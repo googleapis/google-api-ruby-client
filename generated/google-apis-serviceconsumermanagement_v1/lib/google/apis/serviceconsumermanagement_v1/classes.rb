@@ -56,9 +56,18 @@ module Google
       # which represent a concrete implementation of an interface as opposed to simply
       # a description of methods and bindings. They are also sometimes simply referred
       # to as "APIs" in other contexts, such as the name of this message itself. See
-      # https://cloud.google.com/apis/design/glossary for detailed terminology.
+      # https://cloud.google.com/apis/design/glossary for detailed terminology. New
+      # usages of this message as an alternative to ServiceDescriptorProto are
+      # strongly discouraged. This message does not reliability preserve all
+      # information necessary to model the schema and preserve semantics. Instead make
+      # use of FileDescriptorSet which preserves the necessary information.
       class Api
         include Google::Apis::Core::Hashable
+      
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # The methods of this interface, in unspecified order.
         # Corresponds to the JSON property `methods`
@@ -115,6 +124,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
           @mixins = args[:mixins] if args.key?(:mixins)
           @name = args[:name] if args.key?(:name)
@@ -163,6 +173,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Optional. Rules of the Configuration.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ServiceconsumermanagementV1::AspectRule>]
+        attr_accessor :rules
+      
         # Content of the configuration. The underlying schema should be defined by
         # Aspect owners as protobuf message under `google/api/configaspects/proto`.
         # Corresponds to the JSON property `spec`
@@ -176,7 +191,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @rules = args[:rules] if args.key?(:rules)
           @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # Rule-based configuration for an aspect.
+      class AspectRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. Rules of the configuration. The underlying schema should be defined
+        # by Aspect owners as protobuf message under `google/api/configaspects/proto`.
+        # Corresponds to the JSON property `config`
+        # @return [Hash<String,Object>]
+        attr_accessor :config
+      
+        # Required. Selects the RPC methods to which this rule applies. Refer to
+        # selector for syntax details.
+        # Corresponds to the JSON property `selector`
+        # @return [String]
+        attr_accessor :selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @selector = args[:selector] if args.key?(:selector)
         end
       end
       
@@ -497,7 +540,9 @@ module Google
         # @return [Hash<String,Google::Apis::ServiceconsumermanagementV1::BackendRule>]
         attr_accessor :overrides_by_request_protocol
       
-        # 
+        # Path translation specifies how to combine the backend address with the request
+        # path in order to produce the appropriate forwarding URL for the request. See
+        # PathTranslation for more details.
         # Corresponds to the JSON property `pathTranslation`
         # @return [String]
         attr_accessor :path_translation
@@ -871,7 +916,8 @@ module Google
         attr_accessor :reference_docs_uri
       
         # This message is used to configure the generation of a subset of the RPCs in a
-        # service for client libraries.
+        # service for client libraries. Note: This feature should not be used in most
+        # cases.
         # Corresponds to the JSON property `selectiveGapicGeneration`
         # @return [Google::Apis::ServiceconsumermanagementV1::SelectiveGapicGeneration]
         attr_accessor :selective_gapic_generation
@@ -974,9 +1020,9 @@ module Google
       class Control
         include Google::Apis::Core::Hashable
       
-        # The service controller environment to use. If empty, no control plane feature (
-        # like quota and billing) will be enabled. The recommended value for most
-        # services is servicecontrol.googleapis.com
+        # The service controller environment to use. If empty, no control plane features
+        # (like quota and billing) will be enabled. The recommended value for most
+        # services is servicecontrol.googleapis.com.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
@@ -1420,7 +1466,11 @@ module Google
         end
       end
       
-      # Enum type definition.
+      # Enum type definition. New usages of this message as an alternative to
+      # EnumDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class Enum
         include Google::Apis::Core::Hashable
       
@@ -1470,7 +1520,11 @@ module Google
         end
       end
       
-      # Enum value definition.
+      # Enum value definition. New usages of this message as an alternative to
+      # EnumValueDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class EnumValue
         include Google::Apis::Core::Hashable
       
@@ -1544,7 +1598,11 @@ module Google
         end
       end
       
-      # A single field of a message type.
+      # A single field of a message type. New usages of this message as an alternative
+      # to FieldDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class Field
         include Google::Apis::Core::Hashable
       
@@ -1675,7 +1733,8 @@ module Google
       
         # Map of service names to renamed services. Keys are the package relative
         # service names and values are the name to be used for the service client and
-        # call options. publishing: go_settings: renamed_services: Publisher: TopicAdmin
+        # call options. Example: publishing: go_settings: renamed_services: Publisher:
+        # TopicAdmin
         # Corresponds to the JSON property `renamedServices`
         # @return [Hash<String,String>]
         attr_accessor :renamed_services
@@ -2061,6 +2120,14 @@ module Google
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2069,6 +2136,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2254,9 +2322,20 @@ module Google
         end
       end
       
-      # Method represents a method of an API interface.
+      # Method represents a method of an API interface. New usages of this message as
+      # an alternative to MethodDescriptorProto are strongly discouraged. This message
+      # does not reliability preserve all information necessary to model the schema
+      # and preserve semantics. Instead make use of FileDescriptorSet which preserves
+      # the necessary information.
       class MethodProp
         include Google::Apis::Core::Hashable
+      
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS. This
+        # field should be ignored, instead the edition should be inherited from Api.
+        # This is similar to Field and EnumValue.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # The simple name of this method.
         # Corresponds to the JSON property `name`
@@ -2290,7 +2369,8 @@ module Google
         # @return [String]
         attr_accessor :response_type_url
       
-        # The source syntax of this method.
+        # The source syntax of this method. This field should be ignored, instead the
+        # syntax should be inherited from Api. This is similar to Field and EnumValue.
         # Corresponds to the JSON property `syntax`
         # @return [String]
         attr_accessor :syntax
@@ -2301,6 +2381,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
           @request_streaming = args[:request_streaming] if args.key?(:request_streaming)
@@ -2924,7 +3005,9 @@ module Google
       end
       
       # A protocol buffer option, which can be attached to a message, field,
-      # enumeration, etc.
+      # enumeration, etc. New usages of this message as an alternative to FileOptions,
+      # MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions,
+      # or MethodOptions are strongly discouraged.
       class Option
         include Google::Apis::Core::Hashable
       
@@ -3005,6 +3088,16 @@ module Google
         # @return [Google::Apis::ServiceconsumermanagementV1::CommonLanguageSettings]
         attr_accessor :common
       
+        # The package name to use in Php. Clobbers the php_namespace option set in the
+        # protobuf. This should be used **only** by APIs who have already set the
+        # language_settings.php.package_name" field in gapic.yaml. API teams should use
+        # the protobuf php_namespace option where possible. Example of a YAML
+        # configuration:: publishing: library_settings: php_settings: library_package:
+        # Google\Cloud\PubSub\V1
+        # Corresponds to the JSON property `libraryPackage`
+        # @return [String]
+        attr_accessor :library_package
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3012,6 +3105,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common = args[:common] if args.key?(:common)
+          @library_package = args[:library_package] if args.key?(:library_package)
         end
       end
       
@@ -3376,7 +3470,8 @@ module Google
       end
       
       # This message is used to configure the generation of a subset of the RPCs in a
-      # service for client libraries.
+      # service for client libraries. Note: This feature should not be used in most
+      # cases.
       class SelectiveGapicGeneration
         include Google::Apis::Core::Hashable
       
@@ -3598,8 +3693,8 @@ module Google
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::MetricDescriptor>]
         attr_accessor :metrics
       
-        # Defines the monitored resources used by this service. This is required by the
-        # Service.monitoring and Service.logging configurations.
+        # Defines the monitored resources used by this service. This is required by the `
+        # Service.monitoring` and `Service.logging` configurations.
         # Corresponds to the JSON property `monitoredResources`
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::MonitoredResourceDescriptor>]
         attr_accessor :monitored_resources
@@ -4083,6 +4178,14 @@ module Google
       class TenantResource
         include Google::Apis::Core::Hashable
       
+        # Output only. The newly created regional resource name of the tenant project
+        # that has been migrated from a global service. This field is only set for
+        # migrated tenant projects. Format: `services//`collection_id`/`RESOURCE_ID`/
+        # locations/`LOCATION`/tenantProjects/`TENANT_ID``.
+        # Corresponds to the JSON property `migratedTenantProject`
+        # @return [String]
+        attr_accessor :migrated_tenant_project
+      
         # Output only. @OutputOnly Identifier of the tenant resource. For cloud projects,
         # it is in the form 'projects/`number`'. For example 'projects/123456'.
         # Corresponds to the JSON property `resource`
@@ -4105,13 +4208,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @migrated_tenant_project = args[:migrated_tenant_project] if args.key?(:migrated_tenant_project)
           @resource = args[:resource] if args.key?(:resource)
           @status = args[:status] if args.key?(:status)
           @tag = args[:tag] if args.key?(:tag)
         end
       end
       
-      # A protocol buffer message type.
+      # A protocol buffer message type. New usages of this message as an alternative
+      # to DescriptorProto are strongly discouraged. This message does not reliability
+      # preserve all information necessary to model the schema and preserve semantics.
+      # Instead make use of FileDescriptorSet which preserves the necessary
+      # information.
       class Type
         include Google::Apis::Core::Hashable
       
@@ -4572,6 +4680,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The project-level IAM role defined in the service agent's grant configuration.
+        # This is the standard role intended for this service agent. This field is
+        # populated regardless of the `skip_role_attach` option in the request. If `
+        # skip_role_attach` is true, the caller can use this value to know which role
+        # they are responsible for granting.
+        # Corresponds to the JSON property `projectRole`
+        # @return [String]
+        attr_accessor :project_role
+      
         # The P4 service identity configuration tag. This must be defined in
         # activation_grants. If not specified when creating the account, the tag is set
         # to "default".
@@ -4592,6 +4709,7 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @name = args[:name] if args.key?(:name)
+          @project_role = args[:project_role] if args.key?(:project_role)
           @tag = args[:tag] if args.key?(:tag)
           @unique_id = args[:unique_id] if args.key?(:unique_id)
         end

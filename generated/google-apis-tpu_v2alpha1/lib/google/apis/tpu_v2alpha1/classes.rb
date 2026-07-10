@@ -211,6 +211,12 @@ module Google
         # @return [String]
         attr_accessor :source_image
       
+        # Optional. The storage pool in which the boot disk is created. You can provide
+        # this as a partial or full URL to the resource.
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
         def initialize(**args)
            update!(**args)
         end
@@ -223,6 +229,7 @@ module Google
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @source_image = args[:source_image] if args.key?(:source_image)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
         end
       end
       
@@ -244,10 +251,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name of the encryption key that is stored in Google Cloud KMS. For example:
-        # "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/
-        # cryptoKeys/key The fully-qualifed key name may be returned for resource GET
-        # requests. For example: "kmsKeyName": "projects/kms_project_id/locations/region/
-        # keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
+        # "kmsKeyName": "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/
+        # cryptoKeys/KEY The fully-qualifed key name may be returned for resource GET
+        # requests. For example: "kmsKeyName": "projects/KMS_PROJECT_ID/locations/REGION/
+        # keyRings/KEY_REGION/cryptoKeys/KEY/cryptoKeyVersions/1
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -389,6 +396,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @guest_attributes = args[:guest_attributes] if args.key?(:guest_attributes)
+        end
+      end
+      
+      # Response for GetMaintenanceInfo.
+      class GetMaintenanceInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of upcoming maintenance entries.
+        # Corresponds to the JSON property `nodeUpcomingMaintenances`
+        # @return [Array<Google::Apis::TpuV2alpha1::NodeUpcomingMaintenanceInfo>]
+        attr_accessor :node_upcoming_maintenances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_upcoming_maintenances = args[:node_upcoming_maintenances] if args.key?(:node_upcoming_maintenances)
         end
       end
       
@@ -627,6 +653,14 @@ module Google
         # @return [Array<Google::Apis::TpuV2alpha1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -635,6 +669,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1133,6 +1168,37 @@ module Google
         end
       end
       
+      # A tuple containing node name / ID and maintenance info.
+      class NodeUpcomingMaintenanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Unqualified node name.
+        # Corresponds to the JSON property `nodeName`
+        # @return [String]
+        attr_accessor :node_name
+      
+        # UID of this node.
+        # Corresponds to the JSON property `nodeUid`
+        # @return [Fixnum]
+        attr_accessor :node_uid
+      
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::TpuV2alpha1::UpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_name = args[:node_name] if args.key?(:node_name)
+          @node_uid = args[:node_uid] if args.key?(:node_uid)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1612,6 +1678,11 @@ module Google
         # @return [String]
         attr_accessor :provisioning_model
       
+        # Optional. Name of the reservation in which the node should be provisioned.
+        # Corresponds to the JSON property `reservationName`
+        # @return [String]
+        attr_accessor :reservation_name
+      
         # Whether the node is created under a reservation.
         # Corresponds to the JSON property `reserved`
         # @return [Boolean]
@@ -1637,6 +1708,7 @@ module Google
         def update!(**args)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+          @reservation_name = args[:reservation_name] if args.key?(:reservation_name)
           @reserved = args[:reserved] if args.key?(:reserved)
           @spot = args[:spot] if args.key?(:spot)
           @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)

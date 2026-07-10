@@ -634,7 +634,7 @@ module Google
         # @return [String]
         attr_accessor :gmp_organization
       
-        # Output only. Resource name of this account. Format: accounts/`account` Example:
+        # Identifier. Resource name of this account. Format: accounts/`account` Example:
         # "accounts/100"
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -682,8 +682,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name for this account summary. Format: accountSummaries/`account_id`
-        # Example: "accountSummaries/1000"
+        # Identifier. Resource name for this account summary. Format: accountSummaries/`
+        # account_id` Example: "accountSummaries/1000"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1686,7 +1686,7 @@ module Google
         # @return [String]
         attr_accessor :metric_unit
       
-        # Output only. Resource name for this CalculatedMetric. Format: 'properties/`
+        # Identifier. Resource name for this CalculatedMetric. Format: 'properties/`
         # property_id`/calculatedMetrics/`calculated_metric_id`'
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1909,6 +1909,11 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingDataAnnotation]
         attr_accessor :reporting_data_annotation
       
+        # A resource containing settings related to reporting identity.
+        # Corresponds to the JSON property `reportingIdentitySettings`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings]
+        attr_accessor :reporting_identity_settings
+      
         # A link between a Google Analytics property and a Search Ads 360 entity.
         # Corresponds to the JSON property `searchAds360Link`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link]
@@ -1918,6 +1923,19 @@ module Google
         # Corresponds to the JSON property `skadnetworkConversionValueSchema`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSkAdNetworkConversionValueSchema]
         attr_accessor :skadnetwork_conversion_value_schema
+      
+        # Subproperty synchronization configuration controls how ordinary property
+        # configurations are synchronized to subproperties. This resource is provisioned
+        # automatically for each subproperty.
+        # Corresponds to the JSON property `subpropertySyncConfig`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig]
+        attr_accessor :subproperty_sync_config
+      
+        # Configuration for user-provided data collection. This is a singleton resource
+        # for a Google Analytics property.
+        # Corresponds to the JSON property `userProvidedDataSettings`
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserProvidedDataSettings]
+        attr_accessor :user_provided_data_settings
       
         def initialize(**args)
            update!(**args)
@@ -1950,8 +1968,11 @@ module Google
           @measurement_protocol_secret = args[:measurement_protocol_secret] if args.key?(:measurement_protocol_secret)
           @property = args[:property] if args.key?(:property)
           @reporting_data_annotation = args[:reporting_data_annotation] if args.key?(:reporting_data_annotation)
+          @reporting_identity_settings = args[:reporting_identity_settings] if args.key?(:reporting_identity_settings)
           @search_ads360_link = args[:search_ads360_link] if args.key?(:search_ads360_link)
           @skadnetwork_conversion_value_schema = args[:skadnetwork_conversion_value_schema] if args.key?(:skadnetwork_conversion_value_schema)
+          @subproperty_sync_config = args[:subproperty_sync_config] if args.key?(:subproperty_sync_config)
+          @user_provided_data_settings = args[:user_provided_data_settings] if args.key?(:user_provided_data_settings)
         end
       end
       
@@ -2204,33 +2225,6 @@ module Google
         end
       end
       
-      # Configuration for a specific Connected Site Tag.
-      class GoogleAnalyticsAdminV1alphaConnectedSiteTag
-        include Google::Apis::Core::Hashable
-      
-        # Required. User-provided display name for the connected site tag. Must be less
-        # than 256 characters.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Required. "Tag ID to forward events to. Also known as the Measurement ID, or
-        # the "G-ID" (For example: G-12345).
-        # Corresponds to the JSON property `tagId`
-        # @return [String]
-        attr_accessor :tag_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @tag_id = args[:tag_id] if args.key?(:tag_id)
-        end
-      end
-      
       # A conversion event in a Google Analytics property.
       class GoogleAnalyticsAdminV1alphaConversionEvent
         include Google::Apis::Core::Hashable
@@ -2277,7 +2271,7 @@ module Google
         # @return [String]
         attr_accessor :event_name
       
-        # Output only. Resource name of this conversion event. Format: properties/`
+        # Identifier. Resource name of this conversion event. Format: properties/`
         # property`/conversionEvents/`conversion_event`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2408,46 +2402,6 @@ module Google
         end
       end
       
-      # Request message for CreateConnectedSiteTag RPC.
-      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest
-        include Google::Apis::Core::Hashable
-      
-        # Configuration for a specific Connected Site Tag.
-        # Corresponds to the JSON property `connectedSiteTag`
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag]
-        attr_accessor :connected_site_tag
-      
-        # The Universal Analytics property to create connected site tags for. This API
-        # does not support GA4 properties. Format: properties/`
-        # universalAnalyticsPropertyId` Example: properties/1234
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @connected_site_tag = args[:connected_site_tag] if args.key?(:connected_site_tag)
-          @property = args[:property] if args.key?(:property)
-        end
-      end
-      
-      # Response message for CreateConnectedSiteTag RPC.
-      class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Request message for CreateRollupProperty RPC.
       class GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest
         include Google::Apis::Core::Hashable
@@ -2524,7 +2478,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Resource name for this CustomDimension resource. Format:
+        # Identifier. Resource name for this CustomDimension resource. Format:
         # properties/`property`/customDimensions/`customDimension`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2583,7 +2537,7 @@ module Google
         # @return [String]
         attr_accessor :measurement_unit
       
-        # Output only. Resource name for this CustomMetric resource. Format: properties/`
+        # Identifier. Resource name for this CustomMetric resource. Format: properties/`
         # property`/customMetrics/`customMetric`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2682,7 +2636,7 @@ module Google
         # @return [String]
         attr_accessor :event_data_retention
       
-        # Output only. Resource name for this DataRetentionSetting resource. Format:
+        # Identifier. Resource name for this DataRetentionSetting resource. Format:
         # properties/`property`/dataRetentionSettings
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2718,7 +2672,7 @@ module Google
       class GoogleAnalyticsAdminV1alphaDataSharingSettings
         include Google::Apis::Core::Hashable
       
-        # Output only. Resource name. Format: accounts/`account`/dataSharingSettings
+        # Identifier. Resource name. Format: accounts/`account`/dataSharingSettings
         # Example: "accounts/1000/dataSharingSettings"
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2810,9 +2764,8 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData]
         attr_accessor :ios_app_stream_data
       
-        # Output only. Resource name of this Data Stream. Format: properties/`
-        # property_id`/dataStreams/`stream_id` Example: "properties/1000/dataStreams/
-        # 2000"
+        # Identifier. Resource name of this Data Stream. Format: properties/`property_id`
+        # /dataStreams/`stream_id` Example: "properties/1000/dataStreams/2000"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2956,34 +2909,6 @@ module Google
         end
       end
       
-      # Request message for DeleteConnectedSiteTag RPC.
-      class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest
-        include Google::Apis::Core::Hashable
-      
-        # The Universal Analytics property to delete connected site tags for. This API
-        # does not support GA4 properties. Format: properties/`
-        # universalAnalyticsPropertyId` Example: properties/1234
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        # Tag ID to forward events to. Also known as the Measurement ID, or the "G-ID" (
-        # For example: G-12345).
-        # Corresponds to the JSON property `tagId`
-        # @return [String]
-        attr_accessor :tag_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @property = args[:property] if args.key?(:property)
-          @tag_id = args[:tag_id] if args.key?(:tag_id)
-        end
-      end
-      
       # A link between a Google Analytics property and a Display & Video 360
       # advertiser.
       class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink
@@ -3025,7 +2950,7 @@ module Google
         attr_accessor :cost_data_sharing_enabled
         alias_method :cost_data_sharing_enabled?, :cost_data_sharing_enabled
       
-        # Output only. The resource name for this DisplayVideo360AdvertiserLink resource.
+        # Identifier. The resource name for this DisplayVideo360AdvertiserLink resource.
         # Format: properties/`propertyId`/displayVideo360AdvertiserLinks/`linkId` Note:
         # linkId is not the Display & Video 360 Advertiser ID
         # Corresponds to the JSON property `name`
@@ -3092,7 +3017,7 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails]
         attr_accessor :link_proposal_status_details
       
-        # Output only. The resource name for this DisplayVideo360AdvertiserLinkProposal
+        # Identifier. The resource name for this DisplayVideo360AdvertiserLinkProposal
         # resource. Format: properties/`propertyId`/
         # displayVideo360AdvertiserLinkProposals/`proposalId` Note: proposalId is not
         # the Display & Video 360 Advertiser ID
@@ -3592,69 +3517,6 @@ module Google
         end
       end
       
-      # Request for fetching the opt out status for the automated GA4 setup process.
-      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The UA property to get the opt out status. Note this request uses
-        # the internal property ID, not the tracking ID of the form UA-XXXXXX-YY. Format:
-        # properties/`internalWebPropertyId` Example: properties/1234
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @property = args[:property] if args.key?(:property)
-        end
-      end
-      
-      # Response message for fetching the opt out status for the automated GA4 setup
-      # process.
-      class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
-        include Google::Apis::Core::Hashable
-      
-        # The opt out status for the UA property.
-        # Corresponds to the JSON property `optOut`
-        # @return [Boolean]
-        attr_accessor :opt_out
-        alias_method :opt_out?, :opt_out
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @opt_out = args[:opt_out] if args.key?(:opt_out)
-        end
-      end
-      
-      # Response for looking up GA4 property connected to a UA property.
-      class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse
-        include Google::Apis::Core::Hashable
-      
-        # The GA4 property connected to the UA property. An empty string is returned
-        # when there is no connected GA4 property. Format: properties/`property_id`
-        # Example: properties/1234
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @property = args[:property] if args.key?(:property)
-        end
-      end
-      
       # A link between a Google Analytics property and a Firebase project.
       class GoogleAnalyticsAdminV1alphaFirebaseLink
         include Google::Apis::Core::Hashable
@@ -3664,7 +3526,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Example format: properties/1234/firebaseLinks/5678
+        # Identifier. Example format: properties/1234/firebaseLinks/5678
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3695,8 +3557,8 @@ module Google
       class GoogleAnalyticsAdminV1alphaGlobalSiteTag
         include Google::Apis::Core::Hashable
       
-        # Output only. Resource name for this GlobalSiteTag resource. Format: properties/
-        # `property_id`/dataStreams/`stream_id`/globalSiteTag Example: "properties/123/
+        # Identifier. Resource name for this GlobalSiteTag resource. Format: properties/`
+        # property_id`/dataStreams/`stream_id`/globalSiteTag Example: "properties/123/
         # dataStreams/456/globalSiteTag"
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3754,7 +3616,7 @@ module Google
         # @return [String]
         attr_accessor :customer_id
       
-        # Output only. Format: properties/`propertyId`/googleAdsLinks/`googleAdsLinkId`
+        # Identifier. Format: properties/`propertyId`/googleAdsLinks/`googleAdsLinkId`
         # Note: googleAdsLinkId is not the Google Ads customer ID.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4169,47 +4031,6 @@ module Google
         def update!(**args)
           @channel_groups = args[:channel_groups] if args.key?(:channel_groups)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Request message for ListConnectedSiteTags RPC.
-      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The Universal Analytics property to fetch connected site tags for. This does
-        # not work on GA4 properties. A maximum of 20 connected site tags will be
-        # returned. Example Format: `properties/1234`
-        # Corresponds to the JSON property `property`
-        # @return [String]
-        attr_accessor :property
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @property = args[:property] if args.key?(:property)
-        end
-      end
-      
-      # Response message for ListConnectedSiteTags RPC.
-      class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The site tags for the Universal Analytics property. A maximum of 20 connected
-        # site tags will be returned.
-        # Corresponds to the JSON property `connectedSiteTags`
-        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConnectedSiteTag>]
-        attr_accessor :connected_site_tags
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @connected_site_tags = args[:connected_site_tags] if args.key?(:connected_site_tags)
         end
       end
       
@@ -4713,6 +4534,32 @@ module Google
         end
       end
       
+      # Response message for ListSubpropertySyncConfigs RPC.
+      class GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of `SubpropertySyncConfig` resources.
+        # Corresponds to the JSON property `subpropertySyncConfigs`
+        # @return [Array<Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>]
+        attr_accessor :subproperty_sync_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @subproperty_sync_configs = args[:subproperty_sync_configs] if args.key?(:subproperty_sync_configs)
+        end
+      end
+      
       # Defines a condition for when an Event Edit or Event Creation rule applies to
       # an event.
       class GoogleAnalyticsAdminV1alphaMatchingCondition
@@ -4767,7 +4614,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Resource name of this secret. This secret may be a child of any
+        # Identifier. Resource name of this secret. This secret may be a child of any
         # type of stream. Format: properties/`property`/dataStreams/`dataStream`/
         # measurementProtocolSecrets/`measurementProtocolSecret`
         # Corresponds to the JSON property `name`
@@ -4929,7 +4776,7 @@ module Google
         # @return [String]
         attr_accessor :industry_category
       
-        # Output only. Resource name of this property. Format: properties/`property_id`
+        # Identifier. Resource name of this property. Format: properties/`property_id`
         # Example: "properties/1000"
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4994,6 +4841,13 @@ module Google
       class GoogleAnalyticsAdminV1alphaPropertySummary
         include Google::Apis::Core::Hashable
       
+        # If true, then the user has a Google Analytics role that permits them to edit
+        # the property.
+        # Corresponds to the JSON property `canEdit`
+        # @return [Boolean]
+        attr_accessor :can_edit
+        alias_method :can_edit?, :can_edit
+      
         # Display name for the property referred to in this property summary.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -5023,6 +4877,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @can_edit = args[:can_edit] if args.key?(:can_edit)
           @display_name = args[:display_name] if args.key?(:display_name)
           @parent = args[:parent] if args.key?(:parent)
           @property = args[:property] if args.key?(:property)
@@ -5079,6 +4934,12 @@ module Google
       class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The subproperty feature synchronization mode for Custom Dimensions
+        # and Metrics
+        # Corresponds to the JSON property `customDimensionAndMetricSynchronizationMode`
+        # @return [String]
+        attr_accessor :custom_dimension_and_metric_synchronization_mode
+      
         # A resource message representing a Google Analytics property.
         # Corresponds to the JSON property `subproperty`
         # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty]
@@ -5095,6 +4956,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_dimension_and_metric_synchronization_mode = args[:custom_dimension_and_metric_synchronization_mode] if args.key?(:custom_dimension_and_metric_synchronization_mode)
           @subproperty = args[:subproperty] if args.key?(:subproperty)
           @subproperty_event_filter = args[:subproperty_event_filter] if args.key?(:subproperty_event_filter)
         end
@@ -5251,6 +5113,33 @@ module Google
         def update!(**args)
           @end_date = args[:end_date] if args.key?(:end_date)
           @start_date = args[:start_date] if args.key?(:start_date)
+        end
+      end
+      
+      # A resource containing settings related to reporting identity.
+      class GoogleAnalyticsAdminV1alphaReportingIdentitySettings
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Identifier. Resource name for this reporting identity settings
+        # singleton resource. Format: properties/`property_id`/reportingIdentitySettings
+        # Example: "properties/1234/reportingIdentitySettings"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The strategy used for identifying user identities in reports.
+        # Corresponds to the JSON property `reportingIdentity`
+        # @return [String]
+        attr_accessor :reporting_identity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @reporting_identity = args[:reporting_identity] if args.key?(:reporting_identity)
         end
       end
       
@@ -5471,7 +5360,7 @@ module Google
         attr_accessor :apply_conversion_values
         alias_method :apply_conversion_values?, :apply_conversion_values
       
-        # Output only. Resource name of the schema. This will be child of ONLY an iOS
+        # Identifier. Resource name of the schema. This will be child of ONLY an iOS
         # stream, and there can be at most one such child under an iOS stream. Format:
         # properties/`property`/dataStreams/`dataStream`/
         # sKAdNetworkConversionValueSchema
@@ -5549,7 +5438,7 @@ module Google
         attr_accessor :cost_data_sharing_enabled
         alias_method :cost_data_sharing_enabled?, :cost_data_sharing_enabled
       
-        # Output only. The resource name for this SearchAds360Link resource. Format:
+        # Identifier. The resource name for this SearchAds360Link resource. Format:
         # properties/`propertyId`/searchAds360Links/`linkId` Note: linkId is not the
         # Search Ads 360 advertiser ID
         # Corresponds to the JSON property `name`
@@ -5679,22 +5568,35 @@ module Google
         end
       end
       
-      # Request for setting the opt out status for the automated GA4 setup process.
-      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest
+      # Request message for SubmitUserDeletion RPC.
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest
         include Google::Apis::Core::Hashable
       
-        # The status to set.
-        # Corresponds to the JSON property `optOut`
-        # @return [Boolean]
-        attr_accessor :opt_out
-        alias_method :opt_out?, :opt_out
-      
-        # Required. The UA property to set the opt out status. Note this request uses
-        # the internal property ID, not the tracking ID of the form UA-XXXXXX-YY. Format:
-        # properties/`internalWebPropertyId` Example: properties/1234
-        # Corresponds to the JSON property `property`
+        # Firebase [application instance ID](https://firebase.google.com/docs/reference/
+        # android/com/google/firebase/analytics/FirebaseAnalytics.html#getAppInstanceId).
+        # Corresponds to the JSON property `appInstanceId`
         # @return [String]
-        attr_accessor :property
+        attr_accessor :app_instance_id
+      
+        # Google Analytics [client ID](https://support.google.com/analytics/answer/
+        # 11593727).
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Google Analytics [user ID](https://firebase.google.com/docs/analytics/userid).
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        # [User-provided data](https://support.google.com/analytics/answer/14077171).
+        # May contain either one email address or one phone number. Email addresses
+        # should be normalized as such: * lowercase * remove periods before @ for gmail.
+        # com/googlemail.com addresses * remove all spaces Phone numbers should be
+        # normalized as such: * remove all non digit characters * add + prefix
+        # Corresponds to the JSON property `userProvidedData`
+        # @return [String]
+        attr_accessor :user_provided_data
       
         def initialize(**args)
            update!(**args)
@@ -5702,15 +5604,22 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @opt_out = args[:opt_out] if args.key?(:opt_out)
-          @property = args[:property] if args.key?(:property)
+          @app_instance_id = args[:app_instance_id] if args.key?(:app_instance_id)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
+          @user_provided_data = args[:user_provided_data] if args.key?(:user_provided_data)
         end
       end
       
-      # Response message for setting the opt out status for the automated GA4 setup
-      # process.
-      class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
+      # Response message for SubmitUserDeletion RPC.
+      class GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse
         include Google::Apis::Core::Hashable
+      
+        # Marks the moment for which all visitor data before this point should be
+        # deleted. This is set to the time at which the deletion request was received.
+        # Corresponds to the JSON property `deletionRequestTime`
+        # @return [String]
+        attr_accessor :deletion_request_time
       
         def initialize(**args)
            update!(**args)
@@ -5718,6 +5627,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deletion_request_time = args[:deletion_request_time] if args.key?(:deletion_request_time)
         end
       end
       
@@ -5898,6 +5808,47 @@ module Google
         end
       end
       
+      # Subproperty synchronization configuration controls how ordinary property
+      # configurations are synchronized to subproperties. This resource is provisioned
+      # automatically for each subproperty.
+      class GoogleAnalyticsAdminV1alphaSubpropertySyncConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Immutable. Resource name of the subproperty that these settings
+        # apply to.
+        # Corresponds to the JSON property `applyToProperty`
+        # @return [String]
+        attr_accessor :apply_to_property
+      
+        # Required. Specifies the Custom Dimension / Metric synchronization mode for the
+        # subproperty. If set to ALL, Custom Dimension / Metric synchronization will be
+        # immediately enabled. Local configuration of Custom Dimensions / Metrics will
+        # not be allowed on the subproperty so long as the synchronization mode is set
+        # to ALL. If set to NONE, Custom Dimensions / Metric synchronization is disabled.
+        # Custom Dimensions / Metrics must be configured explicitly on the Subproperty.
+        # Corresponds to the JSON property `customDimensionAndMetricSyncMode`
+        # @return [String]
+        attr_accessor :custom_dimension_and_metric_sync_mode
+      
+        # Output only. Identifier. Format: properties/`ordinary_property_id`/
+        # subpropertySyncConfigs/`subproperty_id` Example: properties/1234/
+        # subpropertySyncConfigs/5678
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_to_property = args[:apply_to_property] if args.key?(:apply_to_property)
+          @custom_dimension_and_metric_sync_mode = args[:custom_dimension_and_metric_sync_mode] if args.key?(:custom_dimension_and_metric_sync_mode)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Request message for UpdateAccessBinding RPC.
       class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest
         include Google::Apis::Core::Hashable
@@ -5914,6 +5865,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_binding = args[:access_binding] if args.key?(:access_binding)
+        end
+      end
+      
+      # Configuration for user-provided data collection. This is a singleton resource
+      # for a Google Analytics property.
+      class GoogleAnalyticsAdminV1alphaUserProvidedDataSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether this property allows a Google Tag to automatically collect
+        # user-provided data from your website. This setting only takes effect if `
+        # user_provided_data_collection_enabled` is also true.
+        # Corresponds to the JSON property `automaticallyDetectedDataCollectionEnabled`
+        # @return [Boolean]
+        attr_accessor :automatically_detected_data_collection_enabled
+        alias_method :automatically_detected_data_collection_enabled?, :automatically_detected_data_collection_enabled
+      
+        # Identifier. Resource name of this setting. Format: properties/`property`/
+        # userProvidedDataSettings Example: "properties/1000/userProvidedDataSettings"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Whether this property accepts user-provided data sent to it.
+        # Corresponds to the JSON property `userProvidedDataCollectionEnabled`
+        # @return [Boolean]
+        attr_accessor :user_provided_data_collection_enabled
+        alias_method :user_provided_data_collection_enabled?, :user_provided_data_collection_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automatically_detected_data_collection_enabled = args[:automatically_detected_data_collection_enabled] if args.key?(:automatically_detected_data_collection_enabled)
+          @name = args[:name] if args.key?(:name)
+          @user_provided_data_collection_enabled = args[:user_provided_data_collection_enabled] if args.key?(:user_provided_data_collection_enabled)
         end
       end
       

@@ -141,8 +141,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blob_generation, :numeric_string => true, as: 'blobGeneration'
           property :blob_id, as: 'blobId'
+          property :download_external_read_token, :base64 => true, as: 'downloadExternalReadToken'
           property :download_read_handle, :base64 => true, as: 'downloadReadHandle'
           property :read_token, as: 'readToken'
+          property :upload_fragment_list_creation_info, :base64 => true, as: 'uploadFragmentListCreationInfo'
           property :upload_metadata_container, :base64 => true, as: 'uploadMetadataContainer'
         end
       end
@@ -172,8 +174,10 @@ module Google
           property :best_guess, as: 'bestGuess'
           property :from_bytes, as: 'fromBytes'
           property :from_file_name, as: 'fromFileName'
+          property :from_fusion_id, as: 'fromFusionId'
           property :from_header, as: 'fromHeader'
           property :from_url_path, as: 'fromUrlPath'
+          property :fusion_id_detection_metadata, :base64 => true, as: 'fusionIdDetectionMetadata'
         end
       end
       
@@ -275,6 +279,7 @@ module Google
           property :reference_type, as: 'referenceType'
           property :sha1_hash, :base64 => true, as: 'sha1Hash'
           property :sha256_hash, :base64 => true, as: 'sha256Hash'
+          property :sha512_hash, :base64 => true, as: 'sha512Hash'
           property :timestamp, :numeric_string => true, as: 'timestamp'
           property :token, as: 'token'
         end

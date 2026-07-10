@@ -22,6 +22,35 @@ module Google
   module Apis
     module VmwareengineV1
       
+      # Request message for VmwareEngine.AcceleratePrivateCloudDeletion
+      class AcceleratePrivateCloudDeletionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Checksum used to ensure that the user-provided value is up to date
+        # before the server processes the request. The server compares provided checksum
+        # with the current checksum of the resource. If the user-provided value is out
+        # of date, this request returns an `ABORTED` error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # Announcement for the resources of Vmware Engine.
       class Announcement
         include Google::Apis::Core::Hashable
@@ -405,6 +434,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Configuration of a mounted datastore.
+        # Corresponds to the JSON property `datastoreMountConfig`
+        # @return [Array<Google::Apis::VmwareengineV1::DatastoreMountConfig>]
+        attr_accessor :datastore_mount_config
+      
         # Output only. True if the cluster is a management cluster; false otherwise.
         # There can only be one management cluster in a private cloud and it has to be
         # the first one.
@@ -455,6 +489,7 @@ module Google
         def update!(**args)
           @autoscaling_settings = args[:autoscaling_settings] if args.key?(:autoscaling_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @datastore_mount_config = args[:datastore_mount_config] if args.key?(:datastore_mount_config)
           @management = args[:management] if args.key?(:management)
           @name = args[:name] if args.key?(:name)
           @node_type_configs = args[:node_type_configs] if args.key?(:node_type_configs)
@@ -534,6 +569,188 @@ module Google
         def update!(**args)
           @password = args[:password] if args.key?(:password)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Represents a datastore resource.
+      class Datastore
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Clusters to which the datastore is attached.
+        # Corresponds to the JSON property `clusters`
+        # @return [Array<String>]
+        attr_accessor :clusters
+      
+        # Output only. Creation time of this resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User-provided description for this datastore
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Checksum that may be sent on update and delete requests to ensure
+        # that the user-provided value is up to date before the server processes a
+        # request. The server computes checksums based on the value of other fields in
+        # the request.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. Identifier. The resource name of this datastore. Resource names
+        # are schemeless URIs that follow the conventions in https://cloud.google.com/
+        # apis/design/resource_names. For example: `projects/my-project/locations/us-
+        # central1/datastores/datastore`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The NFS datastore configuration.
+        # Corresponds to the JSON property `nfsDatastore`
+        # @return [Google::Apis::VmwareengineV1::NfsDatastore]
+        attr_accessor :nfs_datastore
+      
+        # Output only. The state of the Datastore.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. System-generated unique identifier for the resource.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Last update time of this resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clusters = args[:clusters] if args.key?(:clusters)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @nfs_datastore = args[:nfs_datastore] if args.key?(:nfs_datastore)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The Datastore Mount configuration
+      class DatastoreMountConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The access mode of the NFS volume. Optional. Default value used will
+        # be READ_WRITE
+        # Corresponds to the JSON property `accessMode`
+        # @return [String]
+        attr_accessor :access_mode
+      
+        # Required. The resource name of the datastore to mount. Resource names are
+        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. For example: `projects/my-project/locations/us-central1/
+        # datastores/my-datastore`
+        # Corresponds to the JSON property `datastore`
+        # @return [String]
+        attr_accessor :datastore
+      
+        # The network configuration for the datastore.
+        # Corresponds to the JSON property `datastoreNetwork`
+        # @return [Google::Apis::VmwareengineV1::DatastoreNetwork]
+        attr_accessor :datastore_network
+      
+        # Output only. File share name.
+        # Corresponds to the JSON property `fileShare`
+        # @return [String]
+        attr_accessor :file_share
+      
+        # Optional. The NFS protocol supported by the NFS volume. Default value used
+        # will be NFS_V3
+        # Corresponds to the JSON property `nfsVersion`
+        # @return [String]
+        attr_accessor :nfs_version
+      
+        # Output only. Server IP addresses of the NFS volume. For NFS 3, you can only
+        # provide a single server IP address or DNS names.
+        # Corresponds to the JSON property `servers`
+        # @return [Array<String>]
+        attr_accessor :servers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_mode = args[:access_mode] if args.key?(:access_mode)
+          @datastore = args[:datastore] if args.key?(:datastore)
+          @datastore_network = args[:datastore_network] if args.key?(:datastore_network)
+          @file_share = args[:file_share] if args.key?(:file_share)
+          @nfs_version = args[:nfs_version] if args.key?(:nfs_version)
+          @servers = args[:servers] if args.key?(:servers)
+        end
+      end
+      
+      # The network configuration for the datastore.
+      class DatastoreNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Optional. connection_count is used to set multiple connections from NFS client
+        # on ESXi host to NFS server. A higher number of connections results in better
+        # performance on datastores. In MountDatastore API by default max 4 connections
+        # are configured. User can set value of connection_count between 1 to 4.
+        # Connection_count is supported from vsphere 8.0u1 for earlier version 1
+        # connection count is set on the ESXi hosts.
+        # Corresponds to the JSON property `connectionCount`
+        # @return [Fixnum]
+        attr_accessor :connection_count
+      
+        # Optional. MTU value is set on the VMKernel adapter for the NFS traffic. By
+        # default standard 1500 MTU size is set in MountDatastore API which is good for
+        # typical setups. However google VPC networks supports jumbo MTU 8896. We
+        # recommend to tune this value based on the NFS traffic performance. Performance
+        # can be determined using benchmarking I/O tools like fio (Flexible I/O Tester)
+        # utility.
+        # Corresponds to the JSON property `mtu`
+        # @return [Fixnum]
+        attr_accessor :mtu
+      
+        # Output only. The resource name of the network peering, used to access the file
+        # share by clients on private cloud. Resource names are schemeless URIs that
+        # follow the conventions in https://cloud.google.com/apis/design/resource_names.
+        # e.g. projects/my-project/locations/us-central1/networkPeerings/my-network-
+        # peering
+        # Corresponds to the JSON property `networkPeering`
+        # @return [String]
+        attr_accessor :network_peering
+      
+        # Required. The resource name of the subnet Resource names are schemeless URIs
+        # that follow the conventions in https://cloud.google.com/apis/design/
+        # resource_names. e.g. projects/my-project/locations/us-central1/subnets/my-
+        # subnet
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_count = args[:connection_count] if args.key?(:connection_count)
+          @mtu = args[:mtu] if args.key?(:mtu)
+          @network_peering = args[:network_peering] if args.key?(:network_peering)
+          @subnet = args[:subnet] if args.key?(:subnet)
         end
       end
       
@@ -623,6 +840,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Encryption configuration for a private cloud.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The resource name of the Cloud KMS key to be used for CMEK
+        # encryption. The format of this field is `projects/`project`/locations/`
+        # location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``. The key must be in the
+        # same region as the private cloud. This key is used for wrapping the key-
+        # encrypting key of vSAN clusters. This field must be provided when `type` is `
+        # CMEK` or `LEGACY_CMEK`, and must not be set when `type` is `OTHER`.
+        # Corresponds to the JSON property `cryptoKeyName`
+        # @return [String]
+        attr_accessor :crypto_key_name
+      
+        # Required. The encryption type of the private cloud.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -917,6 +1164,47 @@ module Google
         end
       end
       
+      # Google service file service configuration
+      class GoogleFileService
+        include Google::Apis::Core::Hashable
+      
+        # Google filestore instance resource name e.g. projects/my-project/locations/me-
+        # west1-b/instances/my-instance
+        # Corresponds to the JSON property `filestoreInstance`
+        # @return [String]
+        attr_accessor :filestore_instance
+      
+        # Google netapp volume resource name e.g. projects/my-project/locations/me-west1-
+        # b/volumes/my-volume
+        # Corresponds to the JSON property `netappVolume`
+        # @return [String]
+        attr_accessor :netapp_volume
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filestore_instance = args[:filestore_instance] if args.key?(:filestore_instance)
+          @netapp_volume = args[:netapp_volume] if args.key?(:netapp_volume)
+        end
+      end
+      
+      # Volume message captures user inputs for creation of file services managed by
+      # GCVE
+      class GoogleVmwareFileService
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for VmwareEngine.GrantDnsBindPermission
       class GrantDnsBindPermissionRequest
         include Google::Apis::Core::Hashable
@@ -1165,6 +1453,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @clusters = args[:clusters] if args.key?(:clusters)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for VmwareEngine.ListDatastores
+      class ListDatastoresResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of Datastores.
+        # Corresponds to the JSON property `datastores`
+        # @return [Array<Google::Apis::VmwareengineV1::Datastore>]
+        attr_accessor :datastores
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable resources.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @datastores = args[:datastores] if args.key?(:datastores)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -1498,6 +1818,14 @@ module Google
         # @return [Array<Google::Apis::VmwareengineV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1506,6 +1834,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1967,6 +2296,99 @@ module Google
         end
       end
       
+      # Request message for VmwareEngine.MigrateManagementVms
+      class MigrateManagementVmsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The user-provided identifier of the workload cluster to which the
+        # management VMs are to be migrated. The cluster must be in the same private
+        # cloud as the one specified in `name`, and must be a workload cluster. The
+        # eventual cluster name will be constructed from the private cloud name and this
+        # cluster ID.
+        # Corresponds to the JSON property `clusterId`
+        # @return [String]
+        attr_accessor :cluster_id
+      
+        # Optional. Checksum used to ensure that the user-provided value is up to date
+        # before the server processes the request. The server compares provided checksum
+        # with the current checksum of the resource. If the user-provided value is out
+        # of date, this request returns an `ABORTED` error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. A request ID to identify requests. Specify a unique request ID so
+        # that if you must retry your request, the server will know to ignore the
+        # request if it has already been completed. The server guarantees that a request
+        # doesn't result in creation of duplicate commitments for at least 60 minutes.
+        # For example, consider a situation where you make an initial request and the
+        # request times out. If you make the request again with the same request ID, the
+        # server can check if the original operation with the same request ID was
+        # received, and if so, will ignore the second request. This prevents clients
+        # from accidentally creating duplicate commitments. The request ID must be a
+        # valid UUID with the exception that zero UUID is not supported (00000000-0000-
+        # 0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+          @etag = args[:etag] if args.key?(:etag)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Mount Datastore Request message
+      class MountDatastoreRequest
+        include Google::Apis::Core::Hashable
+      
+        # The Datastore Mount configuration
+        # Corresponds to the JSON property `datastoreMountConfig`
+        # @return [Google::Apis::VmwareengineV1::DatastoreMountConfig]
+        attr_accessor :datastore_mount_config
+      
+        # Optional. If set to true, the colocation requirement will be ignored. If set
+        # to false, the colocation requirement will be enforced. If not set, the
+        # colocation requirement will be enforced. Colocation requirement is the
+        # requirement that the cluster must be in the same region/zone of datastore(
+        # regional/zonal datastore).
+        # Corresponds to the JSON property `ignoreColocation`
+        # @return [Boolean]
+        attr_accessor :ignore_colocation
+        alias_method :ignore_colocation?, :ignore_colocation
+      
+        # Optional. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. If set to `true`, only validates the request but doesn’t execute the
+        # request. If set to `false`, validates and executes the request.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @datastore_mount_config = args[:datastore_mount_config] if args.key?(:datastore_mount_config)
+          @ignore_colocation = args[:ignore_colocation] if args.key?(:ignore_colocation)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Network configuration in the consumer project with which the peering has to be
       # done.
       class NetworkConfig
@@ -2291,6 +2713,38 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The NFS datastore configuration.
+      class NfsDatastore
+        include Google::Apis::Core::Hashable
+      
+        # Google service file service configuration
+        # Corresponds to the JSON property `googleFileService`
+        # @return [Google::Apis::VmwareengineV1::GoogleFileService]
+        attr_accessor :google_file_service
+      
+        # Volume message captures user inputs for creation of file services managed by
+        # GCVE
+        # Corresponds to the JSON property `googleVmwareFileService`
+        # @return [Google::Apis::VmwareengineV1::GoogleVmwareFileService]
+        attr_accessor :google_vmware_file_service
+      
+        # Third party file service configuration
+        # Corresponds to the JSON property `thirdPartyFileService`
+        # @return [Google::Apis::VmwareengineV1::ThirdPartyFileService]
+        attr_accessor :third_party_file_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_file_service = args[:google_file_service] if args.key?(:google_file_service)
+          @google_vmware_file_service = args[:google_vmware_file_service] if args.key?(:google_vmware_file_service)
+          @third_party_file_service = args[:third_party_file_service] if args.key?(:third_party_file_service)
         end
       end
       
@@ -2823,6 +3277,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Encryption configuration for a private cloud.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::VmwareengineV1::EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Output only. Time when the resource will be irreversibly deleted.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
@@ -2892,6 +3351,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @hcx = args[:hcx] if args.key?(:hcx)
           @management_cluster = args[:management_cluster] if args.key?(:management_cluster)
@@ -3420,6 +3880,40 @@ module Google
         end
       end
       
+      # Third party file service configuration
+      class ThirdPartyFileService
+        include Google::Apis::Core::Hashable
+      
+        # Required. Required Mount Folder name
+        # Corresponds to the JSON property `fileShare`
+        # @return [String]
+        attr_accessor :file_share
+      
+        # Required. Required to identify vpc peering used for NFS access network name of
+        # NFS's vpc e.g. projects/project-id/global/networks/my-network_id
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Required. Server IP addresses of the NFS file service. NFS v3, provide a
+        # single IP address or DNS name. Multiple servers can be supported in future
+        # when NFS 4.1 protocol support is enabled.
+        # Corresponds to the JSON property `servers`
+        # @return [Array<String>]
+        attr_accessor :servers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_share = args[:file_share] if args.key?(:file_share)
+          @network = args[:network] if args.key?(:network)
+          @servers = args[:servers] if args.key?(:servers)
+        end
+      end
+      
       # Thresholds define the utilization of resources triggering scale-out and scale-
       # in operations.
       class Thresholds
@@ -3542,6 +4036,43 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Unmount Datastore Request messag
+      class UnmountDatastoreRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the datastore to unmount. Resource names are
+        # schemeless URIs that follow the conventions in https://cloud.google.com/apis/
+        # design/resource_names. For example: `projects/my-project/locations/us-central1/
+        # datastores/my-datastore`
+        # Corresponds to the JSON property `datastore`
+        # @return [String]
+        attr_accessor :datastore
+      
+        # Optional. The request ID must be a valid UUID with the exception that zero
+        # UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Optional. If set to `true`, only validates the request but doesn’t execute the
+        # request. If set to `false`, validates and executes the request.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @datastore = args[:datastore] if args.key?(:datastore)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
       

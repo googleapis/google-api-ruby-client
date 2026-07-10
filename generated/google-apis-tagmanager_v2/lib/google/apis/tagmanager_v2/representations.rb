@@ -46,7 +46,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkUpdateWorkspaceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Client
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompilerErrorLite
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -280,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProposedChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PublishContainerVersionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -483,6 +501,14 @@ module Google
         end
       end
       
+      class BulkUpdateWorkspaceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :changes, as: 'changes', class: Google::Apis::TagmanagerV2::Entity, decorator: Google::Apis::TagmanagerV2::Entity::Representation
+      
+        end
+      end
+      
       class Client
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -500,6 +526,14 @@ module Google
           property :tag_manager_url, as: 'tagManagerUrl'
           property :type, as: 'type'
           property :workspace_id, as: 'workspaceId'
+        end
+      end
+      
+      class CompilerErrorLite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :error_type, as: 'errorType'
         end
       end
       
@@ -637,6 +671,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compiler_error, as: 'compilerError'
+          collection :compiler_errors, as: 'compilerErrors', class: Google::Apis::TagmanagerV2::CompilerErrorLite, decorator: Google::Apis::TagmanagerV2::CompilerErrorLite::Representation
+      
           property :container_version, as: 'containerVersion', class: Google::Apis::TagmanagerV2::ContainerVersion, decorator: Google::Apis::TagmanagerV2::ContainerVersion::Representation
       
           property :new_workspace_path, as: 'newWorkspacePath'
@@ -977,10 +1013,20 @@ module Google
         end
       end
       
+      class ProposedChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :changes, as: 'changes', class: Google::Apis::TagmanagerV2::Entity, decorator: Google::Apis::TagmanagerV2::Entity::Representation
+      
+        end
+      end
+      
       class PublishContainerVersionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compiler_error, as: 'compilerError'
+          collection :compiler_errors, as: 'compilerErrors', class: Google::Apis::TagmanagerV2::CompilerErrorLite, decorator: Google::Apis::TagmanagerV2::CompilerErrorLite::Representation
+      
           property :container_version, as: 'containerVersion', class: Google::Apis::TagmanagerV2::ContainerVersion, decorator: Google::Apis::TagmanagerV2::ContainerVersion::Representation
       
         end
@@ -990,6 +1036,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compiler_error, as: 'compilerError'
+          collection :compiler_errors, as: 'compilerErrors', class: Google::Apis::TagmanagerV2::CompilerErrorLite, decorator: Google::Apis::TagmanagerV2::CompilerErrorLite::Representation
+      
           property :container_version, as: 'containerVersion', class: Google::Apis::TagmanagerV2::ContainerVersion, decorator: Google::Apis::TagmanagerV2::ContainerVersion::Representation
       
           property :sync_status, as: 'syncStatus', class: Google::Apis::TagmanagerV2::SyncStatus, decorator: Google::Apis::TagmanagerV2::SyncStatus::Representation
@@ -1272,6 +1320,8 @@ module Google
       
           property :convert_null_to_value, as: 'convertNullToValue', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
       
+          property :convert_to_boolean, as: 'convertToBoolean'
+          property :convert_to_number, as: 'convertToNumber'
           property :convert_true_to_value, as: 'convertTrueToValue', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
       
           property :convert_undefined_to_value, as: 'convertUndefinedToValue', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation

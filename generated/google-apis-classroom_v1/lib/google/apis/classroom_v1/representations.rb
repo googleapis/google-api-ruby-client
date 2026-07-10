@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeminiGem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalPermission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +310,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListStudentGroupMembersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListStudentGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListStudentSubmissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -376,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NotebookLmNotebook
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReclaimStudentSubmissionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +455,18 @@ module Google
       end
       
       class StudentContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StudentGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StudentGroupMember
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -517,8 +553,11 @@ module Google
       class AddOnAttachmentStudentSubmission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_work_submission_id, as: 'courseWorkSubmissionId'
+          property :id, as: 'id'
           property :points_earned, as: 'pointsEarned'
           property :post_submission_state, as: 'postSubmissionState'
+          property :user_id, as: 'userId'
         end
       end
       
@@ -620,10 +659,12 @@ module Google
       
           property :guardians_enabled, as: 'guardiansEnabled'
           property :id, as: 'id'
+          property :levels, as: 'levels'
           property :name, as: 'name'
           property :owner_id, as: 'ownerId'
           property :room, as: 'room'
           property :section, as: 'section'
+          property :subject, as: 'subject'
           property :teacher_folder, as: 'teacherFolder', class: Google::Apis::ClassroomV1::DriveFolder, decorator: Google::Apis::ClassroomV1::DriveFolder::Representation
       
           property :teacher_group_email, as: 'teacherGroupEmail'
@@ -804,6 +845,15 @@ module Google
           property :response_url, as: 'responseUrl'
           property :thumbnail_url, as: 'thumbnailUrl'
           property :title, as: 'title'
+        end
+      end
+      
+      class GeminiGem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :title, as: 'title'
+          property :url, as: 'url'
         end
       end
       
@@ -1014,6 +1064,24 @@ module Google
         end
       end
       
+      class ListStudentGroupMembersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :student_group_members, as: 'studentGroupMembers', class: Google::Apis::ClassroomV1::StudentGroupMember, decorator: Google::Apis::ClassroomV1::StudentGroupMember::Representation
+      
+        end
+      end
+      
+      class ListStudentGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :student_groups, as: 'studentGroups', class: Google::Apis::ClassroomV1::StudentGroup, decorator: Google::Apis::ClassroomV1::StudentGroup::Representation
+      
+        end
+      end
+      
       class ListStudentSubmissionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1057,7 +1125,11 @@ module Google
       
           property :form, as: 'form', class: Google::Apis::ClassroomV1::Form, decorator: Google::Apis::ClassroomV1::Form::Representation
       
+          property :gem_prop, as: 'gem', class: Google::Apis::ClassroomV1::GeminiGem, decorator: Google::Apis::ClassroomV1::GeminiGem::Representation
+      
           property :link, as: 'link', class: Google::Apis::ClassroomV1::Link, decorator: Google::Apis::ClassroomV1::Link::Representation
+      
+          property :notebook, as: 'notebook', class: Google::Apis::ClassroomV1::NotebookLmNotebook, decorator: Google::Apis::ClassroomV1::NotebookLmNotebook::Representation
       
           property :youtube_video, as: 'youtubeVideo', class: Google::Apis::ClassroomV1::YouTubeVideo, decorator: Google::Apis::ClassroomV1::YouTubeVideo::Representation
       
@@ -1118,6 +1190,15 @@ module Google
           property :family_name, as: 'familyName'
           property :full_name, as: 'fullName'
           property :given_name, as: 'givenName'
+        end
+      end
+      
+      class NotebookLmNotebook
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :title, as: 'title'
+          property :url, as: 'url'
         end
       end
       
@@ -1209,6 +1290,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :submission_id, as: 'submissionId'
+        end
+      end
+      
+      class StudentGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_id, as: 'courseId'
+          property :id, as: 'id'
+          property :title, as: 'title'
+        end
+      end
+      
+      class StudentGroupMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :course_id, as: 'courseId'
+          property :student_group_id, as: 'studentGroupId'
+          property :user_id, as: 'userId'
         end
       end
       

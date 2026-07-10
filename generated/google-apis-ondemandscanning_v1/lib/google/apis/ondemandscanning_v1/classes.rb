@@ -22,6 +22,37 @@ module Google
   module Apis
     module OndemandscanningV1
       
+      # AISkillAnalysisOccurrence provides the results of an AI-based skill analysis.
+      class AiSkillAnalysisOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # Findings produced by the analysis.
+        # Corresponds to the JSON property `findings`
+        # @return [Array<Google::Apis::OndemandscanningV1::Finding>]
+        attr_accessor :findings
+      
+        # Maximum severity found among findings.
+        # Corresponds to the JSON property `maxSeverity`
+        # @return [String]
+        attr_accessor :max_severity
+      
+        # Name of the skill that produced this analysis.
+        # Corresponds to the JSON property `skillName`
+        # @return [String]
+        attr_accessor :skill_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @findings = args[:findings] if args.key?(:findings)
+          @max_severity = args[:max_severity] if args.key?(:max_severity)
+          @skill_name = args[:skill_name] if args.key?(:skill_name)
+        end
+      end
+      
       # An alias to a repo revision.
       class AliasContext
         include Google::Apis::Core::Hashable
@@ -291,6 +322,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The registry in which the base image is from.
+        # Corresponds to the JSON property `registry`
+        # @return [String]
+        attr_accessor :registry
+      
         # The repository name in which the base image is from.
         # Corresponds to the JSON property `repository`
         # @return [String]
@@ -304,6 +340,7 @@ module Google
         def update!(**args)
           @layer_count = args[:layer_count] if args.key?(:layer_count)
           @name = args[:name] if args.key?(:name)
+          @registry = args[:registry] if args.key?(:registry)
           @repository = args[:repository] if args.key?(:repository)
         end
       end
@@ -577,6 +614,26 @@ module Google
         end
       end
       
+      # 
+      class CisaKnownExploitedVulnerabilities
+        include Google::Apis::Core::Hashable
+      
+        # Whether the vulnerability is known to have been leveraged as part of a
+        # ransomware campaign.
+        # Corresponds to the JSON property `knownRansomwareCampaignUse`
+        # @return [String]
+        attr_accessor :known_ransomware_campaign_use
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @known_ransomware_campaign_use = args[:known_ransomware_campaign_use] if args.key?(:known_ransomware_campaign_use)
+        end
+      end
+      
       # Common Vulnerability Scoring System. For details, see https://www.first.org/
       # cvss/specification-document This is a message we will try to use for storing
       # various versions of CVSS rather than making a separate proto for storing a
@@ -584,23 +641,27 @@ module Google
       class Cvss
         include Google::Apis::Core::Hashable
       
-        # 
+        # Attack Complexity (AC). Defined in CVSS v2, v3, v4.
         # Corresponds to the JSON property `attackComplexity`
         # @return [String]
         attr_accessor :attack_complexity
       
-        # Base Metrics Represents the intrinsic characteristics of a vulnerability that
-        # are constant over time and across user environments.
+        # Attack Requirements (AT). Defined in CVSS v4.
+        # Corresponds to the JSON property `attackRequirements`
+        # @return [String]
+        attr_accessor :attack_requirements
+      
+        # Attack Vector (AV). Defined in CVSS v2, v3, v4.
         # Corresponds to the JSON property `attackVector`
         # @return [String]
         attr_accessor :attack_vector
       
-        # 
+        # Authentication (Au). Defined in CVSS v2.
         # Corresponds to the JSON property `authentication`
         # @return [String]
         attr_accessor :authentication
       
-        # 
+        # Availability Impact (A). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `availabilityImpact`
         # @return [String]
         attr_accessor :availability_impact
@@ -610,10 +671,15 @@ module Google
         # @return [Float]
         attr_accessor :base_score
       
-        # 
+        # Confidentiality Impact (C). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `confidentialityImpact`
         # @return [String]
         attr_accessor :confidentiality_impact
+      
+        # Exploit Maturity (E). Defined in CVSS v4.
+        # Corresponds to the JSON property `exploitMaturity`
+        # @return [String]
+        attr_accessor :exploit_maturity
       
         # 
         # Corresponds to the JSON property `exploitabilityScore`
@@ -625,25 +691,55 @@ module Google
         # @return [Float]
         attr_accessor :impact_score
       
-        # 
+        # Integrity Impact (I). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `integrityImpact`
         # @return [String]
         attr_accessor :integrity_impact
       
-        # 
+        # Privileges Required (PR). Defined in CVSS v3, v4.
         # Corresponds to the JSON property `privilegesRequired`
         # @return [String]
         attr_accessor :privileges_required
       
-        # 
+        # Scope (S). Defined in CVSS v3.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
       
-        # 
+        # Subsequent System Availability Impact (SA). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemAvailabilityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_availability_impact
+      
+        # Subsequent System Confidentiality Impact (SC). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemConfidentialityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_confidentiality_impact
+      
+        # Subsequent System Integrity Impact (SI). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemIntegrityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_integrity_impact
+      
+        # User Interaction (UI). Defined in CVSS v3, v4.
         # Corresponds to the JSON property `userInteraction`
         # @return [String]
         attr_accessor :user_interaction
+      
+        # Vulnerable System Availability Impact (VA). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemAvailabilityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_availability_impact
+      
+        # Vulnerable System Confidentiality Impact (VC). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemConfidentialityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_confidentiality_impact
+      
+        # Vulnerable System Integrity Impact (VI). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemIntegrityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_integrity_impact
       
         def initialize(**args)
            update!(**args)
@@ -652,17 +748,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attack_complexity = args[:attack_complexity] if args.key?(:attack_complexity)
+          @attack_requirements = args[:attack_requirements] if args.key?(:attack_requirements)
           @attack_vector = args[:attack_vector] if args.key?(:attack_vector)
           @authentication = args[:authentication] if args.key?(:authentication)
           @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
           @base_score = args[:base_score] if args.key?(:base_score)
           @confidentiality_impact = args[:confidentiality_impact] if args.key?(:confidentiality_impact)
+          @exploit_maturity = args[:exploit_maturity] if args.key?(:exploit_maturity)
           @exploitability_score = args[:exploitability_score] if args.key?(:exploitability_score)
           @impact_score = args[:impact_score] if args.key?(:impact_score)
           @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
           @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
           @scope = args[:scope] if args.key?(:scope)
+          @subsequent_system_availability_impact = args[:subsequent_system_availability_impact] if args.key?(:subsequent_system_availability_impact)
+          @subsequent_system_confidentiality_impact = args[:subsequent_system_confidentiality_impact] if args.key?(:subsequent_system_confidentiality_impact)
+          @subsequent_system_integrity_impact = args[:subsequent_system_integrity_impact] if args.key?(:subsequent_system_integrity_impact)
           @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+          @vulnerable_system_availability_impact = args[:vulnerable_system_availability_impact] if args.key?(:vulnerable_system_availability_impact)
+          @vulnerable_system_confidentiality_impact = args[:vulnerable_system_confidentiality_impact] if args.key?(:vulnerable_system_confidentiality_impact)
+          @vulnerable_system_integrity_impact = args[:vulnerable_system_integrity_impact] if args.key?(:vulnerable_system_integrity_impact)
         end
       end
       
@@ -1022,6 +1126,11 @@ module Google
         # @return [String]
         attr_accessor :last_scan_time
       
+        # The last time vulnerability scan results changed.
+        # Corresponds to the JSON property `lastVulnerabilityUpdateTime`
+        # @return [String]
+        attr_accessor :last_vulnerability_update_time
+      
         # The status of an SBOM generation.
         # Corresponds to the JSON property `sbomStatus`
         # @return [Google::Apis::OndemandscanningV1::SbomStatus]
@@ -1042,6 +1151,7 @@ module Google
           @cpe = args[:cpe] if args.key?(:cpe)
           @files = args[:files] if args.key?(:files)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
+          @last_vulnerability_update_time = args[:last_vulnerability_update_time] if args.key?(:last_vulnerability_update_time)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
         end
       end
@@ -1122,6 +1232,33 @@ module Google
       end
       
       # 
+      class ExploitPredictionScoringSystem
+        include Google::Apis::Core::Hashable
+      
+        # The percentile of the current score, the proportion of all scored
+        # vulnerabilities with the same or a lower EPSS score
+        # Corresponds to the JSON property `percentile`
+        # @return [Float]
+        attr_accessor :percentile
+      
+        # The EPSS score representing the probability [0-1] of exploitation in the wild
+        # in the next 30 days
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentile = args[:percentile] if args.key?(:percentile)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # 
       class File
         include Google::Apis::Core::Hashable
       
@@ -1181,6 +1318,13 @@ module Google
         # @return [Google::Apis::OndemandscanningV1::LayerDetails]
         attr_accessor :layer_details
       
+        # Line number in the file where the package is found. Applies only to source
+        # repository scanning. Note: this field is marked as `optional` in other
+        # corresponding protos, but in edition 2023, the "optional" keyword is redundant.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1189,6 +1333,76 @@ module Google
         def update!(**args)
           @file_path = args[:file_path] if args.key?(:file_path)
           @layer_details = args[:layer_details] if args.key?(:layer_details)
+          @line_number = args[:line_number] if args.key?(:line_number)
+        end
+      end
+      
+      # Finding provides details for a single finding within an
+      # AISkillAnalysisOccurrence.
+      class Finding
+        include Google::Apis::Core::Hashable
+      
+        # Category of the finding.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Description of the finding category.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Location details with file path and line number.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::OndemandscanningV1::FindingLocation]
+        attr_accessor :location
+      
+        # Scanner determines which engine (e.g. static, llm) emitted the finding.
+        # Corresponds to the JSON property `scanner`
+        # @return [String]
+        attr_accessor :scanner
+      
+        # Severity of the finding.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @details = args[:details] if args.key?(:details)
+          @location = args[:location] if args.key?(:location)
+          @scanner = args[:scanner] if args.key?(:scanner)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # Location details with file path and line number.
+      class FindingLocation
+        include Google::Apis::Core::Hashable
+      
+        # Relative path of the file containing the finding.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
+        # Line number (1-based), or 0 if whole File / unknown.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_path = args[:file_path] if args.key?(:file_path)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -1304,6 +1518,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The registry in which the base image is from.
+        # Corresponds to the JSON property `registry`
+        # @return [String]
+        attr_accessor :registry
+      
         # The repository name in which the base image is from.
         # Corresponds to the JSON property `repository`
         # @return [String]
@@ -1317,6 +1536,7 @@ module Google
         def update!(**args)
           @layer_count = args[:layer_count] if args.key?(:layer_count)
           @name = args[:name] if args.key?(:name)
+          @registry = args[:registry] if args.key?(:registry)
           @repository = args[:repository] if args.key?(:repository)
         end
       end
@@ -1336,6 +1556,12 @@ module Google
         # @return [Google::Apis::OndemandscanningV1::GrafeasV1LayerDetails]
         attr_accessor :layer_details
       
+        # Line number in the file where the package was found. Optional field that only
+        # applies to source repository scanning.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1344,6 +1570,7 @@ module Google
         def update!(**args)
           @file_path = args[:file_path] if args.key?(:file_path)
           @layer_details = args[:layer_details] if args.key?(:layer_details)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -1806,6 +2033,37 @@ module Google
         end
       end
       
+      # Indicates where an extracted package originates from.
+      class IngestionSource
+        include Google::Apis::Core::Hashable
+      
+        # The attachment URI that this package was extracted from.
+        # Corresponds to the JSON property `attachmentUri`
+        # @return [String]
+        attr_accessor :attachment_uri
+      
+        # The resource URL of the resource that was scanned to find this package.
+        # Corresponds to the JSON property `resourceUrl`
+        # @return [String]
+        attr_accessor :resource_url
+      
+        # 
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment_uri = args[:attachment_uri] if args.key?(:attachment_uri)
+          @resource_url = args[:resource_url] if args.key?(:resource_url)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
       # Justification provides the justification when the state of the assessment if
       # NOT_AFFECTED.
       class Justification
@@ -1992,6 +2250,14 @@ module Google
         # @return [Array<Google::Apis::OndemandscanningV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2000,6 +2266,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2210,6 +2477,16 @@ module Google
       class Occurrence
         include Google::Apis::Core::Hashable
       
+        # The time this advisory was published by the source.
+        # Corresponds to the JSON property `advisoryPublishTime`
+        # @return [String]
+        attr_accessor :advisory_publish_time
+      
+        # AISkillAnalysisOccurrence provides the results of an AI-based skill analysis.
+        # Corresponds to the JSON property `aiSkillAnalysis`
+        # @return [Google::Apis::OndemandscanningV1::AiSkillAnalysisOccurrence]
+        attr_accessor :ai_skill_analysis
+      
         # Occurrence that represents a single "attestation". The authenticity of an
         # attestation can be verified using the attached signature. If the verifier
         # trusts the public key of the signer, then verifying the signature is
@@ -2338,6 +2615,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advisory_publish_time = args[:advisory_publish_time] if args.key?(:advisory_publish_time)
+          @ai_skill_analysis = args[:ai_skill_analysis] if args.key?(:ai_skill_analysis)
           @attestation = args[:attestation] if args.key?(:attestation)
           @build = args[:build] if args.key?(:build)
           @compliance = args[:compliance] if args.key?(:compliance)
@@ -2467,6 +2746,12 @@ module Google
         # @return [String]
         attr_accessor :hash_digest
       
+        # The list of sources that were scanned to find this package. This can be a
+        # Docker image, an SBOM attachment, or both, for example.
+        # Corresponds to the JSON property `ingestionSources`
+        # @return [Array<Google::Apis::OndemandscanningV1::IngestionSource>]
+        attr_accessor :ingestion_sources
+      
         # Details about the layer a package was found in.
         # Corresponds to the JSON property `layerDetails`
         # @return [Google::Apis::OndemandscanningV1::LayerDetails]
@@ -2540,6 +2825,7 @@ module Google
           @dependency_chain = args[:dependency_chain] if args.key?(:dependency_chain)
           @file_location = args[:file_location] if args.key?(:file_location)
           @hash_digest = args[:hash_digest] if args.key?(:hash_digest)
+          @ingestion_sources = args[:ingestion_sources] if args.key?(:ingestion_sources)
           @layer_details = args[:layer_details] if args.key?(:layer_details)
           @licenses = args[:licenses] if args.key?(:licenses)
           @maintainer = args[:maintainer] if args.key?(:maintainer)
@@ -2981,6 +3267,33 @@ module Google
           @media_type = args[:media_type] if args.key?(:media_type)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class Risk
+        include Google::Apis::Core::Hashable
+      
+        # CISA maintains the authoritative source of vulnerabilities that have been
+        # exploited in the wild.
+        # Corresponds to the JSON property `cisaKev`
+        # @return [Google::Apis::OndemandscanningV1::CisaKnownExploitedVulnerabilities]
+        attr_accessor :cisa_kev
+      
+        # The Exploit Prediction Scoring System (EPSS) estimates the likelihood (
+        # probability) that a software vulnerability will be exploited in the wild.
+        # Corresponds to the JSON property `epss`
+        # @return [Google::Apis::OndemandscanningV1::ExploitPredictionScoringSystem]
+        attr_accessor :epss
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cisa_kev = args[:cisa_kev] if args.key?(:cisa_kev)
+          @epss = args[:epss] if args.key?(:epss)
         end
       end
       
@@ -3953,6 +4266,14 @@ module Google
         # @return [Google::Apis::OndemandscanningV1::Cvss]
         attr_accessor :cvss_v2
       
+        # Common Vulnerability Scoring System. For details, see https://www.first.org/
+        # cvss/specification-document This is a message we will try to use for storing
+        # various versions of CVSS rather than making a separate proto for storing a
+        # specific version.
+        # Corresponds to the JSON property `cvssV4`
+        # @return [Google::Apis::OndemandscanningV1::Cvss]
+        attr_accessor :cvss_v4
+      
         # Output only. CVSS version used to populate cvss_score and severity.
         # Corresponds to the JSON property `cvssVersion`
         # @return [String]
@@ -4005,6 +4326,11 @@ module Google
         # @return [Array<Google::Apis::OndemandscanningV1::RelatedUrl>]
         attr_accessor :related_urls
       
+        # Risk information about the vulnerability, such as CISA, EPSS, etc.
+        # Corresponds to the JSON property `risk`
+        # @return [Google::Apis::OndemandscanningV1::Risk]
+        attr_accessor :risk
+      
         # Output only. The note provider assigned severity of this vulnerability.
         # Corresponds to the JSON property `severity`
         # @return [String]
@@ -4035,6 +4361,7 @@ module Google
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
           @cvss_v2 = args[:cvss_v2] if args.key?(:cvss_v2)
+          @cvss_v4 = args[:cvss_v4] if args.key?(:cvss_v4)
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
@@ -4043,6 +4370,7 @@ module Google
           @long_description = args[:long_description] if args.key?(:long_description)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
           @related_urls = args[:related_urls] if args.key?(:related_urls)
+          @risk = args[:risk] if args.key?(:risk)
           @severity = args[:severity] if args.key?(:severity)
           @short_description = args[:short_description] if args.key?(:short_description)
           @type = args[:type] if args.key?(:type)

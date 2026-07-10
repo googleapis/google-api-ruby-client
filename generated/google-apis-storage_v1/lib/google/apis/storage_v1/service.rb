@@ -275,7 +275,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.
+        # Updates the config of an Anywhere Cache instance.
         # @param [String] bucket
         #   Name of the parent bucket.
         # @param [String] anywhere_cache_id
@@ -796,6 +796,9 @@ module Google
         #   Filter results to buckets whose names begin with this prefix.
         # @param [String] projection
         #   Set of properties to return. Defaults to noAcl.
+        # @param [Boolean] return_partial_success
+        #   If true, return a list of bucket resource names for buckets that are in
+        #   unreachable locations.
         # @param [Boolean] soft_deleted
         #   If true, only soft-deleted bucket versions will be returned. The default is
         #   false. For more information, see [Soft Delete](https://cloud.google.com/
@@ -821,7 +824,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_buckets(project, max_results: nil, page_token: nil, prefix: nil, projection: nil, soft_deleted: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_buckets(project, max_results: nil, page_token: nil, prefix: nil, projection: nil, return_partial_success: nil, soft_deleted: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'b', options)
           command.response_representation = Google::Apis::StorageV1::Buckets::Representation
           command.response_class = Google::Apis::StorageV1::Buckets
@@ -830,6 +833,7 @@ module Google
           command.query['prefix'] = prefix unless prefix.nil?
           command.query['project'] = project unless project.nil?
           command.query['projection'] = projection unless projection.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['softDeleted'] = soft_deleted unless soft_deleted.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1461,6 +1465,50 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_folder(bucket, folder, if_metageneration_match: nil, if_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'b/{bucket}/folders/{folder}', options)
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['folder'] = folder unless folder.nil?
+          command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
+          command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a folder recursively. Only applicable to buckets with hierarchical
+        # namespace enabled.
+        # @param [String] bucket
+        #   Name of the bucket in which the folder resides.
+        # @param [String] folder
+        #   Name of a folder.
+        # @param [Fixnum] if_metageneration_match
+        #   If set, only deletes the folder if its metageneration matches this value.
+        # @param [Fixnum] if_metageneration_not_match
+        #   If set, only deletes the folder if its metageneration does not match this
+        #   value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_recursive(bucket, folder, if_metageneration_match: nil, if_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/folders/{folder}/deleteRecursive', options)
+          command.response_representation = Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::StorageV1::GoogleLongrunningOperation
           command.params['bucket'] = bucket unless bucket.nil?
           command.params['folder'] = folder unless folder.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
@@ -2455,6 +2503,9 @@ module Google
         # @param [Google::Apis::StorageV1::ComposeRequest] compose_request_object
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
+        # @param [Array<String>, String] drop_context_groups
+        #   Specifies which groups of Object Contexts from the source object(s) should be
+        #   dropped from the destination object.
         # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
         #   matches the given value. Setting to 0 makes the operation succeed only if
@@ -2487,7 +2538,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def compose_object(destination_bucket, destination_object, compose_request_object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_metageneration_match: nil, kms_key_name: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def compose_object(destination_bucket, destination_object, compose_request_object = nil, destination_predefined_acl: nil, drop_context_groups: nil, if_generation_match: nil, if_metageneration_match: nil, kms_key_name: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'b/{destinationBucket}/o/{destinationObject}/compose', options)
           command.request_representation = Google::Apis::StorageV1::ComposeRequest::Representation
           command.request_object = compose_request_object
@@ -2496,6 +2547,7 @@ module Google
           command.params['destinationBucket'] = destination_bucket unless destination_bucket.nil?
           command.params['destinationObject'] = destination_object unless destination_object.nil?
           command.query['destinationPredefinedAcl'] = destination_predefined_acl unless destination_predefined_acl.nil?
+          command.query['dropContextGroups'] = drop_context_groups unless drop_context_groups.nil?
           command.query['ifGenerationMatch'] = if_generation_match unless if_generation_match.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
           command.query['kmsKeyName'] = kms_key_name unless kms_key_name.nil?
@@ -2913,6 +2965,9 @@ module Google
         #   Filter results to objects whose names are lexicographically before endOffset.
         #   If startOffset is also set, the objects listed will have names between
         #   startOffset (inclusive) and endOffset (exclusive).
+        # @param [String] filter
+        #   Filter the returned objects. Currently only supported for the contexts field.
+        #   If delimiter is set, the returned prefixes are exempt from this filter.
         # @param [Boolean] include_folders_as_prefixes
         #   Only applicable if delimiter is set to '/'. If true, will also include folders
         #   and managed folders (besides objects) in the returned prefixes.
@@ -2966,13 +3021,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_objects(bucket, delimiter: nil, end_offset: nil, include_folders_as_prefixes: nil, include_trailing_delimiter: nil, match_glob: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, soft_deleted: nil, start_offset: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_objects(bucket, delimiter: nil, end_offset: nil, filter: nil, include_folders_as_prefixes: nil, include_trailing_delimiter: nil, match_glob: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, soft_deleted: nil, start_offset: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'b/{bucket}/o', options)
           command.response_representation = Google::Apis::StorageV1::Objects::Representation
           command.response_class = Google::Apis::StorageV1::Objects
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['delimiter'] = delimiter unless delimiter.nil?
           command.query['endOffset'] = end_offset unless end_offset.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['includeFoldersAsPrefixes'] = include_folders_as_prefixes unless include_folders_as_prefixes.nil?
           command.query['includeTrailingDelimiter'] = include_trailing_delimiter unless include_trailing_delimiter.nil?
           command.query['matchGlob'] = match_glob unless match_glob.nil?
@@ -3266,6 +3322,9 @@ module Google
         #   object. Overrides the object metadata's kms_key_name value, if any.
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
+        # @param [Array<String>, String] drop_context_groups
+        #   Specifies which groups of Object Contexts from the source object should be
+        #   dropped from the destination object.
         # @param [Fixnum] if_generation_match
         #   Makes the operation conditional on whether the object's current generation
         #   matches the given value. Setting to 0 makes the operation succeed only if
@@ -3333,7 +3392,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rewrite_object(source_bucket, source_object, destination_bucket, destination_object, object_object = nil, destination_kms_key_name: nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, max_bytes_rewritten_per_call: nil, projection: nil, rewrite_token: nil, source_generation: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def rewrite_object(source_bucket, source_object, destination_bucket, destination_object, object_object = nil, destination_kms_key_name: nil, destination_predefined_acl: nil, drop_context_groups: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, max_bytes_rewritten_per_call: nil, projection: nil, rewrite_token: nil, source_generation: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'b/{sourceBucket}/o/{sourceObject}/rewriteTo/b/{destinationBucket}/o/{destinationObject}', options)
           command.request_representation = Google::Apis::StorageV1::Object::Representation
           command.request_object = object_object
@@ -3345,6 +3404,7 @@ module Google
           command.params['destinationObject'] = destination_object unless destination_object.nil?
           command.query['destinationKmsKeyName'] = destination_kms_key_name unless destination_kms_key_name.nil?
           command.query['destinationPredefinedAcl'] = destination_predefined_acl unless destination_predefined_acl.nil?
+          command.query['dropContextGroups'] = drop_context_groups unless drop_context_groups.nil?
           command.query['ifGenerationMatch'] = if_generation_match unless if_generation_match.nil?
           command.query['ifGenerationNotMatch'] = if_generation_not_match unless if_generation_not_match.nil?
           command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?

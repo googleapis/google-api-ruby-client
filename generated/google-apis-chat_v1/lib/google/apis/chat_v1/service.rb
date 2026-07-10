@@ -31,7 +31,7 @@ module Google
       #    Chat = Google::Apis::ChatV1 # Alias the module
       #    service = Chat::HangoutsChatService.new
       #
-      # @see https://developers.google.com/hangouts/chat
+      # @see https://developers.google.com/workspace/chat
       class HangoutsChatService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://chat.$UNIVERSE_DOMAIN$/"
 
@@ -371,22 +371,26 @@ module Google
         # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize): - [App authentication](https://developers.google.com/workspace/
         # chat/authenticate-authorize-chat-app) with [administrator approval](https://
-        # support.google.com/a?p=chat-app-auth) in [Developer Preview](https://
-        # developers.google.com/workspace/preview) and one of the following
-        # authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces.
-        # create` - `https://www.googleapis.com/auth/chat.app.spaces` - [User
-        # authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user) with one of the following authorization scopes: - `https:/
-        # /www.googleapis.com/auth/chat.spaces.create` - `https://www.googleapis.com/
-        # auth/chat.spaces` - `https://www.googleapis.com/auth/chat.import` (import mode
-        # spaces only) When authenticating as an app, the `space.customer` field must be
-        # set in the request. Space membership upon creation depends on whether the
-        # space is created in `Import mode`: * **Import mode:** No members are created. *
-        # **All other modes:** The calling user is added as a member. This is: * The
-        # app itself when using app authentication. * The human user when using user
-        # authentication. If you receive the error message `ALREADY_EXISTS` when
-        # creating a space, try a different `displayName`. An existing space within the
-        # Google Workspace organization might already use this display name.
+        # support.google.com/a?p=chat-app-auth) and one of the following authorization
+        # scopes: - `https://www.googleapis.com/auth/chat.app.spaces.create` - `https://
+        # www.googleapis.com/auth/chat.app.spaces` - [User authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+        # one of the following authorization scopes: - `https://www.googleapis.com/auth/
+        # chat.spaces.create` - `https://www.googleapis.com/auth/chat.spaces` - `https://
+        # www.googleapis.com/auth/chat.import` (import mode spaces only) When
+        # authenticating as an app, the `space.customer` field must be set in the
+        # request. When authenticating as an app, the Chat app is added as a member of
+        # the space. However, unlike human authentication, the Chat app is not added as
+        # a space manager. By default, the Chat app can be removed from the space by all
+        # space members. To allow only space managers to remove the app from a space,
+        # set `space.permission_settings.manage_apps` to `managers_allowed`. Space
+        # membership upon creation depends on whether the space is created in `Import
+        # mode`: * **Import mode:** No members are created. * **All other modes:** The
+        # calling user is added as a member. This is: * The app itself when using app
+        # authentication. * The human user when using user authentication. If you
+        # receive the error message `ALREADY_EXISTS` when creating a space, try a
+        # different `displayName`. An existing space within the Google Workspace
+        # organization might already use this display name.
         # @param [Google::Apis::ChatV1::Space] space_object
         # @param [String] request_id
         #   Optional. A unique identifier for this request. A random UUID is recommended.
@@ -429,16 +433,15 @@ module Google
         # types of [authentication](https://developers.google.com/workspace/chat/
         # authenticate-authorize): - [App authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize-chat-app) with [administrator approval](
-        # https://support.google.com/a?p=chat-app-auth) in [Developer Preview](https://
-        # developers.google.com/workspace/preview) and the authorization scope: - `https:
-        # //www.googleapis.com/auth/chat.app.delete` (only in spaces the app created) - [
-        # User authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user) with one of the following authorization scopes: - `https:/
-        # /www.googleapis.com/auth/chat.delete` - `https://www.googleapis.com/auth/chat.
-        # import` (import mode spaces only) - User authentication grants administrator
-        # privileges when an administrator account authenticates, `use_admin_access` is `
-        # true`, and the following authorization scope is used: - `https://www.
-        # googleapis.com/auth/chat.admin.delete`
+        # https://support.google.com/a?p=chat-app-auth) and the authorization scope: - `
+        # https://www.googleapis.com/auth/chat.app.delete` (only in spaces the app
+        # created) - [User authentication](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-user) with one of the following authorization
+        # scopes: - `https://www.googleapis.com/auth/chat.delete` - `https://www.
+        # googleapis.com/auth/chat.import` (import mode spaces only) - User
+        # authentication grants administrator privileges when an administrator account
+        # authenticates, `use_admin_access` is `true`, and the following authorization
+        # scope is used: - `https://www.googleapis.com/auth/chat.admin.delete`
         # @param [String] name
         #   Required. Resource name of the space to delete. Format: `spaces/`space``
         # @param [Boolean] use_admin_access
@@ -530,6 +533,78 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns all spaces with `spaceType == GROUP_CHAT`, whose human memberships
+        # contain exactly the calling user, and the users specified in `
+        # FindGroupChatsRequest.users`. Only members that have joined the conversation
+        # are supported. For an example, see [Find group chats](https://developers.
+        # google.com/workspace/chat/find-group-chats). If the calling user blocks, or is
+        # blocked by, some users, and no spaces with the entire specified set of users
+        # are found, this method returns spaces that don't include the blocked or
+        # blocking users. The specified set of users must contain only human (non-app)
+        # memberships. A request that contains non-human users doesn't return any spaces.
+        # Requires [user authentication](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-user) with one of the following [authorization
+        # scopes](https://developers.google.com/workspace/chat/authenticate-authorize#
+        # chat-api-scopes): - `https://www.googleapis.com/auth/chat.memberships.readonly`
+        # - `https://www.googleapis.com/auth/chat.memberships`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of spaces to return. The service might return
+        #   fewer than this value. If unspecified, at most 10 spaces are returned. The
+        #   maximum value is 30. If you use a value more than 30, it's automatically
+        #   changed to 30. Negative values return an `INVALID_ARGUMENT` error.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous call to find group chats.
+        #   Provide this parameter to retrieve the subsequent page. When paginating, all
+        #   other parameters provided should match the call that provided the token.
+        #   Passing different values may lead to unexpected results.
+        # @param [String] space_view
+        #   Requested space view type. If unset, defaults to `
+        #   SPACE_VIEW_RESOURCE_NAME_ONLY`. Requests that specify `SPACE_VIEW_EXPANDED`
+        #   must include scopes that allow reading space data, for example, https://www.
+        #   googleapis.com/auth/chat.spaces or https://www.googleapis.com/auth/chat.spaces.
+        #   readonly.
+        # @param [Array<String>, String] users
+        #   Optional. Resource names of all human users in group chat with the calling
+        #   user. Chat apps can't be included in the request. The maximum number of users
+        #   that can be specified in a single request is `49`. Format: `users/`user``,
+        #   where ``user`` is either the `id` for the [person](https://developers.google.
+        #   com/people/api/rest/v1/people) from the People API, or the `id` for the [user](
+        #   https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in
+        #   the Directory API. For example, to find all group chats with the calling user
+        #   and two other users, with People API profile IDs `123456789` and `987654321`,
+        #   you can use `users/123456789` and `users/987654321`. You can also use the
+        #   email as an alias for ``user``. For example, `users/example@gmail.com` where `
+        #   example@gmail.com` is the email of the Google Chat user.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::FindGroupChatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::FindGroupChatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def find_space_group_chats(page_size: nil, page_token: nil, space_view: nil, users: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/spaces:findGroupChats', options)
+          command.response_representation = Google::Apis::ChatV1::FindGroupChatsResponse::Representation
+          command.response_class = Google::Apis::ChatV1::FindGroupChatsResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['spaceView'] = space_view unless space_view.nil?
+          command.query['users'] = users unless users.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns details about a space. For an example, see [Get details about a space](
         # https://developers.google.com/workspace/chat/get-spaces). Supports the
         # following types of [authentication](https://developers.google.com/workspace/
@@ -544,7 +619,12 @@ module Google
         # authentication grants administrator privileges when an administrator account
         # authenticates, `use_admin_access` is `true`, and one of the following
         # authorization scopes is used: - `https://www.googleapis.com/auth/chat.admin.
-        # spaces.readonly` - `https://www.googleapis.com/auth/chat.admin.spaces`
+        # spaces.readonly` - `https://www.googleapis.com/auth/chat.admin.spaces` App
+        # authentication has the following limitations: - `space.access_settings` is
+        # only populated when using the `chat.app.spaces` scope. - `space.
+        # predefind_permission_settings` and `space.permission_settings` are only
+        # populated when using the `chat.app.spaces` scope, and only for spaces the app
+        # created.
         # @param [String] name
         #   Required. Resource name of the space, in the form `spaces/`space``. Format: `
         #   spaces/`space``
@@ -652,16 +732,18 @@ module Google
         # (https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize-chat-app) with [administrator approval](https://support.google.com/a?
-        # p=chat-app-auth) in [Developer Preview](https://developers.google.com/
-        # workspace/preview) and one of the following authorization scopes: - `https://
-        # www.googleapis.com/auth/chat.app.spaces` - [User authentication](https://
+        # p=chat-app-auth) and one of the following authorization scopes: - `https://www.
+        # googleapis.com/auth/chat.app.spaces` - [User authentication](https://
         # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
         # one of the following authorization scopes: - `https://www.googleapis.com/auth/
         # chat.spaces` - `https://www.googleapis.com/auth/chat.import` (import mode
         # spaces only) - User authentication grants administrator privileges when an
         # administrator account authenticates, `use_admin_access` is `true`, and the
         # following authorization scopes is used: - `https://www.googleapis.com/auth/
-        # chat.admin.spaces`
+        # chat.admin.spaces` App authentication has the following limitations: - To
+        # update either `space.predefined_permission_settings` or `space.
+        # permission_settings`, the app must be the space creator. - Updating the `space.
+        # access_settings.audience` is not supported for app authentication.
         # @param [String] name
         #   Identifier. Resource name of the space. Format: `spaces/`space`` Where ``space`
         #   ` represents the system-assigned ID for the space. You can obtain the space ID
@@ -673,9 +755,11 @@ module Google
         # @param [String] update_mask
         #   Required. The updated field paths, comma separated if there are multiple. You
         #   can update the following fields for a space: `space_details`: Updates the
-        #   space's description. Supports up to 150 characters. `display_name`: Only
-        #   supports updating the display name for spaces where `spaceType` field is `
-        #   SPACE`. If you receive the error message `ALREADY_EXISTS`, try a different
+        #   space's description and guidelines. You must pass both description and
+        #   guidelines in the update request as `SpaceDetails`. If you only want to update
+        #   one of the fields, pass the existing value for the other field. `display_name`:
+        #   Only supports updating the display name for spaces where `spaceType` field is
+        #   `SPACE`. If you receive the error message `ALREADY_EXISTS`, try a different
         #   value. An existing space within the Google Workspace organization might
         #   already use this display name. `space_type`: Only supports changing a `
         #   GROUP_CHAT` space type to `SPACE`. Include `display_name` together with `
@@ -704,8 +788,7 @@ module Google
         #   Supports changing the [permission settings](https://support.google.com/chat/
         #   answer/13340792) of a space. When updating permission settings, you can only
         #   specify `permissionSettings` field masks; you cannot update other field masks
-        #   at the same time. `permissionSettings` is not supported with `useAdminAccess`.
-        #   The supported field masks include: - `permission_settings.
+        #   at the same time. The supported field masks include: - `permission_settings.
         #   manageMembersAndGroups` - `permission_settings.modifySpaceDetails` - `
         #   permission_settings.toggleHistory` - `permission_settings.useAtMentionAll` - `
         #   permission_settings.manageApps` - `permission_settings.manageWebhooks` - `
@@ -749,25 +832,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of spaces in a Google Workspace organization based on an
-        # administrator's search. Requires [user authentication with administrator
-        # privileges](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user#admin-privileges) and one of the following [authorization
-        # scopes](https://developers.google.com/workspace/chat/authenticate-authorize#
-        # chat-api-scopes): - `https://www.googleapis.com/auth/chat.admin.spaces.
-        # readonly` - `https://www.googleapis.com/auth/chat.admin.spaces` In the request,
-        # set `use_admin_access` to `true`.
+        # Returns a list of spaces in a Google Workspace organization. For an example,
+        # see [Search for and manage spaces](https://developers.google.com/workspace/
+        # chat/search-manage-admin). When `use_admin_access` is set to `false`, the
+        # results are limited to spaces where the calling user is a joined member. To
+        # search with administrator privileges, set `use_admin_access` to `true`.
+        # Setting `use_admin_access` to `false` is available under Developer Preview.
+        # Supports the following types of [authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize): - [User authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+        # one of the following authorization scopes: - `https://www.googleapis.com/auth/
+        # chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` - [User
+        # authentication with administrator privileges](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user#admin-privileges) and one of
+        # the following [authorization scopes](https://developers.google.com/workspace/
+        # chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/
+        # auth/chat.admin.spaces.readonly` - `https://www.googleapis.com/auth/chat.admin.
+        # spaces`
         # @param [String] order_by
         #   Optional. How the list of spaces is ordered. Supported attributes to order by
         #   are: - `membership_count.joined_direct_human_user_count` — Denotes the count
         #   of human users that have directly joined a space. - `last_active_time` —
         #   Denotes the time when last eligible item is added to any topic of this space. -
-        #   `create_time` — Denotes the time of the space creation. Valid ordering
-        #   operation values are: - `ASC` for ascending. Default value. - `DESC` for
-        #   descending. The supported syntax are: - `membership_count.
-        #   joined_direct_human_user_count DESC` - `membership_count.
+        #   `create_time` — Denotes the time of the space creation. When `useAdminAccess`
+        #   is `false`, only `create_time` and `relevance` are supported for ordering.
+        #   Only `DESC` is supported for these fields in non-admin searches. Valid
+        #   ordering operation values are: - `ASC` for ascending. Default value. - `DESC`
+        #   for descending. The supported syntax are when `useAdminAccess` is set to `true`
+        #   : - `membership_count.joined_direct_human_user_count DESC` - `membership_count.
         #   joined_direct_human_user_count ASC` - `last_active_time DESC` - `
-        #   last_active_time ASC` - `create_time DESC` - `create_time ASC`
+        #   last_active_time ASC` - `create_time DESC` - `create_time ASC` When `
+        #   useAdminAccess` is set to `false`: - `create_time DESC` - `relevance DESC`
         # @param [Fixnum] page_size
         #   The maximum number of spaces to return. The service may return fewer than this
         #   value. If unspecified, at most 100 spaces are returned. The maximum value is
@@ -778,23 +873,28 @@ module Google
         #   provided should match the call that provided the page token. Passing different
         #   values to the other parameters might lead to unexpected results.
         # @param [String] query
-        #   Required. A search query. You can search by using the following parameters: - `
-        #   create_time` - `customer` - `display_name` - `external_user_allowed` - `
-        #   last_active_time` - `space_history_state` - `space_type` `create_time` and `
-        #   last_active_time` accept a timestamp in [RFC-3339](https://www.rfc-editor.org/
-        #   rfc/rfc3339) format and the supported comparison operators are: `=`, `<`, `>`,
-        #   `<=`, `>=`. `customer` is required and is used to indicate which customer to
-        #   fetch spaces from. `customers/my_customer` is the only supported value. `
-        #   display_name` only accepts the `HAS` (`:`) operator. The text to match is
-        #   first tokenized into tokens and each token is prefix-matched case-
-        #   insensitively and independently as a substring anywhere in the space's `
-        #   display_name`. For example, `Fun Eve` matches `Fun event` or `The evening was
-        #   fun`, but not `notFun event` or `even`. `external_user_allowed` accepts either
-        #   `true` or `false`. `space_history_state` only accepts values from the [`
-        #   historyState`] (https://developers.google.com/workspace/chat/api/reference/
-        #   rest/v1/spaces#Space.HistoryState) field of a `space` resource. `space_type`
-        #   is required and the only valid value is `SPACE`. Across different fields, only
-        #   `AND` operators are supported. A valid example is `space_type = "SPACE" AND
+        #   Required. A search query. You can search by using the following parameters
+        #   when `useAdminAccess` is set to `true`: - `create_time` - `customer` - `
+        #   display_name` - `external_user_allowed` - `last_active_time` - `
+        #   space_history_state` - `space_type` When `useAdminAccess` is set to `false`: -
+        #   `display_name` - `external_user_allowed` `create_time` and `last_active_time`
+        #   accept a timestamp in [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339)
+        #   format and the supported comparison operators are: `=`, `<`, `>`, `<=`, `>=`. `
+        #   customer` is required when `useAdminAccess` is set to `true`, and is used to
+        #   indicate which customer to fetch spaces from. `customers/my_customer` is the
+        #   only supported value. `display_name` only accepts the `HAS` (`:`) operator.
+        #   The text to match is first tokenized into tokens and each token is prefix-
+        #   matched case-insensitively and independently as a substring anywhere in the
+        #   space's `display_name`. For example, `Fun Eve` matches `Fun event` or `The
+        #   evening was fun`, but not `notFun event` or `even`. When `useAdminAccess` is
+        #   set to `false`, `display_name` is required to retrieve meaningful results.
+        #   Otherwise, the default behavior is to return an empty response. `
+        #   external_user_allowed` accepts either `true` or `false`. `space_history_state`
+        #   only accepts values from the [`historyState`] (https://developers.google.com/
+        #   workspace/chat/api/reference/rest/v1/spaces#Space.HistoryState) field of a `
+        #   space` resource. `space_type` is required when `useAdminAccess` is set to `
+        #   true`, and the only valid value is `SPACE`. Across different fields, only `AND`
+        #   operators are supported. A valid example is `space_type = "SPACE" AND
         #   display_name:"Hello"` and an invalid example is `space_type = "SPACE" OR
         #   display_name:"Hello"`. Among the same field, `space_type` doesn't support `AND`
         #   or `OR` operators. `display_name`, 'space_history_state', and '
@@ -802,26 +902,31 @@ module Google
         #   create_time` support both `AND` and `OR` operators. `AND` can only be used to
         #   represent an interval, such as `last_active_time < "2022-01-01T00:00:00+00:00"
         #   AND last_active_time > "2023-01-01T00:00:00+00:00"`. The following example
-        #   queries are valid: ``` customer = "customers/my_customer" AND space_type = "
-        #   SPACE" customer = "customers/my_customer" AND space_type = "SPACE" AND
-        #   display_name:"Hello World" customer = "customers/my_customer" AND space_type =
-        #   "SPACE" AND (last_active_time < "2020-01-01T00:00:00+00:00" OR
-        #   last_active_time > "2022-01-01T00:00:00+00:00") customer = "customers/
-        #   my_customer" AND space_type = "SPACE" AND (display_name:"Hello World" OR
-        #   display_name:"Fun event") AND (last_active_time > "2020-01-01T00:00:00+00:00"
-        #   AND last_active_time < "2022-01-01T00:00:00+00:00") customer = "customers/
-        #   my_customer" AND space_type = "SPACE" AND (create_time > "2019-01-01T00:00:00+
-        #   00:00" AND create_time < "2020-01-01T00:00:00+00:00") AND (
-        #   external_user_allowed = "true") AND (space_history_state = "HISTORY_ON" OR
-        #   space_history_state = "HISTORY_OFF") ```
+        #   queries are valid when `useAdminAccess` is set to `true`: ``` customer = "
+        #   customers/my_customer" AND space_type = "SPACE" customer = "customers/
+        #   my_customer" AND space_type = "SPACE" AND display_name:"Hello World" customer =
+        #   "customers/my_customer" AND space_type = "SPACE" AND (last_active_time < "
+        #   2020-01-01T00:00:00+00:00" OR last_active_time > "2022-01-01T00:00:00+00:00")
+        #   customer = "customers/my_customer" AND space_type = "SPACE" AND (display_name:"
+        #   Hello World" OR display_name:"Fun event") AND (last_active_time > "2020-01-
+        #   01T00:00:00+00:00" AND last_active_time < "2022-01-01T00:00:00+00:00")
+        #   customer = "customers/my_customer" AND space_type = "SPACE" AND (create_time >
+        #   "2019-01-01T00:00:00+00:00" AND create_time < "2020-01-01T00:00:00+00:00") AND
+        #   (external_user_allowed = "true") AND (space_history_state = "HISTORY_ON" OR
+        #   space_history_state = "HISTORY_OFF") ``` The following example queries are
+        #   valid when `useAdminAccess` is set to `false`: ``` display_name:"Hello World" (
+        #   display_name:"Hello" OR display_name:"Fun") (external_user_allowed = "true") //
+        #   Returns an empty response. (external_user_allowed = "true" AND display_name:"
+        #   Hello") ```
         # @param [Boolean] use_admin_access
         #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires either the `chat.admin.spaces.readonly` or `chat.
         #   admin.spaces` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/
-        #   authenticate-authorize#chat-api-scopes). This method currently only supports
-        #   admin access, thus only `true` is accepted for this field.
+        #   authenticate-authorize#chat-api-scopes). Setting `use_admin_access` to `false`
+        #   is available under Developer Preview. [Developer Preview](https://developers.
+        #   google.com/workspace/preview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -931,23 +1036,25 @@ module Google
         # space. Supports the following types of [authentication](https://developers.
         # google.com/workspace/chat/authenticate-authorize): - [App authentication](
         # https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
-        # with [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-        # [Developer Preview](https://developers.google.com/workspace/preview) and the
-        # authorization scope: - `https://www.googleapis.com/auth/chat.app.memberships` -
-        # [User authentication](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user) with one of the following authorization
+        # with [administrator approval](https://support.google.com/a?p=chat-app-auth)
+        # and the authorization scope: - `https://www.googleapis.com/auth/chat.app.
+        # memberships` - [User authentication](https://developers.google.com/workspace/
+        # chat/authenticate-authorize-chat-user) with one of the following authorization
         # scopes: - `https://www.googleapis.com/auth/chat.memberships` - `https://www.
         # googleapis.com/auth/chat.memberships.app` (to add the calling app to the space)
         # - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) -
         # User authentication grants administrator privileges when an administrator
         # account authenticates, `use_admin_access` is `true`, and the following
         # authorization scope is used: - `https://www.googleapis.com/auth/chat.admin.
-        # memberships` For example usage, see: - [Invite or add a user to a space](https:
-        # //developers.google.com/workspace/chat/create-members#create-user-membership).
-        # - [Invite or add a Google Group to a space](https://developers.google.com/
-        # workspace/chat/create-members#create-group-membership). - [Add the Chat app to
-        # a space](https://developers.google.com/workspace/chat/create-members#create-
-        # membership-calling-api).
+        # memberships` App authentication is not supported for the following use cases: -
+        # Inviting users external to the Workspace organization that owns the space. -
+        # Adding a Google Group to a space. - Adding a Chat app to a space. For example
+        # usage, see: - [Invite or add a user to a space](https://developers.google.com/
+        # workspace/chat/create-members#create-user-membership). - [Invite or add a
+        # Google Group to a space](https://developers.google.com/workspace/chat/create-
+        # members#create-group-membership). - [Add the Chat app to a space](https://
+        # developers.google.com/workspace/chat/create-members#create-membership-calling-
+        # api).
         # @param [String] parent
         #   Required. The resource name of the space for which to create the membership.
         #   Format: spaces/`space`
@@ -996,8 +1103,7 @@ module Google
         # Supports the following types of [authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize): - [App authentication](https://
         # developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [
-        # administrator approval](https://support.google.com/a?p=chat-app-auth) in [
-        # Developer Preview](https://developers.google.com/workspace/preview) and the
+        # administrator approval](https://support.google.com/a?p=chat-app-auth) and the
         # authorization scope: - `https://www.googleapis.com/auth/chat.app.memberships` -
         # [User authentication](https://developers.google.com/workspace/chat/
         # authenticate-authorize-chat-user) with one of the following authorization
@@ -1007,10 +1113,12 @@ module Google
         # only) - User authentication grants administrator privileges when an
         # administrator account authenticates, `use_admin_access` is `true`, and the
         # following authorization scope is used: - `https://www.googleapis.com/auth/chat.
-        # admin.memberships` To delete memberships for space managers, the requester
-        # must be a space manager. If you're using [app authentication](https://
-        # developers.google.com/workspace/chat/authenticate-authorize-chat-app) the
-        # application must be the space creator.
+        # admin.memberships` App authentication is not supported for the following use
+        # cases: - Removing a Google Group from a space. - Removing a Chat app from a
+        # space. To delete memberships for space managers, the requester must be a space
+        # manager. If you're using [app authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-app) the Chat app must be the space
+        # creator.
         # @param [String] name
         #   Required. Resource name of the membership to delete. Chat apps can delete
         #   human users' or their own memberships. Chat apps can't delete other apps'
@@ -1065,8 +1173,10 @@ module Google
         # workspace/chat/get-members). Supports the following types of [authentication](
         # https://developers.google.com/workspace/chat/authenticate-authorize): - [App
         # authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-app) with the authorization scope: - `https://www.googleapis.
-        # com/auth/chat.bot` - [User authentication](https://developers.google.com/
+        # authorize-chat-app) with one of the following authorization scopes: - `https://
+        # www.googleapis.com/auth/chat.bot` - `https://www.googleapis.com/auth/chat.app.
+        # memberships` (requires [administrator approval](https://support.google.com/a?p=
+        # chat-app-auth)) - [User authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize-chat-user) with one of the following
         # authorization scopes: - `https://www.googleapis.com/auth/chat.memberships.
         # readonly` - `https://www.googleapis.com/auth/chat.memberships` - User
@@ -1129,17 +1239,19 @@ module Google
         # in spaces that the authenticated user has access to. Supports the following
         # types of [authentication](https://developers.google.com/workspace/chat/
         # authenticate-authorize): - [App authentication](https://developers.google.com/
-        # workspace/chat/authenticate-authorize-chat-app) with the authorization scope: -
-        # `https://www.googleapis.com/auth/chat.bot` - [User authentication](https://
-        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
-        # one of the following authorization scopes: - `https://www.googleapis.com/auth/
-        # chat.memberships.readonly` - `https://www.googleapis.com/auth/chat.memberships`
-        # - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) -
-        # User authentication grants administrator privileges when an administrator
-        # account authenticates, `use_admin_access` is `true`, and one of the following
-        # authorization scopes is used: - `https://www.googleapis.com/auth/chat.admin.
-        # memberships.readonly` - `https://www.googleapis.com/auth/chat.admin.
-        # memberships`
+        # workspace/chat/authenticate-authorize-chat-app) with one of the following
+        # authorization scopes: - `https://www.googleapis.com/auth/chat.bot` - `https://
+        # www.googleapis.com/auth/chat.app.memberships` (requires [administrator
+        # approval](https://support.google.com/a?p=chat-app-auth)) - [User
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user) with one of the following authorization scopes: - `https:/
+        # /www.googleapis.com/auth/chat.memberships.readonly` - `https://www.googleapis.
+        # com/auth/chat.memberships` - `https://www.googleapis.com/auth/chat.import` (
+        # import mode spaces only) - User authentication grants administrator privileges
+        # when an administrator account authenticates, `use_admin_access` is `true`, and
+        # one of the following authorization scopes is used: - `https://www.googleapis.
+        # com/auth/chat.admin.memberships.readonly` - `https://www.googleapis.com/auth/
+        # chat.admin.memberships`
         # @param [String] parent
         #   Required. The resource name of the space for which to fetch a membership list.
         #   Format: spaces/`space`
@@ -1227,8 +1339,7 @@ module Google
         # the following types of [authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize): - [App authentication](https://
         # developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [
-        # administrator approval](https://support.google.com/a?p=chat-app-auth) in [
-        # Developer Preview](https://developers.google.com/workspace/preview) and the
+        # administrator approval](https://support.google.com/a?p=chat-app-auth) and the
         # authorization scope: - `https://www.googleapis.com/auth/chat.app.memberships` (
         # only in spaces the app created) - [User authentication](https://developers.
         # google.com/workspace/chat/authenticate-authorize-chat-user) with one of the
@@ -1313,6 +1424,8 @@ module Google
         #   Required. The resource name of the space in which to create a message. Format:
         #   `spaces/`space``
         # @param [Google::Apis::ChatV1::Message] message_object
+        # @param [String] create_message_notification_options_notification_type
+        #   The notification type for the message.
         # @param [String] message_id
         #   Optional. A custom ID for a message. Lets Chat apps get, update, or delete a
         #   message without needing to store the system-assigned ID in the message's
@@ -1355,13 +1468,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_space_message(parent, message_object = nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_space_message(parent, message_object = nil, create_message_notification_options_notification_type: nil, message_id: nil, message_reply_option: nil, request_id: nil, thread_key: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/messages', options)
           command.request_representation = Google::Apis::ChatV1::Message::Representation
           command.request_object = message_object
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['parent'] = parent unless parent.nil?
+          command.query['createMessageNotificationOptions.notificationType'] = create_message_notification_options_notification_type unless create_message_notification_options_notification_type.nil?
           command.query['messageId'] = message_id unless message_id.nil?
           command.query['messageReplyOption'] = message_reply_option unless message_reply_option.nil?
           command.query['requestId'] = request_id unless request_id.nil?
@@ -1427,13 +1541,19 @@ module Google
         # message](https://developers.google.com/workspace/chat/get-messages). Supports
         # the following types of [authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize): - [App authentication](https://
-        # developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the
-        # authorization scope: - `https://www.googleapis.com/auth/chat.bot` - [User
-        # authentication](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user) with one of the following authorization scopes: - `https:/
-        # /www.googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.com/
-        # auth/chat.messages` Note: Might return a message from a blocked member or
-        # space.
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-app) with one
+        # of the following authorization scopes: - `https://www.googleapis.com/auth/chat.
+        # bot`: When using this authorization scope, this method returns details about a
+        # message the Chat app has access to, like direct messages and [slash commands](
+        # https://developers.google.com/workspace/chat/slash-commands) that invoke the
+        # Chat app. - `https://www.googleapis.com/auth/chat.app.messages.readonly` with [
+        # administrator approval](https://support.google.com/a?p=chat-app-auth). When
+        # using this authentication scope, this method returns details about a public
+        # message in a space. - [User authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user) with one of the following
+        # authorization scopes: - `https://www.googleapis.com/auth/chat.messages.
+        # readonly` - `https://www.googleapis.com/auth/chat.messages` Note: Might return
+        # a message from a blocked member or space.
         # @param [String] name
         #   Required. Resource name of the message. Format: `spaces/`space`/messages/`
         #   message`` If you've set a custom ID for your message, you can use the value
@@ -1468,16 +1588,23 @@ module Google
         end
         
         # Lists messages in a space that the caller is a member of, including messages
-        # from blocked members and spaces. If you list messages from a space with no
+        # from blocked members and spaces. System messages, like those announcing new
+        # space members, aren't included. If you list messages from a space with no
         # messages, the response is an empty object. When using a REST/HTTP interface,
         # the response contains an empty JSON object, ````. For an example, see [List
         # messages](https://developers.google.com/workspace/chat/api/guides/v1/messages/
-        # list). Requires [user authentication](https://developers.google.com/workspace/
-        # chat/authenticate-authorize-chat-user) with one of the following [
-        # authorization scopes](https://developers.google.com/workspace/chat/
-        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
-        # chat.messages.readonly` - `https://www.googleapis.com/auth/chat.messages` - `
-        # https://www.googleapis.com/auth/chat.import` (import mode spaces only)
+        # list). Supports the following types of [authentication](https://developers.
+        # google.com/workspace/chat/authenticate-authorize): - [App authentication](
+        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+        # with [administrator approval](https://support.google.com/a?p=chat-app-auth)
+        # with the authorization scope: - `https://www.googleapis.com/auth/chat.app.
+        # messages.readonly`. When using this authentication scope, this method only
+        # returns public messages in a space. It doesn't include private messages. - [
+        # User authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user) with one of the following authorization scopes: - `https:/
+        # /www.googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.com/
+        # auth/chat.messages` - `https://www.googleapis.com/auth/chat.import` (import
+        # mode spaces only)
         # @param [String] parent
         #   Required. The resource name of the space to list messages from. Format: `
         #   spaces/`space``
@@ -1586,7 +1713,8 @@ module Google
         #   `attachment` - `cards` (Requires [app authentication](/chat/api/guides/auth/
         #   service-accounts).) - `cards_v2` (Requires [app authentication](/chat/api/
         #   guides/auth/service-accounts).) - `accessory_widgets` (Requires [app
-        #   authentication](/chat/api/guides/auth/service-accounts).)
+        #   authentication](/chat/api/guides/auth/service-accounts).) - `
+        #   quoted_message_metadata` (Only allows removal of the quoted message.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1653,7 +1781,8 @@ module Google
         #   `attachment` - `cards` (Requires [app authentication](/chat/api/guides/auth/
         #   service-accounts).) - `cards_v2` (Requires [app authentication](/chat/api/
         #   guides/auth/service-accounts).) - `accessory_widgets` (Requires [app
-        #   authentication](/chat/api/guides/auth/service-accounts).)
+        #   authentication](/chat/api/guides/auth/service-accounts).) - `
+        #   quoted_message_metadata` (Only allows removal of the quoted message.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1882,19 +2011,28 @@ module Google
         # message but the message was later updated, the server returns the updated `
         # Message` resource in the event payload. Note: The `permissionSettings` field
         # is not returned in the Space object of the Space event data for this request.
-        # Requires [user authentication](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user) with an [authorization scope](https://
+        # Supports the following types of [authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize) with an [authorization scope](https://
         # developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes)
-        # appropriate for reading the requested data: - `https://www.googleapis.com/auth/
-        # chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` - `https:
-        # //www.googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.
-        # com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.messages.
-        # reactions.readonly` - `https://www.googleapis.com/auth/chat.messages.reactions`
-        # - `https://www.googleapis.com/auth/chat.memberships.readonly` - `https://www.
-        # googleapis.com/auth/chat.memberships` To get an event, the authenticated user
-        # must be a member of the space. For an example, see [Get details about an event
-        # from a Google Chat space](https://developers.google.com/workspace/chat/get-
-        # space-event).
+        # appropriate for reading the requested data: - [App authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [
+        # administrator approval](https://support.google.com/a?p=chat-app-auth) with one
+        # of the following authorization scopes: - `https://www.googleapis.com/auth/chat.
+        # app.spaces` - `https://www.googleapis.com/auth/chat.app.spaces.readonly` - `
+        # https://www.googleapis.com/auth/chat.app.messages.readonly` - `https://www.
+        # googleapis.com/auth/chat.app.memberships` - `https://www.googleapis.com/auth/
+        # chat.app.memberships.readonly` - [User authentication](https://developers.
+        # google.com/workspace/chat/authenticate-authorize-chat-user) with one of the
+        # following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.
+        # readonly` - `https://www.googleapis.com/auth/chat.spaces` - `https://www.
+        # googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.com/auth/
+        # chat.messages` - `https://www.googleapis.com/auth/chat.messages.reactions.
+        # readonly` - `https://www.googleapis.com/auth/chat.messages.reactions` - `https:
+        # //www.googleapis.com/auth/chat.memberships.readonly` - `https://www.googleapis.
+        # com/auth/chat.memberships` To get an event, the authenticated caller must be a
+        # member of the space. For an example, see [Get details about an event from a
+        # Google Chat space](https://developers.google.com/workspace/chat/get-space-
+        # event).
         # @param [String] name
         #   Required. The resource name of the space event. Format: `spaces/`space`/
         #   spaceEvents/`spaceEvent``
@@ -1931,17 +2069,26 @@ module Google
         # resource. For example, if you list events about new space members, the server
         # returns `Membership` resources that contain the latest membership details. If
         # new members were removed during the requested period, the event payload
-        # contains an empty `Membership` resource. Requires [user authentication](https:/
-        # /developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
-        # an [authorization scope](https://developers.google.com/workspace/chat/
-        # authenticate-authorize#chat-api-scopes) appropriate for reading the requested
-        # data: - `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.
-        # googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.
-        # messages.readonly` - `https://www.googleapis.com/auth/chat.messages` - `https:/
-        # /www.googleapis.com/auth/chat.messages.reactions.readonly` - `https://www.
-        # googleapis.com/auth/chat.messages.reactions` - `https://www.googleapis.com/
-        # auth/chat.memberships.readonly` - `https://www.googleapis.com/auth/chat.
-        # memberships` To list events, the authenticated user must be a member of the
+        # contains an empty `Membership` resource. Supports the following types of [
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize) with an [authorization scope](https://developers.google.com/
+        # workspace/chat/authenticate-authorize#chat-api-scopes) appropriate for reading
+        # the requested data: - [App authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-app) with [administrator approval](
+        # https://support.google.com/a?p=chat-app-auth) with one of the following
+        # authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` - `
+        # https://www.googleapis.com/auth/chat.app.spaces.readonly` - `https://www.
+        # googleapis.com/auth/chat.app.messages.readonly` - `https://www.googleapis.com/
+        # auth/chat.app.memberships` - `https://www.googleapis.com/auth/chat.app.
+        # memberships.readonly` - [User authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user) with one of the following
+        # authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly`
+        # - `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/
+        # auth/chat.messages.readonly` - `https://www.googleapis.com/auth/chat.messages`
+        # - `https://www.googleapis.com/auth/chat.messages.reactions.readonly` - `https:/
+        # /www.googleapis.com/auth/chat.messages.reactions` - `https://www.googleapis.
+        # com/auth/chat.memberships.readonly` - `https://www.googleapis.com/auth/chat.
+        # memberships` To list events, the authenticated caller must be a member of the
         # space. For an example, see [List events from a Google Chat space](https://
         # developers.google.com/workspace/chat/list-space-events).
         # @param [String] parent
@@ -2009,6 +2156,546 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns availability information for a human user in Google Chat. For example,
+        # this can be used to check if a user is online or away, or to retrieve their
+        # custom status message. This method only retrieves the authenticated user's
+        # availability. Requires [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user) with one of the following [
+        # authorization scopes](https://developers.google.com/workspace/chat/
+        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
+        # chat.users.availability.readonly` - `https://www.googleapis.com/auth/chat.
+        # users.availability`
+        # @param [String] name
+        #   Required. The resource name of the availability to retrieve. Format: users/`
+        #   user`/availability ``user`` is the id for the Person in the People API or
+        #   Admin SDK directory API. For example, `users/123456789`. The user's email
+        #   address or `me` can also be used as an alias to refer to the caller. For
+        #   example, `users/user@example.com` or `users/me`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Availability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Availability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_availability_availability(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChatV1::Availability::Representation
+          command.response_class = Google::Apis::ChatV1::Availability
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Marks user as `ACTIVE` in Google Chat. Sets the user's availability state to `
+        # ACTIVE`. The `ACTIVE` state lasts until the specified expiration, at which
+        # point the user's state becomes `AWAY`. Note that if the user is actively using
+        # Chat, the `ACTIVE` state duration may extend beyond the provided expiration.
+        # This method only updates the authenticated user's availability. Requires [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user) with [authorization scope](https://developers.google.com/
+        # workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.
+        # googleapis.com/auth/chat.users.availability`
+        # @param [String] name
+        #   Required. The resource name of the availability to mark as active. Format:
+        #   users/`user`/availability ``user`` is the id for the Person in the People API
+        #   or Admin SDK directory API. For example, `users/123456789`. The user's email
+        #   address or `me` can also be used as an alias to refer to the caller. For
+        #   example, `users/user@example.com` or `users/me`.
+        # @param [Google::Apis::ChatV1::MarkAsActiveRequest] mark_as_active_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Availability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Availability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mark_availability_as_active(name, mark_as_active_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:markAsActive', options)
+          command.request_representation = Google::Apis::ChatV1::MarkAsActiveRequest::Representation
+          command.request_object = mark_as_active_request_object
+          command.response_representation = Google::Apis::ChatV1::Availability::Representation
+          command.response_class = Google::Apis::ChatV1::Availability
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Marks user as `AWAY` in Google Chat. Sets the user's state to away and is not
+        # affected by the user's activity. This method only updates the authenticated
+        # user's availability. Requires [user authentication](https://developers.google.
+        # com/workspace/chat/authenticate-authorize-chat-user) with [authorization scope]
+        # (https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
+        # scopes): - `https://www.googleapis.com/auth/chat.users.availability`
+        # @param [String] name
+        #   Required. The resource name of the availability to mark as away. Format: users/
+        #   `user`/availability ``user`` is the id for the Person in the People API or
+        #   Admin SDK directory API. For example, `users/123456789`. The user's email
+        #   address or `me` can also be used as an alias to refer to the caller. For
+        #   example, `users/user@example.com` or `users/me`.
+        # @param [Google::Apis::ChatV1::MarkAsAwayRequest] mark_as_away_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Availability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Availability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mark_availability_as_away(name, mark_as_away_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:markAsAway', options)
+          command.request_representation = Google::Apis::ChatV1::MarkAsAwayRequest::Representation
+          command.request_object = mark_as_away_request_object
+          command.response_representation = Google::Apis::ChatV1::Availability::Representation
+          command.response_class = Google::Apis::ChatV1::Availability
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Marks user as`DO_NOT_DISTURB` in Google Chat. Sets a user's availability state
+        # to `DO_NOT_DISTURB` until a specified expiration time. When in `DO_NOT_DISTURB`
+        # , users typically won't receive notifications. This method only updates the
+        # authenticated user's availability. Requires [user authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with [
+        # authorization scope](https://developers.google.com/workspace/chat/authenticate-
+        # authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.
+        # availability`
+        # @param [String] name
+        #   Required. The resource name of the availability to mark as Do Not Disturb.
+        #   Format: users/`user`/availability ``user`` is the id for the Person in the
+        #   People API or Admin SDK directory API. For example, `users/123456789`. The
+        #   user's email address or `me` can also be used as an alias to refer to the
+        #   caller. For example, `users/user@example.com` or `users/me`.
+        # @param [Google::Apis::ChatV1::MarkAsDoNotDisturbRequest] mark_as_do_not_disturb_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Availability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Availability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mark_availability_as_do_not_disturb(name, mark_as_do_not_disturb_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:markAsDoNotDisturb', options)
+          command.request_representation = Google::Apis::ChatV1::MarkAsDoNotDisturbRequest::Representation
+          command.request_object = mark_as_do_not_disturb_request_object
+          command.response_representation = Google::Apis::ChatV1::Availability::Representation
+          command.response_class = Google::Apis::ChatV1::Availability
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates availability information for a human user. Only the `custom_status`
+        # field can be updated through this method. This method only updates the
+        # authenticated user's availability. Requires [user authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+        # one of the following [authorization scopes](https://developers.google.com/
+        # workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.
+        # googleapis.com/auth/chat.users.availability`
+        # @param [String] name
+        #   Identifier. Resource name of the user's availability. Format: `users/`user`/
+        #   availability` ``user`` is the id for the Person in the People API or Admin SDK
+        #   directory API. For example, `users/123456789`. The user's email address or `me`
+        #   can also be used as an alias to refer to the caller. For example, `users/user@
+        #   example.com` or `users/me`.
+        # @param [Google::Apis::ChatV1::Availability] availability_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update. The only field that can be updated is `
+        #   custom_status`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Availability] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Availability]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_user_availability_availability(name, availability_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ChatV1::Availability::Representation
+          command.request_object = availability_object
+          command.response_representation = Google::Apis::ChatV1::Availability::Representation
+          command.response_class = Google::Apis::ChatV1::Availability
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a section in Google Chat. Sections help users group conversations and
+        # customize the list of spaces displayed in Chat navigation panel. Only sections
+        # of type `CUSTOM_SECTION` can be created. For details, see [Create and organize
+        # sections in Google Chat](https://support.google.com/chat/answer/16059854).
+        # Requires [user authentication](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-user) with the [authorization scope](https://
+        # developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+        # `https://www.googleapis.com/auth/chat.users.sections`
+        # @param [String] parent
+        #   Required. The parent resource name where the section is created. Format: `
+        #   users/`user``
+        # @param [Google::Apis::ChatV1::GoogleChatV1Section] google_chat_v1_section_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::GoogleChatV1Section] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::GoogleChatV1Section]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_user_section(parent, google_chat_v1_section_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/sections', options)
+          command.request_representation = Google::Apis::ChatV1::GoogleChatV1Section::Representation
+          command.request_object = google_chat_v1_section_object
+          command.response_representation = Google::Apis::ChatV1::GoogleChatV1Section::Representation
+          command.response_class = Google::Apis::ChatV1::GoogleChatV1Section
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a section of type `CUSTOM_SECTION`. If the section contains items,
+        # such as spaces, the items are moved to Google Chat's default sections and are
+        # not deleted. For details, see [Create and organize sections in Google Chat](
+        # https://support.google.com/chat/answer/16059854). Requires [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user) with the [authorization scope](https://developers.google.
+        # com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.
+        # googleapis.com/auth/chat.users.sections`
+        # @param [String] name
+        #   Required. The name of the section to delete. Format: `users/`user`/sections/`
+        #   section``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_user_section(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChatV1::Empty::Representation
+          command.response_class = Google::Apis::ChatV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists sections available to the Chat user. Sections help users group their
+        # conversations and customize the list of spaces displayed in Chat navigation
+        # panel. For details, see [Create and organize sections in Google Chat](https://
+        # support.google.com/chat/answer/16059854). Requires [user authentication](https:
+        # //developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+        # the [authorization scope](https://developers.google.com/workspace/chat/
+        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
+        # chat.users.sections` - `https://www.googleapis.com/auth/chat.users.sections.
+        # readonly`
+        # @param [String] parent
+        #   Required. The parent, which is the user resource name that owns this
+        #   collection of sections. Only supports listing sections for the calling user.
+        #   To refer to the calling user, set one of the following: - The `me` alias. For
+        #   example, `users/me`. - Their Workspace email address. For example, `users/user@
+        #   example.com`. - Their user id. For example, `users/123456789`. Format: `users/`
+        #   user``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of sections to return. The service may return
+        #   fewer than this value. If unspecified, at most 10 sections will be returned.
+        #   The maximum value is 100. If you use a value more than 100, it's automatically
+        #   changed to 100. Negative values return an `INVALID_ARGUMENT` error.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous list sections call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided should match the call that provided the page token. Passing different
+        #   values to the other parameters might lead to unexpected results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::ListSectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::ListSectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_user_sections(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/sections', options)
+          command.response_representation = Google::Apis::ChatV1::ListSectionsResponse::Representation
+          command.response_class = Google::Apis::ChatV1::ListSectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a section. Only sections of type `CUSTOM_SECTION` can be updated. For
+        # details, see [Create and organize sections in Google Chat](https://support.
+        # google.com/chat/answer/16059854). Requires [user authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+        # the [authorization scope](https://developers.google.com/workspace/chat/
+        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
+        # chat.users.sections`
+        # @param [String] name
+        #   Identifier. Resource name of the section. For system sections, the section ID
+        #   is a constant string: - DEFAULT_DIRECT_MESSAGES: `users/`user`/sections/
+        #   default-direct-messages` - DEFAULT_SPACES: `users/`user`/sections/default-
+        #   spaces` - DEFAULT_APPS: `users/`user`/sections/default-apps` Format: `users/`
+        #   user`/sections/`section``
+        # @param [Google::Apis::ChatV1::GoogleChatV1Section] google_chat_v1_section_object
+        # @param [String] update_mask
+        #   Required. The mask to specify which fields to update. Currently supported
+        #   field paths: - `display_name`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::GoogleChatV1Section] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::GoogleChatV1Section]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_user_section(name, google_chat_v1_section_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ChatV1::GoogleChatV1Section::Representation
+          command.request_object = google_chat_v1_section_object
+          command.response_representation = Google::Apis::ChatV1::GoogleChatV1Section::Representation
+          command.response_class = Google::Apis::ChatV1::GoogleChatV1Section
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Changes the sort order of a section. For details, see [Create and organize
+        # sections in Google Chat](https://support.google.com/chat/answer/16059854).
+        # Requires [user authentication](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-user) with the [authorization scope](https://
+        # developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+        # `https://www.googleapis.com/auth/chat.users.sections`
+        # @param [String] name
+        #   Required. The resource name of the section to position. Format: `users/`user`/
+        #   sections/`section``
+        # @param [Google::Apis::ChatV1::PositionSectionRequest] position_section_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::PositionSectionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::PositionSectionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def position_section(name, position_section_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:position', options)
+          command.request_representation = Google::Apis::ChatV1::PositionSectionRequest::Representation
+          command.request_object = position_section_request_object
+          command.response_representation = Google::Apis::ChatV1::PositionSectionResponse::Representation
+          command.response_class = Google::Apis::ChatV1::PositionSectionResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists items in a section. Only spaces can be section items. For details, see [
+        # Create and organize sections in Google Chat](https://support.google.com/chat/
+        # answer/16059854). Requires [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user) with the [authorization scope]
+        # (https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
+        # scopes): - `https://www.googleapis.com/auth/chat.users.sections` - `https://
+        # www.googleapis.com/auth/chat.users.sections.readonly`
+        # @param [String] parent
+        #   Required. The parent, which is the section resource name that owns this
+        #   collection of section items. Only supports listing section items for the
+        #   calling user. When you're filtering by space, use the wildcard `-` to search
+        #   across all sections. For example, `users/`user`/sections/-`. Format: `users/`
+        #   user`/sections/`section``
+        # @param [String] filter
+        #   Optional. A query filter. Currently only supports filtering by space. For
+        #   example, `space = spaces/`space``. Invalid queries are rejected with an `
+        #   INVALID_ARGUMENT` error.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of section items to return. The service may
+        #   return fewer than this value. If unspecified, at most 10 section items will be
+        #   returned. The maximum value is 100. If you use a value more than 100, it's
+        #   automatically changed to 100. Negative values return an `INVALID_ARGUMENT`
+        #   error.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous list section items call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided should match the call that provided the page token.
+        #   Passing different values to the other parameters might lead to unexpected
+        #   results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::ListSectionItemsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::ListSectionItemsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_user_section_items(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/items', options)
+          command.response_representation = Google::Apis::ChatV1::ListSectionItemsResponse::Representation
+          command.response_class = Google::Apis::ChatV1::ListSectionItemsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Moves an item from one section to another. For example, if a section contains
+        # spaces, this method can be used to move a space to a different section. For
+        # details, see [Create and organize sections in Google Chat](https://support.
+        # google.com/chat/answer/16059854). Requires [user authentication](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+        # the [authorization scope](https://developers.google.com/workspace/chat/
+        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
+        # chat.users.sections`
+        # @param [String] name
+        #   Required. The resource name of the section item to move. Format: `users/`user`/
+        #   sections/`section`/items/`item``
+        # @param [Google::Apis::ChatV1::MoveSectionItemRequest] move_section_item_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::MoveSectionItemResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::MoveSectionItemResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def move_section_item(name, move_section_item_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:move', options)
+          command.request_representation = Google::Apis::ChatV1::MoveSectionItemRequest::Representation
+          command.request_object = move_section_item_request_object
+          command.response_representation = Google::Apis::ChatV1::MoveSectionItemResponse::Representation
+          command.response_class = Google::Apis::ChatV1::MoveSectionItemResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -33,6 +33,8 @@ module Google
         attr_accessor :daily_metric
       
         # Represents all possible subentity types that are associated with DailyMetrics.
+        # Note: Currently, all metrics are returned as daily aggregates and sub-entity
+        # breakdowns are not supported.
         # Corresponds to the JSON property `dailySubEntityType`
         # @return [Google::Apis::BusinessprofileperformanceV1::DailySubEntityType]
         attr_accessor :daily_sub_entity_type
@@ -55,6 +57,8 @@ module Google
       end
       
       # Represents all possible subentity types that are associated with DailyMetrics.
+      # Note: Currently, all metrics are returned as daily aggregates and sub-entity
+      # breakdowns are not supported.
       class DailySubEntityType
         include Google::Apis::Core::Hashable
       

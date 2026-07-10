@@ -376,6 +376,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAppsDriveLabelsV2LabelEnabledAppSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAppsDriveLabelsV2LabelLimits
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,6 +491,12 @@ module Google
       end
       
       class GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1149,6 +1167,8 @@ module Google
       
           property :display_hints, as: 'displayHints', class: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelDisplayHints, decorator: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelDisplayHints::Representation
       
+          property :enabled_app_settings, as: 'enabledAppSettings', class: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettings, decorator: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettings::Representation
+      
           collection :fields, as: 'fields', class: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2Field, decorator: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2Field::Representation
       
           property :id, as: 'id'
@@ -1196,6 +1216,21 @@ module Google
           property :hidden_in_search, as: 'hiddenInSearch'
           property :priority, :numeric_string => true, as: 'priority'
           property :shown_in_apply, as: 'shownInApply'
+        end
+      end
+      
+      class GoogleAppsDriveLabelsV2LabelEnabledAppSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_apps, as: 'enabledApps', class: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp, decorator: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp::Representation
+      
+        end
+      end
+      
+      class GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app, as: 'app'
         end
       end
       
@@ -1367,6 +1402,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :copy_mode, as: 'copyMode'
+          property :language_code, as: 'languageCode'
+          property :use_admin_access, as: 'useAdminAccess'
+          property :view, as: 'view'
+        end
+      end
+      
+      class GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled_app_settings, as: 'enabledAppSettings', class: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettings, decorator: Google::Apis::DrivelabelsV2::GoogleAppsDriveLabelsV2LabelEnabledAppSettings::Representation
+      
           property :language_code, as: 'languageCode'
           property :use_admin_access, as: 'useAdminAccess'
           property :view, as: 'view'

@@ -1,0 +1,7 @@
+{
+    "api_id": "ces:v1",
+    "name_pretty": "Gemini Enterprise for Customer Experience API",
+    "distribution_name": "google-apis-ces_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}

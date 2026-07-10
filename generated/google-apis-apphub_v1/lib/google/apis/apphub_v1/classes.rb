@@ -310,6 +310,51 @@ module Google
         end
       end
       
+      # Application management boundary.
+      class Boundary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The resource name of the CRM node being attached to the boundary.
+        # Format: `projects/`project-number`` or `projects/`project-id``
+        # Corresponds to the JSON property `crmNode`
+        # @return [String]
+        attr_accessor :crm_node
+      
+        # Identifier. The resource name of the boundary. Format: "projects/`project`/
+        # locations/`location`/boundary"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Boundary type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @crm_node = args[:crm_node] if args.key?(:crm_node)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -551,6 +596,100 @@ module Google
         end
       end
       
+      # Additional metadata for a Service or Workload.
+      class ExtendedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The metadata contents.
+        # Corresponds to the JSON property `metadataStruct`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata_struct
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_struct = args[:metadata_struct] if args.key?(:metadata_struct)
+        end
+      end
+      
+      # ExtendedMetadataSchema represents a schema for extended metadata of a service
+      # or workload.
+      class ExtendedMetadataSchema
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The JSON schema as a string.
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [String]
+        attr_accessor :json_schema
+      
+        # Identifier. Resource name of the schema. Format: projects//locations//
+        # extendedMetadataSchemas/
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The version of the schema. New versions are required to be
+        # backwards compatible.
+        # Corresponds to the JSON property `schemaVersion`
+        # @return [Fixnum]
+        attr_accessor :schema_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
+          @name = args[:name] if args.key?(:name)
+          @schema_version = args[:schema_version] if args.key?(:schema_version)
+        end
+      end
+      
+      # The functional type of a service or workload.
+      class FunctionalType
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The functional type of a service or workload.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The identity associated with a service or workload.
+      class Identity
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The principal of the identity. Supported formats: * `sa://my-sa@
+        # PROJECT_ID.iam.gserviceaccount.com` for GCP Service Account * `principal://
+        # POOL_ID.global.PROJECT_NUMBER.workload.id.goog/ns/NAMESPACE_ID/sa/
+        # MANAGED_IDENTITY_ID` for Managed Workload Identity
+        # Corresponds to the JSON property `principal`
+        # @return [String]
+        attr_accessor :principal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal = args[:principal] if args.key?(:principal)
+        end
+      end
+      
       # Response for ListApplications.
       class ListApplicationsResponse
         include Google::Apis::Core::Hashable
@@ -644,6 +783,31 @@ module Google
         end
       end
       
+      # Response for ListExtendedMetadataSchemas.
+      class ListExtendedMetadataSchemasResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Extended Metadata Schemas.
+        # Corresponds to the JSON property `extendedMetadataSchemas`
+        # @return [Array<Google::Apis::ApphubV1::ExtendedMetadataSchema>]
+        attr_accessor :extended_metadata_schemas
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extended_metadata_schemas = args[:extended_metadata_schemas] if args.key?(:extended_metadata_schemas)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -683,6 +847,14 @@ module Google
         # @return [Array<Google::Apis::ApphubV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -691,6 +863,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1142,6 +1315,25 @@ module Google
         end
       end
       
+      # The registration type of a service.
+      class RegistrationType
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The registration type of a service.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Scope of an application.
       class Scope
         include Google::Apis::Core::Hashable
@@ -1302,17 +1494,40 @@ module Google
       class ServiceProperties
         include Google::Apis::Core::Hashable
       
+        # Output only. Additional metadata specific to the resource type. The key is a
+        # string that identifies the type of metadata and the value is the metadata
+        # contents specific to that type. Key format: `apphub.googleapis.com/`
+        # metadataType``
+        # Corresponds to the JSON property `extendedMetadata`
+        # @return [Hash<String,Google::Apis::ApphubV1::ExtendedMetadata>]
+        attr_accessor :extended_metadata
+      
+        # The functional type of a service or workload.
+        # Corresponds to the JSON property `functionalType`
+        # @return [Google::Apis::ApphubV1::FunctionalType]
+        attr_accessor :functional_type
+      
         # Output only. The service project identifier that the underlying cloud resource
         # resides in.
         # Corresponds to the JSON property `gcpProject`
         # @return [String]
         attr_accessor :gcp_project
       
+        # The identity associated with a service or workload.
+        # Corresponds to the JSON property `identity`
+        # @return [Google::Apis::ApphubV1::Identity]
+        attr_accessor :identity
+      
         # Output only. The location that the underlying resource resides in, for example,
         # us-west1.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
+      
+        # The registration type of a service.
+        # Corresponds to the JSON property `registrationType`
+        # @return [Google::Apis::ApphubV1::RegistrationType]
+        attr_accessor :registration_type
       
         # Output only. The location that the underlying resource resides in if it is
         # zonal, for example, us-west1-a).
@@ -1326,8 +1541,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @extended_metadata = args[:extended_metadata] if args.key?(:extended_metadata)
+          @functional_type = args[:functional_type] if args.key?(:functional_type)
           @gcp_project = args[:gcp_project] if args.key?(:gcp_project)
+          @identity = args[:identity] if args.key?(:identity)
           @location = args[:location] if args.key?(:location)
+          @registration_type = args[:registration_type] if args.key?(:registration_type)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -1575,11 +1794,29 @@ module Google
       class WorkloadProperties
         include Google::Apis::Core::Hashable
       
+        # Output only. Additional metadata specific to the resource type. The key is a
+        # string that identifies the type of metadata and the value is the metadata
+        # contents specific to that type. Key format: `apphub.googleapis.com/`
+        # metadataType``
+        # Corresponds to the JSON property `extendedMetadata`
+        # @return [Hash<String,Google::Apis::ApphubV1::ExtendedMetadata>]
+        attr_accessor :extended_metadata
+      
+        # The functional type of a service or workload.
+        # Corresponds to the JSON property `functionalType`
+        # @return [Google::Apis::ApphubV1::FunctionalType]
+        attr_accessor :functional_type
+      
         # Output only. The service project identifier that the underlying cloud resource
         # resides in. Empty for non-cloud resources.
         # Corresponds to the JSON property `gcpProject`
         # @return [String]
         attr_accessor :gcp_project
+      
+        # The identity associated with a service or workload.
+        # Corresponds to the JSON property `identity`
+        # @return [Google::Apis::ApphubV1::Identity]
+        attr_accessor :identity
       
         # Output only. The location that the underlying compute resource resides in (for
         # example, us-west1).
@@ -1599,7 +1836,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @extended_metadata = args[:extended_metadata] if args.key?(:extended_metadata)
+          @functional_type = args[:functional_type] if args.key?(:functional_type)
           @gcp_project = args[:gcp_project] if args.key?(:gcp_project)
+          @identity = args[:identity] if args.key?(:identity)
           @location = args[:location] if args.key?(:location)
           @zone = args[:zone] if args.key?(:zone)
         end

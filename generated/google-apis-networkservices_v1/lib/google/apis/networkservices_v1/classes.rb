@@ -22,6 +22,276 @@ module Google
   module Apis
     module NetworkservicesV1
       
+      # AgentGateway represents the agent gateway resource.
+      class AgentGateway
+        include Google::Apis::Core::Hashable
+      
+        # AgentGatewayOutputCard contains informational output-only fields
+        # Corresponds to the JSON property `agentGatewayCard`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayAgentGatewayOutputCard]
+        attr_accessor :agent_gateway_card
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Etag of the resource. If this is provided, it must match the server'
+        # s etag. If the provided etag does not match the server's etag, the request
+        # will fail with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Configuration for Google Managed deployment mode. Proxy is orchestrated and
+        # managed by GoogleCloud in a tenant project.
+        # Corresponds to the JSON property `googleManaged`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayGoogleManaged]
+        attr_accessor :google_managed
+      
+        # Optional. Set of label tags associated with the AgentGateway resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Name of the AgentGateway resource. It matches pattern `projects/*/
+        # locations/*/agentGateways/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # NetworkConfig contains network configurations for the AgentGateway.
+        # Corresponds to the JSON property `networkConfig`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfig]
+        attr_accessor :network_config
+      
+        # Optional. Deprecated.
+        # Corresponds to the JSON property `protocols`
+        # @return [Array<String>]
+        attr_accessor :protocols
+      
+        # Optional. A list of Agent registries containing the agents, MCP servers and
+        # tools governed by the Agent Gateway. Note: Currently limited to project-scoped
+        # registries Must be of format `//agentregistry.googleapis.com/projects/`project`
+        # /locations/`location`/
+        # Corresponds to the JSON property `registries`
+        # @return [Array<String>]
+        attr_accessor :registries
+      
+        # Configuration for Self Managed deployment mode. Attach to existing Application
+        # Load Balancers or Secure Web Proxies.
+        # Corresponds to the JSON property `selfManaged`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewaySelfManaged]
+        attr_accessor :self_managed
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_gateway_card = args[:agent_gateway_card] if args.key?(:agent_gateway_card)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @google_managed = args[:google_managed] if args.key?(:google_managed)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network_config = args[:network_config] if args.key?(:network_config)
+          @protocols = args[:protocols] if args.key?(:protocols)
+          @registries = args[:registries] if args.key?(:registries)
+          @self_managed = args[:self_managed] if args.key?(:self_managed)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # AgentGatewayOutputCard contains informational output-only fields
+      class AgentGatewayAgentGatewayOutputCard
+        include Google::Apis::Core::Hashable
+      
+        # Output only. mTLS Endpoint associated with this AgentGateway
+        # Corresponds to the JSON property `mtlsEndpoint`
+        # @return [String]
+        attr_accessor :mtls_endpoint
+      
+        # Output only. Root Certificates for Agents to validate this AgentGateway
+        # Corresponds to the JSON property `rootCertificates`
+        # @return [Array<String>]
+        attr_accessor :root_certificates
+      
+        # Output only. Service Account used by Service Extensions to operate.
+        # Corresponds to the JSON property `serviceExtensionsServiceAccount`
+        # @return [String]
+        attr_accessor :service_extensions_service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mtls_endpoint = args[:mtls_endpoint] if args.key?(:mtls_endpoint)
+          @root_certificates = args[:root_certificates] if args.key?(:root_certificates)
+          @service_extensions_service_account = args[:service_extensions_service_account] if args.key?(:service_extensions_service_account)
+        end
+      end
+      
+      # Configuration for Google Managed deployment mode. Proxy is orchestrated and
+      # managed by GoogleCloud in a tenant project.
+      class AgentGatewayGoogleManaged
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Operating Mode of Agent Gateway.
+        # Corresponds to the JSON property `governedAccessPath`
+        # @return [String]
+        attr_accessor :governed_access_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @governed_access_path = args[:governed_access_path] if args.key?(:governed_access_path)
+        end
+      end
+      
+      # NetworkConfig contains network configurations for the AgentGateway.
+      class AgentGatewayNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # DNS peering config for the user VPC network.
+        # Corresponds to the JSON property `dnsPeeringConfig`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfigDnsPeeringConfig]
+        attr_accessor :dns_peering_config
+      
+        # Configuration for Egress
+        # Corresponds to the JSON property `egress`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfigEgress]
+        attr_accessor :egress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_peering_config = args[:dns_peering_config] if args.key?(:dns_peering_config)
+          @egress = args[:egress] if args.key?(:egress)
+        end
+      end
+      
+      # DNS peering config for the user VPC network.
+      class AgentGatewayNetworkConfigDnsPeeringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Domain names for which DNS queries should be forwarded to the target
+        # network.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
+      
+        # Required. Target network in 'target project' to which DNS queries should be
+        # forwarded to. Must be in format of `projects/`project`/global/networks/`
+        # network``.
+        # Corresponds to the JSON property `targetNetwork`
+        # @return [String]
+        attr_accessor :target_network
+      
+        # Required. Target project ID to which DNS queries should be forwarded to. This
+        # can be the same project that contains the AgentGateway or a different project.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domains = args[:domains] if args.key?(:domains)
+          @target_network = args[:target_network] if args.key?(:target_network)
+          @target_project = args[:target_project] if args.key?(:target_project)
+        end
+      end
+      
+      # Configuration for Egress
+      class AgentGatewayNetworkConfigEgress
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The URI of the Network Attachment resource.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        # TrustConfig defines the trust configuration for egress.
+        # Corresponds to the JSON property `trustConfig`
+        # @return [Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfigEgressTrustConfig]
+        attr_accessor :trust_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
+        end
+      end
+      
+      # TrustConfig defines the trust configuration for egress.
+      class AgentGatewayNetworkConfigEgressTrustConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. PEM encoded root certificates used to validate the identity of the
+        # upstream servers/destinations during egress connections.
+        # Corresponds to the JSON property `pemCertificates`
+        # @return [Array<String>]
+        attr_accessor :pem_certificates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pem_certificates = args[:pem_certificates] if args.key?(:pem_certificates)
+        end
+      end
+      
+      # Configuration for Self Managed deployment mode. Attach to existing Application
+      # Load Balancers or Secure Web Proxies.
+      class AgentGatewaySelfManaged
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A supported Google Cloud networking proxy in the Project and
+        # Location
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -98,8 +368,9 @@ module Google
       class AuthzExtension
         include Google::Apis::Core::Hashable
       
-        # Required. The `:authority` header in the gRPC request sent from Envoy to the
-        # extension service.
+        # Optional. The `:authority` header in the gRPC request sent from Envoy to the
+        # extension service. It is required when the `service` field points to a backend
+        # service or a wasm plugin.
         # Corresponds to the JSON property `authority`
         # @return [String]
         attr_accessor :authority
@@ -128,6 +399,17 @@ module Google
         attr_accessor :fail_open
         alias_method :fail_open?, :fail_open
       
+        # Optional. List of the Envoy attributes to forward to the extension server. The
+        # attributes provided here are included as part of the `ProcessingRequest.
+        # attributes` field (of type `map`), where the keys are the attribute names.
+        # Refer to the [documentation](https://cloud.google.com/service-extensions/docs/
+        # cel-matcher-language-reference#attributes) for the names of attributes that
+        # can be forwarded. If omitted, no attributes are sent. Each element is a string
+        # indicating the attribute name.
+        # Corresponds to the JSON property `forwardAttributes`
+        # @return [Array<String>]
+        attr_accessor :forward_attributes
+      
         # Optional. List of the HTTP headers to forward to the extension (from the
         # client). If omitted, all headers are sent. Each element is a string indicating
         # the header name.
@@ -142,9 +424,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. All backend services and forwarding rules referenced by this
+        # Optional. All backend services and forwarding rules referenced by this
         # extension must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Backend
+        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. Can be omitted for AuthzExtensions that
+        # do not reference a backend service. For more information, refer to [Backend
         # services overview](https://cloud.google.com/load-balancing/docs/backend-
         # service).
         # Corresponds to the JSON property `loadBalancingScheme`
@@ -190,8 +473,10 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Optional. The format of communication supported by the callout extension. If
-        # not specified, the default value `EXT_PROC_GRPC` is used.
+        # Optional. The format of communication supported by the callout extension. This
+        # field is supported only for regional `AuthzExtension` resources. If not
+        # specified, the default value `EXT_PROC_GRPC` is used. Global `AuthzExtension`
+        # resources use the `EXT_PROC_GRPC` wire format.
         # Corresponds to the JSON property `wireFormat`
         # @return [String]
         attr_accessor :wire_format
@@ -206,6 +491,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @fail_open = args[:fail_open] if args.key?(:fail_open)
+          @forward_attributes = args[:forward_attributes] if args.key?(:forward_attributes)
           @forward_headers = args[:forward_headers] if args.key?(:forward_headers)
           @labels = args[:labels] if args.key?(:labels)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
@@ -481,7 +767,7 @@ module Google
         attr_accessor :labels
       
         # Identifier. Name of the EndpointPolicy resource. It matches pattern `projects/`
-        # project`/locations/global/endpointPolicies/`endpoint_policy``.
+        # project`/locations/*/endpointPolicies/`endpoint_policy``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -591,8 +877,8 @@ module Google
       
         # Required. A set of extensions to execute for the matching request. At least
         # one extension is required. Up to 3 extensions can be defined for each
-        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` chains
-        # are limited to 1 extension per extension chain.
+        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` and `
+        # LbEdgeExtension` chains are limited to 1 extension per extension chain.
         # Corresponds to the JSON property `extensions`
         # @return [Array<Google::Apis::NetworkservicesV1::ExtensionChainExtension>]
         attr_accessor :extensions
@@ -648,6 +934,17 @@ module Google
         attr_accessor :fail_open
         alias_method :fail_open?, :fail_open
       
+        # Optional. List of the Envoy attributes to forward to the extension server. The
+        # attributes provided here are included as part of the `ProcessingRequest.
+        # attributes` field (of type `map`), where the keys are the attribute names.
+        # Refer to the [documentation](https://cloud.google.com/service-extensions/docs/
+        # cel-matcher-language-reference#attributes) for the names of attributes that
+        # can be forwarded. If omitted, no attributes are sent. Each element is a string
+        # indicating the attribute name.
+        # Corresponds to the JSON property `forwardAttributes`
+        # @return [Array<String>]
+        attr_accessor :forward_attributes
+      
         # Optional. List of the HTTP headers to forward to the extension (from the
         # client or backend). If omitted, all headers are sent. Each element is a string
         # indicating the header name.
@@ -657,31 +954,68 @@ module Google
       
         # Optional. The metadata provided here is included as part of the `
         # metadata_context` (of type `google.protobuf.Struct`) in the `ProcessingRequest`
-        # message sent to the extension server. The metadata is available under the
-        # namespace `com.google....`. For example: `com.google.lb_traffic_extension.
-        # lbtrafficextension1.chain1.ext1`. The following variables are supported in the
-        # metadata: ``forwarding_rule_id`` - substituted with the forwarding rule's
-        # fully qualified resource name. This field must not be set for plugin
-        # extensions. Setting it results in a validation error. You can set metadata at
-        # either the resource level or the extension level. The extension level metadata
-        # is recommended because you can pass a different set of metadata through each
-        # extension to the backend. This field is subject to following limitations: *
-        # The total size of the metadata must be less than 1KiB. * The total number of
-        # keys in the metadata must be less than 16. * The length of each key must be
-        # less than 64 characters. * The length of each value must be less than 1024
-        # characters. * All values must be strings.
+        # message sent to the extension server. For `AuthzExtension` resources, the
+        # metadata is available under the namespace `com.google.authz_extension.`. For
+        # other types of extensions, the metadata is available under the namespace `com.
+        # google....`. For example: `com.google.lb_traffic_extension.lbtrafficextension1.
+        # chain1.ext1`. The following variables are supported in the metadata: ``
+        # forwarding_rule_id`` - substituted with the forwarding rule's fully qualified
+        # resource name. This field must not be set for plugin extensions. Setting it
+        # results in a validation error. You can set metadata at either the resource
+        # level or the extension level. The extension level metadata is recommended
+        # because you can pass a different set of metadata through each extension to the
+        # backend. This field is subject to following limitations: * The total size of
+        # the metadata must be less than 1KiB. * The total number of keys in the
+        # metadata must be less than 16. * The length of each key must be less than 64
+        # characters. * The length of each value must be less than 1024 characters. *
+        # All values must be strings.
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,Object>]
         attr_accessor :metadata
       
-        # Required. The name for this extension. The name is logged as part of the HTTP
+        # Optional. The name for this extension. The name is logged as part of the HTTP
         # request logs. The name must conform with RFC-1034, is restricted to lower-
         # cased letters, numbers and hyphens, and can have a maximum length of 63
         # characters. Additionally, the first character must be a letter and the last a
-        # letter or a number.
+        # letter or a number. This field is required except for AuthzExtension.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. When set to `true`, the calls to the extension backend are performed
+        # asynchronously, without pausing the processing of the ongoing request. In this
+        # mode, only `STREAMED` (default) body processing is supported. Responses, if
+        # any, are ignored. Supported by regional `LbTrafficExtension` and `
+        # LbRouteExtension` resources.
+        # Corresponds to the JSON property `observabilityMode`
+        # @return [Boolean]
+        attr_accessor :observability_mode
+        alias_method :observability_mode?, :observability_mode
+      
+        # Optional. Configures the send mode for request body processing. The field can
+        # only be set if `supported_events` includes `REQUEST_BODY`. If `
+        # supported_events` includes `REQUEST_BODY`, but `request_body_send_mode` is
+        # unset, the default value `STREAMED` is used. When this field is set to `
+        # FULL_DUPLEX_STREAMED`, `supported_events` must include both `REQUEST_BODY` and
+        # `REQUEST_TRAILERS`. This field can be set only for `LbTrafficExtension` and `
+        # LbRouteExtension` resources, and only when the `service` field of the
+        # extension points to a `BackendService`. Only `FULL_DUPLEX_STREAMED` mode is
+        # supported for `LbRouteExtension` resources.
+        # Corresponds to the JSON property `requestBodySendMode`
+        # @return [String]
+        attr_accessor :request_body_send_mode
+      
+        # Optional. Configures the send mode for response processing. If unspecified,
+        # the default value `STREAMED` is used. The field can only be set if `
+        # supported_events` includes `RESPONSE_BODY`. If `supported_events` includes `
+        # RESPONSE_BODY`, but `response_body_send_mode` is unset, the default value `
+        # STREAMED` is used. When this field is set to `FULL_DUPLEX_STREAMED`, `
+        # supported_events` must include both `RESPONSE_BODY` and `RESPONSE_TRAILERS`.
+        # This field can be set only for `LbTrafficExtension` resources, and only when
+        # the `service` field of the extension points to a `BackendService`.
+        # Corresponds to the JSON property `responseBodySendMode`
+        # @return [String]
+        attr_accessor :response_body_send_mode
       
         # Required. The reference to the service that runs the extension. To configure a
         # callout extension, `service` must be a fully-qualified reference to a [backend
@@ -695,14 +1029,19 @@ module Google
         # in the format: `projects/`project`/locations/`location`/wasmPlugins/`plugin``
         # or `//networkservices.googleapis.com/projects/`project`/locations/`location`/
         # wasmPlugins/`wasmPlugin``. Plugin extensions are currently supported for the `
-        # LbTrafficExtension` and the `LbRouteExtension` resources.
+        # LbTrafficExtension`, the `LbRouteExtension`, and the `LbEdgeExtension`
+        # resources.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
         # Optional. A set of events during request or response processing for which this
-        # extension is called. This field is required for the `LbTrafficExtension`
-        # resource. It is optional for the `LbRouteExtension` resource. If unspecified `
+        # extension is called. For the `LbTrafficExtension` resource, this field is
+        # required. For the `LbRouteExtension` resource, this field is optional. If
+        # unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `
+        # LbEdgeExtension` resource, this field is required and must only contain `
+        # REQUEST_HEADERS` event. For the `AuthzExtension` resource, this field is
+        # optional. `REQUEST_HEADERS` is the only supported event. If unspecified, `
         # REQUEST_HEADERS` event is assumed as supported.
         # Corresponds to the JSON property `supportedEvents`
         # @return [Array<String>]
@@ -724,9 +1063,13 @@ module Google
         def update!(**args)
           @authority = args[:authority] if args.key?(:authority)
           @fail_open = args[:fail_open] if args.key?(:fail_open)
+          @forward_attributes = args[:forward_attributes] if args.key?(:forward_attributes)
           @forward_headers = args[:forward_headers] if args.key?(:forward_headers)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+          @observability_mode = args[:observability_mode] if args.key?(:observability_mode)
+          @request_body_send_mode = args[:request_body_send_mode] if args.key?(:request_body_send_mode)
+          @response_body_send_mode = args[:response_body_send_mode] if args.key?(:response_body_send_mode)
           @service = args[:service] if args.key?(:service)
           @supported_events = args[:supported_events] if args.key?(:supported_events)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -769,6 +1112,22 @@ module Google
         # Corresponds to the JSON property `addresses`
         # @return [Array<String>]
         attr_accessor :addresses
+      
+        # Optional. If true, the Gateway will listen on all ports. This is mutually
+        # exclusive with the `ports` field. This field only applies to gateways of type '
+        # SECURE_WEB_GATEWAY'.
+        # Corresponds to the JSON property `allPorts`
+        # @return [Boolean]
+        attr_accessor :all_ports
+        alias_method :all_ports?, :all_ports
+      
+        # Optional. If true, the gateway will allow traffic from clients outside of the
+        # region where the gateway is located. This field is configurable only for
+        # gateways of type SECURE_WEB_GATEWAY.
+        # Corresponds to the JSON property `allowGlobalAccess`
+        # @return [Boolean]
+        attr_accessor :allow_global_access
+        alias_method :allow_global_access?, :allow_global_access
       
         # Optional. A fully-qualified Certificates URL reference. The proxy presents a
         # Certificate (selected based on SNI) when establishing a TLS connection. This
@@ -828,8 +1187,8 @@ module Google
       
         # Required. One or more port numbers (1-65535), on which the Gateway will
         # receive traffic. The proxy binds to the specified ports. Gateways of type '
-        # SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen
-        # on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
+        # SECURE_WEB_GATEWAY' are limited to 5 ports. Gateways of type 'OPEN_MESH'
+        # listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
         # Corresponds to the JSON property `ports`
         # @return [Array<Fixnum>]
         attr_accessor :ports
@@ -887,6 +1246,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addresses = args[:addresses] if args.key?(:addresses)
+          @all_ports = args[:all_ports] if args.key?(:all_ports)
+          @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
           @certificate_urls = args[:certificate_urls] if args.key?(:certificate_urls)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
@@ -912,8 +1273,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Identifier. Full path name of the GatewayRouteView resource.
-        # Format: projects/`project_number`/locations/`location`/gateways/`gateway_name`/
-        # routeViews/`route_view_name`
+        # Format: projects/`project_number`/locations/`location`/gateways/`gateway`/
+        # routeViews/`route_view`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -969,8 +1330,7 @@ module Google
       
         # Optional. Gateways defines a list of gateways this GrpcRoute is attached to,
         # as one of the routing rules to route the requests served by the gateway. Each
-        # gateway reference should match the pattern: `projects/*/locations/global/
-        # gateways/`
+        # gateway reference should match the pattern: `projects/*/locations/*/gateways/`
         # Corresponds to the JSON property `gateways`
         # @return [Array<String>]
         attr_accessor :gateways
@@ -1005,13 +1365,13 @@ module Google
       
         # Optional. Meshes defines a list of meshes this GrpcRoute is attached to, as
         # one of the routing rules to route the requests served by the mesh. Each mesh
-        # reference should match the pattern: `projects/*/locations/global/meshes/`
+        # reference should match the pattern: `projects/*/locations/*/meshes/`
         # Corresponds to the JSON property `meshes`
         # @return [Array<String>]
         attr_accessor :meshes
       
         # Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/
-        # locations/global/grpcRoutes/`
+        # locations/*/grpcRoutes/`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1450,8 +1810,7 @@ module Google
       
         # Optional. Gateways defines a list of gateways this HttpRoute is attached to,
         # as one of the routing rules to route the requests served by the gateway. Each
-        # gateway reference should match the pattern: `projects/*/locations/global/
-        # gateways/`
+        # gateway reference should match the pattern: `projects/*/locations/*/gateways/`
         # Corresponds to the JSON property `gateways`
         # @return [Array<String>]
         attr_accessor :gateways
@@ -1484,14 +1843,14 @@ module Google
       
         # Optional. Meshes defines a list of meshes this HttpRoute is attached to, as
         # one of the routing rules to route the requests served by the mesh. Each mesh
-        # reference should match the pattern: `projects/*/locations/global/meshes/` The
+        # reference should match the pattern: `projects/*/locations/*/meshes/` The
         # attached Mesh should be of a type SIDECAR
         # Corresponds to the JSON property `meshes`
         # @return [Array<String>]
         attr_accessor :meshes
       
         # Identifier. Name of the HttpRoute resource. It matches pattern `projects/*/
-        # locations/global/httpRoutes/http_route_name>`.
+        # locations/*/httpRoutes/http_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2008,7 +2367,8 @@ module Google
       # Specifies the policy on how requests are shadowed to a separate mirrored
       # destination service. The proxy does not wait for responses from the shadow
       # service. Prior to sending traffic to the shadow service, the host/authority
-      # header is suffixed with -shadow.
+      # header is suffixed with -shadow. Mirroring is currently not supported for
+      # Cloud Run destinations.
       class HttpRouteRequestMirrorPolicy
         include Google::Apis::Core::Hashable
       
@@ -2127,7 +2487,8 @@ module Google
         # Specifies the policy on how requests are shadowed to a separate mirrored
         # destination service. The proxy does not wait for responses from the shadow
         # service. Prior to sending traffic to the shadow service, the host/authority
-        # header is suffixed with -shadow.
+        # header is suffixed with -shadow. Mirroring is currently not supported for
+        # Cloud Run destinations.
         # Corresponds to the JSON property `requestMirrorPolicy`
         # @return [Google::Apis::NetworkservicesV1::HttpRouteRequestMirrorPolicy]
         attr_accessor :request_mirror_policy
@@ -2336,6 +2697,80 @@ module Google
         end
       end
       
+      # `LbEdgeExtension` is a resource that lets the extension service influence the
+      # selection of backend services and Cloud CDN cache keys by modifying request
+      # headers.
+      class LbEdgeExtension
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. A set of ordered extension chains that contain the match conditions
+        # and extensions to execute. Match conditions for each extension chain are
+        # evaluated in sequence for a given request. The first extension chain that has
+        # a condition that matches the request is executed. Any subsequent extension
+        # chains do not execute. Limited to 5 extension chains per resource.
+        # Corresponds to the JSON property `extensionChains`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionChain>]
+        attr_accessor :extension_chains
+      
+        # Required. A list of references to the forwarding rules to which this service
+        # extension is attached. At least one forwarding rule is required. Only one `
+        # LbEdgeExtension` resource can be associated with a forwarding rule.
+        # Corresponds to the JSON property `forwardingRules`
+        # @return [Array<String>]
+        attr_accessor :forwarding_rules
+      
+        # Optional. Set of labels associated with the `LbEdgeExtension` resource. The
+        # format must comply with [the requirements for labels](https://cloud.google.com/
+        # compute/docs/labeling-resources#requirements) for Google Cloud resources.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. All forwarding rules referenced by this extension must share the
+        # same load balancing scheme. Supported values: `EXTERNAL_MANAGED`.
+        # Corresponds to the JSON property `loadBalancingScheme`
+        # @return [String]
+        attr_accessor :load_balancing_scheme
+      
+        # Required. Identifier. Name of the `LbEdgeExtension` resource in the following
+        # format: `projects/`project`/locations/`location`/lbEdgeExtensions/`
+        # lb_edge_extension``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @extension_chains = args[:extension_chains] if args.key?(:extension_chains)
+          @forwarding_rules = args[:forwarding_rules] if args.key?(:forwarding_rules)
+          @labels = args[:labels] if args.key?(:labels)
+          @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # `LbRouteExtension` is a resource that lets you control where traffic is routed
       # to for a given request.
       class LbRouteExtension
@@ -2519,6 +2954,41 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response returned by the ListAgentGateways method.
+      class ListAgentGatewaysResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of AgentGateway resources.
+        # Corresponds to the JSON property `agentGateways`
+        # @return [Array<Google::Apis::NetworkservicesV1::AgentGateway>]
+        attr_accessor :agent_gateways
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable resources. Populated when the request attempts to list all
+        # resources across all supported locations, while some locations are temporarily
+        # unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_gateways = args[:agent_gateways] if args.key?(:agent_gateways)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2725,6 +3195,37 @@ module Google
         end
       end
       
+      # Message for response to listing `LbEdgeExtension` resources.
+      class ListLbEdgeExtensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `LbEdgeExtension` resources.
+        # Corresponds to the JSON property `lbEdgeExtensions`
+        # @return [Array<Google::Apis::NetworkservicesV1::LbEdgeExtension>]
+        attr_accessor :lb_edge_extensions
+      
+        # A token identifying a page of results that the server returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @lb_edge_extensions = args[:lb_edge_extensions] if args.key?(:lb_edge_extensions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Message for response to listing `LbRouteExtension` resources.
       class ListLbRouteExtensionsResponse
         include Google::Apis::Core::Hashable
@@ -2881,6 +3382,68 @@ module Google
         end
       end
       
+      # Response message for ListMulticastConsumerAssociations.
+      class ListMulticastConsumerAssociationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of multicast consumer associations.
+        # Corresponds to the JSON property `multicastConsumerAssociations`
+        # @return [Array<Google::Apis::NetworkservicesV1::MulticastConsumerAssociation>]
+        attr_accessor :multicast_consumer_associations
+      
+        # A page token from an earlier query, as returned in `next_page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multicast_consumer_associations = args[:multicast_consumer_associations] if args.key?(:multicast_consumer_associations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListMulticastGroupConsumerActivations.
+      class ListMulticastGroupConsumerActivationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of multicast group consumer activations.
+        # Corresponds to the JSON property `multicastGroupConsumerActivations`
+        # @return [Array<Google::Apis::NetworkservicesV1::MulticastGroupConsumerActivation>]
+        attr_accessor :multicast_group_consumer_activations
+      
+        # A page token from an earlier query, as returned in `next_page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multicast_group_consumer_activations = args[:multicast_group_consumer_activations] if args.key?(:multicast_group_consumer_activations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -2895,6 +3458,14 @@ module Google
         # @return [Array<Google::Apis::NetworkservicesV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2903,6 +3474,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3223,7 +3795,7 @@ module Google
         attr_accessor :labels
       
         # Identifier. Name of the Mesh resource. It matches pattern `projects/*/
-        # locations/global/meshes/`.
+        # locations/*/meshes/`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3260,8 +3832,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. Identifier. Full path name of the MeshRouteView resource. Format:
-        # projects/`project_number`/locations/`location`/meshes/`mesh_name`/routeViews/`
-        # route_view_name`
+        # projects/`project_number`/locations/`location`/meshes/`mesh`/routeViews/`
+        # route_view`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3297,6 +3869,239 @@ module Google
           @route_location = args[:route_location] if args.key?(:route_location)
           @route_project_number = args[:route_project_number] if args.key?(:route_project_number)
           @route_type = args[:route_type] if args.key?(:route_type)
+        end
+      end
+      
+      # Multicast consumer association resource.
+      class MulticastConsumerAssociation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] The timestamp when the multicast consumer
+        # association was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional text description of the multicast consumer association.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Labels as key-value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. The resource name of the multicast domain activation that is in the
+        # same zone as this multicast consumer association. Use the following format: `
+        # projects/*/locations/*/multicastDomainActivations/*`.
+        # Corresponds to the JSON property `multicastDomainActivation`
+        # @return [String]
+        attr_accessor :multicast_domain_activation
+      
+        # Identifier. The resource name of the multicast consumer association. Use the
+        # following format: `projects/*/locations/*/multicastConsumerAssociations/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The resource name of the multicast consumer VPC network. Use
+        # following format: `projects/`project`/locations/global/networks/`network``.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. [Output only] A Compute Engine (placement policy)[https://cloud.
+        # google.com/compute/docs/instances/placement-policies-overview] that can be
+        # used to place virtual machine (VM) instances as multicast consumers close to
+        # the multicast infrastructure created for this domain, on a best effort basis.
+        # Corresponds to the JSON property `placementPolicy`
+        # @return [String]
+        attr_accessor :placement_policy
+      
+        # Output only. [Deprecated] The resource state of the multicast consumer
+        # association. Use the state field instead.
+        # Corresponds to the JSON property `resourceState`
+        # @return [String]
+        attr_accessor :resource_state
+      
+        # The multicast resource's state.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::NetworkservicesV1::MulticastResourceState]
+        attr_accessor :state
+      
+        # Output only. [Output only] The Google-generated UUID for the resource. This
+        # value is unique across all multicast consumer association resources. If a
+        # consumer association is deleted and another with the same name is created, the
+        # new consumer association is assigned a different unique_id.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        # Output only. [Output only] The timestamp when the Multicast Consumer
+        # Association was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @multicast_domain_activation = args[:multicast_domain_activation] if args.key?(:multicast_domain_activation)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @placement_policy = args[:placement_policy] if args.key?(:placement_policy)
+          @resource_state = args[:resource_state] if args.key?(:resource_state)
+          @state = args[:state] if args.key?(:state)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Multicast group consumer activation resource.
+      class MulticastGroupConsumerActivation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output only] The timestamp when the multicast group consumer
+        # activation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. An optional text description of the multicast group consumer
+        # activation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Labels as key-value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The logging configuration.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::NetworkservicesV1::MulticastLogConfig]
+        attr_accessor :log_config
+      
+        # Required. The resource name of the multicast consumer association that is in
+        # the same zone as this multicast group consumer activation. Use the following
+        # format: `projects/*/locations/*/multicastConsumerAssociations/*`.
+        # Corresponds to the JSON property `multicastConsumerAssociation`
+        # @return [String]
+        attr_accessor :multicast_consumer_association
+      
+        # Optional. The resource name of the multicast group created by the admin in the
+        # same zone as this multicast group consumer activation. Use the following
+        # format: // `projects/*/locations/*/multicastGroups/*`. This field is
+        # deprecated. Use multicast_group_range_activation instead.
+        # Corresponds to the JSON property `multicastGroup`
+        # @return [String]
+        attr_accessor :multicast_group
+      
+        # Required. The resource name of the multicast group range activation created by
+        # the admin in the same zone as this multicast group consumer activation. Use
+        # the following format: // `projects/*/locations/*/
+        # multicastGroupRangeActivations/*`.
+        # Corresponds to the JSON property `multicastGroupRangeActivation`
+        # @return [String]
+        attr_accessor :multicast_group_range_activation
+      
+        # Identifier. The resource name of the multicast group consumer activation. Use
+        # the following format: `projects/*/locations/*/
+        # multicastGroupConsumerActivations/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. [Deprecated] The resource state of the multicast group consumer
+        # activation. Use the state field instead.
+        # Corresponds to the JSON property `resourceState`
+        # @return [String]
+        attr_accessor :resource_state
+      
+        # The multicast resource's state.
+        # Corresponds to the JSON property `state`
+        # @return [Google::Apis::NetworkservicesV1::MulticastResourceState]
+        attr_accessor :state
+      
+        # Output only. [Output only] The Google-generated UUID for the resource. This
+        # value is unique across all multicast group consumer activation resources. If a
+        # group consumer activation is deleted and another with the same name is created,
+        # the new group consumer activation is assigned a different unique_id.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        # Output only. [Output only] The timestamp when the multicast group consumer
+        # activation was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @log_config = args[:log_config] if args.key?(:log_config)
+          @multicast_consumer_association = args[:multicast_consumer_association] if args.key?(:multicast_consumer_association)
+          @multicast_group = args[:multicast_group] if args.key?(:multicast_group)
+          @multicast_group_range_activation = args[:multicast_group_range_activation] if args.key?(:multicast_group_range_activation)
+          @name = args[:name] if args.key?(:name)
+          @resource_state = args[:resource_state] if args.key?(:resource_state)
+          @state = args[:state] if args.key?(:state)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The logging configuration.
+      class MulticastLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to enable logging or not.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # The multicast resource's state.
+      class MulticastResourceState
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The state of the multicast resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -3628,6 +4433,11 @@ module Google
         # @return [Google::Apis::NetworkservicesV1::ServiceLbPolicyFailoverConfig]
         attr_accessor :failover_config
       
+        # Configuration to provide isolation support for the associated Backend Service.
+        # Corresponds to the JSON property `isolationConfig`
+        # @return [Google::Apis::NetworkservicesV1::ServiceLbPolicyIsolationConfig]
+        attr_accessor :isolation_config
+      
         # Optional. Set of label tags associated with the ServiceLbPolicy resource.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -3660,6 +4470,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @failover_config = args[:failover_config] if args.key?(:failover_config)
+          @isolation_config = args[:isolation_config] if args.key?(:isolation_config)
           @labels = args[:labels] if args.key?(:labels)
           @load_balancing_algorithm = args[:load_balancing_algorithm] if args.key?(:load_balancing_algorithm)
           @name = args[:name] if args.key?(:name)
@@ -3713,6 +4524,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @failover_health_threshold = args[:failover_health_threshold] if args.key?(:failover_health_threshold)
+        end
+      end
+      
+      # Configuration to provide isolation support for the associated Backend Service.
+      class ServiceLbPolicyIsolationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The isolation granularity of the load balancer.
+        # Corresponds to the JSON property `isolationGranularity`
+        # @return [String]
+        attr_accessor :isolation_granularity
+      
+        # Optional. The isolation mode of the load balancer.
+        # Corresponds to the JSON property `isolationMode`
+        # @return [String]
+        attr_accessor :isolation_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @isolation_granularity = args[:isolation_granularity] if args.key?(:isolation_granularity)
+          @isolation_mode = args[:isolation_mode] if args.key?(:isolation_mode)
         end
       end
       
@@ -3825,8 +4661,7 @@ module Google
       
         # Optional. Gateways defines a list of gateways this TcpRoute is attached to, as
         # one of the routing rules to route the requests served by the gateway. Each
-        # gateway reference should match the pattern: `projects/*/locations/global/
-        # gateways/`
+        # gateway reference should match the pattern: `projects/*/locations/*/gateways/`
         # Corresponds to the JSON property `gateways`
         # @return [Array<String>]
         attr_accessor :gateways
@@ -3838,14 +4673,14 @@ module Google
       
         # Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one
         # of the routing rules to route the requests served by the mesh. Each mesh
-        # reference should match the pattern: `projects/*/locations/global/meshes/` The
+        # reference should match the pattern: `projects/*/locations/*/meshes/` The
         # attached Mesh should be of a type SIDECAR
         # Corresponds to the JSON property `meshes`
         # @return [Array<String>]
         attr_accessor :meshes
       
         # Identifier. Name of the TcpRoute resource. It matches pattern `projects/*/
-        # locations/global/tcpRoutes/tcp_route_name>`.
+        # locations/*/tcpRoutes/tcp_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4074,8 +4909,7 @@ module Google
       
         # Optional. Gateways defines a list of gateways this TlsRoute is attached to, as
         # one of the routing rules to route the requests served by the gateway. Each
-        # gateway reference should match the pattern: `projects/*/locations/global/
-        # gateways/`
+        # gateway reference should match the pattern: `projects/*/locations/*/gateways/`
         # Corresponds to the JSON property `gateways`
         # @return [Array<String>]
         attr_accessor :gateways
@@ -4087,14 +4921,14 @@ module Google
       
         # Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one
         # of the routing rules to route the requests served by the mesh. Each mesh
-        # reference should match the pattern: `projects/*/locations/global/meshes/` The
+        # reference should match the pattern: `projects/*/locations/*/meshes/` The
         # attached Mesh should be of a type SIDECAR
         # Corresponds to the JSON property `meshes`
         # @return [Array<String>]
         attr_accessor :meshes
       
         # Identifier. Name of the TlsRoute resource. It matches pattern `projects/*/
-        # locations/global/tlsRoutes/tls_route_name>`.
+        # locations/*/tlsRoutes/tls_route_name>`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4110,6 +4944,14 @@ module Google
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # Optional. TargetProxies defines a list of TargetTcpProxies this TlsRoute is
+        # attached to, as one of the routing rules to route the requests served by the
+        # TargetTcpProxy. Each TargetTcpProxy reference should match the pattern: `
+        # projects/*/locations/*/targetTcpProxies/`
+        # Corresponds to the JSON property `targetProxies`
+        # @return [Array<String>]
+        attr_accessor :target_proxies
       
         # Output only. The timestamp when the resource was updated.
         # Corresponds to the JSON property `updateTime`
@@ -4130,6 +4972,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @target_proxies = args[:target_proxies] if args.key?(:target_proxies)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -4370,7 +5213,7 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Non-empty default. Specificies the lowest level of the plugin logs that are
+        # Non-empty default. Specifies the lowest level of the plugin logs that are
         # exported to Cloud Logging. This setting relates to the logs generated by using
         # logging statements in your Wasm code. This field is can be set only if logging
         # is enabled for the plugin. If the field is not provided when logging is
@@ -4437,18 +5280,27 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. The resolved digest for the image specified in the `image` field.
-        # The digest is resolved during the creation of `WasmPluginVersion` resource.
-        # This field holds the digest value, regardless of whether a tag or digest was
-        # originally specified in the `image` field.
+        # Output only. This field holds the digest (usually checksum) value for the
+        # plugin image. The value is calculated based on the `image_uri` field. If the `
+        # image_uri` field refers to a container image, the digest value is obtained
+        # from the container image. If the `image_uri` field refers to a generic
+        # artifact, the digest value is calculated based on the contents of the file.
         # Corresponds to the JSON property `imageDigest`
         # @return [String]
         attr_accessor :image_digest
       
-        # Optional. URI of the container image containing the plugin, stored in the
-        # Artifact Registry. When a new `WasmPluginVersion` resource is created, the
-        # digest of the container image is saved in the `image_digest` field. When
-        # downloading an image, the digest value is used instead of an image tag.
+        # Optional. URI of the image containing the Wasm module, stored in Artifact
+        # Registry. The URI can refer to one of the following repository formats: *
+        # Container images: the `image_uri` must point to a container that contains a
+        # single file with the name `plugin.wasm`. When a new `WasmPluginVersion`
+        # resource is created, the digest of the image is saved in the `image_digest`
+        # field. When pulling a container image from Artifact Registry, the digest value
+        # is used instead of an image tag. * Generic artifacts: the `image_uri` must be
+        # in this format: `projects/`project`/locations/`location`/repositories/`
+        # repository`/ genericArtifacts/`package`:`version``. The specified package and
+        # version must contain a file with the name `plugin.wasm`. When a new `
+        # WasmPluginVersion` resource is created, the checksum of the contents of the
+        # file is saved in the `image_digest` field.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -4476,7 +5328,7 @@ module Google
       
         # Output only. This field holds the digest (usually checksum) value for the
         # plugin configuration. The value is calculated based on the contents of `
-        # plugin_config_data` or the container image defined by the `plugin_config_uri`
+        # plugin_config_data` field or the image defined by the `plugin_config_uri`
         # field.
         # Corresponds to the JSON property `pluginConfigDigest`
         # @return [String]
@@ -4484,9 +5336,18 @@ module Google
       
         # URI of the plugin configuration stored in the Artifact Registry. The
         # configuration is provided to the plugin at runtime through the `ON_CONFIGURE`
-        # callback. The container image must contain only a single file with the name `
-        # plugin.config`. When a new `WasmPluginVersion` resource is created, the digest
-        # of the container image is saved in the `plugin_config_digest` field.
+        # callback. The URI can refer to one of the following repository formats: *
+        # Container images: the `plugin_config_uri` must point to a container that
+        # contains a single file with the name `plugin.config`. When a new `
+        # WasmPluginVersion` resource is created, the digest of the image is saved in
+        # the `plugin_config_digest` field. When pulling a container image from Artifact
+        # Registry, the digest value is used instead of an image tag. * Generic
+        # artifacts: the `plugin_config_uri` must be in this format: `projects/`project`/
+        # locations/`location`/repositories/`repository`/ genericArtifacts/`package`:`
+        # version``. The specified package and version must contain a file with the name
+        # `plugin.config`. When a new `WasmPluginVersion` resource is created, the
+        # checksum of the contents of the file is saved in the `plugin_config_digest`
+        # field.
         # Corresponds to the JSON property `pluginConfigUri`
         # @return [String]
         attr_accessor :plugin_config_uri
@@ -4530,18 +5391,27 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. The resolved digest for the image specified in `image`. The
-        # digest is resolved during the creation of a `WasmPluginVersion` resource. This
-        # field holds the digest value regardless of whether a tag or digest was
-        # originally specified in the `image` field.
+        # Output only. This field holds the digest (usually checksum) value for the
+        # plugin image. The value is calculated based on the `image_uri` field. If the `
+        # image_uri` field refers to a container image, the digest value is obtained
+        # from the container image. If the `image_uri` field refers to a generic
+        # artifact, the digest value is calculated based on the contents of the file.
         # Corresponds to the JSON property `imageDigest`
         # @return [String]
         attr_accessor :image_digest
       
-        # Optional. URI of the container image containing the Wasm module, stored in the
-        # Artifact Registry. The container image must contain only a single file with
-        # the name `plugin.wasm`. When a new `WasmPluginVersion` resource is created,
-        # the URI gets resolved to an image digest and saved in the `image_digest` field.
+        # Optional. URI of the image containing the Wasm module, stored in Artifact
+        # Registry. The URI can refer to one of the following repository formats: *
+        # Container images: the `image_uri` must point to a container that contains a
+        # single file with the name `plugin.wasm`. When a new `WasmPluginVersion`
+        # resource is created, the digest of the image is saved in the `image_digest`
+        # field. When pulling a container image from Artifact Registry, the digest value
+        # is used instead of an image tag. * Generic artifacts: the `image_uri` must be
+        # in this format: `projects/`project`/locations/`location`/repositories/`
+        # repository`/ genericArtifacts/`package`:`version``. The specified package and
+        # version must contain a file with the name `plugin.wasm`. When a new `
+        # WasmPluginVersion` resource is created, the checksum of the contents of the
+        # file is saved in the `image_digest` field.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -4561,18 +5431,27 @@ module Google
         attr_accessor :plugin_config_data
       
         # Output only. This field holds the digest (usually checksum) value for the
-        # plugin configuration. The value is calculated based on the contents of the `
-        # plugin_config_data` field or the container image defined by the `
-        # plugin_config_uri` field.
+        # plugin configuration. The value is calculated based on the contents of `
+        # plugin_config_data` field or the image defined by the `plugin_config_uri`
+        # field.
         # Corresponds to the JSON property `pluginConfigDigest`
         # @return [String]
         attr_accessor :plugin_config_digest
       
         # URI of the plugin configuration stored in the Artifact Registry. The
         # configuration is provided to the plugin at runtime through the `ON_CONFIGURE`
-        # callback. The container image must contain only a single file with the name `
-        # plugin.config`. When a new `WasmPluginVersion` resource is created, the digest
-        # of the container image is saved in the `plugin_config_digest` field.
+        # callback. The URI can refer to one of the following repository formats: *
+        # Container images: the `plugin_config_uri` must point to a container that
+        # contains a single file with the name `plugin.config`. When a new `
+        # WasmPluginVersion` resource is created, the digest of the image is saved in
+        # the `plugin_config_digest` field. When pulling a container image from Artifact
+        # Registry, the digest value is used instead of an image tag. * Generic
+        # artifacts: the `plugin_config_uri` must be in this format: `projects/`project`/
+        # locations/`location`/repositories/`repository`/ genericArtifacts/`package`:`
+        # version``. The specified package and version must contain a file with the name
+        # `plugin.config`. When a new `WasmPluginVersion` resource is created, the
+        # checksum of the contents of the file is saved in the `plugin_config_digest`
+        # field.
         # Corresponds to the JSON property `pluginConfigUri`
         # @return [String]
         attr_accessor :plugin_config_uri

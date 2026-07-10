@@ -95,8 +95,11 @@ module Google
         # - "writer" - Provides read and write access to the calendar. Private events
         # will appear to users with writer access, and event details will be visible.
         # Provides read access to the calendar's ACLs.
-        # - "owner" - Provides ownership of the calendar. This role has all of the
-        # permissions of the writer role with the additional ability to manipulate ACLs.
+        # - "owner" - Provides manager access to the calendar. This role has all of the
+        # permissions of the writer role with the additional ability to modify access
+        # levels of other users.
+        # Important: the owner role is different from the calendar's data owner. A
+        # calendar has a single data owner, but can have multiple users with owner role.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -155,11 +158,24 @@ module Google
       class Calendar
         include Google::Apis::Core::Hashable
       
+        # Whether this calendar automatically accepts invitations. Only valid for
+        # resource calendars.
+        # Corresponds to the JSON property `autoAcceptInvitations`
+        # @return [Boolean]
+        attr_accessor :auto_accept_invitations
+        alias_method :auto_accept_invitations?, :auto_accept_invitations
+      
         # Conferencing properties for this calendar, for example what types of
         # conferences are allowed.
         # Corresponds to the JSON property `conferenceProperties`
         # @return [Google::Apis::CalendarV3::ConferenceProperties]
         attr_accessor :conference_properties
+      
+        # The email of the owner of the calendar. Set only for secondary calendars. Read-
+        # only.
+        # Corresponds to the JSON property `dataOwner`
+        # @return [String]
+        attr_accessor :data_owner
       
         # Description of the calendar. Optional.
         # Corresponds to the JSON property `description`
@@ -204,7 +220,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_accept_invitations = args[:auto_accept_invitations] if args.key?(:auto_accept_invitations)
           @conference_properties = args[:conference_properties] if args.key?(:conference_properties)
+          @data_owner = args[:data_owner] if args.key?(:data_owner)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
@@ -272,12 +290,21 @@ module Google
         # to users with reader access, but event details will be hidden.
         # - "writer" - Provides read and write access to the calendar. Private events
         # will appear to users with writer access, and event details will be visible.
-        # - "owner" - Provides ownership of the calendar. This role has all of the
-        # permissions of the writer role with the additional ability to see and
-        # manipulate ACLs.
+        # - "owner" - Provides manager access to the calendar. This role has all of the
+        # permissions of the writer role with the additional ability to see and modify
+        # access levels of other users.
+        # Important: the owner role is different from the calendar's data owner. A
+        # calendar has a single data owner, but can have multiple users with owner role.
         # Corresponds to the JSON property `accessRole`
         # @return [String]
         attr_accessor :access_role
+      
+        # Whether this calendar automatically accepts invitations. Only valid for
+        # resource calendars. Read-only.
+        # Corresponds to the JSON property `autoAcceptInvitations`
+        # @return [Boolean]
+        attr_accessor :auto_accept_invitations
+        alias_method :auto_accept_invitations?, :auto_accept_invitations
       
         # The main color of the calendar in the hexadecimal format "#0088aa". This
         # property supersedes the index-based colorId property. To set or change this
@@ -300,6 +327,12 @@ module Google
         # Corresponds to the JSON property `conferenceProperties`
         # @return [Google::Apis::CalendarV3::ConferenceProperties]
         attr_accessor :conference_properties
+      
+        # The email of the owner of the calendar. Set only for secondary calendars. Read-
+        # only.
+        # Corresponds to the JSON property `dataOwner`
+        # @return [String]
+        attr_accessor :data_owner
       
         # The default reminders that the authenticated user has for this calendar.
         # Corresponds to the JSON property `defaultReminders`
@@ -394,9 +427,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_role = args[:access_role] if args.key?(:access_role)
+          @auto_accept_invitations = args[:auto_accept_invitations] if args.key?(:auto_accept_invitations)
           @background_color = args[:background_color] if args.key?(:background_color)
           @color_id = args[:color_id] if args.key?(:color_id)
           @conference_properties = args[:conference_properties] if args.key?(:conference_properties)
+          @data_owner = args[:data_owner] if args.key?(:data_owner)
           @default_reminders = args[:default_reminders] if args.key?(:default_reminders)
           @deleted = args[:deleted] if args.key?(:deleted)
           @description = args[:description] if args.key?(:description)
@@ -1076,7 +1111,11 @@ module Google
         # The conference-related information, such as details of a Google Meet
         # conference. To create new conference details use the createRequest field. To
         # persist your changes, remember to set the conferenceDataVersion request
-        # parameter to 1 for all event modification requests.
+        # parameter to 1 for all event modification requests. Warning: Reusing Google
+        # Meet conference data across different events can cause access issues and
+        # expose meeting details to unintended users. To help ensure meeting privacy,
+        # always generate a unique conference for each event by using the createRequest
+        # field.
         # Corresponds to the JSON property `conferenceData`
         # @return [Google::Apis::CalendarV3::ConferenceData]
         attr_accessor :conference_data
@@ -1702,6 +1741,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :additional_guests
       
+        # If present, indicates the status of an asynchronous operation ongoing for this
+        # attendee (e.g. listing of members of large attendee groups). Read-only. The
+        # default is to not be present.
+        # Possible values are:
+        # - "inProgress" - The asynchronous operation is in progress.
+        # - (not present) - Otherwise.
+        # Corresponds to the JSON property `asyncOperation`
+        # @return [String]
+        attr_accessor :async_operation
+      
         # The attendee's response comment. Optional.
         # Corresponds to the JSON property `comment`
         # @return [String]
@@ -1775,6 +1824,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_guests = args[:additional_guests] if args.key?(:additional_guests)
+          @async_operation = args[:async_operation] if args.key?(:async_operation)
           @comment = args[:comment] if args.key?(:comment)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email = args[:email] if args.key?(:email)
@@ -1903,6 +1953,19 @@ module Google
           @auto_decline_mode = args[:auto_decline_mode] if args.key?(:auto_decline_mode)
           @chat_status = args[:chat_status] if args.key?(:chat_status)
           @decline_message = args[:decline_message] if args.key?(:decline_message)
+        end
+      end
+      
+      # 
+      class EventLabel
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2088,9 +2151,11 @@ module Google
         # - "writer" - The user has read and write access to the calendar. Private
         # events will appear to users with writer access, and event details will be
         # visible.
-        # - "owner" - The user has ownership of the calendar. This role has all of the
-        # permissions of the writer role with the additional ability to see and
-        # manipulate ACLs.
+        # - "owner" - The user has manager access to the calendar. This role has all of
+        # the permissions of the writer role with the additional ability to see and
+        # modify access levels of other users.
+        # Important: the owner role is different from the calendar's data owner. A
+        # calendar has a single data owner, but can have multiple users with owner role.
         # Corresponds to the JSON property `accessRole`
         # @return [String]
         attr_accessor :access_role
@@ -2331,6 +2396,19 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @time_max = args[:time_max] if args.key?(:time_max)
           @time_min = args[:time_min] if args.key?(:time_min)
+        end
+      end
+      
+      # 
+      class LabelProperties
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

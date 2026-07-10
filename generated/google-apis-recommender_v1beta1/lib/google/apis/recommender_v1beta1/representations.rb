@@ -258,8 +258,6 @@ module Google
           property :category, as: 'category'
           property :cost_projection, as: 'costProjection', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1CostProjection, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1CostProjection::Representation
       
-          collection :impact_components, as: 'impactComponents', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Impact, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Impact::Representation
-      
           property :reliability_projection, as: 'reliabilityProjection', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1ReliabilityProjection, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1ReliabilityProjection::Representation
       
           property :security_projection, as: 'securityProjection', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SecurityProjection, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1SecurityProjection::Representation

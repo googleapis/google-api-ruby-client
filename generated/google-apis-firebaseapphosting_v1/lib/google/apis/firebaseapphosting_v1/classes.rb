@@ -22,6 +22,55 @@ module Google
   module Apis
     module FirebaseapphostingV1
       
+      # The URI of an storage archive or a signed URL to use as the build source.
+      class ArchiveSource
+        include Google::Apis::Core::Hashable
+      
+        # Deprecated: Not used. Metadata for the user who started the build.
+        # Corresponds to the JSON property `author`
+        # @return [Google::Apis::FirebaseapphostingV1::SourceUserMetadata]
+        attr_accessor :author
+      
+        # Optional. An optional message that describes the uploaded version of the
+        # source code.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Signed URL to an archive in a storage bucket.
+        # Corresponds to the JSON property `externalSignedUri`
+        # @return [String]
+        attr_accessor :external_signed_uri
+      
+        # Optional. The directory relative to the root of the archive to use as the root
+        # for the deployed web app. Defaults to use the root of the repository if not
+        # provided. If deploying a [monorepo](https://firebase.google.com/docs/app-
+        # hosting/monorepos), this should be the directory that contains the `package.
+        # json` or `apphosting.yaml` file.
+        # Corresponds to the JSON property `rootDirectory`
+        # @return [String]
+        attr_accessor :root_directory
+      
+        # URI to an archive in Cloud Storage. The object must be a zipped (.zip) or
+        # gzipped archive file (.tar.gz) containing source to deploy.
+        # Corresponds to the JSON property `userStorageUri`
+        # @return [String]
+        attr_accessor :user_storage_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author = args[:author] if args.key?(:author)
+          @description = args[:description] if args.key?(:description)
+          @external_signed_uri = args[:external_signed_uri] if args.key?(:external_signed_uri)
+          @root_directory = args[:root_directory] if args.key?(:root_directory)
+          @user_storage_uri = args[:user_storage_uri] if args.key?(:user_storage_uri)
+        end
+      end
+      
       # A backend is the primary resource of App Hosting.
       class Backend
         include Google::Apis::Core::Hashable
@@ -102,6 +151,13 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Optional. A field that, if true, indicates that incoming request logs are
+        # disabled for this backend. Incoming request logs are enabled by default.
+        # Corresponds to the JSON property `requestLogsDisabled`
+        # @return [Boolean]
+        attr_accessor :request_logs_disabled
+        alias_method :request_logs_disabled?, :request_logs_disabled
+      
         # Required. The name of the service account used for Cloud Build and Cloud Run.
         # Should have the role roles/firebaseapphosting.computeRunner or equivalent
         # permissions.
@@ -151,6 +207,7 @@ module Google
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @request_logs_disabled = args[:request_logs_disabled] if args.key?(:request_logs_disabled)
           @service_account = args[:service_account] if args.key?(:service_account)
           @serving_locality = args[:serving_locality] if args.key?(:serving_locality)
           @uid = args[:uid] if args.key?(:uid)
@@ -293,6 +350,11 @@ module Google
       class BuildSource
         include Google::Apis::Core::Hashable
       
+        # The URI of an storage archive or a signed URL to use as the build source.
+        # Corresponds to the JSON property `archive`
+        # @return [Google::Apis::FirebaseapphostingV1::ArchiveSource]
+        attr_accessor :archive
+      
         # A codebase source, representing the state of the codebase that the build will
         # be created at.
         # Corresponds to the JSON property `codebase`
@@ -312,6 +374,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @archive = args[:archive] if args.key?(:archive)
           @codebase = args[:codebase] if args.key?(:codebase)
           @container = args[:container] if args.key?(:container)
         end
@@ -347,7 +410,10 @@ module Google
         attr_accessor :repository
       
         # Optional. If `repository` is provided, the directory relative to the root of
-        # the repository to use as the root for the deployed web app.
+        # the repository to use as the root for the deployed web app. Defaults to use
+        # the root of the repository if not provided. If deploying a [monorepo](https://
+        # firebase.google.com/docs/app-hosting/monorepos), this should be the directory
+        # that contains the `package.json` or `apphosting.yaml` file.
         # Corresponds to the JSON property `rootDirectory`
         # @return [String]
         attr_accessor :root_directory
@@ -405,6 +471,15 @@ module Google
         # @return [String]
         attr_accessor :hash_prop
       
+        # Output only. The resource name for the Developer Connect [`gitRepositoryLink`](
+        # https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.
+        # locations.connections.gitRepositoryLinks) used for this build, in the format: `
+        # projects/`project`/locations/`location`/connections/`connection`/
+        # gitRepositoryLinks/`repositoryLink``
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
         # Output only. A URI linking to the codebase on an hosting provider's website.
         # May not be valid if the commit has been rebased or force-pushed out of
         # existence in the linked repository.
@@ -425,6 +500,7 @@ module Google
           @commit_time = args[:commit_time] if args.key?(:commit_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @hash_prop = args[:hash_prop] if args.key?(:hash_prop)
+          @repository = args[:repository] if args.key?(:repository)
           @uri = args[:uri] if args.key?(:uri)
         end
       end
@@ -433,14 +509,25 @@ module Google
       class Config
         include Google::Apis::Core::Hashable
       
-        # Optional. Environment variables for this build.
+        # Output only. [OUTPUT_ONLY] This field represents all environment variables
+        # employed during both the build and runtime. This list reflects the result of
+        # merging variables from all sources (Backend.override_env, Build.Config.env,
+        # YAML, defaults, system). Each variable includes its `origin`
+        # Corresponds to the JSON property `effectiveEnv`
+        # @return [Array<Google::Apis::FirebaseapphostingV1::EnvironmentVariable>]
+        attr_accessor :effective_env
+      
+        # Optional. Supplied environment variables for a specific build. Provided at
+        # Build creation time and immutable afterwards. This field is only applicable
+        # for Builds using a build image - (e.g., ContainerSource or ArchiveSource with
+        # locally_built_source) Attempts to set this for other build types will result
+        # in an error
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::FirebaseapphostingV1::EnvironmentVariable>]
         attr_accessor :env
       
-        # Additional configuration to apply to the Cloud Run [`service`](https://cloud.
-        # google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-
-        # service).
+        # Configuration applied to the Cloud Run [`service`](https://cloud.google.com/
+        # run/docs/reference/rest/v2/projects.locations.services#resource:-service).
         # Corresponds to the JSON property `runConfig`
         # @return [Google::Apis::FirebaseapphostingV1::RunConfig]
         attr_accessor :run_config
@@ -451,6 +538,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @effective_env = args[:effective_env] if args.key?(:effective_env)
           @env = args[:env] if args.key?(:env)
           @run_config = args[:run_config] if args.key?(:run_config)
         end
@@ -913,6 +1001,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :availability
       
+        # Output only. The high-level origin category of the environment variable.
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
+        # Output only. Specific detail about the source. For APPHOSTING_YAML origins,
+        # this will contain the exact filename, such as "apphosting.yaml" or "apphosting.
+        # staging.yaml".
+        # Corresponds to the JSON property `originFileName`
+        # @return [String]
+        attr_accessor :origin_file_name
+      
         # A fully qualified secret version. The value of the secret will be accessed
         # once while building the application and once per cold start of the container
         # at runtime. The service account used by Cloud Build and by Cloud Run must each
@@ -927,9 +1027,10 @@ module Google
         # @return [String]
         attr_accessor :value
       
-        # Required. The name of the environment variable. - Must be a valid environment
-        # variable name (e.g. A-Z or underscores). - May not start with "FIREBASE" or "
-        # GOOGLE". - May not be a reserved environment variable for KNative/Cloud Run
+        # Required. The name of the environment variable. The environment variables
+        # reserved by [Cloud Run](https://docs.cloud.google.com/run/docs/configuring/
+        # services/environment-variables#reserved) should not be set. Additionally,
+        # variable names cannot start with "X_FIREBASE_".
         # Corresponds to the JSON property `variable`
         # @return [String]
         attr_accessor :variable
@@ -941,6 +1042,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability = args[:availability] if args.key?(:availability)
+          @origin = args[:origin] if args.key?(:origin)
+          @origin_file_name = args[:origin_file_name] if args.key?(:origin_file_name)
           @secret = args[:secret] if args.key?(:secret)
           @value = args[:value] if args.key?(:value)
           @variable = args[:variable] if args.key?(:variable)
@@ -1117,6 +1220,14 @@ module Google
         # @return [Array<Google::Apis::FirebaseapphostingV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1125,6 +1236,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1396,6 +1508,31 @@ module Google
         end
       end
       
+      # A file path pattern to match against.
+      class Path
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The pattern to match against.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        # Optional. The type of pattern to match against.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pattern = args[:pattern] if args.key?(:pattern)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Specifies redirect behavior for a domain.
       class Redirect
         include Google::Apis::Core::Hashable
@@ -1435,8 +1572,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Immutable. The name of a build that already exists. It doesn't have to be
-        # built; a rollout will wait for a build to be ready before updating traffic.
+        # Required. Immutable. The name of a build that already exists. It doesn't have
+        # to be built; a rollout will wait for a build to be ready before updating
+        # traffic.
         # Corresponds to the JSON property `build`
         # @return [String]
         attr_accessor :build
@@ -1551,6 +1689,24 @@ module Google
         # @return [String]
         attr_accessor :disabled_time
       
+        # Optional. A list of file paths patterns to exclude from triggering a rollout.
+        # Patterns in this list take precedence over required_paths. **Note**: All paths
+        # must be in the ignored_paths in order for the rollout to be skipped. Limited
+        # to 100 paths. Example: ``` ignored_paths: ` pattern: "foo/bar/excluded/*",
+        # type: "GLOB" ` ```
+        # Corresponds to the JSON property `ignoredPaths`
+        # @return [Array<Google::Apis::FirebaseapphostingV1::Path>]
+        attr_accessor :ignored_paths
+      
+        # Optional. A list of file paths patterns that trigger a build and rollout if at
+        # least one of the changed files in the commit are present in this list. This
+        # field is optional; the rollout policy will default to triggering on all paths
+        # if both ignored_paths and required_paths are not populated. Limited to 100
+        # paths. Example: ``` required_paths: ` pattern: "foo/bar/*", type: "GLOB" ` ```
+        # Corresponds to the JSON property `requiredPaths`
+        # @return [Array<Google::Apis::FirebaseapphostingV1::Path>]
+        attr_accessor :required_paths
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1560,12 +1716,13 @@ module Google
           @codebase_branch = args[:codebase_branch] if args.key?(:codebase_branch)
           @disabled = args[:disabled] if args.key?(:disabled)
           @disabled_time = args[:disabled_time] if args.key?(:disabled_time)
+          @ignored_paths = args[:ignored_paths] if args.key?(:ignored_paths)
+          @required_paths = args[:required_paths] if args.key?(:required_paths)
         end
       end
       
-      # Additional configuration to apply to the Cloud Run [`service`](https://cloud.
-      # google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-
-      # service).
+      # Configuration applied to the Cloud Run [`service`](https://cloud.google.com/
+      # run/docs/reference/rest/v2/projects.locations.services#resource:-service).
       class RunConfig
         include Google::Apis::Core::Hashable
       
@@ -1667,6 +1824,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @redirect = args[:redirect] if args.key?(:redirect)
+        end
+      end
+      
+      # Deprecated: Not used. Metadata for the user who started the build.
+      class SourceUserMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Deprecated: Not used. The user-chosen displayname. May be empty.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Deprecated: Not used. The account email linked to the EUC that
+        # created the build. May be a service account or other robot account.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. Deprecated: Not used. The URI of a profile photo associated with
+        # the user who created the build.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
         end
       end
       

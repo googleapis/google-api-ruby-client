@@ -39,6 +39,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Message for a customized OAuth config.
+        # Corresponds to the JSON property `customOauthConfig`
+        # @return [Google::Apis::DeveloperconnectV1::CustomOAuthConfig]
+        attr_accessor :custom_oauth_config
+      
         # Optional. This checksum is computed by the server based on the value of other
         # fields, and may be sent on update and delete requests to ensure the client has
         # an up-to-date value before proceeding.
@@ -67,6 +72,16 @@ module Google
         # @return [Google::Apis::DeveloperconnectV1::ProviderOAuthConfig]
         attr_accessor :provider_oauth_config
       
+        # The proxy configuration.
+        # Corresponds to the JSON property `proxyConfig`
+        # @return [Google::Apis::DeveloperconnectV1::ProxyConfig]
+        attr_accessor :proxy_config
+      
+        # Output only. A system-assigned unique identifier for the Account Connector.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         # Output only. The timestamp when the accountConnector was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -80,12 +95,227 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_oauth_config = args[:custom_oauth_config] if args.key?(:custom_oauth_config)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @oauth_start_uri = args[:oauth_start_uri] if args.key?(:oauth_start_uri)
           @provider_oauth_config = args[:provider_oauth_config] if args.key?(:provider_oauth_config)
+          @proxy_config = args[:proxy_config] if args.key?(:proxy_config)
+          @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # AppHubService represents the App Hub Service.
+      class AppHubService
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output only. Immutable. The name of the App Hub Service. Format: `
+        # projects/`project`/locations/`location`/applications/`application`/services/`
+        # service``.
+        # Corresponds to the JSON property `apphubService`
+        # @return [String]
+        attr_accessor :apphub_service
+      
+        # Output only. The criticality of the App Hub Service.
+        # Corresponds to the JSON property `criticality`
+        # @return [String]
+        attr_accessor :criticality
+      
+        # Output only. The environment of the App Hub Service.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apphub_service = args[:apphub_service] if args.key?(:apphub_service)
+          @criticality = args[:criticality] if args.key?(:criticality)
+          @environment = args[:environment] if args.key?(:environment)
+        end
+      end
+      
+      # AppHubWorkload represents the App Hub Workload.
+      class AppHubWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The criticality of the App Hub Workload.
+        # Corresponds to the JSON property `criticality`
+        # @return [String]
+        attr_accessor :criticality
+      
+        # Output only. The environment of the App Hub Workload.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # Required. Output only. Immutable. The name of the App Hub Workload. Format: `
+        # projects/`project`/locations/`location`/applications/`application`/workloads/`
+        # workload``.
+        # Corresponds to the JSON property `workload`
+        # @return [String]
+        attr_accessor :workload
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @criticality = args[:criticality] if args.key?(:criticality)
+          @environment = args[:environment] if args.key?(:environment)
+          @workload = args[:workload] if args.key?(:workload)
+        end
+      end
+      
+      # The artifact config of the artifact that is deployed.
+      class ArtifactConfig
+        include Google::Apis::Core::Hashable
+      
+        # Google Artifact Analysis configurations.
+        # Corresponds to the JSON property `googleArtifactAnalysis`
+        # @return [Google::Apis::DeveloperconnectV1::GoogleArtifactAnalysis]
+        attr_accessor :google_artifact_analysis
+      
+        # Google Artifact Registry configurations.
+        # Corresponds to the JSON property `googleArtifactRegistry`
+        # @return [Google::Apis::DeveloperconnectV1::GoogleArtifactRegistry]
+        attr_accessor :google_artifact_registry
+      
+        # Required. Immutable. The URI of the artifact that is deployed. e.g. `us-docker.
+        # pkg.dev/my-project/my-repo/image`. The URI does not include the tag / digest
+        # because it captures a lineage of artifacts.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_artifact_analysis = args[:google_artifact_analysis] if args.key?(:google_artifact_analysis)
+          @google_artifact_registry = args[:google_artifact_registry] if args.key?(:google_artifact_registry)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The ArtifactDeployment resource represents the deployment of the artifact
+      # within the InsightsConfig resource.
+      class ArtifactDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The artifact alias in the deployment spec, with Tag/SHA. e.g. us-
+        # docker.pkg.dev/my-project/my-repo/image:1.0.0
+        # Corresponds to the JSON property `artifactAlias`
+        # @return [String]
+        attr_accessor :artifact_alias
+      
+        # Output only. The artifact that is deployed.
+        # Corresponds to the JSON property `artifactReference`
+        # @return [String]
+        attr_accessor :artifact_reference
+      
+        # Output only. The summary of container status of the artifact deployment.
+        # Format as `ContainerStatusState-Reason : restartCount` e.g. "Waiting-
+        # ImagePullBackOff : 3"
+        # Corresponds to the JSON property `containerStatusSummary`
+        # @return [String]
+        attr_accessor :container_status_summary
+      
+        # Output only. The time at which the deployment was deployed.
+        # Corresponds to the JSON property `deployTime`
+        # @return [String]
+        attr_accessor :deploy_time
+      
+        # Output only. Unique identifier of `ArtifactDeployment`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The URIs of the source code, if available. For Cloud Run source
+        # deploy for example: `gs://my-bucket/my-folder/1234567890.abcde-fdbe.zip#
+        # 1234567890`
+        # Corresponds to the JSON property `sourceCodeUris`
+        # @return [Array<String>]
+        attr_accessor :source_code_uris
+      
+        # Output only. The source commits at which this artifact was built. Extracted
+        # from provenance.
+        # Corresponds to the JSON property `sourceCommitUris`
+        # @return [Array<String>]
+        attr_accessor :source_commit_uris
+      
+        # Output only. The time at which the deployment was undeployed, all artifacts
+        # are considered undeployed once this time is set.
+        # Corresponds to the JSON property `undeployTime`
+        # @return [String]
+        attr_accessor :undeploy_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_alias = args[:artifact_alias] if args.key?(:artifact_alias)
+          @artifact_reference = args[:artifact_reference] if args.key?(:artifact_reference)
+          @container_status_summary = args[:container_status_summary] if args.key?(:container_status_summary)
+          @deploy_time = args[:deploy_time] if args.key?(:deploy_time)
+          @id = args[:id] if args.key?(:id)
+          @source_code_uris = args[:source_code_uris] if args.key?(:source_code_uris)
+          @source_commit_uris = args[:source_commit_uris] if args.key?(:source_commit_uris)
+          @undeploy_time = args[:undeploy_time] if args.key?(:undeploy_time)
+        end
+      end
+      
+      # Basic authentication with username and password.
+      class BasicAuthentication
+        include Google::Apis::Core::Hashable
+      
+        # The password SecretManager secret version to authenticate as.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Required. The username to authenticate as.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Bearer token authentication with a token.
+      class BearerTokenAuthentication
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The token SecretManager secret version to authenticate as.
+        # Corresponds to the JSON property `tokenSecretVersion`
+        # @return [String]
+        attr_accessor :token_secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token_secret_version = args[:token_secret_version] if args.key?(:token_secret_version)
         end
       end
       
@@ -106,8 +336,9 @@ module Google
         attr_accessor :read_authorizer_credential
       
         # Required. Immutable. SecretManager resource containing the webhook secret used
-        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*`. This
-        # is used to validate and create webhooks.
+        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*` or `
+        # projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        # supported in that location). This is used to validate and create webhooks.
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -171,8 +402,9 @@ module Google
         attr_accessor :ssl_ca_certificate
       
         # Required. Immutable. SecretManager resource containing the webhook secret used
-        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*`. This
-        # is used to validate webhooks.
+        # to verify webhook events, formatted as `projects/*/secrets/*/versions/*` or `
+        # projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        # supported in that location). This is used to validate webhooks.
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -281,6 +513,11 @@ module Google
         # @return [Google::Apis::DeveloperconnectV1::GitLabEnterpriseConfig]
         attr_accessor :gitlab_enterprise_config
       
+        # Defines the configuration for connections to an HTTP service provider.
+        # Corresponds to the JSON property `httpConfig`
+        # @return [Google::Apis::DeveloperconnectV1::GenericHttpEndpointConfig]
+        attr_accessor :http_config
+      
         # Describes stage and necessary actions to be taken by the user to complete the
         # installation. Used for GitHub and GitHub Enterprise based connections.
         # Corresponds to the JSON property `installationState`
@@ -304,6 +541,11 @@ module Google
         # @return [Boolean]
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
+      
+        # Configuration for connections to Secure Source Manager instance
+        # Corresponds to the JSON property `secureSourceManagerInstanceConfig`
+        # @return [Google::Apis::DeveloperconnectV1::SecureSourceManagerInstanceConfig]
+        attr_accessor :secure_source_manager_instance_config
       
         # Output only. A system-assigned unique identifier for the Connection.
         # Corresponds to the JSON property `uid`
@@ -334,10 +576,12 @@ module Google
           @github_enterprise_config = args[:github_enterprise_config] if args.key?(:github_enterprise_config)
           @gitlab_config = args[:gitlab_config] if args.key?(:gitlab_config)
           @gitlab_enterprise_config = args[:gitlab_enterprise_config] if args.key?(:gitlab_enterprise_config)
+          @http_config = args[:http_config] if args.key?(:http_config)
           @installation_state = args[:installation_state] if args.key?(:installation_state)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @secure_source_manager_instance_config = args[:secure_source_manager_instance_config] if args.key?(:secure_source_manager_instance_config)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -362,6 +606,168 @@ module Google
         # Update properties of this object
         def update!(**args)
           @key_reference = args[:key_reference] if args.key?(:key_reference)
+        end
+      end
+      
+      # Message for a customized OAuth config.
+      class CustomOAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The OAuth2 authorization server URL.
+        # Corresponds to the JSON property `authUri`
+        # @return [String]
+        attr_accessor :auth_uri
+      
+        # Required. The client ID of the OAuth application.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. Input only. The client secret of the OAuth application. It will be
+        # provided as plain text, but encrypted and stored in developer connect. As
+        # INPUT_ONLY field, it will not be included in the output.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Required. The host URI of the OAuth application.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # Optional. Disable PKCE for this OAuth config. PKCE is enabled by default.
+        # Corresponds to the JSON property `pkceDisabled`
+        # @return [Boolean]
+        attr_accessor :pkce_disabled
+        alias_method :pkce_disabled?, :pkce_disabled
+      
+        # Required. The type of the SCM provider.
+        # Corresponds to the JSON property `scmProvider`
+        # @return [String]
+        attr_accessor :scm_provider
+      
+        # Required. The scopes to be requested during OAuth.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # Output only. SCM server version installed at the host URI.
+        # Corresponds to the JSON property `serverVersion`
+        # @return [String]
+        attr_accessor :server_version
+      
+        # ServiceDirectoryConfig represents Service Directory configuration for a
+        # connection.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
+        # Optional. SSL certificate to use for requests to a private service.
+        # Corresponds to the JSON property `sslCaCertificate`
+        # @return [String]
+        attr_accessor :ssl_ca_certificate
+      
+        # Required. Immutable. The OAuth2 token request URL.
+        # Corresponds to the JSON property `tokenUri`
+        # @return [String]
+        attr_accessor :token_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_uri = args[:auth_uri] if args.key?(:auth_uri)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @pkce_disabled = args[:pkce_disabled] if args.key?(:pkce_disabled)
+          @scm_provider = args[:scm_provider] if args.key?(:scm_provider)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @server_version = args[:server_version] if args.key?(:server_version)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @ssl_ca_certificate = args[:ssl_ca_certificate] if args.key?(:ssl_ca_certificate)
+          @token_uri = args[:token_uri] if args.key?(:token_uri)
+        end
+      end
+      
+      # The DeploymentEvent resource represents the deployment of the artifact within
+      # the InsightsConfig resource.
+      class DeploymentEvent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The artifact deployments of the DeploymentEvent. Each artifact
+        # deployment contains the artifact uri and the runtime configuration uri. For
+        # GKE, this would be all the containers images that are deployed in the pod.
+        # Corresponds to the JSON property `artifactDeployments`
+        # @return [Array<Google::Apis::DeveloperconnectV1::ArtifactDeployment>]
+        attr_accessor :artifact_deployments
+      
+        # Output only. The create time of the DeploymentEvent.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time at which the DeploymentEvent was deployed. This would be
+        # the min of all ArtifactDeployment deploy_times.
+        # Corresponds to the JSON property `deployTime`
+        # @return [String]
+        attr_accessor :deploy_time
+      
+        # Identifier. The name of the DeploymentEvent. This name is provided by
+        # Developer Connect insights. Format: projects/`project`/locations/`location`/
+        # insightsConfigs/`insights_config`/deploymentEvents/`uuid`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # RuntimeConfig represents the runtimes where the application is deployed.
+        # Corresponds to the JSON property `runtimeConfig`
+        # @return [Google::Apis::DeveloperconnectV1::RuntimeConfig]
+        attr_accessor :runtime_config
+      
+        # Output only. The runtime assigned URI of the DeploymentEvent. For GKE, this is
+        # the fully qualified replica set uri. e.g. container.googleapis.com/projects/`
+        # project`/locations/`location`/clusters/`cluster`/k8s/namespaces/`namespace`/
+        # apps/replicasets/`replica-set-id` For Cloud Run, this is the revision name.
+        # Corresponds to the JSON property `runtimeDeploymentUri`
+        # @return [String]
+        attr_accessor :runtime_deployment_uri
+      
+        # Output only. The state of the DeploymentEvent.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time at which the DeploymentEvent was undeployed, all
+        # artifacts are considered undeployed once this time is set. This would be the
+        # max of all ArtifactDeployment undeploy_times. If any ArtifactDeployment is
+        # still active (i.e. does not have an undeploy_time), this field will be empty.
+        # Corresponds to the JSON property `undeployTime`
+        # @return [String]
+        attr_accessor :undeploy_time
+      
+        # Output only. The update time of the DeploymentEvent.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_deployments = args[:artifact_deployments] if args.key?(:artifact_deployments)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deploy_time = args[:deploy_time] if args.key?(:deploy_time)
+          @name = args[:name] if args.key?(:name)
+          @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
+          @runtime_deployment_uri = args[:runtime_deployment_uri] if args.key?(:runtime_deployment_uri)
+          @state = args[:state] if args.key?(:state)
+          @undeploy_time = args[:undeploy_time] if args.key?(:undeploy_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -616,6 +1022,122 @@ module Google
         end
       end
       
+      # Response message for FetchUserRepositories.
+      class FetchUserRepositoriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The repositories that the user can access with this account connector.
+        # Corresponds to the JSON property `userRepos`
+        # @return [Array<Google::Apis::DeveloperconnectV1::UserRepository>]
+        attr_accessor :user_repos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_repos = args[:user_repos] if args.key?(:user_repos)
+        end
+      end
+      
+      # Message for responding to finishing an OAuth flow.
+      class FinishOAuthResponse
+        include Google::Apis::Core::Hashable
+      
+        # Message for representing an error from exchanging OAuth tokens.
+        # Corresponds to the JSON property `exchangeError`
+        # @return [Google::Apis::DeveloperconnectV1::ExchangeError]
+        attr_accessor :exchange_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exchange_error = args[:exchange_error] if args.key?(:exchange_error)
+        end
+      end
+      
+      # GKEWorkload represents the Google Kubernetes Engine runtime.
+      class GkeWorkload
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The name of the GKE cluster. Format: `projects/`project`/
+        # locations/`location`/clusters/`cluster``.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # Output only. The name of the GKE deployment. Format: `projects/`project`/
+        # locations/`location`/clusters/`cluster`/namespaces/`namespace`/deployments/`
+        # deployment``.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @deployment = args[:deployment] if args.key?(:deployment)
+        end
+      end
+      
+      # Defines the configuration for connections to an HTTP service provider.
+      class GenericHttpEndpointConfig
+        include Google::Apis::Core::Hashable
+      
+        # Basic authentication with username and password.
+        # Corresponds to the JSON property `basicAuthentication`
+        # @return [Google::Apis::DeveloperconnectV1::BasicAuthentication]
+        attr_accessor :basic_authentication
+      
+        # Bearer token authentication with a token.
+        # Corresponds to the JSON property `bearerTokenAuthentication`
+        # @return [Google::Apis::DeveloperconnectV1::BearerTokenAuthentication]
+        attr_accessor :bearer_token_authentication
+      
+        # Required. Immutable. The service provider's https endpoint.
+        # Corresponds to the JSON property `hostUri`
+        # @return [String]
+        attr_accessor :host_uri
+      
+        # ServiceDirectoryConfig represents Service Directory configuration for a
+        # connection.
+        # Corresponds to the JSON property `serviceDirectoryConfig`
+        # @return [Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig]
+        attr_accessor :service_directory_config
+      
+        # Optional. The SSL certificate to use for requests to the HTTP service provider.
+        # Corresponds to the JSON property `sslCaCertificate`
+        # @return [String]
+        attr_accessor :ssl_ca_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic_authentication = args[:basic_authentication] if args.key?(:basic_authentication)
+          @bearer_token_authentication = args[:bearer_token_authentication] if args.key?(:bearer_token_authentication)
+          @host_uri = args[:host_uri] if args.key?(:host_uri)
+          @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
+          @ssl_ca_certificate = args[:ssl_ca_certificate] if args.key?(:ssl_ca_certificate)
+        end
+      end
+      
       # Configuration for connections to github.com.
       class GitHubConfig
         include Google::Apis::Core::Hashable
@@ -686,8 +1208,15 @@ module Google
         # @return [String]
         attr_accessor :installation_uri
       
+        # Optional. Immutable. GitHub Enterprise organization in which the GitHub App is
+        # created.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
         # Optional. SecretManager resource containing the private key of the GitHub App,
-        # formatted as `projects/*/secrets/*/versions/*`.
+        # formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/
+        # secrets/*/versions/*` (if regional secrets are supported in that location).
         # Corresponds to the JSON property `privateKeySecretVersion`
         # @return [String]
         attr_accessor :private_key_secret_version
@@ -709,7 +1238,8 @@ module Google
         attr_accessor :ssl_ca_certificate
       
         # Optional. SecretManager resource containing the webhook secret of the GitHub
-        # App, formatted as `projects/*/secrets/*/versions/*`.
+        # App, formatted as `projects/*/secrets/*/versions/*` or `projects/*/locations/*/
+        # secrets/*/versions/*` (if regional secrets are supported in that location).
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -725,6 +1255,7 @@ module Google
           @app_slug = args[:app_slug] if args.key?(:app_slug)
           @host_uri = args[:host_uri] if args.key?(:host_uri)
           @installation_uri = args[:installation_uri] if args.key?(:installation_uri)
+          @organization = args[:organization] if args.key?(:organization)
           @private_key_secret_version = args[:private_key_secret_version] if args.key?(:private_key_secret_version)
           @server_version = args[:server_version] if args.key?(:server_version)
           @service_directory_config = args[:service_directory_config] if args.key?(:service_directory_config)
@@ -750,8 +1281,9 @@ module Google
         attr_accessor :read_authorizer_credential
       
         # Required. Immutable. SecretManager resource containing the webhook secret of a
-        # GitLab project, formatted as `projects/*/secrets/*/versions/*`. This is used
-        # to validate webhooks.
+        # GitLab project, formatted as `projects/*/secrets/*/versions/*` or `projects/*/
+        # locations/*/secrets/*/versions/*` (if regional secrets are supported in that
+        # location). This is used to validate webhooks.
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -807,8 +1339,9 @@ module Google
         attr_accessor :ssl_ca_certificate
       
         # Required. Immutable. SecretManager resource containing the webhook secret of a
-        # GitLab project, formatted as `projects/*/secrets/*/versions/*`. This is used
-        # to validate webhooks.
+        # GitLab project, formatted as `projects/*/secrets/*/versions/*` or `projects/*/
+        # locations/*/secrets/*/versions/*` (if regional secrets are supported in that
+        # location). This is used to validate webhooks.
         # Corresponds to the JSON property `webhookSecretSecretVersion`
         # @return [String]
         attr_accessor :webhook_secret_secret_version
@@ -840,6 +1373,14 @@ module Google
         attr_accessor :enabled
         alias_method :enabled?, :enabled
       
+        # Output only. The base URI for the HTTP proxy endpoint. Has the format `https://
+        # `generatedID`-c-h-`shortRegion`.developerconnect.dev` Populated only when
+        # enabled is set to true. This endpoint is used by other Google services that
+        # integrate with Developer Connect.
+        # Corresponds to the JSON property `httpProxyBaseUri`
+        # @return [String]
+        attr_accessor :http_proxy_base_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -847,6 +1388,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @http_proxy_base_uri = args[:http_proxy_base_uri] if args.key?(:http_proxy_base_uri)
         end
       end
       
@@ -941,6 +1483,70 @@ module Google
         end
       end
       
+      # Google Artifact Analysis configurations.
+      class GoogleArtifactAnalysis
+        include Google::Apis::Core::Hashable
+      
+        # Required. The project id of the project where the provenance is stored.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Google Artifact Registry configurations.
+      class GoogleArtifactRegistry
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The name of the artifact registry package.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
+        # Required. The host project of Artifact Registry.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # GoogleCloudRun represents the Cloud Run runtime.
+      class GoogleCloudRun
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The name of the Cloud Run service. Format: `projects/`
+        # project`/locations/`location`/services/`service``.
+        # Corresponds to the JSON property `serviceUri`
+        # @return [String]
+        attr_accessor :service_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_uri = args[:service_uri] if args.key?(:service_uri)
+        end
+      end
+      
       # Message that represents an arbitrary HTTP body. It should only be used for
       # payload formats that can't be represented as JSON, such as raw binary or an
       # HTML page. This message can be used both in streaming and non-streaming API
@@ -986,6 +1592,105 @@ module Google
           @content_type = args[:content_type] if args.key?(:content_type)
           @data = args[:data] if args.key?(:data)
           @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # The InsightsConfig resource is the core configuration object to capture events
+      # from your Software Development Lifecycle. It acts as the central hub for
+      # managing how Developer Connect understands your application, its runtime
+      # environments, and the artifacts deployed within them.
+      class InsightsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User specified annotations. See https://google.aip.dev/148#
+        # annotations for more details such as format and size limitations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Optional. The name of the App Hub Application. Format: projects/`project`/
+        # locations/`location`/applications/`application`
+        # Corresponds to the JSON property `appHubApplication`
+        # @return [String]
+        attr_accessor :app_hub_application
+      
+        # Optional. The artifact configurations of the artifacts that are deployed.
+        # Corresponds to the JSON property `artifactConfigs`
+        # @return [Array<Google::Apis::DeveloperconnectV1::ArtifactConfig>]
+        attr_accessor :artifact_configs
+      
+        # Output only. Create timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Any errors that occurred while setting up the InsightsConfig.
+        # Each error will be in the format: `field_name: error_message`, e.g.
+        # GetAppHubApplication: Permission denied while getting App Hub application.
+        # Please grant permissions to the P4SA.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DeveloperconnectV1::Status>]
+        attr_accessor :errors
+      
+        # Optional. Set of labels associated with an InsightsConfig.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the InsightsConfig. Format: projects/`project`/
+        # locations/`location`/insightsConfigs/`insightsConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Projects represents the projects to track with the InsightsConfig.
+        # Corresponds to the JSON property `projects`
+        # @return [Google::Apis::DeveloperconnectV1::Projects]
+        attr_accessor :projects
+      
+        # Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to
+        # true if the current state of InsightsConfig does not match the user's intended
+        # state, and the service is actively updating the resource to reconcile them.
+        # This can happen due to user-triggered updates or system actions like failover
+        # or maintenance.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. The runtime configurations where the application is deployed.
+        # Corresponds to the JSON property `runtimeConfigs`
+        # @return [Array<Google::Apis::DeveloperconnectV1::RuntimeConfig>]
+        attr_accessor :runtime_configs
+      
+        # Optional. Output only. The state of the InsightsConfig.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @app_hub_application = args[:app_hub_application] if args.key?(:app_hub_application)
+          @artifact_configs = args[:artifact_configs] if args.key?(:artifact_configs)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @errors = args[:errors] if args.key?(:errors)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @projects = args[:projects] if args.key?(:projects)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @runtime_configs = args[:runtime_configs] if args.key?(:runtime_configs)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1136,6 +1841,32 @@ module Google
         end
       end
       
+      # Response to listing DeploymentEvents.
+      class ListDeploymentEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DeploymentEvents.
+        # Corresponds to the JSON property `deploymentEvents`
+        # @return [Array<Google::Apis::DeveloperconnectV1::DeploymentEvent>]
+        attr_accessor :deployment_events
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_events = args[:deployment_events] if args.key?(:deployment_events)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Message for response to listing GitRepositoryLinks
       class ListGitRepositoryLinksResponse
         include Google::Apis::Core::Hashable
@@ -1162,6 +1893,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @git_repository_links = args[:git_repository_links] if args.key?(:git_repository_links)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Request for response to listing InsightsConfigs.
+      class ListInsightsConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of InsightsConfigs.
+        # Corresponds to the JSON property `insightsConfigs`
+        # @return [Array<Google::Apis::DeveloperconnectV1::InsightsConfig>]
+        attr_accessor :insights_configs
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights_configs = args[:insights_configs] if args.key?(:insights_configs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -1206,6 +1968,14 @@ module Google
         # @return [Array<Google::Apis::DeveloperconnectV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1214,6 +1984,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1301,7 +2072,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A SecretManager resource containing the OAuth token that authorizes
-        # the connection. Format: `projects/*/secrets/*/versions/*`.
+        # the connection. Format: `projects/*/secrets/*/versions/*` or `projects/*/
+        # locations/*/secrets/*/versions/*` (if regional secrets are supported in that
+        # location).
         # Corresponds to the JSON property `oauthTokenSecretVersion`
         # @return [String]
         attr_accessor :oauth_token_secret_version
@@ -1614,6 +2387,25 @@ module Google
         end
       end
       
+      # Projects represents the projects to track with the InsightsConfig.
+      class Projects
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The project IDs. Format: `project`
+        # Corresponds to the JSON property `projectIds`
+        # @return [Array<String>]
+        attr_accessor :project_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_ids = args[:project_ids] if args.key?(:project_ids)
+        end
+      end
+      
       # ProviderOAuthConfig is the OAuth config for a provider.
       class ProviderOAuthConfig
         include Google::Apis::Core::Hashable
@@ -1625,7 +2417,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :scopes
       
-        # Immutable. Developer Connect provided OAuth.
+        # Optional. Immutable. Developer Connect provided OAuth.
         # Corresponds to the JSON property `systemProviderId`
         # @return [String]
         attr_accessor :system_provider_id
@@ -1638,6 +2430,106 @@ module Google
         def update!(**args)
           @scopes = args[:scopes] if args.key?(:scopes)
           @system_provider_id = args[:system_provider_id] if args.key?(:system_provider_id)
+        end
+      end
+      
+      # The proxy configuration.
+      class ProxyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Setting this to true allows the git and http proxies to perform
+        # actions on behalf of the user configured under the account connector.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Output only. The base URI for the HTTP proxy endpoint. Has the format `https://
+        # `generatedID`-a-h-`shortRegion`.developerconnect.dev` Populated only when `
+        # enabled` is set to `true`. This endpoint is used by other Google services that
+        # integrate with Developer Connect.
+        # Corresponds to the JSON property `httpProxyBaseUri`
+        # @return [String]
+        attr_accessor :http_proxy_base_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @http_proxy_base_uri = args[:http_proxy_base_uri] if args.key?(:http_proxy_base_uri)
+        end
+      end
+      
+      # RuntimeConfig represents the runtimes where the application is deployed.
+      class RuntimeConfig
+        include Google::Apis::Core::Hashable
+      
+        # AppHubService represents the App Hub Service.
+        # Corresponds to the JSON property `appHubService`
+        # @return [Google::Apis::DeveloperconnectV1::AppHubService]
+        attr_accessor :app_hub_service
+      
+        # AppHubWorkload represents the App Hub Workload.
+        # Corresponds to the JSON property `appHubWorkload`
+        # @return [Google::Apis::DeveloperconnectV1::AppHubWorkload]
+        attr_accessor :app_hub_workload
+      
+        # GKEWorkload represents the Google Kubernetes Engine runtime.
+        # Corresponds to the JSON property `gkeWorkload`
+        # @return [Google::Apis::DeveloperconnectV1::GkeWorkload]
+        attr_accessor :gke_workload
+      
+        # GoogleCloudRun represents the Cloud Run runtime.
+        # Corresponds to the JSON property `googleCloudRun`
+        # @return [Google::Apis::DeveloperconnectV1::GoogleCloudRun]
+        attr_accessor :google_cloud_run
+      
+        # Output only. The state of the Runtime.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. Immutable. The URI of the runtime configuration. For GKE, this is
+        # the cluster name. For Cloud Run, this is the service name.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_hub_service = args[:app_hub_service] if args.key?(:app_hub_service)
+          @app_hub_workload = args[:app_hub_workload] if args.key?(:app_hub_workload)
+          @gke_workload = args[:gke_workload] if args.key?(:gke_workload)
+          @google_cloud_run = args[:google_cloud_run] if args.key?(:google_cloud_run)
+          @state = args[:state] if args.key?(:state)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Configuration for connections to Secure Source Manager instance
+      class SecureSourceManagerInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. Secure Source Manager instance resource, formatted as `
+        # projects/*/locations/*/instances/*`
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
         end
       end
       
@@ -1659,6 +2551,62 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Message for responding to starting an OAuth flow.
+      class StartOAuthResponse
+        include Google::Apis::Core::Hashable
+      
+        # The authorization server URL to the OAuth flow of the service provider.
+        # Corresponds to the JSON property `authUri`
+        # @return [String]
+        attr_accessor :auth_uri
+      
+        # The client ID to the OAuth App of the service provider.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.1
+        # Corresponds to the JSON property `codeChallenge`
+        # @return [String]
+        attr_accessor :code_challenge
+      
+        # Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.2
+        # Corresponds to the JSON property `codeChallengeMethod`
+        # @return [String]
+        attr_accessor :code_challenge_method
+      
+        # The list of scopes requested by the application.
+        # Corresponds to the JSON property `scopes`
+        # @return [Array<String>]
+        attr_accessor :scopes
+      
+        # The ID of the system provider.
+        # Corresponds to the JSON property `systemProviderId`
+        # @return [String]
+        attr_accessor :system_provider_id
+      
+        # The ticket to be used for post processing the callback from the service
+        # provider.
+        # Corresponds to the JSON property `ticket`
+        # @return [String]
+        attr_accessor :ticket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_uri = args[:auth_uri] if args.key?(:auth_uri)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @code_challenge = args[:code_challenge] if args.key?(:code_challenge)
+          @code_challenge_method = args[:code_challenge_method] if args.key?(:code_challenge_method)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @system_provider_id = args[:system_provider_id] if args.key?(:system_provider_id)
+          @ticket = args[:ticket] if args.key?(:ticket)
         end
       end
       
@@ -1747,7 +2695,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A SecretManager resource containing the user token that authorizes
-        # the Developer Connect connection. Format: `projects/*/secrets/*/versions/*`.
+        # the Developer Connect connection. Format: `projects/*/secrets/*/versions/*` or
+        # `projects/*/locations/*/secrets/*/versions/*` (if regional secrets are
+        # supported in that location).
         # Corresponds to the JSON property `userTokenSecretVersion`
         # @return [String]
         attr_accessor :user_token_secret_version
@@ -1765,6 +2715,42 @@ module Google
         def update!(**args)
           @user_token_secret_version = args[:user_token_secret_version] if args.key?(:user_token_secret_version)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # A user repository that can be linked to the account connector. Consists of the
+      # repo name and the git proxy URL to forward requests to this repo.
+      class UserRepository
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The git clone URL of the repo. For example: https://github.com/
+        # myuser/myrepo.git
+        # Corresponds to the JSON property `cloneUri`
+        # @return [String]
+        attr_accessor :clone_uri
+      
+        # Output only. The user friendly repo name (e.g., myuser/myrepo)
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The Git proxy URL for this repo. For example: https://us-west1-
+        # git.developerconnect.dev/a/my-proj/my-ac/myuser/myrepo.git. Populated only
+        # when `proxy_config.enabled` is set to `true` in the Account Connector. This
+        # URL is used by other Google services that integrate with Developer Connect.
+        # Corresponds to the JSON property `gitProxyUri`
+        # @return [String]
+        attr_accessor :git_proxy_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clone_uri = args[:clone_uri] if args.key?(:clone_uri)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @git_proxy_uri = args[:git_proxy_uri] if args.key?(:git_proxy_uri)
         end
       end
     end

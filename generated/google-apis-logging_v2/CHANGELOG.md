@@ -1,5 +1,74 @@
 # Release history for google-apis-logging_v2
 
+### v0.97.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260605
+* Regenerated using generator version 0.19.0
+
+### v0.96.0 (2026-05-31)
+
+* Regenerated from discovery document revision 20260522
+
+### v0.95.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260501
+
+### v0.94.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260421
+
+### v0.93.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260328
+
+### v0.92.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260315
+
+### v0.91.0 (2026-03-08)
+
+* Regenerated from discovery document revision 20260227
+
+### v0.90.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260130
+
+### v0.89.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260123
+
+### v0.88.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260116
+
+### v0.87.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20251231
+
+### v0.86.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251128
+
+### v0.85.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251107
+
+### v0.84.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251017
+
+### v0.83.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250905
+
+### v0.82.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250822
+
+### v0.81.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250530
+
 ### v0.80.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250516

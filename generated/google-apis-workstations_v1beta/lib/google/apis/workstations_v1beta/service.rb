@@ -165,6 +165,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -182,7 +190,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/{+name}/operations', options)
           command.response_representation = Google::Apis::WorkstationsV1beta::ListOperationsResponse::Representation
           command.response_class = Google::Apis::WorkstationsV1beta::ListOperationsResponse
@@ -190,6 +198,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -200,7 +209,7 @@ module Google
         #   Required. Parent resource name.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationCluster] workstation_cluster_object
         # @param [Boolean] validate_only
-        #   Optional. If set, validate the request and preview the review, but do not
+        #   Optional. If set, validate the request and preview the result, but do not
         #   actually apply it.
         # @param [String] workstation_cluster_id
         #   Required. ID to use for the workstation cluster.
@@ -246,7 +255,7 @@ module Google
         #   workstation cluster are also deleted. Otherwise, the request only works if the
         #   workstation cluster has no configurations or workstations.
         # @param [Boolean] validate_only
-        #   Optional. If set, validate the request and preview the review, but do not
+        #   Optional. If set, validate the request and preview the result, but do not
         #   apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -359,7 +368,7 @@ module Google
         #   Required. Mask that specifies which fields in the workstation cluster should
         #   be updated.
         # @param [Boolean] validate_only
-        #   Optional. If set, validate the request and preview the review, but do not
+        #   Optional. If set, validate the request and preview the result, but do not
         #   actually apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -398,7 +407,7 @@ module Google
         #   Required. Parent resource name.
         # @param [Google::Apis::WorkstationsV1beta::WorkstationConfig] workstation_config_object
         # @param [Boolean] validate_only
-        #   Optional. If set, validate the request and preview the review, but do not
+        #   Optional. If set, validate the request and preview the result, but do not
         #   actually apply it.
         # @param [String] workstation_config_id
         #   Required. ID to use for the workstation configuration.
@@ -444,7 +453,7 @@ module Google
         #   deleted. Otherwise, the request works only if the workstation configuration
         #   has no workstations.
         # @param [Boolean] validate_only
-        #   Optional. If set, validate the request and preview the review, but do not
+        #   Optional. If set, validate the request and preview the result, but do not
         #   actually apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -640,7 +649,7 @@ module Google
         #   Required. Mask specifying which fields in the workstation configuration should
         #   be updated.
         # @param [Boolean] validate_only
-        #   Optional. If set, validate the request and preview the review, but do not
+        #   Optional. If set, validate the request and preview the result, but do not
         #   actually apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -755,7 +764,7 @@ module Google
         #   Required. Parent resource name.
         # @param [Google::Apis::WorkstationsV1beta::Workstation] workstation_object
         # @param [Boolean] validate_only
-        #   Optional. If set, validate the request and preview the review, but do not
+        #   Optional. If set, validate the request and preview the result, but do not
         #   actually apply it.
         # @param [String] workstation_id
         #   Required. ID to use for the workstation.
@@ -797,7 +806,7 @@ module Google
         #   Optional. If set, the request will be rejected if the latest version of the
         #   workstation on the server does not have this ETag.
         # @param [Boolean] validate_only
-        #   Optional. If set, validate the request and preview the review, but do not
+        #   Optional. If set, validate the request and preview the result, but do not
         #   actually apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1021,14 +1030,12 @@ module Google
         #   Identifier. Full name of this workstation.
         # @param [Google::Apis::WorkstationsV1beta::Workstation] workstation_object
         # @param [Boolean] allow_missing
-        #   Optional. If set and the workstation configuration is not found, a new
-        #   workstation configuration is created. In this situation, update_mask is
-        #   ignored.
+        #   Optional. If set and the workstation is not found, a new workstation is
+        #   created. In this situation, update_mask is ignored.
         # @param [String] update_mask
-        #   Required. Mask specifying which fields in the workstation configuration should
-        #   be updated.
+        #   Required. Mask specifying which fields in the workstation should be updated.
         # @param [Boolean] validate_only
-        #   Optional. If set, validate the request and preview the review, but do not
+        #   Optional. If set, validate the request and preview the result, but do not
         #   actually apply it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1057,6 +1064,41 @@ module Google
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Pushes credentials to a running workstation on behalf of a user. Once complete,
+        # supported credential types (application_default_credentials) are made
+        # available to processes running in the user container.
+        # @param [String] workstation
+        #   Required. Name of the workstation for which the credentials should be pushed.
+        # @param [Google::Apis::WorkstationsV1beta::PushCredentialsRequest] push_credentials_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WorkstationsV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WorkstationsV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def push_workstation_credentials(workstation, push_credentials_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+workstation}:pushCredentials', options)
+          command.request_representation = Google::Apis::WorkstationsV1beta::PushCredentialsRequest::Representation
+          command.request_object = push_credentials_request_object
+          command.response_representation = Google::Apis::WorkstationsV1beta::Operation::Representation
+          command.response_class = Google::Apis::WorkstationsV1beta::Operation
+          command.params['workstation'] = workstation unless workstation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

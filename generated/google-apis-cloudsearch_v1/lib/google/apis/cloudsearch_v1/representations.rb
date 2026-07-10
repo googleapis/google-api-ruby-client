@@ -166,12 +166,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DebugResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DeleteQueueItemsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1598,16 +1592,6 @@ module Google
         end
       end
       
-      class DebugResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gsr_request, :base64 => true, as: 'gsrRequest'
-          property :gsr_response, :base64 => true, as: 'gsrResponse'
-          property :search_response, as: 'searchResponse', class: Google::Apis::CloudsearchV1::SearchResponse, decorator: Google::Apis::CloudsearchV1::SearchResponse::Representation
-      
-        end
-      end
-      
       class DeleteQueueItemsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2692,6 +2676,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::CloudsearchV1::Operation, decorator: Google::Apis::CloudsearchV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -3104,6 +3089,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :interpretation_type, as: 'interpretationType'
           property :interpreted_query, as: 'interpretedQuery'
+          property :interpreted_query_actual_result_count, as: 'interpretedQueryActualResultCount'
+          property :interpreted_query_estimated_result_count, :numeric_string => true, as: 'interpretedQueryEstimatedResultCount'
           property :reason, as: 'reason'
         end
       end
@@ -3165,6 +3152,8 @@ module Google
       class QuerySuggestion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_query_time, as: 'lastQueryTime'
+          property :source_corpus, as: 'sourceCorpus'
         end
       end
       
@@ -3196,6 +3185,7 @@ module Google
       class RequestOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_display_language_code, as: 'clientDisplayLanguageCode'
           property :debug_options, as: 'debugOptions', class: Google::Apis::CloudsearchV1::DebugOptions, decorator: Google::Apis::CloudsearchV1::DebugOptions::Representation
       
           property :language_code, as: 'languageCode'

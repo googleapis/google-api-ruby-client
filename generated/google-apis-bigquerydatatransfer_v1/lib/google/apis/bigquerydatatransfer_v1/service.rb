@@ -273,12 +273,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -987,6 +996,94 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a transfer resource.
+        # @param [String] name
+        #   Required. The name of the transfer resource in the form of: * `projects/`
+        #   project`/transferConfigs/`transfer_config`/transferResources/`
+        #   transfer_resource`` * `projects/`project`/locations/`location`/transferConfigs/
+        #   `transfer_config`/transferResources/`transfer_resource``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigquerydatatransferV1::TransferResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigquerydatatransferV1::TransferResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_transfer_config_transfer_resource(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BigquerydatatransferV1::TransferResource::Representation
+          command.response_class = Google::Apis::BigquerydatatransferV1::TransferResource
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns information about transfer resources.
+        # @param [String] parent
+        #   Required. Name of transfer configuration for which transfer resources should
+        #   be retrieved. The name should be in one of the following forms: * `projects/`
+        #   project`/transferConfigs/`transfer_config`` * `projects/`project`/locations/`
+        #   location_id`/transferConfigs/`transfer_config``
+        # @param [String] filter
+        #   Optional. Filter for the transfer resources. Currently supported filters
+        #   include: * Resource name: `name` - Wildcard supported * Resource type: `type` *
+        #   Resource destination: `destination` * Latest resource state: `
+        #   latest_status_detail.state` * Last update time: `update_time` - RFC-3339
+        #   format * Parent table name: `hierarchy_detail.partition_detail.table` Multiple
+        #   filters can be applied using the `AND/OR` operator. Examples: * `name="*123"
+        #   AND (type="TABLE" OR latest_status_detail.state="SUCCEEDED")` * `update_time >=
+        #   "2012-04-21T11:30:00-04:00"` * `hierarchy_detail.partition_detail.table = "
+        #   table1"`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of transfer resources to return. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000. The default page
+        #   size is the maximum value of 1000 results.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListTransferResources` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListTransferResources` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigquerydatatransferV1::ListTransferResourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigquerydatatransferV1::ListTransferResourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_transfer_config_transfer_resources(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/transferResources', options)
+          command.response_representation = Google::Apis::BigquerydatatransferV1::ListTransferResourcesResponse::Representation
+          command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferResourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new data transfer configuration.
         # @param [String] parent
         #   Required. The BigQuery project id where the transfer configuration should be
@@ -1497,6 +1594,94 @@ module Google
           command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferLogsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['messageTypes'] = message_types unless message_types.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a transfer resource.
+        # @param [String] name
+        #   Required. The name of the transfer resource in the form of: * `projects/`
+        #   project`/transferConfigs/`transfer_config`/transferResources/`
+        #   transfer_resource`` * `projects/`project`/locations/`location`/transferConfigs/
+        #   `transfer_config`/transferResources/`transfer_resource``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigquerydatatransferV1::TransferResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigquerydatatransferV1::TransferResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_transfer_config_transfer_resource(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BigquerydatatransferV1::TransferResource::Representation
+          command.response_class = Google::Apis::BigquerydatatransferV1::TransferResource
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns information about transfer resources.
+        # @param [String] parent
+        #   Required. Name of transfer configuration for which transfer resources should
+        #   be retrieved. The name should be in one of the following forms: * `projects/`
+        #   project`/transferConfigs/`transfer_config`` * `projects/`project`/locations/`
+        #   location_id`/transferConfigs/`transfer_config``
+        # @param [String] filter
+        #   Optional. Filter for the transfer resources. Currently supported filters
+        #   include: * Resource name: `name` - Wildcard supported * Resource type: `type` *
+        #   Resource destination: `destination` * Latest resource state: `
+        #   latest_status_detail.state` * Last update time: `update_time` - RFC-3339
+        #   format * Parent table name: `hierarchy_detail.partition_detail.table` Multiple
+        #   filters can be applied using the `AND/OR` operator. Examples: * `name="*123"
+        #   AND (type="TABLE" OR latest_status_detail.state="SUCCEEDED")` * `update_time >=
+        #   "2012-04-21T11:30:00-04:00"` * `hierarchy_detail.partition_detail.table = "
+        #   table1"`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of transfer resources to return. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000. The default page
+        #   size is the maximum value of 1000 results.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListTransferResources` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListTransferResources` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigquerydatatransferV1::ListTransferResourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigquerydatatransferV1::ListTransferResourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_transfer_config_transfer_resources(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/transferResources', options)
+          command.response_representation = Google::Apis::BigquerydatatransferV1::ListTransferResourcesResponse::Representation
+          command.response_class = Google::Apis::BigquerydatatransferV1::ListTransferResourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

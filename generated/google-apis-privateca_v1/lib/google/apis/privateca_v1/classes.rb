@@ -120,6 +120,39 @@ module Google
         end
       end
       
+      # AttributeTypeAndValue specifies an attribute type and value. It can use either
+      # a OID or enum value to specify the attribute type.
+      class AttributeTypeAndValue
+        include Google::Apis::Core::Hashable
+      
+        # An ObjectId specifies an object identifier (OID). These provide context and
+        # describe types in ASN.1 messages.
+        # Corresponds to the JSON property `objectId`
+        # @return [Google::Apis::PrivatecaV1::ObjectIdProp]
+        attr_accessor :object_id_prop
+      
+        # The attribute type of the attribute and value pair.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The value for the attribute type.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -332,6 +365,11 @@ module Google
       class CaPool
         include Google::Apis::Core::Hashable
       
+        # The configuration used for encrypting data at rest.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::PrivatecaV1::EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Defines controls over all certificate issuance within a CaPool.
         # Corresponds to the JSON property `issuancePolicy`
         # @return [Google::Apis::PrivatecaV1::IssuancePolicy]
@@ -367,6 +405,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @issuance_policy = args[:issuance_policy] if args.key?(:issuance_policy)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -479,6 +518,17 @@ module Google
         # @return [String]
         attr_accessor :pem_csr
       
+        # Optional. The requested not_before_time of this Certificate. This field may
+        # only be set if the CaPool.IssuancePolicy.
+        # allow_requester_specified_not_before_time field is set to true for the issuing
+        # CaPool. If this field is specified, the certificate will be issued with this '
+        # not_before_time'. If this is not specified, the 'not_before_time' will be set
+        # to the issuance time or issuance time minus backdate_duration depending on the
+        # CaPool configuration.
+        # Corresponds to the JSON property `requestedNotBeforeTime`
+        # @return [String]
+        attr_accessor :requested_not_before_time
+      
         # Describes fields that are relavent to the revocation of a Certificate.
         # Corresponds to the JSON property `revocationDetails`
         # @return [Google::Apis::PrivatecaV1::RevocationDetails]
@@ -512,6 +562,7 @@ module Google
           @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
           @pem_certificate_chain = args[:pem_certificate_chain] if args.key?(:pem_certificate_chain)
           @pem_csr = args[:pem_csr] if args.key?(:pem_csr)
+          @requested_not_before_time = args[:requested_not_before_time] if args.key?(:requested_not_before_time)
           @revocation_details = args[:revocation_details] if args.key?(:revocation_details)
           @subject_mode = args[:subject_mode] if args.key?(:subject_mode)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1164,6 +1215,26 @@ module Google
         end
       end
       
+      # The configuration used for encrypting data at rest.
+      class EncryptionSpec
+        include Google::Apis::Core::Hashable
+      
+        # The resource name for a Cloud KMS key in the format `projects/*/locations/*/
+        # keyRings/*/cryptoKeys/*`.
+        # Corresponds to the JSON property `cloudKmsKey`
+        # @return [String]
+        attr_accessor :cloud_kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key = args[:cloud_kms_key] if args.key?(:cloud_kms_key)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -1380,6 +1451,18 @@ module Google
       class IssuancePolicy
         include Google::Apis::Core::Hashable
       
+        # Optional. If set to true, allows requesters to specify the
+        # requested_not_before_time field when creating a Certificate. Certificates
+        # requested with this option enabled will have a 'not_before_time' equal to the
+        # value specified in the request. The 'not_after_time' will be adjusted to
+        # preserve the requested lifetime. The maximum time that a certificate can be
+        # backdated with these options is 48 hours in the past. This option cannot be
+        # set if backdate_duration is set.
+        # Corresponds to the JSON property `allowRequesterSpecifiedNotBeforeTime`
+        # @return [Boolean]
+        attr_accessor :allow_requester_specified_not_before_time
+        alias_method :allow_requester_specified_not_before_time?, :allow_requester_specified_not_before_time
+      
         # IssuanceModes specifies the allowed ways in which Certificates may be
         # requested from this CaPool.
         # Corresponds to the JSON property `allowedIssuanceModes`
@@ -1393,12 +1476,12 @@ module Google
         # @return [Array<Google::Apis::PrivatecaV1::AllowedKeyType>]
         attr_accessor :allowed_key_types
       
-        # Optional. The duration to backdate all certificates issued from this CaPool.
-        # If not set, the certificates will be issued with a not_before_time of the
-        # issuance time (i.e. the current time). If set, the certificates will be issued
-        # with a not_before_time of the issuance time minus the backdate_duration. The
-        # not_after_time will be adjusted to preserve the requested lifetime. The
-        # backdate_duration must be less than or equal to 48 hours.
+        # Optional. If set, all certificates issued from this CaPool will be backdated
+        # by this duration. The 'not_before_time' will be the issuance time minus this
+        # backdate_duration, and the 'not_after_time' will be adjusted to preserve the
+        # requested lifetime. The maximum duration that a certificate can be backdated
+        # with these options is 48 hours in the past. This option cannot be set if
+        # allow_requester_specified_not_before_time is set.
         # Corresponds to the JSON property `backdateDuration`
         # @return [String]
         attr_accessor :backdate_duration
@@ -1435,6 +1518,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_requester_specified_not_before_time = args[:allow_requester_specified_not_before_time] if args.key?(:allow_requester_specified_not_before_time)
           @allowed_issuance_modes = args[:allowed_issuance_modes] if args.key?(:allowed_issuance_modes)
           @allowed_key_types = args[:allowed_key_types] if args.key?(:allowed_key_types)
           @backdate_duration = args[:backdate_duration] if args.key?(:backdate_duration)
@@ -1810,6 +1894,14 @@ module Google
         # @return [Array<Google::Apis::PrivatecaV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1818,6 +1910,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2266,20 +2359,15 @@ module Google
         end
       end
       
-      # Operation metadata returned by the CLH during resource state reconciliation.
-      class ReconciliationOperationMetadata
+      # RelativeDistinguishedName specifies a relative distinguished name which will
+      # be used to build a distinguished name.
+      class RelativeDistinguishedName
         include Google::Apis::Core::Hashable
       
-        # DEPRECATED. Use exclusive_action instead.
-        # Corresponds to the JSON property `deleteResource`
-        # @return [Boolean]
-        attr_accessor :delete_resource
-        alias_method :delete_resource?, :delete_resource
-      
-        # Excluisive action returned by the CLH.
-        # Corresponds to the JSON property `exclusiveAction`
-        # @return [String]
-        attr_accessor :exclusive_action
+        # Attributes describes the attribute value assertions in the RDN.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::PrivatecaV1::AttributeTypeAndValue>]
+        attr_accessor :attributes
       
         def initialize(**args)
            update!(**args)
@@ -2287,8 +2375,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @delete_resource = args[:delete_resource] if args.key?(:delete_resource)
-          @exclusive_action = args[:exclusive_action] if args.key?(:exclusive_action)
+          @attributes = args[:attributes] if args.key?(:attributes)
         end
       end
       
@@ -2544,6 +2631,11 @@ module Google
         # @return [String]
         attr_accessor :province
       
+        # This field can be used in place of the named subject fields.
+        # Corresponds to the JSON property `rdnSequence`
+        # @return [Array<Google::Apis::PrivatecaV1::RelativeDistinguishedName>]
+        attr_accessor :rdn_sequence
+      
         # The street address of the subject.
         # Corresponds to the JSON property `streetAddress`
         # @return [String]
@@ -2562,6 +2654,7 @@ module Google
           @organizational_unit = args[:organizational_unit] if args.key?(:organizational_unit)
           @postal_code = args[:postal_code] if args.key?(:postal_code)
           @province = args[:province] if args.key?(:province)
+          @rdn_sequence = args[:rdn_sequence] if args.key?(:rdn_sequence)
           @street_address = args[:street_address] if args.key?(:street_address)
         end
       end

@@ -554,6 +554,7 @@ module Google
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configured_capabilities, as: 'configuredCapabilities'
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
           property :lifecycle_state, as: 'lifecycleState'

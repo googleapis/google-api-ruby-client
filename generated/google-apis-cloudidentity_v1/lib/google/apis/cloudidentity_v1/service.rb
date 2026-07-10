@@ -762,16 +762,20 @@ module Google
         # provided, only DeviceUsers having all of these properties are considered as
         # matches - i.e. the query behaves like an AND. Different platforms require
         # different amounts of information from the caller to ensure that the DeviceUser
-        # is uniquely identified. - iOS: No properties need to be passed, the caller's
-        # credentials are sufficient to identify the corresponding DeviceUser. - Android:
-        # Specifying the 'android_id' field is required. - Desktop: Specifying the '
-        # raw_resource_id' field is required.
+        # is uniquely identified. - iOS: If either the `partner` or `ios_device_id`
+        # field is provided, then both fields are required. - Android: Specifying the `
+        # android_id` field is required. - Desktop: Specifying the `raw_resource_id`
+        # field is required.
         # @param [String] parent
         #   Must be set to "devices/-/deviceUsers" to search across all DeviceUser
         #   belonging to the user.
         # @param [String] android_id
         #   Android Id returned by [Settings.Secure#ANDROID_ID](https://developer.android.
         #   com/reference/android/provider/Settings.Secure.html#ANDROID_ID).
+        # @param [String] ios_device_id
+        #   Optional. The partner-specified device identifier assigned to the iOS device
+        #   that initiated the Lookup API call. This string must match the value of the
+        #   iosDeviceId key in the app config dictionary provided to Google Workspace apps.
         # @param [Fixnum] page_size
         #   The maximum number of DeviceUsers to return. If unspecified, at most 20
         #   DeviceUsers will be returned. The maximum value is 20; values above 20 will be
@@ -781,12 +785,16 @@ module Google
         #   to retrieve the subsequent page. When paginating, all other parameters
         #   provided to `LookupDeviceUsers` must match the call that provided the page
         #   token.
+        # @param [String] partner
+        #   Optional. The partner ID of the calling iOS app. This string must match the
+        #   value of the partner key within the app configuration dictionary provided to
+        #   Google Workspace apps.
         # @param [String] raw_resource_id
         #   Raw Resource Id used by Google Endpoint Verification. If the user is enrolled
         #   into Google Endpoint Verification, this id will be saved as the '
-        #   device_resource_id' field in the following platform dependent files. * macOS: ~
-        #   /.secureConnect/context_aware_config.json * Windows: %USERPROFILE%\AppData\
-        #   Local\Google\Endpoint Verification\accounts.json * Linux: ~/.secureConnect/
+        #   device_resource_id' field in the following platform dependent files. Mac: ~/.
+        #   secureConnect/context_aware_config.json Windows: C:\Users\%USERPROFILE%\.
+        #   secureConnect\context_aware_config.json Linux: ~/.secureConnect/
         #   context_aware_config.json
         # @param [String] user_id
         #   The user whose DeviceUser's resource name will be fetched. Must be set to 'me'
@@ -808,14 +816,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def lookup_device_device_user(parent, android_id: nil, page_size: nil, page_token: nil, raw_resource_id: nil, user_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def lookup_device_device_user(parent, android_id: nil, ios_device_id: nil, page_size: nil, page_token: nil, partner: nil, raw_resource_id: nil, user_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}:lookup', options)
           command.response_representation = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse::Representation
           command.response_class = Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['androidId'] = android_id unless android_id.nil?
+          command.query['iosDeviceId'] = ios_device_id unless ios_device_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['partner'] = partner unless partner.nil?
           command.query['rawResourceId'] = raw_resource_id unless raw_resource_id.nil?
           command.query['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1701,7 +1711,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches direct groups of a member.
+        # Searches direct groups of a member. Groups for which the actor does not have
+        # the permission to view memberships are silently filtered out.
         # @param [String] parent
         #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
         #   group to search transitive memberships in. Format: groups/`group_id`, where
@@ -1854,6 +1865,193 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an InboundOidcSsoProfile for a customer. When the target customer has
+        # enabled [Multi-party approval for sensitive actions](https://support.google.
+        # com/a/answer/13790448), the `Operation` in the response will have `"done":
+        # false`, it will not have a response, and the metadata will have `"state": "
+        # awaiting-multi-party-approval"`.
+        # @param [Google::Apis::CloudidentityV1::InboundOidcSsoProfile] inbound_oidc_sso_profile_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_inbound_oidc_sso_profile(inbound_oidc_sso_profile_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/inboundOidcSsoProfiles', options)
+          command.request_representation = Google::Apis::CloudidentityV1::InboundOidcSsoProfile::Representation
+          command.request_object = inbound_oidc_sso_profile_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an InboundOidcSsoProfile.
+        # @param [String] name
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the InboundOidcSsoProfile to delete. Format: `
+        #   inboundOidcSsoProfiles/`sso_profile_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_inbound_oidc_sso_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an InboundOidcSsoProfile.
+        # @param [String] name
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the InboundOidcSsoProfile to get. Format: `
+        #   inboundOidcSsoProfiles/`sso_profile_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::InboundOidcSsoProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::InboundOidcSsoProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_inbound_oidc_sso_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::InboundOidcSsoProfile::Representation
+          command.response_class = Google::Apis::CloudidentityV1::InboundOidcSsoProfile
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists InboundOidcSsoProfile objects for a Google enterprise customer.
+        # @param [String] filter
+        #   A [Common Expression Language](https://github.com/google/cel-spec) expression
+        #   to filter the results. The only supported filter is filtering by customer. For
+        #   example: `customer=="customers/C0123abc"`. Omitting the filter or specifying a
+        #   filter of `customer=="customers/my_customer"` will return the profiles for the
+        #   customer that the caller (authenticated user) belongs to. Specifying a filter
+        #   of `customer==""` will return the global shared OIDC profiles.
+        # @param [Fixnum] page_size
+        #   The maximum number of InboundOidcSsoProfiles to return. The service may return
+        #   fewer than this value. If omitted (or defaulted to zero) the server will use a
+        #   sensible default. This default may change over time. The maximum allowed value
+        #   is 100. Requests with page_size greater than that will be silently interpreted
+        #   as having this maximum value.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListInboundOidcSsoProfiles` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListInboundOidcSsoProfiles` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::ListInboundOidcSsoProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::ListInboundOidcSsoProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_inbound_oidc_sso_profiles(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/inboundOidcSsoProfiles', options)
+          command.response_representation = Google::Apis::CloudidentityV1::ListInboundOidcSsoProfilesResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::ListInboundOidcSsoProfilesResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an InboundOidcSsoProfile. When the target customer has enabled [Multi-
+        # party approval for sensitive actions](https://support.google.com/a/answer/
+        # 13790448), the `Operation` in the response will have `"done": false`, it will
+        # not have a response, and the metadata will have `"state": "awaiting-multi-
+        # party-approval"`.
+        # @param [String] name
+        #   Output only. [Resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the OIDC SSO profile.
+        # @param [Google::Apis::CloudidentityV1::InboundOidcSsoProfile] inbound_oidc_sso_profile_object
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_inbound_oidc_sso_profile(name, inbound_oidc_sso_profile_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudidentityV1::InboundOidcSsoProfile::Representation
+          command.request_object = inbound_oidc_sso_profile_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2372,9 +2570,69 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get a Policy
+        # Create a policy.
+        # @param [Google::Apis::CloudidentityV1::Policy] policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_policy(policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/policies', options)
+          command.request_representation = Google::Apis::CloudidentityV1::Policy::Representation
+          command.request_object = policy_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a policy.
         # @param [String] name
-        #   Required. The name of the policy to retrieve. Format: "policies/`policy`".
+        #   Required. The name of the policy to delete. Format: `policies/`policy``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a policy.
+        # @param [String] name
+        #   Required. The name of the policy to retrieve. Format: `policies/`policy``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2402,25 +2660,26 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Policies
+        # List policies.
         # @param [String] filter
         #   Optional. A CEL expression for filtering the results. Policies can be filtered
-        #   by application with this expression: setting.type.matches('^settings/gmail\\..*
-        #   $') Policies can be filtered by setting type with this expression: setting.
-        #   type.matches('^.*\\.service_status$') A maximum of one of the above setting.
-        #   type clauses can be used. Policies can be filtered by customer with this
-        #   expression: customer == "customers/`customer`" Where `customer` is the `id`
-        #   from the [Admin SDK `Customer` resource](https://developers.google.com/admin-
-        #   sdk/directory/reference/rest/v1/customers). You may use `customers/my_customer`
-        #   to specify your own organization. When no customer is mentioned it will be
-        #   default to customers/my_customer. A maximum of one customer clause can be used.
-        #   The above clauses can only be combined together in a single filter expression
-        #   with the `&&` operator.
+        #   using the expression in the following ways: - Filter by application: `setting.
+        #   type.matches('^settings/gmail\\..*$')` - Filter by setting type: `setting.type.
+        #   matches('^.*\\.service_status$')` - Filter by customer: `customer == "
+        #   customers/`customer`"` Where `customer` is the `id` from the [Admin SDK `
+        #   Customer` resource](https://developers.google.com/admin-sdk/directory/
+        #   reference/rest/v1/customers). You may use `customers/my_customer` to specify
+        #   your own organization. When no `customer` is mentioned it will be default to `
+        #   customers/my_customer`. You may only filter on policies for a single customer
+        #   at a time. The above clauses can be combined together in a single filter
+        #   expression with the `&&` and `||` operators, like in the following example: `
+        #   customer == "customers/my_customer" && ( setting.type.matches('^settings/gmail\
+        #   \..*$') || setting.type.matches('^.*\\.service_status$') )`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return. The service can return
-        #   fewer than this number. If omitted or set to 0, the default is 50 results per
-        #   page. The maximum allowed value is 100. `page_size` values greater than 100
-        #   default to 100.
+        #   fewer than this number. If omitted or set to `0`, the default is `50` results
+        #   per page. The maximum allowed value is `100`. `page_size` values greater than `
+        #   100` default to `100`.
         # @param [String] page_token
         #   Optional. The pagination token received from a prior call to PoliciesService.
         #   ListPolicies to retrieve the next page of results. When paginating, all other
@@ -2450,6 +2709,40 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a policy.
+        # @param [String] name
+        #   Output only. Identifier. The [resource name](https://cloud.google.com/apis/
+        #   design/resource_names) of the Policy. Format: policies/`policy`.
+        # @param [Google::Apis::CloudidentityV1::Policy] policy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_policy(name, policy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudidentityV1::Policy::Representation
+          command.request_object = policy_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

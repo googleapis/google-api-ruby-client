@@ -292,6 +292,712 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Claims a certificate provisioning process. For each certificate provisioning
+        # process, this operation can succeed only for one `caller_instance_id`.
+        # @param [String] name
+        #   Required. Resource name of the `CertificateProvisioningProcess` to claim. The
+        #   name pattern is given as `customers/`customer`/
+        #   certificateProvisioningProcesses/`certificate_provisioning_process`` with ``
+        #   customer`` being the obfuscated customer id and ``
+        #   certificate_provisioning_process`` being the certificate provisioning process
+        #   id.
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest] google_chrome_management_versions_v1_claim_certificate_provisioning_process_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def claim_customer_certificate_provisioning_process(name, google_chrome_management_versions_v1_claim_certificate_provisioning_process_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:claim', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest::Representation
+          command.request_object = google_chrome_management_versions_v1_claim_certificate_provisioning_process_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a certificate provisioning process.
+        # @param [String] name
+        #   Required. Resource name of the `CertificateProvisioningProcess` to return. The
+        #   name pattern is given as `customers/`customer`/
+        #   certificateProvisioningProcesses/`certificate_provisioning_process`` with ``
+        #   customer`` being the obfuscated customer id and ``
+        #   certificate_provisioning_process`` being the certificate provisioning process
+        #   id.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_certificate_provisioning_process(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CertificateProvisioningProcess
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Marks a certificate provisioning process as failed.
+        # @param [String] name
+        #   Required. Resource name of the `CertificateProvisioningProcess` to return. The
+        #   name pattern is given as `customers/`customer`/
+        #   certificateProvisioningProcesses/`certificate_provisioning_process`` with ``
+        #   customer`` being the obfuscated customer id and ``
+        #   certificate_provisioning_process`` being the certificate provisioning process
+        #   id.
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SetFailureRequest] google_chrome_management_versions_v1_set_failure_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SetFailureResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SetFailureResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_customer_certificate_provisioning_process_failure(name, google_chrome_management_versions_v1_set_failure_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:setFailure', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SetFailureRequest::Representation
+          command.request_object = google_chrome_management_versions_v1_set_failure_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SetFailureResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SetFailureResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Requests the client that initiated a certificate provisioning process to sign
+        # data. This should only be called after `ClaimCertificateProvisioningProcess`
+        # has been successfully executed.
+        # @param [String] name
+        #   Required. Resource name of the `CertificateProvisioningProcess` to return. The
+        #   name pattern is given as `customers/`customer`/
+        #   certificateProvisioningProcesses/`certificate_provisioning_process`` with ``
+        #   customer`` being the obfuscated customer id and ``
+        #   certificate_provisioning_process`` being the certificate provisioning process
+        #   id.
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SignDataRequest] google_chrome_management_versions_v1_sign_data_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def sign_customer_certificate_provisioning_process_data(name, google_chrome_management_versions_v1_sign_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:signData', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SignDataRequest::Representation
+          command.request_object = google_chrome_management_versions_v1_sign_data_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Uploads a successfully issued certificate for a certificate provisioning
+        # process.
+        # @param [String] name
+        #   Required. Resource name of the `CertificateProvisioningProcess` to return. The
+        #   name pattern is given as `customers/`customer`/
+        #   certificateProvisioningProcesses/`certificate_provisioning_process`` with ``
+        #   customer`` being the obfuscated customer id and ``
+        #   certificate_provisioning_process`` being the certificate provisioning process
+        #   id.
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UploadCertificateRequest] google_chrome_management_versions_v1_upload_certificate_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UploadCertificateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UploadCertificateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_customer_certificate_provisioning_process_certificate(name, google_chrome_management_versions_v1_upload_certificate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:uploadCertificate', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UploadCertificateRequest::Representation
+          command.request_object = google_chrome_management_versions_v1_upload_certificate_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UploadCertificateResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UploadCertificateResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_certificate_provisioning_process_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a connector config.
+        # @param [String] parent
+        #   Required. Format: customers/`customer`
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig] google_chrome_management_versions_v1_connector_config_object
+        # @param [String] connector_config_id
+        #   Optional. ID to use for the connector config, which becomes the final
+        #   component of the connector config's resource name. If provided, the ID must be
+        #   1-63 characters long, and contain only lowercase letters, digits, and hyphens.
+        #   It must start with a letter, and end with a letter or number. If not provided,
+        #   the connector config will be assigned a random UUID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_customer_connector_config(parent, google_chrome_management_versions_v1_connector_config_object = nil, connector_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/connectorConfigs', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig::Representation
+          command.request_object = google_chrome_management_versions_v1_connector_config_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['connectorConfigId'] = connector_config_id unless connector_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a connector config.
+        # @param [String] name
+        #   Required. Format: customers/`customer`/connectorConfigs/`connector_config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_customer_connector_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a connector config with customer ID and config ID.
+        # @param [String] name
+        #   Required. Format: customers/`customer`/connectorConfigs/`connector_config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_connector_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists connector configs of a customer.
+        # @param [String] parent
+        #   Required. Format: customers/`customer`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of connector configs to return. The default page
+        #   size is 50 if page_size is unspecified, and the maximum page size allowed is
+        #   100. Values above 100 will be capped at 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListConnectorConfigs` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListConnectorConfigs` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListConnectorConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListConnectorConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_connector_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/connectorConfigs', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListConnectorConfigsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListConnectorConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a connector config.
+        # @param [String] name
+        #   Identifier. Format: customers/`customer`/connectorConfigs/`connector_config`
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig] google_chrome_management_versions_v1_connector_config_object
+        # @param [String] update_mask
+        #   Optional. The update mask that can be used to specify which fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_customer_connector_config(name, google_chrome_management_versions_v1_connector_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig::Representation
+          command.request_object = google_chrome_management_versions_v1_connector_config_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the setting state of the insights feature for the customer.
+        # @param [String] customer
+        #   Required. The customer to check the enablement status for. Format: customers/`
+        #   customer_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CheckEnablementStatusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CheckEnablementStatusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_customer_enterprise_security_insight_enablement_status(customer, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/enterprise/securityInsights:checkEnablementStatus', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CheckEnablementStatusResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CheckEnablementStatusResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Disables insights for the customer.
+        # @param [String] customer
+        #   Required. The customer to disable insights for. Format: customers/`customer`
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsRequest] google_chrome_management_versions_v1_disable_insights_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_customer_enterprise_security_insight(customer, google_chrome_management_versions_v1_disable_insights_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+customer}/enterprise/securityInsights:disable', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsRequest::Representation
+          command.request_object = google_chrome_management_versions_v1_disable_insights_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DisableInsightsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enables insights for the customer and sets up required chrome connectors.
+        # @param [String] customer
+        #   Required. The customer to enable insights for. Format: customers/`customer`
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsRequest] google_chrome_management_versions_v1_enable_insights_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enable_customer_enterprise_security_insight(customer, google_chrome_management_versions_v1_enable_insights_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+customer}/enterprise/securityInsights:enable', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsRequest::Representation
+          command.request_object = google_chrome_management_versions_v1_enable_insights_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnableInsightsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a high-level summary of content transfers for a given customer.
+        # @param [String] customer
+        #   Required. The customer ID in the format "customers/`customer_id`".
+        # @param [String] filter
+        #   Optional. The filter to apply to the request. For syntax, see AIP-160. Data is
+        #   not available for events older than 180 days, and may be unavailable or
+        #   inaccurate for time ranges less than 4 hours. If `event_time` is not specified,
+        #   results will be returned for the last 30 days. Supported fields for filtering:
+        #   - `event_time` Supported operators: - `>=` and `<=` for `event_time`
+        #   Supported conjunctions: - `AND` Example: `event_time >= "2024-01-01T00:00:00Z"
+        #   AND event_time <= "2024-01-02T00:00:00Z"`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_customer_enterprise_security_insight_content_transfers(customer, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/enterprise/securityInsights:queryContentTransfers', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns summaries of content transfers for a given metric and breakdown
+        # dimension.
+        # @param [String] customer
+        #   Required. The customer ID in the format "customers/`customer_id`".
+        # @param [String] breakdown
+        #   Optional. The dimension to break down the content transfers by. Defaults to
+        #   USER.
+        # @param [String] filter
+        #   Optional. The filter to apply to the request. For syntax, see AIP-160. Data is
+        #   not available for events older than 180 days or more recent than 48 hours ago.
+        #   If `event_time` is not specified, results will end 48 hours ago. Supported
+        #   fields for filtering: - `user` - `event_domain` - `content_category` - `
+        #   event_time` Filtering by `user` or `event_domain` requires the `breakdown`
+        #   dimension to be set to the corresponding value (e.g., you must set `breakdown =
+        #   USER` to filter by `user`). Supported operators: - `=` for `user`, `
+        #   event_domain`, and `content_category`. - `<=` for `event_time`. Supported
+        #   conjunctions: - `AND` Example: `user = "testuser" AND event_time <= "2024-01-
+        #   02T00:00:00Z"`
+        # @param [String] fixed_time_range
+        #   Optional. The fixed time range to return the breakdowns for. Defaults to
+        #   FIXED_TIME_RANGE_FOUR_WEEKS. Fixed time ranges are used to allow for
+        #   precomputation and optimize response times.
+        # @param [String] metric
+        #   Optional. The metric to return the breakdowns for. Defaults to
+        #   CONTENT_TRANSFERS_METRIC_TOTAL_TRANSFERS.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of breakdowns to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 breakdowns will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   QueryContentTransfersBreakdowns` call. Provide this to retrieve the subsequent
+        #   page. When paginating, all other parameters provided to `
+        #   QueryContentTransfersBreakdowns` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_customer_enterprise_security_insight_content_transfers_breakdowns(customer, breakdown: nil, filter: nil, fixed_time_range: nil, metric: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/enterprise/securityInsights:queryContentTransfersBreakdowns', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['breakdown'] = breakdown unless breakdown.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fixedTimeRange'] = fixed_time_range unless fixed_time_range.nil?
+          command.query['metric'] = metric unless metric.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a high-level summary of URL visits for a given customer.
+        # @param [String] customer
+        #   Required. The customer ID in the format "customers/`customer_id`".
+        # @param [String] filter
+        #   Optional. The filter to apply to the request. For syntax, see AIP-160. Data is
+        #   not available for events older than 180 days, and may be unavailable or
+        #   inaccurate for time ranges less than 4 hours. If `event_time` is not specified,
+        #   results will be returned for the last 30 days. Supported fields for filtering:
+        #   - `event_time` Supported operators: - `>=` and `<=` for `event_time`
+        #   Supported conjunctions: - `AND` Example: `event_time >= "2024-01-01T00:00:00Z"
+        #   AND event_time <= "2024-01-02T00:00:00Z"`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_customer_enterprise_security_insight_url_visits(customer, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/enterprise/securityInsights:queryUrlVisits', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns summaries of URL visits for a given metric and breakdown dimension.
+        # @param [String] customer
+        #   Required. The customer ID in the format "customers/`customer_id`".
+        # @param [String] breakdown
+        #   Optional. The dimension to break down the URL visits by. Defaults to USER.
+        # @param [String] filter
+        #   Optional. The filter to apply to the request. For syntax, see AIP-160. Data is
+        #   not available for events older than 180 days or more recent than 48 hours ago.
+        #   If `event_time` is not specified, results will end 48 hours ago. Supported
+        #   fields for filtering: - `user` - `event_domain` - `event_time` Filtering by `
+        #   user` or `event_domain` requires the `breakdown` dimension to be set to the
+        #   corresponding value (e.g., you must set `breakdown = USER` to filter by `user`)
+        #   . Supported operators: - `=` for `user` and `event_domain`. - `<=` for `
+        #   event_time`. Supported conjunctions: - `AND` Example: `user = "testuser" AND
+        #   event_time <= "2024-01-02T00:00:00Z"`
+        # @param [String] fixed_time_range
+        #   Optional. The fixed time range to return the breakdowns for. Defaults to
+        #   FIXED_TIME_RANGE_FOUR_WEEKS. Fixed time ranges are used to allow for
+        #   precomputation and optimize response times.
+        # @param [String] metric
+        #   Optional. The metric to return the breakdowns for. Defaults to
+        #   URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of breakdowns to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 breakdowns will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `QueryUrlVisitsBreakdowns`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `QueryUrlVisitsBreakdowns` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_customer_enterprise_security_insight_url_visits_breakdowns(customer, breakdown: nil, filter: nil, fixed_time_range: nil, metric: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/enterprise/securityInsights:queryUrlVisitsBreakdowns', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['breakdown'] = breakdown unless breakdown.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fixedTimeRange'] = fixed_time_range unless fixed_time_range.nil?
+          command.query['metric'] = metric unless metric.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the data collected from a Chrome browser profile.
         # @param [String] name
         #   Required. Format: customers/`customer_id`/profiles/`profile_permanent_id`
@@ -415,6 +1121,151 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Chrome browser profile remote command.
+        # @param [String] parent
+        #   Required. Format: customers/`customer_id`/profiles/`profile_permanent_id`
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand] google_chrome_management_versions_v1_chrome_browser_profile_command_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_customer_profile_command(parent, google_chrome_management_versions_v1_chrome_browser_profile_command_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/commands', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand::Representation
+          command.request_object = google_chrome_management_versions_v1_chrome_browser_profile_command_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Chrome browser profile remote command.
+        # @param [String] name
+        #   Required. Format: customers/`customer_id`/profiles/`profile_permanent_id`/
+        #   commands/`command_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_customer_profile_command(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists remote commands of a Chrome browser profile.
+        # @param [String] parent
+        #   Required. Format: customers/`customer_id`/profiles/`profile_permanent_id`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of commands to return. The default page size is
+        #   100 if page_size is unspecified, and the maximum page size allowed is 100.
+        # @param [String] page_token
+        #   Optional. The page token used to retrieve a specific page of the listing
+        #   request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_customer_profile_commands(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/commands', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a count of active devices per set time frames.
+        # @param [String] customer
+        #   Required. Obfuscated customer ID prefixed with "customers/C" or "customers/
+        #   my_customer".
+        # @param [Fixnum] date_day
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
+        # @param [Fixnum] date_month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        #   and day.
+        # @param [Fixnum] date_year
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountActiveDevicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountActiveDevicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_active_devices(customer, date_day: nil, date_month: nil, date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countActiveDevices', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountActiveDevicesResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountActiveDevicesResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['date.day'] = date_day unless date_day.nil?
+          command.query['date.month'] = date_month unless date_month.nil?
+          command.query['date.year'] = date_year unless date_year.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -625,6 +1476,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generate report of installed Chrome versions on managed profiles.
+        # @param [String] customer
+        #   Required. Customer id or "my_customer" to use the customer associated to the
+        #   account making the request.
+        # @param [String] filter
+        #   Optional. Query string to filter results, AND-separated fields in EBNF syntax.
+        #   Note: OR operations are not supported in this filter. Supported filter fields:
+        #   * last_active_date
+        # @param [String] org_unit_id
+        #   The ID of the organizational unit. If omitted, all data will be returned.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return. Maximum and default are 100.
+        # @param [String] page_token
+        #   Optional. Token to specify the page of the request to be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeProfileVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeProfileVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_chrome_profile_versions(customer, filter: nil, org_unit_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countChromeProfileVersions', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeProfileVersionsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountChromeProfileVersionsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generate report of installed Chrome versions.
         # @param [String] customer
         #   Required. Customer id or "my_customer" to use the customer associated to the
@@ -665,6 +1561,92 @@ module Google
           command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a count of devices per boot type.
+        # @param [String] customer
+        #   Required. Obfuscated customer ID prefixed with "customers/C" or "customers/
+        #   my_customer".
+        # @param [Fixnum] date_day
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
+        # @param [Fixnum] date_month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        #   and day.
+        # @param [Fixnum] date_year
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerBootTypeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerBootTypeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_devices_per_boot_type(customer, date_day: nil, date_month: nil, date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countDevicesPerBootType', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerBootTypeResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerBootTypeResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['date.day'] = date_day unless date_day.nil?
+          command.query['date.month'] = date_month unless date_month.nil?
+          command.query['date.year'] = date_year unless date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a count of devices per channel.
+        # @param [String] customer
+        #   Required. Obfuscated customer ID prefixed with "customers/C" or "customers/
+        #   my_customer".
+        # @param [Fixnum] date_day
+        #   Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        #   specify a year by itself or a year and month where the day isn't significant.
+        # @param [Fixnum] date_month
+        #   Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        #   and day.
+        # @param [Fixnum] date_year
+        #   Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        #   year.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def count_customer_report_devices_per_release_channel(customer, date_day: nil, date_month: nil, date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:countDevicesPerReleaseChannel', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['date.day'] = date_day unless date_day.nil?
+          command.query['date.month'] = date_month unless date_month.nil?
+          command.query['date.year'] = date_year unless date_year.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -942,6 +1924,64 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generate report of managed Chrome profiles that have a specified app installed.
+        # @param [String] customer
+        #   Required. Customer id or "my_customer" to use the customer associated to the
+        #   account making the request.
+        # @param [String] app_id
+        #   Required. Unique identifier of the app. For Chrome apps and extensions, the 32-
+        #   character id (e.g. ehoadneljpdggcbbknedodolkkjodefl). For Android apps, the
+        #   package name (e.g. com.evernote).
+        # @param [String] app_type
+        #   Type of the app. Optional. If not provided, an app type will be inferred from
+        #   the format of the app ID.
+        # @param [String] filter
+        #   Optional. Query string to filter results, AND-separated fields in EBNF syntax.
+        #   Note: OR operations are not supported in this filter. Supported filter fields:
+        #   * last_active_date
+        # @param [String] order_by
+        #   Optional. Field used to order results. Supported order by fields: * email *
+        #   profile_id * profile_permanent_id
+        # @param [String] org_unit_id
+        #   Optional. The ID of the organizational unit.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of results to return. Maximum and default are 100.
+        # @param [String] page_token
+        #   Optional. Token to specify the page of the request to be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindInstalledAppProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindInstalledAppProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def find_customer_report_installed_app_profiles(customer, app_id: nil, app_type: nil, filter: nil, order_by: nil, org_unit_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:findInstalledAppProfiles', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindInstalledAppProfilesResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindInstalledAppProfilesResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['appId'] = app_id unless app_id.nil?
+          command.query['appType'] = app_type unless app_type.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['orgUnitId'] = org_unit_id unless org_unit_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get telemetry device.
         # @param [String] name
         #   Required. Name of the `TelemetryDevice` to return.
@@ -1068,7 +2108,8 @@ module Google
         #   user - audio_severe_underrun_event - usb_peripherals_event -
         #   https_latency_change_event - network_state_change_event -
         #   wifi_signal_strength_event - vpn_connection_state_change_event -
-        #   app_install_event - app_uninstall_event - app_launch_event - os_crash_event
+        #   app_install_event - app_uninstall_event - app_launch_event - os_crash_event -
+        #   external_displays_event
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1287,6 +2328,163 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['readMask'] = read_mask unless read_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Moves a third party chrome profile user to a destination OU. All profiles
+        # associated to that user will be moved to the destination OU.
+        # @param [String] name
+        #   Required. Format: customers/`customer_id`/thirdPartyProfileUsers/`
+        #   third_party_profile_user_id`
+        # @param [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest] google_chrome_management_versions_v1_move_third_party_profile_user_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def move_customer_third_party_profile_user(name, google_chrome_management_versions_v1_move_third_party_profile_user_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:move', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest::Representation
+          command.request_object = google_chrome_management_versions_v1_move_third_party_profile_user_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
+        # @param [String] name
+        #   The name of the operation resource to be cancelled.
+        # @param [Google::Apis::ChromemanagementV1::GoogleLongrunningCancelOperationRequest] google_longrunning_cancel_operation_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_operation(name, google_longrunning_cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::ChromemanagementV1::GoogleLongrunningCancelOperationRequest::Representation
+          command.request_object = google_longrunning_cancel_operation_request_object
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation's parent resource.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleLongrunningListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleLongrunningListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleLongrunningListOperationsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleLongrunningListOperationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

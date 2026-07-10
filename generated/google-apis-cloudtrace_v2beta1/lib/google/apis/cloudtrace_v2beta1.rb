@@ -27,7 +27,7 @@ module Google
     # with the Cloud Trace API directly. If you are looking to instrument your
     # application for Cloud Trace, we recommend using OpenTelemetry.
     #
-    # @see https://cloud.google.com/trace
+    # @see https://cloud.google.com/trace/
     module CloudtraceV2beta1
       # Version of the Cloud Trace API this client connects to.
       # This is NOT the gem version.

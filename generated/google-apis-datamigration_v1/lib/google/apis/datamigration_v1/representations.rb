@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BadRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BinaryLogParser
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DebugInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DemoteDestinationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +305,12 @@ module Google
       end
       
       class FetchStaticIpsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldViolation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +352,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Help
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HeterogeneousMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportMappingRulesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +389,12 @@ module Google
       end
       
       class IntComparisonFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Link
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -401,6 +443,12 @@ module Google
       end
       
       class ListPrivateConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalizedMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -496,6 +544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MySqlHomogeneousConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -568,6 +622,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PostgresHomogeneousConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgresSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostgresToSqlServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreconditionFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreconditionFailureViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrimaryInstanceSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -598,6 +682,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscInterfaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaFailureViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestartMigrationJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +719,12 @@ module Google
       end
       
       class ResumeMigrationJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetryInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -754,7 +874,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerDagConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlServerDatabaseBackup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerDestinationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1027,6 +1159,14 @@ module Google
           property :seed_job_details, as: 'seedJobDetails', class: Google::Apis::DatamigrationV1::SeedJobDetails, decorator: Google::Apis::DatamigrationV1::SeedJobDetails::Representation
       
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class BadRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_violations, as: 'fieldViolations', class: Google::Apis::DatamigrationV1::FieldViolation, decorator: Google::Apis::DatamigrationV1::FieldViolation::Representation
+      
         end
       end
       
@@ -1306,6 +1446,14 @@ module Google
         end
       end
       
+      class DebugInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          collection :stack_entries, as: 'stackEntries'
+        end
+      end
+      
       class DemoteDestinationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1422,6 +1570,15 @@ module Google
         end
       end
       
+      class ErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          hash :metadata, as: 'metadata'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1437,6 +1594,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :static_ips, as: 'staticIps'
+        end
+      end
+      
+      class FieldViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :field, as: 'field'
+          property :localized_message, as: 'localizedMessage', class: Google::Apis::DatamigrationV1::LocalizedMessage, decorator: Google::Apis::DatamigrationV1::LocalizedMessage::Representation
+      
+          property :reason, as: 'reason'
         end
       end
       
@@ -1495,10 +1663,26 @@ module Google
           property :api_version, as: 'apiVersion'
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          hash :metadata, as: 'metadata'
           property :requested_cancellation, as: 'requestedCancellation'
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class Help
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :links, as: 'links', class: Google::Apis::DatamigrationV1::Link, decorator: Google::Apis::DatamigrationV1::Link::Representation
+      
+        end
+      end
+      
+      class HeterogeneousMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unsupported_events_count, :numeric_string => true, as: 'unsupportedEventsCount'
         end
       end
       
@@ -1547,6 +1731,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :value, :numeric_string => true, as: 'value'
           property :value_comparison, as: 'valueComparison'
+        end
+      end
+      
+      class Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :url, as: 'url'
         end
       end
       
@@ -1613,6 +1805,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DatamigrationV1::Operation, decorator: Google::Apis::DatamigrationV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1623,6 +1816,14 @@ module Google
           collection :private_connections, as: 'privateConnections', class: Google::Apis::DatamigrationV1::PrivateConnection, decorator: Google::Apis::DatamigrationV1::PrivateConnection::Representation
       
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class LocalizedMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locale, as: 'locale'
+          property :message, as: 'message'
         end
       end
       
@@ -1746,14 +1947,22 @@ module Google
       
           property :filter, as: 'filter'
           hash :labels, as: 'labels'
+          property :mysql_homogeneous_config, as: 'mysqlHomogeneousConfig', class: Google::Apis::DatamigrationV1::MySqlHomogeneousConfig, decorator: Google::Apis::DatamigrationV1::MySqlHomogeneousConfig::Representation
+      
           property :name, as: 'name'
           property :objects_config, as: 'objectsConfig', class: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig, decorator: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig::Representation
       
           property :oracle_to_postgres_config, as: 'oracleToPostgresConfig', class: Google::Apis::DatamigrationV1::OracleToPostgresConfig, decorator: Google::Apis::DatamigrationV1::OracleToPostgresConfig::Representation
       
+          property :original_migration_name, as: 'originalMigrationName'
           property :performance_config, as: 'performanceConfig', class: Google::Apis::DatamigrationV1::PerformanceConfig, decorator: Google::Apis::DatamigrationV1::PerformanceConfig::Representation
       
           property :phase, as: 'phase'
+          property :postgres_homogeneous_config, as: 'postgresHomogeneousConfig', class: Google::Apis::DatamigrationV1::PostgresHomogeneousConfig, decorator: Google::Apis::DatamigrationV1::PostgresHomogeneousConfig::Representation
+      
+          property :postgres_to_sqlserver_config, as: 'postgresToSqlserverConfig', class: Google::Apis::DatamigrationV1::PostgresToSqlServerConfig, decorator: Google::Apis::DatamigrationV1::PostgresToSqlServerConfig::Representation
+      
+          property :purpose, as: 'purpose'
           property :reverse_ssh_connectivity, as: 'reverseSshConnectivity', class: Google::Apis::DatamigrationV1::ReverseSshConnectivity, decorator: Google::Apis::DatamigrationV1::ReverseSshConnectivity::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
@@ -1780,6 +1989,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :error, as: 'error', class: Google::Apis::DatamigrationV1::Status, decorator: Google::Apis::DatamigrationV1::Status::Representation
+      
+          property :heterogeneous_metadata, as: 'heterogeneousMetadata', class: Google::Apis::DatamigrationV1::HeterogeneousMetadata, decorator: Google::Apis::DatamigrationV1::HeterogeneousMetadata::Representation
       
           property :name, as: 'name'
           property :phase, as: 'phase'
@@ -1843,6 +2054,13 @@ module Google
           property :ssl, as: 'ssl', class: Google::Apis::DatamigrationV1::SslConfig, decorator: Google::Apis::DatamigrationV1::SslConfig::Representation
       
           property :username, as: 'username'
+        end
+      end
+      
+      class MySqlHomogeneousConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_primary_destination, as: 'isPrimaryDestination'
         end
       end
       
@@ -1968,11 +2186,16 @@ module Google
           property :alloydb_cluster_id, as: 'alloydbClusterId'
           property :cloud_sql_id, as: 'cloudSqlId'
           property :database, as: 'database'
+          property :enable_iam_authentication, as: 'enableIamAuthentication'
+          property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity::Representation
+      
           property :host, as: 'host'
           property :network_architecture, as: 'networkArchitecture'
           property :password, as: 'password'
           property :password_set, as: 'passwordSet'
           property :port, as: 'port'
+          property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatamigrationV1::PrivateConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateConnectivity::Representation
+      
           property :private_service_connect_connectivity, as: 'privateServiceConnectConnectivity', class: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity::Representation
       
           property :ssl, as: 'ssl', class: Google::Apis::DatamigrationV1::SslConfig, decorator: Google::Apis::DatamigrationV1::SslConfig::Representation
@@ -1988,6 +2211,48 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_concurrent_connections, as: 'maxConcurrentConnections'
           property :transaction_timeout, as: 'transactionTimeout'
+        end
+      end
+      
+      class PostgresHomogeneousConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_native_logical, as: 'isNativeLogical'
+          property :max_additional_subscriptions, as: 'maxAdditionalSubscriptions'
+        end
+      end
+      
+      class PostgresSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :skip_full_dump, as: 'skipFullDump'
+        end
+      end
+      
+      class PostgresToSqlServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :postgres_source_config, as: 'postgresSourceConfig', class: Google::Apis::DatamigrationV1::PostgresSourceConfig, decorator: Google::Apis::DatamigrationV1::PostgresSourceConfig::Representation
+      
+          property :sqlserver_destination_config, as: 'sqlserverDestinationConfig', class: Google::Apis::DatamigrationV1::SqlServerDestinationConfig, decorator: Google::Apis::DatamigrationV1::SqlServerDestinationConfig::Representation
+      
+        end
+      end
+      
+      class PreconditionFailure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :violations, as: 'violations', class: Google::Apis::DatamigrationV1::PreconditionFailureViolation, decorator: Google::Apis::DatamigrationV1::PreconditionFailureViolation::Representation
+      
+        end
+      end
+      
+      class PreconditionFailureViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :subject, as: 'subject'
+          property :type, as: 'type'
         end
       end
       
@@ -2015,6 +2280,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::DatamigrationV1::PscInterfaceConfig, decorator: Google::Apis::DatamigrationV1::PscInterfaceConfig::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
@@ -2046,6 +2313,53 @@ module Google
         end
       end
       
+      class PscInterfaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment, as: 'networkAttachment'
+        end
+      end
+      
+      class QuotaFailure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :violations, as: 'violations', class: Google::Apis::DatamigrationV1::QuotaFailureViolation, decorator: Google::Apis::DatamigrationV1::QuotaFailureViolation::Representation
+      
+        end
+      end
+      
+      class QuotaFailureViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_service, as: 'apiService'
+          property :description, as: 'description'
+          property :future_quota_value, :numeric_string => true, as: 'futureQuotaValue'
+          hash :quota_dimensions, as: 'quotaDimensions'
+          property :quota_id, as: 'quotaId'
+          property :quota_metric, as: 'quotaMetric'
+          property :quota_value, :numeric_string => true, as: 'quotaValue'
+          property :subject, as: 'subject'
+        end
+      end
+      
+      class RequestInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :serving_data, as: 'servingData'
+        end
+      end
+      
+      class ResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :owner, as: 'owner'
+          property :resource_name, as: 'resourceName'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
       class RestartMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2060,6 +2374,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :skip_validation, as: 'skipValidation'
+        end
+      end
+      
+      class RetryInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retry_delay, as: 'retryDelay'
         end
       end
       
@@ -2280,7 +2601,9 @@ module Google
           property :backups, as: 'backups', class: Google::Apis::DatamigrationV1::SqlServerBackups, decorator: Google::Apis::DatamigrationV1::SqlServerBackups::Representation
       
           property :cloud_sql_id, as: 'cloudSqlId'
+          property :cloud_sql_project_id, as: 'cloudSqlProjectId'
           property :database, as: 'database'
+          property :dbm_port, as: 'dbmPort'
           property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatamigrationV1::ForwardSshTunnelConnectivity::Representation
       
           property :host, as: 'host'
@@ -2299,12 +2622,28 @@ module Google
         end
       end
       
+      class SqlServerDagConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :linked_server, as: 'linkedServer'
+          property :source_ag, as: 'sourceAg'
+        end
+      end
+      
       class SqlServerDatabaseBackup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :database, as: 'database'
           property :encryption_options, as: 'encryptionOptions', class: Google::Apis::DatamigrationV1::SqlServerEncryptionOptions, decorator: Google::Apis::DatamigrationV1::SqlServerEncryptionOptions::Representation
       
+        end
+      end
+      
+      class SqlServerDestinationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_concurrent_connections, as: 'maxConcurrentConnections'
+          property :transaction_timeout, as: 'transactionTimeout'
         end
       end
       
@@ -2321,6 +2660,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_file_pattern, as: 'backupFilePattern'
+          property :dag_config, as: 'dagConfig', class: Google::Apis::DatamigrationV1::SqlServerDagConfig, decorator: Google::Apis::DatamigrationV1::SqlServerDagConfig::Representation
+      
           collection :database_backups, as: 'databaseBackups', class: Google::Apis::DatamigrationV1::SqlServerDatabaseBackup, decorator: Google::Apis::DatamigrationV1::SqlServerDatabaseBackup::Representation
       
           property :promote_when_ready, as: 'promoteWhenReady'

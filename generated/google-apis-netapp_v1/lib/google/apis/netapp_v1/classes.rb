@@ -228,6 +228,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Represents ONTAP source details.
+        # Corresponds to the JSON property `ontapSource`
+        # @return [Google::Apis::NetappV1::OntapSource]
+        attr_accessor :ontap_source
+      
         # Output only. Reserved for future use
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -248,7 +253,8 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot
       
-        # Volume full name of this backup belongs to. Format: `projects/`projects_id`/
+        # The resource name of the volume that this backup belongs to. You must provide
+        # either `source_volume` or `ontap_source`. Format: `projects/`project_id`/
         # locations/`location`/volumes/`volume_id``
         # Corresponds to the JSON property `sourceVolume`
         # @return [String]
@@ -286,6 +292,7 @@ module Google
           @enforced_retention_end_time = args[:enforced_retention_end_time] if args.key?(:enforced_retention_end_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @ontap_source = args[:ontap_source] if args.key?(:ontap_source)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
@@ -426,7 +433,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :backup_minimum_enforced_retention_days
       
-        # Optional. Indicates if the daily backups are immutable. Atleast one of
+        # Optional. Indicates if the daily backups are immutable. At least one of
         # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
         # manual_backup_immutable must be true.
         # Corresponds to the JSON property `dailyBackupImmutable`
@@ -434,7 +441,7 @@ module Google
         attr_accessor :daily_backup_immutable
         alias_method :daily_backup_immutable?, :daily_backup_immutable
       
-        # Optional. Indicates if the manual backups are immutable. Atleast one of
+        # Optional. Indicates if the manual backups are immutable. At least one of
         # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
         # manual_backup_immutable must be true.
         # Corresponds to the JSON property `manualBackupImmutable`
@@ -442,7 +449,7 @@ module Google
         attr_accessor :manual_backup_immutable
         alias_method :manual_backup_immutable?, :manual_backup_immutable
       
-        # Optional. Indicates if the monthly backups are immutable. Atleast one of
+        # Optional. Indicates if the monthly backups are immutable. At least one of
         # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
         # manual_backup_immutable must be true.
         # Corresponds to the JSON property `monthlyBackupImmutable`
@@ -450,7 +457,7 @@ module Google
         attr_accessor :monthly_backup_immutable
         alias_method :monthly_backup_immutable?, :monthly_backup_immutable
       
-        # Optional. Indicates if the weekly backups are immutable. Atleast one of
+        # Optional. Indicates if the weekly backups are immutable. At least one of
         # daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and
         # manual_backup_immutable must be true.
         # Corresponds to the JSON property `weeklyBackupImmutable`
@@ -469,6 +476,33 @@ module Google
           @manual_backup_immutable = args[:manual_backup_immutable] if args.key?(:manual_backup_immutable)
           @monthly_backup_immutable = args[:monthly_backup_immutable] if args.key?(:monthly_backup_immutable)
           @weekly_backup_immutable = args[:weekly_backup_immutable] if args.key?(:weekly_backup_immutable)
+        end
+      end
+      
+      # Represents the backup source of the restore operation.
+      class BackupSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The backup resource name.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # Optional. List of files to be restored in the form of their absolute path as
+        # in source volume. If provided, only these files will be restored. If not
+        # provided, the entire backup will be restored (Full Backup Restore)
+        # Corresponds to the JSON property `fileList`
+        # @return [Array<String>]
+        attr_accessor :file_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @file_list = args[:file_list] if args.key?(:file_list)
         end
       end
       
@@ -492,6 +526,13 @@ module Google
         # @return [String]
         attr_accessor :backup_vault_type
       
+        # Output only. The crypto key version used to encrypt the backup vault. Format: `
+        # projects/`project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`
+        # crypto_key`/cryptoKeyVersions/`crypto_key_version``
+        # Corresponds to the JSON property `backupsCryptoKeyVersion`
+        # @return [String]
+        attr_accessor :backups_crypto_key_version
+      
         # Output only. Create time of the backup vault.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -507,6 +548,18 @@ module Google
         # Corresponds to the JSON property `destinationBackupVault`
         # @return [String]
         attr_accessor :destination_backup_vault
+      
+        # Output only. Field indicating encryption state of CMEK backups.
+        # Corresponds to the JSON property `encryptionState`
+        # @return [String]
+        attr_accessor :encryption_state
+      
+        # Optional. Specifies the Key Management System (KMS) configuration to be used
+        # for backup encryption. Format: `projects/`project`/locations/`location`/
+        # kmsConfigs/`kms_config``
+        # Corresponds to the JSON property `kmsConfig`
+        # @return [String]
+        attr_accessor :kms_config
       
         # Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
@@ -545,14 +598,229 @@ module Google
           @backup_region = args[:backup_region] if args.key?(:backup_region)
           @backup_retention_policy = args[:backup_retention_policy] if args.key?(:backup_retention_policy)
           @backup_vault_type = args[:backup_vault_type] if args.key?(:backup_vault_type)
+          @backups_crypto_key_version = args[:backups_crypto_key_version] if args.key?(:backups_crypto_key_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @destination_backup_vault = args[:destination_backup_vault] if args.key?(:destination_backup_vault)
+          @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
+          @kms_config = args[:kms_config] if args.key?(:kms_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @source_backup_vault = args[:source_backup_vault] if args.key?(:source_backup_vault)
           @source_region = args[:source_region] if args.key?(:source_region)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Block device represents the device(s) which are stored in the block volume.
+      class BlockDevice
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of host groups that identify hosts that can mount the block
+        # volume. Format: `projects/`project_id`/locations/`location`/hostGroups/`
+        # host_group_id`` This field can be updated after the block device is created.
+        # Corresponds to the JSON property `hostGroups`
+        # @return [Array<String>]
+        attr_accessor :host_groups
+      
+        # Output only. Device identifier of the block volume. This represents `
+        # lun_serial_number` for iSCSI volumes.
+        # Corresponds to the JSON property `identifier`
+        # @return [String]
+        attr_accessor :identifier
+      
+        # Optional. User-defined name for the block device, unique within the volume. In
+        # case no user input is provided, name will be auto-generated in the backend.
+        # The name must meet the following requirements: * Be between 1 and 255
+        # characters long. * Contain only uppercase or lowercase letters (A-Z, a-z),
+        # numbers (0-9), and the following special characters: "-", "_", "`", "`", ".". *
+        # Spaces are not allowed.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. The OS type of the volume. This field can't be changed
+        # after the block device is created.
+        # Corresponds to the JSON property `osType`
+        # @return [String]
+        attr_accessor :os_type
+      
+        # Optional. The size of the block device in GiB. Any value provided for the `
+        # size_gib` field during volume creation is ignored. The block device's size is
+        # system-managed and will be set to match the parent Volume's `capacity_gib`.
+        # Corresponds to the JSON property `sizeGib`
+        # @return [Fixnum]
+        attr_accessor :size_gib
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_groups = args[:host_groups] if args.key?(:host_groups)
+          @identifier = args[:identifier] if args.key?(:identifier)
+          @name = args[:name] if args.key?(:name)
+          @os_type = args[:os_type] if args.key?(:os_type)
+          @size_gib = args[:size_gib] if args.key?(:size_gib)
+        end
+      end
+      
+      # Configuration of the cache volume.
+      class CacheConfig
+        include Google::Apis::Core::Hashable
+      
+        # Pre-populate cache volume with data from the origin volume.
+        # Corresponds to the JSON property `cachePrePopulate`
+        # @return [Google::Apis::NetappV1::CachePrePopulate]
+        attr_accessor :cache_pre_populate
+      
+        # Output only. State of the prepopulation job indicating how the prepopulation
+        # is progressing.
+        # Corresponds to the JSON property `cachePrePopulateState`
+        # @return [String]
+        attr_accessor :cache_pre_populate_state
+      
+        # Optional. Flag indicating whether a CIFS change notification is enabled for
+        # the FlexCache volume.
+        # Corresponds to the JSON property `cifsChangeNotifyEnabled`
+        # @return [Boolean]
+        attr_accessor :cifs_change_notify_enabled
+        alias_method :cifs_change_notify_enabled?, :cifs_change_notify_enabled
+      
+        # Optional. Flag indicating whether writeback is enabled for the FlexCache
+        # volume.
+        # Corresponds to the JSON property `writebackEnabled`
+        # @return [Boolean]
+        attr_accessor :writeback_enabled
+        alias_method :writeback_enabled?, :writeback_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_pre_populate = args[:cache_pre_populate] if args.key?(:cache_pre_populate)
+          @cache_pre_populate_state = args[:cache_pre_populate_state] if args.key?(:cache_pre_populate_state)
+          @cifs_change_notify_enabled = args[:cifs_change_notify_enabled] if args.key?(:cifs_change_notify_enabled)
+          @writeback_enabled = args[:writeback_enabled] if args.key?(:writeback_enabled)
+        end
+      end
+      
+      # Cache Parameters for the volume.
+      class CacheParameters
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of the cache volume.
+        # Corresponds to the JSON property `cacheConfig`
+        # @return [Google::Apis::NetappV1::CacheConfig]
+        attr_accessor :cache_config
+      
+        # Output only. State of the cache volume indicating the peering status.
+        # Corresponds to the JSON property `cacheState`
+        # @return [String]
+        attr_accessor :cache_state
+      
+        # Output only. Copy-paste-able commands to be used on user's ONTAP to accept
+        # peering requests.
+        # Corresponds to the JSON property `command`
+        # @return [String]
+        attr_accessor :command
+      
+        # Optional. Indicates whether the cache volume has global file lock enabled.
+        # Corresponds to the JSON property `enableGlobalFileLock`
+        # @return [Boolean]
+        attr_accessor :enable_global_file_lock
+        alias_method :enable_global_file_lock?, :enable_global_file_lock
+      
+        # Output only. Temporary passphrase generated to accept cluster peering command.
+        # Corresponds to the JSON property `passphrase`
+        # @return [String]
+        attr_accessor :passphrase
+      
+        # Required. Name of the origin volume's ONTAP cluster.
+        # Corresponds to the JSON property `peerClusterName`
+        # @return [String]
+        attr_accessor :peer_cluster_name
+      
+        # Required. List of IC LIF addresses of the origin volume's ONTAP cluster.
+        # Corresponds to the JSON property `peerIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :peer_ip_addresses
+      
+        # Required. Name of the origin volume's SVM.
+        # Corresponds to the JSON property `peerSvmName`
+        # @return [String]
+        attr_accessor :peer_svm_name
+      
+        # Required. Name of the origin volume for the cache volume.
+        # Corresponds to the JSON property `peerVolumeName`
+        # @return [String]
+        attr_accessor :peer_volume_name
+      
+        # Optional. Expiration time for the peering command to be executed on user's
+        # ONTAP.
+        # Corresponds to the JSON property `peeringCommandExpiryTime`
+        # @return [String]
+        attr_accessor :peering_command_expiry_time
+      
+        # Output only. Detailed description of the current cache state.
+        # Corresponds to the JSON property `stateDetails`
+        # @return [String]
+        attr_accessor :state_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_config = args[:cache_config] if args.key?(:cache_config)
+          @cache_state = args[:cache_state] if args.key?(:cache_state)
+          @command = args[:command] if args.key?(:command)
+          @enable_global_file_lock = args[:enable_global_file_lock] if args.key?(:enable_global_file_lock)
+          @passphrase = args[:passphrase] if args.key?(:passphrase)
+          @peer_cluster_name = args[:peer_cluster_name] if args.key?(:peer_cluster_name)
+          @peer_ip_addresses = args[:peer_ip_addresses] if args.key?(:peer_ip_addresses)
+          @peer_svm_name = args[:peer_svm_name] if args.key?(:peer_svm_name)
+          @peer_volume_name = args[:peer_volume_name] if args.key?(:peer_volume_name)
+          @peering_command_expiry_time = args[:peering_command_expiry_time] if args.key?(:peering_command_expiry_time)
+          @state_details = args[:state_details] if args.key?(:state_details)
+        end
+      end
+      
+      # Pre-populate cache volume with data from the origin volume.
+      class CachePrePopulate
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of directory-paths to be excluded for pre-population for the
+        # FlexCache volume.
+        # Corresponds to the JSON property `excludePathList`
+        # @return [Array<String>]
+        attr_accessor :exclude_path_list
+      
+        # Optional. List of directory-paths to be pre-populated for the FlexCache volume.
+        # Corresponds to the JSON property `pathList`
+        # @return [Array<String>]
+        attr_accessor :path_list
+      
+        # Optional. Flag indicating whether the directories listed with the `path_list`
+        # need to be recursively pre-populated.
+        # Corresponds to the JSON property `recursion`
+        # @return [Boolean]
+        attr_accessor :recursion
+        alias_method :recursion?, :recursion
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_path_list = args[:exclude_path_list] if args.key?(:exclude_path_list)
+          @path_list = args[:path_list] if args.key?(:path_list)
+          @recursion = args[:recursion] if args.key?(:recursion)
         end
       end
       
@@ -566,6 +834,41 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Details about a clone volume.
+      class CloneDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Shared space in GiB. Determined at volume creation time based on
+        # size of source snapshot.
+        # Corresponds to the JSON property `sharedSpaceGib`
+        # @return [Fixnum]
+        attr_accessor :shared_space_gib
+      
+        # Output only. Specifies the full resource name of the source snapshot from
+        # which this volume was cloned. Format: projects/`project`/locations/`location`/
+        # volumes/`volume`/snapshots/`snapshot`
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        # Output only. Full name of the source volume resource. Format: projects/`
+        # project`/locations/`location`/volumes/`volume`
+        # Corresponds to the JSON property `sourceVolume`
+        # @return [String]
+        attr_accessor :source_volume
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shared_space_gib = args[:shared_space_gib] if args.key?(:shared_space_gib)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
+          @source_volume = args[:source_volume] if args.key?(:source_volume)
         end
       end
       
@@ -703,6 +1006,165 @@ module Google
         end
       end
       
+      # EstablishVolumePeeringRequest establishes cluster and svm peerings between the
+      # source and destination clusters.
+      class EstablishVolumePeeringRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the user's local source cluster to be peered with the
+        # destination cluster.
+        # Corresponds to the JSON property `peerClusterName`
+        # @return [String]
+        attr_accessor :peer_cluster_name
+      
+        # Optional. List of IPv4 IP addresses to be used for peering.
+        # Corresponds to the JSON property `peerIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :peer_ip_addresses
+      
+        # Required. Name of the user's local source vserver svm to be peered with the
+        # destination vserver svm.
+        # Corresponds to the JSON property `peerSvmName`
+        # @return [String]
+        attr_accessor :peer_svm_name
+      
+        # Required. Name of the user's local source volume to be peered with the
+        # destination volume.
+        # Corresponds to the JSON property `peerVolumeName`
+        # @return [String]
+        attr_accessor :peer_volume_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @peer_cluster_name = args[:peer_cluster_name] if args.key?(:peer_cluster_name)
+          @peer_ip_addresses = args[:peer_ip_addresses] if args.key?(:peer_ip_addresses)
+          @peer_svm_name = args[:peer_svm_name] if args.key?(:peer_svm_name)
+          @peer_volume_name = args[:peer_volume_name] if args.key?(:peer_volume_name)
+        end
+      end
+      
+      # Response message for `ExecuteOntapDelete` API.
+      class ExecuteOntapDeleteResponse
+        include Google::Apis::Core::Hashable
+      
+        # The raw `JSON` body of the response.
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Response message for `ExecuteOntapGet` API.
+      class ExecuteOntapGetResponse
+        include Google::Apis::Core::Hashable
+      
+        # The raw `JSON` body of the response.
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Request message for `ExecuteOntapPatch` API.
+      class ExecuteOntapPatchRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The raw `JSON` body of the request. The body should be in the format
+        # of the ONTAP resource. For example: ``` ` "body": ` "field1": "value1", "
+        # field2": "value2", ` ` ```
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Response message for `ExecuteOntapPatch` API.
+      class ExecuteOntapPatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # The raw `JSON` body of the response.
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Request message for `ExecuteOntapPost` API.
+      class ExecuteOntapPostRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The raw `JSON` body of the request. The body should be in the format
+        # of the ONTAP resource. For example: ``` ` "body": ` "field1": "value1", "
+        # field2": "value2", ` ` ```
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
+      # Response message for `ExecuteOntapPost` API.
+      class ExecuteOntapPostResponse
+        include Google::Apis::Core::Hashable
+      
+        # The raw `JSON` body of the response.
+        # Corresponds to the JSON property `body`
+        # @return [Hash<String,Object>]
+        attr_accessor :body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+        end
+      end
+      
       # Defines the export policy for the volume.
       class ExportPolicy
         include Google::Apis::Core::Hashable
@@ -735,6 +1197,71 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Host group is a collection of hosts that can be used for accessing a Block
+      # Volume.
+      class HostGroup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time of the host group.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the host group.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The list of hosts associated with the host group.
+        # Corresponds to the JSON property `hosts`
+        # @return [Array<String>]
+        attr_accessor :hosts
+      
+        # Optional. Labels of the host group.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the host group. Format: `projects/`
+        # project_number`/locations/`location_id`/hostGroups/`host_group_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The OS type of the host group. It indicates the type of operating
+        # system used by all of the hosts in the HostGroup. All hosts in a HostGroup
+        # must be of the same OS type. This can be set only when creating a HostGroup.
+        # Corresponds to the JSON property `osType`
+        # @return [String]
+        attr_accessor :os_type
+      
+        # Output only. State of the host group.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. Type of the host group.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @hosts = args[:hosts] if args.key?(:hosts)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @os_type = args[:os_type] if args.key?(:os_type)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -839,10 +1366,20 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Type of the hybrid replication.
+        # Corresponds to the JSON property `hybridReplicationType`
+        # @return [String]
+        attr_accessor :hybrid_replication_type
+      
         # Optional. Labels to be added to the replication as the key value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Optional. Constituent volume count for large volume.
+        # Corresponds to the JSON property `largeVolumeConstituentCount`
+        # @return [Fixnum]
+        attr_accessor :large_volume_constituent_count
       
         # Required. Name of the user's local source cluster to be peered with the
         # destination cluster.
@@ -872,6 +1409,11 @@ module Google
         # @return [String]
         attr_accessor :replication
       
+        # Optional. Replication Schedule for the replication created.
+        # Corresponds to the JSON property `replicationSchedule`
+        # @return [String]
+        attr_accessor :replication_schedule
+      
         def initialize(**args)
            update!(**args)
         end
@@ -880,16 +1422,19 @@ module Google
         def update!(**args)
           @cluster_location = args[:cluster_location] if args.key?(:cluster_location)
           @description = args[:description] if args.key?(:description)
+          @hybrid_replication_type = args[:hybrid_replication_type] if args.key?(:hybrid_replication_type)
           @labels = args[:labels] if args.key?(:labels)
+          @large_volume_constituent_count = args[:large_volume_constituent_count] if args.key?(:large_volume_constituent_count)
           @peer_cluster_name = args[:peer_cluster_name] if args.key?(:peer_cluster_name)
           @peer_ip_addresses = args[:peer_ip_addresses] if args.key?(:peer_ip_addresses)
           @peer_svm_name = args[:peer_svm_name] if args.key?(:peer_svm_name)
           @peer_volume_name = args[:peer_volume_name] if args.key?(:peer_volume_name)
           @replication = args[:replication] if args.key?(:replication)
+          @replication_schedule = args[:replication_schedule] if args.key?(:replication_schedule)
         end
       end
       
-      # KmsConfig is the customer managed encryption key(CMEK) configuration.
+      # KmsConfig is the customer-managed encryption key(CMEK) configuration.
       class KmsConfig
         include Google::Apis::Core::Hashable
       
@@ -898,8 +1443,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. Customer managed crypto key resource full name. Format: projects/`
-        # project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`key`.
+        # Required. Customer-managed crypto key resource full name. Format: `projects/`
+        # project`/locations/`location`/keyRings/`key_ring`/cryptoKeys/`crypto_key``
         # Corresponds to the JSON property `cryptoKeyName`
         # @return [String]
         attr_accessor :crypto_key_name
@@ -920,7 +1465,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Identifier. Name of the KmsConfig.
+        # Identifier. Name of the `KmsConfig`. Format: `projects/`project`/locations/`
+        # location`/kmsConfigs/`kms_config``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -959,6 +1505,28 @@ module Google
         end
       end
       
+      # Configuration for a Large Capacity Volume. A Large Capacity Volume supports
+      # sizes ranging from 4.8 TiB to 20 PiB; it is composed of multiple internal
+      # constituents, and must be created in a large capacity pool.
+      class LargeCapacityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of internal constituents (e.g., FlexVols) for this large
+        # volume. The minimum number of constituents is 2.
+        # Corresponds to the JSON property `constituentCount`
+        # @return [Fixnum]
+        attr_accessor :constituent_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constituent_count = args[:constituent_count] if args.key?(:constituent_count)
+        end
+      end
+      
       # ListActiveDirectoriesResponse contains all the active directories requested.
       class ListActiveDirectoriesResponse
         include Google::Apis::Core::Hashable
@@ -987,6 +1555,38 @@ module Google
           @active_directories = args[:active_directories] if args.key?(:active_directories)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing BackupConfigs in an ONTAP StoragePool.
+      class ListBackupConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token you can use to retrieve the next page of results. Not returned if
+        # there are no more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # A list of backup configurations for volumes in the pool.
+        # Corresponds to the JSON property `volumeBackupConfigs`
+        # @return [Array<Google::Apis::NetappV1::VolumeBackupConfig>]
+        attr_accessor :volume_backup_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @volume_backup_configs = args[:volume_backup_configs] if args.key?(:volume_backup_configs)
         end
       end
       
@@ -1085,6 +1685,37 @@ module Google
         end
       end
       
+      # ListHostGroupsResponse is the response to a ListHostGroupsRequest.
+      class ListHostGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of host groups.
+        # Corresponds to the JSON property `hostGroups`
+        # @return [Array<Google::Apis::NetappV1::HostGroup>]
+        attr_accessor :host_groups
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_groups = args[:host_groups] if args.key?(:host_groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # ListKmsConfigsResponse is the response to a ListKmsConfigsRequest.
       class ListKmsConfigsResponse
         include Google::Apis::Core::Hashable
@@ -1155,6 +1786,14 @@ module Google
         # @return [Array<Google::Apis::NetappV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1163,6 +1802,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1374,6 +2014,18 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. Indicates if the location has ONTAP Proxy support.
+        # Corresponds to the JSON property `hasOntapProxy`
+        # @return [Boolean]
+        attr_accessor :has_ontap_proxy
+        alias_method :has_ontap_proxy?, :has_ontap_proxy
+      
+        # Output only. Indicates if the location has VCP support.
+        # Corresponds to the JSON property `hasVcp`
+        # @return [Boolean]
+        attr_accessor :has_vcp
+        alias_method :has_vcp?, :has_vcp
+      
         # Output only. Supported flex performance in a location.
         # Corresponds to the JSON property `supportedFlexPerformance`
         # @return [Array<String>]
@@ -1390,6 +2042,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @has_ontap_proxy = args[:has_ontap_proxy] if args.key?(:has_ontap_proxy)
+          @has_vcp = args[:has_vcp] if args.key?(:has_vcp)
           @supported_flex_performance = args[:supported_flex_performance] if args.key?(:supported_flex_performance)
           @supported_service_levels = args[:supported_service_levels] if args.key?(:supported_service_levels)
         end
@@ -1474,6 +2128,64 @@ module Google
           @instructions = args[:instructions] if args.key?(:instructions)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @protocol = args[:protocol] if args.key?(:protocol)
+        end
+      end
+      
+      # Represents ONTAP source details.
+      class OntapSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The UUID of the ONTAP source snapshot.
+        # Corresponds to the JSON property `snapshotUuid`
+        # @return [String]
+        attr_accessor :snapshot_uuid
+      
+        # Required. Name of the storage pool. This must be specified for creating
+        # backups for ONTAP mode volumes. Format: `projects/`projects_id`/locations/`
+        # location`/storagePools/`storage_pool_id``
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
+        # Required. The UUID of the ONTAP source volume.
+        # Corresponds to the JSON property `volumeUuid`
+        # @return [String]
+        attr_accessor :volume_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshot_uuid = args[:snapshot_uuid] if args.key?(:snapshot_uuid)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
+          @volume_uuid = args[:volume_uuid] if args.key?(:volume_uuid)
+        end
+      end
+      
+      # Represents the ONTAP volume target of the restore operation.
+      class OntapVolumeTarget
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Absolute directory path in the destination volume.
+        # Corresponds to the JSON property `restoreDestinationPath`
+        # @return [String]
+        attr_accessor :restore_destination_path
+      
+        # Required. The UUID of the ONTAP volume to restore to.
+        # Corresponds to the JSON property `volumeUuid`
+        # @return [String]
+        attr_accessor :volume_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restore_destination_path = args[:restore_destination_path] if args.key?(:restore_destination_path)
+          @volume_uuid = args[:volume_uuid] if args.key?(:volume_uuid)
         end
       end
       
@@ -1720,6 +2432,11 @@ module Google
         # @return [String]
         attr_accessor :hybrid_replication_type
       
+        # UserCommands contains the commands to be executed by the customer.
+        # Corresponds to the JSON property `hybridReplicationUserCommands`
+        # @return [Google::Apis::NetappV1::UserCommands]
+        attr_accessor :hybrid_replication_user_commands
+      
         # Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -1782,6 +2499,7 @@ module Google
           @healthy = args[:healthy] if args.key?(:healthy)
           @hybrid_peering_details = args[:hybrid_peering_details] if args.key?(:hybrid_peering_details)
           @hybrid_replication_type = args[:hybrid_replication_type] if args.key?(:hybrid_replication_type)
+          @hybrid_replication_user_commands = args[:hybrid_replication_user_commands] if args.key?(:hybrid_replication_user_commands)
           @labels = args[:labels] if args.key?(:labels)
           @mirror_state = args[:mirror_state] if args.key?(:mirror_state)
           @name = args[:name] if args.key?(:name)
@@ -1794,12 +2512,48 @@ module Google
         end
       end
       
+      # RestoreBackupFilesRequest restores files from a backup to a volume.
+      class RestoreBackupFilesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The backup resource name, in the format `projects/`project_id`/
+        # locations/`location`/backupVaults/`backup_vault_id`/backups/`backup_id``
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # Required. List of files to be restored, specified by their absolute path in
+        # the source volume.
+        # Corresponds to the JSON property `fileList`
+        # @return [Array<String>]
+        attr_accessor :file_list
+      
+        # Optional. Absolute directory path in the destination volume. This is required
+        # if the `file_list` is provided.
+        # Corresponds to the JSON property `restoreDestinationPath`
+        # @return [String]
+        attr_accessor :restore_destination_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @file_list = args[:file_list] if args.key?(:file_list)
+          @restore_destination_path = args[:restore_destination_path] if args.key?(:restore_destination_path)
+        end
+      end
+      
       # The RestoreParameters if volume is created from a snapshot or backup.
       class RestoreParameters
         include Google::Apis::Core::Hashable
       
-        # Full name of the backup resource. Format: projects/`project`/locations/`
-        # location`/backupVaults/`backup_vault_id`/backups/`backup_id`
+        # Full name of the backup resource. Format for standard backup: projects/`
+        # project`/locations/`location`/backupVaults/`backup_vault_id`/backups/`
+        # backup_id`. Format for BackupDR backup: projects/`project`/locations/`location`
+        # /backupVaults/`backup_vault`/dataSources/`data_source`/backups/`backup`
         # Corresponds to the JSON property `sourceBackup`
         # @return [String]
         attr_accessor :source_backup
@@ -1818,6 +2572,31 @@ module Google
         def update!(**args)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
+        end
+      end
+      
+      # Request message for `RestoreVolume` API.
+      class RestoreVolumeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents the backup source of the restore operation.
+        # Corresponds to the JSON property `backupSource`
+        # @return [Google::Apis::NetappV1::BackupSource]
+        attr_accessor :backup_source
+      
+        # Represents the ONTAP volume target of the restore operation.
+        # Corresponds to the JSON property `ontapVolumeTarget`
+        # @return [Google::Apis::NetappV1::OntapVolumeTarget]
+        attr_accessor :ontap_volume_target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_source = args[:backup_source] if args.key?(:backup_source)
+          @ontap_volume_target = args[:ontap_volume_target] if args.key?(:ontap_volume_target)
         end
       end
       
@@ -1882,6 +2661,12 @@ module Google
         # Corresponds to the JSON property `allowedClients`
         # @return [String]
         attr_accessor :allowed_clients
+      
+        # Optional. An integer representing the anonymous user ID. Range is 0 to `
+        # 4294967295`. Required when `squash_mode` is `ROOT_SQUASH` or `ALL_SQUASH`.
+        # Corresponds to the JSON property `anonUid`
+        # @return [Fixnum]
+        attr_accessor :anon_uid
       
         # Whether Unix root access will be granted.
         # Corresponds to the JSON property `hasRootAccess`
@@ -1951,6 +2736,13 @@ module Google
         attr_accessor :nfsv4
         alias_method :nfsv4?, :nfsv4
       
+        # Optional. Defines how user identity squashing is applied for this export rule.
+        # This field is the preferred way to configure squashing behavior and takes
+        # precedence over `has_root_access` if both are provided.
+        # Corresponds to the JSON property `squashMode`
+        # @return [String]
+        attr_accessor :squash_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1959,6 +2751,7 @@ module Google
         def update!(**args)
           @access_type = args[:access_type] if args.key?(:access_type)
           @allowed_clients = args[:allowed_clients] if args.key?(:allowed_clients)
+          @anon_uid = args[:anon_uid] if args.key?(:anon_uid)
           @has_root_access = args[:has_root_access] if args.key?(:has_root_access)
           @kerberos5_read_only = args[:kerberos5_read_only] if args.key?(:kerberos5_read_only)
           @kerberos5_read_write = args[:kerberos5_read_write] if args.key?(:kerberos5_read_write)
@@ -1968,6 +2761,7 @@ module Google
           @kerberos5p_read_write = args[:kerberos5p_read_write] if args.key?(:kerberos5p_read_write)
           @nfsv3 = args[:nfsv3] if args.key?(:nfsv3)
           @nfsv4 = args[:nfsv4] if args.key?(:nfsv4)
+          @squash_mode = args[:squash_mode] if args.key?(:squash_mode)
         end
       end
       
@@ -2155,10 +2949,21 @@ module Google
         attr_accessor :allow_auto_tiering
         alias_method :allow_auto_tiering?, :allow_auto_tiering
       
+        # Output only. Available throughput of the storage pool (in MiB/s).
+        # Corresponds to the JSON property `availableThroughputMibps`
+        # @return [Float]
+        attr_accessor :available_throughput_mibps
+      
         # Required. Capacity in GIB of the pool
         # Corresponds to the JSON property `capacityGib`
         # @return [Fixnum]
         attr_accessor :capacity_gib
+      
+        # Output only. Total cold tier data rounded down to the nearest GiB used by the
+        # storage pool.
+        # Corresponds to the JSON property `coldTierSizeUsedGib`
+        # @return [Fixnum]
+        attr_accessor :cold_tier_size_used_gib
       
         # Output only. Create time of the storage pool
         # Corresponds to the JSON property `createTime`
@@ -2177,6 +2982,15 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Flag indicating that the hot-tier threshold will be auto-increased
+        # by 10% of the hot-tier when it hits 100%. Default is true. The increment will
+        # kick in only if the new size after increment is still less than or equal to
+        # storage pool size.
+        # Corresponds to the JSON property `enableHotTierAutoResize`
+        # @return [Boolean]
+        attr_accessor :enable_hot_tier_auto_resize
+        alias_method :enable_hot_tier_auto_resize?, :enable_hot_tier_auto_resize
+      
         # Output only. Specifies the current pool encryption key source.
         # Corresponds to the JSON property `encryptionType`
         # @return [String]
@@ -2188,6 +3002,20 @@ module Google
         # @return [Boolean]
         attr_accessor :global_access_allowed
         alias_method :global_access_allowed?, :global_access_allowed
+      
+        # Optional. Total hot tier capacity for the Storage Pool. It is applicable only
+        # to Flex service level. It should be less than the minimum storage pool size
+        # and cannot be more than the current storage pool size. It cannot be decreased
+        # once set.
+        # Corresponds to the JSON property `hotTierSizeGib`
+        # @return [Fixnum]
+        attr_accessor :hot_tier_size_gib
+      
+        # Output only. Total hot tier data rounded down to the nearest GiB used by the
+        # storage pool.
+        # Corresponds to the JSON property `hotTierSizeUsedGib`
+        # @return [Fixnum]
+        attr_accessor :hot_tier_size_used_gib
       
         # Optional. Specifies the KMS config to be used for volume encryption.
         # Corresponds to the JSON property `kmsConfig`
@@ -2204,6 +3032,13 @@ module Google
         # @return [Boolean]
         attr_accessor :ldap_enabled
         alias_method :ldap_enabled?, :ldap_enabled
+      
+        # Optional. Mode of the storage pool. This field is used to control whether the
+        # user can perform ONTAP operations on the storage pool using the GCNV ONTAP
+        # Mode APIs. If not specified during creation, it defaults to `DEFAULT`.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
       
         # Identifier. Name of the storage pool
         # Corresponds to the JSON property `name`
@@ -2222,6 +3057,11 @@ module Google
         # @return [String]
         attr_accessor :psa_range
       
+        # Optional. QoS (Quality of Service) Type of the storage pool
+        # Corresponds to the JSON property `qosType`
+        # @return [String]
+        attr_accessor :qos_type
+      
         # Optional. Specifies the replica zone for regional storagePool.
         # Corresponds to the JSON property `replicaZone`
         # @return [String]
@@ -2239,6 +3079,12 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # Optional. The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT`
+        # if not specified.
+        # Corresponds to the JSON property `scaleType`
+        # @return [String]
+        attr_accessor :scale_type
+      
         # Required. Service level of the storage pool
         # Corresponds to the JSON property `serviceLevel`
         # @return [String]
@@ -2254,16 +3100,23 @@ module Google
         # @return [String]
         attr_accessor :state_details
       
-        # Optional. Custom Performance Total IOPS of the pool If not provided, it will
+        # Optional. Custom Performance Total IOPS of the pool if not provided, it will
         # be calculated based on the total_throughput_mibps
         # Corresponds to the JSON property `totalIops`
         # @return [Fixnum]
         attr_accessor :total_iops
       
-        # Optional. Custom Performance Total Throughput of the pool (in MiB/s)
+        # Optional. Custom Performance Total Throughput of the pool (in MiBps)
         # Corresponds to the JSON property `totalThroughputMibps`
         # @return [Fixnum]
         attr_accessor :total_throughput_mibps
+      
+        # Optional. Type of the storage pool. This field is used to control whether the
+        # pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`)
+        # volumes. If not specified during creation, it defaults to `FILE`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
       
         # Output only. Allocated size of all volumes in GIB in the storage pool
         # Corresponds to the JSON property `volumeCapacityGib`
@@ -2288,26 +3141,35 @@ module Google
         def update!(**args)
           @active_directory = args[:active_directory] if args.key?(:active_directory)
           @allow_auto_tiering = args[:allow_auto_tiering] if args.key?(:allow_auto_tiering)
+          @available_throughput_mibps = args[:available_throughput_mibps] if args.key?(:available_throughput_mibps)
           @capacity_gib = args[:capacity_gib] if args.key?(:capacity_gib)
+          @cold_tier_size_used_gib = args[:cold_tier_size_used_gib] if args.key?(:cold_tier_size_used_gib)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_performance_enabled = args[:custom_performance_enabled] if args.key?(:custom_performance_enabled)
           @description = args[:description] if args.key?(:description)
+          @enable_hot_tier_auto_resize = args[:enable_hot_tier_auto_resize] if args.key?(:enable_hot_tier_auto_resize)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @global_access_allowed = args[:global_access_allowed] if args.key?(:global_access_allowed)
+          @hot_tier_size_gib = args[:hot_tier_size_gib] if args.key?(:hot_tier_size_gib)
+          @hot_tier_size_used_gib = args[:hot_tier_size_used_gib] if args.key?(:hot_tier_size_used_gib)
           @kms_config = args[:kms_config] if args.key?(:kms_config)
           @labels = args[:labels] if args.key?(:labels)
           @ldap_enabled = args[:ldap_enabled] if args.key?(:ldap_enabled)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @psa_range = args[:psa_range] if args.key?(:psa_range)
+          @qos_type = args[:qos_type] if args.key?(:qos_type)
           @replica_zone = args[:replica_zone] if args.key?(:replica_zone)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @scale_type = args[:scale_type] if args.key?(:scale_type)
           @service_level = args[:service_level] if args.key?(:service_level)
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
           @total_iops = args[:total_iops] if args.key?(:total_iops)
           @total_throughput_mibps = args[:total_throughput_mibps] if args.key?(:total_throughput_mibps)
+          @type = args[:type] if args.key?(:type)
           @volume_capacity_gib = args[:volume_capacity_gib] if args.key?(:volume_capacity_gib)
           @volume_count = args[:volume_count] if args.key?(:volume_count)
           @zone = args[:zone] if args.key?(:zone)
@@ -2351,6 +3213,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :cooling_threshold_days
       
+        # Optional. Flag indicating that the hot tier bypass mode is enabled. Default is
+        # false. This is only applicable to Flex service level.
+        # Corresponds to the JSON property `hotTierBypassModeEnabled`
+        # @return [Boolean]
+        attr_accessor :hot_tier_bypass_mode_enabled
+        alias_method :hot_tier_bypass_mode_enabled?, :hot_tier_bypass_mode_enabled
+      
         # Optional. Flag indicating if the volume has tiering policy enable/pause.
         # Default is PAUSED.
         # Corresponds to the JSON property `tierAction`
@@ -2364,6 +3233,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cooling_threshold_days = args[:cooling_threshold_days] if args.key?(:cooling_threshold_days)
+          @hot_tier_bypass_mode_enabled = args[:hot_tier_bypass_mode_enabled] if args.key?(:hot_tier_bypass_mode_enabled)
           @tier_action = args[:tier_action] if args.key?(:tier_action)
         end
       end
@@ -2427,6 +3297,59 @@ module Google
           @total_transfer_duration = args[:total_transfer_duration] if args.key?(:total_transfer_duration)
           @transfer_bytes = args[:transfer_bytes] if args.key?(:transfer_bytes)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for UpdateBackupConfig
+      class UpdateBackupConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # BackupConfig contains backup related config on a volume.
+        # Corresponds to the JSON property `backupConfig`
+        # @return [Google::Apis::NetappV1::BackupConfig]
+        attr_accessor :backup_config
+      
+        # Required. Field mask is used to specify the fields to be overwritten in the
+        # BackupConfig for the Volume. The fields specified in the update_mask are
+        # relative to the resource, not the full request. A field will be overwritten if
+        # it is in the mask.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        # Required. The UUID of the ONTAP-mode volume.
+        # Corresponds to the JSON property `volumeUuid`
+        # @return [String]
+        attr_accessor :volume_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_config = args[:backup_config] if args.key?(:backup_config)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @volume_uuid = args[:volume_uuid] if args.key?(:volume_uuid)
+        end
+      end
+      
+      # UserCommands contains the commands to be executed by the customer.
+      class UserCommands
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of commands to be executed by the customer.
+        # Corresponds to the JSON property `commands`
+        # @return [Array<String>]
+        attr_accessor :commands
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commands = args[:commands] if args.key?(:commands)
         end
       end
       
@@ -2511,12 +3434,28 @@ module Google
         # @return [Google::Apis::NetappV1::BackupConfig]
         attr_accessor :backup_config
       
+        # Optional. Block devices for the volume. Currently, only one block device is
+        # permitted per Volume.
+        # Corresponds to the JSON property `blockDevices`
+        # @return [Array<Google::Apis::NetappV1::BlockDevice>]
+        attr_accessor :block_devices
+      
+        # Cache Parameters for the volume.
+        # Corresponds to the JSON property `cacheParameters`
+        # @return [Google::Apis::NetappV1::CacheParameters]
+        attr_accessor :cache_parameters
+      
         # Required. Capacity in GIB of the volume
         # Corresponds to the JSON property `capacityGib`
         # @return [Fixnum]
         attr_accessor :capacity_gib
       
-        # Output only. Size of the volume cold tier data in GiB.
+        # Details about a clone volume.
+        # Corresponds to the JSON property `cloneDetails`
+        # @return [Google::Apis::NetappV1::CloneDetails]
+        attr_accessor :clone_details
+      
+        # Output only. Size of the volume cold tier data rounded down to the nearest GiB.
         # Corresponds to the JSON property `coldTierSizeGib`
         # @return [Fixnum]
         attr_accessor :cold_tier_size_gib
@@ -2548,6 +3487,12 @@ module Google
         attr_accessor :has_replication
         alias_method :has_replication?, :has_replication
       
+        # Output only. Total hot tier data rounded down to the nearest GiB used by the
+        # Volume. This field is only used for flex Service Level
+        # Corresponds to the JSON property `hotTierSizeUsedGib`
+        # @return [Fixnum]
+        attr_accessor :hot_tier_size_used_gib
+      
         # The Hybrid Replication parameters for the volume.
         # Corresponds to the JSON property `hybridReplicationParameters`
         # @return [Google::Apis::NetappV1::HybridReplicationParameters]
@@ -2571,11 +3516,20 @@ module Google
         attr_accessor :labels
       
         # Optional. Flag indicating if the volume will be a large capacity volume or a
-        # regular volume.
+        # regular volume. This field is used for legacy FILE pools. For Unified pools,
+        # use the `large_capacity_config` field instead. This field and `
+        # large_capacity_config` are mutually exclusive.
         # Corresponds to the JSON property `largeCapacity`
         # @return [Boolean]
         attr_accessor :large_capacity
         alias_method :large_capacity?, :large_capacity
+      
+        # Configuration for a Large Capacity Volume. A Large Capacity Volume supports
+        # sizes ranging from 4.8 TiB to 20 PiB; it is composed of multiple internal
+        # constituents, and must be created in a large capacity pool.
+        # Corresponds to the JSON property `largeCapacityConfig`
+        # @return [Google::Apis::NetappV1::LargeCapacityConfig]
+        attr_accessor :large_capacity_config
       
         # Output only. Flag indicating if the volume is NFS LDAP enabled or not.
         # Corresponds to the JSON property `ldapEnabled`
@@ -2687,6 +3641,11 @@ module Google
         # @return [String]
         attr_accessor :storage_pool
       
+        # Optional. Throughput of the volume (in MiB/s)
+        # Corresponds to the JSON property `throughputMibps`
+        # @return [Float]
+        attr_accessor :throughput_mibps
+      
         # Defines tiering policy for the volume.
         # Corresponds to the JSON property `tieringPolicy`
         # @return [Google::Apis::NetappV1::TieringPolicy]
@@ -2717,18 +3676,23 @@ module Google
         def update!(**args)
           @active_directory = args[:active_directory] if args.key?(:active_directory)
           @backup_config = args[:backup_config] if args.key?(:backup_config)
+          @block_devices = args[:block_devices] if args.key?(:block_devices)
+          @cache_parameters = args[:cache_parameters] if args.key?(:cache_parameters)
           @capacity_gib = args[:capacity_gib] if args.key?(:capacity_gib)
+          @clone_details = args[:clone_details] if args.key?(:clone_details)
           @cold_tier_size_gib = args[:cold_tier_size_gib] if args.key?(:cold_tier_size_gib)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @export_policy = args[:export_policy] if args.key?(:export_policy)
           @has_replication = args[:has_replication] if args.key?(:has_replication)
+          @hot_tier_size_used_gib = args[:hot_tier_size_used_gib] if args.key?(:hot_tier_size_used_gib)
           @hybrid_replication_parameters = args[:hybrid_replication_parameters] if args.key?(:hybrid_replication_parameters)
           @kerberos_enabled = args[:kerberos_enabled] if args.key?(:kerberos_enabled)
           @kms_config = args[:kms_config] if args.key?(:kms_config)
           @labels = args[:labels] if args.key?(:labels)
           @large_capacity = args[:large_capacity] if args.key?(:large_capacity)
+          @large_capacity_config = args[:large_capacity_config] if args.key?(:large_capacity_config)
           @ldap_enabled = args[:ldap_enabled] if args.key?(:ldap_enabled)
           @mount_options = args[:mount_options] if args.key?(:mount_options)
           @multiple_endpoints = args[:multiple_endpoints] if args.key?(:multiple_endpoints)
@@ -2749,10 +3713,36 @@ module Google
           @state = args[:state] if args.key?(:state)
           @state_details = args[:state_details] if args.key?(:state_details)
           @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
+          @throughput_mibps = args[:throughput_mibps] if args.key?(:throughput_mibps)
           @tiering_policy = args[:tiering_policy] if args.key?(:tiering_policy)
           @unix_permissions = args[:unix_permissions] if args.key?(:unix_permissions)
           @used_gib = args[:used_gib] if args.key?(:used_gib)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Backup configuration for a volume in a pool.
+      class VolumeBackupConfig
+        include Google::Apis::Core::Hashable
+      
+        # BackupConfig contains backup related config on a volume.
+        # Corresponds to the JSON property `backupConfig`
+        # @return [Google::Apis::NetappV1::BackupConfig]
+        attr_accessor :backup_config
+      
+        # Provides the Ontap UUID of the volume within the pool.
+        # Corresponds to the JSON property `volumeUuid`
+        # @return [String]
+        attr_accessor :volume_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_config = args[:backup_config] if args.key?(:backup_config)
+          @volume_uuid = args[:volume_uuid] if args.key?(:volume_uuid)
         end
       end
       

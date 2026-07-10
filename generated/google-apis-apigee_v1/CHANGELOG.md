@@ -1,5 +1,78 @@
 # Release history for google-apis-apigee_v1
 
+### v0.125.0 (2026-07-05)
+
+* Regenerated from discovery document revision 20260622
+
+### v0.124.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.123.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260511
+
+### v0.122.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260327
+
+### v0.121.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260218
+
+### v0.120.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260130
+
+### v0.119.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20260106
+
+### v0.118.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251216
+
+### v0.117.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251125
+
+### v0.116.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251105
+
+### v0.115.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251016
+
+### v0.114.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250929
+
+### v0.113.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250908
+
+### v0.112.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250808
+
+### v0.111.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250731
+
+### v0.110.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250722
+
+### v0.109.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250622
+
+### v0.108.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250614
+* Regenerated using generator version 0.18.0
+
 ### v0.107.0 (2025-05-21)
 
 * Regenerated from discovery document revision 20250519

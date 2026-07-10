@@ -58,13 +58,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DateList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DateTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Early
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EmployeeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeatureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateShiftsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlanningHorizon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateAccess
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShiftTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SolverConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,13 +220,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeZone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrIs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnwantedEventInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WeeklySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkforceDemand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkforceDemandList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -205,8 +289,12 @@ module Google
           property :critical, as: 'critical', class: Google::Apis::ContactcenteraiplatformV1alpha1::Critical, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Critical::Representation
       
           property :customer_domain_prefix, as: 'customerDomainPrefix'
+          property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :early, as: 'early', class: Google::Apis::ContactcenteraiplatformV1alpha1::Early, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Early::Representation
+      
+          property :expire_time, as: 'expireTime'
+          property :feature_config, as: 'featureConfig', class: Google::Apis::ContactcenteraiplatformV1alpha1::FeatureConfig, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::FeatureConfig::Representation
       
           property :instance_config, as: 'instanceConfig', class: Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::InstanceConfig::Representation
       
@@ -218,6 +306,8 @@ module Google
           property :private_access, as: 'privateAccess', class: Google::Apis::ContactcenteraiplatformV1alpha1::PrivateAccess, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::PrivateAccess::Representation
       
           collection :private_components, as: 'privateComponents'
+          property :purge_time, as: 'purgeTime'
+          property :release_version, as: 'releaseVersion'
           property :saml_params, as: 'samlParams', class: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::SamlParams::Representation
       
           property :state, as: 'state'
@@ -246,15 +336,91 @@ module Google
         end
       end
       
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
+      class DateList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::ContactcenteraiplatformV1alpha1::Date, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Date::Representation
+      
+        end
+      end
+      
+      class DateTime
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :month, as: 'month'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+          property :time_zone, as: 'timeZone', class: Google::Apis::ContactcenteraiplatformV1alpha1::TimeZone, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::TimeZone::Representation
+      
+          property :utc_offset, as: 'utcOffset'
+          property :year, as: 'year'
+        end
+      end
+      
       class Early
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
+      class EmployeeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :unwanted_event_intervals, as: 'unwantedEventIntervals', class: Google::Apis::ContactcenteraiplatformV1alpha1::UnwantedEventInterval, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::UnwantedEventInterval::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EventTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_minutes, as: 'durationMinutes'
+          property :id, as: 'id'
+          property :maximum_minutes_after_shift_start, as: 'maximumMinutesAfterShiftStart'
+          property :minimum_minutes_after_shift_start, as: 'minimumMinutesAfterShiftStart'
+          property :start_time_increment_minutes, as: 'startTimeIncrementMinutes'
+        end
+      end
+      
+      class FeatureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_desktop_enabled, as: 'agentDesktopEnabled'
+        end
+      end
+      
+      class GenerateShiftsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :employee_info, as: 'employeeInfo', class: Google::Apis::ContactcenteraiplatformV1alpha1::EmployeeInfo, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::EmployeeInfo::Representation
+      
+          property :planning_horizon, as: 'planningHorizon', class: Google::Apis::ContactcenteraiplatformV1alpha1::PlanningHorizon, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::PlanningHorizon::Representation
+      
+          collection :shift_templates, as: 'shiftTemplates', class: Google::Apis::ContactcenteraiplatformV1alpha1::ShiftTemplate, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::ShiftTemplate::Representation
+      
+          property :solver_config, as: 'solverConfig', class: Google::Apis::ContactcenteraiplatformV1alpha1::SolverConfig, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::SolverConfig::Representation
+      
+          property :workforce_demands, as: 'workforceDemands', class: Google::Apis::ContactcenteraiplatformV1alpha1::WorkforceDemandList, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::WorkforceDemandList::Representation
+      
         end
       end
       
@@ -303,6 +469,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ContactcenteraiplatformV1alpha1::Operation, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -350,6 +517,16 @@ module Google
         end
       end
       
+      class PlanningHorizon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::DateTime, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::DateTime::Representation
+      
+          property :start_time, as: 'startTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::DateTime, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::DateTime::Representation
+      
+        end
+      end
+      
       class PrivateAccess
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -391,6 +568,36 @@ module Google
         end
       end
       
+      class ShiftTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assignable_employee_ids, as: 'assignableEmployeeIds'
+          property :days_off_count_per_week, as: 'daysOffCountPerWeek'
+          property :days_off_dates, as: 'daysOffDates', class: Google::Apis::ContactcenteraiplatformV1alpha1::DateList, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::DateList::Representation
+      
+          property :duration_minutes, as: 'durationMinutes'
+          property :earliest_start_time, as: 'earliestStartTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay::Representation
+      
+          collection :event_templates, as: 'eventTemplates', class: Google::Apis::ContactcenteraiplatformV1alpha1::EventTemplate, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::EventTemplate::Representation
+      
+          property :id, as: 'id'
+          property :latest_start_time, as: 'latestStartTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay::Representation
+      
+          property :maximum_employee_count, as: 'maximumEmployeeCount'
+          property :minimum_employee_count, as: 'minimumEmployeeCount'
+          property :minimum_interevent_gap_minutes, as: 'minimumIntereventGapMinutes'
+          property :start_time_increment_minutes, as: 'startTimeIncrementMinutes'
+        end
+      end
+      
+      class SolverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maximum_processing_duration, as: 'maximumProcessingDuration'
+          property :schedule_type, as: 'scheduleType'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -410,6 +617,14 @@ module Google
         end
       end
       
+      class TimeZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :version, as: 'version'
+        end
+      end
+      
       class UrIs
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -417,6 +632,15 @@ module Google
           property :media_uri, as: 'mediaUri'
           property :root_uri, as: 'rootUri'
           property :virtual_agent_streaming_service_uri, as: 'virtualAgentStreamingServiceUri'
+        end
+      end
+      
+      class UnwantedEventInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_minutes, as: 'durationMinutes'
+          property :start_time, as: 'startTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::DateTime, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::DateTime::Representation
+      
         end
       end
       
@@ -428,6 +652,25 @@ module Google
           property :end_time, as: 'endTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay::Representation
       
           property :start_time, as: 'startTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::TimeOfDay::Representation
+      
+        end
+      end
+      
+      class WorkforceDemand
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :employee_count, as: 'employeeCount'
+          property :end_time, as: 'endTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::DateTime, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::DateTime::Representation
+      
+          property :start_time, as: 'startTime', class: Google::Apis::ContactcenteraiplatformV1alpha1::DateTime, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::DateTime::Representation
+      
+        end
+      end
+      
+      class WorkforceDemandList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::ContactcenteraiplatformV1alpha1::WorkforceDemand, decorator: Google::Apis::ContactcenteraiplatformV1alpha1::WorkforceDemand::Representation
       
         end
       end

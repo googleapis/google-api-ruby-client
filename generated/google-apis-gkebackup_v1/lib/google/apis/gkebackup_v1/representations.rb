@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BdrBackupPlanJobLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BdrBackupRestoreJobLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +83,12 @@ module Google
       end
       
       class BackupPlanDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupRuleDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +160,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetTagsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +203,12 @@ module Google
       end
       
       class GroupKindDependency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Label
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -286,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +400,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetTagsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubstitutionRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +443,12 @@ module Google
       end
       
       class TransformationRuleAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TroubleshootingInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -435,6 +495,61 @@ module Google
         end
       end
       
+      class BdrBackupPlanJobLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_plan_name, as: 'backupPlanName'
+          property :end_time, as: 'endTime'
+          property :error_code, as: 'errorCode'
+          property :error_message, as: 'errorMessage'
+          property :error_type, as: 'errorType'
+          property :job_category, as: 'jobCategory'
+          property :job_id, as: 'jobId'
+          property :job_status, as: 'jobStatus'
+          property :new_backup_plan_revision_id, as: 'newBackupPlanRevisionId'
+          property :new_backup_plan_revision_name, as: 'newBackupPlanRevisionName'
+          property :previous_backup_plan_revision_id, as: 'previousBackupPlanRevisionId'
+          property :previous_backup_plan_revision_name, as: 'previousBackupPlanRevisionName'
+          collection :previous_backup_rules, as: 'previousBackupRules', class: Google::Apis::GkebackupV1::BackupRuleDetail, decorator: Google::Apis::GkebackupV1::BackupRuleDetail::Representation
+      
+          property :resource_type, as: 'resourceType'
+          collection :revised_backup_rules, as: 'revisedBackupRules', class: Google::Apis::GkebackupV1::BackupRuleDetail, decorator: Google::Apis::GkebackupV1::BackupRuleDetail::Representation
+      
+          property :start_time, as: 'startTime'
+          property :workloads_affected_count, as: 'workloadsAffectedCount'
+        end
+      end
+      
+      class BdrBackupRestoreJobLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_consistency_time, as: 'backupConsistencyTime'
+          property :backup_name, as: 'backupName'
+          property :backup_plan_name, as: 'backupPlanName'
+          property :backup_retention_days, as: 'backupRetentionDays'
+          property :backup_rule, as: 'backupRule'
+          property :backup_vault_name, as: 'backupVaultName'
+          property :data_source_name, as: 'dataSourceName'
+          property :end_time, as: 'endTime'
+          property :error_code, as: 'errorCode'
+          property :error_message, as: 'errorMessage'
+          property :error_type, as: 'errorType'
+          property :incremental_backup_size_gib, as: 'incrementalBackupSizeGib'
+          property :job_category, as: 'jobCategory'
+          property :job_id, as: 'jobId'
+          property :job_status, as: 'jobStatus'
+          property :recovery_point_time, as: 'recoveryPointTime'
+          property :resource_type, as: 'resourceType'
+          property :restore_resource_location, as: 'restoreResourceLocation'
+          property :restore_resource_name, as: 'restoreResourceName'
+          property :source_resource_id, as: 'sourceResourceId'
+          property :source_resource_location, as: 'sourceResourceLocation'
+          property :source_resource_name, as: 'sourceResourceName'
+          property :start_time, as: 'startTime'
+          property :target_resource_type, as: 'targetResourceType'
+        end
+      end
+      
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -455,6 +570,7 @@ module Google
           hash :labels, as: 'labels'
           property :manual, as: 'manual'
           property :name, as: 'name'
+          property :namespace_count, as: 'namespaceCount'
           property :permissive_mode, as: 'permissiveMode'
           property :pod_count, as: 'podCount'
           property :resource_count, as: 'resourceCount'
@@ -464,11 +580,15 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :selected_applications, as: 'selectedApplications', class: Google::Apis::GkebackupV1::NamespacedNames, decorator: Google::Apis::GkebackupV1::NamespacedNames::Representation
       
+          property :selected_namespace_labels, as: 'selectedNamespaceLabels', class: Google::Apis::GkebackupV1::ResourceLabels, decorator: Google::Apis::GkebackupV1::ResourceLabels::Representation
+      
           property :selected_namespaces, as: 'selectedNamespaces', class: Google::Apis::GkebackupV1::Namespaces, decorator: Google::Apis::GkebackupV1::Namespaces::Representation
       
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :state, as: 'state'
           property :state_reason, as: 'stateReason'
+          property :troubleshooting_info, as: 'troubleshootingInfo', class: Google::Apis::GkebackupV1::TroubleshootingInfo, decorator: Google::Apis::GkebackupV1::TroubleshootingInfo::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :volume_count, as: 'volumeCount'
@@ -500,6 +620,8 @@ module Google
           property :include_volume_data, as: 'includeVolumeData'
           property :permissive_mode, as: 'permissiveMode'
           property :selected_applications, as: 'selectedApplications', class: Google::Apis::GkebackupV1::NamespacedNames, decorator: Google::Apis::GkebackupV1::NamespacedNames::Representation
+      
+          property :selected_namespace_labels, as: 'selectedNamespaceLabels', class: Google::Apis::GkebackupV1::ResourceLabels, decorator: Google::Apis::GkebackupV1::ResourceLabels::Representation
       
           property :selected_namespaces, as: 'selectedNamespaces', class: Google::Apis::GkebackupV1::Namespaces, decorator: Google::Apis::GkebackupV1::Namespaces::Representation
       
@@ -537,6 +659,7 @@ module Google
           hash :labels, as: 'labels'
           property :last_successful_backup_time, as: 'lastSuccessfulBackupTime'
           property :name, as: 'name'
+          property :protected_namespace_count, as: 'protectedNamespaceCount'
           property :protected_pod_count, as: 'protectedPodCount'
           property :retention_policy, as: 'retentionPolicy', class: Google::Apis::GkebackupV1::RetentionPolicy, decorator: Google::Apis::GkebackupV1::RetentionPolicy::Representation
       
@@ -577,6 +700,18 @@ module Google
       
           property :rpo_risk_level, as: 'rpoRiskLevel'
           property :state, as: 'state'
+        end
+      end
+      
+      class BackupRuleDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_window, as: 'backupWindow'
+          property :backup_window_timezone, as: 'backupWindowTimezone'
+          property :recurrence, as: 'recurrence'
+          property :recurrence_schedule, as: 'recurrenceSchedule'
+          property :retention_days, as: 'retentionDays'
+          property :rule_name, as: 'ruleName'
         end
       end
       
@@ -683,6 +818,22 @@ module Google
         end
       end
       
+      class GetTagsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GetTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          hash :tags, as: 'tags'
+        end
+      end
+      
       class GoogleLongrunningCancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -695,6 +846,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GkebackupV1::GoogleLongrunningOperation, decorator: Google::Apis::GkebackupV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -734,6 +886,14 @@ module Google
       
           property :satisfying, as: 'satisfying', class: Google::Apis::GkebackupV1::GroupKind, decorator: Google::Apis::GkebackupV1::GroupKind::Representation
       
+        end
+      end
+      
+      class Label
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -913,6 +1073,14 @@ module Google
         end
       end
       
+      class ResourceLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_labels, as: 'resourceLabels', class: Google::Apis::GkebackupV1::Label, decorator: Google::Apis::GkebackupV1::Label::Representation
+      
+        end
+      end
+      
       class ResourceSelector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -944,6 +1112,8 @@ module Google
       
           property :state, as: 'state'
           property :state_reason, as: 'stateReason'
+          property :troubleshooting_info, as: 'troubleshootingInfo', class: Google::Apis::GkebackupV1::TroubleshootingInfo, decorator: Google::Apis::GkebackupV1::TroubleshootingInfo::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           collection :volume_data_restore_policy_overrides, as: 'volumeDataRestorePolicyOverrides', class: Google::Apis::GkebackupV1::VolumeDataRestorePolicyOverride, decorator: Google::Apis::GkebackupV1::VolumeDataRestorePolicyOverride::Representation
@@ -1081,6 +1251,25 @@ module Google
         end
       end
       
+      class SetTagsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :request_id, as: 'requestId'
+          hash :tags, as: 'tags'
+        end
+      end
+      
+      class SetTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          hash :tags, as: 'tags'
+        end
+      end
+      
       class SubstitutionRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1135,6 +1324,14 @@ module Google
           property :op, as: 'op'
           property :path, as: 'path'
           property :value, as: 'value'
+        end
+      end
+      
+      class TroubleshootingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state_reason_code, as: 'stateReasonCode'
+          property :state_reason_uri, as: 'stateReasonUri'
         end
       end
       

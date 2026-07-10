@@ -184,6 +184,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OAuthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Oauth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -416,6 +428,7 @@ module Google
       class AuditLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version_identifier, as: 'apiVersionIdentifier'
           property :authentication_info, as: 'authenticationInfo', class: Google::Apis::ServicecontrolV1::AuthenticationInfo, decorator: Google::Apis::ServicecontrolV1::AuthenticationInfo::Representation
       
           collection :authorization_info, as: 'authorizationInfo', class: Google::Apis::ServicecontrolV1::AuthorizationInfo, decorator: Google::Apis::ServicecontrolV1::AuthorizationInfo::Representation
@@ -446,6 +459,9 @@ module Google
           collection :access_levels, as: 'accessLevels'
           collection :audiences, as: 'audiences'
           hash :claims, as: 'claims'
+          property :credential_id, as: 'credentialId'
+          property :oauth, as: 'oauth', class: Google::Apis::ServicecontrolV1::Oauth, decorator: Google::Apis::ServicecontrolV1::Oauth::Representation
+      
           property :presenter, as: 'presenter'
           property :principal, as: 'principal'
         end
@@ -455,6 +471,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authority_selector, as: 'authoritySelector'
+          hash :loggable_short_lived_credential, as: 'loggableShortLivedCredential'
+          property :oauth_info, as: 'oauthInfo', class: Google::Apis::ServicecontrolV1::OAuthInfo, decorator: Google::Apis::ServicecontrolV1::OAuthInfo::Representation
+      
           property :principal_email, as: 'principalEmail'
           property :principal_subject, as: 'principalSubject'
           collection :service_account_delegation_info, as: 'serviceAccountDelegationInfo', class: Google::Apis::ServicecontrolV1::ServiceAccountDelegationInfo, decorator: Google::Apis::ServicecontrolV1::ServiceAccountDelegationInfo::Representation
@@ -495,6 +514,7 @@ module Google
           property :api_key_uid, as: 'apiKeyUid'
           property :consumer_info, as: 'consumerInfo', class: Google::Apis::ServicecontrolV1::ConsumerInfo, decorator: Google::Apis::ServicecontrolV1::ConsumerInfo::Representation
       
+          property :ignore_api_key_uid_as_credential_id, as: 'ignoreApiKeyUidAsCredentialId'
           collection :unused_arguments, as: 'unusedArguments'
         end
       end
@@ -692,6 +712,20 @@ module Google
         end
       end
       
+      class OAuthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth_client_id, as: 'oauthClientId'
+        end
+      end
+      
+      class Oauth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -762,6 +796,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :limit_exceeded, as: 'limitExceeded'
           hash :quota_consumed, as: 'quotaConsumed'
+          property :quota_extraction_state, as: 'quotaExtractionState'
           collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
       
         end
@@ -1046,6 +1081,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :checked_value, as: 'checkedValue'
           property :constraint, as: 'constraint'
+          hash :constraint_violation_info, as: 'constraintViolationInfo'
           property :error_message, as: 'errorMessage'
           property :policy_type, as: 'policyType'
         end

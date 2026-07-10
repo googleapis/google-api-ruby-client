@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Cname
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,12 @@ module Google
       end
       
       class GclbTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IPs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedIdentityCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +215,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Troubleshooting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -236,10 +260,22 @@ module Google
       class AuthorizationAttemptInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :attempt_time, as: 'attemptTime'
           property :details, as: 'details'
           property :domain, as: 'domain'
           property :failure_reason, as: 'failureReason'
           property :state, as: 'state'
+          property :troubleshooting, as: 'troubleshooting', class: Google::Apis::CertificatemanagerV1::Troubleshooting, decorator: Google::Apis::CertificatemanagerV1::Troubleshooting::Representation
+      
+        end
+      end
+      
+      class Cname
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expected_data, as: 'expectedData'
+          property :name, as: 'name'
+          collection :resolved_data, as: 'resolvedData'
         end
       end
       
@@ -257,6 +293,8 @@ module Google
           property :expire_time, as: 'expireTime'
           hash :labels, as: 'labels'
           property :managed, as: 'managed', class: Google::Apis::CertificatemanagerV1::ManagedCertificate, decorator: Google::Apis::CertificatemanagerV1::ManagedCertificate::Representation
+      
+          property :managed_identity, as: 'managedIdentity', class: Google::Apis::CertificatemanagerV1::ManagedIdentityCertificate, decorator: Google::Apis::CertificatemanagerV1::ManagedIdentityCertificate::Representation
       
           property :name, as: 'name'
           property :pem_certificate, as: 'pemCertificate'
@@ -369,6 +407,15 @@ module Google
         end
       end
       
+      class IPs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resolved, as: 'resolved'
+          collection :serving, as: 'serving'
+          collection :serving_on_alt_ports, as: 'servingOnAltPorts'
+        end
+      end
+      
       class IntermediateCa
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -449,6 +496,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::CertificatemanagerV1::Operation, decorator: Google::Apis::CertificatemanagerV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -481,6 +529,16 @@ module Google
           collection :dns_authorizations, as: 'dnsAuthorizations'
           collection :domains, as: 'domains'
           property :issuance_config, as: 'issuanceConfig'
+          property :provisioning_issue, as: 'provisioningIssue', class: Google::Apis::CertificatemanagerV1::ProvisioningIssue, decorator: Google::Apis::CertificatemanagerV1::ProvisioningIssue::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class ManagedIdentityCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity, as: 'identity'
           property :provisioning_issue, as: 'provisioningIssue', class: Google::Apis::CertificatemanagerV1::ProvisioningIssue, decorator: Google::Apis::CertificatemanagerV1::ProvisioningIssue::Representation
       
           property :state, as: 'state'
@@ -537,6 +595,17 @@ module Google
         end
       end
       
+      class Troubleshooting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cname, as: 'cname', class: Google::Apis::CertificatemanagerV1::Cname, decorator: Google::Apis::CertificatemanagerV1::Cname::Representation
+      
+          property :ips, as: 'ips', class: Google::Apis::CertificatemanagerV1::IPs, decorator: Google::Apis::CertificatemanagerV1::IPs::Representation
+      
+          collection :issues, as: 'issues'
+        end
+      end
+      
       class TrustAnchor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -554,6 +623,8 @@ module Google
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          hash :spiffe_trust_stores, as: 'spiffeTrustStores', class: Google::Apis::CertificatemanagerV1::TrustStore, decorator: Google::Apis::CertificatemanagerV1::TrustStore::Representation
+      
           collection :trust_stores, as: 'trustStores', class: Google::Apis::CertificatemanagerV1::TrustStore, decorator: Google::Apis::CertificatemanagerV1::TrustStore::Representation
       
           property :update_time, as: 'updateTime'

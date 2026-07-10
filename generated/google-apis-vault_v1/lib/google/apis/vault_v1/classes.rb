@@ -409,6 +409,11 @@ module Google
         # @return [Google::Apis::VaultV1::HeldDriveQuery]
         attr_accessor :drive_query
       
+        # Options for Gemini holds.
+        # Corresponds to the JSON property `geminiQuery`
+        # @return [Google::Apis::VaultV1::HeldGeminiQuery]
+        attr_accessor :gemini_query
+      
         # Query options for group holds.
         # Corresponds to the JSON property `groupsQuery`
         # @return [Google::Apis::VaultV1::HeldGroupsQuery]
@@ -437,6 +442,7 @@ module Google
         def update!(**args)
           @calendar_query = args[:calendar_query] if args.key?(:calendar_query)
           @drive_query = args[:drive_query] if args.key?(:drive_query)
+          @gemini_query = args[:gemini_query] if args.key?(:gemini_query)
           @groups_query = args[:groups_query] if args.key?(:groups_query)
           @hangouts_chat_query = args[:hangouts_chat_query] if args.key?(:hangouts_chat_query)
           @mail_query = args[:mail_query] if args.key?(:mail_query)
@@ -619,6 +625,13 @@ module Google
         attr_accessor :include_team_drives
         alias_method :include_team_drives?, :include_team_drives
       
+        # Optional. Options to include or exclude documents in shared drives. We
+        # recommend using this field over include_shared_drives. This field overrides
+        # include_shared_drives and include_team_drives when set.
+        # Corresponds to the JSON property `sharedDrivesOption`
+        # @return [String]
+        attr_accessor :shared_drives_option
+      
         # Search the current version of the Drive file, but export the contents of the
         # last version saved before 12:00 AM UTC on the specified date. Enter the date
         # in UTC.
@@ -635,6 +648,7 @@ module Google
           @client_side_encrypted_option = args[:client_side_encrypted_option] if args.key?(:client_side_encrypted_option)
           @include_shared_drives = args[:include_shared_drives] if args.key?(:include_shared_drives)
           @include_team_drives = args[:include_team_drives] if args.key?(:include_team_drives)
+          @shared_drives_option = args[:shared_drives_option] if args.key?(:shared_drives_option)
           @version_date = args[:version_date] if args.key?(:version_date)
         end
       end
@@ -1078,6 +1092,19 @@ module Google
         end
       end
       
+      # Options for Gemini holds.
+      class HeldGeminiQuery
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Query options for group holds.
       class HeldGroupsQuery
         include Google::Apis::Core::Hashable
@@ -1382,6 +1409,14 @@ module Google
         # @return [Array<Google::Apis::VaultV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1390,6 +1425,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

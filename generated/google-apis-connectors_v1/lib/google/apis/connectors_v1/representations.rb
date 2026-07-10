@@ -22,6 +22,12 @@ module Google
   module Apis
     module ConnectorsV1
       
+      class AdminFilters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,6 +436,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchConnectionToolspecOverrideRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchConnectionToolspecOverrideResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +455,18 @@ module Google
       end
       
       class FieldComparison
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateConnectionToolspecOverrideRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateConnectionToolspecOverrideResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -658,6 +688,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModifyConnectionToolspecOverrideRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModifyConnectionToolspecOverrideResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MultipleSelectConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -671,6 +713,12 @@ module Google
       end
       
       class NetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEgressModeOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -754,12 +802,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PriorityEntityType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Provider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -797,6 +839,12 @@ module Google
       end
       
       class RegionalSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveConnectionToolspecOverrideRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -958,6 +1006,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StringListValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SupportedRuntimeFeatures
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -977,6 +1031,18 @@ module Google
       end
       
       class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ToolName
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ToolspecOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1012,6 +1078,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WebhookData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1034,6 +1106,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdminFilters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter_key, as: 'filterKey'
+          property :filter_type, as: 'filterType'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :string_list_values, as: 'stringListValues', class: Google::Apis::ConnectorsV1::StringListValues, decorator: Google::Apis::ConnectorsV1::StringListValues::Representation
+      
+          property :string_value, as: 'stringValue'
+        end
       end
       
       class AuditConfig
@@ -1211,6 +1295,8 @@ module Google
       class Connection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :admin_filters, as: 'adminFilters', class: Google::Apis::ConnectorsV1::AdminFilters, decorator: Google::Apis::ConnectorsV1::AdminFilters::Representation
+      
           property :async_operations_enabled, as: 'asyncOperationsEnabled'
           property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
@@ -1313,6 +1399,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :always_allocate_cpu, as: 'alwaysAllocateCpu'
           property :connection_ratelimit_window_seconds, :numeric_string => true, as: 'connectionRatelimitWindowSeconds'
+          property :connection_service_account_enabled, as: 'connectionServiceAccountEnabled'
           property :connector_versioning_enabled, as: 'connectorVersioningEnabled'
           property :deployment_model, as: 'deploymentModel'
           property :hpa_config, as: 'hpaConfig', class: Google::Apis::ConnectorsV1::HpaConfig, decorator: Google::Apis::ConnectorsV1::HpaConfig::Representation
@@ -1321,9 +1408,11 @@ module Google
           property :max_instance_request_concurrency, as: 'maxInstanceRequestConcurrency'
           property :migrate_deployment_model, as: 'migrateDeploymentModel'
           property :migrate_tls, as: 'migrateTls'
-          property :network_egress_mode, as: 'networkEgressMode'
+          property :network_egress_mode_override, as: 'networkEgressModeOverride', class: Google::Apis::ConnectorsV1::NetworkEgressModeOverride, decorator: Google::Apis::ConnectorsV1::NetworkEgressModeOverride::Representation
+      
           property :provision_cloud_spanner, as: 'provisionCloudSpanner'
           property :provision_memstore, as: 'provisionMemstore'
+          property :public_network_ingress_enabled, as: 'publicNetworkIngressEnabled'
           property :ratelimit_threshold, :numeric_string => true, as: 'ratelimitThreshold'
           property :resource_limits, as: 'resourceLimits', class: Google::Apis::ConnectorsV1::ResourceLimits, decorator: Google::Apis::ConnectorsV1::ResourceLimits::Representation
       
@@ -1356,8 +1445,6 @@ module Google
           hash :labels, as: 'labels'
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
-          collection :priority_entity_types, as: 'priorityEntityTypes', class: Google::Apis::ConnectorsV1::PriorityEntityType, decorator: Google::Apis::ConnectorsV1::PriorityEntityType::Representation
-      
           property :release_version, as: 'releaseVersion'
           property :role_grant, as: 'roleGrant', class: Google::Apis::ConnectorsV1::RoleGrant, decorator: Google::Apis::ConnectorsV1::RoleGrant::Representation
       
@@ -1375,6 +1462,8 @@ module Google
       
           collection :unsupported_connection_types, as: 'unsupportedConnectionTypes'
           property :update_time, as: 'updateTime'
+          property :vpcsc_config, as: 'vpcscConfig', class: Google::Apis::ConnectorsV1::VpcscConfig, decorator: Google::Apis::ConnectorsV1::VpcscConfig::Representation
+      
         end
       end
       
@@ -1542,9 +1631,14 @@ module Google
       class EgressControlConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_mode, as: 'accessMode'
+          property :additional_extraction_rules, as: 'additionalExtractionRules', class: Google::Apis::ConnectorsV1::ExtractionRules, decorator: Google::Apis::ConnectorsV1::ExtractionRules::Representation
+      
+          collection :allowlisted_project_numbers, as: 'allowlistedProjectNumbers'
           property :backends, as: 'backends'
           property :extraction_rules, as: 'extractionRules', class: Google::Apis::ConnectorsV1::ExtractionRules, decorator: Google::Apis::ConnectorsV1::ExtractionRules::Representation
       
+          property :launch_environment, as: 'launchEnvironment'
         end
       end
       
@@ -1784,6 +1878,7 @@ module Google
           property :destinations, as: 'destinations', class: Google::Apis::ConnectorsV1::EventSubscriptionDestination, decorator: Google::Apis::ConnectorsV1::EventSubscriptionDestination::Representation
       
           property :event_type_id, as: 'eventTypeId'
+          property :filter, as: 'filter'
           property :jms, as: 'jms', class: Google::Apis::ConnectorsV1::Jms, decorator: Google::Apis::ConnectorsV1::Jms::Representation
       
           property :name, as: 'name'
@@ -1836,6 +1931,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
+          collection :allowed_event_types, as: 'allowedEventTypes'
           property :auth_config, as: 'authConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
           property :dead_letter_config, as: 'deadLetterConfig', class: Google::Apis::ConnectorsV1::DeadLetterConfig, decorator: Google::Apis::ConnectorsV1::DeadLetterConfig::Representation
@@ -1844,8 +1940,10 @@ module Google
       
           property :enrichment_enabled, as: 'enrichmentEnabled'
           property :events_listener_ingress_endpoint, as: 'eventsListenerIngressEndpoint'
+          property :global_event_filter, as: 'globalEventFilter'
           property :listener_auth_config, as: 'listenerAuthConfig', class: Google::Apis::ConnectorsV1::AuthConfig, decorator: Google::Apis::ConnectorsV1::AuthConfig::Representation
       
+          collection :private_connectivity_allowlisted_projects, as: 'privateConnectivityAllowlistedProjects'
           property :private_connectivity_enabled, as: 'privateConnectivityEnabled'
           property :proxy_destination_config, as: 'proxyDestinationConfig', class: Google::Apis::ConnectorsV1::DestinationConfig, decorator: Google::Apis::ConnectorsV1::DestinationConfig::Representation
       
@@ -1893,6 +1991,7 @@ module Google
           property :launch_stage, as: 'launchStage'
           property :name, as: 'name'
           collection :search_tags, as: 'searchTags'
+          property :subscription_type, as: 'subscriptionType'
           property :type, as: 'type'
         end
       end
@@ -1933,6 +2032,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :extraction_regex, as: 'extractionRegex'
+          property :format_string, as: 'formatString'
           property :source, as: 'source', class: Google::Apis::ConnectorsV1::Source, decorator: Google::Apis::ConnectorsV1::Source::Representation
       
         end
@@ -1952,6 +2052,22 @@ module Google
           collection :auth_schemas, as: 'authSchemas', class: Google::Apis::ConnectorsV1::AuthSchema, decorator: Google::Apis::ConnectorsV1::AuthSchema::Representation
       
           property :json_schema, as: 'jsonSchema', class: Google::Apis::ConnectorsV1::JsonAuthSchema, decorator: Google::Apis::ConnectorsV1::JsonAuthSchema::Representation
+      
+        end
+      end
+      
+      class FetchConnectionToolspecOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_names, as: 'toolNames', class: Google::Apis::ConnectorsV1::ToolName, decorator: Google::Apis::ConnectorsV1::ToolName::Representation
+      
+        end
+      end
+      
+      class FetchConnectionToolspecOverrideResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :toolspec_override, as: 'toolspecOverride', class: Google::Apis::ConnectorsV1::ToolspecOverride, decorator: Google::Apis::ConnectorsV1::ToolspecOverride::Representation
       
         end
       end
@@ -1980,6 +2096,22 @@ module Google
           property :int_value, :numeric_string => true, as: 'intValue'
           property :key, as: 'key'
           property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class GenerateConnectionToolspecOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tool_names, as: 'toolNames', class: Google::Apis::ConnectorsV1::ToolName, decorator: Google::Apis::ConnectorsV1::ToolName::Representation
+      
+        end
+      end
+      
+      class GenerateConnectionToolspecOverrideResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :toolspec_override, as: 'toolspecOverride', class: Google::Apis::ConnectorsV1::ToolspecOverride, decorator: Google::Apis::ConnectorsV1::ToolspecOverride::Representation
+      
         end
       end
       
@@ -2061,18 +2193,71 @@ module Google
       class JsonSchema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :_comment, as: '$comment'
+          hash :_defs, as: '$defs', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          property :_id, as: '$id'
+          property :_ref, as: '$ref'
+          property :_schema, as: '$schema'
           hash :additional_details, as: 'additionalDetails'
+          property :additional_items, as: 'additionalItems', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          property :additional_properties, as: 'additionalProperties', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          collection :all_of, as: 'allOf', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          collection :any_of, as: 'anyOf', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          property :const, as: 'const'
+          property :contains, as: 'contains', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          property :content_encoding, as: 'contentEncoding'
+          property :content_media_type, as: 'contentMediaType'
           property :default, as: 'default'
+          hash :definitions, as: 'definitions', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          hash :dependencies, as: 'dependencies'
           property :description, as: 'description'
+          property :else, as: 'else', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
           collection :enum, as: 'enum'
+          collection :examples, as: 'examples'
+          property :exclusive_maximum, as: 'exclusiveMaximum'
+          property :exclusive_minimum, as: 'exclusiveMinimum'
           property :format, as: 'format'
+          property :if, as: 'if', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
           property :items, as: 'items', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
       
           property :jdbc_type, as: 'jdbcType'
+          property :max_items, as: 'maxItems'
+          property :max_length, as: 'maxLength'
+          property :max_properties, as: 'maxProperties'
+          property :maximum, as: 'maximum'
+          property :min_items, as: 'minItems'
+          property :min_length, as: 'minLength'
+          property :min_properties, as: 'minProperties'
+          property :minimum, as: 'minimum'
+          property :multiple_of, as: 'multipleOf'
+          property :not, as: 'not', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          collection :one_of, as: 'oneOf', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          property :pattern, as: 'pattern'
+          hash :pattern_properties, as: 'patternProperties', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
           hash :properties, as: 'properties', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
       
+          property :property_names, as: 'propertyNames', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          property :read_only, as: 'readOnly'
           collection :required, as: 'required'
+          property :then_prop, as: 'then', class: Google::Apis::ConnectorsV1::JsonSchema, decorator: Google::Apis::ConnectorsV1::JsonSchema::Representation
+      
+          property :title, as: 'title'
           collection :type, as: 'type'
+          property :unique_items, as: 'uniqueItems'
+          property :write_only, as: 'writeOnly'
         end
       end
       
@@ -2217,6 +2402,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ConnectorsV1::Operation, decorator: Google::Apis::ConnectorsV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -2360,6 +2546,22 @@ module Google
         end
       end
       
+      class ModifyConnectionToolspecOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :toolspec_override, as: 'toolspecOverride', class: Google::Apis::ConnectorsV1::ToolspecOverride, decorator: Google::Apis::ConnectorsV1::ToolspecOverride::Representation
+      
+        end
+      end
+      
+      class ModifyConnectionToolspecOverrideResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :toolspec_overrides, as: 'toolspecOverrides', class: Google::Apis::ConnectorsV1::ToolspecOverride, decorator: Google::Apis::ConnectorsV1::ToolspecOverride::Representation
+      
+        end
+      end
+      
       class MultipleSelectConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2385,6 +2587,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :egress_ips, as: 'egressIps'
           property :egress_mode, as: 'egressMode'
+        end
+      end
+      
+      class NetworkEgressModeOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_eventing_override_enabled, as: 'isEventingOverrideEnabled'
+          property :is_jobs_override_enabled, as: 'isJobsOverrideEnabled'
+          property :network_egress_mode, as: 'networkEgressMode'
         end
       end
       
@@ -2536,16 +2747,6 @@ module Google
         end
       end
       
-      class PriorityEntityType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :id, as: 'id'
-          property :order, as: 'order'
-          property :priority, as: 'priority'
-        end
-      end
-      
       class Provider
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2608,12 +2809,19 @@ module Google
       class RegionalSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client, as: 'client'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::ConnectorsV1::EncryptionConfig, decorator: Google::Apis::ConnectorsV1::EncryptionConfig::Representation
       
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::ConnectorsV1::NetworkConfig, decorator: Google::Apis::ConnectorsV1::NetworkConfig::Representation
       
           property :provisioned, as: 'provisioned'
+        end
+      end
+      
+      class RemoveConnectionToolspecOverrideRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2885,6 +3093,13 @@ module Google
         end
       end
       
+      class StringListValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :list_values, as: 'listValues'
+        end
+      end
+      
       class SupportedRuntimeFeatures
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2916,6 +3131,25 @@ module Google
           property :minutes, as: 'minutes'
           property :nanos, as: 'nanos'
           property :seconds, as: 'seconds'
+        end
+      end
+      
+      class ToolName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_type, as: 'entityType'
+          property :name, as: 'name'
+          property :operation, as: 'operation'
+        end
+      end
+      
+      class ToolspecOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_version, as: 'baseVersion'
+          property :create_time, as: 'createTime'
+          collection :tools, as: 'tools'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -2963,12 +3197,22 @@ module Google
         end
       end
       
+      class VpcscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :default_allowlisted_host, as: 'defaultAllowlistedHost'
+          property :disable_firewall_vpcsc_flow, as: 'disableFirewallVpcscFlow'
+        end
+      end
+      
       class WebhookData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_variables, as: 'additionalVariables', class: Google::Apis::ConnectorsV1::ConfigVariable, decorator: Google::Apis::ConnectorsV1::ConfigVariable::Representation
       
           property :create_time, as: 'createTime'
+          collection :event_subscriptions, as: 'eventSubscriptions'
+          collection :event_types, as: 'eventTypes'
           property :id, as: 'id'
           property :name, as: 'name'
           property :next_refresh_time, as: 'nextRefreshTime'

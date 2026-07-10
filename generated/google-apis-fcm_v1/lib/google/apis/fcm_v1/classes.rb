@@ -28,7 +28,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. If set to true, messages will be allowed to be delivered to the app
-        # while the device is in bandwidth constrained mode.
+        # while the device is in bandwidth constrained mode. This should only be enabled
+        # when the app has been tested to properly handle messages in bandwidth
+        # constrained mode.
         # Corresponds to the JSON property `bandwidthConstrainedOk`
         # @return [Boolean]
         attr_accessor :bandwidth_constrained_ok
@@ -47,9 +49,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :data
       
-        # If set to true, messages will be allowed to be delivered to the app while the
-        # device is in direct boot mode. See [Support Direct Boot mode](https://
-        # developer.android.com/training/articles/direct-boot).
+        # Optional. If set to true, messages will be allowed to be delivered to the app
+        # while the device is in direct boot mode. See [Support Direct Boot mode](https:/
+        # /developer.android.com/training/articles/direct-boot).
         # Corresponds to the JSON property `directBootOk`
         # @return [Boolean]
         attr_accessor :direct_boot_ok
@@ -66,7 +68,8 @@ module Google
         attr_accessor :notification
       
         # Message priority. Can take "normal" and "high" values. For more information,
-        # see [Setting the priority of a message](https://goo.gl/GjONJv).
+        # see [Setting the priority of a message](https://firebase.google.com/docs/cloud-
+        # messaging/customize-messages/setting-message-priority).
         # Corresponds to the JSON property `priority`
         # @return [String]
         attr_accessor :priority
@@ -76,6 +79,17 @@ module Google
         # Corresponds to the JSON property `restrictedPackageName`
         # @return [String]
         attr_accessor :restricted_package_name
+      
+        # Optional. If set to true, messages will be allowed to be delivered to the app
+        # while the device is connected over a restricted satellite network. This should
+        # only be enabled for messages that can be handled over a restricted satellite
+        # network and only for apps that are enabled to work over a restricted satellite
+        # network. Note that the ability of the app to connect to a restricted satellite
+        # network is dependent on the carrier's settings and the device model.
+        # Corresponds to the JSON property `restrictedSatelliteOk`
+        # @return [Boolean]
+        attr_accessor :restricted_satellite_ok
+        alias_method :restricted_satellite_ok?, :restricted_satellite_ok
       
         # How long (in seconds) the message should be kept in FCM storage if the device
         # is offline. The maximum time to live supported is 4 weeks, and the default
@@ -105,6 +119,7 @@ module Google
           @notification = args[:notification] if args.key?(:notification)
           @priority = args[:priority] if args.key?(:priority)
           @restricted_package_name = args[:restricted_package_name] if args.key?(:restricted_package_name)
+          @restricted_satellite_ok = args[:restricted_satellite_ok] if args.key?(:restricted_satellite_ok)
           @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
@@ -153,8 +168,8 @@ module Google
         # @return [String]
         attr_accessor :body_loc_key
       
-        # If set, display notifications delivered to the device will be handled by the
-        # app instead of the proxy.
+        # Optional. If set, display notifications delivered to the device will be
+        # handled by the app instead of the proxy.
         # Corresponds to the JSON property `bypassProxyNotification`
         # @return [Boolean]
         attr_accessor :bypass_proxy_notification
@@ -262,13 +277,15 @@ module Google
         # Set the relative priority for this notification. Priority is an indication of
         # how much of the user's attention should be consumed by this notification. Low-
         # priority notifications may be hidden from the user in certain situations,
-        # while the user might be interrupted for a higher-priority notification. The
-        # effect of setting the same priorities may differ slightly on different
-        # platforms. Note this priority differs from `AndroidMessagePriority`. This
-        # priority is processed by the client after the message has been delivered,
-        # whereas [AndroidMessagePriority](https://firebase.google.com/docs/reference/
-        # fcm/rest/v1/projects.messages#androidmessagepriority) is an FCM concept that
-        # controls when the message is delivered.
+        # while the user might be interrupted for a higher-priority notification. This
+        # parameter affects notification priority only on devices running Android 7.1 (
+        # API level 25) and lower. On Android 8.0 (API level 26) and higher, priority is
+        # ignored in favor of channel [importance](https://developer.android.com/develop/
+        # ui/views/notifications/channels#importance). Note this priority differs from `
+        # AndroidMessagePriority`. This priority is processed by the client after the
+        # message has been delivered, whereas [AndroidMessagePriority](https://firebase.
+        # google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority)
+        # is an FCM concept that controls when the message is delivered.
         # Corresponds to the JSON property `notificationPriority`
         # @return [String]
         attr_accessor :notification_priority
@@ -625,9 +642,9 @@ module Google
         # @return [Google::Apis::FcmV1::Color]
         attr_accessor :color
       
-        # Required. Along with `light_on_duration `, define the blink rate of LED
-        # flashes. Resolution defined by [proto.Duration](https://developers.google.com/
-        # protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+        # Required. Along with `light_on_duration`, define the blink rate of LED flashes.
+        # Resolution defined by [proto.Duration](https://developers.google.com/protocol-
+        # buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         # Corresponds to the JSON property `lightOffDuration`
         # @return [String]
         attr_accessor :light_off_duration
@@ -686,6 +703,11 @@ module Google
         # @return [Google::Apis::FcmV1::FcmOptions]
         attr_accessor :fcm_options
       
+        # Firebase Installation ID to send a message to.
+        # Corresponds to the JSON property `fid`
+        # @return [String]
+        attr_accessor :fid
+      
         # Output Only. The identifier of the message sent, in the format of `projects/*/
         # messages/`message_id``.
         # Corresponds to the JSON property `name`
@@ -697,7 +719,9 @@ module Google
         # @return [Google::Apis::FcmV1::Notification]
         attr_accessor :notification
       
-        # Registration token to send a message to.
+        # Deprecated: Use `fid` instead. Registration token to send a message to. During
+        # the transition period, this field also accepts a Firebase Installation ID (FID)
+        # .
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -724,6 +748,7 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @data = args[:data] if args.key?(:data)
           @fcm_options = args[:fcm_options] if args.key?(:fcm_options)
+          @fid = args[:fid] if args.key?(:fid)
           @name = args[:name] if args.key?(:name)
           @notification = args[:notification] if args.key?(:notification)
           @token = args[:token] if args.key?(:token)

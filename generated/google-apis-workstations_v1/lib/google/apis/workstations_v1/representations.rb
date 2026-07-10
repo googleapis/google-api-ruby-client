@@ -88,7 +88,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GatewayConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GceConfidentialInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GceHyperdiskBalancedHighAvailability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkstationPersistentDirectory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Accelerator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -398,10 +416,28 @@ module Google
         end
       end
       
+      class GatewayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http2_enabled, as: 'http2Enabled'
+        end
+      end
+      
       class GceConfidentialInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
+      class GceHyperdiskBalancedHighAvailability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_timeout, as: 'archiveTimeout'
+          property :max_size_gb, as: 'maxSizeGb'
+          property :reclaim_policy, as: 'reclaimPolicy'
+          property :size_gb, as: 'sizeGb'
+          property :source_snapshot, as: 'sourceSnapshot'
         end
       end
       
@@ -418,6 +454,7 @@ module Google
           property :disable_public_ip_addresses, as: 'disablePublicIpAddresses'
           property :disable_ssh, as: 'disableSsh'
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          hash :instance_metadata, as: 'instanceMetadata'
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
           property :pooled_instances, as: 'pooledInstances'
@@ -425,6 +462,7 @@ module Google
           collection :service_account_scopes, as: 'serviceAccountScopes'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::WorkstationsV1::GceShieldedInstanceConfig, decorator: Google::Apis::WorkstationsV1::GceShieldedInstanceConfig::Representation
       
+          property :startup_script_uri, as: 'startupScriptUri'
           collection :tags, as: 'tags'
           hash :vm_tags, as: 'vmTags'
         end
@@ -452,8 +490,10 @@ module Google
       class GceRegionalPersistentDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_timeout, as: 'archiveTimeout'
           property :disk_type, as: 'diskType'
           property :fs_type, as: 'fsType'
+          property :max_size_gb, as: 'maxSizeGb'
           property :reclaim_policy, as: 'reclaimPolicy'
           property :size_gb, as: 'sizeGb'
           property :source_snapshot, as: 'sourceSnapshot'
@@ -515,6 +555,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::WorkstationsV1::Operation, decorator: Google::Apis::WorkstationsV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -607,6 +648,8 @@ module Google
       class PersistentDirectory
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gce_hd, as: 'gceHd', class: Google::Apis::WorkstationsV1::GceHyperdiskBalancedHighAvailability, decorator: Google::Apis::WorkstationsV1::GceHyperdiskBalancedHighAvailability::Representation
+      
           property :gce_pd, as: 'gcePd', class: Google::Apis::WorkstationsV1::GceRegionalPersistentDisk, decorator: Google::Apis::WorkstationsV1::GceRegionalPersistentDisk::Representation
       
           property :mount_path, as: 'mountPath'
@@ -721,6 +764,8 @@ module Google
           property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :persistent_directories, as: 'persistentDirectories', class: Google::Apis::WorkstationsV1::WorkstationPersistentDirectory, decorator: Google::Apis::WorkstationsV1::WorkstationPersistentDirectory::Representation
+      
           property :reconciling, as: 'reconciling'
           property :runtime_host, as: 'runtimeHost', class: Google::Apis::WorkstationsV1::RuntimeHost, decorator: Google::Apis::WorkstationsV1::RuntimeHost::Representation
       
@@ -746,6 +791,8 @@ module Google
           property :domain_config, as: 'domainConfig', class: Google::Apis::WorkstationsV1::DomainConfig, decorator: Google::Apis::WorkstationsV1::DomainConfig::Representation
       
           property :etag, as: 'etag'
+          property :gateway_config, as: 'gatewayConfig', class: Google::Apis::WorkstationsV1::GatewayConfig, decorator: Google::Apis::WorkstationsV1::GatewayConfig::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -756,6 +803,8 @@ module Google
           hash :tags, as: 'tags'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+          property :workstation_authorization_url, as: 'workstationAuthorizationUrl'
+          property :workstation_launch_url, as: 'workstationLaunchUrl'
         end
       end
       
@@ -796,6 +845,14 @@ module Google
           property :running_timeout, as: 'runningTimeout'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class WorkstationPersistentDirectory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mount_path, as: 'mountPath'
+          property :size_gb, as: 'sizeGb'
         end
       end
     end

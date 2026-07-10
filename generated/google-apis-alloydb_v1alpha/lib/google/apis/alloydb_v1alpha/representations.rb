@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoScalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutomatedBackupPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,30 @@ module Google
       end
       
       class Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrBackupSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrEnabledWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupDrPitrSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CpuUtilization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CsvExportOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +155,18 @@ module Google
       end
       
       class CsvImportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataplexConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -143,6 +191,12 @@ module Google
       end
       
       class EncryptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Endpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListEndpointsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +395,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +490,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Schedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecondaryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -484,6 +556,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainBackupDrMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainBackupRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,6 +575,12 @@ module Google
       end
       
       class StorageDatabasecenterPartnerapiV1mainCompliance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -532,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainEntitlement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -545,6 +641,12 @@ module Google
       end
       
       class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainIpAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -568,13 +670,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainResourceFlags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainRetentionSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StorageDatabasecenterPartnerapiV1mainSignalMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainTags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -677,6 +815,16 @@ module Google
         end
       end
       
+      class AutoScalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::AlloydbV1alpha::Policy, decorator: Google::Apis::AlloydbV1alpha::Policy::Representation
+      
+          collection :schedules, as: 'schedules', class: Google::Apis::AlloydbV1alpha::Schedule, decorator: Google::Apis::AlloydbV1alpha::Schedule::Representation
+      
+        end
+      end
+      
       class AutomatedBackupPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -699,6 +847,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :cluster_deleted, as: 'clusterDeleted'
           property :cluster_name, as: 'clusterName'
           property :cluster_uid, as: 'clusterUid'
           property :create_completion_time, as: 'createCompletionTime'
@@ -726,6 +875,46 @@ module Google
           property :type, as: 'type'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class BackupDrBackupSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+        end
+      end
+      
+      class BackupDrEnabledWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automated_backup_previously_enabled, as: 'automatedBackupPreviouslyEnabled'
+          property :backup_plan_association, as: 'backupPlanAssociation'
+          property :continuous_backup_previous_recovery_window_days, as: 'continuousBackupPreviousRecoveryWindowDays'
+          property :continuous_backup_previously_enabled, as: 'continuousBackupPreviouslyEnabled'
+          property :continuous_backup_previously_enabled_time, as: 'continuousBackupPreviouslyEnabledTime'
+          property :data_source, as: 'dataSource'
+          property :disabled_time, as: 'disabledTime'
+          property :enabled_time, as: 'enabledTime'
+          property :log_retention_period, as: 'logRetentionPeriod'
+        end
+      end
+      
+      class BackupDrInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_window, as: 'currentWindow', class: Google::Apis::AlloydbV1alpha::BackupDrEnabledWindow, decorator: Google::Apis::AlloydbV1alpha::BackupDrEnabledWindow::Representation
+      
+          collection :previous_windows, as: 'previousWindows', class: Google::Apis::AlloydbV1alpha::BackupDrEnabledWindow, decorator: Google::Apis::AlloydbV1alpha::BackupDrEnabledWindow::Representation
+      
+        end
+      end
+      
+      class BackupDrPitrSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source, as: 'dataSource'
+          property :point_in_time, as: 'pointInTime'
         end
       end
       
@@ -777,6 +966,10 @@ module Google
       
           property :backup_source, as: 'backupSource', class: Google::Apis::AlloydbV1alpha::BackupSource, decorator: Google::Apis::AlloydbV1alpha::BackupSource::Representation
       
+          property :backupdr_backup_source, as: 'backupdrBackupSource', class: Google::Apis::AlloydbV1alpha::BackupDrBackupSource, decorator: Google::Apis::AlloydbV1alpha::BackupDrBackupSource::Representation
+      
+          property :backupdr_info, as: 'backupdrInfo', class: Google::Apis::AlloydbV1alpha::BackupDrInfo, decorator: Google::Apis::AlloydbV1alpha::BackupDrInfo::Representation
+      
           property :cloudsql_backup_run_source, as: 'cloudsqlBackupRunSource', class: Google::Apis::AlloydbV1alpha::CloudSqlBackupRunSource, decorator: Google::Apis::AlloydbV1alpha::CloudSqlBackupRunSource::Representation
       
           property :cluster_type, as: 'clusterType'
@@ -786,6 +979,8 @@ module Google
       
           property :create_time, as: 'createTime'
           property :database_version, as: 'databaseVersion'
+          property :dataplex_config, as: 'dataplexConfig', class: Google::Apis::AlloydbV1alpha::DataplexConfig, decorator: Google::Apis::AlloydbV1alpha::DataplexConfig::Representation
+      
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::AlloydbV1alpha::EncryptionConfig, decorator: Google::Apis::AlloydbV1alpha::EncryptionConfig::Representation
@@ -802,6 +997,7 @@ module Google
       
           property :maintenance_update_policy, as: 'maintenanceUpdatePolicy', class: Google::Apis::AlloydbV1alpha::MaintenanceUpdatePolicy, decorator: Google::Apis::AlloydbV1alpha::MaintenanceUpdatePolicy::Representation
       
+          property :maintenance_version_selection_policy, as: 'maintenanceVersionSelectionPolicy'
           property :migration_source, as: 'migrationSource', class: Google::Apis::AlloydbV1alpha::MigrationSource, decorator: Google::Apis::AlloydbV1alpha::MigrationSource::Representation
       
           property :name, as: 'name'
@@ -817,6 +1013,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :secondary_config, as: 'secondaryConfig', class: Google::Apis::AlloydbV1alpha::SecondaryConfig, decorator: Google::Apis::AlloydbV1alpha::SecondaryConfig::Representation
       
+          property :service_account_email, as: 'serviceAccountEmail'
           property :ssl_config, as: 'sslConfig', class: Google::Apis::AlloydbV1alpha::SslConfig, decorator: Google::Apis::AlloydbV1alpha::SslConfig::Representation
       
           property :state, as: 'state'
@@ -850,6 +1047,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :name, as: 'name'
           collection :pem_certificate_chain, as: 'pemCertificateChain'
+          property :psc_auto_dns_name, as: 'pscAutoDnsName'
           property :psc_dns_name, as: 'pscDnsName'
           property :public_ip_address, as: 'publicIpAddress'
         end
@@ -858,18 +1056,10 @@ module Google
       class ConnectionPoolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_pool_size, as: 'defaultPoolSize'
-          property :enable, as: 'enable'
+          property :authproxy_pooler_count, as: 'authproxyPoolerCount'
           property :enabled, as: 'enabled'
           hash :flags, as: 'flags'
-          collection :ignore_startup_parameters, as: 'ignoreStartupParameters'
-          property :max_client_conn, as: 'maxClientConn'
-          property :max_prepared_statements, as: 'maxPreparedStatements'
-          property :min_pool_size, as: 'minPoolSize'
-          property :pool_mode, as: 'poolMode'
-          property :query_wait_timeout, as: 'queryWaitTimeout'
-          property :server_idle_timeout, as: 'serverIdleTimeout'
-          collection :stats_users, as: 'statsUsers'
+          property :pooler_count, as: 'poolerCount'
         end
       end
       
@@ -902,6 +1092,13 @@ module Google
         end
       end
       
+      class CpuUtilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :utilization_target, as: 'utilizationTarget'
+        end
+      end
+      
       class CsvExportOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -920,6 +1117,21 @@ module Google
           property :field_delimiter, as: 'fieldDelimiter'
           property :quote_character, as: 'quoteCharacter'
           property :table, as: 'table'
+        end
+      end
+      
+      class DnsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_name, as: 'dnsName'
+          property :dns_record_type, as: 'dnsRecordType'
+        end
+      end
+      
+      class DataplexConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -953,6 +1165,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encryption_type, as: 'encryptionType'
           collection :kms_key_versions, as: 'kmsKeyVersions'
+        end
+      end
+      
+      class Endpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :dns_config, as: 'dnsConfig', class: Google::Apis::AlloydbV1alpha::DnsConfig, decorator: Google::Apis::AlloydbV1alpha::DnsConfig::Representation
+      
+          collection :effective_target_instances, as: 'effectiveTargetInstances'
+          property :endpoint_type, as: 'endpointType'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :state, as: 'state'
+          collection :target_instances, as: 'targetInstances'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1077,6 +1310,7 @@ module Google
           property :connection_pool_config, as: 'connectionPoolConfig', class: Google::Apis::AlloydbV1alpha::ConnectionPoolConfig, decorator: Google::Apis::AlloydbV1alpha::ConnectionPoolConfig::Representation
       
           property :create_time, as: 'createTime'
+          property :data_api_access, as: 'dataApiAccess'
           hash :database_flags, as: 'databaseFlags'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
@@ -1091,6 +1325,7 @@ module Google
           hash :labels, as: 'labels'
           property :machine_config, as: 'machineConfig', class: Google::Apis::AlloydbV1alpha::MachineConfig, decorator: Google::Apis::AlloydbV1alpha::MachineConfig::Representation
       
+          property :maintenance_version_name, as: 'maintenanceVersionName'
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1alpha::InstanceNetworkConfig, decorator: Google::Apis::AlloydbV1alpha::InstanceNetworkConfig::Representation
       
@@ -1168,6 +1403,16 @@ module Google
         end
       end
       
+      class ListEndpointsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoints, as: 'endpoints', class: Google::Apis::AlloydbV1alpha::Endpoint, decorator: Google::Apis::AlloydbV1alpha::Endpoint::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1184,6 +1429,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::AlloydbV1alpha::Operation, decorator: Google::Apis::AlloydbV1alpha::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1262,6 +1508,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :ip, as: 'ip'
+          property :is_hot_standby, as: 'isHotStandby'
           property :state, as: 'state'
           property :zone_id, as: 'zoneId'
         end
@@ -1277,6 +1524,8 @@ module Google
           property :query_plans_per_minute, as: 'queryPlansPerMinute'
           property :record_application_tags, as: 'recordApplicationTags'
           property :track_active_queries, as: 'trackActiveQueries'
+          property :track_active_query_plan, as: 'trackActiveQueryPlan'
+          property :track_client_address, as: 'trackClientAddress'
           property :track_wait_event_types, as: 'trackWaitEventTypes'
           property :track_wait_events, as: 'trackWaitEvents'
         end
@@ -1309,6 +1558,17 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cool_down_period_sec, :numeric_string => true, as: 'coolDownPeriodSec'
+          property :cpu_utilization, as: 'cpuUtilization', class: Google::Apis::AlloydbV1alpha::CpuUtilization, decorator: Google::Apis::AlloydbV1alpha::CpuUtilization::Representation
+      
+          property :enabled, as: 'enabled'
+          property :max_node_count, :numeric_string => true, as: 'maxNodeCount'
+        end
+      end
+      
       class PrimaryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1320,6 +1580,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
+          property :failover, as: 'failover'
           property :request_id, as: 'requestId'
           property :validate_only, as: 'validateOnly'
         end
@@ -1392,6 +1653,8 @@ module Google
       class ReadPoolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_scaling_config, as: 'autoScalingConfig', class: Google::Apis::AlloydbV1alpha::AutoScalingConfig, decorator: Google::Apis::AlloydbV1alpha::AutoScalingConfig::Representation
+      
           property :node_count, as: 'nodeCount'
         end
       end
@@ -1418,6 +1681,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_source, as: 'backupSource', class: Google::Apis::AlloydbV1alpha::BackupSource, decorator: Google::Apis::AlloydbV1alpha::BackupSource::Representation
       
+          property :backupdr_backup_source, as: 'backupdrBackupSource', class: Google::Apis::AlloydbV1alpha::BackupDrBackupSource, decorator: Google::Apis::AlloydbV1alpha::BackupDrBackupSource::Representation
+      
+          property :backupdr_pitr_source, as: 'backupdrPitrSource', class: Google::Apis::AlloydbV1alpha::BackupDrPitrSource, decorator: Google::Apis::AlloydbV1alpha::BackupDrPitrSource::Representation
+      
           property :cluster, as: 'cluster', class: Google::Apis::AlloydbV1alpha::Cluster, decorator: Google::Apis::AlloydbV1alpha::Cluster::Representation
       
           property :cluster_id, as: 'clusterId'
@@ -1436,6 +1703,19 @@ module Google
           property :cluster, as: 'cluster', class: Google::Apis::AlloydbV1alpha::Cluster, decorator: Google::Apis::AlloydbV1alpha::Cluster::Representation
       
           property :cluster_id, as: 'clusterId'
+        end
+      end
+      
+      class Schedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cron_expression, as: 'cronExpression'
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :duration_sec, :numeric_string => true, as: 'durationSec'
+          property :min_node_count, :numeric_string => true, as: 'minNodeCount'
+          property :name, as: 'name'
+          property :time_zone, as: 'timeZone'
         end
       end
       
@@ -1529,6 +1809,29 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backupdr_managed, as: 'backupdrManaged'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainBackupDrMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration::Representation
+      
+          property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
+      
+          property :backupdr_configuration, as: 'backupdrConfiguration', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration::Representation
+      
+          property :full_resource_name, as: 'fullResourceName'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
+      
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainBackupRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1548,6 +1851,18 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_resource_name, as: 'fullResourceName'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
+      
+          property :signal_bool_value, as: 'signalBoolValue'
+          property :signal_type, as: 'signalType'
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainCustomMetadataData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1559,6 +1874,12 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backupdr_metadata, as: 'backupdrMetadata', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata::Representation
+      
+          property :config_based_signal_data, as: 'configBasedSignalData', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData::Representation
+      
+          property :database_resource_signal_data, as: 'databaseResourceSignalData', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData::Representation
+      
           property :feed_timestamp, as: 'feedTimestamp'
           property :feed_type, as: 'feedType'
           property :observability_metric_data, as: 'observabilityMetricData', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData::Representation
@@ -1571,6 +1892,7 @@ module Google
       
           property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata::Representation
       
+          property :skip_ingestion, as: 'skipIngestion'
         end
       end
       
@@ -1583,6 +1905,7 @@ module Google
           property :description, as: 'description'
           property :event_time, as: 'eventTime'
           property :external_uri, as: 'externalUri'
+          property :location, as: 'location'
           property :name, as: 'name'
           property :provider, as: 'provider'
           property :resource_container, as: 'resourceContainer'
@@ -1608,11 +1931,14 @@ module Google
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_metadata, as: 'additionalMetadata'
           property :availability_configuration, as: 'availabilityConfiguration', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration::Representation
       
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupConfiguration::Representation
       
           property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
+      
+          property :backupdr_configuration, as: 'backupdrConfiguration', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration::Representation
       
           property :creation_time, as: 'creationTime'
           property :current_state, as: 'currentState'
@@ -1627,15 +1953,24 @@ module Google
           property :id, as: 'id', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :instance_type, as: 'instanceType'
+          hash :internal_additional_metadata, as: 'internalAdditionalMetadata'
+          property :ip_address, as: 'ipAddress', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainIpAddress, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainIpAddress::Representation
+      
+          property :is_deletion_protection_enabled, as: 'isDeletionProtectionEnabled'
           property :location, as: 'location'
           property :machine_configuration, as: 'machineConfiguration', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainMachineConfiguration, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainMachineConfiguration::Representation
       
+          property :maintenance_info, as: 'maintenanceInfo', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo::Representation
+      
+          collection :modes, as: 'modes'
           property :primary_resource_id, as: 'primaryResourceId', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
       
           property :primary_resource_location, as: 'primaryResourceLocation'
           property :product, as: 'product', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterProtoCommonProduct::Representation
       
           property :resource_container, as: 'resourceContainer'
+          collection :resource_flags, as: 'resourceFlags', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceFlags, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceFlags::Representation
+      
           property :resource_name, as: 'resourceName'
           property :suspension_reason, as: 'suspensionReason'
           property :tags_set, as: 'tagsSet', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainTags, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainTags::Representation
@@ -1643,6 +1978,7 @@ module Google
           property :updation_time, as: 'updationTime'
           property :user_label_set, as: 'userLabelSet', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUserLabels, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUserLabels::Representation
       
+          property :zone, as: 'zone'
         end
       end
       
@@ -1656,6 +1992,24 @@ module Google
           property :recommender_id, as: 'recommenderId'
           property :recommender_subtype, as: 'recommenderSubtype'
           property :resource_name, as: 'resourceName'
+          property :signal_type, as: 'signalType'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
+      
+          property :full_resource_name, as: 'fullResourceName'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :location, as: 'location'
+          property :resource_id, as: 'resourceId', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId::Representation
+      
+          property :signal_bool_value, as: 'signalBoolValue'
+          collection :signal_metadata_list, as: 'signalMetadataList', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainSignalMetadata, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainSignalMetadata::Representation
+      
+          property :signal_state, as: 'signalState'
           property :signal_type, as: 'signalType'
         end
       end
@@ -1691,10 +2045,20 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainIpAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_ip, as: 'privateIp'
+          property :public_ip, as: 'publicIp'
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :baseline_slots, :numeric_string => true, as: 'baselineSlots'
           property :cpu_count, as: 'cpuCount'
+          property :max_reservation_slots, :numeric_string => true, as: 'maxReservationSlots'
           property :memory_size_in_bytes, :numeric_string => true, as: 'memorySizeInBytes'
           property :shard_count, as: 'shardCount'
           property :vcpu_count, as: 'vcpuCount'
@@ -1722,6 +2086,54 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainResourceFlags
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::AlloydbV1alpha::GoogleTypeDate, decorator: Google::Apis::AlloydbV1alpha::GoogleTypeDate::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::AlloydbV1alpha::GoogleTypeDate, decorator: Google::Apis::AlloydbV1alpha::GoogleTypeDate::Representation
+      
+          property :time, as: 'time', class: Google::Apis::AlloydbV1alpha::GoogleTypeTimeOfDay, decorator: Google::Apis::AlloydbV1alpha::GoogleTypeTimeOfDay::Representation
+      
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_version_release_date, as: 'currentVersionReleaseDate', class: Google::Apis::AlloydbV1alpha::GoogleTypeDate, decorator: Google::Apis::AlloydbV1alpha::GoogleTypeDate::Representation
+      
+          collection :deny_maintenance_schedules, as: 'denyMaintenanceSchedules', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule::Representation
+      
+          property :is_instance_stopped, as: 'isInstanceStopped'
+          property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule::Representation
+      
+          property :maintenance_state, as: 'maintenanceState'
+          property :maintenance_version, as: 'maintenanceVersion'
+          collection :next_available_maintenance_versions, as: 'nextAvailableMaintenanceVersions'
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance::Representation
+      
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :phase, as: 'phase'
+          property :time, as: 'time', class: Google::Apis::AlloydbV1alpha::GoogleTypeTimeOfDay, decorator: Google::Apis::AlloydbV1alpha::GoogleTypeTimeOfDay::Representation
+      
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainRetentionSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1733,10 +2145,27 @@ module Google
         end
       end
       
+      class StorageDatabasecenterPartnerapiV1mainSignalMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_run, as: 'backupRun', class: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun, decorator: Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainBackupRun::Representation
+      
+          property :signal_bool_value, as: 'signalBoolValue'
+        end
+      end
+      
       class StorageDatabasecenterPartnerapiV1mainTags
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :tags, as: 'tags'
+        end
+      end
+      
+      class StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -1751,6 +2180,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :engine, as: 'engine'
+          property :minor_version, as: 'minorVersion'
           property :type, as: 'type'
           property :version, as: 'version'
         end

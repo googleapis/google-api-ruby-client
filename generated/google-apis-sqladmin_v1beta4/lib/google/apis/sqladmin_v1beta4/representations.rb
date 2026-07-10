@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Column
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectPoolNodeConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecuteSqlPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -269,6 +281,12 @@ module Google
       end
       
       class FailoverContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FinalBackupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -400,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesListEntraIdCertificatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesPreCheckMajorVersionUpgradeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstancesReencryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +455,12 @@ module Google
       end
       
       class RestoreInstancesBackupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesRotateEntraIdCertificateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -479,6 +515,18 @@ module Google
       end
       
       class MaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Message
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerformanceCaptureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PointInTimeRestoreContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -562,6 +616,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreCheckMajorVersionUpgradeContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreCheckResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PscAutoConnectionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +635,18 @@ module Google
       end
       
       class PscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReadPoolAutoScaleConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -598,6 +676,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RotateEntraIdCertificateContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RotateServerCaContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +689,12 @@ module Google
       end
       
       class RotateServerCertificateContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Row
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -635,6 +725,12 @@ module Google
       end
       
       class SqlInstancesAcquireSsrsLeaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlInstancesExecuteSqlResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -712,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerEntraIdConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlServerUserDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -760,7 +862,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SyncFlags
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetMetric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -797,6 +911,12 @@ module Google
       end
       
       class ListUsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Value
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -977,11 +1097,22 @@ module Google
       
           collection :database_names, as: 'databaseNames'
           property :destination_instance_name, as: 'destinationInstanceName'
+          property :destination_network, as: 'destinationNetwork'
+          property :destination_project, as: 'destinationProject'
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
           property :point_in_time, as: 'pointInTime'
           property :preferred_secondary_zone, as: 'preferredSecondaryZone'
           property :preferred_zone, as: 'preferredZone'
+          property :source_instance_deletion_time, as: 'sourceInstanceDeletionTime'
+        end
+      end
+      
+      class Column
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -1009,6 +1140,7 @@ module Google
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1beta4::IpMapping, decorator: Google::Apis::SqladminV1beta4::IpMapping::Representation
       
           property :kind, as: 'kind'
+          collection :mdx_protocol_support, as: 'mdxProtocolSupport'
           property :node_count, as: 'nodeCount'
           collection :nodes, as: 'nodes', class: Google::Apis::SqladminV1beta4::ConnectPoolNodeConfig, decorator: Google::Apis::SqladminV1beta4::ConnectPoolNodeConfig::Representation
       
@@ -1026,6 +1158,7 @@ module Google
           property :connection_pooling_enabled, as: 'connectionPoolingEnabled'
           collection :flags, as: 'flags', class: Google::Apis::SqladminV1beta4::ConnectionPoolFlags, decorator: Google::Apis::SqladminV1beta4::ConnectionPoolFlags::Representation
       
+          property :pooler_count, as: 'poolerCount'
         end
       end
       
@@ -1073,7 +1206,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :available_maintenance_versions, as: 'availableMaintenanceVersions'
           property :backend_type, as: 'backendType'
-          property :clear_network, as: 'clearNetwork'
           property :connection_name, as: 'connectionName'
           property :create_time, as: 'createTime'
           property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
@@ -1230,12 +1362,26 @@ module Google
           property :connection_type, as: 'connectionType'
           property :dns_scope, as: 'dnsScope'
           property :name, as: 'name'
+          property :record_manager, as: 'recordManager'
         end
       end
       
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ExecuteSqlPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application'
+          property :auto_iam_authn, as: 'autoIamAuthn'
+          property :database, as: 'database'
+          property :partial_result_mode, as: 'partialResultMode'
+          property :row_limit, :numeric_string => true, as: 'rowLimit'
+          property :sql_statement, as: 'sqlStatement'
+          property :user, as: 'user'
         end
       end
       
@@ -1333,6 +1479,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :settings_version, :numeric_string => true, as: 'settingsVersion'
+        end
+      end
+      
+      class FinalBackupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :retention_days, as: 'retentionDays'
         end
       end
       
@@ -1480,6 +1634,7 @@ module Google
       class InsightsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enhanced_query_insights_enabled, as: 'enhancedQueryInsightsEnabled'
           property :query_insights_enabled, as: 'queryInsightsEnabled'
           property :query_plans_per_minute, as: 'queryPlansPerMinute'
           property :query_string_length, as: 'queryStringLength'
@@ -1553,6 +1708,16 @@ module Google
         end
       end
       
+      class InstancesListEntraIdCertificatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_version, as: 'activeVersion'
+          collection :certs, as: 'certs', class: Google::Apis::SqladminV1beta4::SslCert, decorator: Google::Apis::SqladminV1beta4::SslCert::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
       class ListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1587,6 +1752,14 @@ module Google
         end
       end
       
+      class InstancesPreCheckMajorVersionUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pre_check_major_version_upgrade_context, as: 'preCheckMajorVersionUpgradeContext', class: Google::Apis::SqladminV1beta4::PreCheckMajorVersionUpgradeContext, decorator: Google::Apis::SqladminV1beta4::PreCheckMajorVersionUpgradeContext::Representation
+      
+        end
+      end
+      
       class InstancesReencryptRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1602,7 +1775,16 @@ module Google
           property :backupdr_backup, as: 'backupdrBackup'
           property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1beta4::RestoreBackupContext, decorator: Google::Apis::SqladminV1beta4::RestoreBackupContext::Representation
       
+          collection :restore_instance_clear_overrides_field_names, as: 'restoreInstanceClearOverridesFieldNames'
           property :restore_instance_settings, as: 'restoreInstanceSettings', class: Google::Apis::SqladminV1beta4::DatabaseInstance, decorator: Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
+      
+        end
+      end
+      
+      class InstancesRotateEntraIdCertificateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rotate_entra_id_certificate_context, as: 'rotateEntraIdCertificateContext', class: Google::Apis::SqladminV1beta4::RotateEntraIdCertificateContext, decorator: Google::Apis::SqladminV1beta4::RotateEntraIdCertificateContext::Representation
       
         end
       end
@@ -1654,6 +1836,7 @@ module Google
           property :require_ssl, as: 'requireSsl'
           property :server_ca_mode, as: 'serverCaMode'
           property :server_ca_pool, as: 'serverCaPool'
+          property :server_certificate_rotation_mode, as: 'serverCertificateRotationMode'
           property :ssl_mode, as: 'sslMode'
         end
       end
@@ -1695,6 +1878,21 @@ module Google
           property :hour, as: 'hour'
           property :kind, as: 'kind'
           property :update_track, as: 'updateTrack'
+        end
+      end
+      
+      class Message
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :severity, as: 'severity'
+        end
+      end
+      
+      class Metadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_statement_execution_time, as: 'sqlStatementExecutionTime'
         end
       end
       
@@ -1762,6 +1960,8 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :operation_type, as: 'operationType'
+          property :pre_check_major_version_upgrade_context, as: 'preCheckMajorVersionUpgradeContext', class: Google::Apis::SqladminV1beta4::PreCheckMajorVersionUpgradeContext, decorator: Google::Apis::SqladminV1beta4::PreCheckMajorVersionUpgradeContext::Representation
+      
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
@@ -1843,6 +2043,18 @@ module Google
         end
       end
       
+      class PerformanceCaptureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :probe_threshold, as: 'probeThreshold'
+          property :probing_interval_seconds, as: 'probingIntervalSeconds'
+          property :running_threads_threshold, as: 'runningThreadsThreshold'
+          property :seconds_behind_source_threshold, as: 'secondsBehindSourceThreshold'
+          property :transaction_duration_threshold, as: 'transactionDurationThreshold'
+        end
+      end
+      
       class PointInTimeRestoreContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1852,7 +2064,11 @@ module Google
           property :preferred_secondary_zone, as: 'preferredSecondaryZone'
           property :preferred_zone, as: 'preferredZone'
           property :private_network, as: 'privateNetwork'
+          property :region, as: 'region'
           property :target_instance, as: 'targetInstance'
+          collection :target_instance_clear_settings_field_names, as: 'targetInstanceClearSettingsFieldNames'
+          property :target_instance_settings, as: 'targetInstanceSettings', class: Google::Apis::SqladminV1beta4::DatabaseInstance, decorator: Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
+      
         end
       end
       
@@ -1866,7 +2082,29 @@ module Google
           collection :ip_addresses, as: 'ipAddresses', class: Google::Apis::SqladminV1beta4::IpMapping, decorator: Google::Apis::SqladminV1beta4::IpMapping::Representation
       
           property :name, as: 'name'
+          collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::SqladminV1beta4::PscAutoConnectionConfig, decorator: Google::Apis::SqladminV1beta4::PscAutoConnectionConfig::Representation
+      
+          property :psc_service_attachment_link, as: 'pscServiceAttachmentLink'
           property :state, as: 'state'
+        end
+      end
+      
+      class PreCheckMajorVersionUpgradeContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :pre_check_response, as: 'preCheckResponse', class: Google::Apis::SqladminV1beta4::PreCheckResponse, decorator: Google::Apis::SqladminV1beta4::PreCheckResponse::Representation
+      
+          property :target_database_version, as: 'targetDatabaseVersion'
+        end
+      end
+      
+      class PreCheckResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions_required, as: 'actionsRequired'
+          property :message, as: 'message'
+          property :message_type, as: 'messageType'
         end
       end
       
@@ -1877,6 +2115,8 @@ module Google
           property :consumer_network_status, as: 'consumerNetworkStatus'
           property :consumer_project, as: 'consumerProject'
           property :ip_address, as: 'ipAddress'
+          property :service_connection_policy, as: 'serviceConnectionPolicy'
+          property :service_connection_policy_creation_result, as: 'serviceConnectionPolicyCreationResult'
           property :status, as: 'status'
         end
       end
@@ -1886,9 +2126,40 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
           property :network_attachment_uri, as: 'networkAttachmentUri'
+          property :psc_auto_connection_policy_enabled, as: 'pscAutoConnectionPolicyEnabled'
           collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::SqladminV1beta4::PscAutoConnectionConfig, decorator: Google::Apis::SqladminV1beta4::PscAutoConnectionConfig::Representation
       
+          property :psc_auto_dns_enabled, as: 'pscAutoDnsEnabled'
           property :psc_enabled, as: 'pscEnabled'
+          property :psc_write_endpoint_dns_enabled, as: 'pscWriteEndpointDnsEnabled'
+        end
+      end
+      
+      class QueryResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::SqladminV1beta4::Column, decorator: Google::Apis::SqladminV1beta4::Column::Representation
+      
+          property :message, as: 'message'
+          property :partial_result, as: 'partialResult'
+          collection :rows, as: 'rows', class: Google::Apis::SqladminV1beta4::Row, decorator: Google::Apis::SqladminV1beta4::Row::Representation
+      
+          property :status, as: 'status', class: Google::Apis::SqladminV1beta4::Status, decorator: Google::Apis::SqladminV1beta4::Status::Representation
+      
+        end
+      end
+      
+      class ReadPoolAutoScaleConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_scale_in, as: 'disableScaleIn'
+          property :enabled, as: 'enabled'
+          property :max_node_count, as: 'maxNodeCount'
+          property :min_node_count, as: 'minNodeCount'
+          property :scale_in_cooldown_seconds, as: 'scaleInCooldownSeconds'
+          property :scale_out_cooldown_seconds, as: 'scaleOutCooldownSeconds'
+          collection :target_metrics, as: 'targetMetrics', class: Google::Apis::SqladminV1beta4::TargetMetric, decorator: Google::Apis::SqladminV1beta4::TargetMetric::Representation
+      
         end
       end
       
@@ -1930,6 +2201,14 @@ module Google
         end
       end
       
+      class RotateEntraIdCertificateContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_version, as: 'nextVersion'
+        end
+      end
+      
       class RotateServerCaContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1946,6 +2225,14 @@ module Google
         end
       end
       
+      class Row
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::SqladminV1beta4::Value, decorator: Google::Apis::SqladminV1beta4::Value::Representation
+      
+        end
+      end
+      
       class SelectedObjects
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1956,12 +2243,14 @@ module Google
       class Settings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerated_replica_mode, as: 'acceleratedReplicaMode'
           property :activation_policy, as: 'activationPolicy'
           property :active_directory_config, as: 'activeDirectoryConfig', class: Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig, decorator: Google::Apis::SqladminV1beta4::SqlActiveDirectoryConfig::Representation
       
           property :advanced_machine_features, as: 'advancedMachineFeatures', class: Google::Apis::SqladminV1beta4::AdvancedMachineFeatures, decorator: Google::Apis::SqladminV1beta4::AdvancedMachineFeatures::Representation
       
           collection :authorized_gae_applications, as: 'authorizedGaeApplications'
+          property :auto_upgrade_enabled, as: 'autoUpgradeEnabled'
           property :availability_type, as: 'availabilityType'
           property :backup_configuration, as: 'backupConfiguration', class: Google::Apis::SqladminV1beta4::BackupConfiguration, decorator: Google::Apis::SqladminV1beta4::BackupConfiguration::Representation
       
@@ -1970,6 +2259,7 @@ module Google
       
           property :connector_enforcement, as: 'connectorEnforcement'
           property :crash_safe_replication_enabled, as: 'crashSafeReplicationEnabled'
+          property :data_api_access, as: 'dataApiAccess'
           property :data_cache_config, as: 'dataCacheConfig', class: Google::Apis::SqladminV1beta4::DataCacheConfig, decorator: Google::Apis::SqladminV1beta4::DataCacheConfig::Representation
       
           property :data_disk_provisioned_iops, :numeric_string => true, as: 'dataDiskProvisionedIops'
@@ -1985,6 +2275,10 @@ module Google
           property :edition, as: 'edition'
           property :enable_dataplex_integration, as: 'enableDataplexIntegration'
           property :enable_google_ml_integration, as: 'enableGoogleMlIntegration'
+          property :entraid_config, as: 'entraidConfig', class: Google::Apis::SqladminV1beta4::SqlServerEntraIdConfig, decorator: Google::Apis::SqladminV1beta4::SqlServerEntraIdConfig::Representation
+      
+          property :final_backup_config, as: 'finalBackupConfig', class: Google::Apis::SqladminV1beta4::FinalBackupConfig, decorator: Google::Apis::SqladminV1beta4::FinalBackupConfig::Representation
+      
           property :insights_config, as: 'insightsConfig', class: Google::Apis::SqladminV1beta4::InsightsConfig, decorator: Google::Apis::SqladminV1beta4::InsightsConfig::Representation
       
           property :ip_configuration, as: 'ipConfiguration', class: Google::Apis::SqladminV1beta4::IpConfiguration, decorator: Google::Apis::SqladminV1beta4::IpConfiguration::Representation
@@ -1996,7 +2290,11 @@ module Google
       
           property :password_validation_policy, as: 'passwordValidationPolicy', class: Google::Apis::SqladminV1beta4::PasswordValidationPolicy, decorator: Google::Apis::SqladminV1beta4::PasswordValidationPolicy::Representation
       
+          property :performance_capture_config, as: 'performanceCaptureConfig', class: Google::Apis::SqladminV1beta4::PerformanceCaptureConfig, decorator: Google::Apis::SqladminV1beta4::PerformanceCaptureConfig::Representation
+      
           property :pricing_plan, as: 'pricingPlan'
+          property :read_pool_auto_scale_config, as: 'readPoolAutoScaleConfig', class: Google::Apis::SqladminV1beta4::ReadPoolAutoScaleConfig, decorator: Google::Apis::SqladminV1beta4::ReadPoolAutoScaleConfig::Representation
+      
           property :replication_lag_max_seconds, as: 'replicationLagMaxSeconds'
           property :replication_type, as: 'replicationType'
           property :retain_backups_on_delete, as: 'retainBackupsOnDelete'
@@ -2014,8 +2312,12 @@ module Google
       class SqlActiveDirectoryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_credential_secret_name, as: 'adminCredentialSecretName'
+          collection :dns_servers, as: 'dnsServers'
           property :domain, as: 'domain'
           property :kind, as: 'kind'
+          property :mode, as: 'mode'
+          property :organizational_unit, as: 'organizationalUnit'
         end
       end
       
@@ -2035,6 +2337,20 @@ module Google
         end
       end
       
+      class SqlInstancesExecuteSqlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :messages, as: 'messages', class: Google::Apis::SqladminV1beta4::Message, decorator: Google::Apis::SqladminV1beta4::Message::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::SqladminV1beta4::Metadata, decorator: Google::Apis::SqladminV1beta4::Metadata::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::SqladminV1beta4::QueryResult, decorator: Google::Apis::SqladminV1beta4::QueryResult::Representation
+      
+          property :status, as: 'status', class: Google::Apis::SqladminV1beta4::Status, decorator: Google::Apis::SqladminV1beta4::Status::Representation
+      
+        end
+      end
+      
       class SqlInstancesGetDiskShrinkConfigResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2047,6 +2363,7 @@ module Google
       class SqlInstancesGetLatestRecoveryTimeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :earliest_recovery_time, as: 'earliestRecoveryTime'
           property :kind, as: 'kind'
           property :latest_recovery_time, as: 'latestRecoveryTime'
         end
@@ -2079,6 +2396,7 @@ module Google
           property :migration_type, as: 'migrationType'
           property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1beta4::MySqlSyncConfig, decorator: Google::Apis::SqladminV1beta4::MySqlSyncConfig::Representation
       
+          property :replica_overwrite_enabled, as: 'replicaOverwriteEnabled'
           property :skip_verification, as: 'skipVerification'
           property :sync_mode, as: 'syncMode'
           property :sync_parallel_level, as: 'syncParallelLevel'
@@ -2144,6 +2462,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compatibility_level, as: 'compatibilityLevel'
           property :recovery_model, as: 'recoveryModel'
+        end
+      end
+      
+      class SqlServerEntraIdConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_id, as: 'applicationId'
+          property :kind, as: 'kind'
+          property :tenant_id, as: 'tenantId'
         end
       end
       
@@ -2223,11 +2550,28 @@ module Google
         end
       end
       
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class SyncFlags
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class TargetMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric, as: 'metric'
+          property :target_value, as: 'targetValue'
         end
       end
       
@@ -2262,9 +2606,12 @@ module Google
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :database_roles, as: 'databaseRoles'
           property :dual_password_type, as: 'dualPasswordType'
           property :etag, as: 'etag'
           property :host, as: 'host'
+          property :iam_email, as: 'iamEmail'
+          property :iam_status, as: 'iamStatus'
           property :instance, as: 'instance'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -2297,6 +2644,14 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class Value
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :null_value, as: 'nullValue'
+          property :value, as: 'value'
         end
       end
     end

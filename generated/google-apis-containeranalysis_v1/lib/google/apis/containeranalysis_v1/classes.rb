@@ -22,6 +22,50 @@ module Google
   module Apis
     module ContaineranalysisV1
       
+      # AISkillAnalysisNote provides the metadata of an AI-based skill analysis.
+      class AiSkillAnalysisNote
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # AISkillAnalysisOccurrence provides the results of an AI-based skill analysis.
+      class AiSkillAnalysisOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # Findings produced by the analysis.
+        # Corresponds to the JSON property `findings`
+        # @return [Array<Google::Apis::ContaineranalysisV1::Finding>]
+        attr_accessor :findings
+      
+        # Maximum severity found among findings.
+        # Corresponds to the JSON property `maxSeverity`
+        # @return [String]
+        attr_accessor :max_severity
+      
+        # Name of the skill that produced this analysis.
+        # Corresponds to the JSON property `skillName`
+        # @return [String]
+        attr_accessor :skill_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @findings = args[:findings] if args.key?(:findings)
+          @max_severity = args[:max_severity] if args.key?(:max_severity)
+          @skill_name = args[:skill_name] if args.key?(:skill_name)
+        end
+      end
+      
       # An alias to a repo revision.
       class AliasContext
         include Google::Apis::Core::Hashable
@@ -272,6 +316,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The registry in which the base image is from.
+        # Corresponds to the JSON property `registry`
+        # @return [String]
+        attr_accessor :registry
+      
         # The repository name in which the base image is from.
         # Corresponds to the JSON property `repository`
         # @return [String]
@@ -285,6 +334,7 @@ module Google
         def update!(**args)
           @layer_count = args[:layer_count] if args.key?(:layer_count)
           @name = args[:name] if args.key?(:name)
+          @registry = args[:registry] if args.key?(:registry)
           @repository = args[:repository] if args.key?(:repository)
         end
       end
@@ -705,7 +755,7 @@ module Google
         end
       end
       
-      # A step in the build pipeline. Next ID: 22
+      # A step in the build pipeline. Next ID: 23
       class BuildStep
         include Google::Apis::Core::Hashable
       
@@ -796,6 +846,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::TimeSpan]
         attr_accessor :pull_timing
       
+        # Remote configuration for the build step.
+        # Corresponds to the JSON property `remoteConfig`
+        # @return [String]
+        attr_accessor :remote_config
+      
         # 
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::ContaineranalysisV1::StepResult>]
@@ -867,6 +922,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @remote_config = args[:remote_config] if args.key?(:remote_config)
           @results = args[:results] if args.key?(:results)
           @script = args[:script] if args.key?(:script)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
@@ -897,6 +953,26 @@ module Google
         end
       end
       
+      # 
+      class CisaKnownExploitedVulnerabilities
+        include Google::Apis::Core::Hashable
+      
+        # Whether the vulnerability is known to have been leveraged as part of a
+        # ransomware campaign.
+        # Corresponds to the JSON property `knownRansomwareCampaignUse`
+        # @return [String]
+        attr_accessor :known_ransomware_campaign_use
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @known_ransomware_campaign_use = args[:known_ransomware_campaign_use] if args.key?(:known_ransomware_campaign_use)
+        end
+      end
+      
       # Common Vulnerability Scoring System. For details, see https://www.first.org/
       # cvss/specification-document This is a message we will try to use for storing
       # various versions of CVSS rather than making a separate proto for storing a
@@ -904,23 +980,27 @@ module Google
       class Cvss
         include Google::Apis::Core::Hashable
       
-        # 
+        # Attack Complexity (AC). Defined in CVSS v2, v3, v4.
         # Corresponds to the JSON property `attackComplexity`
         # @return [String]
         attr_accessor :attack_complexity
       
-        # Base Metrics Represents the intrinsic characteristics of a vulnerability that
-        # are constant over time and across user environments.
+        # Attack Requirements (AT). Defined in CVSS v4.
+        # Corresponds to the JSON property `attackRequirements`
+        # @return [String]
+        attr_accessor :attack_requirements
+      
+        # Attack Vector (AV). Defined in CVSS v2, v3, v4.
         # Corresponds to the JSON property `attackVector`
         # @return [String]
         attr_accessor :attack_vector
       
-        # 
+        # Authentication (Au). Defined in CVSS v2.
         # Corresponds to the JSON property `authentication`
         # @return [String]
         attr_accessor :authentication
       
-        # 
+        # Availability Impact (A). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `availabilityImpact`
         # @return [String]
         attr_accessor :availability_impact
@@ -930,10 +1010,15 @@ module Google
         # @return [Float]
         attr_accessor :base_score
       
-        # 
+        # Confidentiality Impact (C). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `confidentialityImpact`
         # @return [String]
         attr_accessor :confidentiality_impact
+      
+        # Exploit Maturity (E). Defined in CVSS v4.
+        # Corresponds to the JSON property `exploitMaturity`
+        # @return [String]
+        attr_accessor :exploit_maturity
       
         # 
         # Corresponds to the JSON property `exploitabilityScore`
@@ -945,25 +1030,55 @@ module Google
         # @return [Float]
         attr_accessor :impact_score
       
-        # 
+        # Integrity Impact (I). Defined in CVSS v2, v3.
         # Corresponds to the JSON property `integrityImpact`
         # @return [String]
         attr_accessor :integrity_impact
       
-        # 
+        # Privileges Required (PR). Defined in CVSS v3, v4.
         # Corresponds to the JSON property `privilegesRequired`
         # @return [String]
         attr_accessor :privileges_required
       
-        # 
+        # Scope (S). Defined in CVSS v3.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
       
-        # 
+        # Subsequent System Availability Impact (SA). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemAvailabilityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_availability_impact
+      
+        # Subsequent System Confidentiality Impact (SC). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemConfidentialityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_confidentiality_impact
+      
+        # Subsequent System Integrity Impact (SI). Defined in CVSS v4.
+        # Corresponds to the JSON property `subsequentSystemIntegrityImpact`
+        # @return [String]
+        attr_accessor :subsequent_system_integrity_impact
+      
+        # User Interaction (UI). Defined in CVSS v3, v4.
         # Corresponds to the JSON property `userInteraction`
         # @return [String]
         attr_accessor :user_interaction
+      
+        # Vulnerable System Availability Impact (VA). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemAvailabilityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_availability_impact
+      
+        # Vulnerable System Confidentiality Impact (VC). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemConfidentialityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_confidentiality_impact
+      
+        # Vulnerable System Integrity Impact (VI). Defined in CVSS v4.
+        # Corresponds to the JSON property `vulnerableSystemIntegrityImpact`
+        # @return [String]
+        attr_accessor :vulnerable_system_integrity_impact
       
         def initialize(**args)
            update!(**args)
@@ -972,17 +1087,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attack_complexity = args[:attack_complexity] if args.key?(:attack_complexity)
+          @attack_requirements = args[:attack_requirements] if args.key?(:attack_requirements)
           @attack_vector = args[:attack_vector] if args.key?(:attack_vector)
           @authentication = args[:authentication] if args.key?(:authentication)
           @availability_impact = args[:availability_impact] if args.key?(:availability_impact)
           @base_score = args[:base_score] if args.key?(:base_score)
           @confidentiality_impact = args[:confidentiality_impact] if args.key?(:confidentiality_impact)
+          @exploit_maturity = args[:exploit_maturity] if args.key?(:exploit_maturity)
           @exploitability_score = args[:exploitability_score] if args.key?(:exploitability_score)
           @impact_score = args[:impact_score] if args.key?(:impact_score)
           @integrity_impact = args[:integrity_impact] if args.key?(:integrity_impact)
           @privileges_required = args[:privileges_required] if args.key?(:privileges_required)
           @scope = args[:scope] if args.key?(:scope)
+          @subsequent_system_availability_impact = args[:subsequent_system_availability_impact] if args.key?(:subsequent_system_availability_impact)
+          @subsequent_system_confidentiality_impact = args[:subsequent_system_confidentiality_impact] if args.key?(:subsequent_system_confidentiality_impact)
+          @subsequent_system_integrity_impact = args[:subsequent_system_integrity_impact] if args.key?(:subsequent_system_integrity_impact)
           @user_interaction = args[:user_interaction] if args.key?(:user_interaction)
+          @vulnerable_system_availability_impact = args[:vulnerable_system_availability_impact] if args.key?(:vulnerable_system_availability_impact)
+          @vulnerable_system_confidentiality_impact = args[:vulnerable_system_confidentiality_impact] if args.key?(:vulnerable_system_confidentiality_impact)
+          @vulnerable_system_integrity_impact = args[:vulnerable_system_integrity_impact] if args.key?(:vulnerable_system_integrity_impact)
         end
       end
       
@@ -1455,6 +1578,13 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of generic artifacts to be uploaded to Artifact Registry upon
+        # successful completion of all build steps. If any artifacts fail to be pushed,
+        # the build is marked FAILURE.
+        # Corresponds to the JSON property `genericArtifacts`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGenericArtifact>]
+        attr_accessor :generic_artifacts
+      
         # Optional. A list of Go modules to be uploaded to Artifact Registry upon
         # successful completion of all build steps. If any objects fail to be pushed,
         # the build is marked FAILURE.
@@ -1495,6 +1625,15 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects]
         attr_accessor :objects
       
+        # Optional. A list of OCI images to be uploaded to Artifact Registry upon
+        # successful completion of all build steps. OCI images in the specified paths
+        # will be uploaded to the specified Artifact Registry repository using the
+        # builder service account's credentials. If any images fail to be pushed, the
+        # build is marked FAILURE.
+        # Corresponds to the JSON property `oci`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci>]
+        attr_accessor :oci
+      
         # A list of Python packages to be uploaded to Artifact Registry upon successful
         # completion of all build steps. The build service account credentials will be
         # used to perform the upload. If any objects fail to be pushed, the build is
@@ -1509,11 +1648,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @generic_artifacts = args[:generic_artifacts] if args.key?(:generic_artifacts)
           @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
           @objects = args[:objects] if args.key?(:objects)
+          @oci = args[:oci] if args.key?(:oci)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
       end
@@ -1550,6 +1691,35 @@ module Google
           @location = args[:location] if args.key?(:location)
           @paths = args[:paths] if args.key?(:paths)
           @timing = args[:timing] if args.key?(:timing)
+        end
+      end
+      
+      # Generic artifact to upload to Artifact Registry upon successful completion of
+      # all build steps.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGenericArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Required. Path to the generic artifact in the build's workspace to be uploaded
+        # to Artifact Registry.
+        # Corresponds to the JSON property `folder`
+        # @return [String]
+        attr_accessor :folder
+      
+        # Required. Registry path to upload the generic artifact to, in the form
+        # projects/$PROJECT/locations/$LOCATION/repositories/$REPO/packages/$PACKAGE/
+        # versions/$VERSION
+        # Corresponds to the JSON property `registryPath`
+        # @return [String]
+        attr_accessor :registry_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder = args[:folder] if args.key?(:folder)
+          @registry_path = args[:registry_path] if args.key?(:registry_path)
         end
       end
       
@@ -1621,6 +1791,14 @@ module Google
         # @return [String]
         attr_accessor :artifact_id
       
+        # Optional. Path to a folder containing the files to upload to Artifact Registry.
+        # This can be either an absolute path, e.g. `/workspace/my-app/target/`, or a
+        # relative path from /workspace, e.g. `my-app/target/`. This field is mutually
+        # exclusive with the `path` field.
+        # Corresponds to the JSON property `deployFolder`
+        # @return [String]
+        attr_accessor :deploy_folder
+      
         # Maven `groupId` value used when uploading the artifact to Artifact Registry.
         # Corresponds to the JSON property `groupId`
         # @return [String]
@@ -1653,6 +1831,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+          @deploy_folder = args[:deploy_folder] if args.key?(:deploy_folder)
           @group_id = args[:group_id] if args.key?(:group_id)
           @path = args[:path] if args.key?(:path)
           @repository = args[:repository] if args.key?(:repository)
@@ -1665,7 +1844,8 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage
         include Google::Apis::Core::Hashable
       
-        # Path to the package.json. e.g. workspace/path/to/package
+        # Optional. Path to the package.json. e.g. workspace/path/to/package Only one of
+        # `archive` or `package_path` can be specified.
         # Corresponds to the JSON property `packagePath`
         # @return [String]
         attr_accessor :package_path
@@ -1685,6 +1865,40 @@ module Google
         def update!(**args)
           @package_path = args[:package_path] if args.key?(:package_path)
           @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
+      # OCI image to upload to Artifact Registry upon successful completion of all
+      # build steps.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci
+        include Google::Apis::Core::Hashable
+      
+        # Required. Path on the local file system where to find the container to upload.
+        # e.g. /workspace/my-image.tar
+        # Corresponds to the JSON property `file`
+        # @return [String]
+        attr_accessor :file
+      
+        # Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.
+        # dev/my-project/my-repo/my-image
+        # Corresponds to the JSON property `registryPath`
+        # @return [String]
+        attr_accessor :registry_path
+      
+        # Optional. Tags to apply to the uploaded image. e.g. latest, 1.0.0
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file = args[:file] if args.key?(:file)
+          @registry_path = args[:registry_path] if args.key?(:registry_path)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -2270,6 +2484,11 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan]
         attr_accessor :pull_timing
       
+        # Declaration of results for this build step.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1StepResult>]
+        attr_accessor :results
+      
         # A shell script to be executed in the step. When script is provided, the user
         # cannot specify the entrypoint or args.
         # Corresponds to the JSON property `script`
@@ -2336,6 +2555,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @results = args[:results] if args.key?(:results)
           @script = args[:script] if args.key?(:script)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @status = args[:status] if args.key?(:status)
@@ -2343,6 +2563,25 @@ module Google
           @timing = args[:timing] if args.key?(:timing)
           @volumes = args[:volumes] if args.key?(:volumes)
           @wait_for = args[:wait_for] if args.key?(:wait_for)
+        end
+      end
+      
+      # Results for a build step.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStepResults
+        include Google::Apis::Core::Hashable
+      
+        # Results for a build step.
+        # Corresponds to the JSON property `results`
+        # @return [Hash<String,String>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -2375,6 +2614,11 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage
         include Google::Apis::Core::Hashable
       
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
         # Docker Registry 2.0 digest.
         # Corresponds to the JSON property `digest`
         # @return [String]
@@ -2385,6 +2629,12 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The OCI media type of the artifact. Non-OCI images, such as
+        # Docker images, will have an unspecified value.
+        # Corresponds to the JSON property `ociMediaType`
+        # @return [String]
+        attr_accessor :oci_media_type
       
         # Start and end times for a build execution phase.
         # Corresponds to the JSON property `pushTiming`
@@ -2397,8 +2647,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @digest = args[:digest] if args.key?(:digest)
           @name = args[:name] if args.key?(:name)
+          @oci_media_type = args[:oci_media_type] if args.key?(:oci_media_type)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
         end
       end
@@ -2448,6 +2700,11 @@ module Google
         attr_accessor :empty
         alias_method :empty?, :empty
       
+        # Represents a generic artifact as a build dependency.
+        # Corresponds to the JSON property `genericArtifact`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGenericArtifactDependency]
+        attr_accessor :generic_artifact
+      
         # Represents a git repository as a build dependency.
         # Corresponds to the JSON property `gitSource`
         # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceDependency]
@@ -2460,7 +2717,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @empty = args[:empty] if args.key?(:empty)
+          @generic_artifact = args[:generic_artifact] if args.key?(:generic_artifact)
           @git_source = args[:git_source] if args.key?(:git_source)
+        end
+      end
+      
+      # Represents a generic artifact as a build dependency.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGenericArtifactDependency
+        include Google::Apis::Core::Hashable
+      
+        # Required. Where the artifact files should be placed on the worker.
+        # Corresponds to the JSON property `destPath`
+        # @return [String]
+        attr_accessor :dest_path
+      
+        # Required. The location to download the artifact files from. Ex: projects/p1/
+        # locations/us/repositories/r1/packages/p1/versions/v1
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       
@@ -2513,9 +2797,8 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository
         include Google::Apis::Core::Hashable
       
-        # The Developer Connect Git repository link or the url that matches a repository
-        # link in the current project, formatted as `projects/*/locations/*/connections/*
-        # /gitRepositoryLink/*`
+        # The Developer Connect Git repository link formatted as `projects/*/locations/*/
+        # connections/*/gitRepositoryLink/*`
         # Corresponds to the JSON property `developerConnect`
         # @return [String]
         attr_accessor :developer_connect
@@ -2826,6 +3109,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :build_step_outputs
       
+        # Results for build steps. step_id ->
+        # Corresponds to the JSON property `buildStepResults`
+        # @return [Hash<String,Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStepResults>]
+        attr_accessor :build_step_results
+      
+        # Output only. Generic artifacts uploaded to Artifact Registry at the end of the
+        # build.
+        # Corresponds to the JSON property `genericArtifacts`
+        # @return [Array<Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGenericArtifact>]
+        attr_accessor :generic_artifacts
+      
         # Optional. Go module artifacts uploaded to Artifact Registry at the end of the
         # build.
         # Corresponds to the JSON property `goModules`
@@ -2868,6 +3162,8 @@ module Google
           @artifact_timing = args[:artifact_timing] if args.key?(:artifact_timing)
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
           @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
+          @build_step_results = args[:build_step_results] if args.key?(:build_step_results)
+          @generic_artifacts = args[:generic_artifacts] if args.key?(:generic_artifacts)
           @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
@@ -3070,6 +3366,37 @@ module Google
         end
       end
       
+      # StepResult is the declaration of a result for a build step.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1StepResult
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The content of the attestation to be generated.
+        # Corresponds to the JSON property `attestationContent`
+        # @return [String]
+        attr_accessor :attestation_content
+      
+        # Optional. The type of attestation to be generated.
+        # Corresponds to the JSON property `attestationType`
+        # @return [String]
+        attr_accessor :attestation_type
+      
+        # Required. The name of the result.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_content = args[:attestation_content] if args.key?(:attestation_content)
+          @attestation_type = args[:attestation_type] if args.key?(:attestation_type)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Location of the source in an archive file in Cloud Storage.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource
         include Google::Apis::Core::Hashable
@@ -3172,10 +3499,61 @@ module Google
         end
       end
       
+      # A generic artifact uploaded to Artifact Registry using the GenericArtifact
+      # directive.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGenericArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Container message for hashes of byte content of files, used in
+        # SourceProvenance messages to verify integrity of source input to the build.
+        # Corresponds to the JSON property `artifactFingerprint`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes]
+        attr_accessor :artifact_fingerprint
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
+        # Output only. The file hashes that make up the generic artifact.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Hash<String,Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes>]
+        attr_accessor :file_hashes
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::ContaineranalysisV1::ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :push_timing
+      
+        # Output only. URI of the uploaded artifact. Ex: projects/p1/locations/us/
+        # repositories/r1/packages/p1/versions/v1
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_fingerprint = args[:artifact_fingerprint] if args.key?(:artifact_fingerprint)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # A Go module artifact uploaded to Artifact Registry using the GoModule
       # directive.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGoModule
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
@@ -3199,6 +3577,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -3209,6 +3588,11 @@ module Google
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact
         include Google::Apis::Core::Hashable
       
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
         # Corresponds to the JSON property `fileHashes`
@@ -3231,6 +3615,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -3240,6 +3625,11 @@ module Google
       # An npm package uploaded to Artifact Registry using the NpmPackage directive.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
@@ -3263,6 +3653,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -3272,6 +3663,11 @@ module Google
       # Artifact uploaded using the PythonPackage directive.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedPythonPackage
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
@@ -3295,6 +3691,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -3686,10 +4083,20 @@ module Google
         # @return [String]
         attr_accessor :cpe
       
+        # Files that make up the resource described by the occurrence.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::ContaineranalysisV1::File>]
+        attr_accessor :files
+      
         # The last time this resource was scanned.
         # Corresponds to the JSON property `lastScanTime`
         # @return [String]
         attr_accessor :last_scan_time
+      
+        # The last time vulnerability scan results changed.
+        # Corresponds to the JSON property `lastVulnerabilityUpdateTime`
+        # @return [String]
+        attr_accessor :last_vulnerability_update_time
       
         # The status of an SBOM generation.
         # Corresponds to the JSON property `sbomStatus`
@@ -3709,7 +4116,9 @@ module Google
           @archive_time = args[:archive_time] if args.key?(:archive_time)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
           @cpe = args[:cpe] if args.key?(:cpe)
+          @files = args[:files] if args.key?(:files)
           @last_scan_time = args[:last_scan_time] if args.key?(:last_scan_time)
+          @last_vulnerability_update_time = args[:last_vulnerability_update_time] if args.key?(:last_vulnerability_update_time)
           @sbom_status = args[:sbom_status] if args.key?(:sbom_status)
         end
       end
@@ -3841,6 +4250,33 @@ module Google
         end
       end
       
+      # 
+      class ExploitPredictionScoringSystem
+        include Google::Apis::Core::Hashable
+      
+        # The percentile of the current score, the proportion of all scored
+        # vulnerabilities with the same or a lower EPSS score
+        # Corresponds to the JSON property `percentile`
+        # @return [Float]
+        attr_accessor :percentile
+      
+        # The EPSS score representing the probability [0-1] of exploitation in the wild
+        # in the next 30 days
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentile = args[:percentile] if args.key?(:percentile)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
       # The request to generate and export SBOM. Target must be specified for the
       # request.
       class ExportSbomRequest
@@ -3936,6 +4372,31 @@ module Google
         end
       end
       
+      # 
+      class File
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `digest`
+        # @return [Hash<String,String>]
+        attr_accessor :digest
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @digest = args[:digest] if args.key?(:digest)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Container message for hashes of byte content of files, used in source messages
       # to verify integrity of source input to the build.
       class FileHashes
@@ -3953,6 +4414,75 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # Finding provides details for a single finding within an
+      # AISkillAnalysisOccurrence.
+      class Finding
+        include Google::Apis::Core::Hashable
+      
+        # Category of the finding.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Description of the finding category.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Location details with file path and line number.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::ContaineranalysisV1::FindingLocation]
+        attr_accessor :location
+      
+        # Scanner determines which engine (e.g. static, llm) emitted the finding.
+        # Corresponds to the JSON property `scanner`
+        # @return [String]
+        attr_accessor :scanner
+      
+        # Severity of the finding.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @details = args[:details] if args.key?(:details)
+          @location = args[:location] if args.key?(:location)
+          @scanner = args[:scanner] if args.key?(:scanner)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # Location details with file path and line number.
+      class FindingLocation
+        include Google::Apis::Core::Hashable
+      
+        # Relative path of the file containing the finding.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
+        # Line number (1-based), or 0 if whole File / unknown.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_path = args[:file_path] if args.key?(:file_path)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -4180,6 +4710,12 @@ module Google
         # @return [Google::Apis::ContaineranalysisV1::LayerDetails]
         attr_accessor :layer_details
       
+        # Line number in the file where the package was found. Optional field that only
+        # applies to source repository scanning.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4188,6 +4724,7 @@ module Google
         def update!(**args)
           @file_path = args[:file_path] if args.key?(:file_path)
           @layer_details = args[:layer_details] if args.key?(:layer_details)
+          @line_number = args[:line_number] if args.key?(:line_number)
         end
       end
       
@@ -4870,6 +5407,13 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1::Note>]
         attr_accessor :notes
       
+        # Unordered list. Unreachable regions. Populated for requests from the global
+        # region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/
+        # locations/[LOCATION]`
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4878,6 +5422,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @notes = args[:notes] if args.key?(:notes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -4896,6 +5441,13 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1::Occurrence>]
         attr_accessor :occurrences
       
+        # Unordered list. Unreachable regions. Populated for requests from the global
+        # region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/
+        # locations/[LOCATION]`
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4904,6 +5456,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @occurrences = args[:occurrences] if args.key?(:occurrences)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -5050,6 +5603,11 @@ module Google
       class Note
         include Google::Apis::Core::Hashable
       
+        # AISkillAnalysisNote provides the metadata of an AI-based skill analysis.
+        # Corresponds to the JSON property `aiSkillAnalysis`
+        # @return [Google::Apis::ContaineranalysisV1::AiSkillAnalysisNote]
+        attr_accessor :ai_skill_analysis
+      
         # Note kind that represents a logical attestation "role" or "authority". For
         # example, an organization might have one `Authority` for "QA" and one for "
         # build". This note is intended to act strictly as a grouping mechanism for the
@@ -5186,6 +5744,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ai_skill_analysis = args[:ai_skill_analysis] if args.key?(:ai_skill_analysis)
           @attestation = args[:attestation] if args.key?(:attestation)
           @build = args[:build] if args.key?(:build)
           @compliance = args[:compliance] if args.key?(:compliance)
@@ -5214,6 +5773,16 @@ module Google
       # An instance of an analysis type that has been found on a resource.
       class Occurrence
         include Google::Apis::Core::Hashable
+      
+        # The time this advisory was published by the source.
+        # Corresponds to the JSON property `advisoryPublishTime`
+        # @return [String]
+        attr_accessor :advisory_publish_time
+      
+        # AISkillAnalysisOccurrence provides the results of an AI-based skill analysis.
+        # Corresponds to the JSON property `aiSkillAnalysis`
+        # @return [Google::Apis::ContaineranalysisV1::AiSkillAnalysisOccurrence]
+        attr_accessor :ai_skill_analysis
       
         # Occurrence that represents a single "attestation". The authenticity of an
         # attestation can be verified using the attached signature. If the verifier
@@ -5343,6 +5912,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advisory_publish_time = args[:advisory_publish_time] if args.key?(:advisory_publish_time)
+          @ai_skill_analysis = args[:ai_skill_analysis] if args.key?(:ai_skill_analysis)
           @attestation = args[:attestation] if args.key?(:attestation)
           @build = args[:build] if args.key?(:build)
           @compliance = args[:compliance] if args.key?(:compliance)
@@ -6001,6 +6572,33 @@ module Google
           @media_type = args[:media_type] if args.key?(:media_type)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class Risk
+        include Google::Apis::Core::Hashable
+      
+        # CISA maintains the authoritative source of vulnerabilities that have been
+        # exploited in the wild.
+        # Corresponds to the JSON property `cisaKev`
+        # @return [Google::Apis::ContaineranalysisV1::CisaKnownExploitedVulnerabilities]
+        attr_accessor :cisa_kev
+      
+        # The Exploit Prediction Scoring System (EPSS) estimates the likelihood (
+        # probability) that a software vulnerability will be exploited in the wild.
+        # Corresponds to the JSON property `epss`
+        # @return [Google::Apis::ContaineranalysisV1::ExploitPredictionScoringSystem]
+        attr_accessor :epss
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cisa_kev = args[:cisa_kev] if args.key?(:cisa_kev)
+          @epss = args[:epss] if args.key?(:epss)
         end
       end
       
@@ -7270,6 +7868,11 @@ module Google
       class VulnerabilityNote
         include Google::Apis::Core::Hashable
       
+        # The time this advisory was published by the source.
+        # Corresponds to the JSON property `advisoryPublishTime`
+        # @return [String]
+        attr_accessor :advisory_publish_time
+      
         # The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where
         # 0 indicates low severity and 10 indicates high severity.
         # Corresponds to the JSON property `cvssScore`
@@ -7289,6 +7892,14 @@ module Google
         # Corresponds to the JSON property `cvssV3`
         # @return [Google::Apis::ContaineranalysisV1::CvsSv3]
         attr_accessor :cvss_v3
+      
+        # Common Vulnerability Scoring System. For details, see https://www.first.org/
+        # cvss/specification-document This is a message we will try to use for storing
+        # various versions of CVSS rather than making a separate proto for storing a
+        # specific version.
+        # Corresponds to the JSON property `cvssV4`
+        # @return [Google::Apis::ContaineranalysisV1::Cvss]
+        attr_accessor :cvss_v4
       
         # CVSS version used to populate cvss_score and severity.
         # Corresponds to the JSON property `cvssVersion`
@@ -7326,9 +7937,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @advisory_publish_time = args[:advisory_publish_time] if args.key?(:advisory_publish_time)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
           @cvss_v2 = args[:cvss_v2] if args.key?(:cvss_v2)
           @cvss_v3 = args[:cvss_v3] if args.key?(:cvss_v3)
+          @cvss_v4 = args[:cvss_v4] if args.key?(:cvss_v4)
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @details = args[:details] if args.key?(:details)
           @severity = args[:severity] if args.key?(:severity)
@@ -7354,6 +7967,14 @@ module Google
         # Corresponds to the JSON property `cvssV2`
         # @return [Google::Apis::ContaineranalysisV1::Cvss]
         attr_accessor :cvss_v2
+      
+        # Common Vulnerability Scoring System. For details, see https://www.first.org/
+        # cvss/specification-document This is a message we will try to use for storing
+        # various versions of CVSS rather than making a separate proto for storing a
+        # specific version.
+        # Corresponds to the JSON property `cvssV4`
+        # @return [Google::Apis::ContaineranalysisV1::Cvss]
+        attr_accessor :cvss_v4
       
         # Output only. CVSS version used to populate cvss_score and severity.
         # Corresponds to the JSON property `cvssVersion`
@@ -7407,6 +8028,11 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1::RelatedUrl>]
         attr_accessor :related_urls
       
+        # Risk information about the vulnerability, such as CISA, EPSS, etc.
+        # Corresponds to the JSON property `risk`
+        # @return [Google::Apis::ContaineranalysisV1::Risk]
+        attr_accessor :risk
+      
         # Output only. The note provider assigned severity of this vulnerability.
         # Corresponds to the JSON property `severity`
         # @return [String]
@@ -7437,6 +8063,7 @@ module Google
         def update!(**args)
           @cvss_score = args[:cvss_score] if args.key?(:cvss_score)
           @cvss_v2 = args[:cvss_v2] if args.key?(:cvss_v2)
+          @cvss_v4 = args[:cvss_v4] if args.key?(:cvss_v4)
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
@@ -7445,6 +8072,7 @@ module Google
           @long_description = args[:long_description] if args.key?(:long_description)
           @package_issue = args[:package_issue] if args.key?(:package_issue)
           @related_urls = args[:related_urls] if args.key?(:related_urls)
+          @risk = args[:risk] if args.key?(:risk)
           @severity = args[:severity] if args.key?(:severity)
           @short_description = args[:short_description] if args.key?(:short_description)
           @type = args[:type] if args.key?(:type)
@@ -7462,6 +8090,13 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1::FixableTotalByDigest>]
         attr_accessor :counts
       
+        # Unordered list. Unreachable regions. Populated for requests from the global
+        # region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/
+        # locations/[LOCATION]`
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7469,6 +8104,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @counts = args[:counts] if args.key?(:counts)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

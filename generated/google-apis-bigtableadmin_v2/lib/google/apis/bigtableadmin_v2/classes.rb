@@ -42,8 +42,8 @@ module Google
       
         # Strongly validated etag for optimistic concurrency control. Preserve the value
         # returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the
-        # request if there has been a modification in the mean time. The `update_mask`
-        # of the request need not include `etag` for this protection to apply. See [
+        # request if there has been a modification in the meantime. The `update_mask` of
+        # the request need not include `etag` for this protection to apply. See [
         # Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://
         # tools.ietf.org/html/rfc7232#section-2.3) for more details.
         # Corresponds to the JSON property `etag`
@@ -224,6 +224,14 @@ module Google
         # @return [String]
         attr_accessor :frequency
       
+        # Optional. A list of Cloud Bigtable zones where automated backups are allowed
+        # to be created. If empty, automated backups will be created in all zones of the
+        # instance. Locations are in the format `projects/`project`/locations/`zone``.
+        # You can set this field only for tables in Enterprise Plus instances.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
         # Required. How long the automated backups should be retained. Values must be at
         # least 3 days and at most 90 days.
         # Corresponds to the JSON property `retentionPeriod`
@@ -237,6 +245,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @frequency = args[:frequency] if args.key?(:frequency)
+          @locations = args[:locations] if args.key?(:locations)
           @retention_period = args[:retention_period] if args.key?(:retention_period)
         end
       end
@@ -792,8 +801,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -1008,22 +1017,33 @@ module Google
       class CreateBackupMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was cancelled.
+        # If set, the time at which this operation finished or was cancelled. DEPRECATED:
+        # Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # The name of the backup being created.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
         # The name of the table the backup is created from.
         # Corresponds to the JSON property `sourceTable`
         # @return [String]
         attr_accessor :source_table
       
-        # The time at which this operation started.
+        # The time at which this operation started. DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -1035,7 +1055,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @name = args[:name] if args.key?(:name)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @source_table = args[:source_table] if args.key?(:source_table)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
@@ -1195,17 +1217,27 @@ module Google
       class CreateLogicalViewMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was canceled.
+        # DEPRECATED: Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # Request message for BigtableInstanceAdmin.CreateLogicalView.
         # Corresponds to the JSON property `originalRequest`
         # @return [Google::Apis::BigtableadminV2::CreateLogicalViewRequest]
         attr_accessor :original_request
       
-        # The time at which this operation started.
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -1217,7 +1249,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @original_request = args[:original_request] if args.key?(:original_request)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -1259,17 +1293,28 @@ module Google
       class CreateMaterializedViewMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was canceled.
+        # If set, the time at which this operation finished or was canceled. DEPRECATED:
+        # Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # Request message for BigtableInstanceAdmin.CreateMaterializedView.
         # Corresponds to the JSON property `originalRequest`
         # @return [Google::Apis::BigtableadminV2::CreateMaterializedViewRequest]
         attr_accessor :original_request
       
-        # The time at which this operation started.
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # The time at which this operation started. DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -1281,7 +1326,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @original_request = args[:original_request] if args.key?(:original_request)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -1316,6 +1363,39 @@ module Google
           @materialized_view = args[:materialized_view] if args.key?(:materialized_view)
           @materialized_view_id = args[:materialized_view_id] if args.key?(:materialized_view_id)
           @parent = args[:parent] if args.key?(:parent)
+        end
+      end
+      
+      # The metadata for the Operation returned by CreateSchemaBundle.
+      class CreateSchemaBundleMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
+      
+        # The unique name identifying this schema bundle. Values are of the form `
+        # projects/`project`/instances/`instance`/tables/`table`/schemaBundles/`
+        # schema_bundle``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @name = args[:name] if args.key?(:name)
+          @request_time = args[:request_time] if args.key?(:request_time)
         end
       end
       
@@ -1732,6 +1812,44 @@ module Google
         end
       end
       
+      # The state of a materialized view's data in a particular cluster.
+      class GoogleBigtableAdminV2MaterializedViewClusterState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state of the materialized view in this cluster.
+        # Corresponds to the JSON property `replicationState`
+        # @return [String]
+        attr_accessor :replication_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replication_state = args[:replication_state] if args.key?(:replication_state)
+        end
+      end
+      
+      # Configuration of a memory layer.
+      class GoogleBigtableAdminV2MemoryLayerMemoryConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Reporting the current size of the memory layer in GiB.
+        # Corresponds to the JSON property `storageSizeGib`
+        # @return [Fixnum]
+        attr_accessor :storage_size_gib
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_size_gib = args[:storage_size_gib] if args.key?(:storage_size_gib)
+        end
+      end
+      
       # A value that combines incremental updates into a summarized value. Data is
       # never directly written or read using type `Aggregate`. Writes provide either
       # the `input_type` or `state_type`, and reads always return the `state_type` .
@@ -1756,8 +1874,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -1788,8 +1906,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -1893,8 +2011,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -1916,6 +2034,25 @@ module Google
       
       # bool Values of type `Bool` are stored in `Value.bool_value`.
       class GoogleBigtableAdminV2TypeBool
+        include Google::Apis::Core::Hashable
+      
+        # Defines rules used to convert to or from lower level types.
+        # Corresponds to the JSON property `encoding`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBoolEncoding]
+        attr_accessor :encoding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+        end
+      end
+      
+      # Defines rules used to convert to or from lower level types.
+      class GoogleBigtableAdminV2TypeBoolEncoding
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1972,7 +2109,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If set, allows NULL values to be encoded as the empty string "". The actual
-        # empty string, or any value which only contains the null byte 0x00, has one
+        # empty string, or any value which only contains the null byte `0x00`, has one
         # more null byte appended.
         # Corresponds to the JSON property `escapeNulls`
         # @return [Boolean]
@@ -2002,6 +2139,32 @@ module Google
         end
       end
       
+      # A protobuf enum type. Values of type `Enum` are stored in `Value.int_value`.
+      class GoogleBigtableAdminV2TypeEnum
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified name of the protobuf enum message, including package. In
+        # the format of "foo.bar.EnumMessage".
+        # Corresponds to the JSON property `enumName`
+        # @return [String]
+        attr_accessor :enum_name
+      
+        # The ID of the schema bundle that this enum is defined in.
+        # Corresponds to the JSON property `schemaBundleId`
+        # @return [String]
+        attr_accessor :schema_bundle_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enum_name = args[:enum_name] if args.key?(:enum_name)
+          @schema_bundle_id = args[:schema_bundle_id] if args.key?(:schema_bundle_id)
+        end
+      end
+      
       # Float32 Values of type `Float32` are stored in `Value.float_value`.
       class GoogleBigtableAdminV2TypeFloat32
         include Google::Apis::Core::Hashable
@@ -2017,6 +2180,100 @@ module Google
       
       # Float64 Values of type `Float64` are stored in `Value.float_value`.
       class GoogleBigtableAdminV2TypeFloat64
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A geography type, representing a point or region on Earth. The value is stored
+      # in `Value.bytes_value` as Well-Known Binary (WKB) bytes.
+      class GoogleBigtableAdminV2TypeGeography
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Int32 Values of type `Int32` are stored in `Value.int_value`.
+      class GoogleBigtableAdminV2TypeInt32
+        include Google::Apis::Core::Hashable
+      
+        # Rules used to convert to or from lower level types.
+        # Corresponds to the JSON property `encoding`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32Encoding]
+        attr_accessor :encoding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encoding = args[:encoding] if args.key?(:encoding)
+        end
+      end
+      
+      # Rules used to convert to or from lower level types.
+      class GoogleBigtableAdminV2TypeInt32Encoding
+        include Google::Apis::Core::Hashable
+      
+        # Encodes the value as a 4-byte big-endian two's complement value. Sorted mode:
+        # non-negative values are supported. Distinct mode: all values are supported.
+        # Compatible with: - BigQuery `BINARY` encoding - HBase `Bytes.toBytes` - Java `
+        # ByteBuffer.putInt()` with `ByteOrder.BIG_ENDIAN`
+        # Corresponds to the JSON property `bigEndianBytes`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes]
+        attr_accessor :big_endian_bytes
+      
+        # Encodes the value in a variable length binary format of up to 5 bytes. Values
+        # that are closer to zero use fewer bytes. Sorted mode: all values are supported.
+        # Distinct mode: all values are supported.
+        # Corresponds to the JSON property `orderedCodeBytes`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes]
+        attr_accessor :ordered_code_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @big_endian_bytes = args[:big_endian_bytes] if args.key?(:big_endian_bytes)
+          @ordered_code_bytes = args[:ordered_code_bytes] if args.key?(:ordered_code_bytes)
+        end
+      end
+      
+      # Encodes the value as a 4-byte big-endian two's complement value. Sorted mode:
+      # non-negative values are supported. Distinct mode: all values are supported.
+      # Compatible with: - BigQuery `BINARY` encoding - HBase `Bytes.toBytes` - Java `
+      # ByteBuffer.putInt()` with `ByteOrder.BIG_ENDIAN`
+      class GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Encodes the value in a variable length binary format of up to 5 bytes. Values
+      # that are closer to zero use fewer bytes. Sorted mode: all values are supported.
+      # Distinct mode: all values are supported.
+      class GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -2132,8 +2389,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -2152,8 +2409,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -2171,6 +2428,33 @@ module Google
         def update!(**args)
           @key_type = args[:key_type] if args.key?(:key_type)
           @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # A protobuf message type. Values of type `Proto` are stored in `Value.
+      # bytes_value`.
+      class GoogleBigtableAdminV2TypeProto
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified name of the protobuf message, including package. In the
+        # format of "foo.bar.Message".
+        # Corresponds to the JSON property `messageName`
+        # @return [String]
+        attr_accessor :message_name
+      
+        # The ID of the schema bundle that this proto is defined in.
+        # Corresponds to the JSON property `schemaBundleId`
+        # @return [String]
+        attr_accessor :schema_bundle_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_name = args[:message_name] if args.key?(:message_name)
+          @schema_bundle_id = args[:schema_bundle_id] if args.key?(:schema_bundle_id)
         end
       end
       
@@ -2232,8 +2516,8 @@ module Google
         # NULL values to be encoded as the empty string "". The actual empty string, or
         # any value where every character equals `null_escape_char`, has one more `
         # null_escape_char` appended. If `null_escape_char` is set and does not equal
-        # the ASCII null character 0x00, then the encoding will not support sorted mode.
-        # .
+        # the ASCII null character `0x00`, then the encoding will not support sorted
+        # mode. .
         # Corresponds to the JSON property `nullEscapeChar`
         # @return [String]
         attr_accessor :null_escape_char
@@ -2297,35 +2581,45 @@ module Google
         # delimiter`. Sorted mode: - Fields are encoded in sorted mode. - Encoded field
         # values must not contain any bytes <= `delimiter[0]` - Element-wise order is
         # preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc.
-        # Strict prefixes sort first. Distinct mode: - Fields are encoded in distinct
-        # mode. - Encoded field values must not contain `delimiter[0]`.
+        # Strict prefixes sort first. - This encoding does not support `DESC` field
+        # ordering. Distinct mode: - Fields are encoded in distinct mode. - Encoded
+        # field values must not contain `delimiter[0]`.
         # Corresponds to the JSON property `delimitedBytes`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes]
         attr_accessor :delimited_bytes
       
-        # Fields are encoded independently and concatenated with the fixed byte pair `
-        # 0x00, 0x01` in between. Any null (0x00) byte in an encoded field is replaced
-        # by the fixed byte pair `0x00, 0xFF`. Fields that encode to the empty string ""
-        # have special handling: - If *every* field encodes to "", or if the STRUCT has
-        # no fields defined, then the STRUCT is encoded as the fixed byte pair `0x00,
-        # 0x00`. - Otherwise, the STRUCT only encodes until the last non-empty field,
-        # omitting any trailing empty fields. Any empty fields that aren't omitted are
-        # replaced with the fixed byte pair `0x00, 0x00`. Examples: - STRUCT() -> "\00\
-        # 00" - STRUCT("") -> "\00\00" - STRUCT("", "") -> "\00\00" - STRUCT("", "B") ->
-        # "\00\00" + "\00\01" + "B" - STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\
-        # 00\00" + "\00\01" + "B" - STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "
-        # \00\01" + "C" Since null bytes are always escaped, this encoding can cause
-        # size blowup for encodings like `Int64.BigEndianBytes` that are likely to
-        # produce many such bytes. Sorted mode: - Fields are encoded in sorted mode. -
-        # All values supported by the field encodings are allowed - Element-wise order
-        # is preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`,
-        # etc. Strict prefixes sort first. Distinct mode: - Fields are encoded in
-        # distinct mode. - All values supported by the field encodings are allowed.
+        # Fields are encoded independently, then escaped and delimited by appling the
+        # following rules in order: - While the last remaining field is `ASC` or `
+        # UNSPECIFIED`, and encodes to the empty string "", remove it. - In each
+        # remaining field, replace all null bytes `0x00` with the fixed byte pair ``0x00,
+        # 0xFF``. - If any remaining field encodes to the empty string "", replace it
+        # with the fixed byte pair ``0x00, 0x00``. - Append the fixed byte pair ``0x00,
+        # 0x01`` to each remaining field, except for the last remaining field if it is `
+        # ASC`. - Bitwise negate all `DESC` fields. - Concatenate the results, or emit
+        # the fixed byte pair ``0x00, 0x00`` if there are no remaining fields to
+        # concatenate. Examples: ``` - STRUCT() -> "\00\00" - STRUCT("") -> "\00\00" -
+        # STRUCT("", "") -> "\00\00" - STRUCT("", "B") -> "\00\00" + "\00\01" + "B" -
+        # STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\00\00" + "\00\01" + "B" -
+        # STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "\00\01" + "C" ```
+        # Examples for struct with `DESC` fields: ``` - STRUCT("" DESC) -> "\xFF\xFF" + "
+        # \xFF\xFE" - STRUCT("" DESC, "") -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, ""
+        # , "") -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, "A") -> "\xFF\xFF" + "\xFF\
+        # xFE" + "A" - STRUCT("A", "" DESC, "") -> "A" + "\00\01" + "\xFF\xFF" + "\xFF\
+        # xFE" - STRUCT("", "A" DESC) -> "\x00\x00" + "\x00\x01" + "\xBE" + "\xFF\xFE" ``
+        # ` Since null bytes are always escaped, this encoding can cause size blowup for
+        # encodings like `Int64.BigEndianBytes` that are likely to produce many such
+        # bytes. Sorted mode: - Fields are encoded in sorted mode. - All values
+        # supported by the field encodings are allowed. - Fields with unset or `
+        # UNSPECIFIED` order are treated as `ASC`. - Element-wise order is preserved: `A
+        # < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc. Strict
+        # prefixes sort first. Distinct mode: - Fields are encoded in distinct mode. -
+        # All values supported by the field encodings are allowed.
         # Corresponds to the JSON property `orderedCodeBytes`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes]
         attr_accessor :ordered_code_bytes
       
         # Uses the encoding of `fields[0].type` as-is. Only valid if `fields.size == 1`.
+        # This encoding does not support `DESC` field ordering.
         # Corresponds to the JSON property `singleton`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeStructEncodingSingleton]
         attr_accessor :singleton
@@ -2347,8 +2641,9 @@ module Google
       # delimiter`. Sorted mode: - Fields are encoded in sorted mode. - Encoded field
       # values must not contain any bytes <= `delimiter[0]` - Element-wise order is
       # preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc.
-      # Strict prefixes sort first. Distinct mode: - Fields are encoded in distinct
-      # mode. - Encoded field values must not contain `delimiter[0]`.
+      # Strict prefixes sort first. - This encoding does not support `DESC` field
+      # ordering. Distinct mode: - Fields are encoded in distinct mode. - Encoded
+      # field values must not contain `delimiter[0]`.
       class GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes
         include Google::Apis::Core::Hashable
       
@@ -2369,24 +2664,32 @@ module Google
         end
       end
       
-      # Fields are encoded independently and concatenated with the fixed byte pair `
-      # 0x00, 0x01` in between. Any null (0x00) byte in an encoded field is replaced
-      # by the fixed byte pair `0x00, 0xFF`. Fields that encode to the empty string ""
-      # have special handling: - If *every* field encodes to "", or if the STRUCT has
-      # no fields defined, then the STRUCT is encoded as the fixed byte pair `0x00,
-      # 0x00`. - Otherwise, the STRUCT only encodes until the last non-empty field,
-      # omitting any trailing empty fields. Any empty fields that aren't omitted are
-      # replaced with the fixed byte pair `0x00, 0x00`. Examples: - STRUCT() -> "\00\
-      # 00" - STRUCT("") -> "\00\00" - STRUCT("", "") -> "\00\00" - STRUCT("", "B") ->
-      # "\00\00" + "\00\01" + "B" - STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\
-      # 00\00" + "\00\01" + "B" - STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "
-      # \00\01" + "C" Since null bytes are always escaped, this encoding can cause
-      # size blowup for encodings like `Int64.BigEndianBytes` that are likely to
-      # produce many such bytes. Sorted mode: - Fields are encoded in sorted mode. -
-      # All values supported by the field encodings are allowed - Element-wise order
-      # is preserved: `A < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`,
-      # etc. Strict prefixes sort first. Distinct mode: - Fields are encoded in
-      # distinct mode. - All values supported by the field encodings are allowed.
+      # Fields are encoded independently, then escaped and delimited by appling the
+      # following rules in order: - While the last remaining field is `ASC` or `
+      # UNSPECIFIED`, and encodes to the empty string "", remove it. - In each
+      # remaining field, replace all null bytes `0x00` with the fixed byte pair ``0x00,
+      # 0xFF``. - If any remaining field encodes to the empty string "", replace it
+      # with the fixed byte pair ``0x00, 0x00``. - Append the fixed byte pair ``0x00,
+      # 0x01`` to each remaining field, except for the last remaining field if it is `
+      # ASC`. - Bitwise negate all `DESC` fields. - Concatenate the results, or emit
+      # the fixed byte pair ``0x00, 0x00`` if there are no remaining fields to
+      # concatenate. Examples: ``` - STRUCT() -> "\00\00" - STRUCT("") -> "\00\00" -
+      # STRUCT("", "") -> "\00\00" - STRUCT("", "B") -> "\00\00" + "\00\01" + "B" -
+      # STRUCT("A", "") -> "A" - STRUCT("", "B", "") -> "\00\00" + "\00\01" + "B" -
+      # STRUCT("A", "", "C") -> "A" + "\00\01" + "\00\00" + "\00\01" + "C" ```
+      # Examples for struct with `DESC` fields: ``` - STRUCT("" DESC) -> "\xFF\xFF" + "
+      # \xFF\xFE" - STRUCT("" DESC, "") -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, ""
+      # , "") -> "\xFF\xFF" + "\xFF\xFE" - STRUCT("" DESC, "A") -> "\xFF\xFF" + "\xFF\
+      # xFE" + "A" - STRUCT("A", "" DESC, "") -> "A" + "\00\01" + "\xFF\xFF" + "\xFF\
+      # xFE" - STRUCT("", "A" DESC) -> "\x00\x00" + "\x00\x01" + "\xBE" + "\xFF\xFE" ``
+      # ` Since null bytes are always escaped, this encoding can cause size blowup for
+      # encodings like `Int64.BigEndianBytes` that are likely to produce many such
+      # bytes. Sorted mode: - Fields are encoded in sorted mode. - All values
+      # supported by the field encodings are allowed. - Fields with unset or `
+      # UNSPECIFIED` order are treated as `ASC`. - Element-wise order is preserved: `A
+      # < B` if `A[0] < B[0]`, or if `A[0] == B[0] && A[1] < B[1]`, etc. Strict
+      # prefixes sort first. Distinct mode: - Fields are encoded in distinct mode. -
+      # All values supported by the field encodings are allowed.
       class GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes
         include Google::Apis::Core::Hashable
       
@@ -2400,6 +2703,7 @@ module Google
       end
       
       # Uses the encoding of `fields[0].type` as-is. Only valid if `fields.size == 1`.
+      # This encoding does not support `DESC` field ordering.
       class GoogleBigtableAdminV2TypeStructEncodingSingleton
         include Google::Apis::Core::Hashable
       
@@ -2431,8 +2735,8 @@ module Google
         # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
         # sort order is important, for example when encoding keys. - Distinct: In this
         # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-        # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-        # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+        # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+        # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
         # value. The API clearly documents which mode is used wherever an encoding can
         # be configured. Each encoding also documents which values are supported in
         # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -2572,6 +2876,17 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. The edition of the instance. See Edition for details.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
+        # Output only. The region where Knowledge Catalog data is synced to and stored,
+        # including user-created aspects.
+        # Corresponds to the JSON property `knowledgeCatalogRegion`
+        # @return [String]
+        attr_accessor :knowledge_catalog_region
+      
         # Labels are a flexible and lightweight mechanism for organizing cloud resources
         # into groups that reflect a customer's organizational needs and deployment
         # strategies. They can be used to filter resources and aggregate metrics. *
@@ -2607,6 +2922,16 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: - "123/environment": "production", - "123/costCenter": "
+        # marketing" Tags and Labels (above) are both used to bind metadata to resources,
+        # with different use-cases. See https://cloud.google.com/resource-manager/docs/
+        # tags/tags-overview for an in-depth overview on the difference between tags and
+        # labels.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # The type of the instance. Defaults to `PRODUCTION`.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2620,11 +2945,14 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @edition = args[:edition] if args.key?(:edition)
+          @knowledge_catalog_region = args[:knowledge_catalog_region] if args.key?(:knowledge_catalog_region)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -2911,6 +3239,41 @@ module Google
         end
       end
       
+      # Response message for BigtableInstanceAdmin.ListMemoryLayers.
+      class ListMemoryLayersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Locations from which MemoryLayer information could not be retrieved, due to an
+        # outage or some other transient condition. MemoryLayers from these locations
+        # may be missing from `memory_layers`, or may only have partial information
+        # returned. Values are of the form `projects//locations/`
+        # Corresponds to the JSON property `failedLocations`
+        # @return [Array<String>]
+        attr_accessor :failed_locations
+      
+        # The list of requested memory layers.
+        # Corresponds to the JSON property `memoryLayers`
+        # @return [Array<Google::Apis::BigtableadminV2::MemoryLayer>]
+        attr_accessor :memory_layers
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_locations = args[:failed_locations] if args.key?(:failed_locations)
+          @memory_layers = args[:memory_layers] if args.key?(:memory_layers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -2925,6 +3288,14 @@ module Google
         # @return [Array<Google::Apis::BigtableadminV2::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2933,6 +3304,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response for ListSchemaBundles.
+      class ListSchemaBundlesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The schema bundles from the specified table.
+        # Corresponds to the JSON property `schemaBundles`
+        # @return [Array<Google::Apis::BigtableadminV2::SchemaBundle>]
+        attr_accessor :schema_bundles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @schema_bundles = args[:schema_bundles] if args.key?(:schema_bundles)
         end
       end
       
@@ -3054,7 +3452,17 @@ module Google
       class MaterializedView
         include Google::Apis::Core::Hashable
       
-        # Set to true to make the MaterializedView protected against deletion.
+        # Output only. Map from cluster ID to per-cluster materialized view state. If it
+        # could not be determined whether or not the materialized view has data in a
+        # particular cluster (for example, if its zone is unavailable), then there will
+        # be an entry for the cluster with `STATE_NOT_KNOWN` state. Views: `
+        # REPLICATION_VIEW`, `FULL`.
+        # Corresponds to the JSON property `clusterStates`
+        # @return [Hash<String,Google::Apis::BigtableadminV2::GoogleBigtableAdminV2MaterializedViewClusterState>]
+        attr_accessor :cluster_states
+      
+        # Set to true to make the MaterializedView protected against deletion. Views: `
+        # SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
         # Corresponds to the JSON property `deletionProtection`
         # @return [Boolean]
         attr_accessor :deletion_protection
@@ -3062,18 +3470,21 @@ module Google
       
         # Optional. The etag for this materialized view. This may be sent on update
         # requests to ensure that the client has an up-to-date value before proceeding.
-        # The server returns an ABORTED error on a mismatched etag.
+        # The server returns an ABORTED error on a mismatched etag. Views: `SCHEMA_VIEW`,
+        # `REPLICATION_VIEW`, `FULL`.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
         # Identifier. The unique name of the materialized view. Format: `projects/`
-        # project`/instances/`instance`/materializedViews/`materialized_view``
+        # project`/instances/`instance`/materializedViews/`materialized_view`` Views: `
+        # SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. Immutable. The materialized view's select query.
+        # Required. Immutable. The materialized view's select query. Views: `SCHEMA_VIEW`
+        # , `FULL`.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -3084,10 +3495,68 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_states = args[:cluster_states] if args.key?(:cluster_states)
           @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # If set, eligible single-row requests (currently limited to ReadRows) using
+      # this app profile will be routed to the memory layer. All eligible writes
+      # populate the memory layer. MemoryConfig can only be set if the AppProfile uses
+      # single cluster routing and the configured cluster has a memory layer enabled.
+      class MemoryConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The memory layer of a cluster. A memory layer serves reads from memory without
+      # hitting the backing persistent data store.
+      class MemoryLayer
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The etag for this memory layer. This may be sent on update requests
+        # to ensure that the client has an up-to-date value before proceeding. The
+        # server returns an ABORTED error on a mismatched etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Configuration of a memory layer.
+        # Corresponds to the JSON property `memoryConfig`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2MemoryLayerMemoryConfig]
+        attr_accessor :memory_config
+      
+        # Identifier. Name of the memory layer. This is always: "projects/`project`/
+        # instances/`instance`/clusters/`cluster`/memoryLayer".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of the memory layer.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @memory_config = args[:memory_config] if args.key?(:memory_config)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -3508,6 +3977,34 @@ module Google
         end
       end
       
+      # Represents a collection of protobuf schemas.
+      class ProtoSchema
+        include Google::Apis::Core::Hashable
+      
+        # Required. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](
+        # https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/
+        # descriptor.proto), which could include multiple proto files. To generate it, [
+        # install](https://grpc.io/docs/protoc-installation/) and run `protoc` with `--
+        # include_imports` and `--descriptor_set_out`. For example, to generate for moon/
+        # shot/app.proto, run ``` $protoc --proto_path=/app_path --proto_path=/lib_path \
+        # --include_imports \ --descriptor_set_out=descriptors.pb \ moon/shot/app.proto
+        # ``` For more details, see protobuffer [self description](https://developers.
+        # google.com/protocol-buffers/docs/techniques#self-description).
+        # Corresponds to the JSON property `protoDescriptors`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :proto_descriptors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @proto_descriptors = args[:proto_descriptors] if args.key?(:proto_descriptors)
+        end
+      end
+      
       # Information about a table restore.
       class RestoreInfo
         include Google::Apis::Core::Hashable
@@ -3633,6 +4130,41 @@ module Google
         end
       end
       
+      # A named collection of related schemas.
+      class SchemaBundle
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The etag for this schema bundle. This may be sent on update and
+        # delete requests to ensure the client has an up-to-date value before proceeding.
+        # The server returns an ABORTED error on a mismatched etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The unique name identifying this schema bundle. Values are of the
+        # form `projects/`project`/instances/`instance`/tables/`table`/schemaBundles/`
+        # schema_bundle``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a collection of protobuf schemas.
+        # Corresponds to the JSON property `protoSchema`
+        # @return [Google::Apis::BigtableadminV2::ProtoSchema]
+        attr_accessor :proto_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @proto_schema = args[:proto_schema] if args.key?(:proto_schema)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -3740,6 +4272,14 @@ module Google
       class StandardIsolation
         include Google::Apis::Core::Hashable
       
+        # If set, eligible single-row requests (currently limited to ReadRows) using
+        # this app profile will be routed to the memory layer. All eligible writes
+        # populate the memory layer. MemoryConfig can only be set if the AppProfile uses
+        # single cluster routing and the configured cluster has a memory layer enabled.
+        # Corresponds to the JSON property `memoryConfig`
+        # @return [Google::Apis::BigtableadminV2::MemoryConfig]
+        attr_accessor :memory_config
+      
         # The priority of requests sent using this app profile.
         # Corresponds to the JSON property `priority`
         # @return [String]
@@ -3751,6 +4291,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @memory_config = args[:memory_config] if args.key?(:memory_config)
           @priority = args[:priority] if args.key?(:priority)
         end
       end
@@ -3847,10 +4388,9 @@ module Google
         attr_accessor :deletion_protection
         alias_method :deletion_protection?, :deletion_protection
       
-        # Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in
-        # this table. Timestamps not matching the granularity will be rejected. If
-        # unspecified at creation time, the value will be set to `MILLIS`. Views: `
-        # SCHEMA_VIEW`, `FULL`.
+        # Immutable. The granularity at which timestamps are stored in this table.
+        # Timestamps not matching the granularity will be rejected. If unspecified at
+        # creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
         # Corresponds to the JSON property `granularity`
         # @return [String]
         attr_accessor :granularity
@@ -3884,6 +4424,13 @@ module Google
         # @return [Google::Apis::BigtableadminV2::TableStats]
         attr_accessor :stats
       
+        # Config for tiered storage. A valid config must have a valid TieredStorageRule.
+        # Otherwise the whole TieredStorageConfig must be unset. By default all data is
+        # stored in the SSD tier (only SSD instances can configure tiered storage).
+        # Corresponds to the JSON property `tieredStorageConfig`
+        # @return [Google::Apis::BigtableadminV2::TieredStorageConfig]
+        attr_accessor :tiered_storage_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3900,6 +4447,7 @@ module Google
           @restore_info = args[:restore_info] if args.key?(:restore_info)
           @row_key_schema = args[:row_key_schema] if args.key?(:row_key_schema)
           @stats = args[:stats] if args.key?(:stats)
+          @tiered_storage_config = args[:tiered_storage_config] if args.key?(:tiered_storage_config)
         end
       end
       
@@ -4027,6 +4575,47 @@ module Google
         end
       end
       
+      # Config for tiered storage. A valid config must have a valid TieredStorageRule.
+      # Otherwise the whole TieredStorageConfig must be unset. By default all data is
+      # stored in the SSD tier (only SSD instances can configure tiered storage).
+      class TieredStorageConfig
+        include Google::Apis::Core::Hashable
+      
+        # Rule to specify what data is stored in a storage tier.
+        # Corresponds to the JSON property `infrequentAccess`
+        # @return [Google::Apis::BigtableadminV2::TieredStorageRule]
+        attr_accessor :infrequent_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @infrequent_access = args[:infrequent_access] if args.key?(:infrequent_access)
+        end
+      end
+      
+      # Rule to specify what data is stored in a storage tier.
+      class TieredStorageRule
+        include Google::Apis::Core::Hashable
+      
+        # Include cells older than the given age. For the infrequent access tier, this
+        # value must be at least 30 days.
+        # Corresponds to the JSON property `includeIfOlderThan`
+        # @return [String]
+        attr_accessor :include_if_older_than
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_if_older_than = args[:include_if_older_than] if args.key?(:include_if_older_than)
+        end
+      end
+      
       # `Type` represents the type of data that is written to, read from, or stored in
       # Bigtable. It is heavily based on the GoogleSQL standard to help maintain
       # familiarity and consistency across products and features. For compatibility
@@ -4036,8 +4625,8 @@ module Google
       # that `Encode(X) <= Encode(Y)` if and only if `X <= Y`. This is useful anywhere
       # sort order is important, for example when encoding keys. - Distinct: In this
       # mode, Bigtable guarantees that if `X != Y` then `Encode(X) != Encode(Y)`.
-      # However, the converse is not guaranteed. For example, both "`'foo': '1', 'bar':
-      # '2'`" and "`'bar': '2', 'foo': '1'`" are valid encodings of the same JSON
+      # However, the converse is not guaranteed. For example, both ``'foo': '1', 'bar':
+      # '2'`` and ``'bar': '2', 'foo': '1'`` are valid encodings of the same JSON
       # value. The API clearly documents which mode is used wherever an encoding can
       # be configured. Each encoding also documents which values are supported in
       # which modes. For example, when encoding INT64 as a numeric STRING, negative
@@ -4074,6 +4663,11 @@ module Google
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeDate]
         attr_accessor :date_type
       
+        # A protobuf enum type. Values of type `Enum` are stored in `Value.int_value`.
+        # Corresponds to the JSON property `enumType`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeEnum]
+        attr_accessor :enum_type
+      
         # Float32 Values of type `Float32` are stored in `Value.float_value`.
         # Corresponds to the JSON property `float32Type`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat32]
@@ -4083,6 +4677,17 @@ module Google
         # Corresponds to the JSON property `float64Type`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat64]
         attr_accessor :float64_type
+      
+        # A geography type, representing a point or region on Earth. The value is stored
+        # in `Value.bytes_value` as Well-Known Binary (WKB) bytes.
+        # Corresponds to the JSON property `geographyType`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeGeography]
+        attr_accessor :geography_type
+      
+        # Int32 Values of type `Int32` are stored in `Value.int_value`.
+        # Corresponds to the JSON property `int32Type`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32]
+        attr_accessor :int32_type
       
         # Int64 Values of type `Int64` are stored in `Value.int_value`.
         # Corresponds to the JSON property `int64Type`
@@ -4098,6 +4703,12 @@ module Google
         # Corresponds to the JSON property `mapType`
         # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeMap]
         attr_accessor :map_type
+      
+        # A protobuf message type. Values of type `Proto` are stored in `Value.
+        # bytes_value`.
+        # Corresponds to the JSON property `protoType`
+        # @return [Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeProto]
+        attr_accessor :proto_type
       
         # String Values of type `String` are stored in `Value.string_value`.
         # Corresponds to the JSON property `stringType`
@@ -4127,10 +4738,14 @@ module Google
           @bool_type = args[:bool_type] if args.key?(:bool_type)
           @bytes_type = args[:bytes_type] if args.key?(:bytes_type)
           @date_type = args[:date_type] if args.key?(:date_type)
+          @enum_type = args[:enum_type] if args.key?(:enum_type)
           @float32_type = args[:float32_type] if args.key?(:float32_type)
           @float64_type = args[:float64_type] if args.key?(:float64_type)
+          @geography_type = args[:geography_type] if args.key?(:geography_type)
+          @int32_type = args[:int32_type] if args.key?(:int32_type)
           @int64_type = args[:int64_type] if args.key?(:int64_type)
           @map_type = args[:map_type] if args.key?(:map_type)
+          @proto_type = args[:proto_type] if args.key?(:proto_type)
           @string_type = args[:string_type] if args.key?(:string_type)
           @struct_type = args[:struct_type] if args.key?(:struct_type)
           @timestamp_type = args[:timestamp_type] if args.key?(:timestamp_type)
@@ -4142,17 +4757,28 @@ module Google
       class UndeleteTableMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was cancelled.
+        # If set, the time at which this operation finished or was cancelled. DEPRECATED:
+        # Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # The name of the table being restored.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The time at which this operation started.
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # The time at which this operation started. DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -4164,7 +4790,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @name = args[:name] if args.key?(:name)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -4349,17 +4977,27 @@ module Google
       class UpdateLogicalViewMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was canceled.
+        # DEPRECATED: Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # Request message for BigtableInstanceAdmin.UpdateLogicalView.
         # Corresponds to the JSON property `originalRequest`
         # @return [Google::Apis::BigtableadminV2::UpdateLogicalViewRequest]
         attr_accessor :original_request
       
-        # The time at which this operation was started.
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -4371,7 +5009,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @original_request = args[:original_request] if args.key?(:original_request)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -4401,21 +5041,122 @@ module Google
         end
       end
       
+      # The metadata for the Operation returned by UpdateMemoryLayer.
+      class UpdateMemoryLayerMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
+      
+        # Request message for BigtableInstanceAdmin.UpdateMemoryLayer.
+        # Corresponds to the JSON property `originalRequest`
+        # @return [Google::Apis::BigtableadminV2::UpdateMemoryLayerRequest]
+        attr_accessor :original_request
+      
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @original_request = args[:original_request] if args.key?(:original_request)
+          @request_time = args[:request_time] if args.key?(:request_time)
+        end
+      end
+      
+      # Request message for BigtableInstanceAdmin.UpdateMemoryLayer.
+      class UpdateMemoryLayerRequest
+        include Google::Apis::Core::Hashable
+      
+        # The memory layer of a cluster. A memory layer serves reads from memory without
+        # hitting the backing persistent data store.
+        # Corresponds to the JSON property `memoryLayer`
+        # @return [Google::Apis::BigtableadminV2::MemoryLayer]
+        attr_accessor :memory_layer
+      
+        # Optional. The list of fields to update.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @memory_layer = args[:memory_layer] if args.key?(:memory_layer)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # The metadata for the Operation returned by UpdateSchemaBundle.
+      class UpdateSchemaBundleMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
+      
+        # The unique name identifying this schema bundle. Values are of the form `
+        # projects/`project`/instances/`instance`/tables/`table`/schemaBundles/`
+        # schema_bundle``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
+          @name = args[:name] if args.key?(:name)
+          @request_time = args[:request_time] if args.key?(:request_time)
+        end
+      end
+      
       # Metadata type for the operation returned by UpdateTable.
       class UpdateTableMetadata
         include Google::Apis::Core::Hashable
       
-        # If set, the time at which this operation finished or was canceled.
+        # If set, the time at which this operation finished or was canceled. DEPRECATED:
+        # Use finish_time instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
+      
+        # The time at which the operation failed or was completed successfully.
+        # Corresponds to the JSON property `finishTime`
+        # @return [String]
+        attr_accessor :finish_time
       
         # The name of the table being updated.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The time at which this operation started.
+        # The time at which the original request was received.
+        # Corresponds to the JSON property `requestTime`
+        # @return [String]
+        attr_accessor :request_time
+      
+        # The time at which this operation started. DEPRECATED: Use request_time instead.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -4427,7 +5168,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @finish_time = args[:finish_time] if args.key?(:finish_time)
           @name = args[:name] if args.key?(:name)
+          @request_time = args[:request_time] if args.key?(:request_time)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end

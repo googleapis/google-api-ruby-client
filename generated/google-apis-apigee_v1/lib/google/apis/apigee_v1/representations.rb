@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1AdjustAppGroupBalanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +202,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ApimServiceExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ApimServiceExtensionExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1App
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,7 +244,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1AppGroupBalance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AppGroupBalanceWallet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AppGroupMonetizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AppGroupSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ArchiveDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1AsyncApiDocumentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -257,6 +311,18 @@ module Google
       end
       
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -365,6 +431,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1Credential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1CreditAppGroupBalanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -640,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -850,7 +928,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListApimServiceExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListAppGroupAppsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1012,6 +1102,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ListSecurityFeedbackResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1ListSecurityIncidentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1061,6 +1157,42 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListTraceConfigOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1LlmOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1LlmOperationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1LlmOperationGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1LlmTokenQuota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1181,6 +1313,24 @@ module Google
       end
       
       class GoogleCloudApigeeV1OrganizationProjectMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1PayloadOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1PayloadOperationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1PayloadOperationGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1450,6 +1600,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1ScheduledMaintenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Schema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1552,6 +1708,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1SecurityAssessmentResultScoringResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1571,6 +1733,18 @@ module Google
       end
       
       class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityFeedback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityFeedbackFeedbackContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1619,6 +1793,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1906,6 +2086,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleTypeTimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EdgeConfigstoreBundleBadBundle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2004,6 +2190,14 @@ module Google
           property :integration_config, as: 'integrationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1IntegrationConfig::Representation
       
           property :monetization_config, as: 'monetizationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MonetizationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1AdjustAppGroupBalanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment, as: 'adjustment', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
       
         end
       end
@@ -2110,6 +2304,8 @@ module Google
       class GoogleCloudApigeeV1ApiDocDocumentation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_api_documentation, as: 'asyncApiDocumentation', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncApiDocumentation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncApiDocumentation::Representation
+      
           property :graphql_documentation, as: 'graphqlDocumentation', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphqlDocumentation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphqlDocumentation::Representation
       
           property :oas_documentation, as: 'oasDocumentation', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OasDocumentation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OasDocumentation::Representation
@@ -2157,8 +2353,15 @@ module Google
           property :grpc_operation_group, as: 'grpcOperationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GrpcOperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1GrpcOperationGroup::Representation
       
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :llm_operation_group, as: 'llmOperationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationGroup::Representation
+      
+          property :llm_quota, as: 'llmQuota'
+          property :llm_quota_interval, as: 'llmQuotaInterval'
+          property :llm_quota_time_unit, as: 'llmQuotaTimeUnit'
           property :name, as: 'name'
           property :operation_group, as: 'operationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup::Representation
+      
+          property :payload_operation_group, as: 'payloadOperationGroup', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationGroup, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationGroup::Representation
       
           collection :proxies, as: 'proxies'
           property :quota, as: 'quota'
@@ -2208,6 +2411,7 @@ module Google
           property :has_extensible_policy, as: 'hasExtensiblePolicy'
           collection :integration_endpoints, as: 'integrationEndpoints'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :mcp, as: 'mcp'
           property :name, as: 'name'
           collection :policies, as: 'policies'
           collection :proxies, as: 'proxies'
@@ -2245,6 +2449,42 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ApimServiceExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :extension_processor, as: 'extensionProcessor'
+          collection :extensions, as: 'extensions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtensionExtension, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtensionExtension::Representation
+      
+          property :lb_forwarding_rule, as: 'lbForwardingRule'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          collection :network_configs, as: 'networkConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApimServiceExtensionExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fail_open, as: 'failOpen'
+          property :hostname, as: 'hostname'
+          property :match_condition, as: 'matchCondition'
+          property :name, as: 'name'
+          collection :supported_events, as: 'supportedEvents'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :region, as: 'region'
+          property :subnet, as: 'subnet'
+        end
+      end
+      
       class GoogleCloudApigeeV1App
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2279,6 +2519,7 @@ module Google
           property :channel_uri, as: 'channelUri'
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :display_name, as: 'displayName'
+          property :email, as: 'email'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
           property :organization, as: 'organization'
@@ -2323,6 +2564,42 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1AppGroupBalance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :wallets, as: 'wallets', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalanceWallet, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalanceWallet::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1AppGroupBalanceWallet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :balance, as: 'balance', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
+      
+          property :last_credit_time, :numeric_string => true, as: 'lastCreditTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AppGroupMonetizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billing_type, as: 'billingType'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AppGroupSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apiproduct, as: 'apiproduct'
+          property :created_at, :numeric_string => true, as: 'createdAt'
+          property :end_time, :numeric_string => true, as: 'endTime'
+          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
+          property :name, as: 'name'
+          property :start_time, :numeric_string => true, as: 'startTime'
+        end
+      end
+      
       class GoogleCloudApigeeV1ArchiveDeployment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2332,6 +2609,14 @@ module Google
           property :name, as: 'name'
           property :operation, as: 'operation'
           property :updated_at, :numeric_string => true, as: 'updatedAt'
+        end
+      end
+      
+      class GoogleCloudApigeeV1AsyncApiDocumentation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :spec, as: 'spec', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile::Representation
+      
         end
       end
       
@@ -2395,6 +2680,10 @@ module Google
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_hub_apis, as: 'apiHubApis', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray::Representation
+      
+          property :api_hub_gateways, as: 'apiHubGateways', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray::Representation
+      
           property :include, as: 'include', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray::Representation
       
           property :include_all_resources, as: 'includeAllResources', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll::Representation
@@ -2403,6 +2692,20 @@ module Google
           property :page_token, as: 'pageToken'
           property :profile, as: 'profile'
           property :scope, as: 'scope'
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apis, as: 'apis'
+        end
+      end
+      
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateways, as: 'gateways'
         end
       end
       
@@ -2578,6 +2881,15 @@ module Google
           property :issued_at, :numeric_string => true, as: 'issuedAt'
           collection :scopes, as: 'scopes'
           property :status, as: 'status'
+        end
+      end
+      
+      class GoogleCloudApigeeV1CreditAppGroupBalanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :transaction_amount, as: 'transactionAmount', class: Google::Apis::ApigeeV1::GoogleTypeMoney, decorator: Google::Apis::ApigeeV1::GoogleTypeMoney::Representation
+      
+          property :transaction_id, as: 'transactionId'
         end
       end
       
@@ -3134,6 +3446,12 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3320,12 +3638,17 @@ module Google
           property :display_name, as: 'displayName'
           property :host, as: 'host'
           property :ip_range, as: 'ipRange'
+          property :is_version_locked, as: 'isVersionLocked'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :location, as: 'location'
+          property :maintenance_update_policy, as: 'maintenanceUpdatePolicy', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicy, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicy::Representation
+      
           property :name, as: 'name'
           property :peering_cidr_range, as: 'peeringCidrRange'
           property :port, as: 'port'
           property :runtime_version, as: 'runtimeVersion'
+          property :scheduled_maintenance, as: 'scheduledMaintenance', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScheduledMaintenance, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScheduledMaintenance::Representation
+      
           property :service_attachment, as: 'serviceAttachment'
           property :state, as: 'state'
         end
@@ -3396,6 +3719,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :encrypted, as: 'encrypted'
+          property :masked_values, as: 'maskedValues'
           property :name, as: 'name'
         end
       end
@@ -3467,10 +3791,28 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListApimServiceExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apim_service_extensions, as: 'apimServiceExtensions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudApigeeV1ListAppGroupAppsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :app_group_apps, as: 'appGroupApps', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupApp::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_group_subscriptions, as: 'appGroupSubscriptions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -3702,6 +4044,15 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1ListSecurityFeedbackResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :security_feedback, as: 'securityFeedback', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback::Representation
+      
+        end
+      end
+      
       class GoogleCloudApigeeV1ListSecurityIncidentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3778,6 +4129,63 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :trace_config_overrides, as: 'traceConfigOverrides', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOverride::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1LlmOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :methods_prop, as: 'methods'
+          property :model, as: 'model'
+          property :resource, as: 'resource'
+        end
+      end
+      
+      class GoogleCloudApigeeV1LlmOperationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_source, as: 'apiSource'
+          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+          collection :llm_operations, as: 'llmOperations', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperation::Representation
+      
+          property :llm_token_quota, as: 'llmTokenQuota', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmTokenQuota, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmTokenQuota::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1LlmOperationGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operation_configs, as: 'operationConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1LlmTokenQuota
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval'
+          property :limit, as: 'limit'
+          property :time_unit, as: 'timeUnit'
+        end
+      end
+      
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_channel, as: 'maintenanceChannel'
+          collection :maintenance_windows, as: 'maintenanceWindows', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :start_time, as: 'startTime', class: Google::Apis::ApigeeV1::GoogleTypeTimeOfDay, decorator: Google::Apis::ApigeeV1::GoogleTypeTimeOfDay::Representation
       
         end
       end
@@ -3954,6 +4362,7 @@ module Google
           property :authorized_network, as: 'authorizedNetwork'
           property :billing_type, as: 'billingType'
           property :ca_certificate, :base64 => true, as: 'caCertificate'
+          collection :ca_certificates, as: 'caCertificates'
           property :control_plane_encryption_key_name, as: 'controlPlaneEncryptionKeyName'
           property :created_at, :numeric_string => true, as: 'createdAt'
           property :customer_name, as: 'customerName'
@@ -3964,6 +4373,7 @@ module Google
           property :expires_at, :numeric_string => true, as: 'expiresAt'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
           property :name, as: 'name'
+          property :network_egress_restricted, as: 'networkEgressRestricted'
           property :portal_disabled, as: 'portalDisabled'
           property :project_id, as: 'projectId'
           property :properties, as: 'properties', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Properties::Representation
@@ -3984,6 +4394,34 @@ module Google
           property :organization, as: 'organization'
           property :project_id, as: 'projectId'
           collection :project_ids, as: 'projectIds'
+        end
+      end
+      
+      class GoogleCloudApigeeV1PayloadOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation'
+        end
+      end
+      
+      class GoogleCloudApigeeV1PayloadOperationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_source, as: 'apiSource'
+          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
+      
+          collection :operations, as: 'operations', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperation, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperation::Representation
+      
+          property :quota, as: 'quota', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApigeeV1PayloadOperationGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operation_configs, as: 'operationConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationConfig::Representation
+      
         end
       end
       
@@ -4427,12 +4865,14 @@ module Google
           property :endpoint, as: 'endpoint'
           property :exporter, as: 'exporter'
           property :name, as: 'name'
+          property :open_telemetry_protocol_enabled, as: 'openTelemetryProtocolEnabled'
           collection :overrides, as: 'overrides', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOverride, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOverride::Representation
       
           property :revision_create_time, as: 'revisionCreateTime'
           property :revision_id, as: 'revisionId'
           property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig::Representation
       
+          property :trace_protocol, as: 'traceProtocol'
         end
       end
       
@@ -4441,10 +4881,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_proxy, as: 'apiProxy'
           property :name, as: 'name'
+          property :open_telemetry_protocol_enabled, as: 'openTelemetryProtocolEnabled'
           property :revision_create_time, as: 'revisionCreateTime'
           property :revision_id, as: 'revisionId'
           property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig::Representation
       
+          property :trace_protocol, as: 'traceProtocol'
           property :uid, as: 'uid'
         end
       end
@@ -4454,6 +4896,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sampler, as: 'sampler'
           property :sampling_rate, as: 'samplingRate'
+        end
+      end
+      
+      class GoogleCloudApigeeV1ScheduledMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -4631,9 +5080,23 @@ module Google
       class GoogleCloudApigeeV1SecurityAssessmentResultResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_hub_deployment_details, as: 'apiHubDeploymentDetails', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails::Representation
+      
+          property :api_hub_gateway_type, as: 'apiHubGatewayType'
           property :name, as: 'name'
           property :resource_revision_id, as: 'resourceRevisionId'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :gateway, as: 'gateway'
+          property :gateway_type, as: 'gatewayType'
+          property :resource_uri, as: 'resourceUri'
+          property :source_project, as: 'sourceProject'
         end
       end
       
@@ -4678,6 +5141,29 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1SecurityFeedback
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          collection :feedback_contexts, as: 'feedbackContexts', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedbackFeedbackContext, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedbackFeedbackContext::Representation
+      
+          property :feedback_type, as: 'feedbackType'
+          property :name, as: 'name'
+          property :reason, as: 'reason'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityFeedbackFeedbackContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute, as: 'attribute'
+          collection :values, as: 'values'
+        end
+      end
+      
       class GoogleCloudApigeeV1SecurityIncident
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4696,6 +5182,7 @@ module Google
       class GoogleCloudApigeeV1SecurityMonitoringCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_hub_gateway, as: 'apiHubGateway'
           property :create_time, as: 'createTime'
           property :include, as: 'include', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray::Representation
       
@@ -4703,6 +5190,7 @@ module Google
       
           property :name, as: 'name'
           property :profile, as: 'profile'
+          property :risk_assessment_type, as: 'riskAssessmentType'
           property :scope, as: 'scope'
           property :total_deployed_resources, as: 'totalDeployedResources'
           property :total_monitored_resources, as: 'totalMonitoredResources'
@@ -4766,6 +5254,7 @@ module Google
           property :name, as: 'name'
           hash :profile_assessment_configs, as: 'profileAssessmentConfigs', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig::Representation
       
+          property :risk_assessment_type, as: 'riskAssessmentType'
           property :update_time, as: 'updateTime'
         end
       end
@@ -4773,7 +5262,16 @@ module Google
       class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include, as: 'include', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray::Representation
+      
           property :weight, as: 'weight'
+        end
+      end
+      
+      class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateway_types, as: 'gatewayTypes'
         end
       end
       
@@ -5077,6 +5575,7 @@ module Google
           property :exporter, as: 'exporter'
           property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig::Representation
       
+          property :trace_protocol, as: 'traceProtocol'
         end
       end
       
@@ -5195,6 +5694,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ApigeeV1::GoogleLongrunningOperation, decorator: Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -5266,6 +5766,16 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class GoogleTypeTimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
         end
       end
     end

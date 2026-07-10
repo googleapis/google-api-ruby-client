@@ -488,7 +488,7 @@ module Google
         attr_accessor :hyperthreading
         alias_method :hyperthreading?, :hyperthreading
       
-        # A transient unique identifier to idenfity an instance within an
+        # A transient unique identifier to identify an instance within an
         # ProvisioningConfig request.
         # Corresponds to the JSON property `id`
         # @return [String]

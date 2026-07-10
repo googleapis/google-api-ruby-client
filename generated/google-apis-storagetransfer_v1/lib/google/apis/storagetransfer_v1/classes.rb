@@ -188,6 +188,13 @@ module Google
         # @return [String]
         attr_accessor :path
       
+        # Service Directory Service to be used as the endpoint for transfers from a
+        # custom VPC. Format: `projects/`project_id`/locations/`location`/namespaces/`
+        # namespace`/services/`service``
+        # Corresponds to the JSON property `privateNetworkService`
+        # @return [String]
+        attr_accessor :private_network_service
+      
         # The Amazon Resource Name (ARN) of the role to support temporary credentials
         # via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM
         # ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.
@@ -210,6 +217,7 @@ module Google
           @credentials_secret = args[:credentials_secret] if args.key?(:credentials_secret)
           @managed_private_network = args[:managed_private_network] if args.key?(:managed_private_network)
           @path = args[:path] if args.key?(:path)
+          @private_network_service = args[:private_network_service] if args.key?(:private_network_service)
           @role_arn = args[:role_arn] if args.key?(:role_arn)
         end
       end
@@ -248,16 +256,13 @@ module Google
         # @return [String]
         attr_accessor :credentials_secret
       
-        # Identities of a user registered Azure application that enables identity
-        # federation to trust tokens issued by the user's Google service account. For
-        # more information about Azure application and identity federation, see [
-        # Register an application with the Microsoft identity platform] (https://learn.
-        # microsoft.com/en-us/entra/identity-platform/quickstart-register-app) Azure
-        # RBAC roles then need be assigned to the Azure application to authorize access
-        # to the user's Azure data source. For more information about Azure RBAC roles
-        # for blobs, see [Manage Access Rights with RBAC] (https://learn.microsoft.com/
-        # en-us/rest/api/storageservices/authorize-with-azure-active-directory#manage-
-        # access-rights-with-rbac)
+        # The identity of an Azure application through which Storage Transfer Service
+        # can authenticate requests using Azure workload identity federation. Storage
+        # Transfer Service can issue requests to Azure Storage through registered Azure
+        # applications, eliminating the need to pass credentials to Storage Transfer
+        # Service directly. To configure federated identity, see [Configure access to
+        # Microsoft Azure Storage](https://cloud.google.com/storage-transfer/docs/source-
+        # microsoft-azure#option_3_authenticate_using_federated_identity).
         # Corresponds to the JSON property `federatedIdentityConfig`
         # @return [Google::Apis::StoragetransferV1::FederatedIdentityConfig]
         attr_accessor :federated_identity_config
@@ -268,6 +273,13 @@ module Google
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
+      
+        # Service Directory Service to be used as the endpoint for transfers from a
+        # custom VPC. Format: `projects/`project_id`/locations/`location`/namespaces/`
+        # namespace`/services/`service``
+        # Corresponds to the JSON property `privateNetworkService`
+        # @return [String]
+        attr_accessor :private_network_service
       
         # Required. The name of the Azure Storage account.
         # Corresponds to the JSON property `storageAccount`
@@ -285,6 +297,7 @@ module Google
           @credentials_secret = args[:credentials_secret] if args.key?(:credentials_secret)
           @federated_identity_config = args[:federated_identity_config] if args.key?(:federated_identity_config)
           @path = args[:path] if args.key?(:path)
+          @private_network_service = args[:private_network_service] if args.key?(:private_network_service)
           @storage_account = args[:storage_account] if args.key?(:storage_account)
         end
       end
@@ -403,17 +416,17 @@ module Google
         end
       end
       
-      # An entry describing an error that has occurred.
+      # LINT.IfChange An entry describing an error that has occurred.
       class ErrorLogEntry
         include Google::Apis::Core::Hashable
       
-        # A list of messages that carry the error details.
+        # Optional. A list of messages that carry the error details.
         # Corresponds to the JSON property `errorDetails`
         # @return [Array<String>]
         attr_accessor :error_details
       
-        # Required. A URL that refers to the target (a data source, a data sink, or an
-        # object) with which the error is associated.
+        # Output only. A URL that refers to the target (a data source, a data sink, or
+        # an object) with which the error is associated.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -499,26 +512,24 @@ module Google
         end
       end
       
-      # Identities of a user registered Azure application that enables identity
-      # federation to trust tokens issued by the user's Google service account. For
-      # more information about Azure application and identity federation, see [
-      # Register an application with the Microsoft identity platform] (https://learn.
-      # microsoft.com/en-us/entra/identity-platform/quickstart-register-app) Azure
-      # RBAC roles then need be assigned to the Azure application to authorize access
-      # to the user's Azure data source. For more information about Azure RBAC roles
-      # for blobs, see [Manage Access Rights with RBAC] (https://learn.microsoft.com/
-      # en-us/rest/api/storageservices/authorize-with-azure-active-directory#manage-
-      # access-rights-with-rbac)
+      # The identity of an Azure application through which Storage Transfer Service
+      # can authenticate requests using Azure workload identity federation. Storage
+      # Transfer Service can issue requests to Azure Storage through registered Azure
+      # applications, eliminating the need to pass credentials to Storage Transfer
+      # Service directly. To configure federated identity, see [Configure access to
+      # Microsoft Azure Storage](https://cloud.google.com/storage-transfer/docs/source-
+      # microsoft-azure#option_3_authenticate_using_federated_identity).
       class FederatedIdentityConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Client (application) ID of the application with federated
+        # Required. The client (application) ID of the application with federated
         # credentials.
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
       
-        # Required. Tenant (directory) ID of the application with federated credentials.
+        # Required. The tenant (directory) ID of the application with federated
+        # credentials.
         # Corresponds to the JSON property `tenantId`
         # @return [String]
         attr_accessor :tenant_id
@@ -706,6 +717,14 @@ module Google
         # @return [Array<Google::Apis::StoragetransferV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -714,6 +733,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -966,6 +986,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :include_prefixes
       
+        # Optional. If specified, objects in the source matching any of the storage
+        # classes in this field will be transferred. Objects in storage classes not
+        # included in this field will be skipped. If empty, the default behavior
+        # regarding the storage classes is applied. This includes all storage classes
+        # except "GLACIER" as per default behavior. Currently, this field only supports
+        # S3 data source. For the list of valid Amazon S3 storage classnames, please
+        # refer to the AWS documentation: https://docs.aws.amazon.com/AmazonS3/latest/
+        # userguide/sc-howtoset.html
+        # Corresponds to the JSON property `includeStorageClasses`
+        # @return [Array<String>]
+        attr_accessor :include_storage_classes
+      
         # If specified, only objects with a "last modification time" before this
         # timestamp and objects that don't have a "last modification time" are
         # transferred.
@@ -983,6 +1015,11 @@ module Google
         # Corresponds to the JSON property `lastModifiedSince`
         # @return [String]
         attr_accessor :last_modified_since
+      
+        # Optional. If specified, only objects matching this glob are transferred.
+        # Corresponds to the JSON property `matchGlob`
+        # @return [String]
+        attr_accessor :match_glob
       
         # Ensures that objects are not transferred if a specific maximum time has
         # elapsed since the "last modification time". When a TransferOperation begins,
@@ -1014,8 +1051,10 @@ module Google
         def update!(**args)
           @exclude_prefixes = args[:exclude_prefixes] if args.key?(:exclude_prefixes)
           @include_prefixes = args[:include_prefixes] if args.key?(:include_prefixes)
+          @include_storage_classes = args[:include_storage_classes] if args.key?(:include_storage_classes)
           @last_modified_before = args[:last_modified_before] if args.key?(:last_modified_before)
           @last_modified_since = args[:last_modified_since] if args.key?(:last_modified_since)
+          @match_glob = args[:match_glob] if args.key?(:match_glob)
           @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
           @min_time_elapsed_since_last_modification = args[:min_time_elapsed_since_last_modification] if args.key?(:min_time_elapsed_since_last_modification)
         end
@@ -1514,6 +1553,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :objects_from_source_skipped_by_sync
       
+        # Number of unrestored deep archive objects skipped.
+        # Corresponds to the JSON property `unrestoredDeepArchiveObjectsSkippedCount`
+        # @return [Fixnum]
+        attr_accessor :unrestored_deep_archive_objects_skipped_count
+      
+        # Number of glacier objects skipped, glacier objects are unsupported by default
+        # regardless of the restore status. Allowlist the project to copy glacier
+        # objects if needed.
+        # Corresponds to the JSON property `unsupportedS3GlacierObjectsSkippedCount`
+        # @return [Fixnum]
+        attr_accessor :unsupported_s3_glacier_objects_skipped_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1541,6 +1592,8 @@ module Google
           @objects_found_only_from_sink = args[:objects_found_only_from_sink] if args.key?(:objects_found_only_from_sink)
           @objects_from_source_failed = args[:objects_from_source_failed] if args.key?(:objects_from_source_failed)
           @objects_from_source_skipped_by_sync = args[:objects_from_source_skipped_by_sync] if args.key?(:objects_from_source_skipped_by_sync)
+          @unrestored_deep_archive_objects_skipped_count = args[:unrestored_deep_archive_objects_skipped_count] if args.key?(:unrestored_deep_archive_objects_skipped_count)
+          @unsupported_s3_glacier_objects_skipped_count = args[:unsupported_s3_glacier_objects_skipped_count] if args.key?(:unsupported_s3_glacier_objects_skipped_count)
         end
       end
       
@@ -1637,16 +1690,13 @@ module Google
         # @return [Google::Apis::StoragetransferV1::Schedule]
         attr_accessor :schedule
       
-        # Optional. The service account to be used to access resources in the consumer
-        # project in the transfer job. We accept `email` or `uniqueId` for the service
-        # account. Service account format is projects/-/serviceAccounts/`
-        # ACCOUNT_EMAIL_OR_UNIQUEID` See https://cloud.google.com/iam/docs/reference/
-        # credentials/rest/v1/projects.serviceAccounts/generateAccessToken#path-
-        # parameters for details. Caller requires the following IAM permission on the
-        # specified service account: `iam.serviceAccounts.actAs`. project-PROJECT_NUMBER@
-        # storage-transfer-service.iam.gserviceaccount.com requires the following IAM
-        # permission on the specified service account: `iam.serviceAccounts.
-        # getAccessToken`
+        # Optional. The user-managed service account to which to delegate service agent
+        # permissions. You can grant Cloud Storage bucket permissions to this service
+        # account instead of to the Transfer Service service agent. Either the service
+        # account email (`SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com`) or
+        # the unique ID (`123456789012345678901`) are accepted. See https://docs.cloud.
+        # google.com/storage-transfer/docs/delegate-service-agent-permissions for
+        # required permissions.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -1811,8 +1861,9 @@ module Google
         attr_accessor :delete_objects_from_source_after_transfer
         alias_method :delete_objects_from_source_after_transfer?, :delete_objects_from_source_after_transfer
       
-        # Whether objects that exist only in the sink should be deleted. **Note:** This
-        # option and delete_objects_from_source_after_transfer are mutually exclusive.
+        # Whether objects that exist only in the sink should be deleted from the sink. **
+        # Note:** This option and delete_objects_from_source_after_transfer are mutually
+        # exclusive.
         # Corresponds to the JSON property `deleteObjectsUniqueInSink`
         # @return [Boolean]
         attr_accessor :delete_objects_unique_in_sink

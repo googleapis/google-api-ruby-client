@@ -52,13 +52,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupVault
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BlockDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CacheConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CacheParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CachePrePopulate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloneDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -88,6 +124,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EstablishVolumePeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapDeleteResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapGetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapPatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapPatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapPostRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteOntapPostResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +173,12 @@ module Google
       end
       
       class GoogleProtobufEmpty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,7 +208,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LargeCapacityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListActiveDirectoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBackupConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -143,6 +239,12 @@ module Google
       end
       
       class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListHostGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -220,6 +322,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OntapSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OntapVolumeTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,7 +358,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreBackupFilesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreVolumeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +454,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateBackupConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserCommands
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ValidateDirectoryServiceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +485,12 @@ module Google
       end
       
       class Volume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VolumeBackupConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -397,6 +541,8 @@ module Google
           property :enforced_retention_end_time, as: 'enforcedRetentionEndTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :ontap_source, as: 'ontapSource', class: Google::Apis::NetappV1::OntapSource, decorator: Google::Apis::NetappV1::OntapSource::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :source_snapshot, as: 'sourceSnapshot'
@@ -444,6 +590,14 @@ module Google
         end
       end
       
+      class BackupSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          collection :file_list, as: 'fileList'
+        end
+      end
+      
       class BackupVault
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -451,9 +605,12 @@ module Google
           property :backup_retention_policy, as: 'backupRetentionPolicy', class: Google::Apis::NetappV1::BackupRetentionPolicy, decorator: Google::Apis::NetappV1::BackupRetentionPolicy::Representation
       
           property :backup_vault_type, as: 'backupVaultType'
+          property :backups_crypto_key_version, as: 'backupsCryptoKeyVersion'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :destination_backup_vault, as: 'destinationBackupVault'
+          property :encryption_state, as: 'encryptionState'
+          property :kms_config, as: 'kmsConfig'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :source_backup_vault, as: 'sourceBackupVault'
@@ -462,9 +619,67 @@ module Google
         end
       end
       
+      class BlockDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :host_groups, as: 'hostGroups'
+          property :identifier, as: 'identifier'
+          property :name, as: 'name'
+          property :os_type, as: 'osType'
+          property :size_gib, :numeric_string => true, as: 'sizeGib'
+        end
+      end
+      
+      class CacheConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_pre_populate, as: 'cachePrePopulate', class: Google::Apis::NetappV1::CachePrePopulate, decorator: Google::Apis::NetappV1::CachePrePopulate::Representation
+      
+          property :cache_pre_populate_state, as: 'cachePrePopulateState'
+          property :cifs_change_notify_enabled, as: 'cifsChangeNotifyEnabled'
+          property :writeback_enabled, as: 'writebackEnabled'
+        end
+      end
+      
+      class CacheParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_config, as: 'cacheConfig', class: Google::Apis::NetappV1::CacheConfig, decorator: Google::Apis::NetappV1::CacheConfig::Representation
+      
+          property :cache_state, as: 'cacheState'
+          property :command, as: 'command'
+          property :enable_global_file_lock, as: 'enableGlobalFileLock'
+          property :passphrase, as: 'passphrase'
+          property :peer_cluster_name, as: 'peerClusterName'
+          collection :peer_ip_addresses, as: 'peerIpAddresses'
+          property :peer_svm_name, as: 'peerSvmName'
+          property :peer_volume_name, as: 'peerVolumeName'
+          property :peering_command_expiry_time, as: 'peeringCommandExpiryTime'
+          property :state_details, as: 'stateDetails'
+        end
+      end
+      
+      class CachePrePopulate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exclude_path_list, as: 'excludePathList'
+          collection :path_list, as: 'pathList'
+          property :recursion, as: 'recursion'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CloneDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shared_space_gib, :numeric_string => true, as: 'sharedSpaceGib'
+          property :source_snapshot, as: 'sourceSnapshot'
+          property :source_volume, as: 'sourceVolume'
         end
       end
       
@@ -505,6 +720,58 @@ module Google
         end
       end
       
+      class EstablishVolumePeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :peer_cluster_name, as: 'peerClusterName'
+          collection :peer_ip_addresses, as: 'peerIpAddresses'
+          property :peer_svm_name, as: 'peerSvmName'
+          property :peer_volume_name, as: 'peerVolumeName'
+        end
+      end
+      
+      class ExecuteOntapDeleteResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
+      class ExecuteOntapGetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
+      class ExecuteOntapPatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
+      class ExecuteOntapPatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
+      class ExecuteOntapPostRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
+      class ExecuteOntapPostResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :body, as: 'body'
+        end
+      end
+      
       class ExportPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -516,6 +783,20 @@ module Google
       class GoogleProtobufEmpty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class HostGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :hosts, as: 'hosts'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :os_type, as: 'osType'
+          property :state, as: 'state'
+          property :type, as: 'type'
         end
       end
       
@@ -545,12 +826,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_location, as: 'clusterLocation'
           property :description, as: 'description'
+          property :hybrid_replication_type, as: 'hybridReplicationType'
           hash :labels, as: 'labels'
+          property :large_volume_constituent_count, as: 'largeVolumeConstituentCount'
           property :peer_cluster_name, as: 'peerClusterName'
           collection :peer_ip_addresses, as: 'peerIpAddresses'
           property :peer_svm_name, as: 'peerSvmName'
           property :peer_volume_name, as: 'peerVolumeName'
           property :replication, as: 'replication'
+          property :replication_schedule, as: 'replicationSchedule'
         end
       end
       
@@ -569,6 +853,13 @@ module Google
         end
       end
       
+      class LargeCapacityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :constituent_count, as: 'constituentCount'
+        end
+      end
+      
       class ListActiveDirectoriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -576,6 +867,16 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListBackupConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :volume_backup_configs, as: 'volumeBackupConfigs', class: Google::Apis::NetappV1::VolumeBackupConfig, decorator: Google::Apis::NetappV1::VolumeBackupConfig::Representation
+      
         end
       end
       
@@ -609,6 +910,16 @@ module Google
         end
       end
       
+      class ListHostGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :host_groups, as: 'hostGroups', class: Google::Apis::NetappV1::HostGroup, decorator: Google::Apis::NetappV1::HostGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListKmsConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -634,6 +945,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetappV1::Operation, decorator: Google::Apis::NetappV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -701,6 +1013,8 @@ module Google
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_ontap_proxy, as: 'hasOntapProxy'
+          property :has_vcp, as: 'hasVcp'
           collection :supported_flex_performance, as: 'supportedFlexPerformance'
           collection :supported_service_levels, as: 'supportedServiceLevels'
         end
@@ -724,6 +1038,23 @@ module Google
           property :instructions, as: 'instructions'
           property :ip_address, as: 'ipAddress'
           property :protocol, as: 'protocol'
+        end
+      end
+      
+      class OntapSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :snapshot_uuid, as: 'snapshotUuid'
+          property :storage_pool, as: 'storagePool'
+          property :volume_uuid, as: 'volumeUuid'
+        end
+      end
+      
+      class OntapVolumeTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restore_destination_path, as: 'restoreDestinationPath'
+          property :volume_uuid, as: 'volumeUuid'
         end
       end
       
@@ -780,6 +1111,8 @@ module Google
           property :hybrid_peering_details, as: 'hybridPeeringDetails', class: Google::Apis::NetappV1::HybridPeeringDetails, decorator: Google::Apis::NetappV1::HybridPeeringDetails::Representation
       
           property :hybrid_replication_type, as: 'hybridReplicationType'
+          property :hybrid_replication_user_commands, as: 'hybridReplicationUserCommands', class: Google::Apis::NetappV1::UserCommands, decorator: Google::Apis::NetappV1::UserCommands::Representation
+      
           hash :labels, as: 'labels'
           property :mirror_state, as: 'mirrorState'
           property :name, as: 'name'
@@ -793,11 +1126,30 @@ module Google
         end
       end
       
+      class RestoreBackupFilesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          collection :file_list, as: 'fileList'
+          property :restore_destination_path, as: 'restoreDestinationPath'
+        end
+      end
+      
       class RestoreParameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_backup, as: 'sourceBackup'
           property :source_snapshot, as: 'sourceSnapshot'
+        end
+      end
+      
+      class RestoreVolumeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_source, as: 'backupSource', class: Google::Apis::NetappV1::BackupSource, decorator: Google::Apis::NetappV1::BackupSource::Representation
+      
+          property :ontap_volume_target, as: 'ontapVolumeTarget', class: Google::Apis::NetappV1::OntapVolumeTarget, decorator: Google::Apis::NetappV1::OntapVolumeTarget::Representation
+      
         end
       end
       
@@ -825,6 +1177,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_type, as: 'accessType'
           property :allowed_clients, as: 'allowedClients'
+          property :anon_uid, :numeric_string => true, as: 'anonUid'
           property :has_root_access, as: 'hasRootAccess'
           property :kerberos5_read_only, as: 'kerberos5ReadOnly'
           property :kerberos5_read_write, as: 'kerberos5ReadWrite'
@@ -834,6 +1187,7 @@ module Google
           property :kerberos5p_read_write, as: 'kerberos5pReadWrite'
           property :nfsv3, as: 'nfsv3'
           property :nfsv4, as: 'nfsv4'
+          property :squash_mode, as: 'squashMode'
         end
       end
       
@@ -886,26 +1240,35 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_directory, as: 'activeDirectory'
           property :allow_auto_tiering, as: 'allowAutoTiering'
+          property :available_throughput_mibps, as: 'availableThroughputMibps'
           property :capacity_gib, :numeric_string => true, as: 'capacityGib'
+          property :cold_tier_size_used_gib, :numeric_string => true, as: 'coldTierSizeUsedGib'
           property :create_time, as: 'createTime'
           property :custom_performance_enabled, as: 'customPerformanceEnabled'
           property :description, as: 'description'
+          property :enable_hot_tier_auto_resize, as: 'enableHotTierAutoResize'
           property :encryption_type, as: 'encryptionType'
           property :global_access_allowed, as: 'globalAccessAllowed'
+          property :hot_tier_size_gib, :numeric_string => true, as: 'hotTierSizeGib'
+          property :hot_tier_size_used_gib, :numeric_string => true, as: 'hotTierSizeUsedGib'
           property :kms_config, as: 'kmsConfig'
           hash :labels, as: 'labels'
           property :ldap_enabled, as: 'ldapEnabled'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :network, as: 'network'
           property :psa_range, as: 'psaRange'
+          property :qos_type, as: 'qosType'
           property :replica_zone, as: 'replicaZone'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :scale_type, as: 'scaleType'
           property :service_level, as: 'serviceLevel'
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
           property :total_iops, :numeric_string => true, as: 'totalIops'
           property :total_throughput_mibps, :numeric_string => true, as: 'totalThroughputMibps'
+          property :type, as: 'type'
           property :volume_capacity_gib, :numeric_string => true, as: 'volumeCapacityGib'
           property :volume_count, as: 'volumeCount'
           property :zone, as: 'zone'
@@ -928,6 +1291,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cooling_threshold_days, as: 'coolingThresholdDays'
+          property :hot_tier_bypass_mode_enabled, as: 'hotTierBypassModeEnabled'
           property :tier_action, as: 'tierAction'
         end
       end
@@ -943,6 +1307,23 @@ module Google
           property :total_transfer_duration, as: 'totalTransferDuration'
           property :transfer_bytes, :numeric_string => true, as: 'transferBytes'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class UpdateBackupConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_config, as: 'backupConfig', class: Google::Apis::NetappV1::BackupConfig, decorator: Google::Apis::NetappV1::BackupConfig::Representation
+      
+          property :update_mask, as: 'updateMask'
+          property :volume_uuid, as: 'volumeUuid'
+        end
+      end
+      
+      class UserCommands
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :commands, as: 'commands'
         end
       end
       
@@ -974,7 +1355,13 @@ module Google
           property :active_directory, as: 'activeDirectory'
           property :backup_config, as: 'backupConfig', class: Google::Apis::NetappV1::BackupConfig, decorator: Google::Apis::NetappV1::BackupConfig::Representation
       
+          collection :block_devices, as: 'blockDevices', class: Google::Apis::NetappV1::BlockDevice, decorator: Google::Apis::NetappV1::BlockDevice::Representation
+      
+          property :cache_parameters, as: 'cacheParameters', class: Google::Apis::NetappV1::CacheParameters, decorator: Google::Apis::NetappV1::CacheParameters::Representation
+      
           property :capacity_gib, :numeric_string => true, as: 'capacityGib'
+          property :clone_details, as: 'cloneDetails', class: Google::Apis::NetappV1::CloneDetails, decorator: Google::Apis::NetappV1::CloneDetails::Representation
+      
           property :cold_tier_size_gib, :numeric_string => true, as: 'coldTierSizeGib'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
@@ -982,12 +1369,15 @@ module Google
           property :export_policy, as: 'exportPolicy', class: Google::Apis::NetappV1::ExportPolicy, decorator: Google::Apis::NetappV1::ExportPolicy::Representation
       
           property :has_replication, as: 'hasReplication'
+          property :hot_tier_size_used_gib, :numeric_string => true, as: 'hotTierSizeUsedGib'
           property :hybrid_replication_parameters, as: 'hybridReplicationParameters', class: Google::Apis::NetappV1::HybridReplicationParameters, decorator: Google::Apis::NetappV1::HybridReplicationParameters::Representation
       
           property :kerberos_enabled, as: 'kerberosEnabled'
           property :kms_config, as: 'kmsConfig'
           hash :labels, as: 'labels'
           property :large_capacity, as: 'largeCapacity'
+          property :large_capacity_config, as: 'largeCapacityConfig', class: Google::Apis::NetappV1::LargeCapacityConfig, decorator: Google::Apis::NetappV1::LargeCapacityConfig::Representation
+      
           property :ldap_enabled, as: 'ldapEnabled'
           collection :mount_options, as: 'mountOptions', class: Google::Apis::NetappV1::MountOption, decorator: Google::Apis::NetappV1::MountOption::Representation
       
@@ -1011,11 +1401,21 @@ module Google
           property :state, as: 'state'
           property :state_details, as: 'stateDetails'
           property :storage_pool, as: 'storagePool'
+          property :throughput_mibps, as: 'throughputMibps'
           property :tiering_policy, as: 'tieringPolicy', class: Google::Apis::NetappV1::TieringPolicy, decorator: Google::Apis::NetappV1::TieringPolicy::Representation
       
           property :unix_permissions, as: 'unixPermissions'
           property :used_gib, :numeric_string => true, as: 'usedGib'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class VolumeBackupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_config, as: 'backupConfig', class: Google::Apis::NetappV1::BackupConfig, decorator: Google::Apis::NetappV1::BackupConfig::Representation
+      
+          property :volume_uuid, as: 'volumeUuid'
         end
       end
       

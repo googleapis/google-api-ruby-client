@@ -99,9 +99,9 @@ module Google
         # @return [String]
         attr_accessor :ownership_privilege
       
-        # Whether device supports Android work profiles. If false, this service will not
-        # block access to corp data even if an administrator turns on the "Enforce Work
-        # Profile" policy.
+        # Whether the device supports Android work profiles. If false, this service will
+        # not block access to corp data even if an administrator turns on the "Enforce
+        # Work Profile" policy.
         # Corresponds to the JSON property `supportsWorkProfile`
         # @return [Boolean]
         attr_accessor :supports_work_profile
@@ -133,6 +133,37 @@ module Google
           @supports_work_profile = args[:supports_work_profile] if args.key?(:supports_work_profile)
           @verified_boot = args[:verified_boot] if args.key?(:verified_boot)
           @verify_apps_enabled = args[:verify_apps_enabled] if args.key?(:verify_apps_enabled)
+        end
+      end
+      
+      # Resource representing the anti-virus information of a Device.
+      class AntivirusInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The display name of the anti-virus software.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The GUID of the anti-virus product.
+        # Corresponds to the JSON property `productGuid`
+        # @return [String]
+        attr_accessor :product_guid
+      
+        # Output only. The state of the anti-virus.
+        # Corresponds to the JSON property `productState`
+        # @return [String]
+        attr_accessor :product_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @product_guid = args[:product_guid] if args.key?(:product_guid)
+          @product_state = args[:product_state] if args.key?(:product_state)
         end
       end
       
@@ -222,15 +253,15 @@ module Google
         end
       end
       
-      # Contains information about browser profiles reported by the [Endpoint
-      # Verification extension](https://chromewebstore.google.com/detail/endpoint-
-      # verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+      # Contains information about browser profiles reported by the clients on the
+      # device (e.g. [Endpoint Verification extension](https://chromewebstore.google.
+      # com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1)).
       class BrowserAttributes
         include Google::Apis::Core::Hashable
       
-        # Browser-specific fields reported by the [Endpoint Verification extension](
-        # https://chromewebstore.google.com/detail/endpoint-verification/
-        # callobklhcbilhphinckomhgkigmfocg?pli=1).
+        # Browser-specific fields reported by clients on the device, such as [Endpoint
+        # Verification extension](https://chromewebstore.google.com/detail/endpoint-
+        # verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
         # Corresponds to the JSON property `chromeBrowserInfo`
         # @return [Google::Apis::CloudidentityV1beta1::BrowserInfo]
         attr_accessor :chrome_browser_info
@@ -259,9 +290,9 @@ module Google
         end
       end
       
-      # Browser-specific fields reported by the [Endpoint Verification extension](
-      # https://chromewebstore.google.com/detail/endpoint-verification/
-      # callobklhcbilhphinckomhgkigmfocg?pli=1).
+      # Browser-specific fields reported by clients on the device, such as [Endpoint
+      # Verification extension](https://chromewebstore.google.com/detail/endpoint-
+      # verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
       class BrowserInfo
         include Google::Apis::Core::Hashable
       
@@ -290,7 +321,8 @@ module Google
         attr_accessor :is_bulk_data_entry_analysis_enabled
         alias_method :is_bulk_data_entry_analysis_enabled?, :is_bulk_data_entry_analysis_enabled
       
-        # Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#
+        # Deprecated: This field is not used for Chrome version 118 and later. Current
+        # state of [Chrome Cleanup](https://chromeenterprise.google/policies/#
         # ChromeCleanupEnabled).
         # Corresponds to the JSON property `isChromeCleanupEnabled`
         # @return [Boolean]
@@ -356,6 +388,13 @@ module Google
         # @return [String]
         attr_accessor :password_protection_warning_trigger
       
+        # Output only. Chrome policies information for the browser as can be seen in
+        # chrome://policy. Full possibilities of policies can be consulted in [Chrome
+        # Enterprise Policy List](https://chromeenterprise.google/policies/).
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::ChromePolicy>]
+        attr_accessor :policies
+      
         # Current state of [Safe Browsing protection level](https://chromeenterprise.
         # google/policies/#SafeBrowsingProtectionLevel).
         # Corresponds to the JSON property `safeBrowsingProtectionLevel`
@@ -381,6 +420,7 @@ module Google
           @is_site_isolation_enabled = args[:is_site_isolation_enabled] if args.key?(:is_site_isolation_enabled)
           @is_third_party_blocking_enabled = args[:is_third_party_blocking_enabled] if args.key?(:is_third_party_blocking_enabled)
           @password_protection_warning_trigger = args[:password_protection_warning_trigger] if args.key?(:password_protection_warning_trigger)
+          @policies = args[:policies] if args.key?(:policies)
           @safe_browsing_protection_level = args[:safe_browsing_protection_level] if args.key?(:safe_browsing_protection_level)
         end
       end
@@ -610,6 +650,55 @@ module Google
         end
       end
       
+      # Represents a Chrome policy and its current state.
+      class ChromePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A list of other policy values for the same policy name that were
+        # not applied due to lower precedence. This field is empty if there were no
+        # conflicts.
+        # Corresponds to the JSON property `conflicts`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::PolicyConflict>]
+        attr_accessor :conflicts
+      
+        # Output only. The unique name of the Chrome policy. These names correspond to
+        # the policy names listed in [Chrome Enterprise Policy List](https://
+        # chromeenterprise.google/policies/)
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The scope at which the *applied* policy value is set (USER or
+        # MACHINE).
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Output only. The source from which the *applied* policy value originated.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. The currently applied value of the policy. The format depends on
+        # the policy type (e.g., boolean, string, JSON array/object).
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conflicts = args[:conflicts] if args.key?(:conflicts)
+          @name = args[:name] if args.key?(:name)
+          @scope = args[:scope] if args.key?(:scope)
+          @source = args[:source] if args.key?(:source)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Represents the state associated with an API client calling the Devices API.
       # Resource representing ClientState and supports updates from API users
       class ClientState
@@ -737,6 +826,28 @@ module Google
         end
       end
       
+      # LRO response metadata for InboundOidcSsoProfilesService.
+      # CreateInboundOidcSsoProfile.
+      class CreateInboundOidcSsoProfileOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # State of this Operation Will be "awaiting-multi-party-approval" when the
+        # operation is deferred due to the target customer having enabled [Multi-party
+        # approval for sensitive actions](https://support.google.com/a/answer/13790448).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # LRO response metadata for InboundSamlSsoProfilesService.
       # CreateInboundSamlSsoProfile.
       class CreateInboundSamlSsoProfileOperationMetadata
@@ -818,6 +929,20 @@ module Google
         end
       end
       
+      # LRO response metadata for InboundOidcSsoProfilesService.
+      # DeleteInboundOidcSsoProfile.
+      class DeleteInboundOidcSsoProfileOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # LRO response metadata for InboundSamlSsoProfilesService.
       # DeleteInboundSamlSsoProfile.
       class DeleteInboundSamlSsoProfileOperationMetadata
@@ -860,6 +985,11 @@ module Google
         # @return [Google::Apis::CloudidentityV1beta1::AndroidAttributes]
         attr_accessor :android_specific_attributes
       
+        # Output only. Anti-virus information for the device.
+        # Corresponds to the JSON property `antivirusInfo`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::AntivirusInfo>]
+        attr_accessor :antivirus_info
+      
         # Asset tag of the device.
         # Corresponds to the JSON property `assetTag`
         # @return [String]
@@ -879,6 +1009,14 @@ module Google
         # Corresponds to the JSON property `brand`
         # @return [String]
         attr_accessor :brand
+      
+        # Browser profiles on the device. This is a copy of the BrowserAttributes
+        # message defined in EndpointVerificationSpecificAttributes. We are replicating
+        # it here since EndpointVerification isn't the only client reporting browser
+        # profiles.
+        # Corresponds to the JSON property `browserProfiles`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::BrowserAttributes>]
+        attr_accessor :browser_profiles
       
         # Output only. Build number of the device.
         # Corresponds to the JSON property `buildNumber`
@@ -986,6 +1124,11 @@ module Google
         # @return [String]
         attr_accessor :network_operator
       
+        # Output only. OS firewall status of the device.
+        # Corresponds to the JSON property `osFirewallStatus`
+        # @return [String]
+        attr_accessor :os_firewall_status
+      
         # Output only. OS version of the device. Example: Android 8.1.0.
         # Corresponds to the JSON property `osVersion`
         # @return [String]
@@ -1030,6 +1173,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :wifi_mac_addresses
       
+        # Represents the Windows specific attributes of a Device.
+        # Corresponds to the JSON property `windowsSpecificDeviceAttributes`
+        # @return [Google::Apis::CloudidentityV1beta1::WindowsSpecificDeviceAttributes]
+        attr_accessor :windows_specific_device_attributes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1037,10 +1185,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @android_specific_attributes = args[:android_specific_attributes] if args.key?(:android_specific_attributes)
+          @antivirus_info = args[:antivirus_info] if args.key?(:antivirus_info)
           @asset_tag = args[:asset_tag] if args.key?(:asset_tag)
           @baseband_version = args[:baseband_version] if args.key?(:baseband_version)
           @bootloader_version = args[:bootloader_version] if args.key?(:bootloader_version)
           @brand = args[:brand] if args.key?(:brand)
+          @browser_profiles = args[:browser_profiles] if args.key?(:browser_profiles)
           @build_number = args[:build_number] if args.key?(:build_number)
           @client_types = args[:client_types] if args.key?(:client_types)
           @compromised_state = args[:compromised_state] if args.key?(:compromised_state)
@@ -1061,6 +1211,7 @@ module Google
           @model = args[:model] if args.key?(:model)
           @name = args[:name] if args.key?(:name)
           @network_operator = args[:network_operator] if args.key?(:network_operator)
+          @os_firewall_status = args[:os_firewall_status] if args.key?(:os_firewall_status)
           @os_version = args[:os_version] if args.key?(:os_version)
           @other_accounts = args[:other_accounts] if args.key?(:other_accounts)
           @owner_type = args[:owner_type] if args.key?(:owner_type)
@@ -1069,6 +1220,7 @@ module Google
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @unified_device_id = args[:unified_device_id] if args.key?(:unified_device_id)
           @wifi_mac_addresses = args[:wifi_mac_addresses] if args.key?(:wifi_mac_addresses)
+          @windows_specific_device_attributes = args[:windows_specific_device_attributes] if args.key?(:windows_specific_device_attributes)
         end
       end
       
@@ -1579,7 +1731,8 @@ module Google
         attr_accessor :is_bulk_data_entry_analysis_enabled
         alias_method :is_bulk_data_entry_analysis_enabled?, :is_bulk_data_entry_analysis_enabled
       
-        # Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#
+        # Deprecated: This field is not used for Chrome version 118 and later. Current
+        # state of [Chrome Cleanup](https://chromeenterprise.google/policies/#
         # ChromeCleanupEnabled).
         # Corresponds to the JSON property `isChromeCleanupEnabled`
         # @return [Boolean]
@@ -2518,11 +2671,10 @@ module Google
         # to them. **This is an immutable change and the security label cannot be
         # removed once added.** Dynamic groups have a label with a key of `cloudidentity.
         # googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a
-        # label with a key of `system/groups/external` and an empty value. (Beta) Google
-        # Groups can be [locked](https://support.google.com/a?p=locked-groups). To lock
-        # a group, add a label with a key of `cloudidentity.googleapis.com/groups.locked`
-        # and an empty value. Doing so locks the group. To unlock the group, remove
-        # this label.
+        # label with a key of `system/groups/external` and an empty value. Google Groups
+        # can be [locked](https://support.google.com/a?p=locked-groups). To lock a group,
+        # add a label with a key of `cloudidentity.googleapis.com/groups.locked` and an
+        # empty value. Doing so locks the group. To unlock the group, remove this label.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2664,6 +2816,51 @@ module Google
         end
       end
       
+      # An [OIDC](https://openid.net/developers/how-connect-works/) federation between
+      # a Google enterprise customer and an OIDC identity provider.
+      class InboundOidcSsoProfile
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The customer. For example: `customers/C0123abc`.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Human-readable name of the OIDC SSO profile.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # OIDC IDP (identity provider) configuration.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Google::Apis::CloudidentityV1beta1::OidcIdpConfig]
+        attr_accessor :idp_config
+      
+        # Output only. [Resource name](https://cloud.google.com/apis/design/
+        # resource_names) of the OIDC SSO profile.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # OIDC RP (relying party) configuration.
+        # Corresponds to the JSON property `rpConfig`
+        # @return [Google::Apis::CloudidentityV1beta1::OidcRpConfig]
+        attr_accessor :rp_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @name = args[:name] if args.key?(:name)
+          @rp_config = args[:rp_config] if args.key?(:rp_config)
+        end
+      end
+      
       # A [SAML 2.0](https://www.oasis-open.org/standards#samlv2.0) federation between
       # a Google enterprise customer and a SAML identity provider.
       class InboundSamlSsoProfile
@@ -2724,6 +2921,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Details that are applicable when `sso_mode` is set to `OIDC_SSO`.
+        # Corresponds to the JSON property `oidcSsoInfo`
+        # @return [Google::Apis::CloudidentityV1beta1::OidcSsoInfo]
+        attr_accessor :oidc_sso_info
+      
         # Must be zero (which is the default value so it can be omitted) for assignments
         # with `target_org_unit` set and must be greater-than-or-equal-to one for
         # assignments with `target_group` set.
@@ -2764,6 +2966,7 @@ module Google
         def update!(**args)
           @customer = args[:customer] if args.key?(:customer)
           @name = args[:name] if args.key?(:name)
+          @oidc_sso_info = args[:oidc_sso_info] if args.key?(:oidc_sso_info)
           @rank = args[:rank] if args.key?(:rank)
           @saml_sso_info = args[:saml_sso_info] if args.key?(:saml_sso_info)
           @sign_in_behavior = args[:sign_in_behavior] if args.key?(:sign_in_behavior)
@@ -2916,6 +3119,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @idp_credentials = args[:idp_credentials] if args.key?(:idp_credentials)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response of the InboundOidcSsoProfilesService.ListInboundOidcSsoProfiles
+      # method.
+      class ListInboundOidcSsoProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of InboundOidcSsoProfiles.
+        # Corresponds to the JSON property `inboundOidcSsoProfiles`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile>]
+        attr_accessor :inbound_oidc_sso_profiles
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inbound_oidc_sso_profiles = args[:inbound_oidc_sso_profiles] if args.key?(:inbound_oidc_sso_profiles)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -3534,6 +3764,87 @@ module Google
         end
       end
       
+      # OIDC IDP (identity provider) configuration.
+      class OidcIdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # The **Change Password URL** of the identity provider. Users will be sent to
+        # this URL when changing their passwords at `myaccount.google.com`. This takes
+        # precedence over the change password URL configured at customer-level. Must use
+        # `HTTPS`.
+        # Corresponds to the JSON property `changePasswordUri`
+        # @return [String]
+        attr_accessor :change_password_uri
+      
+        # Required. The Issuer identifier for the IdP. Must be a URL. The discovery URL
+        # will be derived from this as described in Section 4 of [the OIDC specification]
+        # (https://openid.net/specs/openid-connect-discovery-1_0.html).
+        # Corresponds to the JSON property `issuerUri`
+        # @return [String]
+        attr_accessor :issuer_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_password_uri = args[:change_password_uri] if args.key?(:change_password_uri)
+          @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
+        end
+      end
+      
+      # OIDC RP (relying party) configuration.
+      class OidcRpConfig
+        include Google::Apis::Core::Hashable
+      
+        # OAuth2 client ID for OIDC.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Input only. OAuth2 client secret for OIDC.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Output only. The URL(s) that this client may use in authentication requests.
+        # Corresponds to the JSON property `redirectUris`
+        # @return [Array<String>]
+        attr_accessor :redirect_uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @redirect_uris = args[:redirect_uris] if args.key?(:redirect_uris)
+        end
+      end
+      
+      # Details that are applicable when `sso_mode` is set to `OIDC_SSO`.
+      class OidcSsoInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the `InboundOidcSsoProfile` to use. Must be of the form `
+        # inboundOidcSsoProfiles/`inbound_oidc_sso_profile``.
+        # Corresponds to the JSON property `inboundOidcSsoProfile`
+        # @return [String]
+        attr_accessor :inbound_oidc_sso_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inbound_oidc_sso_profile = args[:inbound_oidc_sso_profile] if args.key?(:inbound_oidc_sso_profile)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -3698,6 +4009,39 @@ module Google
         end
       end
       
+      # Represents a policy value from a source that was not applied because a higher-
+      # priority source took precedence.
+      class PolicyConflict
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The scope at which this lower-priority policy is set (USER or
+        # MACHINE).
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Output only. The source from which this lower-priority policy value originated.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. The policy value from this lower-priority source.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+          @source = args[:source] if args.key?(:source)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # PolicyQuery
       class PolicyQuery
         include Google::Apis::Core::Hashable
@@ -3723,11 +4067,12 @@ module Google
         # orgUnitId`')) The Group the Policy applies to are represented by a clause like
         # so: entity.groups.exists(group, group.group_id == groupId('`groupId`')) The
         # Licenses the Policy applies to are represented by a clause like so: entity.
-        # licenses.exists(license, license in ['/product/`productId`/sku/`skuId`']) The
-        # above clauses can be present in any combination, and used in conjunction with
-        # the &&, || and ! operators. The org_unit and group fields below are helper
-        # fields that contain the corresponding value(s) as the query to make the query
-        # easier to use.
+        # licenses.exists(license, license in ['/product/`productId`/sku/`skuId`']) **
+        # Note:** The licenses clause is not supported in mutate endpoints. The above
+        # clauses can be present in any combination, and used in conjunction with the &&,
+        # || and ! operators. The org_unit and group fields below are helper fields
+        # that contain the corresponding value(s) as the query to make the query easier
+        # to use.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -4183,6 +4528,28 @@ module Google
         end
       end
       
+      # LRO response metadata for InboundOidcSsoProfilesService.
+      # UpdateInboundOidcSsoProfile.
+      class UpdateInboundOidcSsoProfileOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # State of this Operation Will be "awaiting-multi-party-approval" when the
+        # operation is deferred due to the target customer having enabled [Multi-party
+        # approval for sensitive actions](https://support.google.com/a/answer/13790448).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # LRO response metadata for InboundSamlSsoProfilesService.
       # UpdateInboundSamlSsoProfile.
       class UpdateInboundSamlSsoProfileOperationMetadata
@@ -4286,6 +4653,45 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents the Windows specific attributes of a Device.
+      class WindowsSpecificDeviceAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The hotfixes installed on the device.
+        # Corresponds to the JSON property `hotfixes`
+        # @return [Array<String>]
+        attr_accessor :hotfixes
+      
+        # Output only. Secure boot mode of the device.
+        # Corresponds to the JSON property `secureBootMode`
+        # @return [String]
+        attr_accessor :secure_boot_mode
+      
+        # Output only. The domain of the machine that the user is logged into. This is
+        # different from the windows_user_domain as the user could be logged into a
+        # domain different from the machine domain.
+        # Corresponds to the JSON property `windowsMachineDomain`
+        # @return [String]
+        attr_accessor :windows_machine_domain
+      
+        # Output only. The domain of the user account that is logged into the machine.
+        # Corresponds to the JSON property `windowsUserDomain`
+        # @return [String]
+        attr_accessor :windows_user_domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hotfixes = args[:hotfixes] if args.key?(:hotfixes)
+          @secure_boot_mode = args[:secure_boot_mode] if args.key?(:secure_boot_mode)
+          @windows_machine_domain = args[:windows_machine_domain] if args.key?(:windows_machine_domain)
+          @windows_user_domain = args[:windows_user_domain] if args.key?(:windows_user_domain)
         end
       end
       

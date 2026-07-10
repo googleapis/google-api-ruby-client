@@ -1550,7 +1550,7 @@ module Google
         attr_accessor :use_streaming_engine_resource_based_billing
         alias_method :use_streaming_engine_resource_based_billing?, :use_streaming_engine_resource_based_billing
       
-        # A description of the process that generated the request.
+        # Optional. A description of the process that generated the request.
         # Corresponds to the JSON property `userAgent`
         # @return [Hash<String,Object>]
         attr_accessor :user_agent
@@ -1839,7 +1839,8 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # The machine type to use for launching the job. The default is n1-standard-1.
+        # The machine type to use for launching the job. If not set, Dataflow will
+        # select a default machine type.
         # Corresponds to the JSON property `launcherMachineType`
         # @return [String]
         attr_accessor :launcher_machine_type
@@ -2164,6 +2165,12 @@ module Google
       class GetWorkerStacktracesRequest
         include Google::Apis::Core::Hashable
       
+        # The end time for the stacktrace query. The returned stacktraces will be a
+        # recent stack trace at or shortly before this time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # The worker for which to get stacktraces. The returned stacktraces will be for
         # the SDK harness running on this worker.
         # Corresponds to the JSON property `workerId`
@@ -2176,6 +2183,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @worker_id = args[:worker_id] if args.key?(:worker_id)
         end
       end
@@ -2562,6 +2570,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Indicates whether the job can be paused.
+        # Corresponds to the JSON property `pausable`
+        # @return [Boolean]
+        attr_accessor :pausable
+        alias_method :pausable?, :pausable
+      
         # A descriptive representation of submitted pipeline as well as the executed
         # form. This data is provided by the Dataflow service for ease of visualizing
         # the pipeline and interpreting Dataflow provided metrics.
@@ -2689,6 +2703,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @pausable = args[:pausable] if args.key?(:pausable)
           @pipeline_description = args[:pipeline_description] if args.key?(:pipeline_description)
           @project_id = args[:project_id] if args.key?(:project_id)
           @replace_job_id = args[:replace_job_id] if args.key?(:replace_job_id)
@@ -3805,6 +3820,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The hex-encoded SHA256 checksum of the package. If the checksum is
+        # provided, the worker will verify the checksum of the package before using it.
+        # If the checksum does not match, the worker will fail to start.
+        # Corresponds to the JSON property `sha256`
+        # @return [String]
+        attr_accessor :sha256
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3813,6 +3835,7 @@ module Google
         def update!(**args)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @sha256 = args[:sha256] if args.key?(:sha256)
         end
       end
       
@@ -4837,6 +4860,25 @@ module Google
       class RuntimeUpdatableParams
         include Google::Apis::Core::Hashable
       
+        # Optional. Deprecated: Use `latency_tier` instead. The backlog threshold
+        # duration in seconds for autoscaling. Value must be non-negative.
+        # Corresponds to the JSON property `acceptableBacklogDuration`
+        # @return [String]
+        attr_accessor :acceptable_backlog_duration
+      
+        # Optional. Deprecated: Use `latency_tier` instead. The backlog threshold tier
+        # for autoscaling. Value must be one of "low-latency", "medium-latency", or "
+        # high-latency".
+        # Corresponds to the JSON property `autoscalingTier`
+        # @return [String]
+        attr_accessor :autoscaling_tier
+      
+        # Optional. The backlog threshold tier for autoscaling. Value must be one of "
+        # low-latency", "medium-latency", or "high-latency".
+        # Corresponds to the JSON property `latencyTier`
+        # @return [String]
+        attr_accessor :latency_tier
+      
         # The maximum number of workers to cap autoscaling at. This field is currently
         # only supported for Streaming Engine jobs.
         # Corresponds to the JSON property `maxNumWorkers`
@@ -4864,6 +4906,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @acceptable_backlog_duration = args[:acceptable_backlog_duration] if args.key?(:acceptable_backlog_duration)
+          @autoscaling_tier = args[:autoscaling_tier] if args.key?(:autoscaling_tier)
+          @latency_tier = args[:latency_tier] if args.key?(:latency_tier)
           @max_num_workers = args[:max_num_workers] if args.key?(:max_num_workers)
           @min_num_workers = args[:min_num_workers] if args.key?(:min_num_workers)
           @worker_utilization_hint = args[:worker_utilization_hint] if args.key?(:worker_utilization_hint)
@@ -6447,6 +6492,11 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::StreamingComputationConfig>]
         attr_accessor :streaming_computation_configs
       
+        # Optional. The state tag encoding format version for streaming engine jobs.
+        # Corresponds to the JSON property `streamingEngineStateTagEncodingVersion`
+        # @return [Fixnum]
+        attr_accessor :streaming_engine_state_tag_encoding_version
+      
         # Map from user step names to state families.
         # Corresponds to the JSON property `userStepToStateFamilyNameMap`
         # @return [Hash<String,String>]
@@ -6489,6 +6539,7 @@ module Google
           @max_work_item_commit_bytes = args[:max_work_item_commit_bytes] if args.key?(:max_work_item_commit_bytes)
           @operational_limits = args[:operational_limits] if args.key?(:operational_limits)
           @streaming_computation_configs = args[:streaming_computation_configs] if args.key?(:streaming_computation_configs)
+          @streaming_engine_state_tag_encoding_version = args[:streaming_engine_state_tag_encoding_version] if args.key?(:streaming_engine_state_tag_encoding_version)
           @user_step_to_state_family_name_map = args[:user_step_to_state_family_name_map] if args.key?(:user_step_to_state_family_name_map)
           @user_worker_runner_v1_settings = args[:user_worker_runner_v1_settings] if args.key?(:user_worker_runner_v1_settings)
           @user_worker_runner_v2_settings = args[:user_worker_runner_v2_settings] if args.key?(:user_worker_runner_v2_settings)
@@ -7862,6 +7913,16 @@ module Google
         # @return [String]
         attr_accessor :default_package_set
       
+        # Optional. IOPS provisioned for the root disk for VMs.
+        # Corresponds to the JSON property `diskProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :disk_provisioned_iops
+      
+        # Optional. Throughput provisioned for the root disk for VMs.
+        # Corresponds to the JSON property `diskProvisionedThroughputMibps`
+        # @return [Fixnum]
+        attr_accessor :disk_provisioned_throughput_mibps
+      
         # Size of root disk for VMs, in GB. If zero or unspecified, the service will
         # attempt to choose a reasonable default.
         # Corresponds to the JSON property `diskSizeGb`
@@ -7992,6 +8053,8 @@ module Google
           @autoscaling_settings = args[:autoscaling_settings] if args.key?(:autoscaling_settings)
           @data_disks = args[:data_disks] if args.key?(:data_disks)
           @default_package_set = args[:default_package_set] if args.key?(:default_package_set)
+          @disk_provisioned_iops = args[:disk_provisioned_iops] if args.key?(:disk_provisioned_iops)
+          @disk_provisioned_throughput_mibps = args[:disk_provisioned_throughput_mibps] if args.key?(:disk_provisioned_throughput_mibps)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_source_image = args[:disk_source_image] if args.key?(:disk_source_image)
           @disk_type = args[:disk_type] if args.key?(:disk_type)

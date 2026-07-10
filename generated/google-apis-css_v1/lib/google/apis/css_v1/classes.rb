@@ -328,6 +328,18 @@ module Google
         # @return [String]
         attr_accessor :material
       
+        # Maximum rating score of the product. Required if `rating` is provided. This
+        # field is for an upcoming feature and is not yet used.
+        # Corresponds to the JSON property `maxRating`
+        # @return [Fixnum]
+        attr_accessor :max_rating
+      
+        # Minimum rating score of the product. Required if `rating` is provided. This
+        # field is for an upcoming feature and is not yet used.
+        # Corresponds to the JSON property `minRating`
+        # @return [Fixnum]
+        attr_accessor :min_rating
+      
         # Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/
         # 188494#mpn)) of the item.
         # Corresponds to the JSON property `mpn`
@@ -390,6 +402,21 @@ module Google
         # @return [Google::Apis::CssV1::ProductDimension]
         attr_accessor :product_width
       
+        # Average rating score of the product. The value must be within the range of [`
+        # min_rating`, `max_rating`], inclusive. When displayed on the product page,
+        # this rating is normalized to a scale of [1, 5] with one decimal place. If
+        # provided, `review_count`, `min_rating`, and `max_rating` are also required.
+        # This field is for an upcoming feature and is not yet used.
+        # Corresponds to the JSON property `rating`
+        # @return [Float]
+        attr_accessor :rating
+      
+        # Number of reviews of the product. Required if `rating` is provided. This field
+        # is for an upcoming feature and is not yet used.
+        # Corresponds to the JSON property `reviewCount`
+        # @return [Fixnum]
+        attr_accessor :review_count
+      
         # Size of the item. Only one value is allowed. For variants with different sizes,
         # insert a separate product for each size with the same `itemGroupId` value (
         # see [https://support.google.com/merchants/answer/6324492](size definition)).
@@ -403,8 +430,8 @@ module Google
         attr_accessor :size_system
       
         # The cut of the item. It can be used to represent combined size types for
-        # apparel items. Maximum two of size types can be provided (see [https://support.
-        # google.com/merchants/answer/6324497](size type)).
+        # apparel items. Maximum two of size types can be provided (see [size type](
+        # https://support.google.com/merchants/answer/6324497).
         # Corresponds to the JSON property `sizeTypes`
         # @return [Array<String>]
         attr_accessor :size_types
@@ -454,6 +481,8 @@ module Google
           @item_group_id = args[:item_group_id] if args.key?(:item_group_id)
           @low_price = args[:low_price] if args.key?(:low_price)
           @material = args[:material] if args.key?(:material)
+          @max_rating = args[:max_rating] if args.key?(:max_rating)
+          @min_rating = args[:min_rating] if args.key?(:min_rating)
           @mpn = args[:mpn] if args.key?(:mpn)
           @multipack = args[:multipack] if args.key?(:multipack)
           @number_of_offers = args[:number_of_offers] if args.key?(:number_of_offers)
@@ -466,6 +495,8 @@ module Google
           @product_types = args[:product_types] if args.key?(:product_types)
           @product_weight = args[:product_weight] if args.key?(:product_weight)
           @product_width = args[:product_width] if args.key?(:product_width)
+          @rating = args[:rating] if args.key?(:rating)
+          @review_count = args[:review_count] if args.key?(:review_count)
           @size = args[:size] if args.key?(:size)
           @size_system = args[:size_system] if args.key?(:size_system)
           @size_types = args[:size_types] if args.key?(:size_types)

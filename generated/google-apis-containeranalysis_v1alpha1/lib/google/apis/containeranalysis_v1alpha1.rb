@@ -22,8 +22,7 @@ module Google
     # Container Analysis API
     #
     # This API is a prerequisite for leveraging Artifact Analysis scanning
-    # capabilities in both Artifact Registry and with Advanced Vulnerability
-    # Insights (runtime scanning) in GKE. In addition, the Container Analysis API is
+    # capabilities in Artifact Registry. In addition, the Container Analysis API is
     # an implementation of the Grafeas API, which enables storing, querying, and
     # retrieval of critical metadata about all of your software artifacts.
     #

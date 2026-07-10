@@ -1336,23 +1336,32 @@ module Google
         # @return [String]
         attr_accessor :email_address
       
-        # Whether user is an order manager.
+        # This role is deprecated and can no longer be assigned. Any value set will be
+        # ignored.
         # Corresponds to the JSON property `orderManager`
         # @return [Boolean]
         attr_accessor :order_manager
         alias_method :order_manager?, :order_manager
       
-        # Whether user can access payment statements.
+        # This role is deprecated and can no longer be assigned. Any value set will be
+        # ignored.
         # Corresponds to the JSON property `paymentsAnalyst`
         # @return [Boolean]
         attr_accessor :payments_analyst
         alias_method :payments_analyst?, :payments_analyst
       
-        # Whether user can manage payment settings.
+        # This role is deprecated and can no longer be assigned. Any value set will be
+        # ignored.
         # Corresponds to the JSON property `paymentsManager`
         # @return [Boolean]
         attr_accessor :payments_manager
         alias_method :payments_manager?, :payments_manager
+      
+        # Optional. Whether user has standard read-only access.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
       
         # Whether user is a reporting manager. This role is equivalent to the
         # Performance and insights role in Merchant Center.
@@ -1372,6 +1381,7 @@ module Google
           @order_manager = args[:order_manager] if args.key?(:order_manager)
           @payments_analyst = args[:payments_analyst] if args.key?(:payments_analyst)
           @payments_manager = args[:payments_manager] if args.key?(:payments_manager)
+          @read_only = args[:read_only] if args.key?(:read_only)
           @reporting_manager = args[:reporting_manager] if args.key?(:reporting_manager)
         end
       end
@@ -9004,6 +9014,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_handling_time
       
+        # Maximum retail price (MRP) of the item. Applicable to India only.
+        # Corresponds to the JSON property `maximumRetailPrice`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :maximum_retail_price
+      
         # The energy efficiency class as defined in EU directive 2010/30/EU.
         # Corresponds to the JSON property `minEnergyEfficiencyClass`
         # @return [String]
@@ -9322,6 +9337,7 @@ module Google
           @material = args[:material] if args.key?(:material)
           @max_energy_efficiency_class = args[:max_energy_efficiency_class] if args.key?(:max_energy_efficiency_class)
           @max_handling_time = args[:max_handling_time] if args.key?(:max_handling_time)
+          @maximum_retail_price = args[:maximum_retail_price] if args.key?(:maximum_retail_price)
           @min_energy_efficiency_class = args[:min_energy_efficiency_class] if args.key?(:min_energy_efficiency_class)
           @min_handling_time = args[:min_handling_time] if args.key?(:min_handling_time)
           @mobile_link = args[:mobile_link] if args.key?(:mobile_link)
@@ -10051,6 +10067,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :approved_countries
       
+        # The channel of the destination.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
         # The name of the destination
         # Corresponds to the JSON property `destination`
         # @return [String]
@@ -10078,6 +10099,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @approved_countries = args[:approved_countries] if args.key?(:approved_countries)
+          @channel = args[:channel] if args.key?(:channel)
           @destination = args[:destination] if args.key?(:destination)
           @disapproved_countries = args[:disapproved_countries] if args.key?(:disapproved_countries)
           @pending_countries = args[:pending_countries] if args.key?(:pending_countries)
@@ -10434,9 +10456,8 @@ module Google
         # @return [String]
         attr_accessor :click_potential
       
-        # Rank of the product based on its click potential. A product with `
-        # click_potential_rank` 1 has the highest click potential among the merchant's
-        # products that fulfill the search query conditions.
+        # Normalized click potential of the product. Values range from 1 to 1000, where
+        # 1 is the highest click potential and 1000 is the theoretical lowest.
         # Corresponds to the JSON property `clickPotentialRank`
         # @return [Fixnum]
         attr_accessor :click_potential_rank
@@ -11117,6 +11138,12 @@ module Google
         # @return [String]
         attr_accessor :coupon_value_type
       
+        # The custom redemption restriction for the promotion. If the `
+        # redemption_restriction` field is set to `CUSTOM`, this field must be set.
+        # Corresponds to the JSON property `customRedemptionRestriction`
+        # @return [String]
+        attr_accessor :custom_redemption_restriction
+      
         # Free gift description for the promotion.
         # Corresponds to the JSON property `freeGiftDescription`
         # @return [String]
@@ -11186,6 +11213,11 @@ module Google
         # Corresponds to the JSON property `longTitle`
         # @return [String]
         attr_accessor :long_title
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `maxDiscountAmount`
+        # @return [Google::Apis::ContentV2_1::PriceAmount]
+        attr_accessor :max_discount_amount
       
         # The price represented as a number and currency.
         # Corresponds to the JSON property `minimumPurchaseAmount`
@@ -11288,6 +11320,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :redemption_channel
       
+        # The redemption restriction for the promotion.
+        # Corresponds to the JSON property `redemptionRestriction`
+        # @return [String]
+        attr_accessor :redemption_restriction
+      
         # Shipping service names for the promotion.
         # Corresponds to the JSON property `shippingServiceNames`
         # @return [Array<String>]
@@ -11327,6 +11364,7 @@ module Google
           @brand_exclusion = args[:brand_exclusion] if args.key?(:brand_exclusion)
           @content_language = args[:content_language] if args.key?(:content_language)
           @coupon_value_type = args[:coupon_value_type] if args.key?(:coupon_value_type)
+          @custom_redemption_restriction = args[:custom_redemption_restriction] if args.key?(:custom_redemption_restriction)
           @free_gift_description = args[:free_gift_description] if args.key?(:free_gift_description)
           @free_gift_item_id = args[:free_gift_item_id] if args.key?(:free_gift_item_id)
           @free_gift_value = args[:free_gift_value] if args.key?(:free_gift_value)
@@ -11340,6 +11378,7 @@ module Google
           @limit_quantity = args[:limit_quantity] if args.key?(:limit_quantity)
           @limit_value = args[:limit_value] if args.key?(:limit_value)
           @long_title = args[:long_title] if args.key?(:long_title)
+          @max_discount_amount = args[:max_discount_amount] if args.key?(:max_discount_amount)
           @minimum_purchase_amount = args[:minimum_purchase_amount] if args.key?(:minimum_purchase_amount)
           @minimum_purchase_quantity = args[:minimum_purchase_quantity] if args.key?(:minimum_purchase_quantity)
           @money_budget = args[:money_budget] if args.key?(:money_budget)
@@ -11359,6 +11398,7 @@ module Google
           @promotion_status = args[:promotion_status] if args.key?(:promotion_status)
           @promotion_url = args[:promotion_url] if args.key?(:promotion_url)
           @redemption_channel = args[:redemption_channel] if args.key?(:redemption_channel)
+          @redemption_restriction = args[:redemption_restriction] if args.key?(:redemption_restriction)
           @shipping_service_names = args[:shipping_service_names] if args.key?(:shipping_service_names)
           @store_applicability = args[:store_applicability] if args.key?(:store_applicability)
           @store_code = args[:store_code] if args.key?(:store_code)
@@ -12431,178 +12471,6 @@ module Google
         end
       end
       
-      # Return address resource.
-      class ReturnAddress
-        include Google::Apis::Core::Hashable
-      
-        # Required. The address.
-        # Corresponds to the JSON property `address`
-        # @return [Google::Apis::ContentV2_1::ReturnAddressAddress]
-        attr_accessor :address
-      
-        # Required. The country of sale where the return address is applicable.
-        # Corresponds to the JSON property `country`
-        # @return [String]
-        attr_accessor :country
-      
-        # Identifies what kind of resource this is. Value: the fixed string "`content#
-        # returnAddress`"
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Required. The user-defined label of the return address. For the default
-        # address, use the label "default".
-        # Corresponds to the JSON property `label`
-        # @return [String]
-        attr_accessor :label
-      
-        # Required. The merchant's contact phone number regarding the return.
-        # Corresponds to the JSON property `phoneNumber`
-        # @return [String]
-        attr_accessor :phone_number
-      
-        # Return address ID generated by Google.
-        # Corresponds to the JSON property `returnAddressId`
-        # @return [String]
-        attr_accessor :return_address_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @address = args[:address] if args.key?(:address)
-          @country = args[:country] if args.key?(:country)
-          @kind = args[:kind] if args.key?(:kind)
-          @label = args[:label] if args.key?(:label)
-          @phone_number = args[:phone_number] if args.key?(:phone_number)
-          @return_address_id = args[:return_address_id] if args.key?(:return_address_id)
-        end
-      end
-      
-      # 
-      class ReturnAddressAddress
-        include Google::Apis::Core::Hashable
-      
-        # CLDR country code (for example, "US").
-        # Corresponds to the JSON property `country`
-        # @return [String]
-        attr_accessor :country
-      
-        # City, town or commune. May also include dependent localities or sublocalities (
-        # for example, neighborhoods or suburbs).
-        # Corresponds to the JSON property `locality`
-        # @return [String]
-        attr_accessor :locality
-      
-        # Postal code or ZIP (for example, "94043").
-        # Corresponds to the JSON property `postalCode`
-        # @return [String]
-        attr_accessor :postal_code
-      
-        # Name of the recipient to address returns to.
-        # Corresponds to the JSON property `recipientName`
-        # @return [String]
-        attr_accessor :recipient_name
-      
-        # Top-level administrative subdivision of the country. For example, a state like
-        # California ("CA") or a province like Quebec ("QC").
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
-        # Street-level part of the address. May be up to two lines, each line specified
-        # as an array element.
-        # Corresponds to the JSON property `streetAddress`
-        # @return [Array<String>]
-        attr_accessor :street_address
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @country = args[:country] if args.key?(:country)
-          @locality = args[:locality] if args.key?(:locality)
-          @postal_code = args[:postal_code] if args.key?(:postal_code)
-          @recipient_name = args[:recipient_name] if args.key?(:recipient_name)
-          @region = args[:region] if args.key?(:region)
-          @street_address = args[:street_address] if args.key?(:street_address)
-        end
-      end
-      
-      # Return policy resource.
-      class ReturnPolicy
-        include Google::Apis::Core::Hashable
-      
-        # Required. The country of sale where the return policy is applicable.
-        # Corresponds to the JSON property `country`
-        # @return [String]
-        attr_accessor :country
-      
-        # Identifies what kind of resource this is. Value: the fixed string "`content#
-        # returnPolicy`"
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Required. The user-defined label of the return policy. For the default policy,
-        # use the label "default".
-        # Corresponds to the JSON property `label`
-        # @return [String]
-        attr_accessor :label
-      
-        # Required. The name of the policy as shown in Merchant Center.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Return reasons that will incur return fees.
-        # Corresponds to the JSON property `nonFreeReturnReasons`
-        # @return [Array<String>]
-        attr_accessor :non_free_return_reasons
-      
-        # Required. The policy.
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::ContentV2_1::ReturnPolicyPolicy]
-        attr_accessor :policy
-      
-        # Return policy ID generated by Google.
-        # Corresponds to the JSON property `returnPolicyId`
-        # @return [String]
-        attr_accessor :return_policy_id
-      
-        # The return shipping fee that will apply to non free return reasons.
-        # Corresponds to the JSON property `returnShippingFee`
-        # @return [Google::Apis::ContentV2_1::Price]
-        attr_accessor :return_shipping_fee
-      
-        # An optional list of seasonal overrides.
-        # Corresponds to the JSON property `seasonalOverrides`
-        # @return [Array<Google::Apis::ContentV2_1::ReturnPolicySeasonalOverride>]
-        attr_accessor :seasonal_overrides
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @country = args[:country] if args.key?(:country)
-          @kind = args[:kind] if args.key?(:kind)
-          @label = args[:label] if args.key?(:label)
-          @name = args[:name] if args.key?(:name)
-          @non_free_return_reasons = args[:non_free_return_reasons] if args.key?(:non_free_return_reasons)
-          @policy = args[:policy] if args.key?(:policy)
-          @return_policy_id = args[:return_policy_id] if args.key?(:return_policy_id)
-          @return_shipping_fee = args[:return_shipping_fee] if args.key?(:return_shipping_fee)
-          @seasonal_overrides = args[:seasonal_overrides] if args.key?(:seasonal_overrides)
-        end
-      end
-      
       # Return policy online object. This is currently used to represent return
       # policies for ads and free listings programs.
       class ReturnPolicyOnline
@@ -12795,402 +12663,6 @@ module Google
         def update!(**args)
           @fixed_fee = args[:fixed_fee] if args.key?(:fixed_fee)
           @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # 
-      class ReturnPolicyPolicy
-        include Google::Apis::Core::Hashable
-      
-        # Required. Last day for returning the items. In ISO 8601 format. When
-        # specifying the return window like this, set the policy type to "lastReturnDate"
-        # . Use this for seasonal overrides only.
-        # Corresponds to the JSON property `lastReturnDate`
-        # @return [String]
-        attr_accessor :last_return_date
-      
-        # The number of days items can be returned after delivery, where one day is
-        # defined to be 24 hours after the delivery timestamp. When specifying the
-        # return window like this, set the policy type to "numberOfDaysAfterDelivery".
-        # Acceptable values are 30, 45, 60, 90, 100, 180, 270 and 365 for the default
-        # policy. Additional policies further allow 14, 15, 21 and 28 days, but note
-        # that for most items a minimum of 30 days is required for returns. Exceptions
-        # may be made for electronics. A policy of less than 30 days can only be applied
-        # to those items.
-        # Corresponds to the JSON property `numberOfDays`
-        # @return [Fixnum]
-        attr_accessor :number_of_days
-      
-        # Policy type. Use "lastReturnDate" for seasonal overrides only. Note that for
-        # most items a minimum of 30 days is required for returns. Exceptions may be
-        # made for electronics or non-returnable items such as food, perishables, and
-        # living things. A policy of less than 30 days can only be applied to those
-        # items. Acceptable values are: - "`lastReturnDate`" - "`lifetimeReturns`" - "`
-        # noReturns`" - "`numberOfDaysAfterDelivery`"
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @last_return_date = args[:last_return_date] if args.key?(:last_return_date)
-          @number_of_days = args[:number_of_days] if args.key?(:number_of_days)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # 
-      class ReturnPolicySeasonalOverride
-        include Google::Apis::Core::Hashable
-      
-        # Required. Last day on which the override applies. In ISO 8601 format.
-        # Corresponds to the JSON property `endDate`
-        # @return [String]
-        attr_accessor :end_date
-      
-        # Required. The name of the seasonal override as shown in Merchant Center.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Required. The policy which is in effect during that time.
-        # Corresponds to the JSON property `policy`
-        # @return [Google::Apis::ContentV2_1::ReturnPolicyPolicy]
-        attr_accessor :policy
-      
-        # Required. First day on which the override applies. In ISO 8601 format.
-        # Corresponds to the JSON property `startDate`
-        # @return [String]
-        attr_accessor :start_date
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end_date = args[:end_date] if args.key?(:end_date)
-          @name = args[:name] if args.key?(:name)
-          @policy = args[:policy] if args.key?(:policy)
-          @start_date = args[:start_date] if args.key?(:start_date)
-        end
-      end
-      
-      # 
-      class ReturnaddressCustomBatchRequest
-        include Google::Apis::Core::Hashable
-      
-        # The request entries to be processed in the batch.
-        # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2_1::ReturnaddressCustomBatchRequestEntry>]
-        attr_accessor :entries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @entries = args[:entries] if args.key?(:entries)
-        end
-      end
-      
-      # 
-      class ReturnaddressCustomBatchRequestEntry
-        include Google::Apis::Core::Hashable
-      
-        # An entry ID, unique within the batch request.
-        # Corresponds to the JSON property `batchId`
-        # @return [Fixnum]
-        attr_accessor :batch_id
-      
-        # The Merchant Center account ID.
-        # Corresponds to the JSON property `merchantId`
-        # @return [Fixnum]
-        attr_accessor :merchant_id
-      
-        # Method of the batch request entry. Acceptable values are: - "`delete`" - "`get`
-        # " - "`insert`"
-        # Corresponds to the JSON property `method`
-        # @return [String]
-        attr_accessor :method_prop
-      
-        # Return address resource.
-        # Corresponds to the JSON property `returnAddress`
-        # @return [Google::Apis::ContentV2_1::ReturnAddress]
-        attr_accessor :return_address
-      
-        # The return address ID. This should be set only if the method is `delete` or `
-        # get`.
-        # Corresponds to the JSON property `returnAddressId`
-        # @return [String]
-        attr_accessor :return_address_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @batch_id = args[:batch_id] if args.key?(:batch_id)
-          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-          @method_prop = args[:method_prop] if args.key?(:method_prop)
-          @return_address = args[:return_address] if args.key?(:return_address)
-          @return_address_id = args[:return_address_id] if args.key?(:return_address_id)
-        end
-      end
-      
-      # 
-      class ReturnaddressCustomBatchResponse
-        include Google::Apis::Core::Hashable
-      
-        # The result of the execution of the batch requests.
-        # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2_1::ReturnaddressCustomBatchResponseEntry>]
-        attr_accessor :entries
-      
-        # Identifies what kind of resource this is. Value: the fixed string "`content#
-        # returnaddressCustomBatchResponse`".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @entries = args[:entries] if args.key?(:entries)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # 
-      class ReturnaddressCustomBatchResponseEntry
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the request entry to which this entry responds.
-        # Corresponds to the JSON property `batchId`
-        # @return [Fixnum]
-        attr_accessor :batch_id
-      
-        # A list of errors returned by a failed batch entry.
-        # Corresponds to the JSON property `errors`
-        # @return [Google::Apis::ContentV2_1::Errors]
-        attr_accessor :errors
-      
-        # Identifies what kind of resource this is. Value: the fixed string "`content#
-        # returnaddressCustomBatchResponseEntry`"
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Return address resource.
-        # Corresponds to the JSON property `returnAddress`
-        # @return [Google::Apis::ContentV2_1::ReturnAddress]
-        attr_accessor :return_address
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @batch_id = args[:batch_id] if args.key?(:batch_id)
-          @errors = args[:errors] if args.key?(:errors)
-          @kind = args[:kind] if args.key?(:kind)
-          @return_address = args[:return_address] if args.key?(:return_address)
-        end
-      end
-      
-      # 
-      class ReturnaddressListResponse
-        include Google::Apis::Core::Hashable
-      
-        # Identifies what kind of resource this is. Value: the fixed string "`content#
-        # returnaddressListResponse`".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The token for the retrieval of the next page of addresses.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # 
-        # Corresponds to the JSON property `resources`
-        # @return [Array<Google::Apis::ContentV2_1::ReturnAddress>]
-        attr_accessor :resources
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @resources = args[:resources] if args.key?(:resources)
-        end
-      end
-      
-      # 
-      class ReturnpolicyCustomBatchRequest
-        include Google::Apis::Core::Hashable
-      
-        # The request entries to be processed in the batch.
-        # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2_1::ReturnpolicyCustomBatchRequestEntry>]
-        attr_accessor :entries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @entries = args[:entries] if args.key?(:entries)
-        end
-      end
-      
-      # 
-      class ReturnpolicyCustomBatchRequestEntry
-        include Google::Apis::Core::Hashable
-      
-        # An entry ID, unique within the batch request.
-        # Corresponds to the JSON property `batchId`
-        # @return [Fixnum]
-        attr_accessor :batch_id
-      
-        # The Merchant Center account ID.
-        # Corresponds to the JSON property `merchantId`
-        # @return [Fixnum]
-        attr_accessor :merchant_id
-      
-        # Method of the batch request entry. Acceptable values are: - "`delete`" - "`get`
-        # " - "`insert`"
-        # Corresponds to the JSON property `method`
-        # @return [String]
-        attr_accessor :method_prop
-      
-        # Return policy resource.
-        # Corresponds to the JSON property `returnPolicy`
-        # @return [Google::Apis::ContentV2_1::ReturnPolicy]
-        attr_accessor :return_policy
-      
-        # The return policy ID. This should be set only if the method is `delete` or `
-        # get`.
-        # Corresponds to the JSON property `returnPolicyId`
-        # @return [String]
-        attr_accessor :return_policy_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @batch_id = args[:batch_id] if args.key?(:batch_id)
-          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
-          @method_prop = args[:method_prop] if args.key?(:method_prop)
-          @return_policy = args[:return_policy] if args.key?(:return_policy)
-          @return_policy_id = args[:return_policy_id] if args.key?(:return_policy_id)
-        end
-      end
-      
-      # 
-      class ReturnpolicyCustomBatchResponse
-        include Google::Apis::Core::Hashable
-      
-        # The result of the execution of the batch requests.
-        # Corresponds to the JSON property `entries`
-        # @return [Array<Google::Apis::ContentV2_1::ReturnpolicyCustomBatchResponseEntry>]
-        attr_accessor :entries
-      
-        # Identifies what kind of resource this is. Value: the fixed string "`content#
-        # returnpolicyCustomBatchResponse`".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @entries = args[:entries] if args.key?(:entries)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # 
-      class ReturnpolicyCustomBatchResponseEntry
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the request entry to which this entry responds.
-        # Corresponds to the JSON property `batchId`
-        # @return [Fixnum]
-        attr_accessor :batch_id
-      
-        # A list of errors returned by a failed batch entry.
-        # Corresponds to the JSON property `errors`
-        # @return [Google::Apis::ContentV2_1::Errors]
-        attr_accessor :errors
-      
-        # Identifies what kind of resource this is. Value: the fixed string "`content#
-        # returnpolicyCustomBatchResponseEntry`"
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Return policy resource.
-        # Corresponds to the JSON property `returnPolicy`
-        # @return [Google::Apis::ContentV2_1::ReturnPolicy]
-        attr_accessor :return_policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @batch_id = args[:batch_id] if args.key?(:batch_id)
-          @errors = args[:errors] if args.key?(:errors)
-          @kind = args[:kind] if args.key?(:kind)
-          @return_policy = args[:return_policy] if args.key?(:return_policy)
-        end
-      end
-      
-      # 
-      class ReturnpolicyListResponse
-        include Google::Apis::Core::Hashable
-      
-        # Identifies what kind of resource this is. Value: the fixed string "`content#
-        # returnpolicyListResponse`".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # 
-        # Corresponds to the JSON property `resources`
-        # @return [Array<Google::Apis::ContentV2_1::ReturnPolicy>]
-        attr_accessor :resources
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @resources = args[:resources] if args.key?(:resources)
         end
       end
       

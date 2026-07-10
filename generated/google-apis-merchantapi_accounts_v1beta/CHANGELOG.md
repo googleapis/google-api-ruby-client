@@ -1,5 +1,107 @@
 # Release history for google-apis-merchantapi_accounts_v1beta
 
+### v0.37.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260527
+* Regenerated using generator version 0.19.0
+
+### v0.36.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260512
+
+### v0.35.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260415
+
+### v0.34.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260318
+
+### v0.33.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260310
+
+### v0.32.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260218
+
+### v0.31.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260206
+
+### v0.30.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260203
+
+### v0.29.0 (2025-11-30)
+
+* Regenerated from discovery document revision 20251120
+
+### v0.28.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251115
+
+### v0.27.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251023
+
+### v0.26.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251002
+
+### v0.25.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250909
+
+### v0.24.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250830
+
+### v0.23.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250826
+
+### v0.22.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250811
+
+### v0.21.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250803
+
+### v0.20.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250729
+
+### v0.19.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250721
+
+### v0.18.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250710
+
+### v0.17.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250628
+
+### v0.16.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250621
+
+### v0.15.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250618
+
+### v0.14.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250611
+
+### v0.13.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250603
+* Regenerated using generator version 0.18.0
+
 ### v0.12.0 (2025-05-11)
 
 * Regenerated from discovery document revision 20250507

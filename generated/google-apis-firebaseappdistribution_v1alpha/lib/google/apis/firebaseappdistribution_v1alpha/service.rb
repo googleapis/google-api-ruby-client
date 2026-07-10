@@ -88,8 +88,9 @@ module Google
         
         # Get a JWT token
         # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        #   Required. Unique id for a Firebase app of the format: `version`:`
+        #   project_number`:`platform`:`hash(bundle_id)` Example: 1:581234567376:android:
+        #   aa0a3c7b135e90289
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -119,10 +120,11 @@ module Google
         
         # GET Release by binary upload hash
         # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        #   Required. Unique id for a Firebase app of the format: `version`:`
+        #   project_number`:`platform`:`hash(bundle_id)` Example: 1:581234567376:android:
+        #   aa0a3c7b135e90289
         # @param [String] upload_hash
-        #   The hash for the upload
+        #   Required. The hash for the upload
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,10 +155,11 @@ module Google
         
         # Enable access on a release for testers.
         # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        #   Required. Unique id for a Firebase app of the format: `version`:`
+        #   project_number`:`platform`:`hash(bundle_id)` Example: 1:581234567376:android:
+        #   aa0a3c7b135e90289
         # @param [String] release_id
-        #   Release identifier
+        #   Required. Release identifier
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest] google_firebase_appdistro_v1alpha_enable_access_on_release_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -190,10 +193,11 @@ module Google
         
         # Create release notes on a release.
         # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        #   Required. Unique id for a Firebase app of the format: `version`:`
+        #   project_number`:`platform`:`hash(bundle_id)` Example: 1:581234567376:android:
+        #   aa0a3c7b135e90289
         # @param [String] release_id
-        #   Release identifier
+        #   Required. Release identifier
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest] google_firebase_appdistro_v1alpha_create_release_notes_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -262,10 +266,11 @@ module Google
         
         # GET Binary upload status by token
         # @param [String] mobilesdk_app_id
-        #   Unique id for a Firebase app of the format: `version`:`project_number`:`
-        #   platform`:`hash(bundle_id)` Example: 1:581234567376:android:aa0a3c7b135e90289
+        #   Required. Unique id for a Firebase app of the format: `version`:`
+        #   project_number`:`platform`:`hash(bundle_id)` Example: 1:581234567376:android:
+        #   aa0a3c7b135e90289
         # @param [String] upload_token
-        #   The token for the upload
+        #   Required. The token for the upload
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -328,7 +333,7 @@ module Google
         # Gets configuration for automated tests.
         # @param [String] name
         #   Required. The name of the `TestConfig` resource to retrieve. Format: `projects/
-        #   `project_number`/apps/`app_id`/testConfig`
+        #   `project_number`/apps/`app`/testConfig`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -359,7 +364,7 @@ module Google
         # Updates automated test configuration.
         # @param [String] name
         #   Identifier. The name of the test configuration resource. Format: `projects/`
-        #   project_number`/apps/`app_id`/testConfig`
+        #   project_number`/apps/`app`/testConfig`
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestConfig] google_firebase_appdistro_v1alpha_test_config_object
         # @param [String] update_mask
         #   Optional. The list of fields to update.
@@ -396,7 +401,7 @@ module Google
         # Abort automated test run on release.
         # @param [String] name
         #   Required. The name of the release test resource. Format: `projects/`
-        #   project_number`/apps/`app_id`/releases/`release_id`/tests/`test_id``
+        #   project_number`/apps/`app`/releases/`release`/tests/`test``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -427,7 +432,7 @@ module Google
         # Run automated test(s) on release.
         # @param [String] parent
         #   Required. The name of the release resource, which is the parent of the test
-        #   Format: `projects/`project_number`/apps/`app_id`/releases/`release_id``
+        #   Format: `projects/`project_number`/apps/`app`/releases/`release``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaReleaseTest] google_firebase_appdistro_v1alpha_release_test_object
         # @param [String] release_test_id
         #   Optional. The ID to use for the test, which will become the final component of
@@ -467,7 +472,7 @@ module Google
         # Get results for automated test run on release.
         # @param [String] name
         #   Required. The name of the release test resource. Format: `projects/`
-        #   project_number`/apps/`app_id`/releases/`release_id`/tests/`test_id``
+        #   project_number`/apps/`app`/releases/`release`/tests/`test``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -498,7 +503,7 @@ module Google
         # List results for automated tests run on release.
         # @param [String] parent
         #   Required. The name of the release resource, which is the parent of the tests
-        #   Format: `projects/`project_number`/apps/`app_id`/releases/`release_id``
+        #   Format: `projects/`project_number`/apps/`app`/releases/`release``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of tests to return. The service may return fewer
         #   than this value.
@@ -538,10 +543,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete test cases.
+        # Deletes multiple test cases.
         # @param [String] parent
-        #   Required. The parent resource where these test cases will be deleted. Format: `
-        #   projects/`project_number`/apps/`app_id``
+        #   Required. The parent resource of the test cases being deleted. Format: `
+        #   projects/`project_number`/apps/`app``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest] google_firebase_appdistro_v1alpha_batch_delete_test_cases_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -572,10 +577,78 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates multiple test cases.
+        # @param [String] parent
+        #   Required. The parent resource of the test cases being updated. Format: `
+        #   projects/`project_number`/apps/`app``
+        # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest] google_firebase_appdistro_v1alpha_batch_update_test_cases_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_app_test_case_update(parent, google_firebase_appdistro_v1alpha_batch_update_test_cases_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/testCases:batchUpdate', options)
+          command.request_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest::Representation
+          command.request_object = google_firebase_appdistro_v1alpha_batch_update_test_cases_request_object
+          command.response_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse::Representation
+          command.response_class = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Clears cached test runs for a specific test case and device(s).
+        # @param [String] test_case
+        #   Required. The name of the test case resource for which to clear the cache.
+        #   Format: `projects/`project_number`/apps/`app`/testCases/`test_case``
+        # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest] google_firebase_appdistro_v1alpha_clear_test_case_cache_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def clear_project_app_test_case_test_case_cache(test_case, google_firebase_appdistro_v1alpha_clear_test_case_cache_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+testCase}:clearTestCaseCache', options)
+          command.request_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest::Representation
+          command.request_object = google_firebase_appdistro_v1alpha_clear_test_case_cache_request_object
+          command.response_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse::Representation
+          command.response_class = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse
+          command.params['testCase'] = test_case unless test_case.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a new test case.
         # @param [String] parent
         #   Required. The parent resource where this test case will be created. Format: `
-        #   projects/`project_number`/apps/`app_id``
+        #   projects/`project_number`/apps/`app``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase] google_firebase_appdistro_v1alpha_test_case_object
         # @param [String] test_case_id
         #   Optional. The ID to use for the test case, which will become the final
@@ -614,7 +687,7 @@ module Google
         # Delete a test case.
         # @param [String] name
         #   Required. The name of the test case resource to delete. Format: `projects/`
-        #   project_number`/apps/`app_id`/testCases/`test_case_id``
+        #   project_number`/apps/`app`/testCases/`test_case``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -645,7 +718,7 @@ module Google
         # Get a test case.
         # @param [String] name
         #   Required. The name of the test case resource to retrieve. Format: `projects/`
-        #   project_number`/apps/`app_id`/testCases/`test_case_id``
+        #   project_number`/apps/`app`/testCases/`test_case``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -676,7 +749,7 @@ module Google
         # List test cases.
         # @param [String] parent
         #   Required. The parent resource from which to list test cases. Format: `projects/
-        #   `project_number`/apps/`app_id``
+        #   `project_number`/apps/`app``
         # @param [Fixnum] page_size
         #   Optional. The maximum number of test cases to return. The service may return
         #   fewer than this value. If unspecified, at most 50 test cases will be returned.
@@ -717,8 +790,11 @@ module Google
         # Update a test case.
         # @param [String] name
         #   Identifier. The name of the test case resource. Format: `projects/`
-        #   project_number`/apps/`app_id`/testCases/`test_case_id``
+        #   project_number`/apps/`app`/testCases/`test_case``
         # @param [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase] google_firebase_appdistro_v1alpha_test_case_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the test case is not found, a new test case will
+        #   be created.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -736,13 +812,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_app_test_case(name, google_firebase_appdistro_v1alpha_test_case_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_app_test_case(name, google_firebase_appdistro_v1alpha_test_case_object = nil, allow_missing: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1alpha/{+name}', options)
           command.request_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase::Representation
           command.request_object = google_firebase_appdistro_v1alpha_test_case_object
           command.response_representation = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase::Representation
           command.response_class = Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase
           command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

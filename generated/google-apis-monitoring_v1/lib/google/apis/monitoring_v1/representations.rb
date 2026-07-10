@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FilterControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GaugeView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,7 +352,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpanAttributeFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpanContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpanFilters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -437,6 +455,24 @@ module Google
       end
       
       class TimeSeriesTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TraceQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Treemap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TreemapDataSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -642,6 +678,8 @@ module Google
           property :sort_column, as: 'sortColumn'
           property :sort_order, as: 'sortOrder'
           property :time_bin_size, as: 'timeBinSize'
+          property :x_max, as: 'xMax'
+          property :x_min, as: 'xMin'
         end
       end
       
@@ -692,6 +730,13 @@ module Google
       
           property :packed, as: 'packed'
           property :type_url, as: 'typeUrl'
+        end
+      end
+      
+      class FilterControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :template_variable, as: 'templateVariable'
         end
       end
       
@@ -1004,10 +1049,36 @@ module Google
         end
       end
       
+      class SpanAttributeFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          collection :value, as: 'value'
+        end
+      end
+      
       class SpanContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :span_name, as: 'spanName'
+        end
+      end
+      
+      class SpanFilters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :apphub_services, as: 'apphubServices'
+          collection :apphub_workloads, as: 'apphubWorkloads'
+          collection :application_ids, as: 'applicationIds'
+          collection :attributes, as: 'attributes', class: Google::Apis::MonitoringV1::SpanAttributeFilter, decorator: Google::Apis::MonitoringV1::SpanAttributeFilter::Representation
+      
+          collection :display_names, as: 'displayNames'
+          property :is_root_span, as: 'isRootSpan'
+          collection :kinds, as: 'kinds'
+          property :max_duration, as: 'maxDuration'
+          property :min_duration, as: 'minDuration'
+          collection :services, as: 'services'
+          collection :status, as: 'status'
         end
       end
       
@@ -1160,6 +1231,8 @@ module Google
           property :time_series_filter_ratio, as: 'timeSeriesFilterRatio', class: Google::Apis::MonitoringV1::TimeSeriesFilterRatio, decorator: Google::Apis::MonitoringV1::TimeSeriesFilterRatio::Representation
       
           property :time_series_query_language, as: 'timeSeriesQueryLanguage'
+          property :trace_query, as: 'traceQuery', class: Google::Apis::MonitoringV1::TraceQuery, decorator: Google::Apis::MonitoringV1::TraceQuery::Representation
+      
           property :unit_override, as: 'unitOverride'
         end
       end
@@ -1172,6 +1245,37 @@ module Google
           collection :data_sets, as: 'dataSets', class: Google::Apis::MonitoringV1::TableDataSet, decorator: Google::Apis::MonitoringV1::TableDataSet::Representation
       
           property :metric_visualization, as: 'metricVisualization'
+        end
+      end
+      
+      class TraceQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_container, as: 'resourceContainer'
+          property :span_data_value, as: 'spanDataValue'
+          property :span_filters, as: 'spanFilters', class: Google::Apis::MonitoringV1::SpanFilters, decorator: Google::Apis::MonitoringV1::SpanFilters::Representation
+      
+        end
+      end
+      
+      class Treemap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_sets, as: 'dataSets', class: Google::Apis::MonitoringV1::TreemapDataSet, decorator: Google::Apis::MonitoringV1::TreemapDataSet::Representation
+      
+          collection :treemap_hierarchy, as: 'treemapHierarchy'
+        end
+      end
+      
+      class TreemapDataSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :breakdowns, as: 'breakdowns', class: Google::Apis::MonitoringV1::Breakdown, decorator: Google::Apis::MonitoringV1::Breakdown::Representation
+      
+          collection :measures, as: 'measures', class: Google::Apis::MonitoringV1::Measure, decorator: Google::Apis::MonitoringV1::Measure::Representation
+      
+          property :time_series_query, as: 'timeSeriesQuery', class: Google::Apis::MonitoringV1::TimeSeriesQuery, decorator: Google::Apis::MonitoringV1::TimeSeriesQuery::Representation
+      
         end
       end
       
@@ -1210,6 +1314,8 @@ module Google
       
           property :error_reporting_panel, as: 'errorReportingPanel', class: Google::Apis::MonitoringV1::ErrorReportingPanel, decorator: Google::Apis::MonitoringV1::ErrorReportingPanel::Representation
       
+          property :filter_control, as: 'filterControl', class: Google::Apis::MonitoringV1::FilterControl, decorator: Google::Apis::MonitoringV1::FilterControl::Representation
+      
           property :id, as: 'id'
           property :incident_list, as: 'incidentList', class: Google::Apis::MonitoringV1::IncidentList, decorator: Google::Apis::MonitoringV1::IncidentList::Representation
       
@@ -1228,6 +1334,8 @@ module Google
           property :time_series_table, as: 'timeSeriesTable', class: Google::Apis::MonitoringV1::TimeSeriesTable, decorator: Google::Apis::MonitoringV1::TimeSeriesTable::Representation
       
           property :title, as: 'title'
+          property :treemap, as: 'treemap', class: Google::Apis::MonitoringV1::Treemap, decorator: Google::Apis::MonitoringV1::Treemap::Representation
+      
           property :visibility_condition, as: 'visibilityCondition', class: Google::Apis::MonitoringV1::VisibilityCondition, decorator: Google::Apis::MonitoringV1::VisibilityCondition::Representation
       
           property :xy_chart, as: 'xyChart', class: Google::Apis::MonitoringV1::XyChart, decorator: Google::Apis::MonitoringV1::XyChart::Representation

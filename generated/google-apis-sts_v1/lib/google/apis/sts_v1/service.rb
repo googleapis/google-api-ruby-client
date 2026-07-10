@@ -52,6 +52,160 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Fetches the signing keys for an agentic or managed workload identity pool and
+        # returns them in JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/
+        # rfc7517). For now, only agentic system pools are supported.
+        # @param [String] name
+        #   Required. The name of the pool whose JWKS needs to be retrieved. Format: '
+        #   organizations/`ORGANIZATION_NUMBER`/locations/global/workloadIdentityPools/`
+        #   POOL_ID`' 'projects/`PROJECT_NUMBER`/locations/global/workloadIdentityPools/`
+        #   POOL_ID`' Example(s): 'organizations/1234/locations/global/
+        #   workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/
+        #   12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.
+        #   system.id.goog'
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StsV1::GoogleIdentityStsV1Jwks] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StsV1::GoogleIdentityStsV1Jwks]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_workload_identity_pool_openid_jwks(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/openid/jwks', options)
+          command.response_representation = Google::Apis::StsV1::GoogleIdentityStsV1Jwks::Representation
+          command.response_class = Google::Apis::StsV1::GoogleIdentityStsV1Jwks
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the OIDC provider configuration for an agentic or managed workload
+        # identity pool following [the OIDC 1.0 discovery specification](https://openid.
+        # net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse).
+        # For now, only agentic system pools are supported.
+        # @param [String] name
+        #   Required. The name of the pool whose OpenID provider configuration to retrieve.
+        #   Format: 'organizations/`ORGANIZATION_NUMBER`/locations/global/
+        #   workloadIdentityPools/`POOL_ID`' 'projects/`PROJECT_NUMBER`/locations/global/
+        #   workloadIdentityPools/`POOL_ID`' Example: 'organizations/1234/locations/global/
+        #   workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/
+        #   12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.
+        #   system.id.goog'
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StsV1::GoogleIdentityStsV1OpenIdProviderConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StsV1::GoogleIdentityStsV1OpenIdProviderConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_workload_identity_pool_well_known_openid_configuration(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/.well-known/openid-configuration', options)
+          command.response_representation = Google::Apis::StsV1::GoogleIdentityStsV1OpenIdProviderConfig::Representation
+          command.response_class = Google::Apis::StsV1::GoogleIdentityStsV1OpenIdProviderConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches the signing keys for an agentic or managed workload identity pool and
+        # returns them in JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/
+        # rfc7517). For now, only agentic system pools are supported.
+        # @param [String] name
+        #   Required. The name of the pool whose JWKS needs to be retrieved. Format: '
+        #   organizations/`ORGANIZATION_NUMBER`/locations/global/workloadIdentityPools/`
+        #   POOL_ID`' 'projects/`PROJECT_NUMBER`/locations/global/workloadIdentityPools/`
+        #   POOL_ID`' Example(s): 'organizations/1234/locations/global/
+        #   workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/
+        #   12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.
+        #   system.id.goog'
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StsV1::GoogleIdentityStsV1Jwks] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StsV1::GoogleIdentityStsV1Jwks]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_workload_identity_pool_openid_jwks(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/openid/jwks', options)
+          command.response_representation = Google::Apis::StsV1::GoogleIdentityStsV1Jwks::Representation
+          command.response_class = Google::Apis::StsV1::GoogleIdentityStsV1Jwks
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the OIDC provider configuration for an agentic or managed workload
+        # identity pool following [the OIDC 1.0 discovery specification](https://openid.
+        # net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse).
+        # For now, only agentic system pools are supported.
+        # @param [String] name
+        #   Required. The name of the pool whose OpenID provider configuration to retrieve.
+        #   Format: 'organizations/`ORGANIZATION_NUMBER`/locations/global/
+        #   workloadIdentityPools/`POOL_ID`' 'projects/`PROJECT_NUMBER`/locations/global/
+        #   workloadIdentityPools/`POOL_ID`' Example: 'organizations/1234/locations/global/
+        #   workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/
+        #   12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.
+        #   system.id.goog'
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StsV1::GoogleIdentityStsV1OpenIdProviderConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StsV1::GoogleIdentityStsV1OpenIdProviderConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_workload_identity_pool_well_known_openid_configuration(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}/.well-known/openid-configuration', options)
+          command.response_representation = Google::Apis::StsV1::GoogleIdentityStsV1OpenIdProviderConfig::Representation
+          command.response_class = Google::Apis::StsV1::GoogleIdentityStsV1OpenIdProviderConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Exchanges a credential for a Google OAuth 2.0 access token. The token asserts
         # an external identity within an identity pool, or it applies a Credential
         # Access Boundary to a Google access token. Note that workforce pools do not

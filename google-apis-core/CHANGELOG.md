@@ -1,5 +1,59 @@
 # Release History
 
+### 1.2.4 (2026-06-28)
+
+#### Bug Fixes
+
+* map sharingRateLimitExceeded to RateLimitError ([#27178](https://github.com/googleapis/google-api-ruby-client/issues/27178)) ([80c0656](https://github.com/googleapis/google-api-ruby-client/commit/80c0656d3933418993f5857b39c6d5bd968a8118)), closes [#26531](https://github.com/googleapis/google-api-ruby-client/issues/26531)
+
+### 1.2.3 (2026-06-10)
+
+#### Bug Fixes
+
+* upgrade addressable dependency to ~&gt; 2.9 ([#26622](https://github.com/googleapis/google-api-ruby-client/issues/26622)) 
+
+### 1.2.2 (2026-06-10)
+
+#### Bug Fixes
+
+* Relax retriable dependency constraint ([#26621](https://github.com/googleapis/google-api-ruby-client/issues/26621)) ([1511d44](https://github.com/googleapis/google-api-ruby-client/commit/1511d44e3945caebf41160e47cc42f7bdfdb5fe2)), closes [#26620](https://github.com/googleapis/google-api-ruby-client/issues/26620)
+
+### 1.2.1 (2026-06-09)
+
+#### Bug Fixes
+
+* Add missing multi_json runtime dependency for representable ([#26612](https://github.com/googleapis/google-api-ruby-client/issues/26612)) ([16afc11](https://github.com/googleapis/google-api-ruby-client/commit/16afc118f58d64a1394f33b76133d69ce4632575)), closes [#26611](https://github.com/googleapis/google-api-ruby-client/issues/26611) [#26613](https://github.com/googleapis/google-api-ruby-client/issues/26613)
+
+### 1.2.0 (2026-06-04)
+
+#### Features
+
+* ruby 3.2 minimum ([#26608](https://github.com/googleapis/google-api-ruby-client/issues/26608)) 
+
+### 1.1.0 (2026-05-17)
+
+#### Features
+
+* adding checksum header ([#25157](https://github.com/googleapis/google-api-ruby-client/issues/25157)) 
+
+### 1.0.2 (2025-09-09)
+
+#### Bug Fixes
+
+* Handle nil response in on_data callback for Faraday streaming ([#24235](https://github.com/googleapis/google-api-ruby-client/issues/24235)) 
+
+### 1.0.1 (2025-08-08)
+
+#### Bug Fixes
+
+* Compute and send content-length header when posting a CompositeIO ([#23864](https://github.com/googleapis/google-api-ruby-client/issues/23864)) 
+
+### 1.0.0 (2025-08-03)
+
+This is a major release that replaces the underlying httpclient library with Faraday ([#23524](https://github.com/googleapis/google-api-ruby-client/issues/23524)). This will ensure the client libraries are on a more stable and better maintained foundation moving forward.
+
+For most users, this change should be transparent. However, if your application depends on the httpclient interfaces, you can retain compatibility with httpclient by pinning the `google-apis-core` gem to `~> 0.18` in your Gemfile. Httpclient-based versions of this gem will remain on the 0.x release train, while Faraday-based versions will occupy the 1.x release train. We will push critical fixes and security updates to both branches for one year until August 2026, but new feature work will take place only on the 1.x branch.
+
 ### 0.18.0 (2025-05-22)
 
 #### Features

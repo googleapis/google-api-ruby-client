@@ -278,6 +278,22 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. A list of authorization network rules to match against the incoming
+        # request. A policy match occurs when at least one network rule matches the
+        # request. At least one network rule is required for Allow or Deny Action if no
+        # HTTP rules are provided. Network rules are mutually exclusive with HTTP rules.
+        # Limited to 5 rules.
+        # Corresponds to the JSON property `networkRules`
+        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRule>]
+        attr_accessor :network_rules
+      
+        # Optional. Immutable. Defines the type of authorization being performed. If not
+        # specified, `REQUEST_AUTHZ` is applied. This field cannot be changed once
+        # AuthzPolicy is created.
+        # Corresponds to the JSON property `policyProfile`
+        # @return [String]
+        attr_accessor :policy_profile
+      
         # Specifies the set of targets to which this policy should be applied to.
         # Corresponds to the JSON property `target`
         # @return [Google::Apis::NetworksecurityV1::AuthzPolicyTarget]
@@ -301,6 +317,8 @@ module Google
           @http_rules = args[:http_rules] if args.key?(:http_rules)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @network_rules = args[:network_rules] if args.key?(:network_rules)
+          @policy_profile = args[:policy_profile] if args.key?(:policy_profile)
           @target = args[:target] if args.key?(:target)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -375,15 +393,29 @@ module Google
       class AuthzPolicyAuthzRuleFromRequestSource
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of IP addresses or IP address ranges to match against the
+        # source IP address of the request. Limited to 10 ip_blocks per Authorization
+        # Policy
+        # Corresponds to the JSON property `ipBlocks`
+        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleIpBlock>]
+        attr_accessor :ip_blocks
+      
         # Optional. A list of identities derived from the client's certificate. This
-        # field is under development and we don't recommend using it at this time.
-        # Limited to 5 principals.
+        # field will not match on a request unless frontend mutual TLS is enabled for
+        # the forwarding rule or Gateway and the client certificate has been
+        # successfully validated by mTLS. Each identity is a string whose value is
+        # matched against a list of URI SANs, DNS Name SANs, or the common name in the
+        # client's certificate. A match happens when any principal matches with the rule.
+        # Limited to 50 principals per Authorization Policy for regional internal
+        # Application Load Balancers, regional external Application Load Balancers,
+        # cross-region internal Application Load Balancers, and Cloud Service Mesh. This
+        # field is not supported for global external Application Load Balancers.
         # Corresponds to the JSON property `principals`
-        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch>]
+        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRulePrincipal>]
         attr_accessor :principals
       
         # Optional. A list of resources to match against the resource of the source VM
-        # of a request. Limited to 5 resources.
+        # of a request. Limited to 10 resources per Authorization Policy.
         # Corresponds to the JSON property `resources`
         # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource>]
         attr_accessor :resources
@@ -394,6 +426,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ip_blocks = args[:ip_blocks] if args.key?(:ip_blocks)
           @principals = args[:principals] if args.key?(:principals)
           @resources = args[:resources] if args.key?(:resources)
         end
@@ -421,6 +454,57 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents a range of IP Addresses.
+      class AuthzPolicyAuthzRuleIpBlock
+        include Google::Apis::Core::Hashable
+      
+        # Required. The length of the address range.
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # Required. The address prefix.
+        # Corresponds to the JSON property `prefix`
+        # @return [String]
+        attr_accessor :prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @length = args[:length] if args.key?(:length)
+          @prefix = args[:prefix] if args.key?(:prefix)
+        end
+      end
+      
+      # Describes the properties of a principal to be matched against.
+      class AuthzPolicyAuthzRulePrincipal
+        include Google::Apis::Core::Hashable
+      
+        # Determines how a string value should be matched.
+        # Corresponds to the JSON property `principal`
+        # @return [Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch]
+        attr_accessor :principal
+      
+        # Optional. An enum to decide what principal value the principal rule will match
+        # against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
+        # Corresponds to the JSON property `principalSelector`
+        # @return [String]
+        attr_accessor :principal_selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal = args[:principal] if args.key?(:principal)
+          @principal_selector = args[:principal_selector] if args.key?(:principal_selector)
         end
       end
       
@@ -459,7 +543,7 @@ module Google
         # Required. A list of resource tag value permanent IDs to match against the
         # resource manager tags value associated with the source VM of a request. The
         # match follows AND semantics which means all the ids must match. Limited to 5
-        # matches.
+        # ids in the Tag value id set.
         # Corresponds to the JSON property `ids`
         # @return [Array<Fixnum>]
         attr_accessor :ids
@@ -570,26 +654,44 @@ module Google
       
         # Optional. A list of HTTP Hosts to match against. The match can be one of exact,
         # prefix, suffix, or contains (substring match). Matches are always case
-        # sensitive unless the ignoreCase is set. Limited to 5 matches.
+        # sensitive unless the ignoreCase is set. Limited to 10 hosts per Authorization
+        # Policy.
         # Corresponds to the JSON property `hosts`
         # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch>]
         attr_accessor :hosts
       
+        # Describes a set of MCP protocol attributes to match against for a given MCP
+        # request.
+        # Corresponds to the JSON property `mcp`
+        # @return [Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperationMcp]
+        attr_accessor :mcp
+      
         # Optional. A list of HTTP methods to match against. Each entry must be a valid
         # HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only
-        # allows exact match and is always case sensitive.
+        # allows exact match and is always case sensitive. Limited to 10 methods per
+        # Authorization Policy.
         # Corresponds to the JSON property `methods`
         # @return [Array<String>]
         attr_accessor :methods_prop
       
         # Optional. A list of paths to match against. The match can be one of exact,
         # prefix, suffix, or contains (substring match). Matches are always case
-        # sensitive unless the ignoreCase is set. Limited to 5 matches. Note that this
-        # path match includes the query parameters. For gRPC services, this should be a
-        # fully-qualified name of the form /package.service/method.
+        # sensitive unless the ignoreCase is set. Limited to 10 paths per Authorization
+        # Policy. Note that this path match includes the query parameters. For gRPC
+        # services, this should be a fully-qualified name of the form /package.service/
+        # method.
         # Corresponds to the JSON property `paths`
         # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch>]
         attr_accessor :paths
+      
+        # Optional. A list of SNIs to match against. The match can be one of exact,
+        # prefix, suffix, or contains (substring match). If there is no SNI (i.e.
+        # plaintext HTTP traffic), the request will be denied. Matches are always case
+        # sensitive unless the ignoreCase is set. Limited to 10 SNIs per Authorization
+        # Policy.
+        # Corresponds to the JSON property `snis`
+        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch>]
+        attr_accessor :snis
       
         def initialize(**args)
            update!(**args)
@@ -599,8 +701,10 @@ module Google
         def update!(**args)
           @header_set = args[:header_set] if args.key?(:header_set)
           @hosts = args[:hosts] if args.key?(:hosts)
+          @mcp = args[:mcp] if args.key?(:mcp)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
           @paths = args[:paths] if args.key?(:paths)
+          @snis = args[:snis] if args.key?(:snis)
         end
       end
       
@@ -611,7 +715,8 @@ module Google
         # Required. A list of headers to match against in http header. The match can be
         # one of exact, prefix, suffix, or contains (substring match). The match follows
         # AND semantics which means all the headers must match. Matches are always case
-        # sensitive unless the ignoreCase is set. Limited to 5 matches.
+        # sensitive unless the ignoreCase is set. Limited to 10 headers per
+        # Authorization Policy.
         # Corresponds to the JSON property `headers`
         # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleHeaderMatch>]
         attr_accessor :headers
@@ -623,6 +728,71 @@ module Google
         # Update properties of this object
         def update!(**args)
           @headers = args[:headers] if args.key?(:headers)
+        end
+      end
+      
+      # Describes a set of MCP protocol attributes to match against for a given MCP
+      # request.
+      class AuthzPolicyAuthzRuleToRequestOperationMcp
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If specified, matches on the MCP protocol’s non-access specific
+        # methods namely: * initialize * completion/ * logging/ * notifications/ * ping
+        # Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.
+        # Corresponds to the JSON property `baseProtocolMethodsOption`
+        # @return [String]
+        attr_accessor :base_protocol_methods_option
+      
+        # Optional. A list of MCP methods and associated parameters to match on. It is
+        # recommended to use this field to match on tools, prompts and resource accesses
+        # while setting the baseProtocolMethodsOption to MATCH_BASE_PROTOCOL_METHODS to
+        # match on all the other MCP protocol methods. Limited to 10 MCP methods per
+        # Authorization Policy.
+        # Corresponds to the JSON property `methods`
+        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperationMcpMethod>]
+        attr_accessor :methods_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_protocol_methods_option = args[:base_protocol_methods_option] if args.key?(:base_protocol_methods_option)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
+        end
+      end
+      
+      # Describes a set of MCP methods to match against.
+      class AuthzPolicyAuthzRuleToRequestOperationMcpMethod
+        include Google::Apis::Core::Hashable
+      
+        # Required. The MCP method to match against. Allowed values are as follows: 1. `
+        # tools`, `prompts`, `resources` - these will match against all sub methods
+        # under the respective methods. 2. `prompts/list`, `tools/list`, `resources/list`
+        # , `resources/templates/list` 3. `prompts/get`, `tools/call`, `resources/
+        # subscribe`, `resources/unsubscribe`, `resources/read` Params cannot be
+        # specified for categories 1 and 2.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A list of MCP method parameters to match against. The match can be
+        # one of exact, prefix, suffix, or contains (substring match). Matches are
+        # always case sensitive unless the ignoreCase is set. Limited to 10 MCP method
+        # parameters per Authorization Policy.
+        # Corresponds to the JSON property `params`
+        # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch>]
+        attr_accessor :params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
         end
       end
       
@@ -699,17 +869,19 @@ module Google
       class AuthzPolicyTarget
         include Google::Apis::Core::Hashable
       
-        # Required. All gateways and forwarding rules referenced by this policy and
-        # extensions must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information, refer to [
-        # Backend services overview](https://cloud.google.com/load-balancing/docs/
-        # backend-service).
+        # Optional. All gateways and forwarding rules referenced by this policy and
+        # extensions must share the same load balancing scheme. Required only when
+        # targeting forwarding rules. If targeting Secure Web Proxy, this field must be `
+        # INTERNAL_MANAGED` or not specified. Must not be specified when targeting Agent
+        # Gateway. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more
+        # information, refer to [Backend services overview](https://cloud.google.com/
+        # load-balancing/docs/backend-service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
       
-        # Required. A list of references to the Forwarding Rules on which this policy
-        # will be applied.
+        # Required. A list of references to the Forwarding Rules, Secure Web Proxy
+        # Gateways, or Agent Gateways on which this policy will be applied.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
@@ -722,6 +894,93 @@ module Google
         def update!(**args)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # BackendAuthenticationConfig message groups the TrustConfig together with other
+      # settings that control how the load balancer authenticates, and expresses its
+      # identity to, the backend: * `trustConfig` is the attached TrustConfig. * `
+      # wellKnownRoots` indicates whether the load balance should trust backend server
+      # certificates that are issued by public certificate authorities, in addition to
+      # certificates trusted by the TrustConfig. * `clientCertificate` is a client
+      # certificate that the load balancer uses to express its identity to the backend,
+      # if the connection to the backend uses mTLS. You can attach the
+      # BackendAuthenticationConfig to the load balancer's BackendService directly
+      # determining how that BackendService negotiates TLS.
+      class BackendAuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A reference to a certificatemanager.googleapis.com.Certificate
+        # resource. This is a relative resource path following the form "projects/`
+        # project`/locations/`location`/certificates/`certificate`". Used by a
+        # BackendService to negotiate mTLS when the backend connection uses TLS and the
+        # backend requests a client certificate. Must have a CLIENT_AUTH scope.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [String]
+        attr_accessor :client_certificate
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Free-text description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Etag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Set of label tags associated with the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Name of the BackendAuthenticationConfig resource. It matches the
+        # pattern `projects/*/locations/`location`/backendAuthenticationConfigs/`
+        # backend_authentication_config``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A reference to a TrustConfig resource from the certificatemanager.
+        # googleapis.com namespace. This is a relative resource path following the form "
+        # projects/`project`/locations/`location`/trustConfigs/`trust_config`". A
+        # BackendService uses the chain of trust represented by this TrustConfig, if
+        # specified, to validate the server certificates presented by the backend.
+        # Required unless wellKnownRoots is set to PUBLIC_ROOTS.
+        # Corresponds to the JSON property `trustConfig`
+        # @return [String]
+        attr_accessor :trust_config
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Well known roots to use for server certificate validation.
+        # Corresponds to the JSON property `wellKnownRoots`
+        # @return [String]
+        attr_accessor :well_known_roots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @well_known_roots = args[:well_known_roots] if args.key?(:well_known_roots)
         end
       end
       
@@ -790,7 +1049,7 @@ module Google
         attr_accessor :labels
       
         # Required. Name of the ClientTlsPolicy resource. It matches the pattern `
-        # projects/*/locations/`location`/clientTlsPolicies/`client_tls_policy``
+        # projects/`project`/locations/`location`/clientTlsPolicies/`client_tls_policy``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -891,9 +1150,9 @@ module Google
       class CustomMirroringProfile
         include Google::Apis::Core::Hashable
       
-        # Required. The target MirroringEndpointGroup. When a mirroring rule with this
-        # security profile attached matches a packet, a replica will be mirrored to the
-        # location-local target in this group.
+        # Required. Immutable. The target MirroringEndpointGroup. When a mirroring rule
+        # with this security profile attached matches a packet, a replica will be
+        # mirrored to the location-local target in this group.
         # Corresponds to the JSON property `mirroringEndpointGroup`
         # @return [String]
         attr_accessor :mirroring_endpoint_group
@@ -946,6 +1205,60 @@ module Google
           @http_header_match = args[:http_header_match] if args.key?(:http_header_match)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
           @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # A DNS threat detector sends DNS query logs to a _provider_ that then analyzes
+      # the logs to identify threat events in the DNS queries. By default, all VPC
+      # networks in your projects are included. You can exclude specific networks by
+      # supplying `excluded_networks`.
+      class DnsThreatDetector
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time stamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A list of network resource names which aren't monitored by this
+        # DnsThreatDetector. Example: `projects/PROJECT_ID/global/networks/NETWORK_NAME`.
+        # Corresponds to the JSON property `excludedNetworks`
+        # @return [Array<String>]
+        attr_accessor :excluded_networks
+      
+        # Optional. Any labels associated with the DnsThreatDetector, listed as key
+        # value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. Name of the DnsThreatDetector resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The provider used for DNS threat analysis.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. Update time stamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @excluded_networks = args[:excluded_networks] if args.key?(:excluded_networks)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @provider = args[:provider] if args.key?(:provider)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1019,14 +1332,15 @@ module Google
         end
       end
       
-      # Message describing Endpoint object
+      # Message describing Endpoint object.
       class FirewallEndpoint
         include Google::Apis::Core::Hashable
       
-        # Output only. List of networks that are associated with this endpoint in the
-        # local zone. This is a projection of the FirewallEndpointAssociations pointing
-        # at this endpoint. A network will only appear in this list after traffic
-        # routing is fully configured. Format: projects/`project`/global/networks/`name`.
+        # Output only. Deprecated: List of networks that are associated with this
+        # endpoint in the local zone. This is a projection of the
+        # FirewallEndpointAssociations pointing at this endpoint. A network will only
+        # appear in this list after traffic routing is fully configured. Format:
+        # projects/`project`/global/networks/`name`.
         # Corresponds to the JSON property `associatedNetworks`
         # @return [Array<String>]
         attr_accessor :associated_networks
@@ -1038,12 +1352,14 @@ module Google
         # @return [Array<Google::Apis::NetworksecurityV1::FirewallEndpointAssociationReference>]
         attr_accessor :associations
       
-        # Required. Project to bill on endpoint uptime usage.
+        # Optional. Project to charge for the deployed firewall endpoint. This field
+        # must be specified when creating the endpoint in the organization scope, and
+        # should be omitted otherwise.
         # Corresponds to the JSON property `billingProjectId`
         # @return [String]
         attr_accessor :billing_project_id
       
-        # Output only. Create time stamp
+        # Output only. Create time stamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1053,12 +1369,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Settings for the endpoint.
+        # Corresponds to the JSON property `endpointSettings`
+        # @return [Google::Apis::NetworksecurityV1::FirewallEndpointEndpointSettings]
+        attr_accessor :endpoint_settings
+      
         # Optional. Labels as key value pairs
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. Identifier. name of resource
+        # Immutable. Identifier. Name of resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1103,6 +1424,7 @@ module Google
           @billing_project_id = args[:billing_project_id] if args.key?(:billing_project_id)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @endpoint_settings = args[:endpoint_settings] if args.key?(:endpoint_settings)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -1215,6 +1537,27 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+        end
+      end
+      
+      # Settings for the endpoint.
+      class FirewallEndpointEndpointSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable. Indicates whether Jumbo Frames are enabled. Default value
+        # is false.
+        # Corresponds to the JSON property `jumboFramesEnabled`
+        # @return [Boolean]
+        attr_accessor :jumbo_frames_enabled
+        alias_method :jumbo_frames_enabled?, :jumbo_frames_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jumbo_frames_enabled = args[:jumbo_frames_enabled] if args.key?(:jumbo_frames_enabled)
         end
       end
       
@@ -2158,6 +2501,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Output only. Identifier used by the data-path. See the NSI GENEVE format for
+        # more details: https://docs.cloud.google.com/network-security-integration/docs/
+        # understand-geneve#network_id
+        # Corresponds to the JSON property `networkCookie`
+        # @return [Fixnum]
+        attr_accessor :network_cookie
+      
         # Output only. The current state of the resource does not match the user's
         # intended state, and the system is working to reconcile them. This part of the
         # normal operation (e.g. adding a new location to the target deployment group).
@@ -2191,6 +2541,7 @@ module Google
           @locations_details = args[:locations_details] if args.key?(:locations_details)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_cookie = args[:network_cookie] if args.key?(:network_cookie)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -2458,6 +2809,39 @@ module Google
         end
       end
       
+      # Response returned by the ListBackendAuthenticationConfigs method.
+      class ListBackendAuthenticationConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of BackendAuthenticationConfig resources.
+        # Corresponds to the JSON property `backendAuthenticationConfigs`
+        # @return [Array<Google::Apis::NetworksecurityV1::BackendAuthenticationConfig>]
+        attr_accessor :backend_authentication_configs
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_authentication_configs = args[:backend_authentication_configs] if args.key?(:backend_authentication_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response returned by the ListClientTlsPolicies method.
       class ListClientTlsPoliciesResponse
         include Google::Apis::Core::Hashable
@@ -2482,6 +2866,37 @@ module Google
         def update!(**args)
           @client_tls_policies = args[:client_tls_policies] if args.key?(:client_tls_policies)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message to requesting a list of DnsThreatDetectors.
+      class ListDnsThreatDetectorsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DnsThreatDetector resources.
+        # Corresponds to the JSON property `dnsThreatDetectors`
+        # @return [Array<Google::Apis::NetworksecurityV1::DnsThreatDetector>]
+        attr_accessor :dns_threat_detectors
+      
+        # A token, which can be sent as `page_token`, to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Unreachable `DnsThreatDetector` resources.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_threat_detectors = args[:dns_threat_detectors] if args.key?(:dns_threat_detectors)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2795,7 +3210,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Locations that could not be reached.
+        # Unordered list. Locations that could not be reached. See https://google.aip.
+        # dev/217 for more details.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -2880,6 +3296,14 @@ module Google
         # @return [Array<Google::Apis::NetworksecurityV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2888,6 +3312,69 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for `ListSACAttachments` method.
+      class ListSacAttachmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SACAttachments.
+        # Corresponds to the JSON property `sacAttachments`
+        # @return [Array<Google::Apis::NetworksecurityV1::SacAttachment>]
+        attr_accessor :sac_attachments
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sac_attachments = args[:sac_attachments] if args.key?(:sac_attachments)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for `ListSACRealms` method.
+      class ListSacRealmsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SACRealms.
+        # Corresponds to the JSON property `sacRealms`
+        # @return [Array<Google::Apis::NetworksecurityV1::SacRealm>]
+        attr_accessor :sac_realms
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sac_realms = args[:sac_realms] if args.key?(:sac_realms)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3424,6 +3911,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Immutable. The type of the endpoint group. If left unspecified, defaults to
+        # DIRECT.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Output only. The timestamp when the resource was most recently updated. See
         # https://google.aip.dev/148#timestamps.
         # Corresponds to the JSON property `updateTime`
@@ -3445,6 +3938,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -3504,6 +3998,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Output only. Identifier used by the data-path. See the NSI GENEVE format for
+        # more details: https://docs.cloud.google.com/network-security-integration/docs/
+        # understand-geneve#network_id
+        # Corresponds to the JSON property `networkCookie`
+        # @return [Fixnum]
+        attr_accessor :network_cookie
+      
         # Output only. The current state of the resource does not match the user's
         # intended state, and the system is working to reconcile them. This part of the
         # normal operation (e.g. adding a new location to the target deployment group).
@@ -3537,6 +4038,7 @@ module Google
           @mirroring_endpoint_group = args[:mirroring_endpoint_group] if args.key?(:mirroring_endpoint_group)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_cookie = args[:network_cookie] if args.key?(:network_cookie)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -3842,6 +4344,151 @@ module Google
         end
       end
       
+      # Represents a Secure Access Connect (SAC) attachment resource. A Secure Access
+      # Connect attachment enables NCC Gateway to process traffic with an SSE product.
+      class SacAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the attachment was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Optional list of labels applied to the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Resource name, in the form `projects/`project`/locations/`location`
+        # /sacAttachments/`sac_attachment``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. NCC Gateway associated with the attachment. This can be input as an
+        # ID or a full resource name. The output always has the form `projects/`
+        # project_number`/locations/`location`/spokes/`ncc_gateway``.
+        # Corresponds to the JSON property `nccGateway`
+        # @return [String]
+        attr_accessor :ncc_gateway
+      
+        # Required. SAC Realm which owns the attachment. This can be input as an ID or a
+        # full resource name. The output always has the form `projects/`project_number`/
+        # locations/`location`/sacRealms/`sac_realm``.
+        # Corresponds to the JSON property `sacRealm`
+        # @return [String]
+        attr_accessor :sac_realm
+      
+        # Output only. State of the attachment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the attachment was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @ncc_gateway = args[:ncc_gateway] if args.key?(:ncc_gateway)
+          @sac_realm = args[:sac_realm] if args.key?(:sac_realm)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a Secure Access Connect (SAC) realm resource. A Secure Access
+      # Connect realm establishes a connection between your Google Cloud project and
+      # an SSE service.
+      class SacRealm
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the realm was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Optional list of labels applied to the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Resource name, in the form `projects/`project`/locations/global/
+        # sacRealms/`sacRealm``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Key to be shared with SSE service provider to establish global handshake.
+        # Corresponds to the JSON property `pairingKey`
+        # @return [Google::Apis::NetworksecurityV1::SacRealmPairingKey]
+        attr_accessor :pairing_key
+      
+        # Immutable. SSE service provider associated with the realm.
+        # Corresponds to the JSON property `securityService`
+        # @return [String]
+        attr_accessor :security_service
+      
+        # Output only. State of the realm.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the realm was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
+          @security_service = args[:security_service] if args.key?(:security_service)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Key to be shared with SSE service provider to establish global handshake.
+      class SacRealmPairingKey
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp in UTC of when this resource is considered expired. It
+        # expires 7 days after creation.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. Key value.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @key = args[:key] if args.key?(:key)
+        end
+      end
+      
       # SecurityProfile is a resource that defines the behavior for one of many
       # ProfileTypes.
       class SecurityProfile
@@ -3904,6 +4551,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # UrlFilteringProfile defines filters based on URL.
+        # Corresponds to the JSON property `urlFilteringProfile`
+        # @return [Google::Apis::NetworksecurityV1::UrlFilteringProfile]
+        attr_accessor :url_filtering_profile
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3920,6 +4572,7 @@ module Google
           @threat_prevention_profile = args[:threat_prevention_profile] if args.key?(:threat_prevention_profile)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @url_filtering_profile = args[:url_filtering_profile] if args.key?(:url_filtering_profile)
         end
       end
       
@@ -3987,6 +4640,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. Reference to a SecurityProfile with the UrlFiltering configuration.
+        # Corresponds to the JSON property `urlFilteringProfile`
+        # @return [String]
+        attr_accessor :url_filtering_profile
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4003,6 +4661,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @threat_prevention_profile = args[:threat_prevention_profile] if args.key?(:threat_prevention_profile)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @url_filtering_profile = args[:url_filtering_profile] if args.key?(:url_filtering_profile)
         end
       end
       
@@ -4352,6 +5011,60 @@ module Google
           @tls_feature_profile = args[:tls_feature_profile] if args.key?(:tls_feature_profile)
           @trust_config = args[:trust_config] if args.key?(:trust_config)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A URL filter defines an action to take for some URL match.
+      class UrlFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. The action taken when this filter is applied.
+        # Corresponds to the JSON property `filteringAction`
+        # @return [String]
+        attr_accessor :filtering_action
+      
+        # Required. The priority of this filter within the URL Filtering Profile. Lower
+        # integers indicate higher priorities. The priority of a filter must be unique
+        # within a URL Filtering Profile.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # Required. The list of strings that a URL must match with for this filter to be
+        # applied.
+        # Corresponds to the JSON property `urls`
+        # @return [Array<String>]
+        attr_accessor :urls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filtering_action = args[:filtering_action] if args.key?(:filtering_action)
+          @priority = args[:priority] if args.key?(:priority)
+          @urls = args[:urls] if args.key?(:urls)
+        end
+      end
+      
+      # UrlFilteringProfile defines filters based on URL.
+      class UrlFilteringProfile
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of filtering configs in which each config defines an action
+        # to take for some URL match.
+        # Corresponds to the JSON property `urlFilters`
+        # @return [Array<Google::Apis::NetworksecurityV1::UrlFilter>]
+        attr_accessor :url_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url_filters = args[:url_filters] if args.key?(:url_filters)
         end
       end
       

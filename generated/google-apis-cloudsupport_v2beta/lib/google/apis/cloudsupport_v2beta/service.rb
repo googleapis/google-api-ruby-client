@@ -60,10 +60,10 @@ module Google
         # deactivated, this endpoint immediately stops returning it. After six months, `
         # case.create` requests using the classification will fail. EXAMPLES: cURL: ```
         # shell curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)"
-        # \ 'https://cloudsupport.googleapis.com/v2/caseClassifications:search?query=
-        # display_name:"*Compute%20Engine*"' ``` Python: ```python import
+        # \ 'https://cloudsupport.googleapis.com/v2beta/caseClassifications:search?
+        # query=display_name:"*Compute%20Engine*"' ``` Python: ```python import
         # googleapiclient.discovery supportApiService = googleapiclient.discovery.build(
-        # serviceName="cloudsupport", version="v2", discoveryServiceUrl=f"https://
+        # serviceName="cloudsupport", version="v2beta", discoveryServiceUrl=f"https://
         # cloudsupport.googleapis.com/$discovery/rest?version=v2", ) request =
         # supportApiService.caseClassifications().search( query='display_name:"*Compute
         # Engine*"' ) print(request.execute()) ```
@@ -110,9 +110,9 @@ module Google
         
         # Close a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/
         # 43595344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud
-        # auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case:
+        # auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case:
         # close" ``` Python: ```python import googleapiclient.discovery api_version = "
-        # v2" supportApiService = googleapiclient.discovery.build( serviceName="
+        # v2beta" supportApiService = googleapiclient.discovery.build( serviceName="
         # cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.
         # googleapis.com/$discovery/rest?version=`api_version`", ) request =
         # supportApiService.cases().close( name="projects/some-project/cases/43595344" )
@@ -160,8 +160,8 @@ module Google
         # 1BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8"
         # `, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "
         # bar@domain.com" ], "testCase": true, "priority": "P3" `' \ "https://
-        # cloudsupport.googleapis.com/v2/$parent/cases" ``` Python: ```python import
-        # googleapiclient.discovery api_version = "v2" supportApiService =
+        # cloudsupport.googleapis.com/v2beta/$parent/cases" ``` Python: ```python import
+        # googleapiclient.discovery api_version = "v2beta" supportApiService =
         # googleapiclient.discovery.build( serviceName="cloudsupport", version=
         # api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$
         # discovery/rest?version=`api_version`", ) request = supportApiService.cases().
@@ -210,8 +210,8 @@ module Google
         # header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "
         # Content-Type: application/json" \ --data '` "escalation": ` "reason": "
         # BUSINESS_IMPACT", "justification": "This is a test escalation." ` `' \ "https:/
-        # /cloudsupport.googleapis.com/v2/$case:escalate" ``` Python: ```python import
-        # googleapiclient.discovery api_version = "v2" supportApiService =
+        # /cloudsupport.googleapis.com/v2beta/$case:escalate" ``` Python: ```python
+        # import googleapiclient.discovery api_version = "v2beta" supportApiService =
         # googleapiclient.discovery.build( serviceName="cloudsupport", version=
         # api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$
         # discovery/rest?version=`api_version`", ) request = supportApiService.cases().
@@ -252,13 +252,13 @@ module Google
         
         # Retrieve a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/
         # 16033687" curl \ --header "Authorization: Bearer $(gcloud auth print-access-
-        # token)" \ "https://cloudsupport.googleapis.com/v2/$case" ``` Python: ```python
-        # import googleapiclient.discovery api_version = "v2" supportApiService =
-        # googleapiclient.discovery.build( serviceName="cloudsupport", version=
-        # api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$
-        # discovery/rest?version=`api_version`", ) request = supportApiService.cases().
-        # get( name="projects/some-project/cases/43595344", ) print(request.execute()) ``
-        # `
+        # token)" \ "https://cloudsupport.googleapis.com/v2beta/$case" ``` Python: ```
+        # python import googleapiclient.discovery api_version = "v2beta"
+        # supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport"
+        # , version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.
+        # com/$discovery/rest?version=`api_version`", ) request = supportApiService.
+        # cases().get( name="projects/some-project/cases/43595344", ) print(request.
+        # execute()) ```
         # @param [String] name
         #   Required. The full name of a case to be retrieved.
         # @param [String] fields
@@ -293,12 +293,12 @@ module Google
         # by that organization. To retrieve cases under an organization and its projects,
         # use `cases.search`. EXAMPLES: cURL: ```shell parent="projects/some-project"
         # curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "
-        # https://cloudsupport.googleapis.com/v2/$parent/cases" ``` Python: ```python
-        # import googleapiclient.discovery api_version = "v2" supportApiService =
-        # googleapiclient.discovery.build( serviceName="cloudsupport", version=
-        # api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$
-        # discovery/rest?version=`api_version`", ) request = supportApiService.cases().
-        # list(parent="projects/some-project") print(request.execute()) ```
+        # https://cloudsupport.googleapis.com/v2beta/$parent/cases" ``` Python: ```
+        # python import googleapiclient.discovery api_version = "v2beta"
+        # supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport"
+        # , version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.
+        # com/$discovery/rest?version=`api_version`", ) request = supportApiService.
+        # cases().list(parent="projects/some-project") print(request.execute()) ```
         # @param [String] parent
         #   Required. The name of a parent to list cases under.
         # @param [String] filter
@@ -354,13 +354,14 @@ module Google
         # projects/some-project/cases/43595344" curl \ --request PATCH \ --header "
         # Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-
         # Type: application/json" \ --data '` "priority": "P1" `' \ "https://
-        # cloudsupport.googleapis.com/v2/$case?updateMask=priority" ``` Python: ```
-        # python import googleapiclient.discovery api_version = "v2" supportApiService =
-        # googleapiclient.discovery.build( serviceName="cloudsupport", version=
-        # api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$
-        # discovery/rest?version=`api_version`", ) request = supportApiService.cases().
-        # patch( name="projects/some-project/cases/43112854", body=` "displayName": "
-        # This is Now a New Title", "priority": "P2", `, ) print(request.execute()) ```
+        # cloudsupport.googleapis.com/v2beta/$case?updateMask=priority" ``` Python: ```
+        # python import googleapiclient.discovery api_version = "v2beta"
+        # supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport"
+        # , version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.
+        # com/$discovery/rest?version=`api_version`", ) request = supportApiService.
+        # cases().patch( name="projects/some-project/cases/43112854", body=` "
+        # displayName": "This is Now a New Title", "priority": "P2", `, ) print(request.
+        # execute()) ```
         # @param [String] name
         #   Identifier. The resource name for the case.
         # @param [Google::Apis::CloudsupportV2beta::Case] case_object
@@ -404,8 +405,8 @@ module Google
         
         # Search for cases using a query. EXAMPLES: cURL: ```shell parent="projects/some-
         # project" curl \ --header "Authorization: Bearer $(gcloud auth print-access-
-        # token)" \ "https://cloudsupport.googleapis.com/v2/$parent/cases:search" ```
-        # Python: ```python import googleapiclient.discovery api_version = "v2"
+        # token)" \ "https://cloudsupport.googleapis.com/v2beta/$parent/cases:search" ```
+        # Python: ```python import googleapiclient.discovery api_version = "v2beta"
         # supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport"
         # , version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.
         # com/$discovery/rest?version=`api_version`", ) request = supportApiService.
@@ -421,18 +422,25 @@ module Google
         #   The name of the parent resource to search for cases under.
         # @param [String] query
         #   An expression used to filter cases. Expressions use the following fields
-        #   separated by `AND` and specified with `=`: - `organization`: An organization
+        #   separated by `AND` and specified with `=`: - `state`: Can be `OPEN` or `CLOSED`
+        #   . - `priority`: Can be `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify
+        #   multiple values for priority using the `OR` operator. For example, `priority=
+        #   P1 OR priority=P2`. - `creator.email`: The email address of the case creator.
+        #   To search across `displayName`, `description`, and comments, use a global
+        #   restriction with no keyword or operator. For example, `"my search"`. To search
+        #   only cases updated after a certain date, use `update_time` restricted with
+        #   that particular date, time, and timezone in ISO datetime format. For example, `
+        #   update_time>"2020-01-01T00:00:00-05:00"`. `update_time` only supports the
+        #   greater than operator (`>`). If you are using the `v2` version of the API, you
+        #   must specify the case parent in the `parent` field. If you provide an empty `
+        #   query`, all cases under the parent resource will be returned. If you are using
+        #   the `v2beta` version of the API, you must specify the case parent in the `
+        #   query` field using one of the two fields below, which are only available for `
+        #   v2beta`. The `parent` field will be ignored. - `organization`: An organization
         #   name in the form `organizations/`. - `project`: A project name in the form `
-        #   projects/`. - `state`: Can be `OPEN` or `CLOSED`. - `priority`: Can be `P0`, `
-        #   P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using
-        #   the `OR` operator. For example, `priority=P1 OR priority=P2`. - `creator.email`
-        #   : The email address of the case creator. You must specify either `organization`
-        #   or `project`. To search across `displayName`, `description`, and comments,
-        #   use a global restriction with no keyword or operator. For example, `"my search"
-        #   `. To search only cases updated after a certain date, use `update_time`
-        #   restricted with that particular date, time, and timezone in ISO datetime
-        #   format. For example, `update_time>"2020-01-01T00:00:00-05:00"`. `update_time`
-        #   only supports the greater than operator (`>`). Examples: - `organization="
+        #   projects/`. Examples: For `v2`: - `state=CLOSED` - `state=OPEN AND creator.
+        #   email="tester@example.com"` - `state=OPEN AND (priority=P0 OR priority=P1)` - `
+        #   update_time>"2020-01-01T00:00:00-05:00"` For `v2beta`: - `organization="
         #   organizations/123456789"` - `project="projects/my-project-id"` - `project="
         #   projects/123456789"` - `organization="organizations/123456789" AND state=
         #   CLOSED` - `project="projects/my-project-id" AND creator.email="tester@example.
@@ -511,11 +519,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieve an attachment associated with a support case. EXAMPLES: cURL: ```
+        # shell attachment="projects/some-project/cases/23598314/attachments/
+        # 0684M00000P3h1fQAB" curl \ --header "Authorization: Bearer $(gcloud auth print-
+        # access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$attachment" ```
+        # Python: ```python import googleapiclient.discovery api_version = "v2beta"
+        # supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport"
+        # , version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.
+        # com/$discovery/rest?version=`api_version`", ) request = ( supportApiService.
+        # cases() .attachments() .get(name="projects/some-project/cases/43595344/
+        # attachments/0684M00000P3h1fQAB") ) print(request.execute()) ```
+        # @param [String] name
+        #   Required. The name of the attachment to get.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::Attachment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::Attachment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_case_attachment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudsupportV2beta::Attachment::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::Attachment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List all the attachments associated with a support case. EXAMPLES: cURL: ```
         # shell case="projects/some-project/cases/23598314" curl \ --header "
         # Authorization: Bearer $(gcloud auth print-access-token)" \ "https://
-        # cloudsupport.googleapis.com/v2/$case/attachments" ``` Python: ```python import
-        # googleapiclient.discovery api_version = "v2" supportApiService =
+        # cloudsupport.googleapis.com/v2beta/$case/attachments" ``` Python: ```python
+        # import googleapiclient.discovery api_version = "v2beta" supportApiService =
         # googleapiclient.discovery.build( serviceName="cloudsupport", version=
         # api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$
         # discovery/rest?version=`api_version`", ) request = ( supportApiService.cases()
@@ -565,14 +612,14 @@ module Google
         # body`. EXAMPLES: cURL: ```shell case="projects/some-project/cases/43591344"
         # curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-
         # access-token)" \ --header 'Content-Type: application/json' \ --data '` "body":
-        # "This is a test comment." `' \ "https://cloudsupport.googleapis.com/v2/$case/
-        # comments" ``` Python: ```python import googleapiclient.discovery api_version =
-        # "v2" supportApiService = googleapiclient.discovery.build( serviceName="
-        # cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.
-        # googleapis.com/$discovery/rest?version=`api_version`", ) request = (
-        # supportApiService.cases() .comments() .create( parent="projects/some-project/
-        # cases/43595344", body=`"body": "This is a test comment."`, ) ) print(request.
-        # execute()) ```
+        # "This is a test comment." `' \ "https://cloudsupport.googleapis.com/v2beta/$
+        # case/comments" ``` Python: ```python import googleapiclient.discovery
+        # api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
+        # serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://
+        # cloudsupport.googleapis.com/$discovery/rest?version=`api_version`", ) request =
+        # ( supportApiService.cases() .comments() .create( parent="projects/some-
+        # project/cases/43595344", body=`"body": "This is a test comment."`, ) ) print(
+        # request.execute()) ```
         # @param [String] parent
         #   Required. The name of the case to which the comment should be added.
         # @param [Google::Apis::CloudsupportV2beta::Comment] comment_object
@@ -605,11 +652,49 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieve a comment. EXAMPLES: cURL: ```shell comment="projects/some-project/
+        # cases/43595344/comments/234567890" curl \ --header "Authorization: Bearer $(
+        # gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/
+        # $comment" ``` Python: ```python import googleapiclient.discovery api_version =
+        # "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="
+        # cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.
+        # googleapis.com/$discovery/rest?version=`api_version`", ) request =
+        # supportApiService.cases().comments().get( name="projects/some-project/cases/
+        # 43595344/comments/234567890", ) print(request.execute()) ```
+        # @param [String] name
+        #   Required. The name of the comment to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::Comment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::Comment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_case_comment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudsupportV2beta::Comment::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::Comment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List all the comments associated with a case. EXAMPLES: cURL: ```shell case="
         # projects/some-project/cases/43595344" curl \ --header "Authorization: Bearer $(
-        # gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$
-        # case/comments" ``` Python: ```python import googleapiclient.discovery
-        # api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        # gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/
+        # $case/comments" ``` Python: ```python import googleapiclient.discovery
+        # api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
         # serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://
         # cloudsupport.googleapis.com/$discovery/rest?version=`api_version`", ) request =
         # ( supportApiService.cases() .comments() .list(parent="projects/some-project/
@@ -650,17 +735,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Download a file attached to a case. Note: HTTP requests must append "?alt=
-        # media" to the URL. EXAMPLES: cURL: ```shell name="projects/some-project/cases/
-        # 43594844/attachments/0674M00000WijAnZAJ" curl \ --header "Authorization:
-        # Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.
-        # com/v2/$name:download?alt=media" ``` Python: ```python import googleapiclient.
-        # discovery api_version = "v2" supportApiService = googleapiclient.discovery.
-        # build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"
-        # https://cloudsupport.googleapis.com/$discovery/rest?version=`api_version`", )
-        # request = supportApiService.media().download( name="projects/some-project/
-        # cases/43595344/attachments/0684M00000Pw6pHQAR" ) request.uri = request.uri.
-        # split("?")[0] + "?alt=media" print(request.execute()) ```
+        # Download a file attached to a case. When this endpoint is called, no "response
+        # body" will be returned. Instead, the attachment's blob will be returned. Note:
+        # HTTP requests must append "?alt=media" to the URL. EXAMPLES: cURL: ```shell
+        # name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ"
+        # curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "
+        # https://cloudsupport.googleapis.com/v2beta/$name:download?alt=media" ```
+        # Python: ```python import googleapiclient.discovery api_version = "v2beta"
+        # supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport"
+        # , version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.
+        # com/$discovery/rest?version=`api_version`", ) request = supportApiService.
+        # media().download( name="projects/some-project/cases/43595344/attachments/
+        # 0684M00000Pw6pHQAR" ) request.uri = request.uri.split("?")[0] + "?alt=media"
+        # print(request.execute()) ```
         # @param [String] name
         #   The name of the file attachment to download.
         # @param [String] fields
@@ -704,7 +791,7 @@ module Google
         # gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \ "
         # https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.
         # filename=uploaded_via_curl.txt" ``` Python: ```python import googleapiclient.
-        # discovery api_version = "v2" supportApiService = googleapiclient.discovery.
+        # discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.
         # build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"
         # https://cloudsupport.googleapis.com/$discovery/rest?version=`api_version`", )
         # file_path = "./example_file.txt" with open(file_path, "w") as file: file.write(
@@ -750,6 +837,223 @@ module Google
           command.response_representation = Google::Apis::CloudsupportV2beta::Attachment::Representation
           command.response_class = Google::Apis::CloudsupportV2beta::Attachment
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a support event subscription for an organization.
+        # @param [String] parent
+        #   Required. The parent resource name where the support event subscription will
+        #   be created. Format: organizations/`organization_id`
+        # @param [Google::Apis::CloudsupportV2beta::SupportEventSubscription] support_event_subscription_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::SupportEventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::SupportEventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_support_event_subscription(parent, support_event_subscription_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+parent}/supportEventSubscriptions', options)
+          command.request_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.request_object = support_event_subscription_object
+          command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Soft deletes a support event subscription.
+        # @param [String] name
+        #   Required. The name of the support event subscription to delete. Format:
+        #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::SupportEventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::SupportEventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a support event subscription.
+        # @param [String] name
+        #   Required. The name of the support event subscription to retrieve. Format:
+        #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::SupportEventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::SupportEventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta/{+name}', options)
+          command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists support event subscriptions.
+        # @param [String] parent
+        #   Required. The fully qualified name of the Cloud resource to list support event
+        #   subscriptions under. Format: organizations/`organization_id`
+        # @param [String] filter
+        #   Optional. Filter expression based on AIP-160. Supported fields: -
+        #   pub_sub_topic - state Examples: - `pub_sub_topic="projects/example-project/
+        #   topics/example-topic"` - `state=WORKING` - `pub_sub_topic="projects/example-
+        #   project/topics/example-topic" AND state=WORKING`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of support event subscriptions to return.
+        # @param [String] page_token
+        #   Optional. A token identifying the page of results to return. If unspecified,
+        #   the first page is retrieved. When paginating, all other parameters provided to
+        #   `ListSupportEventSubscriptions` must match the call that provided the page
+        #   token.
+        # @param [Boolean] show_deleted
+        #   Optional. Whether to show deleted subscriptions. By default, deleted
+        #   subscriptions are not returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::ListSupportEventSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::ListSupportEventSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_support_event_subscriptions(parent, filter: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta/{+parent}/supportEventSubscriptions', options)
+          command.response_representation = Google::Apis::CloudsupportV2beta::ListSupportEventSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::ListSupportEventSubscriptionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a support event subscription.
+        # @param [String] name
+        #   Identifier. The resource name of the support event subscription.
+        # @param [Google::Apis::CloudsupportV2beta::SupportEventSubscription] support_event_subscription_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. The only supported value is
+        #   pub_sub_topic.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::SupportEventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::SupportEventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_support_event_subscription(name, support_event_subscription_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta/{+name}', options)
+          command.request_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.request_object = support_event_subscription_object
+          command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Undeletes a support event subscription.
+        # @param [String] name
+        #   Required. The name of the support event subscription to undelete. Format:
+        #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
+        # @param [Google::Apis::CloudsupportV2beta::UndeleteSupportEventSubscriptionRequest] undelete_support_event_subscription_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::SupportEventSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::SupportEventSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def undelete_support_event_subscription(name, undelete_support_event_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:undelete', options)
+          command.request_representation = Google::Apis::CloudsupportV2beta::UndeleteSupportEventSubscriptionRequest::Representation
+          command.request_object = undelete_support_event_subscription_request_object
+          command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

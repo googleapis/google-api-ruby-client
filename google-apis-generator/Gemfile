@@ -4,6 +4,9 @@ gemspec
 
 group :development do
   gem 'bundler', '>= 1.7'
+  gem 'irb', '~> 1.18'
+  gem 'ostruct', '~> 0.5.5'
+  gem "fiddle", "~> 1.1"
   gem 'rake', '~> 13.0'
   gem 'rspec', '~> 3.1'
   gem 'json_spec', '~> 1.1'

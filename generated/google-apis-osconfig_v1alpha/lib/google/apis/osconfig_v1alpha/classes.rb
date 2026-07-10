@@ -2135,7 +2135,7 @@ module Google
       class OsPolicyResourceFileResource
         include Google::Apis::Core::Hashable
       
-        # A a file with this content. The size of the content is limited to 32KiB.
+        # A file with this content. The size of the content is limited to 32KiB.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -2812,6 +2812,12 @@ module Google
       class VulnerabilityReport
         include Google::Apis::Core::Hashable
       
+        # Output only. Highest level of severity among all the upgradable
+        # vulnerabilities with CVEs attached.
+        # Corresponds to the JSON property `highestUpgradableCveSeverity`
+        # @return [String]
+        attr_accessor :highest_upgradable_cve_severity
+      
         # Output only. The `vulnerabilityReport` API resource name. Format: `projects/`
         # project_number`/locations/`location`/instances/`instance_id`/
         # vulnerabilityReport`
@@ -2836,6 +2842,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @highest_upgradable_cve_severity = args[:highest_upgradable_cve_severity] if args.key?(:highest_upgradable_cve_severity)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vulnerabilities = args[:vulnerabilities] if args.key?(:vulnerabilities)

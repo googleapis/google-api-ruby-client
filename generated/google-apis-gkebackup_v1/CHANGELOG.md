@@ -1,5 +1,67 @@
 # Release history for google-apis-gkebackup_v1
 
+### v0.61.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260527
+* Regenerated using generator version 0.19.0
+
+### v0.60.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260422
+
+### v0.59.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260318
+
+### v0.58.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260213
+
+### v0.57.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260202
+
+### v0.56.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260120
+
+### v0.55.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260107
+
+### v0.54.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251209
+
+### v0.53.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251112
+
+### v0.52.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251027
+
+### v0.51.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251001
+
+### v0.50.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250922
+
+### v0.49.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250813
+
+### v0.48.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250723
+
+### v0.47.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250528
+* Regenerated using generator version 0.18.0
+
 ### v0.46.0 (2025-05-21)
 
 * Regenerated from discovery document revision 20250514

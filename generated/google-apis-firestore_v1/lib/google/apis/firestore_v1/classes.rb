@@ -826,6 +826,113 @@ module Google
         end
       end
       
+      # The request for Firestore.ExecutePipeline.
+      class ExecutePipelineRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Automatically commits the transaction after the pipeline has been
+        # executed. Only permitted in combination with `transaction` or `new_transaction`
+        # .
+        # Corresponds to the JSON property `autoCommitTransaction`
+        # @return [Boolean]
+        attr_accessor :auto_commit_transaction
+        alias_method :auto_commit_transaction?, :auto_commit_transaction
+      
+        # Options for creating a new transaction.
+        # Corresponds to the JSON property `newTransaction`
+        # @return [Google::Apis::FirestoreV1::TransactionOptions]
+        attr_accessor :new_transaction
+      
+        # Execute the pipeline in a snapshot transaction at the given time. This must be
+        # a microsecond precision timestamp within the past one hour, or if Point-in-
+        # Time Recovery is enabled, can additionally be a whole minute timestamp within
+        # the past 7 days.
+        # Corresponds to the JSON property `readTime`
+        # @return [String]
+        attr_accessor :read_time
+      
+        # A Firestore query represented as an ordered list of operations / stages. This
+        # is considered the top-level function which plans and executes a query. It is
+        # logically equivalent to `query(stages, options)`, but prevents the client from
+        # having to build a function wrapper.
+        # Corresponds to the JSON property `structuredPipeline`
+        # @return [Google::Apis::FirestoreV1::StructuredPipeline]
+        attr_accessor :structured_pipeline
+      
+        # Run the query within an already active transaction. The value here is the
+        # opaque transaction ID to execute the query in.
+        # Corresponds to the JSON property `transaction`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :transaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_commit_transaction = args[:auto_commit_transaction] if args.key?(:auto_commit_transaction)
+          @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
+          @read_time = args[:read_time] if args.key?(:read_time)
+          @structured_pipeline = args[:structured_pipeline] if args.key?(:structured_pipeline)
+          @transaction = args[:transaction] if args.key?(:transaction)
+        end
+      end
+      
+      # The response for Firestore.Execute.
+      class ExecutePipelineResponse
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the results are valid. This is a (not strictly)
+        # monotonically increasing value across multiple responses in the same stream.
+        # The API guarantees that all previously returned results are still valid at the
+        # latest `execution_time`. This allows the API consumer to treat the query if it
+        # ran at the latest `execution_time` returned. If the query returns no results,
+        # a response with `execution_time` and no `results` will be sent, and this
+        # represents the time at which the operation was run.
+        # Corresponds to the JSON property `executionTime`
+        # @return [String]
+        attr_accessor :execution_time
+      
+        # Pipeline explain stats. Depending on the explain options in the original
+        # request, this can contain the optimized plan and / or execution stats.
+        # Corresponds to the JSON property `explainStats`
+        # @return [Google::Apis::FirestoreV1::ExplainStats]
+        attr_accessor :explain_stats
+      
+        # An ordered batch of results returned executing a pipeline. The batch size is
+        # variable, and can even be zero for when only a partial progress message is
+        # returned. The fields present in the returned documents are only those that
+        # were explicitly requested in the pipeline, this includes those like `__name__`
+        # and `__update_time__`. This is explicitly a divergence from `Firestore.
+        # RunQuery` / `Firestore.GetDocument` RPCs which always return such fields even
+        # when they are not specified in the `mask`.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::FirestoreV1::Document>]
+        attr_accessor :results
+      
+        # Newly created transaction identifier. This field is only specified as part of
+        # the first response from the server, alongside the `results` field when the
+        # original request specified ExecuteRequest.new_transaction.
+        # Corresponds to the JSON property `transaction`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :transaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_time = args[:execution_time] if args.key?(:execution_time)
+          @explain_stats = args[:explain_stats] if args.key?(:explain_stats)
+          @results = args[:results] if args.key?(:results)
+          @transaction = args[:transaction] if args.key?(:transaction)
+        end
+      end
+      
       # Execution statistics for the query.
       class ExecutionStats
         include Google::Apis::Core::Hashable
@@ -956,6 +1063,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analyze = args[:analyze] if args.key?(:analyze)
+        end
+      end
+      
+      # Pipeline explain stats. Depending on the explain options in the original
+      # request, this can contain the optimized plan and / or execution stats.
+      class ExplainStats
+        include Google::Apis::Core::Hashable
+      
+        # The format depends on the `output_format` options in the request. Currently
+        # there are two supported options: `TEXT` and `JSON`. Both supply a `google.
+        # protobuf.StringValue`.
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,Object>]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
         end
       end
       
@@ -1156,6 +1285,40 @@ module Google
         end
       end
       
+      # Represents an unevaluated scalar expression. For example, the expression `like(
+      # user_name, "%alice%")` is represented as: ``` name: "like" args `
+      # field_reference: "user_name" ` args ` string_value: "%alice%" ` ```
+      class Function
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Ordered list of arguments the given function expects.
+        # Corresponds to the JSON property `args`
+        # @return [Array<Google::Apis::FirestoreV1::Value>]
+        attr_accessor :args
+      
+        # Required. The name of the function to evaluate. **Requires:** * must be in
+        # snake case (lower case with underscore separator).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Optional named arguments that certain functions may support.
+        # Corresponds to the JSON property `options`
+        # @return [Hash<String,Google::Apis::FirestoreV1::Value>]
+        attr_accessor :options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @name = args[:name] if args.key?(:name)
+          @options = args[:options] if args.key?(:options)
+        end
+      end
+      
       # A Backup of a Cloud Firestore Database. The backup contains all documents and
       # index configurations for the given database at a specific point in time.
       class GoogleFirestoreAdminV1Backup
@@ -1179,7 +1342,10 @@ module Google
         attr_accessor :expire_time
       
         # Output only. The unique resource name of the Backup. Format is `projects/`
-        # project`/locations/`location`/backups/`backup``.
+        # project`/locations/`location`/backups/`backup``. The location in the name will
+        # be the Standard Managed Multi-Region (SMMR) location (e.g. `us`) if the backup
+        # was created with an SMMR location, or the Google Managed Multi-Region (GMMR)
+        # location (e.g. `nam5`) if the backup was created with a GMMR location.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1395,6 +1561,110 @@ module Google
         end
       end
       
+      # Metadata for the long-running operation from the CloneDatabase request.
+      class GoogleFirestoreAdminV1CloneDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The name of the database being cloned to.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # The time the clone finished, unset for ongoing clones.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The operation state of the clone.
+        # Corresponds to the JSON property `operationState`
+        # @return [String]
+        attr_accessor :operation_state
+      
+        # A consistent snapshot of a database at a specific point in time. A PITR (Point-
+        # in-time recovery) snapshot with previous versions of a database's data is
+        # available for every minute up to the associated database's data retention
+        # period. If the PITR feature is enabled, the retention period is 7 days;
+        # otherwise, it is one hour.
+        # Corresponds to the JSON property `pitrSnapshot`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot]
+        attr_accessor :pitr_snapshot
+      
+        # Describes the progress of the operation. Unit of work is generic and must be
+        # interpreted based on where Progress is used.
+        # Corresponds to the JSON property `progressPercentage`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress]
+        attr_accessor :progress_percentage
+      
+        # The time the clone was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @operation_state = args[:operation_state] if args.key?(:operation_state)
+          @pitr_snapshot = args[:pitr_snapshot] if args.key?(:pitr_snapshot)
+          @progress_percentage = args[:progress_percentage] if args.key?(:progress_percentage)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The request message for FirestoreAdmin.CloneDatabase.
+      class GoogleFirestoreAdminV1CloneDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID to use for the database, which will become the final
+        # component of the database's resource name. This database ID must not be
+        # associated with an existing database. This value should be 4-63 characters.
+        # Valid characters are /a-z-/ with first character a letter and the last a
+        # letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-[0-9a-
+        # f]`12`/. "(default)" database ID is also valid if the database is Standard
+        # edition.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        # Encryption configuration for a new database being created from another source.
+        # The source could be a Backup or a PitrSnapshot.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig]
+        attr_accessor :encryption_config
+      
+        # A consistent snapshot of a database at a specific point in time. A PITR (Point-
+        # in-time recovery) snapshot with previous versions of a database's data is
+        # available for every minute up to the associated database's data retention
+        # period. If the PITR feature is enabled, the retention period is 7 days;
+        # otherwise, it is one hour.
+        # Corresponds to the JSON property `pitrSnapshot`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot]
+        attr_accessor :pitr_snapshot
+      
+        # Optional. Immutable. Tags to be bound to the cloned database. The tags should
+        # be provided in the format of `tagKeys/`tag_key_id` -> tagValues/`tag_value_id``
+        # .
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_id = args[:database_id] if args.key?(:database_id)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @pitr_snapshot = args[:pitr_snapshot] if args.key?(:pitr_snapshot)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # The CMEK (Customer Managed Encryption Key) configuration for a Firestore
       # database. If not present, the database is secured by the default Google
       # encryption key.
@@ -1498,7 +1768,14 @@ module Google
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CmekConfig]
         attr_accessor :cmek_config
       
-        # The concurrency control mode to use for this database.
+        # The default concurrency control mode to use for this database. If unspecified
+        # in a CreateDatabase request, this will default based on the database edition:
+        # Optimistic for Enterprise and Pessimistic for all other databases. While
+        # transactions can explicitly specify their own concurrency mode, this setting
+        # defines the default behavior when left unspecified. Important: This database-
+        # level setting is not respected for Firestore with MongoDB compatibility. All
+        # transactions through the MongoDB compatibility layer will use optimistic
+        # concurrency control, regardless of this setting.
         # Corresponds to the JSON property `concurrencyMode`
         # @return [String]
         attr_accessor :concurrency_mode
@@ -1542,6 +1819,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Optional. The Firestore API data access mode to use for this database. If not
+        # set on write: - the default value is DATA_ACCESS_MODE_DISABLED for Enterprise
+        # Edition. - the default value is DATA_ACCESS_MODE_ENABLED for Standard Edition.
+        # Corresponds to the JSON property `firestoreDataAccessMode`
+        # @return [String]
+        attr_accessor :firestore_data_access_mode
+      
         # Output only. Background: Free tier is the ability of a Firestore database to
         # use a small amount of resources every day without being charged. Once usage
         # exceeds the free tier limit further usage is charged. Whether this database
@@ -1564,11 +1848,19 @@ module Google
         # @return [String]
         attr_accessor :key_prefix
       
-        # The location of the database. Available locations are listed at https://cloud.
-        # google.com/firestore/docs/locations.
+        # Required. The location of the database. Available locations are listed at
+        # https://cloud.google.com/firestore/docs/locations.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
+      
+        # Optional. The MongoDB compatible API data access mode to use for this database.
+        # If not set on write, the default value is DATA_ACCESS_MODE_ENABLED for
+        # Enterprise Edition. The value is always DATA_ACCESS_MODE_DISABLED for Standard
+        # Edition.
+        # Corresponds to the JSON property `mongodbCompatibleDataAccessMode`
+        # @return [String]
+        attr_accessor :mongodb_compatible_data_access_mode
       
         # The resource name of the Database. Format: `projects/`project`/databases/`
         # database``
@@ -1587,6 +1879,11 @@ module Google
         # @return [String]
         attr_accessor :previous_id
       
+        # Immutable. The default Realtime Updates mode to use for this database.
+        # Corresponds to the JSON property `realtimeUpdatesMode`
+        # @return [String]
+        attr_accessor :realtime_updates_mode
+      
         # Information about the provenance of this database.
         # Corresponds to the JSON property `sourceInfo`
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo]
@@ -1599,8 +1896,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
-        # The type of the database. See https://cloud.google.com/datastore/docs/
-        # firestore-or-datastore for information about how to choose.
+        # Required. The type of the database. See https://cloud.google.com/datastore/
+        # docs/firestore-or-datastore for information about how to choose.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1641,12 +1938,15 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @earliest_version_time = args[:earliest_version_time] if args.key?(:earliest_version_time)
           @etag = args[:etag] if args.key?(:etag)
+          @firestore_data_access_mode = args[:firestore_data_access_mode] if args.key?(:firestore_data_access_mode)
           @free_tier = args[:free_tier] if args.key?(:free_tier)
           @key_prefix = args[:key_prefix] if args.key?(:key_prefix)
           @location_id = args[:location_id] if args.key?(:location_id)
+          @mongodb_compatible_data_access_mode = args[:mongodb_compatible_data_access_mode] if args.key?(:mongodb_compatible_data_access_mode)
           @name = args[:name] if args.key?(:name)
           @point_in_time_recovery_enablement = args[:point_in_time_recovery_enablement] if args.key?(:point_in_time_recovery_enablement)
           @previous_id = args[:previous_id] if args.key?(:previous_id)
+          @realtime_updates_mode = args[:realtime_updates_mode] if args.key?(:realtime_updates_mode)
           @source_info = args[:source_info] if args.key?(:source_info)
           @tags = args[:tags] if args.key?(:tags)
           @type = args[:type] if args.key?(:type)
@@ -1696,7 +1996,7 @@ module Google
       end
       
       # Encryption configuration for a new database being created from another source.
-      # The source could be a Backup .
+      # The source could be a Backup or a PitrSnapshot.
       class GoogleFirestoreAdminV1EncryptionConfig
         include Google::Apis::Core::Hashable
       
@@ -1805,8 +2105,8 @@ module Google
       class GoogleFirestoreAdminV1ExportDocumentsRequest
         include Google::Apis::Core::Hashable
       
-        # Which collection IDs to export. Unspecified means all collections. Each
-        # collection ID in this list must be unique.
+        # IDs of the collection groups to export. Unspecified means all collection
+        # groups. Each collection group in this list must be unique.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -1905,11 +2205,13 @@ module Google
         attr_accessor :name
       
         # The TTL (time-to-live) configuration for documents that have this `Field` set.
-        # Storing a timestamp value into a TTL-enabled field will be treated as the
-        # document's absolute expiration time. Timestamp values in the past indicate
-        # that the document is eligible for immediate expiration. Using any other data
-        # type or leaving the field absent will disable expiration for the individual
-        # document.
+        # A timestamp stored in a TTL-enabled field will be used to determine the
+        # expiration time of the document. The expiration time is the sum of the
+        # timestamp value and the `expiration_offset`. For Enterprise edition databases,
+        # the timestamp value may alternatively be stored in an array value in the TTL-
+        # enabled field. An expiration time in the past indicates that the document is
+        # eligible for immediate expiration. Using any other data type or leaving the
+        # field absent will disable expiration for the individual document.
         # Corresponds to the JSON property `ttlConfig`
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1TtlConfig]
         attr_accessor :ttl_config
@@ -2089,8 +2391,9 @@ module Google
       class GoogleFirestoreAdminV1ImportDocumentsRequest
         include Google::Apis::Core::Hashable
       
-        # Which collection IDs to import. Unspecified means all collections included in
-        # the import. Each collection ID in this list must be unique.
+        # IDs of the collection groups to import. Unspecified means all collection
+        # groups that were included in the export. Each collection group in this list
+        # must be unique.
         # Corresponds to the JSON property `collectionIds`
         # @return [Array<String>]
         attr_accessor :collection_ids
@@ -2179,6 +2482,11 @@ module Google
         # @return [String]
         attr_accessor :query_scope
       
+        # Options for search indexes at the definition level.
+        # Corresponds to the JSON property `searchIndexOptions`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchIndexOptions]
+        attr_accessor :search_index_options
+      
         # Optional. The number of shards for the index.
         # Corresponds to the JSON property `shardCount`
         # @return [Fixnum]
@@ -2188,6 +2496,13 @@ module Google
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
+      
+        # Optional. Whether it is an unique index. Unique index ensures all values for
+        # the indexed field(s) are unique across documents.
+        # Corresponds to the JSON property `unique`
+        # @return [Boolean]
+        attr_accessor :unique
+        alias_method :unique?, :unique
       
         def initialize(**args)
            update!(**args)
@@ -2201,8 +2516,10 @@ module Google
           @multikey = args[:multikey] if args.key?(:multikey)
           @name = args[:name] if args.key?(:name)
           @query_scope = args[:query_scope] if args.key?(:query_scope)
+          @search_index_options = args[:search_index_options] if args.key?(:search_index_options)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
           @state = args[:state] if args.key?(:state)
+          @unique = args[:unique] if args.key?(:unique)
         end
       end
       
@@ -2301,6 +2618,11 @@ module Google
         # @return [String]
         attr_accessor :order
       
+        # The configuration for how to index a field for search.
+        # Corresponds to the JSON property `searchConfig`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchConfig]
+        attr_accessor :search_config
+      
         # The index configuration to support vector search operations
         # Corresponds to the JSON property `vectorConfig`
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1VectorConfig]
@@ -2315,6 +2637,7 @@ module Google
           @array_config = args[:array_config] if args.key?(:array_config)
           @field_path = args[:field_path] if args.key?(:field_path)
           @order = args[:order] if args.key?(:order)
+          @search_config = args[:search_config] if args.key?(:search_config)
           @vector_config = args[:vector_config] if args.key?(:vector_config)
         end
       end
@@ -2537,6 +2860,43 @@ module Google
         end
       end
       
+      # A consistent snapshot of a database at a specific point in time. A PITR (Point-
+      # in-time recovery) snapshot with previous versions of a database's data is
+      # available for every minute up to the associated database's data retention
+      # period. If the PITR feature is enabled, the retention period is 7 days;
+      # otherwise, it is one hour.
+      class GoogleFirestoreAdminV1PitrSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the database that this was a snapshot of. Format: `
+        # projects/`project`/databases/`database``.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Output only. Public UUID of the database the snapshot was associated with.
+        # Corresponds to the JSON property `databaseUid`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :database_uid
+      
+        # Required. Snapshot time of the database.
+        # Corresponds to the JSON property `snapshotTime`
+        # @return [String]
+        attr_accessor :snapshot_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @database_uid = args[:database_uid] if args.key?(:database_uid)
+          @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
+        end
+      end
+      
       # Describes the progress of the operation. Unit of work is generic and must be
       # interpreted based on where Progress is used.
       class GoogleFirestoreAdminV1Progress
@@ -2663,13 +3023,14 @@ module Google
         # associated with an existing database. This value should be 4-63 characters.
         # Valid characters are /a-z-/ with first character a letter and the last a
         # letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-[0-9a-
-        # f]`12`/. "(default)" database ID is also valid.
+        # f]`12`/. "(default)" database ID is also valid if the database is Standard
+        # edition.
         # Corresponds to the JSON property `databaseId`
         # @return [String]
         attr_accessor :database_id
       
         # Encryption configuration for a new database being created from another source.
-        # The source could be a Backup .
+        # The source could be a Backup or a PitrSnapshot.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig]
         attr_accessor :encryption_config
@@ -2691,6 +3052,130 @@ module Google
           @database_id = args[:database_id] if args.key?(:database_id)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # The configuration for how to index a field for search.
+      class GoogleFirestoreAdminV1SearchConfig
+        include Google::Apis::Core::Hashable
+      
+        # The specification for how to build a geo search index for a field.
+        # Corresponds to the JSON property `geoSpec`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchGeoSpec]
+        attr_accessor :geo_spec
+      
+        # The specification for how to build a text search index for a field.
+        # Corresponds to the JSON property `textSpec`
+        # @return [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchTextSpec]
+        attr_accessor :text_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @geo_spec = args[:geo_spec] if args.key?(:geo_spec)
+          @text_spec = args[:text_spec] if args.key?(:text_spec)
+        end
+      end
+      
+      # The specification for how to build a geo search index for a field.
+      class GoogleFirestoreAdminV1SearchGeoSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Disables geoJSON indexing for the field. By default, geoJSON points
+        # are indexed.
+        # Corresponds to the JSON property `geoJsonIndexingDisabled`
+        # @return [Boolean]
+        attr_accessor :geo_json_indexing_disabled
+        alias_method :geo_json_indexing_disabled?, :geo_json_indexing_disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @geo_json_indexing_disabled = args[:geo_json_indexing_disabled] if args.key?(:geo_json_indexing_disabled)
+        end
+      end
+      
+      # Options for search indexes at the definition level.
+      class GoogleFirestoreAdminV1SearchIndexOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The language to use for text search indexes. Used as the default
+        # language if not overridden at the document level by specifying the `
+        # text_language_override_field`. The language is specified as a BCP 47 language
+        # code. For indexes with MONGODB_COMPATIBLE_API ApiScope: If unspecified, the
+        # default language is English. For indexes with `ANY_API` ApiScope: If
+        # unspecified, the default behavior is autodetect.
+        # Corresponds to the JSON property `textLanguage`
+        # @return [String]
+        attr_accessor :text_language
+      
+        # Optional. The field in the document that specifies which language to use for
+        # that specific document. For indexes with MONGODB_COMPATIBLE_API ApiScope: if
+        # unspecified, the language is taken from the "language" field if it exists or
+        # from `text_language` if it does not.
+        # Corresponds to the JSON property `textLanguageOverrideFieldPath`
+        # @return [String]
+        attr_accessor :text_language_override_field_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text_language = args[:text_language] if args.key?(:text_language)
+          @text_language_override_field_path = args[:text_language_override_field_path] if args.key?(:text_language_override_field_path)
+        end
+      end
+      
+      # Specification of how the field should be indexed for search text indexes.
+      class GoogleFirestoreAdminV1SearchTextIndexSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. How to index the text field value.
+        # Corresponds to the JSON property `indexType`
+        # @return [String]
+        attr_accessor :index_type
+      
+        # Required. How to match the text field value.
+        # Corresponds to the JSON property `matchType`
+        # @return [String]
+        attr_accessor :match_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index_type = args[:index_type] if args.key?(:index_type)
+          @match_type = args[:match_type] if args.key?(:match_type)
+        end
+      end
+      
+      # The specification for how to build a text search index for a field.
+      class GoogleFirestoreAdminV1SearchTextSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifications for how the field should be indexed. Repeated so that
+        # the field can be indexed in multiple ways.
+        # Corresponds to the JSON property `indexSpecs`
+        # @return [Array<Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchTextIndexSpec>]
+        attr_accessor :index_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index_specs = args[:index_specs] if args.key?(:index_specs)
         end
       end
       
@@ -2767,13 +3252,24 @@ module Google
       end
       
       # The TTL (time-to-live) configuration for documents that have this `Field` set.
-      # Storing a timestamp value into a TTL-enabled field will be treated as the
-      # document's absolute expiration time. Timestamp values in the past indicate
-      # that the document is eligible for immediate expiration. Using any other data
-      # type or leaving the field absent will disable expiration for the individual
-      # document.
+      # A timestamp stored in a TTL-enabled field will be used to determine the
+      # expiration time of the document. The expiration time is the sum of the
+      # timestamp value and the `expiration_offset`. For Enterprise edition databases,
+      # the timestamp value may alternatively be stored in an array value in the TTL-
+      # enabled field. An expiration time in the past indicates that the document is
+      # eligible for immediate expiration. Using any other data type or leaving the
+      # field absent will disable expiration for the individual document.
       class GoogleFirestoreAdminV1TtlConfig
         include Google::Apis::Core::Hashable
+      
+        # Optional. The offset, relative to the timestamp value from the TTL-enabled
+        # field, used to determine the document's expiration time. `expiration_offset.
+        # seconds` must be between 0 and 2,147,483,647 inclusive. Values more precise
+        # than seconds are rejected. If unset, defaults to 0, in which case the
+        # expiration time is the same as the timestamp value from the TTL-enabled field.
+        # Corresponds to the JSON property `expirationOffset`
+        # @return [String]
+        attr_accessor :expiration_offset
       
         # Output only. The state of the TTL configuration.
         # Corresponds to the JSON property `state`
@@ -2786,6 +3282,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @expiration_offset = args[:expiration_offset] if args.key?(:expiration_offset)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -2799,6 +3296,12 @@ module Google
         # @return [String]
         attr_accessor :change_type
       
+        # The offset, relative to the timestamp value in the TTL-enabled field, used
+        # determine the document's expiration time.
+        # Corresponds to the JSON property `expirationOffset`
+        # @return [String]
+        attr_accessor :expiration_offset
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2806,6 +3309,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @change_type = args[:change_type] if args.key?(:change_type)
+          @expiration_offset = args[:expiration_offset] if args.key?(:expiration_offset)
         end
       end
       
@@ -2949,6 +3453,14 @@ module Google
         # @return [Array<Google::Apis::FirestoreV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2957,6 +3469,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3437,6 +3950,25 @@ module Google
         end
       end
       
+      # A Firestore query represented as an ordered list of operations / stages.
+      class Pipeline
+        include Google::Apis::Core::Hashable
+      
+        # Required. Ordered list of stages to evaluate.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::FirestoreV1::Stage>]
+        attr_accessor :stages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stages = args[:stages] if args.key?(:stages)
+        end
+      end
+      
       # Planning phase information for the query.
       class PlanSummary
         include Google::Apis::Core::Hashable
@@ -3559,10 +4091,17 @@ module Google
       end
       
       # Options for a transaction that can be used to read and write documents.
-      # Firestore does not allow 3rd party auth requests to create read-write.
-      # transactions.
       class ReadWrite
         include Google::Apis::Core::Hashable
+      
+        # Optional. The concurrency control mode to use for this transaction. A database
+        # is able to use different concurrency modes for different transactions
+        # simultaneously. 3rd party auth requests are only allowed to create optimistic
+        # read-write transactions and must specify that here even if the database-level
+        # setting is already configured to optimistic.
+        # Corresponds to the JSON property `concurrencyMode`
+        # @return [String]
+        attr_accessor :concurrency_mode
       
         # An optional transaction to retry.
         # Corresponds to the JSON property `retryTransaction`
@@ -3576,6 +4115,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @concurrency_mode = args[:concurrency_mode] if args.key?(:concurrency_mode)
           @retry_transaction = args[:retry_transaction] if args.key?(:retry_transaction)
         end
       end
@@ -3800,6 +4340,43 @@ module Google
         end
       end
       
+      # A single operation within a pipeline. A stage is made up of a unique name, and
+      # a list of arguments. The exact number of arguments & types is dependent on the
+      # stage type. To give an example, the stage `filter(state = "MD")` would be
+      # encoded as: ``` name: "filter" args ` function_value ` name: "eq" args `
+      # field_reference_value: "state" ` args ` string_value: "MD" ` ` ` ``` See
+      # public documentation for the full list.
+      class Stage
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Ordered list of arguments the given stage expects.
+        # Corresponds to the JSON property `args`
+        # @return [Array<Google::Apis::FirestoreV1::Value>]
+        attr_accessor :args
+      
+        # Required. The name of the stage to evaluate. **Requires:** * must be in snake
+        # case (lower case with underscore separator).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Optional named arguments that certain functions may support.
+        # Corresponds to the JSON property `options`
+        # @return [Hash<String,Google::Apis::FirestoreV1::Value>]
+        attr_accessor :options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @name = args[:name] if args.key?(:name)
+          @options = args[:options] if args.key?(:options)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -3868,6 +4445,34 @@ module Google
         end
       end
       
+      # A Firestore query represented as an ordered list of operations / stages. This
+      # is considered the top-level function which plans and executes a query. It is
+      # logically equivalent to `query(stages, options)`, but prevents the client from
+      # having to build a function wrapper.
+      class StructuredPipeline
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional query-level arguments.
+        # Corresponds to the JSON property `options`
+        # @return [Hash<String,Google::Apis::FirestoreV1::Value>]
+        attr_accessor :options
+      
+        # A Firestore query represented as an ordered list of operations / stages.
+        # Corresponds to the JSON property `pipeline`
+        # @return [Google::Apis::FirestoreV1::Pipeline]
+        attr_accessor :pipeline
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @options = args[:options] if args.key?(:options)
+          @pipeline = args[:pipeline] if args.key?(:pipeline)
+        end
+      end
+      
       # A Firestore query. The query stages are executed in the following order: 1.
       # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
       # find_nearest
@@ -3906,19 +4511,25 @@ module Google
         # @return [Fixnum]
         attr_accessor :offset
       
-        # The order to apply to the query results. Firestore allows callers to provide a
-        # full ordering, a partial ordering, or no ordering at all. In all cases,
-        # Firestore guarantees a stable ordering through the following rules: * The `
-        # order_by` is required to reference all fields used with an inequality filter. *
-        # All fields that are required to be in the `order_by` but are not already
-        # present are appended in lexicographical ordering of the field name. * If an
-        # order on `__name__` is not specified, it is appended by default. Fields are
-        # appended with the same sort direction as the last order specified, or '
-        # ASCENDING' if no order was specified. For example: * `ORDER BY a` becomes `
-        # ORDER BY a ASC, __name__ ASC` * `ORDER BY a DESC` becomes `ORDER BY a DESC,
-        # __name__ DESC` * `WHERE a > 1` becomes `WHERE a > 1 ORDER BY a ASC, __name__
-        # ASC` * `WHERE __name__ > ... AND a > 1` becomes `WHERE __name__ > ... AND a >
-        # 1 ORDER BY a ASC, __name__ ASC`
+        # The order to apply to the query results. Callers can provide a full ordering,
+        # a partial ordering, or no ordering at all. While Firestore will always respect
+        # the provided order, the behavior for queries without a full ordering is
+        # different per database edition: In Standard edition, Firestore guarantees a
+        # stable ordering through the following rules: * The `order_by` is required to
+        # reference all fields used with an inequality filter. * All fields that are
+        # required to be in the `order_by` but are not already present are appended in
+        # lexicographical ordering of the field name. * If an order on `__name__` is not
+        # specified, it is appended by default. Fields are appended with the same sort
+        # direction as the last order specified, or 'ASCENDING' if no order was
+        # specified. For example: * `ORDER BY a` becomes `ORDER BY a ASC, __name__ ASC` *
+        # `ORDER BY a DESC` becomes `ORDER BY a DESC, __name__ DESC` * `WHERE a > 1`
+        # becomes `WHERE a > 1 ORDER BY a ASC, __name__ ASC` * `WHERE __name__ > ... AND
+        # a > 1` becomes `WHERE __name__ > ... AND a > 1 ORDER BY a ASC, __name__ ASC`
+        # In Enterprise edition, Firestore does not guarantee a stable ordering. Instead
+        # it will pick the most efficient ordering based on the indexes available at the
+        # time of query execution. This will result in a different ordering for queries
+        # that are otherwise identical. To ensure a stable ordering, always include a
+        # unique field in the `order_by` clause, such as `__name__`.
         # Corresponds to the JSON property `orderBy`
         # @return [Array<Google::Apis::FirestoreV1::Order>]
         attr_accessor :order_by
@@ -4127,8 +4738,6 @@ module Google
         attr_accessor :read_only
       
         # Options for a transaction that can be used to read and write documents.
-        # Firestore does not allow 3rd party auth requests to create read-write.
-        # transactions.
         # Corresponds to the JSON property `readWrite`
         # @return [Google::Apis::FirestoreV1::ReadWrite]
         attr_accessor :read_write
@@ -4196,6 +4805,21 @@ module Google
         # @return [Float]
         attr_accessor :double_value
       
+        # Value which references a field. This is considered relative (vs absolute)
+        # since it only refers to a field and not a field within a particular document. *
+        # *Requires:** * Must follow field reference limitations. * Not allowed to be
+        # used when writing documents.
+        # Corresponds to the JSON property `fieldReferenceValue`
+        # @return [String]
+        attr_accessor :field_reference_value
+      
+        # Represents an unevaluated scalar expression. For example, the expression `like(
+        # user_name, "%alice%")` is represented as: ``` name: "like" args `
+        # field_reference: "user_name" ` args ` string_value: "%alice%" ` ```
+        # Corresponds to the JSON property `functionValue`
+        # @return [Google::Apis::FirestoreV1::Function]
+        attr_accessor :function_value
+      
         # An object that represents a latitude/longitude pair. This is expressed as a
         # pair of doubles to represent degrees latitude and degrees longitude. Unless
         # specified otherwise, this object must conform to the WGS84 standard. Values
@@ -4219,6 +4843,11 @@ module Google
         # @return [String]
         attr_accessor :null_value
       
+        # A Firestore query represented as an ordered list of operations / stages.
+        # Corresponds to the JSON property `pipelineValue`
+        # @return [Google::Apis::FirestoreV1::Pipeline]
+        attr_accessor :pipeline_value
+      
         # A reference to a document. For example: `projects/`project_id`/databases/`
         # database_id`/documents/`document_path``.
         # Corresponds to the JSON property `referenceValue`
@@ -4238,6 +4867,13 @@ module Google
         # @return [String]
         attr_accessor :timestamp_value
       
+        # Pointer to a variable defined elsewhere in a pipeline. Unlike `
+        # field_reference_value` which references a field within a document, this refers
+        # to a variable, defined in a separate namespace than the fields of a document.
+        # Corresponds to the JSON property `variableReferenceValue`
+        # @return [String]
+        attr_accessor :variable_reference_value
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4248,13 +4884,17 @@ module Google
           @boolean_value = args[:boolean_value] if args.key?(:boolean_value)
           @bytes_value = args[:bytes_value] if args.key?(:bytes_value)
           @double_value = args[:double_value] if args.key?(:double_value)
+          @field_reference_value = args[:field_reference_value] if args.key?(:field_reference_value)
+          @function_value = args[:function_value] if args.key?(:function_value)
           @geo_point_value = args[:geo_point_value] if args.key?(:geo_point_value)
           @integer_value = args[:integer_value] if args.key?(:integer_value)
           @map_value = args[:map_value] if args.key?(:map_value)
           @null_value = args[:null_value] if args.key?(:null_value)
+          @pipeline_value = args[:pipeline_value] if args.key?(:pipeline_value)
           @reference_value = args[:reference_value] if args.key?(:reference_value)
           @string_value = args[:string_value] if args.key?(:string_value)
           @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
+          @variable_reference_value = args[:variable_reference_value] if args.key?(:variable_reference_value)
         end
       end
       

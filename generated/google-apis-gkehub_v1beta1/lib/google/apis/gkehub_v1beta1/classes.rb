@@ -26,9 +26,9 @@ module Google
       class ApplianceCluster
         include Google::Apis::Core::Hashable
       
-        # Immutable. Self-link of the GCP resource for the Appliance Cluster. For
-        # example: //transferappliance.googleapis.com/projects/my-project/locations/us-
-        # west1-a/appliances/my-appliance
+        # Immutable. Self-link of the Google Cloud resource for the Appliance Cluster.
+        # For example: //transferappliance.googleapis.com/projects/my-project/locations/
+        # us-west1-a/appliances/my-appliance
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
         attr_accessor :resource_link
@@ -327,9 +327,9 @@ module Google
       class EdgeCluster
         include Google::Apis::Core::Hashable
       
-        # Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //
-        # edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/
-        # my-cluster
+        # Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For
+        # example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-
+        # a/clusters/my-cluster
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
         attr_accessor :resource_link
@@ -473,9 +473,9 @@ module Google
         attr_accessor :cluster_missing
         alias_method :cluster_missing?, :cluster_missing
       
-        # Immutable. Self-link of the GCP resource for the GKE cluster. For example: //
-        # container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-
-        # cluster Zonal clusters are also supported.
+        # Immutable. Self-link of the Google Cloud resource for the GKE cluster. For
+        # example: //container.googleapis.com/projects/my-project/locations/us-west1-a/
+        # clusters/my-cluster Zonal clusters are also supported.
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
         attr_accessor :resource_link
@@ -553,7 +553,7 @@ module Google
       
         # Output only. Node providerID as reported by the first node in the list of
         # nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-
-        # node clusters (like GKE-on-GCP), the node_count will be zero and the
+        # node clusters (like GKE-on-Google Cloud), the node_count will be zero and the
         # node_provider_id will be empty.
         # Corresponds to the JSON property `nodeProviderId`
         # @return [String]
@@ -713,6 +713,14 @@ module Google
         # @return [Array<Google::Apis::GkehubV1beta1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -721,6 +729,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -819,9 +828,9 @@ module Google
         # @return [String]
         attr_accessor :infrastructure_type
       
-        # Optional. GCP labels for this membership. These labels are not leveraged by
-        # multi-cluster features, instead, we prefer cluster labels, which can be set on
-        # GKE cluster or other cluster types.
+        # Optional. Google Cloud labels for this membership. These labels are not
+        # leveraged by multi-cluster features, instead, we prefer cluster labels, which
+        # can be set on GKE cluster or other cluster types.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -833,6 +842,11 @@ module Google
         # Corresponds to the JSON property `lastConnectionTime`
         # @return [String]
         attr_accessor :last_connection_time
+      
+        # Output only. The type of the membership.
+        # Corresponds to the JSON property `membershipType`
+        # @return [String]
+        attr_accessor :membership_type
       
         # MonitoringConfig informs Fleet-based applications/services/UIs how the metrics
         # for the underlying cluster is reported to cloud monitoring services. It can be
@@ -885,6 +899,7 @@ module Google
           @infrastructure_type = args[:infrastructure_type] if args.key?(:infrastructure_type)
           @labels = args[:labels] if args.key?(:labels)
           @last_connection_time = args[:last_connection_time] if args.key?(:last_connection_time)
+          @membership_type = args[:membership_type] if args.key?(:membership_type)
           @monitoring_config = args[:monitoring_config] if args.key?(:monitoring_config)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
@@ -1046,11 +1061,12 @@ module Google
         attr_accessor :cluster_missing
         alias_method :cluster_missing?, :cluster_missing
       
-        # Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For
-        # example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-
-        # a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/
-        # locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/
-        # projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+        # Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud
+        # cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/
+        # locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/
+        # projects/my-project/locations/us-west1-a/azureClusters/my-cluster //
+        # gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/
+        # attachedClusters/my-cluster
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
         attr_accessor :resource_link
@@ -1088,9 +1104,9 @@ module Google
         # @return [String]
         attr_accessor :cluster_type
       
-        # Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For
-        # example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/
-        # vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/
+        # Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster.
+        # For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-
+        # a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/
         # locations/us-west1-a/bareMetalClusters/my-cluster
         # Corresponds to the JSON property `resourceLink`
         # @return [String]
@@ -1365,8 +1381,14 @@ module Google
         # @return [String]
         attr_accessor :connect_version
       
-        # Optional. Major version of the Kubernetes cluster. This is only used to
-        # determine which version to use for the CustomResourceDefinition resources, `
+        # Optional. Git version of the Kubernetes cluster. This is only used to gate the
+        # Connect Agent migration to svc.id.goog on GDC-SO 1.33.100 patch and above.
+        # Corresponds to the JSON property `k8sGitVersion`
+        # @return [String]
+        attr_accessor :k8s_git_version
+      
+        # Optional. Major and minor version of the Kubernetes cluster. This is only used
+        # to determine which version to use for the CustomResourceDefinition resources, `
         # apiextensions/v1beta1` or`apiextensions/v1`.
         # Corresponds to the JSON property `k8sVersion`
         # @return [String]
@@ -1387,6 +1409,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connect_version = args[:connect_version] if args.key?(:connect_version)
+          @k8s_git_version = args[:k8s_git_version] if args.key?(:k8s_git_version)
           @k8s_version = args[:k8s_version] if args.key?(:k8s_version)
           @v1beta1_crd = args[:v1beta1_crd] if args.key?(:v1beta1_crd)
         end

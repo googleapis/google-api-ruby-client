@@ -58,6 +58,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckPrewarmedArtifactRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckPrewarmedArtifactResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CleanupPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +125,30 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportArtifactMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportArtifactRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportArtifactResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportedFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +239,12 @@ module Google
       end
       
       class HashProp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageManifest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPrewarmedArtifactsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListPythonPackagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -424,7 +478,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlatformLogsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrewarmArtifactRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrewarmArtifactResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrewarmPlatform
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrewarmedArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -449,6 +539,18 @@ module Google
       end
       
       class RemoteRepositoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemovePrewarmedArtifactRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemovePrewarmedArtifactResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -744,6 +846,29 @@ module Google
         end
       end
       
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CheckPrewarmedArtifactRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stream_location, as: 'streamLocation'
+          property :tag, as: 'tag'
+          property :version, as: 'version'
+        end
+      end
+      
+      class CheckPrewarmedArtifactResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prewarmed_artifact, as: 'prewarmedArtifact', class: Google::Apis::ArtifactregistryV1::PrewarmedArtifact, decorator: Google::Apis::ArtifactregistryV1::PrewarmedArtifact::Representation
+      
+        end
+      end
+      
       class CleanupPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -786,7 +911,10 @@ module Google
       class DockerImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_type, as: 'artifactType'
           property :build_time, as: 'buildTime'
+          collection :image_manifests, as: 'imageManifests', class: Google::Apis::ArtifactregistryV1::ImageManifest, decorator: Google::Apis::ArtifactregistryV1::ImageManifest::Representation
+      
           property :image_size_bytes, :numeric_string => true, as: 'imageSizeBytes'
           property :media_type, as: 'mediaType'
           property :name, as: 'name'
@@ -822,6 +950,41 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ExportArtifactMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exported_files, as: 'exportedFiles', class: Google::Apis::ArtifactregistryV1::ExportedFile, decorator: Google::Apis::ArtifactregistryV1::ExportedFile::Representation
+      
+        end
+      end
+      
+      class ExportArtifactRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_path, as: 'gcsPath'
+          property :source_tag, as: 'sourceTag'
+          property :source_version, as: 'sourceVersion'
+        end
+      end
+      
+      class ExportArtifactResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exported_version, as: 'exportedVersion', class: Google::Apis::ArtifactregistryV1::Version, decorator: Google::Apis::ArtifactregistryV1::Version::Representation
+      
+        end
+      end
+      
+      class ExportedFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_object_path, as: 'gcsObjectPath'
+          collection :hashes, as: 'hashes', class: Google::Apis::ArtifactregistryV1::HashProp, decorator: Google::Apis::ArtifactregistryV1::HashProp::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -954,6 +1117,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
           property :value, :base64 => true, as: 'value'
+        end
+      end
+      
+      class ImageManifest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :digest, as: 'digest'
+          property :media_type, as: 'mediaType'
+          property :os, as: 'os'
+          collection :os_features, as: 'osFeatures'
+          property :os_version, as: 'osVersion'
+          property :variant, as: 'variant'
         end
       end
       
@@ -1154,6 +1330,15 @@ module Google
         end
       end
       
+      class ListPrewarmedArtifactsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :prewarmed_artifacts, as: 'prewarmedArtifacts', class: Google::Apis::ArtifactregistryV1::PrewarmedArtifact, decorator: Google::Apis::ArtifactregistryV1::PrewarmedArtifact::Representation
+      
+        end
+      end
+      
       class ListPythonPackagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1290,6 +1475,14 @@ module Google
         end
       end
       
+      class PlatformLogsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :logging_state, as: 'loggingState'
+          property :severity_level, as: 'severityLevel'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1297,6 +1490,53 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PrewarmArtifactRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
+          property :platform, as: 'platform', class: Google::Apis::ArtifactregistryV1::PrewarmPlatform, decorator: Google::Apis::ArtifactregistryV1::PrewarmPlatform::Representation
+      
+          property :retention_days, :numeric_string => true, as: 'retentionDays'
+          property :stream_location, as: 'streamLocation'
+          property :tag, as: 'tag'
+          property :version, as: 'version'
+        end
+      end
+      
+      class PrewarmArtifactResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prewarmed_artifact, as: 'prewarmedArtifact', class: Google::Apis::ArtifactregistryV1::PrewarmedArtifact, decorator: Google::Apis::ArtifactregistryV1::PrewarmedArtifact::Representation
+      
+        end
+      end
+      
+      class PrewarmPlatform
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :os, as: 'os'
+        end
+      end
+      
+      class PrewarmedArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_time, as: 'expirationTime'
+          property :location, as: 'location'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class ProjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :platform_logs_config, as: 'platformLogsConfig', class: Google::Apis::ArtifactregistryV1::PlatformLogsConfig, decorator: Google::Apis::ArtifactregistryV1::PlatformLogsConfig::Representation
+      
         end
       end
       
@@ -1354,6 +1594,23 @@ module Google
         end
       end
       
+      class RemovePrewarmedArtifactRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stream_location, as: 'streamLocation'
+          property :tag, as: 'tag'
+          property :version, as: 'version'
+        end
+      end
+      
+      class RemovePrewarmedArtifactResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prewarmed_artifact, as: 'prewarmedArtifact', class: Google::Apis::ArtifactregistryV1::PrewarmedArtifact, decorator: Google::Apis::ArtifactregistryV1::PrewarmedArtifact::Representation
+      
+        end
+      end
+      
       class Repository
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1372,6 +1629,8 @@ module Google
       
           property :mode, as: 'mode'
           property :name, as: 'name'
+          property :platform_logs_config, as: 'platformLogsConfig', class: Google::Apis::ArtifactregistryV1::PlatformLogsConfig, decorator: Google::Apis::ArtifactregistryV1::PlatformLogsConfig::Representation
+      
           property :registry_uri, as: 'registryUri'
           property :remote_repository_config, as: 'remoteRepositoryConfig', class: Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig, decorator: Google::Apis::ArtifactregistryV1::RemoteRepositoryConfig::Representation
       
@@ -1628,6 +1887,8 @@ module Google
           hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          collection :fingerprints, as: 'fingerprints', class: Google::Apis::ArtifactregistryV1::HashProp, decorator: Google::Apis::ArtifactregistryV1::HashProp::Representation
+      
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           collection :related_tags, as: 'relatedTags', class: Google::Apis::ArtifactregistryV1::Tag, decorator: Google::Apis::ArtifactregistryV1::Tag::Representation

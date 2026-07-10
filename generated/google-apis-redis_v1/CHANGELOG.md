@@ -1,5 +1,95 @@
 # Release history for google-apis-redis_v1
 
+### v0.92.0 (2026-06-28)
+
+* Regenerated from discovery document revision 20260616
+
+### v0.91.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260526
+* Regenerated using generator version 0.19.0
+
+### v0.90.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260423
+
+### v0.89.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260406
+
+### v0.88.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260309
+
+### v0.87.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260210
+
+### v0.86.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260129
+
+### v0.85.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20260107
+
+### v0.84.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251104
+
+### v0.83.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251021
+
+### v0.82.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251009
+
+### v0.81.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251007
+
+### v0.80.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250930
+
+### v0.79.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250909
+
+### v0.78.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250902
+
+### v0.77.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250825
+
+### v0.76.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250819
+
+### v0.75.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250729
+
+### v0.74.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250718
+
+### v0.73.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250701
+
+### v0.72.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250617
+
+### v0.71.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250527
+* Regenerated using generator version 0.18.0
+
 ### v0.70.0 (2025-05-04)
 
 * Regenerated from discovery document revision 20250418

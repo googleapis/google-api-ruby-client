@@ -513,6 +513,11 @@ module Google
         # @return [Google::Apis::DatafusionV1::MaintenancePolicy]
         attr_accessor :maintenance_policy
       
+        # Monitoring configuration for a Data Fusion instance.
+        # Corresponds to the JSON property `monitoringConfig`
+        # @return [Google::Apis::DatafusionV1::MonitoringConfig]
+        attr_accessor :monitoring_config
+      
         # Output only. The name of this instance is in the form of projects/`project`/
         # locations/`location`/instances/`instance`.
         # Corresponds to the JSON property `name`
@@ -652,6 +657,7 @@ module Google
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @maintenance_events = args[:maintenance_events] if args.key?(:maintenance_events)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
+          @monitoring_config = args[:monitoring_config] if args.key?(:monitoring_config)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @options = args[:options] if args.key?(:options)
@@ -804,6 +810,14 @@ module Google
         # @return [Array<Google::Apis::DatafusionV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -812,6 +826,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -866,6 +881,13 @@ module Google
       class LoggingConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Option to enable the InstanceV2 logging for this instance. This
+        # field is supported only in CDF patch revision versions 6.11.1.1 and above.
+        # Corresponds to the JSON property `enableInstanceV2Logs`
+        # @return [Boolean]
+        attr_accessor :enable_instance_v2_logs
+        alias_method :enable_instance_v2_logs?, :enable_instance_v2_logs
+      
         # Optional. Option to determine whether instance logs should be written to Cloud
         # Logging. By default, instance logs are written to Cloud Logging.
         # Corresponds to the JSON property `instanceCloudLoggingDisabled`
@@ -879,6 +901,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_instance_v2_logs = args[:enable_instance_v2_logs] if args.key?(:enable_instance_v2_logs)
           @instance_cloud_logging_disabled = args[:instance_cloud_logging_disabled] if args.key?(:instance_cloud_logging_disabled)
         end
       end
@@ -959,6 +982,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @recurring_time_window = args[:recurring_time_window] if args.key?(:recurring_time_window)
+        end
+      end
+      
+      # Monitoring configuration for a Data Fusion instance.
+      class MonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Option to enable the instance v2 metrics for this instance. This
+        # field is supported only in CDF versions 6.11.1.1 and above.
+        # Corresponds to the JSON property `enableInstanceV2Metrics`
+        # @return [Boolean]
+        attr_accessor :enable_instance_v2_metrics
+        alias_method :enable_instance_v2_metrics?, :enable_instance_v2_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_instance_v2_metrics = args[:enable_instance_v2_metrics] if args.key?(:enable_instance_v2_metrics)
         end
       end
       

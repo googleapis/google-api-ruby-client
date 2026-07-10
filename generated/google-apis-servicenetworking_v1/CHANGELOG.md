@@ -1,5 +1,34 @@
 # Release history for google-apis-servicenetworking_v1
 
+### v0.86.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260406
+* Regenerated using generator version 0.19.0
+
+### v0.85.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251027
+
+### v0.84.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250929
+
+### v0.83.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250722
+
+### v0.82.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250713
+
+### v0.81.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250618
+
+### v0.80.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250604
+
 ### v0.79.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250521

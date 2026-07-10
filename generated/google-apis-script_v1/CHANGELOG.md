@@ -1,5 +1,22 @@
 # Release history for google-apis-script_v1
 
+### v0.32.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.31.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250824
+
+### v0.30.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250623
+
+### v0.29.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250526
+* Regenerated using generator version 0.18.0
+
 ### v0.28.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

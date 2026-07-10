@@ -69,6 +69,24 @@ module Google
         
         class Encryption
           class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class CustomerManagedEncryptionEnforcementConfig
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+          
+          class CustomerSuppliedEncryptionEnforcementConfig
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+          
+          class GoogleManagedEncryptionEnforcementConfig
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -343,6 +361,12 @@ module Google
       class Object
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class Contexts
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class CustomerEncryption
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -377,6 +401,12 @@ module Google
       end
       
       class ObjectAccessControls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObjectCustomContextPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -448,6 +478,7 @@ module Google
           property :create_time, as: 'createTime', type: DateTime
       
           property :id, as: 'id'
+          property :ingest_on_write, as: 'ingestOnWrite'
           property :kind, as: 'kind'
           property :pending_update, as: 'pendingUpdate'
           property :self_link, as: 'selfLink'
@@ -573,7 +604,40 @@ module Google
         class Encryption
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :customer_managed_encryption_enforcement_config, as: 'customerManagedEncryptionEnforcementConfig', class: Google::Apis::StorageV1::Bucket::Encryption::CustomerManagedEncryptionEnforcementConfig, decorator: Google::Apis::StorageV1::Bucket::Encryption::CustomerManagedEncryptionEnforcementConfig::Representation
+        
+            property :customer_supplied_encryption_enforcement_config, as: 'customerSuppliedEncryptionEnforcementConfig', class: Google::Apis::StorageV1::Bucket::Encryption::CustomerSuppliedEncryptionEnforcementConfig, decorator: Google::Apis::StorageV1::Bucket::Encryption::CustomerSuppliedEncryptionEnforcementConfig::Representation
+        
             property :default_kms_key_name, as: 'defaultKmsKeyName'
+            property :google_managed_encryption_enforcement_config, as: 'googleManagedEncryptionEnforcementConfig', class: Google::Apis::StorageV1::Bucket::Encryption::GoogleManagedEncryptionEnforcementConfig, decorator: Google::Apis::StorageV1::Bucket::Encryption::GoogleManagedEncryptionEnforcementConfig::Representation
+        
+          end
+          
+          class CustomerManagedEncryptionEnforcementConfig
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :effective_time, as: 'effectiveTime', type: DateTime
+          
+              property :restriction_mode, as: 'restrictionMode'
+            end
+          end
+          
+          class CustomerSuppliedEncryptionEnforcementConfig
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :effective_time, as: 'effectiveTime', type: DateTime
+          
+              property :restriction_mode, as: 'restrictionMode'
+            end
+          end
+          
+          class GoogleManagedEncryptionEnforcementConfig
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :effective_time, as: 'effectiveTime', type: DateTime
+          
+              property :restriction_mode, as: 'restrictionMode'
+            end
           end
         end
         
@@ -616,6 +680,8 @@ module Google
         class IpFilter
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :allow_all_service_agent_access, as: 'allowAllServiceAgentAccess'
+            property :allow_cross_org_vpcs, as: 'allowCrossOrgVpcs'
             property :mode, as: 'mode'
             property :public_network_source, as: 'publicNetworkSource', class: Google::Apis::StorageV1::Bucket::IpFilter::PublicNetworkSource, decorator: Google::Apis::StorageV1::Bucket::IpFilter::PublicNetworkSource::Representation
         
@@ -681,6 +747,8 @@ module Google
                 property :noncurrent_time_before, as: 'noncurrentTimeBefore', type: Date
             
                 property :num_newer_versions, as: 'numNewerVersions'
+                property :size_above_bytes, :numeric_string => true, as: 'sizeAboveBytes'
+                property :size_below_bytes, :numeric_string => true, as: 'sizeBelowBytes'
               end
             end
           end
@@ -814,6 +882,7 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -822,6 +891,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_overwrite, as: 'allowOverwrite'
           property :copy_source_acl, as: 'copySourceAcl'
+          property :created_after_time, as: 'createdAfterTime', type: DateTime
+      
+          property :created_before_time, as: 'createdBeforeTime', type: DateTime
+      
           collection :match_globs, as: 'matchGlobs'
           property :soft_deleted_after_time, as: 'softDeletedAfterTime', type: DateTime
       
@@ -849,6 +922,7 @@ module Google
       class ComposeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_source_objects, as: 'deleteSourceObjects'
           property :destination, as: 'destination', class: Google::Apis::StorageV1::Object, decorator: Google::Apis::StorageV1::Object::Representation
       
           property :kind, as: 'kind'
@@ -1052,6 +1126,8 @@ module Google
           property :content_encoding, as: 'contentEncoding'
           property :content_language, as: 'contentLanguage'
           property :content_type, as: 'contentType'
+          property :contexts, as: 'contexts', class: Google::Apis::StorageV1::Object::Contexts, decorator: Google::Apis::StorageV1::Object::Contexts::Representation
+      
           property :crc32c, as: 'crc32c'
           property :custom_time, as: 'customTime', type: DateTime
       
@@ -1093,6 +1169,14 @@ module Google
       
           property :updated, as: 'updated', type: DateTime
       
+        end
+        
+        class Contexts
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            hash :custom, as: 'custom', class: Google::Apis::StorageV1::ObjectCustomContextPayload, decorator: Google::Apis::StorageV1::ObjectCustomContextPayload::Representation
+        
+          end
         end
         
         class CustomerEncryption
@@ -1158,6 +1242,17 @@ module Google
         end
       end
       
+      class ObjectCustomContextPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime', type: DateTime
+      
+          property :update_time, as: 'updateTime', type: DateTime
+      
+          property :value, as: 'value'
+        end
+      end
+      
       class Objects
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1196,6 +1291,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :destination_custom_placement_config, as: 'destinationCustomPlacementConfig', class: Google::Apis::StorageV1::RelocateBucketRequest::DestinationCustomPlacementConfig, decorator: Google::Apis::StorageV1::RelocateBucketRequest::DestinationCustomPlacementConfig::Representation
       
+          property :destination_kms_key_name, as: 'destinationKmsKeyName'
           property :destination_location, as: 'destinationLocation'
           property :validate_only, as: 'validateOnly'
         end

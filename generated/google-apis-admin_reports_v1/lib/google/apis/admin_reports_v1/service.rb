@@ -73,6 +73,11 @@ module Google
         #   the user's physical location. For example, the IP address can be the user's
         #   proxy server's address or a virtual private network (VPN) address. This
         #   parameter supports both IPv4 and IPv6 address versions.
+        # @param [String] application_info_filter
+        #   Optional. Used to filter on the `oAuthClientId` field present in [`
+        #   ApplicationInfo`](#applicationinfo) message. **Usage** ``` GET...&
+        #   applicationInfoFilter=oAuthClientId="clientId" GET...&applicationInfoFilter=
+        #   oAuthClientId=%22clientId%22 ```
         # @param [String] customer_id
         #   The unique ID of the customer to retrieve data for.
         # @param [String] end_time
@@ -88,7 +93,8 @@ module Google
         #   and end in May. The report itself can be requested in August. If the `endTime`
         #   is not specified, the report returns all activities from the `startTime` until
         #   the current time or the most recent 180 days if the `startTime` is more than
-        #   180 days in the past.
+        #   180 days in the past. For Gmail requests, `startTime` and `endTime` must be
+        #   provided and the difference must not be greater than 30 days.
         # @param [String] event_name
         #   The name of the event being queried by the API. Each `eventName` is related to
         #   a specific Google Workspace service or feature which the API organizes into
@@ -135,12 +141,21 @@ module Google
         #   filtering groups allowlist. For more information about adding groups to
         #   filtering groups allowlist, see [Filter results by Google Group](https://
         #   support.google.com/a/answer/11482175)
+        # @param [Boolean] include_sensitive_data
+        #   Optional. When set to `true`, this field allows sensitive user-generated
+        #   content to be included in the returned audit logs. This parameter is supported
+        #   only for Rules (DLP) and Chat applications; using it with any other
+        #   application will result in a permission error.
         # @param [Fixnum] max_results
         #   Determines how many activity records are shown on each response page. For
         #   example, if the request sets `maxResults=1` and the report has two activities,
         #   the report has two pages. The response's `nextPageToken` property has the
         #   token to the second page. The `maxResults` query string is optional in the
         #   request. The default value is 1000.
+        # @param [String] network_info_filter
+        #   Optional. Used to filter on the `regionCode` field present in [`NetworkInfo`](#
+        #   networkinfo) message. **Usage** ``` GET...&networkInfoFilter=regionCode="IN"
+        #   GET...&networkInfoFilter=regionCode=%22IN%22 ```
         # @param [String] org_unit_id
         #   ID of the organizational unit to report on. Activity records will be shown
         #   only for users who belong to the specified organizational unit. Data before
@@ -150,12 +165,56 @@ module Google
         #   nextPageToken` property in the response. In your follow-on request getting the
         #   next page of the report, enter the `nextPageToken` value in the `pageToken`
         #   query string.
+        # @param [String] resource_details_filter
+        #   Optional. The `resourceDetailsFilter` query string is an AND separated list
+        #   composed of [Resource Details](#resourcedetails) fields manipulated by
+        #   relational operators. Resource Details Filters are in the form ``
+        #   resourceDetails.field1``relational operator``field1 value` AND `
+        #   resourceDetails.field2``relational operator``field2 value`...` All the inner
+        #   fields are traversed using the `.` operator, as shown in the following example:
+        #   ``` resourceDetails.id = "resourceId" AND resourceDetails.appliedLabels.id = "
+        #   appliedLabelId" AND resourceDetails.appliedLabels.fieldValue.id = "
+        #   fieldValueId" ``` `resourceDetailsFilter` query supports these relational
+        #   operators: * `=`—'equal to'. * `!=`—'not equal to'. * `:`—'exists'. This is
+        #   used for filtering on repeated fields. [`FieldValue`](#fieldvalue) types that
+        #   are repeated in nature uses `exists` operator for filtering. The following [`
+        #   FieldValue`](#fieldvalue) types are repeated: * [`TextListValue`](#
+        #   textlistvalue) * [`SelectionListValue`](#selectionlistvalue) * [`UserListValue`
+        #   ](#userlistvalue) For example, in the following filter, [`SelectionListValue`](
+        #   #selectionlistvalue), is a repeated field. The filter checks whether [`
+        #   SelectionListValue`](#selectionlistvalue) contains `selection_id`: ```
+        #   resourceDetails.id = "resourceId" AND resourceDetails.appliedLabels.id = "
+        #   appliedLabelId" AND resourceDetails.appliedLabels.fieldValue.id = "
+        #   fieldValueId" AND resourceDetails.appliedLabels.fieldValue.type = "
+        #   SELECTION_LIST_VALUE" AND resourceDetails.appliedLabels.fieldValue.
+        #   selectionListValue.id: "id" ``` **Usage** ``` GET...&resourceDetailsFilter=
+        #   resourceDetails.id = "resourceId" AND resourceDetails.appliedLabels.id = "
+        #   appliedLabelId" GET...&resourceDetailsFilter=resourceDetails.id=%22resourceId%
+        #   22%20AND%20resourceDetails.appliedLabels.id=%22appliedLabelId%22 ``` **Note
+        #   the following**: * You must URL encode the query string before sending the
+        #   request. * The API supports a maximum of 5 fields separated by the AND
+        #   operator. - When filtering on deeper levels (e.g., [`AppliedLabel`](#
+        #   appliedlabel), [`FieldValue`](#fieldvalue)), the IDs of all preceding levels
+        #   in the hierarchy must be included in the filter. For example: Filtering on [`
+        #   FieldValue`](#fieldvalue) requires [`AppliedLabel`](#appliedlabel) ID and
+        #   resourceDetails ID to be present. *Sample Query*: ``` resourceDetails.id = "
+        #   resourceId" AND resourceDetails.appliedLabels.id = "appliedLabelId" AND
+        #   resourceDetails.appliedLabels.fieldValue.id = "fieldValueId" ``` * Filtering
+        #   on inner [`FieldValue`](#fieldvalue) types like `longTextValue` and `textValue`
+        #   requires `resourceDetails.appliedLabels.fieldValue.type` to be present. *
+        #   Only Filtering on a single [`AppliedLabel`](#appliedlabel) id and [`FieldValue`
+        #   ](#fieldvalue) id is supported.
         # @param [String] start_time
         #   Sets the beginning of the range of time shown in the report. The date is in
         #   the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The report returns
         #   all activities from `startTime` until `endTime`. The `startTime` must be
         #   before the `endTime` (if specified) and the current time when the request is
-        #   made, or the API returns an error.
+        #   made, or the API returns an error. For Gmail requests, `startTime` and `
+        #   endTime` must be provided and the difference must not be greater than 30 days.
+        # @param [String] status_filter
+        #   Optional. Used to filter on the `statusCode` field present in [`Status`](#
+        #   status) message. **Usage** ``` GET...&statusFilter=statusCode="200" GET...&
+        #   statusFilter=statusCode=%22200%22 ```
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -173,22 +232,27 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_activities(user_key, application_name, actor_ip_address: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, group_id_filter: nil, max_results: nil, org_unit_id: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_activities(user_key, application_name, actor_ip_address: nil, application_info_filter: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, group_id_filter: nil, include_sensitive_data: nil, max_results: nil, network_info_filter: nil, org_unit_id: nil, page_token: nil, resource_details_filter: nil, start_time: nil, status_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'admin/reports/v1/activity/users/{userKey}/applications/{applicationName}', options)
           command.response_representation = Google::Apis::AdminReportsV1::Activities::Representation
           command.response_class = Google::Apis::AdminReportsV1::Activities
           command.params['userKey'] = user_key unless user_key.nil?
           command.params['applicationName'] = application_name unless application_name.nil?
           command.query['actorIpAddress'] = actor_ip_address unless actor_ip_address.nil?
+          command.query['applicationInfoFilter'] = application_info_filter unless application_info_filter.nil?
           command.query['customerId'] = customer_id unless customer_id.nil?
           command.query['endTime'] = end_time unless end_time.nil?
           command.query['eventName'] = event_name unless event_name.nil?
           command.query['filters'] = filters unless filters.nil?
           command.query['groupIdFilter'] = group_id_filter unless group_id_filter.nil?
+          command.query['includeSensitiveData'] = include_sensitive_data unless include_sensitive_data.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['networkInfoFilter'] = network_info_filter unless network_info_filter.nil?
           command.query['orgUnitID'] = org_unit_id unless org_unit_id.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['resourceDetailsFilter'] = resource_details_filter unless resource_details_filter.nil?
           command.query['startTime'] = start_time unless start_time.nil?
+          command.query['statusFilter'] = status_filter unless status_filter.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -267,10 +331,11 @@ module Google
         #   returns the response corresponding to the remaining valid parameters. If no
         #   parameters are requested, all parameters are returned.
         # @param [String] group_id_filter
-        #   Comma separated group ids (obfuscated) on which user activities are filtered,
-        #   i.e. the response will contain activities for only those users that are a part
-        #   of at least one of the group ids mentioned here. Format: "id:abc123,id:xyz456"
-        #   *Important:* To filter by groups, you must explicitly add the groups to your
+        #   `Deprecated`. This field is deprecated and is no longer supported. Comma
+        #   separated group ids (obfuscated) on which user activities are filtered, i.e.
+        #   the response will contain activities for only those users that are a part of
+        #   at least one of the group ids mentioned here. Format: "id:abc123,id:xyz456" *
+        #   Important:* To filter by groups, you must explicitly add the groups to your
         #   filtering groups allowlist. For more information about adding groups to
         #   filtering groups allowlist, see [Filter results by Google Group](https://
         #   support.google.com/a/answer/11482175)

@@ -59,6 +59,14 @@ module Google
         # @return [String]
         attr_accessor :provider
       
+        # Output only. The reseller parent billing account of the account's
+        # corresponding billing account, applicable only when the corresponding billing
+        # account is a subaccount of a reseller. Included in responses only for view:
+        # ACCOUNT_VIEW_FULL. Format: billingAccounts/`billing_account_id`
+        # Corresponds to the JSON property `resellerParentBillingAccount`
+        # @return [String]
+        attr_accessor :reseller_parent_billing_account
+      
         # Output only. The state of the account. This is used to decide whether the
         # customer is in good standing with the provider and is able to make purchases.
         # An account might not be able to make a purchase if the billing account is
@@ -83,6 +91,7 @@ module Google
           @input_properties = args[:input_properties] if args.key?(:input_properties)
           @name = args[:name] if args.key?(:name)
           @provider = args[:provider] if args.key?(:provider)
+          @reseller_parent_billing_account = args[:reseller_parent_billing_account] if args.key?(:reseller_parent_billing_account)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -163,7 +172,7 @@ module Google
       class ApproveEntitlementPlanChangeRequest
         include Google::Apis::Core::Hashable
       
-        # Name of the pending plan that is being approved. Required.
+        # Required. Name of the pending plan that's being approved.
         # Corresponds to the JSON property `pendingPlanName`
         # @return [String]
         attr_accessor :pending_plan_name
@@ -182,6 +191,14 @@ module Google
       class ApproveEntitlementRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The resource name of the entitlement that was migrated, with the
+        # format `providers/`provider_id`/entitlements/`entitlement_id``. Should only be
+        # sent when resources have been migrated from entitlement_migrated to the new
+        # entitlement. Optional.
+        # Corresponds to the JSON property `entitlementMigrated`
+        # @return [String]
+        attr_accessor :entitlement_migrated
+      
         # Set of properties that should be associated with the entitlement. Optional.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,String>]
@@ -193,6 +210,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @entitlement_migrated = args[:entitlement_migrated] if args.key?(:entitlement_migrated)
           @properties = args[:properties] if args.key?(:properties)
         end
       end
@@ -219,8 +237,7 @@ module Google
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
-      # protobuf.Empty) returns (google.protobuf.Empty); ` The JSON representation for
-      # `Empty` is empty JSON object ````.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
         include Google::Apis::Core::Hashable
       
@@ -233,7 +250,7 @@ module Google
         end
       end
       
-      # Represents a procured product of a customer. Next Id: 24
+      # Represents a procured product of a customer.
       class Entitlement
         include Google::Apis::Core::Hashable
       
@@ -242,6 +259,17 @@ module Google
         # Corresponds to the JSON property `account`
         # @return [String]
         attr_accessor :account
+      
+        # Output only. The reason the entitlement was cancelled. If this entitlement
+        # wasn't cancelled, this field is empty. Possible values include "unknown", "
+        # expired", "user-cancelled", "account-closed", "billing-disabled" (if the
+        # customer has manually disabled billing to their resources), "user-aborted",
+        # and "migrated" (if the entitlement has migrated across products). Values of
+        # this field are subject to change, and we recommend that you don't build your
+        # technical integration to rely on these fields.
+        # Corresponds to the JSON property `cancellationReason`
+        # @return [String]
+        attr_accessor :cancellation_reason
       
         # Output only. The resources using this entitlement, if applicable.
         # Corresponds to the JSON property `consumers`
@@ -252,6 +280,11 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Output only. The entitlement benefit IDs associated with the purchase.
+        # Corresponds to the JSON property `entitlementBenefitIds`
+        # @return [Array<String>]
+        attr_accessor :entitlement_benefit_ids
       
         # Output only. The custom properties that were collected from the user to create
         # this entitlement.
@@ -275,14 +308,72 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The name of the offer the entitlement is switching to upon a
-        # pending plan change. Only exists if the pending plan change is moving to an
-        # offer. Format: 'projects/`project`/services/`service`/privateOffers/`offer-id`'
-        # OR 'projects/`project`/services/`service`/standardOffers/`offer-id`',
-        # depending on whether the offer is private or public.
+        # Output only. The end time of the new offer, determined from the offer's
+        # specified end date. If the offer des not have a specified end date then this
+        # field is not set. This field is populated even if the entitlement isn't active
+        # yet. If there's no upcoming offer, the field is empty. * If the entitlement is
+        # in the state ENTITLEMENT_ACTIVATION_REQUESTED, ENTITLEMENT_ACTIVE, or
+        # ENTITLEMENT_PENDING_CANCELLATION, then this field is empty. * If the
+        # entitlement is in the state ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL or
+        # ENTITLEMENT_PENDING_PLAN_CHANGE, and the upcoming offer has a specified end
+        # date, then this field is populated with the expected end time of the upcoming
+        # offer, in the future. Otherwise, this field is empty. * If the entitlement is
+        # in the state ENTITLEMENT_CANCELLED, then this field is empty.
+        # Corresponds to the JSON property `newOfferEndTime`
+        # @return [String]
+        attr_accessor :new_offer_end_time
+      
+        # Output only. The timestamp when the new offer becomes effective. This field is
+        # populated even if the entitlement isn't active yet. If there's no upcoming
+        # offer, the field is empty. * If the entitlement is in the state
+        # ENTITLEMENT_ACTIVATION_REQUESTED, this field isn't populated when the
+        # entitlement isn't yet approved. After the entitlement is approved, this field
+        # is populated with the effective time of the upcoming offer. * If the
+        # entitlement is in the state ENTITLEMENT_ACTIVE or
+        # ENTITLEMENT_PENDING_CANCELLATION, this field isn't populated. * If the
+        # entitlement is in the state ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL, this
+        # field isn't populated, because the entitlement change is waiting on approval. *
+        # If the entitlement is in the state ENTITLEMENT_PENDING_PLAN_CHANGE, this
+        # field is populated with the expected effective time of the upcoming offer,
+        # which is in the future. * If the entitlement is in the state
+        # ENTITLEMENT_CANCELLED, then this field is empty.
+        # Corresponds to the JSON property `newOfferStartTime`
+        # @return [String]
+        attr_accessor :new_offer_start_time
+      
+        # Output only. Upon a pending plan change, the name of the offer that the
+        # entitlement is switching to. Only exists if the pending plan change is moving
+        # to an offer. This field isn't populated for entitlements which aren't active
+        # yet. Format: 'projects/`project`/services/`service`/privateOffers/`offer`' OR '
+        # projects/`project`/services/`service`/standardOffers/`offer`', depending on
+        # whether the offer is private or public. The `service` in the name is the
+        # listing service of the offer. It could be either the product service that the
+        # offer is referencing, or a generic private offer parent service. We recommend
+        # that you don't build your integration to rely on the meaning of this `service`
+        # part. * If the entitlement is in the state ENTITLEMENT_ACTIVATION_REQUESTED,
+        # ENTITLEMENT_ACTIVE or ENTITLEMENT_PENDING_CANCELLATION, then this field is
+        # empty. * If the entitlement is in the state
+        # ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL or ENTITLEMENT_PENDING_PLAN_CHANGE,
+        # then this field is populated with the upcoming offer. * If the entitlement is
+        # in the state ENTITLEMENT_CANCELLED, then this is empty.
         # Corresponds to the JSON property `newPendingOffer`
         # @return [String]
         attr_accessor :new_pending_offer
+      
+        # Output only. The duration of the new offer, in ISO 8601 duration format. This
+        # field is populated for pending offer changes. It isn't populated for
+        # entitlements which aren't active yet. If the offer has a specified end date
+        # instead of a duration, this field is empty. * If the entitlement is in the
+        # state ENTITLEMENT_ACTIVATION_REQUESTED, ENTITLEMENT_ACTIVE, or
+        # ENTITLEMENT_PENDING_CANCELLATION, this field is empty. * If the entitlement is
+        # in the state ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL or
+        # ENTITLEMENT_PENDING_PLAN_CHANGE, and the upcoming offer doesn't have a
+        # specified end date, then this field is populated with the duration of the
+        # upcoming offer. Otherwise, this field is empty. * If the entitlement is in the
+        # state ENTITLEMENT_CANCELLED, then this field is empty.
+        # Corresponds to the JSON property `newPendingOfferDuration`
+        # @return [String]
+        attr_accessor :new_pending_offer_duration
       
         # Output only. The identifier of the pending new plan. Required if the product
         # has plans and the entitlement has a pending plan change.
@@ -291,20 +382,76 @@ module Google
         attr_accessor :new_pending_plan
       
         # Output only. The name of the offer that was procured. Field is empty if order
-        # was not made using an offer. Format: 'projects/`project`/services/`service`/
-        # privateOffers/`offer-id`' OR 'projects/`project`/services/`service`/
-        # standardOffers/`offer-id`', depending on whether the offer is private or
-        # public.
+        # wasn't made using an offer. Format: 'projects/`project`/services/`service`/
+        # privateOffers/`offer`' OR 'projects/`project`/services/`service`/
+        # standardOffers/`offer`', depending on whether the offer is private or public.
+        # The `service` in the name is the listing service of the offer. It could be
+        # either the product service that the offer is referencing, or a generic private
+        # offer parent service. We recommend that you don't build your integration to
+        # rely on the meaning of this `service` part. * If the entitlement is in the
+        # state ENTITLEMENT_ACTIVATION_REQUESTED, this field is populated with the
+        # upcoming offer. * If the entitlement is in the state ENTITLEMENT_ACTIVE,
+        # ENTITLEMENT_PENDING_CANCELLATION, ENTITLEMENT_PENDING_PLAN_CHANGE, or
+        # ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL, this field is populated with the
+        # current offer. * If the entitlement is in the state ENTITLEMENT_CANCELLED,
+        # then this field is populated with the latest offer that the order was
+        # associated with.
         # Corresponds to the JSON property `offer`
         # @return [String]
         attr_accessor :offer
       
-        # Output only. End time for the Offer association corresponding to this
-        # entitlement. The field is only populated if the entitlement is currently
-        # associated with an Offer.
+        # Output only. The offer duration of the current offer, in ISO 8601 duration
+        # format. This is empty if the entitlement wasn't made using an offer, or if the
+        # offer has a specified end date instead of a duration. * If the entitlement is
+        # in the state ENTITLEMENT_ACTIVATION_REQUESTED, and the upcoming offer doesn't
+        # have a specified end date, then this field is populated with the duration of
+        # the upcoming offer. Otherwise, this field is empty. * If the entitlement is in
+        # the state ENTITLEMENT_ACTIVE, ENTITLEMENT_PENDING_CANCELLATION,
+        # ENTITLEMENT_PENDING_PLAN_CHANGE, or ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL,
+        # and the current offer doesn't have a specified end date, then this field
+        # contains the duration of the current offer. Otherwise, this field is empty. *
+        # If the entitlement is in the state ENTITLEMENT_CANCELLED, and the offer doesn'
+        # t have a specified end date, then this field is populated with the duration of
+        # the latest offer that the order was associated with. Otherwise, this field is
+        # empty.
+        # Corresponds to the JSON property `offerDuration`
+        # @return [String]
+        attr_accessor :offer_duration
+      
+        # Output only. End time for the current term of the Offer associated with this
+        # entitlement. The value of this field can change naturally over time due to
+        # auto-renewal, even if the offer isn't changed. * If the entitlement is in the
+        # state ENTITLEMENT_ACTIVATION_REQUESTED, then: * If the entitlement isn't
+        # approved yet approved, and the offer has a specified end date, then this field
+        # is populated with the expected end time of the upcoming offer, in the future.
+        # Otherwise, this field is empty. * If the entitlement is approved, then this
+        # field is populated with the expected end time of the upcoming offer, in the
+        # future. This means that this field and the field offer_duration can both exist.
+        # * If the entitlement is in the state ENTITLEMENT_ACTIVE or
+        # ENTITLEMENT_PENDING_CANCELLATION, then this field is populated with the
+        # expected end time of the current offer, in the future. This field's value is
+        # set regardless of whether the offer has a specific end date or a duration.
+        # This means that this field and the field offer_duration can both exist. * If
+        # the entitlement is in the state ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL or
+        # ENTITLEMENT_PENDING_PLAN_CHANGE: * If the entitlement's pricing model is usage
+        # based and the associated offer is a private offer whose term has ended, then
+        # this field reflects the ACTUAL end time of the entitlement's associated offer (
+        # in the past), even though the entitlement associated with this private offer
+        # does not terminate at the end of that private offer's term. * Otherwise, this
+        # is the expected end date of the current offer, in the future. * If the
+        # entitlement is in the state ENTITLEMENT_CANCELLED, then this field is
+        # populated with the end time, in the past, of the latest offer that the order
+        # was associated with. If the entitlement was cancelled before any offer started,
+        # then this field is empty.
         # Corresponds to the JSON property `offerEndTime`
         # @return [String]
         attr_accessor :offer_end_time
+      
+        # Output only. The order ID of this entitlement, without any `orders/` resource
+        # name prefix.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
       
         # Output only. The identifier of the plan that was procured. Required if the
         # product has plans.
@@ -313,7 +460,9 @@ module Google
         attr_accessor :plan
       
         # Output only. The identifier of the entity that was purchased. This may
-        # actually represent a product, quote, or offer.
+        # actually represent a product, quote, or offer. We strongly recommend that you
+        # use the following more explicit fields: productExternalName, quoteExternalName,
+        # or offer.
         # Corresponds to the JSON property `product`
         # @return [String]
         attr_accessor :product
@@ -366,15 +515,22 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account = args[:account] if args.key?(:account)
+          @cancellation_reason = args[:cancellation_reason] if args.key?(:cancellation_reason)
           @consumers = args[:consumers] if args.key?(:consumers)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @entitlement_benefit_ids = args[:entitlement_benefit_ids] if args.key?(:entitlement_benefit_ids)
           @input_properties = args[:input_properties] if args.key?(:input_properties)
           @message_to_user = args[:message_to_user] if args.key?(:message_to_user)
           @name = args[:name] if args.key?(:name)
+          @new_offer_end_time = args[:new_offer_end_time] if args.key?(:new_offer_end_time)
+          @new_offer_start_time = args[:new_offer_start_time] if args.key?(:new_offer_start_time)
           @new_pending_offer = args[:new_pending_offer] if args.key?(:new_pending_offer)
+          @new_pending_offer_duration = args[:new_pending_offer_duration] if args.key?(:new_pending_offer_duration)
           @new_pending_plan = args[:new_pending_plan] if args.key?(:new_pending_plan)
           @offer = args[:offer] if args.key?(:offer)
+          @offer_duration = args[:offer_duration] if args.key?(:offer_duration)
           @offer_end_time = args[:offer_end_time] if args.key?(:offer_end_time)
+          @order_id = args[:order_id] if args.key?(:order_id)
           @plan = args[:plan] if args.key?(:plan)
           @product = args[:product] if args.key?(:product)
           @product_external_name = args[:product_external_name] if args.key?(:product_external_name)
@@ -470,7 +626,7 @@ module Google
       class RejectEntitlementPlanChangeRequest
         include Google::Apis::Core::Hashable
       
-        # Name of the pending plan that is being rejected. Required.
+        # Required. Name of the pending plan that is being rejected.
         # Corresponds to the JSON property `pendingPlanName`
         # @return [String]
         attr_accessor :pending_plan_name
@@ -512,7 +668,7 @@ module Google
         end
       end
       
-      # Request message for for PartnerProcurementService.ResetAccount.
+      # Request message for PartnerProcurementService.ResetAccount.
       class ResetAccountRequest
         include Google::Apis::Core::Hashable
       

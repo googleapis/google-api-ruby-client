@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateSchemaBundleMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateTableRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +310,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleBigtableAdminV2MaterializedViewClusterState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2MemoryLayerMemoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleBigtableAdminV2TypeAggregate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleBigtableAdminV2TypeBoolEncoding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleBigtableAdminV2TypeBytes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleBigtableAdminV2TypeEnum
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleBigtableAdminV2TypeFloat32
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +407,36 @@ module Google
       end
       
       class GoogleBigtableAdminV2TypeFloat64
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeGeography
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeInt32
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeInt32Encoding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -407,6 +467,12 @@ module Google
       end
       
       class GoogleBigtableAdminV2TypeMap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleBigtableAdminV2TypeProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -556,7 +622,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMemoryLayersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSchemaBundlesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -581,6 +659,18 @@ module Google
       end
       
       class MaterializedView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MemoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MemoryLayer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -646,6 +736,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProtoSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -665,6 +761,12 @@ module Google
       end
       
       class RowAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaBundle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -736,6 +838,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TieredStorageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TieredStorageRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Type
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -802,6 +916,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateMemoryLayerMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateMemoryLayerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateSchemaBundleMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateTableMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -858,6 +990,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :frequency, as: 'frequency'
+          collection :locations, as: 'locations'
           property :retention_period, as: 'retentionPeriod'
         end
       end
@@ -1050,7 +1183,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :name, as: 'name'
+          property :request_time, as: 'requestTime'
           property :source_table, as: 'sourceTable'
           property :start_time, as: 'startTime'
         end
@@ -1104,8 +1239,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::CreateLogicalViewRequest, decorator: Google::Apis::BigtableadminV2::CreateLogicalViewRequest::Representation
       
+          property :request_time, as: 'requestTime'
           property :start_time, as: 'startTime'
         end
       end
@@ -1124,8 +1261,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::CreateMaterializedViewRequest, decorator: Google::Apis::BigtableadminV2::CreateMaterializedViewRequest::Representation
       
+          property :request_time, as: 'requestTime'
           property :start_time, as: 'startTime'
         end
       end
@@ -1137,6 +1276,15 @@ module Google
       
           property :materialized_view_id, as: 'materializedViewId'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class CreateSchemaBundleMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finish_time, as: 'finishTime'
+          property :name, as: 'name'
+          property :request_time, as: 'requestTime'
         end
       end
       
@@ -1262,6 +1410,20 @@ module Google
         end
       end
       
+      class GoogleBigtableAdminV2MaterializedViewClusterState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :replication_state, as: 'replicationState'
+        end
+      end
+      
+      class GoogleBigtableAdminV2MemoryLayerMemoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_size_gib, as: 'storageSizeGib'
+        end
+      end
+      
       class GoogleBigtableAdminV2TypeAggregate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1315,6 +1477,14 @@ module Google
       class GoogleBigtableAdminV2TypeBool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBoolEncoding, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeBoolEncoding::Representation
+      
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeBoolEncoding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1347,6 +1517,14 @@ module Google
         end
       end
       
+      class GoogleBigtableAdminV2TypeEnum
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enum_name, as: 'enumName'
+          property :schema_bundle_id, as: 'schemaBundleId'
+        end
+      end
+      
       class GoogleBigtableAdminV2TypeFloat32
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1354,6 +1532,42 @@ module Google
       end
       
       class GoogleBigtableAdminV2TypeFloat64
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeGeography
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeInt32
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encoding, as: 'encoding', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32Encoding, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32Encoding::Representation
+      
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeInt32Encoding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_endian_bytes, as: 'bigEndianBytes', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes::Representation
+      
+          property :ordered_code_bytes, as: 'orderedCodeBytes', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes::Representation
+      
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1398,6 +1612,14 @@ module Google
       
           property :value_type, as: 'valueType', class: Google::Apis::BigtableadminV2::Type, decorator: Google::Apis::BigtableadminV2::Type::Representation
       
+        end
+      end
+      
+      class GoogleBigtableAdminV2TypeProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message_name, as: 'messageName'
+          property :schema_bundle_id, as: 'schemaBundleId'
         end
       end
       
@@ -1516,11 +1738,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
+          property :edition, as: 'edition'
+          property :knowledge_catalog_region, as: 'knowledgeCatalogRegion'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
+          hash :tags, as: 'tags'
           property :type, as: 'type'
         end
       end
@@ -1617,11 +1842,31 @@ module Google
         end
       end
       
+      class ListMemoryLayersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failed_locations, as: 'failedLocations'
+          collection :memory_layers, as: 'memoryLayers', class: Google::Apis::BigtableadminV2::MemoryLayer, decorator: Google::Apis::BigtableadminV2::MemoryLayer::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::BigtableadminV2::Operation, decorator: Google::Apis::BigtableadminV2::Operation::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListSchemaBundlesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :schema_bundles, as: 'schemaBundles', class: Google::Apis::BigtableadminV2::SchemaBundle, decorator: Google::Apis::BigtableadminV2::SchemaBundle::Representation
       
         end
       end
@@ -1659,10 +1904,29 @@ module Google
       class MaterializedView
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :cluster_states, as: 'clusterStates', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2MaterializedViewClusterState, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2MaterializedViewClusterState::Representation
+      
           property :deletion_protection, as: 'deletionProtection'
           property :etag, as: 'etag'
           property :name, as: 'name'
           property :query, as: 'query'
+        end
+      end
+      
+      class MemoryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class MemoryLayer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :memory_config, as: 'memoryConfig', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2MemoryLayerMemoryConfig, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2MemoryLayerMemoryConfig::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       
@@ -1767,6 +2031,13 @@ module Google
         end
       end
       
+      class ProtoSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :proto_descriptors, :base64 => true, as: 'protoDescriptors'
+        end
+      end
+      
       class RestoreInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1803,6 +2074,16 @@ module Google
         end
       end
       
+      class SchemaBundle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :proto_schema, as: 'protoSchema', class: Google::Apis::BigtableadminV2::ProtoSchema, decorator: Google::Apis::BigtableadminV2::ProtoSchema::Representation
+      
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1830,6 +2111,8 @@ module Google
       class StandardIsolation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :memory_config, as: 'memoryConfig', class: Google::Apis::BigtableadminV2::MemoryConfig, decorator: Google::Apis::BigtableadminV2::MemoryConfig::Representation
+      
           property :priority, as: 'priority'
         end
       end
@@ -1869,6 +2152,8 @@ module Google
       
           property :stats, as: 'stats', class: Google::Apis::BigtableadminV2::TableStats, decorator: Google::Apis::BigtableadminV2::TableStats::Representation
       
+          property :tiered_storage_config, as: 'tieredStorageConfig', class: Google::Apis::BigtableadminV2::TieredStorageConfig, decorator: Google::Apis::BigtableadminV2::TieredStorageConfig::Representation
+      
         end
       end
       
@@ -1905,6 +2190,21 @@ module Google
         end
       end
       
+      class TieredStorageConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :infrequent_access, as: 'infrequentAccess', class: Google::Apis::BigtableadminV2::TieredStorageRule, decorator: Google::Apis::BigtableadminV2::TieredStorageRule::Representation
+      
+        end
+      end
+      
+      class TieredStorageRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_if_older_than, as: 'includeIfOlderThan'
+        end
+      end
+      
       class Type
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1918,13 +2218,21 @@ module Google
       
           property :date_type, as: 'dateType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeDate, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeDate::Representation
       
+          property :enum_type, as: 'enumType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeEnum, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeEnum::Representation
+      
           property :float32_type, as: 'float32Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat32, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat32::Representation
       
           property :float64_type, as: 'float64Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat64, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeFloat64::Representation
       
+          property :geography_type, as: 'geographyType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeGeography, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeGeography::Representation
+      
+          property :int32_type, as: 'int32Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt32::Representation
+      
           property :int64_type, as: 'int64Type', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeInt64::Representation
       
           property :map_type, as: 'mapType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeMap, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeMap::Representation
+      
+          property :proto_type, as: 'protoType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeProto, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeProto::Representation
       
           property :string_type, as: 'stringType', class: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeString, decorator: Google::Apis::BigtableadminV2::GoogleBigtableAdminV2TypeString::Representation
       
@@ -1939,7 +2247,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :name, as: 'name'
+          property :request_time, as: 'requestTime'
           property :start_time, as: 'startTime'
         end
       end
@@ -2008,8 +2318,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::UpdateLogicalViewRequest, decorator: Google::Apis::BigtableadminV2::UpdateLogicalViewRequest::Representation
       
+          property :request_time, as: 'requestTime'
           property :start_time, as: 'startTime'
         end
       end
@@ -2023,11 +2335,41 @@ module Google
         end
       end
       
+      class UpdateMemoryLayerMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finish_time, as: 'finishTime'
+          property :original_request, as: 'originalRequest', class: Google::Apis::BigtableadminV2::UpdateMemoryLayerRequest, decorator: Google::Apis::BigtableadminV2::UpdateMemoryLayerRequest::Representation
+      
+          property :request_time, as: 'requestTime'
+        end
+      end
+      
+      class UpdateMemoryLayerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :memory_layer, as: 'memoryLayer', class: Google::Apis::BigtableadminV2::MemoryLayer, decorator: Google::Apis::BigtableadminV2::MemoryLayer::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class UpdateSchemaBundleMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finish_time, as: 'finishTime'
+          property :name, as: 'name'
+          property :request_time, as: 'requestTime'
+        end
+      end
+      
       class UpdateTableMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :finish_time, as: 'finishTime'
           property :name, as: 'name'
+          property :request_time, as: 'requestTime'
           property :start_time, as: 'startTime'
         end
       end

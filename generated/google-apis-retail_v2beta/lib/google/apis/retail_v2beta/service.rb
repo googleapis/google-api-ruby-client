@@ -311,6 +311,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the conversational search customization config for a given catalog.
+        # @param [String] name
+        #   Required. Resource name of the parent catalog. Format: projects/`project`/
+        #   locations/`location`/catalogs/`catalog`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchCustomizationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchCustomizationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_catalog_conversational_search_customization_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta/{+name}/conversationalSearchCustomizationConfig', options)
+          command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchCustomizationConfig::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchCustomizationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get which branch is currently default branch set by CatalogService.
         # SetDefaultBranch method under a specified parent catalog.
         # @param [String] catalog
@@ -424,8 +455,9 @@ module Google
         #   Required. Immutable. The fully qualified resource name of the catalog.
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCatalog] google_cloud_retail_v2beta_catalog_object
         # @param [String] update_mask
-        #   Indicates which fields in the provided Catalog to update. If an unsupported or
-        #   unknown field is provided, an INVALID_ARGUMENT error is returned.
+        #   Optional. Indicates which fields in the provided Catalog to update. If an
+        #   unsupported or unknown field is provided, an INVALID_ARGUMENT error is
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -519,9 +551,9 @@ module Google
         #   Format: `projects/*/locations/*/catalogs/*/attributesConfig`
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaAttributesConfig] google_cloud_retail_v2beta_attributes_config_object
         # @param [String] update_mask
-        #   Indicates which fields in the provided AttributesConfig to update. The
-        #   following is the only supported field: * AttributesConfig.catalog_attributes
-        #   If not set, all supported fields are updated.
+        #   Optional. Indicates which fields in the provided AttributesConfig to update.
+        #   The following is the only supported field: * AttributesConfig.
+        #   catalog_attributes If not set, all supported fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -558,9 +590,9 @@ module Google
         #   completionConfig`
         # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionConfig] google_cloud_retail_v2beta_completion_config_object
         # @param [String] update_mask
-        #   Indicates which fields in the provided CompletionConfig to update. The
-        #   following are the only supported fields: * CompletionConfig.matching_order *
-        #   CompletionConfig.max_suggestions * CompletionConfig.min_prefix_length *
+        #   Optional. Indicates which fields in the provided CompletionConfig to update.
+        #   The following are the only supported fields: * CompletionConfig.matching_order
+        #   * CompletionConfig.max_suggestions * CompletionConfig.min_prefix_length *
         #   CompletionConfig.auto_learning If not set, all supported fields are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -586,6 +618,45 @@ module Google
           command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionConfig::Representation
           command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaCompletionConfig
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the conversational search customization config for a given catalog.
+        # @param [String] catalog
+        #   Required. Resource name of the catalog. Format: projects/`project`/locations/`
+        #   location`/catalogs/`catalog`
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchCustomizationConfig] google_cloud_retail_v2beta_conversational_search_customization_config_object
+        # @param [String] update_mask
+        #   Optional. Indicates which fields in the provided
+        #   ConversationalSearchCustomizationConfig to update. If not set or empty, all
+        #   supported fields are updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchCustomizationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchCustomizationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_catalog_conversational_search_customization_config(catalog, google_cloud_retail_v2beta_conversational_search_customization_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2beta/{+catalog}/conversationalSearchCustomizationConfig', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchCustomizationConfig::Representation
+          command.request_object = google_cloud_retail_v2beta_conversational_search_customization_config_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchCustomizationConfig::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchCustomizationConfig
+          command.params['catalog'] = catalog unless catalog.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2051,6 +2122,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2068,7 +2147,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_catalog_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_catalog_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/{+name}/operations', options)
           command.response_representation = Google::Apis::RetailV2beta::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::RetailV2beta::GoogleLongrunningListOperationsResponse
@@ -2076,6 +2155,45 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Performs a conversational search. This feature is only available for users who
+        # have Conversational Search enabled.
+        # @param [String] placement
+        #   Required. The resource name of the search engine placement, such as `projects/*
+        #   /locations/global/catalogs/default_catalog/placements/default_search` or `
+        #   projects/*/locations/global/catalogs/default_catalog/servingConfigs/
+        #   default_serving_config` This field is used to identify the serving config name
+        #   and the set of models that will be used to make the search.
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchRequest] google_cloud_retail_v2beta_conversational_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def conversational_project_location_catalog_placement_search(placement, google_cloud_retail_v2beta_conversational_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+placement}:conversationalSearch', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchRequest::Representation
+          command.request_object = google_cloud_retail_v2beta_conversational_search_request_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchResponse::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchResponse
+          command.params['placement'] = placement unless placement.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2198,6 +2316,44 @@ module Google
           command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaServingConfig::Representation
           command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaServingConfig
           command.params['servingConfig'] = serving_config unless serving_config.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Performs a conversational search. This feature is only available for users who
+        # have Conversational Search enabled.
+        # @param [String] placement
+        #   Required. The resource name of the search engine placement, such as `projects/*
+        #   /locations/global/catalogs/default_catalog/placements/default_search` or `
+        #   projects/*/locations/global/catalogs/default_catalog/servingConfigs/
+        #   default_serving_config` This field is used to identify the serving config name
+        #   and the set of models that will be used to make the search.
+        # @param [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchRequest] google_cloud_retail_v2beta_conversational_search_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def conversational_project_location_catalog_serving_config_search(placement, google_cloud_retail_v2beta_conversational_search_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+placement}:conversationalSearch', options)
+          command.request_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchRequest::Representation
+          command.request_object = google_cloud_retail_v2beta_conversational_search_request_object
+          command.response_representation = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchResponse::Representation
+          command.response_class = Google::Apis::RetailV2beta::GoogleCloudRetailV2betaConversationalSearchResponse
+          command.params['placement'] = placement unless placement.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2775,6 +2931,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2792,7 +2956,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/{+name}/operations', options)
           command.response_representation = Google::Apis::RetailV2beta::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::RetailV2beta::GoogleLongrunningListOperationsResponse
@@ -2800,6 +2964,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2846,6 +3011,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2863,7 +3036,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/{+name}/operations', options)
           command.response_representation = Google::Apis::RetailV2beta::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::RetailV2beta::GoogleLongrunningListOperationsResponse
@@ -2871,6 +3044,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -697,6 +697,42 @@ module Google
         end
       end
       
+      # Response for the Videos.stats API. Returns VideoStat information about a batch
+      # of videos. VideoStat contains a subset of the information in Video that is
+      # relevant to statistics and content details. BatchGetStats is intentionally not
+      # atomic to provide a better user experience. BatchGetStatsResponse returns a
+      # summary to help users understand the outcome of the operation.
+      class BatchGetStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The videos' stats information.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::VideoStat>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # batchGetStatsResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # A *caption* resource represents a YouTube caption track. A caption track is
       # associated with exactly one YouTube video.
       class Caption
@@ -1911,6 +1947,44 @@ module Google
           @made_for_kids = args[:made_for_kids] if args.key?(:made_for_kids)
           @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
           @self_declared_made_for_kids = args[:self_declared_made_for_kids] if args.key?(:self_declared_made_for_kids)
+        end
+      end
+      
+      # Information specific to a creator in an affiliate program linked to a YouTube
+      # channel.
+      class ChannelToAffiliateProgramLinkDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. Google Merchant Center ID of the partner.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        # Required. Affiliate program status.
+        # Corresponds to the JSON property `programStatus`
+        # @return [String]
+        attr_accessor :program_status
+      
+        # Optional. Reason for the last update of the affiliate program status.
+        # Corresponds to the JSON property `statusUpdateReason`
+        # @return [String]
+        attr_accessor :status_update_reason
+      
+        # Optional. Timestamp when the affiliate program status was last updated.
+        # Corresponds to the JSON property `statusUpdateTime`
+        # @return [String]
+        attr_accessor :status_update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+          @program_status = args[:program_status] if args.key?(:program_status)
+          @status_update_reason = args[:status_update_reason] if args.key?(:status_update_reason)
+          @status_update_time = args[:status_update_time] if args.key?(:status_update_time)
         end
       end
       
@@ -4251,6 +4325,68 @@ module Google
         end
       end
       
+      # Details about the gift event, this is only set if the type is 'giftEvent'.
+      class LiveChatGiftDetails
+        include Google::Apis::Core::Hashable
+      
+        # The alternative text to be used for accessibility.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
+        # The number of times the gift has been sent in a row.
+        # Corresponds to the JSON property `comboCount`
+        # @return [Fixnum]
+        attr_accessor :combo_count
+      
+        # The duration of the gift.
+        # Corresponds to the JSON property `giftDuration`
+        # @return [String]
+        attr_accessor :gift_duration
+      
+        # The name of the gift.
+        # Corresponds to the JSON property `giftName`
+        # @return [String]
+        attr_accessor :gift_name
+      
+        # The URL of the gift image.
+        # Corresponds to the JSON property `giftUrl`
+        # @return [String]
+        attr_accessor :gift_url
+      
+        # Whether the gift involves a visual effect.
+        # Corresponds to the JSON property `hasVisualEffect`
+        # @return [Boolean]
+        attr_accessor :has_visual_effect
+        alias_method :has_visual_effect?, :has_visual_effect
+      
+        # The value of the gift in jewels.
+        # Corresponds to the JSON property `jewelsAmount`
+        # @return [Fixnum]
+        attr_accessor :jewels_amount
+      
+        # The BCP-47 language code of the gift.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
+          @combo_count = args[:combo_count] if args.key?(:combo_count)
+          @gift_duration = args[:gift_duration] if args.key?(:gift_duration)
+          @gift_name = args[:gift_name] if args.key?(:gift_name)
+          @gift_url = args[:gift_url] if args.key?(:gift_url)
+          @has_visual_effect = args[:has_visual_effect] if args.key?(:has_visual_effect)
+          @jewels_amount = args[:jewels_amount] if args.key?(:jewels_amount)
+          @language = args[:language] if args.key?(:language)
+        end
+      end
+      
       # 
       class LiveChatGiftMembershipReceivedDetails
         include Google::Apis::Core::Hashable
@@ -4377,7 +4513,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Next ID: 34
+        # Next ID: 35
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::LiveChatMessageSnippet]
         attr_accessor :snippet
@@ -4580,7 +4716,7 @@ module Google
         end
       end
       
-      # Next ID: 34
+      # Next ID: 35
       class LiveChatMessageSnippet
         include Google::Apis::Core::Hashable
       
@@ -4611,6 +4747,11 @@ module Google
         # Corresponds to the JSON property `fanFundingEventDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails]
         attr_accessor :fan_funding_event_details
+      
+        # Details about the gift event, this is only set if the type is 'giftEvent'.
+        # Corresponds to the JSON property `giftDetails`
+        # @return [Google::Apis::YoutubeV3::LiveChatGiftDetails]
+        attr_accessor :gift_details
       
         # Details about the Gift Membership Received event, this is only set if the type
         # is 'giftMembershipReceivedEvent'.
@@ -4705,6 +4846,7 @@ module Google
           @author_channel_id = args[:author_channel_id] if args.key?(:author_channel_id)
           @display_message = args[:display_message] if args.key?(:display_message)
           @fan_funding_event_details = args[:fan_funding_event_details] if args.key?(:fan_funding_event_details)
+          @gift_details = args[:gift_details] if args.key?(:gift_details)
           @gift_membership_received_details = args[:gift_membership_received_details] if args.key?(:gift_membership_received_details)
           @has_display_content = args[:has_display_content] if args.key?(:has_display_content)
           @live_chat_id = args[:live_chat_id] if args.key?(:live_chat_id)
@@ -6752,7 +6894,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The visitorId identifies the visitor.
+        # The visitor ID identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -7479,6 +7621,12 @@ module Google
       class ThirdPartyLinkSnippet
         include Google::Apis::Core::Hashable
       
+        # Information specific to a creator in an affiliate program linked to a YouTube
+        # channel.
+        # Corresponds to the JSON property `channelToAffiliateProgramLink`
+        # @return [Google::Apis::YoutubeV3::ChannelToAffiliateProgramLinkDetails]
+        attr_accessor :channel_to_affiliate_program_link
+      
         # Information specific to a store on a merchandising platform linked to a
         # YouTube channel.
         # Corresponds to the JSON property `channelToStoreLink`
@@ -7496,6 +7644,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channel_to_affiliate_program_link = args[:channel_to_affiliate_program_link] if args.key?(:channel_to_affiliate_program_link)
           @channel_to_store_link = args[:channel_to_store_link] if args.key?(:channel_to_store_link)
           @type = args[:type] if args.key?(:type)
         end
@@ -9015,6 +9164,59 @@ module Google
         end
       end
       
+      # A *VideoStat* resource represents a YouTube video's stats.
+      class VideoStat
+        include Google::Apis::Core::Hashable
+      
+        # Details about the content of a YouTube Video. This is a subset of the
+        # information in VideoContentDetails specifically for the Videos.stats API.
+        # Corresponds to the JSON property `contentDetails`
+        # @return [Google::Apis::YoutubeV3::VideoStatsContentDetails]
+        attr_accessor :content_details
+      
+        # Output only. Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The ID that YouTube uses to uniquely identify the video.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. Identifies what kind of resource this is. Value: the fixed string
+        # "youtube#videoStats".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Basic details about a video. This is a subset of the information in
+        # VideoSnippet specifically for the Videos.stats API.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::VideoStatsSnippet]
+        attr_accessor :snippet
+      
+        # Statistics about the video, such as the number of times the video was viewed
+        # or liked.
+        # Corresponds to the JSON property `statistics`
+        # @return [Google::Apis::YoutubeV3::VideoStatsStatistics]
+        attr_accessor :statistics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_details = args[:content_details] if args.key?(:content_details)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @statistics = args[:statistics] if args.key?(:statistics)
+        end
+      end
+      
       # Statistics about the video, such as the number of times the video was viewed
       # or liked.
       class VideoStatistics
@@ -9056,6 +9258,83 @@ module Google
           @comment_count = args[:comment_count] if args.key?(:comment_count)
           @dislike_count = args[:dislike_count] if args.key?(:dislike_count)
           @favorite_count = args[:favorite_count] if args.key?(:favorite_count)
+          @like_count = args[:like_count] if args.key?(:like_count)
+          @view_count = args[:view_count] if args.key?(:view_count)
+        end
+      end
+      
+      # Details about the content of a YouTube Video. This is a subset of the
+      # information in VideoContentDetails specifically for the Videos.stats API.
+      class VideoStatsContentDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The length of the video. The property value is a [`google.
+        # protobuf.Duration`](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#duration) object.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+        end
+      end
+      
+      # Basic details about a video. This is a subset of the information in
+      # VideoSnippet specifically for the Videos.stats API.
+      class VideoStatsSnippet
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The date and time that the video was uploaded. The property value
+        # is a [`google.protobuf.Timestamp`](https://developers.google.com/protocol-
+        # buffers/docs/reference/google.protobuf#timestamp) object.
+        # Corresponds to the JSON property `publishTime`
+        # @return [String]
+        attr_accessor :publish_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publish_time = args[:publish_time] if args.key?(:publish_time)
+        end
+      end
+      
+      # Statistics about the video, such as the number of times the video was viewed
+      # or liked.
+      class VideoStatsStatistics
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of comments for the video.
+        # Corresponds to the JSON property `commentCount`
+        # @return [Fixnum]
+        attr_accessor :comment_count
+      
+        # Output only. The number of users who have indicated that they liked the video
+        # by giving it a positive rating.
+        # Corresponds to the JSON property `likeCount`
+        # @return [Fixnum]
+        attr_accessor :like_count
+      
+        # Output only. The number of times the video has been viewed.
+        # Corresponds to the JSON property `viewCount`
+        # @return [Fixnum]
+        attr_accessor :view_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_count = args[:comment_count] if args.key?(:comment_count)
           @like_count = args[:like_count] if args.key?(:like_count)
           @view_count = args[:view_count] if args.key?(:view_count)
         end

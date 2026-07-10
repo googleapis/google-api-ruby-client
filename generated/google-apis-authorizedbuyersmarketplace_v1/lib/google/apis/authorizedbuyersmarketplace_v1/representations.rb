@@ -464,6 +464,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           collection :eligible_seat_ids, as: 'eligibleSeatIds'
+          property :floor_price_cpm, as: 'floorPriceCpm', class: Google::Apis::AuthorizedbuyersmarketplaceV1::Money, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1::Money::Representation
+      
           property :name, as: 'name'
           collection :subscribed_buyers, as: 'subscribedBuyers'
           collection :subscribed_clients, as: 'subscribedClients'
@@ -783,6 +785,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
+          collection :ancestor_names, as: 'ancestorNames'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
         end
       end
       

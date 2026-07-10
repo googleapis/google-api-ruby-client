@@ -158,6 +158,14 @@ module Google
       class AuditLog
         include Google::Apis::Core::Hashable
       
+        # The API version identifier of the operation that uses interface based
+        # versioning (IBV). For example, `"2026-01-01-preview"`. The version identifier
+        # generally follows the format of [variant_]date[_decorator]. It should not be
+        # parsed because the exact format varies across services.
+        # Corresponds to the JSON property `apiVersionIdentifier`
+        # @return [String]
+        attr_accessor :api_version_identifier
+      
         # Authentication information for the operation.
         # Corresponds to the JSON property `authenticationInfo`
         # @return [Google::Apis::ServicecontrolV2::AuthenticationInfo]
@@ -267,6 +275,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_version_identifier = args[:api_version_identifier] if args.key?(:api_version_identifier)
           @authentication_info = args[:authentication_info] if args.key?(:authentication_info)
           @authorization_info = args[:authorization_info] if args.key?(:authorization_info)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -326,6 +335,18 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :claims
       
+        # Identifies the client credential id used for authentication. credential_id is
+        # in the format of AUTH_METHOD:IDENTIFIER, e.g. "serviceaccount:XXXXX, apikey:
+        # XXXXX" where the format of the IDENTIFIER can vary for different AUTH_METHODs.
+        # Corresponds to the JSON property `credentialId`
+        # @return [String]
+        attr_accessor :credential_id
+      
+        # This message defines attributes associated with OAuth credentials.
+        # Corresponds to the JSON property `oauth`
+        # @return [Google::Apis::ServicecontrolV2::Oauth]
+        attr_accessor :oauth
+      
         # The authorized presenter of the credential. Reflects the optional Authorized
         # Presenter (`azp`) claim within a JWT or the OAuth client id. For example, a
         # Google Cloud Platform client id looks as follows: "123456789012.apps.
@@ -351,6 +372,8 @@ module Google
           @access_levels = args[:access_levels] if args.key?(:access_levels)
           @audiences = args[:audiences] if args.key?(:audiences)
           @claims = args[:claims] if args.key?(:claims)
+          @credential_id = args[:credential_id] if args.key?(:credential_id)
+          @oauth = args[:oauth] if args.key?(:oauth)
           @presenter = args[:presenter] if args.key?(:presenter)
           @principal = args[:principal] if args.key?(:principal)
         end
@@ -365,6 +388,20 @@ module Google
         # Corresponds to the JSON property `authoritySelector`
         # @return [String]
         attr_accessor :authority_selector
+      
+        # Converted from "identity_cloudgaia.AuditLoggableShortLivedCredential" proto.
+        # This message will be used by security, detection and response team. For
+        # context please refer to go/cg:short-lived-credential-logging. When the JSON
+        # object represented here has a proto equivalent, the proto name will be
+        # indicated in the `@type` property.
+        # Corresponds to the JSON property `loggableShortLivedCredential`
+        # @return [Hash<String,Object>]
+        attr_accessor :loggable_short_lived_credential
+      
+        # OAuth related information about the request.
+        # Corresponds to the JSON property `oauthInfo`
+        # @return [Google::Apis::ServicecontrolV2::OAuthInfo]
+        attr_accessor :oauth_info
       
         # The email address of the authenticated user (or service account on behalf of
         # third party principal) making the request. For third party identity callers,
@@ -421,6 +458,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authority_selector = args[:authority_selector] if args.key?(:authority_selector)
+          @loggable_short_lived_credential = args[:loggable_short_lived_credential] if args.key?(:loggable_short_lived_credential)
+          @oauth_info = args[:oauth_info] if args.key?(:oauth_info)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
           @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
           @service_account_delegation_info = args[:service_account_delegation_info] if args.key?(:service_account_delegation_info)
@@ -589,6 +628,47 @@ module Google
         def update!(**args)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
           @service_metadata = args[:service_metadata] if args.key?(:service_metadata)
+        end
+      end
+      
+      # OAuth related information about the request.
+      class OAuthInfo
+        include Google::Apis::Core::Hashable
+      
+        # The OAuth client ID of the 1P or 3P application acting on behalf of the user.
+        # Corresponds to the JSON property `oauthClientId`
+        # @return [String]
+        attr_accessor :oauth_client_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_client_id = args[:oauth_client_id] if args.key?(:oauth_client_id)
+        end
+      end
+      
+      # This message defines attributes associated with OAuth credentials.
+      class Oauth
+        include Google::Apis::Core::Hashable
+      
+        # The optional OAuth client ID. This is the unique public identifier issued by
+        # an authorization server to a registered client application. Empty string is
+        # equivalent to no oauth client id. WARNING: This is for MCP tools/call and
+        # tools/list authorization and not for general use.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
         end
       end
       
@@ -1751,6 +1831,13 @@ module Google
         # @return [String]
         attr_accessor :constraint
       
+        # Optional. Provides extra information for the specific violated constraint. See
+        # the constraint's documentation to determine if this field is populated and
+        # what the structure of the message should be.
+        # Corresponds to the JSON property `constraintViolationInfo`
+        # @return [Hash<String,Object>]
+        attr_accessor :constraint_violation_info
+      
         # Optional. Error message that policy is indicating.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
@@ -1769,6 +1856,7 @@ module Google
         def update!(**args)
           @checked_value = args[:checked_value] if args.key?(:checked_value)
           @constraint = args[:constraint] if args.key?(:constraint)
+          @constraint_violation_info = args[:constraint_violation_info] if args.key?(:constraint_violation_info)
           @error_message = args[:error_message] if args.key?(:error_message)
           @policy_type = args[:policy_type] if args.key?(:policy_type)
         end

@@ -21,9 +21,8 @@ module Google
   module Apis
     # Ad Exchange Buyer API II
     #
-    # Accesses the latest features for managing Authorized Buyers accounts, Real-
-    # Time Bidding configurations and auction metrics, and Marketplace programmatic
-    # deals.
+    # Access the latest features for managing Authorized Buyers accounts, Real-Time
+    # Bidding configurations and auction metrics, and Marketplace programmatic deals.
     #
     # @see https://developers.google.com/authorized-buyers/apis/reference/rest/
     module Adexchangebuyer2V2beta1

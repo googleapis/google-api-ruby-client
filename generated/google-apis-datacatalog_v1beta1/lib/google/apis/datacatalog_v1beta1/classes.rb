@@ -757,7 +757,7 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec]
         attr_accessor :database_view_spec
       
-        # Entry specification for a Dataplex table.
+        # Entry specification for a Dataplex Universal Catalog table.
         # Corresponds to the JSON property `dataplexTable`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexTableSpec]
         attr_accessor :dataplex_table
@@ -810,11 +810,12 @@ module Google
         end
       end
       
-      # External table registered by Dataplex. Dataplex publishes data discovered from
-      # an asset into multiple other systems (BigQuery, DPMS) in form of tables. We
-      # call them "external tables". External tables are also synced into the Data
-      # Catalog. This message contains pointers to those external tables (fully
-      # qualified name, resource name et cetera) within the Data Catalog.
+      # External table registered by Dataplex Universal Catalog. Dataplex Universal
+      # Catalog publishes data discovered from an asset into multiple other systems (
+      # BigQuery, DPMS) in form of tables. We call them "external tables". External
+      # tables are also synced into the Data Catalog. This message contains pointers
+      # to those external tables (fully qualified name, resource name et cetera)
+      # within the Data Catalog.
       class GoogleCloudDatacatalogV1DataplexExternalTable
         include Google::Apis::Core::Hashable
       
@@ -851,11 +852,11 @@ module Google
         end
       end
       
-      # Entry specyfication for a Dataplex fileset.
+      # Entry specification for a Dataplex Universal Catalog fileset.
       class GoogleCloudDatacatalogV1DataplexFilesetSpec
         include Google::Apis::Core::Hashable
       
-        # Common Dataplex fields.
+        # Common Dataplex Universal Catalog fields.
         # Corresponds to the JSON property `dataplexSpec`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexSpec]
         attr_accessor :dataplex_spec
@@ -870,13 +871,13 @@ module Google
         end
       end
       
-      # Common Dataplex fields.
+      # Common Dataplex Universal Catalog fields.
       class GoogleCloudDatacatalogV1DataplexSpec
         include Google::Apis::Core::Hashable
       
-        # Fully qualified resource name of an asset in Dataplex, to which the underlying
-        # data source (Cloud Storage bucket or BigQuery dataset) of the entity is
-        # attached.
+        # Fully qualified resource name of an asset in Dataplex Universal Catalog, to
+        # which the underlying data source (Cloud Storage bucket or BigQuery dataset) of
+        # the entity is attached.
         # Corresponds to the JSON property `asset`
         # @return [String]
         attr_accessor :asset
@@ -893,8 +894,8 @@ module Google
         attr_accessor :data_format
       
         # Project ID of the underlying Cloud Storage or BigQuery data. Note that this
-        # may not be the same project as the correspondingly Dataplex lake / zone /
-        # asset.
+        # may not be the same project as the corresponding Dataplex Universal Catalog
+        # lake / zone / asset.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -912,18 +913,18 @@ module Google
         end
       end
       
-      # Entry specification for a Dataplex table.
+      # Entry specification for a Dataplex Universal Catalog table.
       class GoogleCloudDatacatalogV1DataplexTableSpec
         include Google::Apis::Core::Hashable
       
-        # Common Dataplex fields.
+        # Common Dataplex Universal Catalog fields.
         # Corresponds to the JSON property `dataplexSpec`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexSpec]
         attr_accessor :dataplex_spec
       
-        # List of external tables registered by Dataplex in other systems based on the
-        # same underlying data. External tables allow to query this data in those
-        # systems.
+        # List of external tables registered by Dataplex Universal Catalog in other
+        # systems based on the same underlying data. External tables allow to query this
+        # data in those systems.
         # Corresponds to the JSON property `externalTables`
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexExternalTable>]
         attr_accessor :external_tables
@@ -1082,6 +1083,11 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GcsFilesetSpec]
         attr_accessor :gcs_fileset_spec
       
+        # Specification that applies to a graph.
+        # Corresponds to the JSON property `graphSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpec]
+        attr_accessor :graph_spec
+      
         # Output only. Indicates the entry's source system that Data Catalog integrates
         # with, such as BigQuery, Pub/Sub, or Dataproc Metastore.
         # Corresponds to the JSON property `integratedSystem`
@@ -1155,6 +1161,11 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SystemTimestamps]
         attr_accessor :source_system_timestamps
       
+        # Specification of a Spanner table.
+        # Corresponds to the JSON property `spannerTableSpec`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SpannerTableSpec]
+        attr_accessor :spanner_table_spec
+      
         # Specification that applies to entries that are part `SQL_DATABASE` system (
         # user_specified_type)
         # Corresponds to the JSON property `sqlDatabaseSystemSpec`
@@ -1214,6 +1225,7 @@ module Google
           @fileset_spec = args[:fileset_spec] if args.key?(:fileset_spec)
           @fully_qualified_name = args[:fully_qualified_name] if args.key?(:fully_qualified_name)
           @gcs_fileset_spec = args[:gcs_fileset_spec] if args.key?(:gcs_fileset_spec)
+          @graph_spec = args[:graph_spec] if args.key?(:graph_spec)
           @integrated_system = args[:integrated_system] if args.key?(:integrated_system)
           @labels = args[:labels] if args.key?(:labels)
           @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
@@ -1225,6 +1237,7 @@ module Google
           @schema = args[:schema] if args.key?(:schema)
           @service_spec = args[:service_spec] if args.key?(:service_spec)
           @source_system_timestamps = args[:source_system_timestamps] if args.key?(:source_system_timestamps)
+          @spanner_table_spec = args[:spanner_table_spec] if args.key?(:spanner_table_spec)
           @sql_database_system_spec = args[:sql_database_system_spec] if args.key?(:sql_database_system_spec)
           @type = args[:type] if args.key?(:type)
           @usage_signal = args[:usage_signal] if args.key?(:usage_signal)
@@ -1279,7 +1292,7 @@ module Google
       class GoogleCloudDatacatalogV1FilesetSpec
         include Google::Apis::Core::Hashable
       
-        # Entry specyfication for a Dataplex fileset.
+        # Entry specification for a Dataplex Universal Catalog fileset.
         # Corresponds to the JSON property `dataplexFileset`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1DataplexFilesetSpec]
         attr_accessor :dataplex_fileset
@@ -1362,6 +1375,199 @@ module Google
         def update!(**args)
           @file_patterns = args[:file_patterns] if args.key?(:file_patterns)
           @sample_gcs_file_specs = args[:sample_gcs_file_specs] if args.key?(:sample_gcs_file_specs)
+        end
+      end
+      
+      # Specification that applies to a graph.
+      class GoogleCloudDatacatalogV1GraphSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Edge tables of the graph.
+        # Corresponds to the JSON property `edgeTables`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable>]
+        attr_accessor :edge_tables
+      
+        # Output only. Fully qualified graph name. e.g. `named_catalog.MyGraph`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Node tables of the graph.
+        # Corresponds to the JSON property `nodeTables`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable>]
+        attr_accessor :node_tables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edge_tables = args[:edge_tables] if args.key?(:edge_tables)
+          @name = args[:name] if args.key?(:name)
+          @node_tables = args[:node_tables] if args.key?(:node_tables)
+        end
+      end
+      
+      # Element table definition.
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTable
+        include Google::Apis::Core::Hashable
+      
+        # Required. The alias name of the graph element.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # Required. The name of the data source. This is either a table name or a view
+        # name that is used for graph element input source. E.g. `Person` table or `
+        # PersonView` view.
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # A reference to a source or destination node in a graph edge.
+        # Corresponds to the JSON property `destinationNodeReference`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference]
+        attr_accessor :destination_node_reference
+      
+        # Optional. If set, this is the input column for dynamic label in schemaless
+        # data model.
+        # Corresponds to the JSON property `dynamicLabelColumn`
+        # @return [String]
+        attr_accessor :dynamic_label_column
+      
+        # Optional. If set, this is the input column for dynamic properties in
+        # schemaless data model.
+        # Corresponds to the JSON property `dynamicPropertiesColumn`
+        # @return [String]
+        attr_accessor :dynamic_properties_column
+      
+        # Required. The name of the keys of the elements in the table.
+        # Corresponds to the JSON property `elementKeys`
+        # @return [Array<String>]
+        attr_accessor :element_keys
+      
+        # Required. The input source of the graph element.
+        # Corresponds to the JSON property `inputSource`
+        # @return [String]
+        attr_accessor :input_source
+      
+        # Required. The kind of the graph element.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Required. The labels and their properties for the graph element.
+        # Corresponds to the JSON property `labelAndProperties`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>]
+        attr_accessor :label_and_properties
+      
+        # A reference to a source or destination node in a graph edge.
+        # Corresponds to the JSON property `sourceNodeReference`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference]
+        attr_accessor :source_node_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @destination_node_reference = args[:destination_node_reference] if args.key?(:destination_node_reference)
+          @dynamic_label_column = args[:dynamic_label_column] if args.key?(:dynamic_label_column)
+          @dynamic_properties_column = args[:dynamic_properties_column] if args.key?(:dynamic_properties_column)
+          @element_keys = args[:element_keys] if args.key?(:element_keys)
+          @input_source = args[:input_source] if args.key?(:input_source)
+          @kind = args[:kind] if args.key?(:kind)
+          @label_and_properties = args[:label_and_properties] if args.key?(:label_and_properties)
+          @source_node_reference = args[:source_node_reference] if args.key?(:source_node_reference)
+        end
+      end
+      
+      # A reference to a source or destination node in a graph edge.
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. The referencing columns in the edge table. The size of `
+        # edge_table_columns` must be equal to the size of `node_table_columns`.
+        # Corresponds to the JSON property `edgeTableColumns`
+        # @return [Array<String>]
+        attr_accessor :edge_table_columns
+      
+        # Required. The reference to the source/destination node of the edge. This name
+        # must be a valid `alias` of a node element in the same graph. Example, `Person`
+        # node can be a source node name of an edge element `Person_to_Address`.
+        # Corresponds to the JSON property `nodeAlias`
+        # @return [String]
+        attr_accessor :node_alias
+      
+        # Required. The referenced columns of the source node table.
+        # Corresponds to the JSON property `nodeTableColumns`
+        # @return [Array<String>]
+        attr_accessor :node_table_columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edge_table_columns = args[:edge_table_columns] if args.key?(:edge_table_columns)
+          @node_alias = args[:node_alias] if args.key?(:node_alias)
+          @node_table_columns = args[:node_table_columns] if args.key?(:node_table_columns)
+        end
+      end
+      
+      # The label and its properties. Each label is associated with a set of
+      # properties.
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the label.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Optional. The properties associated with the label.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # A property declaration.
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty
+        include Google::Apis::Core::Hashable
+      
+        # Required. Property name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Property data type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1841,6 +2047,110 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_bigtable_instance_spec = args[:cloud_bigtable_instance_spec] if args.key?(:cloud_bigtable_instance_spec)
+        end
+      end
+      
+      # Specification of a Spanner table.
+      class GoogleCloudDatacatalogV1SpannerTableSpec
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The foreign keys of the table.
+        # Corresponds to the JSON property `foreignKeys`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>]
+        attr_accessor :foreign_keys
+      
+        # Specification of a Spanner primary key.
+        # Corresponds to the JSON property `primaryKey`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey]
+        attr_accessor :primary_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @foreign_keys = args[:foreign_keys] if args.key?(:foreign_keys)
+          @primary_key = args[:primary_key] if args.key?(:primary_key)
+        end
+      end
+      
+      # Specification of a Spanner foreign key.
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The ordered list of column mappings for this foreign key.
+        # Corresponds to the JSON property `columnMappings`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>]
+        attr_accessor :column_mappings
+      
+        # Output only. The table name this foreign key referenced to. Format: `projects/`
+        # PROJECT_ID`/locations/`LOCATION`/entryGroups/`ENTRY_GROUP_ID`/entries/`
+        # ENTRY_ID``
+        # Corresponds to the JSON property `entry`
+        # @return [String]
+        attr_accessor :entry
+      
+        # Output only. The constraint_name of the foreign key, for example,
+        # FK_CustomerOrder.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_mappings = args[:column_mappings] if args.key?(:column_mappings)
+          @entry = args[:entry] if args.key?(:entry)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Column mapping for a Spanner foreign key.
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The column in the current table that is part of the foreign key.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Output only. The column in the referenced table that is part of the foreign
+        # key.
+        # Corresponds to the JSON property `referenceColumn`
+        # @return [String]
+        attr_accessor :reference_column
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @reference_column = args[:reference_column] if args.key?(:reference_column)
+        end
+      end
+      
+      # Specification of a Spanner primary key.
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Column names of the primary key.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<String>]
+        attr_accessor :columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
         end
       end
       
@@ -3574,8 +3884,8 @@ module Google
       
       # A tag template defines a tag, which can have one or more typed fields. The
       # template is used to create and attach the tag to Google Cloud resources. [Tag
-      # template roles](https://cloud.google.com/iam/docs/understanding-roles#data-
-      # catalog-roles) provide permissions to create, edit, and use the template. See,
+      # template roles](https://cloud.google.com/iam/docs/roles-permissions/
+      # datacatalog) provide permissions to create, edit, and use the template. See,
       # for example, the [TagTemplate User](https://cloud.google.com/data-catalog/docs/
       # how-to/template-user) role, which includes permission to use the tag template
       # to tag resources.

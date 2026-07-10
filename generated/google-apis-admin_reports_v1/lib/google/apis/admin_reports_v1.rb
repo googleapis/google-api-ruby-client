@@ -31,10 +31,10 @@ module Google
       # This is NOT the gem version.
       VERSION = 'ReportsV1'
 
-      # View audit reports for your G Suite domain
+      # View audit reports for your Google Workspace domain
       AUTH_ADMIN_REPORTS_AUDIT_READONLY = 'https://www.googleapis.com/auth/admin.reports.audit.readonly'
 
-      # View usage reports for your G Suite domain
+      # View usage reports for your Google Workspace domain
       AUTH_ADMIN_REPORTS_USAGE_READONLY = 'https://www.googleapis.com/auth/admin.reports.usage.readonly'
     end
   end

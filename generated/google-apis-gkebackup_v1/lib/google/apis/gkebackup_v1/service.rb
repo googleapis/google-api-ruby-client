@@ -82,12 +82,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -569,6 +578,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns tags directly bound to a GCP resource.
+        # @param [String] name
+        #   Required. The full resource name of the service resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::GetTagsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::GetTagsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_backup_plan_tags(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:getTags', options)
+          command.response_representation = Google::Apis::GkebackupV1::GetTagsResponse::Representation
+          command.response_class = Google::Apis::GkebackupV1::GetTagsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists BackupPlans in a given location.
         # @param [String] parent
         #   Required. The location that contains the BackupPlans to list. Format: `
@@ -621,8 +660,8 @@ module Google
         
         # Update a BackupPlan.
         # @param [String] name
-        #   Output only. The full name of the BackupPlan resource. Format: `projects/*/
-        #   locations/*/backupPlans/*`
+        #   Output only. Identifier. The full name of the BackupPlan resource. Format: `
+        #   projects/*/locations/*/backupPlans/*`
         # @param [Google::Apis::GkebackupV1::BackupPlan] backup_plan_object
         # @param [String] update_mask
         #   Optional. This is used to specify the fields to be overwritten in the
@@ -695,6 +734,39 @@ module Google
           command.response_representation = Google::Apis::GkebackupV1::Policy::Representation
           command.response_class = Google::Apis::GkebackupV1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates tags directly bound to a GCP resource.
+        # @param [String] name
+        #   Required. The full resource name of the service resource.
+        # @param [Google::Apis::GkebackupV1::SetTagsRequest] set_tags_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::SetTagsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::SetTagsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_backup_plan_tags(name, set_tags_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:setTags', options)
+          command.request_representation = Google::Apis::GkebackupV1::SetTagsRequest::Representation
+          command.request_object = set_tags_request_object
+          command.response_representation = Google::Apis::GkebackupV1::SetTagsResponse::Representation
+          command.response_class = Google::Apis::GkebackupV1::SetTagsResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -983,8 +1055,8 @@ module Google
         
         # Update a Backup.
         # @param [String] name
-        #   Output only. The fully qualified name of the Backup. `projects/*/locations/*/
-        #   backupPlans/*/backups/*`
+        #   Output only. Identifier. The fully qualified name of the Backup. `projects/*/
+        #   locations/*/backupPlans/*/backups/*`
         # @param [Google::Apis::GkebackupV1::Backup] backup_object
         # @param [String] update_mask
         #   Optional. This is used to specify the fields to be overwritten in the Backup
@@ -1416,6 +1488,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1433,7 +1513,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::GkebackupV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::GkebackupV1::GoogleLongrunningListOperationsResponse
@@ -1441,6 +1521,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1886,6 +1967,36 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns tags directly bound to a GCP resource.
+        # @param [String] name
+        #   Required. The full resource name of the service resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::GetTagsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::GetTagsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_restore_plan_tags(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:getTags', options)
+          command.response_representation = Google::Apis::GkebackupV1::GetTagsResponse::Representation
+          command.response_class = Google::Apis::GkebackupV1::GetTagsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists RestorePlans in a given location.
         # @param [String] parent
         #   Required. The location that contains the RestorePlans to list. Format: `
@@ -1938,8 +2049,8 @@ module Google
         
         # Update a RestorePlan.
         # @param [String] name
-        #   Output only. The full name of the RestorePlan resource. Format: `projects/*/
-        #   locations/*/restorePlans/*`.
+        #   Output only. Identifier. The full name of the RestorePlan resource. Format: `
+        #   projects/*/locations/*/restorePlans/*`.
         # @param [Google::Apis::GkebackupV1::RestorePlan] restore_plan_object
         # @param [String] update_mask
         #   Optional. This is used to specify the fields to be overwritten in the
@@ -2011,6 +2122,39 @@ module Google
           command.response_representation = Google::Apis::GkebackupV1::Policy::Representation
           command.response_class = Google::Apis::GkebackupV1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates tags directly bound to a GCP resource.
+        # @param [String] name
+        #   Required. The full resource name of the service resource.
+        # @param [Google::Apis::GkebackupV1::SetTagsRequest] set_tags_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GkebackupV1::SetTagsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GkebackupV1::SetTagsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_restore_plan_tags(name, set_tags_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:setTags', options)
+          command.request_representation = Google::Apis::GkebackupV1::SetTagsRequest::Representation
+          command.request_object = set_tags_request_object
+          command.response_representation = Google::Apis::GkebackupV1::SetTagsResponse::Representation
+          command.response_class = Google::Apis::GkebackupV1::SetTagsResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2264,8 +2408,8 @@ module Google
         
         # Update a Restore.
         # @param [String] name
-        #   Output only. The full name of the Restore resource. Format: `projects/*/
-        #   locations/*/restorePlans/*/restores/*`
+        #   Output only. Identifier. The full name of the Restore resource. Format: `
+        #   projects/*/locations/*/restorePlans/*/restores/*`
         # @param [Google::Apis::GkebackupV1::Restore] restore_object
         # @param [String] update_mask
         #   Optional. This is used to specify the fields to be overwritten in the Restore

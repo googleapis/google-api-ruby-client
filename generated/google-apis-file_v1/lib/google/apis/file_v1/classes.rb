@@ -278,6 +278,25 @@ module Google
         end
       end
       
+      # Directory Services configuration for Kerberos-based authentication.
+      class DirectoryServicesConfig
+        include Google::Apis::Core::Hashable
+      
+        # LdapConfig contains all the parameters for connecting to LDAP servers.
+        # Corresponds to the JSON property `ldap`
+        # @return [Google::Apis::FileV1::LdapConfig]
+        attr_accessor :ldap
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ldap = args[:ldap] if args.key?(:ldap)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -323,6 +342,13 @@ module Google
         # @return [String]
         attr_accessor :source_backup
       
+        # The resource name of the BackupDR backup, in the format `projects/`project_id`/
+        # locations/`location_id`/backupVaults/`backupvault_id`/dataSources/`
+        # datasource_id`/backups/`backup_id``,
+        # Corresponds to the JSON property `sourceBackupdrBackup`
+        # @return [String]
+        attr_accessor :source_backupdr_backup
+      
         def initialize(**args)
            update!(**args)
         end
@@ -333,6 +359,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nfs_export_options = args[:nfs_export_options] if args.key?(:nfs_export_options)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
+          @source_backupdr_backup = args[:source_backupdr_backup] if args.key?(:source_backupdr_backup)
         end
       end
       
@@ -824,6 +851,12 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
+        # Output only. The incremental increase or decrease in capacity, designated in
+        # some number of GB.
+        # Corresponds to the JSON property `capacityStepSizeGb`
+        # @return [Fixnum]
+        attr_accessor :capacity_step_size_gb
+      
         # Output only. The time when the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -853,6 +886,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Directory Services configuration for Kerberos-based authentication.
+        # Corresponds to the JSON property `directoryServices`
+        # @return [Google::Apis::FileV1::DirectoryServicesConfig]
+        attr_accessor :directory_services
+      
         # Server-specified ETag for the instance resource to prevent simultaneous
         # updates from overwriting each other.
         # Corresponds to the JSON property `etag`
@@ -874,6 +912,16 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Output only. The maximum capacity of the instance in GB.
+        # Corresponds to the JSON property `maxCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :max_capacity_gb
+      
+        # Output only. The minimum capacity of the instance in GB.
+        # Corresponds to the JSON property `minCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :min_capacity_gb
       
         # Output only. The resource name of the instance, in the format `projects/`
         # project`/locations/`location`/instances/`instance``.
@@ -910,7 +958,7 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
-        # Replication specifications.
+        # Optional. The configuration used to replicate an instance.
         # Corresponds to the JSON property `replication`
         # @return [Google::Apis::FileV1::Replication]
         attr_accessor :replication
@@ -965,15 +1013,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @capacity_step_size_gb = args[:capacity_step_size_gb] if args.key?(:capacity_step_size_gb)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_performance_supported = args[:custom_performance_supported] if args.key?(:custom_performance_supported)
           @deletion_protection_enabled = args[:deletion_protection_enabled] if args.key?(:deletion_protection_enabled)
           @deletion_protection_reason = args[:deletion_protection_reason] if args.key?(:deletion_protection_reason)
           @description = args[:description] if args.key?(:description)
+          @directory_services = args[:directory_services] if args.key?(:directory_services)
           @etag = args[:etag] if args.key?(:etag)
           @file_shares = args[:file_shares] if args.key?(:file_shares)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @labels = args[:labels] if args.key?(:labels)
+          @max_capacity_gb = args[:max_capacity_gb] if args.key?(:max_capacity_gb)
+          @min_capacity_gb = args[:min_capacity_gb] if args.key?(:min_capacity_gb)
           @name = args[:name] if args.key?(:name)
           @networks = args[:networks] if args.key?(:networks)
           @performance_config = args[:performance_config] if args.key?(:performance_config)
@@ -987,6 +1039,51 @@ module Google
           @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
           @tags = args[:tags] if args.key?(:tags)
           @tier = args[:tier] if args.key?(:tier)
+        end
+      end
+      
+      # LdapConfig contains all the parameters for connecting to LDAP servers.
+      class LdapConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The LDAP domain name in the format of `my-domain.com`.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Optional. The groups Organizational Unit (OU) is optional. This parameter is a
+        # hint to allow faster lookup in the LDAP namespace. In case that this parameter
+        # is not provided, Filestore instance will query the whole LDAP namespace.
+        # Corresponds to the JSON property `groupsOu`
+        # @return [String]
+        attr_accessor :groups_ou
+      
+        # Required. The servers names are used for specifying the LDAP servers names.
+        # The LDAP servers names can come with two formats: 1. DNS name, for example: `
+        # ldap.example1.com`, `ldap.example2.com`. 2. IP address, for example: `10.0.0.1`
+        # , `10.0.0.2`, `10.0.0.3`. All servers names must be in the same format: either
+        # all DNS names or all IP addresses.
+        # Corresponds to the JSON property `servers`
+        # @return [Array<String>]
+        attr_accessor :servers
+      
+        # Optional. The users Organizational Unit (OU) is optional. This parameter is a
+        # hint to allow faster lookup in the LDAP namespace. In case that this parameter
+        # is not provided, Filestore instance will query the whole LDAP namespace.
+        # Corresponds to the JSON property `usersOu`
+        # @return [String]
+        attr_accessor :users_ou
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @groups_ou = args[:groups_ou] if args.key?(:groups_ou)
+          @servers = args[:servers] if args.key?(:servers)
+          @users_ou = args[:users_ou] if args.key?(:users_ou)
         end
       end
       
@@ -1101,6 +1198,14 @@ module Google
         # @return [Array<Google::Apis::FileV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1109,6 +1214,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1296,7 +1402,6 @@ module Google
         attr_accessor :ip_addresses
       
         # Internet protocol versions for which the instance has IP addresses assigned.
-        # For this version, only MODE_IPV4 is supported.
         # Corresponds to the JSON property `modes`
         # @return [Array<String>]
         attr_accessor :modes
@@ -1306,6 +1411,11 @@ module Google
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
+      
+        # Private Service Connect configuration.
+        # Corresponds to the JSON property `pscConfig`
+        # @return [Google::Apis::FileV1::PscConfig]
+        attr_accessor :psc_config
       
         # Optional, reserved_ip_range can have one of the following two types of values.
         # * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP
@@ -1335,6 +1445,7 @@ module Google
           @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @modes = args[:modes] if args.key?(:modes)
           @network = args[:network] if args.key?(:network)
+          @psc_config = args[:psc_config] if args.key?(:psc_config)
           @reserved_ip_range = args[:reserved_ip_range] if args.key?(:reserved_ip_range)
         end
       end
@@ -1374,6 +1485,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :ip_ranges
       
+        # Optional. The source VPC network for ip_ranges. Required for instances using
+        # Private Service Connect, optional otherwise. If provided, must be the same
+        # network specified in the `NetworkConfig.network` field.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or
         # ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         # Corresponds to the JSON property `squashMode`
@@ -1390,6 +1508,7 @@ module Google
           @anon_gid = args[:anon_gid] if args.key?(:anon_gid)
           @anon_uid = args[:anon_uid] if args.key?(:anon_uid)
           @ip_ranges = args[:ip_ranges] if args.key?(:ip_ranges)
+          @network = args[:network] if args.key?(:network)
           @squash_mode = args[:squash_mode] if args.key?(:squash_mode)
         end
       end
@@ -1515,6 +1634,19 @@ module Google
         end
       end
       
+      # PauseReplicaRequest pauses a Filestore standby instance (replica).
+      class PauseReplicaRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Used for setting the performance configuration. If the user doesn't specify
       # PerformanceConfig, automatically provision the default performance settings as
       # described in https://cloud.google.com/filestore/docs/performance. Larger
@@ -1550,27 +1682,27 @@ module Google
       class PerformanceLimits
         include Google::Apis::Core::Hashable
       
-        # Output only. The max IOPS.
+        # Output only. The maximum IOPS.
         # Corresponds to the JSON property `maxIops`
         # @return [Fixnum]
         attr_accessor :max_iops
       
-        # Output only. The max read IOPS.
+        # Output only. The maximum read IOPS.
         # Corresponds to the JSON property `maxReadIops`
         # @return [Fixnum]
         attr_accessor :max_read_iops
       
-        # Output only. The max read throughput in bytes per second.
+        # Output only. The maximum read throughput in bytes per second.
         # Corresponds to the JSON property `maxReadThroughputBps`
         # @return [Fixnum]
         attr_accessor :max_read_throughput_bps
       
-        # Output only. The max write IOPS.
+        # Output only. The maximum write IOPS.
         # Corresponds to the JSON property `maxWriteIops`
         # @return [Fixnum]
         attr_accessor :max_write_iops
       
-        # Output only. The max write throughput in bytes per second.
+        # Output only. The maximum write throughput in bytes per second.
         # Corresponds to the JSON property `maxWriteThroughputBps`
         # @return [Fixnum]
         attr_accessor :max_write_throughput_bps
@@ -1610,6 +1742,28 @@ module Google
         end
       end
       
+      # Private Service Connect configuration.
+      class PscConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Consumer service project in which the Private Service Connect
+        # endpoint would be set up. This is optional, and only relevant in case the
+        # network is a shared VPC. If this is not specified, the endpoint would be setup
+        # in the VPC host project.
+        # Corresponds to the JSON property `endpointProject`
+        # @return [String]
+        attr_accessor :endpoint_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_project = args[:endpoint_project] if args.key?(:endpoint_project)
+        end
+      end
+      
       # Replica configuration for the instance.
       class ReplicaConfig
         include Google::Apis::Core::Hashable
@@ -1620,7 +1774,9 @@ module Google
         # @return [String]
         attr_accessor :last_active_sync_time
       
-        # Optional. The peer instance.
+        # Optional. The name of the source instance for the replica, in the format `
+        # projects/`project`/locations/`location`/instances/`instance``. This field is
+        # required when creating a replica.
         # Corresponds to the JSON property `peerInstance`
         # @return [String]
         attr_accessor :peer_instance
@@ -1635,6 +1791,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :state_reasons
       
+        # Output only. The time when the replica state was updated.
+        # Corresponds to the JSON property `stateUpdateTime`
+        # @return [String]
+        attr_accessor :state_update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1645,10 +1806,11 @@ module Google
           @peer_instance = args[:peer_instance] if args.key?(:peer_instance)
           @state = args[:state] if args.key?(:state)
           @state_reasons = args[:state_reasons] if args.key?(:state_reasons)
+          @state_update_time = args[:state_update_time] if args.key?(:state_update_time)
         end
       end
       
-      # Replication specifications.
+      # Optional. The configuration used to replicate an instance.
       class Replication
         include Google::Apis::Core::Hashable
       
@@ -1658,7 +1820,8 @@ module Google
         # @return [Array<Google::Apis::FileV1::ReplicaConfig>]
         attr_accessor :replicas
       
-        # Optional. The replication role.
+        # Optional. The replication role. When creating a new replica, this field must
+        # be set to `STANDBY`.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
@@ -1699,6 +1862,19 @@ module Google
         def update!(**args)
           @file_share = args[:file_share] if args.key?(:file_share)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
+        end
+      end
+      
+      # ResumeReplicaRequest resumes a Filestore standby instance (replica).
+      class ResumeReplicaRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

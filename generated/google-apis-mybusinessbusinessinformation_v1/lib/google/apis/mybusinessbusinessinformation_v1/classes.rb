@@ -475,7 +475,7 @@ module Google
       
       # Represents a free-form service offered by the merchant. These are services
       # that are not exposed as part of our structure service data. The merchant
-      # manually enters the names for of such services via a geomerchant surface.
+      # manually enters the names for such services using a geomerchant surface.
       class FreeFormServiceItem
         include Google::Apis::Core::Hashable
       
@@ -540,11 +540,14 @@ module Google
         end
       end
       
-      # Represents a location that was modified by Google.
+      # Represents the view of a location as it appears to consumers, which includes
+      # updates that are currently serving on Google Maps and Search.
       class GoogleUpdatedLocation
         include Google::Apis::Core::Hashable
       
-        # The fields that Google updated.
+        # The fields where the values in the view as it appears to consumers are
+        # different than the merchant's information. To accept these changes, patch the
+        # location. To reject, patch with your preferred values.
         # Corresponds to the JSON property `diffMask`
         # @return [String]
         attr_accessor :diff_mask
@@ -557,8 +560,9 @@ module Google
         # @return [Google::Apis::MybusinessbusinessinformationV1::Location]
         attr_accessor :location
       
-        # The fields that have pending edits that haven't yet been pushed to Maps and
-        # Search.
+        # The fields where the merchant has provided an update that is currently in
+        # flight and hasn't yet been published to Maps and Search. This mask only tracks
+        # the status of the merchant's own edits, not external changes.
         # Corresponds to the JSON property `pendingMask`
         # @return [String]
         attr_accessor :pending_mask
@@ -837,16 +841,17 @@ module Google
         # @return [String]
         attr_accessor :store_code
       
-        # Represents a postal address (for example, for postal delivery or payments
-        # addresses). Given a postal address, a postal service can deliver items to a
-        # premise, P.O. box or similar. It is not intended to model geographical
-        # locations (roads, towns, mountains). In typical usage, an address would be
-        # created by user input or from importing existing data, depending on the type
-        # of process. Advice on address input or editing: - Use an internationalization-
-        # ready address widget such as https://github.com/google/libaddressinput. -
-        # Users should not be presented with UI elements for input or editing of fields
-        # outside countries where that field is used. For more guidance on how to use
-        # this schema, see: https://support.google.com/business/answer/6397478.
+        # Represents a postal address, such as for postal delivery or payments addresses.
+        # With a postal address, a postal service can deliver items to a premise, P.O.
+        # box, or similar. A postal address is not intended to model geographical
+        # locations like roads, towns, or mountains. In typical usage, an address would
+        # be created by user input or from importing existing data, depending on the
+        # type of process. Advice on address input or editing: - Use an
+        # internationalization-ready address widget such as https://github.com/google/
+        # libaddressinput. - Users should not be presented with UI elements for input or
+        # editing of fields outside countries where that field is used. For more
+        # guidance on how to use this schema, see: https://support.google.com/business/
+        # answer/6397478.
         # Corresponds to the JSON property `storefrontAddress`
         # @return [Google::Apis::MybusinessbusinessinformationV1::PostalAddress]
         attr_accessor :storefront_address
@@ -955,7 +960,7 @@ module Google
       
         # Output only. Indicates whether the place ID associated with this location has
         # updates that need to be updated or rejected by the client. If this boolean is
-        # set, you should call the `getGoogleUpdated` method to lookup information that'
+        # set, you should call the `getGoogleUpdated` method to look up information that'
         # s needs to be verified.
         # Corresponds to the JSON property `hasGoogleUpdated`
         # @return [Boolean]
@@ -976,6 +981,12 @@ module Google
         # @return [Boolean]
         attr_accessor :has_voice_of_merchant
         alias_method :has_voice_of_merchant?, :has_voice_of_merchant
+      
+        # Output only.
+        # Corresponds to the JSON property `isParticularlyPersonalPlace`
+        # @return [Boolean]
+        attr_accessor :is_particularly_personal_place
+        alias_method :is_particularly_personal_place?, :is_particularly_personal_place
       
         # Output only. A link to the location on Maps.
         # Corresponds to the JSON property `mapsUri`
@@ -1012,6 +1023,7 @@ module Google
           @has_google_updated = args[:has_google_updated] if args.key?(:has_google_updated)
           @has_pending_edits = args[:has_pending_edits] if args.key?(:has_pending_edits)
           @has_voice_of_merchant = args[:has_voice_of_merchant] if args.key?(:has_voice_of_merchant)
+          @is_particularly_personal_place = args[:is_particularly_personal_place] if args.key?(:is_particularly_personal_place)
           @maps_uri = args[:maps_uri] if args.key?(:maps_uri)
           @new_review_uri = args[:new_review_uri] if args.key?(:new_review_uri)
           @place_id = args[:place_id] if args.key?(:place_id)
@@ -1229,16 +1241,17 @@ module Google
         end
       end
       
-      # Represents a postal address (for example, for postal delivery or payments
-      # addresses). Given a postal address, a postal service can deliver items to a
-      # premise, P.O. box or similar. It is not intended to model geographical
-      # locations (roads, towns, mountains). In typical usage, an address would be
-      # created by user input or from importing existing data, depending on the type
-      # of process. Advice on address input or editing: - Use an internationalization-
-      # ready address widget such as https://github.com/google/libaddressinput. -
-      # Users should not be presented with UI elements for input or editing of fields
-      # outside countries where that field is used. For more guidance on how to use
-      # this schema, see: https://support.google.com/business/answer/6397478.
+      # Represents a postal address, such as for postal delivery or payments addresses.
+      # With a postal address, a postal service can deliver items to a premise, P.O.
+      # box, or similar. A postal address is not intended to model geographical
+      # locations like roads, towns, or mountains. In typical usage, an address would
+      # be created by user input or from importing existing data, depending on the
+      # type of process. Advice on address input or editing: - Use an
+      # internationalization-ready address widget such as https://github.com/google/
+      # libaddressinput. - Users should not be presented with UI elements for input or
+      # editing of fields outside countries where that field is used. For more
+      # guidance on how to use this schema, see: https://support.google.com/business/
+      # answer/6397478.
       class PostalAddress
         include Google::Apis::Core::Hashable
       
@@ -1603,7 +1616,7 @@ module Google
       
         # Represents a free-form service offered by the merchant. These are services
         # that are not exposed as part of our structure service data. The merchant
-        # manually enters the names for of such services via a geomerchant surface.
+        # manually enters the names for such services using a geomerchant surface.
         # Corresponds to the JSON property `freeFormServiceItem`
         # @return [Google::Apis::MybusinessbusinessinformationV1::FreeFormServiceItem]
         attr_accessor :free_form_service_item

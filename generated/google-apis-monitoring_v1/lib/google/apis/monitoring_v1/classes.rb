@@ -618,9 +618,12 @@ module Google
       
         # Optional. The lower bound on data point frequency for this data set,
         # implemented by specifying the minimum alignment period to use in a time series
-        # query For example, if the data is published once every 10 minutes, the
+        # query. For example, if the data is published once every 10 minutes, the
         # min_alignment_period should be at least 10 minutes. It would not make sense to
-        # fetch and align data at one minute intervals.
+        # fetch and align data at one minute intervals.For PromQL queries, this field is
+        # used to set the minimum interval for the query step, controlling data
+        # granularity. Larger values can improve performance on long time ranges. See
+        # Querying Basics and Range Queries for more details on the PromQL step.
         # Corresponds to the JSON property `minAlignmentPeriod`
         # @return [String]
         attr_accessor :min_alignment_period
@@ -670,8 +673,9 @@ module Google
       class Dimension
         include Google::Apis::Core::Hashable
       
-        # Required. The name of the column in the source SQL query that is used to chart
-        # the dimension.
+        # Required. For widgets that use SQL queries, set the value to the name of the
+        # column in the results table whose data is charted. For a histogram that uses a
+        # time series query, set the value of this field to metric_value.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -691,14 +695,18 @@ module Google
         # @return [Float]
         attr_accessor :float_bin_size
       
-        # A limit to the number of bins generated. When 0 is specified, the maximum
-        # count is not enforced.
+        # For widgets that use SQL queries, the limit to the number of bins to generate.
+        # When 0 is specified, the maximum count is not enforced. For a histogram that
+        # uses a time series query, the exact number of bins to generate. If not
+        # specified or the value is 0, then the histogram determines the number of bins
+        # to use.
         # Corresponds to the JSON property `maxBinCount`
         # @return [Fixnum]
         attr_accessor :max_bin_count
       
         # numeric_bin_size is used when the column type used for a dimension is numeric
-        # or string.
+        # or string. If the column field is set to metric_value, then numericBinSize
+        # overrides maxBinCount.
         # Corresponds to the JSON property `numericBinSize`
         # @return [Fixnum]
         attr_accessor :numeric_bin_size
@@ -715,13 +723,23 @@ module Google
         # @return [String]
         attr_accessor :sort_order
       
-        # time_bin_size is used when the data type specified by column is a time type
-        # and the bin size is determined by a time duration. If column_type is DATE,
+        # time_bin_size is used when the data type of the specified dimension is a time
+        # type and the bin size is determined by a time duration. If column_type is DATE,
         # this must be a whole value multiple of 1 day. If column_type is TIME, this
         # must be less than or equal to 24 hours.
         # Corresponds to the JSON property `timeBinSize`
         # @return [String]
         attr_accessor :time_bin_size
+      
+        # The maximum value for the x-axis.
+        # Corresponds to the JSON property `xMax`
+        # @return [Float]
+        attr_accessor :x_max
+      
+        # The minimum value for the x-axis.
+        # Corresponds to the JSON property `xMin`
+        # @return [Float]
+        attr_accessor :x_min
       
         def initialize(**args)
            update!(**args)
@@ -737,6 +755,8 @@ module Google
           @sort_column = args[:sort_column] if args.key?(:sort_column)
           @sort_order = args[:sort_order] if args.key?(:sort_order)
           @time_bin_size = args[:time_bin_size] if args.key?(:time_bin_size)
+          @x_max = args[:x_max] if args.key?(:x_max)
+          @x_min = args[:x_min] if args.key?(:x_min)
         end
       end
       
@@ -876,7 +896,11 @@ module Google
         end
       end
       
-      # A single field of a message type.
+      # A single field of a message type.New usages of this message as an alternative
+      # to FieldDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class Field
         include Google::Apis::Core::Hashable
       
@@ -949,6 +973,26 @@ module Google
           @options = args[:options] if args.key?(:options)
           @packed = args[:packed] if args.key?(:packed)
           @type_url = args[:type_url] if args.key?(:type_url)
+        end
+      end
+      
+      # A widget that displays an input field to change the value of a template
+      # variable.
+      class FilterControl
+        include Google::Apis::Core::Hashable
+      
+        # Name of the template variable the widget affects.
+        # Corresponds to the JSON property `templateVariable`
+        # @return [String]
+        attr_accessor :template_variable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @template_variable = args[:template_variable] if args.key?(:template_variable)
         end
       end
       
@@ -1483,7 +1527,9 @@ module Google
       end
       
       # A protocol buffer option, which can be attached to a message, field,
-      # enumeration, etc.
+      # enumeration, etc.New usages of this message as an alternative to FileOptions,
+      # MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions,
+      # or MethodOptions are strongly discouraged.
       class Option
         include Google::Apis::Core::Hashable
       
@@ -2114,6 +2160,31 @@ module Google
         end
       end
       
+      # Span attribute key and list of values to be used for filtering.
+      class SpanAttributeFilter
+        include Google::Apis::Core::Hashable
+      
+        # Key of the attribute
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # List of attribute values for given key. Multiple values will be OR'd together.
+        # Corresponds to the JSON property `value`
+        # @return [Array<String>]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # The context of a span. This is attached to an Exemplar in Distribution values
       # during aggregation.It contains the name of a span with format: projects/[
       # PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
@@ -2139,6 +2210,97 @@ module Google
         end
       end
       
+      # First version of span filtering that is supported by the Trace component.
+      class SpanFilters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Filtering for spans containing one of the Apphub service IDs in the
+        # list. Multiple values will be OR'd together. Example: "service-id1", "service-
+        # id2"
+        # Corresponds to the JSON property `apphubServices`
+        # @return [Array<String>]
+        attr_accessor :apphub_services
+      
+        # Optional. Filtering for spans containing one of the Apphub workload IDs in the
+        # list. Multiple values will be OR'd together. Example: "workload-id1", "
+        # workload-id2"
+        # Corresponds to the JSON property `apphubWorkloads`
+        # @return [Array<String>]
+        attr_accessor :apphub_workloads
+      
+        # Optional. Filtering for spans containing one of the Apphub Application IDs in
+        # the list. Multiple values will be OR'd together.
+        # Corresponds to the JSON property `applicationIds`
+        # @return [Array<String>]
+        attr_accessor :application_ids
+      
+        # Optional. List of span attribute filters. Each SpanAttributeFilter key must be
+        # unique. Multiple attribute filters will be AND'd together.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::MonitoringV1::SpanAttributeFilter>]
+        attr_accessor :attributes
+      
+        # Optional. Filtering for spans containing one of the span display names in the
+        # list. Multiple values will be OR'd together.
+        # Corresponds to the JSON property `displayNames`
+        # @return [Array<String>]
+        attr_accessor :display_names
+      
+        # Optional. Filters for root spans only if set to true. A root span is a span
+        # without a defined parent span ID.
+        # Corresponds to the JSON property `isRootSpan`
+        # @return [Boolean]
+        attr_accessor :is_root_span
+        alias_method :is_root_span?, :is_root_span
+      
+        # Optional. Filtering for spans containing one of the kinds in the list.
+        # Multiple values will be OR'd together.
+        # Corresponds to the JSON property `kinds`
+        # @return [Array<String>]
+        attr_accessor :kinds
+      
+        # Optional. Filtering for spans with a maximum duration.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [String]
+        attr_accessor :max_duration
+      
+        # Optional. Filtering for spans with a minimum duration.
+        # Corresponds to the JSON property `minDuration`
+        # @return [String]
+        attr_accessor :min_duration
+      
+        # Optional. Filtering for spans containing one of the services in the list.
+        # Multiple values will be OR'd together.
+        # Corresponds to the JSON property `services`
+        # @return [Array<String>]
+        attr_accessor :services
+      
+        # Optional. Filtering for spans containing one of the statuses in the list.
+        # Multiple values will be OR'd together.
+        # Corresponds to the JSON property `status`
+        # @return [Array<String>]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apphub_services = args[:apphub_services] if args.key?(:apphub_services)
+          @apphub_workloads = args[:apphub_workloads] if args.key?(:apphub_workloads)
+          @application_ids = args[:application_ids] if args.key?(:application_ids)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @display_names = args[:display_names] if args.key?(:display_names)
+          @is_root_span = args[:is_root_span] if args.key?(:is_root_span)
+          @kinds = args[:kinds] if args.key?(:kinds)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @min_duration = args[:min_duration] if args.key?(:min_duration)
+          @services = args[:services] if args.key?(:services)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # A sparkChart is a small chart suitable for inclusion in a table-cell or inline
       # in text. This message contains the configuration for a sparkChart to show up
       # on a Scorecard, showing recent trends of the scorecard's timeseries.
@@ -2149,7 +2311,10 @@ module Google
         # the minimum alignment period to use in a time series query. For example, if
         # the data is published once every 10 minutes it would not make sense to fetch
         # and align data at one minute intervals. This field is optional and exists only
-        # as a hint.
+        # as a hint.For PromQL queries, this field is used to set the minimum interval
+        # for the query step, controlling data granularity. Larger values can improve
+        # performance on long time ranges. See Querying Basics and Range Queries for
+        # more details on the PromQL step.
         # Corresponds to the JSON property `minAlignmentPeriod`
         # @return [String]
         attr_accessor :min_alignment_period
@@ -2750,6 +2915,12 @@ module Google
         # @return [String]
         attr_accessor :time_series_query_language
       
+        # LINT.IfChange Preview: Query for traces. This is a preview feature and may be
+        # subject to change before final release.
+        # Corresponds to the JSON property `traceQuery`
+        # @return [Google::Apis::MonitoringV1::TraceQuery]
+        attr_accessor :trace_query
+      
         # The unit of data contained in fetched time series. If non-empty, this unit
         # will override any unit that accompanies fetched data. The format is the same
         # as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.
@@ -2770,6 +2941,7 @@ module Google
           @time_series_filter = args[:time_series_filter] if args.key?(:time_series_filter)
           @time_series_filter_ratio = args[:time_series_filter_ratio] if args.key?(:time_series_filter_ratio)
           @time_series_query_language = args[:time_series_query_language] if args.key?(:time_series_query_language)
+          @trace_query = args[:trace_query] if args.key?(:trace_query)
           @unit_override = args[:unit_override] if args.key?(:unit_override)
         end
       end
@@ -2805,7 +2977,110 @@ module Google
         end
       end
       
-      # A protocol buffer message type.
+      # LINT.IfChange Preview: Query for traces. This is a preview feature and may be
+      # subject to change before final release.
+      class TraceQuery
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The resource name of the project or Trace scope to fetch data from.
+        # If empty, the widget will default to the project's default Trace scope. If
+        # scope cannot be determined, then we fallback to the current project. Optional.
+        # Corresponds to the JSON property `resourceContainer`
+        # @return [String]
+        attr_accessor :resource_container
+      
+        # The type of span data value to be displayed on the chart. Required.
+        # Corresponds to the JSON property `spanDataValue`
+        # @return [String]
+        attr_accessor :span_data_value
+      
+        # First version of span filtering that is supported by the Trace component.
+        # Corresponds to the JSON property `spanFilters`
+        # @return [Google::Apis::MonitoringV1::SpanFilters]
+        attr_accessor :span_filters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @span_data_value = args[:span_data_value] if args.key?(:span_data_value)
+          @span_filters = args[:span_filters] if args.key?(:span_filters)
+        end
+      end
+      
+      # A widget that displays hierarchical data as a treemap.
+      class Treemap
+        include Google::Apis::Core::Hashable
+      
+        # Required. The collection of datasets used to construct and populate the
+        # treemap. For the rendered treemap rectangles: Color is determined by the
+        # aggregated value for each grouping. Size is proportional to the count of time
+        # series aggregated within that rectangle's segment.
+        # Corresponds to the JSON property `dataSets`
+        # @return [Array<Google::Apis::MonitoringV1::TreemapDataSet>]
+        attr_accessor :data_sets
+      
+        # Required. Ordered labels representing the hierarchical treemap structure.
+        # Corresponds to the JSON property `treemapHierarchy`
+        # @return [Array<String>]
+        attr_accessor :treemap_hierarchy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_sets = args[:data_sets] if args.key?(:data_sets)
+          @treemap_hierarchy = args[:treemap_hierarchy] if args.key?(:treemap_hierarchy)
+        end
+      end
+      
+      # The data represented by the treemap. Needs to include the data itself, plus
+      # rules on how to organize it hierarchically.
+      class TreemapDataSet
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The collection of breakdowns to be applied to the dataset. A
+        # breakdown is a way to slice the data. For example, you can break down the data
+        # by region.
+        # Corresponds to the JSON property `breakdowns`
+        # @return [Array<Google::Apis::MonitoringV1::Breakdown>]
+        attr_accessor :breakdowns
+      
+        # Optional. A collection of measures. A measure is a measured value of a
+        # property in your data. For example, rainfall in inches, number of units sold,
+        # revenue gained, etc.
+        # Corresponds to the JSON property `measures`
+        # @return [Array<Google::Apis::MonitoringV1::Measure>]
+        attr_accessor :measures
+      
+        # TimeSeriesQuery collects the set of supported methods for querying time series
+        # data from the Stackdriver metrics API.
+        # Corresponds to the JSON property `timeSeriesQuery`
+        # @return [Google::Apis::MonitoringV1::TimeSeriesQuery]
+        attr_accessor :time_series_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @breakdowns = args[:breakdowns] if args.key?(:breakdowns)
+          @measures = args[:measures] if args.key?(:measures)
+          @time_series_query = args[:time_series_query] if args.key?(:time_series_query)
+        end
+      end
+      
+      # A protocol buffer message type.New usages of this message as an alternative to
+      # DescriptorProto are strongly discouraged. This message does not reliability
+      # preserve all information necessary to model the schema and preserve semantics.
+      # Instead make use of FileDescriptorSet which preserves the necessary
+      # information.
       class Type
         include Google::Apis::Core::Hashable
       
@@ -2909,6 +3184,12 @@ module Google
         # @return [Google::Apis::MonitoringV1::ErrorReportingPanel]
         attr_accessor :error_reporting_panel
       
+        # A widget that displays an input field to change the value of a template
+        # variable.
+        # Corresponds to the JSON property `filterControl`
+        # @return [Google::Apis::MonitoringV1::FilterControl]
+        attr_accessor :filter_control
+      
         # Optional. The widget id. Ids may be made up of alphanumerics, dashes and
         # underscores. Widget ids are optional.
         # Corresponds to the JSON property `id`
@@ -2964,6 +3245,11 @@ module Google
         # @return [String]
         attr_accessor :title
       
+        # A widget that displays hierarchical data as a treemap.
+        # Corresponds to the JSON property `treemap`
+        # @return [Google::Apis::MonitoringV1::Treemap]
+        attr_accessor :treemap
+      
         # Condition that determines whether the widget should be displayed.
         # Corresponds to the JSON property `visibilityCondition`
         # @return [Google::Apis::MonitoringV1::VisibilityCondition]
@@ -2984,6 +3270,7 @@ module Google
           @blank = args[:blank] if args.key?(:blank)
           @collapsible_group = args[:collapsible_group] if args.key?(:collapsible_group)
           @error_reporting_panel = args[:error_reporting_panel] if args.key?(:error_reporting_panel)
+          @filter_control = args[:filter_control] if args.key?(:filter_control)
           @id = args[:id] if args.key?(:id)
           @incident_list = args[:incident_list] if args.key?(:incident_list)
           @logs_panel = args[:logs_panel] if args.key?(:logs_panel)
@@ -2994,6 +3281,7 @@ module Google
           @text = args[:text] if args.key?(:text)
           @time_series_table = args[:time_series_table] if args.key?(:time_series_table)
           @title = args[:title] if args.key?(:title)
+          @treemap = args[:treemap] if args.key?(:treemap)
           @visibility_condition = args[:visibility_condition] if args.key?(:visibility_condition)
           @xy_chart = args[:xy_chart] if args.key?(:xy_chart)
         end

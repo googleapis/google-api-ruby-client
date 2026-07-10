@@ -274,6 +274,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1GraphSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1ImportEntriesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -527,6 +557,30 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1SetConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1016,6 +1070,8 @@ module Google
           property :fully_qualified_name, as: 'fullyQualifiedName'
           property :gcs_fileset_spec, as: 'gcsFilesetSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFilesetSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFilesetSpec::Representation
       
+          property :graph_spec, as: 'graphSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpec::Representation
+      
           property :integrated_system, as: 'integratedSystem'
           hash :labels, as: 'labels'
           property :linked_resource, as: 'linkedResource'
@@ -1033,6 +1089,8 @@ module Google
           property :service_spec, as: 'serviceSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ServiceSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1ServiceSpec::Representation
       
           property :source_system_timestamps, as: 'sourceSystemTimestamps', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SystemTimestamps::Representation
+      
+          property :spanner_table_spec, as: 'spannerTableSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpec::Representation
       
           property :sql_database_system_spec, as: 'sqlDatabaseSystemSpec', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SqlDatabaseSystemSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SqlDatabaseSystemSpec::Representation
       
@@ -1126,6 +1184,62 @@ module Google
           collection :file_patterns, as: 'filePatterns'
           collection :sample_gcs_file_specs, as: 'sampleGcsFileSpecs', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFileSpec, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GcsFileSpec::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edge_tables, as: 'edgeTables', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable::Representation
+      
+          property :name, as: 'name'
+          collection :node_tables, as: 'nodeTables', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTable::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :data_source, as: 'dataSource'
+          property :destination_node_reference, as: 'destinationNodeReference', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference::Representation
+      
+          property :dynamic_label_column, as: 'dynamicLabelColumn'
+          property :dynamic_properties_column, as: 'dynamicPropertiesColumn'
+          collection :element_keys, as: 'elementKeys'
+          property :input_source, as: 'inputSource'
+          property :kind, as: 'kind'
+          collection :label_and_properties, as: 'labelAndProperties', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties::Representation
+      
+          property :source_node_reference, as: 'sourceNodeReference', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edge_table_columns, as: 'edgeTableColumns'
+          property :node_alias, as: 'nodeAlias'
+          collection :node_table_columns, as: 'nodeTableColumns'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          collection :properties, as: 'properties', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -1525,6 +1639,41 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1SpannerTableSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :foreign_keys, as: 'foreignKeys', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey::Representation
+      
+          property :primary_key, as: 'primaryKey', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_mappings, as: 'columnMappings', class: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping, decorator: Google::Apis::DatacatalogV1::GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping::Representation
+      
+          property :entry, as: 'entry'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :reference_column, as: 'referenceColumn'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns'
+        end
+      end
+      
       class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1740,6 +1889,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DatacatalogV1::Operation, decorator: Google::Apis::DatacatalogV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

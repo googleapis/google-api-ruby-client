@@ -31,6 +31,12 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # See your Google Cloud Memorystore for Redis data and the email address of your Google Account
+      AUTH_REDIS_READ_ONLY = 'https://www.googleapis.com/auth/redis.read-only'
+
+      # See, edit, configure, and delete your Google Cloud Memorystore for Redis data and see the email address for your Google Account
+      AUTH_REDIS_READ_WRITE = 'https://www.googleapis.com/auth/redis.read-write'
     end
   end
 end

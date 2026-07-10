@@ -1824,6 +1824,11 @@ module Google
         # @return [String]
         attr_accessor :realtime_database_url
       
+        # Optional. Recaptcha Enterprise site key associated with the Firebase App.
+        # Corresponds to the JSON property `recaptchaSiteKey`
+        # @return [String]
+        attr_accessor :recaptcha_site_key
+      
         # **DEPRECATED.** _Instead, find the name of the default Cloud Storage for
         # Firebase bucket using the [list endpoint](https://firebase.google.com/docs/
         # reference/rest/storage/rest/v1beta/projects.buckets/list) within the Cloud
@@ -1857,6 +1862,7 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @project_number = args[:project_number] if args.key?(:project_number)
           @realtime_database_url = args[:realtime_database_url] if args.key?(:realtime_database_url)
+          @recaptcha_site_key = args[:recaptcha_site_key] if args.key?(:recaptcha_site_key)
           @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)
           @version = args[:version] if args.key?(:version)
         end

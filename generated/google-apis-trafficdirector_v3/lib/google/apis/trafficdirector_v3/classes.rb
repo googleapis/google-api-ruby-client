@@ -861,9 +861,9 @@ module Google
       class ListMatcher
         include Google::Apis::Core::Hashable
       
-        # Specifies the way to match a ProtobufWkt::Value. Primitive values and
-        # ListValue are supported. StructValue is not supported and is always not
-        # matched. [#next-free-field: 8]
+        # Specifies the way to match a Protobuf::Value. Primitive values and ListValue
+        # are supported. StructValue is not supported and is always not matched. [#next-
+        # free-field: 8]
         # Corresponds to the JSON property `oneOf`
         # @return [Google::Apis::TrafficdirectorV3::ValueMatcher]
         attr_accessor :one_of
@@ -1399,9 +1399,12 @@ module Google
         # @return [String]
         attr_accessor :named_port
       
-        # The Linux network namespace to bind the socket to. If this is set, Envoy will
-        # create the socket in the specified network namespace. Only supported on Linux.
-        # [#not-implemented-hide:]
+        # Filepath that specifies the Linux network namespace this socket will be
+        # created in (see ``man 7 network_namespaces``). If this field is set, Envoy
+        # will create the socket in the specified network namespace. .. note:: Setting
+        # this parameter requires Envoy to run with the ``CAP_NET_ADMIN`` capability. ..
+        # attention:: Network namespaces are only configurable on Linux. Otherwise, this
+        # field has no effect.
         # Corresponds to the JSON property `networkNamespaceFilepath`
         # @return [String]
         attr_accessor :network_namespace_filepath
@@ -1545,9 +1548,9 @@ module Google
       class StringMatcher
         include Google::Apis::Core::Hashable
       
-        # The input string must have the substring specified here. Note: empty contains
-        # match is not allowed, please use regex instead. Examples: * ``abc`` matches
-        # the value ``xyz.abc.def``
+        # The input string must have the substring specified here. .. note:: Empty
+        # contains match is not allowed, please use ``safe_regex`` instead. Examples: * `
+        # `abc`` matches the value ``xyz.abc.def``
         # Corresponds to the JSON property `contains`
         # @return [String]
         attr_accessor :contains
@@ -1563,18 +1566,18 @@ module Google
         # @return [String]
         attr_accessor :exact
       
-        # If true, indicates the exact/prefix/suffix/contains matching should be case
-        # insensitive. This has no effect for the safe_regex match. For example, the
-        # matcher ``data`` will match both input string ``Data`` and ``data`` if set to
-        # true.
+        # If ``true``, indicates the exact/prefix/suffix/contains matching should be
+        # case insensitive. This has no effect for the ``safe_regex`` match. For example,
+        # the matcher ``data`` will match both input string ``Data`` and ``data`` if
+        # this option is set to ``true``.
         # Corresponds to the JSON property `ignoreCase`
         # @return [Boolean]
         attr_accessor :ignore_case
         alias_method :ignore_case?, :ignore_case
       
-        # The input string must have the prefix specified here. Note: empty prefix is
-        # not allowed, please use regex instead. Examples: * ``abc`` matches the value ``
-        # abc.xyz``
+        # The input string must have the prefix specified here. .. note:: Empty prefix
+        # match is not allowed, please use ``safe_regex`` instead. Examples: * ``abc``
+        # matches the value ``abc.xyz``
         # Corresponds to the JSON property `prefix`
         # @return [String]
         attr_accessor :prefix
@@ -1584,9 +1587,9 @@ module Google
         # @return [Google::Apis::TrafficdirectorV3::RegexMatcher]
         attr_accessor :safe_regex
       
-        # The input string must have the suffix specified here. Note: empty prefix is
-        # not allowed, please use regex instead. Examples: * ``abc`` matches the value ``
-        # xyz.abc``
+        # The input string must have the suffix specified here. .. note:: Empty suffix
+        # match is not allowed, please use ``safe_regex`` instead. Examples: * ``abc``
+        # matches the value ``xyz.abc``
         # Corresponds to the JSON property `suffix`
         # @return [String]
         attr_accessor :suffix
@@ -1628,9 +1631,9 @@ module Google
         # @return [Array<Google::Apis::TrafficdirectorV3::PathSegment>]
         attr_accessor :path
       
-        # Specifies the way to match a ProtobufWkt::Value. Primitive values and
-        # ListValue are supported. StructValue is not supported and is always not
-        # matched. [#next-free-field: 8]
+        # Specifies the way to match a Protobuf::Value. Primitive values and ListValue
+        # are supported. StructValue is not supported and is always not matched. [#next-
+        # free-field: 8]
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::TrafficdirectorV3::ValueMatcher]
         attr_accessor :value
@@ -1714,9 +1717,9 @@ module Google
         end
       end
       
-      # Specifies the way to match a ProtobufWkt::Value. Primitive values and
-      # ListValue are supported. StructValue is not supported and is always not
-      # matched. [#next-free-field: 8]
+      # Specifies the way to match a Protobuf::Value. Primitive values and ListValue
+      # are supported. StructValue is not supported and is always not matched. [#next-
+      # free-field: 8]
       class ValueMatcher
         include Google::Apis::Core::Hashable
       

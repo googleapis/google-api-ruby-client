@@ -54,9 +54,9 @@ module Google
         # Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log
         # Router can be configured for Google Cloud projects, folders, organizations,
         # and billing accounts. Once configured for an organization, it applies to all
-        # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
-        # for more information.
+        # projects and folders in the Google Cloud organization.See Configure CMEK for
+        # Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-
+        # encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -94,8 +94,8 @@ module Google
         
         # Gets the settings for the given resource.Note: Settings can be retrieved for
         # Google Cloud projects, folders, organizations, and billing accounts.See View
-        # default resource settings for Logging (https://cloud.google.com/logging/docs/
-        # default-settings#view-org-settings) for more information.
+        # default resource settings for Logging (https://docs.cloud.google.com/logging/
+        # docs/default-settings#view-org-settings) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
         #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
@@ -353,12 +353,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service.This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: Global locations: If name is empty, the
+        # method lists the public locations available to all projects. Project-specific
+        # locations: If name follows the format projects/`project`, the method lists
+        # locations visible to that specific project. This includes public, private, or
+        # other project-specific locations enabled for the project.For gRPC and client
+        # library implementations, the resource name is passed as the name field. For
+        # direct service calls, the resource name is incorporated into the request path
+        # based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -1222,6 +1231,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to true, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1239,7 +1256,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_account_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_billing_account_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}/operations', options)
           command.response_representation = Google::Apis::LoggingV2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListOperationsResponse
@@ -1247,6 +1264,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1486,10 +1504,10 @@ module Google
         # @param [String] name
         #   Output only. Resource name of the saved query.In the format: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
-        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
-        #   docs/region-support#bucket-regions)After the saved query is created, the
-        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
-        #   will generate an alphanumeric ID.
+        #   supported locations, see Supported Regions (https://docs.cloud.google.com/
+        #   logging/docs/region-support#bucket-regions)After the saved query is created,
+        #   the location cannot be changed.If the user doesn't provide a QUERY_ID, the
+        #   system will generate an alphanumeric ID.
         # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing saved query.
@@ -1646,8 +1664,8 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
-        #   types#service-agents) used by the sinks with the same parent. For more
+        #   will be a service agent (https://docs.cloud.google.com/iam/docs/service-
+        #   account-types#service-agents) used by the sinks with the same parent. For more
         #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1823,10 +1841,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -1892,10 +1910,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -1970,7 +1988,8 @@ module Google
         
         # Lists log entries. Use this method to retrieve log entries that originated
         # from a project/folder/organization/billing account. For ways to export log
-        # entries, see Exporting Logs (https://cloud.google.com/logging/docs/export).
+        # entries, see Routing overview (https://docs.cloud.google.com/logging/docs/
+        # routing/overview).
         # @param [Google::Apis::LoggingV2::ListLogEntriesRequest] list_log_entries_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2263,9 +2282,9 @@ module Google
         # Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log
         # Router can be configured for Google Cloud projects, folders, organizations,
         # and billing accounts. Once configured for an organization, it applies to all
-        # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
-        # for more information.
+        # projects and folders in the Google Cloud organization.See Configure CMEK for
+        # Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-
+        # encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -2303,8 +2322,8 @@ module Google
         
         # Gets the settings for the given resource.Note: Settings can be retrieved for
         # Google Cloud projects, folders, organizations, and billing accounts.See View
-        # default resource settings for Logging (https://cloud.google.com/logging/docs/
-        # default-settings#view-org-settings) for more information.
+        # default resource settings for Logging (https://docs.cloud.google.com/logging/
+        # docs/default-settings#view-org-settings) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
         #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
@@ -2346,7 +2365,7 @@ module Google
         # The value of kms_key_name is invalid. The associated service account doesn't
         # have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for
         # the key. Access to the key is disabled.See Configure default settings for
-        # organizations and folders (https://cloud.google.com/logging/docs/default-
+        # organizations and folders (https://docs.cloud.google.com/logging/docs/default-
         # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[
@@ -2612,12 +2631,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service.This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: Global locations: If name is empty, the
+        # method lists the public locations available to all projects. Project-specific
+        # locations: If name follows the format projects/`project`, the method lists
+        # locations visible to that specific project. This includes public, private, or
+        # other project-specific locations enabled for the project.For gRPC and client
+        # library implementations, the resource name is passed as the name field. For
+        # direct service calls, the resource name is incorporated into the request path
+        # based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -3514,9 +3542,10 @@ module Google
         
         # Creates a log scope.
         # @param [String] parent
-        #   Required. The parent project in which to create the log scope "projects/[
-        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
-        #   locations/global"
+        #   Required. The parent resource in which to create the log scope: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+        #   example:"projects/my-project/locations/global"
         # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
         # @param [String] log_scope_id
         #   Required. A client-assigned identifier such as "log-scope". Identifiers are
@@ -3555,8 +3584,9 @@ module Google
         # Deletes a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-
-        #   project/locations/global/logScopes/my-log-scope"
+        #   locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"
+        #   projects/my-project/locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3587,7 +3617,8 @@ module Google
         # Gets a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/
-        #   [LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-project/
+        #   [LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "
+        #   folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
         #   locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3781,6 +3812,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to true, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3798,7 +3837,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_folder_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_folder_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}/operations', options)
           command.response_representation = Google::Apis::LoggingV2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListOperationsResponse
@@ -3806,6 +3845,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4045,10 +4085,10 @@ module Google
         # @param [String] name
         #   Output only. Resource name of the saved query.In the format: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
-        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
-        #   docs/region-support#bucket-regions)After the saved query is created, the
-        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
-        #   will generate an alphanumeric ID.
+        #   supported locations, see Supported Regions (https://docs.cloud.google.com/
+        #   logging/docs/region-support#bucket-regions)After the saved query is created,
+        #   the location cannot be changed.If the user doesn't provide a QUERY_ID, the
+        #   system will generate an alphanumeric ID.
         # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing saved query.
@@ -4205,8 +4245,8 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
-        #   types#service-agents) used by the sinks with the same parent. For more
+        #   will be a service agent (https://docs.cloud.google.com/iam/docs/service-
+        #   account-types#service-agents) used by the sinks with the same parent. For more
         #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4382,10 +4422,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -4451,10 +4491,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -4527,12 +4567,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service.This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: Global locations: If name is empty, the
+        # method lists the public locations available to all projects. Project-specific
+        # locations: If name follows the format projects/`project`, the method lists
+        # locations visible to that specific project. This includes public, private, or
+        # other project-specific locations enabled for the project.For gRPC and client
+        # library implementations, the resource name is passed as the name field. For
+        # direct service calls, the resource name is incorporated into the request path
+        # based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -5453,6 +5502,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to true, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5470,7 +5527,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}/operations', options)
           command.response_representation = Google::Apis::LoggingV2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListOperationsResponse
@@ -5478,6 +5535,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -5617,9 +5675,9 @@ module Google
         # Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log
         # Router can be configured for Google Cloud projects, folders, organizations,
         # and billing accounts. Once configured for an organization, it applies to all
-        # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
-        # for more information.
+        # projects and folders in the Google Cloud organization.See Configure CMEK for
+        # Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-
+        # encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -5657,8 +5715,8 @@ module Google
         
         # Gets the settings for the given resource.Note: Settings can be retrieved for
         # Google Cloud projects, folders, organizations, and billing accounts.See View
-        # default resource settings for Logging (https://cloud.google.com/logging/docs/
-        # default-settings#view-org-settings) for more information.
+        # default resource settings for Logging (https://docs.cloud.google.com/logging/
+        # docs/default-settings#view-org-settings) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
         #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
@@ -5698,8 +5756,9 @@ module Google
         # organization.UpdateCmekSettings fails when any of the following are true: The
         # value of kms_key_name is invalid. The associated service account doesn't have
         # the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        # key. Access to the key is disabled.See Enabling CMEK for Log Router (https://
-        # cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        # key. Access to the key is disabled.See Configure CMEK for Cloud Logging (https:
+        # //docs.cloud.google.com/logging/docs/routing/managed-encryption) for more
+        # information.
         # @param [String] name
         #   Required. The resource name for the CMEK settings to update. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -5752,7 +5811,7 @@ module Google
         # The value of kms_key_name is invalid. The associated service account doesn't
         # have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for
         # the key. Access to the key is disabled.See Configure default settings for
-        # organizations and folders (https://cloud.google.com/logging/docs/default-
+        # organizations and folders (https://docs.cloud.google.com/logging/docs/default-
         # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[
@@ -6018,12 +6077,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service.This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: Global locations: If name is empty, the
+        # method lists the public locations available to all projects. Project-specific
+        # locations: If name follows the format projects/`project`, the method lists
+        # locations visible to that specific project. This includes public, private, or
+        # other project-specific locations enabled for the project.For gRPC and client
+        # library implementations, the resource name is passed as the name field. For
+        # direct service calls, the resource name is incorporated into the request path
+        # based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -6920,9 +6988,10 @@ module Google
         
         # Creates a log scope.
         # @param [String] parent
-        #   Required. The parent project in which to create the log scope "projects/[
-        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
-        #   locations/global"
+        #   Required. The parent resource in which to create the log scope: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+        #   example:"projects/my-project/locations/global"
         # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
         # @param [String] log_scope_id
         #   Required. A client-assigned identifier such as "log-scope". Identifiers are
@@ -6961,8 +7030,9 @@ module Google
         # Deletes a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-
-        #   project/locations/global/logScopes/my-log-scope"
+        #   locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"
+        #   projects/my-project/locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6993,7 +7063,8 @@ module Google
         # Gets a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/
-        #   [LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-project/
+        #   [LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "
+        #   folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
         #   locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7187,6 +7258,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to true, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7204,7 +7283,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}/operations', options)
           command.response_representation = Google::Apis::LoggingV2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListOperationsResponse
@@ -7212,6 +7291,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -7451,10 +7531,10 @@ module Google
         # @param [String] name
         #   Output only. Resource name of the saved query.In the format: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
-        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
-        #   docs/region-support#bucket-regions)After the saved query is created, the
-        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
-        #   will generate an alphanumeric ID.
+        #   supported locations, see Supported Regions (https://docs.cloud.google.com/
+        #   logging/docs/region-support#bucket-regions)After the saved query is created,
+        #   the location cannot be changed.If the user doesn't provide a QUERY_ID, the
+        #   system will generate an alphanumeric ID.
         # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing saved query.
@@ -7611,8 +7691,8 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
-        #   types#service-agents) used by the sinks with the same parent. For more
+        #   will be a service agent (https://docs.cloud.google.com/iam/docs/service-
+        #   account-types#service-agents) used by the sinks with the same parent. For more
         #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7788,10 +7868,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -7857,10 +7937,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -7906,9 +7986,9 @@ module Google
         # Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log
         # Router can be configured for Google Cloud projects, folders, organizations,
         # and billing accounts. Once configured for an organization, it applies to all
-        # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
-        # for more information.
+        # projects and folders in the Google Cloud organization.See Configure CMEK for
+        # Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-
+        # encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -7946,8 +8026,8 @@ module Google
         
         # Gets the settings for the given resource.Note: Settings can be retrieved for
         # Google Cloud projects, folders, organizations, and billing accounts.See View
-        # default resource settings for Logging (https://cloud.google.com/logging/docs/
-        # default-settings#view-org-settings) for more information.
+        # default resource settings for Logging (https://docs.cloud.google.com/logging/
+        # docs/default-settings#view-org-settings) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
         #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
@@ -8205,12 +8285,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service.This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: Global locations: If name is empty, the
+        # method lists the public locations available to all projects. Project-specific
+        # locations: If name follows the format projects/`project`, the method lists
+        # locations visible to that specific project. This includes public, private, or
+        # other project-specific locations enabled for the project.For gRPC and client
+        # library implementations, the resource name is passed as the name field. For
+        # direct service calls, the resource name is incorporated into the request path
+        # based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -9107,9 +9196,10 @@ module Google
         
         # Creates a log scope.
         # @param [String] parent
-        #   Required. The parent project in which to create the log scope "projects/[
-        #   PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
-        #   locations/global"
+        #   Required. The parent resource in which to create the log scope: "projects/[
+        #   PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/
+        #   locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For
+        #   example:"projects/my-project/locations/global"
         # @param [Google::Apis::LoggingV2::LogScope] log_scope_object
         # @param [String] log_scope_id
         #   Required. A client-assigned identifier such as "log-scope". Identifiers are
@@ -9148,8 +9238,9 @@ module Google
         # Deletes a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/
-        #   locations/[LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-
-        #   project/locations/global/logScopes/my-log-scope"
+        #   locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[
+        #   LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"
+        #   projects/my-project/locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9180,7 +9271,8 @@ module Google
         # Gets a log scope.
         # @param [String] name
         #   Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/
-        #   [LOCATION_ID]/logScopes/[LOG_SCOPE_ID]" For example:"projects/my-project/
+        #   [LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "
+        #   folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/
         #   locations/global/logScopes/my-log-scope"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -9374,6 +9466,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to true, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9391,7 +9491,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}/operations', options)
           command.response_representation = Google::Apis::LoggingV2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListOperationsResponse
@@ -9399,6 +9499,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -9638,10 +9739,10 @@ module Google
         # @param [String] name
         #   Output only. Resource name of the saved query.In the format: "projects/[
         #   PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of
-        #   supported locations, see Supported Regions (https://cloud.google.com/logging/
-        #   docs/region-support#bucket-regions)After the saved query is created, the
-        #   location cannot be changed.If the user doesn't provide a QUERY_ID, the system
-        #   will generate an alphanumeric ID.
+        #   supported locations, see Supported Regions (https://docs.cloud.google.com/
+        #   logging/docs/region-support#bucket-regions)After the saved query is created,
+        #   the location cannot be changed.If the user doesn't provide a QUERY_ID, the
+        #   system will generate an alphanumeric ID.
         # @param [Google::Apis::LoggingV2::SavedQuery] saved_query_object
         # @param [String] update_mask
         #   Required. A non-empty list of fields to change in the existing saved query.
@@ -9972,8 +10073,8 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
-        #   types#service-agents) used by the sinks with the same parent. For more
+        #   will be a service agent (https://docs.cloud.google.com/iam/docs/service-
+        #   account-types#service-agents) used by the sinks with the same parent. For more
         #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -10149,10 +10250,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -10218,10 +10319,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -10288,8 +10389,8 @@ module Google
         #   identities to this API. The sink's destination must be in the same project as
         #   the sink itself.If this field is set to true, or if the sink is owned by a non-
         #   project resource such as an organization, then the value of writer_identity
-        #   will be a service agent (https://cloud.google.com/iam/docs/service-account-
-        #   types#service-agents) used by the sinks with the same parent. For more
+        #   will be a service agent (https://docs.cloud.google.com/iam/docs/service-
+        #   account-types#service-agents) used by the sinks with the same parent. For more
         #   information, see writer_identity in LogSink.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -10465,10 +10566,10 @@ module Google
         #   sink depends on both the old and new values of this field: If the old and new
         #   values of this field are both false or both true, then there is no change to
         #   the sink's writer_identity. If the old value is false and the new value is
-        #   true, then writer_identity is changed to a service agent (https://cloud.google.
-        #   com/iam/docs/service-account-types#service-agents) owned by Cloud Logging. It
-        #   is an error if the old value is true and the new value is set to false or
-        #   defaulted to false.
+        #   true, then writer_identity is changed to a service agent (https://docs.cloud.
+        #   google.com/iam/docs/service-account-types#service-agents) owned by Cloud
+        #   Logging. It is an error if the old value is true and the new value is set to
+        #   false or defaulted to false.
         # @param [String] update_mask
         #   Optional. Field mask that specifies the fields in sink that need an update. A
         #   sink field will be overwritten if, and only if, it is in the update mask. name
@@ -10514,9 +10615,9 @@ module Google
         # Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log
         # Router can be configured for Google Cloud projects, folders, organizations,
         # and billing accounts. Once configured for an organization, it applies to all
-        # projects and folders in the Google Cloud organization.See Enabling CMEK for
-        # Log Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
-        # for more information.
+        # projects and folders in the Google Cloud organization.See Configure CMEK for
+        # Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-
+        # encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -10554,8 +10655,8 @@ module Google
         
         # Gets the settings for the given resource.Note: Settings can be retrieved for
         # Google Cloud projects, folders, organizations, and billing accounts.See View
-        # default resource settings for Logging (https://cloud.google.com/logging/docs/
-        # default-settings#view-org-settings) for more information.
+        # default resource settings for Logging (https://docs.cloud.google.com/logging/
+        # docs/default-settings#view-org-settings) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/
         #   settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[
@@ -10595,8 +10696,9 @@ module Google
         # organization.UpdateCmekSettings fails when any of the following are true: The
         # value of kms_key_name is invalid. The associated service account doesn't have
         # the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the
-        # key. Access to the key is disabled.See Enabling CMEK for Log Router (https://
-        # cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+        # key. Access to the key is disabled.See Configure CMEK for Cloud Logging (https:
+        # //docs.cloud.google.com/logging/docs/routing/managed-encryption) for more
+        # information.
         # @param [String] name
         #   Required. The resource name for the CMEK settings to update. "projects/[
         #   PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "
@@ -10649,7 +10751,7 @@ module Google
         # The value of kms_key_name is invalid. The associated service account doesn't
         # have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for
         # the key. Access to the key is disabled.See Configure default settings for
-        # organizations and folders (https://cloud.google.com/logging/docs/default-
+        # organizations and folders (https://docs.cloud.google.com/logging/docs/default-
         # settings) for more information.
         # @param [String] name
         #   Required. The resource name for the settings to update. "organizations/[

@@ -22,6 +22,51 @@ module Google
   module Apis
     module ConnectorsV1
       
+      # * AdminFilters defines a set of filters that can be applied to a connection.
+      # These are currently used by Gemini Enterprise connections.
+      class AdminFilters
+        include Google::Apis::Core::Hashable
+      
+        # Required. Unique name for the filter, e.g., "SharePointSiteURL", "DocumentType"
+        # , "ChatSpaceName".
+        # Corresponds to the JSON property `filterKey`
+        # @return [String]
+        attr_accessor :filter_key
+      
+        # Required. Type of the filter.
+        # Corresponds to the JSON property `filterType`
+        # @return [String]
+        attr_accessor :filter_type
+      
+        # Optional. A single integer value.
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # StringListValues is a message to store a list of string values.
+        # Corresponds to the JSON property `stringListValues`
+        # @return [Google::Apis::ConnectorsV1::StringListValues]
+        attr_accessor :string_list_values
+      
+        # Optional. A single string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_key = args[:filter_key] if args.key?(:filter_key)
+          @filter_type = args[:filter_type] if args.key?(:filter_type)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @string_list_values = args[:string_list_values] if args.key?(:string_list_values)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -572,7 +617,7 @@ module Google
       class ConfigVariable
         include Google::Apis::Core::Hashable
       
-        # Value is a bool.
+        # Optional. Value is a bool.
         # Corresponds to the JSON property `boolValue`
         # @return [Boolean]
         attr_accessor :bool_value
@@ -583,7 +628,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::EncryptionKey]
         attr_accessor :encryption_key_value
       
-        # Value is an integer
+        # Optional. Value is an integer
         # Corresponds to the JSON property `intValue`
         # @return [Fixnum]
         attr_accessor :int_value
@@ -598,7 +643,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::Secret]
         attr_accessor :secret_value
       
-        # Value is a string.
+        # Optional. Value is a string.
         # Corresponds to the JSON property `stringValue`
         # @return [String]
         attr_accessor :string_value
@@ -660,7 +705,7 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # Optional. Location Tyep denotes where this value should be sent in BYOC
+        # Optional. Location Type denotes where this value should be sent in BYOC
         # connections.
         # Corresponds to the JSON property `locationType`
         # @return [String]
@@ -736,6 +781,12 @@ module Google
       # Connection represents an instance of connector.
       class Connection
         include Google::Apis::Core::Hashable
+      
+        # Optional. Admin filters for the connection. These are used by Gemini
+        # Enterprise.
+        # Corresponds to the JSON property `adminFilters`
+        # @return [Array<Google::Apis::ConnectorsV1::AdminFilters>]
+        attr_accessor :admin_filters
       
         # Optional. Async operations enabled for the connection. If Async Operations is
         # enabled, Connection allows the customers to initiate async long running
@@ -819,7 +870,7 @@ module Google
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
         attr_accessor :eua_oauth_auth_config
       
-        # Eventing Configuration of a connection next: 18
+        # Eventing Configuration of a connection next: 21
         # Corresponds to the JSON property `eventingConfig`
         # @return [Google::Apis::ConnectorsV1::EventingConfig]
         attr_accessor :eventing_config
@@ -948,6 +999,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @admin_filters = args[:admin_filters] if args.key?(:admin_filters)
           @async_operations_enabled = args[:async_operations_enabled] if args.key?(:async_operations_enabled)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @auth_override_enabled = args[:auth_override_enabled] if args.key?(:auth_override_enabled)
@@ -1199,6 +1251,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :connection_ratelimit_window_seconds
       
+        # Indicate whether connection service account is enabled. If false, the common
+        # runtime service agent is used.
+        # Corresponds to the JSON property `connectionServiceAccountEnabled`
+        # @return [Boolean]
+        attr_accessor :connection_service_account_enabled
+        alias_method :connection_service_account_enabled?, :connection_service_account_enabled
+      
         # Indicate whether connector versioning is enabled.
         # Corresponds to the JSON property `connectorVersioningEnabled`
         # @return [Boolean]
@@ -1237,10 +1296,11 @@ module Google
         attr_accessor :migrate_tls
         alias_method :migrate_tls?, :migrate_tls
       
-        # Indicate whether connector is being migrated to use direct VPC egress.
-        # Corresponds to the JSON property `networkEgressMode`
-        # @return [String]
-        attr_accessor :network_egress_mode
+        # NetworkEgressModeOverride provides the network egress mode override for a
+        # connector.
+        # Corresponds to the JSON property `networkEgressModeOverride`
+        # @return [Google::Apis::ConnectorsV1::NetworkEgressModeOverride]
+        attr_accessor :network_egress_mode_override
       
         # Indicate whether cloud spanner is required for connector job.
         # Corresponds to the JSON property `provisionCloudSpanner`
@@ -1253,6 +1313,12 @@ module Google
         # @return [Boolean]
         attr_accessor :provision_memstore
         alias_method :provision_memstore?, :provision_memstore
+      
+        # Indicate whether public network ingress should be enabled.
+        # Corresponds to the JSON property `publicNetworkIngressEnabled`
+        # @return [Boolean]
+        attr_accessor :public_network_ingress_enabled
+        alias_method :public_network_ingress_enabled?, :public_network_ingress_enabled
       
         # Max QPS supported by the connector version before throttling of requests.
         # Corresponds to the JSON property `ratelimitThreshold`
@@ -1282,6 +1348,7 @@ module Google
         def update!(**args)
           @always_allocate_cpu = args[:always_allocate_cpu] if args.key?(:always_allocate_cpu)
           @connection_ratelimit_window_seconds = args[:connection_ratelimit_window_seconds] if args.key?(:connection_ratelimit_window_seconds)
+          @connection_service_account_enabled = args[:connection_service_account_enabled] if args.key?(:connection_service_account_enabled)
           @connector_versioning_enabled = args[:connector_versioning_enabled] if args.key?(:connector_versioning_enabled)
           @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
           @hpa_config = args[:hpa_config] if args.key?(:hpa_config)
@@ -1289,9 +1356,10 @@ module Google
           @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @migrate_deployment_model = args[:migrate_deployment_model] if args.key?(:migrate_deployment_model)
           @migrate_tls = args[:migrate_tls] if args.key?(:migrate_tls)
-          @network_egress_mode = args[:network_egress_mode] if args.key?(:network_egress_mode)
+          @network_egress_mode_override = args[:network_egress_mode_override] if args.key?(:network_egress_mode_override)
           @provision_cloud_spanner = args[:provision_cloud_spanner] if args.key?(:provision_cloud_spanner)
           @provision_memstore = args[:provision_memstore] if args.key?(:provision_memstore)
+          @public_network_ingress_enabled = args[:public_network_ingress_enabled] if args.key?(:public_network_ingress_enabled)
           @ratelimit_threshold = args[:ratelimit_threshold] if args.key?(:ratelimit_threshold)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
           @resource_requests = args[:resource_requests] if args.key?(:resource_requests)
@@ -1384,11 +1452,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The priority entity types for the connector version.
-        # Corresponds to the JSON property `priorityEntityTypes`
-        # @return [Array<Google::Apis::ConnectorsV1::PriorityEntityType>]
-        attr_accessor :priority_entity_types
-      
         # Output only. ReleaseVersion of the connector, for example: "1.0.1-alpha".
         # Corresponds to the JSON property `releaseVersion`
         # @return [String]
@@ -1443,6 +1506,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # This configuration provides VPCSC config for a connector.
+        # Corresponds to the JSON property `vpcscConfig`
+        # @return [Google::Apis::ConnectorsV1::VpcscConfig]
+        attr_accessor :vpcsc_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1463,7 +1531,6 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
-          @priority_entity_types = args[:priority_entity_types] if args.key?(:priority_entity_types)
           @release_version = args[:release_version] if args.key?(:release_version)
           @role_grant = args[:role_grant] if args.key?(:role_grant)
           @role_grants = args[:role_grants] if args.key?(:role_grants)
@@ -1474,6 +1541,7 @@ module Google
           @supported_standard_entities = args[:supported_standard_entities] if args.key?(:supported_standard_entities)
           @unsupported_connection_types = args[:unsupported_connection_types] if args.key?(:unsupported_connection_types)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @vpcsc_config = args[:vpcsc_config] if args.key?(:vpcsc_config)
         end
       end
       
@@ -1973,7 +2041,8 @@ module Google
         # @return [String]
         attr_accessor :host
       
-        # The port is the target port number that is accepted by the destination.
+        # Optional. The port is the target port number that is accepted by the
+        # destination.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -1999,12 +2068,13 @@ module Google
       class DestinationConfig
         include Google::Apis::Core::Hashable
       
-        # The destinations for the key.
+        # Optional. The destinations for the key.
         # Corresponds to the JSON property `destinations`
         # @return [Array<Google::Apis::ConnectorsV1::Destination>]
         attr_accessor :destinations
       
-        # The key is the destination identifier that is supported by the Connector.
+        # Optional. The key is the destination identifier that is supported by the
+        # Connector.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -2128,6 +2198,22 @@ module Google
       class EgressControlConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Access mode for egress control.
+        # Corresponds to the JSON property `accessMode`
+        # @return [String]
+        attr_accessor :access_mode
+      
+        # Extraction Rules to identity the backends from customer provided configuration
+        # in Connection resource.
+        # Corresponds to the JSON property `additionalExtractionRules`
+        # @return [Google::Apis::ConnectorsV1::ExtractionRules]
+        attr_accessor :additional_extraction_rules
+      
+        # Optional. Used when access_mode is RESTRICTED or ACCESS_MODE_UNSPECIFIED.
+        # Corresponds to the JSON property `allowlistedProjectNumbers`
+        # @return [Array<String>]
+        attr_accessor :allowlisted_project_numbers
+      
         # Static Comma separated backends which are common for all Connection resources.
         # Supported formats for each backend are host:port or just host (host can be ip
         # address or domain name).
@@ -2141,14 +2227,23 @@ module Google
         # @return [Google::Apis::ConnectorsV1::ExtractionRules]
         attr_accessor :extraction_rules
       
+        # Launch environment for egress control.
+        # Corresponds to the JSON property `launchEnvironment`
+        # @return [String]
+        attr_accessor :launch_environment
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @access_mode = args[:access_mode] if args.key?(:access_mode)
+          @additional_extraction_rules = args[:additional_extraction_rules] if args.key?(:additional_extraction_rules)
+          @allowlisted_project_numbers = args[:allowlisted_project_numbers] if args.key?(:allowlisted_project_numbers)
           @backends = args[:backends] if args.key?(:backends)
           @extraction_rules = args[:extraction_rules] if args.key?(:extraction_rules)
+          @launch_environment = args[:launch_environment] if args.key?(:launch_environment)
         end
       end
       
@@ -2205,7 +2300,7 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # Type.
+        # Optional. Specifies the type of the encryption key.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2951,6 +3046,12 @@ module Google
         # @return [String]
         attr_accessor :event_type_id
       
+        # Optional. Filter for the event subscription. Incoming events are filtered
+        # based on the filter expression.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         # JMS message denotes the source of the event
         # Corresponds to the JSON property `jms`
         # @return [Google::Apis::ConnectorsV1::Jms]
@@ -2997,6 +3098,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @destinations = args[:destinations] if args.key?(:destinations)
           @event_type_id = args[:event_type_id] if args.key?(:event_type_id)
+          @filter = args[:filter] if args.key?(:filter)
           @jms = args[:jms] if args.key?(:jms)
           @name = args[:name] if args.key?(:name)
           @status = args[:status] if args.key?(:status)
@@ -3135,7 +3237,7 @@ module Google
         end
       end
       
-      # Eventing Configuration of a connection next: 18
+      # Eventing Configuration of a connection next: 21
       class EventingConfig
         include Google::Apis::Core::Hashable
       
@@ -3143,6 +3245,11 @@ module Google
         # Corresponds to the JSON property `additionalVariables`
         # @return [Array<Google::Apis::ConnectorsV1::ConfigVariable>]
         attr_accessor :additional_variables
+      
+        # Optional. List of allowed event types for the connection.
+        # Corresponds to the JSON property `allowedEventTypes`
+        # @return [Array<String>]
+        attr_accessor :allowed_event_types
       
         # AuthConfig defines details of a authentication type.
         # Corresponds to the JSON property `authConfig`
@@ -3165,16 +3272,27 @@ module Google
         attr_accessor :enrichment_enabled
         alias_method :enrichment_enabled?, :enrichment_enabled
       
-        # Optional. Ingress endpoint of the event listener. This is used only when
+        # Output only. Ingress endpoint of the event listener. This is used only when
         # private connectivity is enabled.
         # Corresponds to the JSON property `eventsListenerIngressEndpoint`
         # @return [String]
         attr_accessor :events_listener_ingress_endpoint
       
+        # Optional. Filter to be applied on the events to be received by the connection.
+        # Corresponds to the JSON property `globalEventFilter`
+        # @return [String]
+        attr_accessor :global_event_filter
+      
         # AuthConfig defines details of a authentication type.
         # Corresponds to the JSON property `listenerAuthConfig`
         # @return [Google::Apis::ConnectorsV1::AuthConfig]
         attr_accessor :listener_auth_config
+      
+        # Optional. List of projects to be allowlisted for the service attachment
+        # created in the tenant project for eventing ingress.
+        # Corresponds to the JSON property `privateConnectivityAllowlistedProjects`
+        # @return [Array<String>]
+        attr_accessor :private_connectivity_allowlisted_projects
       
         # Optional. Private Connectivity Enabled.
         # Corresponds to the JSON property `privateConnectivityEnabled`
@@ -3204,12 +3322,15 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @allowed_event_types = args[:allowed_event_types] if args.key?(:allowed_event_types)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @dead_letter_config = args[:dead_letter_config] if args.key?(:dead_letter_config)
           @enrichment_config = args[:enrichment_config] if args.key?(:enrichment_config)
           @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
           @events_listener_ingress_endpoint = args[:events_listener_ingress_endpoint] if args.key?(:events_listener_ingress_endpoint)
+          @global_event_filter = args[:global_event_filter] if args.key?(:global_event_filter)
           @listener_auth_config = args[:listener_auth_config] if args.key?(:listener_auth_config)
+          @private_connectivity_allowlisted_projects = args[:private_connectivity_allowlisted_projects] if args.key?(:private_connectivity_allowlisted_projects)
           @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
           @proxy_destination_config = args[:proxy_destination_config] if args.key?(:proxy_destination_config)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
@@ -3355,6 +3476,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :search_tags
       
+        # The webhook model supported by this connector.
+        # Corresponds to the JSON property `subscriptionType`
+        # @return [String]
+        attr_accessor :subscription_type
+      
         # Output only. The type of the event listener for a specific connector.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -3373,6 +3499,7 @@ module Google
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
           @search_tags = args[:search_tags] if args.key?(:search_tags)
+          @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -3513,6 +3640,12 @@ module Google
         # @return [String]
         attr_accessor :extraction_regex
       
+        # Format string used to format the extracted backend details. If empty,
+        # extracted backend details will be returned as it is.
+        # Corresponds to the JSON property `formatString`
+        # @return [String]
+        attr_accessor :format_string
+      
         # Source to extract the backend from.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::ConnectorsV1::Source]
@@ -3525,6 +3658,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @extraction_regex = args[:extraction_regex] if args.key?(:extraction_regex)
+          @format_string = args[:format_string] if args.key?(:format_string)
           @source = args[:source] if args.key?(:source)
         end
       end
@@ -3571,6 +3705,45 @@ module Google
         def update!(**args)
           @auth_schemas = args[:auth_schemas] if args.key?(:auth_schemas)
           @json_schema = args[:json_schema] if args.key?(:json_schema)
+        end
+      end
+      
+      # Request message for FetchConnectionToolspecOverride API.
+      class FetchConnectionToolspecOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of tools for which the tool spec override is to be generated.
+        # Corresponds to the JSON property `toolNames`
+        # @return [Array<Google::Apis::ConnectorsV1::ToolName>]
+        attr_accessor :tool_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_names = args[:tool_names] if args.key?(:tool_names)
+        end
+      end
+      
+      # Response message for FetchConnectionToolspecOverride API.
+      class FetchConnectionToolspecOverrideResponse
+        include Google::Apis::Core::Hashable
+      
+        # Toolspec overrides for a connection only holds the information that is to be
+        # displayed in the UI for admins.
+        # Corresponds to the JSON property `toolspecOverride`
+        # @return [Google::Apis::ConnectorsV1::ToolspecOverride]
+        attr_accessor :toolspec_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @toolspec_override = args[:toolspec_override] if args.key?(:toolspec_override)
         end
       end
       
@@ -3688,6 +3861,45 @@ module Google
           @int_value = args[:int_value] if args.key?(:int_value)
           @key = args[:key] if args.key?(:key)
           @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # Request message for GenerateConnectionToolspecOverride API.
+      class GenerateConnectionToolspecOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of tools for which the tool spec override is to be generated.
+        # Corresponds to the JSON property `toolNames`
+        # @return [Array<Google::Apis::ConnectorsV1::ToolName>]
+        attr_accessor :tool_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tool_names = args[:tool_names] if args.key?(:tool_names)
+        end
+      end
+      
+      # Response message for GenerateConnectionToolspecOverride API.
+      class GenerateConnectionToolspecOverrideResponse
+        include Google::Apis::Core::Hashable
+      
+        # Toolspec overrides for a connection only holds the information that is to be
+        # displayed in the UI for admins.
+        # Corresponds to the JSON property `toolspecOverride`
+        # @return [Google::Apis::ConnectorsV1::ToolspecOverride]
+        attr_accessor :toolspec_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @toolspec_override = args[:toolspec_override] if args.key?(:toolspec_override)
         end
       end
       
@@ -4021,21 +4233,101 @@ module Google
       class JsonSchema
         include Google::Apis::Core::Hashable
       
+        # A comment on the schema.
+        # Corresponds to the JSON property `$comment`
+        # @return [String]
+        attr_accessor :_comment
+      
+        # Definitions for the schema.
+        # Corresponds to the JSON property `$defs`
+        # @return [Hash<String,Google::Apis::ConnectorsV1::JsonSchema>]
+        attr_accessor :_defs
+      
+        # The URI defining the core schema meta-schema.
+        # Corresponds to the JSON property `$id`
+        # @return [String]
+        attr_accessor :_id
+      
+        # A reference to another schema.
+        # Corresponds to the JSON property `$ref`
+        # @return [String]
+        attr_accessor :_ref
+      
+        # The URI defining the schema.
+        # Corresponds to the JSON property `$schema`
+        # @return [String]
+        attr_accessor :_schema
+      
         # Additional details apart from standard json schema fields, this gives
         # flexibility to store metadata about the schema
         # Corresponds to the JSON property `additionalDetails`
         # @return [Hash<String,Object>]
         attr_accessor :additional_details
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `additionalItems`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :additional_items
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `additionalProperties`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :additional_properties
+      
+        # Schema that must be valid against all of the sub-schemas.
+        # Corresponds to the JSON property `allOf`
+        # @return [Array<Google::Apis::ConnectorsV1::JsonSchema>]
+        attr_accessor :all_of
+      
+        # Schema that must be valid against at least one of the sub-schemas.
+        # Corresponds to the JSON property `anyOf`
+        # @return [Array<Google::Apis::ConnectorsV1::JsonSchema>]
+        attr_accessor :any_of
+      
+        # Const value that the data must match.
+        # Corresponds to the JSON property `const`
+        # @return [Object]
+        attr_accessor :const
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `contains`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :contains
+      
+        # Encoding of the content.
+        # Corresponds to the JSON property `contentEncoding`
+        # @return [String]
+        attr_accessor :content_encoding
+      
+        # Media type of the content.
+        # Corresponds to the JSON property `contentMediaType`
+        # @return [String]
+        attr_accessor :content_media_type
+      
         # The default value of the field or object described by this schema.
         # Corresponds to the JSON property `default`
         # @return [Object]
         attr_accessor :default
       
+        # Definitions for the schema.
+        # Corresponds to the JSON property `definitions`
+        # @return [Hash<String,Google::Apis::ConnectorsV1::JsonSchema>]
+        attr_accessor :definitions
+      
+        # Dependencies for the schema.
+        # Corresponds to the JSON property `dependencies`
+        # @return [Hash<String,Object>]
+        attr_accessor :dependencies
+      
         # A description of this schema.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `else`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :else
       
         # Possible values for an enumeration. This works in conjunction with `type` to
         # represent types with a fixed set of legal values
@@ -4043,11 +4335,31 @@ module Google
         # @return [Array<Object>]
         attr_accessor :enum
       
+        # Examples of the value.
+        # Corresponds to the JSON property `examples`
+        # @return [Array<Object>]
+        attr_accessor :examples
+      
+        # Whether the maximum number value is exclusive.
+        # Corresponds to the JSON property `exclusiveMaximum`
+        # @return [Object]
+        attr_accessor :exclusive_maximum
+      
+        # Whether the minimum number value is exclusive.
+        # Corresponds to the JSON property `exclusiveMinimum`
+        # @return [Object]
+        attr_accessor :exclusive_minimum
+      
         # Format of the value as per https://json-schema.org/understanding-json-schema/
         # reference/string.html#format
         # Corresponds to the JSON property `format`
         # @return [String]
         attr_accessor :format
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `if`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :if
       
         # JsonSchema representation of schema metadata
         # Corresponds to the JSON property `items`
@@ -4059,6 +4371,72 @@ module Google
         # @return [String]
         attr_accessor :jdbc_type
       
+        # Maximum number of items in the array field.
+        # Corresponds to the JSON property `maxItems`
+        # @return [Fixnum]
+        attr_accessor :max_items
+      
+        # Maximum length of the string field.
+        # Corresponds to the JSON property `maxLength`
+        # @return [Fixnum]
+        attr_accessor :max_length
+      
+        # Maximum number of properties.
+        # Corresponds to the JSON property `maxProperties`
+        # @return [Fixnum]
+        attr_accessor :max_properties
+      
+        # Maximum value of the number field.
+        # Corresponds to the JSON property `maximum`
+        # @return [Object]
+        attr_accessor :maximum
+      
+        # Minimum number of items in the array field.
+        # Corresponds to the JSON property `minItems`
+        # @return [Fixnum]
+        attr_accessor :min_items
+      
+        # Minimum length of the string field.
+        # Corresponds to the JSON property `minLength`
+        # @return [Fixnum]
+        attr_accessor :min_length
+      
+        # Minimum number of properties.
+        # Corresponds to the JSON property `minProperties`
+        # @return [Fixnum]
+        attr_accessor :min_properties
+      
+        # Minimum value of the number field.
+        # Corresponds to the JSON property `minimum`
+        # @return [Object]
+        attr_accessor :minimum
+      
+        # Number must be a multiple of this value.
+        # Corresponds to the JSON property `multipleOf`
+        # @return [Float]
+        attr_accessor :multiple_of
+      
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `not`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :not
+      
+        # Schema that must be valid against at least one of the sub-schemas.
+        # Corresponds to the JSON property `oneOf`
+        # @return [Array<Google::Apis::ConnectorsV1::JsonSchema>]
+        attr_accessor :one_of
+      
+        # Regex pattern of the string field. This is a string value that describes the
+        # regular expression that the string value should match.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        # Pattern properties for the schema.
+        # Corresponds to the JSON property `patternProperties`
+        # @return [Hash<String,Google::Apis::ConnectorsV1::JsonSchema>]
+        attr_accessor :pattern_properties
+      
         # The child schemas, applicable only if this is of type `object`. The key is the
         # name of the property and the value is the json schema that describes that
         # property
@@ -4066,15 +4444,48 @@ module Google
         # @return [Hash<String,Google::Apis::ConnectorsV1::JsonSchema>]
         attr_accessor :properties
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `propertyNames`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :property_names
+      
+        # Whether the value is read-only.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
         # Whether this property is required.
         # Corresponds to the JSON property `required`
         # @return [Array<String>]
         attr_accessor :required
       
+        # JsonSchema representation of schema metadata
+        # Corresponds to the JSON property `then`
+        # @return [Google::Apis::ConnectorsV1::JsonSchema]
+        attr_accessor :then_prop
+      
+        # A title of the schema.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
         # JSON Schema Validation: A Vocabulary for Structural Validation of JSON
         # Corresponds to the JSON property `type`
         # @return [Array<String>]
         attr_accessor :type
+      
+        # Whether the items in the array field are unique.
+        # Corresponds to the JSON property `uniqueItems`
+        # @return [Boolean]
+        attr_accessor :unique_items
+        alias_method :unique_items?, :unique_items
+      
+        # Whether the value is write-only.
+        # Corresponds to the JSON property `writeOnly`
+        # @return [Boolean]
+        attr_accessor :write_only
+        alias_method :write_only?, :write_only
       
         def initialize(**args)
            update!(**args)
@@ -4082,16 +4493,55 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @_comment = args[:_comment] if args.key?(:_comment)
+          @_defs = args[:_defs] if args.key?(:_defs)
+          @_id = args[:_id] if args.key?(:_id)
+          @_ref = args[:_ref] if args.key?(:_ref)
+          @_schema = args[:_schema] if args.key?(:_schema)
           @additional_details = args[:additional_details] if args.key?(:additional_details)
+          @additional_items = args[:additional_items] if args.key?(:additional_items)
+          @additional_properties = args[:additional_properties] if args.key?(:additional_properties)
+          @all_of = args[:all_of] if args.key?(:all_of)
+          @any_of = args[:any_of] if args.key?(:any_of)
+          @const = args[:const] if args.key?(:const)
+          @contains = args[:contains] if args.key?(:contains)
+          @content_encoding = args[:content_encoding] if args.key?(:content_encoding)
+          @content_media_type = args[:content_media_type] if args.key?(:content_media_type)
           @default = args[:default] if args.key?(:default)
+          @definitions = args[:definitions] if args.key?(:definitions)
+          @dependencies = args[:dependencies] if args.key?(:dependencies)
           @description = args[:description] if args.key?(:description)
+          @else = args[:else] if args.key?(:else)
           @enum = args[:enum] if args.key?(:enum)
+          @examples = args[:examples] if args.key?(:examples)
+          @exclusive_maximum = args[:exclusive_maximum] if args.key?(:exclusive_maximum)
+          @exclusive_minimum = args[:exclusive_minimum] if args.key?(:exclusive_minimum)
           @format = args[:format] if args.key?(:format)
+          @if = args[:if] if args.key?(:if)
           @items = args[:items] if args.key?(:items)
           @jdbc_type = args[:jdbc_type] if args.key?(:jdbc_type)
+          @max_items = args[:max_items] if args.key?(:max_items)
+          @max_length = args[:max_length] if args.key?(:max_length)
+          @max_properties = args[:max_properties] if args.key?(:max_properties)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @min_items = args[:min_items] if args.key?(:min_items)
+          @min_length = args[:min_length] if args.key?(:min_length)
+          @min_properties = args[:min_properties] if args.key?(:min_properties)
+          @minimum = args[:minimum] if args.key?(:minimum)
+          @multiple_of = args[:multiple_of] if args.key?(:multiple_of)
+          @not = args[:not] if args.key?(:not)
+          @one_of = args[:one_of] if args.key?(:one_of)
+          @pattern = args[:pattern] if args.key?(:pattern)
+          @pattern_properties = args[:pattern_properties] if args.key?(:pattern_properties)
           @properties = args[:properties] if args.key?(:properties)
+          @property_names = args[:property_names] if args.key?(:property_names)
+          @read_only = args[:read_only] if args.key?(:read_only)
           @required = args[:required] if args.key?(:required)
+          @then_prop = args[:then_prop] if args.key?(:then_prop)
+          @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
+          @unique_items = args[:unique_items] if args.key?(:unique_items)
+          @write_only = args[:write_only] if args.key?(:write_only)
         end
       end
       
@@ -4519,6 +4969,14 @@ module Google
         # @return [Array<Google::Apis::ConnectorsV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4527,6 +4985,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -5029,6 +5488,46 @@ module Google
         end
       end
       
+      # Request message for ModifyConnectionToolspecOverride API.
+      class ModifyConnectionToolspecOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        # Toolspec overrides for a connection only holds the information that is to be
+        # displayed in the UI for admins.
+        # Corresponds to the JSON property `toolspecOverride`
+        # @return [Google::Apis::ConnectorsV1::ToolspecOverride]
+        attr_accessor :toolspec_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @toolspec_override = args[:toolspec_override] if args.key?(:toolspec_override)
+        end
+      end
+      
+      # Response message for ModifyConnectionToolspecOverride API.
+      class ModifyConnectionToolspecOverrideResponse
+        include Google::Apis::Core::Hashable
+      
+        # Toolspec overrides for a connection only holds the information that is to be
+        # displayed in the UI for admins.
+        # Corresponds to the JSON property `toolspecOverrides`
+        # @return [Google::Apis::ConnectorsV1::ToolspecOverride]
+        attr_accessor :toolspec_overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @toolspec_overrides = args[:toolspec_overrides] if args.key?(:toolspec_overrides)
+        end
+      end
+      
       # MultipleSelectConfig represents the multiple options for a config variable.
       class MultipleSelectConfig
         include Google::Apis::Core::Hashable
@@ -5122,6 +5621,42 @@ module Google
         def update!(**args)
           @egress_ips = args[:egress_ips] if args.key?(:egress_ips)
           @egress_mode = args[:egress_mode] if args.key?(:egress_mode)
+        end
+      end
+      
+      # NetworkEgressModeOverride provides the network egress mode override for a
+      # connector.
+      class NetworkEgressModeOverride
+        include Google::Apis::Core::Hashable
+      
+        # boolean should be set to true to make sure only eventing enabled connections
+        # are migrated to direct vpc egress.
+        # Corresponds to the JSON property `isEventingOverrideEnabled`
+        # @return [Boolean]
+        attr_accessor :is_eventing_override_enabled
+        alias_method :is_eventing_override_enabled?, :is_eventing_override_enabled
+      
+        # boolean should be set to true to make sure only async operations enabled
+        # connections are migrated to direct vpc egress.
+        # Corresponds to the JSON property `isJobsOverrideEnabled`
+        # @return [Boolean]
+        attr_accessor :is_jobs_override_enabled
+        alias_method :is_jobs_override_enabled?, :is_jobs_override_enabled
+      
+        # Determines the VPC Egress mode for the connector.
+        # Corresponds to the JSON property `networkEgressMode`
+        # @return [String]
+        attr_accessor :network_egress_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_eventing_override_enabled = args[:is_eventing_override_enabled] if args.key?(:is_eventing_override_enabled)
+          @is_jobs_override_enabled = args[:is_jobs_override_enabled] if args.key?(:is_jobs_override_enabled)
+          @network_egress_mode = args[:network_egress_mode] if args.key?(:network_egress_mode)
         end
       end
       
@@ -5761,44 +6296,6 @@ module Google
         end
       end
       
-      # PriorityEntityType represents an entity type with its associated priority and
-      # order.
-      class PriorityEntityType
-        include Google::Apis::Core::Hashable
-      
-        # The description of the entity type.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The entity type.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The order of the entity type within its priority group.
-        # Corresponds to the JSON property `order`
-        # @return [Fixnum]
-        attr_accessor :order
-      
-        # The priority of the entity type, such as P0, P1, etc.
-        # Corresponds to the JSON property `priority`
-        # @return [String]
-        attr_accessor :priority
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @id = args[:id] if args.key?(:id)
-          @order = args[:order] if args.key?(:order)
-          @priority = args[:priority] if args.key?(:priority)
-        end
-      end
-      
       # Provider indicates the owner who provides the connectors.
       class Provider
         include Google::Apis::Core::Hashable
@@ -6020,6 +6517,11 @@ module Google
       class RegionalSettings
         include Google::Apis::Core::Hashable
       
+        # Optional. Client type for the regional settings.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
         # Regional encryption config for CMEK details.
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::ConnectorsV1::EncryptionConfig]
@@ -6048,10 +6550,24 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client = args[:client] if args.key?(:client)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @provisioned = args[:provisioned] if args.key?(:provisioned)
+        end
+      end
+      
+      # Request message for RemoveConnectionToolspecOverride API.
+      class RemoveConnectionToolspecOverrideRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -6993,6 +7509,25 @@ module Google
         end
       end
       
+      # StringListValues is a message to store a list of string values.
+      class StringListValues
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of string values.
+        # Corresponds to the JSON property `listValues`
+        # @return [Array<String>]
+        attr_accessor :list_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @list_values = args[:list_values] if args.key?(:list_values)
+        end
+      end
+      
       # Supported runtime features of a connector version.
       class SupportedRuntimeFeatures
         include Google::Apis::Core::Hashable
@@ -7119,6 +7654,78 @@ module Google
         end
       end
       
+      # Tool name for which the tool spec override is to be generated.
+      class ToolName
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Entity type name for which the tool was generated.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Required. Tool name that was generated in the list tools call.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Operation for which the tool was generated.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @name = args[:name] if args.key?(:name)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # Toolspec overrides for a connection only holds the information that is to be
+      # displayed in the UI for admins.
+      class ToolspecOverride
+        include Google::Apis::Core::Hashable
+      
+        # Required. Represents the base version of the toolspec for which admin has
+        # added overrides.
+        # Corresponds to the JSON property `baseVersion`
+        # @return [String]
+        attr_accessor :base_version
+      
+        # Output only. Created time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. List of tools defined in the tool spec. Marking this field as
+        # required as this is the only field that is editable by the user in modify API
+        # so we should have at least one tool in the list.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :tools
+      
+        # Output only. Updated time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_version = args[:base_version] if args.key?(:base_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @tools = args[:tools] if args.key?(:tools)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # * TrafficShapingConfig defines the configuration for shaping API traffic by
       # specifying a quota limit and the duration over which this limit is enforced.
       # This configuration helps to control and manage the rate at which API calls are
@@ -7132,16 +7739,16 @@ module Google
       class TrafficShapingConfig
         include Google::Apis::Core::Hashable
       
-        # Required. * The duration over which the API call quota limits are calculated.
-        # This duration is used to define the time window for evaluating if the number
-        # of API calls made by a user is within the allowed quota limits. For example: -
-        # To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a
-        # quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a
-        # quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and so on. It
-        # is important to note that this duration is not the time the quota is valid for,
-        # but rather the time window over which the quota is evaluated. For example, if
-        # the quota is 100 calls per 10 seconds, then this duration field would be set
-        # to 10 seconds.
+        # Required. Specifies the duration over which the API call quota limits are
+        # calculated. This duration is used to define the time window for evaluating if
+        # the number of API calls made by a user is within the allowed quota limits. For
+        # example: - To define a quota sampled over 16 seconds, set `seconds` to 16 - To
+        # define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To
+        # define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and
+        # so on. It is important to note that this duration is not the time the quota is
+        # valid for, but rather the time window over which the quota is evaluated. For
+        # example, if the quota is 100 calls per 10 seconds, then this duration field
+        # would be set to 10 seconds.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
@@ -7272,6 +7879,32 @@ module Google
         end
       end
       
+      # This configuration provides VPCSC config for a connector.
+      class VpcscConfig
+        include Google::Apis::Core::Hashable
+      
+        # The list of allowlisted FQDNs for VPCSC.
+        # Corresponds to the JSON property `defaultAllowlistedHost`
+        # @return [Array<String>]
+        attr_accessor :default_allowlisted_host
+      
+        # Whether to disable firewall VPCSC flow.
+        # Corresponds to the JSON property `disableFirewallVpcscFlow`
+        # @return [Boolean]
+        attr_accessor :disable_firewall_vpcsc_flow
+        alias_method :disable_firewall_vpcsc_flow?, :disable_firewall_vpcsc_flow
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_allowlisted_host = args[:default_allowlisted_host] if args.key?(:default_allowlisted_host)
+          @disable_firewall_vpcsc_flow = args[:disable_firewall_vpcsc_flow] if args.key?(:disable_firewall_vpcsc_flow)
+        end
+      end
+      
       # WebhookData has details of webhook configuration.
       class WebhookData
         include Google::Apis::Core::Hashable
@@ -7285,6 +7918,17 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Output only. List of event subscriptions which are using the webhook.
+        # Corresponds to the JSON property `eventSubscriptions`
+        # @return [Array<String>]
+        attr_accessor :event_subscriptions
+      
+        # Output only. List of event types for the webhook. This is the event types
+        # subscribed by the current webhook.
+        # Corresponds to the JSON property `eventTypes`
+        # @return [Array<String>]
+        attr_accessor :event_types
       
         # Output only. ID to uniquely identify webhook.
         # Corresponds to the JSON property `id`
@@ -7315,6 +7959,8 @@ module Google
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @event_subscriptions = args[:event_subscriptions] if args.key?(:event_subscriptions)
+          @event_types = args[:event_types] if args.key?(:event_types)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @next_refresh_time = args[:next_refresh_time] if args.key?(:next_refresh_time)

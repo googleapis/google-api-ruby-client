@@ -1,5 +1,127 @@
 # Release history for google-apis-backupdr_v1
 
+### v0.59.0 (2026-07-05)
+
+* Regenerated from discovery document revision 20260621
+
+### v0.58.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260526
+* Regenerated using generator version 0.19.0
+
+### v0.57.0 (2026-05-24)
+
+* Regenerated from discovery document revision 20260517
+
+### v0.56.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260510
+
+### v0.55.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260423
+
+### v0.54.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260408
+
+### v0.53.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260309
+
+### v0.52.0 (2026-03-08)
+
+* Regenerated from discovery document revision 20260227
+
+### v0.51.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260128
+
+### v0.50.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260116
+
+### v0.49.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20251227
+
+### v0.48.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251130
+
+### v0.47.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251112
+
+### v0.46.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251105
+
+### v0.45.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251029
+
+### v0.44.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251022
+
+### v0.43.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251015
+
+### v0.42.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251001
+
+### v0.41.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250916
+
+### v0.40.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250910
+
+### v0.39.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250902
+
+### v0.38.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250825
+
+### v0.37.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250730
+
+### v0.36.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250723
+
+### v0.35.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250720
+
+### v0.34.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250711
+
+### v0.33.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250625
+
+### v0.32.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250611
+
+### v0.31.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250605
+
+### v0.30.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250523
+* Regenerated using generator version 0.18.0
+
 ### v0.29.0 (2025-05-18)
 
 * Regenerated from discovery document revision 20250509

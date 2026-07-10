@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1ExportToOutputUriStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1FaceAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +269,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2ExportToOutputUriStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -514,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1p1beta1ExportToOutputUriStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1p1beta1FaceAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +719,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1ExportToOutputUriStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -911,6 +935,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p3beta1ExportToOutputUriStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1157,6 +1187,15 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1ExportToOutputUriStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus, decorator: Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1FaceAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1376,6 +1415,8 @@ module Google
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_status, as: 'exportStatus', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1ExportToOutputUriStatus, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1ExportToOutputUriStatus::Representation
+      
           property :feature, as: 'feature'
           property :input_uri, as: 'inputUri'
           property :progress_percent, as: 'progressPercent'
@@ -1438,6 +1479,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -1522,6 +1564,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pornography_likelihood, as: 'pornographyLikelihood'
           property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2ExportToOutputUriStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus, decorator: Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus::Representation
+      
         end
       end
       
@@ -1738,6 +1789,7 @@ module Google
       class GoogleCloudVideointelligenceV1beta2SpeechTranscriptionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_output_uri_prefix, as: 'audioOutputUriPrefix'
           collection :audio_tracks, as: 'audioTracks'
           property :diarization_speaker_count, as: 'diarizationSpeakerCount'
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
@@ -1818,6 +1870,8 @@ module Google
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_status, as: 'exportStatus', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2ExportToOutputUriStatus, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2ExportToOutputUriStatus::Representation
+      
           property :feature, as: 'feature'
           property :input_uri, as: 'inputUri'
           property :progress_percent, as: 'progressPercent'
@@ -1904,6 +1958,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -1968,6 +2023,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pornography_likelihood, as: 'pornographyLikelihood'
           property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p1beta1ExportToOutputUriStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus, decorator: Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus::Representation
+      
         end
       end
       
@@ -2190,6 +2254,8 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_status, as: 'exportStatus', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1ExportToOutputUriStatus, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1ExportToOutputUriStatus::Representation
+      
           property :feature, as: 'feature'
           property :input_uri, as: 'inputUri'
           property :progress_percent, as: 'progressPercent'
@@ -2252,6 +2318,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -2316,6 +2383,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pornography_likelihood, as: 'pornographyLikelihood'
           property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1ExportToOutputUriStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus, decorator: Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus::Representation
+      
         end
       end
       
@@ -2538,6 +2614,8 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_status, as: 'exportStatus', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1ExportToOutputUriStatus, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1ExportToOutputUriStatus::Representation
+      
           property :feature, as: 'feature'
           property :input_uri, as: 'inputUri'
           property :progress_percent, as: 'progressPercent'
@@ -2600,6 +2678,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
@@ -2692,6 +2771,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pornography_likelihood, as: 'pornographyLikelihood'
           property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p3beta1ExportToOutputUriStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus, decorator: Google::Apis::VideointelligenceV1beta2::GoogleRpcStatus::Representation
+      
         end
       end
       
@@ -2949,6 +3037,8 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_status, as: 'exportStatus', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ExportToOutputUriStatus, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ExportToOutputUriStatus::Representation
+      
           property :feature, as: 'feature'
           property :input_uri, as: 'inputUri'
           property :progress_percent, as: 'progressPercent'
@@ -3013,6 +3103,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :end_time, as: 'endTime'
+          property :speaker_label, as: 'speakerLabel'
           property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'

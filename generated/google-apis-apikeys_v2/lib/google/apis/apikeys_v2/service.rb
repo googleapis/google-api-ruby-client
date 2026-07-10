@@ -118,7 +118,8 @@ module Google
         # Creates a new API key. NOTE: Key is a global resource; hence the only
         # supported value for location is `global`.
         # @param [String] parent
-        #   Required. The project in which the API key is created.
+        #   Required. The project in which the API key is created. The parent field must
+        #   be in format of "projects//locations/global".
         # @param [Google::Apis::ApikeysV2::V2Key] v2_key_object
         # @param [String] key_id
         #   User specified key id (optional). If specified, it will become the final
@@ -260,7 +261,8 @@ module Google
         # included in the response. NOTE: Key is a global resource; hence the only
         # supported value for location is `global`.
         # @param [String] parent
-        #   Required. Lists all API keys associated with this project.
+        #   Required. Lists all API keys associated with this project. The parent field
+        #   must be in format of "projects//locations/global".
         # @param [Fixnum] page_size
         #   Optional. Specifies the maximum number of results to be returned at a time.
         # @param [String] page_token
@@ -302,7 +304,7 @@ module Google
         # t included in the response. NOTE: Key is a global resource; hence the only
         # supported value for location is `global`.
         # @param [String] name
-        #   Output only. The resource name of the key. The `name` has the form: `projects//
+        #   Identifier. The resource name of the key. The `name` has the form: `projects//
         #   locations/global/keys/`. For example: `projects/123456867718/locations/global/
         #   keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource;
         #   hence the only supported value for location is `global`.

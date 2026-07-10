@@ -46,6 +46,11 @@ module Google
       class AuthorizationAttemptInfo
         include Google::Apis::Core::Hashable
       
+        # Output only. The timestamp, when the authorization attempt was made.
+        # Corresponds to the JSON property `attemptTime`
+        # @return [String]
+        attr_accessor :attempt_time
+      
         # Output only. Human readable explanation for reaching the state. Provided to
         # help address the configuration issues. Not guaranteed to be stable. For
         # programmatic access use FailureReason enum.
@@ -68,16 +73,59 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Troubleshooting information for the authorization attempt.
+        # Corresponds to the JSON property `troubleshooting`
+        # @return [Google::Apis::CertificatemanagerV1::Troubleshooting]
+        attr_accessor :troubleshooting
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @attempt_time = args[:attempt_time] if args.key?(:attempt_time)
           @details = args[:details] if args.key?(:details)
           @domain = args[:domain] if args.key?(:domain)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @state = args[:state] if args.key?(:state)
+          @troubleshooting = args[:troubleshooting] if args.key?(:troubleshooting)
+        end
+      end
+      
+      # CNAME troubleshooting information.
+      class Cname
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The expected value of the CNAME record for the domain, equals to `
+        # dns_resource_record.data` in the corresponding `DnsAuthorization`.
+        # Corresponds to the JSON property `expectedData`
+        # @return [String]
+        attr_accessor :expected_data
+      
+        # Output only. The name of the CNAME record for the domain, equals to `
+        # dns_resource_record.name` in the corresponding `DnsAuthorization`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The resolved CNAME chain. Empty list if the CNAME record for `
+        # CNAME.name` is not found. Otherwise the first item is the value of the CNAME
+        # record for `CNAME.name`. If the CNAME chain is longer, the second item is the
+        # value of the CNAME record for the first item, and so on.
+        # Corresponds to the JSON property `resolvedData`
+        # @return [Array<String>]
+        attr_accessor :resolved_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expected_data = args[:expected_data] if args.key?(:expected_data)
+          @name = args[:name] if args.key?(:name)
+          @resolved_data = args[:resolved_data] if args.key?(:resolved_data)
         end
       end
       
@@ -124,6 +172,13 @@ module Google
         # Corresponds to the JSON property `managed`
         # @return [Google::Apis::CertificatemanagerV1::ManagedCertificate]
         attr_accessor :managed
+      
+        # Configuration and state of a Managed Identity Certificate. Certificate Manager
+        # provisions and renews Managed Identity Certificates automatically, for as long
+        # as it's authorized to do so.
+        # Corresponds to the JSON property `managedIdentity`
+        # @return [Google::Apis::CertificatemanagerV1::ManagedIdentityCertificate]
+        attr_accessor :managed_identity
       
         # Identifier. A user-defined name of the certificate. Certificate names must be
         # unique globally and match pattern `projects/*/locations/*/certificates/*`.
@@ -177,6 +232,7 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @labels = args[:labels] if args.key?(:labels)
           @managed = args[:managed] if args.key?(:managed)
+          @managed_identity = args[:managed_identity] if args.key?(:managed_identity)
           @name = args[:name] if args.key?(:name)
           @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
           @san_dnsnames = args[:san_dnsnames] if args.key?(:san_dnsnames)
@@ -580,6 +636,40 @@ module Google
         end
       end
       
+      # IPs troubleshooting information.
+      class IPs
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of IP addresses resolved from the domain's A/AAAA
+        # records. Can contain both ipv4 and ipv6 addresses.
+        # Corresponds to the JSON property `resolved`
+        # @return [Array<String>]
+        attr_accessor :resolved
+      
+        # Output only. The list of IP addresses, where the certificate is attached and
+        # port 443 is open.
+        # Corresponds to the JSON property `serving`
+        # @return [Array<String>]
+        attr_accessor :serving
+      
+        # Output only. The list of IP addresses, where the certificate is attached, but
+        # port 443 is not open.
+        # Corresponds to the JSON property `servingOnAltPorts`
+        # @return [Array<String>]
+        attr_accessor :serving_on_alt_ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resolved = args[:resolved] if args.key?(:resolved)
+          @serving = args[:serving] if args.key?(:serving)
+          @serving_on_alt_ports = args[:serving_on_alt_ports] if args.key?(:serving_on_alt_ports)
+        end
+      end
+      
       # Defines an intermediate CA.
       class IntermediateCa
         include Google::Apis::Core::Hashable
@@ -829,6 +919,14 @@ module Google
         # @return [Array<Google::Apis::CertificatemanagerV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -837,6 +935,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -973,6 +1072,40 @@ module Google
           @dns_authorizations = args[:dns_authorizations] if args.key?(:dns_authorizations)
           @domains = args[:domains] if args.key?(:domains)
           @issuance_config = args[:issuance_config] if args.key?(:issuance_config)
+          @provisioning_issue = args[:provisioning_issue] if args.key?(:provisioning_issue)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Configuration and state of a Managed Identity Certificate. Certificate Manager
+      # provisions and renews Managed Identity Certificates automatically, for as long
+      # as it's authorized to do so.
+      class ManagedIdentityCertificate
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. SPIFFE ID of the Managed Identity used for this
+        # certificate.
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
+        # Information about issues with provisioning a Managed Certificate.
+        # Corresponds to the JSON property `provisioningIssue`
+        # @return [Google::Apis::CertificatemanagerV1::ProvisioningIssue]
+        attr_accessor :provisioning_issue
+      
+        # Output only. State of the managed certificate resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity = args[:identity] if args.key?(:identity)
           @provisioning_issue = args[:provisioning_issue] if args.key?(:provisioning_issue)
           @state = args[:state] if args.key?(:state)
         end
@@ -1193,6 +1326,37 @@ module Google
         end
       end
       
+      # Troubleshooting information for the authorization attempt.
+      class Troubleshooting
+        include Google::Apis::Core::Hashable
+      
+        # CNAME troubleshooting information.
+        # Corresponds to the JSON property `cname`
+        # @return [Google::Apis::CertificatemanagerV1::Cname]
+        attr_accessor :cname
+      
+        # IPs troubleshooting information.
+        # Corresponds to the JSON property `ips`
+        # @return [Google::Apis::CertificatemanagerV1::IPs]
+        attr_accessor :ips
+      
+        # Output only. The list of issues discovered during the authorization attempt.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<String>]
+        attr_accessor :issues
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cname = args[:cname] if args.key?(:cname)
+          @ips = args[:ips] if args.key?(:ips)
+          @issues = args[:issues] if args.key?(:issues)
+        end
+      end
+      
       # Defines a trust anchor.
       class TrustAnchor
         include Google::Apis::Core::Hashable
@@ -1253,6 +1417,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Defines a mapping from a trust domain to a TrustStore. This is used
+        # for SPIFFE certificate validation.
+        # Corresponds to the JSON property `spiffeTrustStores`
+        # @return [Hash<String,Google::Apis::CertificatemanagerV1::TrustStore>]
+        attr_accessor :spiffe_trust_stores
+      
         # Optional. Set of trust stores to perform validation against. This field is
         # supported when TrustConfig is configured with Load Balancers, currently not
         # supported for SPIFFE certificate validation. Only one TrustStore specified is
@@ -1278,6 +1448,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @spiffe_trust_stores = args[:spiffe_trust_stores] if args.key?(:spiffe_trust_stores)
           @trust_stores = args[:trust_stores] if args.key?(:trust_stores)
           @update_time = args[:update_time] if args.key?(:update_time)
         end

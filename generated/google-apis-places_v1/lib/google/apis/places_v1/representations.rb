@@ -220,6 +220,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1PlaceConsumerAlert
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1PlaceContainingPlace
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,6 +418,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1TransitAgency
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1TransitIcon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1TransitLine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1TransitStation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1TransitStop
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleTypeDate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -493,6 +541,7 @@ module Google
       class GoogleMapsPlacesV1AutocompletePlacesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_future_opening_businesses, as: 'includeFutureOpeningBusinesses'
           property :include_pure_service_area_businesses, as: 'includePureServiceAreaBusinesses'
           property :include_query_predictions, as: 'includeQueryPredictions'
           collection :included_primary_types, as: 'includedPrimaryTypes'
@@ -750,6 +799,8 @@ module Google
           collection :attributions, as: 'attributions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceAttribution::Representation
       
           property :business_status, as: 'businessStatus'
+          property :consumer_alert, as: 'consumerAlert', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlert, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlert::Representation
+      
           collection :containing_places, as: 'containingPlaces', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceContainingPlace, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceContainingPlace::Representation
       
           property :curbside_pickup, as: 'curbsidePickup'
@@ -777,6 +828,8 @@ module Google
           property :good_for_watching_sports, as: 'goodForWatchingSports'
           property :google_maps_links, as: 'googleMapsLinks', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGoogleMapsLinks, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGoogleMapsLinks::Representation
       
+          property :google_maps_type_label, as: 'googleMapsTypeLabel', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
           property :google_maps_uri, as: 'googleMapsUri'
           property :icon_background_color, as: 'iconBackgroundColor'
           property :icon_mask_base_uri, as: 'iconMaskBaseUri'
@@ -786,9 +839,13 @@ module Google
           property :location, as: 'location', class: Google::Apis::PlacesV1::GoogleTypeLatLng, decorator: Google::Apis::PlacesV1::GoogleTypeLatLng::Representation
       
           property :menu_for_children, as: 'menuForChildren'
+          property :moved_place, as: 'movedPlace'
+          property :moved_place_id, as: 'movedPlaceId'
           property :name, as: 'name'
           property :national_phone_number, as: 'nationalPhoneNumber'
           property :neighborhood_summary, as: 'neighborhoodSummary', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNeighborhoodSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNeighborhoodSummary::Representation
+      
+          property :opening_date, as: 'openingDate', class: Google::Apis::PlacesV1::GoogleTypeDate, decorator: Google::Apis::PlacesV1::GoogleTypeDate::Representation
       
           property :outdoor_seating, as: 'outdoorSeating'
           property :parking_options, as: 'parkingOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceParkingOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceParkingOptions::Representation
@@ -835,6 +892,8 @@ module Google
           property :takeout, as: 'takeout'
           property :time_zone, as: 'timeZone', class: Google::Apis::PlacesV1::GoogleTypeTimeZone, decorator: Google::Apis::PlacesV1::GoogleTypeTimeZone::Representation
       
+          property :transit_station, as: 'transitStation', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStation, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStation::Representation
+      
           collection :types, as: 'types'
           property :user_rating_count, as: 'userRatingCount'
           property :utc_offset_minutes, as: 'utcOffsetMinutes'
@@ -869,6 +928,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :provider, as: 'provider'
           property :provider_uri, as: 'providerUri'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlaceConsumerAlert
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetails, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetails::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :overview, as: 'overview'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :about_link, as: 'aboutLink', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink::Representation
+      
+          property :description, as: 'description'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :title, as: 'title'
+          property :uri, as: 'uri'
         end
       end
       
@@ -1060,6 +1147,8 @@ module Google
           property :relative_publish_time_description, as: 'relativePublishTimeDescription'
           property :text, as: 'text', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
+          property :visit_date, as: 'visitDate', class: Google::Apis::PlacesV1::GoogleTypeDate, decorator: Google::Apis::PlacesV1::GoogleTypeDate::Representation
+      
         end
       end
       
@@ -1107,6 +1196,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :excluded_primary_types, as: 'excludedPrimaryTypes'
           collection :excluded_types, as: 'excludedTypes'
+          property :include_future_opening_businesses, as: 'includeFutureOpeningBusinesses'
           collection :included_primary_types, as: 'includedPrimaryTypes'
           collection :included_types, as: 'includedTypes'
           property :language_code, as: 'languageCode'
@@ -1143,6 +1233,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ev_options, as: 'evOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestEvOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestEvOptions::Representation
       
+          property :include_future_opening_businesses, as: 'includeFutureOpeningBusinesses'
           property :include_pure_service_area_businesses, as: 'includePureServiceAreaBusinesses'
           property :included_type, as: 'includedType'
           property :language_code, as: 'languageCode'
@@ -1212,6 +1303,77 @@ module Google
           collection :routing_summaries, as: 'routingSummaries', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1RoutingSummary::Representation
       
           property :search_uri, as: 'searchUri'
+        end
+      end
+      
+      class GoogleMapsPlacesV1TransitAgency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :fare_url, as: 'fareUrl'
+          property :icon, as: 'icon', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon::Representation
+      
+          collection :lines, as: 'lines', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitLine, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitLine::Representation
+      
+          property :url, as: 'url'
+        end
+      end
+      
+      class GoogleMapsPlacesV1TransitIcon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name_included, as: 'nameIncluded'
+          property :url, as: 'url'
+        end
+      end
+      
+      class GoogleMapsPlacesV1TransitLine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_color, as: 'backgroundColor'
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :icon, as: 'icon', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon::Representation
+      
+          property :id, as: 'id'
+          property :short_display_name, as: 'shortDisplayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :text_color, as: 'textColor'
+          property :url, as: 'url'
+          property :vehicle_icon, as: 'vehicleIcon', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon::Representation
+      
+          property :vehicle_type, as: 'vehicleType'
+        end
+      end
+      
+      class GoogleMapsPlacesV1TransitStation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agencies, as: 'agencies', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitAgency, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitAgency::Representation
+      
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          collection :stops, as: 'stops', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStop, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStop::Representation
+      
+        end
+      end
+      
+      class GoogleMapsPlacesV1TransitStop
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :id, as: 'id'
+          property :location, as: 'location', class: Google::Apis::PlacesV1::GoogleTypeLatLng, decorator: Google::Apis::PlacesV1::GoogleTypeLatLng::Representation
+      
+          property :platform_code, as: 'platformCode', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :signage_text, as: 'signageText', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :stop_code, as: 'stopCode', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :wheelchair_accessible_entrance, as: 'wheelchairAccessibleEntrance'
         end
       end
       

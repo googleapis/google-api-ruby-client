@@ -30,7 +30,7 @@ module Google
       #    Merchantapi = Google::Apis::MerchantapiPromotionsV1beta # Alias the module
       #    service = Merchantapi::MerchantService.new
       #
-      # @see https://developers.devsite.corp.google.com/merchant/api
+      # @see https://developers.google.com/merchant/api
       class MerchantService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://merchantapi.$UNIVERSE_DOMAIN$/"
 
@@ -128,12 +128,12 @@ module Google
         #   Required. The account to list processed promotions for. Format: `accounts/`
         #   account``
         # @param [Fixnum] page_size
-        #   Output only. The maximum number of promotions to return. The service may
-        #   return fewer than this value. The maximum value is 250; values above 250 will
-        #   be coerced to 250. If unspecified, the maximum number of promotions will be
+        #   Optional. The maximum number of promotions to return. The service may return
+        #   fewer than this value. The maximum value is 250; values above 250 will be
+        #   coerced to 250. If unspecified, the maximum number of promotions will be
         #   returned.
         # @param [String] page_token
-        #   Output only. A page token, received from a previous `ListPromotions` call.
+        #   Optional. A page token, received from a previous `ListPromotions` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
         #   parameters provided to `ListPromotions` must match the call that provided the
         #   page token.

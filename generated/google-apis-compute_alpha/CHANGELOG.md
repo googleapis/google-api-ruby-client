@@ -1,5 +1,111 @@
 # Release history for google-apis-compute_alpha
 
+### v0.140.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260612
+
+### v0.139.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260530
+* Regenerated using generator version 0.19.0
+
+### v0.138.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260501
+
+### v0.137.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260422
+
+### v0.136.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260410
+
+### v0.135.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260306
+
+### v0.134.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260227
+
+### v0.133.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260213
+
+### v0.132.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260206
+
+### v0.131.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260122
+
+### v0.130.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260113
+
+### v0.129.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20251230
+
+### v0.128.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251210
+
+### v0.127.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251202
+
+### v0.126.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251031
+
+### v0.125.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251019
+
+### v0.124.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20250930
+
+### v0.123.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250916
+
+### v0.122.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250909
+
+### v0.121.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250810
+
+### v0.120.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250807
+
+### v0.119.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250729
+
+### v0.118.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250728
+
+### v0.117.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250717
+
+### v0.116.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250708
+
+### v0.115.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250601
+* Regenerated using generator version 0.18.0
+
 ### v0.114.0 (2025-05-21)
 
 * Regenerated from discovery document revision 20250511

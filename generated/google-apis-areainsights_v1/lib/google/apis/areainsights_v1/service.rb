@@ -30,7 +30,7 @@ module Google
       #    Areainsights = Google::Apis::AreainsightsV1 # Alias the module
       #    service = Areainsights::AreaInsightsService.new
       #
-      # @see https://g3doc.corp.google.com/geo/platform/area_insights/README.md?cl=head
+      # @see https://developers.google.com/maps/documentation/places-aggregate/overview
       class AreaInsightsService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://areainsights.$UNIVERSE_DOMAIN$/"
 

@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AspectRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -686,6 +692,7 @@ module Google
       class Api
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           collection :methods_prop, as: 'methods', class: Google::Apis::ServicemanagementV1::MethodProp, decorator: Google::Apis::ServicemanagementV1::MethodProp::Representation
       
           collection :mixins, as: 'mixins', class: Google::Apis::ServicemanagementV1::Mixin, decorator: Google::Apis::ServicemanagementV1::Mixin::Representation
@@ -704,7 +711,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::AspectRule, decorator: Google::Apis::ServicemanagementV1::AspectRule::Representation
+      
           hash :spec, as: 'spec'
+        end
+      end
+      
+      class AspectRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config, as: 'config'
+          property :selector, as: 'selector'
         end
       end
       
@@ -1249,6 +1266,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ServicemanagementV1::Operation, decorator: Google::Apis::ServicemanagementV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1329,6 +1347,7 @@ module Google
       class MethodProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           property :name, as: 'name'
           collection :options, as: 'options', class: Google::Apis::ServicemanagementV1::Option, decorator: Google::Apis::ServicemanagementV1::Option::Representation
       
@@ -1506,6 +1525,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServicemanagementV1::CommonLanguageSettings, decorator: Google::Apis::ServicemanagementV1::CommonLanguageSettings::Representation
       
+          property :library_package, as: 'libraryPackage'
         end
       end
       

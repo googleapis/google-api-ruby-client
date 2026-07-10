@@ -36,6 +36,14 @@ module Google
         # @return [String]
         attr_accessor :blob_id
       
+        # A serialized External Read Token passed from Bigstore -> Scotty for a GCS
+        # download. This field must never be consumed outside of Bigstore, and is not
+        # applicable to non-GCS media uploads.
+        # Corresponds to the JSON property `downloadExternalReadToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :download_external_read_token
+      
         # Read handle passed from Bigstore -> Scotty for a GCS download. This is a
         # signed, serialized blobstore2.ReadHandle proto which must never be set outside
         # of Bigstore, and is not applicable to non-GCS media downloads.
@@ -49,6 +57,14 @@ module Google
         # Corresponds to the JSON property `readToken`
         # @return [String]
         attr_accessor :read_token
+      
+        # A serialized Object Fragment List Creation Info passed from Bigstore -> Scotty
+        # for a GCS upload. This field must never be consumed outside of Bigstore, and
+        # is not applicable to non-GCS media uploads.
+        # Corresponds to the JSON property `uploadFragmentListCreationInfo`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :upload_fragment_list_creation_info
       
         # Metadata passed from Blobstore -> Scotty for a new GCS upload. This is a
         # signed, serialized blobstore2.BlobMetadataContainer proto which must never be
@@ -66,8 +82,10 @@ module Google
         def update!(**args)
           @blob_generation = args[:blob_generation] if args.key?(:blob_generation)
           @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @download_external_read_token = args[:download_external_read_token] if args.key?(:download_external_read_token)
           @download_read_handle = args[:download_read_handle] if args.key?(:download_read_handle)
           @read_token = args[:read_token] if args.key?(:read_token)
+          @upload_fragment_list_creation_info = args[:upload_fragment_list_creation_info] if args.key?(:upload_fragment_list_creation_info)
           @upload_metadata_container = args[:upload_metadata_container] if args.key?(:upload_metadata_container)
         end
       end
@@ -193,6 +211,11 @@ module Google
         # @return [String]
         attr_accessor :from_file_name
       
+        # The content type of the file detected by Fusion ID. go/fusionid
+        # Corresponds to the JSON property `fromFusionId`
+        # @return [String]
+        attr_accessor :from_fusion_id
+      
         # The content type of the file as specified in the request headers, multipart
         # headers, or RUPIO start request.
         # Corresponds to the JSON property `fromHeader`
@@ -206,6 +229,13 @@ module Google
         # @return [String]
         attr_accessor :from_url_path
       
+        # Metadata information from Fusion ID detection. Serialized
+        # FusionIdDetectionMetadata proto. Only set if from_fusion_id is set.
+        # Corresponds to the JSON property `fusionIdDetectionMetadata`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fusion_id_detection_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -215,8 +245,10 @@ module Google
           @best_guess = args[:best_guess] if args.key?(:best_guess)
           @from_bytes = args[:from_bytes] if args.key?(:from_bytes)
           @from_file_name = args[:from_file_name] if args.key?(:from_file_name)
+          @from_fusion_id = args[:from_fusion_id] if args.key?(:from_fusion_id)
           @from_header = args[:from_header] if args.key?(:from_header)
           @from_url_path = args[:from_url_path] if args.key?(:from_url_path)
+          @fusion_id_detection_metadata = args[:fusion_id_detection_metadata] if args.key?(:fusion_id_detection_metadata)
         end
       end
       
@@ -609,6 +641,12 @@ module Google
         # @return [String]
         attr_accessor :sha256_hash
       
+        # Scotty-provided SHA512 hash for an upload.
+        # Corresponds to the JSON property `sha512Hash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha512_hash
+      
         # Time at which the media data was last updated, in milliseconds since UNIX
         # epoch
         # Corresponds to the JSON property `timestamp`
@@ -654,6 +692,7 @@ module Google
           @reference_type = args[:reference_type] if args.key?(:reference_type)
           @sha1_hash = args[:sha1_hash] if args.key?(:sha1_hash)
           @sha256_hash = args[:sha256_hash] if args.key?(:sha256_hash)
+          @sha512_hash = args[:sha512_hash] if args.key?(:sha512_hash)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @token = args[:token] if args.key?(:token)
         end
@@ -771,8 +810,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The names of the release resources to delete. Format: `projects/`
-        # project_number`/apps/`app_id`/releases/`release_id`` A maximum of 100 releases
-        # can be deleted per request.
+        # project_number`/apps/`app`/releases/`release`` A maximum of 100 releases can
+        # be deleted per request.
         # Corresponds to the JSON property `names`
         # @return [Array<String>]
         attr_accessor :names
@@ -878,16 +917,16 @@ module Google
       class GoogleFirebaseAppdistroV1DistributeReleaseRequest
         include Google::Apis::Core::Hashable
       
-        # A list of group aliases (IDs) to be given access to this release. A combined
-        # maximum of 999 `testerEmails` and `groupAliases` can be specified in a single
-        # request.
+        # Optional. A list of group aliases (IDs) to be given access to this release. A
+        # combined maximum of 999 `testerEmails` and `groupAliases` can be specified in
+        # a single request.
         # Corresponds to the JSON property `groupAliases`
         # @return [Array<String>]
         attr_accessor :group_aliases
       
-        # A list of tester email addresses to be given access to this release. A
-        # combined maximum of 999 `testerEmails` and `groupAliases` can be specified in
-        # a single request.
+        # Optional. A list of tester email addresses to be given access to this release.
+        # A combined maximum of 999 `testerEmails` and `groupAliases` can be specified
+        # in a single request.
         # Corresponds to the JSON property `testerEmails`
         # @return [Array<String>]
         attr_accessor :tester_emails
@@ -1145,13 +1184,18 @@ module Google
         # @return [String]
         attr_accessor :display_version
       
+        # Output only. The time the release will expire.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # Output only. A link to the Firebase console displaying a single release.
         # Corresponds to the JSON property `firebaseConsoleUri`
         # @return [String]
         attr_accessor :firebase_console_uri
       
-        # The name of the release resource. Format: `projects/`project_number`/apps/`
-        # app_id`/releases/`release_id``
+        # The name of the release resource. Format: `projects/`project_number`/apps/`app`
+        # /releases/`release``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1168,6 +1212,11 @@ module Google
         # @return [String]
         attr_accessor :testing_uri
       
+        # Output only. The time the release was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1178,10 +1227,12 @@ module Google
           @build_version = args[:build_version] if args.key?(:build_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_version = args[:display_version] if args.key?(:display_version)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @firebase_console_uri = args[:firebase_console_uri] if args.key?(:firebase_console_uri)
           @name = args[:name] if args.key?(:name)
           @release_notes = args[:release_notes] if args.key?(:release_notes)
           @testing_uri = args[:testing_uri] if args.key?(:testing_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1360,6 +1411,14 @@ module Google
         # @return [Array<Google::Apis::FirebaseappdistributionV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1368,6 +1427,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

@@ -63,6 +63,24 @@ module Google
           
             include Google::Apis::Core::JsonObjectSupport
           end
+          
+          class SensitiveParameter
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class MessageValue
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+            
+            class MultiMessageValue
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -76,6 +94,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActivityEventsStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ActivityNetworkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppliedLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +113,12 @@ module Google
       end
       
       class Channel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerIdentity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,7 +166,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NestedParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OwnerDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OwnerIdentity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -184,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Activities
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -207,6 +267,8 @@ module Google
       
           property :ip_address, as: 'ipAddress'
           property :kind, as: 'kind'
+          property :network_info, as: 'networkInfo', class: Google::Apis::AdminReportsV1::ActivityNetworkInfo, decorator: Google::Apis::AdminReportsV1::ActivityNetworkInfo::Representation
+      
           property :owner_domain, as: 'ownerDomain'
           collection :resource_details, as: 'resourceDetails', class: Google::Apis::AdminReportsV1::ResourceDetails, decorator: Google::Apis::AdminReportsV1::ResourceDetails::Representation
       
@@ -240,6 +302,10 @@ module Google
             collection :parameters, as: 'parameters', class: Google::Apis::AdminReportsV1::Activity::Event::Parameter, decorator: Google::Apis::AdminReportsV1::Activity::Event::Parameter::Representation
         
             collection :resource_ids, as: 'resourceIds'
+            collection :sensitive_parameters, as: 'sensitiveParameters', class: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter, decorator: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::Representation
+        
+            property :status, as: 'status', class: Google::Apis::AdminReportsV1::ActivityEventsStatus, decorator: Google::Apis::AdminReportsV1::ActivityEventsStatus::Representation
+        
             property :type, as: 'type'
           end
           
@@ -252,6 +318,38 @@ module Google
           
               collection :multi_int_value, as: 'multiIntValue'
               collection :multi_message_value, as: 'multiMessageValue', class: Google::Apis::AdminReportsV1::Activity::Event::Parameter::MultiMessageValue, decorator: Google::Apis::AdminReportsV1::Activity::Event::Parameter::MultiMessageValue::Representation
+          
+              collection :multi_value, as: 'multiValue'
+              property :name, as: 'name'
+              property :value, as: 'value'
+            end
+            
+            class MessageValue
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                collection :parameter, as: 'parameter', class: Google::Apis::AdminReportsV1::NestedParameter, decorator: Google::Apis::AdminReportsV1::NestedParameter::Representation
+            
+              end
+            end
+            
+            class MultiMessageValue
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                collection :parameter, as: 'parameter', class: Google::Apis::AdminReportsV1::NestedParameter, decorator: Google::Apis::AdminReportsV1::NestedParameter::Representation
+            
+              end
+            end
+          end
+          
+          class SensitiveParameter
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :bool_value, as: 'boolValue'
+              property :int_value, :numeric_string => true, as: 'intValue'
+              property :message_value, as: 'messageValue', class: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MessageValue, decorator: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MessageValue::Representation
+          
+              collection :multi_int_value, as: 'multiIntValue'
+              collection :multi_message_value, as: 'multiMessageValue', class: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MultiMessageValue, decorator: Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MultiMessageValue::Representation
           
               collection :multi_value, as: 'multiValue'
               property :name, as: 'name'
@@ -288,6 +386,25 @@ module Google
         end
       end
       
+      class ActivityEventsStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, as: 'errorCode'
+          property :error_message, as: 'errorMessage'
+          property :event_status, as: 'eventStatus'
+          property :http_status_code, as: 'httpStatusCode'
+        end
+      end
+      
+      class ActivityNetworkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_asn, as: 'ipAsn'
+          property :region_code, as: 'regionCode'
+          property :subdivision_code, as: 'subdivisionCode'
+        end
+      end
+      
       class AppliedLabel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -313,6 +430,13 @@ module Google
           property :resource_uri, as: 'resourceUri'
           property :token, as: 'token'
           property :type, as: 'type'
+        end
+      end
+      
+      class CustomerIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
         end
       end
       
@@ -391,6 +515,14 @@ module Google
         end
       end
       
+      class GroupIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group_email, as: 'groupEmail'
+          property :id, as: 'id'
+        end
+      end
+      
       class NestedParameter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -401,6 +533,27 @@ module Google
           collection :multi_value, as: 'multiValue'
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class OwnerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :owner_identity, as: 'ownerIdentity', class: Google::Apis::AdminReportsV1::OwnerIdentity, decorator: Google::Apis::AdminReportsV1::OwnerIdentity::Representation
+      
+          property :owner_type, as: 'ownerType'
+        end
+      end
+      
+      class OwnerIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_identity, as: 'customerIdentity', class: Google::Apis::AdminReportsV1::CustomerIdentity, decorator: Google::Apis::AdminReportsV1::CustomerIdentity::Representation
+      
+          property :group_identity, as: 'groupIdentity', class: Google::Apis::AdminReportsV1::GroupIdentity, decorator: Google::Apis::AdminReportsV1::GroupIdentity::Representation
+      
+          property :user_identity, as: 'userIdentity', class: Google::Apis::AdminReportsV1::UserIdentity, decorator: Google::Apis::AdminReportsV1::UserIdentity::Representation
+      
         end
       end
       
@@ -417,6 +570,8 @@ module Google
           collection :applied_labels, as: 'appliedLabels', class: Google::Apis::AdminReportsV1::AppliedLabel, decorator: Google::Apis::AdminReportsV1::AppliedLabel::Representation
       
           property :id, as: 'id'
+          property :owner_details, as: 'ownerDetails', class: Google::Apis::AdminReportsV1::OwnerDetails, decorator: Google::Apis::AdminReportsV1::OwnerDetails::Representation
+      
           property :relation, as: 'relation'
           property :title, as: 'title'
           property :type, as: 'type'
@@ -488,6 +643,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class UserIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :user_email, as: 'userEmail'
         end
       end
     end

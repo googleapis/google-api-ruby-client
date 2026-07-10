@@ -19,14 +19,13 @@ require 'google/apis/aiplatform_v1/gem_version.rb'
 
 module Google
   module Apis
-    # Vertex AI API
+    # Agent Platform API
     #
-    # Train high-quality custom machine learning models with minimal machine
-    # learning expertise and effort.
+    # Build, scale, govern, and optimize sophisticated agents and models.
     #
     # @see https://cloud.google.com/vertex-ai/
     module AiplatformV1
-      # Version of the Vertex AI API this client connects to.
+      # Version of the Agent Platform API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
 

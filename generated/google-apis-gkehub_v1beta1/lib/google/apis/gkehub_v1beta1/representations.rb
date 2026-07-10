@@ -405,6 +405,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GkehubV1beta1::Operation, decorator: Google::Apis::GkehubV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -433,6 +434,7 @@ module Google
           property :infrastructure_type, as: 'infrastructureType'
           hash :labels, as: 'labels'
           property :last_connection_time, as: 'lastConnectionTime'
+          property :membership_type, as: 'membershipType'
           property :monitoring_config, as: 'monitoringConfig', class: Google::Apis::GkehubV1beta1::MonitoringConfig, decorator: Google::Apis::GkehubV1beta1::MonitoringConfig::Representation
       
           property :name, as: 'name'
@@ -550,6 +552,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connect_version, as: 'connectVersion'
+          property :k8s_git_version, as: 'k8sGitVersion'
           property :k8s_version, as: 'k8sVersion'
           property :v1beta1_crd, as: 'v1beta1Crd'
         end

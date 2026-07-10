@@ -1,5 +1,89 @@
 # Release history for google-apis-documentai_v1
 
+### v0.119.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.118.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260503
+
+### v0.117.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260325
+
+### v0.116.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260316
+
+### v0.115.0 (2026-03-01)
+
+* Regenerated from discovery document revision 20260224
+
+### v0.114.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260203
+
+### v0.113.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260118
+
+### v0.112.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20260104
+
+### v0.111.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251209
+
+### v0.110.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251202
+
+### v0.109.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251030
+
+### v0.108.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251020
+
+### v0.107.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251013
+
+### v0.106.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250929
+
+### v0.105.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250922
+
+### v0.104.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250914
+
+### v0.103.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250908
+
+### v0.102.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250820
+
+### v0.101.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250811
+
+### v0.100.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250716
+
+### v0.99.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250616
+
 ### v0.98.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250521

@@ -54,8 +54,21 @@ module Google
         # Locates the building whose centroid is closest to a query point. Returns an
         # error with code `NOT_FOUND` if there are no buildings within approximately 50m
         # of the query point.
+        # @param [Array<String>, String] additional_insights
+        #   Optional. A list of additional_insights to be included in the response.
+        # @param [Boolean] exact_quality_required
+        #   Optional. Whether to require exact quality of the imagery. If set to false,
+        #   the `required_quality` field is interpreted as the minimum required quality,
+        #   such that HIGH quality imagery may be returned when `required_quality` is set
+        #   to MEDIUM. If set to true, `required_quality` is interpreted as the exact
+        #   required quality and only `MEDIUM` quality imagery is returned if `
+        #   required_quality` is set to `MEDIUM`.
         # @param [Array<String>, String] experiments
-        #   Optional. Specifies the pre-GA features to enable.
+        #   Optional. Specifies the pre-GA experiments to enable. Requests using this
+        #   field are classified as a pre-GA offering under the [Google Maps Platform
+        #   Service Specific Terms](https://cloud.google.com/maps-platform/terms/maps-
+        #   service-terms). See [launch stage descriptions](https://cloud.google.com/maps-
+        #   platform/terms/launch-stages) for more details.
         # @param [Float] location_latitude
         #   The latitude in degrees. It must be in the range [-90.0, +90.0].
         # @param [Float] location_longitude
@@ -81,10 +94,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def find_building_insight_closest(experiments: nil, location_latitude: nil, location_longitude: nil, required_quality: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def find_building_insight_closest(additional_insights: nil, exact_quality_required: nil, experiments: nil, location_latitude: nil, location_longitude: nil, required_quality: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/buildingInsights:findClosest', options)
           command.response_representation = Google::Apis::SolarV1::BuildingInsights::Representation
           command.response_class = Google::Apis::SolarV1::BuildingInsights
+          command.query['additionalInsights'] = additional_insights unless additional_insights.nil?
+          command.query['exactQualityRequired'] = exact_quality_required unless exact_quality_required.nil?
           command.query['experiments'] = experiments unless experiments.nil?
           command.query['location.latitude'] = location_latitude unless location_latitude.nil?
           command.query['location.longitude'] = location_longitude unless location_longitude.nil?
@@ -104,7 +119,11 @@ module Google
         #   required quality and only `MEDIUM` quality imagery is returned if `
         #   required_quality` is set to `MEDIUM`.
         # @param [Array<String>, String] experiments
-        #   Optional. Specifies the pre-GA experiments to enable.
+        #   Optional. Specifies the pre-GA experiments to enable. Requests using this
+        #   field are classified as a pre-GA offering under the [Google Maps Platform
+        #   Service Specific Terms](https://cloud.google.com/maps-platform/terms/maps-
+        #   service-terms). See [launch stage descriptions]( https://cloud.google.com/maps-
+        #   platform/terms/launch-stages) for more details.
         # @param [Float] location_latitude
         #   The latitude in degrees. It must be in the range [-90.0, +90.0].
         # @param [Float] location_longitude

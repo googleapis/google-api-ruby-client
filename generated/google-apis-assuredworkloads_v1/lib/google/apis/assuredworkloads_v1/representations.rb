@@ -58,13 +58,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1DbFindingSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -77,6 +107,12 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +191,18 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,6 +382,25 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_time, as: 'archiveTime'
+          property :batch_size, as: 'batchSize'
+          property :event_cutoff_time, as: 'eventCutoffTime'
+          property :max_events_move, as: 'maxEventsMove'
+          property :organization_id, :numeric_string => true, as: 'organizationId'
+          property :region, as: 'region'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :moved_events_count, as: 'movedEventsCount'
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -344,6 +411,22 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledge_type, as: 'acknowledgeType'
+          property :comment, as: 'comment'
+          collection :names, as: 'names'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acknowledged_violations_count, as: 'acknowledgedViolationsCount'
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -351,6 +434,19 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1DbFindingSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finding_category, as: 'findingCategory'
+          property :finding_class, as: 'findingClass'
+          property :finding_count, :numeric_string => true, as: 'findingCount'
+          property :name, as: 'name'
+          collection :related_frameworks, as: 'relatedFrameworks'
+          property :severity, as: 'severity'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -366,10 +462,20 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :db_finding_summaries, as: 'dbFindingSummaries', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbFindingSummary, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbFindingSummary::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1ListViolationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
           collection :violations, as: 'violations', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Violation, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Violation::Representation
       
         end
@@ -482,6 +588,25 @@ module Google
       class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_end_time, as: 'archiveEndTime'
+          property :archive_start_time, as: 'archiveStartTime'
+          property :batch_size, as: 'batchSize'
+          property :max_events_move, as: 'maxEventsMove'
+          property :organization_id, :numeric_string => true, as: 'organizationId'
+          property :region, as: 'region'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :moved_events_count, as: 'movedEventsCount'
         end
       end
       
@@ -692,6 +817,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::AssuredworkloadsV1::GoogleLongrunningOperation, decorator: Google::Apis::AssuredworkloadsV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

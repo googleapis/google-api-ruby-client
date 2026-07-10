@@ -1,5 +1,95 @@
 # Release history for google-apis-redis_v1beta1
 
+### v0.83.0 (2026-07-05)
+
+* Regenerated from discovery document revision 20260616
+
+### v0.82.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260526
+* Regenerated using generator version 0.19.0
+
+### v0.81.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260423
+
+### v0.80.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260406
+
+### v0.79.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260309
+
+### v0.78.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260210
+
+### v0.77.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260129
+
+### v0.76.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20260107
+
+### v0.75.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251104
+
+### v0.74.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251021
+
+### v0.73.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251009
+
+### v0.72.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251007
+
+### v0.71.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250909
+
+### v0.70.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250902
+
+### v0.69.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250825
+
+### v0.68.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250807
+
+### v0.67.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250729
+
+### v0.66.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250718
+
+### v0.65.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250701
+
+### v0.64.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250617
+
+### v0.63.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250609
+
+### v0.62.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250527
+* Regenerated using generator version 0.18.0
+
 ### v0.61.0 (2025-05-04)
 
 * Regenerated from discovery document revision 20250418

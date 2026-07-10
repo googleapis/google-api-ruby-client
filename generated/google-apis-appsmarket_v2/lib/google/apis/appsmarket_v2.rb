@@ -19,14 +19,14 @@ require 'google/apis/appsmarket_v2/gem_version.rb'
 
 module Google
   module Apis
-    # G Suite Marketplace API
+    # Google Workspace Marketplace API
     #
     # Lets your Google Workspace Marketplace applications integrate with Google's
-    # licensing and billing services.
+    # installtion and licensing services.
     #
-    # @see https://developers.google.com/apps-marketplace
+    # @see https://developers.google.com/workspace/marketplace
     module AppsmarketV2
-      # Version of the G Suite Marketplace API this client connects to.
+      # Version of the Google Workspace Marketplace API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V2'
 

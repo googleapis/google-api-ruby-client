@@ -372,7 +372,7 @@ module Google
       # A BeyondCorp AppConnection resource represents a BeyondCorp protected
       # AppConnection to a remote application. It creates all the necessary GCP
       # components needed for creating a BeyondCorp protected AppConnection. Multiple
-      # connectors can be authorised for a single AppConnection.
+      # connectors can be authorized for a single AppConnection.
       class GoogleCloudBeyondcorpAppconnectionsV1AppConnection
         include Google::Apis::Core::Hashable
       
@@ -382,7 +382,7 @@ module Google
         attr_accessor :application_endpoint
       
         # Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are
-        # authorised to be associated with this AppConnection.
+        # authorized to be associated with this AppConnection.
         # Corresponds to the JSON property `connectors`
         # @return [Array<String>]
         attr_accessor :connectors
@@ -670,7 +670,7 @@ module Google
         # A BeyondCorp AppConnection resource represents a BeyondCorp protected
         # AppConnection to a remote application. It creates all the necessary GCP
         # components needed for creating a BeyondCorp protected AppConnection. Multiple
-        # connectors can be authorised for a single AppConnection.
+        # connectors can be authorized for a single AppConnection.
         # Corresponds to the JSON property `appConnection`
         # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnection]
         attr_accessor :app_connection
@@ -787,9 +787,10 @@ module Google
         # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo]
         attr_accessor :principal_info
       
-        # ResourceInfo represents the information/status of an app connector resource.
-        # Such as: - remote_agent - container - runtime - appgateway - appconnector -
-        # appconnection - tunnel - logagent
+        # ResourceInfo represents the information or status of an app connector resource
+        # component that's used to report on various parts of the system. For example,
+        # ResourceInfo can be used to convey the status of a remote_agent, including the
+        # status of an appgateway for an runtime environment in a container instance.
         # Corresponds to the JSON property `resourceInfo`
         # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo]
         attr_accessor :resource_info
@@ -1128,9 +1129,10 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
-        # ResourceInfo represents the information/status of an app connector resource.
-        # Such as: - remote_agent - container - runtime - appgateway - appconnector -
-        # appconnection - tunnel - logagent
+        # ResourceInfo represents the information or status of an app connector resource
+        # component that's used to report on various parts of the system. For example,
+        # ResourceInfo can be used to convey the status of a remote_agent, including the
+        # status of an appgateway for an runtime environment in a container instance.
         # Corresponds to the JSON property `resourceInfo`
         # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo]
         attr_accessor :resource_info
@@ -1173,9 +1175,10 @@ module Google
         end
       end
       
-      # ResourceInfo represents the information/status of an app connector resource.
-      # Such as: - remote_agent - container - runtime - appgateway - appconnector -
-      # appconnection - tunnel - logagent
+      # ResourceInfo represents the information or status of an app connector resource
+      # component that's used to report on various parts of the system. For example,
+      # ResourceInfo can be used to convey the status of a remote_agent, including the
+      # status of an appgateway for an runtime environment in a container instance.
       class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo
         include Google::Apis::Core::Hashable
       
@@ -1674,7 +1677,7 @@ module Google
         end
       end
       
-      # A Beyondcorp Application resource information.
+      # The information about an application resource.
       class GoogleCloudBeyondcorpSecuritygatewaysV1Application
         include Google::Apis::Core::Hashable
       
@@ -1683,19 +1686,21 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. An arbitrary user-provided name for the Application resource. Cannot
+        # Optional. An arbitrary user-provided name for the application resource. Cannot
         # exceed 64 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Required. Endpoint matchers associated with an application. A combination of
-        # hostname and ports as endpoint matcher is used to match the application. Match
-        # conditions for OR logic. An array of match conditions to allow for multiple
-        # matching criteria. The rule is considered a match if one the conditions are
-        # met. The conditions can be one of the following combination (Hostname), (
-        # Hostname & Ports) EXAMPLES: Hostname - ("*.abc.com"), ("xyz.abc.com") Hostname
-        # and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
+        # Optional. An array of conditions to match the application's network endpoint.
+        # Each element in the array is an EndpointMatcher object, which defines a
+        # specific combination of a hostname pattern and one or more ports. The
+        # application is considered matched if at least one of the EndpointMatcher
+        # conditions in this array is met (the conditions are combined using OR logic).
+        # Each EndpointMatcher must contain a hostname pattern, such as "example.com",
+        # and one or more port numbers specified as a string, such as "443". Hostname
+        # and port number examples: "*.example.com", "443" "example.com" and "22" "
+        # example.com" and "22,33"
         # Corresponds to the JSON property `endpointMatchers`
         # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>]
         attr_accessor :endpoint_matchers
@@ -1705,10 +1710,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Type of the external application.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
         # Output only. Timestamp when the resource was last modified.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
+      
+        # Optional. Which upstream resources to forward traffic to.
+        # Corresponds to the JSON property `upstreams`
+        # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream>]
+        attr_accessor :upstreams
       
         def initialize(**args)
            update!(**args)
@@ -1720,7 +1735,223 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @endpoint_matchers = args[:endpoint_matchers] if args.key?(:endpoint_matchers)
           @name = args[:name] if args.key?(:name)
+          @schema = args[:schema] if args.key?(:schema)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upstreams = args[:upstreams] if args.key?(:upstreams)
+        end
+      end
+      
+      # Which upstream resource to forward traffic to.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream
+        include Google::Apis::Core::Hashable
+      
+        # Routing policy information.
+        # Corresponds to the JSON property `egressPolicy`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy]
+        attr_accessor :egress_policy
+      
+        # Endpoints to forward traffic to.
+        # Corresponds to the JSON property `external`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal]
+        attr_accessor :external
+      
+        # Network to forward traffic to.
+        # Corresponds to the JSON property `network`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork]
+        attr_accessor :network
+      
+        # The configuration for the proxy.
+        # Corresponds to the JSON property `proxyProtocol`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig]
+        attr_accessor :proxy_protocol
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_policy = args[:egress_policy] if args.key?(:egress_policy)
+          @external = args[:external] if args.key?(:external)
+          @network = args[:network] if args.key?(:network)
+          @proxy_protocol = args[:proxy_protocol] if args.key?(:proxy_protocol)
+        end
+      end
+      
+      # Endpoints to forward traffic to.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of the endpoints to forward traffic to.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>]
+        attr_accessor :endpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+        end
+      end
+      
+      # Network to forward traffic to.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork
+        include Google::Apis::Core::Hashable
+      
+        # Required. Network name is of the format: `projects/`project`/global/networks/`
+        # network`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Contextual headers configuration.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders
+        include Google::Apis::Core::Hashable
+      
+        # The delegated device information configuration.
+        # Corresponds to the JSON property `deviceInfo`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo]
+        attr_accessor :device_info
+      
+        # The delegated group configuration details.
+        # Corresponds to the JSON property `groupInfo`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo]
+        attr_accessor :group_info
+      
+        # Optional. Default output type for all enabled headers.
+        # Corresponds to the JSON property `outputType`
+        # @return [String]
+        attr_accessor :output_type
+      
+        # The configuration information for the delegated user.
+        # Corresponds to the JSON property `userInfo`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo]
+        attr_accessor :user_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_info = args[:device_info] if args.key?(:device_info)
+          @group_info = args[:group_info] if args.key?(:group_info)
+          @output_type = args[:output_type] if args.key?(:output_type)
+          @user_info = args[:user_info] if args.key?(:user_info)
+        end
+      end
+      
+      # The delegated device information configuration.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The output type details for the delegated device.
+        # Corresponds to the JSON property `outputType`
+        # @return [String]
+        attr_accessor :output_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_type = args[:output_type] if args.key?(:output_type)
+        end
+      end
+      
+      # The delegated group configuration details.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The output type of the delegated group information.
+        # Corresponds to the JSON property `outputType`
+        # @return [String]
+        attr_accessor :output_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_type = args[:output_type] if args.key?(:output_type)
+        end
+      end
+      
+      # The configuration information for the delegated user.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The delegated user's information.
+        # Corresponds to the JSON property `outputType`
+        # @return [String]
+        attr_accessor :output_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_type = args[:output_type] if args.key?(:output_type)
+        end
+      end
+      
+      # Routing policy information.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of the regions where the application sends traffic.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @regions = args[:regions] if args.key?(:regions)
+        end
+      end
+      
+      # Internet Gateway endpoint to forward traffic to.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint
+        include Google::Apis::Core::Hashable
+      
+        # Required. Hostname of the endpoint.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Required. Port of the endpoint.
+        # Corresponds to the JSON property `port`
+        # @return [Fixnum]
+        attr_accessor :port
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @port = args[:port] if args.key?(:port)
         end
       end
       
@@ -1734,7 +1965,7 @@ module Google
         # @return [String]
         attr_accessor :hostname
       
-        # Optional. Ports of the application.
+        # Required. The ports of the application.
         # Corresponds to the JSON property `ports`
         # @return [Array<Fixnum>]
         attr_accessor :ports
@@ -1853,7 +2084,67 @@ module Google
         end
       end
       
-      # Information about a BeyoncCorp SecurityGateway resource.
+      # Configuration for Cloud Logging.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The configuration for the proxy.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of the allowed client header names.
+        # Corresponds to the JSON property `allowedClientHeaders`
+        # @return [Array<String>]
+        attr_accessor :allowed_client_headers
+      
+        # Optional. Client IP configuration. The client IP address is included if true.
+        # Corresponds to the JSON property `clientIp`
+        # @return [Boolean]
+        attr_accessor :client_ip
+        alias_method :client_ip?, :client_ip
+      
+        # Contextual headers configuration.
+        # Corresponds to the JSON property `contextualHeaders`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders]
+        attr_accessor :contextual_headers
+      
+        # Optional. The security gateway identity configuration.
+        # Corresponds to the JSON property `gatewayIdentity`
+        # @return [String]
+        attr_accessor :gateway_identity
+      
+        # Optional. Custom resource specific headers along with the values. The names
+        # should conform to RFC 9110: >Field names can contain alphanumeric characters,
+        # hyphens, and periods, can contain only ASCII-printable characters and tabs,
+        # and must start with a letter.
+        # Corresponds to the JSON property `metadataHeaders`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata_headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_client_headers = args[:allowed_client_headers] if args.key?(:allowed_client_headers)
+          @client_ip = args[:client_ip] if args.key?(:client_ip)
+          @contextual_headers = args[:contextual_headers] if args.key?(:contextual_headers)
+          @gateway_identity = args[:gateway_identity] if args.key?(:gateway_identity)
+          @metadata_headers = args[:metadata_headers] if args.key?(:metadata_headers)
+        end
+      end
+      
+      # The information about a security gateway resource.
       class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway
         include Google::Apis::Core::Hashable
       
@@ -1861,6 +2152,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Output only. Service account used for operations that involve resources in
+        # consumer projects.
+        # Corresponds to the JSON property `delegatingServiceAccount`
+        # @return [String]
+        attr_accessor :delegating_service_account
       
         # Optional. An arbitrary user-provided name for the SecurityGateway. Cannot
         # exceed 64 characters.
@@ -1880,10 +2177,25 @@ module Google
         # @return [Hash<String,Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1Hub>]
         attr_accessor :hubs
       
+        # Configuration for Cloud Logging.
+        # Corresponds to the JSON property `logging`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig]
+        attr_accessor :logging
+      
         # Identifier. Name of the resource.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The configuration for the proxy.
+        # Corresponds to the JSON property `proxyProtocolConfig`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig]
+        attr_accessor :proxy_protocol_config
+      
+        # Settings related to the Service Discovery.
+        # Corresponds to the JSON property `serviceDiscovery`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery]
+        attr_accessor :service_discovery
       
         # Output only. The operational state of the SecurityGateway.
         # Corresponds to the JSON property `state`
@@ -1902,10 +2214,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @delegating_service_account = args[:delegating_service_account] if args.key?(:delegating_service_account)
           @display_name = args[:display_name] if args.key?(:display_name)
           @external_ips = args[:external_ips] if args.key?(:external_ips)
           @hubs = args[:hubs] if args.key?(:hubs)
+          @logging = args[:logging] if args.key?(:logging)
           @name = args[:name] if args.key?(:name)
+          @proxy_protocol_config = args[:proxy_protocol_config] if args.key?(:proxy_protocol_config)
+          @service_discovery = args[:service_discovery] if args.key?(:service_discovery)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1967,6 +2283,63 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Settings related to the Service Discovery.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery
+        include Google::Apis::Core::Hashable
+      
+        # If Service Discovery is done through API, defines its settings.
+        # Corresponds to the JSON property `apiGateway`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway]
+        attr_accessor :api_gateway
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_gateway = args[:api_gateway] if args.key?(:api_gateway)
+        end
+      end
+      
+      # If Service Discovery is done through API, defines its settings.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway
+        include Google::Apis::Core::Hashable
+      
+        # API operation descriptor.
+        # Corresponds to the JSON property `resourceOverride`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor]
+        attr_accessor :resource_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_override = args[:resource_override] if args.key?(:resource_override)
+        end
+      end
+      
+      # API operation descriptor.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Contains the URI path fragment where HTTP request is sent.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
         end
       end
       
@@ -2488,6 +2861,14 @@ module Google
         # @return [Array<Google::Apis::BeyondcorpV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2496,6 +2877,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

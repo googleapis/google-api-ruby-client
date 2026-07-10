@@ -261,10 +261,16 @@ module Google
       class GoogleCloudRunV2CloudSqlInstance
         include Google::Apis::Core::Hashable
       
-        # The Cloud SQL instance connection names, as can be found in https://console.
-        # cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/
-        # connect-run for more information on how to connect Cloud SQL and Cloud Run.
-        # Format: `project`:`location`:`instance`
+        # A list of Cloud SQL instance connection names. Cloud Run uses these to
+        # establish connections to the specified Cloud SQL instances. While the SQL
+        # instance name itself is unique within a project, the full connection name
+        # requires the location for proper routing. Format: ``project`:`location`:`
+        # instance`` Example: `my-project:us-central1:my-instance` You can find this
+        # value on the instance's **Overview** page in the Google Cloud console or by
+        # using the following `gcloud` command: ```sh gcloud sql instances describe
+        # INSTANCE_NAME \ --format='value(connectionName)' ``` Visit https://cloud.
+        # google.com/sql/docs/mysql/connect-run for more information on how to connect
+        # Cloud SQL and Cloud Run.
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
         attr_accessor :instances
@@ -276,6 +282,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # Cloud Storage source.
+      class GoogleCloudRunV2CloudStorageSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Cloud Storage bucket name.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # Optional. The Cloud Storage object generation.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Required. The Cloud Storage object name.
+        # Corresponds to the JSON property `object`
+        # @return [String]
+        attr_accessor :object
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @generation = args[:generation] if args.key?(:generation)
+          @object = args[:object] if args.key?(:object)
         end
       end
       
@@ -409,10 +446,28 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerPort>]
         attr_accessor :ports
       
+        # Probe describes a health check to be performed against a container to
+        # determine whether it is alive or ready to receive traffic.
+        # Corresponds to the JSON property `readinessProbe`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Probe]
+        attr_accessor :readiness_probe
+      
         # ResourceRequirements describes the compute resource requirements.
         # Corresponds to the JSON property `resources`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements]
         attr_accessor :resources
+      
+        # Optional. Indicates that this container can act as a sandbox supervisor and
+        # launch sandboxes.
+        # Corresponds to the JSON property `sandboxLauncher`
+        # @return [Boolean]
+        attr_accessor :sandbox_launcher
+        alias_method :sandbox_launcher?, :sandbox_launcher
+      
+        # Source type for the container.
+        # Corresponds to the JSON property `sourceCode`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SourceCode]
+        attr_accessor :source_code
       
         # Probe describes a health check to be performed against a container to
         # determine whether it is alive or ready to receive traffic.
@@ -447,7 +502,10 @@ module Google
           @liveness_probe = args[:liveness_probe] if args.key?(:liveness_probe)
           @name = args[:name] if args.key?(:name)
           @ports = args[:ports] if args.key?(:ports)
+          @readiness_probe = args[:readiness_probe] if args.key?(:readiness_probe)
           @resources = args[:resources] if args.key?(:resources)
+          @sandbox_launcher = args[:sandbox_launcher] if args.key?(:sandbox_launcher)
+          @source_code = args[:source_code] if args.key?(:source_code)
           @startup_probe = args[:startup_probe] if args.key?(:startup_probe)
           @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
           @working_dir = args[:working_dir] if args.key?(:working_dir)
@@ -516,6 +574,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_port = args[:container_port] if args.key?(:container_port)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # ContainerStatus holds the information of container name and image digest value.
+      class GoogleCloudRunV2ContainerStatus
+        include Google::Apis::Core::Hashable
+      
+        # ImageDigest holds the resolved digest for the image specified and resolved
+        # during the creation of Revision. This field holds the digest value regardless
+        # of whether a tag or digest was originally specified in the Container object.
+        # Corresponds to the JSON property `imageDigest`
+        # @return [String]
+        attr_accessor :image_digest
+      
+        # The name of the container, if specified.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_digest = args[:image_digest] if args.key?(:image_digest)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -637,6 +722,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :cancelled_count
       
+        # Output only. Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Output only. Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
         # Output only. Represents time when the execution was completed. It is not
         # guaranteed to be set in happens-before order across separate operations.
         # Corresponds to the JSON property `completionTime`
@@ -709,7 +804,7 @@ module Google
         # Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-
         # stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note that this value
         # might not be what was used as input. For example, if ALPHA was provided as
-        # input in the parent resource, but only BETA and GA-level features are were,
+        # input in the parent resource, but only BETA and GA-level features are used,
         # this field will be BETA.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
@@ -808,6 +903,8 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @cancelled_count = args[:cancelled_count] if args.key?(:cancelled_count)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
           @completion_time = args[:completion_time] if args.key?(:completion_time)
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -898,6 +995,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Optional. Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Optional. Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
         # Unstructured key value map that can be used to organize and categorize objects.
         # User-provided labels are shared with Google's billing system, so they can be
         # used to filter, or break down billing charges by team, component, environment,
@@ -941,6 +1048,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
           @labels = args[:labels] if args.key?(:labels)
           @parallelism = args[:parallelism] if args.key?(:parallelism)
           @task_count = args[:task_count] if args.key?(:task_count)
@@ -1179,6 +1288,320 @@ module Google
         end
       end
       
+      # Inlined source.
+      class GoogleCloudRunV2InlinedSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. The source code.
+        # Corresponds to the JSON property `sources`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2SourceFile>]
+        attr_accessor :sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # A Cloud Run Instance represents a single group of containers running in a
+      # region.
+      class GoogleCloudRunV2Instance
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Settings for Binary Authorization feature.
+        # Corresponds to the JSON property `binaryAuthorization`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization]
+        attr_accessor :binary_authorization
+      
+        # Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
+        # Output only. The Conditions of all other associated sub-resources. They
+        # contain additional diagnostics information in case the Instance does not reach
+        # its Serving state. See comments in `reconciling` for additional information on
+        # reconciliation process in Cloud Run.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
+        attr_accessor :conditions
+      
+        # Output only. Status information for each of the specified containers. The
+        # status includes the resolved digest for specified images.
+        # Corresponds to the JSON property `containerStatuses`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus>]
+        attr_accessor :container_statuses
+      
+        # Required. Holds the single container that defines the unit of execution for
+        # this Instance.
+        # Corresponds to the JSON property `containers`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
+        attr_accessor :containers
+      
+        # Output only. The creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Email address of the authenticated creator.
+        # Corresponds to the JSON property `creator`
+        # @return [String]
+        attr_accessor :creator
+      
+        # Optional. Disables public resolution of the default URI of this Instance.
+        # Corresponds to the JSON property `defaultUriDisabled`
+        # @return [Boolean]
+        attr_accessor :default_uri_disabled
+        alias_method :default_uri_disabled?, :default_uri_disabled
+      
+        # Output only. The deletion time.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # User-provided description of the Instance. This field currently has a 512-
+        # character limit.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A reference to a customer managed encryption key (CMEK) to use to encrypt this
+        # container image. For more information, go to https://cloud.google.com/run/docs/
+        # securing/using-cmek
+        # Corresponds to the JSON property `encryptionKey`
+        # @return [String]
+        attr_accessor :encryption_key
+      
+        # The action to take if the encryption key is revoked.
+        # Corresponds to the JSON property `encryptionKeyRevocationAction`
+        # @return [String]
+        attr_accessor :encryption_key_revocation_action
+      
+        # If `encryption_key_revocation_action` is `SHUTDOWN`, the duration before
+        # shutting down all instances. The minimum increment is 1 hour.
+        # Corresponds to the JSON property `encryptionKeyShutdownDuration`
+        # @return [String]
+        attr_accessor :encryption_key_shutdown_duration
+      
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. For a deleted resource, the time after which it will be
+        # permamently deleted.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. A number that monotonically increases every time the user
+        # modifies the desired state. Please note that unlike v1, this is an `int64`
+        # value. As with most Google APIs, its JSON representation will be a `string`
+        # instead of an `integer`.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Optional. True if GPU zonal redundancy is disabled on this instance.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
+      
+        # Optional. IAP settings on the Instance.
+        # Corresponds to the JSON property `iapEnabled`
+        # @return [Boolean]
+        attr_accessor :iap_enabled
+        alias_method :iap_enabled?, :iap_enabled
+      
+        # Optional. Provides the ingress settings for this Instance. On output, returns
+        # the currently observed ingress settings, or `INGRESS_TRAFFIC_UNSPECIFIED` if
+        # no revision is active.
+        # Corresponds to the JSON property `ingress`
+        # @return [String]
+        attr_accessor :ingress
+      
+        # Optional. Disables IAM permission check for `run.routes.invoke` for callers of
+        # this Instance. For more information, visit https://cloud.google.com/run/docs/
+        # securing/managing-access#invoker_check.
+        # Corresponds to the JSON property `invokerIamDisabled`
+        # @return [Boolean]
+        attr_accessor :invoker_iam_disabled
+        alias_method :invoker_iam_disabled?, :invoker_iam_disabled
+      
+        # 
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Email address of the last authenticated modifier.
+        # Corresponds to the JSON property `lastModifier`
+        # @return [String]
+        attr_accessor :last_modifier
+      
+        # The launch stage as defined by [Google Cloud Platform Launch Stages](https://
+        # cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and
+        # `GA`. If no value is specified, `GA` is assumed. Set the launch stage to a
+        # preview stage on input to allow use of preview features in that stage. On read
+        # (or output), describes whether the resource uses preview features. For example,
+        # if `ALPHA` is provided as input, but only `BETA` and `GA`-level features are
+        # used, this field will be `BETA` on output.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
+        # Output only. The Google Console URI to obtain logs for the Instance.
+        # Corresponds to the JSON property `logUri`
+        # @return [String]
+        attr_accessor :log_uri
+      
+        # The fully qualified name of this Instance. In `CreateInstanceRequest`, this
+        # field is ignored, and instead composed from `CreateInstanceRequest.parent` and
+        # `CreateInstanceRequest.instance_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Hardware constraints configuration.
+        # Corresponds to the JSON property `nodeSelector`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2NodeSelector]
+        attr_accessor :node_selector
+      
+        # Output only. The generation of this Instance currently serving traffic. See
+        # comments in `reconciling` for additional information on reconciliation process
+        # in Cloud Run. Please note that unlike v1, this is an `int64` value. As with
+        # most Google APIs, its JSON representation will be a `string` instead of an `
+        # integer`.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # Output only. Returns `true` if the Instance is currently being acted upon by
+        # the system to bring it into the desired state. When a new Instance is created,
+        # or an existing one is updated, Cloud Run will asynchronously perform all
+        # necessary steps to bring the Instance to the desired serving state. This
+        # process is called reconciliation. While reconciliation is in process, `
+        # observed_generation` will have a transient value that might mismatch the
+        # intended state. Once reconciliation is over (and this field is `false`), there
+        # are two possible outcomes: reconciliation succeeded and the serving state
+        # matches the Instance, or there was an error, and reconciliation failed. This
+        # state can be found in `terminal_condition.state`.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Optional. Restart policy for the Instance.
+        # Corresponds to the JSON property `restartPolicy`
+        # @return [String]
+        attr_accessor :restart_policy
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # 
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Defines a status condition for a resource.
+        # Corresponds to the JSON property `terminalCondition`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
+        attr_accessor :terminal_condition
+      
+        # Output only. Server assigned unique identifier for the trigger. The value is a
+        # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The last-modified time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Output only. All URLs serving traffic for this Instance.
+        # Corresponds to the JSON property `urls`
+        # @return [Array<String>]
+        attr_accessor :urls
+      
+        # A list of Volumes to make available to containers.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
+        attr_accessor :volumes
+      
+        # VPC Access settings. For more information on sending traffic to a VPC network,
+        # visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        # Corresponds to the JSON property `vpcAccess`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
+        attr_accessor :vpc_access
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @container_statuses = args[:container_statuses] if args.key?(:container_statuses)
+          @containers = args[:containers] if args.key?(:containers)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator = args[:creator] if args.key?(:creator)
+          @default_uri_disabled = args[:default_uri_disabled] if args.key?(:default_uri_disabled)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @description = args[:description] if args.key?(:description)
+          @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
+          @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
+          @encryption_key_shutdown_duration = args[:encryption_key_shutdown_duration] if args.key?(:encryption_key_shutdown_duration)
+          @etag = args[:etag] if args.key?(:etag)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @generation = args[:generation] if args.key?(:generation)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
+          @iap_enabled = args[:iap_enabled] if args.key?(:iap_enabled)
+          @ingress = args[:ingress] if args.key?(:ingress)
+          @invoker_iam_disabled = args[:invoker_iam_disabled] if args.key?(:invoker_iam_disabled)
+          @labels = args[:labels] if args.key?(:labels)
+          @last_modifier = args[:last_modifier] if args.key?(:last_modifier)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @log_uri = args[:log_uri] if args.key?(:log_uri)
+          @name = args[:name] if args.key?(:name)
+          @node_selector = args[:node_selector] if args.key?(:node_selector)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @restart_policy = args[:restart_policy] if args.key?(:restart_policy)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @urls = args[:urls] if args.key?(:urls)
+          @volumes = args[:volumes] if args.key?(:volumes)
+          @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+        end
+      end
+      
       # Holds a single instance split entry for the Worker. Allocations can be done to
       # a specific Revision name, or pointing to the latest Ready Revision.
       class GoogleCloudRunV2InstanceSplit
@@ -1299,8 +1722,8 @@ module Google
         # @return [String]
         attr_accessor :delete_time
       
-        # Output only. A system-generated fingerprint for this version of the resource.
-        # May be used to detect modification conflict during updates.
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1494,6 +1917,32 @@ module Google
         end
       end
       
+      # Response message containing a list of Instances.
+      class GoogleCloudRunV2ListInstancesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resulting list of Instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Instance>]
+        attr_accessor :instances
+      
+        # A token indicating there are more items than page_size. Use it in the next
+        # ListInstances request to continue.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message containing a list of Jobs.
       class GoogleCloudRunV2ListJobsResponse
         include Google::Apis::Core::Hashable
@@ -1561,6 +2010,12 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Service>]
         attr_accessor :services
       
+        # Output only. For global requests, returns the list of regions that could not
+        # be reached within the deadline.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1569,6 +2024,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @services = args[:services] if args.key?(:services)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1640,6 +2096,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # Settings for multi-region deployment.
+      class GoogleCloudRunV2MultiRegionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. System-generated unique id for the multi-region Service.
+        # Corresponds to the JSON property `multiRegionId`
+        # @return [String]
+        attr_accessor :multi_region_id
+      
+        # Required. List of regions to deploy to, including primary region.
+        # Corresponds to the JSON property `regions`
+        # @return [Array<String>]
+        attr_accessor :regions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multi_region_id = args[:multi_region_id] if args.key?(:multi_region_id)
+          @regions = args[:regions] if args.key?(:regions)
         end
       end
       
@@ -1842,11 +2323,12 @@ module Google
         attr_accessor :cpu_idle
         alias_method :cpu_idle?, :cpu_idle
       
-        # Only `memory` and `cpu` keys in the map are supported. Notes: * The only
-        # supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at
-        # least 2Gi of memory. For more information, go to https://cloud.google.com/run/
-        # docs/configuring/cpu. * For supported 'memory' values and syntax, go to https:/
-        # /cloud.google.com/run/docs/configuring/memory-limits
+        # Only `memory`, `cpu` and `nvidia.com/gpu` keys in the map are supported. Notes:
+        # * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU
+        # requires at least 2Gi of memory. For more information, go to https://cloud.
+        # google.com/run/docs/configuring/cpu. * For supported 'memory' values and
+        # syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits *
+        # The only supported 'nvidia.com/gpu' value is '1'.
         # Corresponds to the JSON property `limits`
         # @return [Hash<String,String>]
         attr_accessor :limits
@@ -1884,14 +2366,23 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Output only. Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Output only. Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
         # Output only. The Condition of this Revision, containing its readiness status,
         # and detailed error information in case it did not reach a serving state.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Condition>]
         attr_accessor :conditions
       
-        # Holds the single container that defines the unit of execution for this
-        # Revision.
+        # Holds the list which define the units of execution for this Revision.
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
         attr_accessor :containers
@@ -1974,7 +2465,7 @@ module Google
         # Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-
         # stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note that this value
         # might not be what was used as input. For example, if ALPHA was provided as
-        # input in the parent resource, but only BETA and GA-level features are were,
+        # input in the parent resource, but only BETA and GA-level features are used,
         # this field will be BETA.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
@@ -2090,6 +2581,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
           @conditions = args[:conditions] if args.key?(:conditions)
           @containers = args[:containers] if args.key?(:containers)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -2130,6 +2623,22 @@ module Google
       class GoogleCloudRunV2RevisionScaling
         include Google::Apis::Core::Hashable
       
+        # Optional. Determines a threshold for concurrency utilization before scaling
+        # begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to
+        # disable concurrency utilization as threshold for scaling. CPU and concurrency
+        # scaling cannot both be disabled.
+        # Corresponds to the JSON property `concurrencyUtilization`
+        # @return [Float]
+        attr_accessor :concurrency_utilization
+      
+        # Optional. Determines a threshold for CPU utilization before scaling begins.
+        # Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable
+        # CPU utilization as threshold for scaling. CPU and concurrency scaling cannot
+        # both be disabled.
+        # Corresponds to the JSON property `cpuUtilization`
+        # @return [Float]
+        attr_accessor :cpu_utilization
+      
         # Optional. Maximum number of serving instances that this resource should have.
         # When unspecified, the field is set to the server default value of 100. For
         # more information see https://cloud.google.com/run/docs/configuring/max-
@@ -2149,6 +2658,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @concurrency_utilization = args[:concurrency_utilization] if args.key?(:concurrency_utilization)
+          @cpu_utilization = args[:cpu_utilization] if args.key?(:cpu_utilization)
           @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
           @min_instance_count = args[:min_instance_count] if args.key?(:min_instance_count)
         end
@@ -2189,8 +2700,17 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Holds the single container that defines the unit of execution for this
-        # Revision.
+        # Optional. Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Optional. Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
+      
+        # Holds the list which define the units of execution for this Revision.
         # Corresponds to the JSON property `containers`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Container>]
         attr_accessor :containers
@@ -2309,6 +2829,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
           @containers = args[:containers] if args.key?(:containers)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
@@ -2415,10 +2937,10 @@ module Google
         attr_accessor :default_mode
       
         # If unspecified, the volume will expose a file whose name is the secret,
-        # relative to VolumeMount.mount_path. If specified, the key will be used as the
-        # version to fetch from Cloud Secret Manager and the path will be the name of
-        # the file exposed in the volume. When items are defined, they must specify a
-        # path and a version.
+        # relative to VolumeMount.mount_path + VolumeMount.sub_path. If specified, the
+        # key will be used as the version to fetch from Cloud Secret Manager and the
+        # path will be the name of the file exposed in the volume. When items are
+        # defined, they must specify a path and a version.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2VersionToPath>]
         attr_accessor :items
@@ -2527,8 +3049,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. A system-generated fingerprint for this version of the resource.
-        # May be used to detect modification conflict during updates.
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -2610,9 +3132,14 @@ module Google
         # @return [String]
         attr_accessor :launch_stage
       
-        # The fully qualified name of this Service. In CreateServiceRequest, this field
-        # is ignored, and instead composed from CreateServiceRequest.parent and
-        # CreateServiceRequest.service_id. Format: projects/`project`/locations/`
+        # Settings for multi-region deployment.
+        # Corresponds to the JSON property `multiRegionSettings`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2MultiRegionSettings]
+        attr_accessor :multi_region_settings
+      
+        # Identifier. The fully qualified name of this Service. In CreateServiceRequest,
+        # this field is ignored, and instead composed from CreateServiceRequest.parent
+        # and CreateServiceRequest.service_id. Format: projects/`project`/locations/`
         # location`/services/`service_id`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2743,6 +3270,7 @@ module Google
           @latest_created_revision = args[:latest_created_revision] if args.key?(:latest_created_revision)
           @latest_ready_revision = args[:latest_ready_revision] if args.key?(:latest_ready_revision)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
+          @multi_region_settings = args[:multi_region_settings] if args.key?(:multi_region_settings)
           @name = args[:name] if args.key?(:name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -2825,6 +3353,119 @@ module Google
         end
       end
       
+      # Source type for the container.
+      class GoogleCloudRunV2SourceCode
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage source.
+        # Corresponds to the JSON property `cloudStorageSource`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource]
+        attr_accessor :cloud_storage_source
+      
+        # Inlined source.
+        # Corresponds to the JSON property `inlinedSource`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2InlinedSource]
+        attr_accessor :inlined_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_source = args[:cloud_storage_source] if args.key?(:cloud_storage_source)
+          @inlined_source = args[:inlined_source] if args.key?(:inlined_source)
+        end
+      end
+      
+      # Source file.
+      class GoogleCloudRunV2SourceFile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. Represents the exact, literal, and complete source code
+        # of the file. Placeholders like `...` or comments such as `# [rest of code]`
+        # should NEVER be used as omission. Every character in this field will be built
+        # into the final container. Any omission will result in a broken application.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Required. Input only. The file name for the source code. e.g., `"index.js"` or
+        # `"node_modules/dependency.js"`. The filename must be less than 255 characters
+        # and cannot contain `..`, `./`, `//`, or end with a `/`. Cloud Run will place
+        # the files in the container subdirectories, please use relative path to access
+        # the file.
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @filename = args[:filename] if args.key?(:filename)
+        end
+      end
+      
+      # Request message for starting an Instance.
+      class GoogleCloudRunV2StartInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A system-generated fingerprint for this version of the resource.
+        # This may be used to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Indicates that the request should be validated without actually
+        # stopping any resources.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Request message for deleting an Instance.
+      class GoogleCloudRunV2StopInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A system-generated fingerprint for this version of the resource.
+        # This may be used to detect modification conflict during updates.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Indicates that the request should be validated without actually
+        # stopping any resources.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Location of the source in an archive file in Google Cloud Storage.
       class GoogleCloudRunV2StorageSource
         include Google::Apis::Core::Hashable
@@ -2869,6 +3510,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2BuildpacksBuild]
         attr_accessor :buildpack_build
       
+        # Optional. The client that initiated the build request.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
         # Build the source using Docker. This means the source has a Dockerfile.
         # Corresponds to the JSON property `dockerBuild`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2DockerBuild]
@@ -2878,6 +3524,18 @@ module Google
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
+      
+        # Optional. The machine type from default pool to use for the build. If left
+        # blank, cloudbuild will use a sensible default. Currently only E2_HIGHCPU_8 is
+        # supported. If worker_pool is set, this field will be ignored.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Optional. The release track of the client that initiated the build request.
+        # Corresponds to the JSON property `releaseTrack`
+        # @return [String]
+        attr_accessor :release_track
       
         # Optional. The service account to use for the build. If not set, the default
         # Cloud Build service account for the project will be used.
@@ -2911,8 +3569,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @buildpack_build = args[:buildpack_build] if args.key?(:buildpack_build)
+          @client = args[:client] if args.key?(:client)
           @docker_build = args[:docker_build] if args.key?(:docker_build)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @release_track = args[:release_track] if args.key?(:release_track)
           @service_account = args[:service_account] if args.key?(:service_account)
           @storage_source = args[:storage_source] if args.key?(:storage_source)
           @tags = args[:tags] if args.key?(:tags)
@@ -3224,7 +3885,8 @@ module Google
       
         # Output only. The exit code of this attempt. This may be unset if the container
         # was unable to exit cleanly with a code due to some other failure. See status
-        # field for possible failure details.
+        # field for possible failure details. At most one of exit_code or term_signal
+        # will be set.
         # Corresponds to the JSON property `exitCode`
         # @return [Fixnum]
         attr_accessor :exit_code
@@ -3239,6 +3901,13 @@ module Google
         # @return [Google::Apis::RunV2::GoogleRpcStatus]
         attr_accessor :status
       
+        # Output only. Termination signal of the container. This is set to non-zero if
+        # the container is terminated by the system. At most one of exit_code or
+        # term_signal will be set.
+        # Corresponds to the JSON property `termSignal`
+        # @return [Fixnum]
+        attr_accessor :term_signal
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3247,6 +3916,7 @@ module Google
         def update!(**args)
           @exit_code = args[:exit_code] if args.key?(:exit_code)
           @status = args[:status] if args.key?(:status)
+          @term_signal = args[:term_signal] if args.key?(:term_signal)
         end
       end
       
@@ -3271,6 +3941,12 @@ module Google
         # Corresponds to the JSON property `executionEnvironment`
         # @return [String]
         attr_accessor :execution_environment
+      
+        # Optional. True if GPU zonal redundancy is disabled on this task template.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
       
         # Number of retries allowed per Task, before marking this Task failed. Defaults
         # to 3.
@@ -3319,6 +3995,7 @@ module Google
           @containers = args[:containers] if args.key?(:containers)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @execution_environment = args[:execution_environment] if args.key?(:execution_environment)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
           @max_retries = args[:max_retries] if args.key?(:max_retries)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -3525,6 +4202,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Path within the volume from which the container's volume should be
+        # mounted. Defaults to "" (volume's root). This field is currently rejected in
+        # Secret volume mounts.
+        # Corresponds to the JSON property `subPath`
+        # @return [String]
+        attr_accessor :sub_path
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3533,6 +4217,7 @@ module Google
         def update!(**args)
           @mount_path = args[:mount_path] if args.key?(:mount_path)
           @name = args[:name] if args.key?(:name)
+          @sub_path = args[:sub_path] if args.key?(:sub_path)
         end
       end
       
@@ -3626,11 +4311,7 @@ module Google
         # @return [String]
         attr_accessor :creator
       
-        # One or more custom audiences that you want this worker pool to support.
-        # Specify each custom audience as the full URL in a string. The custom audiences
-        # are encoded in the token and used to authenticate requests. For more
-        # information, see https://cloud.google.com/run/docs/configuring/custom-
-        # audiences.
+        # Deprecated: Not supported, and ignored by Cloud Run.
         # Corresponds to the JSON property `customAudiences`
         # @return [Array<String>]
         attr_accessor :custom_audiences
@@ -3647,8 +4328,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. A system-generated fingerprint for this version of the resource.
-        # May be used to detect modification conflict during updates.
+        # Optional. A system-generated fingerprint for this version of the resource. May
+        # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -3705,9 +4386,9 @@ module Google
         # @return [String]
         attr_accessor :latest_created_revision
       
-        # Output only. Name of the latest revision that is serving traffic. See comments
-        # in `reconciling` for additional information on reconciliation process in Cloud
-        # Run.
+        # Output only. Name of the latest revision that is serving workloads. See
+        # comments in `reconciling` for additional information on reconciliation process
+        # in Cloud Run.
         # Corresponds to the JSON property `latestReadyRevision`
         # @return [String]
         attr_accessor :latest_ready_revision
@@ -3725,17 +4406,17 @@ module Google
       
         # The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this
         # field is ignored, and instead composed from CreateWorkerPoolRequest.parent and
-        # CreateWorkerPoolRequest.worker_id. Format: projects/`project`/locations/`
-        # location`/workerPools/`worker_id`
+        # CreateWorkerPoolRequest.worker_id. Format: `projects/`project`/locations/`
+        # location`/workerPools/`worker_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The generation of this WorkerPool currently serving traffic. See
-        # comments in `reconciling` for additional information on reconciliation process
-        # in Cloud Run. Please note that unlike v1, this is an int64 value. As with most
-        # Google APIs, its JSON representation will be a `string` instead of an `integer`
-        # .
+        # Output only. The generation of this WorkerPool currently serving workloads.
+        # See comments in `reconciling` for additional information on reconciliation
+        # process in Cloud Run. Please note that unlike v1, this is an int64 value. As
+        # with most Google APIs, its JSON representation will be a `string` instead of
+        # an `integer`.
         # Corresponds to the JSON property `observedGeneration`
         # @return [Fixnum]
         attr_accessor :observed_generation
@@ -3745,16 +4426,16 @@ module Google
         # created, or an existing one is updated, Cloud Run will asynchronously perform
         # all necessary steps to bring the WorkerPool to the desired serving state. This
         # process is called reconciliation. While reconciliation is in process, `
-        # observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri`
-        # will have transient values that might mismatch the intended state: Once
+        # observed_generation`, `latest_ready_revison`, `instance_split_statuses`, and `
+        # uri` will have transient values that might mismatch the intended state: Once
         # reconciliation is over (and this field is false), there are two possible
         # outcomes: reconciliation succeeded and the serving state matches the
         # WorkerPool, or there was an error, and reconciliation failed. This state can
         # be found in `terminal_condition.state`. If reconciliation succeeded, the
-        # following fields will match: `traffic` and `traffic_statuses`, `
+        # following fields will match: `instance_splits` and `instance_split_statuses`, `
         # observed_generation` and `generation`, `latest_ready_revision` and `
-        # latest_created_revision`. If reconciliation failed, `traffic_statuses`, `
-        # observed_generation`, and `latest_ready_revision` will have the state of the
+        # latest_created_revision`. If reconciliation failed, `instance_split_statuses`,
+        # `observed_generation`, and `latest_ready_revision` will have the state of the
         # last serving revision, or empty for newly created WorkerPools. Additional
         # information on the failure can be found in `terminal_condition` and `
         # conditions`.
@@ -3784,6 +4465,13 @@ module Google
         # Corresponds to the JSON property `terminalCondition`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
         attr_accessor :terminal_condition
+      
+        # Output only. Indicates whether Cloud Run Threat Detection monitoring is
+        # enabled for the parent project of this worker pool.
+        # Corresponds to the JSON property `threatDetectionEnabled`
+        # @return [Boolean]
+        attr_accessor :threat_detection_enabled
+        alias_method :threat_detection_enabled?, :threat_detection_enabled
       
         # Output only. Server assigned unique identifier for the trigger. The value is a
         # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -3829,6 +4517,7 @@ module Google
           @scaling = args[:scaling] if args.key?(:scaling)
           @template = args[:template] if args.key?(:template)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
+          @threat_detection_enabled = args[:threat_detection_enabled] if args.key?(:threat_detection_enabled)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -3850,6 +4539,16 @@ module Google
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
+      
+        # Optional. Arbitrary identifier for the API client.
+        # Corresponds to the JSON property `client`
+        # @return [String]
+        attr_accessor :client
+      
+        # Optional. Arbitrary version identifier for the API client.
+        # Corresponds to the JSON property `clientVersion`
+        # @return [String]
+        attr_accessor :client_version
       
         # Holds list of the containers that defines the unit of execution for this
         # Revision.
@@ -3874,6 +4573,12 @@ module Google
         # Corresponds to the JSON property `encryptionKeyShutdownDuration`
         # @return [String]
         attr_accessor :encryption_key_shutdown_duration
+      
+        # Optional. True if GPU zonal redundancy is disabled on this worker pool.
+        # Corresponds to the JSON property `gpuZonalRedundancyDisabled`
+        # @return [Boolean]
+        attr_accessor :gpu_zonal_redundancy_disabled
+        alias_method :gpu_zonal_redundancy_disabled?, :gpu_zonal_redundancy_disabled
       
         # Optional. Unstructured key value map that can be used to organize and
         # categorize objects. User-provided labels are shared with Google's billing
@@ -3914,12 +4619,6 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh]
         attr_accessor :service_mesh
       
-        # Optional. Enable session affinity.
-        # Corresponds to the JSON property `sessionAffinity`
-        # @return [Boolean]
-        attr_accessor :session_affinity
-        alias_method :session_affinity?, :session_affinity
-      
         # Optional. A list of Volumes to make available to containers.
         # Corresponds to the JSON property `volumes`
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2Volume>]
@@ -3938,16 +4637,18 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client = args[:client] if args.key?(:client)
+          @client_version = args[:client_version] if args.key?(:client_version)
           @containers = args[:containers] if args.key?(:containers)
           @encryption_key = args[:encryption_key] if args.key?(:encryption_key)
           @encryption_key_revocation_action = args[:encryption_key_revocation_action] if args.key?(:encryption_key_revocation_action)
           @encryption_key_shutdown_duration = args[:encryption_key_shutdown_duration] if args.key?(:encryption_key_shutdown_duration)
+          @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
           @labels = args[:labels] if args.key?(:labels)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @revision = args[:revision] if args.key?(:revision)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_mesh = args[:service_mesh] if args.key?(:service_mesh)
-          @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
         end
@@ -4081,6 +4782,13 @@ module Google
       class GoogleDevtoolsCloudbuildV1Artifacts
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of generic artifacts to be uploaded to Artifact Registry upon
+        # successful completion of all build steps. If any artifacts fail to be pushed,
+        # the build is marked FAILURE.
+        # Corresponds to the JSON property `genericArtifacts`
+        # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GenericArtifact>]
+        attr_accessor :generic_artifacts
+      
         # Optional. A list of Go modules to be uploaded to Artifact Registry upon
         # successful completion of all build steps. If any objects fail to be pushed,
         # the build is marked FAILURE.
@@ -4121,6 +4829,15 @@ module Google
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1ArtifactObjects]
         attr_accessor :objects
       
+        # Optional. A list of OCI images to be uploaded to Artifact Registry upon
+        # successful completion of all build steps. OCI images in the specified paths
+        # will be uploaded to the specified Artifact Registry repository using the
+        # builder service account's credentials. If any images fail to be pushed, the
+        # build is marked FAILURE.
+        # Corresponds to the JSON property `oci`
+        # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Oci>]
+        attr_accessor :oci
+      
         # A list of Python packages to be uploaded to Artifact Registry upon successful
         # completion of all build steps. The build service account credentials will be
         # used to perform the upload. If any objects fail to be pushed, the build is
@@ -4135,11 +4852,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @generic_artifacts = args[:generic_artifacts] if args.key?(:generic_artifacts)
           @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
           @objects = args[:objects] if args.key?(:objects)
+          @oci = args[:oci] if args.key?(:oci)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
         end
       end
@@ -4678,6 +5397,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan]
         attr_accessor :pull_timing
       
+        # Declaration of results for this build step.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1StepResult>]
+        attr_accessor :results
+      
         # A shell script to be executed in the step. When script is provided, the user
         # cannot specify the entrypoint or args.
         # Corresponds to the JSON property `script`
@@ -4744,6 +5468,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @pull_timing = args[:pull_timing] if args.key?(:pull_timing)
+          @results = args[:results] if args.key?(:results)
           @script = args[:script] if args.key?(:script)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @status = args[:status] if args.key?(:status)
@@ -4754,9 +5479,33 @@ module Google
         end
       end
       
+      # Results for a build step.
+      class GoogleDevtoolsCloudbuildV1BuildStepResults
+        include Google::Apis::Core::Hashable
+      
+        # Results for a build step.
+        # Corresponds to the JSON property `results`
+        # @return [Hash<String,String>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
       # An image built by the pipeline.
       class GoogleDevtoolsCloudbuildV1BuiltImage
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Docker Registry 2.0 digest.
         # Corresponds to the JSON property `digest`
@@ -4769,6 +5518,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The OCI media type of the artifact. Non-OCI images, such as
+        # Docker images, will have an unspecified value.
+        # Corresponds to the JSON property `ociMediaType`
+        # @return [String]
+        attr_accessor :oci_media_type
+      
         # Start and end times for a build execution phase.
         # Corresponds to the JSON property `pushTiming`
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan]
@@ -4780,8 +5535,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @digest = args[:digest] if args.key?(:digest)
           @name = args[:name] if args.key?(:name)
+          @oci_media_type = args[:oci_media_type] if args.key?(:oci_media_type)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
         end
       end
@@ -4831,6 +5588,11 @@ module Google
         attr_accessor :empty
         alias_method :empty?, :empty
       
+        # Represents a generic artifact as a build dependency.
+        # Corresponds to the JSON property `genericArtifact`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GenericArtifactDependency]
+        attr_accessor :generic_artifact
+      
         # Represents a git repository as a build dependency.
         # Corresponds to the JSON property `gitSource`
         # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitSourceDependency]
@@ -4843,6 +5605,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @empty = args[:empty] if args.key?(:empty)
+          @generic_artifact = args[:generic_artifact] if args.key?(:generic_artifact)
           @git_source = args[:git_source] if args.key?(:git_source)
         end
       end
@@ -4922,6 +5685,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_hash = args[:file_hash] if args.key?(:file_hash)
+        end
+      end
+      
+      # Generic artifact to upload to Artifact Registry upon successful completion of
+      # all build steps.
+      class GoogleDevtoolsCloudbuildV1GenericArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Required. Path to the generic artifact in the build's workspace to be uploaded
+        # to Artifact Registry.
+        # Corresponds to the JSON property `folder`
+        # @return [String]
+        attr_accessor :folder
+      
+        # Required. Registry path to upload the generic artifact to, in the form
+        # projects/$PROJECT/locations/$LOCATION/repositories/$REPO/packages/$PACKAGE/
+        # versions/$VERSION
+        # Corresponds to the JSON property `registryPath`
+        # @return [String]
+        attr_accessor :registry_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder = args[:folder] if args.key?(:folder)
+          @registry_path = args[:registry_path] if args.key?(:registry_path)
+        end
+      end
+      
+      # Represents a generic artifact as a build dependency.
+      class GoogleDevtoolsCloudbuildV1GenericArtifactDependency
+        include Google::Apis::Core::Hashable
+      
+        # Required. Where the artifact files should be placed on the worker.
+        # Corresponds to the JSON property `destPath`
+        # @return [String]
+        attr_accessor :dest_path
+      
+        # Required. The location to download the artifact files from. Ex: projects/p1/
+        # locations/us/repositories/r1/packages/p1/versions/v1
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       
@@ -5033,9 +5851,8 @@ module Google
       class GoogleDevtoolsCloudbuildV1GitSourceRepository
         include Google::Apis::Core::Hashable
       
-        # The Developer Connect Git repository link or the url that matches a repository
-        # link in the current project, formatted as `projects/*/locations/*/connections/*
-        # /gitRepositoryLink/*`
+        # The Developer Connect Git repository link formatted as `projects/*/locations/*/
+        # connections/*/gitRepositoryLink/*`
         # Corresponds to the JSON property `developerConnect`
         # @return [String]
         attr_accessor :developer_connect
@@ -5202,6 +6019,14 @@ module Google
         # @return [String]
         attr_accessor :artifact_id
       
+        # Optional. Path to a folder containing the files to upload to Artifact Registry.
+        # This can be either an absolute path, e.g. `/workspace/my-app/target/`, or a
+        # relative path from /workspace, e.g. `my-app/target/`. This field is mutually
+        # exclusive with the `path` field.
+        # Corresponds to the JSON property `deployFolder`
+        # @return [String]
+        attr_accessor :deploy_folder
+      
         # Maven `groupId` value used when uploading the artifact to Artifact Registry.
         # Corresponds to the JSON property `groupId`
         # @return [String]
@@ -5234,6 +6059,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+          @deploy_folder = args[:deploy_folder] if args.key?(:deploy_folder)
           @group_id = args[:group_id] if args.key?(:group_id)
           @path = args[:path] if args.key?(:path)
           @repository = args[:repository] if args.key?(:repository)
@@ -5246,7 +6072,8 @@ module Google
       class GoogleDevtoolsCloudbuildV1NpmPackage
         include Google::Apis::Core::Hashable
       
-        # Path to the package.json. e.g. workspace/path/to/package
+        # Optional. Path to the package.json. e.g. workspace/path/to/package Only one of
+        # `archive` or `package_path` can be specified.
         # Corresponds to the JSON property `packagePath`
         # @return [String]
         attr_accessor :package_path
@@ -5266,6 +6093,40 @@ module Google
         def update!(**args)
           @package_path = args[:package_path] if args.key?(:package_path)
           @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
+      # OCI image to upload to Artifact Registry upon successful completion of all
+      # build steps.
+      class GoogleDevtoolsCloudbuildV1Oci
+        include Google::Apis::Core::Hashable
+      
+        # Required. Path on the local file system where to find the container to upload.
+        # e.g. /workspace/my-image.tar
+        # Corresponds to the JSON property `file`
+        # @return [String]
+        attr_accessor :file
+      
+        # Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.
+        # dev/my-project/my-repo/my-image
+        # Corresponds to the JSON property `registryPath`
+        # @return [String]
+        attr_accessor :registry_path
+      
+        # Optional. Tags to apply to the uploaded image. e.g. latest, 1.0.0
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file = args[:file] if args.key?(:file)
+          @registry_path = args[:registry_path] if args.key?(:registry_path)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -5422,6 +6283,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :build_step_outputs
       
+        # Results for build steps. step_id ->
+        # Corresponds to the JSON property `buildStepResults`
+        # @return [Hash<String,Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuildStepResults>]
+        attr_accessor :build_step_results
+      
+        # Output only. Generic artifacts uploaded to Artifact Registry at the end of the
+        # build.
+        # Corresponds to the JSON property `genericArtifacts`
+        # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGenericArtifact>]
+        attr_accessor :generic_artifacts
+      
         # Optional. Go module artifacts uploaded to Artifact Registry at the end of the
         # build.
         # Corresponds to the JSON property `goModules`
@@ -5464,6 +6336,8 @@ module Google
           @artifact_timing = args[:artifact_timing] if args.key?(:artifact_timing)
           @build_step_images = args[:build_step_images] if args.key?(:build_step_images)
           @build_step_outputs = args[:build_step_outputs] if args.key?(:build_step_outputs)
+          @build_step_results = args[:build_step_results] if args.key?(:build_step_results)
+          @generic_artifacts = args[:generic_artifacts] if args.key?(:generic_artifacts)
           @go_modules = args[:go_modules] if args.key?(:go_modules)
           @images = args[:images] if args.key?(:images)
           @maven_artifacts = args[:maven_artifacts] if args.key?(:maven_artifacts)
@@ -5666,6 +6540,37 @@ module Google
         end
       end
       
+      # StepResult is the declaration of a result for a build step.
+      class GoogleDevtoolsCloudbuildV1StepResult
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The content of the attestation to be generated.
+        # Corresponds to the JSON property `attestationContent`
+        # @return [String]
+        attr_accessor :attestation_content
+      
+        # Optional. The type of attestation to be generated.
+        # Corresponds to the JSON property `attestationType`
+        # @return [String]
+        attr_accessor :attestation_type
+      
+        # Required. The name of the result.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attestation_content = args[:attestation_content] if args.key?(:attestation_content)
+          @attestation_type = args[:attestation_type] if args.key?(:attestation_type)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Location of the source in an archive file in Cloud Storage.
       class GoogleDevtoolsCloudbuildV1StorageSource
         include Google::Apis::Core::Hashable
@@ -5768,10 +6673,61 @@ module Google
         end
       end
       
+      # A generic artifact uploaded to Artifact Registry using the GenericArtifact
+      # directive.
+      class GoogleDevtoolsCloudbuildV1UploadedGenericArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Container message for hashes of byte content of files, used in
+        # SourceProvenance messages to verify integrity of source input to the build.
+        # Corresponds to the JSON property `artifactFingerprint`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes]
+        attr_accessor :artifact_fingerprint
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
+        # Output only. The file hashes that make up the generic artifact.
+        # Corresponds to the JSON property `fileHashes`
+        # @return [Hash<String,Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes>]
+        attr_accessor :file_hashes
+      
+        # Start and end times for a build execution phase.
+        # Corresponds to the JSON property `pushTiming`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan]
+        attr_accessor :push_timing
+      
+        # Output only. URI of the uploaded artifact. Ex: projects/p1/locations/us/
+        # repositories/r1/packages/p1/versions/v1
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_fingerprint = args[:artifact_fingerprint] if args.key?(:artifact_fingerprint)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
+          @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
+          @push_timing = args[:push_timing] if args.key?(:push_timing)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # A Go module artifact uploaded to Artifact Registry using the GoModule
       # directive.
       class GoogleDevtoolsCloudbuildV1UploadedGoModule
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
@@ -5795,6 +6751,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -5805,6 +6762,11 @@ module Google
       class GoogleDevtoolsCloudbuildV1UploadedMavenArtifact
         include Google::Apis::Core::Hashable
       
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
+      
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
         # Corresponds to the JSON property `fileHashes`
@@ -5827,6 +6789,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -5836,6 +6799,11 @@ module Google
       # An npm package uploaded to Artifact Registry using the NpmPackage directive.
       class GoogleDevtoolsCloudbuildV1UploadedNpmPackage
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
@@ -5859,6 +6827,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -5868,6 +6837,11 @@ module Google
       # Artifact uploaded using the PythonPackage directive.
       class GoogleDevtoolsCloudbuildV1UploadedPythonPackage
         include Google::Apis::Core::Hashable
+      
+        # Output only. Path to the artifact in Artifact Registry.
+        # Corresponds to the JSON property `artifactRegistryPackage`
+        # @return [String]
+        attr_accessor :artifact_registry_package
       
         # Container message for hashes of byte content of files, used in
         # SourceProvenance messages to verify integrity of source input to the build.
@@ -5891,6 +6865,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_registry_package = args[:artifact_registry_package] if args.key?(:artifact_registry_package)
           @file_hashes = args[:file_hashes] if args.key?(:file_hashes)
           @push_timing = args[:push_timing] if args.key?(:push_timing)
           @uri = args[:uri] if args.key?(:uri)
@@ -6326,6 +7301,14 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6334,6 +7317,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

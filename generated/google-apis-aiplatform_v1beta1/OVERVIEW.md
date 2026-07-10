@@ -1,6 +1,6 @@
-# Simple REST client for version V1beta1 of the Vertex AI API
+# Simple REST client for version V1beta1 of the Agent Platform API
 
-This is a simple client library for version V1beta1 of the Vertex AI API. It provides:
+This is a simple client library for version V1beta1 of the Agent Platform API. It provides:
 
 * A client object that connects to the HTTP/JSON REST endpoint for the service.
 * Ruby objects for data structures related to the service.
@@ -65,7 +65,7 @@ More detailed descriptions of the Google simple REST clients are available in tw
 
 (Note: the above documents are written for the simple REST clients in general, and their examples may not reflect the Aiplatform service in particular.)
 
-For reference information on specific calls in the Vertex AI API, see the {Google::Apis::AiplatformV1beta1::AiplatformService class reference docs}.
+For reference information on specific calls in the Agent Platform API, see the {Google::Apis::AiplatformV1beta1::AiplatformService class reference docs}.
 
 ## Which client should I use?
 
@@ -83,7 +83,7 @@ The [product documentation](https://cloud.google.com/vertex-ai/) may provide gui
 
 ## Supported Ruby versions
 
-This library is supported on Ruby 3.1+.
+This library is supported on Ruby 3.2+.
 
 Google provides official support for Ruby versions that are actively supported by Ruby Core -- that is, Ruby versions that are either in normal maintenance or in security maintenance, and not end of life. Older versions of Ruby _may_ still work, but are unsupported and not recommended. See https://www.ruby-lang.org/en/downloads/branches/ for details about the Ruby support schedule.
 

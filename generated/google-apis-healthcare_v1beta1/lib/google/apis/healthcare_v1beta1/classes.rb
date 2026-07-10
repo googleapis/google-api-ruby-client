@@ -55,7 +55,7 @@ module Google
         attr_accessor :clean_image_tag
       
         # Inspect text and transform sensitive text. Configurable using TextConfig.
-        # Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/
+        # Supported [Value Representations] (https://dicom.nema.org/medical/dicom/2018e/
         # output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT,
         # DA, DT, AS
         # Corresponds to the JSON property `cleanTextTag`
@@ -79,15 +79,15 @@ module Google
         attr_accessor :queries
       
         # Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value
-        # Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/
-        # sect_6.2.html#table_6.2-1): SQ
+        # Representation] (https://dicom.nema.org/medical/dicom/2018e/output/chtml/
+        # part05/sect_6.2.html#table_6.2-1): SQ
         # Corresponds to the JSON property `recurseTag`
         # @return [Google::Apis::HealthcareV1beta1::RecurseTag]
         attr_accessor :recurse_tag
       
-        # Replace UID with a new generated UID. Supported [Value Representation] (http://
-        # dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-
-        # 1): UI
+        # Replace UID with a new generated UID. Supported [Value Representation] (https:/
+        # /dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.
+        # 2-1): UI
         # Corresponds to the JSON property `regenUidTag`
         # @return [Google::Apis::HealthcareV1beta1::RegenUidTag]
         attr_accessor :regen_uid_tag
@@ -254,144 +254,6 @@ module Google
           @entity_mentions = args[:entity_mentions] if args.key?(:entity_mentions)
           @fhir_bundle = args[:fhir_bundle] if args.key?(:fhir_bundle)
           @relationships = args[:relationships] if args.key?(:relationships)
-        end
-      end
-      
-      # An annotation record.
-      class Annotation
-        include Google::Apis::Core::Hashable
-      
-        # AnnotationSource holds the source information of the annotation.
-        # Corresponds to the JSON property `annotationSource`
-        # @return [Google::Apis::HealthcareV1beta1::AnnotationSource]
-        attr_accessor :annotation_source
-      
-        # Additional information for this annotation record, such as annotator and
-        # verifier information or study campaign.
-        # Corresponds to the JSON property `customData`
-        # @return [Hash<String,String>]
-        attr_accessor :custom_data
-      
-        # Image annotation.
-        # Corresponds to the JSON property `imageAnnotation`
-        # @return [Google::Apis::HealthcareV1beta1::ImageAnnotation]
-        attr_accessor :image_annotation
-      
-        # Identifier. Resource name of the Annotation, of the form `projects/`project_id`
-        # /locations/`location_id`/datasets/`dataset_id`/annotationStores/`
-        # annotation_store_id`/annotations/`annotation_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Resource level annotation.
-        # Corresponds to the JSON property `resourceAnnotation`
-        # @return [Google::Apis::HealthcareV1beta1::ResourceAnnotation]
-        attr_accessor :resource_annotation
-      
-        # A TextAnnotation specifies a text range that includes sensitive information.
-        # Corresponds to the JSON property `textAnnotation`
-        # @return [Google::Apis::HealthcareV1beta1::SensitiveTextAnnotation]
-        attr_accessor :text_annotation
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotation_source = args[:annotation_source] if args.key?(:annotation_source)
-          @custom_data = args[:custom_data] if args.key?(:custom_data)
-          @image_annotation = args[:image_annotation] if args.key?(:image_annotation)
-          @name = args[:name] if args.key?(:name)
-          @resource_annotation = args[:resource_annotation] if args.key?(:resource_annotation)
-          @text_annotation = args[:text_annotation] if args.key?(:text_annotation)
-        end
-      end
-      
-      # Specifies how to store annotations during de-identification operation.
-      class AnnotationConfig
-        include Google::Apis::Core::Hashable
-      
-        # The name of the annotation store, in the form `projects/`project_id`/locations/
-        # `location_id`/datasets/`dataset_id`/annotationStores/`annotation_store_id``). *
-        # The destination annotation store must be in the same project as the source
-        # data. De-identifying data across multiple projects is not supported. * The
-        # destination annotation store must exist when using DeidentifyDicomStore or
-        # DeidentifyFhirStore. DeidentifyDataset automatically creates the destination
-        # annotation store.
-        # Corresponds to the JSON property `annotationStoreName`
-        # @return [String]
-        attr_accessor :annotation_store_name
-      
-        # If set to true, the sensitive texts are included in SensitiveTextAnnotation of
-        # Annotation.
-        # Corresponds to the JSON property `storeQuote`
-        # @return [Boolean]
-        attr_accessor :store_quote
-        alias_method :store_quote?, :store_quote
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotation_store_name = args[:annotation_store_name] if args.key?(:annotation_store_name)
-          @store_quote = args[:store_quote] if args.key?(:store_quote)
-        end
-      end
-      
-      # AnnotationSource holds the source information of the annotation.
-      class AnnotationSource
-        include Google::Apis::Core::Hashable
-      
-        # Cloud Healthcare API resource.
-        # Corresponds to the JSON property `cloudHealthcareSource`
-        # @return [Google::Apis::HealthcareV1beta1::CloudHealthcareSource]
-        attr_accessor :cloud_healthcare_source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cloud_healthcare_source = args[:cloud_healthcare_source] if args.key?(:cloud_healthcare_source)
-        end
-      end
-      
-      # An Annotation store that can store annotation resources such as labels and
-      # tags for text, image and audio.
-      class AnnotationStore
-        include Google::Apis::Core::Hashable
-      
-        # Optional. User-supplied key-value pairs used to organize Annotation stores.
-        # Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        # maximum 128 bytes, and must conform to the following PCRE regular expression: \
-        # p`Ll`\p`Lo``0,62` Label values must be between 1 and 63 characters long, have
-        # a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE
-        # regular expression: [\p`Ll`\p`Lo`\p`N`_-]`0,63` No more than 64 labels can be
-        # associated with a given store.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Identifier. Resource name of the Annotation store, of the form `projects/`
-        # project_id`/locations/`location_id`/datasets/`dataset_id`/annotationStores/`
-        # annotation_store_id``.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -940,19 +802,42 @@ module Google
         end
       end
       
-      # A bounding polygon for the detected image annotation.
-      class BoundingPoly
+      # Request to bulk delete FHIR resources.
+      class BulkDeleteResourcesRequest
         include Google::Apis::Core::Hashable
       
-        # A description of this polygon.
-        # Corresponds to the JSON property `label`
-        # @return [String]
-        attr_accessor :label
+        # The configuration for exporting to Cloud Storage.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination]
+        attr_accessor :gcs_destination
       
-        # List of the vertices of this polygon.
-        # Corresponds to the JSON property `vertices`
-        # @return [Array<Google::Apis::HealthcareV1beta1::Vertex>]
-        attr_accessor :vertices
+        # Optional. String of comma-delimited FHIR resource types. If provided, only
+        # resources of the specified resource type(s) will be deleted.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Optional. If provided, only resources updated before or atthis time are
+        # deleted. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `
+        # 2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be
+        # specified to the second and include a time zone.
+        # Corresponds to the JSON property `until`
+        # @return [String]
+        attr_accessor :until
+      
+        # Optional. If set to true, the request will only perform a dry run. By default (
+        # once the behavior change is fully rolled out), this will default to true.
+        # During the transition period, the default depends on the Mendel flag status
+        # for the project.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        # Optional. Specifies which version of the resources to delete.
+        # Corresponds to the JSON property `versionConfig`
+        # @return [String]
+        attr_accessor :version_config
       
         def initialize(**args)
            update!(**args)
@@ -960,8 +845,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @label = args[:label] if args.key?(:label)
-          @vertices = args[:vertices] if args.key?(:vertices)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @type = args[:type] if args.key?(:type)
+          @until = args[:until] if args.key?(:until)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+          @version_config = args[:version_config] if args.key?(:version_config)
         end
       end
       
@@ -1102,12 +990,12 @@ module Google
         end
       end
       
-      # This option is based on the DICOM Standard's [Clean Descriptors Option](http://
-      # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and
+      # This option is based on the DICOM Standard's [Clean Descriptors Option](https:/
+      # /dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and
       # the `CleanText` `Action` is applied to all the specified fields. When cleaning
       # text, the process attempts to transform phrases matching any of the tags
-      # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://
-      # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
+      # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](https:/
+      # /dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
       # contextual phrases are replaced with the token "[CTX]". This option uses an
       # additional infoType during inspection.
       class CleanDescriptorsOption
@@ -1139,7 +1027,7 @@ module Google
       end
       
       # Inspect text and transform sensitive text. Configurable using TextConfig.
-      # Supported [Value Representations] (http://dicom.nema.org/medical/dicom/2018e/
+      # Supported [Value Representations] (https://dicom.nema.org/medical/dicom/2018e/
       # output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH, ST, UC, UT,
       # DA, DT, AS
       class CleanTextTag
@@ -1151,25 +1039,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Cloud Healthcare API resource.
-      class CloudHealthcareSource
-        include Google::Apis::Core::Hashable
-      
-        # Full path of a Cloud Healthcare API resource.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1686,6 +1555,31 @@ module Google
         end
       end
       
+      # Defines a custom regular expression pattern to detect and redact in the image.
+      class CustomRegex
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The capturing group indexes to redact. skip_request_analyics: true
+        # Corresponds to the JSON property `groupIndexes`
+        # @return [Array<Fixnum>]
+        attr_accessor :group_indexes
+      
+        # Optional. The regular expression pattern to match.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_indexes = args[:group_indexes] if args.key?(:group_indexes)
+          @pattern = args[:pattern] if args.key?(:pattern)
+        end
+      end
+      
       # A message representing a health dataset. A health dataset represents a
       # collection of healthcare data pertaining to one or more patients. This may
       # include multiple modalities of healthcare data, such as electronic medical
@@ -1825,11 +1719,6 @@ module Google
       class DeidentifyConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies how to store annotations during de-identification operation.
-        # Corresponds to the JSON property `annotation`
-        # @return [Google::Apis::HealthcareV1beta1::AnnotationConfig]
-        attr_accessor :annotation
-      
         # Specifies the parameters needed for de-identification of DICOM stores.
         # Corresponds to the JSON property `dicom`
         # @return [Google::Apis::HealthcareV1beta1::DicomConfig]
@@ -1882,7 +1771,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @annotation = args[:annotation] if args.key?(:annotation)
           @dicom = args[:dicom] if args.key?(:dicom)
           @dicom_tag_config = args[:dicom_tag_config] if args.key?(:dicom_tag_config)
           @fhir = args[:fhir] if args.key?(:fhir)
@@ -1946,13 +1834,13 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DeidentifyConfig]
         attr_accessor :config
       
-        # Required. The name of the DICOM store to create and write the redacted data to.
-        # For example, `projects/`project_id`/locations/`location_id`/datasets/`
-        # dataset_id`/dicomStores/`dicom_store_id``. * The destination dataset must
+        # Required. The name of the DICOM store to write the redacted data to. For
+        # example, `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # dicomStores/`dicom_store_id``. * The destination dataset and DICOM store must
         # exist. * The source dataset and destination dataset must both reside in the
         # same location. De-identifying data across multiple locations is not supported.
-        # * The destination DICOM store must not exist. * The caller must have the
-        # necessary permissions to create the destination DICOM store.
+        # * The caller must have the healthcare.dicomStores.dicomWebWrite permission to
+        # write to the destination DICOM store.
         # Corresponds to the JSON property `destinationStore`
         # @return [String]
         attr_accessor :destination_store
@@ -1996,13 +1884,13 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DeidentifyConfig]
         attr_accessor :config
       
-        # Required. The name of the FHIR store to create and write the redacted data to.
-        # For example, `projects/`project_id`/locations/`location_id`/datasets/`
-        # dataset_id`/fhirStores/`fhir_store_id``. * The destination dataset must exist.
-        # * The source dataset and destination dataset must both reside in the same
-        # location. De-identifying data across multiple locations is not supported. *
-        # The destination FHIR store must exist. * The caller must have the healthcare.
-        # fhirResources.update permission to write to the destination FHIR store.
+        # Required. The name of the FHIR store to write the redacted data to. For
+        # example, `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # fhirStores/`fhir_store_id``. * The destination dataset and FHIR store must
+        # exist. * The source dataset and destination dataset must both reside in the
+        # same location. De-identifying data across multiple locations is not supported.
+        # * The caller must have the healthcare.fhirResources.update permission to write
+        # to the destination FHIR store.
         # Corresponds to the JSON property `destinationStore`
         # @return [String]
         attr_accessor :destination_store
@@ -2088,25 +1976,6 @@ module Google
         end
       end
       
-      # Contains multiple sensitive information findings for each resource slice.
-      class Detail
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `findings`
-        # @return [Array<Google::Apis::HealthcareV1beta1::Finding>]
-        attr_accessor :findings
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @findings = args[:findings] if args.key?(:findings)
-        end
-      end
-      
       # Specifies the parameters needed for de-identification of DICOM stores.
       class DicomConfig
         include Google::Apis::Core::Hashable
@@ -2132,7 +2001,7 @@ module Google
         # "Whilst these UIDs cannot be mapped directly to an individual out of context,
         # given access to the original images, or to a database of the original images
         # containing the UIDs, it would be possible to recover the individual's identity.
-        # " http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.
+        # " https://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.
         # html
         # Corresponds to the JSON property `skipIdRedaction`
         # @return [Boolean]
@@ -2177,6 +2046,56 @@ module Google
         end
       end
       
+      # Contains the configuration for DICOM notifications.
+      class DicomNotificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
+        # notifications of changes are published on. Supplied by the client. The
+        # notification is a `PubsubMessage` with the following fields: * `PubsubMessage.
+        # Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of
+        # this notification. It is guaranteed to be unique within the topic. * `
+        # PubsubMessage.PublishTime` is the time when the message was published. * `
+        # PubsubMessage.Attributes` contains the following attributes: * `action`: The
+        # name of the endpoint that generated the notification. Possible values are `
+        # StoreInstances`, `SetBlobSettings`, `ImportDicomData`, etc. * `lastUpdatedTime`
+        # : The latest timestamp when the DICOM instance was updated. * `storeName`: The
+        # resource name of the DICOM store, of the form `projects/`project_id`/locations/
+        # `location_id`/datasets/`dataset_id`/dicomStores/`dicom_store_id``. * `
+        # studyInstanceUID`: The study UID of the DICOM instance that was changed. * `
+        # seriesInstanceUID`: The series UID of the DICOM instance that was changed. * `
+        # sopInstanceUID`: The instance UID of the DICOM instance that was changed. * `
+        # versionId`: The version ID of the DICOM instance that was changed. * `modality`
+        # : The modality tag of the DICOM instance that was changed. * `
+        # previousStorageClass`: The storage class where the DICOM instance was
+        # previously stored if the storage class was changed. * `storageClass`: The
+        # storage class where the DICOM instance is currently stored. Note that
+        # notifications are only sent if the topic is non-empty. [Topic names](https://
+        # cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The
+        # Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.
+        # gserviceaccount.com, must have the `pubsub.topics.publish` permission (which
+        # is typically included in `roles/pubsub.publisher` role) on the given Pub/Sub
+        # topic. Not having adequate permissions causes the calls that send
+        # notifications to fail (https://cloud.google.com/healthcare-api/docs/
+        # permissions-healthcare-api-gcp-products#
+        # dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't
+        # be published to Pub/Sub, errors are logged to Cloud Logging. For more
+        # information, see [Viewing error logs in Cloud Logging](https://cloud.google.
+        # com/healthcare-api/docs/how-tos/logging).
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+        end
+      end
+      
       # Represents a DICOM store.
       class DicomStore
         include Google::Apis::Core::Hashable
@@ -2204,6 +2123,12 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::NotificationConfig]
         attr_accessor :notification_config
       
+        # Optional. Specifies where and whether to send notifications upon changes to a
+        # DICOM store.
+        # Corresponds to the JSON property `notificationConfigs`
+        # @return [Array<Google::Apis::HealthcareV1beta1::DicomNotificationConfig>]
+        attr_accessor :notification_configs
+      
         # Optional. A list of streaming configs used to configure the destination of
         # streaming exports for every DICOM instance insertion in this DICOM store.
         # After a new config is added to `stream_configs`, DICOM instance insertions are
@@ -2223,6 +2148,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
+          @notification_configs = args[:notification_configs] if args.key?(:notification_configs)
           @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
         end
       end
@@ -2498,75 +2424,6 @@ module Google
         end
       end
       
-      # Request to evaluate an Annotation store against a ground truth [Annotation
-      # store].
-      class EvaluateAnnotationStoreRequest
-        include Google::Apis::Core::Hashable
-      
-        # The BigQuery table for export.
-        # Corresponds to the JSON property `bigqueryDestination`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination]
-        attr_accessor :bigquery_destination
-      
-        # Optional. InfoType mapping for `eval_store`. Different resources can map to
-        # the same infoType. For example, `PERSON_NAME`, `PERSON`, `NAME`, and `HUMAN`
-        # are different. To map all of these into a single infoType (such as `
-        # PERSON_NAME`), specify the following mapping: ``` info_type_mapping["PERSON"] =
-        # "PERSON_NAME" info_type_mapping["NAME"] = "PERSON_NAME" info_type_mapping["
-        # HUMAN"] = "PERSON_NAME" ``` Unmentioned infoTypes, such as `DATE`, are treated
-        # as identity mapping. For example: ``` info_type_mapping["DATE"] = "DATE" ```
-        # InfoTypes are case-insensitive.
-        # Corresponds to the JSON property `evalInfoTypeMapping`
-        # @return [Hash<String,String>]
-        attr_accessor :eval_info_type_mapping
-      
-        # Optional. Similar to `eval_info_type_mapping`, infoType mapping for `
-        # golden_store`.
-        # Corresponds to the JSON property `goldenInfoTypeMapping`
-        # @return [Hash<String,String>]
-        attr_accessor :golden_info_type_mapping
-      
-        # Required. The Annotation store to use as ground truth, in the format of `
-        # projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        # annotationStores/`annotation_store_id``.
-        # Corresponds to the JSON property `goldenStore`
-        # @return [String]
-        attr_accessor :golden_store
-      
-        # Specifies how to use infoTypes for evaluation. For example, a user might only
-        # want to evaluate `PERSON`, `LOCATION`, and `AGE`.
-        # Corresponds to the JSON property `infoTypeConfig`
-        # @return [Google::Apis::HealthcareV1beta1::InfoTypeConfig]
-        attr_accessor :info_type_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
-          @eval_info_type_mapping = args[:eval_info_type_mapping] if args.key?(:eval_info_type_mapping)
-          @golden_info_type_mapping = args[:golden_info_type_mapping] if args.key?(:golden_info_type_mapping)
-          @golden_store = args[:golden_store] if args.key?(:golden_store)
-          @info_type_config = args[:info_type_config] if args.key?(:info_type_config)
-        end
-      end
-      
-      # Response for successful Annotation store evaluation operations. This structure
-      # is included in the response upon operation completion.
-      class EvaluateAnnotationStoreResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Evaluate a user's Consents for all matching User data mappings. Note: User
       # data mappings are indexed asynchronously, causing slight delays between the
       # time mappings are created or updated and when they are included in
@@ -2785,46 +2642,6 @@ module Google
         def update!(**args)
           @consent_scopes = args[:consent_scopes] if args.key?(:consent_scopes)
           @warning = args[:warning] if args.key?(:warning)
-        end
-      end
-      
-      # Request to export Annotations. The export operation is not atomic. If a
-      # failure occurs, any annotations already exported are not removed.
-      class ExportAnnotationsRequest
-        include Google::Apis::Core::Hashable
-      
-        # The BigQuery table for export.
-        # Corresponds to the JSON property `bigqueryDestination`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination]
-        attr_accessor :bigquery_destination
-      
-        # The Cloud Storage location for export.
-        # Corresponds to the JSON property `gcsDestination`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsDestination]
-        attr_accessor :gcs_destination
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
-          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
-        end
-      end
-      
-      # Response for successful annotation export operations. This structure is
-      # included in response upon operation completion.
-      class ExportAnnotationsResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -3338,7 +3155,7 @@ module Google
         # complex data types will not be parsed. New stores will have this value set to
         # ENABLED after a notification period. Warning: turning on this flag causes
         # processing existing resources to fail if they contain references to non-
-        # existent resources.
+        # existent resources. Cannot be disabled in R5.
         # Corresponds to the JSON property `complexDataTypeReferenceParsing`
         # @return [String]
         attr_accessor :complex_data_type_reference_parsing
@@ -3383,9 +3200,12 @@ module Google
         attr_accessor :disable_resource_versioning
         alias_method :disable_resource_versioning?, :disable_resource_versioning
       
-        # Optional. Whether to allow ExecuteBundle to accept history bundles, and
-        # directly insert and overwrite historical resource versions into the FHIR store.
-        # If set to false, using history bundles fails with an error. Defaults to false.
+        # Optional. Whether to allow the [ImportResourcesHistory] and [ExecuteBundle]
+        # APIs to accept history bundles, and directly insert and overwrite historical
+        # resource versions into the FHIR store. Changing resource histories creates
+        # resource interactions that have occurred in the past which clients might not
+        # allow. If set to false, [ImportResourcesHistory] and [ExecuteBundle] requests
+        # will return errors.
         # Corresponds to the JSON property `enableHistoryModifications`
         # @return [Boolean]
         attr_accessor :enable_history_modifications
@@ -3512,6 +3332,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :structured_storage_size_bytes
       
+        # The total amount of versioned storage used by versioned FHIR resources of this
+        # resource type in the store.
+        # Corresponds to the JSON property `versionedStorageSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :versioned_storage_size_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3521,6 +3347,7 @@ module Google
           @count = args[:count] if args.key?(:count)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @structured_storage_size_bytes = args[:structured_storage_size_bytes] if args.key?(:structured_storage_size_bytes)
+          @versioned_storage_size_bytes = args[:versioned_storage_size_bytes] if args.key?(:versioned_storage_size_bytes)
         end
       end
       
@@ -3635,65 +3462,6 @@ module Google
         end
       end
       
-      # List of infoTypes to be filtered.
-      class FilterList
-        include Google::Apis::Core::Hashable
-      
-        # These infoTypes are based on after the `eval_info_type_mapping` and `
-        # golden_info_type_mapping`.
-        # Corresponds to the JSON property `infoTypes`
-        # @return [Array<String>]
-        attr_accessor :info_types
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @info_types = args[:info_types] if args.key?(:info_types)
-        end
-      end
-      
-      # 
-      class Finding
-        include Google::Apis::Core::Hashable
-      
-        # Zero-based ending index of the found text, exclusively.
-        # Corresponds to the JSON property `end`
-        # @return [Fixnum]
-        attr_accessor :end
-      
-        # The type of information stored in this text range. For example, HumanName,
-        # BirthDate, or Address.
-        # Corresponds to the JSON property `infoType`
-        # @return [String]
-        attr_accessor :info_type
-      
-        # The snippet of the sensitive text. This field is only populated during
-        # deidentification if `store_quote` is set to true in DeidentifyConfig.
-        # Corresponds to the JSON property `quote`
-        # @return [String]
-        attr_accessor :quote
-      
-        # Zero-based starting index of the found text, inclusively.
-        # Corresponds to the JSON property `start`
-        # @return [Fixnum]
-        attr_accessor :start
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end = args[:end] if args.key?(:end)
-          @info_type = args[:info_type] if args.key?(:info_type)
-          @quote = args[:quote] if args.key?(:quote)
-          @start = args[:start] if args.key?(:start)
-        end
-      end
-      
       # The Cloud Storage output destination. The Cloud Healthcare Service Agent
       # requires the `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage
       # location.
@@ -3745,101 +3513,6 @@ module Google
         # .ndjson` imports all files with `.ndjson` extensions in `my-directory/` and
         # its sub-directories. * `?` to match 1 character Files matching the wildcard
         # are expected to contain content only, no metadata.
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
-      # The BigQuery table for export.
-      class GoogleCloudHealthcareV1beta1AnnotationBigQueryDestination
-        include Google::Apis::Core::Hashable
-      
-        # Use `write_disposition` instead. If `write_disposition` is specified, this
-        # parameter is ignored. force=false is equivalent to write_disposition=
-        # WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
-        # Corresponds to the JSON property `force`
-        # @return [Boolean]
-        attr_accessor :force
-        alias_method :force?, :force
-      
-        # Specifies the schema format to export.
-        # Corresponds to the JSON property `schemaType`
-        # @return [String]
-        attr_accessor :schema_type
-      
-        # BigQuery URI to a table, up to 2000 characters long, must be of the form bq://
-        # projectId.bqDatasetId.tableId.
-        # Corresponds to the JSON property `tableUri`
-        # @return [String]
-        attr_accessor :table_uri
-      
-        # Determines if existing data in the destination dataset is overwritten,
-        # appended to, or not written if the tables contain data. If a write_disposition
-        # is specified, the `force` parameter is ignored.
-        # Corresponds to the JSON property `writeDisposition`
-        # @return [String]
-        attr_accessor :write_disposition
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @force = args[:force] if args.key?(:force)
-          @schema_type = args[:schema_type] if args.key?(:schema_type)
-          @table_uri = args[:table_uri] if args.key?(:table_uri)
-          @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
-        end
-      end
-      
-      # The Cloud Storage location for export.
-      class GoogleCloudHealthcareV1beta1AnnotationGcsDestination
-        include Google::Apis::Core::Hashable
-      
-        # The Cloud Storage destination to export to. URI for a Cloud Storage directory
-        # where the server writes result files, in the format `gs://`bucket-id`/`path/to/
-        # destination/dir``. If there is no trailing slash, the service appends one when
-        # composing the object path. The user is responsible for creating the Cloud
-        # Storage bucket referenced in `uri_prefix`.
-        # Corresponds to the JSON property `uriPrefix`
-        # @return [String]
-        attr_accessor :uri_prefix
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @uri_prefix = args[:uri_prefix] if args.key?(:uri_prefix)
-        end
-      end
-      
-      # Specifies the configuration for importing data from Cloud Storage.
-      class GoogleCloudHealthcareV1beta1AnnotationGcsSource
-        include Google::Apis::Core::Hashable
-      
-        # Points to a Cloud Storage URI containing file(s) with content only. The URI
-        # must be in the following format: `gs://`bucket_id`/`object_id``. The URI can
-        # include wildcards in `object_id` and thus identify multiple files. Supported
-        # wildcards: '*' to match 0 or more non-separator characters '**' to match 0 or
-        # more characters (including separators). Must be used at the end of a path and
-        # with no other wildcards in the path. Can also be used with a file extension (
-        # such as .dcm), which imports all files with the extension in the specified
-        # directory and its sub-directories. For example, `gs://my-bucket/my-directory/**
-        # .json` imports all files with .json extensions in `my-directory/` and its sub-
-        # directories. '?' to match 1 character All other URI formats are invalid. Files
-        # matching the wildcard are expected to contain content only, no metadata.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -4096,6 +3769,40 @@ module Google
         attr_accessor :force
         alias_method :force?, :force
       
+        # Optional. If true, the source store name will be included as a column in the
+        # BigQuery schema.
+        # Corresponds to the JSON property `includeSourceStore`
+        # @return [Boolean]
+        attr_accessor :include_source_store
+        alias_method :include_source_store?, :include_source_store
+      
+        # Using this field will flatten the DICOM instances into a BigQuery table. The
+        # table will have one column for each DICOM tag. The column name will be the
+        # DICOM tag's textual representation.
+        # Corresponds to the JSON property `schemaFlattened`
+        # @return [Google::Apis::HealthcareV1beta1::SchemaFlattened]
+        attr_accessor :schema_flattened
+      
+        # Using this field will set the schema such that all DICOM tags will be included
+        # in the BigQuery table as a single JSON type column. The BigQuery table schema
+        # will include the following columns: * `StudyInstanceUID` (Type: STRING): DICOM
+        # Tag 0020000D. * `SeriesInstanceUID` (Type: STRING): DICOM Tag 0020000E. * `
+        # SOPInstanceUID` (Type: STRING): DICOM Tag 00080018. * `SourceDicomStore` (Type:
+        # STRING): The name of the source DICOM store. This field is only included if
+        # the `include_source_store` option is set to true. * `Metadata` (Type: JSON):
+        # All DICOM tags for the instance, stored in a single JSON object. * `
+        # StructuredStorageSize` (Type: INTEGER): Size of the structured storage in
+        # bytes. * `DroppedTags` (Type: STRING, Repeated: Yes): List of tags that were
+        # dropped during the conversion. * `StorageClass` (Type: STRING): The storage
+        # class of the instance. * `LastUpdated` (Type: TIMESTAMP): Timestamp of the
+        # last update to the instance. * `BlobStorageSize` (Type: INTEGER): Size of the
+        # blob storage in bytes. * `Type` (Type: STRING): Indicates the type of
+        # operation (e.g., INSERT, DELETE). This field is *omitted* if `
+        # ChangeDataCaptureConfig` is enabled.
+        # Corresponds to the JSON property `schemaJson`
+        # @return [Google::Apis::HealthcareV1beta1::SchemaJson]
+        attr_accessor :schema_json
+      
         # BigQuery URI to a table, up to 2000 characters long, in the format `bq://
         # projectId.bqDatasetId.tableId`
         # Corresponds to the JSON property `tableUri`
@@ -4117,6 +3824,9 @@ module Google
         def update!(**args)
           @change_data_capture_config = args[:change_data_capture_config] if args.key?(:change_data_capture_config)
           @force = args[:force] if args.key?(:force)
+          @include_source_store = args[:include_source_store] if args.key?(:include_source_store)
+          @schema_flattened = args[:schema_flattened] if args.key?(:schema_flattened)
+          @schema_json = args[:schema_json] if args.key?(:schema_json)
           @table_uri = args[:table_uri] if args.key?(:table_uri)
           @write_disposition = args[:write_disposition] if args.key?(:write_disposition)
         end
@@ -4146,13 +3856,34 @@ module Google
         # MIME types are consistent with supported formats in DICOMweb: https://cloud.
         # google.com/healthcare/docs/dicom#retrieve_transaction. Specifically, the
         # following are supported: - application/dicom; transfer-syntax=1.2.840.10008.1.
-        # 2.1 (uncompressed DICOM) - application/dicom; transfer-syntax=1.2.840.10008.1.
-        # 2.4.50 (DICOM with embedded JPEG Baseline) - application/dicom; transfer-
-        # syntax=1.2.840.10008.1.2.4.90 (DICOM with embedded JPEG 2000 Lossless Only) -
-        # application/dicom; transfer-syntax=1.2.840.10008.1.2.4.91 (DICOM with embedded
-        # JPEG 2000)h - application/dicom; transfer-syntax=* (DICOM with no transcoding)
-        # - application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1 (raw
-        # uncompressed PixelData) - application/octet-stream; transfer-syntax=* (raw
+        # 2 (DICOM Implicit VR Little Endian) - application/dicom; transfer-syntax=1.2.
+        # 840.10008.1.2.1 (DICOM Explicit VR Little Endian) - application/dicom;
+        # transfer-syntax=1.2.840.10008.1.2.1.99 (DICOM Deflated Explicit VR Little
+        # Endian) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.50 (DICOM
+        # with embedded JPEG Baseline) - application/dicom; transfer-syntax=1.2.840.
+        # 10008.1.2.4.51 (DICOM with embedded JPEG Extended) - application/dicom;
+        # transfer-syntax=1.2.840.10008.1.2.4.57 (DICOM with embedded JPEG Lossless) -
+        # application/dicom; transfer-syntax=1.2.840.10008.1.2.4.70 (DICOM with embedded
+        # JPEG Lossless First-Order Prediction) - application/dicom; transfer-syntax=1.2.
+        # 840.10008.1.2.4.80 (DICOM with embedded JPEG-LS Lossless) - application/dicom;
+        # transfer-syntax=1.2.840.10008.1.2.4.81 (DICOM with embedded JPEG-LS Lossy (
+        # Near-Lossless)) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.90 (
+        # DICOM with embedded JPEG 2000 Lossless Only) - application/dicom; transfer-
+        # syntax=1.2.840.10008.1.2.4.91 (DICOM with embedded JPEG 2000) - application/
+        # dicom; transfer-syntax=1.2.840.10008.1.2.4.110 (DICOM with embedded JPEG XL
+        # Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.111 (DICOM
+        # with embedded JPEG XL JPEG Recompression) - application/dicom; transfer-syntax=
+        # 1.2.840.10008.1.2.4.112 (DICOM with embedded JPEG XL) - application/dicom;
+        # transfer-syntax=1.2.840.10008.1.2.4.201 (DICOM with embedded High-Throughput
+        # JPEG 2000 Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.
+        # 202 (DICOM with embedded High-Throughput JPEG 2000 with RPCL Options Lossless)
+        # - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.203 (DICOM with
+        # embedded High-Throughput JPEG 2000) - application/dicom; transfer-syntax=1.2.
+        # 840.10008.1.2.5 (DICOM with embedded RLE Lossless) - application/dicom;
+        # transfer-syntax=1.2.840.10008.1.2.8.1 (DICOM with embedded Deflated Image
+        # Frame Compression) - application/dicom; transfer-syntax=* (DICOM with no
+        # transcoding) - application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1 (
+        # raw uncompressed PixelData) - application/octet-stream; transfer-syntax=* (raw
         # PixelData in whatever format it was uploaded in) - image/jpeg; transfer-syntax=
         # 1.2.840.10008.1.2.4.50 (Consumer JPEG) - image/png The following extensions
         # are used for output files: - application/dicom -> .dcm - image/jpeg -> .jpg -
@@ -4747,32 +4478,6 @@ module Google
         end
       end
       
-      # Image annotation.
-      class ImageAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # The list of polygons outlining the sensitive regions in the image.
-        # Corresponds to the JSON property `boundingPolys`
-        # @return [Array<Google::Apis::HealthcareV1beta1::BoundingPoly>]
-        attr_accessor :bounding_polys
-      
-        # 0-based index of the image frame. For example, an image frame in a DICOM
-        # instance.
-        # Corresponds to the JSON property `frameIndex`
-        # @return [Fixnum]
-        attr_accessor :frame_index
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bounding_polys = args[:bounding_polys] if args.key?(:bounding_polys)
-          @frame_index = args[:frame_index] if args.key?(:frame_index)
-        end
-      end
-      
       # Specifies how to handle de-identification of image pixels.
       class ImageConfig
         include Google::Apis::Core::Hashable
@@ -4784,6 +4489,11 @@ module Google
         # Corresponds to the JSON property `additionalInfoTypes`
         # @return [Array<String>]
         attr_accessor :additional_info_types
+      
+        # Optional. Custom regex patterns to redact from the image.
+        # Corresponds to the JSON property `customRegexes`
+        # @return [Array<Google::Apis::HealthcareV1beta1::CustomRegex>]
+        attr_accessor :custom_regexes
       
         # InfoTypes to skip redacting, overriding those used by `text_redaction_mode`.
         # Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`
@@ -4804,44 +4514,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_info_types = args[:additional_info_types] if args.key?(:additional_info_types)
+          @custom_regexes = args[:custom_regexes] if args.key?(:custom_regexes)
           @exclude_info_types = args[:exclude_info_types] if args.key?(:exclude_info_types)
           @text_redaction_mode = args[:text_redaction_mode] if args.key?(:text_redaction_mode)
-        end
-      end
-      
-      # Request to import Annotations. The Annotations to be imported must have client-
-      # supplied resource names which indicate the annotation resource. The import
-      # operation is not atomic. If a failure occurs, any annotations already imported
-      # are not removed.
-      class ImportAnnotationsRequest
-        include Google::Apis::Core::Hashable
-      
-        # Specifies the configuration for importing data from Cloud Storage.
-        # Corresponds to the JSON property `gcsSource`
-        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1AnnotationGcsSource]
-        attr_accessor :gcs_source
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
-        end
-      end
-      
-      # Final response of importing Annotations in successful case. This structure is
-      # included in the response. It is only included when the operation finishes.
-      class ImportAnnotationsResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -4977,47 +4652,6 @@ module Google
         def update!(**args)
           @content_structure = args[:content_structure] if args.key?(:content_structure)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
-        end
-      end
-      
-      # Specifies how to use infoTypes for evaluation. For example, a user might only
-      # want to evaluate `PERSON`, `LOCATION`, and `AGE`.
-      class InfoTypeConfig
-        include Google::Apis::Core::Hashable
-      
-        # List of infoTypes to be filtered.
-        # Corresponds to the JSON property `evaluateList`
-        # @return [Google::Apis::HealthcareV1beta1::FilterList]
-        attr_accessor :evaluate_list
-      
-        # List of infoTypes to be filtered.
-        # Corresponds to the JSON property `ignoreList`
-        # @return [Google::Apis::HealthcareV1beta1::FilterList]
-        attr_accessor :ignore_list
-      
-        # If `TRUE`, infoTypes described by `filter` are used for evaluation. Otherwise,
-        # infoTypes are not considered for evaluation. For example: * Annotated text: "
-        # Toronto is a location" * Finding 1: ``"infoType": "PERSON", "quote": "Toronto",
-        # "start": 0, "end": 7`` * Finding 2: ``"infoType": "CITY", "quote": "Toronto",
-        # "start": 0, "end": 7`` * Finding 3: ```` * Ground truth: ``"infoType": "
-        # LOCATION", "quote": "Toronto", "start": 0, "end": 7`` When `strict_matching`
-        # is `TRUE`: * Finding 1: 1 false positive * Finding 2: 1 false positive *
-        # Finding 3: 1 false negative When `strict_matching` is `FALSE`: * Finding 1: 1
-        # true positive * Finding 2: 1 true positive * Finding 3: 1 false negative
-        # Corresponds to the JSON property `strictMatching`
-        # @return [Boolean]
-        attr_accessor :strict_matching
-        alias_method :strict_matching?, :strict_matching
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @evaluate_list = args[:evaluate_list] if args.key?(:evaluate_list)
-          @ignore_list = args[:ignore_list] if args.key?(:ignore_list)
-          @strict_matching = args[:strict_matching] if args.key?(:strict_matching)
         end
       end
       
@@ -5219,60 +4853,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entity_id = args[:entity_id] if args.key?(:entity_id)
-        end
-      end
-      
-      # Lists the Annotation stores in the given dataset.
-      class ListAnnotationStoresResponse
-        include Google::Apis::Core::Hashable
-      
-        # The returned Annotation stores. Won't be more Annotation stores than the value
-        # of page_size in the request.
-        # Corresponds to the JSON property `annotationStores`
-        # @return [Array<Google::Apis::HealthcareV1beta1::AnnotationStore>]
-        attr_accessor :annotation_stores
-      
-        # Token to retrieve the next page of results or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotation_stores = args[:annotation_stores] if args.key?(:annotation_stores)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Lists the Annotations in the specified Annotation store.
-      class ListAnnotationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The returned Annotations. Won't be more values than the value of page_size in
-        # the request. See `AnnotationView` in the request for populated fields.
-        # Corresponds to the JSON property `annotations`
-        # @return [Array<Google::Apis::HealthcareV1beta1::Annotation>]
-        attr_accessor :annotations
-      
-        # Token to retrieve the next page of results or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotations = args[:annotations] if args.key?(:annotations)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -5584,6 +5164,14 @@ module Google
         # @return [Array<Google::Apis::HealthcareV1beta1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5592,6 +5180,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -5917,12 +5506,12 @@ module Google
       class Options
         include Google::Apis::Core::Hashable
       
-        # This option is based on the DICOM Standard's [Clean Descriptors Option](http://
-        # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and
+        # This option is based on the DICOM Standard's [Clean Descriptors Option](https:/
+        # /dicom.nema.org/medical/dicom/2018e/output/chtml/part15/sect_E.3.5.html), and
         # the `CleanText` `Action` is applied to all the specified fields. When cleaning
         # text, the process attempts to transform phrases matching any of the tags
-        # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](http://
-        # dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
+        # marked for removal (action codes D, Z, X, and U) in the [Basic Profile](https:/
+        # /dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These
         # contextual phrases are replaced with the token "[CTX]". This option uses an
         # additional infoType during inspection.
         # Corresponds to the JSON property `cleanDescriptors`
@@ -5935,7 +5524,7 @@ module Google
         attr_accessor :clean_image
       
         # Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`,
-        # and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/
+        # and `MediaStorageSOPInstanceUID`](https://dicom.nema.org/medical/dicom/2018e/
         # output/chtml/part06/chapter_6.html).
         # Corresponds to the JSON property `primaryIds`
         # @return [String]
@@ -6289,8 +5878,8 @@ module Google
       end
       
       # Recursively apply DICOM de-id to tags nested in a sequence. Supported [Value
-      # Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/
-      # sect_6.2.html#table_6.2-1): SQ
+      # Representation] (https://dicom.nema.org/medical/dicom/2018e/output/chtml/
+      # part05/sect_6.2.html#table_6.2-1): SQ
       class RecurseTag
         include Google::Apis::Core::Hashable
       
@@ -6317,9 +5906,9 @@ module Google
         end
       end
       
-      # Replace UID with a new generated UID. Supported [Value Representation] (http://
-      # dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-
-      # 1): UI
+      # Replace UID with a new generated UID. Supported [Value Representation] (https:/
+      # /dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.
+      # 2-1): UI
       class RegenUidTag
         include Google::Apis::Core::Hashable
       
@@ -6408,25 +5997,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Resource level annotation.
-      class ResourceAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # A description of the annotation record.
-        # Corresponds to the JSON property `label`
-        # @return [String]
-        attr_accessor :label
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @label = args[:label] if args.key?(:label)
         end
       end
       
@@ -6756,6 +6326,21 @@ module Google
         end
       end
       
+      # Using this field will flatten the DICOM instances into a BigQuery table. The
+      # table will have one column for each DICOM tag. The column name will be the
+      # DICOM tag's textual representation.
+      class SchemaFlattened
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # An HL7v2 logical group construct.
       class SchemaGroup
         include Google::Apis::Core::Hashable
@@ -6799,6 +6384,34 @@ module Google
           @members = args[:members] if args.key?(:members)
           @min_occurs = args[:min_occurs] if args.key?(:min_occurs)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Using this field will set the schema such that all DICOM tags will be included
+      # in the BigQuery table as a single JSON type column. The BigQuery table schema
+      # will include the following columns: * `StudyInstanceUID` (Type: STRING): DICOM
+      # Tag 0020000D. * `SeriesInstanceUID` (Type: STRING): DICOM Tag 0020000E. * `
+      # SOPInstanceUID` (Type: STRING): DICOM Tag 00080018. * `SourceDicomStore` (Type:
+      # STRING): The name of the source DICOM store. This field is only included if
+      # the `include_source_store` option is set to true. * `Metadata` (Type: JSON):
+      # All DICOM tags for the instance, stored in a single JSON object. * `
+      # StructuredStorageSize` (Type: INTEGER): Size of the structured storage in
+      # bytes. * `DroppedTags` (Type: STRING, Repeated: Yes): List of tags that were
+      # dropped during the conversion. * `StorageClass` (Type: STRING): The storage
+      # class of the instance. * `LastUpdated` (Type: TIMESTAMP): Timestamp of the
+      # last update to the instance. * `BlobStorageSize` (Type: INTEGER): Size of the
+      # blob storage in bytes. * `Type` (Type: STRING): Indicates the type of
+      # operation (e.g., INSERT, DELETE). This field is *omitted* if `
+      # ChangeDataCaptureConfig` is enabled.
+      class SchemaJson
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -6963,28 +6576,6 @@ module Google
         end
       end
       
-      # Request to search the resources in the specified FHIR store.
-      class SearchResourcesRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The FHIR resource type to search, such as Patient or Observation.
-        # For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/
-        # DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html),
-        # [R4](https://hl7.org/fhir/R4/resourcelist.html)).
-        # Corresponds to the JSON property `resourceType`
-        # @return [String]
-        attr_accessor :resource_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_type = args[:resource_type] if args.key?(:resource_type)
-        end
-      end
-      
       # A segment in a structured format.
       class Segment
         include Google::Apis::Core::Hashable
@@ -7022,27 +6613,6 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @segment_id = args[:segment_id] if args.key?(:segment_id)
           @set_id = args[:set_id] if args.key?(:set_id)
-        end
-      end
-      
-      # A TextAnnotation specifies a text range that includes sensitive information.
-      class SensitiveTextAnnotation
-        include Google::Apis::Core::Hashable
-      
-        # Maps from a resource slice. For example, FHIR resource field path to a set of
-        # sensitive text findings. For example, Appointment.Narrative text1 --> `
-        # findings_1, findings_2, findings_3`
-        # Corresponds to the JSON property `details`
-        # @return [Hash<String,Google::Apis::HealthcareV1beta1::Detail>]
-        attr_accessor :details
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @details = args[:details] if args.key?(:details)
         end
       end
       
@@ -7394,7 +6964,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or
-        # Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/
+        # Directory Structuring Elements, as defined at: https://dicom.nema.org/medical/
         # dicom/current/output/html/part06.html#table_6-1,. They may be provided by "
         # Keyword" or "Tag". For example, "PatientID", "00100010".
         # Corresponds to the JSON property `tags`
@@ -7602,6 +7172,32 @@ module Google
         end
       end
       
+      # UpdateSeriesMetadataResponse is the LRO response for UpdateSeriesMetadata.
+      class UpdateSeriesMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # UpdateStudyMetadataResponse is the LRO response for UpdateStudyMetadata.
+      class UpdateStudyMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Maps a resource to the associated user and Attributes.
       class UserDataMapping
         include Google::Apis::Core::Hashable
@@ -7701,6 +7297,15 @@ module Google
         attr_accessor :disable_required_field_validation
         alias_method :disable_required_field_validation?, :disable_required_field_validation
       
+        # Optional. Whether to enable FHIRPath validation for incoming resource types
+        # that have profiles configured for them in the `enabled_implementation_guides`
+        # list. Set this to true to enable checking incoming resources for conformance
+        # against FHIRPath requirements defined in the configured profiles.
+        # Corresponds to the JSON property `enableFhirpathProfileValidation`
+        # @return [Boolean]
+        attr_accessor :enable_fhirpath_profile_validation
+        alias_method :enable_fhirpath_profile_validation?, :enable_fhirpath_profile_validation
+      
         # A list of ImplementationGuide URLs in this FHIR store that are used to
         # configure the profiles to use for validation. For example, to use the US Core
         # profiles for validation, set `enabled_implementation_guides` to `["http://hl7.
@@ -7711,9 +7316,10 @@ module Google
         # ImplementationGuides. The Cloud Healthcare API does not currently enforce all
         # of the rules in a StructureDefinition. The following rules are supported: -
         # min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on
-        # simple types - slicing, when using "value" as the discriminator type When a
-        # URL cannot be resolved (for example, in a type assertion), the server does not
-        # return an error.
+        # simple types - slicing, when using "value" as the discriminator type -
+        # FHIRPath constraints (only when `enable_fhirpath_profile_validation` is true)
+        # When a URL cannot be resolved (for example, in a type assertion), the server
+        # does not return an error.
         # Corresponds to the JSON property `enabledImplementationGuides`
         # @return [Array<String>]
         attr_accessor :enabled_implementation_guides
@@ -7728,6 +7334,7 @@ module Google
           @disable_profile_validation = args[:disable_profile_validation] if args.key?(:disable_profile_validation)
           @disable_reference_type_validation = args[:disable_reference_type_validation] if args.key?(:disable_reference_type_validation)
           @disable_required_field_validation = args[:disable_required_field_validation] if args.key?(:disable_required_field_validation)
+          @enable_fhirpath_profile_validation = args[:enable_fhirpath_profile_validation] if args.key?(:enable_fhirpath_profile_validation)
           @enabled_implementation_guides = args[:enabled_implementation_guides] if args.key?(:enabled_implementation_guides)
         end
       end
@@ -7754,31 +7361,6 @@ module Google
         def update!(**args)
           @msh_field = args[:msh_field] if args.key?(:msh_field)
           @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # A 2D coordinate in an image. The origin is the top-left.
-      class Vertex
-        include Google::Apis::Core::Hashable
-      
-        # X coordinate.
-        # Corresponds to the JSON property `x`
-        # @return [Float]
-        attr_accessor :x
-      
-        # Y coordinate.
-        # Corresponds to the JSON property `y`
-        # @return [Float]
-        attr_accessor :y
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @x = args[:x] if args.key?(:x)
-          @y = args[:y] if args.key?(:y)
         end
       end
     end

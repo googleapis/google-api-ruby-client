@@ -1,5 +1,18 @@
 # Release history for google-apis-addressvalidation_v1
 
+### v0.12.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.11.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250618
+
+### v0.10.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250611
+* Regenerated using generator version 0.18.0
+
 ### v0.9.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

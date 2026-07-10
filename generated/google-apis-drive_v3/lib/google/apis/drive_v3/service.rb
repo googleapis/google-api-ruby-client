@@ -82,11 +82,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an AccessProposal by ID.
+        # Retrieves an access proposal by ID. For more information, see [Manage pending
+        # access proposals](https://developers.google.com/workspace/drive/api/guides/
+        # pending-access).
         # @param [String] file_id
-        #   Required. The id of the item the request is on.
+        #   Required. The ID of the item the request is on.
         # @param [String] proposal_id
-        #   Required. The id of the access proposal to resolve.
+        #   Required. The ID of the access proposal to resolve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -115,12 +117,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the AccessProposals on a file. Note: Only approvers are able to list
-        # AccessProposals on a file. If the user is not an approver, returns a 403.
+        # List the access proposals on a file. For more information, see [Manage pending
+        # access proposals](https://developers.google.com/workspace/drive/api/guides/
+        # pending-access). Note: Only approvers are able to list access proposals on a
+        # file. If the user isn't an approver, a 403 error is returned.
         # @param [String] file_id
-        #   Required. The id of the item the request is on.
+        #   Required. The ID of the item the request is on.
         # @param [Fixnum] page_size
-        #   Optional. The number of results per page
+        #   Optional. The number of results per page.
         # @param [String] page_token
         #   Optional. The continuation token on the list of access requests.
         # @param [String] fields
@@ -152,11 +156,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Used to approve or deny an Access Proposal.
+        # Approves or denies an access proposal. For more information, see [Manage
+        # pending access proposals](https://developers.google.com/workspace/drive/api/
+        # guides/pending-access).
         # @param [String] file_id
-        #   Required. The id of the item the request is on.
+        #   Required. The ID of the item the request is on.
         # @param [String] proposal_id
-        #   Required. The id of the access proposal to resolve.
+        #   Required. The ID of the access proposal to resolve.
         # @param [Google::Apis::DriveV3::ResolveAccessProposalRequest] resolve_access_proposal_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -181,6 +187,314 @@ module Google
           command.request_object = resolve_access_proposal_request_object
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['proposalId'] = proposal_id unless proposal_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Approves an approval. For more information, see [Manage approvals](https://
+        # developers.google.com/workspace/drive/api/guides/approvals). This is used to
+        # update the ReviewerResponse of the requesting user with a Response of `
+        # APPROVED`. If this is the last required reviewer response, this also completes
+        # the approval and sets the approval Status to `APPROVED`.
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval to approve.
+        # @param [Google::Apis::DriveV3::ApproveApprovalRequest] approve_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def approve_approval(file_id, approval_id, approve_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals/{approvalId}:approve', options)
+          command.request_representation = Google::Apis::DriveV3::ApproveApprovalRequest::Representation
+          command.request_object = approve_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels an approval. For more information, see [Manage approvals](https://
+        # developers.google.com/workspace/drive/api/guides/approvals). Updates the
+        # approval Status to `CANCELLED`. This can be called by any user with the `
+        # writer` permission on the file while the approval Status is `IN_PROGRESS`.
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval to cancel.
+        # @param [Google::Apis::DriveV3::CancelApprovalRequest] cancel_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_approval(file_id, approval_id, cancel_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals/{approvalId}:cancel', options)
+          command.request_representation = Google::Apis::DriveV3::CancelApprovalRequest::Representation
+          command.request_object = cancel_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Comments on an approval. For more information, see [Manage approvals](https://
+        # developers.google.com/workspace/drive/api/guides/approvals). This sends a
+        # notification to both the initiator and the reviewers. Additionally, a message
+        # is also added to the approval activity log.
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval to comment on.
+        # @param [Google::Apis::DriveV3::CommentApprovalRequest] comment_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def comment_approval(file_id, approval_id, comment_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals/{approvalId}:comment', options)
+          command.request_representation = Google::Apis::DriveV3::CommentApprovalRequest::Representation
+          command.request_object = comment_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Declines an approval. For more information, see [Manage approvals](https://
+        # developers.google.com/workspace/drive/api/guides/approvals). This is used to
+        # update the ReviewerResponse of the requesting user with a Response of `
+        # DECLINED`. This also completes the approval and sets the approval Status to `
+        # DECLINED`.
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval to decline.
+        # @param [Google::Apis::DriveV3::DeclineApprovalRequest] decline_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def decline_approval(file_id, approval_id, decline_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals/{approvalId}:decline', options)
+          command.request_representation = Google::Apis::DriveV3::DeclineApprovalRequest::Representation
+          command.request_object = decline_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an approval by ID. For more information, see [Manage approvals](https://
+        # developers.google.com/workspace/drive/api/guides/approvals).
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_approval(file_id, approval_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'files/{fileId}/approvals/{approvalId}', options)
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the approvals on a file. For more information, see [Manage approvals](
+        # https://developers.google.com/workspace/drive/api/guides/approvals).
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [Fixnum] page_size
+        #   The maximum number of approvals to return. When not set, at most 100 approvals
+        #   are returned.
+        # @param [String] page_token
+        #   The token for continuing a previous list request on the next page. This should
+        #   be set to the value of `nextPageToken` from a previous response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::ApprovalList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::ApprovalList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_approvals(file_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'files/{fileId}/approvals', options)
+          command.response_representation = Google::Apis::DriveV3::ApprovalList::Representation
+          command.response_class = Google::Apis::DriveV3::ApprovalList
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reassigns the reviewers on an approval. For more information, see [Manage
+        # approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+        # Adds or replaces reviewers in the ReviewerResponse of the approval. This can
+        # be called by any user with the `writer` permission on the file while the
+        # approval Status is `IN_PROGRESS` and the Response for the reviewer being
+        # reassigned is `NO_RESPONSE`. A user with the `reader` permission can only
+        # reassign an approval that's assigned to themselves. Removing a reviewer isn't
+        # allowed.
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is on.
+        # @param [String] approval_id
+        #   Required. The ID of the approval to reassign.
+        # @param [Google::Apis::DriveV3::ReassignApprovalRequest] reassign_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reassign_approval(file_id, approval_id, reassign_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals/{approvalId}:reassign', options)
+          command.request_representation = Google::Apis::DriveV3::ReassignApprovalRequest::Representation
+          command.request_object = reassign_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
+          command.params['approvalId'] = approval_id unless approval_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts an approval on a file. For more information, see [Manage approvals](
+        # https://developers.google.com/workspace/drive/api/guides/approvals).
+        # @param [String] file_id
+        #   Required. The ID of the file that the approval is created on.
+        # @param [Google::Apis::DriveV3::StartApprovalRequest] start_approval_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::Approval] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::Approval]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_approval(file_id, start_approval_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'files/{fileId}/approvals:start', options)
+          command.request_representation = Google::Apis::DriveV3::StartApprovalRequest::Representation
+          command.request_object = start_approval_request_object
+          command.response_representation = Google::Apis::DriveV3::Approval::Representation
+          command.response_class = Google::Apis::DriveV3::Approval
+          command.params['fileId'] = file_id unless file_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -703,7 +1017,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a shared drive.
+        # Creates a shared drive. For more information, see [Manage shared drives](https:
+        # //developers.google.com/workspace/drive/api/guides/manage-shareddrives).
         # @param [String] request_id
         #   Required. An ID, such as a random UUID, which uniquely identifies this user's
         #   request for idempotent creation of a shared drive. A repeated request by the
@@ -741,7 +1056,9 @@ module Google
         end
         
         # Permanently deletes a shared drive for which the user is an `organizer`. The
-        # shared drive cannot contain any untrashed items.
+        # shared drive cannot contain any untrashed items. For more information, see [
+        # Manage shared drives](https://developers.google.com/workspace/drive/api/guides/
+        # manage-shareddrives).
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [Boolean] allow_item_deletion
@@ -778,7 +1095,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a shared drive's metadata by ID.
+        # Gets a shared drive's metadata by ID. For more information, see [Manage shared
+        # drives](https://developers.google.com/workspace/drive/api/guides/manage-
+        # shareddrives).
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [Boolean] use_domain_admin_access
@@ -813,7 +1132,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Hides a shared drive from the default view.
+        # Hides a shared drive from the default view. For more information, see [Manage
+        # shared drives](https://developers.google.com/workspace/drive/api/guides/manage-
+        # shareddrives).
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [String] fields
@@ -845,8 +1166,8 @@ module Google
         
         # Lists the user's shared drives. This method accepts the `q` parameter, which
         # is a search query combining one or more search terms. For more information,
-        # see the [Search for shared drives](/workspace/drive/api/guides/search-
-        # shareddrives) guide.
+        # see the [Search for shared drives](https://developers.google.com/workspace/
+        # drive/api/guides/search-shareddrives) guide.
         # @param [Fixnum] page_size
         #   Maximum number of shared drives to return per page.
         # @param [String] page_token
@@ -886,7 +1207,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Restores a shared drive to the default view.
+        # Restores a shared drive to the default view. For more information, see [Manage
+        # shared drives](https://developers.google.com/workspace/drive/api/guides/manage-
+        # shareddrives).
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [String] fields
@@ -916,7 +1239,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the metadata for a shared drive.
+        # Updates the metadata for a shared drive. For more information, see [Manage
+        # shared drives](https://developers.google.com/workspace/drive/api/guides/manage-
+        # shareddrives).
         # @param [String] drive_id
         #   The ID of the shared drive.
         # @param [Google::Apis::DriveV3::Drive] drive_object
@@ -955,12 +1280,13 @@ module Google
         end
         
         # Creates a copy of a file and applies any requested updates with patch
-        # semantics.
+        # semantics. For more information, see [Create and manage files](https://
+        # developers.google.com/workspace/drive/api/guides/create-file).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::File] file_object
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. Copying files into multiple folders is no longer supported. Use
+        #   Deprecated: Copying files into multiple folders is no longer supported. Use
         #   shortcuts instead.
         # @param [Boolean] ignore_default_visibility
         #   Whether to ignore the domain's default visibility settings for the created
@@ -972,9 +1298,9 @@ module Google
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] keep_revision_forever
-        #   Whether to set the 'keepForever' field in the new head revision. This is only
+        #   Whether to set the `keepForever` field in the new head revision. This is only
         #   applicable to files with binary content in Google Drive. Only 200 revisions
         #   for the file can be kept forever. If the limit is reached, try deleting pinned
         #   revisions.
@@ -1021,26 +1347,30 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new file. This method supports an */upload* URI and accepts
-        # uploaded media with the following characteristics: - *Maximum file size:* 5,
-        # 120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME type,
-        # rather than the literal `*/*` value. The literal `*/*` is only used to
-        # indicate that any valid MIME type can be uploaded. For more information on
-        # uploading files, see [Upload file data](/workspace/drive/api/guides/manage-
-        # uploads). Apps creating shortcuts with `files.create` must specify the MIME
-        # type `application/vnd.google-apps.shortcut`. Apps should specify a file
-        # extension in the `name` property when inserting files with the API. For
-        # example, an operation to insert a JPEG file should specify something like `"
-        # name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-
-        # only `fileExtension` property populated with the extension originally
-        # specified in the `title` property. When a Google Drive user requests to
-        # download a file, or when the file is downloaded through the sync client, Drive
-        # builds a full filename (with extension) based on the title. In cases where the
-        # extension is missing, Drive attempts to determine the extension based on the
-        # file's MIME type.
+        # Creates a file. For more information, see [Create and manage files](https://
+        # developers.google.com/workspace/drive/api/guides/create-file). This method
+        # supports an */upload* URI and accepts uploaded media with the following
+        # characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*
+        # `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The
+        # literal `*/*` is only used to indicate that any valid MIME type can be
+        # uploaded. For more information, see [Google Workspace and Google Drive
+        # supported MIME types](https://developers.google.com/workspace/drive/api/guides/
+        # mime-types).) For more information on uploading files, see [Upload file data](
+        # https://developers.google.com/workspace/drive/api/guides/manage-uploads). Apps
+        # creating shortcuts with the `create` method must specify the MIME type `
+        # application/vnd.google-apps.shortcut`. Apps should specify a file extension in
+        # the `name` property when inserting files with the API. For example, an
+        # operation to insert a JPEG file should specify something like `"name": "cat.
+        # jpg"` in the metadata. Subsequent `GET` requests include the read-only `
+        # fileExtension` property populated with the extension originally specified in
+        # the `name` property. When a Google Drive user requests to download a file, or
+        # when the file is downloaded through the sync client, Drive builds a full
+        # filename (with extension) based on the name. In cases where the extension is
+        # missing, Drive attempts to determine the extension based on the file's MIME
+        # type.
         # @param [Google::Apis::DriveV3::File] file_object
         # @param [Boolean] enforce_single_parent
-        #   Deprecated. Creating files in multiple folders is no longer supported.
+        #   Deprecated: Creating files in multiple folders is no longer supported.
         # @param [Boolean] ignore_default_visibility
         #   Whether to ignore the domain's default visibility settings for the created
         #   file. Domain administrators can choose to make all uploaded files visible to
@@ -1051,9 +1381,9 @@ module Google
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] keep_revision_forever
-        #   Whether to set the 'keepForever' field in the new head revision. This is only
+        #   Whether to set the `keepForever` field in the new head revision. This is only
         #   applicable to files with binary content in Google Drive. Only 200 revisions
         #   for the file can be kept forever. If the limit is reached, try deleting pinned
         #   revisions.
@@ -1113,14 +1443,15 @@ module Google
         end
         
         # Permanently deletes a file owned by the user without moving it to the trash.
-        # If the file belongs to a shared drive, the user must be an `organizer` on the
-        # parent folder. If the target is a folder, all descendants owned by the user
-        # are also deleted.
+        # For more information, see [Trash or delete files and folders](https://
+        # developers.google.com/workspace/drive/api/guides/delete). If the file belongs
+        # to a shared drive, the user must be an `organizer` on the parent folder. If
+        # the target is a folder, all descendants owned by the user are also deleted.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated: If an item is not in a shared drive and its last parent is deleted
-        #   but the item itself is not, the item will be placed under its owner's root.
+        #   Deprecated: If an item isn't in a shared drive and its last parent is deleted
+        #   but the item itself isn't, the item will be placed under its owner's root.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -1153,16 +1484,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Downloads content of a file. Operations are valid for 24 hours from the time
-        # of creation.
+        # Downloads the content of a file. For more information, see [Download and
+        # export files](https://developers.google.com/workspace/drive/api/guides/manage-
+        # downloads). Operations are valid for 24 hours from the time of creation.
         # @param [String] file_id
         #   Required. The ID of the file to download.
         # @param [String] mime_type
         #   Optional. The MIME type the file should be downloaded as. This field can only
-        #   be set when downloading Google Workspace documents. See [Export MIME types for
-        #   Google Workspace documents](/drive/api/guides/ref-export-formats) for the list
-        #   of supported MIME types. If not set, a Google Workspace document is downloaded
-        #   with a default MIME type. The default MIME type might change in the future.
+        #   be set when downloading Google Workspace documents. For a list of supported
+        #   MIME types, see [Export MIME types for Google Workspace documents](/workspace/
+        #   drive/api/guides/ref-export-formats). If not set, a Google Workspace document
+        #   is downloaded with a default MIME type. The default MIME type might change in
+        #   the future.
         # @param [String] revision_id
         #   Optional. The revision ID of the file to download. This field can only be set
         #   when downloading blob files, Google Docs, and Google Sheets. Returns `
@@ -1197,12 +1530,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Permanently deletes all of the user's trashed files.
+        # Permanently deletes all of the user's trashed files. For more information, see
+        # [Trash or delete files and folders](https://developers.google.com/workspace/
+        # drive/api/guides/delete).
         # @param [String] drive_id
         #   If set, empties the trash of the provided shared drive.
         # @param [Boolean] enforce_single_parent
-        #   Deprecated: If an item is not in a shared drive and its last parent is deleted
-        #   but the item itself is not, the item will be placed under its owner's root.
+        #   Deprecated: If an item isn't in a shared drive and its last parent is deleted
+        #   but the item itself isn't, the item will be placed under its owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1230,11 +1565,15 @@ module Google
         end
         
         # Exports a Google Workspace document to the requested MIME type and returns
-        # exported byte content. Note that the exported content is limited to 10MB.
+        # exported byte content. For more information, see [Download and export files](
+        # https://developers.google.com/workspace/drive/api/guides/manage-downloads).
+        # Note that the exported content is limited to 10 MB.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] mime_type
-        #   Required. The MIME type of the format requested for this export.
+        #   Required. The MIME type of the format requested for this export. For a list of
+        #   supported MIME types, see [Export MIME types for Google Workspace documents](/
+        #   workspace/drive/api/guides/ref-export-formats).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1268,16 +1607,60 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates a CSE token which can be used to create or update CSE files.
+        # @param [String] file_id
+        #   The ID of the file for which the JWT should be generated. If not provided, an
+        #   id will be generated.
+        # @param [String] parent
+        #   The ID of the expected parent of the file. Used when generating a JWT for a
+        #   new CSE file. If specified, the parent will be fetched, and if the parent is a
+        #   shared drive item, the shared drive's policy will be used to determine the
+        #   KACLS that should be used. It is invalid to specify both file_id and parent in
+        #   a single request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV3::GenerateCseTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV3::GenerateCseTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_file_cse_token(file_id: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'files/generateCseToken', options)
+          command.response_representation = Google::Apis::DriveV3::GenerateCseTokenResponse::Representation
+          command.response_class = Google::Apis::DriveV3::GenerateCseTokenResponse
+          command.query['fileId'] = file_id unless file_id.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generates a set of file IDs which can be provided in create or copy requests.
+        # For more information, see [Create and manage files](https://developers.google.
+        # com/workspace/drive/api/guides/create-file).
         # @param [Fixnum] count
         #   The number of IDs to return.
         # @param [String] space
-        #   The space in which the IDs can be used to create new files. Supported values
-        #   are 'drive' and 'appDataFolder'. (Default: 'drive')
+        #   The space in which the IDs can be used to create files. Supported values are `
+        #   drive` and `appDataFolder`. (Default: `drive`.) For more information, see [
+        #   File organization](https://developers.google.com/workspace/drive/api/guides/
+        #   about-files#file-organization).
         # @param [String] type
-        #   The type of items which the IDs can be used for. Supported values are 'files'
-        #   and 'shortcuts'. Note that 'shortcuts' are only supported in the `drive` '
-        #   space'. (Default: 'files')
+        #   The type of items which the IDs can be used for. Supported values are `files`
+        #   and `shortcuts`. Note that `shortcuts` are only supported in the `drive` `
+        #   space`. (Default: `files`.) For more information, see [File organization](
+        #   https://developers.google.com/workspace/drive/api/guides/about-files#file-
+        #   organization).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1307,12 +1690,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a file's metadata or content by ID. If you provide the URL parameter `
-        # alt=media`, then the response includes the file contents in the response body.
-        # Downloading content with `alt=media` only works if the file is stored in Drive.
-        # To download Google Docs, Sheets, and Slides use [`files.export`](/workspace/
-        # drive/api/reference/rest/v3/files/export) instead. For more information, see [
-        # Download & export files](/workspace/drive/api/guides/manage-downloads).
+        # Gets a file's metadata or content by ID. For more information, see [Search
+        # for files and folders](https://developers.google.com/workspace/drive/api/
+        # guides/search-files). If you provide the URL parameter `alt=media`, then the
+        # response includes the file contents in the response body. Downloading content
+        # with `alt=media` only works if the file is stored in Drive. To download Google
+        # Docs, Sheets, and Slides use [`files.export`](https://developers.google.com/
+        # workspace/drive/api/reference/rest/v3/files/export) instead. For more
+        # information, see [Download and export files](https://developers.google.com/
+        # workspace/drive/api/guides/manage-downloads).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Boolean] acknowledge_abuse
@@ -1325,7 +1711,7 @@ module Google
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -1369,19 +1755,22 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the user's files. This method accepts the `q` parameter, which is a
-        # search query combining one or more search terms. For more information, see the
-        # [Search for files & folders](/workspace/drive/api/guides/search-files) guide. *
-        # Note:* This method returns *all* files by default, including trashed files. If
-        # you don't want trashed files to appear in the list, use the `trashed=false`
-        # query parameter to remove trashed files from the results.
+        # Lists the user's files. For more information, see [Search for files and
+        # folders](https://developers.google.com/workspace/drive/api/guides/search-files)
+        # . This method accepts the `q` parameter, which is a search query combining one
+        # or more search terms. This method returns *all* files by default, including
+        # trashed files. If you don't want trashed files to appear in the list, use the `
+        # trashed=false` query parameter to remove trashed files from the results.
         # @param [String] corpora
-        #   Bodies of items (files/documents) to which the query applies. Supported bodies
-        #   are 'user', 'domain', 'drive', and 'allDrives'. Prefer 'user' or 'drive' to '
-        #   allDrives' for efficiency. By default, corpora is set to 'user'. However, this
-        #   can change depending on the filter set through the 'q' parameter.
+        #   Specifies a collection of items (files or documents) to which the query
+        #   applies. Supported items include: * `user` * `domain` * `drive` * `allDrives`
+        #   Prefer `user` or `drive` to `allDrives` for efficiency. By default, corpora is
+        #   set to `user`. However, this can change depending on the filter set through
+        #   the `q` parameter. For more information, see [File organization](https://
+        #   developers.google.com/workspace/drive/api/guides/about-files#file-organization)
+        #   .
         # @param [String] corpus
-        #   Deprecated: The source of files to list. Use 'corpora' instead.
+        #   Deprecated: The source of files to list. Use `corpora` instead.
         # @param [String] drive_id
         #   ID of the shared drive to search.
         # @param [Boolean] include_items_from_all_drives
@@ -1391,36 +1780,42 @@ module Google
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] include_team_drive_items
         #   Deprecated: Use `includeItemsFromAllDrives` instead.
         # @param [String] order_by
         #   A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the
-        #   file was created. * `folder`: The folder ID. This field is sorted using
-        #   alphabetical ordering. * `modifiedByMeTime`: The last time the file was
-        #   modified by the user. * `modifiedTime`: The last time the file was modified by
-        #   anyone. * `name`: The name of the file. This field is sorted using
-        #   alphabetical ordering, so 1, 12, 2, 22. * `name_natural`: The name of the file.
-        #   This field is sorted using natural sort ordering, so 1, 2, 12, 22. * `
-        #   quotaBytesUsed`: The number of storage quota bytes used by the file. * `
-        #   recency`: The most recent timestamp from the file's date-time fields. * `
-        #   sharedWithMeTime`: When the file was shared with the user, if applicable. * `
-        #   starred`: Whether the user has starred the file. * `viewedByMeTime`: The last
-        #   time the file was viewed by the user. Each key sorts ascending by default, but
-        #   can be reversed with the 'desc' modifier. Example usage: `?orderBy=folder,
-        #   modifiedTime desc,name`.
+        #   file was created. Avoid using this key for queries on large item collections
+        #   as it might result in timeouts or other issues. For time-related sorting on
+        #   large item collections, use `modifiedTime desc` instead. * `folder`: The
+        #   folder ID. This field is sorted using alphabetical ordering. * `
+        #   modifiedByMeTime`: The last time the file was modified by the user. * `
+        #   modifiedTime`: The last time the file was modified by anyone. * `name`: The
+        #   name of the file. This field is sorted using alphabetical ordering, so 1, 12,
+        #   2, 22. * `name_natural`: The name of the file. This field is sorted using
+        #   natural sort ordering, so 1, 2, 12, 22. * `quotaBytesUsed`: The number of
+        #   storage quota bytes used by the file. * `recency`: The most recent timestamp
+        #   from the file's date-time fields. * `sharedWithMeTime`: When the file was
+        #   shared with the user, if applicable. * `starred`: Whether the user has starred
+        #   the file. * `viewedByMeTime`: The last time the file was viewed by the user.
+        #   Each key sorts ascending by default, but can be reversed with the `desc`
+        #   modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.
         # @param [Fixnum] page_size
-        #   The maximum number of files to return per page. Partial or empty result pages
-        #   are possible even before the end of the files list has been reached.
+        #   The maximum number of files to return per page. Pages may be partial or empty
+        #   even before reaching the end of the file list. If unspecified, at most 100
+        #   files are returned for shared drives, and the entire list of files for non-
+        #   shared drives. The maximum value is 100; values above 100 are changed to 100.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
-        #   be set to the value of 'nextPageToken' from the previous response.
+        #   be set to the value of `nextPageToken` from the previous response.
         # @param [String] q
-        #   A query for filtering the file results. See the "Search for files & folders"
-        #   guide for supported syntax.
+        #   A query for filtering the file results. For supported syntax, see [Search for
+        #   files and folders](/workspace/drive/api/guides/search-files).
         # @param [String] spaces
         #   A comma-separated list of spaces to query within the corpora. Supported values
-        #   are 'drive' and 'appDataFolder'.
+        #   are `drive` and `appDataFolder`. For more information, see [File organization](
+        #   https://developers.google.com/workspace/drive/api/guides/about-files#file-
+        #   organization).
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -1468,14 +1863,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the labels on a file.
+        # Lists the labels on a file. For more information, see [List labels on a file](
+        # https://developers.google.com/workspace/drive/api/guides/list-labels).
         # @param [String] file_id
         #   The ID for the file.
         # @param [Fixnum] max_results
         #   The maximum number of labels to return per page. When not set, defaults to 100.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
-        #   be set to the value of 'nextPageToken' from the previous response.
+        #   be set to the value of `nextPageToken` from the previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1505,8 +1901,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the set of labels applied to a file. Returns a list of the labels
-        # that were added or modified.
+        # Modifies the set of labels applied to a file. For more information, see [Set a
+        # label field on a file](https://developers.google.com/workspace/drive/api/
+        # guides/set-label). Returns a list of the labels that were added or modified.
         # @param [String] file_id
         #   The ID of the file to which the labels belong.
         # @param [Google::Apis::DriveV3::ModifyLabelsRequest] modify_labels_request_object
@@ -1539,16 +1936,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a file's metadata and/or content. When calling this method, only
+        # Updates a file's metadata, content, or both. When calling this method, only
         # populate fields in the request that you want to modify. When updating fields,
         # some fields might be changed automatically, such as `modifiedDate`. This
         # method supports patch semantics. This method supports an */upload* URI and
         # accepts uploaded media with the following characteristics: - *Maximum file
-        # size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME
+        # size:* 5,120 GB - *Accepted Media MIME types:* `*/*` (Specify a valid MIME
         # type, rather than the literal `*/*` value. The literal `*/*` is only used to
-        # indicate that any valid MIME type can be uploaded. For more information on
-        # uploading files, see [Upload file data](/workspace/drive/api/guides/manage-
-        # uploads).
+        # indicate that any valid MIME type can be uploaded. For more information, see [
+        # Google Workspace and Google Drive supported MIME types](https://developers.
+        # google.com/workspace/drive/api/guides/mime-types).) For more information on
+        # uploading files, see [Upload file data](https://developers.google.com/
+        # workspace/drive/api/guides/manage-uploads).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::File] file_object
@@ -1562,9 +1961,9 @@ module Google
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] keep_revision_forever
-        #   Whether to set the 'keepForever' field in the new head revision. This is only
+        #   Whether to set the `keepForever` field in the new head revision. This is only
         #   applicable to files with binary content in Google Drive. Only 200 revisions
         #   for the file can be kept forever. If the limit is reached, try deleting pinned
         #   revisions.
@@ -1627,7 +2026,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Subscribes to changes to a file.
+        # Subscribes to changes to a file. For more information, see [Notifications for
+        # resource changes](https://developers.google.com/workspace/drive/api/guides/
+        # push).
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::Channel] channel_object
@@ -1641,7 +2042,7 @@ module Google
         #   the response.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -1680,72 +2081,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation. The server makes
-        # a best effort to cancel the operation, but success is not guaranteed. If the
-        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-        # Clients can use Operations.GetOperation or other methods to check whether the
-        # cancellation succeeded or whether the operation completed despite cancellation.
-        # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
-        # , corresponding to `Code.CANCELLED`.
-        # @param [String] name
-        #   The name of the operation resource to be cancelled.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [void]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'operations/{name}:cancel', options)
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a long-running operation. This method indicates that the client is no
-        # longer interested in the operation result. It does not cancel the operation.
-        # If the server doesn't support this method, it returns `google.rpc.Code.
-        # UNIMPLEMENTED`.
-        # @param [String] name
-        #   The name of the operation resource to be deleted.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [void]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'operations/{name}', options)
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -1777,66 +2112,27 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`.
-        # @param [String] filter
-        #   The standard list filter.
-        # @param [String] name
-        #   The name of the operation's parent resource.
-        # @param [Fixnum] page_size
-        #   The standard list page size.
-        # @param [String] page_token
-        #   The standard list page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DriveV3::ListOperationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DriveV3::ListOperationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(filter: nil, name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'operations', options)
-          command.response_representation = Google::Apis::DriveV3::ListOperationsResponse::Representation
-          command.response_class = Google::Apis::DriveV3::ListOperationsResponse
-          command.query['filter'] = filter unless filter.nil?
-          command.query['name'] = name unless name.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a permission for a file or shared drive. **Warning:** Concurrent
-        # permissions operations on the same file are not supported; only the last
-        # update is applied.
+        # Creates a permission for a file or shared drive. For more information, see [
+        # Share files, folders, and drives](https://developers.google.com/workspace/
+        # drive/api/guides/manage-sharing). **Warning:** Concurrent permissions
+        # operations on the same file aren't supported; only the last update is applied.
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [Google::Apis::DriveV3::Permission] permission_object
         # @param [String] email_message
         #   A plain text custom message to include in the notification email.
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] enforce_single_parent
         #   Deprecated: See `moveToNewOwnersRoot` for details.
         # @param [Boolean] move_to_new_owners_root
-        #   This parameter will only take effect if the item is not in a shared drive and
-        #   the request is attempting to transfer the ownership of the item. If set to `
-        #   true`, the item will be moved to the new owner's My Drive root folder and all
-        #   prior parents removed. If set to `false`, parents are not changed.
+        #   This parameter only takes effect if the item isn't in a shared drive and the
+        #   request is attempting to transfer the ownership of the item. If set to `true`,
+        #   the item is moved to the new owner's My Drive root folder and all prior
+        #   parents removed. If set to `false`, parents aren't changed.
         # @param [Boolean] send_notification_email
         #   Whether to send a notification email when sharing to users or groups. This
-        #   defaults to true for users and groups, and is not allowed for other requests.
+        #   defaults to `true` for users and groups, and is not allowed for other requests.
         #   It must not be disabled for ownership transfers.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
@@ -1845,12 +2141,16 @@ module Google
         # @param [Boolean] transfer_ownership
         #   Whether to transfer ownership to the specified user and downgrade the current
         #   owner to a writer. This parameter is required as an acknowledgement of the
-        #   side effect.
+        #   side effect. For more information, see [Transfer file ownership](https://
+        #   developers.google.com/workspace/drive/api/guides/transfer-file).
         # @param [Boolean] use_domain_admin_access
-        #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if the file ID parameter refers to a shared
-        #   drive and the requester is an administrator of the domain to which the shared
-        #   drive belongs.
+        #   Issue the request as a domain administrator. If set to `true`, and if the
+        #   following additional conditions are met, the requester is granted access: 1.
+        #   The file ID parameter refers to a shared drive. 2. The requester is an
+        #   administrator of the domain to which the shared drive belongs. For more
+        #   information, see [Manage shared drives as domain administrators](https://
+        #   developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-
+        #   administrators).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1889,23 +2189,28 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a permission. **Warning:** Concurrent permissions operations on the
-        # same file are not supported; only the last update is applied.
+        # Deletes a permission. For more information, see [Share files, folders, and
+        # drives](https://developers.google.com/workspace/drive/api/guides/manage-
+        # sharing). **Warning:** Concurrent permissions operations on the same file aren'
+        # t supported; only the last update is applied.
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [String] permission_id
         #   The ID of the permission.
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] use_domain_admin_access
-        #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if the file ID parameter refers to a shared
-        #   drive and the requester is an administrator of the domain to which the shared
-        #   drive belongs.
+        #   Issue the request as a domain administrator. If set to `true`, and if the
+        #   following additional conditions are met, the requester is granted access: 1.
+        #   The file ID parameter refers to a shared drive. 2. The requester is an
+        #   administrator of the domain to which the shared drive belongs. For more
+        #   information, see [Manage shared drives as domain administrators](https://
+        #   developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-
+        #   administrators).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1936,7 +2241,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a permission by ID.
+        # Gets a permission by ID. For more information, see [Share files, folders, and
+        # drives](https://developers.google.com/workspace/drive/api/guides/manage-
+        # sharing).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] permission_id
@@ -1946,10 +2253,13 @@ module Google
         # @param [Boolean] supports_team_drives
         #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] use_domain_admin_access
-        #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if the file ID parameter refers to a shared
-        #   drive and the requester is an administrator of the domain to which the shared
-        #   drive belongs.
+        #   Issue the request as a domain administrator. If set to `true`, and if the
+        #   following additional conditions are met, the requester is granted access: 1.
+        #   The file ID parameter refers to a shared drive. 2. The requester is an
+        #   administrator of the domain to which the shared drive belongs. For more
+        #   information, see [Manage shared drives as domain administrators](https://
+        #   developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-
+        #   administrators).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1981,28 +2291,33 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a file's or shared drive's permissions.
+        # Lists a file's or shared drive's permissions. For more information, see [Share
+        # files, folders, and drives](https://developers.google.com/workspace/drive/api/
+        # guides/manage-sharing).
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [String] include_permissions_for_view
         #   Specifies which additional view's permissions to include in the response. Only
-        #   'published' is supported.
+        #   `published` is supported.
         # @param [Fixnum] page_size
         #   The maximum number of permissions to return per page. When not set for files
         #   in a shared drive, at most 100 results will be returned. When not set for
         #   files that are not in a shared drive, the entire list will be returned.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
-        #   be set to the value of 'nextPageToken' from the previous response.
+        #   be set to the value of `nextPageToken` from the previous response.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
         #   Deprecated: Use `supportsAllDrives` instead.
         # @param [Boolean] use_domain_admin_access
-        #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if the file ID parameter refers to a shared
-        #   drive and the requester is an administrator of the domain to which the shared
-        #   drive belongs.
+        #   Issue the request as a domain administrator. If set to `true`, and if the
+        #   following additional conditions are met, the requester is granted access: 1.
+        #   The file ID parameter refers to a shared drive. 2. The requester is an
+        #   administrator of the domain to which the shared drive belongs. For more
+        #   information, see [Manage shared drives as domain administrators](https://
+        #   developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-
+        #   administrators).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2036,15 +2351,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a permission with patch semantics. **Warning:** Concurrent permissions
-        # operations on the same file are not supported; only the last update is applied.
+        # Updates a permission with patch semantics. For more information, see [Share
+        # files, folders, and drives](https://developers.google.com/workspace/drive/api/
+        # guides/manage-sharing). **Warning:** Concurrent permissions operations on the
+        # same file aren't supported; only the last update is applied.
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [String] permission_id
         #   The ID of the permission.
         # @param [Google::Apis::DriveV3::Permission] permission_object
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
         # @param [Boolean] supports_all_drives
@@ -2054,12 +2371,16 @@ module Google
         # @param [Boolean] transfer_ownership
         #   Whether to transfer ownership to the specified user and downgrade the current
         #   owner to a writer. This parameter is required as an acknowledgement of the
-        #   side effect.
+        #   side effect. For more information, see [Transfer file ownership](https://
+        #   developers.google.com//workspace/drive/api/guides/transfer-file).
         # @param [Boolean] use_domain_admin_access
-        #   Issue the request as a domain administrator; if set to true, then the
-        #   requester will be granted access if the file ID parameter refers to a shared
-        #   drive and the requester is an administrator of the domain to which the shared
-        #   drive belongs.
+        #   Issue the request as a domain administrator. If set to `true`, and if the
+        #   following additional conditions are met, the requester is granted access: 1.
+        #   The file ID parameter refers to a shared drive. 2. The requester is an
+        #   administrator of the domain to which the shared drive belongs. For more
+        #   information, see [Manage shared drives as domain administrators](https://
+        #   developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-
+        #   administrators).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2096,7 +2417,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a reply to a comment.
+        # Creates a reply to a comment. For more information, see [Manage comments and
+        # replies](https://developers.google.com/workspace/drive/api/guides/manage-
+        # comments).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -2132,7 +2455,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a reply.
+        # Deletes a reply. For more information, see [Manage comments and replies](https:
+        # //developers.google.com/workspace/drive/api/guides/manage-comments).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -2166,7 +2490,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a reply by ID.
+        # Gets a reply by ID. For more information, see [Manage comments and replies](
+        # https://developers.google.com/workspace/drive/api/guides/manage-comments).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -2174,7 +2499,7 @@ module Google
         # @param [String] reply_id
         #   The ID of the reply.
         # @param [Boolean] include_deleted
-        #   Whether to return deleted replies. Deleted replies will not include their
+        #   Whether to return deleted replies. Deleted replies don't include their
         #   original content.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2206,19 +2531,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a comment's replies.
+        # Lists a comment's replies. For more information, see [Manage comments and
+        # replies](https://developers.google.com/workspace/drive/api/guides/manage-
+        # comments).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
         #   The ID of the comment.
         # @param [Boolean] include_deleted
-        #   Whether to include deleted replies. Deleted replies will not include their
+        #   Whether to include deleted replies. Deleted replies don't include their
         #   original content.
         # @param [Fixnum] page_size
         #   The maximum number of replies to return per page.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
-        #   be set to the value of 'nextPageToken' from the previous response.
+        #   be set to the value of `nextPageToken` from the previous response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2250,7 +2577,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a reply with patch semantics.
+        # Updates a reply with patch semantics. For more information, see [Manage
+        # comments and replies](https://developers.google.com/workspace/drive/api/guides/
+        # manage-comments).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -2292,7 +2621,8 @@ module Google
         # Permanently deletes a file version. You can only delete revisions for files
         # with binary content in Google Drive, like images or videos. Revisions for
         # other files, like Google Docs or Sheets, and the last remaining file version
-        # can't be deleted.
+        # can't be deleted. For more information, see [Manage file revisions](https://
+        # developers.google.com/drive/api/guides/manage-revisions).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] revision_id
@@ -2323,7 +2653,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a revision's metadata or content by ID.
+        # Gets a revision's metadata or content by ID. For more information, see [Manage
+        # file revisions](https://developers.google.com/workspace/drive/api/guides/
+        # manage-revisions).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] revision_id
@@ -2369,7 +2701,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a file's revisions.
+        # Lists a file's revisions. For more information, see [Manage file revisions](
+        # https://developers.google.com/workspace/drive/api/guides/manage-revisions). **
+        # Important:** The list of revisions returned by this method might be incomplete
+        # for files with a large revision history, including frequently edited Google
+        # Docs, Sheets, and Slides. Older revisions might be omitted from the response,
+        # meaning the first revision returned may not be the oldest existing revision.
+        # The revision history visible in the Workspace editor user interface might be
+        # more complete than the list returned by the API.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Fixnum] page_size
@@ -2406,7 +2745,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a revision with patch semantics.
+        # Updates a revision with patch semantics. For more information, see [Manage
+        # file revisions](https://developers.google.com/workspace/drive/api/guides/
+        # manage-revisions).
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] revision_id

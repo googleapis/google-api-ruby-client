@@ -161,11 +161,11 @@ module Google
       class MerchantReview
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :attributes, as: 'attributes', class: Google::Apis::MerchantapiReviewsV1beta::MerchantReviewAttributes, decorator: Google::Apis::MerchantapiReviewsV1beta::MerchantReviewAttributes::Representation
-      
           collection :custom_attributes, as: 'customAttributes', class: Google::Apis::MerchantapiReviewsV1beta::CustomAttribute, decorator: Google::Apis::MerchantapiReviewsV1beta::CustomAttribute::Representation
       
           property :data_source, as: 'dataSource'
+          property :merchant_review_attributes, as: 'merchantReviewAttributes', class: Google::Apis::MerchantapiReviewsV1beta::MerchantReviewAttributes, decorator: Google::Apis::MerchantapiReviewsV1beta::MerchantReviewAttributes::Representation
+      
           property :merchant_review_id, as: 'merchantReviewId'
           property :merchant_review_status, as: 'merchantReviewStatus', class: Google::Apis::MerchantapiReviewsV1beta::MerchantReviewStatus, decorator: Google::Apis::MerchantapiReviewsV1beta::MerchantReviewStatus::Representation
       
@@ -241,12 +241,12 @@ module Google
       class ProductReview
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :attributes, as: 'attributes', class: Google::Apis::MerchantapiReviewsV1beta::ProductReviewAttributes, decorator: Google::Apis::MerchantapiReviewsV1beta::ProductReviewAttributes::Representation
-      
           collection :custom_attributes, as: 'customAttributes', class: Google::Apis::MerchantapiReviewsV1beta::CustomAttribute, decorator: Google::Apis::MerchantapiReviewsV1beta::CustomAttribute::Representation
       
           property :data_source, as: 'dataSource'
           property :name, as: 'name'
+          property :product_review_attributes, as: 'productReviewAttributes', class: Google::Apis::MerchantapiReviewsV1beta::ProductReviewAttributes, decorator: Google::Apis::MerchantapiReviewsV1beta::ProductReviewAttributes::Representation
+      
           property :product_review_id, as: 'productReviewId'
           property :product_review_status, as: 'productReviewStatus', class: Google::Apis::MerchantapiReviewsV1beta::ProductReviewStatus, decorator: Google::Apis::MerchantapiReviewsV1beta::ProductReviewStatus::Representation
       
@@ -263,7 +263,9 @@ module Google
           collection :cons, as: 'cons'
           property :content, as: 'content'
           collection :gtins, as: 'gtins'
+          property :is_incentivized_review, as: 'isIncentivizedReview'
           property :is_spam, as: 'isSpam'
+          property :is_verified_purchase, as: 'isVerifiedPurchase'
           property :max_rating, :numeric_string => true, as: 'maxRating'
           property :min_rating, :numeric_string => true, as: 'minRating'
           collection :mpns, as: 'mpns'

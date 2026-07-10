@@ -88,7 +88,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GatewayConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GceConfidentialInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GceHyperdiskBalancedHighAvailability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OAuthToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,7 +244,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PushCredentialsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReadinessCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationAffinity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkstationPersistentDirectory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Accelerator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -343,6 +379,8 @@ module Google
           property :id, as: 'id'
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::WorkstationsV1beta::ReservationAffinity, decorator: Google::Apis::WorkstationsV1beta::ReservationAffinity::Representation
+      
         end
       end
       
@@ -398,10 +436,28 @@ module Google
         end
       end
       
+      class GatewayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http2_enabled, as: 'http2Enabled'
+        end
+      end
+      
       class GceConfidentialInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
+      class GceHyperdiskBalancedHighAvailability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_timeout, as: 'archiveTimeout'
+          property :max_size_gb, as: 'maxSizeGb'
+          property :reclaim_policy, as: 'reclaimPolicy'
+          property :size_gb, as: 'sizeGb'
+          property :source_snapshot, as: 'sourceSnapshot'
         end
       end
       
@@ -418,13 +474,17 @@ module Google
           property :disable_public_ip_addresses, as: 'disablePublicIpAddresses'
           property :disable_ssh, as: 'disableSsh'
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
+          hash :instance_metadata, as: 'instanceMetadata'
           property :machine_type, as: 'machineType'
           property :pool_size, as: 'poolSize'
           property :pooled_instances, as: 'pooledInstances'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::WorkstationsV1beta::ReservationAffinity, decorator: Google::Apis::WorkstationsV1beta::ReservationAffinity::Representation
+      
           property :service_account, as: 'serviceAccount'
           collection :service_account_scopes, as: 'serviceAccountScopes'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig, decorator: Google::Apis::WorkstationsV1beta::GceShieldedInstanceConfig::Representation
       
+          property :startup_script_uri, as: 'startupScriptUri'
           collection :tags, as: 'tags'
           hash :vm_tags, as: 'vmTags'
         end
@@ -452,8 +512,10 @@ module Google
       class GceRegionalPersistentDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_timeout, as: 'archiveTimeout'
           property :disk_type, as: 'diskType'
           property :fs_type, as: 'fsType'
+          property :max_size_gb, as: 'maxSizeGb'
           property :reclaim_policy, as: 'reclaimPolicy'
           property :size_gb, as: 'sizeGb'
           property :source_snapshot, as: 'sourceSnapshot'
@@ -514,6 +576,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::WorkstationsV1beta::Operation, decorator: Google::Apis::WorkstationsV1beta::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -567,6 +630,16 @@ module Google
         end
       end
       
+      class OAuthToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'accessToken'
+          property :email, as: 'email'
+          property :expire_time, as: 'expireTime'
+          property :scopes, as: 'scopes'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -595,6 +668,8 @@ module Google
       class PersistentDirectory
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gce_hd, as: 'gceHd', class: Google::Apis::WorkstationsV1beta::GceHyperdiskBalancedHighAvailability, decorator: Google::Apis::WorkstationsV1beta::GceHyperdiskBalancedHighAvailability::Representation
+      
           property :gce_pd, as: 'gcePd', class: Google::Apis::WorkstationsV1beta::GceRegionalPersistentDisk, decorator: Google::Apis::WorkstationsV1beta::GceRegionalPersistentDisk::Representation
       
           property :mount_path, as: 'mountPath'
@@ -631,11 +706,28 @@ module Google
         end
       end
       
+      class PushCredentialsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_default_credentials, as: 'applicationDefaultCredentials', class: Google::Apis::WorkstationsV1beta::OAuthToken, decorator: Google::Apis::WorkstationsV1beta::OAuthToken::Representation
+      
+        end
+      end
+      
       class ReadinessCheck
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :path, as: 'path'
           property :port, as: 'port'
+        end
+      end
+      
+      class ReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
         end
       end
       
@@ -714,6 +806,8 @@ module Google
           property :kms_key, as: 'kmsKey'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :persistent_directories, as: 'persistentDirectories', class: Google::Apis::WorkstationsV1beta::WorkstationPersistentDirectory, decorator: Google::Apis::WorkstationsV1beta::WorkstationPersistentDirectory::Representation
+      
           property :reconciling, as: 'reconciling'
           property :runtime_host, as: 'runtimeHost', class: Google::Apis::WorkstationsV1beta::RuntimeHost, decorator: Google::Apis::WorkstationsV1beta::RuntimeHost::Representation
       
@@ -731,6 +825,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+          property :running, as: 'running'
         end
       end
       
@@ -748,6 +843,8 @@ module Google
           property :domain_config, as: 'domainConfig', class: Google::Apis::WorkstationsV1beta::DomainConfig, decorator: Google::Apis::WorkstationsV1beta::DomainConfig::Representation
       
           property :etag, as: 'etag'
+          property :gateway_config, as: 'gatewayConfig', class: Google::Apis::WorkstationsV1beta::GatewayConfig, decorator: Google::Apis::WorkstationsV1beta::GatewayConfig::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -760,6 +857,8 @@ module Google
           hash :tags, as: 'tags'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+          property :workstation_authorization_url, as: 'workstationAuthorizationUrl'
+          property :workstation_launch_url, as: 'workstationLaunchUrl'
         end
       end
       
@@ -779,6 +878,7 @@ module Google
           property :disable_tcp_connections, as: 'disableTcpConnections'
           property :display_name, as: 'displayName'
           property :enable_audit_agent, as: 'enableAuditAgent'
+          property :enable_pushing_credentials, as: 'enablePushingCredentials'
           property :encryption_key, as: 'encryptionKey', class: Google::Apis::WorkstationsV1beta::CustomerEncryptionKey, decorator: Google::Apis::WorkstationsV1beta::CustomerEncryptionKey::Representation
       
           collection :ephemeral_directories, as: 'ephemeralDirectories', class: Google::Apis::WorkstationsV1beta::EphemeralDirectory, decorator: Google::Apis::WorkstationsV1beta::EphemeralDirectory::Representation
@@ -804,6 +904,14 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class WorkstationPersistentDirectory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mount_path, as: 'mountPath'
+          property :size_gb, as: 'sizeGb'
         end
       end
     end

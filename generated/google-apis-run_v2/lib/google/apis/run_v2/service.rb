@@ -225,6 +225,388 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an Instance.
+        # @param [String] parent
+        #   Required. The location and project in which this Instance should be created.
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2Instance] google_cloud_run_v2_instance_object
+        # @param [String] instance_id
+        #   Optional. The unique identifier for the Instance. It must begin with letter,
+        #   and cannot end with hyphen; must contain fewer than 50 characters. The name of
+        #   the instance becomes `parent`/instances/`instance_id`. If not provided, the
+        #   server will generate a unique `instance_id`.
+        # @param [Boolean] validate_only
+        #   Optional. Indicates that the request should be validated and default values
+        #   populated, without persisting the request or creating any resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_instance(parent, google_cloud_run_v2_instance_object = nil, instance_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/instances', options)
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2Instance::Representation
+          command.request_object = google_cloud_run_v2_instance_object
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['instanceId'] = instance_id unless instance_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an Instance
+        # @param [String] name
+        #   Required. The name of the Instance to delete.
+        # @param [String] etag
+        #   Optional. A system-generated fingerprint for this version of the resource. May
+        #   be used to detect modification conflict during updates.
+        # @param [Boolean] validate_only
+        #   Optional. Indicates that the request should be validated without actually
+        #   deleting any resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_instance(name, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an Instance
+        # @param [String] name
+        #   Required. The name of the Instance to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2Instance] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2Instance]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_instance(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2Instance::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2Instance
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the IAM Access Control policy currently in effect for the given Instance.
+        # This result does not include any inherited policies.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_instance_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::RunV2::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::RunV2::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Instances. Results are sorted by creation time, descending.
+        # @param [String] parent
+        #   Required. The location and project to list resources on.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of Instances to return in this call.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous call to ListInstances. All
+        #   other parameters must match.
+        # @param [Boolean] show_deleted
+        #   Optional. If true, returns deleted (but unexpired) resources along with active
+        #   ones.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2ListInstancesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2ListInstancesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_instances(parent, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/instances', options)
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2ListInstancesResponse::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2ListInstancesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an Instance.
+        # @param [String] name
+        #   The fully qualified name of this Instance. In `CreateInstanceRequest`, this
+        #   field is ignored, and instead composed from `CreateInstanceRequest.parent` and
+        #   `CreateInstanceRequest.instance_id`.
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2Instance] google_cloud_run_v2_instance_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to `true`, and if the Instance does not exist, it will create
+        #   a new one. The caller must have `run.instances.create` permissions if this is
+        #   set to `true` and the Instance does not exist.
+        # @param [String] update_mask
+        #   Optional. The list of fields to be updated.
+        # @param [Boolean] validate_only
+        #   Optional. Indicates that the request should be validated and default values
+        #   populated, without persisting the request or updating any resources.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_instance(name, google_cloud_run_v2_instance_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2Instance::Representation
+          command.request_object = google_cloud_run_v2_instance_object
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the IAM Access control policy for the specified Instance. Overwrites any
+        # existing policy.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::RunV2::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_instance_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::RunV2::GoogleIamV1SetIamPolicyRequest::Representation
+          command.request_object = google_iam_v1_set_iam_policy_request_object
+          command.response_representation = Google::Apis::RunV2::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::RunV2::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts an Instance.
+        # @param [String] name
+        #   Required. The name of the Instance to start.
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2StartInstanceRequest] google_cloud_run_v2_start_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_project_location_instance(name, google_cloud_run_v2_start_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:start', options)
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2StartInstanceRequest::Representation
+          command.request_object = google_cloud_run_v2_start_instance_request_object
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops an Instance.
+        # @param [String] name
+        #   Required. The name of the Instance to stop.
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2StopInstanceRequest] google_cloud_run_v2_stop_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_project_location_instance(name, google_cloud_run_v2_stop_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:stop', options)
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2StopInstanceRequest::Representation
+          command.request_object = google_cloud_run_v2_stop_instance_request_object
+          command.response_representation = Google::Apis::RunV2::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified Project. There are no
+        # permissions required for making this API call.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::RunV2::GoogleIamV1TestIamPermissionsRequest] google_iam_v1_test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleIamV1TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleIamV1TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_project_location_instance_iam_permissions(resource, google_iam_v1_test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::RunV2::GoogleIamV1TestIamPermissionsRequest::Representation
+          command.request_object = google_iam_v1_test_iam_permissions_request_object
+          command.response_representation = Google::Apis::RunV2::GoogleIamV1TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::RunV2::GoogleIamV1TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Job.
         # @param [String] parent
         #   Required. The location and project in which this Job should be created. Format:
@@ -232,8 +614,9 @@ module Google
         #   number.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Job] google_cloud_run_v2_job_object
         # @param [String] job_id
-        #   Required. The unique identifier for the Job. The name of the job becomes `
-        #   parent`/jobs/`job_id`.
+        #   Optional. The unique identifier for the Job. The name of the job becomes `
+        #   parent`/jobs/`job_id`. If not provided, the server will generate a unique `
+        #   job_id`.
         # @param [Boolean] validate_only
         #   Indicates that the request should be validated and default values populated,
         #   without persisting the request or creating any resources.
@@ -914,6 +1297,14 @@ module Google
         # @param [String] page_token
         #   Token identifying which result to start with, which is returned by a previous
         #   list call.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -931,7 +1322,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}/operations', options)
           command.response_representation = Google::Apis::RunV2::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::RunV2::GoogleLongrunningListOperationsResponse
@@ -939,6 +1330,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -991,9 +1383,10 @@ module Google
         #   project id or number. Only lowercase characters, digits, and hyphens.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Service] google_cloud_run_v2_service_object
         # @param [String] service_id
-        #   Required. The unique identifier for the Service. It must begin with letter,
+        #   Optional. The unique identifier for the Service. It must begin with letter,
         #   and cannot end with hyphen; must contain fewer than 50 characters. The name of
-        #   the service becomes `parent`/services/`service_id`.
+        #   the service becomes `parent`/services/`service_id`. If not provided, the
+        #   server will generate a unique `service_id`.
         # @param [Boolean] validate_only
         #   Indicates that the request should be validated and default values populated,
         #   without persisting the request or creating any resources.
@@ -1188,15 +1581,22 @@ module Google
         
         # Updates a Service.
         # @param [String] name
-        #   The fully qualified name of this Service. In CreateServiceRequest, this field
-        #   is ignored, and instead composed from CreateServiceRequest.parent and
-        #   CreateServiceRequest.service_id. Format: projects/`project`/locations/`
+        #   Identifier. The fully qualified name of this Service. In CreateServiceRequest,
+        #   this field is ignored, and instead composed from CreateServiceRequest.parent
+        #   and CreateServiceRequest.service_id. Format: projects/`project`/locations/`
         #   location`/services/`service_id`
         # @param [Google::Apis::RunV2::GoogleCloudRunV2Service] google_cloud_run_v2_service_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, and if the Service does not exist, it will create a
         #   new one. The caller must have 'run.services.create' permissions if this is set
         #   to true and the Service does not exist.
+        # @param [Boolean] force_new_revision
+        #   Optional. If set to true, a new revision will be created from the template
+        #   even if the system doesn't detect any changes from the previously deployed
+        #   revision. This may be useful for cases where the underlying resources need to
+        #   be recreated or reinitialized. For example if the image is specified by label,
+        #   but the underlying image digest has changed) or if the container performs
+        #   deployment initialization work that needs to be performed again.
         # @param [String] update_mask
         #   Optional. The list of fields to be updated.
         # @param [Boolean] validate_only
@@ -1219,7 +1619,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_service(name, google_cloud_run_v2_service_object = nil, allow_missing: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_service(name, google_cloud_run_v2_service_object = nil, allow_missing: nil, force_new_revision: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2Service::Representation
           command.request_object = google_cloud_run_v2_service_object
@@ -1227,6 +1627,7 @@ module Google
           command.response_class = Google::Apis::RunV2::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['forceNewRevision'] = force_new_revision unless force_new_revision.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1459,16 +1860,17 @@ module Google
         # Creates a new WorkerPool in a given project and location.
         # @param [String] parent
         #   Required. The location and project in which this worker pool should be created.
-        #   Format: projects/`project`/locations/`location`, where `project` can be
+        #   Format: `projects/`project`/locations/`location``, where ``project`` can be
         #   project id or number. Only lowercase characters, digits, and hyphens.
         # @param [Google::Apis::RunV2::GoogleCloudRunV2WorkerPool] google_cloud_run_v2_worker_pool_object
         # @param [Boolean] validate_only
         #   Optional. Indicates that the request should be validated and default values
         #   populated, without persisting the request or creating any resources.
         # @param [String] worker_pool_id
-        #   Required. The unique identifier for the WorkerPool. It must begin with letter,
+        #   Optional. The unique identifier for the WorkerPool. It must begin with letter,
         #   and cannot end with hyphen; must contain fewer than 50 characters. The name of
-        #   the worker pool becomes `parent`/workerPools/`worker_pool_id`.
+        #   the worker pool becomes ``parent`/workerPools/`worker_pool_id``. If not
+        #   provided, the server will generate a unique `worker_pool_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1502,9 +1904,9 @@ module Google
         
         # Deletes a WorkerPool.
         # @param [String] name
-        #   Required. The full name of the WorkerPool. Format: projects/`project`/
-        #   locations/`location`/workerPools/`worker_pool`, where `project` can be project
-        #   id or number.
+        #   Required. The full name of the WorkerPool. Format: `projects/`project`/
+        #   locations/`location`/workerPools/`worker_pool``, where ``project`` can be
+        #   project id or number.
         # @param [String] etag
         #   A system-generated fingerprint for this version of the resource. May be used
         #   to detect modification conflict during updates.
@@ -1542,9 +1944,9 @@ module Google
         
         # Gets information about a WorkerPool.
         # @param [String] name
-        #   Required. The full name of the WorkerPool. Format: projects/`project`/
-        #   locations/`location`/workerPools/`worker_pool`, where `project` can be project
-        #   id or number.
+        #   Required. The full name of the WorkerPool. Format: `projects/`project`/
+        #   locations/`location`/workerPools/`worker_pool``, where ``project`` can be
+        #   project id or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1620,8 +2022,8 @@ module Google
         # Lists WorkerPools. Results are sorted by creation time, descending.
         # @param [String] parent
         #   Required. The location and project to list resources on. Location must be a
-        #   valid Google Cloud region, and cannot be the "-" wildcard. Format: projects/`
-        #   project`/locations/`location`, where `project` can be project id or number.
+        #   valid Google Cloud region, and cannot be the "-" wildcard. Format: `projects/`
+        #   project`/locations/`location``, where ``project`` can be project id or number.
         # @param [Fixnum] page_size
         #   Maximum number of WorkerPools to return in this call.
         # @param [String] page_token
@@ -1663,8 +2065,8 @@ module Google
         # @param [String] name
         #   The fully qualified name of this WorkerPool. In CreateWorkerPoolRequest, this
         #   field is ignored, and instead composed from CreateWorkerPoolRequest.parent and
-        #   CreateWorkerPoolRequest.worker_id. Format: projects/`project`/locations/`
-        #   location`/workerPools/`worker_id`
+        #   CreateWorkerPoolRequest.worker_id. Format: `projects/`project`/locations/`
+        #   location`/workerPools/`worker_id``
         # @param [Google::Apis::RunV2::GoogleCloudRunV2WorkerPool] google_cloud_run_v2_worker_pool_object
         # @param [Boolean] allow_missing
         #   Optional. If set to true, and if the WorkerPool does not exist, it will create

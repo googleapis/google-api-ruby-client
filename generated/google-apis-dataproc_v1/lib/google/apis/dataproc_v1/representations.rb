@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AttachedDiskConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthenticationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +287,12 @@ module Google
       end
       
       class ClusterToRepair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CohortInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -862,6 +874,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PySparkNotebookBatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Quantiles
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1181,6 +1199,18 @@ module Google
       end
       
       class SparkConnectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SparkConnectExecutionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SparkConnectSessionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1728,6 +1758,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
+          property :requestor_id, as: 'requestorId'
         end
       end
       
@@ -1795,6 +1826,16 @@ module Google
           property :memory_per_executor_mb, as: 'memoryPerExecutorMb'
           property :name, as: 'name'
           property :quantile_data_status, as: 'quantileDataStatus'
+        end
+      end
+      
+      class AttachedDiskConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_size_gb, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
         end
       end
       
@@ -1888,6 +1929,8 @@ module Google
           property :operation, as: 'operation'
           property :pyspark_batch, as: 'pysparkBatch', class: Google::Apis::DataprocV1::PySparkBatch, decorator: Google::Apis::DataprocV1::PySparkBatch::Representation
       
+          property :pyspark_notebook_batch, as: 'pysparkNotebookBatch', class: Google::Apis::DataprocV1::PySparkNotebookBatch, decorator: Google::Apis::DataprocV1::PySparkNotebookBatch::Representation
+      
           property :runtime_config, as: 'runtimeConfig', class: Google::Apis::DataprocV1::RuntimeConfig, decorator: Google::Apis::DataprocV1::RuntimeConfig::Representation
       
           property :runtime_info, as: 'runtimeInfo', class: Google::Apis::DataprocV1::RuntimeInfo, decorator: Google::Apis::DataprocV1::RuntimeInfo::Representation
@@ -1972,14 +2015,17 @@ module Google
       
           collection :auxiliary_node_groups, as: 'auxiliaryNodeGroups', class: Google::Apis::DataprocV1::AuxiliaryNodeGroup, decorator: Google::Apis::DataprocV1::AuxiliaryNodeGroup::Representation
       
+          property :cluster_tier, as: 'clusterTier'
           property :cluster_type, as: 'clusterType'
           property :config_bucket, as: 'configBucket'
           property :dataproc_metric_config, as: 'dataprocMetricConfig', class: Google::Apis::DataprocV1::DataprocMetricConfig, decorator: Google::Apis::DataprocV1::DataprocMetricConfig::Representation
       
+          property :diagnostic_bucket, as: 'diagnosticBucket'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::DataprocV1::EncryptionConfig, decorator: Google::Apis::DataprocV1::EncryptionConfig::Representation
       
           property :endpoint_config, as: 'endpointConfig', class: Google::Apis::DataprocV1::EndpointConfig, decorator: Google::Apis::DataprocV1::EndpointConfig::Representation
       
+          property :engine, as: 'engine'
           property :gce_cluster_config, as: 'gceClusterConfig', class: Google::Apis::DataprocV1::GceClusterConfig, decorator: Google::Apis::DataprocV1::GceClusterConfig::Representation
       
           property :gke_cluster_config, as: 'gkeClusterConfig', class: Google::Apis::DataprocV1::GkeClusterConfig, decorator: Google::Apis::DataprocV1::GkeClusterConfig::Representation
@@ -2073,9 +2119,18 @@ module Google
         end
       end
       
+      class CohortInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cohort, as: 'cohort'
+          property :cohort_source, as: 'cohortSource'
+        end
+      end
+      
       class ConfidentialInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidential_instance_type, as: 'confidentialInstanceType'
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
         end
       end
@@ -2136,6 +2191,8 @@ module Google
       class DiskConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attached_disk_configs, as: 'attachedDiskConfigs', class: Google::Apis::DataprocV1::AttachedDiskConfig, decorator: Google::Apis::DataprocV1::AttachedDiskConfig::Representation
+      
           property :boot_disk_provisioned_iops, :numeric_string => true, as: 'bootDiskProvisionedIops'
           property :boot_disk_provisioned_throughput, :numeric_string => true, as: 'bootDiskProvisionedThroughput'
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
@@ -2194,6 +2251,7 @@ module Google
           property :kms_key, as: 'kmsKey'
           collection :network_tags, as: 'networkTags'
           property :network_uri, as: 'networkUri'
+          hash :resource_manager_tags, as: 'resourceManagerTags'
           property :service_account, as: 'serviceAccount'
           property :staging_bucket, as: 'stagingBucket'
           property :subnetwork_uri, as: 'subnetworkUri'
@@ -2349,6 +2407,7 @@ module Google
       class GceClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_zone_exclude_zone_uris, as: 'autoZoneExcludeZoneUris'
           property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::DataprocV1::ConfidentialInstanceConfig, decorator: Google::Apis::DataprocV1::ConfidentialInstanceConfig::Representation
       
           property :internal_ip_only, as: 'internalIpOnly'
@@ -2406,6 +2465,7 @@ module Google
           property :machine_type, as: 'machineType'
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :preemptible, as: 'preemptible'
+          property :service_account, as: 'serviceAccount'
           property :spot, as: 'spot'
         end
       end
@@ -2519,6 +2579,7 @@ module Google
       class InstanceFlexibilityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :instance_machine_types, as: 'instanceMachineTypes'
           collection :instance_selection_list, as: 'instanceSelectionList', class: Google::Apis::DataprocV1::InstanceSelection, decorator: Google::Apis::DataprocV1::InstanceSelection::Representation
       
           collection :instance_selection_results, as: 'instanceSelectionResults', class: Google::Apis::DataprocV1::InstanceSelectionResult, decorator: Google::Apis::DataprocV1::InstanceSelectionResult::Representation
@@ -2576,6 +2637,8 @@ module Google
       class InstanceSelection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_config, as: 'diskConfig', class: Google::Apis::DataprocV1::DiskConfig, decorator: Google::Apis::DataprocV1::DiskConfig::Representation
+      
           collection :machine_types, as: 'machineTypes'
           property :rank, as: 'rank'
         end
@@ -2843,6 +2906,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DataprocV1::Operation, decorator: Google::Apis::DataprocV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -3197,6 +3261,18 @@ module Google
         end
       end
       
+      class PySparkNotebookBatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :archive_uris, as: 'archiveUris'
+          collection :file_uris, as: 'fileUris'
+          collection :jar_file_uris, as: 'jarFileUris'
+          property :notebook_file_uri, as: 'notebookFileUri'
+          hash :params, as: 'params'
+          collection :python_file_uris, as: 'pythonFileUris'
+        end
+      end
+      
       class Quantiles
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3319,6 +3395,7 @@ module Google
           property :cluster, as: 'cluster', class: Google::Apis::DataprocV1::ClusterToRepair, decorator: Google::Apis::DataprocV1::ClusterToRepair::Representation
       
           property :cluster_uuid, as: 'clusterUuid'
+          property :dataproc_super_user, as: 'dataprocSuperUser'
           property :graceful_decommission_timeout, as: 'gracefulDecommissionTimeout'
           collection :node_pools, as: 'nodePools', class: Google::Apis::DataprocV1::NodePool, decorator: Google::Apis::DataprocV1::NodePool::Representation
       
@@ -3400,6 +3477,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :approximate_usage, as: 'approximateUsage', class: Google::Apis::DataprocV1::UsageMetrics, decorator: Google::Apis::DataprocV1::UsageMetrics::Representation
+      
+          property :cohort_info, as: 'cohortInfo', class: Google::Apis::DataprocV1::CohortInfo, decorator: Google::Apis::DataprocV1::CohortInfo::Representation
       
           property :current_usage, as: 'currentUsage', class: Google::Apis::DataprocV1::UsageSnapshot, decorator: Google::Apis::DataprocV1::UsageSnapshot::Representation
       
@@ -3815,6 +3894,36 @@ module Google
         end
       end
       
+      class SparkConnectExecutionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :close_timestamp, :numeric_string => true, as: 'closeTimestamp'
+          property :detail, as: 'detail'
+          property :finish_timestamp, :numeric_string => true, as: 'finishTimestamp'
+          collection :job_ids, as: 'jobIds'
+          property :job_tag, as: 'jobTag'
+          property :operation_id, as: 'operationId'
+          property :session_id, as: 'sessionId'
+          collection :spark_session_tags, as: 'sparkSessionTags'
+          collection :sql_exec_ids, as: 'sqlExecIds'
+          property :start_timestamp, :numeric_string => true, as: 'startTimestamp'
+          property :state, as: 'state'
+          property :statement, as: 'statement'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class SparkConnectSessionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finish_timestamp, :numeric_string => true, as: 'finishTimestamp'
+          property :session_id, as: 'sessionId'
+          property :start_timestamp, :numeric_string => true, as: 'startTimestamp'
+          property :total_execution, :numeric_string => true, as: 'totalExecution'
+          property :user_id, as: 'userId'
+        end
+      end
+      
       class SparkHistoryServerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3852,6 +3961,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desc, as: 'desc'
+          hash :metadata, as: 'metadata'
           collection :metrics, as: 'metrics', class: Google::Apis::DataprocV1::SqlPlanMetric, decorator: Google::Apis::DataprocV1::SqlPlanMetric::Representation
       
           property :name, as: 'name'
@@ -3873,6 +3983,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desc, as: 'desc'
+          hash :metadata, as: 'metadata'
           collection :metrics, as: 'metrics', class: Google::Apis::DataprocV1::SqlPlanMetric, decorator: Google::Apis::DataprocV1::SqlPlanMetric::Representation
       
           property :name, as: 'name'
@@ -3987,6 +4098,10 @@ module Google
           property :rdd_storage_info, as: 'rddStorageInfo', class: Google::Apis::DataprocV1::RddStorageInfo, decorator: Google::Apis::DataprocV1::RddStorageInfo::Representation
       
           property :resource_profile_info, as: 'resourceProfileInfo', class: Google::Apis::DataprocV1::ResourceProfileInfo, decorator: Google::Apis::DataprocV1::ResourceProfileInfo::Representation
+      
+          property :spark_connect_execution_info, as: 'sparkConnectExecutionInfo', class: Google::Apis::DataprocV1::SparkConnectExecutionInfo, decorator: Google::Apis::DataprocV1::SparkConnectExecutionInfo::Representation
+      
+          property :spark_connect_session_info, as: 'sparkConnectSessionInfo', class: Google::Apis::DataprocV1::SparkConnectSessionInfo, decorator: Google::Apis::DataprocV1::SparkConnectSessionInfo::Representation
       
           property :spark_plan_graph, as: 'sparkPlanGraph', class: Google::Apis::DataprocV1::SparkPlanGraph, decorator: Google::Apis::DataprocV1::SparkPlanGraph::Representation
       
@@ -4549,8 +4664,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_type, as: 'acceleratorType'
           property :milli_accelerator_seconds, :numeric_string => true, as: 'milliAcceleratorSeconds'
+          property :milli_accelerator_seconds_a10040, :numeric_string => true, as: 'milliAcceleratorSecondsA10040'
+          property :milli_accelerator_seconds_a10080, :numeric_string => true, as: 'milliAcceleratorSecondsA10080'
+          property :milli_accelerator_seconds_l4, :numeric_string => true, as: 'milliAcceleratorSecondsL4'
           property :milli_dcu_seconds, :numeric_string => true, as: 'milliDcuSeconds'
-          property :milli_slot_seconds, :numeric_string => true, as: 'milliSlotSeconds'
           property :shuffle_storage_gb_seconds, :numeric_string => true, as: 'shuffleStorageGbSeconds'
           property :update_time, as: 'updateTime'
         end
@@ -4561,9 +4678,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_type, as: 'acceleratorType'
           property :milli_accelerator, :numeric_string => true, as: 'milliAccelerator'
+          property :milli_accelerator_a10040, :numeric_string => true, as: 'milliAcceleratorA10040'
+          property :milli_accelerator_a10080, :numeric_string => true, as: 'milliAcceleratorA10080'
+          property :milli_accelerator_l4, :numeric_string => true, as: 'milliAcceleratorL4'
           property :milli_dcu, :numeric_string => true, as: 'milliDcu'
           property :milli_dcu_premium, :numeric_string => true, as: 'milliDcuPremium'
-          property :milli_slot, :numeric_string => true, as: 'milliSlot'
           property :shuffle_storage_gb, :numeric_string => true, as: 'shuffleStorageGb'
           property :shuffle_storage_gb_premium, :numeric_string => true, as: 'shuffleStorageGbPremium'
           property :snapshot_time, as: 'snapshotTime'
@@ -4703,10 +4822,12 @@ module Google
       class YarnApplication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :memory_mb_seconds, :numeric_string => true, as: 'memoryMbSeconds'
           property :name, as: 'name'
           property :progress, as: 'progress'
           property :state, as: 'state'
           property :tracking_url, as: 'trackingUrl'
+          property :vcore_seconds, :numeric_string => true, as: 'vcoreSeconds'
         end
       end
     end

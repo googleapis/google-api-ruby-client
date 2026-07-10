@@ -58,11 +58,11 @@ module Google
         #   one of the following forms: * `projects/`project_number`` * `projects/`
         #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -135,9 +135,9 @@ module Google
         # @param [String] name
         #   Required. Name of the policy to delete. See the policy entry for naming rules.
         # @param [String] etag
-        #   Optional. The current etag of policy. If an etag is provided and does not
-        #   match the current etag of the policy, deletion will be blocked and an ABORTED
-        #   error will be returned.
+        #   Optional. The current entity tag (ETag) of the organization policy. If an ETag
+        #   is provided and doesn't match the current ETag of the policy, deletion of the
+        #   policy will be blocked and an `ABORTED` error will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -167,8 +167,8 @@ module Google
         end
         
         # Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND`
-        # is returned. The `etag` value can be used with `UpdatePolicy()` to update a
-        # policy during read-modify-write.
+        # is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update
+        # a policy during read-modify-write.
         # @param [String] name
         #   Required. Resource name of the policy. See Policy for naming requirements.
         # @param [String] fields
@@ -200,7 +200,7 @@ module Google
         
         # Gets the effective policy on a resource. This is the result of merging
         # policies in the resource hierarchy and evaluating conditions. The returned
-        # policy will not have an `etag` or `condition` set because it is an evaluated
+        # policy will not have an ETag or `condition` set because it is an evaluated
         # policy across multiple resources. Subtrees of Resource Manager resource
         # hierarchy with 'under:' prefix will not be expanded.
         # @param [String] name
@@ -239,11 +239,11 @@ module Google
         #   following forms: * `projects/`project_number`` * `projects/`project_id`` * `
         #   folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -274,13 +274,13 @@ module Google
         end
         
         # Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.
-        # NOT_FOUND` if the constraint or the policy do not exist. Returns a `google.rpc.
-        # Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request
-        # does not match the persisted etag of the policy Note: the supplied policy will
+        # NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.
+        # rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request
+        # doesn't match the persisted ETag of the policy. Note: the supplied policy will
         # perform a full overwrite of all fields.
         # @param [String] name
         #   Immutable. The resource name of the policy. Must be one of the following forms,
-        #   where `constraint_name` is the name of the constraint which this policy
+        #   where `constraint_name` is the name of the constraint that this policy
         #   configures: * `projects/`project_number`/policies/`constraint_name`` * `
         #   folders/`folder_id`/policies/`constraint_name`` * `organizations/`
         #   organization_id`/policies/`constraint_name`` For example, `projects/123/
@@ -289,9 +289,9 @@ module Google
         #   responses will return the name using the equivalent project number.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
         # @param [String] update_mask
-        #   Field mask used to specify the fields to be overwritten in the policy by the
-        #   set. The fields specified in the update_mask are relative to the policy, not
-        #   the full request.
+        #   Field mask used to specify the fields to be overwritten in the policy. The
+        #   fields specified in the update_mask are relative to the policy, not the full
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -328,11 +328,11 @@ module Google
         #   one of the following forms: * `projects/`project_number`` * `projects/`
         #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -469,11 +469,11 @@ module Google
         #   constraints that will be returned from this call. Must be in one of the
         #   following forms: * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -507,12 +507,12 @@ module Google
         # Code.NOT_FOUND` if the constraint does not exist. Note: the supplied policy
         # will perform a full overwrite of all fields.
         # @param [String] name
-        #   Immutable. Name of the constraint. This is unique within the organization.
-        #   Format of the name should be * `organizations/`organization_id`/
-        #   customConstraints/`custom_constraint_id`` Example: `organizations/123/
-        #   customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters
-        #   and the minimum length is 1. Note that the prefix `organizations/`
-        #   organization_id`/customConstraints/` is not counted.
+        #   Immutable. Name of the constraint. This is unique within the organization. The
+        #   name must be of the form: * `organizations/`organization_id`/customConstraints/
+        #   `custom_constraint_id`` Example: `organizations/123/customConstraints/custom.
+        #   createOnlyE2TypeVms` The max length is 71 characters and the minimum length is
+        #   1. Note that the prefix `organizations/`organization_id`/customConstraints/
+        #   custom.` is not counted.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2CustomConstraint] google_cloud_orgpolicy_v2_custom_constraint_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -586,9 +586,9 @@ module Google
         # @param [String] name
         #   Required. Name of the policy to delete. See the policy entry for naming rules.
         # @param [String] etag
-        #   Optional. The current etag of policy. If an etag is provided and does not
-        #   match the current etag of the policy, deletion will be blocked and an ABORTED
-        #   error will be returned.
+        #   Optional. The current entity tag (ETag) of the organization policy. If an ETag
+        #   is provided and doesn't match the current ETag of the policy, deletion of the
+        #   policy will be blocked and an `ABORTED` error will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -618,8 +618,8 @@ module Google
         end
         
         # Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND`
-        # is returned. The `etag` value can be used with `UpdatePolicy()` to update a
-        # policy during read-modify-write.
+        # is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update
+        # a policy during read-modify-write.
         # @param [String] name
         #   Required. Resource name of the policy. See Policy for naming requirements.
         # @param [String] fields
@@ -651,7 +651,7 @@ module Google
         
         # Gets the effective policy on a resource. This is the result of merging
         # policies in the resource hierarchy and evaluating conditions. The returned
-        # policy will not have an `etag` or `condition` set because it is an evaluated
+        # policy will not have an ETag or `condition` set because it is an evaluated
         # policy across multiple resources. Subtrees of Resource Manager resource
         # hierarchy with 'under:' prefix will not be expanded.
         # @param [String] name
@@ -690,11 +690,11 @@ module Google
         #   following forms: * `projects/`project_number`` * `projects/`project_id`` * `
         #   folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -725,13 +725,13 @@ module Google
         end
         
         # Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.
-        # NOT_FOUND` if the constraint or the policy do not exist. Returns a `google.rpc.
-        # Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request
-        # does not match the persisted etag of the policy Note: the supplied policy will
+        # NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.
+        # rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request
+        # doesn't match the persisted ETag of the policy. Note: the supplied policy will
         # perform a full overwrite of all fields.
         # @param [String] name
         #   Immutable. The resource name of the policy. Must be one of the following forms,
-        #   where `constraint_name` is the name of the constraint which this policy
+        #   where `constraint_name` is the name of the constraint that this policy
         #   configures: * `projects/`project_number`/policies/`constraint_name`` * `
         #   folders/`folder_id`/policies/`constraint_name`` * `organizations/`
         #   organization_id`/policies/`constraint_name`` For example, `projects/123/
@@ -740,9 +740,9 @@ module Google
         #   responses will return the name using the equivalent project number.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
         # @param [String] update_mask
-        #   Field mask used to specify the fields to be overwritten in the policy by the
-        #   set. The fields specified in the update_mask are relative to the policy, not
-        #   the full request.
+        #   Field mask used to specify the fields to be overwritten in the policy. The
+        #   fields specified in the update_mask are relative to the policy, not the full
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -779,11 +779,11 @@ module Google
         #   one of the following forms: * `projects/`project_number`` * `projects/`
         #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -856,9 +856,9 @@ module Google
         # @param [String] name
         #   Required. Name of the policy to delete. See the policy entry for naming rules.
         # @param [String] etag
-        #   Optional. The current etag of policy. If an etag is provided and does not
-        #   match the current etag of the policy, deletion will be blocked and an ABORTED
-        #   error will be returned.
+        #   Optional. The current entity tag (ETag) of the organization policy. If an ETag
+        #   is provided and doesn't match the current ETag of the policy, deletion of the
+        #   policy will be blocked and an `ABORTED` error will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -888,8 +888,8 @@ module Google
         end
         
         # Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND`
-        # is returned. The `etag` value can be used with `UpdatePolicy()` to update a
-        # policy during read-modify-write.
+        # is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update
+        # a policy during read-modify-write.
         # @param [String] name
         #   Required. Resource name of the policy. See Policy for naming requirements.
         # @param [String] fields
@@ -921,7 +921,7 @@ module Google
         
         # Gets the effective policy on a resource. This is the result of merging
         # policies in the resource hierarchy and evaluating conditions. The returned
-        # policy will not have an `etag` or `condition` set because it is an evaluated
+        # policy will not have an ETag or `condition` set because it is an evaluated
         # policy across multiple resources. Subtrees of Resource Manager resource
         # hierarchy with 'under:' prefix will not be expanded.
         # @param [String] name
@@ -960,11 +960,11 @@ module Google
         #   following forms: * `projects/`project_number`` * `projects/`project_id`` * `
         #   folders/`folder_id`` * `organizations/`organization_id``
         # @param [Fixnum] page_size
-        #   Size of the pages to be returned. This is currently unsupported and will be
-        #   ignored. The server may at any point start using this field to limit page size.
+        #   Size of the pages to be returned. This is not used, but the server may at any
+        #   point start using this field to limit page size.
         # @param [String] page_token
-        #   Page token used to retrieve the next page. This is currently unsupported and
-        #   will be ignored. The server may at any point start using this field.
+        #   Page token used to retrieve the next page. This is not used, but the server
+        #   may at any point start using this field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -995,13 +995,13 @@ module Google
         end
         
         # Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.
-        # NOT_FOUND` if the constraint or the policy do not exist. Returns a `google.rpc.
-        # Status` with `google.rpc.Code.ABORTED` if the etag supplied in the request
-        # does not match the persisted etag of the policy Note: the supplied policy will
+        # NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.
+        # rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request
+        # doesn't match the persisted ETag of the policy. Note: the supplied policy will
         # perform a full overwrite of all fields.
         # @param [String] name
         #   Immutable. The resource name of the policy. Must be one of the following forms,
-        #   where `constraint_name` is the name of the constraint which this policy
+        #   where `constraint_name` is the name of the constraint that this policy
         #   configures: * `projects/`project_number`/policies/`constraint_name`` * `
         #   folders/`folder_id`/policies/`constraint_name`` * `organizations/`
         #   organization_id`/policies/`constraint_name`` For example, `projects/123/
@@ -1010,9 +1010,9 @@ module Google
         #   responses will return the name using the equivalent project number.
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
         # @param [String] update_mask
-        #   Field mask used to specify the fields to be overwritten in the policy by the
-        #   set. The fields specified in the update_mask are relative to the policy, not
-        #   the full request.
+        #   Field mask used to specify the fields to be overwritten in the policy. The
+        #   fields specified in the update_mask are relative to the policy, not the full
+        #   request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

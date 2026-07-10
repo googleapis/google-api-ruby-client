@@ -187,7 +187,8 @@ module Google
         
         # Returns the trust boundary info for a given service account.
         # @param [String] name
-        #   Required. Resource name of service account.
+        #   Required. Resource name of service account. Format: `projects/-/
+        #   serviceAccounts/`service_account_email``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

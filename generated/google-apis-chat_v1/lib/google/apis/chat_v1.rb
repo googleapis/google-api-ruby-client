@@ -24,7 +24,7 @@ module Google
     # The Google Chat API lets you build Chat apps to integrate your services with
     # Google Chat and manage Chat resources such as spaces, members, and messages.
     #
-    # @see https://developers.google.com/hangouts/chat
+    # @see https://developers.google.com/workspace/chat
     module ChatV1
       # Version of the Google Chat API this client connects to.
       # This is NOT the gem version.
@@ -51,11 +51,20 @@ module Google
       # On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and spaces
       AUTH_CHAT_APP_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.app.memberships'
 
+      # On their own behalf, apps in Google Chat can see members of conversations and spaces
+      AUTH_CHAT_APP_MEMBERSHIPS_READONLY = 'https://www.googleapis.com/auth/chat.app.memberships.readonly'
+
+      # On their own behalf, apps in Google Chat can see all messages and their associated reactions and message content
+      AUTH_CHAT_APP_MESSAGES_READONLY = 'https://www.googleapis.com/auth/chat.app.messages.readonly'
+
       # On their own behalf, apps in Google Chat can create conversations and spaces and see or update their metadata (including history settings and access settings)
       AUTH_CHAT_APP_SPACES = 'https://www.googleapis.com/auth/chat.app.spaces'
 
       # On their own behalf, apps in Google Chat can create conversations and spaces
       AUTH_CHAT_APP_SPACES_CREATE = 'https://www.googleapis.com/auth/chat.app.spaces.create'
+
+      # On their own behalf, apps in Google Chat can see conversations and spaces and their metadata (including history settings and access settings)
+      AUTH_CHAT_APP_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.app.spaces.readonly'
 
       # Private Service: https://www.googleapis.com/auth/chat.bot
       AUTH_CHAT_BOT = 'https://www.googleapis.com/auth/chat.bot'
@@ -108,11 +117,23 @@ module Google
       # View chat and spaces in Google Chat
       AUTH_CHAT_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.spaces.readonly'
 
+      # See and change your availability status in Google Chat.
+      AUTH_CHAT_USERS_AVAILABILITY = 'https://www.googleapis.com/auth/chat.users.availability'
+
+      # See your availability status in Google Chat.
+      AUTH_CHAT_USERS_AVAILABILITY_READONLY = 'https://www.googleapis.com/auth/chat.users.availability.readonly'
+
       # View and modify last read time for Google Chat conversations
       AUTH_CHAT_USERS_READSTATE = 'https://www.googleapis.com/auth/chat.users.readstate'
 
       # View last read time for Google Chat conversations
       AUTH_CHAT_USERS_READSTATE_READONLY = 'https://www.googleapis.com/auth/chat.users.readstate.readonly'
+
+      # View, create, update, and delete your sections in Google Chat; move and list your section items in Google Chat
+      AUTH_CHAT_USERS_SECTIONS = 'https://www.googleapis.com/auth/chat.users.sections'
+
+      # View your sections and their section items in Google Chat
+      AUTH_CHAT_USERS_SECTIONS_READONLY = 'https://www.googleapis.com/auth/chat.users.sections.readonly'
 
       # Read and update your space settings
       AUTH_CHAT_USERS_SPACESETTINGS = 'https://www.googleapis.com/auth/chat.users.spacesettings'

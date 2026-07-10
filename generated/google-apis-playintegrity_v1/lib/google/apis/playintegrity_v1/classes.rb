@@ -331,6 +331,27 @@ module Google
         end
       end
       
+      # Contains the account information such as the licensing status for the user in
+      # the scope.
+      class PcAccountDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. Details about the licensing status of the user for the app in the
+        # scope.
+        # Corresponds to the JSON property `appLicensingVerdict`
+        # @return [String]
+        attr_accessor :app_licensing_verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_licensing_verdict = args[:app_licensing_verdict] if args.key?(:app_licensing_verdict)
+        end
+      end
+      
       # Contains the device attestation information.
       class PcDeviceIntegrity
         include Google::Apis::Core::Hashable
@@ -382,9 +403,36 @@ module Google
         end
       end
       
+      # Contains additional information generated for testing responses.
+      class PcTestingDetails
+        include Google::Apis::Core::Hashable
+      
+        # Indicates that the information contained in this payload is a testing response
+        # that is statically overridden for a tester.
+        # Corresponds to the JSON property `isTestingResponse`
+        # @return [Boolean]
+        attr_accessor :is_testing_response
+        alias_method :is_testing_response?, :is_testing_response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_testing_response = args[:is_testing_response] if args.key?(:is_testing_response)
+        end
+      end
+      
       # Contains PC device attestation details.
       class PcTokenPayloadExternal
         include Google::Apis::Core::Hashable
+      
+        # Contains the account information such as the licensing status for the user in
+        # the scope.
+        # Corresponds to the JSON property `accountDetails`
+        # @return [Google::Apis::PlayintegrityV1::PcAccountDetails]
+        attr_accessor :account_details
       
         # Contains the device attestation information.
         # Corresponds to the JSON property `deviceIntegrity`
@@ -396,14 +444,21 @@ module Google
         # @return [Google::Apis::PlayintegrityV1::PcRequestDetails]
         attr_accessor :request_details
       
+        # Contains additional information generated for testing responses.
+        # Corresponds to the JSON property `testingDetails`
+        # @return [Google::Apis::PlayintegrityV1::PcTestingDetails]
+        attr_accessor :testing_details
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @account_details = args[:account_details] if args.key?(:account_details)
           @device_integrity = args[:device_integrity] if args.key?(:device_integrity)
           @request_details = args[:request_details] if args.key?(:request_details)
+          @testing_details = args[:testing_details] if args.key?(:testing_details)
         end
       end
       

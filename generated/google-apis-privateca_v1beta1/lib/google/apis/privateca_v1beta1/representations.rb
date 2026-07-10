@@ -88,12 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ReconciliationOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -182,6 +176,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::PrivatecaV1beta1::Operation, decorator: Google::Apis::PrivatecaV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -217,14 +212,6 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
-        end
-      end
-      
-      class ReconciliationOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :delete_resource, as: 'deleteResource'
-          property :exclusive_action, as: 'exclusiveAction'
         end
       end
       

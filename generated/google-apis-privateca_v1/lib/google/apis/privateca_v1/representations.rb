@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AttributeTypeAndValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +167,12 @@ module Google
       end
       
       class EnableCertificateAuthorityRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptionSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -322,7 +334,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ReconciliationOperationMetadata
+      class RelativeDistinguishedName
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -464,6 +476,16 @@ module Google
         end
       end
       
+      class AttributeTypeAndValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId', class: Google::Apis::PrivatecaV1::ObjectIdProp, decorator: Google::Apis::PrivatecaV1::ObjectIdProp::Representation
+      
+          property :type, as: 'type'
+          property :value, as: 'value'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -502,6 +524,8 @@ module Google
       class CaPool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::PrivatecaV1::EncryptionSpec, decorator: Google::Apis::PrivatecaV1::EncryptionSpec::Representation
+      
           property :issuance_policy, as: 'issuancePolicy', class: Google::Apis::PrivatecaV1::IssuancePolicy, decorator: Google::Apis::PrivatecaV1::IssuancePolicy::Representation
       
           hash :labels, as: 'labels'
@@ -541,6 +565,7 @@ module Google
           property :pem_certificate, as: 'pemCertificate'
           collection :pem_certificate_chain, as: 'pemCertificateChain'
           property :pem_csr, as: 'pemCsr'
+          property :requested_not_before_time, as: 'requestedNotBeforeTime'
           property :revocation_details, as: 'revocationDetails', class: Google::Apis::PrivatecaV1::RevocationDetails, decorator: Google::Apis::PrivatecaV1::RevocationDetails::Representation
       
           property :subject_mode, as: 'subjectMode'
@@ -711,6 +736,13 @@ module Google
         end
       end
       
+      class EncryptionSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key, as: 'cloudKmsKey'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -766,6 +798,7 @@ module Google
       class IssuancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_requester_specified_not_before_time, as: 'allowRequesterSpecifiedNotBeforeTime'
           property :allowed_issuance_modes, as: 'allowedIssuanceModes', class: Google::Apis::PrivatecaV1::IssuanceModes, decorator: Google::Apis::PrivatecaV1::IssuanceModes::Representation
       
           collection :allowed_key_types, as: 'allowedKeyTypes', class: Google::Apis::PrivatecaV1::AllowedKeyType, decorator: Google::Apis::PrivatecaV1::AllowedKeyType::Representation
@@ -888,6 +921,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::PrivatecaV1::Operation, decorator: Google::Apis::PrivatecaV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -978,11 +1012,11 @@ module Google
         end
       end
       
-      class ReconciliationOperationMetadata
+      class RelativeDistinguishedName
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :delete_resource, as: 'deleteResource'
-          property :exclusive_action, as: 'exclusiveAction'
+          collection :attributes, as: 'attributes', class: Google::Apis::PrivatecaV1::AttributeTypeAndValue, decorator: Google::Apis::PrivatecaV1::AttributeTypeAndValue::Representation
+      
         end
       end
       
@@ -1047,6 +1081,8 @@ module Google
           property :organizational_unit, as: 'organizationalUnit'
           property :postal_code, as: 'postalCode'
           property :province, as: 'province'
+          collection :rdn_sequence, as: 'rdnSequence', class: Google::Apis::PrivatecaV1::RelativeDistinguishedName, decorator: Google::Apis::PrivatecaV1::RelativeDistinguishedName::Representation
+      
           property :street_address, as: 'streetAddress'
         end
       end

@@ -799,7 +799,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Sessions with an end time that is between startTime and endTime of the request.
+        # Sessions starting before endTime of the request and ending after startTime of
+        # the request up to (endTime of the request + 1 day).
         # Corresponds to the JSON property `session`
         # @return [Array<Google::Apis::FitnessV1::Session>]
         attr_accessor :session

@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrganizationSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Pipeline
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProjectSubscriptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Provider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +347,12 @@ module Google
       end
       
       class Pubsub
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetryPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -545,6 +563,10 @@ module Google
           property :logging_config, as: 'loggingConfig', class: Google::Apis::EventarcV1::LoggingConfig, decorator: Google::Apis::EventarcV1::LoggingConfig::Representation
       
           property :name, as: 'name'
+          property :organization_subscription, as: 'organizationSubscription', class: Google::Apis::EventarcV1::OrganizationSubscription, decorator: Google::Apis::EventarcV1::OrganizationSubscription::Representation
+      
+          property :project_subscriptions, as: 'projectSubscriptions', class: Google::Apis::EventarcV1::ProjectSubscriptions, decorator: Google::Apis::EventarcV1::ProjectSubscriptions::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -686,6 +708,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::EventarcV1::GoogleLongrunningOperation, decorator: Google::Apis::EventarcV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -870,6 +893,13 @@ module Google
         end
       end
       
+      class OrganizationSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class Pipeline
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -890,6 +920,7 @@ module Google
           property :name, as: 'name'
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineRetryPolicy, decorator: Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineRetryPolicy::Representation
       
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -904,6 +935,13 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class ProjectSubscriptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :list, as: 'list'
         end
       end
       
@@ -922,6 +960,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :subscription, as: 'subscription'
           property :topic, as: 'topic'
+        end
+      end
+      
+      class RetryPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_attempts, as: 'maxAttempts'
         end
       end
       
@@ -979,6 +1024,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :retry_policy, as: 'retryPolicy', class: Google::Apis::EventarcV1::RetryPolicy, decorator: Google::Apis::EventarcV1::RetryPolicy::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :transport, as: 'transport', class: Google::Apis::EventarcV1::Transport, decorator: Google::Apis::EventarcV1::Transport::Representation

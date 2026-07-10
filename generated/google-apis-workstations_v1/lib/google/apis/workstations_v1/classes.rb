@@ -505,6 +505,27 @@ module Google
         end
       end
       
+      # Configuration options for Cluster HTTP Gateway.
+      class GatewayConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether HTTP/2 is enabled for this workstation cluster. Defaults to
+        # false.
+        # Corresponds to the JSON property `http2Enabled`
+        # @return [Boolean]
+        attr_accessor :http2_enabled
+        alias_method :http2_enabled?, :http2_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http2_enabled = args[:http2_enabled] if args.key?(:http2_enabled)
+        end
+      end
+      
       # A set of Compute Engine Confidential VM instance options.
       class GceConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
@@ -522,6 +543,63 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+        end
+      end
+      
+      # A Persistent Directory backed by a Compute Engine [Hyperdisk Balanced High
+      # Availability Disk](https://cloud.google.com/compute/docs/disks/hd-types/
+      # hyperdisk-balanced-ha). This is a high-availability block storage solution
+      # that offers a balance between performance and cost for most general-purpose
+      # workloads.
+      class GceHyperdiskBalancedHighAvailability
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of seconds to wait after initially creating or subsequently
+        # shutting down the workstation before converting its disk into a snapshot. This
+        # generally saves costs at the expense of greater startup time on next
+        # workstation start, as the service will need to create a disk from the archival
+        # snapshot. A value of `"0s"` indicates that the disk will never be archived.
+        # Corresponds to the JSON property `archiveTimeout`
+        # @return [String]
+        attr_accessor :archive_timeout
+      
+        # Optional. Maximum size in GB to which this persistent directory can be resized.
+        # Defaults to unlimited if not set.
+        # Corresponds to the JSON property `maxSizeGb`
+        # @return [Fixnum]
+        attr_accessor :max_size_gb
+      
+        # Optional. Whether the persistent disk should be deleted when the workstation
+        # is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
+        # Corresponds to the JSON property `reclaimPolicy`
+        # @return [String]
+        attr_accessor :reclaim_policy
+      
+        # Optional. The GB capacity of a persistent home directory for each workstation
+        # created with this configuration. Must be empty if source_snapshot is set.
+        # Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        # Optional. Name of the snapshot to use as the source for the disk. If set,
+        # size_gb must be empty. Must be formatted as ext4 file system with no
+        # partitions.
+        # Corresponds to the JSON property `sourceSnapshot`
+        # @return [String]
+        attr_accessor :source_snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_timeout = args[:archive_timeout] if args.key?(:archive_timeout)
+          @max_size_gb = args[:max_size_gb] if args.key?(:max_size_gb)
+          @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
         end
       end
       
@@ -594,6 +672,11 @@ module Google
         attr_accessor :enable_nested_virtualization
         alias_method :enable_nested_virtualization?, :enable_nested_virtualization
       
+        # Optional. Custom metadata to apply to Compute Engine instances.
+        # Corresponds to the JSON property `instanceMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :instance_metadata
+      
         # Optional. The type of machine to use for VM instances—for example, `"e2-
         # standard-4"`. For more information about machine types that Cloud Workstations
         # supports, see the list of [available machine types](https://cloud.google.com/
@@ -643,6 +726,19 @@ module Google
         # @return [Google::Apis::WorkstationsV1::GceShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
       
+        # Optional. Link to the startup script stored in Cloud Storage. This script will
+        # be run on the host workstation VM when the VM is created. The URI must be of
+        # the form gs://`bucket-name`/`object-name`. If specifying a startup script, the
+        # service account must have [Permission to access the bucket and script file in
+        # Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-
+        # permissions). Otherwise, the script must be publicly accessible. Note that the
+        # service regularly updates the OS version of the host VM, and it is the
+        # responsibility of the user to ensure the script stays compatible with the OS
+        # version.
+        # Corresponds to the JSON property `startupScriptUri`
+        # @return [String]
+        attr_accessor :startup_script_uri
+      
         # Optional. Network tags to add to the Compute Engine VMs backing the
         # workstations. This option applies [network tags](https://cloud.google.com/vpc/
         # docs/add-remove-network-tags) to VMs created with this configuration. These
@@ -673,12 +769,14 @@ module Google
           @disable_public_ip_addresses = args[:disable_public_ip_addresses] if args.key?(:disable_public_ip_addresses)
           @disable_ssh = args[:disable_ssh] if args.key?(:disable_ssh)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
+          @instance_metadata = args[:instance_metadata] if args.key?(:instance_metadata)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool_size = args[:pool_size] if args.key?(:pool_size)
           @pooled_instances = args[:pooled_instances] if args.key?(:pooled_instances)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @startup_script_uri = args[:startup_script_uri] if args.key?(:startup_script_uri)
           @tags = args[:tags] if args.key?(:tags)
           @vm_tags = args[:vm_tags] if args.key?(:vm_tags)
         end
@@ -777,6 +875,15 @@ module Google
       class GceRegionalPersistentDisk
         include Google::Apis::Core::Hashable
       
+        # Optional. Number of seconds to wait after initially creating or subsequently
+        # shutting down the workstation before converting its disk into a snapshot. This
+        # generally saves costs at the expense of greater startup time on next
+        # workstation start, as the service will need to create a disk from the archival
+        # snapshot. A value of `"0s"` indicates that the disk will never be archived.
+        # Corresponds to the JSON property `archiveTimeout`
+        # @return [String]
+        attr_accessor :archive_timeout
+      
         # Optional. The [type of the persistent disk](https://cloud.google.com/compute/
         # docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
         # Corresponds to the JSON property `diskType`
@@ -789,6 +896,12 @@ module Google
         # Corresponds to the JSON property `fsType`
         # @return [String]
         attr_accessor :fs_type
+      
+        # Optional. Maximum size in GB to which this persistent directory can be resized.
+        # Defaults to unlimited if not set.
+        # Corresponds to the JSON property `maxSizeGb`
+        # @return [Fixnum]
+        attr_accessor :max_size_gb
       
         # Optional. Whether the persistent disk should be deleted when the workstation
         # is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
@@ -817,8 +930,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @archive_timeout = args[:archive_timeout] if args.key?(:archive_timeout)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @fs_type = args[:fs_type] if args.key?(:fs_type)
+          @max_size_gb = args[:max_size_gb] if args.key?(:max_size_gb)
           @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
@@ -999,6 +1114,14 @@ module Google
         # @return [Array<Google::Apis::WorkstationsV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1007,6 +1130,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1341,6 +1465,15 @@ module Google
       class PersistentDirectory
         include Google::Apis::Core::Hashable
       
+        # A Persistent Directory backed by a Compute Engine [Hyperdisk Balanced High
+        # Availability Disk](https://cloud.google.com/compute/docs/disks/hd-types/
+        # hyperdisk-balanced-ha). This is a high-availability block storage solution
+        # that offers a balance between performance and cost for most general-purpose
+        # workloads.
+        # Corresponds to the JSON property `gceHd`
+        # @return [Google::Apis::WorkstationsV1::GceHyperdiskBalancedHighAvailability]
+        attr_accessor :gce_hd
+      
         # A Persistent Directory backed by a Compute Engine regional persistent disk.
         # The persistent_directories field is repeated, but it may contain only one
         # entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/
@@ -1363,6 +1496,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gce_hd = args[:gce_hd] if args.key?(:gce_hd)
           @gce_pd = args[:gce_pd] if args.key?(:gce_pd)
           @mount_path = args[:mount_path] if args.key?(:mount_path)
         end
@@ -1652,7 +1786,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Optional. If set, validate the request and preview the review, but do not
+        # Optional. If set, validate the request and preview the result, but do not
         # actually apply it.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
@@ -1720,7 +1854,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Optional. If set, validate the request and preview the review, but do not
+        # Optional. If set, validate the request and preview the result, but do not
         # actually apply it.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
@@ -1842,6 +1976,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Directories to persist across workstation sessions.
+        # Corresponds to the JSON property `persistentDirectories`
+        # @return [Array<Google::Apis::WorkstationsV1::WorkstationPersistentDirectory>]
+        attr_accessor :persistent_directories
+      
         # Output only. Indicates whether this workstation is currently being updated to
         # match its intended state.
         # Corresponds to the JSON property `reconciling`
@@ -1897,6 +2036,7 @@ module Google
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @persistent_directories = args[:persistent_directories] if args.key?(:persistent_directories)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @runtime_host = args[:runtime_host] if args.key?(:runtime_host)
           @source_workstation = args[:source_workstation] if args.key?(:source_workstation)
@@ -1966,6 +2106,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Configuration options for Cluster HTTP Gateway.
+        # Corresponds to the JSON property `gatewayConfig`
+        # @return [Google::Apis::WorkstationsV1::GatewayConfig]
+        attr_accessor :gateway_config
+      
         # Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources)
         # that are applied to the workstation cluster and that are also propagated to
         # the underlying Compute Engine resources.
@@ -2020,6 +2165,27 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. Specifies the redirect URL for unauthorized requests received by
+        # workstation VMs in this cluster. Redirects to this endpoint will send a base64
+        # encoded `state` query param containing the target workstation name and
+        # original request hostname. The endpoint is responsible for retrieving a token
+        # using `GenerateAccessToken` and redirecting back to the original hostname with
+        # the token.
+        # Corresponds to the JSON property `workstationAuthorizationUrl`
+        # @return [String]
+        attr_accessor :workstation_authorization_url
+      
+        # Optional. Specifies the launch URL for workstations in this cluster. Requests
+        # sent to unstarted workstations will be redirected to this URL. Requests
+        # redirected to the launch endpoint will be sent with a `workstation` and `
+        # project` query parameter containing the full workstation resource name and
+        # project ID, respectively. The launch endpoint is responsible for starting the
+        # workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a
+        # redirect to the workstation's host URL.
+        # Corresponds to the JSON property `workstationLaunchUrl`
+        # @return [String]
+        attr_accessor :workstation_launch_url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2035,6 +2201,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @domain_config = args[:domain_config] if args.key?(:domain_config)
           @etag = args[:etag] if args.key?(:etag)
+          @gateway_config = args[:gateway_config] if args.key?(:gateway_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -2044,6 +2211,8 @@ module Google
           @tags = args[:tags] if args.key?(:tags)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @workstation_authorization_url = args[:workstation_authorization_url] if args.key?(:workstation_authorization_url)
+          @workstation_launch_url = args[:workstation_launch_url] if args.key?(:workstation_launch_url)
         end
       end
       
@@ -2288,6 +2457,33 @@ module Google
           @running_timeout = args[:running_timeout] if args.key?(:running_timeout)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A directory to persist across workstation sessions. Updates to this field will
+      # only take effect on this workstation after it is restarted.
+      class WorkstationPersistentDirectory
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The mount path of the persistent directory.
+        # Corresponds to the JSON property `mountPath`
+        # @return [String]
+        attr_accessor :mount_path
+      
+        # Optional. Size of the persistent directory in GB. If specified in an update
+        # request, this is the desired size of the directory.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mount_path = args[:mount_path] if args.key?(:mount_path)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
         end
       end
     end

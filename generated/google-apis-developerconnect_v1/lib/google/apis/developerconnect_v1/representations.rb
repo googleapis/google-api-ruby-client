@@ -28,6 +28,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppHubService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AppHubWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArtifactConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArtifactDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BasicAuthentication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BearerTokenAuthentication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BitbucketCloudConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +89,18 @@ module Google
       end
       
       class CryptoKeyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomOAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,6 +172,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchUserRepositoriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FinishOAuthResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeWorkload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenericHttpEndpointConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GitHubConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,7 +232,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleArtifactAnalysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleArtifactRegistry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsightsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,7 +292,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDeploymentEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListGitRepositoryLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInsightsConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,13 +382,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Projects
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProviderOAuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProxyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuntimeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecureSourceManagerInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceDirectoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartOAuthResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,18 +442,87 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserRepository
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountConnector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
+          property :custom_oauth_config, as: 'customOauthConfig', class: Google::Apis::DeveloperconnectV1::CustomOAuthConfig, decorator: Google::Apis::DeveloperconnectV1::CustomOAuthConfig::Representation
+      
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :oauth_start_uri, as: 'oauthStartUri'
           property :provider_oauth_config, as: 'providerOauthConfig', class: Google::Apis::DeveloperconnectV1::ProviderOAuthConfig, decorator: Google::Apis::DeveloperconnectV1::ProviderOAuthConfig::Representation
       
+          property :proxy_config, as: 'proxyConfig', class: Google::Apis::DeveloperconnectV1::ProxyConfig, decorator: Google::Apis::DeveloperconnectV1::ProxyConfig::Representation
+      
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AppHubService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apphub_service, as: 'apphubService'
+          property :criticality, as: 'criticality'
+          property :environment, as: 'environment'
+        end
+      end
+      
+      class AppHubWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :criticality, as: 'criticality'
+          property :environment, as: 'environment'
+          property :workload, as: 'workload'
+        end
+      end
+      
+      class ArtifactConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_artifact_analysis, as: 'googleArtifactAnalysis', class: Google::Apis::DeveloperconnectV1::GoogleArtifactAnalysis, decorator: Google::Apis::DeveloperconnectV1::GoogleArtifactAnalysis::Representation
+      
+          property :google_artifact_registry, as: 'googleArtifactRegistry', class: Google::Apis::DeveloperconnectV1::GoogleArtifactRegistry, decorator: Google::Apis::DeveloperconnectV1::GoogleArtifactRegistry::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class ArtifactDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_alias, as: 'artifactAlias'
+          property :artifact_reference, as: 'artifactReference'
+          property :container_status_summary, as: 'containerStatusSummary'
+          property :deploy_time, as: 'deployTime'
+          property :id, as: 'id'
+          collection :source_code_uris, as: 'sourceCodeUris'
+          collection :source_commit_uris, as: 'sourceCommitUris'
+          property :undeploy_time, as: 'undeployTime'
+        end
+      end
+      
+      class BasicAuthentication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :username, as: 'username'
+        end
+      end
+      
+      class BearerTokenAuthentication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token_secret_version, as: 'tokenSecretVersion'
         end
       end
       
@@ -377,11 +584,15 @@ module Google
       
           property :gitlab_enterprise_config, as: 'gitlabEnterpriseConfig', class: Google::Apis::DeveloperconnectV1::GitLabEnterpriseConfig, decorator: Google::Apis::DeveloperconnectV1::GitLabEnterpriseConfig::Representation
       
+          property :http_config, as: 'httpConfig', class: Google::Apis::DeveloperconnectV1::GenericHttpEndpointConfig, decorator: Google::Apis::DeveloperconnectV1::GenericHttpEndpointConfig::Representation
+      
           property :installation_state, as: 'installationState', class: Google::Apis::DeveloperconnectV1::InstallationState, decorator: Google::Apis::DeveloperconnectV1::InstallationState::Representation
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          property :secure_source_manager_instance_config, as: 'secureSourceManagerInstanceConfig', class: Google::Apis::DeveloperconnectV1::SecureSourceManagerInstanceConfig, decorator: Google::Apis::DeveloperconnectV1::SecureSourceManagerInstanceConfig::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -391,6 +602,41 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_reference, as: 'keyReference'
+        end
+      end
+      
+      class CustomOAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_uri, as: 'authUri'
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          property :host_uri, as: 'hostUri'
+          property :pkce_disabled, as: 'pkceDisabled'
+          property :scm_provider, as: 'scmProvider'
+          collection :scopes, as: 'scopes'
+          property :server_version, as: 'serverVersion'
+          property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig, decorator: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig::Representation
+      
+          property :ssl_ca_certificate, as: 'sslCaCertificate'
+          property :token_uri, as: 'tokenUri'
+        end
+      end
+      
+      class DeploymentEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :artifact_deployments, as: 'artifactDeployments', class: Google::Apis::DeveloperconnectV1::ArtifactDeployment, decorator: Google::Apis::DeveloperconnectV1::ArtifactDeployment::Representation
+      
+          property :create_time, as: 'createTime'
+          property :deploy_time, as: 'deployTime'
+          property :name, as: 'name'
+          property :runtime_config, as: 'runtimeConfig', class: Google::Apis::DeveloperconnectV1::RuntimeConfig, decorator: Google::Apis::DeveloperconnectV1::RuntimeConfig::Representation
+      
+          property :runtime_deployment_uri, as: 'runtimeDeploymentUri'
+          property :state, as: 'state'
+          property :undeploy_time, as: 'undeployTime'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -480,6 +726,45 @@ module Google
         end
       end
       
+      class FetchUserRepositoriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_repos, as: 'userRepos', class: Google::Apis::DeveloperconnectV1::UserRepository, decorator: Google::Apis::DeveloperconnectV1::UserRepository::Representation
+      
+        end
+      end
+      
+      class FinishOAuthResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exchange_error, as: 'exchangeError', class: Google::Apis::DeveloperconnectV1::ExchangeError, decorator: Google::Apis::DeveloperconnectV1::ExchangeError::Representation
+      
+        end
+      end
+      
+      class GkeWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster'
+          property :deployment, as: 'deployment'
+        end
+      end
+      
+      class GenericHttpEndpointConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic_authentication, as: 'basicAuthentication', class: Google::Apis::DeveloperconnectV1::BasicAuthentication, decorator: Google::Apis::DeveloperconnectV1::BasicAuthentication::Representation
+      
+          property :bearer_token_authentication, as: 'bearerTokenAuthentication', class: Google::Apis::DeveloperconnectV1::BearerTokenAuthentication, decorator: Google::Apis::DeveloperconnectV1::BearerTokenAuthentication::Representation
+      
+          property :host_uri, as: 'hostUri'
+          property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig, decorator: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig::Representation
+      
+          property :ssl_ca_certificate, as: 'sslCaCertificate'
+        end
+      end
+      
       class GitHubConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -499,6 +784,7 @@ module Google
           property :app_slug, as: 'appSlug'
           property :host_uri, as: 'hostUri'
           property :installation_uri, as: 'installationUri'
+          property :organization, as: 'organization'
           property :private_key_secret_version, as: 'privateKeySecretVersion'
           property :server_version, as: 'serverVersion'
           property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig, decorator: Google::Apis::DeveloperconnectV1::ServiceDirectoryConfig::Representation
@@ -539,6 +825,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+          property :http_proxy_base_uri, as: 'httpProxyBaseUri'
         end
       end
       
@@ -560,12 +847,56 @@ module Google
         end
       end
       
+      class GoogleArtifactAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class GoogleArtifactRegistry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class GoogleCloudRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_uri, as: 'serviceUri'
+        end
+      end
+      
       class HttpBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_type, as: 'contentType'
           property :data, :base64 => true, as: 'data'
           collection :extensions, as: 'extensions'
+        end
+      end
+      
+      class InsightsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :app_hub_application, as: 'appHubApplication'
+          collection :artifact_configs, as: 'artifactConfigs', class: Google::Apis::DeveloperconnectV1::ArtifactConfig, decorator: Google::Apis::DeveloperconnectV1::ArtifactConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          collection :errors, as: 'errors', class: Google::Apis::DeveloperconnectV1::Status, decorator: Google::Apis::DeveloperconnectV1::Status::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :projects, as: 'projects', class: Google::Apis::DeveloperconnectV1::Projects, decorator: Google::Apis::DeveloperconnectV1::Projects::Representation
+      
+          property :reconciling, as: 'reconciling'
+          collection :runtime_configs, as: 'runtimeConfigs', class: Google::Apis::DeveloperconnectV1::RuntimeConfig, decorator: Google::Apis::DeveloperconnectV1::RuntimeConfig::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -614,10 +945,29 @@ module Google
         end
       end
       
+      class ListDeploymentEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployment_events, as: 'deploymentEvents', class: Google::Apis::DeveloperconnectV1::DeploymentEvent, decorator: Google::Apis::DeveloperconnectV1::DeploymentEvent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListGitRepositoryLinksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :git_repository_links, as: 'gitRepositoryLinks', class: Google::Apis::DeveloperconnectV1::GitRepositoryLink, decorator: Google::Apis::DeveloperconnectV1::GitRepositoryLink::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListInsightsConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :insights_configs, as: 'insightsConfigs', class: Google::Apis::DeveloperconnectV1::InsightsConfig, decorator: Google::Apis::DeveloperconnectV1::InsightsConfig::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -639,6 +989,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DeveloperconnectV1::Operation, decorator: Google::Apis::DeveloperconnectV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -736,6 +1087,13 @@ module Google
         end
       end
       
+      class Projects
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :project_ids, as: 'projectIds'
+        end
+      end
+      
       class ProviderOAuthConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -744,10 +1102,54 @@ module Google
         end
       end
       
+      class ProxyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :http_proxy_base_uri, as: 'httpProxyBaseUri'
+        end
+      end
+      
+      class RuntimeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_hub_service, as: 'appHubService', class: Google::Apis::DeveloperconnectV1::AppHubService, decorator: Google::Apis::DeveloperconnectV1::AppHubService::Representation
+      
+          property :app_hub_workload, as: 'appHubWorkload', class: Google::Apis::DeveloperconnectV1::AppHubWorkload, decorator: Google::Apis::DeveloperconnectV1::AppHubWorkload::Representation
+      
+          property :gke_workload, as: 'gkeWorkload', class: Google::Apis::DeveloperconnectV1::GkeWorkload, decorator: Google::Apis::DeveloperconnectV1::GkeWorkload::Representation
+      
+          property :google_cloud_run, as: 'googleCloudRun', class: Google::Apis::DeveloperconnectV1::GoogleCloudRun, decorator: Google::Apis::DeveloperconnectV1::GoogleCloudRun::Representation
+      
+          property :state, as: 'state'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class SecureSourceManagerInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+        end
+      end
+      
       class ServiceDirectoryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service, as: 'service'
+        end
+      end
+      
+      class StartOAuthResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auth_uri, as: 'authUri'
+          property :client_id, as: 'clientId'
+          property :code_challenge, as: 'codeChallenge'
+          property :code_challenge_method, as: 'codeChallengeMethod'
+          collection :scopes, as: 'scopes'
+          property :system_provider_id, as: 'systemProviderId'
+          property :ticket, as: 'ticket'
         end
       end
       
@@ -775,6 +1177,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :user_token_secret_version, as: 'userTokenSecretVersion'
           property :username, as: 'username'
+        end
+      end
+      
+      class UserRepository
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clone_uri, as: 'cloneUri'
+          property :display_name, as: 'displayName'
+          property :git_proxy_uri, as: 'gitProxyUri'
         end
       end
     end

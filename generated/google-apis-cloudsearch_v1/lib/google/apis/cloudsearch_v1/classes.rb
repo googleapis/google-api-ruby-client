@@ -855,39 +855,6 @@ module Google
         end
       end
       
-      # Debug Search Response.
-      class DebugResponse
-        include Google::Apis::Core::Hashable
-      
-        # Serialized string of GenericSearchRequest.
-        # Corresponds to the JSON property `gsrRequest`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :gsr_request
-      
-        # Serialized string of GenericSearchResponse.
-        # Corresponds to the JSON property `gsrResponse`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :gsr_response
-      
-        # The search API response. NEXT ID: 17
-        # Corresponds to the JSON property `searchResponse`
-        # @return [Google::Apis::CloudsearchV1::SearchResponse]
-        attr_accessor :search_response
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @gsr_request = args[:gsr_request] if args.key?(:gsr_request)
-          @gsr_response = args[:gsr_response] if args.key?(:gsr_response)
-          @search_response = args[:search_response] if args.key?(:search_response)
-        end
-      end
-      
       # 
       class DeleteQueueItemsRequest
         include Google::Apis::Core::Hashable
@@ -4119,7 +4086,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Access control list information for the item. For more information see [Map
-        # ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+        # ACLs](https://developers.google.com/workspace/cloud-search/docs/guides/acls).
         # Corresponds to the JSON property `acl`
         # @return [Google::Apis::CloudsearchV1::ItemAcl]
         attr_accessor :acl
@@ -4175,8 +4142,8 @@ module Google
         # queued item with a version value that is less than or equal to the version of
         # the currently indexed item. The maximum length for this field is 1024 bytes.
         # For information on how item version affects the deletion process, refer to [
-        # Handle revisions after manual deletes](https://developers.google.com/cloud-
-        # search/docs/guides/operations).
+        # Handle revisions after manual deletes](https://developers.google.com/workspace/
+        # cloud-search/docs/guides/operations).
         # Corresponds to the JSON property `version`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -4202,7 +4169,7 @@ module Google
       end
       
       # Access control list information for the item. For more information see [Map
-      # ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+      # ACLs](https://developers.google.com/workspace/cloud-search/docs/guides/acls).
       class ItemAcl
         include Google::Apis::Core::Hashable
       
@@ -4602,6 +4569,14 @@ module Google
         # @return [Array<Google::Apis::CloudsearchV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4610,6 +4585,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -5844,7 +5820,8 @@ module Google
         # supported for Text properties. IsReturnable must be true to set this option.
         # In a given datasource maximum of 5 properties can be marked as
         # is_wildcard_searchable. For more details, see [Define object properties](https:
-        # //developers.google.com/cloud-search/docs/guides/schema-guide#properties)
+        # //developers.google.com/workspace/cloud-search/docs/guides/schema-guide#
+        # properties)
         # Corresponds to the JSON property `isWildcardSearchable`
         # @return [Boolean]
         attr_accessor :is_wildcard_searchable
@@ -6088,6 +6065,16 @@ module Google
         # @return [String]
         attr_accessor :interpreted_query
       
+        # The actual number of results returned by the interpreted query.
+        # Corresponds to the JSON property `interpretedQueryActualResultCount`
+        # @return [Fixnum]
+        attr_accessor :interpreted_query_actual_result_count
+      
+        # The estimated number of results returned by the interpreted query.
+        # Corresponds to the JSON property `interpretedQueryEstimatedResultCount`
+        # @return [Fixnum]
+        attr_accessor :interpreted_query_estimated_result_count
+      
         # The reason for interpretation of the query. This field will not be UNSPECIFIED
         # if the interpretation type is not NONE.
         # Corresponds to the JSON property `reason`
@@ -6102,6 +6089,8 @@ module Google
         def update!(**args)
           @interpretation_type = args[:interpretation_type] if args.key?(:interpretation_type)
           @interpreted_query = args[:interpreted_query] if args.key?(:interpreted_query)
+          @interpreted_query_actual_result_count = args[:interpreted_query_actual_result_count] if args.key?(:interpreted_query_actual_result_count)
+          @interpreted_query_estimated_result_count = args[:interpreted_query_estimated_result_count] if args.key?(:interpreted_query_estimated_result_count)
           @reason = args[:reason] if args.key?(:reason)
         end
       end
@@ -6335,10 +6324,19 @@ module Google
         end
       end
       
-      # This field does not contain anything as of now and is just used as an
-      # indicator that the suggest result was a phrase completion.
+      # 
       class QuerySuggestion
         include Google::Apis::Core::Hashable
+      
+        # Last query time of the suggestion for query history suggestions.
+        # Corresponds to the JSON property `lastQueryTime`
+        # @return [String]
+        attr_accessor :last_query_time
+      
+        # Source corpus of the suggestion.
+        # Corresponds to the JSON property `sourceCorpus`
+        # @return [String]
+        attr_accessor :source_corpus
       
         def initialize(**args)
            update!(**args)
@@ -6346,6 +6344,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @last_query_time = args[:last_query_time] if args.key?(:last_query_time)
+          @source_corpus = args[:source_corpus] if args.key?(:source_corpus)
         end
       end
       
@@ -6425,6 +6425,12 @@ module Google
       class RequestOptions
         include Google::Apis::Core::Hashable
       
+        # The BCP-47 language code, such as "pt" or "en". It represents the user's
+        # preferred Display Language.
+        # Corresponds to the JSON property `clientDisplayLanguageCode`
+        # @return [String]
+        attr_accessor :client_display_language_code
+      
         # Shared request debug options for all cloudsearch RPC methods.
         # Corresponds to the JSON property `debugOptions`
         # @return [Google::Apis::CloudsearchV1::DebugOptions]
@@ -6463,6 +6469,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_display_language_code = args[:client_display_language_code] if args.key?(:client_display_language_code)
           @debug_options = args[:debug_options] if args.key?(:debug_options)
           @language_code = args[:language_code] if args.key?(:language_code)
           @search_application_id = args[:search_application_id] if args.key?(:search_application_id)
@@ -7058,7 +7065,7 @@ module Google
         end
       end
       
-      # The search API request. NEXT ID: 17
+      # The search API request. NEXT ID: 26
       class SearchRequest
         include Google::Apis::Core::Hashable
       
@@ -7130,7 +7137,7 @@ module Google
         end
       end
       
-      # The search API response. NEXT ID: 17
+      # The search API response. NEXT ID: 20
       class SearchResponse
         include Google::Apis::Core::Hashable
       
@@ -7212,7 +7219,7 @@ module Google
         end
       end
       
-      # Results containing indexed information for a document.
+      # Results containing indexed information for a document. Next ID: 17
       class SearchResult
         include Google::Apis::Core::Hashable
       
@@ -7673,8 +7680,7 @@ module Google
         # @return [Google::Apis::CloudsearchV1::PeopleSuggestion]
         attr_accessor :people_suggestion
       
-        # This field does not contain anything as of now and is just used as an
-        # indicator that the suggest result was a phrase completion.
+        # This field will be present if the suggested query is a word/phrase completion.
         # Corresponds to the JSON property `querySuggestion`
         # @return [Google::Apis::CloudsearchV1::QuerySuggestion]
         attr_accessor :query_suggestion
@@ -8005,11 +8011,11 @@ module Google
         attr_accessor :source
       
         # Only applies to [`settings.datasources.patch`](https://developers.google.com/
-        # cloud-search/docs/reference/rest/v1/settings.datasources/patch). Update mask
-        # to control which fields to update. Example field paths: `name`, `displayName`.
-        # * If `update_mask` is non-empty, then only the fields specified in the `
-        # update_mask` are updated. * If you specify a field in the `update_mask`, but
-        # don't specify its value in the source, that field is cleared. * If the `
+        # workspace/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+        # Update mask to control which fields to update. Example field paths: `name`, `
+        # displayName`. * If `update_mask` is non-empty, then only the fields specified
+        # in the `update_mask` are updated. * If you specify a field in the `update_mask`
+        # , but don't specify its value in the source, that field is cleared. * If the `
         # update_mask` is not present or empty or has the value `*`, then all fields are
         # updated.
         # Corresponds to the JSON property `updateMask`

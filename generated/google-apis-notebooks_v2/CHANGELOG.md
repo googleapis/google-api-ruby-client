@@ -1,5 +1,55 @@
 # Release history for google-apis-notebooks_v2
 
+### v0.35.0 (2026-06-28)
+
+* Regenerated from discovery document revision 20260610
+
+### v0.34.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260528
+* Regenerated using generator version 0.19.0
+
+### v0.33.0 (2026-05-24)
+
+* Regenerated from discovery document revision 20260521
+
+### v0.32.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260401
+
+### v0.31.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260130
+
+### v0.30.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251121
+
+### v0.29.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251029
+
+### v0.28.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251016
+
+### v0.27.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251008
+
+### v0.26.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250710
+
+### v0.25.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250604
+
+### v0.24.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250528
+* Regenerated using generator version 0.18.0
+
 ### v0.23.0 (2025-05-18)
 
 * Regenerated from discovery document revision 20250507

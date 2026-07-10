@@ -81,12 +81,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -225,6 +234,9 @@ module Google
         # Returns the properties of a single cluster.
         # @param [String] name
         #   Required. The name of the cluster whose configuration to return.
+        # @param [String] view
+        #   Optional. Specifies the view of the Cluster resource to be returned. Defaults
+        #   to CLUSTER_VIEW_BASIC. See the ClusterView enum for possible values.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -242,11 +254,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_cluster(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_cluster(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ManagedkafkaV1::Cluster::Representation
           command.response_class = Google::Apis::ManagedkafkaV1::Cluster
           command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -696,6 +709,9 @@ module Google
         # @param [String] parent
         #   Required. The parent cluster whose consumer groups are to be listed.
         #   Structured like `projects/`project`/locations/`location`/clusters/`cluster``.
+        # @param [String] filter
+        #   Optional. Filter expression for the result. Only supports filtering by topic
+        #   name as a key in the `topics` map.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of consumer groups to return. The service may
         #   return fewer than this value. If unset or zero, all consumer groups for the
@@ -705,6 +721,9 @@ module Google
         #   Provide this to retrieve the subsequent page. When paginating, all other
         #   parameters provided to `ListConsumerGroups` must match the call that provided
         #   the page token.
+        # @param [String] view
+        #   Optional. Specifies the view (BASIC or FULL) of the ConsumerGroup resource to
+        #   be returned in the response. Defaults to FULL view.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -722,13 +741,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_cluster_consumer_groups(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_cluster_consumer_groups(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/consumerGroups', options)
           command.response_representation = Google::Apis::ManagedkafkaV1::ListConsumerGroupsResponse::Representation
           command.response_class = Google::Apis::ManagedkafkaV1::ListConsumerGroupsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1629,6 +1650,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1646,7 +1675,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::ManagedkafkaV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ManagedkafkaV1::ListOperationsResponse
@@ -1654,6 +1683,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1759,6 +1789,9 @@ module Google
         # @param [String] parent
         #   Required. The parent whose schema registry instances are to be listed.
         #   Structured like: `projects/`project`/locations/`location``
+        # @param [String] view
+        #   Optional. Specifies the view to return for the schema registry instances. If
+        #   not specified, the default view is SCHEMA_REGISTRY_VIEW_BASIC.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1776,11 +1809,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_schema_registries(parent, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_schema_registries(parent, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/schemaRegistries', options)
           command.response_representation = Google::Apis::ManagedkafkaV1::ListSchemaRegistriesResponse::Representation
           command.response_class = Google::Apis::ManagedkafkaV1::ListSchemaRegistriesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2139,6 +2173,39 @@ module Google
           command.request_object = update_schema_config_request_object
           command.response_representation = Google::Apis::ManagedkafkaV1::SchemaConfig::Representation
           command.response_class = Google::Apis::ManagedkafkaV1::SchemaConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete schema mode for a subject.
+        # @param [String] name
+        #   Required. The resource name of subject to delete the mode for. The format is *
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   mode/`subject` * projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/contexts/`context`/mode/`subject`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaMode] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaMode]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry_context_mode(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaMode::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaMode
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2752,6 +2819,39 @@ module Google
           command.response_representation = Google::Apis::ManagedkafkaV1::HttpBody::Representation
           command.response_class = Google::Apis::ManagedkafkaV1::HttpBody
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete schema mode for a subject.
+        # @param [String] name
+        #   Required. The resource name of subject to delete the mode for. The format is *
+        #   projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        #   mode/`subject` * projects/`project`/locations/`location`/schemaRegistries/`
+        #   schema_registry`/contexts/`context`/mode/`subject`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ManagedkafkaV1::SchemaMode] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ManagedkafkaV1::SchemaMode]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_schema_registry_mode(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ManagedkafkaV1::SchemaMode::Representation
+          command.response_class = Google::Apis::ManagedkafkaV1::SchemaMode
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

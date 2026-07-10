@@ -78,6 +78,17 @@ module Google
       class BatchModifyMessagesRequest
         include Google::Apis::Core::Hashable
       
+        # A list of Classification Label values to add. If a Classification Label with
+        # the same label ID is already applied to the message, fields with existing
+        # field IDs will be updated and fields with new field IDs will be added. There's
+        # a limit of 20 Classification Label values per request. If the message is
+        # already classified and the final total number of Classification Label values
+        # exceeds the maximum allowed number of Classification Label values per message,
+        # the modification fails.
+        # Corresponds to the JSON property `addClassificationLabels`
+        # @return [Array<Google::Apis::GmailV1::ClassificationLabelValue>]
+        attr_accessor :add_classification_labels
+      
         # A list of label IDs to add to messages.
         # Corresponds to the JSON property `addLabelIds`
         # @return [Array<String>]
@@ -87,6 +98,11 @@ module Google
         # Corresponds to the JSON property `ids`
         # @return [Array<String>]
         attr_accessor :ids
+      
+        # A list of Classification Label values to remove from messages.
+        # Corresponds to the JSON property `removeClassificationLabelIds`
+        # @return [Array<String>]
+        attr_accessor :remove_classification_label_ids
       
         # A list of label IDs to remove from messages.
         # Corresponds to the JSON property `removeLabelIds`
@@ -99,15 +115,83 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_classification_labels = args[:add_classification_labels] if args.key?(:add_classification_labels)
           @add_label_ids = args[:add_label_ids] if args.key?(:add_label_ids)
           @ids = args[:ids] if args.key?(:ids)
+          @remove_classification_label_ids = args[:remove_classification_label_ids] if args.key?(:remove_classification_label_ids)
           @remove_label_ids = args[:remove_label_ids] if args.key?(:remove_label_ids)
+        end
+      end
+      
+      # Field values for a classification label.
+      class ClassificationLabelFieldValue
+        include Google::Apis::Core::Hashable
+      
+        # Required. The field ID for the Classification Label Value. Maps to the ID
+        # field of the Google Drive `Label.Field` object.
+        # Corresponds to the JSON property `fieldId`
+        # @return [String]
+        attr_accessor :field_id
+      
+        # Selection choice ID for the selection option. Should only be set if the field
+        # type is `SELECTION` in the Google Drive `Label.Field` object. Maps to the id
+        # field of the Google Drive `Label.Field.SelectionOptions` resource.
+        # Corresponds to the JSON property `selection`
+        # @return [String]
+        attr_accessor :selection
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_id = args[:field_id] if args.key?(:field_id)
+          @selection = args[:selection] if args.key?(:selection)
+        end
+      end
+      
+      # Classification Labels applied to the email message. Classification Labels are
+      # different from Gmail inbox labels. Only used for Google Workspace accounts. [
+      # Learn more about classification labels](https://support.google.com/a/answer/
+      # 9292382).
+      class ClassificationLabelValue
+        include Google::Apis::Core::Hashable
+      
+        # Field values for the given classification label ID.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::GmailV1::ClassificationLabelFieldValue>]
+        attr_accessor :fields
+      
+        # Required. The canonical or raw alphanumeric classification label ID. Maps to
+        # the ID field of the Google Drive Label resource.
+        # Corresponds to the JSON property `labelId`
+        # @return [String]
+        attr_accessor :label_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @label_id = args[:label_id] if args.key?(:label_id)
         end
       end
       
       # The client-side encryption (CSE) configuration for the email address of an
       # authenticated user. Gmail uses CSE configurations to save drafts of client-
       # side encrypted email messages, and to sign and send encrypted email messages.
+      # For administrators managing identities and keypairs for users in their
+      # organization, requests require authorization with a [service account](https://
+      # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+      # domain-wide delegation authority](https://developers.google.com/identity/
+      # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+      # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+      # managing their own identities and keypairs, requests require [hardware key
+      # encryption](https://support.google.com/a/answer/14153163) turned on and
+      # configured.
       class CseIdentity
         include Google::Apis::Core::Hashable
       
@@ -145,7 +229,15 @@ module Google
       # key pair to complete the following tasks: - Sign outgoing client-side
       # encrypted messages. - Save and reopen drafts of client-side encrypted messages.
       # - Save and reopen sent messages. - Decrypt incoming or archived S/MIME
-      # messages.
+      # messages. For administrators managing identities and keypairs for users in
+      # their organization, requests require authorization with a [service account](
+      # https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that
+      # has [domain-wide delegation authority](https://developers.google.com/identity/
+      # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+      # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+      # managing their own identities and keypairs, requests require [hardware key
+      # encryption](https://support.google.com/a/answer/14153163) turned on and
+      # configured.
       class CseKeyPair
         include Google::Apis::Core::Hashable
       
@@ -210,7 +302,11 @@ module Google
       class CsePrivateKeyMetadata
         include Google::Apis::Core::Hashable
       
-        # Metadata for hardware keys.
+        # Metadata for hardware keys. If [hardware key encryption](https://support.
+        # google.com/a/answer/14153163) is set up for the Google Workspace organization,
+        # users can optionally store their private key on their smart card and use it to
+        # sign and decrypt email messages in Gmail by inserting their smart card into a
+        # reader attached to their Windows device.
         # Corresponds to the JSON property `hardwareKeyMetadata`
         # @return [Google::Apis::GmailV1::HardwareKeyMetadata]
         attr_accessor :hardware_key_metadata
@@ -359,7 +455,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :add_label_ids
       
-        # Email address that the message should be forwarded to.
+        # Email address that the message should be forwarded to. This effectively
+        # redirects the message to the address specified in this field, maintaining the
+        # original sender in the "From" field.
         # Corresponds to the JSON property `forward`
         # @return [String]
         attr_accessor :forward
@@ -485,7 +583,11 @@ module Google
         end
       end
       
-      # Metadata for hardware keys.
+      # Metadata for hardware keys. If [hardware key encryption](https://support.
+      # google.com/a/answer/14153163) is set up for the Google Workspace organization,
+      # users can optionally store their private key on their smart card and use it to
+      # sign and decrypt email messages in Gmail by inserting their smart card into a
+      # reader attached to their Windows device.
       class HardwareKeyMetadata
         include Google::Apis::Core::Hashable
       
@@ -813,12 +915,13 @@ module Google
         # 44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041, #f2c960, #
         # 149e60, #3dc789, #3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933, #d5ae49, #
         # 0b804b, #2a9c68, #285bac, #653e9b, #b65775, \#822111, #a46a21, #aa8831, #
-        # 076239, #1a764d, #1c4587, #41236d, #83334c \#464646, #e7e7e7, #0d3472, #b6cff5,
-        # #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a, #f2b2a8, #
-        # 7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #fdedc1, #
-        # 0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #
-        # 994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #
-        # 42d692, #16a765
+        # 076239, #1a764d, #1c4587, #41236d, #83334c, \#464646, #e7e7e7, #0d3472, #
+        # b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a, #
+        # f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #
+        # fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #
+        # b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #
+        # 094228, #42d692, #16a765, #757575, #1e53b8, \#007286, #7858c3, #c2185b, #
+        # d93025, #54240e, #633e04, #521d28, #202124, \#083018
         # Corresponds to the JSON property `backgroundColor`
         # @return [String]
         attr_accessor :background_color
@@ -833,11 +936,13 @@ module Google
         # 6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #
         # 3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #
         # 285bac, #653e9b, #b65775, \#822111, #a46a21, #aa8831, #076239, #1a764d, #
-        # 1c4587, #41236d, #83334c \#464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4,
-        # #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #
-        # 7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #
-        # 04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #
-        # ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765
+        # 1c4587, #41236d, #83334c, \#464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #
+        # 98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #
+        # ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #
+        # b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #
+        # f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #
+        # 16a765, #757575, #1e53b8, \#007286, #7858c3, #c2185b, #d93025, #54240e, #
+        # 633e04, #521d28, #202124, \#083018
         # Corresponds to the JSON property `textColor`
         # @return [String]
         attr_accessor :text_color
@@ -1192,6 +1297,17 @@ module Google
       class Message
         include Google::Apis::Core::Hashable
       
+        # Classification Label values on the message. Available Classification Label
+        # schemas can be queried using the Google Drive Labels API. Each classification
+        # label ID must be unique. If duplicate IDs are provided, only one will be
+        # retained, and the selection is arbitrary. Only used for Google Workspace
+        # accounts. There's a limit of 20 Classification Label values per request. If
+        # the Classification Label values exceeds the maximum allowed number, the
+        # request fails.
+        # Corresponds to the JSON property `classificationLabelValues`
+        # @return [Array<Google::Apis::GmailV1::ClassificationLabelValue>]
+        attr_accessor :classification_label_values
+      
         # The ID of the last history record that modified this message.
         # Corresponds to the JSON property `historyId`
         # @return [Fixnum]
@@ -1223,7 +1339,8 @@ module Google
       
         # The entire email message in an RFC 2822 formatted and base64url encoded string.
         # Returned in `messages.get` and `drafts.get` responses when the `format=RAW`
-        # parameter is supplied.
+        # parameter is supplied. @required gmail.users.drafts.create gmail.users.drafts.
+        # update
         # Corresponds to the JSON property `raw`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1255,6 +1372,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @classification_label_values = args[:classification_label_values] if args.key?(:classification_label_values)
           @history_id = args[:history_id] if args.key?(:history_id)
           @id = args[:id] if args.key?(:id)
           @internal_date = args[:internal_date] if args.key?(:internal_date)
@@ -1389,11 +1507,27 @@ module Google
       class ModifyMessageRequest
         include Google::Apis::Core::Hashable
       
+        # A list of classification label values to add. If a Classification Label with
+        # the same label ID is already applied to the message, fields with existing
+        # field IDs will be updated and fields with new field IDs will be added. There's
+        # a limit of 20 Classification Label values per request. If the message is
+        # already classified and the final total number of Classification Label values
+        # exceeds the maximum allowed number of Classification Label values per message,
+        # the modification fails.
+        # Corresponds to the JSON property `addClassificationLabels`
+        # @return [Array<Google::Apis::GmailV1::ClassificationLabelValue>]
+        attr_accessor :add_classification_labels
+      
         # A list of IDs of labels to add to this message. You can add up to 100 labels
         # with each update.
         # Corresponds to the JSON property `addLabelIds`
         # @return [Array<String>]
         attr_accessor :add_label_ids
+      
+        # A list of Classification Label values to remove from this message.
+        # Corresponds to the JSON property `removeClassificationLabelIds`
+        # @return [Array<String>]
+        attr_accessor :remove_classification_label_ids
       
         # A list IDs of labels to remove from this message. You can remove up to 100
         # labels with each update.
@@ -1407,7 +1541,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_classification_labels = args[:add_classification_labels] if args.key?(:add_classification_labels)
           @add_label_ids = args[:add_label_ids] if args.key?(:add_label_ids)
+          @remove_classification_label_ids = args[:remove_classification_label_ids] if args.key?(:remove_classification_label_ids)
           @remove_label_ids = args[:remove_label_ids] if args.key?(:remove_label_ids)
         end
       end
@@ -1517,7 +1653,8 @@ module Google
       
       # Settings associated with a send-as alias, which can be either the primary
       # login address associated with the account or a custom "from" address. Send-as
-      # aliases correspond to the "Send Mail As" feature in the web interface.
+      # aliases correspond to the "Send Mail As" feature in the web interface. The
+      # send-as alias must be a valid email address.
       class SendAs
         include Google::Apis::Core::Hashable
       

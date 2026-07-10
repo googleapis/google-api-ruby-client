@@ -493,6 +493,7 @@ module Google
       class AchievementDefinition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :achievement_lifecycle_state, as: 'achievementLifecycleState'
           property :achievement_type, as: 'achievementType'
           property :description, as: 'description'
           property :experience_points, :numeric_string => true, as: 'experiencePoints'

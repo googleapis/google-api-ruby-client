@@ -344,6 +344,44 @@ module Google
         end
       end
       
+      # Contains overrides related to the function's build configuration.
+      class BuildConfigOverrides
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the desired runtime for the new Cloud Run function. (e.g.,
+        # `"nodejs20"`, `"python312"`). Constraints: 1. This field CANNOT be used to
+        # change the runtime language (e.g., from `NODEJS` to `PYTHON`). The backend
+        # will enforce this. 2. This field can ONLY be used to upgrade the runtime
+        # version (e.g., `nodejs18` to `nodejs20`). Downgrading the version is not
+        # permitted. The backend will validate the version change. If provided and valid,
+        # this overrides the runtime of the Gen1 function.
+        # Corresponds to the JSON property `runtime`
+        # @return [String]
+        attr_accessor :runtime
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @runtime = args[:runtime] if args.key?(:runtime)
+        end
+      end
+      
+      # Request for the `CommitFunctionUpgradeAsGen2` method.
+      class CommitFunctionUpgradeAsGen2Request
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request for the `CommitFunctionUpgrade` method.
       class CommitFunctionUpgradeRequest
         include Google::Apis::Core::Hashable
@@ -408,6 +446,44 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The Direct VPC network interface. This is mutually exclusive with VPC
+      # Connector.
+      class DirectVpcNetworkInterface
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the VPC network to which the function will be connected.
+        # Specify either a VPC network or a subnet, or both. If you specify only a
+        # network, the subnet uses the same name as the network.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Optional. The name of the VPC subnetwork that the Cloud Function resource will
+        # get IPs from. Specify either a VPC network or a subnet, or both. If both
+        # network and subnetwork are specified, the given VPC subnetwork must belong to
+        # the given VPC network. If subnetwork is not specified, the subnetwork with the
+        # same name with the network will be used.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # Optional. Network tags applied to this Cloud Function resource.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -1069,6 +1145,14 @@ module Google
         # @return [Array<Google::Apis::CloudfunctionsV2beta::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1077,6 +1161,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1697,6 +1782,18 @@ module Google
         # @return [String]
         attr_accessor :binary_authorization_policy
       
+        # Optional. Egress settings for direct VPC. If not provided, it defaults to
+        # VPC_EGRESS_PRIVATE_RANGES_ONLY.
+        # Corresponds to the JSON property `directVpcEgress`
+        # @return [String]
+        attr_accessor :direct_vpc_egress
+      
+        # Optional. The Direct VPC network interface for the Cloud Function. Currently
+        # only a single Direct VPC is supported.
+        # Corresponds to the JSON property `directVpcNetworkInterface`
+        # @return [Array<Google::Apis::CloudfunctionsV2beta::DirectVpcNetworkInterface>]
+        attr_accessor :direct_vpc_network_interface
+      
         # Environment variables that shall be available during function execution.
         # Corresponds to the JSON property `environmentVariables`
         # @return [Hash<String,String>]
@@ -1804,6 +1901,8 @@ module Google
           @available_cpu = args[:available_cpu] if args.key?(:available_cpu)
           @available_memory = args[:available_memory] if args.key?(:available_memory)
           @binary_authorization_policy = args[:binary_authorization_policy] if args.key?(:binary_authorization_policy)
+          @direct_vpc_egress = args[:direct_vpc_egress] if args.key?(:direct_vpc_egress)
+          @direct_vpc_network_interface = args[:direct_vpc_network_interface] if args.key?(:direct_vpc_network_interface)
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @ingress_settings = args[:ingress_settings] if args.key?(:ingress_settings)
           @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
@@ -1819,6 +1918,27 @@ module Google
           @uri = args[:uri] if args.key?(:uri)
           @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
           @vpc_connector_egress_settings = args[:vpc_connector_egress_settings] if args.key?(:vpc_connector_egress_settings)
+        end
+      end
+      
+      # Contains overrides related to the function's service configuration.
+      class ServiceConfigOverrides
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the maximum number of instances for the new Cloud Run
+        # function. If provided, this overrides the max_instance_count setting of the
+        # Gen1 function.
+        # Corresponds to the JSON property `maxInstanceCount`
+        # @return [Fixnum]
+        attr_accessor :max_instance_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_instance_count = args[:max_instance_count] if args.key?(:max_instance_count)
         end
       end
       
@@ -1879,6 +1999,16 @@ module Google
       class SetupFunctionUpgradeConfigRequest
         include Google::Apis::Core::Hashable
       
+        # Contains overrides related to the function's build configuration.
+        # Corresponds to the JSON property `buildConfigOverrides`
+        # @return [Google::Apis::CloudfunctionsV2beta::BuildConfigOverrides]
+        attr_accessor :build_config_overrides
+      
+        # Contains overrides related to the function's service configuration.
+        # Corresponds to the JSON property `serviceConfigOverrides`
+        # @return [Google::Apis::CloudfunctionsV2beta::ServiceConfigOverrides]
+        attr_accessor :service_config_overrides
+      
         # Optional. The trigger's service account. The service account must have
         # permission to invoke Cloud Run services, the permission is `run.routes.invoke`.
         # If empty, defaults to the Compute Engine default service account: ``
@@ -1893,6 +2023,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @build_config_overrides = args[:build_config_overrides] if args.key?(:build_config_overrides)
+          @service_config_overrides = args[:service_config_overrides] if args.key?(:service_config_overrides)
           @trigger_service_account = args[:trigger_service_account] if args.key?(:trigger_service_account)
         end
       end

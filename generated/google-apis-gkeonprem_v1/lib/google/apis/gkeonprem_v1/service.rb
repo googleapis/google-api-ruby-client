@@ -81,12 +81,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -606,6 +615,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -623,7 +640,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_bare_metal_admin_cluster_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_bare_metal_admin_cluster_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListOperationsResponse
@@ -631,6 +648,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1611,6 +1629,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1628,7 +1654,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_bare_metal_cluster_bare_metal_node_pool_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_bare_metal_cluster_bare_metal_node_pool_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListOperationsResponse
@@ -1636,6 +1662,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1682,6 +1709,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1699,7 +1734,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_bare_metal_cluster_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_bare_metal_cluster_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListOperationsResponse
@@ -1707,6 +1742,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1826,6 +1862,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1843,7 +1887,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListOperationsResponse
@@ -1851,6 +1895,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1867,6 +1912,8 @@ module Google
         #   in RMS when the creation fails during standalone preflight checks. In that
         #   case the subsequent create call will fail with "cluster already exists" error
         #   and hence a update cluster is required to fix the cluster.
+        # @param [Array<String>, String] skip_validations
+        #   Optional. If set, skip the specified validations.
         # @param [Boolean] validate_only
         #   Validate the request without actually doing any updates.
         # @param [String] vmware_admin_cluster_id
@@ -1890,7 +1937,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_vmware_admin_cluster(parent, vmware_admin_cluster_object = nil, allow_preflight_failure: nil, validate_only: nil, vmware_admin_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_vmware_admin_cluster(parent, vmware_admin_cluster_object = nil, allow_preflight_failure: nil, skip_validations: nil, validate_only: nil, vmware_admin_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/vmwareAdminClusters', options)
           command.request_representation = Google::Apis::GkeonpremV1::VmwareAdminCluster::Representation
           command.request_object = vmware_admin_cluster_object
@@ -1898,6 +1945,7 @@ module Google
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['allowPreflightFailure'] = allow_preflight_failure unless allow_preflight_failure.nil?
+          command.query['skipValidations'] = skip_validations unless skip_validations.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['vmwareAdminClusterId'] = vmware_admin_cluster_id unless vmware_admin_cluster_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2082,6 +2130,8 @@ module Google
         # @param [String] name
         #   Immutable. The VMware admin cluster resource name.
         # @param [Google::Apis::GkeonpremV1::VmwareAdminCluster] vmware_admin_cluster_object
+        # @param [Array<String>, String] skip_validations
+        #   Optional. If set, the server-side preflight checks will be skipped.
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the
         #   VMwareAdminCluster resource by the update. The fields specified in the
@@ -2108,13 +2158,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_vmware_admin_cluster(name, vmware_admin_cluster_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_vmware_admin_cluster(name, vmware_admin_cluster_object = nil, skip_validations: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::GkeonpremV1::VmwareAdminCluster::Representation
           command.request_object = vmware_admin_cluster_object
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['skipValidations'] = skip_validations unless skip_validations.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2213,6 +2264,13 @@ module Google
         #   The current etag of the VMware admin cluster. If an etag is provided and does
         #   not match the current etag of the cluster, deletion will be blocked and an
         #   ABORTED error will be returned.
+        # @param [Boolean] ignore_errors
+        #   Optional. If set to true, the unenrollment of a vmware admin cluster resource
+        #   will succeed even if errors occur during unenrollment. This parameter can be
+        #   used when you want to unenroll admin cluster resource and the on-prem admin
+        #   cluster is disconnected / unreachable. WARNING: Using this parameter when your
+        #   admin cluster still exists may result in a deleted GCP admin cluster but
+        #   existing resourcelink in on-prem admin cluster and membership.
         # @param [Boolean] validate_only
         #   Validate the request without actually doing any updates.
         # @param [String] fields
@@ -2232,13 +2290,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def unenroll_project_location_vmware_admin_cluster(name, allow_missing: nil, etag: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def unenroll_project_location_vmware_admin_cluster(name, allow_missing: nil, etag: nil, ignore_errors: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}:unenroll', options)
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['etag'] = etag unless etag.nil?
+          command.query['ignoreErrors'] = ignore_errors unless ignore_errors.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2286,6 +2345,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2303,7 +2370,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_vmware_admin_cluster_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_vmware_admin_cluster_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListOperationsResponse
@@ -2311,6 +2378,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2326,6 +2394,8 @@ module Google
         #   in RMS when the creation fails during standalone preflight checks. In that
         #   case the subsequent create call will fail with "cluster already exists" error
         #   and hence a update cluster is required to fix the cluster.
+        # @param [Array<String>, String] skip_validations
+        #   Optional. List of validations to skip during cluster creation.
         # @param [Boolean] validate_only
         #   Validate the request without actually doing any updates.
         # @param [String] vmware_cluster_id
@@ -2349,7 +2419,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_vmware_cluster(parent, vmware_cluster_object = nil, allow_preflight_failure: nil, validate_only: nil, vmware_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_vmware_cluster(parent, vmware_cluster_object = nil, allow_preflight_failure: nil, skip_validations: nil, validate_only: nil, vmware_cluster_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/vmwareClusters', options)
           command.request_representation = Google::Apis::GkeonpremV1::VmwareCluster::Representation
           command.request_object = vmware_cluster_object
@@ -2357,6 +2427,7 @@ module Google
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['allowPreflightFailure'] = allow_preflight_failure unless allow_preflight_failure.nil?
+          command.query['skipValidations'] = skip_validations unless skip_validations.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['vmwareClusterId'] = vmware_cluster_id unless vmware_cluster_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2599,6 +2670,7 @@ module Google
         # @param [String] name
         #   Immutable. The VMware user cluster resource name.
         # @param [Google::Apis::GkeonpremV1::VmwareCluster] vmware_cluster_object
+        # @param [Array<String>, String] skip_validations
         # @param [String] update_mask
         #   Required. Field mask is used to specify the fields to be overwritten in the
         #   VMwareCluster resource by the update. The fields specified in the update_mask
@@ -2625,13 +2697,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_vmware_cluster(name, vmware_cluster_object = nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_vmware_cluster(name, vmware_cluster_object = nil, skip_validations: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::GkeonpremV1::VmwareCluster::Representation
           command.request_object = vmware_cluster_object
           command.response_representation = Google::Apis::GkeonpremV1::Operation::Representation
           command.response_class = Google::Apis::GkeonpremV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['skipValidations'] = skip_validations unless skip_validations.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2853,6 +2926,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2870,7 +2951,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_vmware_cluster_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_vmware_cluster_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListOperationsResponse
@@ -2878,6 +2959,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3345,6 +3427,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3362,7 +3452,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_vmware_cluster_vmware_node_pool_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_vmware_cluster_vmware_node_pool_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::GkeonpremV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::GkeonpremV1::ListOperationsResponse
@@ -3370,6 +3460,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

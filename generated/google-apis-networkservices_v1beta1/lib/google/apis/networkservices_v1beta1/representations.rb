@@ -22,6 +22,54 @@ module Google
   module Apis
     module NetworkservicesV1beta1
       
+      class AgentGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayAgentGatewayOutputCard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayGoogleManaged
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayNetworkConfigDnsPeeringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayNetworkConfigEgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewayNetworkConfigEgressTrustConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentGatewaySelfManaged
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthzExtension
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,7 +328,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LbTcpExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LbTrafficExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAgentGatewaysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +389,12 @@ module Google
       end
       
       class ListLbRouteExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLbTcpExtensionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -586,6 +652,86 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_gateway_card, as: 'agentGatewayCard', class: Google::Apis::NetworkservicesV1beta1::AgentGatewayAgentGatewayOutputCard, decorator: Google::Apis::NetworkservicesV1beta1::AgentGatewayAgentGatewayOutputCard::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :google_managed, as: 'googleManaged', class: Google::Apis::NetworkservicesV1beta1::AgentGatewayGoogleManaged, decorator: Google::Apis::NetworkservicesV1beta1::AgentGatewayGoogleManaged::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network_config, as: 'networkConfig', class: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfig, decorator: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfig::Representation
+      
+          collection :protocols, as: 'protocols'
+          collection :registries, as: 'registries'
+          property :self_managed, as: 'selfManaged', class: Google::Apis::NetworkservicesV1beta1::AgentGatewaySelfManaged, decorator: Google::Apis::NetworkservicesV1beta1::AgentGatewaySelfManaged::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AgentGatewayAgentGatewayOutputCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mtls_endpoint, as: 'mtlsEndpoint'
+          collection :root_certificates, as: 'rootCertificates'
+          property :service_extensions_service_account, as: 'serviceExtensionsServiceAccount'
+        end
+      end
+      
+      class AgentGatewayGoogleManaged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :governed_access_path, as: 'governedAccessPath'
+        end
+      end
+      
+      class AgentGatewayNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_peering_config, as: 'dnsPeeringConfig', class: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigDnsPeeringConfig, decorator: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigDnsPeeringConfig::Representation
+      
+          property :egress, as: 'egress', class: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigEgress, decorator: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigEgress::Representation
+      
+        end
+      end
+      
+      class AgentGatewayNetworkConfigDnsPeeringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domains, as: 'domains'
+          property :target_network, as: 'targetNetwork'
+          property :target_project, as: 'targetProject'
+        end
+      end
+      
+      class AgentGatewayNetworkConfigEgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment, as: 'networkAttachment'
+          property :trust_config, as: 'trustConfig', class: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigEgressTrustConfig, decorator: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigEgressTrustConfig::Representation
+      
+        end
+      end
+      
+      class AgentGatewayNetworkConfigEgressTrustConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pem_certificates, as: 'pemCertificates'
+        end
+      end
+      
+      class AgentGatewaySelfManaged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_uri, as: 'resourceUri'
+        end
+      end
+      
       class AuthzExtension
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -593,6 +739,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :fail_open, as: 'failOpen'
+          collection :forward_attributes, as: 'forwardAttributes'
           collection :forward_headers, as: 'forwardHeaders'
           hash :labels, as: 'labels'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
@@ -636,6 +783,7 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :security_policy, as: 'securityPolicy'
           property :server_tls_policy, as: 'serverTlsPolicy'
           property :traffic_port_selector, as: 'trafficPortSelector', class: Google::Apis::NetworkservicesV1beta1::TrafficPortSelector, decorator: Google::Apis::NetworkservicesV1beta1::TrafficPortSelector::Representation
       
@@ -661,9 +809,11 @@ module Google
           property :allow_dynamic_forwarding, as: 'allowDynamicForwarding'
           property :authority, as: 'authority'
           property :fail_open, as: 'failOpen'
+          collection :forward_attributes, as: 'forwardAttributes'
           collection :forward_headers, as: 'forwardHeaders'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+          property :observability_mode, as: 'observabilityMode'
           property :request_body_send_mode, as: 'requestBodySendMode'
           property :response_body_send_mode, as: 'responseBodySendMode'
           property :service, as: 'service'
@@ -683,6 +833,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :addresses, as: 'addresses'
+          property :all_ports, as: 'allPorts'
+          property :allow_global_access, as: 'allowGlobalAccess'
           collection :certificate_urls, as: 'certificateUrls'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
@@ -1086,6 +1238,21 @@ module Google
         end
       end
       
+      class LbTcpExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :extension_chains, as: 'extensionChains', class: Google::Apis::NetworkservicesV1beta1::ExtensionChain, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionChain::Representation
+      
+          hash :labels, as: 'labels'
+          property :load_balancing_scheme, as: 'loadBalancingScheme'
+          property :name, as: 'name'
+          collection :networks, as: 'networks'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class LbTrafficExtension
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1099,6 +1266,16 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ListAgentGatewaysResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_gateways, as: 'agentGateways', class: Google::Apis::NetworkservicesV1beta1::AgentGateway, decorator: Google::Apis::NetworkservicesV1beta1::AgentGateway::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1182,6 +1359,16 @@ module Google
         end
       end
       
+      class ListLbTcpExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :lb_tcp_extensions, as: 'lbTcpExtensions', class: Google::Apis::NetworkservicesV1beta1::LbTcpExtension, decorator: Google::Apis::NetworkservicesV1beta1::LbTcpExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListLbTrafficExtensionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1227,6 +1414,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetworkservicesV1beta1::Operation, decorator: Google::Apis::NetworkservicesV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1508,6 +1696,7 @@ module Google
           collection :rules, as: 'rules', class: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteRule, decorator: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteRule::Representation
       
           property :self_link, as: 'selfLink'
+          collection :target_proxies, as: 'targetProxies'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1559,6 +1748,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :kms_key_version, as: 'kmsKeyVersion'
           hash :labels, as: 'labels'
           property :log_config, as: 'logConfig', class: Google::Apis::NetworkservicesV1beta1::WasmPluginLogConfig, decorator: Google::Apis::NetworkservicesV1beta1::WasmPluginLogConfig::Representation
       

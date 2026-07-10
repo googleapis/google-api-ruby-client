@@ -316,6 +316,14 @@ module Google
         # @return [Array<Google::Apis::PrivatecaV1beta1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -324,6 +332,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -528,32 +537,6 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # Operation metadata returned by the CLH during resource state reconciliation.
-      class ReconciliationOperationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # DEPRECATED. Use exclusive_action instead.
-        # Corresponds to the JSON property `deleteResource`
-        # @return [Boolean]
-        attr_accessor :delete_resource
-        alias_method :delete_resource?, :delete_resource
-      
-        # Excluisive action returned by the CLH.
-        # Corresponds to the JSON property `exclusiveAction`
-        # @return [String]
-        attr_accessor :exclusive_action
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @delete_resource = args[:delete_resource] if args.key?(:delete_resource)
-          @exclusive_action = args[:exclusive_action] if args.key?(:exclusive_action)
         end
       end
       

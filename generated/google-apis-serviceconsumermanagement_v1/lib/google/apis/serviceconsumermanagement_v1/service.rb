@@ -165,6 +165,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -182,7 +190,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ServiceconsumermanagementV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ServiceconsumermanagementV1::ListOperationsResponse
@@ -190,6 +198,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -201,8 +210,8 @@ module Google
         #   the name of a service, for example 'service.googleapis.com'.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results returned by this request. Currently,
-        #   the default maximum is set to 1000. If `page_size` isn't provided or the size
-        #   provided is a number larger than 1000, it's automatically set to 1000.
+        #   the default maximum is set to 256. If `page_size` <= 256, the request proceeds.
+        #   Else, the request fails with an `TU_INVALID_PAGE_SIZE` error.
         # @param [String] page_token
         #   Optional. The continuation token, which is used to page through large result
         #   sets. To get the next page of results, set this parameter to the value of `

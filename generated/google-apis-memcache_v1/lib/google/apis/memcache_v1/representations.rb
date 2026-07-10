@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetTagsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMemcacheV1LocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +256,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetTagsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -333,6 +357,22 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GetTagsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GetTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          hash :tags, as: 'tags'
         end
       end
       
@@ -487,9 +527,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authorized_network, as: 'authorizedNetwork'
+          collection :available_maintenance_versions, as: 'availableMaintenanceVersions'
           property :create_time, as: 'createTime'
           property :discovery_endpoint, as: 'discoveryEndpoint'
           property :display_name, as: 'displayName'
+          property :effective_maintenance_version, as: 'effectiveMaintenanceVersion'
           collection :instance_messages, as: 'instanceMessages', class: Google::Apis::MemcacheV1::InstanceMessage, decorator: Google::Apis::MemcacheV1::InstanceMessage::Representation
       
           hash :labels, as: 'labels'
@@ -497,6 +539,7 @@ module Google
       
           property :maintenance_schedule, as: 'maintenanceSchedule', class: Google::Apis::MemcacheV1::MaintenanceSchedule, decorator: Google::Apis::MemcacheV1::MaintenanceSchedule::Representation
       
+          property :maintenance_version, as: 'maintenanceVersion'
           property :memcache_full_version, as: 'memcacheFullVersion'
           collection :memcache_nodes, as: 'memcacheNodes', class: Google::Apis::MemcacheV1::Node, decorator: Google::Apis::MemcacheV1::Node::Representation
       
@@ -549,6 +592,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::MemcacheV1::Operation, decorator: Google::Apis::MemcacheV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -675,6 +719,25 @@ module Google
           property :duration, as: 'duration'
           property :start_time, as: 'startTime', class: Google::Apis::MemcacheV1::TimeOfDay, decorator: Google::Apis::MemcacheV1::TimeOfDay::Representation
       
+        end
+      end
+      
+      class SetTagsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :request_id, as: 'requestId'
+          hash :tags, as: 'tags'
+        end
+      end
+      
+      class SetTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          hash :tags, as: 'tags'
         end
       end
       

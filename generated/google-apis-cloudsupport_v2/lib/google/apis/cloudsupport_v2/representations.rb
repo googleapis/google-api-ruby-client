@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSupportEventSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Media
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,7 +178,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class WorkflowOperationMetadata
+      class SupportEventSubscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UndeleteSupportEventSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -206,8 +218,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blob_generation, :numeric_string => true, as: 'blobGeneration'
           property :blob_id, as: 'blobId'
+          property :download_external_read_token, :base64 => true, as: 'downloadExternalReadToken'
           property :download_read_handle, :base64 => true, as: 'downloadReadHandle'
           property :read_token, as: 'readToken'
+          property :upload_fragment_list_creation_info, :base64 => true, as: 'uploadFragmentListCreationInfo'
           property :upload_metadata_container, :base64 => true, as: 'uploadMetadataContainer'
         end
       end
@@ -286,8 +300,10 @@ module Google
           property :best_guess, as: 'bestGuess'
           property :from_bytes, as: 'fromBytes'
           property :from_file_name, as: 'fromFileName'
+          property :from_fusion_id, as: 'fromFusionId'
           property :from_header, as: 'fromHeader'
           property :from_url_path, as: 'fromUrlPath'
+          property :fusion_id_detection_metadata, :base64 => true, as: 'fusionIdDetectionMetadata'
         end
       end
       
@@ -399,6 +415,15 @@ module Google
         end
       end
       
+      class ListSupportEventSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :support_event_subscriptions, as: 'supportEventSubscriptions', class: Google::Apis::CloudsupportV2::SupportEventSubscription, decorator: Google::Apis::CloudsupportV2::SupportEventSubscription::Representation
+      
+        end
+      end
+      
       class Media
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -440,6 +465,7 @@ module Google
           property :reference_type, as: 'referenceType'
           property :sha1_hash, :base64 => true, as: 'sha1Hash'
           property :sha256_hash, :base64 => true, as: 'sha256Hash'
+          property :sha512_hash, :base64 => true, as: 'sha512Hash'
           property :timestamp, :numeric_string => true, as: 'timestamp'
           property :token, as: 'token'
         end
@@ -472,12 +498,23 @@ module Google
         end
       end
       
-      class WorkflowOperationMetadata
+      class SupportEventSubscription
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :namespace, as: 'namespace'
-          property :operation_action, as: 'operationAction'
-          property :workflow_operation_type, as: 'workflowOperationType'
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :failure_reason, as: 'failureReason'
+          property :name, as: 'name'
+          property :pub_sub_topic, as: 'pubSubTopic'
+          property :purge_time, as: 'purgeTime'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class UndeleteSupportEventSubscriptionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

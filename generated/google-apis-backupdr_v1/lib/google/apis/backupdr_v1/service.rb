@@ -51,6 +51,100 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Fetches ResourceBackupConfigs.
+        # @param [String] parent
+        #   Required. The project, folder or organization and location for which to
+        #   retrieve resource backup configs. Format: 'projects/`project_id`/locations/`
+        #   location`', 'folders/`folder_id`/locations/`location`', or 'organizations/`
+        #   organization_id`/locations/`location`'.
+        # @param [String] filter
+        #   Optional. Filtering results.
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will use 100 as default. Maximum value is 500 and
+        #   values above 500 will be coerced to 500.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_folder_location_resource_backup_config(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/resourceBackupConfigs:fetch', options)
+          command.response_representation = Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches ResourceBackupConfigs.
+        # @param [String] parent
+        #   Required. The project, folder or organization and location for which to
+        #   retrieve resource backup configs. Format: 'projects/`project_id`/locations/`
+        #   location`', 'folders/`folder_id`/locations/`location`', or 'organizations/`
+        #   organization_id`/locations/`location`'.
+        # @param [String] filter
+        #   Optional. Filtering results.
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will use 100 as default. Maximum value is 500 and
+        #   values above 500 will be coerced to 500.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_organization_location_resource_backup_config(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/resourceBackupConfigs:fetch', options)
+          command.response_representation = Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets information about a location.
         # @param [String] name
         #   Resource name for the location.
@@ -81,12 +175,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Gets the Trial state for a given project
+        # @param [String] name
+        #   Required. The project for which trial details need to be retrieved. Format:
+        #   projects/`project`/locations/`location` Supported Locations are - us, eu and
+        #   asia.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Trial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Trial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_trial(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BackupdrV1::Trial::Representation
+          command.response_class = Google::Apis::BackupdrV1::Trial
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -131,8 +266,8 @@ module Google
         # Create a BackupPlanAssociation
         # @param [String] parent
         #   Required. The backup plan association project and location in the format `
-        #   projects/`project_id`/locations/`location``. In Cloud BackupDR locations map
-        #   to GCP regions, for example **us-central1**.
+        #   projects/`project_id`/locations/`location``. In Backup and DR locations map to
+        #   Google Cloud regions, for example **us-central1**.
         # @param [Google::Apis::BackupdrV1::BackupPlanAssociation] backup_plan_association_object
         # @param [String] backup_plan_association_id
         #   Required. The name of the backup plan association to create. The name must be
@@ -223,6 +358,65 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # List BackupPlanAssociations for a given resource type.
+        # @param [String] parent
+        #   Required. The parent resource name. Format: projects/`project`/locations/`
+        #   location`
+        # @param [String] filter
+        #   Optional. A filter expression that filters the results fetched in the response.
+        #   The expression must specify the field name, a comparison operator, and the
+        #   value that you want to use for filtering. Supported fields: * resource *
+        #   backup_plan * state * data_source *
+        #   cloud_sql_instance_backup_plan_association_properties.instance_create_time
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "desc" after a field name for descending. Supported fields: * name
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of BackupPlanAssociations to return. The service
+        #   may return fewer than this value. If unspecified, at most 50
+        #   BackupPlanAssociations will be returned. The maximum value is 100; values
+        #   above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous call of `
+        #   FetchBackupPlanAssociationsForResourceType`. Provide this to retrieve the
+        #   subsequent page. When paginating, all other parameters provided to `
+        #   FetchBackupPlanAssociationsForResourceType` must match the call that provided
+        #   the page token.
+        # @param [String] resource_type
+        #   Required. The type of the Google Cloud resource. Ex: sql.googleapis.com/
+        #   Instance
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::FetchBackupPlanAssociationsForResourceTypeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::FetchBackupPlanAssociationsForResourceTypeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_backup_plan_association_for_resource_type(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, resource_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backupPlanAssociations:fetchForResourceType', options)
+          command.response_representation = Google::Apis::BackupdrV1::FetchBackupPlanAssociationsForResourceTypeResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::FetchBackupPlanAssociationsForResourceTypeResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['resourceType'] = resource_type unless resource_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details of a single BackupPlanAssociation.
         # @param [String] name
         #   Required. Name of the backup plan association resource, in the format `
@@ -259,9 +453,9 @@ module Google
         # @param [String] parent
         #   Required. The project and location for which to retrieve backup Plan
         #   Associations information, in the format `projects/`project_id`/locations/`
-        #   location``. In Cloud BackupDR, locations map to GCP regions, for example **us-
-        #   central1**. To retrieve backup plan associations for all locations, use "-"
-        #   for the ``location`` value.
+        #   location``. In Backup and DR, locations map to Google Cloud regions, for
+        #   example **us-central1**. To retrieve backup plan associations for all
+        #   locations, use "-" for the ``location`` value.
         # @param [String] filter
         #   Optional. Filtering results
         # @param [Fixnum] page_size
@@ -299,7 +493,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update a BackupPlanAssociation
+        # Update a BackupPlanAssociation.
         # @param [String] name
         #   Output only. Identifier. The resource name of BackupPlanAssociation in below
         #   format Format : projects/`project`/locations/`location`/backupPlanAssociations/
@@ -392,8 +586,8 @@ module Google
         # Create a BackupPlan
         # @param [String] parent
         #   Required. The `BackupPlan` project and location in the format `projects/`
-        #   project`/locations/`location``. In Cloud BackupDR locations map to GCP regions,
-        #   for example **us-central1**.
+        #   project`/locations/`location``. In Google Cloud Backup and DR locations map to
+        #   Google Cloud regions, for example **us-central1**.
         # @param [Google::Apis::BackupdrV1::BackupPlan] backup_plan_object
         # @param [String] backup_plan_id
         #   Required. The name of the `BackupPlan` to create. The name must be unique for
@@ -519,9 +713,10 @@ module Google
         # Lists BackupPlans in a given project and location.
         # @param [String] parent
         #   Required. The project and location for which to retrieve `BackupPlans`
-        #   information. Format: `projects/`project`/locations/`location``. In Cloud
-        #   BackupDR, locations map to GCP regions, for e.g. **us-central1**. To retrieve
-        #   backup plans for all locations, use "-" for the ``location`` value.
+        #   information. Format: `projects/`project`/locations/`location``. In Google
+        #   Cloud Backup and DR, locations map to Google Cloud regions, for example **us-
+        #   central1**. To retrieve backup plans for all locations, use "-" for the ``
+        #   location`` value.
         # @param [String] filter
         #   Optional. Field match expression used to filter the results.
         # @param [String] order_by
@@ -561,6 +756,139 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a BackupPlan.
+        # @param [String] name
+        #   Output only. Identifier. The resource name of the `BackupPlan`. Format: `
+        #   projects/`project`/locations/`location`/backupPlans/`backup_plan``
+        # @param [Google::Apis::BackupdrV1::BackupPlan] backup_plan_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. For example, consider a
+        #   situation where you make an initial request and t he request times out. If you
+        #   make the request again with the same request ID, the server can check if
+        #   original operation with the same request ID was received, and if so, will
+        #   ignore the second request. This prevents clients from accidentally creating
+        #   duplicate commitments. The request ID must be a valid UUID with the exception
+        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Required. The list of fields to update. Field mask is used to specify the
+        #   fields to be overwritten in the BackupPlan resource by the update. The fields
+        #   specified in the update_mask are relative to the resource, not the full
+        #   request. A field will be overwritten if it is in the mask. If the user does
+        #   not provide a mask then the request will fail. Currently, these fields are
+        #   supported in update: description, schedules, retention period, adding and
+        #   removing Backup Rules.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_backup_plan(name, backup_plan_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::BackupdrV1::BackupPlan::Representation
+          command.request_object = backup_plan_object
+          command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
+          command.response_class = Google::Apis::BackupdrV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single BackupPlanRevision.
+        # @param [String] name
+        #   Required. The resource name of the `BackupPlanRevision` to retrieve. Format: `
+        #   projects/`project`/locations/`location`/backupPlans/`backup_plan`/revisions/`
+        #   revision``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::BackupPlanRevision] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::BackupPlanRevision]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_backup_plan_revision(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BackupdrV1::BackupPlanRevision::Representation
+          command.response_class = Google::Apis::BackupdrV1::BackupPlanRevision
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists BackupPlanRevisions in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location for which to retrieve `BackupPlanRevisions`
+        #   information. Format: `projects/`project`/locations/`location`/backupPlans/`
+        #   backup_plan``. In Google Cloud Backup and DR, locations map to Google Cloud
+        #   regions, for example **us-central1**.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of `BackupPlans` to return in a single response.
+        #   If not specified, a default value will be chosen by the service. Note that the
+        #   response may include a partial list and a caller should only rely on the
+        #   response's next_page_token to determine if there are more instances left to be
+        #   queried.
+        # @param [String] page_token
+        #   Optional. The value of next_page_token received from a previous `
+        #   ListBackupPlans` call. Provide this to retrieve the subsequent page in a multi-
+        #   page list of results. When paginating, all other parameters provided to `
+        #   ListBackupPlans` must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::ListBackupPlanRevisionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::ListBackupPlanRevisionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_backup_plan_revisions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/revisions', options)
+          command.response_representation = Google::Apis::BackupdrV1::ListBackupPlanRevisionsResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::ListBackupPlanRevisionsResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1307,6 +1635,70 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetch Backups for a given resource type.
+        # @param [String] parent
+        #   Required. Datasources are the parent resource for the backups. Format:
+        #   projects/`project`/locations/`location`/backupVaults/`backupVaultId`/
+        #   dataSources/`datasourceId`
+        # @param [String] filter
+        #   Optional. A filter expression that filters the results fetched in the response.
+        #   The expression must specify the field name, a comparison operator, and the
+        #   value that you want to use for filtering. Supported fields: * name * state *
+        #   backup_type * create_time * expire_time * enforced_retention_end_time *
+        #   gcp_backup_plan_info.backup_plan * cloud_sql_instance_backup_properties.
+        #   instance_tier * cloud_sql_instance_backup_properties.
+        #   database_installed_version
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "desc" after a field name for descending. Supported fields: * name
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of Backups to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 Backups will be returned.
+        #   The maximum value is 100; values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous call of `
+        #   FetchBackupsForResourceType`. Provide this to retrieve the subsequent page.
+        #   When paginating, all other parameters provided to `FetchBackupsForResourceType`
+        #   must match the call that provided the page token.
+        # @param [String] resource_type
+        #   Required. The type of the Google Cloud resource. Ex: sqladmin.googleapis.com/
+        #   Instance
+        # @param [String] view
+        #   Optional. This parameter is used to specify the view of the backup. If not
+        #   specified, the default view is BASIC.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::FetchBackupsForResourceTypeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::FetchBackupsForResourceTypeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_backup_vault_data_source_backup_for_resource_type(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, resource_type: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backups:fetchForResourceType', options)
+          command.response_representation = Google::Apis::BackupdrV1::FetchBackupsForResourceTypeResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::FetchBackupsForResourceTypeResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['resourceType'] = resource_type unless resource_type.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details of a Backup.
         # @param [String] name
         #   Required. Name of the data source resource name, in the format 'projects/`
@@ -1477,6 +1869,155 @@ module Google
           command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
           command.response_class = Google::Apis::BackupdrV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetch DataSourceReferences for a given project, location and resource type.
+        # @param [String] parent
+        #   Required. The parent resource name. Format: projects/`project`/locations/`
+        #   location`
+        # @param [String] filter
+        #   Optional. A filter expression that filters the results fetched in the response.
+        #   The expression must specify the field name, a comparison operator, and the
+        #   value that you want to use for filtering. Supported fields: * data_source *
+        #   data_source_gcp_resource_info.gcp_resourcename *
+        #   data_source_backup_config_state * data_source_backup_count *
+        #   data_source_backup_config_info.last_backup_state *
+        #   data_source_gcp_resource_info.gcp_resourcename * data_source_gcp_resource_info.
+        #   type * data_source_gcp_resource_info.location * data_source_gcp_resource_info.
+        #   cloud_sql_instance_properties.instance_create_time
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "desc" after a field name for descending. Supported fields: * name
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of DataSourceReferences to return. The service
+        #   may return fewer than this value. If unspecified, at most 50
+        #   DataSourceReferences will be returned. The maximum value is 100; values above
+        #   100 will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous call of `
+        #   FetchDataSourceReferencesForResourceType`. Provide this to retrieve the
+        #   subsequent page. When paginating, all other parameters provided to `
+        #   FetchDataSourceReferencesForResourceType` must match the call that provided
+        #   the page token.
+        # @param [String] resource_type
+        #   Required. The type of the Google Cloud resource. Ex: sql.googleapis.com/
+        #   Instance
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::FetchDataSourceReferencesForResourceTypeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::FetchDataSourceReferencesForResourceTypeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_data_source_reference_for_resource_type(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, resource_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dataSourceReferences:fetchForResourceType', options)
+          command.response_representation = Google::Apis::BackupdrV1::FetchDataSourceReferencesForResourceTypeResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::FetchDataSourceReferencesForResourceTypeResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['resourceType'] = resource_type unless resource_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single DataSourceReference.
+        # @param [String] name
+        #   Required. The name of the DataSourceReference to retrieve. Format: projects/`
+        #   project`/locations/`location`/dataSourceReferences/`data_source_reference`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::DataSourceReference] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::DataSourceReference]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_data_source_reference(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BackupdrV1::DataSourceReference::Representation
+          command.response_class = Google::Apis::BackupdrV1::DataSourceReference
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DataSourceReferences for a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource name. Format: projects/`project`/locations/`
+        #   location`
+        # @param [String] filter
+        #   Optional. A filter expression that filters the results listed in the response.
+        #   The expression must specify the field name, a comparison operator, and the
+        #   value that you want to use for filtering. The following field and operator
+        #   combinations are supported: * data_source_gcp_resource_info.gcp_resourcename
+        #   with `=`, `!=` * data_source_gcp_resource_info.type with `=`, `!=`
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order. Use "desc" after a field name for descending. Supported fields: *
+        #   data_source * data_source_gcp_resource_info.gcp_resourcename
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of DataSourceReferences to return. The service
+        #   may return fewer than this value. If unspecified, at most 50
+        #   DataSourceReferences will be returned. The maximum value is 100; values above
+        #   100 will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListDataSourceReferences`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListDataSourceReferences` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::ListDataSourceReferencesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::ListDataSourceReferencesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_data_source_references(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dataSourceReferences', options)
+          command.response_representation = Google::Apis::BackupdrV1::ListDataSourceReferencesResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::ListDataSourceReferencesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1655,9 +2196,9 @@ module Google
         # @param [String] parent
         #   Required. The project and location for which to retrieve management servers
         #   information, in the format 'projects/`project_id`/locations/`location`'. In
-        #   Cloud BackupDR, locations map to Google Cloud regions, for example **us-
-        #   central1**. To retrieve management servers for all locations, use "-" for the '
-        #   `location`' value.
+        #   Google Cloud Backup and DR, locations map to Google Cloud regions, for example
+        #   **us-central1**. To retrieve management servers for all locations, use "-" for
+        #   the '`location`' value.
         # @param [String] filter
         #   Optional. Filtering results.
         # @param [String] order_by
@@ -1693,6 +2234,42 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the Assured Workloads compliance metadata for a given project.
+        # @param [String] parent
+        #   Required. The project and location to be used to check CSS metadata for target
+        #   project information, in the format 'projects/`project_id`/locations/`location`'
+        #   . In Google Cloud Backup and DR, locations map to Google Cloud regions, for
+        #   example **us-central1**.
+        # @param [Google::Apis::BackupdrV1::FetchMsComplianceMetadataRequest] fetch_ms_compliance_metadata_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::FetchMsComplianceMetadataResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::FetchMsComplianceMetadataResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def ms_project_location_management_server_compliance_metadata(parent, fetch_ms_compliance_metadata_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:msComplianceMetadata', options)
+          command.request_representation = Google::Apis::BackupdrV1::FetchMsComplianceMetadataRequest::Representation
+          command.request_object = fetch_ms_compliance_metadata_request_object
+          command.response_representation = Google::Apis::BackupdrV1::FetchMsComplianceMetadataResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::FetchMsComplianceMetadataResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1888,6 +2465,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1905,12 +2490,60 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::BackupdrV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::BackupdrV1::ListOperationsResponse
           command.params['name'] = name unless name.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches ResourceBackupConfigs.
+        # @param [String] parent
+        #   Required. The project, folder or organization and location for which to
+        #   retrieve resource backup configs. Format: 'projects/`project_id`/locations/`
+        #   location`', 'folders/`folder_id`/locations/`location`', or 'organizations/`
+        #   organization_id`/locations/`location`'.
+        # @param [String] filter
+        #   Optional. Filtering results.
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will use 100 as default. Maximum value is 500 and
+        #   values above 500 will be coerced to 500.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_resource_backup_config(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/resourceBackupConfigs:fetch', options)
+          command.response_representation = Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::FetchResourceBackupConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1921,8 +2554,9 @@ module Google
         # Lists ResourceBackupConfigs.
         # @param [String] parent
         #   Required. The project and location for which to retrieve resource backup
-        #   configs. Format: 'projects/`project_id`/locations/`location`'. In Cloud Backup
-        #   and DR, locations map to Google Cloud regions, for example **us-central1**.
+        #   configs. Format: 'projects/`project_id`/locations/`location`'. In Google Cloud
+        #   Backup and DR, locations map to Google Cloud regions, for example **us-
+        #   central1**.
         # @param [String] filter
         #   Optional. Filtering results.
         # @param [String] order_by
@@ -1967,7 +2601,8 @@ module Google
         # Initializes the service related config for a project.
         # @param [String] name
         #   Required. The resource name of the serviceConfig used to initialize the
-        #   service. Format: `projects/`project_id`/locations/`location`/serviceConfig`.
+        #   service. The location must be the location of the BackupVault. Format: `
+        #   projects/`project_id`/locations/`location`/serviceConfig`.
         # @param [Google::Apis::BackupdrV1::InitializeServiceRequest] initialize_service_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1993,6 +2628,74 @@ module Google
           command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
           command.response_class = Google::Apis::BackupdrV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Ends the trial for a project
+        # @param [String] parent
+        #   Required. The parent resource where the trial has been created. Format:
+        #   projects/`project`/locations/`location`
+        # @param [Google::Apis::BackupdrV1::EndTrialRequest] end_trial_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Trial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Trial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def end_trial(parent, end_trial_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/trial:end', options)
+          command.request_representation = Google::Apis::BackupdrV1::EndTrialRequest::Representation
+          command.request_object = end_trial_request_object
+          command.response_representation = Google::Apis::BackupdrV1::Trial::Representation
+          command.response_class = Google::Apis::BackupdrV1::Trial
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Subscribes to a trial for a project
+        # @param [String] parent
+        #   Required. The project where this trial will be created. Format: projects/`
+        #   project`/locations/`location` Supported Locations are - us, eu and asia.
+        # @param [Google::Apis::BackupdrV1::SubscribeTrialRequest] subscribe_trial_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Trial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Trial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def subscribe_trial(parent, subscribe_trial_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/trial:subscribe', options)
+          command.request_representation = Google::Apis::BackupdrV1::SubscribeTrialRequest::Representation
+          command.request_object = subscribe_trial_request_object
+          command.response_representation = Google::Apis::BackupdrV1::Trial::Representation
+          command.response_class = Google::Apis::BackupdrV1::Trial
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

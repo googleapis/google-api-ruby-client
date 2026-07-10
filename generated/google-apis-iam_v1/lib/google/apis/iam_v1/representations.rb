@@ -286,6 +286,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListWorkforcePoolProviderScimTenantsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListWorkforcePoolProviderScimTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListWorkforcePoolProvidersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -574,6 +586,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteWorkforcePoolProviderScimTenantRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UndeleteWorkforcePoolRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -635,6 +653,18 @@ module Google
       end
       
       class WorkforcePoolProviderKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkforcePoolProviderScimTenant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkforcePoolProviderScimToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -937,6 +967,7 @@ module Google
           property :key_algorithm, as: 'keyAlgorithm'
           property :lifetime, as: 'lifetime'
           property :rotation_window_percentage, as: 'rotationWindowPercentage'
+          property :use_default_shared_ca, as: 'useDefaultSharedCa'
         end
       end
       
@@ -1052,6 +1083,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :workforce_pool_provider_keys, as: 'workforcePoolProviderKeys', class: Google::Apis::IamV1::WorkforcePoolProviderKey, decorator: Google::Apis::IamV1::WorkforcePoolProviderKey::Representation
+      
+        end
+      end
+      
+      class ListWorkforcePoolProviderScimTenantsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workforce_pool_provider_scim_tenants, as: 'workforcePoolProviderScimTenants', class: Google::Apis::IamV1::WorkforcePoolProviderScimTenant, decorator: Google::Apis::IamV1::WorkforcePoolProviderScimTenant::Representation
+      
+        end
+      end
+      
+      class ListWorkforcePoolProviderScimTokensResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :workforce_pool_provider_scim_tokens, as: 'workforcePoolProviderScimTokens', class: Google::Apis::IamV1::WorkforcePoolProviderScimToken, decorator: Google::Apis::IamV1::WorkforcePoolProviderScimToken::Representation
       
         end
       end
@@ -1451,6 +1500,7 @@ module Google
       
           collection :trust_anchors, as: 'trustAnchors', class: Google::Apis::IamV1::TrustAnchor, decorator: Google::Apis::IamV1::TrustAnchor::Representation
       
+          property :trust_default_shared_ca, as: 'trustDefaultSharedCa'
         end
       end
       
@@ -1488,6 +1538,12 @@ module Google
       end
       
       class UndeleteWorkforcePoolProviderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UndeleteWorkforcePoolProviderScimTenantRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1568,6 +1624,8 @@ module Google
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
           property :expire_time, as: 'expireTime'
+          property :extended_attributes_oauth2_client, as: 'extendedAttributesOauth2Client', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client::Representation
+      
           property :extra_attributes_oauth2_client, as: 'extraAttributesOauth2Client', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client::Representation
       
           property :name, as: 'name'
@@ -1575,6 +1633,7 @@ module Google
       
           property :saml, as: 'saml', class: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderSaml, decorator: Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderSaml::Representation
       
+          property :scim_usage, as: 'scimUsage'
           property :state, as: 'state'
         end
       end
@@ -1588,6 +1647,30 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :use, as: 'use'
+        end
+      end
+      
+      class WorkforcePoolProviderScimTenant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_uri, as: 'baseUri'
+          hash :claim_mapping, as: 'claimMapping'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :purge_time, as: 'purgeTime'
+          property :service_agent, as: 'serviceAgent'
+          property :state, as: 'state'
+        end
+      end
+      
+      class WorkforcePoolProviderScimToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :security_token, as: 'securityToken'
+          property :state, as: 'state'
         end
       end
       

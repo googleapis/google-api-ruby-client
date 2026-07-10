@@ -40,6 +40,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1AdditionalSpecContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1Addon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1AddonConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1AgentRegistrySyncConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1AllDataAddonConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1AllowedValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +113,30 @@ module Google
       end
       
       class GoogleCloudApihubV1ApiOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ApiView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ApigeeEdgeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ApigeeOpdkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ApigeeXHybridConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -220,6 +274,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1DiscoveredApiObservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1DiscoveredApiOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1Documentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1EnvironmentFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1ExecutePluginInstanceActionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,7 +340,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1FetchAdditionalSpecContentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1FlattenedApiVersionDeploymentView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1GatewayPluginAddonConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1GatewayPluginConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1GoogleServiceAccountConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1Header
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +395,24 @@ module Google
       end
       
       class GoogleCloudApihubV1HttpOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1HttpOperationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1HttpRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1HttpResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -311,6 +437,12 @@ module Google
       end
       
       class GoogleCloudApihubV1LintSpecRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ListAddonsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -347,6 +479,18 @@ module Google
       end
       
       class GoogleCloudApihubV1ListDeploymentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ListDiscoveredApiObservationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ListDiscoveredApiOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -406,6 +550,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1ManageAddonConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1MatchResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1McpTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1MultiIntValues
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -448,6 +622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1OperationSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1Owner
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +635,12 @@ module Google
       end
       
       class GoogleCloudApihubV1Path
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1PathParam
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -502,7 +688,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1QueryParam
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1Range
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ResourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1RetrieveApiViewsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -539,6 +743,12 @@ module Google
       end
       
       class GoogleCloudApihubV1Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1SourceEnvironment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -593,6 +803,12 @@ module Google
       end
       
       class GoogleCloudApihubV1SummaryEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ToolAnnotations
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -681,6 +897,57 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_id, as: 'actionId'
+        end
+      end
+      
+      class GoogleCloudApihubV1AdditionalSpecContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :spec_content_type, as: 'specContentType'
+          property :spec_contents, as: 'specContents', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SpecContents, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SpecContents::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApihubV1Addon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          property :data_source, as: 'dataSource'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApihubV1AddonConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_data_addon_config, as: 'allDataAddonConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AllDataAddonConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AllDataAddonConfig::Representation
+      
+          property :gateway_plugin_addon_config, as: 'gatewayPluginAddonConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1GatewayPluginAddonConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1GatewayPluginAddonConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1AgentRegistrySyncConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+        end
+      end
+      
+      class GoogleCloudApihubV1AllDataAddonConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -807,6 +1074,40 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1ApiView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mcp_server_view, as: 'mcpServerView', class: Google::Apis::ApihubV1::GoogleCloudApihubV1FlattenedApiVersionDeploymentView, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1FlattenedApiVersionDeploymentView::Representation
+      
+          property :mcp_tool_view, as: 'mcpToolView', class: Google::Apis::ApihubV1::GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1ApigeeEdgeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment_filter, as: 'environmentFilter', class: Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1ApigeeOpdkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment_filter, as: 'environmentFilter', class: Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1ApigeeXHybridConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment_filter, as: 'environmentFilter', class: Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter::Representation
+      
+        end
+      end
+      
       class GoogleCloudApihubV1ApplicationIntegrationEndpointDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -886,6 +1187,8 @@ module Google
       class GoogleCloudApihubV1Config
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_registry_sync_config, as: 'agentRegistrySyncConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AgentRegistrySyncConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AgentRegistrySyncConfig::Representation
+      
           property :cmek_key_name, as: 'cmekKeyName'
           property :disable_search, as: 'disableSearch'
           property :encryption_type, as: 'encryptionType'
@@ -1049,11 +1352,17 @@ module Google
           collection :endpoints, as: 'endpoints'
           property :environment, as: 'environment', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
       
+          property :management_url, as: 'managementUrl', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
+      
           property :name, as: 'name'
           property :resource_uri, as: 'resourceUri'
           property :slo, as: 'slo', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
       
+          property :source_environment, as: 'sourceEnvironment'
           collection :source_metadata, as: 'sourceMetadata', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata::Representation
+      
+          property :source_project, as: 'sourceProject'
+          property :source_uri, as: 'sourceUri', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
       
           property :update_time, as: 'updateTime'
         end
@@ -1080,6 +1389,46 @@ module Google
       class GoogleCloudApihubV1DisablePluginRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApihubV1DiscoveredApiObservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_operation_count, :numeric_string => true, as: 'apiOperationCount'
+          property :create_time, as: 'createTime'
+          property :hostname, as: 'hostname'
+          property :known_operations_count, :numeric_string => true, as: 'knownOperationsCount'
+          property :last_event_detected_time, as: 'lastEventDetectedTime'
+          property :name, as: 'name'
+          property :origin, as: 'origin'
+          collection :server_ips, as: 'serverIps'
+          collection :source_locations, as: 'sourceLocations'
+          property :source_metadata, as: 'sourceMetadata', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata::Representation
+      
+          collection :source_types, as: 'sourceTypes'
+          property :style, as: 'style'
+          property :unknown_operations_count, :numeric_string => true, as: 'unknownOperationsCount'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudApihubV1DiscoveredApiOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :classification, as: 'classification'
+          property :count, :numeric_string => true, as: 'count'
+          property :create_time, as: 'createTime'
+          property :first_seen_time, as: 'firstSeenTime'
+          property :http_operation, as: 'httpOperation', class: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperationDetails, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperationDetails::Representation
+      
+          property :last_seen_time, as: 'lastSeenTime'
+          collection :match_results, as: 'matchResults', class: Google::Apis::ApihubV1::GoogleCloudApihubV1MatchResult, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1MatchResult::Representation
+      
+          property :name, as: 'name'
+          property :source_metadata, as: 'sourceMetadata', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata::Representation
+      
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1119,6 +1468,14 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1EnvironmentFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_environments, as: 'allEnvironments'
+          collection :environments, as: 'environments'
+        end
+      end
+      
       class GoogleCloudApihubV1ExecutePluginInstanceActionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1153,10 +1510,74 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1FetchAdditionalSpecContentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_spec_content, as: 'additionalSpecContent', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AdditionalSpecContent, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AdditionalSpecContent::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1FlattenedApiVersionDeploymentView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api, as: 'api', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Api, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Api::Representation
+      
+          property :deployment, as: 'deployment', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Deployment, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Deployment::Representation
+      
+          property :version, as: 'version', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Version, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Version::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api, as: 'api', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Api, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Api::Representation
+      
+          property :api_operation, as: 'apiOperation', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ApiOperation, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ApiOperation::Representation
+      
+          property :deployment, as: 'deployment', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Deployment, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Deployment::Representation
+      
+          property :version, as: 'version', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Version, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Version::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1GatewayPluginAddonConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :gateway_plugin_configs, as: 'gatewayPluginConfigs', class: Google::Apis::ApihubV1::GoogleCloudApihubV1GatewayPluginConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1GatewayPluginConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1GatewayPluginConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apigee_edge_config, as: 'apigeeEdgeConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeEdgeConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeEdgeConfig::Representation
+      
+          property :apigee_opdk_config, as: 'apigeeOpdkConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeOpdkConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeOpdkConfig::Representation
+      
+          property :apigee_x_hybrid_config, as: 'apigeeXHybridConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeXHybridConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeXHybridConfig::Representation
+      
+          property :plugin_instance, as: 'pluginInstance'
+        end
+      end
+      
       class GoogleCloudApihubV1GoogleServiceAccountConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudApihubV1Header
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :data_type, as: 'dataType'
+          property :name, as: 'name'
         end
       end
       
@@ -1185,6 +1606,39 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1HttpOperationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_operation, as: 'httpOperation', class: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperation, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperation::Representation
+      
+          collection :path_params, as: 'pathParams', class: Google::Apis::ApihubV1::GoogleCloudApihubV1PathParam, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1PathParam::Representation
+      
+          hash :query_params, as: 'queryParams', class: Google::Apis::ApihubV1::GoogleCloudApihubV1QueryParam, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1QueryParam::Representation
+      
+          property :request, as: 'request', class: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpRequest, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpRequest::Representation
+      
+          property :response, as: 'response', class: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpResponse, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpResponse::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1HttpRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :headers, as: 'headers', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Header, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Header::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1HttpResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :headers, as: 'headers', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Header, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Header::Representation
+      
+          hash :response_codes, as: 'responseCodes'
+        end
+      end
+      
       class GoogleCloudApihubV1Issue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1203,6 +1657,7 @@ module Google
           property :end_time, as: 'endTime'
           property :error_message, as: 'errorMessage'
           property :result, as: 'result'
+          property :result_metadata, as: 'resultMetadata'
           property :start_time, as: 'startTime'
         end
       end
@@ -1224,6 +1679,15 @@ module Google
       class GoogleCloudApihubV1LintSpecRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApihubV1ListAddonsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :addons, as: 'addons', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Addon, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Addon::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -1276,6 +1740,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :deployments, as: 'deployments', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Deployment, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Deployment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudApihubV1ListDiscoveredApiObservationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :discovered_api_observations, as: 'discoveredApiObservations', class: Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiObservation, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiObservation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudApihubV1ListDiscoveredApiOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :discovered_api_operations, as: 'discoveredApiOperations', class: Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiOperation, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiOperation::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1360,6 +1842,52 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1ManageAddonConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :data, :base64 => true, as: 'data'
+          property :data_type, as: 'dataType'
+          property :relative_path, as: 'relativePath'
+        end
+      end
+      
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudApihubV1MatchResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudApihubV1McpTool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotations, as: 'annotations', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ToolAnnotations, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ToolAnnotations::Representation
+      
+          property :description, as: 'description'
+          property :input_schema, as: 'inputSchema', class: Google::Apis::ApihubV1::GoogleCloudApihubV1OperationSchema, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1OperationSchema::Representation
+      
+          property :name, as: 'name'
+          property :output_schema, as: 'outputSchema', class: Google::Apis::ApihubV1::GoogleCloudApihubV1OperationSchema, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1OperationSchema::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
       class GoogleCloudApihubV1MultiIntValues
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1410,6 +1938,8 @@ module Google
       
           property :http_operation, as: 'httpOperation', class: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperation, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperation::Representation
       
+          property :mcp_tool, as: 'mcpTool', class: Google::Apis::ApihubV1::GoogleCloudApihubV1McpTool, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1McpTool::Representation
+      
         end
       end
       
@@ -1423,6 +1953,13 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class GoogleCloudApihubV1OperationSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :json_schema, as: 'jsonSchema'
         end
       end
       
@@ -1442,6 +1979,14 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1PathParam
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_type, as: 'dataType'
+          property :position, as: 'position'
+        end
+      end
+      
       class GoogleCloudApihubV1Plugin
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1454,6 +1999,7 @@ module Google
           property :display_name, as: 'displayName'
           property :documentation, as: 'documentation', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Documentation, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Documentation::Representation
       
+          property :gateway_type, as: 'gatewayType'
           property :hosting_service, as: 'hostingService', class: Google::Apis::ApihubV1::GoogleCloudApihubV1HostingService, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1HostingService::Representation
       
           property :name, as: 'name'
@@ -1489,6 +2035,9 @@ module Google
           property :display_name, as: 'displayName'
           property :error_message, as: 'errorMessage'
           property :name, as: 'name'
+          hash :source_environments_config, as: 'sourceEnvironmentsConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceEnvironment, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceEnvironment::Representation
+      
+          property :source_project_id, as: 'sourceProjectId'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -1502,8 +2051,11 @@ module Google
       
           property :hub_instance_action, as: 'hubInstanceAction', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ExecutionStatus, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ExecutionStatus::Representation
       
+          property :resource_config, as: 'resourceConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ResourceConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ResourceConfig::Representation
+      
           property :schedule_cron_expression, as: 'scheduleCronExpression'
           property :schedule_time_zone, as: 'scheduleTimeZone'
+          property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
         end
       end
@@ -1532,6 +2084,15 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1QueryParam
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :data_type, as: 'dataType'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudApihubV1Range
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1539,6 +2100,23 @@ module Google
       
           property :start, as: 'start', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Point, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Point::Representation
       
+        end
+      end
+      
+      class GoogleCloudApihubV1ResourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action_type, as: 'actionType'
+          property :pubsub_topic, as: 'pubsubTopic'
+        end
+      end
+      
+      class GoogleCloudApihubV1RetrieveApiViewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :api_views, as: 'apiViews', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ApiView, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ApiView::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -1593,6 +2171,16 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1SourceEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :source_environment, as: 'sourceEnvironment'
+          property :source_environment_uri, as: 'sourceEnvironmentUri'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudApihubV1SourceMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1608,6 +2196,8 @@ module Google
       class GoogleCloudApihubV1Spec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_spec_contents, as: 'additionalSpecContents', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AdditionalSpecContent, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AdditionalSpecContent::Representation
+      
           hash :attributes, as: 'attributes', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
       
           property :contents, as: 'contents', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SpecContents, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SpecContents::Representation
@@ -1689,6 +2279,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, as: 'count'
           property :severity, as: 'severity'
+        end
+      end
+      
+      class GoogleCloudApihubV1ToolAnnotations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_hints, as: 'additionalHints'
+          property :destructive_hint, as: 'destructiveHint'
+          property :idempotent_hint, as: 'idempotentHint'
+          property :open_world_hint, as: 'openWorldHint'
+          property :read_only_hint, as: 'readOnlyHint'
+          property :title, as: 'title'
         end
       end
       
@@ -1789,6 +2391,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ApihubV1::GoogleLongrunningOperation, decorator: Google::Apis::ApihubV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

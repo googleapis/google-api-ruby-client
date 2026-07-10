@@ -551,9 +551,9 @@ module Google
       class ListMatcher
         include Google::Apis::Core::Hashable
       
-        # Specifies the way to match a ProtobufWkt::Value. Primitive values and
-        # ListValue are supported. StructValue is not supported and is always not
-        # matched. [#next-free-field: 7]
+        # Specifies the way to match a Protobuf::Value. Primitive values and ListValue
+        # are supported. StructValue is not supported and is always not matched. [#next-
+        # free-field: 7]
         # Corresponds to the JSON property `oneOf`
         # @return [Google::Apis::TrafficdirectorV2::ValueMatcher]
         attr_accessor :one_of
@@ -1238,9 +1238,9 @@ module Google
         # @return [Array<Google::Apis::TrafficdirectorV2::PathSegment>]
         attr_accessor :path
       
-        # Specifies the way to match a ProtobufWkt::Value. Primitive values and
-        # ListValue are supported. StructValue is not supported and is always not
-        # matched. [#next-free-field: 7]
+        # Specifies the way to match a Protobuf::Value. Primitive values and ListValue
+        # are supported. StructValue is not supported and is always not matched. [#next-
+        # free-field: 7]
         # Corresponds to the JSON property `value`
         # @return [Google::Apis::TrafficdirectorV2::ValueMatcher]
         attr_accessor :value
@@ -1287,9 +1287,9 @@ module Google
         end
       end
       
-      # Specifies the way to match a ProtobufWkt::Value. Primitive values and
-      # ListValue are supported. StructValue is not supported and is always not
-      # matched. [#next-free-field: 7]
+      # Specifies the way to match a Protobuf::Value. Primitive values and ListValue
+      # are supported. StructValue is not supported and is always not matched. [#next-
+      # free-field: 7]
       class ValueMatcher
         include Google::Apis::Core::Hashable
       

@@ -1,5 +1,82 @@
 # Release history for google-apis-dataproc_v1
 
+### v0.97.0 (2026-07-05)
+
+* Regenerated from discovery document revision 20260625
+
+### v0.96.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260612
+
+### v0.95.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260524
+* Regenerated using generator version 0.19.0
+
+### v0.94.0 (2026-05-31)
+
+* Regenerated from discovery document revision 20260509
+
+### v0.93.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260501
+
+### v0.92.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260427
+
+### v0.91.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260407
+
+### v0.90.0 (2026-03-01)
+
+* Regenerated from discovery document revision 20260219
+
+### v0.89.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260204
+
+### v0.88.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260122
+
+### v0.87.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251203
+
+### v0.86.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251104
+
+### v0.85.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251021
+
+### v0.84.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251003
+
+### v0.83.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251001
+
+### v0.82.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250813
+
+### v0.81.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250624
+
+### v0.80.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250604
+
+### v0.79.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250521
+
 ### v0.78.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250513

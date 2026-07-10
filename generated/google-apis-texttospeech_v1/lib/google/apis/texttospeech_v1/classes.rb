@@ -26,6 +26,13 @@ module Google
       class AdvancedVoiceOptions
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, textnorm will be applied to text input. This feature is
+        # enabled by default. Only applies for Gemini TTS.
+        # Corresponds to the JSON property `enableTextnorm`
+        # @return [Boolean]
+        attr_accessor :enable_textnorm
+        alias_method :enable_textnorm?, :enable_textnorm
+      
         # Only for Journey voices. If false, the synthesis is context aware and has a
         # higher latency.
         # Corresponds to the JSON property `lowLatencyJourneySynthesis`
@@ -33,13 +40,28 @@ module Google
         attr_accessor :low_latency_journey_synthesis
         alias_method :low_latency_journey_synthesis?, :low_latency_journey_synthesis
       
+        # Optional. Input only. Deprecated, use safety_settings instead. If true,
+        # relaxes safety filters for Gemini TTS.
+        # Corresponds to the JSON property `relaxSafetyFilters`
+        # @return [Boolean]
+        attr_accessor :relax_safety_filters
+        alias_method :relax_safety_filters?, :relax_safety_filters
+      
+        # Safety settings for the request.
+        # Corresponds to the JSON property `safetySettings`
+        # @return [Google::Apis::TexttospeechV1::SafetySettings]
+        attr_accessor :safety_settings
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enable_textnorm = args[:enable_textnorm] if args.key?(:enable_textnorm)
           @low_latency_journey_synthesis = args[:low_latency_journey_synthesis] if args.key?(:low_latency_journey_synthesis)
+          @relax_safety_filters = args[:relax_safety_filters] if args.key?(:relax_safety_filters)
+          @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
         end
       end
       
@@ -265,6 +287,14 @@ module Google
         # @return [Array<Google::Apis::TexttospeechV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -273,6 +303,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -311,6 +342,55 @@ module Google
         # Update properties of this object
         def update!(**args)
           @turns = args[:turns] if args.key?(:turns)
+        end
+      end
+      
+      # Configuration for a multi-speaker text-to-speech setup. Enables the use of up
+      # to two distinct voices in a single synthesis request.
+      class MultiSpeakerVoiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of configurations for the voices of the speakers. Exactly two
+        # speaker voice configurations must be provided.
+        # Corresponds to the JSON property `speakerVoiceConfigs`
+        # @return [Array<Google::Apis::TexttospeechV1::MultispeakerPrebuiltVoice>]
+        attr_accessor :speaker_voice_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker_voice_configs = args[:speaker_voice_configs] if args.key?(:speaker_voice_configs)
+        end
+      end
+      
+      # Configuration for a single speaker in a Gemini TTS multi-speaker setup.
+      # Enables dialogue between two speakers.
+      class MultispeakerPrebuiltVoice
+        include Google::Apis::Core::Hashable
+      
+        # Required. The speaker alias of the voice. This is the user-chosen speaker name
+        # that is used in the multispeaker text input, such as "Speaker1".
+        # Corresponds to the JSON property `speakerAlias`
+        # @return [String]
+        attr_accessor :speaker_alias
+      
+        # Required. The speaker ID of the voice. See https://cloud.google.com/text-to-
+        # speech/docs/gemini-tts#voice_options for available values.
+        # Corresponds to the JSON property `speakerId`
+        # @return [String]
+        attr_accessor :speaker_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker_alias = args[:speaker_alias] if args.key?(:speaker_alias)
+          @speaker_id = args[:speaker_id] if args.key?(:speaker_id)
         end
       end
       
@@ -376,6 +456,50 @@ module Google
         end
       end
       
+      # Safety setting for a single harm category.
+      class SafetySetting
+        include Google::Apis::Core::Hashable
+      
+        # The harm category to apply the safety setting to.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # The harm block threshold for the safety setting.
+        # Corresponds to the JSON property `threshold`
+        # @return [String]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
+      # Safety settings for the request.
+      class SafetySettings
+        include Google::Apis::Core::Hashable
+      
+        # The safety settings for the request.
+        # Corresponds to the JSON property `settings`
+        # @return [Array<Google::Apis::TexttospeechV1::SafetySetting>]
+        attr_accessor :settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @settings = args[:settings] if args.key?(:settings)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -426,8 +550,8 @@ module Google
         # @return [Google::Apis::TexttospeechV1::CustomPronunciations]
         attr_accessor :custom_pronunciations
       
-        # Markup for HD voices specifically. This field may not be used with any other
-        # voices.
+        # Markup for Chirp 3: HD voices specifically. This field may not be used with
+        # any other voices.
         # Corresponds to the JSON property `markup`
         # @return [String]
         attr_accessor :markup
@@ -436,6 +560,14 @@ module Google
         # Corresponds to the JSON property `multiSpeakerMarkup`
         # @return [Google::Apis::TexttospeechV1::MultiSpeakerMarkup]
         attr_accessor :multi_speaker_markup
+      
+        # This system instruction is supported only for controllable/promptable voice
+        # models. If this system instruction is used, we pass the unedited text to
+        # Gemini-TTS. Otherwise, a default system instruction is used. AI Studio calls
+        # this system instruction, Style Instructions.
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
       
         # The SSML document to be synthesized. The SSML document must be valid and well-
         # formed. Otherwise the RPC will fail and return google.rpc.Code.
@@ -459,6 +591,7 @@ module Google
           @custom_pronunciations = args[:custom_pronunciations] if args.key?(:custom_pronunciations)
           @markup = args[:markup] if args.key?(:markup)
           @multi_speaker_markup = args[:multi_speaker_markup] if args.key?(:multi_speaker_markup)
+          @prompt = args[:prompt] if args.key?(:prompt)
           @ssml = args[:ssml] if args.key?(:ssml)
           @text = args[:text] if args.key?(:text)
         end
@@ -705,6 +838,18 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
+        # Optional. The name of the model. If set, the service will choose the model
+        # matching the specified configuration.
+        # Corresponds to the JSON property `modelName`
+        # @return [String]
+        attr_accessor :model_name
+      
+        # Configuration for a multi-speaker text-to-speech setup. Enables the use of up
+        # to two distinct voices in a single synthesis request.
+        # Corresponds to the JSON property `multiSpeakerVoiceConfig`
+        # @return [Google::Apis::TexttospeechV1::MultiSpeakerVoiceConfig]
+        attr_accessor :multi_speaker_voice_config
+      
         # The name of the voice. If both the name and the gender are not set, the
         # service will choose a voice based on the other parameters such as
         # language_code.
@@ -734,6 +879,8 @@ module Google
         def update!(**args)
           @custom_voice = args[:custom_voice] if args.key?(:custom_voice)
           @language_code = args[:language_code] if args.key?(:language_code)
+          @model_name = args[:model_name] if args.key?(:model_name)
+          @multi_speaker_voice_config = args[:multi_speaker_voice_config] if args.key?(:multi_speaker_voice_config)
           @name = args[:name] if args.key?(:name)
           @ssml_gender = args[:ssml_gender] if args.key?(:ssml_gender)
           @voice_clone = args[:voice_clone] if args.key?(:voice_clone)

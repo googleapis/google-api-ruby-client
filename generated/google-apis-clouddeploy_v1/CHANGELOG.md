@@ -1,5 +1,67 @@
 # Release history for google-apis-clouddeploy_v1
 
+### v0.75.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260525
+* Regenerated using generator version 0.19.0
+
+### v0.74.0 (2026-05-24)
+
+* Regenerated from discovery document revision 20260512
+
+### v0.73.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260427
+
+### v0.72.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260422
+
+### v0.71.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260325
+
+### v0.70.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260313
+
+### v0.69.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260128
+
+### v0.68.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260109
+
+### v0.67.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251210
+
+### v0.66.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251203
+
+### v0.65.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251105
+
+### v0.64.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251022
+
+### v0.63.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250924
+
+### v0.62.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250910
+
+### v0.61.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250813
+* Regenerated using generator version 0.18.0
+
 ### v0.60.0 (2025-05-04)
 
 * Regenerated from discovery document revision 20250416

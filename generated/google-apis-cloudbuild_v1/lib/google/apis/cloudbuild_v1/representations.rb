@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildStepResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildTrigger
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +293,18 @@ module Google
       end
       
       class FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenericArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenericArtifactDependency
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -484,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Oci
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -634,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StepResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StorageSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -671,6 +701,12 @@ module Google
       end
       
       class UpdateWorkerPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadedGenericArtifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -778,6 +814,8 @@ module Google
       class Artifacts
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generic_artifacts, as: 'genericArtifacts', class: Google::Apis::CloudbuildV1::GenericArtifact, decorator: Google::Apis::CloudbuildV1::GenericArtifact::Representation
+      
           collection :go_modules, as: 'goModules', class: Google::Apis::CloudbuildV1::GoModule, decorator: Google::Apis::CloudbuildV1::GoModule::Representation
       
           collection :images, as: 'images'
@@ -786,6 +824,8 @@ module Google
           collection :npm_packages, as: 'npmPackages', class: Google::Apis::CloudbuildV1::NpmPackage, decorator: Google::Apis::CloudbuildV1::NpmPackage::Representation
       
           property :objects, as: 'objects', class: Google::Apis::CloudbuildV1::ArtifactObjects, decorator: Google::Apis::CloudbuildV1::ArtifactObjects::Representation
+      
+          collection :oci, as: 'oci', class: Google::Apis::CloudbuildV1::Oci, decorator: Google::Apis::CloudbuildV1::Oci::Representation
       
           collection :python_packages, as: 'pythonPackages', class: Google::Apis::CloudbuildV1::PythonPackage, decorator: Google::Apis::CloudbuildV1::PythonPackage::Representation
       
@@ -1027,6 +1067,8 @@ module Google
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
       
+          collection :results, as: 'results', class: Google::Apis::CloudbuildV1::StepResult, decorator: Google::Apis::CloudbuildV1::StepResult::Representation
+      
           property :script, as: 'script'
           collection :secret_env, as: 'secretEnv'
           property :status, as: 'status'
@@ -1036,6 +1078,13 @@ module Google
           collection :volumes, as: 'volumes', class: Google::Apis::CloudbuildV1::Volume, decorator: Google::Apis::CloudbuildV1::Volume::Representation
       
           collection :wait_for, as: 'waitFor'
+        end
+      end
+      
+      class BuildStepResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :results, as: 'results'
         end
       end
       
@@ -1088,8 +1137,10 @@ module Google
       class BuiltImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :digest, as: 'digest'
           property :name, as: 'name'
+          property :oci_media_type, as: 'ociMediaType'
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
       
         end
@@ -1221,6 +1272,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :empty, as: 'empty'
+          property :generic_artifact, as: 'genericArtifact', class: Google::Apis::CloudbuildV1::GenericArtifactDependency, decorator: Google::Apis::CloudbuildV1::GenericArtifactDependency::Representation
+      
           property :git_source, as: 'gitSource', class: Google::Apis::CloudbuildV1::GitSourceDependency, decorator: Google::Apis::CloudbuildV1::GitSourceDependency::Representation
       
         end
@@ -1266,6 +1319,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::CloudbuildV1::HashProp, decorator: Google::Apis::CloudbuildV1::HashProp::Representation
       
+        end
+      end
+      
+      class GenericArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :folder, as: 'folder'
+          property :registry_path, as: 'registryPath'
+        end
+      end
+      
+      class GenericArtifactDependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dest_path, as: 'destPath'
+          property :resource, as: 'resource'
         end
       end
       
@@ -1575,6 +1644,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_id, as: 'artifactId'
+          property :deploy_folder, as: 'deployFolder'
           property :group_id, as: 'groupId'
           property :path, as: 'path'
           property :repository, as: 'repository'
@@ -1596,6 +1666,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :package_path, as: 'packagePath'
           property :repository, as: 'repository'
+        end
+      end
+      
+      class Oci
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file, as: 'file'
+          property :registry_path, as: 'registryPath'
+          collection :tags, as: 'tags'
         end
       end
       
@@ -1753,6 +1832,10 @@ module Google
       
           collection :build_step_images, as: 'buildStepImages'
           collection :build_step_outputs, as: 'buildStepOutputs'
+          hash :build_step_results, as: 'buildStepResults', class: Google::Apis::CloudbuildV1::BuildStepResults, decorator: Google::Apis::CloudbuildV1::BuildStepResults::Representation
+      
+          collection :generic_artifacts, as: 'genericArtifacts', class: Google::Apis::CloudbuildV1::UploadedGenericArtifact, decorator: Google::Apis::CloudbuildV1::UploadedGenericArtifact::Representation
+      
           collection :go_modules, as: 'goModules', class: Google::Apis::CloudbuildV1::UploadedGoModule, decorator: Google::Apis::CloudbuildV1::UploadedGoModule::Representation
       
           collection :images, as: 'images', class: Google::Apis::CloudbuildV1::BuiltImage, decorator: Google::Apis::CloudbuildV1::BuiltImage::Representation
@@ -1864,6 +1947,15 @@ module Google
         end
       end
       
+      class StepResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation_content, as: 'attestationContent'
+          property :attestation_type, as: 'attestationType'
+          property :name, as: 'name'
+        end
+      end
+      
       class StorageSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1927,9 +2019,24 @@ module Google
         end
       end
       
+      class UploadedGenericArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_fingerprint, as: 'artifactFingerprint', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
+      
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
+          hash :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
       class UploadedGoModule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
@@ -1941,6 +2048,7 @@ module Google
       class UploadedMavenArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
@@ -1952,6 +2060,7 @@ module Google
       class UploadedNpmPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
@@ -1963,6 +2072,7 @@ module Google
       class UploadedPythonPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::CloudbuildV1::FileHashes, decorator: Google::Apis::CloudbuildV1::FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::CloudbuildV1::TimeSpan, decorator: Google::Apis::CloudbuildV1::TimeSpan::Representation
@@ -1999,6 +2109,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :machine_type, as: 'machineType'
         end
       end

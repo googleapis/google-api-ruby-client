@@ -235,6 +235,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetworkconnectivityV1alpha1::GoogleLongrunningOperation, decorator: Google::Apis::NetworkconnectivityV1alpha1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -291,6 +292,7 @@ module Google
           collection :overlaps, as: 'overlaps'
           property :peering, as: 'peering'
           property :prefix_length, as: 'prefixLength'
+          property :range_status, as: 'rangeStatus'
           collection :target_cidr_range, as: 'targetCidrRange'
           property :update_time, as: 'updateTime'
           property :usage, as: 'usage'

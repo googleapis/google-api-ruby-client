@@ -23,7 +23,7 @@ module Google
     #
     # Places Aggregate API.
     #
-    # @see https://g3doc.corp.google.com/geo/platform/area_insights/README.md?cl=head
+    # @see https://developers.google.com/maps/documentation/places-aggregate/overview
     module AreainsightsV1
       # Version of the Places Aggregate API this client connects to.
       # This is NOT the gem version.

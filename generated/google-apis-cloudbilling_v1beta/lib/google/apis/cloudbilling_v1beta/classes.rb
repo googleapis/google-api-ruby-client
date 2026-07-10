@@ -22,550 +22,47 @@ module Google
   module Apis
     module CloudbillingV1beta
       
-      # Specifies the regions for Cache Fill.
-      class CacheFillRegions
+      # A local representation of the query used to fetch the data. This is used
+      # instead of the raw QueryBillingDataRequest to avoid pulling in Cloud Policy
+      # Enforcement (CPE) resource_type annotations into the response payload, which
+      # causes ESF validation failures.
+      class AgenticQueryInfo
         include Google::Apis::Core::Hashable
       
-        # The destination region for cache fill.
-        # Corresponds to the JSON property `destinationRegion`
+        # The columns queried.
+        # Corresponds to the JSON property `columns`
         # @return [String]
-        attr_accessor :destination_region
+        attr_accessor :columns
       
-        # The source region for cache fill.
-        # Corresponds to the JSON property `sourceRegion`
+        # The filter applied to the query.
+        # Corresponds to the JSON property `filter`
         # @return [String]
-        attr_accessor :source_region
+        attr_accessor :filter
       
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @destination_region = args[:destination_region] if args.key?(:destination_region)
-          @source_region = args[:source_region] if args.key?(:source_region)
-        end
-      end
-      
-      # Specifies usage for Cloud CDN Data Transfer.
-      class CloudCdnEgressWorkload
-        include Google::Apis::Core::Hashable
-      
-        # The destination for the cache data transfer.
-        # Corresponds to the JSON property `cacheEgressDestination`
+        # The group-by clause applied to the query.
+        # Corresponds to the JSON property `groupBy`
         # @return [String]
-        attr_accessor :cache_egress_destination
+        attr_accessor :group_by
       
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `cacheEgressRate`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :cache_egress_rate
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cache_egress_destination = args[:cache_egress_destination] if args.key?(:cache_egress_destination)
-          @cache_egress_rate = args[:cache_egress_rate] if args.key?(:cache_egress_rate)
-        end
-      end
-      
-      # Specifies usage for Cloud CDN resources.
-      class CloudCdnWorkload
-        include Google::Apis::Core::Hashable
-      
-        # The source service for the cache fill.
-        # Corresponds to the JSON property `cacheFillOriginService`
-        # @return [String]
-        attr_accessor :cache_fill_origin_service
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `cacheFillRate`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :cache_fill_rate
-      
-        # Specifies the regions for Cache Fill.
-        # Corresponds to the JSON property `cacheFillRegions`
-        # @return [Google::Apis::CloudbillingV1beta::CacheFillRegions]
-        attr_accessor :cache_fill_regions
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `cacheLookUpRate`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :cache_look_up_rate
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cache_fill_origin_service = args[:cache_fill_origin_service] if args.key?(:cache_fill_origin_service)
-          @cache_fill_rate = args[:cache_fill_rate] if args.key?(:cache_fill_rate)
-          @cache_fill_regions = args[:cache_fill_regions] if args.key?(:cache_fill_regions)
-          @cache_look_up_rate = args[:cache_look_up_rate] if args.key?(:cache_look_up_rate)
-        end
-      end
-      
-      # Includes the estimate for Interconnect Data Transfer only. To specify usage
-      # for data transfer between VMs and internet end-points, use the Standard Tier
-      # Internet Data Transfer interface.
-      class CloudInterconnectEgressWorkload
-        include Google::Apis::Core::Hashable
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `egressRate`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :egress_rate
-      
-        # Locations in the [Interconnect connection location table](https://cloud.google.
-        # com/vpc/network-pricing#interconnect-pricing). These are the Interconnect Data
-        # Transfer charges.
-        # Corresponds to the JSON property `interconnectConnectionLocation`
-        # @return [String]
-        attr_accessor :interconnect_connection_location
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
-          @interconnect_connection_location = args[:interconnect_connection_location] if args.key?(:interconnect_connection_location)
-        end
-      end
-      
-      # Specifies usage for Cloud Interconnect resources.
-      class CloudInterconnectWorkload
-        include Google::Apis::Core::Hashable
-      
-        # VLAN attachment used for interconnect.
-        # Corresponds to the JSON property `interconnectAttachments`
-        # @return [Array<Google::Apis::CloudbillingV1beta::VlanAttachment>]
-        attr_accessor :interconnect_attachments
-      
-        # VLAN attachment type
-        # Corresponds to the JSON property `interconnectType`
-        # @return [String]
-        attr_accessor :interconnect_type
-      
-        # Interconnect circuit link type.
-        # Corresponds to the JSON property `linkType`
-        # @return [String]
-        attr_accessor :link_type
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `provisionedLinkCount`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :provisioned_link_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @interconnect_attachments = args[:interconnect_attachments] if args.key?(:interconnect_attachments)
-          @interconnect_type = args[:interconnect_type] if args.key?(:interconnect_type)
-          @link_type = args[:link_type] if args.key?(:link_type)
-          @provisioned_link_count = args[:provisioned_link_count] if args.key?(:provisioned_link_count)
-        end
-      end
-      
-      # Specification of a network type. Network data transfer within Google Cloud
-      # applies when you move or copy data from one Cloud Storage bucket to another or
-      # when another Google Cloud service accesses data in your Cloud Storage bucket.
-      # This includes the network data transfer within Google Cloud and the general
-      # network usage. * If transferring data between two regions, the source and
-      # destination fields are set to different values. For example: `source_continent`
-      # = "SOURCE_CONTINENT_ASIA_PACIFIC", `destination_continent` = "
-      # SOURCE_CONTINENT_SOUTH_AMERICA". * If transferring data within one region, the
-      # source and destination fields are set to the same value. For example: `
-      # source_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC", `destination_continent` =
-      # "SOURCE_CONTINENT_ASIA_PACIFIC". Some examples for the Network data transfer
-      # traffic type on the pricing page. * Data moves between different locations on
-      # the same continent. `source_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC", `
-      # destination_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC". * Data moves between
-      # different continents and neither is Australia. `source_continent` = "
-      # SOURCE_CONTINENT_NORTH_AMERICA", `destination_continent` = "
-      # SOURCE_CONTINENT_ASIA_PACIFIC". * Data moves between different continents and
-      # one is Australia. `source_continent` = "SOURCE_CONTINENT_NORTH_AMERICA", `
-      # destination_continent` = "SOURCE_CONTINENT_AUSTRALIA".
-      class CloudStorageEgressWorkload
-        include Google::Apis::Core::Hashable
-      
-        # Where the data is sent to.
-        # Corresponds to the JSON property `destinationContinent`
-        # @return [String]
-        attr_accessor :destination_continent
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `egressRate`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :egress_rate
-      
-        # Where the data comes from.
-        # Corresponds to the JSON property `sourceContinent`
-        # @return [String]
-        attr_accessor :source_continent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @destination_continent = args[:destination_continent] if args.key?(:destination_continent)
-          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
-          @source_continent = args[:source_continent] if args.key?(:source_continent)
-        end
-      end
-      
-      # Specifies usage of Cloud Storage resources.
-      class CloudStorageWorkload
-        include Google::Apis::Core::Hashable
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `dataRetrieval`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :data_retrieval
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `dataStored`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :data_stored
-      
-        # Area contains dual locations.
-        # Corresponds to the JSON property `dualRegion`
-        # @return [Google::Apis::CloudbillingV1beta::DualRegional]
-        attr_accessor :dual_region
-      
-        # Area contains multiple locations.
-        # Corresponds to the JSON property `multiRegion`
-        # @return [Google::Apis::CloudbillingV1beta::MultiRegional]
-        attr_accessor :multi_region
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `operationA`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :operation_a
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `operationB`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :operation_b
-      
-        # Area contains only one location.
-        # Corresponds to the JSON property `region`
-        # @return [Google::Apis::CloudbillingV1beta::Regional]
-        attr_accessor :region
-      
-        # The [storage class](https://cloud.google.com/storage/docs/storage-classes#
-        # classes) of the data and operation. For example: "standard" and "nearline".
-        # Corresponds to the JSON property `storageClass`
-        # @return [String]
-        attr_accessor :storage_class
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_retrieval = args[:data_retrieval] if args.key?(:data_retrieval)
-          @data_stored = args[:data_stored] if args.key?(:data_stored)
-          @dual_region = args[:dual_region] if args.key?(:dual_region)
-          @multi_region = args[:multi_region] if args.key?(:multi_region)
-          @operation_a = args[:operation_a] if args.key?(:operation_a)
-          @operation_b = args[:operation_b] if args.key?(:operation_b)
-          @region = args[:region] if args.key?(:region)
-          @storage_class = args[:storage_class] if args.key?(:storage_class)
-        end
-      end
-      
-      # Commitments give you the ability to pay a recurring fee in exchange for a
-      # benefit, such as a discount for your use. For example, this object might
-      # contain details of a [spend-based committed use discount (CUD)](https://cloud.
-      # google.com/docs/cuds#spend_based_commitments). Within a CostScenario, adding a
-      # commitment includes the cost of the commitment and any discounts.
-      class Commitment
-        include Google::Apis::Core::Hashable
-      
-        # Required. A name for this commitment. All commitments in a CostScenario must
-        # have unique names. Each name may be at most 128 characters long.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Specifies a resource-based committed use discount (CUD).
-        # Corresponds to the JSON property `vmResourceBasedCud`
-        # @return [Google::Apis::CloudbillingV1beta::VmResourceBasedCud]
-        attr_accessor :vm_resource_based_cud
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @vm_resource_based_cud = args[:vm_resource_based_cud] if args.key?(:vm_resource_based_cud)
-        end
-      end
-      
-      # Estimated cost for a commitment.
-      class CommitmentCostEstimate
-        include Google::Apis::Core::Hashable
-      
-        # An estimated cost.
-        # Corresponds to the JSON property `commitmentTotalCostEstimate`
-        # @return [Google::Apis::CloudbillingV1beta::CostEstimate]
-        attr_accessor :commitment_total_cost_estimate
-      
-        # The name of the commitment, as specified in the `CostScenario`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Estimated costs for each SKU in the commitment.
-        # Corresponds to the JSON property `skuCostEstimates`
-        # @return [Array<Google::Apis::CloudbillingV1beta::SkuCostEstimate>]
-        attr_accessor :sku_cost_estimates
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @commitment_total_cost_estimate = args[:commitment_total_cost_estimate] if args.key?(:commitment_total_cost_estimate)
-          @name = args[:name] if args.key?(:name)
-          @sku_cost_estimates = args[:sku_cost_estimates] if args.key?(:sku_cost_estimates)
-        end
-      end
-      
-      # Specificies usage of a set of identical compute VM instances.
-      class ComputeVmWorkload
-        include Google::Apis::Core::Hashable
-      
-        # Defines whether each instance has confidential compute enabled.
-        # Corresponds to the JSON property `enableConfidentialCompute`
-        # @return [Boolean]
-        attr_accessor :enable_confidential_compute
-        alias_method :enable_confidential_compute?, :enable_confidential_compute
-      
-        # Specification of a set of guest accelerators attached to a machine.
-        # Corresponds to the JSON property `guestAccelerator`
-        # @return [Google::Apis::CloudbillingV1beta::GuestAccelerator]
-        attr_accessor :guest_accelerator
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `instancesRunning`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :instances_running
-      
-        # Premium image licenses used by each instance.
-        # Corresponds to the JSON property `licenses`
-        # @return [Array<String>]
-        attr_accessor :licenses
-      
-        # Specification of machine series, memory, and number of vCPUs.
-        # Corresponds to the JSON property `machineType`
-        # @return [Google::Apis::CloudbillingV1beta::MachineType]
-        attr_accessor :machine_type
-      
-        # Persistent disks attached to each instance. Must include a boot disk.
-        # Corresponds to the JSON property `persistentDisks`
-        # @return [Array<Google::Apis::CloudbillingV1beta::PersistentDisk>]
-        attr_accessor :persistent_disks
-      
-        # Defines whether each instance is preemptible.
-        # Corresponds to the JSON property `preemptible`
-        # @return [Boolean]
-        attr_accessor :preemptible
-        alias_method :preemptible?, :preemptible
-      
-        # The [region](https://cloud.google.com/compute/docs/regions-zones) where the
-        # VMs run. For example: "us-central1".
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
-          @guest_accelerator = args[:guest_accelerator] if args.key?(:guest_accelerator)
-          @instances_running = args[:instances_running] if args.key?(:instances_running)
-          @licenses = args[:licenses] if args.key?(:licenses)
-          @machine_type = args[:machine_type] if args.key?(:machine_type)
-          @persistent_disks = args[:persistent_disks] if args.key?(:persistent_disks)
-          @preemptible = args[:preemptible] if args.key?(:preemptible)
-          @region = args[:region] if args.key?(:region)
-        end
-      end
-      
-      # An estimated cost.
-      class CostEstimate
-        include Google::Apis::Core::Hashable
-      
-        # The estimated credits applied.
-        # Corresponds to the JSON property `creditEstimates`
-        # @return [Array<Google::Apis::CloudbillingV1beta::CreditEstimate>]
-        attr_accessor :credit_estimates
-      
-        # Represents an amount of money with its currency type.
-        # Corresponds to the JSON property `netCostEstimate`
-        # @return [Google::Apis::CloudbillingV1beta::Money]
-        attr_accessor :net_cost_estimate
-      
-        # Represents an amount of money with its currency type.
-        # Corresponds to the JSON property `preCreditCostEstimate`
-        # @return [Google::Apis::CloudbillingV1beta::Money]
-        attr_accessor :pre_credit_cost_estimate
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @credit_estimates = args[:credit_estimates] if args.key?(:credit_estimates)
-          @net_cost_estimate = args[:net_cost_estimate] if args.key?(:net_cost_estimate)
-          @pre_credit_cost_estimate = args[:pre_credit_cost_estimate] if args.key?(:pre_credit_cost_estimate)
-        end
-      end
-      
-      # The result of a estimating the costs of a `CostScenario`.
-      class CostEstimationResult
-        include Google::Apis::Core::Hashable
-      
-        # Required. The ISO 4217 currency code for the cost estimate.
-        # Corresponds to the JSON property `currencyCode`
-        # @return [String]
-        attr_accessor :currency_code
-      
-        # Required. Estimated costs for each idealized month of a `CostScenario`.
-        # Corresponds to the JSON property `segmentCostEstimates`
-        # @return [Array<Google::Apis::CloudbillingV1beta::SegmentCostEstimate>]
-        attr_accessor :segment_cost_estimates
-      
-        # Required. Information about SKUs used in the estimate.
-        # Corresponds to the JSON property `skus`
-        # @return [Array<Google::Apis::CloudbillingV1beta::Sku>]
-        attr_accessor :skus
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @currency_code = args[:currency_code] if args.key?(:currency_code)
-          @segment_cost_estimates = args[:segment_cost_estimates] if args.key?(:segment_cost_estimates)
-          @skus = args[:skus] if args.key?(:skus)
-        end
-      end
-      
-      # Encapsulates all the information needed to perform a cost estimate. It
-      # includes a specification of the Google Cloud usage whose costs are estimated,
-      # and configuration options.
-      class CostScenario
-        include Google::Apis::Core::Hashable
-      
-        # New commitments to estimate the costs for. The cost of the commitments will be
-        # included in the estimate result and discounts the commitment entitles will be
-        # included in the workload cost estimates. A maximum of 100 workloads can be
-        # provided.
-        # Corresponds to the JSON property `commitments`
-        # @return [Array<Google::Apis::CloudbillingV1beta::Commitment>]
-        attr_accessor :commitments
-      
-        # Configuration for a CostScenario. Specifies how costs are calculated.
-        # Corresponds to the JSON property `scenarioConfig`
-        # @return [Google::Apis::CloudbillingV1beta::ScenarioConfig]
-        attr_accessor :scenario_config
-      
-        # The Google Cloud usage whose costs are estimated. A maximum of 100 workloads
-        # can be provided.
-        # Corresponds to the JSON property `workloads`
-        # @return [Array<Google::Apis::CloudbillingV1beta::Workload>]
-        attr_accessor :workloads
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @commitments = args[:commitments] if args.key?(:commitments)
-          @scenario_config = args[:scenario_config] if args.key?(:scenario_config)
-          @workloads = args[:workloads] if args.key?(:workloads)
-        end
-      end
-      
-      # An estimated credit applied to the costs on a SKU.
-      class CreditEstimate
-        include Google::Apis::Core::Hashable
-      
-        # Represents an amount of money with its currency type.
-        # Corresponds to the JSON property `creditAmount`
-        # @return [Google::Apis::CloudbillingV1beta::Money]
-        attr_accessor :credit_amount
-      
-        # The credit description.
-        # Corresponds to the JSON property `creditDescription`
-        # @return [String]
-        attr_accessor :credit_description
-      
-        # The credit type.
-        # Corresponds to the JSON property `creditType`
-        # @return [String]
-        attr_accessor :credit_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @credit_amount = args[:credit_amount] if args.key?(:credit_amount)
-          @credit_description = args[:credit_description] if args.key?(:credit_description)
-          @credit_type = args[:credit_type] if args.key?(:credit_type)
-        end
-      end
-      
-      # Specification of a custom machine type.
-      class CustomMachineType
-        include Google::Apis::Core::Hashable
-      
-        # Required. The machine series. Only certain [machine series](https://cloud.
-        # google.com/compute/docs/general-purpose-machines#custom_machine_types) support
-        # custom configurations. For example: "n1".
-        # Corresponds to the JSON property `machineSeries`
-        # @return [String]
-        attr_accessor :machine_series
-      
-        # Required. Memory size of the VM in GB (2^30 bytes). Must be an increment of 0.
-        # 25 (256 MB). Each [machine series](https://cloud.google.com/compute/docs/
-        # machine-types#machine_type_comparison) has limitations on allowed values for
-        # the ratio of memory-to-vCPU count.
-        # Corresponds to the JSON property `memorySizeGb`
-        # @return [Float]
-        attr_accessor :memory_size_gb
-      
-        # Required. The number of vCPUs. The allowed values depend on the [machine
-        # series](https://cloud.google.com/compute/docs/machine-types#
-        # machine_type_comparison).
-        # Corresponds to the JSON property `virtualCpuCount`
+        # The row limit applied to the query.
+        # Corresponds to the JSON property `limit`
         # @return [Fixnum]
-        attr_accessor :virtual_cpu_count
+        attr_accessor :limit
+      
+        # The order-by clause applied to the query.
+        # Corresponds to the JSON property `orderBy`
+        # @return [String]
+        attr_accessor :order_by
+      
+        # The parents (e.g. projects, billing accounts) queried.
+        # Corresponds to the JSON property `parents`
+        # @return [Array<String>]
+        attr_accessor :parents
+      
+        # The view queried.
+        # Corresponds to the JSON property `view`
+        # @return [String]
+        attr_accessor :view
       
         def initialize(**args)
            update!(**args)
@@ -573,9 +70,166 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @machine_series = args[:machine_series] if args.key?(:machine_series)
-          @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
-          @virtual_cpu_count = args[:virtual_cpu_count] if args.key?(:virtual_cpu_count)
+          @columns = args[:columns] if args.key?(:columns)
+          @filter = args[:filter] if args.key?(:filter)
+          @group_by = args[:group_by] if args.key?(:group_by)
+          @limit = args[:limit] if args.key?(:limit)
+          @order_by = args[:order_by] if args.key?(:order_by)
+          @parents = args[:parents] if args.key?(:parents)
+          @view = args[:view] if args.key?(:view)
+        end
+      end
+      
+      # An ordered collection of elements of arbitrary count.
+      class Array
+        include Google::Apis::Core::Hashable
+      
+        # The elements of the array.
+        # Corresponds to the JSON property `element`
+        # @return [Array<Google::Apis::CloudbillingV1beta::ValueProto>]
+        attr_accessor :element
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @element = args[:element] if args.key?(:element)
+        end
+      end
+      
+      # Encapsulates billing data.
+      class BillingData
+        include Google::Apis::Core::Hashable
+      
+        # Information about columns.
+        # Corresponds to the JSON property `columnInfo`
+        # @return [Array<Google::Apis::CloudbillingV1beta::ColumnInfo>]
+        attr_accessor :column_info
+      
+        # Rows.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::CloudbillingV1beta::Row>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_info = args[:column_info] if args.key?(:column_info)
+          @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # Specifies a Billing data resource that can be used for authorization to access
+      # billing data.
+      class BillingDataResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If not provided the billing account currently associated with the
+        # resource will be used.
+        # Corresponds to the JSON property `billingAccount`
+        # @return [String]
+        attr_accessor :billing_account
+      
+        # Required. Resource name for an entitity that can be used for authorization to
+        # access billing data such as `projects/`project`` or `billingAccounts/`
+        # billing_account``
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_account = args[:billing_account] if args.key?(:billing_account)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # Represents a column header.
+      class ColumnInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of the column.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+        end
+      end
+      
+      # A dataset used to support an insight, suitable for UI rendering (tables/charts)
+      # .
+      class DataSet
+        include Google::Apis::Core::Hashable
+      
+        # Encapsulates billing data.
+        # Corresponds to the JSON property `billingData`
+        # @return [Google::Apis::CloudbillingV1beta::BillingData]
+        attr_accessor :billing_data
+      
+        # A local representation of the query used to fetch the data. This is used
+        # instead of the raw QueryBillingDataRequest to avoid pulling in Cloud Policy
+        # Enforcement (CPE) resource_type annotations into the response payload, which
+        # causes ESF validation failures.
+        # Corresponds to the JSON property `queryInfo`
+        # @return [Google::Apis::CloudbillingV1beta::AgenticQueryInfo]
+        attr_accessor :query_info
+      
+        # A suggested chart for the data set, used for UI rendering.
+        # Corresponds to the JSON property `suggestedChart`
+        # @return [Google::Apis::CloudbillingV1beta::SuggestedChart]
+        attr_accessor :suggested_chart
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_data = args[:billing_data] if args.key?(:billing_data)
+          @query_info = args[:query_info] if args.key?(:query_info)
+          @suggested_chart = args[:suggested_chart] if args.key?(:suggested_chart)
+        end
+      end
+      
+      # A datetime value.
+      class Datetime
+        include Google::Apis::Core::Hashable
+      
+        # Represents bit field encoding of year/month/day/hour/minute/second. See class
+        # DatetimeValue in civil_time.h for details of encoding.
+        # Corresponds to the JSON property `bitFieldDatetimeSeconds`
+        # @return [Fixnum]
+        attr_accessor :bit_field_datetime_seconds
+      
+        # Non-negative fractions of a second at nanosecond resolution.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bit_field_datetime_seconds = args[:bit_field_datetime_seconds] if args.key?(:bit_field_datetime_seconds)
+          @nanos = args[:nanos] if args.key?(:nanos)
         end
       end
       
@@ -635,115 +289,42 @@ module Google
         end
       end
       
-      # Area contains dual locations.
-      class DualRegional
+      # Encapsulates all structured data and the completed summary.
+      class FinalResult
         include Google::Apis::Core::Hashable
       
-        # The [location name](https://cloud.google.com/storage/docs/locations#available-
-        # locations) where the data is stored. For example: "asia1" for dual region.
-        # Corresponds to the JSON property `name`
+        # Output only. Data sets used to support the insights, suitable for UI rendering
+        # (tables/charts).
+        # Corresponds to the JSON property `dataSets`
+        # @return [Array<Google::Apis::CloudbillingV1beta::DataSet>]
+        attr_accessor :data_sets
+      
+        # Output only. Contains the full natural language analysis, including thoughts,
+        # reasoning, and references.
+        # Corresponds to the JSON property `fullAnalysis`
         # @return [String]
-        attr_accessor :name
+        attr_accessor :full_analysis
       
-        def initialize(**args)
-           update!(**args)
-        end
+        # Output only. A list of discrete insights gleaned from the data.
+        # Corresponds to the JSON property `insights`
+        # @return [Array<Google::Apis::CloudbillingV1beta::Insight>]
+        attr_accessor :insights
       
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
+        # Output only. Links to interoperable tools (e.g., pre-filtered Cost Reports or
+        # BQE queries).
+        # Corresponds to the JSON property `interopLinks`
+        # @return [Array<Google::Apis::CloudbillingV1beta::InteropLink>]
+        attr_accessor :interop_links
       
-      # Request for EstimateCostScenarioForBillingAccount.
-      class EstimateCostScenarioForBillingAccountRequest
-        include Google::Apis::Core::Hashable
+        # Output only. A list of suggested follow-up queries for the user.
+        # Corresponds to the JSON property `suggestedQueries`
+        # @return [Array<Google::Apis::CloudbillingV1beta::SuggestedQuery>]
+        attr_accessor :suggested_queries
       
-        # Encapsulates all the information needed to perform a cost estimate. It
-        # includes a specification of the Google Cloud usage whose costs are estimated,
-        # and configuration options.
-        # Corresponds to the JSON property `costScenario`
-        # @return [Google::Apis::CloudbillingV1beta::CostScenario]
-        attr_accessor :cost_scenario
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cost_scenario = args[:cost_scenario] if args.key?(:cost_scenario)
-        end
-      end
-      
-      # Response for EstimateCostScenarioForBillingAccount
-      class EstimateCostScenarioForBillingAccountResponse
-        include Google::Apis::Core::Hashable
-      
-        # The result of a estimating the costs of a `CostScenario`.
-        # Corresponds to the JSON property `costEstimationResult`
-        # @return [Google::Apis::CloudbillingV1beta::CostEstimationResult]
-        attr_accessor :cost_estimation_result
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cost_estimation_result = args[:cost_estimation_result] if args.key?(:cost_estimation_result)
-        end
-      end
-      
-      # Request for EstimateCostScenarioWithListPrice.
-      class EstimateCostScenarioWithListPriceRequest
-        include Google::Apis::Core::Hashable
-      
-        # Encapsulates all the information needed to perform a cost estimate. It
-        # includes a specification of the Google Cloud usage whose costs are estimated,
-        # and configuration options.
-        # Corresponds to the JSON property `costScenario`
-        # @return [Google::Apis::CloudbillingV1beta::CostScenario]
-        attr_accessor :cost_scenario
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cost_scenario = args[:cost_scenario] if args.key?(:cost_scenario)
-        end
-      end
-      
-      # Response for EstimateCostScenarioWithListPrice
-      class EstimateCostScenarioWithListPriceResponse
-        include Google::Apis::Core::Hashable
-      
-        # The result of a estimating the costs of a `CostScenario`.
-        # Corresponds to the JSON property `costEstimationResult`
-        # @return [Google::Apis::CloudbillingV1beta::CostEstimationResult]
-        attr_accessor :cost_estimation_result
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cost_estimation_result = args[:cost_estimation_result] if args.key?(:cost_estimation_result)
-        end
-      end
-      
-      # Represents a point in time.
-      class EstimationTimePoint
-        include Google::Apis::Core::Hashable
-      
-        # The point in time, relative to the start of the time frame covered by the cost
-        # estimate.
-        # Corresponds to the JSON property `estimationTimeFrameOffset`
+        # Output only. The full natural language summary (re-sent for consistency).
+        # Corresponds to the JSON property `summary`
         # @return [String]
-        attr_accessor :estimation_time_frame_offset
+        attr_accessor :summary
       
         def initialize(**args)
            update!(**args)
@@ -751,7 +332,95 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @estimation_time_frame_offset = args[:estimation_time_frame_offset] if args.key?(:estimation_time_frame_offset)
+          @data_sets = args[:data_sets] if args.key?(:data_sets)
+          @full_analysis = args[:full_analysis] if args.key?(:full_analysis)
+          @insights = args[:insights] if args.key?(:insights)
+          @interop_links = args[:interop_links] if args.key?(:interop_links)
+          @suggested_queries = args[:suggested_queries] if args.key?(:suggested_queries)
+          @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
+      # Request for GenerateInsights.
+      class GenerateInsightsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Filters cost data by service id. Follows https://google.aip.dev/160
+        # for the filter syntax. eg. filter: "service = 'C7E2-9256-1C43'"
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. Overrides the maximum iterations for any selected strategy.
+        # Corresponds to the JSON property `overriddenMaxIterationCounts`
+        # @return [Fixnum]
+        attr_accessor :overridden_max_iteration_counts
+      
+        # Optional. The billing account or projects to analyze.
+        # Corresponds to the JSON property `parents`
+        # @return [Array<Google::Apis::CloudbillingV1beta::BillingDataResource>]
+        attr_accessor :parents
+      
+        # Required. The natural language prompt from the user.
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        # Additional context for personalization (e.g., user persona, role).
+        # Corresponds to the JSON property `userContext`
+        # @return [Google::Apis::CloudbillingV1beta::UserContext]
+        attr_accessor :user_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @overridden_max_iteration_counts = args[:overridden_max_iteration_counts] if args.key?(:overridden_max_iteration_counts)
+          @parents = args[:parents] if args.key?(:parents)
+          @prompt = args[:prompt] if args.key?(:prompt)
+          @user_context = args[:user_context] if args.key?(:user_context)
+        end
+      end
+      
+      # Response for GenerateInsights.
+      class GenerateInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Encapsulates all structured data and the completed summary.
+        # Corresponds to the JSON property `finalResult`
+        # @return [Google::Apis::CloudbillingV1beta::FinalResult]
+        attr_accessor :final_result
+      
+        # Encapsulates details about why a request was rejected.
+        # Corresponds to the JSON property `rejection`
+        # @return [Google::Apis::CloudbillingV1beta::Rejection]
+        attr_accessor :rejection
+      
+        # Output only. A chunk of the natural language summary (customer-facing). The UI
+        # can append these chunks to provide a real-time "typing" effect.
+        # Corresponds to the JSON property `summaryChunk`
+        # @return [String]
+        attr_accessor :summary_chunk
+      
+        # Output only. A chunk of the agent's internal reasoning process. The UI can use
+        # this to render a "Thinking..." log or status.
+        # Corresponds to the JSON property `thoughtChunk`
+        # @return [String]
+        attr_accessor :thought_chunk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @final_result = args[:final_result] if args.key?(:final_result)
+          @rejection = args[:rejection] if args.key?(:rejection)
+          @summary_chunk = args[:summary_chunk] if args.key?(:summary_chunk)
+          @thought_chunk = args[:thought_chunk] if args.key?(:thought_chunk)
         end
       end
       
@@ -2239,19 +1908,27 @@ module Google
         end
       end
       
-      # Specification of a set of guest accelerators attached to a machine.
-      class GuestAccelerator
+      # e.g. insight: title: "Cost Increase (The Explanation)" description: "Your cost
+      # increase was driven by Vertex AI Online Prediction in us-central1..." severity:
+      # INFO
+      class Insight
         include Google::Apis::Core::Hashable
       
-        # The number of the guest accelerator cards exposed to each instance.
-        # Corresponds to the JSON property `acceleratorCount`
-        # @return [Fixnum]
-        attr_accessor :accelerator_count
-      
-        # The type of the guest accelerator cards. For example: "nvidia-tesla-t4".
-        # Corresponds to the JSON property `acceleratorType`
+        # Output only. The description of the insight.
+        # Corresponds to the JSON property `description`
         # @return [String]
-        attr_accessor :accelerator_type
+        attr_accessor :description
+      
+        # Output only. The severity of the insight, used for UI rendering (e.g., color-
+        # coding).
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Output only. The title of the insight.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
       
         def initialize(**args)
            update!(**args)
@@ -2259,31 +1936,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
-          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+          @description = args[:description] if args.key?(:description)
+          @severity = args[:severity] if args.key?(:severity)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
-      # Data transfer between two regions.
-      class InterRegionEgress
+      # A link to interoperable tools (e.g., pre-filtered Cost Reports, BQE queries).
+      class InteropLink
         include Google::Apis::Core::Hashable
       
-        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the data
-        # is transferred to.
-        # Corresponds to the JSON property `destinationRegion`
+        # Output only. The label of the link, suitable for UI rendering.
+        # Corresponds to the JSON property `label`
         # @return [String]
-        attr_accessor :destination_region
+        attr_accessor :label
       
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `egressRate`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :egress_rate
-      
-        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the data
-        # is transferred from.
-        # Corresponds to the JSON property `sourceRegion`
+        # Output only. The type of the interop link, e.g., "COST_REPORT", "BQE_QUERY",
+        # etc.
+        # Corresponds to the JSON property `linkType`
         # @return [String]
-        attr_accessor :source_region
+        attr_accessor :link_type
+      
+        # Output only. The URL of the link.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
       
         def initialize(**args)
            update!(**args)
@@ -2291,22 +1968,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @destination_region = args[:destination_region] if args.key?(:destination_region)
-          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
-          @source_region = args[:source_region] if args.key?(:source_region)
+          @label = args[:label] if args.key?(:label)
+          @link_type = args[:link_type] if args.key?(:link_type)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
-      # Data transfer within the same region. When the source region and destination
-      # region are in the same zone, using internal IP addresses, there isn't any
-      # charge for data transfer.
-      class IntraRegionEgress
+      # An unordered mapping from key to value, represented as a collection of map
+      # entries.
+      class Map
         include Google::Apis::Core::Hashable
       
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `egressRate`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :egress_rate
+        # Represents the map entries in the map.
+        # Corresponds to the JSON property `entry`
+        # @return [Array<Google::Apis::CloudbillingV1beta::MapEntry>]
+        attr_accessor :entry
       
         def initialize(**args)
            update!(**args)
@@ -2314,23 +1990,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
+          @entry = args[:entry] if args.key?(:entry)
         end
       end
       
-      # Specification of machine series, memory, and number of vCPUs.
-      class MachineType
+      # A single entry in a Map, representing the mapping between `key` and `value`.
+      class MapEntry
         include Google::Apis::Core::Hashable
       
-        # Specification of a custom machine type.
-        # Corresponds to the JSON property `customMachineType`
-        # @return [Google::Apis::CloudbillingV1beta::CustomMachineType]
-        attr_accessor :custom_machine_type
+        # This is a copy of storage/googlesql/public/value.proto. ValueProto represents
+        # the serialized form of the googlesql::Value. The intention is to support
+        # multiple languages including Java and C++, so we must be sensitive to the
+        # distinction between Java Strings and byte arrays or ByteStrings. We also want
+        # to support use-cases which do not want to serialize a copy of the GoogleSQL
+        # type for every instance (which might be very repetitive). Therefore, unlike
+        # googlesql::Value, ValueProto does not carry full type information with every
+        # instance, and can only be fully interpreted with an associated TypeProto.
+        # Corresponds to the JSON property `key`
+        # @return [Google::Apis::CloudbillingV1beta::ValueProto]
+        attr_accessor :key
       
-        # Specification of a predefined machine type.
-        # Corresponds to the JSON property `predefinedMachineType`
-        # @return [Google::Apis::CloudbillingV1beta::PredefinedMachineType]
-        attr_accessor :predefined_machine_type
+        # This is a copy of storage/googlesql/public/value.proto. ValueProto represents
+        # the serialized form of the googlesql::Value. The intention is to support
+        # multiple languages including Java and C++, so we must be sensitive to the
+        # distinction between Java Strings and byte arrays or ByteStrings. We also want
+        # to support use-cases which do not want to serialize a copy of the GoogleSQL
+        # type for every instance (which might be very repetitive). Therefore, unlike
+        # googlesql::Value, ValueProto does not carry full type information with every
+        # instance, and can only be fully interpreted with an associated TypeProto.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::CloudbillingV1beta::ValueProto]
+        attr_accessor :value
       
         def initialize(**args)
            update!(**args)
@@ -2338,8 +2028,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @custom_machine_type = args[:custom_machine_type] if args.key?(:custom_machine_type)
-          @predefined_machine_type = args[:predefined_machine_type] if args.key?(:predefined_machine_type)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -2379,15 +2069,38 @@ module Google
         end
       end
       
-      # Area contains multiple locations.
-      class MultiRegional
+      # A range of values, bounded by the values 'start' (inclusive) and 'end' (
+      # exclusive). A range has an element type, and values must be of this element
+      # type. A range is contiguous, ie it contains all values of the given element
+      # type starting at 'start' and ending before 'end'. A "null" value on start or
+      # end represents an unbounded start or end value respectively. Start and end
+      # values must always be present.
+      class Range
         include Google::Apis::Core::Hashable
       
-        # The [location name](https://cloud.google.com/storage/docs/locations#available-
-        # locations) where the data is stored. For example: "us" for multi-region.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
+        # This is a copy of storage/googlesql/public/value.proto. ValueProto represents
+        # the serialized form of the googlesql::Value. The intention is to support
+        # multiple languages including Java and C++, so we must be sensitive to the
+        # distinction between Java Strings and byte arrays or ByteStrings. We also want
+        # to support use-cases which do not want to serialize a copy of the GoogleSQL
+        # type for every instance (which might be very repetitive). Therefore, unlike
+        # googlesql::Value, ValueProto does not carry full type information with every
+        # instance, and can only be fully interpreted with an associated TypeProto.
+        # Corresponds to the JSON property `end`
+        # @return [Google::Apis::CloudbillingV1beta::ValueProto]
+        attr_accessor :end
+      
+        # This is a copy of storage/googlesql/public/value.proto. ValueProto represents
+        # the serialized form of the googlesql::Value. The intention is to support
+        # multiple languages including Java and C++, so we must be sensitive to the
+        # distinction between Java Strings and byte arrays or ByteStrings. We also want
+        # to support use-cases which do not want to serialize a copy of the GoogleSQL
+        # type for every instance (which might be very repetitive). Therefore, unlike
+        # googlesql::Value, ValueProto does not carry full type information with every
+        # instance, and can only be fully interpreted with an associated TypeProto.
+        # Corresponds to the JSON property `start`
+        # @return [Google::Apis::CloudbillingV1beta::ValueProto]
+        attr_accessor :start
       
         def initialize(**args)
            update!(**args)
@@ -2395,34 +2108,24 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] if args.key?(:name)
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
-      # Specification of a persistent disk attached to a VM.
-      class PersistentDisk
+      # Encapsulates details about why a request was rejected.
+      class Rejection
         include Google::Apis::Core::Hashable
       
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `diskSize`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :disk_size
-      
-        # The [disk type](https://cloud.google.com/compute/docs/disks#disk-types). For
-        # example: "pd-standard".
-        # Corresponds to the JSON property `diskType`
+        # Output only. A user-facing message explaining the rejection.
+        # Corresponds to the JSON property `displayMessage`
         # @return [String]
-        attr_accessor :disk_type
+        attr_accessor :display_message
       
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `provisionedIops`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :provisioned_iops
-      
-        # The geographic scope of the disk. Defaults to `SCOPE_ZONAL` if not specified.
-        # Corresponds to the JSON property `scope`
+        # Output only. The reason for the rejection.
+        # Corresponds to the JSON property `reason`
         # @return [String]
-        attr_accessor :scope
+        attr_accessor :reason
       
         def initialize(**args)
            update!(**args)
@@ -2430,22 +2133,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @disk_size = args[:disk_size] if args.key?(:disk_size)
-          @disk_type = args[:disk_type] if args.key?(:disk_type)
-          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
-          @scope = args[:scope] if args.key?(:scope)
+          @display_message = args[:display_message] if args.key?(:display_message)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
-      # Specification of a predefined machine type.
-      class PredefinedMachineType
+      # Represents a row in the query result.
+      class Row
         include Google::Apis::Core::Hashable
       
-        # The [machine type](https://cloud.google.com/compute/docs/machine-types). For
-        # example: "n1-standard1".
-        # Corresponds to the JSON property `machineType`
-        # @return [String]
-        attr_accessor :machine_type
+        # Values for a row in the column order.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::CloudbillingV1beta::ValueProto>]
+        attr_accessor :values
       
         def initialize(**args)
            update!(**args)
@@ -2453,29 +2153,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
-      # Specify a Premium Tier Internet Data Transfer networking workload.
-      class PremiumTierEgressWorkload
+      # A collection of fields. The count, order, and type of the fields is determined
+      # by the type associated with this value.
+      class Struct
         include Google::Apis::Core::Hashable
       
-        # Where the data is sent to.
-        # Corresponds to the JSON property `destinationContinent`
-        # @return [String]
-        attr_accessor :destination_continent
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `egressRate`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :egress_rate
-      
-        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the data
-        # comes from.
-        # Corresponds to the JSON property `sourceRegion`
-        # @return [String]
-        attr_accessor :source_region
+        # The fields in the struct
+        # Corresponds to the JSON property `field`
+        # @return [Array<Google::Apis::CloudbillingV1beta::ValueProto>]
+        attr_accessor :field
       
         def initialize(**args)
            update!(**args)
@@ -2483,30 +2173,49 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @destination_continent = args[:destination_continent] if args.key?(:destination_continent)
-          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
-          @source_region = args[:source_region] if args.key?(:source_region)
+          @field = args[:field] if args.key?(:field)
         end
       end
       
-      # The price of a SKU at a point int time.
-      class Price
+      # A suggested chart for the data set, used for UI rendering.
+      class SuggestedChart
         include Google::Apis::Core::Hashable
       
-        # Represents a point in time.
-        # Corresponds to the JSON property `effectiveTime`
-        # @return [Google::Apis::CloudbillingV1beta::EstimationTimePoint]
-        attr_accessor :effective_time
-      
-        # The type of price. Possible values: "RATE"
-        # Corresponds to the JSON property `priceType`
+        # The title of the chart.
+        # Corresponds to the JSON property `chartTitle`
         # @return [String]
-        attr_accessor :price_type
+        attr_accessor :chart_title
       
-        # A SKU price consisting of tiered rates.
-        # Corresponds to the JSON property `rate`
-        # @return [Google::Apis::CloudbillingV1beta::Rate]
-        attr_accessor :rate
+        # The type of the chart.
+        # Corresponds to the JSON property `chartType`
+        # @return [String]
+        attr_accessor :chart_type
+      
+        # The field used for the series (e.g., color-coding). Optional, but recommended
+        # for time-series data.
+        # Corresponds to the JSON property `seriesField`
+        # @return [String]
+        attr_accessor :series_field
+      
+        # The field used for the x-axis.
+        # Corresponds to the JSON property `xAxisField`
+        # @return [String]
+        attr_accessor :x_axis_field
+      
+        # The label of the x-axis.
+        # Corresponds to the JSON property `xAxisLabel`
+        # @return [String]
+        attr_accessor :x_axis_label
+      
+        # The field used for the y-axis.
+        # Corresponds to the JSON property `yAxisField`
+        # @return [String]
+        attr_accessor :y_axis_field
+      
+        # The label of the y-axis.
+        # Corresponds to the JSON property `yAxisLabel`
+        # @return [String]
+        attr_accessor :y_axis_label
       
         def initialize(**args)
            update!(**args)
@@ -2514,33 +2223,24 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @effective_time = args[:effective_time] if args.key?(:effective_time)
-          @price_type = args[:price_type] if args.key?(:price_type)
-          @rate = args[:rate] if args.key?(:rate)
+          @chart_title = args[:chart_title] if args.key?(:chart_title)
+          @chart_type = args[:chart_type] if args.key?(:chart_type)
+          @series_field = args[:series_field] if args.key?(:series_field)
+          @x_axis_field = args[:x_axis_field] if args.key?(:x_axis_field)
+          @x_axis_label = args[:x_axis_label] if args.key?(:x_axis_label)
+          @y_axis_field = args[:y_axis_field] if args.key?(:y_axis_field)
+          @y_axis_label = args[:y_axis_label] if args.key?(:y_axis_label)
         end
       end
       
-      # A SKU price consisting of tiered rates.
-      class Rate
+      # A suggested follow-up query for the user.
+      class SuggestedQuery
         include Google::Apis::Core::Hashable
       
-        # The service tiers.
-        # Corresponds to the JSON property `tiers`
-        # @return [Array<Google::Apis::CloudbillingV1beta::RateTier>]
-        attr_accessor :tiers
-      
-        # The SKU's pricing unit. For example, if the tier price is $1 per 1000000 Bytes,
-        # then this field will show 'By'. The `start_amount` field in each tier will be
-        # in this unit.
-        # Corresponds to the JSON property `unit`
+        # The natural language query.
+        # Corresponds to the JSON property `query`
         # @return [String]
-        attr_accessor :unit
-      
-        # The SKU's count for the pricing unit. For example, if the tier price is $1 per
-        # 1000000 Bytes, then this column will show 1000000.
-        # Corresponds to the JSON property `unitCount`
-        # @return [Float]
-        attr_accessor :unit_count
+        attr_accessor :query
       
         def initialize(**args)
            update!(**args)
@@ -2548,26 +2248,23 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @tiers = args[:tiers] if args.key?(:tiers)
-          @unit = args[:unit] if args.key?(:unit)
-          @unit_count = args[:unit_count] if args.key?(:unit_count)
+          @query = args[:query] if args.key?(:query)
         end
       end
       
-      # Pricing details for a service tier.
-      class RateTier
+      # Additional context for personalization (e.g., user persona, role).
+      class UserContext
         include Google::Apis::Core::Hashable
       
-        # Represents an amount of money with its currency type.
-        # Corresponds to the JSON property `price`
-        # @return [Google::Apis::CloudbillingV1beta::Money]
-        attr_accessor :price
+        # Optional. The user's persona (e.g., FinOps Manager, Developer).
+        # Corresponds to the JSON property `persona`
+        # @return [String]
+        attr_accessor :persona
       
-        # The magnitude of usage in which the tier interval begins. Example: "From 100
-        # GiBi the price is $1 per byte" implies `start_amount` = 100
-        # Corresponds to the JSON property `startAmount`
-        # @return [Float]
-        attr_accessor :start_amount
+        # Optional. The user's role (e.g., Billing Admin, Project Owner, etc.).
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
       
         def initialize(**args)
            update!(**args)
@@ -2575,528 +2272,188 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @price = args[:price] if args.key?(:price)
-          @start_amount = args[:start_amount] if args.key?(:start_amount)
+          @persona = args[:persona] if args.key?(:persona)
+          @role = args[:role] if args.key?(:role)
         end
       end
       
-      # Area contains only one location.
-      class Regional
+      # This is a copy of storage/googlesql/public/value.proto. ValueProto represents
+      # the serialized form of the googlesql::Value. The intention is to support
+      # multiple languages including Java and C++, so we must be sensitive to the
+      # distinction between Java Strings and byte arrays or ByteStrings. We also want
+      # to support use-cases which do not want to serialize a copy of the GoogleSQL
+      # type for every instance (which might be very repetitive). Therefore, unlike
+      # googlesql::Value, ValueProto does not carry full type information with every
+      # instance, and can only be fully interpreted with an associated TypeProto.
+      class ValueProto
         include Google::Apis::Core::Hashable
       
-        # The [location name](https://cloud.google.com/storage/docs/locations#available-
-        # locations). For example: "us-central1" for region.
-        # Corresponds to the JSON property `name`
+        # User code that switches on this oneoff enum must have a default case so builds
+        # won't break when new fields are added.
+        # Corresponds to the JSON property `ValueProtoSwitchMustHaveADefault`
+        # @return [Boolean]
+        attr_accessor :value_proto_switch_must_have_a_default
+        alias_method :value_proto_switch_must_have_a_default?, :value_proto_switch_must_have_a_default
+      
+        # An ordered collection of elements of arbitrary count.
+        # Corresponds to the JSON property `arrayValue`
+        # @return [Google::Apis::CloudbillingV1beta::Array]
+        attr_accessor :array_value
+      
+        # Encoded bignumeric value. For the encoding format see documentation for
+        # BigNumericValue::SerializeAsProtoBytes().
+        # Corresponds to the JSON property `bignumericValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
-        attr_accessor :name
+        attr_accessor :bignumeric_value
       
-        def initialize(**args)
-           update!(**args)
-        end
+        # Primitive for bool.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
       
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Configuration for a CostScenario. Specifies how costs are calculated.
-      class ScenarioConfig
-        include Google::Apis::Core::Hashable
-      
-        # Time frame for the estimate. Workloads must specify usage for this duration.
-        # Duration must be at least 1 hour (3,600 seconds) and at most 10 years (315,360,
-        # 000 seconds). The calculations for years and months are based on a 730-hour (2,
-        # 628,000-second) month. For durations longer than one month (2,628,000 seconds),
-        # the duration is rounded up to the next month, so the estimate shows you the
-        # costs for full months. For example, a duration of 3,232,800 seconds (roughly 5
-        # weeks) is rounded up to 2 months.
-        # Corresponds to the JSON property `estimateDuration`
+        # Primitive for bytes.
+        # Corresponds to the JSON property `bytesValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
-        attr_accessor :estimate_duration
+        attr_accessor :bytes_value
       
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @estimate_duration = args[:estimate_duration] if args.key?(:estimate_duration)
-        end
-      end
-      
-      # Workload cost estimates for a single time segment.
-      class SegmentCostEstimate
-        include Google::Apis::Core::Hashable
-      
-        # Estimated costs for each commitment.
-        # Corresponds to the JSON property `commitmentCostEstimates`
-        # @return [Array<Google::Apis::CloudbillingV1beta::CommitmentCostEstimate>]
-        attr_accessor :commitment_cost_estimates
-      
-        # Represents a point in time.
-        # Corresponds to the JSON property `segmentStartTime`
-        # @return [Google::Apis::CloudbillingV1beta::EstimationTimePoint]
-        attr_accessor :segment_start_time
-      
-        # An estimated cost.
-        # Corresponds to the JSON property `segmentTotalCostEstimate`
-        # @return [Google::Apis::CloudbillingV1beta::CostEstimate]
-        attr_accessor :segment_total_cost_estimate
-      
-        # Estimated costs for each workload.
-        # Corresponds to the JSON property `workloadCostEstimates`
-        # @return [Array<Google::Apis::CloudbillingV1beta::WorkloadCostEstimate>]
-        attr_accessor :workload_cost_estimates
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @commitment_cost_estimates = args[:commitment_cost_estimates] if args.key?(:commitment_cost_estimates)
-          @segment_start_time = args[:segment_start_time] if args.key?(:segment_start_time)
-          @segment_total_cost_estimate = args[:segment_total_cost_estimate] if args.key?(:segment_total_cost_estimate)
-          @workload_cost_estimates = args[:workload_cost_estimates] if args.key?(:workload_cost_estimates)
-        end
-      end
-      
-      # Information about SKUs appearing in the cost estimate.
-      class Sku
-        include Google::Apis::Core::Hashable
-      
-        # The display name for the SKU. Example: A2 Instance Core running in Americas
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # A timeline of prices for a SKU in chronological order. Note: The API currently
-        # only supports using a constant price for the entire estimation time frame so
-        # this list will contain a single value.
-        # Corresponds to the JSON property `prices`
-        # @return [Array<Google::Apis::CloudbillingV1beta::Price>]
-        attr_accessor :prices
-      
-        # The resource name for the SKU. Example: "services/DA34-426B-A397/skus/AA95-
-        # CD31-42FE"
-        # Corresponds to the JSON property `sku`
-        # @return [String]
-        attr_accessor :sku
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @prices = args[:prices] if args.key?(:prices)
-          @sku = args[:sku] if args.key?(:sku)
-        end
-      end
-      
-      # Estimated cost for usage on a SKU.
-      class SkuCostEstimate
-        include Google::Apis::Core::Hashable
-      
-        # An estimated cost.
-        # Corresponds to the JSON property `costEstimate`
-        # @return [Google::Apis::CloudbillingV1beta::CostEstimate]
-        attr_accessor :cost_estimate
-      
-        # The resource name for the SKU. Example: "services/DA34-426B-A397/skus/AA95-
-        # CD31-42FE" More information about the SKU can be found in the `skus` field of
-        # the `CostEstimationResult`.
-        # Corresponds to the JSON property `sku`
-        # @return [String]
-        attr_accessor :sku
-      
-        # The amount of usage on this SKU.
-        # Corresponds to the JSON property `usageAmount`
-        # @return [Float]
-        attr_accessor :usage_amount
-      
-        # The unit for the usage on this SKU.
-        # Corresponds to the JSON property `usageUnit`
-        # @return [String]
-        attr_accessor :usage_unit
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cost_estimate = args[:cost_estimate] if args.key?(:cost_estimate)
-          @sku = args[:sku] if args.key?(:sku)
-          @usage_amount = args[:usage_amount] if args.key?(:usage_amount)
-          @usage_unit = args[:usage_unit] if args.key?(:usage_unit)
-        end
-      end
-      
-      # Specify Standard Tier Internet Data Transfer.
-      class StandardTierEgressWorkload
-        include Google::Apis::Core::Hashable
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `egressRate`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :egress_rate
-      
-        # Which [region](https://cloud.google.com/compute/docs/regions-zones) the data
-        # is transferred from.
-        # Corresponds to the JSON property `sourceRegion`
-        # @return [String]
-        attr_accessor :source_region
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @egress_rate = args[:egress_rate] if args.key?(:egress_rate)
-          @source_region = args[:source_region] if args.key?(:source_region)
-        end
-      end
-      
-      # An amount of usage over a time frame.
-      class Usage
-        include Google::Apis::Core::Hashable
-      
-        # A timeline of usage rates. Consists of a series of entries, each of which
-        # specifies a constant rate of usage during a time interval. Each entry contains
-        # an effective time. The usage rate is in effect from that time until the
-        # effective time of the subsequent entry, or, for the last entry, for the
-        # remaining portion of estimation time frame. Effective times are specified as
-        # an offset into the estimation time frame. Usage is considered to be zero until
-        # the `effective_time` of the first entry. All subsequent entries must have an
-        # effective time greater than the previous entry and less than the estimate time
-        # frame. The effective time on all entries must be an integer number of hours.
-        # Corresponds to the JSON property `usageRateTimeline`
-        # @return [Google::Apis::CloudbillingV1beta::UsageRateTimeline]
-        attr_accessor :usage_rate_timeline
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @usage_rate_timeline = args[:usage_rate_timeline] if args.key?(:usage_rate_timeline)
-        end
-      end
-      
-      # A timeline of usage rates. Consists of a series of entries, each of which
-      # specifies a constant rate of usage during a time interval. Each entry contains
-      # an effective time. The usage rate is in effect from that time until the
-      # effective time of the subsequent entry, or, for the last entry, for the
-      # remaining portion of estimation time frame. Effective times are specified as
-      # an offset into the estimation time frame. Usage is considered to be zero until
-      # the `effective_time` of the first entry. All subsequent entries must have an
-      # effective time greater than the previous entry and less than the estimate time
-      # frame. The effective time on all entries must be an integer number of hours.
-      class UsageRateTimeline
-        include Google::Apis::Core::Hashable
-      
-        # The unit for the usage rate in each timeline entry. If you provide an
-        # incorrect unit for an instance, the correct unit is provided in the error
-        # message. The supported units are a subset of [The Unified Code for Units of
-        # Measure](https://ucum.org/ucum.html) standard: * **Time units (TIME-UNIT)** * `
-        # s` second * `min` minute * `h` hour * `d` day * `wk` week * `mo` month * `yr`
-        # year * `ms` millisecond * `us` microsecond * `ns` nanosecond * **Basic storage
-        # units (BASIC-STORAGE-UNIT)** * `bit` bit * `By` byte * **Count units (COUNT-
-        # UNIT)** * `count` count * **Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (
-        # 10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `Ki` kibi (2^
-        # 10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50)
-        # **Grammar** The grammar also includes these connectors: * `/` division or
-        # ratio (as an infix operator). For example: `kBy/`email`` or `MiBy/10ms`. * `.`
-        # multiplication or composition (as an infix operator). For example: `GBy.d` or `
-        # k`watt`.h`. The grammar for a unit is as follows: ``` Expression = Component `
-        # "." Component ` ` "/" Component ` ; Component = ( [ PREFIX ] UNIT | "%" ) [
-        # Annotation ] | Annotation | "1" ; UNIT = TIME-UNIT | STORAGE-UNIT | DATA-UNIT |
-        # COUNT-UNIT Annotation = "`" NAME "`" ; ``` Examples: * Request per second: `1/
-        # s` or ``requests`/s` * GibiBytes: `GiBy` * GibiBytes * seconds: `GiBy.s`
-        # Corresponds to the JSON property `unit`
-        # @return [String]
-        attr_accessor :unit
-      
-        # The timeline entries. Each entry has a start time and usage rate. The start
-        # time specifies the effective time of the usage rate. The entries must be
-        # sorted by start time in an increasing order.
-        # Corresponds to the JSON property `usageRateTimelineEntries`
-        # @return [Array<Google::Apis::CloudbillingV1beta::UsageRateTimelineEntry>]
-        attr_accessor :usage_rate_timeline_entries
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @unit = args[:unit] if args.key?(:unit)
-          @usage_rate_timeline_entries = args[:usage_rate_timeline_entries] if args.key?(:usage_rate_timeline_entries)
-        end
-      end
-      
-      # A usage rate timeline entry. Each entry specifies a constant usage rate during
-      # a time interval.
-      class UsageRateTimelineEntry
-        include Google::Apis::Core::Hashable
-      
-        # Represents a point in time.
-        # Corresponds to the JSON property `effectiveTime`
-        # @return [Google::Apis::CloudbillingV1beta::EstimationTimePoint]
-        attr_accessor :effective_time
-      
-        # The usage rate.
-        # Corresponds to the JSON property `usageRate`
-        # @return [Float]
-        attr_accessor :usage_rate
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @effective_time = args[:effective_time] if args.key?(:effective_time)
-          @usage_rate = args[:usage_rate] if args.key?(:usage_rate)
-        end
-      end
-      
-      # VLAN attachment for Cloud Interconnect.
-      class VlanAttachment
-        include Google::Apis::Core::Hashable
-      
-        # Capacities in the [pricing table](https://cloud.google.com/vpc/network-pricing#
-        # interconnect-pricing) Examples of capacity are: 50/100/200/300/400/500-Mbps, 1/
-        # 2/5/10/20/50-Gbps.
-        # Corresponds to the JSON property `bandwidth`
-        # @return [String]
-        attr_accessor :bandwidth
-      
-        # An amount of usage over a time frame.
-        # Corresponds to the JSON property `vlanCount`
-        # @return [Google::Apis::CloudbillingV1beta::Usage]
-        attr_accessor :vlan_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bandwidth = args[:bandwidth] if args.key?(:bandwidth)
-          @vlan_count = args[:vlan_count] if args.key?(:vlan_count)
-        end
-      end
-      
-      # Specifies a resource-based committed use discount (CUD).
-      class VmResourceBasedCud
-        include Google::Apis::Core::Hashable
-      
-        # Specification of a set of guest accelerators attached to a machine.
-        # Corresponds to the JSON property `guestAccelerator`
-        # @return [Google::Apis::CloudbillingV1beta::GuestAccelerator]
-        attr_accessor :guest_accelerator
-      
-        # The machine series for CUD. For example: "n1" for general purpose N1 machine
-        # type commitments. "n2" for general purpose N2 machine type commitments. "e2"
-        # for general purpose E2 machine type commitments. "n2d" for general purpose N2D
-        # machine type commitments. "t2d" for general purpose T2D machine type
-        # commitments. "c2"/"c2d" for compute-optimized commitments. "m1"/"m2" for the
-        # memory-optimized commitments. "a2' for the accelerator-optimized commitments.
-        # Corresponds to the JSON property `machineSeries`
-        # @return [String]
-        attr_accessor :machine_series
-      
-        # Memory size of the VM in GB (2^30 bytes). Must be an increment of 0.25 (256 MB)
-        # .
-        # Corresponds to the JSON property `memorySizeGb`
-        # @return [Float]
-        attr_accessor :memory_size_gb
-      
-        # Commitment usage plan.
-        # Corresponds to the JSON property `plan`
-        # @return [String]
-        attr_accessor :plan
-      
-        # The region where the VM runs. For example: "us-central1"
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
-        # The number of vCPUs. The number of vCPUs must be an integer of 0 or more and
-        # can be even or odd.
-        # Corresponds to the JSON property `virtualCpuCount`
+        # Primitive for date.
+        # Corresponds to the JSON property `dateValue`
         # @return [Fixnum]
-        attr_accessor :virtual_cpu_count
+        attr_accessor :date_value
       
-        def initialize(**args)
-           update!(**args)
-        end
+        # A datetime value.
+        # Corresponds to the JSON property `datetimeValue`
+        # @return [Google::Apis::CloudbillingV1beta::Datetime]
+        attr_accessor :datetime_value
       
-        # Update properties of this object
-        def update!(**args)
-          @guest_accelerator = args[:guest_accelerator] if args.key?(:guest_accelerator)
-          @machine_series = args[:machine_series] if args.key?(:machine_series)
-          @memory_size_gb = args[:memory_size_gb] if args.key?(:memory_size_gb)
-          @plan = args[:plan] if args.key?(:plan)
-          @region = args[:region] if args.key?(:region)
-          @virtual_cpu_count = args[:virtual_cpu_count] if args.key?(:virtual_cpu_count)
-        end
-      end
+        # Primitive for double.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
       
-      # Specify VM to VM data transfer.
-      class VmToVmEgressWorkload
-        include Google::Apis::Core::Hashable
+        # Tag 11 was used for specifying micros timestamps as int64, now obsolete.
+        # Corresponds to the JSON property `enumValue`
+        # @return [Fixnum]
+        attr_accessor :enum_value
       
-        # Data transfer between two regions.
-        # Corresponds to the JSON property `interRegionEgress`
-        # @return [Google::Apis::CloudbillingV1beta::InterRegionEgress]
-        attr_accessor :inter_region_egress
+        # Primitive for float.
+        # Corresponds to the JSON property `floatValue`
+        # @return [Float]
+        attr_accessor :float_value
       
-        # Data transfer within the same region. When the source region and destination
-        # region are in the same zone, using internal IP addresses, there isn't any
-        # charge for data transfer.
-        # Corresponds to the JSON property `intraRegionEgress`
-        # @return [Google::Apis::CloudbillingV1beta::IntraRegionEgress]
-        attr_accessor :intra_region_egress
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @inter_region_egress = args[:inter_region_egress] if args.key?(:inter_region_egress)
-          @intra_region_egress = args[:intra_region_egress] if args.key?(:intra_region_egress)
-        end
-      end
-      
-      # Specifies usage on a single Google Cloud product over a time frame. Each
-      # Google Cloud product has its own message, containing specific product
-      # configuration parameters of the product usage amounts along each dimension in
-      # which the product is billed.
-      class Workload
-        include Google::Apis::Core::Hashable
-      
-        # Specifies usage for Cloud CDN Data Transfer.
-        # Corresponds to the JSON property `cloudCdnEgressWorkload`
-        # @return [Google::Apis::CloudbillingV1beta::CloudCdnEgressWorkload]
-        attr_accessor :cloud_cdn_egress_workload
-      
-        # Specifies usage for Cloud CDN resources.
-        # Corresponds to the JSON property `cloudCdnWorkload`
-        # @return [Google::Apis::CloudbillingV1beta::CloudCdnWorkload]
-        attr_accessor :cloud_cdn_workload
-      
-        # Includes the estimate for Interconnect Data Transfer only. To specify usage
-        # for data transfer between VMs and internet end-points, use the Standard Tier
-        # Internet Data Transfer interface.
-        # Corresponds to the JSON property `cloudInterconnectEgressWorkload`
-        # @return [Google::Apis::CloudbillingV1beta::CloudInterconnectEgressWorkload]
-        attr_accessor :cloud_interconnect_egress_workload
-      
-        # Specifies usage for Cloud Interconnect resources.
-        # Corresponds to the JSON property `cloudInterconnectWorkload`
-        # @return [Google::Apis::CloudbillingV1beta::CloudInterconnectWorkload]
-        attr_accessor :cloud_interconnect_workload
-      
-        # Specification of a network type. Network data transfer within Google Cloud
-        # applies when you move or copy data from one Cloud Storage bucket to another or
-        # when another Google Cloud service accesses data in your Cloud Storage bucket.
-        # This includes the network data transfer within Google Cloud and the general
-        # network usage. * If transferring data between two regions, the source and
-        # destination fields are set to different values. For example: `source_continent`
-        # = "SOURCE_CONTINENT_ASIA_PACIFIC", `destination_continent` = "
-        # SOURCE_CONTINENT_SOUTH_AMERICA". * If transferring data within one region, the
-        # source and destination fields are set to the same value. For example: `
-        # source_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC", `destination_continent` =
-        # "SOURCE_CONTINENT_ASIA_PACIFIC". Some examples for the Network data transfer
-        # traffic type on the pricing page. * Data moves between different locations on
-        # the same continent. `source_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC", `
-        # destination_continent` = "SOURCE_CONTINENT_ASIA_PACIFIC". * Data moves between
-        # different continents and neither is Australia. `source_continent` = "
-        # SOURCE_CONTINENT_NORTH_AMERICA", `destination_continent` = "
-        # SOURCE_CONTINENT_ASIA_PACIFIC". * Data moves between different continents and
-        # one is Australia. `source_continent` = "SOURCE_CONTINENT_NORTH_AMERICA", `
-        # destination_continent` = "SOURCE_CONTINENT_AUSTRALIA".
-        # Corresponds to the JSON property `cloudStorageEgressWorkload`
-        # @return [Google::Apis::CloudbillingV1beta::CloudStorageEgressWorkload]
-        attr_accessor :cloud_storage_egress_workload
-      
-        # Specifies usage of Cloud Storage resources.
-        # Corresponds to the JSON property `cloudStorageWorkload`
-        # @return [Google::Apis::CloudbillingV1beta::CloudStorageWorkload]
-        attr_accessor :cloud_storage_workload
-      
-        # Specificies usage of a set of identical compute VM instances.
-        # Corresponds to the JSON property `computeVmWorkload`
-        # @return [Google::Apis::CloudbillingV1beta::ComputeVmWorkload]
-        attr_accessor :compute_vm_workload
-      
-        # Required. A name for this workload. All workloads in a `CostScenario` must
-        # have a unique `name`. Each `name` may be at most 128 characters long.
-        # Corresponds to the JSON property `name`
+        # Geography encoded using ::stlib::STGeographyEncoder
+        # Corresponds to the JSON property `geographyValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
-        attr_accessor :name
+        attr_accessor :geography_value
       
-        # Specify a Premium Tier Internet Data Transfer networking workload.
-        # Corresponds to the JSON property `premiumTierEgressWorkload`
-        # @return [Google::Apis::CloudbillingV1beta::PremiumTierEgressWorkload]
-        attr_accessor :premium_tier_egress_workload
+        # Primitive value for int32.
+        # Corresponds to the JSON property `int32Value`
+        # @return [Fixnum]
+        attr_accessor :int32_value
       
-        # Specify Standard Tier Internet Data Transfer.
-        # Corresponds to the JSON property `standardTierEgressWorkload`
-        # @return [Google::Apis::CloudbillingV1beta::StandardTierEgressWorkload]
-        attr_accessor :standard_tier_egress_workload
+        # Primitive for int64.
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
       
-        # Specify VM to VM data transfer.
-        # Corresponds to the JSON property `vmToVmEgressWorkload`
-        # @return [Google::Apis::CloudbillingV1beta::VmToVmEgressWorkload]
-        attr_accessor :vm_to_vm_egress_workload
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cloud_cdn_egress_workload = args[:cloud_cdn_egress_workload] if args.key?(:cloud_cdn_egress_workload)
-          @cloud_cdn_workload = args[:cloud_cdn_workload] if args.key?(:cloud_cdn_workload)
-          @cloud_interconnect_egress_workload = args[:cloud_interconnect_egress_workload] if args.key?(:cloud_interconnect_egress_workload)
-          @cloud_interconnect_workload = args[:cloud_interconnect_workload] if args.key?(:cloud_interconnect_workload)
-          @cloud_storage_egress_workload = args[:cloud_storage_egress_workload] if args.key?(:cloud_storage_egress_workload)
-          @cloud_storage_workload = args[:cloud_storage_workload] if args.key?(:cloud_storage_workload)
-          @compute_vm_workload = args[:compute_vm_workload] if args.key?(:compute_vm_workload)
-          @name = args[:name] if args.key?(:name)
-          @premium_tier_egress_workload = args[:premium_tier_egress_workload] if args.key?(:premium_tier_egress_workload)
-          @standard_tier_egress_workload = args[:standard_tier_egress_workload] if args.key?(:standard_tier_egress_workload)
-          @vm_to_vm_egress_workload = args[:vm_to_vm_egress_workload] if args.key?(:vm_to_vm_egress_workload)
-        end
-      end
-      
-      # Estimated cost for a workload.
-      class WorkloadCostEstimate
-        include Google::Apis::Core::Hashable
-      
-        # The name of the workload, as specified in the `CostScenario`.
-        # Corresponds to the JSON property `name`
+        # Encoded interval value. For the encoding format see documentation for
+        # IntervalValue::SerializeAsBytes().
+        # Corresponds to the JSON property `intervalValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
-        attr_accessor :name
+        attr_accessor :interval_value
       
-        # Estimated costs for each SKU in the workload.
-        # Corresponds to the JSON property `skuCostEstimates`
-        # @return [Array<Google::Apis::CloudbillingV1beta::SkuCostEstimate>]
-        attr_accessor :sku_cost_estimates
+        # Tag 22 was used for json value as bytes, now obsolete. Json value represented
+        # as a string document.
+        # Corresponds to the JSON property `jsonValue`
+        # @return [String]
+        attr_accessor :json_value
       
-        # An estimated cost.
-        # Corresponds to the JSON property `workloadTotalCostEstimate`
-        # @return [Google::Apis::CloudbillingV1beta::CostEstimate]
-        attr_accessor :workload_total_cost_estimate
+        # An unordered mapping from key to value, represented as a collection of map
+        # entries.
+        # Corresponds to the JSON property `mapValue`
+        # @return [Google::Apis::CloudbillingV1beta::Map]
+        attr_accessor :map_value
+      
+        # Encoded numeric value. For the encoding format see documentation for
+        # NumericValue::SerializeAsProtoBytes().
+        # Corresponds to the JSON property `numericValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :numeric_value
+      
+        # Stores a serialized protocol message.
+        # Corresponds to the JSON property `protoValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :proto_value
+      
+        # A range of values, bounded by the values 'start' (inclusive) and 'end' (
+        # exclusive). A range has an element type, and values must be of this element
+        # type. A range is contiguous, ie it contains all values of the given element
+        # type starting at 'start' and ending before 'end'. A "null" value on start or
+        # end represents an unbounded start or end value respectively. Start and end
+        # values must always be present.
+        # Corresponds to the JSON property `rangeValue`
+        # @return [Google::Apis::CloudbillingV1beta::Range]
+        attr_accessor :range_value
+      
+        # Primitive for string.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        # A collection of fields. The count, order, and type of the fields is determined
+        # by the type associated with this value.
+        # Corresponds to the JSON property `structValue`
+        # @return [Google::Apis::CloudbillingV1beta::Struct]
+        attr_accessor :struct_value
+      
+        # Bit field encoding of hour/minute/second/nanos. See TimeValue class for
+        # details.
+        # Corresponds to the JSON property `timeValue`
+        # @return [Fixnum]
+        attr_accessor :time_value
+      
+        # Encoded timestamp_pico value. For the encoding format see documentation for
+        # googlesql::TimestampPico::SerializeAsBytes().
+        # Corresponds to the JSON property `timestampPicoValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :timestamp_pico_value
+      
+        # primitive for timestamp
+        # Corresponds to the JSON property `timestampValue`
+        # @return [String]
+        attr_accessor :timestamp_value
+      
+        # Encoded tokenlist value. copybara:strip_begin(internal-comment) See //search/
+        # tokens:token_list. copybara:strip_end
+        # Corresponds to the JSON property `tokenlistValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :tokenlist_value
+      
+        # Primitive for uint32.
+        # Corresponds to the JSON property `uint32Value`
+        # @return [Fixnum]
+        attr_accessor :uint32_value
+      
+        # Primitive for uint64.
+        # Corresponds to the JSON property `uint64Value`
+        # @return [Fixnum]
+        attr_accessor :uint64_value
+      
+        # Encoded uuid value. For the encoding format see documentation for UuidValue::
+        # SerializeAsBytes().
+        # Corresponds to the JSON property `uuidValue`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :uuid_value
       
         def initialize(**args)
            update!(**args)
@@ -3104,9 +2461,34 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @sku_cost_estimates = args[:sku_cost_estimates] if args.key?(:sku_cost_estimates)
-          @workload_total_cost_estimate = args[:workload_total_cost_estimate] if args.key?(:workload_total_cost_estimate)
+          @value_proto_switch_must_have_a_default = args[:value_proto_switch_must_have_a_default] if args.key?(:value_proto_switch_must_have_a_default)
+          @array_value = args[:array_value] if args.key?(:array_value)
+          @bignumeric_value = args[:bignumeric_value] if args.key?(:bignumeric_value)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @bytes_value = args[:bytes_value] if args.key?(:bytes_value)
+          @date_value = args[:date_value] if args.key?(:date_value)
+          @datetime_value = args[:datetime_value] if args.key?(:datetime_value)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @enum_value = args[:enum_value] if args.key?(:enum_value)
+          @float_value = args[:float_value] if args.key?(:float_value)
+          @geography_value = args[:geography_value] if args.key?(:geography_value)
+          @int32_value = args[:int32_value] if args.key?(:int32_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @interval_value = args[:interval_value] if args.key?(:interval_value)
+          @json_value = args[:json_value] if args.key?(:json_value)
+          @map_value = args[:map_value] if args.key?(:map_value)
+          @numeric_value = args[:numeric_value] if args.key?(:numeric_value)
+          @proto_value = args[:proto_value] if args.key?(:proto_value)
+          @range_value = args[:range_value] if args.key?(:range_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+          @struct_value = args[:struct_value] if args.key?(:struct_value)
+          @time_value = args[:time_value] if args.key?(:time_value)
+          @timestamp_pico_value = args[:timestamp_pico_value] if args.key?(:timestamp_pico_value)
+          @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
+          @tokenlist_value = args[:tokenlist_value] if args.key?(:tokenlist_value)
+          @uint32_value = args[:uint32_value] if args.key?(:uint32_value)
+          @uint64_value = args[:uint64_value] if args.key?(:uint64_value)
+          @uuid_value = args[:uuid_value] if args.key?(:uuid_value)
         end
       end
     end

@@ -67,13 +67,6 @@ module Google
         # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1CostProjection]
         attr_accessor :cost_projection
       
-        # If populated, the impact contains multiple components. In this case, the top-
-        # level impact contains aggregated values and each component contains per-
-        # service details.
-        # Corresponds to the JSON property `impactComponents`
-        # @return [Array<Google::Apis::RecommenderV1::GoogleCloudRecommenderV1Impact>]
-        attr_accessor :impact_components
-      
         # Contains information on the impact of a reliability recommendation.
         # Corresponds to the JSON property `reliabilityProjection`
         # @return [Google::Apis::RecommenderV1::GoogleCloudRecommenderV1ReliabilityProjection]
@@ -103,7 +96,6 @@ module Google
         def update!(**args)
           @category = args[:category] if args.key?(:category)
           @cost_projection = args[:cost_projection] if args.key?(:cost_projection)
-          @impact_components = args[:impact_components] if args.key?(:impact_components)
           @reliability_projection = args[:reliability_projection] if args.key?(:reliability_projection)
           @security_projection = args[:security_projection] if args.key?(:security_projection)
           @service = args[:service] if args.key?(:service)

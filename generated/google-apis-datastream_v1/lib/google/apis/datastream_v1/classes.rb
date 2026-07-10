@@ -74,10 +74,20 @@ module Google
         # @return [Google::Apis::DatastreamV1::PostgresqlRdbms]
         attr_accessor :postgresql_excluded_objects
       
+        # Source catalog.
+        # Corresponds to the JSON property `saasExcludedObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :saas_excluded_objects
+      
         # Salesforce organization structure.
         # Corresponds to the JSON property `salesforceExcludedObjects`
         # @return [Google::Apis::DatastreamV1::SalesforceOrg]
         attr_accessor :salesforce_excluded_objects
+      
+        # Spanner database structure.
+        # Corresponds to the JSON property `spannerExcludedObjects`
+        # @return [Google::Apis::DatastreamV1::SpannerDatabase]
+        attr_accessor :spanner_excluded_objects
       
         # SQLServer database structure.
         # Corresponds to the JSON property `sqlServerExcludedObjects`
@@ -94,7 +104,9 @@ module Google
           @mysql_excluded_objects = args[:mysql_excluded_objects] if args.key?(:mysql_excluded_objects)
           @oracle_excluded_objects = args[:oracle_excluded_objects] if args.key?(:oracle_excluded_objects)
           @postgresql_excluded_objects = args[:postgresql_excluded_objects] if args.key?(:postgresql_excluded_objects)
+          @saas_excluded_objects = args[:saas_excluded_objects] if args.key?(:saas_excluded_objects)
           @salesforce_excluded_objects = args[:salesforce_excluded_objects] if args.key?(:salesforce_excluded_objects)
+          @spanner_excluded_objects = args[:spanner_excluded_objects] if args.key?(:spanner_excluded_objects)
           @sql_server_excluded_objects = args[:sql_server_excluded_objects] if args.key?(:sql_server_excluded_objects)
         end
       end
@@ -107,6 +119,11 @@ module Google
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::DatastreamV1::Error>]
         attr_accessor :errors
+      
+        # Represents a filter for included data on a stream object.
+        # Corresponds to the JSON property `eventFilter`
+        # @return [Google::Apis::DatastreamV1::EventFilter]
+        attr_accessor :event_filter
       
         # Output only. Backfill job's end time.
         # Corresponds to the JSON property `lastEndTime`
@@ -135,6 +152,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @errors = args[:errors] if args.key?(:errors)
+          @event_filter = args[:event_filter] if args.key?(:event_filter)
           @last_end_time = args[:last_end_time] if args.key?(:last_end_time)
           @last_start_time = args[:last_start_time] if args.key?(:last_start_time)
           @state = args[:state] if args.key?(:state)
@@ -152,6 +170,60 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Describes violations in a client request. This error type focuses on the
+      # syntactic aspects of the request.
+      class BadRequest
+        include Google::Apis::Core::Hashable
+      
+        # Describes all violations in a client request.
+        # Corresponds to the JSON property `fieldViolations`
+        # @return [Array<Google::Apis::DatastreamV1::FieldViolation>]
+        attr_accessor :field_violations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_violations = args[:field_violations] if args.key?(:field_violations)
+        end
+      end
+      
+      # Message to represent the option where Datastream will enforce encryption
+      # without authenticating server identity. Server certificates will be trusted by
+      # default.
+      class BasicEncryption
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # BigQuery clustering configuration.
+      class BigQueryClustering
+        include Google::Apis::Core::Hashable
+      
+        # Required. Column names to set as clustering columns.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<String>]
+        attr_accessor :columns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
         end
       end
       
@@ -210,7 +282,48 @@ module Google
         end
       end
       
-      # BigQuery warehouse profile.
+      # BigQuery partitioning configuration.
+      class BigQueryPartitioning
+        include Google::Apis::Core::Hashable
+      
+        # Ingestion time partitioning. see https://cloud.google.com/bigquery/docs/
+        # partitioned-tables#ingestion_time
+        # Corresponds to the JSON property `ingestionTimePartition`
+        # @return [Google::Apis::DatastreamV1::IngestionTimePartition]
+        attr_accessor :ingestion_time_partition
+      
+        # Integer range partitioning. see https://cloud.google.com/bigquery/docs/
+        # partitioned-tables#integer_range
+        # Corresponds to the JSON property `integerRangePartition`
+        # @return [Google::Apis::DatastreamV1::IntegerRangePartition]
+        attr_accessor :integer_range_partition
+      
+        # Optional. If true, queries over the table require a partition filter.
+        # Corresponds to the JSON property `requirePartitionFilter`
+        # @return [Boolean]
+        attr_accessor :require_partition_filter
+        alias_method :require_partition_filter?, :require_partition_filter
+      
+        # Time unit column partitioning. see https://cloud.google.com/bigquery/docs/
+        # partitioned-tables#date_timestamp_partitioned_tables
+        # Corresponds to the JSON property `timeUnitPartition`
+        # @return [Google::Apis::DatastreamV1::TimeUnitPartition]
+        attr_accessor :time_unit_partition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ingestion_time_partition = args[:ingestion_time_partition] if args.key?(:ingestion_time_partition)
+          @integer_range_partition = args[:integer_range_partition] if args.key?(:integer_range_partition)
+          @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
+          @time_unit_partition = args[:time_unit_partition] if args.key?(:time_unit_partition)
+        end
+      end
+      
+      # Profile for connecting to a BigQuery destination.
       class BigQueryProfile
         include Google::Apis::Core::Hashable
       
@@ -354,7 +467,7 @@ module Google
       class ConnectionProfile
         include Google::Apis::Core::Hashable
       
-        # BigQuery warehouse profile.
+        # Profile for connecting to a BigQuery destination.
         # Corresponds to the JSON property `bigqueryProfile`
         # @return [Google::Apis::DatastreamV1::BigQueryProfile]
         attr_accessor :bigquery_profile
@@ -363,6 +476,11 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Profile for connecting to a Dataverse source.
+        # Corresponds to the JSON property `dataverseProfile`
+        # @return [Google::Apis::DatastreamV1::DataverseProfile]
+        attr_accessor :dataverse_profile
       
         # Required. Display name.
         # Corresponds to the JSON property `displayName`
@@ -374,7 +492,7 @@ module Google
         # @return [Google::Apis::DatastreamV1::ForwardSshTunnelConnectivity]
         attr_accessor :forward_ssh_connectivity
       
-        # Cloud Storage bucket profile.
+        # Profile for connecting to a Cloud Storage destination.
         # Corresponds to the JSON property `gcsProfile`
         # @return [Google::Apis::DatastreamV1::GcsProfile]
         attr_accessor :gcs_profile
@@ -384,12 +502,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # MongoDB profile.
+        # Profile for connecting to a MongoDB source.
         # Corresponds to the JSON property `mongodbProfile`
         # @return [Google::Apis::DatastreamV1::MongodbProfile]
         attr_accessor :mongodb_profile
       
-        # MySQL database profile.
+        # Profile for connecting to a MySQL source.
         # Corresponds to the JSON property `mysqlProfile`
         # @return [Google::Apis::DatastreamV1::MysqlProfile]
         attr_accessor :mysql_profile
@@ -399,12 +517,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Oracle database profile.
+        # Profile for connecting to an Oracle source.
         # Corresponds to the JSON property `oracleProfile`
         # @return [Google::Apis::DatastreamV1::OracleProfile]
         attr_accessor :oracle_profile
       
-        # PostgreSQL database profile.
+        # Profile for connecting to a PostgreSQL source.
         # Corresponds to the JSON property `postgresqlProfile`
         # @return [Google::Apis::DatastreamV1::PostgresqlProfile]
         attr_accessor :postgresql_profile
@@ -414,7 +532,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::PrivateConnectivity]
         attr_accessor :private_connectivity
       
-        # Salesforce profile
+        # Profile for connecting to a Salesforce Marketing Cloud source.
+        # Corresponds to the JSON property `salesforceMarketingCloudProfile`
+        # @return [Google::Apis::DatastreamV1::SalesforceMarketingCloudProfile]
+        attr_accessor :salesforce_marketing_cloud_profile
+      
+        # Profile for connecting to a Salesforce source.
         # Corresponds to the JSON property `salesforceProfile`
         # @return [Google::Apis::DatastreamV1::SalesforceProfile]
         attr_accessor :salesforce_profile
@@ -431,7 +554,17 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # SQLServer database profile.
+        # Profile for connecting to a ServiceNow source.
+        # Corresponds to the JSON property `serviceNowProfile`
+        # @return [Google::Apis::DatastreamV1::ServiceNowProfile]
+        attr_accessor :service_now_profile
+      
+        # Profile for connecting to a Spanner source.
+        # Corresponds to the JSON property `spannerProfile`
+        # @return [Google::Apis::DatastreamV1::SpannerProfile]
+        attr_accessor :spanner_profile
+      
+        # Profile for connecting to a SQLServer source.
         # Corresponds to the JSON property `sqlServerProfile`
         # @return [Google::Apis::DatastreamV1::SqlServerProfile]
         attr_accessor :sql_server_profile
@@ -456,6 +589,7 @@ module Google
         def update!(**args)
           @bigquery_profile = args[:bigquery_profile] if args.key?(:bigquery_profile)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dataverse_profile = args[:dataverse_profile] if args.key?(:dataverse_profile)
           @display_name = args[:display_name] if args.key?(:display_name)
           @forward_ssh_connectivity = args[:forward_ssh_connectivity] if args.key?(:forward_ssh_connectivity)
           @gcs_profile = args[:gcs_profile] if args.key?(:gcs_profile)
@@ -466,12 +600,40 @@ module Google
           @oracle_profile = args[:oracle_profile] if args.key?(:oracle_profile)
           @postgresql_profile = args[:postgresql_profile] if args.key?(:postgresql_profile)
           @private_connectivity = args[:private_connectivity] if args.key?(:private_connectivity)
+          @salesforce_marketing_cloud_profile = args[:salesforce_marketing_cloud_profile] if args.key?(:salesforce_marketing_cloud_profile)
           @salesforce_profile = args[:salesforce_profile] if args.key?(:salesforce_profile)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @service_now_profile = args[:service_now_profile] if args.key?(:service_now_profile)
+          @spanner_profile = args[:spanner_profile] if args.key?(:spanner_profile)
           @sql_server_profile = args[:sql_server_profile] if args.key?(:sql_server_profile)
           @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A customization rule to apply to a set of objects.
+      class CustomizationRule
+        include Google::Apis::Core::Hashable
+      
+        # BigQuery clustering configuration.
+        # Corresponds to the JSON property `bigqueryClustering`
+        # @return [Google::Apis::DatastreamV1::BigQueryClustering]
+        attr_accessor :bigquery_clustering
+      
+        # BigQuery partitioning configuration.
+        # Corresponds to the JSON property `bigqueryPartitioning`
+        # @return [Google::Apis::DatastreamV1::BigQueryPartitioning]
+        attr_accessor :bigquery_partitioning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_clustering = args[:bigquery_clustering] if args.key?(:bigquery_clustering)
+          @bigquery_partitioning = args[:bigquery_partitioning] if args.key?(:bigquery_partitioning)
         end
       end
       
@@ -510,6 +672,96 @@ module Google
           @dataset_id_prefix = args[:dataset_id_prefix] if args.key?(:dataset_id_prefix)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Profile for connecting to a Dataverse source.
+      class DataverseProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Environment URL of the Microsoft Dataverse instance. Example: `.crm.
+        # dynamics.com`
+        # Corresponds to the JSON property `environmentUrl`
+        # @return [String]
+        attr_accessor :environment_url
+      
+        # OAuth Client Credentials.
+        # Corresponds to the JSON property `oauthClientCredentials`
+        # @return [Google::Apis::DatastreamV1::OauthClientCredentials]
+        attr_accessor :oauth_client_credentials
+      
+        # Required. Tenant id of the Microsoft Dataverse instance.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_url = args[:environment_url] if args.key?(:environment_url)
+          @oauth_client_credentials = args[:oauth_client_credentials] if args.key?(:oauth_client_credentials)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+        end
+      end
+      
+      # Configuration for syncing data from a Dataverse source.
+      class DataverseSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Source catalog.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :exclude_objects
+      
+        # Source catalog.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :include_objects
+      
+        # Required. Incremental sync polling interval for all objects. If not set, a
+        # default value of `5 minutes` is used. The duration must be from `5 minutes` to
+        # `24 hours`, inclusive.
+        # Corresponds to the JSON property `pollingInterval`
+        # @return [String]
+        attr_accessor :polling_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @polling_interval = args[:polling_interval] if args.key?(:polling_interval)
+        end
+      end
+      
+      # Describes additional debugging info.
+      class DebugInfo
+        include Google::Apis::Core::Hashable
+      
+        # Additional debugging information provided by the server.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # The stack trace entries indicating where the error occurred.
+        # Corresponds to the JSON property `stackEntries`
+        # @return [Array<String>]
+        attr_accessor :stack_entries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
+          @stack_entries = args[:stack_entries] if args.key?(:stack_entries)
         end
       end
       
@@ -555,19 +807,20 @@ module Google
         # @return [Google::Apis::DatastreamV1::ConnectionProfile]
         attr_accessor :connection_profile
       
-        # A reference to an existing connection profile.
+        # Optional. A reference to an existing connection profile.
         # Corresponds to the JSON property `connectionProfileName`
         # @return [String]
         attr_accessor :connection_profile_name
       
-        # Whether to retrieve the full hierarchy of data objects (TRUE) or only the
-        # current level (FALSE).
+        # Optional. Whether to retrieve the full hierarchy of data objects (TRUE) or
+        # only the current level (FALSE).
         # Corresponds to the JSON property `fullHierarchy`
         # @return [Boolean]
         attr_accessor :full_hierarchy
         alias_method :full_hierarchy?, :full_hierarchy
       
-        # The number of hierarchy levels below the current level to be retrieved.
+        # Optional. The number of hierarchy levels below the current level to be
+        # retrieved.
         # Corresponds to the JSON property `hierarchyDepth`
         # @return [Fixnum]
         attr_accessor :hierarchy_depth
@@ -597,6 +850,16 @@ module Google
         # @return [Google::Apis::DatastreamV1::SalesforceOrg]
         attr_accessor :salesforce_org
       
+        # Source catalog.
+        # Corresponds to the JSON property `sourceCatalog`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :source_catalog
+      
+        # Spanner database structure.
+        # Corresponds to the JSON property `spannerDatabase`
+        # @return [Google::Apis::DatastreamV1::SpannerDatabase]
+        attr_accessor :spanner_database
+      
         # SQLServer database structure.
         # Corresponds to the JSON property `sqlServerRdbms`
         # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
@@ -617,6 +880,8 @@ module Google
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
           @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
           @salesforce_org = args[:salesforce_org] if args.key?(:salesforce_org)
+          @source_catalog = args[:source_catalog] if args.key?(:source_catalog)
+          @spanner_database = args[:spanner_database] if args.key?(:spanner_database)
           @sql_server_rdbms = args[:sql_server_rdbms] if args.key?(:sql_server_rdbms)
         end
       end
@@ -650,6 +915,16 @@ module Google
         # @return [Google::Apis::DatastreamV1::SalesforceOrg]
         attr_accessor :salesforce_org
       
+        # Source catalog.
+        # Corresponds to the JSON property `sourceCatalog`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :source_catalog
+      
+        # Spanner database structure.
+        # Corresponds to the JSON property `spannerDatabase`
+        # @return [Google::Apis::DatastreamV1::SpannerDatabase]
+        attr_accessor :spanner_database
+      
         # SQLServer database structure.
         # Corresponds to the JSON property `sqlServerRdbms`
         # @return [Google::Apis::DatastreamV1::SqlServerRdbms]
@@ -666,6 +941,8 @@ module Google
           @oracle_rdbms = args[:oracle_rdbms] if args.key?(:oracle_rdbms)
           @postgresql_rdbms = args[:postgresql_rdbms] if args.key?(:postgresql_rdbms)
           @salesforce_org = args[:salesforce_org] if args.key?(:salesforce_org)
+          @source_catalog = args[:source_catalog] if args.key?(:source_catalog)
+          @spanner_database = args[:spanner_database] if args.key?(:spanner_database)
           @sql_server_rdbms = args[:sql_server_rdbms] if args.key?(:sql_server_rdbms)
         end
       end
@@ -688,6 +965,54 @@ module Google
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
       # protobuf.Empty) returns (google.protobuf.Empty); `
       class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Message to represent the option where Datastream will enforce encryption and
+      # authenticate server identity. ca_certificate must be set if user selects this
+      # option.
+      class EncryptionAndServerValidation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input only. PEM-encoded certificate of the CA that signed the source
+        # database server's certificate.
+        # Corresponds to the JSON property `caCertificate`
+        # @return [String]
+        attr_accessor :ca_certificate
+      
+        # Optional. The hostname mentioned in the Subject or SAN extension of the server
+        # certificate. This field is used for bypassing the hostname validation while
+        # verifying server certificate. This is required for scenarios where the host
+        # name that datastream connects to is different from the certificate's subject.
+        # This specifically happens for private connectivity. It could also happen when
+        # the customer provides a public IP in connection profile but the same is not
+        # present in the server certificate.
+        # Corresponds to the JSON property `serverCertificateHostname`
+        # @return [String]
+        attr_accessor :server_certificate_hostname
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @server_certificate_hostname = args[:server_certificate_hostname] if args.key?(:server_certificate_hostname)
+        end
+      end
+      
+      # Message to represent the option where encryption is not enforced. An empty
+      # message right now to allow future extensibility.
+      class EncryptionNotEnforced
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -743,6 +1068,78 @@ module Google
         end
       end
       
+      # Describes the cause of the error with structured details. Example of an error
+      # when contacting the "pubsub.googleapis.com" API when it is not enabled: ` "
+      # reason": "API_DISABLED" "domain": "googleapis.com" "metadata": ` "resource": "
+      # projects/123", "service": "pubsub.googleapis.com" ` ` This response indicates
+      # that the pubsub.googleapis.com API is not enabled. Example of an error that is
+      # returned when attempting to create a Spanner instance in a region that is out
+      # of stock: ` "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata"
+      # : ` "availableRegions": "us-central1,us-east2" ` `
+      class ErrorInfo
+        include Google::Apis::Core::Hashable
+      
+        # The logical grouping to which the "reason" belongs. The error domain is
+        # typically the registered service name of the tool or product that generates
+        # the error. Example: "pubsub.googleapis.com". If the error is generated by some
+        # common infrastructure, the error domain must be a globally unique value that
+        # identifies the infrastructure. For Google API infrastructure, the error domain
+        # is "googleapis.com".
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Additional structured details about this error. Keys must match a regular
+        # expression of `a-z+` but should ideally be lowerCamelCase. Also, they must be
+        # limited to 64 characters in length. When identifying the current value of an
+        # exceeded limit, the units should be contained in the key, not the value. For
+        # example, rather than ``"instanceLimit": "100/request"``, should be returned as,
+        # ``"instanceLimitPerRequest": "100"``, if the client exceeds the number of
+        # instances that can be created in a single (batch) request.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # The reason of the error. This is a constant value that identifies the
+        # proximate cause of the error. Error reasons are unique within a particular
+        # domain of errors. This should be at most 63 characters and match a regular
+        # expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Represents a filter for included data on a stream object.
+      class EventFilter
+        include Google::Apis::Core::Hashable
+      
+        # An SQL-query Where clause selecting which data should be included, not
+        # including the "WHERE" keyword. e.g., `t.key1 = 'value1' AND t.key2 = 'value2'`
+        # Corresponds to the JSON property `sqlWhereClause`
+        # @return [String]
+        attr_accessor :sql_where_clause
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sql_where_clause = args[:sql_where_clause] if args.key?(:sql_where_clause)
+        end
+      end
+      
       # Response message for a 'FetchStaticIps' response.
       class FetchStaticIpsResponse
         include Google::Apis::Core::Hashable
@@ -766,6 +1163,61 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @static_ips = args[:static_ips] if args.key?(:static_ips)
+        end
+      end
+      
+      # A message type used to describe a single bad request field.
+      class FieldViolation
+        include Google::Apis::Core::Hashable
+      
+        # A description of why the request element is bad.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A path that leads to a field in the request body. The value will be a sequence
+        # of dot-separated identifiers that identify a protocol buffer field. Consider
+        # the following: message CreateContactRequest ` message EmailAddress ` enum Type
+        # ` TYPE_UNSPECIFIED = 0; HOME = 1; WORK = 2; ` optional string email = 1;
+        # repeated EmailType type = 2; ` string full_name = 1; repeated EmailAddress
+        # email_addresses = 2; ` In this example, in proto `field` could take one of the
+        # following values: * `full_name` for a violation in the `full_name` value * `
+        # email_addresses[0].email` for a violation in the `email` field of the first `
+        # email_addresses` message * `email_addresses[2].type[1]` for a violation in the
+        # second `type` value in the third `email_addresses` message. In JSON, the same
+        # values are represented as: * `fullName` for a violation in the `fullName`
+        # value * `emailAddresses[0].email` for a violation in the `email` field of the
+        # first `emailAddresses` message * `emailAddresses[2].type[1]` for a violation
+        # in the second `type` value in the third `emailAddresses` message.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Provides a localized error message that is safe to return to the user which
+        # can be attached to an RPC error.
+        # Corresponds to the JSON property `localizedMessage`
+        # @return [Google::Apis::DatastreamV1::LocalizedMessage]
+        attr_accessor :localized_message
+      
+        # The reason of the field-level error. This is a constant value that identifies
+        # the proximate cause of the field-level error. It should uniquely identify the
+        # type of the FieldViolation within the scope of the google.rpc.ErrorInfo.domain.
+        # This should be at most 63 characters and match a regular expression of `A-Z+[
+        # A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @field = args[:field] if args.key?(:field)
+          @localized_message = args[:localized_message] if args.key?(:localized_message)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -857,7 +1309,7 @@ module Google
         end
       end
       
-      # Cloud Storage bucket profile.
+      # Profile for connecting to a Cloud Storage destination.
       class GcsProfile
         include Google::Apis::Core::Hashable
       
@@ -866,7 +1318,7 @@ module Google
         # @return [String]
         attr_accessor :bucket
       
-        # The root path inside the Cloud Storage bucket.
+        # Optional. The root path inside the Cloud Storage bucket.
         # Corresponds to the JSON property `rootPath`
         # @return [String]
         attr_accessor :root_path
@@ -892,6 +1344,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Provides links to documentation or for performing an out of band action. For
+      # example, if a quota check failed with an error indicating the calling project
+      # hasn't enabled the accessed service, this can contain a URL pointing directly
+      # to the right place in the developer console to flip the bit.
+      class Help
+        include Google::Apis::Core::Hashable
+      
+        # URL(s) pointing to additional information on handling the current error.
+        # Corresponds to the JSON property `links`
+        # @return [Array<Google::Apis::DatastreamV1::Link>]
+        attr_accessor :links
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @links = args[:links] if args.key?(:links)
         end
       end
       
@@ -921,6 +1395,64 @@ module Google
         end
       end
       
+      # Ingestion time partitioning. see https://cloud.google.com/bigquery/docs/
+      # partitioned-tables#ingestion_time
+      class IngestionTimePartition
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Partition granularity
+        # Corresponds to the JSON property `partitioningTimeGranularity`
+        # @return [String]
+        attr_accessor :partitioning_time_granularity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partitioning_time_granularity = args[:partitioning_time_granularity] if args.key?(:partitioning_time_granularity)
+        end
+      end
+      
+      # Integer range partitioning. see https://cloud.google.com/bigquery/docs/
+      # partitioned-tables#integer_range
+      class IntegerRangePartition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The partitioning column.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Required. The ending value for range partitioning (exclusive).
+        # Corresponds to the JSON property `end`
+        # @return [Fixnum]
+        attr_accessor :end
+      
+        # Required. The interval of each range within the partition.
+        # Corresponds to the JSON property `interval`
+        # @return [Fixnum]
+        attr_accessor :interval
+      
+        # Required. The starting value for range partitioning (inclusive).
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @end = args[:end] if args.key?(:end)
+          @interval = args[:interval] if args.key?(:interval)
+          @start = args[:start] if args.key?(:start)
+        end
+      end
+      
       # JSON file format configuration.
       class JsonFileFormat
         include Google::Apis::Core::Hashable
@@ -943,6 +1475,31 @@ module Google
         def update!(**args)
           @compression = args[:compression] if args.key?(:compression)
           @schema_file_format = args[:schema_file_format] if args.key?(:schema_file_format)
+        end
+      end
+      
+      # Describes a URL link.
+      class Link
+        include Google::Apis::Core::Hashable
+      
+        # Describes what the link offers.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The URL of the link.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -1017,6 +1574,14 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1025,6 +1590,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1149,6 +1715,33 @@ module Google
         end
       end
       
+      # Provides a localized error message that is safe to return to the user which
+      # can be attached to an RPC error.
+      class LocalizedMessage
+        include Google::Apis::Core::Hashable
+      
+        # The locale used following the specification defined at https://www.rfc-editor.
+        # org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        # Corresponds to the JSON property `locale`
+        # @return [String]
+        attr_accessor :locale
+      
+        # The localized error message in the above locale.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locale = args[:locale] if args.key?(:locale)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -1268,6 +1861,25 @@ module Google
         end
       end
       
+      # MongoDB change stream position
+      class MongodbChangeStreamPosition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The timestamp to start change stream from.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # MongoDB Cluster structure.
       class MongodbCluster
         include Google::Apis::Core::Hashable
@@ -1291,7 +1903,7 @@ module Google
       class MongodbCollection
         include Google::Apis::Core::Hashable
       
-        # Collection name.
+        # The collection name.
         # Corresponds to the JSON property `collection`
         # @return [String]
         attr_accessor :collection
@@ -1321,7 +1933,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::MongodbCollection>]
         attr_accessor :collections
       
-        # Database name.
+        # The database name.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -1341,7 +1953,7 @@ module Google
       class MongodbField
         include Google::Apis::Core::Hashable
       
-        # Field name.
+        # The field name.
         # Corresponds to the JSON property `field`
         # @return [String]
         attr_accessor :field
@@ -1381,9 +1993,19 @@ module Google
         end
       end
       
-      # MongoDB profile.
+      # Profile for connecting to a MongoDB source.
       class MongodbProfile
         include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies additional options for the MongoDB connection. The options
+        # should be sent as key-value pairs, for example: `additional_options = `"
+        # serverSelectionTimeoutMS": "10000", "directConnection": "true"``. Keys are
+        # case-sensitive and should match the official MongoDB connection string options:
+        # https://www.mongodb.com/docs/manual/reference/connection-string-options/ The
+        # server will not modify the values provided by the user.
+        # Corresponds to the JSON property `additionalOptions`
+        # @return [Hash<String,String>]
+        attr_accessor :additional_options
       
         # Required. List of host addresses for a MongoDB cluster. For SRV connection
         # format, this list must contain exactly one DNS host without a port. For
@@ -1438,6 +2060,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_options = args[:additional_options] if args.key?(:additional_options)
           @host_addresses = args[:host_addresses] if args.key?(:host_addresses)
           @password = args[:password] if args.key?(:password)
           @replica_set = args[:replica_set] if args.key?(:replica_set)
@@ -1449,7 +2072,7 @@ module Google
         end
       end
       
-      # MongoDB source configuration.
+      # Configuration for syncing data from a MongoDB source.
       class MongodbSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -1462,6 +2085,11 @@ module Google
         # Corresponds to the JSON property `includeObjects`
         # @return [Google::Apis::DatastreamV1::MongodbCluster]
         attr_accessor :include_objects
+      
+        # Optional. MongoDB JSON mode to use for the stream.
+        # Corresponds to the JSON property `jsonMode`
+        # @return [String]
+        attr_accessor :json_mode
       
         # Optional. Maximum number of concurrent backfill tasks. The number should be
         # non-negative and less than or equal to 50. If not set (or set to 0), the
@@ -1478,6 +2106,7 @@ module Google
         def update!(**args)
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @json_mode = args[:json_mode] if args.key?(:json_mode)
           @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
         end
       end
@@ -1570,7 +2199,7 @@ module Google
         # @return [String]
         attr_accessor :collation
       
-        # Column name.
+        # The column name.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -1635,7 +2264,7 @@ module Google
       class MysqlDatabase
         include Google::Apis::Core::Hashable
       
-        # Database name.
+        # The database name.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -1725,7 +2354,7 @@ module Google
         end
       end
       
-      # MySQL database profile.
+      # Profile for connecting to a MySQL source.
       class MysqlProfile
         include Google::Apis::Core::Hashable
       
@@ -1795,7 +2424,7 @@ module Google
         end
       end
       
-      # MySQL source configuration
+      # Configuration for syncing data from a MySQL source.
       class MysqlSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -1913,7 +2542,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::MysqlColumn>]
         attr_accessor :mysql_columns
       
-        # Table name.
+        # The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
@@ -1973,6 +2602,51 @@ module Google
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
           @secret_manager_stored_client_secret = args[:secret_manager_stored_client_secret] if args.key?(:secret_manager_stored_client_secret)
+        end
+      end
+      
+      # OAuth Client Credentials.
+      class OauthClientCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Required. Client ID for OAuth Client Credentials.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # A confidential piece of information where the actual value is either directly
+        # specified in the message as a raw string or stored in GCP secret manager.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [Google::Apis::DatastreamV1::Secret]
+        attr_accessor :client_secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+        end
+      end
+      
+      # Object filter to apply the rules to.
+      class ObjectFilter
+        include Google::Apis::Core::Hashable
+      
+        # Represents an identifier of an object in the data source.
+        # Corresponds to the JSON property `sourceObjectIdentifier`
+        # @return [Google::Apis::DatastreamV1::SourceObjectIdentifier]
+        attr_accessor :source_object_identifier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_object_identifier = args[:source_object_identifier] if args.key?(:source_object_identifier)
         end
       end
       
@@ -2183,7 +2857,7 @@ module Google
       class OracleColumn
         include Google::Apis::Core::Hashable
       
-        # Column name.
+        # The column name.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -2273,7 +2947,7 @@ module Google
         end
       end
       
-      # Oracle database profile.
+      # Profile for connecting to an Oracle source.
       class OracleProfile
         include Google::Apis::Core::Hashable
       
@@ -2370,7 +3044,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::OracleTable>]
         attr_accessor :oracle_tables
       
-        # Schema name.
+        # The schema name.
         # Corresponds to the JSON property `schema`
         # @return [String]
         attr_accessor :schema
@@ -2405,7 +3079,7 @@ module Google
         end
       end
       
-      # Oracle data source configuration
+      # Configuration for syncing data from an Oracle source.
       class OracleSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -2485,6 +3159,15 @@ module Google
         attr_accessor :ca_certificate_set
         alias_method :ca_certificate_set?, :ca_certificate_set
       
+        # Optional. The distinguished name (DN) mentioned in the server certificate.
+        # This corresponds to SSL_SERVER_CERT_DN sqlnet parameter. Refer https://docs.
+        # oracle.com/en/database/oracle/oracle-database/19/netrf/local-naming-parameters-
+        # in-tns-ora-file.html#GUID-70AB0695-A9AA-4A94-B141-4C605236EEB7 If this field
+        # is not provided, the DN matching is not enforced.
+        # Corresponds to the JSON property `serverCertificateDistinguishedName`
+        # @return [String]
+        attr_accessor :server_certificate_distinguished_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2493,6 +3176,7 @@ module Google
         def update!(**args)
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
           @ca_certificate_set = args[:ca_certificate_set] if args.key?(:ca_certificate_set)
+          @server_certificate_distinguished_name = args[:server_certificate_distinguished_name] if args.key?(:server_certificate_distinguished_name)
         end
       end
       
@@ -2506,7 +3190,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::OracleColumn>]
         attr_accessor :oracle_columns
       
-        # Table name.
+        # The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
@@ -2526,7 +3210,7 @@ module Google
       class PostgresqlColumn
         include Google::Apis::Core::Hashable
       
-        # Column name.
+        # The column name.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -2610,7 +3294,7 @@ module Google
         end
       end
       
-      # PostgreSQL database profile.
+      # Profile for connecting to a PostgreSQL source.
       class PostgresqlProfile
         include Google::Apis::Core::Hashable
       
@@ -2695,7 +3379,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::PostgresqlTable>]
         attr_accessor :postgresql_tables
       
-        # Schema name.
+        # The schema name.
         # Corresponds to the JSON property `schema`
         # @return [String]
         attr_accessor :schema
@@ -2711,7 +3395,7 @@ module Google
         end
       end
       
-      # PostgreSQL data source configuration
+      # Configuration for syncing data from a PostgreSQL source.
       class PostgresqlSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -2797,7 +3481,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::PostgresqlColumn>]
         attr_accessor :postgresql_columns
       
-        # Table name.
+        # The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
@@ -2810,6 +3494,64 @@ module Google
         def update!(**args)
           @postgresql_columns = args[:postgresql_columns] if args.key?(:postgresql_columns)
           @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Describes what preconditions have failed. For example, if an RPC failed
+      # because it required the Terms of Service to be acknowledged, it could list the
+      # terms of service violation in the PreconditionFailure message.
+      class PreconditionFailure
+        include Google::Apis::Core::Hashable
+      
+        # Describes all precondition violations.
+        # Corresponds to the JSON property `violations`
+        # @return [Array<Google::Apis::DatastreamV1::PreconditionFailureViolation>]
+        attr_accessor :violations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @violations = args[:violations] if args.key?(:violations)
+        end
+      end
+      
+      # A message type used to describe a single precondition failure.
+      class PreconditionFailureViolation
+        include Google::Apis::Core::Hashable
+      
+        # A description of how the precondition failed. Developers can use this
+        # description to understand how to fix the failure. For example: "Terms of
+        # service not accepted".
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The subject, relative to the type, that failed. For example, "google.com/cloud"
+        # relative to the "TOS" type would indicate which terms of service is being
+        # referenced.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        # The type of PreconditionFailure. We recommend using a service-specific enum
+        # type to define the supported precondition violation subjects. For example, "
+        # TOS" for "Terms of Service violation".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @subject = args[:subject] if args.key?(:subject)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -2939,6 +3681,225 @@ module Google
         end
       end
       
+      # Describes how a quota check failed. For example if a daily limit was exceeded
+      # for the calling project, a service could respond with a QuotaFailure detail
+      # containing the project id and the description of the quota limit that was
+      # exceeded. If the calling project hasn't enabled the service in the developer
+      # console, then a service could respond with the project id and set `
+      # service_disabled` to true. Also see RetryInfo and Help types for other details
+      # about handling a quota failure.
+      class QuotaFailure
+        include Google::Apis::Core::Hashable
+      
+        # Describes all quota violations.
+        # Corresponds to the JSON property `violations`
+        # @return [Array<Google::Apis::DatastreamV1::QuotaFailureViolation>]
+        attr_accessor :violations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @violations = args[:violations] if args.key?(:violations)
+        end
+      end
+      
+      # A message type used to describe a single quota violation. For example, a daily
+      # quota or a custom quota that was exceeded.
+      class QuotaFailureViolation
+        include Google::Apis::Core::Hashable
+      
+        # The API Service from which the `QuotaFailure.Violation` originates. In some
+        # cases, Quota issues originate from an API Service other than the one that was
+        # called. In other words, a dependency of the called API Service could be the
+        # cause of the `QuotaFailure`, and this field would have the dependency API
+        # service name. For example, if the called API is Kubernetes Engine API (
+        # container.googleapis.com), and a quota violation occurs in the Kubernetes
+        # Engine API itself, this field would be "container.googleapis.com". On the
+        # other hand, if the quota violation occurs when the Kubernetes Engine API
+        # creates VMs in the Compute Engine API (compute.googleapis.com), this field
+        # would be "compute.googleapis.com".
+        # Corresponds to the JSON property `apiService`
+        # @return [String]
+        attr_accessor :api_service
+      
+        # A description of how the quota check failed. Clients can use this description
+        # to find more about the quota configuration in the service's public
+        # documentation, or find the relevant quota limit to adjust through developer
+        # console. For example: "Service disabled" or "Daily Limit for read operations
+        # exceeded".
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The new quota value being rolled out at the time of the violation. At the
+        # completion of the rollout, this value will be enforced in place of quota_value.
+        # If no rollout is in progress at the time of the violation, this field is not
+        # set. For example, if at the time of the violation a rollout is in progress
+        # changing the number of CPUs quota from 10 to 20, 20 would be the value of this
+        # field.
+        # Corresponds to the JSON property `futureQuotaValue`
+        # @return [Fixnum]
+        attr_accessor :future_quota_value
+      
+        # The dimensions of the violated quota. Every non-global quota is enforced on a
+        # set of dimensions. While quota metric defines what to count, the dimensions
+        # specify for what aspects the counter should be increased. For example, the
+        # quota "CPUs per region per VM family" enforces a limit on the metric "compute.
+        # googleapis.com/cpus_per_vm_family" on dimensions "region" and "vm_family". And
+        # if the violation occurred in region "us-central1" and for VM family "n1", the
+        # quota_dimensions would be, ` "region": "us-central1", "vm_family": "n1", `
+        # When a quota is enforced globally, the quota_dimensions would always be empty.
+        # Corresponds to the JSON property `quotaDimensions`
+        # @return [Hash<String,String>]
+        attr_accessor :quota_dimensions
+      
+        # The id of the violated quota. Also know as "limit name", this is the unique
+        # identifier of a quota in the context of an API service. For example, "CPUS-PER-
+        # VM-FAMILY-per-project-region".
+        # Corresponds to the JSON property `quotaId`
+        # @return [String]
+        attr_accessor :quota_id
+      
+        # The metric of the violated quota. A quota metric is a named counter to measure
+        # usage, such as API requests or CPUs. When an activity occurs in a service,
+        # such as Virtual Machine allocation, one or more quota metrics may be affected.
+        # For example, "compute.googleapis.com/cpus_per_vm_family", "storage.googleapis.
+        # com/internet_egress_bandwidth".
+        # Corresponds to the JSON property `quotaMetric`
+        # @return [String]
+        attr_accessor :quota_metric
+      
+        # The enforced quota value at the time of the `QuotaFailure`. For example, if
+        # the enforced quota value at the time of the `QuotaFailure` on the number of
+        # CPUs is "10", then the value of this field would reflect this quantity.
+        # Corresponds to the JSON property `quotaValue`
+        # @return [Fixnum]
+        attr_accessor :quota_value
+      
+        # The subject on which the quota check failed. For example, "clientip:" or "
+        # project:".
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_service = args[:api_service] if args.key?(:api_service)
+          @description = args[:description] if args.key?(:description)
+          @future_quota_value = args[:future_quota_value] if args.key?(:future_quota_value)
+          @quota_dimensions = args[:quota_dimensions] if args.key?(:quota_dimensions)
+          @quota_id = args[:quota_id] if args.key?(:quota_id)
+          @quota_metric = args[:quota_metric] if args.key?(:quota_metric)
+          @quota_value = args[:quota_value] if args.key?(:quota_value)
+          @subject = args[:subject] if args.key?(:subject)
+        end
+      end
+      
+      # Contains metadata about the request that clients can attach when filing a bug
+      # or providing other forms of feedback.
+      class RequestInfo
+        include Google::Apis::Core::Hashable
+      
+        # An opaque string that should only be interpreted by the service generating it.
+        # For example, it can be used to identify requests in the service's logs.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Any data that was used to serve this request. For example, an encrypted stack
+        # trace that can be sent back to the service provider for debugging.
+        # Corresponds to the JSON property `servingData`
+        # @return [String]
+        attr_accessor :serving_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @serving_data = args[:serving_data] if args.key?(:serving_data)
+        end
+      end
+      
+      # Describes the resource that is being accessed.
+      class ResourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Describes what error is encountered when accessing this resource. For example,
+        # updating a cloud project may require the `writer` permission on the developer
+        # console project.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The owner of the resource (optional). For example, "user:" or "project:".
+        # Corresponds to the JSON property `owner`
+        # @return [String]
+        attr_accessor :owner
+      
+        # The name of the resource being accessed. For example, a shared calendar name: "
+        # example.com_4fghdhgsrgh@group.calendar.google.com", if the current error is
+        # google.rpc.Code.PERMISSION_DENIED.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # A name for the type of resource being accessed, e.g. "sql table", "cloud
+        # storage bucket", "file", "Google calendar"; or the type URL of the resource: e.
+        # g. "type.googleapis.com/google.pubsub.v1.Topic".
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @owner = args[:owner] if args.key?(:owner)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
+      # Describes when the clients can retry a failed request. Clients could ignore
+      # the recommendation here or retry when this information is missing from error
+      # responses. It's always recommended that clients should use exponential backoff
+      # when retrying. Clients should wait until `retry_delay` amount of time has
+      # passed since receiving the error response before retrying. If retrying
+      # requests also fail, clients should use an exponential backoff scheme to
+      # gradually increase the delay between retries based on `retry_delay`, until
+      # either a maximum number of retries have been reached or a maximum retry delay
+      # cap has been reached.
+      class RetryInfo
+        include Google::Apis::Core::Hashable
+      
+        # Clients should wait at least this long between retrying the same request.
+        # Corresponds to the JSON property `retryDelay`
+        # @return [String]
+        attr_accessor :retry_delay
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retry_delay = args[:retry_delay] if args.key?(:retry_delay)
+        end
+      end
+      
       # The route resource is the child of the private connection resource, used for
       # defining a route for a private connection.
       class Route
@@ -2995,6 +3956,31 @@ module Google
         end
       end
       
+      # A set of rules to apply to a set of objects.
+      class RuleSet
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of customization rules to apply.
+        # Corresponds to the JSON property `customizationRules`
+        # @return [Array<Google::Apis::DatastreamV1::CustomizationRule>]
+        attr_accessor :customization_rules
+      
+        # Object filter to apply the rules to.
+        # Corresponds to the JSON property `objectFilter`
+        # @return [Google::Apis::DatastreamV1::ObjectFilter]
+        attr_accessor :object_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customization_rules = args[:customization_rules] if args.key?(:customization_rules)
+          @object_filter = args[:object_filter] if args.key?(:object_filter)
+        end
+      end
+      
       # Request message for running a stream.
       class RunStreamRequest
         include Google::Apis::Core::Hashable
@@ -3030,7 +4016,7 @@ module Google
         # @return [String]
         attr_accessor :data_type
       
-        # Field name.
+        # The field name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3053,6 +4039,76 @@ module Google
         end
       end
       
+      # Profile for connecting to a Salesforce Marketing Cloud source.
+      class SalesforceMarketingCloudProfile
+        include Google::Apis::Core::Hashable
+      
+        # OAuth Client Credentials.
+        # Corresponds to the JSON property `oauthClientCredentials`
+        # @return [Google::Apis::DatastreamV1::OauthClientCredentials]
+        attr_accessor :oauth_client_credentials
+      
+        # Required. Subdomain for the Salesforce Marketing Cloud connection. Example: if
+        # your specific endpoint is `https://`your-specific-subdomain`.rest.
+        # marketingcloudapis.com/`, the subdomain is ``your-specific-subdomain``. Must
+        # be 1-63 characters, start and end with an alphanumeric character, and contain
+        # only lowercase letters, numbers, and hyphens (-).
+        # Corresponds to the JSON property `subdomain`
+        # @return [String]
+        attr_accessor :subdomain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_client_credentials = args[:oauth_client_credentials] if args.key?(:oauth_client_credentials)
+          @subdomain = args[:subdomain] if args.key?(:subdomain)
+        end
+      end
+      
+      # Configuration for syncing data from a Salesforce Marketing Cloud source.
+      class SalesforceMarketingCloudSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Source catalog.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :exclude_objects
+      
+        # Required. Specifies the polling interval for a full refresh of objects that do
+        # not support incremental sync. If not set, a default value of 24 hours is used.
+        # The duration must be between 1 and 24 hours, inclusive.
+        # Corresponds to the JSON property `fullRefreshPollingInterval`
+        # @return [String]
+        attr_accessor :full_refresh_polling_interval
+      
+        # Source catalog.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :include_objects
+      
+        # Required. Incremental sync polling interval for all objects. If not set, a
+        # default value of `5 minutes` is used. The duration must be from `5 minutes` to
+        # `24 hours`, inclusive.
+        # Corresponds to the JSON property `pollingInterval`
+        # @return [String]
+        attr_accessor :polling_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @full_refresh_polling_interval = args[:full_refresh_polling_interval] if args.key?(:full_refresh_polling_interval)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @polling_interval = args[:polling_interval] if args.key?(:polling_interval)
+        end
+      end
+      
       # Salesforce object.
       class SalesforceObject
         include Google::Apis::Core::Hashable
@@ -3063,7 +4119,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::SalesforceField>]
         attr_accessor :fields
       
-        # Object name.
+        # The object name.
         # Corresponds to the JSON property `objectName`
         # @return [String]
         attr_accessor :object_name
@@ -3117,7 +4173,7 @@ module Google
         end
       end
       
-      # Salesforce profile
+      # Profile for connecting to a Salesforce source.
       class SalesforceProfile
         include Google::Apis::Core::Hashable
       
@@ -3131,7 +4187,8 @@ module Google
         # @return [Google::Apis::DatastreamV1::Oauth2ClientCredentials]
         attr_accessor :oauth2_client_credentials
       
-        # Username-password credentials.
+        # Deprecated: Salesforce is retiring Username-Password authentication. Use `
+        # Oauth2ClientCredentials` instead.
         # Corresponds to the JSON property `userCredentials`
         # @return [Google::Apis::DatastreamV1::UserCredentials]
         attr_accessor :user_credentials
@@ -3148,7 +4205,7 @@ module Google
         end
       end
       
-      # Salesforce source configuration
+      # Configuration for syncing data from a Salesforce source.
       class SalesforceSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -3163,8 +4220,8 @@ module Google
         attr_accessor :include_objects
       
         # Required. Salesforce objects polling interval. The interval at which new
-        # changes will be polled for each object. The duration must be between 5 minutes
-        # and 24 hours.
+        # changes will be polled for each object. The duration must be from `5 minutes`
+        # to `24 hours`, inclusive.
         # Corresponds to the JSON property `pollingInterval`
         # @return [String]
         attr_accessor :polling_interval
@@ -3178,6 +4235,35 @@ module Google
           @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
           @include_objects = args[:include_objects] if args.key?(:include_objects)
           @polling_interval = args[:polling_interval] if args.key?(:polling_interval)
+        end
+      end
+      
+      # A confidential piece of information where the actual value is either directly
+      # specified in the message as a raw string or stored in GCP secret manager.
+      class Secret
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input only. The actual raw value of the secret as plain text.
+        # Corresponds to the JSON property `rawValue`
+        # @return [String]
+        attr_accessor :raw_value
+      
+        # Optional. A Secret Manager resource name storing the actual value of the
+        # secret. Supported formats: * projects/`project`/locations/`location`/secrets/`
+        # secret`/versions/`version` * projects/`project`/secrets/`secret`/versions/`
+        # version`
+        # Corresponds to the JSON property `secretVersion`
+        # @return [String]
+        attr_accessor :secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @raw_value = args[:raw_value] if args.key?(:raw_value)
+          @secret_version = args[:secret_version] if args.key?(:secret_version)
         end
       end
       
@@ -3210,6 +4296,13 @@ module Google
         # @return [String]
         attr_accessor :client_key
       
+        # Optional. The hostname mentioned in the Subject or SAN extension of the server
+        # certificate. If this field is not provided, the hostname in the server
+        # certificate is not validated.
+        # Corresponds to the JSON property `serverCertificateHostname`
+        # @return [String]
+        attr_accessor :server_certificate_hostname
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3219,6 +4312,7 @@ module Google
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
           @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
           @client_key = args[:client_key] if args.key?(:client_key)
+          @server_certificate_hostname = args[:server_certificate_hostname] if args.key?(:server_certificate_hostname)
         end
       end
       
@@ -3233,6 +4327,13 @@ module Google
         # @return [String]
         attr_accessor :ca_certificate
       
+        # Optional. The hostname mentioned in the Subject or SAN extension of the server
+        # certificate. If this field is not provided, the hostname in the server
+        # certificate is not validated.
+        # Corresponds to the JSON property `serverCertificateHostname`
+        # @return [String]
+        attr_accessor :server_certificate_hostname
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3240,6 +4341,72 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @server_certificate_hostname = args[:server_certificate_hostname] if args.key?(:server_certificate_hostname)
+        end
+      end
+      
+      # Profile for connecting to a ServiceNow source.
+      class ServiceNowProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. The instance of the ServiceNow account. This is the `` part of the
+        # URL `https://.service-now.com`.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # OAuth Client Credentials.
+        # Corresponds to the JSON property `oauthClientCredentials`
+        # @return [Google::Apis::DatastreamV1::OauthClientCredentials]
+        attr_accessor :oauth_client_credentials
+      
+        # User-password credentials.
+        # Corresponds to the JSON property `userPasswordCredentials`
+        # @return [Google::Apis::DatastreamV1::UserPasswordCredentials]
+        attr_accessor :user_password_credentials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @oauth_client_credentials = args[:oauth_client_credentials] if args.key?(:oauth_client_credentials)
+          @user_password_credentials = args[:user_password_credentials] if args.key?(:user_password_credentials)
+        end
+      end
+      
+      # Configuration for syncing data from a ServiceNow source.
+      class ServiceNowSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Source catalog.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :exclude_objects
+      
+        # Source catalog.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :include_objects
+      
+        # Required. Incremental sync polling interval for all objects. If not set, a
+        # default value of `5 minutes` is used. The duration must be from `5 minutes` to
+        # `24 hours`, inclusive.
+        # Corresponds to the JSON property `pollingInterval`
+        # @return [String]
+        attr_accessor :polling_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @polling_interval = args[:polling_interval] if args.key?(:polling_interval)
         end
       end
       
@@ -3263,34 +4430,68 @@ module Google
         end
       end
       
+      # Source catalog.
+      class SourceCatalog
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Source objects in the catalog.
+        # Corresponds to the JSON property `objects`
+        # @return [Array<Google::Apis::DatastreamV1::SourceObject>]
+        attr_accessor :objects
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @objects = args[:objects] if args.key?(:objects)
+        end
+      end
+      
       # The configuration of the stream source.
       class SourceConfig
         include Google::Apis::Core::Hashable
       
-        # MongoDB source configuration.
+        # Configuration for syncing data from a Dataverse source.
+        # Corresponds to the JSON property `dataverseSourceConfig`
+        # @return [Google::Apis::DatastreamV1::DataverseSourceConfig]
+        attr_accessor :dataverse_source_config
+      
+        # Configuration for syncing data from a MongoDB source.
         # Corresponds to the JSON property `mongodbSourceConfig`
         # @return [Google::Apis::DatastreamV1::MongodbSourceConfig]
         attr_accessor :mongodb_source_config
       
-        # MySQL source configuration
+        # Configuration for syncing data from a MySQL source.
         # Corresponds to the JSON property `mysqlSourceConfig`
         # @return [Google::Apis::DatastreamV1::MysqlSourceConfig]
         attr_accessor :mysql_source_config
       
-        # Oracle data source configuration
+        # Configuration for syncing data from an Oracle source.
         # Corresponds to the JSON property `oracleSourceConfig`
         # @return [Google::Apis::DatastreamV1::OracleSourceConfig]
         attr_accessor :oracle_source_config
       
-        # PostgreSQL data source configuration
+        # Configuration for syncing data from a PostgreSQL source.
         # Corresponds to the JSON property `postgresqlSourceConfig`
         # @return [Google::Apis::DatastreamV1::PostgresqlSourceConfig]
         attr_accessor :postgresql_source_config
       
-        # Salesforce source configuration
+        # Configuration for syncing data from a Salesforce Marketing Cloud source.
+        # Corresponds to the JSON property `salesforceMarketingCloudSourceConfig`
+        # @return [Google::Apis::DatastreamV1::SalesforceMarketingCloudSourceConfig]
+        attr_accessor :salesforce_marketing_cloud_source_config
+      
+        # Configuration for syncing data from a Salesforce source.
         # Corresponds to the JSON property `salesforceSourceConfig`
         # @return [Google::Apis::DatastreamV1::SalesforceSourceConfig]
         attr_accessor :salesforce_source_config
+      
+        # Configuration for syncing data from a ServiceNow source.
+        # Corresponds to the JSON property `serviceNowSourceConfig`
+        # @return [Google::Apis::DatastreamV1::ServiceNowSourceConfig]
+        attr_accessor :service_now_source_config
       
         # Required. Source connection profile resource. Format: `projects/`project`/
         # locations/`location`/connectionProfiles/`name``
@@ -3298,7 +4499,12 @@ module Google
         # @return [String]
         attr_accessor :source_connection_profile
       
-        # SQLServer data source configuration
+        # Configuration for syncing data from a Spanner source.
+        # Corresponds to the JSON property `spannerSourceConfig`
+        # @return [Google::Apis::DatastreamV1::SpannerSourceConfig]
+        attr_accessor :spanner_source_config
+      
+        # Configuration for syncing data from a SQLServer source.
         # Corresponds to the JSON property `sqlServerSourceConfig`
         # @return [Google::Apis::DatastreamV1::SqlServerSourceConfig]
         attr_accessor :sql_server_source_config
@@ -3309,12 +4515,16 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dataverse_source_config = args[:dataverse_source_config] if args.key?(:dataverse_source_config)
           @mongodb_source_config = args[:mongodb_source_config] if args.key?(:mongodb_source_config)
           @mysql_source_config = args[:mysql_source_config] if args.key?(:mysql_source_config)
           @oracle_source_config = args[:oracle_source_config] if args.key?(:oracle_source_config)
           @postgresql_source_config = args[:postgresql_source_config] if args.key?(:postgresql_source_config)
+          @salesforce_marketing_cloud_source_config = args[:salesforce_marketing_cloud_source_config] if args.key?(:salesforce_marketing_cloud_source_config)
           @salesforce_source_config = args[:salesforce_source_config] if args.key?(:salesforce_source_config)
+          @service_now_source_config = args[:service_now_source_config] if args.key?(:service_now_source_config)
           @source_connection_profile = args[:source_connection_profile] if args.key?(:source_connection_profile)
+          @spanner_source_config = args[:spanner_source_config] if args.key?(:spanner_source_config)
           @sql_server_source_config = args[:sql_server_source_config] if args.key?(:sql_server_source_config)
         end
       end
@@ -3329,6 +4539,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::DatasetTemplate]
         attr_accessor :dataset_template
       
+        # Optional. The project id of the BigQuery dataset. If not specified, the
+        # project will be inferred from the stream resource.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3336,6 +4552,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset_template = args[:dataset_template] if args.key?(:dataset_template)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
+      # Source object.
+      class SourceObject
+        include Google::Apis::Core::Hashable
+      
+        # Required. The object name.
+        # Corresponds to the JSON property `objectName`
+        # @return [String]
+        attr_accessor :object_name
+      
+        # Optional. Source properties. When unspecified as part of include objects,
+        # includes everything, when unspecified as part of exclude objects, excludes
+        # nothing.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DatastreamV1::SourceProperty>]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_name = args[:object_name] if args.key?(:object_name)
+          @properties = args[:properties] if args.key?(:properties)
         end
       end
       
@@ -3368,6 +4612,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::SalesforceObjectIdentifier]
         attr_accessor :salesforce_identifier
       
+        # Spanner data source object identifier.
+        # Corresponds to the JSON property `spannerIdentifier`
+        # @return [Google::Apis::DatastreamV1::SpannerObjectIdentifier]
+        attr_accessor :spanner_identifier
+      
         # SQLServer data source object identifier.
         # Corresponds to the JSON property `sqlServerIdentifier`
         # @return [Google::Apis::DatastreamV1::SqlServerObjectIdentifier]
@@ -3384,13 +4633,299 @@ module Google
           @oracle_identifier = args[:oracle_identifier] if args.key?(:oracle_identifier)
           @postgresql_identifier = args[:postgresql_identifier] if args.key?(:postgresql_identifier)
           @salesforce_identifier = args[:salesforce_identifier] if args.key?(:salesforce_identifier)
+          @spanner_identifier = args[:spanner_identifier] if args.key?(:spanner_identifier)
           @sql_server_identifier = args[:sql_server_identifier] if args.key?(:sql_server_identifier)
+        end
+      end
+      
+      # Source property.
+      class SourceProperty
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether or not the property is a primary key.
+        # Corresponds to the JSON property `primaryKey`
+        # @return [Boolean]
+        attr_accessor :primary_key
+        alias_method :primary_key?, :primary_key
+      
+        # Optional. Source properties. When specified, it means that the current
+        # property contains nested properties of its own. When unspecified as part of
+        # include objects, includes everything, when unspecified as part of exclude
+        # objects, excludes nothing.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DatastreamV1::SourceProperty>]
+        attr_accessor :properties
+      
+        # Required. The property name.
+        # Corresponds to the JSON property `propertyName`
+        # @return [String]
+        attr_accessor :property_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_key = args[:primary_key] if args.key?(:primary_key)
+          @properties = args[:properties] if args.key?(:properties)
+          @property_name = args[:property_name] if args.key?(:property_name)
+        end
+      end
+      
+      # Represents a position in a Spanner change stream from which to start
+      # replicating.
+      class SpannerChangeStreamPosition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The timestamp to start change stream queries from. The timestamp
+        # must be a positive value.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Spanner column.
+      class SpannerColumn
+        include Google::Apis::Core::Hashable
+      
+        # Required. The column name.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Optional. Spanner data type.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Optional. Whether or not the column is a primary key.
+        # Corresponds to the JSON property `isPrimaryKey`
+        # @return [Boolean]
+        attr_accessor :is_primary_key
+        alias_method :is_primary_key?, :is_primary_key
+      
+        # Optional. The ordinal position of the column in the table.
+        # Corresponds to the JSON property `ordinalPosition`
+        # @return [Fixnum]
+        attr_accessor :ordinal_position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @is_primary_key = args[:is_primary_key] if args.key?(:is_primary_key)
+          @ordinal_position = args[:ordinal_position] if args.key?(:ordinal_position)
+        end
+      end
+      
+      # Spanner database structure.
+      class SpannerDatabase
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Spanner schemas in the database.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::DatastreamV1::SpannerSchema>]
+        attr_accessor :schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # Spanner data source object identifier.
+      class SpannerObjectIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The schema name.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Required. The table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # Profile for connecting to a Spanner source.
+      class SpannerProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. Cloud Spanner database resource. This field is immutable.
+        # Must be in the format: projects/`project`/instances/`instance`/databases/`
+        # database_id`.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Optional. The Spanner endpoint to connect to. Defaults to the global endpoint (
+        # https://spanner.googleapis.com). Must be in the format: https://spanner.`
+        # region`.rep.googleapis.com.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @host = args[:host] if args.key?(:host)
+        end
+      end
+      
+      # Spanner schema.
+      class SpannerSchema
+        include Google::Apis::Core::Hashable
+      
+        # Required. The schema name.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Optional. Spanner tables in the schema.
+        # Corresponds to the JSON property `tables`
+        # @return [Array<Google::Apis::DatastreamV1::SpannerTable>]
+        attr_accessor :tables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema = args[:schema] if args.key?(:schema)
+          @tables = args[:tables] if args.key?(:tables)
+        end
+      end
+      
+      # Configuration for syncing data from a Spanner source.
+      class SpannerSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use Data Boost for Spanner backfills. Defaults to false
+        # if not set.
+        # Corresponds to the JSON property `backfillDataBoostEnabled`
+        # @return [Boolean]
+        attr_accessor :backfill_data_boost_enabled
+        alias_method :backfill_data_boost_enabled?, :backfill_data_boost_enabled
+      
+        # Required. Immutable. The change stream name to use for the stream.
+        # Corresponds to the JSON property `changeStreamName`
+        # @return [String]
+        attr_accessor :change_stream_name
+      
+        # Spanner database structure.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SpannerDatabase]
+        attr_accessor :exclude_objects
+      
+        # Optional. The FGAC role to use for the stream.
+        # Corresponds to the JSON property `fgacRole`
+        # @return [String]
+        attr_accessor :fgac_role
+      
+        # Spanner database structure.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SpannerDatabase]
+        attr_accessor :include_objects
+      
+        # Optional. Maximum number of concurrent backfill tasks.
+        # Corresponds to the JSON property `maxConcurrentBackfillTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_backfill_tasks
+      
+        # Optional. Maximum number of concurrent CDC tasks.
+        # Corresponds to the JSON property `maxConcurrentCdcTasks`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_cdc_tasks
+      
+        # Optional. The RPC priority to use for the stream.
+        # Corresponds to the JSON property `spannerRpcPriority`
+        # @return [String]
+        attr_accessor :spanner_rpc_priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backfill_data_boost_enabled = args[:backfill_data_boost_enabled] if args.key?(:backfill_data_boost_enabled)
+          @change_stream_name = args[:change_stream_name] if args.key?(:change_stream_name)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @fgac_role = args[:fgac_role] if args.key?(:fgac_role)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @max_concurrent_backfill_tasks = args[:max_concurrent_backfill_tasks] if args.key?(:max_concurrent_backfill_tasks)
+          @max_concurrent_cdc_tasks = args[:max_concurrent_cdc_tasks] if args.key?(:max_concurrent_cdc_tasks)
+          @spanner_rpc_priority = args[:spanner_rpc_priority] if args.key?(:spanner_rpc_priority)
+        end
+      end
+      
+      # Spanner table.
+      class SpannerTable
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Spanner columns in the table.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::DatastreamV1::SpannerColumn>]
+        attr_accessor :columns
+      
+        # Required. The table name.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @columns = args[:columns] if args.key?(:columns)
+          @table = args[:table] if args.key?(:table)
         end
       end
       
       # CDC strategy to start replicating from a specific position in the source.
       class SpecificStartPosition
         include Google::Apis::Core::Hashable
+      
+        # MongoDB change stream position
+        # Corresponds to the JSON property `mongodbChangeStreamPosition`
+        # @return [Google::Apis::DatastreamV1::MongodbChangeStreamPosition]
+        attr_accessor :mongodb_change_stream_position
       
         # MySQL GTID position
         # Corresponds to the JSON property `mysqlGtidPosition`
@@ -3407,6 +4942,12 @@ module Google
         # @return [Google::Apis::DatastreamV1::OracleScnPosition]
         attr_accessor :oracle_scn_position
       
+        # Represents a position in a Spanner change stream from which to start
+        # replicating.
+        # Corresponds to the JSON property `spannerChangeStreamPosition`
+        # @return [Google::Apis::DatastreamV1::SpannerChangeStreamPosition]
+        attr_accessor :spanner_change_stream_position
+      
         # SQL Server LSN position
         # Corresponds to the JSON property `sqlServerLsnPosition`
         # @return [Google::Apis::DatastreamV1::SqlServerLsnPosition]
@@ -3418,9 +4959,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @mongodb_change_stream_position = args[:mongodb_change_stream_position] if args.key?(:mongodb_change_stream_position)
           @mysql_gtid_position = args[:mysql_gtid_position] if args.key?(:mysql_gtid_position)
           @mysql_log_position = args[:mysql_log_position] if args.key?(:mysql_log_position)
           @oracle_scn_position = args[:oracle_scn_position] if args.key?(:oracle_scn_position)
+          @spanner_change_stream_position = args[:spanner_change_stream_position] if args.key?(:spanner_change_stream_position)
           @sql_server_lsn_position = args[:sql_server_lsn_position] if args.key?(:sql_server_lsn_position)
         end
       end
@@ -3442,7 +4985,7 @@ module Google
       class SqlServerColumn
         include Google::Apis::Core::Hashable
       
-        # Column name.
+        # The column name.
         # Corresponds to the JSON property `column`
         # @return [String]
         attr_accessor :column
@@ -3545,7 +5088,7 @@ module Google
         end
       end
       
-      # SQLServer database profile.
+      # Profile for connecting to a SQLServer source.
       class SqlServerProfile
         include Google::Apis::Core::Hashable
       
@@ -3576,6 +5119,11 @@ module Google
         # @return [String]
         attr_accessor :secret_manager_stored_password
       
+        # SQL Server SSL configuration information.
+        # Corresponds to the JSON property `sslConfig`
+        # @return [Google::Apis::DatastreamV1::SqlServerSslConfig]
+        attr_accessor :ssl_config
+      
         # Required. Username for the SQLServer connection.
         # Corresponds to the JSON property `username`
         # @return [String]
@@ -3592,6 +5140,7 @@ module Google
           @password = args[:password] if args.key?(:password)
           @port = args[:port] if args.key?(:port)
           @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
+          @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -3619,7 +5168,7 @@ module Google
       class SqlServerSchema
         include Google::Apis::Core::Hashable
       
-        # Schema name.
+        # The schema name.
         # Corresponds to the JSON property `schema`
         # @return [String]
         attr_accessor :schema
@@ -3640,7 +5189,7 @@ module Google
         end
       end
       
-      # SQLServer data source configuration
+      # Configuration for syncing data from a SQLServer source.
       class SqlServerSourceConfig
         include Google::Apis::Core::Hashable
       
@@ -3689,6 +5238,42 @@ module Google
         end
       end
       
+      # SQL Server SSL configuration information.
+      class SqlServerSslConfig
+        include Google::Apis::Core::Hashable
+      
+        # Message to represent the option where Datastream will enforce encryption
+        # without authenticating server identity. Server certificates will be trusted by
+        # default.
+        # Corresponds to the JSON property `basicEncryption`
+        # @return [Google::Apis::DatastreamV1::BasicEncryption]
+        attr_accessor :basic_encryption
+      
+        # Message to represent the option where Datastream will enforce encryption and
+        # authenticate server identity. ca_certificate must be set if user selects this
+        # option.
+        # Corresponds to the JSON property `encryptionAndServerValidation`
+        # @return [Google::Apis::DatastreamV1::EncryptionAndServerValidation]
+        attr_accessor :encryption_and_server_validation
+      
+        # Message to represent the option where encryption is not enforced. An empty
+        # message right now to allow future extensibility.
+        # Corresponds to the JSON property `encryptionNotEnforced`
+        # @return [Google::Apis::DatastreamV1::EncryptionNotEnforced]
+        attr_accessor :encryption_not_enforced
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic_encryption = args[:basic_encryption] if args.key?(:basic_encryption)
+          @encryption_and_server_validation = args[:encryption_and_server_validation] if args.key?(:encryption_and_server_validation)
+          @encryption_not_enforced = args[:encryption_not_enforced] if args.key?(:encryption_not_enforced)
+        end
+      end
+      
       # SQLServer table.
       class SqlServerTable
         include Google::Apis::Core::Hashable
@@ -3699,7 +5284,7 @@ module Google
         # @return [Array<Google::Apis::DatastreamV1::SqlServerColumn>]
         attr_accessor :columns
       
-        # Table name.
+        # The table name.
         # Corresponds to the JSON property `table`
         # @return [String]
         attr_accessor :table
@@ -3745,8 +5330,10 @@ module Google
       class StandardConnectionFormat
         include Google::Apis::Core::Hashable
       
-        # Optional. Specifies whether the client connects directly to the host[:port] in
-        # the connection URI.
+        # Optional. Deprecated: Use the `additional_options` map to specify the `
+        # directConnection` parameter instead. For example: `additional_options = `"
+        # directConnection": "true"``. Specifies whether the client connects directly to
+        # the host[:port] in the connection URI.
         # Corresponds to the JSON property `directConnection`
         # @return [Boolean]
         attr_accessor :direct_connection
@@ -3766,12 +5353,18 @@ module Google
       class StartBackfillJobRequest
         include Google::Apis::Core::Hashable
       
+        # Represents a filter for included data on a stream object.
+        # Corresponds to the JSON property `eventFilter`
+        # @return [Google::Apis::DatastreamV1::EventFilter]
+        attr_accessor :event_filter
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @event_filter = args[:event_filter] if args.key?(:event_filter)
         end
       end
       
@@ -3939,6 +5532,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Rule sets to apply to the stream.
+        # Corresponds to the JSON property `ruleSets`
+        # @return [Array<Google::Apis::DatastreamV1::RuleSet>]
+        attr_accessor :rule_sets
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -3982,6 +5580,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_recovery_time = args[:last_recovery_time] if args.key?(:last_recovery_time)
           @name = args[:name] if args.key?(:name)
+          @rule_sets = args[:rule_sets] if args.key?(:rule_sets)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source_config = args[:source_config] if args.key?(:source_config)
@@ -4017,6 +5616,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The customization rules for the object. These rules are derived
+        # from the parent Stream's `rule_sets` and represent the intended configuration
+        # for the object.
+        # Corresponds to the JSON property `customizationRules`
+        # @return [Array<Google::Apis::DatastreamV1::CustomizationRule>]
+        attr_accessor :customization_rules
+      
         # Required. Display name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -4050,6 +5656,7 @@ module Google
         def update!(**args)
           @backfill_job = args[:backfill_job] if args.key?(:backfill_job)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customization_rules = args[:customization_rules] if args.key?(:customization_rules)
           @display_name = args[:display_name] if args.key?(:display_name)
           @errors = args[:errors] if args.key?(:errors)
           @name = args[:name] if args.key?(:name)
@@ -4058,7 +5665,34 @@ module Google
         end
       end
       
-      # Username-password credentials.
+      # Time unit column partitioning. see https://cloud.google.com/bigquery/docs/
+      # partitioned-tables#date_timestamp_partitioned_tables
+      class TimeUnitPartition
+        include Google::Apis::Core::Hashable
+      
+        # Required. The partitioning column.
+        # Corresponds to the JSON property `column`
+        # @return [String]
+        attr_accessor :column
+      
+        # Optional. Partition granularity.
+        # Corresponds to the JSON property `partitioningTimeGranularity`
+        # @return [String]
+        attr_accessor :partitioning_time_granularity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @partitioning_time_granularity = args[:partitioning_time_granularity] if args.key?(:partitioning_time_granularity)
+        end
+      end
+      
+      # Deprecated: Salesforce is retiring Username-Password authentication. Use `
+      # Oauth2ClientCredentials` instead.
       class UserCredentials
         include Google::Apis::Core::Hashable
       
@@ -4102,6 +5736,32 @@ module Google
           @secret_manager_stored_password = args[:secret_manager_stored_password] if args.key?(:secret_manager_stored_password)
           @secret_manager_stored_security_token = args[:secret_manager_stored_security_token] if args.key?(:secret_manager_stored_security_token)
           @security_token = args[:security_token] if args.key?(:security_token)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # User-password credentials.
+      class UserPasswordCredentials
+        include Google::Apis::Core::Hashable
+      
+        # A confidential piece of information where the actual value is either directly
+        # specified in the message as a raw string or stored in GCP secret manager.
+        # Corresponds to the JSON property `password`
+        # @return [Google::Apis::DatastreamV1::Secret]
+        attr_accessor :password
+      
+        # Required. Username for the connection.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password = args[:password] if args.key?(:password)
           @username = args[:username] if args.key?(:username)
         end
       end

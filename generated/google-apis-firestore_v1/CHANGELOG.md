@@ -1,5 +1,83 @@
 # Release history for google-apis-firestore_v1
 
+### v0.96.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260608
+
+### v0.95.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260529
+* Regenerated using generator version 0.19.0
+
+### v0.94.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260507
+
+### v0.93.0 (2026-05-10)
+
+* Regenerated from discovery document revision 20260427
+
+### v0.92.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260405
+
+### v0.91.0 (2026-03-08)
+
+* Regenerated from discovery document revision 20260304
+
+### v0.90.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260212
+
+### v0.89.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260130
+
+### v0.88.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260116
+
+### v0.87.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251216
+
+### v0.86.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251203
+
+### v0.85.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251111
+
+### v0.84.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251026
+
+### v0.83.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251001
+
+### v0.82.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250918
+
+### v0.81.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250908
+
+### v0.80.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250824
+
+### v0.79.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250811
+
+### v0.78.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250618
+* Regenerated using generator version 0.18.0
+
 ### v0.77.0 (2025-05-11)
 
 * Regenerated using generator version 0.17.0

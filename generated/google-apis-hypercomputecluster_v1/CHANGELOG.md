@@ -1,0 +1,40 @@
+# Release history for google-apis-hypercomputecluster_v1
+
+### v0.9.0 (2026-06-28)
+
+* Regenerated from discovery document revision 20260617
+
+### v0.8.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260606
+* Regenerated using generator version 0.19.0
+
+### v0.7.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260506
+
+### v0.6.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260422
+
+### v0.5.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260401
+
+### v0.4.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260311
+
+### v0.3.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260204
+
+### v0.2.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260121
+
+### v0.1.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260114
+* Regenerated using generator version 0.18.0
+

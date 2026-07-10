@@ -425,6 +425,7 @@ module Google
           property :management_settings, as: 'managementSettings', class: Google::Apis::DomainsV1alpha2::ManagementSettings, decorator: Google::Apis::DomainsV1alpha2::ManagementSettings::Representation
       
           property :update_mask, as: 'updateMask'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
@@ -590,6 +591,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :tag, as: 'tag'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
@@ -608,6 +610,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DomainsV1alpha2::Operation, decorator: Google::Apis::DomainsV1alpha2::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

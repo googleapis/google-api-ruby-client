@@ -3122,6 +3122,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DatalabelingV1beta1::GoogleLongrunningOperation, decorator: Google::Apis::DatalabelingV1beta1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

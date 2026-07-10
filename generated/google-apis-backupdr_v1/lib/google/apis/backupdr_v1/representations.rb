@@ -58,6 +58,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlloyDbClusterBackupPlanAssociationProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlloyDbClusterDataSourceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlloyDbClusterDataSourceReferenceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlloyDbClusterBackupProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlloyDbPitrWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttachedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -130,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupGcpResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +185,12 @@ module Google
       end
       
       class BackupPlanAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupPlanRevision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -179,6 +221,42 @@ module Google
       end
       
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSqlInstanceBackupPlanAssociationProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSqlInstanceBackupProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSqlInstanceDataSourceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSqlInstanceDataSourceReferenceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSqlInstanceInitializationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeInstanceBackupPlanProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,7 +310,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataSourceBackupConfigInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataSourceGcpResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceGcpResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataSourceReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskBackupPlanProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +376,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndTrialRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Entry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,7 +412,67 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchBackupPlanAssociationsForResourceTypeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchBackupsForResourceTypeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchDataSourceReferencesForResourceTypeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchMsComplianceMetadataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchMsComplianceMetadataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchResourceBackupConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchUsableBackupVaultsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilestoreInstanceBackupPlanAssociationProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilestoreInstanceBackupProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilestoreInstanceDataSourceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FilestoreInstanceDataSourceReferenceProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -323,6 +497,12 @@ module Google
       end
       
       class GcpResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudBackupdrV1OperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBackupPlanRevisionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBackupPlansResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -383,6 +569,12 @@ module Google
       end
       
       class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDataSourceReferencesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -419,6 +611,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -580,6 +778,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubscribeTrialRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Tags
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +803,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Trial
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -684,6 +894,49 @@ module Google
         end
       end
       
+      class AlloyDbClusterBackupPlanAssociationProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uid, as: 'clusterUid'
+        end
+      end
+      
+      class AlloyDbClusterDataSourceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uid, as: 'clusterUid'
+          property :name, as: 'name'
+          collection :pitr_windows, as: 'pitrWindows', class: Google::Apis::BackupdrV1::AlloyDbPitrWindow, decorator: Google::Apis::BackupdrV1::AlloyDbPitrWindow::Representation
+      
+        end
+      end
+      
+      class AlloyDbClusterDataSourceReferenceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class AlloyDbClusterBackupProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chain_id, as: 'chainId'
+          property :database_version, as: 'databaseVersion'
+          property :description, as: 'description'
+          property :stored_bytes, :numeric_string => true, as: 'storedBytes'
+        end
+      end
+      
+      class AlloyDbPitrWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :log_retention_days, :numeric_string => true, as: 'logRetentionDays'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class AttachedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -730,11 +983,16 @@ module Google
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloy_db_backup_properties, as: 'alloyDbBackupProperties', class: Google::Apis::BackupdrV1::AlloyDbClusterBackupProperties, decorator: Google::Apis::BackupdrV1::AlloyDbClusterBackupProperties::Representation
+      
           property :backup_appliance_backup_properties, as: 'backupApplianceBackupProperties', class: Google::Apis::BackupdrV1::BackupApplianceBackupProperties, decorator: Google::Apis::BackupdrV1::BackupApplianceBackupProperties::Representation
       
           collection :backup_appliance_locks, as: 'backupApplianceLocks', class: Google::Apis::BackupdrV1::BackupLock, decorator: Google::Apis::BackupdrV1::BackupLock::Representation
       
+          property :backup_retention_inheritance, as: 'backupRetentionInheritance'
           property :backup_type, as: 'backupType'
+          property :cloud_sql_instance_backup_properties, as: 'cloudSqlInstanceBackupProperties', class: Google::Apis::BackupdrV1::CloudSqlInstanceBackupProperties, decorator: Google::Apis::BackupdrV1::CloudSqlInstanceBackupProperties::Representation
+      
           property :compute_instance_backup_properties, as: 'computeInstanceBackupProperties', class: Google::Apis::BackupdrV1::ComputeInstanceBackupProperties, decorator: Google::Apis::BackupdrV1::ComputeInstanceBackupProperties::Representation
       
           property :consistency_time, as: 'consistencyTime'
@@ -745,8 +1003,13 @@ module Google
           property :enforced_retention_end_time, as: 'enforcedRetentionEndTime'
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
+          property :filestore_instance_backup_properties, as: 'filestoreInstanceBackupProperties', class: Google::Apis::BackupdrV1::FilestoreInstanceBackupProperties, decorator: Google::Apis::BackupdrV1::FilestoreInstanceBackupProperties::Representation
+      
           property :gcp_backup_plan_info, as: 'gcpBackupPlanInfo', class: Google::Apis::BackupdrV1::GcpBackupPlanInfo, decorator: Google::Apis::BackupdrV1::GcpBackupPlanInfo::Representation
       
+          property :gcp_resource, as: 'gcpResource', class: Google::Apis::BackupdrV1::BackupGcpResource, decorator: Google::Apis::BackupdrV1::BackupGcpResource::Representation
+      
+          collection :kms_key_versions, as: 'kmsKeyVersions'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :resource_size_bytes, :numeric_string => true, as: 'resourceSizeBytes'
@@ -826,7 +1089,6 @@ module Google
       
           property :last_backup_state, as: 'lastBackupState'
           property :last_successful_backup_consistency_time, as: 'lastSuccessfulBackupConsistencyTime'
-          property :last_successful_log_backup_consistency_time, as: 'lastSuccessfulLogBackupConsistencyTime'
         end
       end
       
@@ -851,6 +1113,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :first_party_management_uri, as: 'firstPartyManagementUri'
           property :third_party_management_uri, as: 'thirdPartyManagementUri'
+        end
+      end
+      
+      class BackupGcpResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcp_resourcename, as: 'gcpResourcename'
+          property :location, as: 'location'
+          property :type, as: 'type'
         end
       end
       
@@ -880,12 +1151,20 @@ module Google
       
           property :backup_vault, as: 'backupVault'
           property :backup_vault_service_account, as: 'backupVaultServiceAccount'
+          property :compute_instance_backup_plan_properties, as: 'computeInstanceBackupPlanProperties', class: Google::Apis::BackupdrV1::ComputeInstanceBackupPlanProperties, decorator: Google::Apis::BackupdrV1::ComputeInstanceBackupPlanProperties::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :disk_backup_plan_properties, as: 'diskBackupPlanProperties', class: Google::Apis::BackupdrV1::DiskBackupPlanProperties, decorator: Google::Apis::BackupdrV1::DiskBackupPlanProperties::Representation
+      
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
+          property :log_retention_days, :numeric_string => true, as: 'logRetentionDays'
+          property :max_custom_on_demand_retention_days, as: 'maxCustomOnDemandRetentionDays'
           property :name, as: 'name'
           property :resource_type, as: 'resourceType'
+          property :revision_id, as: 'revisionId'
+          property :revision_name, as: 'revisionName'
           property :state, as: 'state'
           collection :supported_resource_types, as: 'supportedResourceTypes'
           property :update_time, as: 'updateTime'
@@ -895,9 +1174,17 @@ module Google
       class BackupPlanAssociation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloydb_cluster_backup_plan_association_properties, as: 'alloydbClusterBackupPlanAssociationProperties', class: Google::Apis::BackupdrV1::AlloyDbClusterBackupPlanAssociationProperties, decorator: Google::Apis::BackupdrV1::AlloyDbClusterBackupPlanAssociationProperties::Representation
+      
           property :backup_plan, as: 'backupPlan'
+          property :backup_plan_revision_id, as: 'backupPlanRevisionId'
+          property :backup_plan_revision_name, as: 'backupPlanRevisionName'
+          property :cloud_sql_instance_backup_plan_association_properties, as: 'cloudSqlInstanceBackupPlanAssociationProperties', class: Google::Apis::BackupdrV1::CloudSqlInstanceBackupPlanAssociationProperties, decorator: Google::Apis::BackupdrV1::CloudSqlInstanceBackupPlanAssociationProperties::Representation
+      
           property :create_time, as: 'createTime'
           property :data_source, as: 'dataSource'
+          property :filestore_instance_backup_plan_association_properties, as: 'filestoreInstanceBackupPlanAssociationProperties', class: Google::Apis::BackupdrV1::FilestoreInstanceBackupPlanAssociationProperties, decorator: Google::Apis::BackupdrV1::FilestoreInstanceBackupPlanAssociationProperties::Representation
+      
           property :name, as: 'name'
           property :resource, as: 'resource'
           property :resource_type, as: 'resourceType'
@@ -905,6 +1192,18 @@ module Google
       
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class BackupPlanRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_plan_snapshot, as: 'backupPlanSnapshot', class: Google::Apis::BackupdrV1::BackupPlan, decorator: Google::Apis::BackupdrV1::BackupPlan::Representation
+      
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :revision_id, as: 'revisionId'
+          property :state, as: 'state'
         end
       end
       
@@ -925,10 +1224,13 @@ module Google
           hash :annotations, as: 'annotations'
           property :backup_count, :numeric_string => true, as: 'backupCount'
           property :backup_minimum_enforced_retention_duration, as: 'backupMinimumEnforcedRetentionDuration'
+          property :backup_retention_inheritance, as: 'backupRetentionInheritance'
           property :create_time, as: 'createTime'
           property :deletable, as: 'deletable'
           property :description, as: 'description'
           property :effective_time, as: 'effectiveTime'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::BackupdrV1::EncryptionConfig, decorator: Google::Apis::BackupdrV1::EncryptionConfig::Representation
+      
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
@@ -964,6 +1266,59 @@ module Google
         end
       end
       
+      class CloudSqlInstanceBackupPlanAssociationProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_create_time, as: 'instanceCreateTime'
+        end
+      end
+      
+      class CloudSqlInstanceBackupProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_installed_version, as: 'databaseInstalledVersion'
+          property :final_backup, as: 'finalBackup'
+          property :instance_create_time, as: 'instanceCreateTime'
+          property :instance_delete_time, as: 'instanceDeleteTime'
+          property :instance_tier, as: 'instanceTier'
+          property :source_instance, as: 'sourceInstance'
+        end
+      end
+      
+      class CloudSqlInstanceDataSourceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_installed_version, as: 'databaseInstalledVersion'
+          property :instance_create_time, as: 'instanceCreateTime'
+          property :instance_tier, as: 'instanceTier'
+          property :name, as: 'name'
+        end
+      end
+      
+      class CloudSqlInstanceDataSourceReferenceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_installed_version, as: 'databaseInstalledVersion'
+          property :instance_create_time, as: 'instanceCreateTime'
+          property :instance_tier, as: 'instanceTier'
+          property :name, as: 'name'
+        end
+      end
+      
+      class CloudSqlInstanceInitializationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
+        end
+      end
+      
+      class ComputeInstanceBackupPlanProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :guest_flush, as: 'guestFlush'
+        end
+      end
+      
       class ComputeInstanceBackupProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -973,6 +1328,7 @@ module Google
       
           collection :guest_accelerator, as: 'guestAccelerator', class: Google::Apis::BackupdrV1::AcceleratorConfig, decorator: Google::Apis::BackupdrV1::AcceleratorConfig::Representation
       
+          property :guest_flush, as: 'guestFlush'
           property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
@@ -1051,6 +1407,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :project, as: 'project'
+          property :use_project_service_account, as: 'useProjectServiceAccount'
           property :zone, as: 'zone'
         end
       end
@@ -1107,12 +1464,26 @@ module Google
         end
       end
       
+      class DataSourceBackupConfigInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_backup_state, as: 'lastBackupState'
+          property :last_successful_backup_consistency_time, as: 'lastSuccessfulBackupConsistencyTime'
+        end
+      end
+      
       class DataSourceGcpResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloy_db_cluster_datasource_properties, as: 'alloyDbClusterDatasourceProperties', class: Google::Apis::BackupdrV1::AlloyDbClusterDataSourceProperties, decorator: Google::Apis::BackupdrV1::AlloyDbClusterDataSourceProperties::Representation
+      
+          property :cloud_sql_instance_datasource_properties, as: 'cloudSqlInstanceDatasourceProperties', class: Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceProperties, decorator: Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceProperties::Representation
+      
           property :compute_instance_datasource_properties, as: 'computeInstanceDatasourceProperties', class: Google::Apis::BackupdrV1::ComputeInstanceDataSourceProperties, decorator: Google::Apis::BackupdrV1::ComputeInstanceDataSourceProperties::Representation
       
           property :disk_datasource_properties, as: 'diskDatasourceProperties', class: Google::Apis::BackupdrV1::DiskDataSourceProperties, decorator: Google::Apis::BackupdrV1::DiskDataSourceProperties::Representation
+      
+          property :filestore_instance_datasource_properties, as: 'filestoreInstanceDatasourceProperties', class: Google::Apis::BackupdrV1::FilestoreInstanceDataSourceProperties, decorator: Google::Apis::BackupdrV1::FilestoreInstanceDataSourceProperties::Representation
       
           property :gcp_resourcename, as: 'gcpResourcename'
           property :location, as: 'location'
@@ -1120,18 +1491,64 @@ module Google
         end
       end
       
+      class DataSourceGcpResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alloy_db_cluster_properties, as: 'alloyDbClusterProperties', class: Google::Apis::BackupdrV1::AlloyDbClusterDataSourceReferenceProperties, decorator: Google::Apis::BackupdrV1::AlloyDbClusterDataSourceReferenceProperties::Representation
+      
+          property :cloud_sql_instance_properties, as: 'cloudSqlInstanceProperties', class: Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceReferenceProperties, decorator: Google::Apis::BackupdrV1::CloudSqlInstanceDataSourceReferenceProperties::Representation
+      
+          property :filestore_instance_properties, as: 'filestoreInstanceProperties', class: Google::Apis::BackupdrV1::FilestoreInstanceDataSourceReferenceProperties, decorator: Google::Apis::BackupdrV1::FilestoreInstanceDataSourceReferenceProperties::Representation
+      
+          property :gcp_resourcename, as: 'gcpResourcename'
+          property :location, as: 'location'
+          property :type, as: 'type'
+        end
+      end
+      
+      class DataSourceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :data_source, as: 'dataSource'
+          property :data_source_backup_config_info, as: 'dataSourceBackupConfigInfo', class: Google::Apis::BackupdrV1::DataSourceBackupConfigInfo, decorator: Google::Apis::BackupdrV1::DataSourceBackupConfigInfo::Representation
+      
+          property :data_source_backup_config_state, as: 'dataSourceBackupConfigState'
+          property :data_source_backup_count, :numeric_string => true, as: 'dataSourceBackupCount'
+          property :data_source_gcp_resource_info, as: 'dataSourceGcpResourceInfo', class: Google::Apis::BackupdrV1::DataSourceGcpResourceInfo, decorator: Google::Apis::BackupdrV1::DataSourceGcpResourceInfo::Representation
+      
+          property :name, as: 'name'
+          property :total_stored_bytes, :numeric_string => true, as: 'totalStoredBytes'
+        end
+      end
+      
+      class DiskBackupPlanProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :guest_flush, as: 'guestFlush'
+        end
+      end
+      
       class DiskBackupProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_mode, as: 'accessMode'
           property :architecture, as: 'architecture'
           property :description, as: 'description'
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
+          property :guest_flush, as: 'guestFlush'
           collection :guest_os_feature, as: 'guestOsFeature', class: Google::Apis::BackupdrV1::GuestOsFeature, decorator: Google::Apis::BackupdrV1::GuestOsFeature::Representation
       
+          hash :labels, as: 'labels'
           collection :licenses, as: 'licenses'
+          property :physical_block_size_bytes, :numeric_string => true, as: 'physicalBlockSizeBytes'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :source_disk, as: 'sourceDisk'
+          property :storage_pool, as: 'storagePool'
           property :type, as: 'type'
           property :zone, as: 'zone'
         end
@@ -1176,6 +1593,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :project, as: 'project'
+          property :use_project_service_account, as: 'useProjectServiceAccount'
           property :zone, as: 'zone'
         end
       end
@@ -1190,6 +1608,20 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class EndTrialRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_reason, as: 'endReason'
         end
       end
       
@@ -1228,6 +1660,56 @@ module Google
         end
       end
       
+      class FetchBackupPlanAssociationsForResourceTypeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_plan_associations, as: 'backupPlanAssociations', class: Google::Apis::BackupdrV1::BackupPlanAssociation, decorator: Google::Apis::BackupdrV1::BackupPlanAssociation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FetchBackupsForResourceTypeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backups, as: 'backups', class: Google::Apis::BackupdrV1::Backup, decorator: Google::Apis::BackupdrV1::Backup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FetchDataSourceReferencesForResourceTypeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_source_references, as: 'dataSourceReferences', class: Google::Apis::BackupdrV1::DataSourceReference, decorator: Google::Apis::BackupdrV1::DataSourceReference::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FetchMsComplianceMetadataRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class FetchMsComplianceMetadataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_assured_workload, as: 'isAssuredWorkload'
+        end
+      end
+      
+      class FetchResourceBackupConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resource_backup_configs, as: 'resourceBackupConfigs', class: Google::Apis::BackupdrV1::ResourceBackupConfig, decorator: Google::Apis::BackupdrV1::ResourceBackupConfig::Representation
+      
+        end
+      end
+      
       class FetchUsableBackupVaultsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1235,6 +1717,36 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class FilestoreInstanceBackupPlanAssociationProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_create_time, as: 'instanceCreateTime'
+        end
+      end
+      
+      class FilestoreInstanceBackupProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_instance, as: 'sourceInstance'
+        end
+      end
+      
+      class FilestoreInstanceDataSourceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_create_time, as: 'instanceCreateTime'
+          property :name, as: 'name'
+        end
+      end
+      
+      class FilestoreInstanceDataSourceReferenceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_create_time, as: 'instanceCreateTime'
+          property :name, as: 'name'
         end
       end
       
@@ -1255,6 +1767,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup_plan, as: 'backupPlan'
+          property :backup_plan_revision_id, as: 'backupPlanRevisionId'
+          property :backup_plan_revision_name, as: 'backupPlanRevisionName'
           property :backup_plan_rule_id, as: 'backupPlanRuleId'
         end
       end
@@ -1265,6 +1779,8 @@ module Google
           property :backup_plan, as: 'backupPlan'
           property :backup_plan_association, as: 'backupPlanAssociation'
           property :backup_plan_description, as: 'backupPlanDescription'
+          property :backup_plan_revision_id, as: 'backupPlanRevisionId'
+          property :backup_plan_revision_name, as: 'backupPlanRevisionName'
           collection :backup_plan_rules, as: 'backupPlanRules'
         end
       end
@@ -1275,6 +1791,20 @@ module Google
           property :gcp_resourcename, as: 'gcpResourcename'
           property :location, as: 'location'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudBackupdrV1OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_info, as: 'additionalInfo'
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
         end
       end
       
@@ -1296,8 +1826,12 @@ module Google
       class InitializeServiceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_plan_location, as: 'backupPlanLocation'
+          property :cloud_sql_instance_initialization_config, as: 'cloudSqlInstanceInitializationConfig', class: Google::Apis::BackupdrV1::CloudSqlInstanceInitializationConfig, decorator: Google::Apis::BackupdrV1::CloudSqlInstanceInitializationConfig::Representation
+      
           property :request_id, as: 'requestId'
           property :resource_type, as: 'resourceType'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
@@ -1335,6 +1869,16 @@ module Google
         end
       end
       
+      class ListBackupPlanRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_plan_revisions, as: 'backupPlanRevisions', class: Google::Apis::BackupdrV1::BackupPlanRevision, decorator: Google::Apis::BackupdrV1::BackupPlanRevision::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListBackupPlansResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1359,6 +1903,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :backups, as: 'backups', class: Google::Apis::BackupdrV1::Backup, decorator: Google::Apis::BackupdrV1::Backup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListDataSourceReferencesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_source_references, as: 'dataSourceReferences', class: Google::Apis::BackupdrV1::DataSourceReference, decorator: Google::Apis::BackupdrV1::DataSourceReference::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -1400,6 +1954,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::BackupdrV1::Operation, decorator: Google::Apis::BackupdrV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1420,6 +1975,13 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class LocationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :unsupported_features, as: 'unsupportedFeatures'
         end
       end
       
@@ -1563,6 +2125,7 @@ module Google
           property :project, as: 'project'
           property :region, as: 'region'
           collection :replica_zones, as: 'replicaZones'
+          property :use_project_service_account, as: 'useProjectServiceAccount'
         end
       end
       
@@ -1592,6 +2155,7 @@ module Google
       class RestoreBackupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :clear_overrides_field_mask, as: 'clearOverridesFieldMask'
           property :compute_instance_restore_properties, as: 'computeInstanceRestoreProperties', class: Google::Apis::BackupdrV1::ComputeInstanceRestoreProperties, decorator: Google::Apis::BackupdrV1::ComputeInstanceRestoreProperties::Representation
       
           property :compute_instance_target_environment, as: 'computeInstanceTargetEnvironment', class: Google::Apis::BackupdrV1::ComputeInstanceTargetEnvironment, decorator: Google::Apis::BackupdrV1::ComputeInstanceTargetEnvironment::Representation
@@ -1713,6 +2277,12 @@ module Google
         end
       end
       
+      class SubscribeTrialRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Tags
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1742,9 +2312,22 @@ module Google
         end
       end
       
+      class Trial
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_reason, as: 'endReason'
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
       class TriggerBackupRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_retention_days, as: 'customRetentionDays'
+          hash :labels, as: 'labels'
           property :request_id, as: 'requestId'
           property :rule_id, as: 'ruleId'
         end

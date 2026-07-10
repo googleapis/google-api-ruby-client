@@ -1,5 +1,51 @@
 # Release history for google-apis-apphub_v1
 
+### v0.21.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260520
+* Regenerated using generator version 0.19.0
+
+### v0.20.0 (2026-05-10)
+
+* Regenerated from discovery document revision 20260422
+
+### v0.19.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260323
+
+### v0.18.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260204
+
+### v0.17.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260119
+
+### v0.16.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251210
+
+### v0.15.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251114
+
+### v0.14.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251110
+
+### v0.13.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251028
+
+### v0.12.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251001
+
+### v0.11.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250813
+* Regenerated using generator version 0.18.0
+
 ### v0.10.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

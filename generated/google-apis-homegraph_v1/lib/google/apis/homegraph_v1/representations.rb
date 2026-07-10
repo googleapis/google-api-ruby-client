@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Component
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComponentTraitUpdates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Device
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeviceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeviceNames
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +71,36 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Events
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HomeEvents
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HomeTraitPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HomeTraitUpdates
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TraitData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentDeviceId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -154,6 +208,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_id, as: 'agentId'
           property :device_id, as: 'deviceId'
+        end
+      end
+      
+      class Component
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_components, as: 'childComponents', class: Google::Apis::HomegraphV1::Component, decorator: Google::Apis::HomegraphV1::Component::Representation
+      
+          collection :device_types, as: 'deviceTypes'
+          property :id, as: 'id'
+          collection :trait_data, as: 'traitData', class: Google::Apis::HomegraphV1::TraitData, decorator: Google::Apis::HomegraphV1::TraitData::Representation
+      
+        end
+      end
+      
+      class ComponentTraitUpdates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_id, as: 'componentId'
+          collection :trait_data, as: 'traitData', class: Google::Apis::HomegraphV1::TraitData, decorator: Google::Apis::HomegraphV1::TraitData::Representation
+      
         end
       end
       
@@ -188,6 +263,13 @@ module Google
         end
       end
       
+      class DeviceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :trait_commit_timestamps, as: 'traitCommitTimestamps'
+        end
+      end
+      
       class DeviceNames
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -203,10 +285,56 @@ module Google
         end
       end
       
+      class EventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :event, as: 'event'
+          property :event_id, as: 'eventId'
+          property :event_time, as: 'eventTime'
+        end
+      end
+      
+      class Events
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_id, as: 'componentId'
+          collection :events, as: 'events', class: Google::Apis::HomegraphV1::EventData, decorator: Google::Apis::HomegraphV1::EventData::Representation
+      
+        end
+      end
+      
+      class HomeEvents
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          collection :events, as: 'events', class: Google::Apis::HomegraphV1::Events, decorator: Google::Apis::HomegraphV1::Events::Representation
+      
+        end
+      end
+      
+      class HomeTraitPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :root_component, as: 'rootComponent', class: Google::Apis::HomegraphV1::Component, decorator: Google::Apis::HomegraphV1::Component::Representation
+      
+        end
+      end
+      
+      class HomeTraitUpdates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :components, as: 'components', class: Google::Apis::HomegraphV1::ComponentTraitUpdates, decorator: Google::Apis::HomegraphV1::ComponentTraitUpdates::Representation
+      
+          property :device_id, as: 'deviceId'
+        end
+      end
+      
       class QueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_user_id, as: 'agentUserId'
+          property :device_view, as: 'deviceView'
+          property :include_device_metadata, as: 'includeDeviceMetadata'
           collection :inputs, as: 'inputs', class: Google::Apis::HomegraphV1::QueryRequestInput, decorator: Google::Apis::HomegraphV1::QueryRequestInput::Representation
       
           property :request_id, as: 'requestId'
@@ -241,13 +369,21 @@ module Google
       class QueryResponsePayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :device_metadata, as: 'deviceMetadata', class: Google::Apis::HomegraphV1::DeviceMetadata, decorator: Google::Apis::HomegraphV1::DeviceMetadata::Representation
+      
           hash :devices, as: 'devices'
+          hash :home_trait_payload, as: 'homeTraitPayload', class: Google::Apis::HomegraphV1::HomeTraitPayload, decorator: Google::Apis::HomegraphV1::HomeTraitPayload::Representation
+      
         end
       end
       
       class ReportStateAndNotificationDevice
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :home_events, as: 'homeEvents', class: Google::Apis::HomegraphV1::HomeEvents, decorator: Google::Apis::HomegraphV1::HomeEvents::Representation
+      
+          collection :home_traits, as: 'homeTraits', class: Google::Apis::HomegraphV1::HomeTraitUpdates, decorator: Google::Apis::HomegraphV1::HomeTraitUpdates::Representation
+      
           hash :notifications, as: 'notifications'
           hash :states, as: 'states'
         end
@@ -317,6 +453,14 @@ module Google
           property :agent_user_id, as: 'agentUserId'
           collection :devices, as: 'devices', class: Google::Apis::HomegraphV1::Device, decorator: Google::Apis::HomegraphV1::Device::Representation
       
+        end
+      end
+      
+      class TraitData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_time, as: 'commitTime'
+          hash :trait, as: 'trait'
         end
       end
     end

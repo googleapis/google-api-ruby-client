@@ -663,6 +663,7 @@ module Google
           property :project_id, as: 'projectId'
           property :project_number, as: 'projectNumber'
           property :realtime_database_url, as: 'realtimeDatabaseUrl'
+          property :recaptcha_site_key, as: 'recaptchaSiteKey'
           property :storage_bucket, as: 'storageBucket'
           property :version, as: 'version'
         end

@@ -64,7 +64,10 @@ module Google
         end
       end
       
-      # Represents a notification subscription owned by a Merchant account.
+      # Represents a notification subscription owned by a Merchant account. See [
+      # Decode notifications](/merchant/api/guides/accounts/notifications#
+      # decode_notifications) for information on how to decode the notification
+      # payload and how to interpret its contents.
       class NotificationSubscription
         include Google::Apis::Core::Hashable
       
@@ -190,7 +193,7 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Optional. The product expiration time. This field will not bet set if the
+        # Optional. The product expiration time. This field will not be set if the
         # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]

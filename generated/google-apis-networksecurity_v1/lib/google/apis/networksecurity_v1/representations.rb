@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthzPolicyAuthzRuleIpBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRulePrincipal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthzPolicyAuthzRuleRequestResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthzPolicyAuthzRuleToRequestOperationMcp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperationMcpMethod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthzPolicyCustomProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +155,12 @@ module Google
       end
       
       class AuthzPolicyTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendAuthenticationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DnsThreatDetector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +239,12 @@ module Google
       end
       
       class FirewallEndpointAssociationReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FirewallEndpointEndpointSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,7 +412,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBackendAuthenticationConfigsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClientTlsPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDnsThreatDetectorsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -455,6 +509,18 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSacAttachmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSacRealmsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -586,6 +652,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SacAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SacRealm
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SacRealmPairingKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -635,6 +719,18 @@ module Google
       end
       
       class TlsInspectionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UrlFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UrlFilteringProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -710,6 +806,9 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          collection :network_rules, as: 'networkRules', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRule, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRule::Representation
+      
+          property :policy_profile, as: 'policyProfile'
           property :target, as: 'target', class: Google::Apis::NetworksecurityV1::AuthzPolicyTarget, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyTarget::Representation
       
           property :update_time, as: 'updateTime'
@@ -740,7 +839,9 @@ module Google
       class AuthzPolicyAuthzRuleFromRequestSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :principals, as: 'principals', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+          collection :ip_blocks, as: 'ipBlocks', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleIpBlock, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleIpBlock::Representation
+      
+          collection :principals, as: 'principals', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRulePrincipal, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRulePrincipal::Representation
       
           collection :resources, as: 'resources', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleRequestResource::Representation
       
@@ -753,6 +854,23 @@ module Google
           property :name, as: 'name'
           property :value, as: 'value', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
       
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleIpBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :length, as: 'length'
+          property :prefix, as: 'prefix'
+        end
+      end
+      
+      class AuthzPolicyAuthzRulePrincipal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal, as: 'principal', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          property :principal_selector, as: 'principalSelector'
         end
       end
       
@@ -801,8 +919,12 @@ module Google
       
           collection :hosts, as: 'hosts', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
       
+          property :mcp, as: 'mcp', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperationMcp, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperationMcp::Representation
+      
           collection :methods_prop, as: 'methods'
           collection :paths, as: 'paths', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
+      
+          collection :snis, as: 'snis', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
       
         end
       end
@@ -811,6 +933,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :headers, as: 'headers', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleHeaderMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleHeaderMatch::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperationMcp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_protocol_methods_option, as: 'baseProtocolMethodsOption'
+          collection :methods_prop, as: 'methods', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperationMcpMethod, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleToRequestOperationMcpMethod::Representation
+      
+        end
+      end
+      
+      class AuthzPolicyAuthzRuleToRequestOperationMcpMethod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :params, as: 'params', class: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch, decorator: Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRuleStringMatch::Representation
       
         end
       end
@@ -843,6 +983,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           collection :resources, as: 'resources'
+        end
+      end
+      
+      class BackendAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_certificate, as: 'clientCertificate'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :trust_config, as: 'trustConfig'
+          property :update_time, as: 'updateTime'
+          property :well_known_roots, as: 'wellKnownRoots'
         end
       end
       
@@ -908,6 +1063,18 @@ module Google
         end
       end
       
+      class DnsThreatDetector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :excluded_networks, as: 'excludedNetworks'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :provider, as: 'provider'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -933,6 +1100,8 @@ module Google
           property :billing_project_id, as: 'billingProjectId'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          property :endpoint_settings, as: 'endpointSettings', class: Google::Apis::NetworksecurityV1::FirewallEndpointEndpointSettings, decorator: Google::Apis::NetworksecurityV1::FirewallEndpointEndpointSettings::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
@@ -964,6 +1133,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :network, as: 'network'
+        end
+      end
+      
+      class FirewallEndpointEndpointSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :jumbo_frames_enabled, as: 'jumboFramesEnabled'
         end
       end
       
@@ -1161,6 +1337,7 @@ module Google
       
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_cookie, as: 'networkCookie'
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
@@ -1248,12 +1425,32 @@ module Google
         end
       end
       
+      class ListBackendAuthenticationConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backend_authentication_configs, as: 'backendAuthenticationConfigs', class: Google::Apis::NetworksecurityV1::BackendAuthenticationConfig, decorator: Google::Apis::NetworksecurityV1::BackendAuthenticationConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListClientTlsPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :client_tls_policies, as: 'clientTlsPolicies', class: Google::Apis::NetworksecurityV1::ClientTlsPolicy, decorator: Google::Apis::NetworksecurityV1::ClientTlsPolicy::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListDnsThreatDetectorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dns_threat_detectors, as: 'dnsThreatDetectors', class: Google::Apis::NetworksecurityV1::DnsThreatDetector, decorator: Google::Apis::NetworksecurityV1::DnsThreatDetector::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1386,6 +1583,27 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetworksecurityV1::Operation, decorator: Google::Apis::NetworksecurityV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListSacAttachmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sac_attachments, as: 'sacAttachments', class: Google::Apis::NetworksecurityV1::SacAttachment, decorator: Google::Apis::NetworksecurityV1::SacAttachment::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListSacRealmsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sac_realms, as: 'sacRealms', class: Google::Apis::NetworksecurityV1::SacRealm, decorator: Google::Apis::NetworksecurityV1::SacRealm::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1522,6 +1740,7 @@ module Google
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
+          property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
       end
@@ -1538,6 +1757,7 @@ module Google
           property :mirroring_endpoint_group, as: 'mirroringEndpointGroup'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_cookie, as: 'networkCookie'
           property :reconciling, as: 'reconciling'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
@@ -1621,6 +1841,41 @@ module Google
         end
       end
       
+      class SacAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :ncc_gateway, as: 'nccGateway'
+          property :sac_realm, as: 'sacRealm'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SacRealm
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :pairing_key, as: 'pairingKey', class: Google::Apis::NetworksecurityV1::SacRealmPairingKey, decorator: Google::Apis::NetworksecurityV1::SacRealmPairingKey::Representation
+      
+          property :security_service, as: 'securityService'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SacRealmPairingKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :key, as: 'key'
+        end
+      end
+      
       class SecurityProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1637,6 +1892,8 @@ module Google
       
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+          property :url_filtering_profile, as: 'urlFilteringProfile', class: Google::Apis::NetworksecurityV1::UrlFilteringProfile, decorator: Google::Apis::NetworksecurityV1::UrlFilteringProfile::Representation
+      
         end
       end
       
@@ -1653,6 +1910,7 @@ module Google
           property :name, as: 'name'
           property :threat_prevention_profile, as: 'threatPreventionProfile'
           property :update_time, as: 'updateTime'
+          property :url_filtering_profile, as: 'urlFilteringProfile'
         end
       end
       
@@ -1731,6 +1989,23 @@ module Google
           property :tls_feature_profile, as: 'tlsFeatureProfile'
           property :trust_config, as: 'trustConfig'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class UrlFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filtering_action, as: 'filteringAction'
+          property :priority, as: 'priority'
+          collection :urls, as: 'urls'
+        end
+      end
+      
+      class UrlFilteringProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :url_filters, as: 'urlFilters', class: Google::Apis::NetworksecurityV1::UrlFilter, decorator: Google::Apis::NetworksecurityV1::UrlFilter::Representation
+      
         end
       end
       

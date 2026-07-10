@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectoryServicesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LdapConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListBackupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PauseReplicaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PerformanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +263,12 @@ module Google
       end
       
       class RestoreInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumeReplicaRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -344,6 +374,14 @@ module Google
         end
       end
       
+      class DirectoryServicesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ldap, as: 'ldap', class: Google::Apis::FileV1::LdapConfig, decorator: Google::Apis::FileV1::LdapConfig::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -358,6 +396,7 @@ module Google
           collection :nfs_export_options, as: 'nfsExportOptions', class: Google::Apis::FileV1::NfsExportOptions, decorator: Google::Apis::FileV1::NfsExportOptions::Representation
       
           property :source_backup, as: 'sourceBackup'
+          property :source_backupdr_backup, as: 'sourceBackupdrBackup'
         end
       end
       
@@ -480,16 +519,21 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_step_size_gb, :numeric_string => true, as: 'capacityStepSizeGb'
           property :create_time, as: 'createTime'
           property :custom_performance_supported, as: 'customPerformanceSupported'
           property :deletion_protection_enabled, as: 'deletionProtectionEnabled'
           property :deletion_protection_reason, as: 'deletionProtectionReason'
           property :description, as: 'description'
+          property :directory_services, as: 'directoryServices', class: Google::Apis::FileV1::DirectoryServicesConfig, decorator: Google::Apis::FileV1::DirectoryServicesConfig::Representation
+      
           property :etag, as: 'etag'
           collection :file_shares, as: 'fileShares', class: Google::Apis::FileV1::FileShareConfig, decorator: Google::Apis::FileV1::FileShareConfig::Representation
       
           property :kms_key_name, as: 'kmsKeyName'
           hash :labels, as: 'labels'
+          property :max_capacity_gb, :numeric_string => true, as: 'maxCapacityGb'
+          property :min_capacity_gb, :numeric_string => true, as: 'minCapacityGb'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1::NetworkConfig, decorator: Google::Apis::FileV1::NetworkConfig::Representation
       
@@ -507,6 +551,16 @@ module Google
           collection :suspension_reasons, as: 'suspensionReasons'
           hash :tags, as: 'tags'
           property :tier, as: 'tier'
+        end
+      end
+      
+      class LdapConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :groups_ou, as: 'groupsOu'
+          collection :servers, as: 'servers'
+          property :users_ou, as: 'usersOu'
         end
       end
       
@@ -545,6 +599,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::FileV1::Operation, decorator: Google::Apis::FileV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -600,6 +655,8 @@ module Google
           collection :ip_addresses, as: 'ipAddresses'
           collection :modes, as: 'modes'
           property :network, as: 'network'
+          property :psc_config, as: 'pscConfig', class: Google::Apis::FileV1::PscConfig, decorator: Google::Apis::FileV1::PscConfig::Representation
+      
           property :reserved_ip_range, as: 'reservedIpRange'
         end
       end
@@ -611,6 +668,7 @@ module Google
           property :anon_gid, :numeric_string => true, as: 'anonGid'
           property :anon_uid, :numeric_string => true, as: 'anonUid'
           collection :ip_ranges, as: 'ipRanges'
+          property :network, as: 'network'
           property :squash_mode, as: 'squashMode'
         end
       end
@@ -637,6 +695,12 @@ module Google
           property :status_detail, as: 'statusDetail'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PauseReplicaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -668,6 +732,13 @@ module Google
         end
       end
       
+      class PscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint_project, as: 'endpointProject'
+        end
+      end
+      
       class ReplicaConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -675,6 +746,7 @@ module Google
           property :peer_instance, as: 'peerInstance'
           property :state, as: 'state'
           collection :state_reasons, as: 'stateReasons'
+          property :state_update_time, as: 'stateUpdateTime'
         end
       end
       
@@ -692,6 +764,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_share, as: 'fileShare'
           property :source_backup, as: 'sourceBackup'
+        end
+      end
+      
+      class ResumeReplicaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

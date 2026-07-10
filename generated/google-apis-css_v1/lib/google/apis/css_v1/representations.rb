@@ -236,6 +236,8 @@ module Google
           property :low_price, as: 'lowPrice', class: Google::Apis::CssV1::Price, decorator: Google::Apis::CssV1::Price::Representation
       
           property :material, as: 'material'
+          property :max_rating, :numeric_string => true, as: 'maxRating'
+          property :min_rating, :numeric_string => true, as: 'minRating'
           property :mpn, as: 'mpn'
           property :multipack, :numeric_string => true, as: 'multipack'
           property :number_of_offers, :numeric_string => true, as: 'numberOfOffers'
@@ -253,6 +255,8 @@ module Google
       
           property :product_width, as: 'productWidth', class: Google::Apis::CssV1::ProductDimension, decorator: Google::Apis::CssV1::ProductDimension::Representation
       
+          property :rating, as: 'rating'
+          property :review_count, :numeric_string => true, as: 'reviewCount'
           property :size, as: 'size'
           property :size_system, as: 'sizeSystem'
           collection :size_types, as: 'sizeTypes'

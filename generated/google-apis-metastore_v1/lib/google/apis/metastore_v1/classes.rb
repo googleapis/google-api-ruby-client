@@ -597,8 +597,10 @@ module Google
         end
       end
       
-      # Configuration information for migrating from self-managed hive metastore on
-      # Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
+      # Deprecated: Migrations to Dataproc Metastore are no longer supported. Use
+      # BigLake Metastore migration instead. Configuration information for migrating
+      # from self-managed hive metastore on Google Cloud using Cloud SQL as the
+      # backend database to Dataproc Metastore.
       class CloudSqlMigrationConfig
         include Google::Apis::Core::Hashable
       
@@ -675,8 +677,9 @@ module Google
         end
       end
       
-      # Metadata about a custom region. This is only populated if the region is a
-      # custom region. For single/multi regions, it will be empty.
+      # Deprecated: Use a single region service instead. Metadata about a custom
+      # region. This is only populated if the region is a custom region. For single/
+      # multi regions, it will be empty.
       class CustomRegionMetadata
         include Google::Apis::Core::Hashable
       
@@ -965,6 +968,13 @@ module Google
         # @return [String]
         attr_accessor :state_message
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. The globally unique resource identifier of the metastore
         # federation.
         # Corresponds to the JSON property `uid`
@@ -995,6 +1005,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+          @tags = args[:tags] if args.key?(:tags)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
@@ -1349,6 +1360,13 @@ module Google
         # @return [Array<Google::Apis::MetastoreV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets
+        # ListOperationsRequest.return_partial_success and reads across collections. For
+        # example, when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1357,6 +1375,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1443,14 +1462,16 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # Possible configurations supported if the current region is a custom region.
+        # Deprecated: Use a single region service instead. Possible configurations
+        # supported if the current region is a custom region.
         # Corresponds to the JSON property `customRegionMetadata`
         # @return [Array<Google::Apis::MetastoreV1::CustomRegionMetadata>]
         attr_accessor :custom_region_metadata
       
-        # The metadata for the multi-region that includes the constituent regions. The
-        # metadata is only populated if the region is multi-region. For single region or
-        # custom dual region, it will be empty.
+        # Deprecated: Use a single region service instead. The metadata for the multi-
+        # region that includes the constituent regions. The metadata is only populated
+        # if the region is multi-region. For single region or custom dual region, it
+        # will be empty.
         # Corresponds to the JSON property `multiRegionMetadata`
         # @return [Google::Apis::MetastoreV1::MultiRegionMetadata]
         attr_accessor :multi_region_metadata
@@ -1672,8 +1693,10 @@ module Google
       class MigrationExecution
         include Google::Apis::Core::Hashable
       
-        # Configuration information for migrating from self-managed hive metastore on
-        # Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
+        # Deprecated: Migrations to Dataproc Metastore are no longer supported. Use
+        # BigLake Metastore migration instead. Configuration information for migrating
+        # from self-managed hive metastore on Google Cloud using Cloud SQL as the
+        # backend database to Dataproc Metastore.
         # Corresponds to the JSON property `cloudSqlMigrationConfig`
         # @return [Google::Apis::MetastoreV1::CloudSqlMigrationConfig]
         attr_accessor :cloud_sql_migration_config
@@ -1695,7 +1718,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The current phase of the migration execution.
+        # Output only. Deprecated: Phase was designed for incoming migrations to
+        # Dataproc Metastore, not applicable when migrating away from it. The current
+        # phase of the migration execution.
         # Corresponds to the JSON property `phase`
         # @return [String]
         attr_accessor :phase
@@ -1771,9 +1796,10 @@ module Google
         end
       end
       
-      # The metadata for the multi-region that includes the constituent regions. The
-      # metadata is only populated if the region is multi-region. For single region or
-      # custom dual region, it will be empty.
+      # Deprecated: Use a single region service instead. The metadata for the multi-
+      # region that includes the constituent regions. The metadata is only populated
+      # if the region is multi-region. For single region or custom dual region, it
+      # will be empty.
       class MultiRegionMetadata
         include Google::Apis::Core::Hashable
       
@@ -2416,6 +2442,13 @@ module Google
         # @return [String]
         attr_accessor :state_message
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Telemetry Configuration for the Dataproc Metastore service.
         # Corresponds to the JSON property `telemetryConfig`
         # @return [Google::Apis::MetastoreV1::TelemetryConfig]
@@ -2462,6 +2495,7 @@ module Google
           @scheduled_backup = args[:scheduled_backup] if args.key?(:scheduled_backup)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+          @tags = args[:tags] if args.key?(:tags)
           @telemetry_config = args[:telemetry_config] if args.key?(:telemetry_config)
           @tier = args[:tier] if args.key?(:tier)
           @uid = args[:uid] if args.key?(:uid)

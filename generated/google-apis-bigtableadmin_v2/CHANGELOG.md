@@ -1,5 +1,77 @@
 # Release history for google-apis-bigtableadmin_v2
 
+### v0.89.0 (2026-07-05)
+
+* Regenerated from discovery document revision 20260624
+
+### v0.88.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.87.0 (2026-05-24)
+
+* Regenerated from discovery document revision 20260514
+
+### v0.86.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260425
+
+### v0.85.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260331
+
+### v0.84.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260307
+
+### v0.83.0 (2026-03-08)
+
+* Regenerated from discovery document revision 20260225
+
+### v0.82.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260210
+
+### v0.81.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251209
+
+### v0.80.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251026
+
+### v0.79.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251012
+
+### v0.78.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250912
+
+### v0.77.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250828
+
+### v0.76.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250821
+
+### v0.75.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250804
+
+### v0.74.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250724
+
+### v0.73.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250624
+
+### v0.72.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250610
+
 ### v0.71.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250512

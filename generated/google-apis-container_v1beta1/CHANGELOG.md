@@ -1,5 +1,82 @@
 # Release history for google-apis-container_v1beta1
 
+### v0.104.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260609
+
+### v0.103.0 (2026-06-10)
+
+* Regenerated from discovery document revision 20260519
+* Regenerated using generator version 0.19.0
+
+### v0.102.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260209
+
+### v0.101.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260120
+
+### v0.100.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260113
+
+### v0.99.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251202
+
+### v0.98.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251125
+
+### v0.97.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251104
+
+### v0.96.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251028
+
+### v0.95.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251021
+
+### v0.94.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20250930
+
+### v0.93.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250923
+
+### v0.92.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250916
+
+### v0.91.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250819
+
+### v0.90.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250807
+
+### v0.89.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250725
+
+### v0.88.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250701
+
+### v0.87.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250617
+
+### v0.86.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250603
+
 ### v0.85.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250513

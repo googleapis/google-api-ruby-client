@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientSideEncryptionServiceUnavailable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudPubsubTopic
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DriveSyncStateChanged
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +233,18 @@ module Google
       end
       
       class GoogleOperations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdentityProviderError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KeyServiceError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -508,6 +532,7 @@ module Google
       class ActionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :evidence_locker_file_path, as: 'evidenceLockerFilePath'
         end
       end
       
@@ -668,6 +693,16 @@ module Google
         end
       end
       
+      class ClientSideEncryptionServiceUnavailable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :idp_error, as: 'idpError', class: Google::Apis::AlertcenterV1beta1::IdentityProviderError, decorator: Google::Apis::AlertcenterV1beta1::IdentityProviderError::Representation
+      
+          collection :key_service_error, as: 'keyServiceError', class: Google::Apis::AlertcenterV1beta1::KeyServiceError, decorator: Google::Apis::AlertcenterV1beta1::KeyServiceError::Representation
+      
+        end
+      end
+      
       class CloudPubsubTopic
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -753,6 +788,16 @@ module Google
         end
       end
       
+      class DriveSyncStateChanged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :sync_pause_start_time, as: 'syncPauseStartTime'
+          property :sync_state, as: 'syncState'
+          property :sync_state_change_reason, as: 'syncStateChangeReason'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -803,6 +848,25 @@ module Google
           property :domain, as: 'domain'
           property :header, as: 'header'
           property :title, as: 'title'
+        end
+      end
+      
+      class IdentityProviderError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_base_url, as: 'authorizationBaseUrl'
+          property :error_count, :numeric_string => true, as: 'errorCount'
+          property :error_info, as: 'errorInfo'
+        end
+      end
+      
+      class KeyServiceError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_count, :numeric_string => true, as: 'errorCount'
+          property :error_info, as: 'errorInfo'
+          property :http_response_code, :numeric_string => true, as: 'httpResponseCode'
+          property :key_service_url, as: 'keyServiceUrl'
         end
       end
       
@@ -943,6 +1007,7 @@ module Google
           property :chat_message_id, as: 'chatMessageId'
           property :device_id, as: 'deviceId'
           property :document_id, as: 'documentId'
+          property :message_id, as: 'messageId'
           property :resource_title, as: 'resourceTitle'
         end
       end
@@ -958,6 +1023,7 @@ module Google
       class RuleViolationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_type, as: 'agentType'
           property :data_source, as: 'dataSource'
           property :event_type, as: 'eventType'
           collection :match_info, as: 'matchInfo', class: Google::Apis::AlertcenterV1beta1::MatchInfo, decorator: Google::Apis::AlertcenterV1beta1::MatchInfo::Representation

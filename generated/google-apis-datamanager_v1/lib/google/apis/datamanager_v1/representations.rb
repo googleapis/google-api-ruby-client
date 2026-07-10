@@ -1,0 +1,1649 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+require 'date'
+require 'google/apis/core/base_service'
+require 'google/apis/core/json_representation'
+require 'google/apis/core/hashable'
+require 'google/apis/errors'
+
+module Google
+  module Apis
+    module DatamanagerV1
+      
+      class AdEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdIdentifiers
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddressInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AudienceMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsWrappedKeyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Baseline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CartData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompositeData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Consent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContactIdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CoordinatorKeyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataTypeCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Destination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptedUserId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ErrorCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Event
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExperimentalField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcpWrappedKeyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestAdEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestAdEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestAudienceMembersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestAudienceMembersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestAudienceMembersStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestCompositeDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestEventsStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestMobileDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestPairDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestPpidDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestUserDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestUserIdDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestedUserListInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IpData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Item
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ItemCustomVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ItemParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserListDirectLicensesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserListGlobalLicenseCustomerInfosResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserListGlobalLicensesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserListsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MarketingDataInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MarketingDataInsightsAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MobileData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MobileIdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PairData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PairIdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartnerAudienceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartnerCustomerAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartnerLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartnerLinkMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PpidData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProductAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PseudonymousIdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveAudienceMembersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveAudienceMembersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveAudienceMembersStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveCompositeDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveMobileDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemovePairDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemovePpidDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveUserDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveUserIdDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestStatusPerDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetrieveInsightsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetrieveInsightsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetrieveRequestStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchPartnerLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SizeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetNetworkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TermsOfService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserIdData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserIdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserListDirectLicense
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserListGlobalLicense
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserListGlobalLicenseCustomerInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserListLicenseMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserListLicensePricing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ViewabilityInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WarningCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WarningInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_format, as: 'adFormat'
+          property :ad_format_string, as: 'adFormatString'
+          property :ad_group_id, as: 'adGroupId'
+          property :ad_height, as: 'adHeight'
+          property :ad_id, as: 'adId'
+          property :ad_placement, as: 'adPlacement'
+          property :ad_placement_string, as: 'adPlacementString'
+          property :ad_type, as: 'adType'
+          property :ad_type_string, as: 'adTypeString'
+          property :ad_width, as: 'adWidth'
+          property :advertiser_id, as: 'advertiserId'
+          property :attribution_hint, as: 'attributionHint'
+          property :campaign_id, as: 'campaignId'
+          property :campaign_name, as: 'campaignName'
+          property :device_info, as: 'deviceInfo', class: Google::Apis::DatamanagerV1::DeviceInfo, decorator: Google::Apis::DatamanagerV1::DeviceInfo::Representation
+      
+          property :event_id, as: 'eventId'
+          property :event_subtype, as: 'eventSubtype'
+          property :event_subtype_string, as: 'eventSubtypeString'
+          property :event_type, as: 'eventType'
+          property :measurement_allowed, as: 'measurementAllowed'
+          property :medium, as: 'medium'
+          property :mobile_device_id, as: 'mobileDeviceId'
+          property :platform, as: 'platform'
+          property :platform_string, as: 'platformString'
+          property :platform_type, as: 'platformType'
+          property :platform_type_string, as: 'platformTypeString'
+          property :region_code, as: 'regionCode'
+          property :source, as: 'source'
+          property :targeting_type, as: 'targetingType'
+          property :targeting_type_string, as: 'targetingTypeString'
+          property :timestamp, as: 'timestamp'
+          property :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
+      
+          property :viewability_info, as: 'viewabilityInfo', class: Google::Apis::DatamanagerV1::ViewabilityInfo, decorator: Google::Apis::DatamanagerV1::ViewabilityInfo::Representation
+      
+        end
+      end
+      
+      class AdIdentifiers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dclid, as: 'dclid'
+          collection :encrypted_user_ids, as: 'encryptedUserIds', class: Google::Apis::DatamanagerV1::EncryptedUserId, decorator: Google::Apis::DatamanagerV1::EncryptedUserId::Representation
+      
+          property :gbraid, as: 'gbraid'
+          property :gclid, as: 'gclid'
+          property :impression_id, as: 'impressionId'
+          property :landing_page_device_info, as: 'landingPageDeviceInfo', class: Google::Apis::DatamanagerV1::DeviceInfo, decorator: Google::Apis::DatamanagerV1::DeviceInfo::Representation
+      
+          property :match_id, as: 'matchId'
+          property :mobile_device_id, as: 'mobileDeviceId'
+          property :session_attributes, as: 'sessionAttributes'
+          property :wbraid, as: 'wbraid'
+        end
+      end
+      
+      class AddressInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :family_name, as: 'familyName'
+          property :given_name, as: 'givenName'
+          property :postal_code, as: 'postalCode'
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class AudienceMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :composite_data, as: 'compositeData', class: Google::Apis::DatamanagerV1::CompositeData, decorator: Google::Apis::DatamanagerV1::CompositeData::Representation
+      
+          property :consent, as: 'consent', class: Google::Apis::DatamanagerV1::Consent, decorator: Google::Apis::DatamanagerV1::Consent::Representation
+      
+          collection :destination_references, as: 'destinationReferences'
+          property :mobile_data, as: 'mobileData', class: Google::Apis::DatamanagerV1::MobileData, decorator: Google::Apis::DatamanagerV1::MobileData::Representation
+      
+          property :pair_data, as: 'pairData', class: Google::Apis::DatamanagerV1::PairData, decorator: Google::Apis::DatamanagerV1::PairData::Representation
+      
+          property :ppid_data, as: 'ppidData', class: Google::Apis::DatamanagerV1::PpidData, decorator: Google::Apis::DatamanagerV1::PpidData::Representation
+      
+          property :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
+      
+          property :user_id_data, as: 'userIdData', class: Google::Apis::DatamanagerV1::UserIdData, decorator: Google::Apis::DatamanagerV1::UserIdData::Representation
+      
+        end
+      end
+      
+      class AwsWrappedKeyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encrypted_dek, as: 'encryptedDek'
+          property :kek_uri, as: 'kekUri'
+          property :key_type, as: 'keyType'
+          property :role_arn, as: 'roleArn'
+        end
+      end
+      
+      class Baseline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :baseline_location, as: 'baselineLocation', class: Google::Apis::DatamanagerV1::Location, decorator: Google::Apis::DatamanagerV1::Location::Representation
+      
+          property :location_auto_detection_enabled, as: 'locationAutoDetectionEnabled'
+        end
+      end
+      
+      class CartData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :coupon_codes, as: 'couponCodes'
+          collection :items, as: 'items', class: Google::Apis::DatamanagerV1::Item, decorator: Google::Apis::DatamanagerV1::Item::Representation
+      
+          property :merchant_feed_label, as: 'merchantFeedLabel'
+          property :merchant_feed_language_code, as: 'merchantFeedLanguageCode'
+          property :merchant_id, as: 'merchantId'
+          property :transaction_discount, as: 'transactionDiscount'
+        end
+      end
+      
+      class CompositeData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_data, as: 'ipData', class: Google::Apis::DatamanagerV1::IpData, decorator: Google::Apis::DatamanagerV1::IpData::Representation
+      
+          property :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
+      
+        end
+      end
+      
+      class Consent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_personalization, as: 'adPersonalization'
+          property :ad_user_data, as: 'adUserData'
+        end
+      end
+      
+      class ContactIdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_type, as: 'dataSourceType'
+          property :match_rate_percentage, as: 'matchRatePercentage'
+        end
+      end
+      
+      class CoordinatorKeyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_id, as: 'keyId'
+        end
+      end
+      
+      class CustomVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destination_references, as: 'destinationReferences'
+          property :value, as: 'value'
+          property :variable, as: 'variable'
+        end
+      end
+      
+      class DataTypeCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :type, as: 'type'
+        end
+      end
+      
+      class Destination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :linked_account, as: 'linkedAccount', class: Google::Apis::DatamanagerV1::ProductAccount, decorator: Google::Apis::DatamanagerV1::ProductAccount::Representation
+      
+          property :login_account, as: 'loginAccount', class: Google::Apis::DatamanagerV1::ProductAccount, decorator: Google::Apis::DatamanagerV1::ProductAccount::Representation
+      
+          property :operating_account, as: 'operatingAccount', class: Google::Apis::DatamanagerV1::ProductAccount, decorator: Google::Apis::DatamanagerV1::ProductAccount::Representation
+      
+          property :product_destination_id, as: 'productDestinationId'
+          property :reference, as: 'reference'
+        end
+      end
+      
+      class DeviceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :brand, as: 'brand'
+          property :browser, as: 'browser'
+          property :browser_version, as: 'browserVersion'
+          property :category, as: 'category'
+          property :ip_address, as: 'ipAddress'
+          property :language_code, as: 'languageCode'
+          property :model, as: 'model'
+          property :operating_system, as: 'operatingSystem'
+          property :operating_system_version, as: 'operatingSystemVersion'
+          property :screen_height, as: 'screenHeight'
+          property :screen_width, as: 'screenWidth'
+          property :user_agent, as: 'userAgent'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EncryptedUserId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encrypted_id, as: 'encryptedId'
+          property :entity_id, :numeric_string => true, as: 'entityId'
+          property :entity_type, as: 'entityType'
+          property :source, as: 'source'
+        end
+      end
+      
+      class EncryptionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_wrapped_key_info, as: 'awsWrappedKeyInfo', class: Google::Apis::DatamanagerV1::AwsWrappedKeyInfo, decorator: Google::Apis::DatamanagerV1::AwsWrappedKeyInfo::Representation
+      
+          property :coordinator_key_info, as: 'coordinatorKeyInfo', class: Google::Apis::DatamanagerV1::CoordinatorKeyInfo, decorator: Google::Apis::DatamanagerV1::CoordinatorKeyInfo::Representation
+      
+          property :gcp_wrapped_key_info, as: 'gcpWrappedKeyInfo', class: Google::Apis::DatamanagerV1::GcpWrappedKeyInfo, decorator: Google::Apis::DatamanagerV1::GcpWrappedKeyInfo::Representation
+      
+        end
+      end
+      
+      class ErrorCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class ErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :error_counts, as: 'errorCounts', class: Google::Apis::DatamanagerV1::ErrorCount, decorator: Google::Apis::DatamanagerV1::ErrorCount::Representation
+      
+        end
+      end
+      
+      class Event
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ad_identifiers, as: 'adIdentifiers', class: Google::Apis::DatamanagerV1::AdIdentifiers, decorator: Google::Apis::DatamanagerV1::AdIdentifiers::Representation
+      
+          collection :additional_event_parameters, as: 'additionalEventParameters', class: Google::Apis::DatamanagerV1::EventParameter, decorator: Google::Apis::DatamanagerV1::EventParameter::Representation
+      
+          property :app_instance_id, as: 'appInstanceId'
+          property :cart_data, as: 'cartData', class: Google::Apis::DatamanagerV1::CartData, decorator: Google::Apis::DatamanagerV1::CartData::Representation
+      
+          property :client_id, as: 'clientId'
+          property :consent, as: 'consent', class: Google::Apis::DatamanagerV1::Consent, decorator: Google::Apis::DatamanagerV1::Consent::Representation
+      
+          property :conversion_count, as: 'conversionCount'
+          property :conversion_value, as: 'conversionValue'
+          property :currency, as: 'currency'
+          collection :custom_variables, as: 'customVariables', class: Google::Apis::DatamanagerV1::CustomVariable, decorator: Google::Apis::DatamanagerV1::CustomVariable::Representation
+      
+          collection :destination_references, as: 'destinationReferences'
+          property :event_device_info, as: 'eventDeviceInfo', class: Google::Apis::DatamanagerV1::DeviceInfo, decorator: Google::Apis::DatamanagerV1::DeviceInfo::Representation
+      
+          property :event_location, as: 'eventLocation', class: Google::Apis::DatamanagerV1::EventLocation, decorator: Google::Apis::DatamanagerV1::EventLocation::Representation
+      
+          property :event_name, as: 'eventName'
+          property :event_source, as: 'eventSource'
+          property :event_timestamp, as: 'eventTimestamp'
+          collection :experimental_fields, as: 'experimentalFields', class: Google::Apis::DatamanagerV1::ExperimentalField, decorator: Google::Apis::DatamanagerV1::ExperimentalField::Representation
+      
+          property :last_updated_timestamp, as: 'lastUpdatedTimestamp'
+          property :third_party_user_data, as: 'thirdPartyUserData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
+      
+          property :transaction_id, as: 'transactionId'
+          property :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
+      
+          property :user_id, as: 'userId'
+          property :user_properties, as: 'userProperties', class: Google::Apis::DatamanagerV1::UserProperties, decorator: Google::Apis::DatamanagerV1::UserProperties::Representation
+      
+        end
+      end
+      
+      class EventLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :city, as: 'city'
+          property :continent_code, as: 'continentCode'
+          property :region_code, as: 'regionCode'
+          property :store_id, as: 'storeId'
+          property :subcontinent_code, as: 'subcontinentCode'
+          property :subdivision_code, as: 'subdivisionCode'
+        end
+      end
+      
+      class EventParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parameter_name, as: 'parameterName'
+          property :value, as: 'value'
+        end
+      end
+      
+      class ExperimentalField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GcpWrappedKeyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encrypted_dek, as: 'encryptedDek'
+          property :kek_uri, as: 'kekUri'
+          property :key_type, as: 'keyType'
+          property :wip_provider, as: 'wipProvider'
+        end
+      end
+      
+      class IngestAdEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ad_events, as: 'adEvents', class: Google::Apis::DatamanagerV1::AdEvent, decorator: Google::Apis::DatamanagerV1::AdEvent::Representation
+      
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::DatamanagerV1::EncryptionInfo, decorator: Google::Apis::DatamanagerV1::EncryptionInfo::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class IngestAdEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class IngestAudienceMembersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audience_members, as: 'audienceMembers', class: Google::Apis::DatamanagerV1::AudienceMember, decorator: Google::Apis::DatamanagerV1::AudienceMember::Representation
+      
+          property :consent, as: 'consent', class: Google::Apis::DatamanagerV1::Consent, decorator: Google::Apis::DatamanagerV1::Consent::Representation
+      
+          collection :destinations, as: 'destinations', class: Google::Apis::DatamanagerV1::Destination, decorator: Google::Apis::DatamanagerV1::Destination::Representation
+      
+          property :encoding, as: 'encoding'
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::DatamanagerV1::EncryptionInfo, decorator: Google::Apis::DatamanagerV1::EncryptionInfo::Representation
+      
+          property :terms_of_service, as: 'termsOfService', class: Google::Apis::DatamanagerV1::TermsOfService, decorator: Google::Apis::DatamanagerV1::TermsOfService::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class IngestAudienceMembersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class IngestAudienceMembersStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :composite_data_ingestion_status, as: 'compositeDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestCompositeDataStatus, decorator: Google::Apis::DatamanagerV1::IngestCompositeDataStatus::Representation
+      
+          property :mobile_data_ingestion_status, as: 'mobileDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestMobileDataStatus, decorator: Google::Apis::DatamanagerV1::IngestMobileDataStatus::Representation
+      
+          property :pair_data_ingestion_status, as: 'pairDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestPairDataStatus, decorator: Google::Apis::DatamanagerV1::IngestPairDataStatus::Representation
+      
+          property :ppid_data_ingestion_status, as: 'ppidDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestPpidDataStatus, decorator: Google::Apis::DatamanagerV1::IngestPpidDataStatus::Representation
+      
+          property :user_data_ingestion_status, as: 'userDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestUserDataStatus, decorator: Google::Apis::DatamanagerV1::IngestUserDataStatus::Representation
+      
+          property :user_id_data_ingestion_status, as: 'userIdDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestUserIdDataStatus, decorator: Google::Apis::DatamanagerV1::IngestUserIdDataStatus::Representation
+      
+        end
+      end
+      
+      class IngestCompositeDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_type_counts, as: 'dataTypeCounts', class: Google::Apis::DatamanagerV1::DataTypeCount, decorator: Google::Apis::DatamanagerV1::DataTypeCount::Representation
+      
+          property :record_count, :numeric_string => true, as: 'recordCount'
+          property :upload_match_rate_range, as: 'uploadMatchRateRange'
+        end
+      end
+      
+      class IngestEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent, as: 'consent', class: Google::Apis::DatamanagerV1::Consent, decorator: Google::Apis::DatamanagerV1::Consent::Representation
+      
+          collection :destinations, as: 'destinations', class: Google::Apis::DatamanagerV1::Destination, decorator: Google::Apis::DatamanagerV1::Destination::Representation
+      
+          property :encoding, as: 'encoding'
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::DatamanagerV1::EncryptionInfo, decorator: Google::Apis::DatamanagerV1::EncryptionInfo::Representation
+      
+          collection :events, as: 'events', class: Google::Apis::DatamanagerV1::Event, decorator: Google::Apis::DatamanagerV1::Event::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class IngestEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class IngestEventsStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class IngestMobileDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mobile_id_count, :numeric_string => true, as: 'mobileIdCount'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class IngestPairDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pair_id_count, :numeric_string => true, as: 'pairIdCount'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class IngestPpidDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ppid_count, :numeric_string => true, as: 'ppidCount'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class IngestUserDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :record_count, :numeric_string => true, as: 'recordCount'
+          property :upload_match_rate_range, as: 'uploadMatchRateRange'
+          property :user_identifier_count, :numeric_string => true, as: 'userIdentifierCount'
+        end
+      end
+      
+      class IngestUserIdDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :record_count, :numeric_string => true, as: 'recordCount'
+          property :user_id_count, :numeric_string => true, as: 'userIdCount'
+        end
+      end
+      
+      class IngestedUserListInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_id_info, as: 'contactIdInfo', class: Google::Apis::DatamanagerV1::ContactIdInfo, decorator: Google::Apis::DatamanagerV1::ContactIdInfo::Representation
+      
+          property :mobile_id_info, as: 'mobileIdInfo', class: Google::Apis::DatamanagerV1::MobileIdInfo, decorator: Google::Apis::DatamanagerV1::MobileIdInfo::Representation
+      
+          property :pair_id_info, as: 'pairIdInfo', class: Google::Apis::DatamanagerV1::PairIdInfo, decorator: Google::Apis::DatamanagerV1::PairIdInfo::Representation
+      
+          property :partner_audience_info, as: 'partnerAudienceInfo', class: Google::Apis::DatamanagerV1::PartnerAudienceInfo, decorator: Google::Apis::DatamanagerV1::PartnerAudienceInfo::Representation
+      
+          property :pseudonymous_id_info, as: 'pseudonymousIdInfo', class: Google::Apis::DatamanagerV1::PseudonymousIdInfo, decorator: Google::Apis::DatamanagerV1::PseudonymousIdInfo::Representation
+      
+          collection :upload_key_types, as: 'uploadKeyTypes'
+          property :user_id_info, as: 'userIdInfo', class: Google::Apis::DatamanagerV1::UserIdInfo, decorator: Google::Apis::DatamanagerV1::UserIdInfo::Representation
+      
+        end
+      end
+      
+      class IpData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :observe_end_time, as: 'observeEndTime'
+          property :observe_start_time, as: 'observeStartTime'
+        end
+      end
+      
+      class Item
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_item_parameters, as: 'additionalItemParameters', class: Google::Apis::DatamanagerV1::ItemParameter, decorator: Google::Apis::DatamanagerV1::ItemParameter::Representation
+      
+          property :conversion_value, as: 'conversionValue'
+          collection :custom_variables, as: 'customVariables', class: Google::Apis::DatamanagerV1::ItemCustomVariable, decorator: Google::Apis::DatamanagerV1::ItemCustomVariable::Representation
+      
+          property :item_id, as: 'itemId'
+          property :merchant_feed_label, as: 'merchantFeedLabel'
+          property :merchant_feed_language_code, as: 'merchantFeedLanguageCode'
+          property :merchant_id, as: 'merchantId'
+          property :merchant_product_id, as: 'merchantProductId'
+          property :quantity, :numeric_string => true, as: 'quantity'
+          property :unit_price, as: 'unitPrice'
+        end
+      end
+      
+      class ItemCustomVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destination_references, as: 'destinationReferences'
+          property :value, as: 'value'
+          property :variable, as: 'variable'
+        end
+      end
+      
+      class ItemParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parameter_name, as: 'parameterName'
+          property :value, as: 'value'
+        end
+      end
+      
+      class ListUserListDirectLicensesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_list_direct_licenses, as: 'userListDirectLicenses', class: Google::Apis::DatamanagerV1::UserListDirectLicense, decorator: Google::Apis::DatamanagerV1::UserListDirectLicense::Representation
+      
+        end
+      end
+      
+      class ListUserListGlobalLicenseCustomerInfosResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_list_global_license_customer_infos, as: 'userListGlobalLicenseCustomerInfos', class: Google::Apis::DatamanagerV1::UserListGlobalLicenseCustomerInfo, decorator: Google::Apis::DatamanagerV1::UserListGlobalLicenseCustomerInfo::Representation
+      
+        end
+      end
+      
+      class ListUserListGlobalLicensesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_list_global_licenses, as: 'userListGlobalLicenses', class: Google::Apis::DatamanagerV1::UserListGlobalLicense, decorator: Google::Apis::DatamanagerV1::UserListGlobalLicense::Representation
+      
+        end
+      end
+      
+      class ListUserListsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_lists, as: 'userLists', class: Google::Apis::DatamanagerV1::UserList, decorator: Google::Apis::DatamanagerV1::UserList::Representation
+      
+        end
+      end
+      
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :region_codes, as: 'regionCodes'
+        end
+      end
+      
+      class MarketingDataInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::DatamanagerV1::MarketingDataInsightsAttribute, decorator: Google::Apis::DatamanagerV1::MarketingDataInsightsAttribute::Representation
+      
+          property :dimension, as: 'dimension'
+        end
+      end
+      
+      class MarketingDataInsightsAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :age_range, as: 'ageRange'
+          property :gender, as: 'gender'
+          property :lift, as: 'lift'
+          property :user_interest_id, :numeric_string => true, as: 'userInterestId'
+        end
+      end
+      
+      class MobileData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mobile_ids, as: 'mobileIds'
+        end
+      end
+      
+      class MobileIdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          property :data_source_type, as: 'dataSourceType'
+          property :key_space, as: 'keySpace'
+        end
+      end
+      
+      class PairData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pair_ids, as: 'pairIds'
+        end
+      end
+      
+      class PairIdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_identifier_count, :numeric_string => true, as: 'advertiserIdentifierCount'
+          property :clean_room_identifier, as: 'cleanRoomIdentifier'
+          property :match_rate_percentage, as: 'matchRatePercentage'
+          property :publisher_id, :numeric_string => true, as: 'publisherId'
+          property :publisher_name, as: 'publisherName'
+        end
+      end
+      
+      class PartnerAudienceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commerce_partner, as: 'commercePartner'
+          property :partner_audience_source, as: 'partnerAudienceSource'
+        end
+      end
+      
+      class PartnerCustomerAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :account_name, as: 'accountName'
+          property :account_type, as: 'accountType'
+        end
+      end
+      
+      class PartnerLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feature_set, as: 'featureSet'
+          property :name, as: 'name'
+          property :owning_account, as: 'owningAccount', class: Google::Apis::DatamanagerV1::ProductAccount, decorator: Google::Apis::DatamanagerV1::ProductAccount::Representation
+      
+          property :partner_account, as: 'partnerAccount', class: Google::Apis::DatamanagerV1::ProductAccount, decorator: Google::Apis::DatamanagerV1::ProductAccount::Representation
+      
+          property :partner_customer_account, as: 'partnerCustomerAccount', class: Google::Apis::DatamanagerV1::PartnerCustomerAccount, decorator: Google::Apis::DatamanagerV1::PartnerCustomerAccount::Representation
+      
+          property :partner_link_id, as: 'partnerLinkId'
+          property :partner_link_metadata, as: 'partnerLinkMetadata', class: Google::Apis::DatamanagerV1::PartnerLinkMetadata, decorator: Google::Apis::DatamanagerV1::PartnerLinkMetadata::Representation
+      
+        end
+      end
+      
+      class PartnerLinkMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :implicit_accounts, as: 'implicitAccounts', class: Google::Apis::DatamanagerV1::PartnerCustomerAccount, decorator: Google::Apis::DatamanagerV1::PartnerCustomerAccount::Representation
+      
+        end
+      end
+      
+      class PpidData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ppids, as: 'ppids'
+        end
+      end
+      
+      class ProductAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :account_type, as: 'accountType'
+          property :product, as: 'product'
+        end
+      end
+      
+      class PseudonymousIdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billable_record_count, :numeric_string => true, as: 'billableRecordCount'
+          property :sync_status, as: 'syncStatus'
+        end
+      end
+      
+      class RemoveAudienceMembersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audience_members, as: 'audienceMembers', class: Google::Apis::DatamanagerV1::AudienceMember, decorator: Google::Apis::DatamanagerV1::AudienceMember::Representation
+      
+          collection :destinations, as: 'destinations', class: Google::Apis::DatamanagerV1::Destination, decorator: Google::Apis::DatamanagerV1::Destination::Representation
+      
+          property :encoding, as: 'encoding'
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::DatamanagerV1::EncryptionInfo, decorator: Google::Apis::DatamanagerV1::EncryptionInfo::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class RemoveAudienceMembersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class RemoveAudienceMembersStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :composite_data_removal_status, as: 'compositeDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveCompositeDataStatus, decorator: Google::Apis::DatamanagerV1::RemoveCompositeDataStatus::Representation
+      
+          property :mobile_data_removal_status, as: 'mobileDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveMobileDataStatus, decorator: Google::Apis::DatamanagerV1::RemoveMobileDataStatus::Representation
+      
+          property :pair_data_removal_status, as: 'pairDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemovePairDataStatus, decorator: Google::Apis::DatamanagerV1::RemovePairDataStatus::Representation
+      
+          property :ppid_data_removal_status, as: 'ppidDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemovePpidDataStatus, decorator: Google::Apis::DatamanagerV1::RemovePpidDataStatus::Representation
+      
+          property :user_data_removal_status, as: 'userDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveUserDataStatus, decorator: Google::Apis::DatamanagerV1::RemoveUserDataStatus::Representation
+      
+          property :user_id_data_removal_status, as: 'userIdDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveUserIdDataStatus, decorator: Google::Apis::DatamanagerV1::RemoveUserIdDataStatus::Representation
+      
+        end
+      end
+      
+      class RemoveCompositeDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_type_counts, as: 'dataTypeCounts', class: Google::Apis::DatamanagerV1::DataTypeCount, decorator: Google::Apis::DatamanagerV1::DataTypeCount::Representation
+      
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class RemoveMobileDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mobile_id_count, :numeric_string => true, as: 'mobileIdCount'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class RemovePairDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pair_id_count, :numeric_string => true, as: 'pairIdCount'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class RemovePpidDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ppid_count, :numeric_string => true, as: 'ppidCount'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class RemoveUserDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :record_count, :numeric_string => true, as: 'recordCount'
+          property :user_identifier_count, :numeric_string => true, as: 'userIdentifierCount'
+        end
+      end
+      
+      class RemoveUserIdDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :record_count, :numeric_string => true, as: 'recordCount'
+          property :user_id_count, :numeric_string => true, as: 'userIdCount'
+        end
+      end
+      
+      class RequestStatusPerDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience_members_ingestion_status, as: 'audienceMembersIngestionStatus', class: Google::Apis::DatamanagerV1::IngestAudienceMembersStatus, decorator: Google::Apis::DatamanagerV1::IngestAudienceMembersStatus::Representation
+      
+          property :audience_members_removal_status, as: 'audienceMembersRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveAudienceMembersStatus, decorator: Google::Apis::DatamanagerV1::RemoveAudienceMembersStatus::Representation
+      
+          property :destination, as: 'destination', class: Google::Apis::DatamanagerV1::Destination, decorator: Google::Apis::DatamanagerV1::Destination::Representation
+      
+          property :error_info, as: 'errorInfo', class: Google::Apis::DatamanagerV1::ErrorInfo, decorator: Google::Apis::DatamanagerV1::ErrorInfo::Representation
+      
+          property :events_ingestion_status, as: 'eventsIngestionStatus', class: Google::Apis::DatamanagerV1::IngestEventsStatus, decorator: Google::Apis::DatamanagerV1::IngestEventsStatus::Representation
+      
+          property :request_status, as: 'requestStatus'
+          property :warning_info, as: 'warningInfo', class: Google::Apis::DatamanagerV1::WarningInfo, decorator: Google::Apis::DatamanagerV1::WarningInfo::Representation
+      
+        end
+      end
+      
+      class RetrieveInsightsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :baseline, as: 'baseline', class: Google::Apis::DatamanagerV1::Baseline, decorator: Google::Apis::DatamanagerV1::Baseline::Representation
+      
+          property :user_list_id, as: 'userListId'
+        end
+      end
+      
+      class RetrieveInsightsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :marketing_data_insights, as: 'marketingDataInsights', class: Google::Apis::DatamanagerV1::MarketingDataInsight, decorator: Google::Apis::DatamanagerV1::MarketingDataInsight::Representation
+      
+        end
+      end
+      
+      class RetrieveRequestStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_status_per_destination, as: 'requestStatusPerDestination', class: Google::Apis::DatamanagerV1::RequestStatusPerDestination, decorator: Google::Apis::DatamanagerV1::RequestStatusPerDestination::Representation
+      
+        end
+      end
+      
+      class SearchPartnerLinksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :partner_links, as: 'partnerLinks', class: Google::Apis::DatamanagerV1::PartnerLink, decorator: Google::Apis::DatamanagerV1::PartnerLink::Representation
+      
+        end
+      end
+      
+      class SizeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_network_members_count, :numeric_string => true, as: 'displayNetworkMembersCount'
+          property :gmail_members_count, :numeric_string => true, as: 'gmailMembersCount'
+          property :search_network_members_count, :numeric_string => true, as: 'searchNetworkMembersCount'
+          property :youtube_members_count, :numeric_string => true, as: 'youtubeMembersCount'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
+      class TargetNetworkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eligible_for_display, as: 'eligibleForDisplay'
+          property :eligible_for_search, as: 'eligibleForSearch'
+        end
+      end
+      
+      class TermsOfService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer_match_terms_of_service_status, as: 'customerMatchTermsOfServiceStatus'
+        end
+      end
+      
+      class UserData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :user_identifiers, as: 'userIdentifiers', class: Google::Apis::DatamanagerV1::UserIdentifier, decorator: Google::Apis::DatamanagerV1::UserIdentifier::Representation
+      
+        end
+      end
+      
+      class UserIdData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class UserIdInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source_type, as: 'dataSourceType'
+        end
+      end
+      
+      class UserIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address', class: Google::Apis::DatamanagerV1::AddressInfo, decorator: Google::Apis::DatamanagerV1::AddressInfo::Representation
+      
+          property :email_address, as: 'emailAddress'
+          property :phone_number, as: 'phoneNumber'
+        end
+      end
+      
+      class UserList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_reason, as: 'accessReason'
+          property :account_access_status, as: 'accountAccessStatus'
+          property :closing_reason, as: 'closingReason'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :id, :numeric_string => true, as: 'id'
+          property :ingested_user_list_info, as: 'ingestedUserListInfo', class: Google::Apis::DatamanagerV1::IngestedUserListInfo, decorator: Google::Apis::DatamanagerV1::IngestedUserListInfo::Representation
+      
+          property :integration_code, as: 'integrationCode'
+          property :membership_duration, as: 'membershipDuration'
+          property :membership_status, as: 'membershipStatus'
+          property :name, as: 'name'
+          property :read_only, as: 'readOnly'
+          property :size_info, as: 'sizeInfo', class: Google::Apis::DatamanagerV1::SizeInfo, decorator: Google::Apis::DatamanagerV1::SizeInfo::Representation
+      
+          property :target_network_info, as: 'targetNetworkInfo', class: Google::Apis::DatamanagerV1::TargetNetworkInfo, decorator: Google::Apis::DatamanagerV1::TargetNetworkInfo::Representation
+      
+        end
+      end
+      
+      class UserListDirectLicense
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_account_display_name, as: 'clientAccountDisplayName'
+          property :client_account_id, :numeric_string => true, as: 'clientAccountId'
+          property :client_account_type, as: 'clientAccountType'
+          collection :historical_pricings, as: 'historicalPricings', class: Google::Apis::DatamanagerV1::UserListLicensePricing, decorator: Google::Apis::DatamanagerV1::UserListLicensePricing::Representation
+      
+          property :metrics, as: 'metrics', class: Google::Apis::DatamanagerV1::UserListLicenseMetrics, decorator: Google::Apis::DatamanagerV1::UserListLicenseMetrics::Representation
+      
+          property :name, as: 'name'
+          property :pricing, as: 'pricing', class: Google::Apis::DatamanagerV1::UserListLicensePricing, decorator: Google::Apis::DatamanagerV1::UserListLicensePricing::Representation
+      
+          property :status, as: 'status'
+          property :user_list_display_name, as: 'userListDisplayName'
+          property :user_list_id, :numeric_string => true, as: 'userListId'
+        end
+      end
+      
+      class UserListGlobalLicense
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :historical_pricings, as: 'historicalPricings', class: Google::Apis::DatamanagerV1::UserListLicensePricing, decorator: Google::Apis::DatamanagerV1::UserListLicensePricing::Representation
+      
+          property :license_type, as: 'licenseType'
+          property :metrics, as: 'metrics', class: Google::Apis::DatamanagerV1::UserListLicenseMetrics, decorator: Google::Apis::DatamanagerV1::UserListLicenseMetrics::Representation
+      
+          property :name, as: 'name'
+          property :pricing, as: 'pricing', class: Google::Apis::DatamanagerV1::UserListLicensePricing, decorator: Google::Apis::DatamanagerV1::UserListLicensePricing::Representation
+      
+          property :status, as: 'status'
+          property :user_list_display_name, as: 'userListDisplayName'
+          property :user_list_id, :numeric_string => true, as: 'userListId'
+        end
+      end
+      
+      class UserListGlobalLicenseCustomerInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_account_display_name, as: 'clientAccountDisplayName'
+          property :client_account_id, :numeric_string => true, as: 'clientAccountId'
+          property :client_account_type, as: 'clientAccountType'
+          collection :historical_pricings, as: 'historicalPricings', class: Google::Apis::DatamanagerV1::UserListLicensePricing, decorator: Google::Apis::DatamanagerV1::UserListLicensePricing::Representation
+      
+          property :license_type, as: 'licenseType'
+          property :metrics, as: 'metrics', class: Google::Apis::DatamanagerV1::UserListLicenseMetrics, decorator: Google::Apis::DatamanagerV1::UserListLicenseMetrics::Representation
+      
+          property :name, as: 'name'
+          property :pricing, as: 'pricing', class: Google::Apis::DatamanagerV1::UserListLicensePricing, decorator: Google::Apis::DatamanagerV1::UserListLicensePricing::Representation
+      
+          property :status, as: 'status'
+          property :user_list_display_name, as: 'userListDisplayName'
+          property :user_list_id, :numeric_string => true, as: 'userListId'
+        end
+      end
+      
+      class UserListLicenseMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :click_count, :numeric_string => true, as: 'clickCount'
+          property :end_date, :numeric_string => true, as: 'endDate'
+          property :impression_count, :numeric_string => true, as: 'impressionCount'
+          property :revenue_usd_micros, :numeric_string => true, as: 'revenueUsdMicros'
+          property :start_date, :numeric_string => true, as: 'startDate'
+        end
+      end
+      
+      class UserListLicensePricing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buyer_approval_state, as: 'buyerApprovalState'
+          property :cost_micros, :numeric_string => true, as: 'costMicros'
+          property :cost_type, as: 'costType'
+          property :currency_code, as: 'currencyCode'
+          property :end_time, as: 'endTime'
+          property :max_cost_micros, :numeric_string => true, as: 'maxCostMicros'
+          property :pricing_active, as: 'pricingActive'
+          property :pricing_id, :numeric_string => true, as: 'pricingId'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class UserProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_user_properties, as: 'additionalUserProperties', class: Google::Apis::DatamanagerV1::UserProperty, decorator: Google::Apis::DatamanagerV1::UserProperty::Representation
+      
+          property :customer_type, as: 'customerType'
+          property :customer_value_bucket, as: 'customerValueBucket'
+        end
+      end
+      
+      class UserProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :property_name, as: 'propertyName'
+          property :value, as: 'value'
+        end
+      end
+      
+      class ViewabilityInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :media_duration, as: 'mediaDuration'
+          property :media_quartile, as: 'mediaQuartile'
+          property :media_skippable, as: 'mediaSkippable'
+          property :media_volume_percent, as: 'mediaVolumePercent'
+          property :playback_duration, as: 'playbackDuration'
+          property :view_type, as: 'viewType'
+          property :viewable_duration, as: 'viewableDuration'
+          property :viewable_percent, as: 'viewablePercent'
+        end
+      end
+      
+      class WarningCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class WarningInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :warning_counts, as: 'warningCounts', class: Google::Apis::DatamanagerV1::WarningCount, decorator: Google::Apis::DatamanagerV1::WarningCount::Representation
+      
+        end
+      end
+    end
+  end
+end

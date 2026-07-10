@@ -618,8 +618,10 @@ module Google
         end
       end
       
-      # Configuration information for migrating from self-managed hive metastore on
-      # Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
+      # Deprecated: Migrations to Dataproc Metastore are no longer supported. Use
+      # BigLake Metastore migration instead. Configuration information for migrating
+      # from self-managed hive metastore on Google Cloud using Cloud SQL as the
+      # backend database to Dataproc Metastore.
       class CloudSqlMigrationConfig
         include Google::Apis::Core::Hashable
       
@@ -717,8 +719,9 @@ module Google
         end
       end
       
-      # Custom configuration used to specify regions that the metastore service runs
-      # in. Currently only supported in the us multi-region.
+      # Deprecated: Use a single region service instead. Custom configuration used to
+      # specify regions that the metastore service runs in. Currently only supported
+      # in the us multi-region.
       class CustomRegionConfig
         include Google::Apis::Core::Hashable
       
@@ -745,8 +748,9 @@ module Google
         end
       end
       
-      # Metadata about a custom region. This is only populated if the region is a
-      # custom region. For single/multi regions, it will be empty.
+      # Deprecated: Use a single region service instead. Metadata about a custom
+      # region. This is only populated if the region is a custom region. For single/
+      # multi regions, it will be empty.
       class CustomRegionMetadata
         include Google::Apis::Core::Hashable
       
@@ -1066,6 +1070,13 @@ module Google
         # @return [String]
         attr_accessor :state_message
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. The globally unique resource identifier of the metastore
         # federation.
         # Corresponds to the JSON property `uid`
@@ -1096,6 +1107,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+          @tags = args[:tags] if args.key?(:tags)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
@@ -1470,6 +1482,13 @@ module Google
         # @return [Array<Google::Apis::MetastoreV1alpha::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets
+        # ListOperationsRequest.return_partial_success and reads across collections. For
+        # example, when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1478,6 +1497,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1564,14 +1584,16 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
-        # Possible configurations supported if the current region is a custom region.
+        # Deprecated: Use a single region service instead. Possible configurations
+        # supported if the current region is a custom region.
         # Corresponds to the JSON property `customRegionMetadata`
         # @return [Array<Google::Apis::MetastoreV1alpha::CustomRegionMetadata>]
         attr_accessor :custom_region_metadata
       
-        # The metadata for the multi-region that includes the constituent regions. The
-        # metadata is only populated if the region is multi-region. For single region or
-        # custom dual region, it will be empty.
+        # Deprecated: Use a single region service instead. The metadata for the multi-
+        # region that includes the constituent regions. The metadata is only populated
+        # if the region is multi-region. For single region or custom dual region, it
+        # will be empty.
         # Corresponds to the JSON property `multiRegionMetadata`
         # @return [Google::Apis::MetastoreV1alpha::MultiRegionMetadata]
         attr_accessor :multi_region_metadata
@@ -1800,8 +1822,10 @@ module Google
       class MigrationExecution
         include Google::Apis::Core::Hashable
       
-        # Configuration information for migrating from self-managed hive metastore on
-        # Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
+        # Deprecated: Migrations to Dataproc Metastore are no longer supported. Use
+        # BigLake Metastore migration instead. Configuration information for migrating
+        # from self-managed hive metastore on Google Cloud using Cloud SQL as the
+        # backend database to Dataproc Metastore.
         # Corresponds to the JSON property `cloudSqlMigrationConfig`
         # @return [Google::Apis::MetastoreV1alpha::CloudSqlMigrationConfig]
         attr_accessor :cloud_sql_migration_config
@@ -1823,7 +1847,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The current phase of the migration execution.
+        # Output only. Deprecated: Phase was designed for incoming migrations to
+        # Dataproc Metastore, not applicable when migrating away from it. The current
+        # phase of the migration execution.
         # Corresponds to the JSON property `phase`
         # @return [String]
         attr_accessor :phase
@@ -1899,18 +1925,21 @@ module Google
         end
       end
       
-      # The multi-region config for the Dataproc Metastore service.
+      # Deprecated: Use a single region service instead. The multi-region config for
+      # the Dataproc Metastore service.
       class MultiRegionConfig
         include Google::Apis::Core::Hashable
       
-        # Output only. The list of root CA certificates that a gRPC client uses to
-        # connect to a multi-regional Dataproc Metastore service.
+        # Output only. Deprecated: Use a single region service instead. The list of root
+        # CA certificates that a gRPC client uses to connect to a multi-regional
+        # Dataproc Metastore service.
         # Corresponds to the JSON property `certificates`
         # @return [Array<Google::Apis::MetastoreV1alpha::RootCaCertificate>]
         attr_accessor :certificates
       
-        # Custom configuration used to specify regions that the metastore service runs
-        # in. Currently only supported in the us multi-region.
+        # Deprecated: Use a single region service instead. Custom configuration used to
+        # specify regions that the metastore service runs in. Currently only supported
+        # in the us multi-region.
         # Corresponds to the JSON property `customRegionConfig`
         # @return [Google::Apis::MetastoreV1alpha::CustomRegionConfig]
         attr_accessor :custom_region_config
@@ -1926,9 +1955,10 @@ module Google
         end
       end
       
-      # The metadata for the multi-region that includes the constituent regions. The
-      # metadata is only populated if the region is multi-region. For single region or
-      # custom dual region, it will be empty.
+      # Deprecated: Use a single region service instead. The metadata for the multi-
+      # region that includes the constituent regions. The metadata is only populated
+      # if the region is multi-region. For single region or custom dual region, it
+      # will be empty.
       class MultiRegionMetadata
         include Google::Apis::Core::Hashable
       
@@ -2393,17 +2423,20 @@ module Google
         end
       end
       
-      # A gRPC client must install all root CA certificates to connect to a multi-
-      # regional Dataproc Metastore service and achieve failover.
+      # Deprecated: Use a single region service instead. A gRPC client must install
+      # all root CA certificates to connect to a multi-regional Dataproc Metastore
+      # service and achieve failover.
       class RootCaCertificate
         include Google::Apis::Core::Hashable
       
-        # The root CA certificate in PEM format. The maximum length is 65536 bytes.
+        # Deprecated: Use a single region service instead. The root CA certificate in
+        # PEM format. The maximum length is 65536 bytes.
         # Corresponds to the JSON property `certificate`
         # @return [String]
         attr_accessor :certificate
       
-        # The certificate expiration time in timestamp format.
+        # Deprecated: Use a single region service instead. The certificate expiration
+        # time in timestamp format.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
         attr_accessor :expiration_time
@@ -2594,7 +2627,8 @@ module Google
         # @return [Google::Apis::MetastoreV1alpha::MetadataManagementActivity]
         attr_accessor :metadata_management_activity
       
-        # The multi-region config for the Dataproc Metastore service.
+        # Deprecated: Use a single region service instead. The multi-region config for
+        # the Dataproc Metastore service.
         # Corresponds to the JSON property `multiRegionConfig`
         # @return [Google::Apis::MetastoreV1alpha::MultiRegionConfig]
         attr_accessor :multi_region_config
@@ -2651,6 +2685,13 @@ module Google
         # @return [String]
         attr_accessor :state_message
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Telemetry Configuration for the Dataproc Metastore service.
         # Corresponds to the JSON property `telemetryConfig`
         # @return [Google::Apis::MetastoreV1alpha::TelemetryConfig]
@@ -2698,6 +2739,7 @@ module Google
           @scheduled_backup = args[:scheduled_backup] if args.key?(:scheduled_backup)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+          @tags = args[:tags] if args.key?(:tags)
           @telemetry_config = args[:telemetry_config] if args.key?(:telemetry_config)
           @tier = args[:tier] if args.key?(:tier)
           @uid = args[:uid] if args.key?(:uid)

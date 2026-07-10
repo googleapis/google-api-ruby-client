@@ -537,7 +537,7 @@ module Google
       class PlatformGroup
         include Google::Apis::Core::Hashable
       
-        # Output only. Description of the PlatformGroup.
+        # Required. Description of the PlatformGroup.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description

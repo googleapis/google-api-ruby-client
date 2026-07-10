@@ -204,6 +204,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -221,7 +229,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::WebriskV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::WebriskV1::GoogleLongrunningListOperationsResponse
@@ -229,18 +237,18 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a Submission of a URI suspected of containing phishing content to be
-        # reviewed. If the result verifies the existence of malicious phishing content,
-        # the site will be added to the [Google's Social Engineering lists](https://
-        # support.google.com/webmasters/answer/6350487/) in order to protect users that
-        # could get exposed to this threat in the future. Only allowlisted projects can
-        # use this method during Early Access. Please reach out to Sales or your
-        # customer engineer to obtain access.
+        # Creates a Submission of a URI suspected of containing phishing content for
+        # review. If the review confirms malicious phishing content, Google adds the
+        # site to [Google's Social Engineering lists](https://support.google.com/
+        # webmasters/answer/6350487/) to help protect users. Only allowlisted projects
+        # can use this method during Early Access. To obtain access, contact Sales or
+        # your customer engineer.
         # @param [String] parent
         #   Required. The name of the project that is making the submission. This string
         #   is in the format "projects/`project_number`".

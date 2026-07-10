@@ -52,7 +52,7 @@ module Google
         end
         
         # Currently, it doesn't support **YouTube** products. Retrieves the products
-        # that can be resold by the partner. It should be autenticated with a service
+        # that can be resold by the partner. It should be authenticated with a service
         # account.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
@@ -83,18 +83,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::ListProductsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::ListProductsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_partner_products(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/products', options)
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::ListProductsResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::ListProductsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -104,12 +104,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Currently, it is only enabeld for **YouTube**. Finds eligible promotions for
+        # Currently, it is only enabled for **YouTube**. Finds eligible promotions for
         # the current user. The API requires user authorization via OAuth. The bare
         # minimum oauth scope `openid` is sufficient, which will skip the consent screen.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
-        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest] google_cloud_payments_reseller_subscription_v1_find_eligible_promotions_request_object
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::FindEligiblePromotionsRequest] find_eligible_promotions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -119,20 +119,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::FindEligiblePromotionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::FindEligiblePromotionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def find_partner_promotion_eligible(parent, google_cloud_payments_reseller_subscription_v1_find_eligible_promotions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def find_partner_promotion_eligible(parent, find_eligible_promotions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/promotions:findEligible', options)
-          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest::Representation
-          command.request_object = google_cloud_payments_reseller_subscription_v1_find_eligible_promotions_request_object
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::FindEligiblePromotionsRequest::Representation
+          command.request_object = find_eligible_promotions_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::FindEligiblePromotionsResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::FindEligiblePromotionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -141,7 +141,7 @@ module Google
         
         # Currently, it doesn't support **YouTube** promotions. Retrieves the promotions,
         # such as free trial, that can be used by the partner. It should be
-        # autenticated with a service account.
+        # authenticated with a service account.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
         # @param [String] filter
@@ -157,7 +157,7 @@ module Google
         #   youtubePayload.partnerEligibilityId=eligibility-id`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of promotions to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 products will be returned.
+        #   fewer than this value. If unspecified, at most 50 promotions will be returned.
         #   The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListPromotions` call.
@@ -173,18 +173,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::ListPromotionsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::ListPromotionsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_partner_promotions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/promotions', options)
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::ListPromotionsResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::ListPromotionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
@@ -200,7 +200,7 @@ module Google
         # @param [String] name
         #   Required. The name of the subscription resource to be cancelled. It will have
         #   the format of "partners/`partner_id`/subscriptions/`subscription_id`"
-        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest] google_cloud_payments_reseller_subscription_v1_cancel_subscription_request_object
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::CancelSubscriptionRequest] cancel_subscription_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -210,20 +210,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::CancelSubscriptionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::CancelSubscriptionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_partner_subscription(name, google_cloud_payments_reseller_subscription_v1_cancel_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def cancel_partner_subscription(name, cancel_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:cancel', options)
-          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest::Representation
-          command.request_object = google_cloud_payments_reseller_subscription_v1_cancel_subscription_request_object
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::CancelSubscriptionRequest::Representation
+          command.request_object = cancel_subscription_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::CancelSubscriptionResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::CancelSubscriptionResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -236,12 +236,11 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name, which is the identifier of the partner. It
         #   will have the format of "partners/`partner_id`".
-        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription] google_cloud_payments_reseller_subscription_v1_subscription_object
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::Subscription] subscription_object
         # @param [String] subscription_id
         #   Required. Identifies the subscription resource on the Partner side. The value
-        #   is restricted to 63 ASCII characters at the maximum. If a subscription was
-        #   previously created with the same subscription_id, we will directly return that
-        #   one.
+        #   is restricted to 63 ASCII characters at the maximum. If a subscription with
+        #   the same ID already exists, the creation fails with an `ALREADY_EXISTS` error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -251,20 +250,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::Subscription] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Subscription]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_partner_subscription(parent, google_cloud_payments_reseller_subscription_v1_subscription_object = nil, subscription_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_partner_subscription(parent, subscription_object = nil, subscription_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/subscriptions', options)
-          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription::Representation
-          command.request_object = google_cloud_payments_reseller_subscription_v1_subscription_object
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::Subscription::Representation
+          command.request_object = subscription_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::Subscription::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::Subscription
           command.params['parent'] = parent unless parent.nil?
           command.query['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -279,7 +278,7 @@ module Google
         #   Required. The name of the subscription resource that is entitled to the
         #   current end user. It will have the format of "partners/`partner_id`/
         #   subscriptions/`subscription_id`"
-        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest] google_cloud_payments_reseller_subscription_v1_entitle_subscription_request_object
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionRequest] entitle_subscription_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -289,20 +288,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def entitle_partner_subscription(name, google_cloud_payments_reseller_subscription_v1_entitle_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def entitle_partner_subscription(name, entitle_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:entitle', options)
-          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest::Representation
-          command.request_object = google_cloud_payments_reseller_subscription_v1_entitle_subscription_request_object
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionRequest::Representation
+          command.request_object = entitle_subscription_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -316,7 +315,7 @@ module Google
         # @param [String] name
         #   Required. The name of the subscription resource to be extended. It will have
         #   the format of "partners/`partner_id`/subscriptions/`subscription_id`".
-        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest] google_cloud_payments_reseller_subscription_v1_extend_subscription_request_object
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::ExtendSubscriptionRequest] extend_subscription_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -326,20 +325,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::ExtendSubscriptionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::ExtendSubscriptionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def extend_partner_subscription(name, google_cloud_payments_reseller_subscription_v1_extend_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def extend_partner_subscription(name, extend_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:extend', options)
-          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest::Representation
-          command.request_object = google_cloud_payments_reseller_subscription_v1_extend_subscription_request_object
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::ExtendSubscriptionRequest::Representation
+          command.request_object = extend_subscription_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::ExtendSubscriptionResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::ExtendSubscriptionResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -360,18 +359,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::Subscription] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Subscription]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_partner_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::Subscription::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::Subscription
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -386,12 +385,15 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name, which is the identifier of the partner. It
         #   will have the format of "partners/`partner_id`".
-        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription] google_cloud_payments_reseller_subscription_v1_subscription_object
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::Subscription] subscription_object
+        # @param [Fixnum] cycle_options_initial_cycle_duration_count
+        #   number of duration units to be included.
+        # @param [String] cycle_options_initial_cycle_duration_unit
+        #   The unit used for the duration
         # @param [String] subscription_id
         #   Required. Identifies the subscription resource on the Partner side. The value
-        #   is restricted to 63 ASCII characters at the maximum. If a subscription was
-        #   previously created with the same subscription_id, we will directly return that
-        #   one.
+        #   is restricted to 63 ASCII characters at the maximum. If a subscription with
+        #   the same ID already exists, the creation fails with an `ALREADY_EXISTS` error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -401,21 +403,23 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::Subscription] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::Subscription]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def provision_partner_subscription(parent, google_cloud_payments_reseller_subscription_v1_subscription_object = nil, subscription_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def provision_partner_subscription(parent, subscription_object = nil, cycle_options_initial_cycle_duration_count: nil, cycle_options_initial_cycle_duration_unit: nil, subscription_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/subscriptions:provision', options)
-          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription::Representation
-          command.request_object = google_cloud_payments_reseller_subscription_v1_subscription_object
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1Subscription
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::Subscription::Representation
+          command.request_object = subscription_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::Subscription::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::Subscription
           command.params['parent'] = parent unless parent.nil?
+          command.query['cycleOptions.initialCycleDuration.count'] = cycle_options_initial_cycle_duration_count unless cycle_options_initial_cycle_duration_count.nil?
+          command.query['cycleOptions.initialCycleDuration.unit'] = cycle_options_initial_cycle_duration_unit unless cycle_options_initial_cycle_duration_unit.nil?
           command.query['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -428,7 +432,7 @@ module Google
         # @param [String] name
         #   Required. The name of the subscription resource to be resumed. It will have
         #   the format of "partners/`partner_id`/subscriptions/`subscription_id`"
-        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest] google_cloud_payments_reseller_subscription_v1_resume_subscription_request_object
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::ResumeSubscriptionRequest] resume_subscription_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -438,20 +442,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::ResumeSubscriptionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::ResumeSubscriptionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def resume_partner_subscription(name, google_cloud_payments_reseller_subscription_v1_resume_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def resume_partner_subscription(name, resume_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:resume', options)
-          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest::Representation
-          command.request_object = google_cloud_payments_reseller_subscription_v1_resume_subscription_request_object
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::ResumeSubscriptionRequest::Representation
+          command.request_object = resume_subscription_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::ResumeSubscriptionResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::ResumeSubscriptionResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -464,7 +468,7 @@ module Google
         # @param [String] name
         #   Required. The name of the subscription resource to be suspended. It will have
         #   the format of "partners/`partner_id`/subscriptions/`subscription_id`"
-        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest] google_cloud_payments_reseller_subscription_v1_suspend_subscription_request_object
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::SuspendSubscriptionRequest] suspend_subscription_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -474,20 +478,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::SuspendSubscriptionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::SuspendSubscriptionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def suspend_partner_subscription(name, google_cloud_payments_reseller_subscription_v1_suspend_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def suspend_partner_subscription(name, suspend_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:suspend', options)
-          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest::Representation
-          command.request_object = google_cloud_payments_reseller_subscription_v1_suspend_subscription_request_object
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::SuspendSubscriptionRequest::Representation
+          command.request_object = suspend_subscription_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::SuspendSubscriptionResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::SuspendSubscriptionResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -503,7 +507,7 @@ module Google
         #   Required. The name of the subscription resource whose pending cancellation
         #   needs to be undone. It will have the format of "partners/`partner_id`/
         #   subscriptions/`subscription_id`"
-        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest] google_cloud_payments_reseller_subscription_v1_undo_cancel_subscription_request_object
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::UndoCancelSubscriptionRequest] undo_cancel_subscription_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -513,21 +517,61 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::UndoCancelSubscriptionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::UndoCancelSubscriptionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def undo_partner_subscription_cancel(name, google_cloud_payments_reseller_subscription_v1_undo_cancel_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def undo_partner_subscription_cancel(name, undo_cancel_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:undoCancel', options)
-          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest::Representation
-          command.request_object = google_cloud_payments_reseller_subscription_v1_undo_cancel_subscription_request_object
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::UndoCancelSubscriptionRequest::Representation
+          command.request_object = undo_cancel_subscription_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::UndoCancelSubscriptionResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::UndoCancelSubscriptionResponse
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a line item of a subscription. It should be authenticated with a
+        # service account.
+        # @param [String] name
+        #   Identifier. Resource name of the line item. Format: partners/`partner`/
+        #   subscriptions/`subscription`/lineItems/`lineItem`
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem] subscription_line_item_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update. Only a limited set of fields can be
+        #   updated. The allowed fields are the following: - `product_payload.
+        #   googleHomePayload.googleStructureId`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_partner_subscription_line_item(name, subscription_line_item_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem::Representation
+          command.request_object = subscription_line_item_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -537,10 +581,11 @@ module Google
         # Issues a timed session token for the given user intent. You can use the
         # session token to redirect the user to Google to finish the signup flow. You
         # can re-generate new session token repeatedly for the same request if necessary,
-        # regardless of the previous tokens being expired or not.
+        # regardless of the previous tokens being expired or not. By default, the
+        # session token is valid for 1 hour.
         # @param [String] parent
         #   Required. The parent, the partner that can resell. Format: partners/`partner`
-        # @param [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest] google_cloud_payments_reseller_subscription_v1_generate_user_session_request_object
+        # @param [Google::Apis::PaymentsresellersubscriptionV1::GenerateUserSessionRequest] generate_user_session_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -550,20 +595,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse] parsed result object
+        # @yieldparam result [Google::Apis::PaymentsresellersubscriptionV1::GenerateUserSessionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse]
+        # @return [Google::Apis::PaymentsresellersubscriptionV1::GenerateUserSessionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_partner_user_session(parent, google_cloud_payments_reseller_subscription_v1_generate_user_session_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def generate_partner_user_session(parent, generate_user_session_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/userSessions:generate', options)
-          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest::Representation
-          command.request_object = google_cloud_payments_reseller_subscription_v1_generate_user_session_request_object
-          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse::Representation
-          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
+          command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::GenerateUserSessionRequest::Representation
+          command.request_object = generate_user_session_request_object
+          command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::GenerateUserSessionResponse::Representation
+          command.response_class = Google::Apis::PaymentsresellersubscriptionV1::GenerateUserSessionResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -30,6 +30,7 @@ module Google
         UPLOAD_CONTENT_TYPE_HEADER = 'X-Goog-Upload-Header-Content-Type'
         UPLOAD_CONTENT_LENGTH = 'X-Goog-Upload-Header-Content-Length'
         CONTENT_TYPE_HEADER = 'Content-Type'
+        CONTENT_LENGTH_HEADER = "Content-Length"
 
         # File name or IO containing the content to upload
         # @return [String, File, #read]
@@ -159,9 +160,11 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def process_response(status, header, body)
-          @offset = Integer(header[BYTES_RECEIVED_HEADER].first) unless header[BYTES_RECEIVED_HEADER].empty?
-          @upload_url = header[UPLOAD_URL_HEADER].first unless header[UPLOAD_URL_HEADER].empty?
-          upload_status = header[UPLOAD_STATUS_HEADER].first
+          bytes_received_header = Array(header[BYTES_RECEIVED_HEADER])
+          @offset = Integer(bytes_received_header.first) unless bytes_received_header.empty?
+          upload_url_header = Array(header[UPLOAD_URL_HEADER])
+          @upload_url = upload_url_header.first unless upload_url_header.empty?
+          upload_status = Array(header[UPLOAD_STATUS_HEADER]).first
           logger.debug { sprintf('Upload status %s', upload_status) }
           if upload_status == STATUS_ACTIVE
             @state = :active
@@ -184,19 +187,14 @@ module Google
           request_header[UPLOAD_CONTENT_LENGTH] = upload_io.size.to_s
           request_header[UPLOAD_CONTENT_TYPE_HEADER] = upload_content_type
 
-          client.request(method.to_s.upcase,
-                         url.to_s, query: nil,
-                         body: body,
-                         header: request_header,
-                         follow_redirect: true)
+          client.run_request(method, url.to_s, body, request_header)
         rescue => e
           raise Google::Apis::ServerError, e.message
         end
 
         # Query for the status of an incomplete upload
         #
-        # @param [HTTPClient] client
-        #   HTTP client
+        # @param [Faraday::Connection] client Faraday connection
         # @return [HTTP::Message]
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_query_command(client)
@@ -206,14 +204,13 @@ module Google
           apply_request_options(request_header)
           request_header[UPLOAD_COMMAND_HEADER] = QUERY_COMMAND
 
-          client.post(@upload_url, body: '', header: request_header, follow_redirect: true)
+          client.post(@upload_url, '', request_header)
         end
 
 
         # Send the actual content
         #
-        # @param [HTTPClient] client
-        #   HTTP client
+        # @param [Faraday::Connection] client Faraday connection
         # @return [HTTP::Message]
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_upload_command(client)
@@ -228,16 +225,16 @@ module Google
           request_header[UPLOAD_COMMAND_HEADER] = UPLOAD_COMMAND
           request_header[UPLOAD_OFFSET_HEADER] = @offset.to_s
           request_header[CONTENT_TYPE_HEADER] = upload_content_type
+          request_header[CONTENT_LENGTH_HEADER] = (upload_io.size - @offset).to_s
 
-          client.post(@upload_url, body: content, header: request_header, follow_redirect: true)
+          client.post(@upload_url, content, request_header)
         end
 
         # Execute the upload request once. This will typically perform two HTTP requests -- one to initiate or query
         # for the status of the upload, the second to send the (remaining) content.
         #
         # @private
-        # @param [HTTPClient] client
-        #   HTTP client
+        # @param [Faraday::Connection] client Faraday connection
         # @yield [result, err] Result or error if block supplied
         # @return [Object]
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
@@ -247,16 +244,16 @@ module Google
           case @state
           when :start
             response = send_start_command(client)
-            result = process_response(response.status_code, response.header, response.body)
+            result = process_response(response.status.to_i, response.headers, response.body)
           when :active
             response = send_query_command(client)
-            result = process_response(response.status_code, response.header, response.body)
+            result = process_response(response.status.to_i, response.headers, response.body)
           when :cancelled, :final
             error(@last_error, rethrow: true, &block)
           end
           if @state == :active
             response = send_upload_command(client)
-            result = process_response(response.status_code, response.header, response.body)
+            result = process_response(response.status.to_i, response.headers, response.body)
           end
 
           success(result, &block) if @state == :final

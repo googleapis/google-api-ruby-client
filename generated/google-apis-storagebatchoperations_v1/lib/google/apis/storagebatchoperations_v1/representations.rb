@@ -22,6 +22,12 @@ module Google
   module Apis
     module StoragebatchoperationsV1
       
+      class AccessControlsUpdates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Bucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +35,12 @@ module Google
       end
       
       class BucketList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BucketOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomContextUpdates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteObject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,7 +100,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBucketOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,6 +154,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObjectAccessControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObjectCustomContextPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObjectRetention
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +185,12 @@ module Google
       end
       
       class PrefixList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProjectSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,10 +214,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SetObjectAcls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetLocations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateObjectCustomContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessControlsUpdates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :grants, as: 'grants', class: Google::Apis::StoragebatchoperationsV1::ObjectAccessControl, decorator: Google::Apis::StoragebatchoperationsV1::ObjectAccessControl::Representation
+      
+          collection :remove_entities, as: 'removeEntities'
+        end
       end
       
       class Bucket
@@ -181,6 +262,40 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :buckets, as: 'buckets', class: Google::Apis::StoragebatchoperationsV1::Bucket, decorator: Google::Apis::StoragebatchoperationsV1::Bucket::Representation
+      
+        end
+      end
+      
+      class BucketOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_name, as: 'bucketName'
+          property :complete_time, as: 'completeTime'
+          property :counters, as: 'counters', class: Google::Apis::StoragebatchoperationsV1::Counters, decorator: Google::Apis::StoragebatchoperationsV1::Counters::Representation
+      
+          property :create_time, as: 'createTime'
+          property :delete_object, as: 'deleteObject', class: Google::Apis::StoragebatchoperationsV1::DeleteObject, decorator: Google::Apis::StoragebatchoperationsV1::DeleteObject::Representation
+      
+          collection :error_summaries, as: 'errorSummaries', class: Google::Apis::StoragebatchoperationsV1::ErrorSummary, decorator: Google::Apis::StoragebatchoperationsV1::ErrorSummary::Representation
+      
+          property :manifest, as: 'manifest', class: Google::Apis::StoragebatchoperationsV1::Manifest, decorator: Google::Apis::StoragebatchoperationsV1::Manifest::Representation
+      
+          property :name, as: 'name'
+          property :prefix_list, as: 'prefixList', class: Google::Apis::StoragebatchoperationsV1::PrefixList, decorator: Google::Apis::StoragebatchoperationsV1::PrefixList::Representation
+      
+          property :project_source, as: 'projectSource', class: Google::Apis::StoragebatchoperationsV1::ProjectSource, decorator: Google::Apis::StoragebatchoperationsV1::ProjectSource::Representation
+      
+          property :put_metadata, as: 'putMetadata', class: Google::Apis::StoragebatchoperationsV1::PutMetadata, decorator: Google::Apis::StoragebatchoperationsV1::PutMetadata::Representation
+      
+          property :put_object_hold, as: 'putObjectHold', class: Google::Apis::StoragebatchoperationsV1::PutObjectHold, decorator: Google::Apis::StoragebatchoperationsV1::PutObjectHold::Representation
+      
+          property :rewrite_object, as: 'rewriteObject', class: Google::Apis::StoragebatchoperationsV1::RewriteObject, decorator: Google::Apis::StoragebatchoperationsV1::RewriteObject::Representation
+      
+          property :set_object_acls, as: 'setObjectAcls', class: Google::Apis::StoragebatchoperationsV1::SetObjectAcls, decorator: Google::Apis::StoragebatchoperationsV1::SetObjectAcls::Representation
+      
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :update_object_custom_context, as: 'updateObjectCustomContext', class: Google::Apis::StoragebatchoperationsV1::UpdateObjectCustomContext, decorator: Google::Apis::StoragebatchoperationsV1::UpdateObjectCustomContext::Representation
       
         end
       end
@@ -208,8 +323,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failed_object_count, :numeric_string => true, as: 'failedObjectCount'
+          property :object_custom_contexts_created, :numeric_string => true, as: 'objectCustomContextsCreated'
+          property :object_custom_contexts_deleted, :numeric_string => true, as: 'objectCustomContextsDeleted'
+          property :object_custom_contexts_updated, :numeric_string => true, as: 'objectCustomContextsUpdated'
           property :succeeded_object_count, :numeric_string => true, as: 'succeededObjectCount'
+          property :total_bytes_found, :numeric_string => true, as: 'totalBytesFound'
+          property :total_bytes_transformed, :numeric_string => true, as: 'totalBytesTransformed'
           property :total_object_count, :numeric_string => true, as: 'totalObjectCount'
+        end
+      end
+      
+      class CustomContextUpdates
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :keys_to_clear, as: 'keysToClear'
+          hash :updates, as: 'updates', class: Google::Apis::StoragebatchoperationsV1::ObjectCustomContextPayload, decorator: Google::Apis::StoragebatchoperationsV1::ObjectCustomContextPayload::Representation
+      
         end
       end
       
@@ -244,6 +373,16 @@ module Google
         end
       end
       
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
       class Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -256,11 +395,15 @@ module Google
           property :delete_object, as: 'deleteObject', class: Google::Apis::StoragebatchoperationsV1::DeleteObject, decorator: Google::Apis::StoragebatchoperationsV1::DeleteObject::Representation
       
           property :description, as: 'description'
+          property :dry_run, as: 'dryRun'
           collection :error_summaries, as: 'errorSummaries', class: Google::Apis::StoragebatchoperationsV1::ErrorSummary, decorator: Google::Apis::StoragebatchoperationsV1::ErrorSummary::Representation
       
+          property :is_multi_bucket_job, as: 'isMultiBucketJob'
           property :logging_config, as: 'loggingConfig', class: Google::Apis::StoragebatchoperationsV1::LoggingConfig, decorator: Google::Apis::StoragebatchoperationsV1::LoggingConfig::Representation
       
           property :name, as: 'name'
+          property :project_source, as: 'projectSource', class: Google::Apis::StoragebatchoperationsV1::ProjectSource, decorator: Google::Apis::StoragebatchoperationsV1::ProjectSource::Representation
+      
           property :put_metadata, as: 'putMetadata', class: Google::Apis::StoragebatchoperationsV1::PutMetadata, decorator: Google::Apis::StoragebatchoperationsV1::PutMetadata::Representation
       
           property :put_object_hold, as: 'putObjectHold', class: Google::Apis::StoragebatchoperationsV1::PutObjectHold, decorator: Google::Apis::StoragebatchoperationsV1::PutObjectHold::Representation
@@ -268,7 +411,21 @@ module Google
           property :rewrite_object, as: 'rewriteObject', class: Google::Apis::StoragebatchoperationsV1::RewriteObject, decorator: Google::Apis::StoragebatchoperationsV1::RewriteObject::Representation
       
           property :schedule_time, as: 'scheduleTime'
+          property :set_object_acls, as: 'setObjectAcls', class: Google::Apis::StoragebatchoperationsV1::SetObjectAcls, decorator: Google::Apis::StoragebatchoperationsV1::SetObjectAcls::Representation
+      
           property :state, as: 'state'
+          property :update_object_custom_context, as: 'updateObjectCustomContext', class: Google::Apis::StoragebatchoperationsV1::UpdateObjectCustomContext, decorator: Google::Apis::StoragebatchoperationsV1::UpdateObjectCustomContext::Representation
+      
+        end
+      end
+      
+      class ListBucketOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bucket_operations, as: 'bucketOperations', class: Google::Apis::StoragebatchoperationsV1::BucketOperation, decorator: Google::Apis::StoragebatchoperationsV1::BucketOperation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -297,6 +454,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::StoragebatchoperationsV1::Operation, decorator: Google::Apis::StoragebatchoperationsV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -323,6 +481,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :manifest_location, as: 'manifestLocation'
+        end
+      end
+      
+      class ObjectAccessControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity, as: 'entity'
+          property :role, as: 'role'
+        end
+      end
+      
+      class ObjectCustomContextPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :value, as: 'value'
+        end
+      end
+      
+      class ObjectRetention
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retain_until_time, as: 'retainUntilTime'
+          property :retention_mode, as: 'retentionMode'
         end
       end
       
@@ -358,6 +539,22 @@ module Google
         end
       end
       
+      class ProjectSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket_filters, as: 'bucketFilters', class: Google::Apis::StoragebatchoperationsV1::Expr, decorator: Google::Apis::StoragebatchoperationsV1::Expr::Representation
+      
+          property :dry_run_job_id, as: 'dryRunJobId'
+          property :insights_dataset_config, as: 'insightsDatasetConfig'
+          property :object_filters, as: 'objectFilters', class: Google::Apis::StoragebatchoperationsV1::Expr, decorator: Google::Apis::StoragebatchoperationsV1::Expr::Representation
+      
+          property :project, as: 'project'
+          property :snapshot_time, as: 'snapshotTime'
+          property :target_locations, as: 'targetLocations', class: Google::Apis::StoragebatchoperationsV1::TargetLocations, decorator: Google::Apis::StoragebatchoperationsV1::TargetLocations::Representation
+      
+        end
+      end
+      
       class PutMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -368,6 +565,8 @@ module Google
           property :content_type, as: 'contentType'
           hash :custom_metadata, as: 'customMetadata'
           property :custom_time, as: 'customTime'
+          property :object_retention, as: 'objectRetention', class: Google::Apis::StoragebatchoperationsV1::ObjectRetention, decorator: Google::Apis::StoragebatchoperationsV1::ObjectRetention::Representation
+      
         end
       end
       
@@ -383,6 +582,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key, as: 'kmsKey'
+          property :storage_class, as: 'storageClass'
+        end
+      end
+      
+      class SetObjectAcls
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_controls_updates, as: 'accessControlsUpdates', class: Google::Apis::StoragebatchoperationsV1::AccessControlsUpdates, decorator: Google::Apis::StoragebatchoperationsV1::AccessControlsUpdates::Representation
+      
         end
       end
       
@@ -392,6 +600,23 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TargetLocations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations'
+          property :snapshot_time, as: 'snapshotTime'
+        end
+      end
+      
+      class UpdateObjectCustomContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :clear_all, as: 'clearAll'
+          property :custom_context_updates, as: 'customContextUpdates', class: Google::Apis::StoragebatchoperationsV1::CustomContextUpdates, decorator: Google::Apis::StoragebatchoperationsV1::CustomContextUpdates::Representation
+      
         end
       end
     end

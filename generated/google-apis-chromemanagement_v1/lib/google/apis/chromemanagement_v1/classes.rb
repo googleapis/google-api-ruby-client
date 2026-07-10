@@ -76,6 +76,12 @@ module Google
         # @return [String]
         attr_accessor :app_id
       
+        # Output only. The category IDs of the app, which are the same as stored in the
+        # Web Store item. It's expected that there is only one category ID.
+        # Corresponds to the JSON property `categoryIds`
+        # @return [Array<String>]
+        attr_accessor :category_ids
+      
         # Chrome Web Store app information.
         # Corresponds to the JSON property `chromeAppInfo`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ChromeAppInfo]
@@ -181,6 +187,7 @@ module Google
         def update!(**args)
           @android_app_info = args[:android_app_info] if args.key?(:android_app_info)
           @app_id = args[:app_id] if args.key?(:app_id)
+          @category_ids = args[:category_ids] if args.key?(:category_ids)
           @chrome_app_info = args[:chrome_app_info] if args.key?(:chrome_app_info)
           @description = args[:description] if args.key?(:description)
           @detail_uri = args[:detail_uri] if args.key?(:detail_uri)
@@ -658,6 +665,11 @@ module Google
         attr_accessor :kiosk_enabled
         alias_method :kiosk_enabled?, :kiosk_enabled
       
+        # Output only. The version of this extension's manifest.
+        # Corresponds to the JSON property `manifestVersion`
+        # @return [Fixnum]
+        attr_accessor :manifest_version
+      
         # Output only. The minimum number of users using this app.
         # Corresponds to the JSON property `minUserCount`
         # @return [Fixnum]
@@ -701,6 +713,7 @@ module Google
           @is_kiosk_only = args[:is_kiosk_only] if args.key?(:is_kiosk_only)
           @is_theme = args[:is_theme] if args.key?(:is_theme)
           @kiosk_enabled = args[:kiosk_enabled] if args.key?(:kiosk_enabled)
+          @manifest_version = args[:manifest_version] if args.key?(:manifest_version)
           @min_user_count = args[:min_user_count] if args.key?(:min_user_count)
           @permissions = args[:permissions] if args.key?(:permissions)
           @site_access = args[:site_access] if args.key?(:site_access)
@@ -817,6 +830,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @host_match = args[:host_match] if args.key?(:host_match)
+        end
+      end
+      
+      # Response containing the number of active devices.
+      class GoogleChromeManagementV1CountActiveDevicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of active devices in the 7 days leading up to the date specified in the
+        # request.
+        # Corresponds to the JSON property `sevenDaysCount`
+        # @return [Fixnum]
+        attr_accessor :seven_days_count
+      
+        # Number of active devices in the 30 days leading up to the date specified in
+        # the request.
+        # Corresponds to the JSON property `thirtyDaysCount`
+        # @return [Fixnum]
+        attr_accessor :thirty_days_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @seven_days_count = args[:seven_days_count] if args.key?(:seven_days_count)
+          @thirty_days_count = args[:thirty_days_count] if args.key?(:thirty_days_count)
         end
       end
       
@@ -1047,6 +1087,37 @@ module Google
         end
       end
       
+      # Response containing requested managed profile versions details and counts.
+      class GoogleChromeManagementV1CountChromeProfileVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to specify the next page of the request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of all browser versions reported for profiles and their install counts.
+        # Corresponds to the JSON property `profileBrowserVersions`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1BrowserVersion>]
+        attr_accessor :profile_browser_versions
+      
+        # Total number browser versions matching request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @profile_browser_versions = args[:profile_browser_versions] if args.key?(:profile_browser_versions)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # Response containing requested browser versions details and counts.
       class GoogleChromeManagementV1CountChromeVersionsResponse
         include Google::Apis::Core::Hashable
@@ -1075,6 +1146,98 @@ module Google
           @browser_versions = args[:browser_versions] if args.key?(:browser_versions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response containing the number of devices with the given boot type.
+      class GoogleChromeManagementV1CountDevicesPerBootTypeResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of devices with dev boot type.
+        # Corresponds to the JSON property `devBootTypeCount`
+        # @return [Fixnum]
+        attr_accessor :dev_boot_type_count
+      
+        # Number of devices with unreported boot type.
+        # Corresponds to the JSON property `unreportedBootTypeCount`
+        # @return [Fixnum]
+        attr_accessor :unreported_boot_type_count
+      
+        # Number of devices with verified boot type.
+        # Corresponds to the JSON property `verifiedBootTypeCount`
+        # @return [Fixnum]
+        attr_accessor :verified_boot_type_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dev_boot_type_count = args[:dev_boot_type_count] if args.key?(:dev_boot_type_count)
+          @unreported_boot_type_count = args[:unreported_boot_type_count] if args.key?(:unreported_boot_type_count)
+          @verified_boot_type_count = args[:verified_boot_type_count] if args.key?(:verified_boot_type_count)
+        end
+      end
+      
+      # Response containing the number of devices with the given channel.
+      class GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse
+        include Google::Apis::Core::Hashable
+      
+        # Number of devices with beta release channel.
+        # Corresponds to the JSON property `betaChannelCount`
+        # @return [Fixnum]
+        attr_accessor :beta_channel_count
+      
+        # Number of devices with canary release channel.
+        # Corresponds to the JSON property `canaryChannelCount`
+        # @return [Fixnum]
+        attr_accessor :canary_channel_count
+      
+        # Number of devices with dev release channel.
+        # Corresponds to the JSON property `devChannelCount`
+        # @return [Fixnum]
+        attr_accessor :dev_channel_count
+      
+        # Number of devices with ltc release channel.
+        # Corresponds to the JSON property `ltcChannelCount`
+        # @return [Fixnum]
+        attr_accessor :ltc_channel_count
+      
+        # Number of devices with lts release channel.
+        # Corresponds to the JSON property `ltsChannelCount`
+        # @return [Fixnum]
+        attr_accessor :lts_channel_count
+      
+        # Number of devices with stable release channel.
+        # Corresponds to the JSON property `stableChannelCount`
+        # @return [Fixnum]
+        attr_accessor :stable_channel_count
+      
+        # Number of devices with an unreported release channel.
+        # Corresponds to the JSON property `unreportedChannelCount`
+        # @return [Fixnum]
+        attr_accessor :unreported_channel_count
+      
+        # Number of devices with unsupported release channel.
+        # Corresponds to the JSON property `unsupportedChannelCount`
+        # @return [Fixnum]
+        attr_accessor :unsupported_channel_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @beta_channel_count = args[:beta_channel_count] if args.key?(:beta_channel_count)
+          @canary_channel_count = args[:canary_channel_count] if args.key?(:canary_channel_count)
+          @dev_channel_count = args[:dev_channel_count] if args.key?(:dev_channel_count)
+          @ltc_channel_count = args[:ltc_channel_count] if args.key?(:ltc_channel_count)
+          @lts_channel_count = args[:lts_channel_count] if args.key?(:lts_channel_count)
+          @stable_channel_count = args[:stable_channel_count] if args.key?(:stable_channel_count)
+          @unreported_channel_count = args[:unreported_channel_count] if args.key?(:unreported_channel_count)
+          @unsupported_channel_count = args[:unsupported_channel_count] if args.key?(:unsupported_channel_count)
         end
       end
       
@@ -1576,6 +1739,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :display_width_mm
       
+        # Output only. EDID version.
+        # Corresponds to the JSON property `edidVersion`
+        # @return [String]
+        attr_accessor :edid_version
+      
         # Output only. Is display internal or not.
         # Corresponds to the JSON property `internal`
         # @return [Boolean]
@@ -1597,6 +1765,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :model_id
       
+        # Output only. Serial number.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [Fixnum]
+        attr_accessor :serial_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1606,10 +1779,12 @@ module Google
           @display_height_mm = args[:display_height_mm] if args.key?(:display_height_mm)
           @display_name = args[:display_name] if args.key?(:display_name)
           @display_width_mm = args[:display_width_mm] if args.key?(:display_width_mm)
+          @edid_version = args[:edid_version] if args.key?(:edid_version)
           @internal = args[:internal] if args.key?(:internal)
           @manufacture_year = args[:manufacture_year] if args.key?(:manufacture_year)
           @manufacturer_id = args[:manufacturer_id] if args.key?(:manufacturer_id)
           @model_id = args[:model_id] if args.key?(:model_id)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
         end
       end
       
@@ -1626,6 +1801,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Output only. EDID version.
+        # Corresponds to the JSON property `edidVersion`
+        # @return [String]
+        attr_accessor :edid_version
       
         # Output only. Indicates if display is internal or not.
         # Corresponds to the JSON property `isInternal`
@@ -1648,6 +1828,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :resolution_width
       
+        # Output only. Serial number.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [Fixnum]
+        attr_accessor :serial_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1656,10 +1841,12 @@ module Google
         def update!(**args)
           @device_id = args[:device_id] if args.key?(:device_id)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @edid_version = args[:edid_version] if args.key?(:edid_version)
           @is_internal = args[:is_internal] if args.key?(:is_internal)
           @refresh_rate = args[:refresh_rate] if args.key?(:refresh_rate)
           @resolution_height = args[:resolution_height] if args.key?(:resolution_height)
           @resolution_width = args[:resolution_width] if args.key?(:resolution_width)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
         end
       end
       
@@ -1787,6 +1974,38 @@ module Google
         def update!(**args)
           @devices = args[:devices] if args.key?(:devices)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response containing a list of profiles with queried app installed.
+      class GoogleChromeManagementV1FindInstalledAppProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to specify the next page of the request.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of profiles which have the app installed. Sorted in ascending
+        # alphabetical order on the profile.Email field.
+        # Corresponds to the JSON property `profiles`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1ProfileAppInstallInstance>]
+        attr_accessor :profiles
+      
+        # Total number of profiles matching request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @profiles = args[:profiles] if args.key?(:profiles)
           @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
@@ -2026,6 +2245,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :permissions
       
+        # Output only. Count of Chrome Profiles with this app installed.
+        # Corresponds to the JSON property `profileCount`
+        # @return [Fixnum]
+        attr_accessor :profile_count
+      
         # Risk assessment data about an extension/app.
         # Corresponds to the JSON property `riskAssessment`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessmentData]
@@ -2048,6 +2272,7 @@ module Google
           @homepage_uri = args[:homepage_uri] if args.key?(:homepage_uri)
           @os_user_count = args[:os_user_count] if args.key?(:os_user_count)
           @permissions = args[:permissions] if args.key?(:permissions)
+          @profile_count = args[:profile_count] if args.key?(:profile_count)
           @risk_assessment = args[:risk_assessment] if args.key?(:risk_assessment)
         end
       end
@@ -2459,15 +2684,38 @@ module Google
         # @return [String]
         attr_accessor :gateway_ip_address
       
+        # Output only. The gateway IPv6 for this interface, if detected
+        # Corresponds to the JSON property `gatewayIpv6Address`
+        # @return [String]
+        attr_accessor :gateway_ipv6_address
+      
         # Output only. Network connection guid.
         # Corresponds to the JSON property `guid`
         # @return [String]
         attr_accessor :guid
       
+        # Output only. IPv6 addresses assigned to this network, if any. Each address is
+        # a string in standard IPv6 text representation (e.g., "2001:db8::1").
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [Array<String>]
+        attr_accessor :ipv6_address
+      
         # Output only. LAN IP address.
         # Corresponds to the JSON property `lanIpAddress`
         # @return [String]
         attr_accessor :lan_ip_address
+      
+        # Output only. The maximum downstream bandwidth in Kilobits per second (Kbps),
+        # if reported by the network interface or connection.
+        # Corresponds to the JSON property `linkDownSpeedKbps`
+        # @return [Fixnum]
+        attr_accessor :link_down_speed_kbps
+      
+        # Output only. Whether the network was detected as metered.
+        # Corresponds to the JSON property `metered`
+        # @return [Boolean]
+        attr_accessor :metered
+        alias_method :metered?, :metered
       
         # Output only. Receiving bit rate measured in Megabits per second.
         # Corresponds to the JSON property `receivingBitRateMbps`
@@ -2521,8 +2769,12 @@ module Google
           @connection_type = args[:connection_type] if args.key?(:connection_type)
           @encryption_on = args[:encryption_on] if args.key?(:encryption_on)
           @gateway_ip_address = args[:gateway_ip_address] if args.key?(:gateway_ip_address)
+          @gateway_ipv6_address = args[:gateway_ipv6_address] if args.key?(:gateway_ipv6_address)
           @guid = args[:guid] if args.key?(:guid)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @lan_ip_address = args[:lan_ip_address] if args.key?(:lan_ip_address)
+          @link_down_speed_kbps = args[:link_down_speed_kbps] if args.key?(:link_down_speed_kbps)
+          @metered = args[:metered] if args.key?(:metered)
           @receiving_bit_rate_mbps = args[:receiving_bit_rate_mbps] if args.key?(:receiving_bit_rate_mbps)
           @report_time = args[:report_time] if args.key?(:report_time)
           @sample_frequency = args[:sample_frequency] if args.key?(:sample_frequency)
@@ -2765,6 +3017,44 @@ module Google
         end
       end
       
+      # Describes a profile reporting Chrome Profile information.
+      class GoogleChromeManagementV1ProfileAppInstallInstance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The email of the profile.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. The Chrome client side profile ID.
+        # Corresponds to the JSON property `profileId`
+        # @return [String]
+        attr_accessor :profile_id
+      
+        # Output only. The organizational unit id of the profile.
+        # Corresponds to the JSON property `profileOrgUnitId`
+        # @return [String]
+        attr_accessor :profile_org_unit_id
+      
+        # Output only. Profile permanent ID is the unique identifier of a profile within
+        # one customer.
+        # Corresponds to the JSON property `profilePermanentId`
+        # @return [String]
+        attr_accessor :profile_permanent_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @profile_id = args[:profile_id] if args.key?(:profile_id)
+          @profile_org_unit_id = args[:profile_org_unit_id] if args.key?(:profile_org_unit_id)
+          @profile_permanent_id = args[:profile_permanent_id] if args.key?(:profile_permanent_id)
+        end
+      end
+      
       # Risk assessment for a Chrome extension.
       class GoogleChromeManagementV1RiskAssessment
         include Google::Apis::Core::Hashable
@@ -2828,7 +3118,7 @@ module Google
       class GoogleChromeManagementV1RiskAssessmentEntry
         include Google::Apis::Core::Hashable
       
-        # The risk assessment provider from which this entry comes from.
+        # Output only. The risk assessment provider from which this entry comes from.
         # Corresponds to the JSON property `provider`
         # @return [String]
         attr_accessor :provider
@@ -2838,7 +3128,7 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1RiskAssessment]
         attr_accessor :risk_assessment
       
-        # The bucketed risk level for the risk assessment.
+        # Output only. The bucketed risk level for the risk assessment.
         # Corresponds to the JSON property `riskLevel`
         # @return [String]
         attr_accessor :risk_level
@@ -3418,6 +3708,11 @@ module Google
         # @return [String]
         attr_accessor :event_type
       
+        # External display connected/disconnected event payload.
+        # Corresponds to the JSON property `externalDisplaysEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryExternalDisplayEvent]
+        attr_accessor :external_displays_event
+      
         # Https latency routine is run periodically and `
         # TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was
         # detected or if the device has recovered from a latency problem. * Granular
@@ -3437,6 +3732,11 @@ module Google
         # Corresponds to the JSON property `networkStateChangeEvent`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent]
         attr_accessor :network_state_change_event
+      
+        # OS crash data.
+        # Corresponds to the JSON property `osCrashEvent`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryOsCrashEvent]
+        attr_accessor :os_crash_event
       
         # Timestamp that represents when the event was reported.
         # Corresponds to the JSON property `reportTime`
@@ -3480,9 +3780,11 @@ module Google
           @audio_severe_underrun_event = args[:audio_severe_underrun_event] if args.key?(:audio_severe_underrun_event)
           @device = args[:device] if args.key?(:device)
           @event_type = args[:event_type] if args.key?(:event_type)
+          @external_displays_event = args[:external_displays_event] if args.key?(:external_displays_event)
           @https_latency_change_event = args[:https_latency_change_event] if args.key?(:https_latency_change_event)
           @name = args[:name] if args.key?(:name)
           @network_state_change_event = args[:network_state_change_event] if args.key?(:network_state_change_event)
+          @os_crash_event = args[:os_crash_event] if args.key?(:os_crash_event)
           @report_time = args[:report_time] if args.key?(:report_time)
           @usb_peripherals_event = args[:usb_peripherals_event] if args.key?(:usb_peripherals_event)
           @user = args[:user] if args.key?(:user)
@@ -3507,6 +3809,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event_types = args[:event_types] if args.key?(:event_types)
+        end
+      end
+      
+      # External display data.
+      class GoogleChromeManagementV1TelemetryExternalDisplayData
+        include Google::Apis::Core::Hashable
+      
+        # The display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The EDID version.
+        # Corresponds to the JSON property `edidVersion`
+        # @return [String]
+        attr_accessor :edid_version
+      
+        # The refresh rate.
+        # Corresponds to the JSON property `refreshRate`
+        # @return [Fixnum]
+        attr_accessor :refresh_rate
+      
+        # The horizontal resolution.
+        # Corresponds to the JSON property `resolutionHorizontal`
+        # @return [Fixnum]
+        attr_accessor :resolution_horizontal
+      
+        # The vertical resolution.
+        # Corresponds to the JSON property `resolutionVertical`
+        # @return [Fixnum]
+        attr_accessor :resolution_vertical
+      
+        # The serial number.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [Fixnum]
+        attr_accessor :serial_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @edid_version = args[:edid_version] if args.key?(:edid_version)
+          @refresh_rate = args[:refresh_rate] if args.key?(:refresh_rate)
+          @resolution_horizontal = args[:resolution_horizontal] if args.key?(:resolution_horizontal)
+          @resolution_vertical = args[:resolution_vertical] if args.key?(:resolution_vertical)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+        end
+      end
+      
+      # External display connected/disconnected event payload.
+      class GoogleChromeManagementV1TelemetryExternalDisplayEvent
+        include Google::Apis::Core::Hashable
+      
+        # List of external displays that were connected/disconnected.
+        # Corresponds to the JSON property `externalDisplayData`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1TelemetryExternalDisplayData>]
+        attr_accessor :external_display_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_display_data = args[:external_display_data] if args.key?(:external_display_data)
         end
       end
       
@@ -3672,6 +4042,37 @@ module Google
           @telemetry_event_notification_filter = args[:telemetry_event_notification_filter] if args.key?(:telemetry_event_notification_filter)
           @user_email = args[:user_email] if args.key?(:user_email)
           @user_org_unit_id = args[:user_org_unit_id] if args.key?(:user_org_unit_id)
+        end
+      end
+      
+      # OS crash data.
+      class GoogleChromeManagementV1TelemetryOsCrashEvent
+        include Google::Apis::Core::Hashable
+      
+        # Crash id.
+        # Corresponds to the JSON property `crashId`
+        # @return [String]
+        attr_accessor :crash_id
+      
+        # Crash type.
+        # Corresponds to the JSON property `crashType`
+        # @return [String]
+        attr_accessor :crash_type
+      
+        # Session type.
+        # Corresponds to the JSON property `sessionType`
+        # @return [String]
+        attr_accessor :session_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crash_id = args[:crash_id] if args.key?(:crash_id)
+          @crash_type = args[:crash_type] if args.key?(:crash_type)
+          @session_type = args[:session_type] if args.key?(:session_type)
         end
       end
       
@@ -4179,6 +4580,16 @@ module Google
         # @return [String]
         attr_accessor :provisioning_profile_id
       
+        # Describes a SCEP Certificate Authority Connection.
+        # Corresponds to the JSON property `scepCaConnection`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ScepCaConnection]
+        attr_accessor :scep_ca_connection
+      
+        # Describes a SCEP certificate provisioning profile.
+        # Corresponds to the JSON property `scepProfile`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ScepProfile]
+        attr_accessor :scep_profile
+      
         # Output only. The data that the client was asked to sign. This field is only
         # present after the `SignData` operation has been initiated.
         # Corresponds to the JSON property `signData`
@@ -4194,9 +4605,10 @@ module Google
         # @return [String]
         attr_accessor :signature
       
-        # Output only. The signature algorithm that the adapter expects the client and
-        # backend components to use when processing `sign_data`. This field is only
-        # present after the `SignData` operation has been initiated.
+        # Output only. The signature algorithm that the client and backend components
+        # use when processing `sign_data`. If the `profile_type` is a `GenericProfile`,
+        # this field will only be present after the `SignData` operation was initiated.
+        # If the `profile_type` is a `ScepProfile`, the field will always be present.
         # Corresponds to the JSON property `signatureAlgorithm`
         # @return [String]
         attr_accessor :signature_algorithm
@@ -4228,11 +4640,32 @@ module Google
           @issued_certificate = args[:issued_certificate] if args.key?(:issued_certificate)
           @name = args[:name] if args.key?(:name)
           @provisioning_profile_id = args[:provisioning_profile_id] if args.key?(:provisioning_profile_id)
+          @scep_ca_connection = args[:scep_ca_connection] if args.key?(:scep_ca_connection)
+          @scep_profile = args[:scep_profile] if args.key?(:scep_profile)
           @sign_data = args[:sign_data] if args.key?(:sign_data)
           @signature = args[:signature] if args.key?(:signature)
           @signature_algorithm = args[:signature_algorithm] if args.key?(:signature_algorithm)
           @start_time = args[:start_time] if args.key?(:start_time)
           @subject_public_key_info = args[:subject_public_key_info] if args.key?(:subject_public_key_info)
+        end
+      end
+      
+      # Response from checking the enablement status of insights for the customer.
+      class GoogleChromeManagementVersionsV1CheckEnablementStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        # The state of the insights feature.
+        # Corresponds to the JSON property `insightsState`
+        # @return [String]
+        attr_accessor :insights_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights_state = args[:insights_state] if args.key?(:insights_state)
         end
       end
       
@@ -4363,6 +4796,12 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingData]
         attr_accessor :reporting_data
       
+        # Output only. Whether the profile supports FCM notifications.
+        # Corresponds to the JSON property `supportsFcmNotifications`
+        # @return [Boolean]
+        attr_accessor :supports_fcm_notifications
+        alias_method :supports_fcm_notifications?, :supports_fcm_notifications
+      
         # Output only. Email address of the user to which the profile belongs.
         # Corresponds to the JSON property `userEmail`
         # @return [String]
@@ -4404,8 +4843,100 @@ module Google
           @profile_id = args[:profile_id] if args.key?(:profile_id)
           @profile_permanent_id = args[:profile_permanent_id] if args.key?(:profile_permanent_id)
           @reporting_data = args[:reporting_data] if args.key?(:reporting_data)
+          @supports_fcm_notifications = args[:supports_fcm_notifications] if args.key?(:supports_fcm_notifications)
           @user_email = args[:user_email] if args.key?(:user_email)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # A representation of a remote command for a Chrome browser profile.
+      class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand
+        include Google::Apis::Core::Hashable
+      
+        # Result of the execution of a command.
+        # Corresponds to the JSON property `commandResult`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult]
+        attr_accessor :command_result
+      
+        # Output only. State of the remote command.
+        # Corresponds to the JSON property `commandState`
+        # @return [String]
+        attr_accessor :command_state
+      
+        # Required. Type of the remote command. The only supported command_type is "
+        # clearBrowsingData".
+        # Corresponds to the JSON property `commandType`
+        # @return [String]
+        attr_accessor :command_type
+      
+        # Output only. Timestamp of the issurance of the remote command.
+        # Corresponds to the JSON property `issueTime`
+        # @return [String]
+        attr_accessor :issue_time
+      
+        # Identifier. Format: customers/`customer_id`/profiles/`profile_permanent_id`/
+        # commands/`command_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Payload of the remote command. The payload for "clearBrowsingData"
+        # command supports: - fields "clearCache" and "clearCookies" - values of boolean
+        # type.
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # Output only. Valid duration of the remote command.
+        # Corresponds to the JSON property `validDuration`
+        # @return [String]
+        attr_accessor :valid_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @command_result = args[:command_result] if args.key?(:command_result)
+          @command_state = args[:command_state] if args.key?(:command_state)
+          @command_type = args[:command_type] if args.key?(:command_type)
+          @issue_time = args[:issue_time] if args.key?(:issue_time)
+          @name = args[:name] if args.key?(:name)
+          @payload = args[:payload] if args.key?(:payload)
+          @valid_duration = args[:valid_duration] if args.key?(:valid_duration)
+        end
+      end
+      
+      # Result of the execution of a command.
+      class GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp of the client execution of the remote command.
+        # Corresponds to the JSON property `clientExecutionTime`
+        # @return [String]
+        attr_accessor :client_execution_time
+      
+        # Output only. Result code that indicates the type of error or success of the
+        # command.
+        # Corresponds to the JSON property `resultCode`
+        # @return [String]
+        attr_accessor :result_code
+      
+        # Output only. Result type of the remote command.
+        # Corresponds to the JSON property `resultType`
+        # @return [String]
+        attr_accessor :result_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_execution_time = args[:client_execution_time] if args.key?(:client_execution_time)
+          @result_code = args[:result_code] if args.key?(:result_code)
+          @result_type = args[:result_type] if args.key?(:result_type)
         end
       end
       
@@ -4470,6 +5001,346 @@ module Google
         end
       end
       
+      # Request message for claiming a certificate provisioning process.
+      class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The instance id of the caller.
+        # Corresponds to the JSON property `callerInstanceId`
+        # @return [String]
+        attr_accessor :caller_instance_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @caller_instance_id = args[:caller_instance_id] if args.key?(:caller_instance_id)
+        end
+      end
+      
+      # Response message for claiming a certificate provisioning process.
+      class GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A representation of a connector config.
+      class GoogleChromeManagementVersionsV1ConnectorConfig
+        include Google::Apis::Core::Hashable
+      
+        # The details of the connector config.
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfigDetails]
+        attr_accessor :details
+      
+        # Required. The display name of the config.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Format: customers/`customer`/connectorConfigs/`connector_config`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The status of the connector config.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfigStatus]
+        attr_accessor :status
+      
+        # Required. The type of the connector.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The details of the connector config.
+      class GoogleChromeManagementVersionsV1ConnectorConfigDetails
+        include Google::Apis::Core::Hashable
+      
+        # CrowdStrike connector config.
+        # Corresponds to the JSON property `crowdStrikeConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CrowdStrikeConfig]
+        attr_accessor :crowd_strike_config
+      
+        # CrowdStrike Falcon Next Gen connector config.
+        # Corresponds to the JSON property `crowdStrikeFalconNextGenConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig]
+        attr_accessor :crowd_strike_falcon_next_gen_config
+      
+        # CrowdStrike XDR connector config.
+        # Corresponds to the JSON property `crowdStrikeXdrConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig]
+        attr_accessor :crowd_strike_xdr_config
+      
+        # Device trust config for device trust connectors.
+        # Corresponds to the JSON property `deviceTrustConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceTrustConfig]
+        attr_accessor :device_trust_config
+      
+        # Google SecOps connector config.
+        # Corresponds to the JSON property `googleSecOpsConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1GoogleSecOpsConfig]
+        attr_accessor :google_sec_ops_config
+      
+        # MIP label connector config.
+        # Corresponds to the JSON property `mipLabelConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1MipLabelConfig]
+        attr_accessor :mip_label_config
+      
+        # Palo Alto Networks connector config.
+        # Corresponds to the JSON property `paloAltoNetworksConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PaloAltoNetworksConfig]
+        attr_accessor :palo_alto_networks_config
+      
+        # Pub/Sub connector config.
+        # Corresponds to the JSON property `pubSubConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PubSubConfig]
+        attr_accessor :pub_sub_config
+      
+        # Pub/Sub XDR connector config.
+        # Corresponds to the JSON property `pubSubXdrConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PubSubXdrConfig]
+        attr_accessor :pub_sub_xdr_config
+      
+        # Splunk connector config.
+        # Corresponds to the JSON property `splunkConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SplunkConfig]
+        attr_accessor :splunk_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crowd_strike_config = args[:crowd_strike_config] if args.key?(:crowd_strike_config)
+          @crowd_strike_falcon_next_gen_config = args[:crowd_strike_falcon_next_gen_config] if args.key?(:crowd_strike_falcon_next_gen_config)
+          @crowd_strike_xdr_config = args[:crowd_strike_xdr_config] if args.key?(:crowd_strike_xdr_config)
+          @device_trust_config = args[:device_trust_config] if args.key?(:device_trust_config)
+          @google_sec_ops_config = args[:google_sec_ops_config] if args.key?(:google_sec_ops_config)
+          @mip_label_config = args[:mip_label_config] if args.key?(:mip_label_config)
+          @palo_alto_networks_config = args[:palo_alto_networks_config] if args.key?(:palo_alto_networks_config)
+          @pub_sub_config = args[:pub_sub_config] if args.key?(:pub_sub_config)
+          @pub_sub_xdr_config = args[:pub_sub_xdr_config] if args.key?(:pub_sub_xdr_config)
+          @splunk_config = args[:splunk_config] if args.key?(:splunk_config)
+        end
+      end
+      
+      # The status of the connector config.
+      class GoogleChromeManagementVersionsV1ConnectorConfigStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Field recording time of the earliest failure since the last
+        # success event. This field is only set when the state is `DISABLED_BY_FAILURES`.
+        # Corresponds to the JSON property `failureStartTime`
+        # @return [String]
+        attr_accessor :failure_start_time
+      
+        # Output only. The state of the connector config. The connector state is
+        # disabled if the connector has not successfully sent an event in the last 24
+        # hours.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Field recording time of most recent modification of the status.
+        # For `ENABLED`, this is the time the status was changed to `ENABLED`. For `
+        # DISABLED_BY_FAILURES`, this is the time of the most recent failed attempt to
+        # send an event to this config.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_start_time = args[:failure_start_time] if args.key?(:failure_start_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A content transfers summary for a given breakdown dimension.
+      class GoogleChromeManagementVersionsV1ContentTransfersBreakdown
+        include Google::Apis::Core::Hashable
+      
+        # The content category of the content transfers.
+        # Corresponds to the JSON property `contentCategory`
+        # @return [String]
+        attr_accessor :content_category
+      
+        # The event domain of the content transfers.
+        # Corresponds to the JSON property `eventDomain`
+        # @return [String]
+        attr_accessor :event_domain
+      
+        # Summary of content transfers for a given metric.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersSummary]
+        attr_accessor :summary
+      
+        # The user that transferred the content.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_category = args[:content_category] if args.key?(:content_category)
+          @event_domain = args[:event_domain] if args.key?(:event_domain)
+          @summary = args[:summary] if args.key?(:summary)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Summary of content transfers for a given metric.
+      class GoogleChromeManagementVersionsV1ContentTransfersSummary
+        include Google::Apis::Core::Hashable
+      
+        # The count of the content transfers metric.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The type of content transfers metric.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @metric = args[:metric] if args.key?(:metric)
+        end
+      end
+      
+      # CrowdStrike connector config.
+      class GoogleChromeManagementVersionsV1CrowdStrikeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. API key to use on the ingestion API.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # Required. Host to identify the customer specific server to receive the events.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Reporting settings for connector configs.
+        # Corresponds to the JSON property `reportingSettings`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingSettings]
+        attr_accessor :reporting_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @host = args[:host] if args.key?(:host)
+          @reporting_settings = args[:reporting_settings] if args.key?(:reporting_settings)
+        end
+      end
+      
+      # CrowdStrike Falcon Next Gen connector config.
+      class GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. API key to use on the ingestion API.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # Required. Host to identify the customer specific server to receive the events.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Reporting settings for connector configs.
+        # Corresponds to the JSON property `reportingSettings`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingSettings]
+        attr_accessor :reporting_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @host = args[:host] if args.key?(:host)
+          @reporting_settings = args[:reporting_settings] if args.key?(:reporting_settings)
+        end
+      end
+      
+      # CrowdStrike XDR connector config.
+      class GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. API key to use on the ingestion API.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # Required. Host to identify the customer specific server to receive the events.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # XDR settings for connector configs.
+        # Corresponds to the JSON property `xdrSettings`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1XdrSettings]
+        attr_accessor :xdr_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @host = args[:host] if args.key?(:host)
+          @xdr_settings = args[:xdr_settings] if args.key?(:xdr_settings)
+        end
+      end
+      
       # Information of a device that runs a Chrome browser profile.
       class GoogleChromeManagementVersionsV1DeviceInfo
         include Google::Apis::Core::Hashable
@@ -4513,13 +5384,128 @@ module Google
         end
       end
       
+      # Device trust config for device trust connectors.
+      class GoogleChromeManagementVersionsV1DeviceTrustConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The scope at which this configuration will be applied. Note that
+        # this only applies to Chrome browser, as in ChromeOS it's always applied.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Required. A list of email addresses of the service accounts which are allowed
+        # to call the Verified Access API with full access.
+        # Corresponds to the JSON property `serviceAccounts`
+        # @return [Array<String>]
+        attr_accessor :service_accounts
+      
+        # Optional. The service provider for the device trust connector.
+        # Corresponds to the JSON property `serviceProvider`
+        # @return [String]
+        attr_accessor :service_provider
+      
+        # Required. List of URLs allowed to be part of the attestation flow to get the
+        # set of signals from the machine. URLs must have HTTPS scheme, e.g. "https://
+        # example.com". Wildcards, *, are allowed. For detailed information on valid URL
+        # patterns, please see https://cloud.google.com/docs/chrome-enterprise/policies/
+        # url-patterns.
+        # Corresponds to the JSON property `urlMatchers`
+        # @return [Array<String>]
+        attr_accessor :url_matchers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+          @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
+          @service_provider = args[:service_provider] if args.key?(:service_provider)
+          @url_matchers = args[:url_matchers] if args.key?(:url_matchers)
+        end
+      end
+      
+      # Request to disable insights for the customer.
+      class GoogleChromeManagementVersionsV1DisableInsightsRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response from disabling insights for the customer.
+      class GoogleChromeManagementVersionsV1DisableInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The state of the insights feature.
+        # Corresponds to the JSON property `insightsState`
+        # @return [String]
+        attr_accessor :insights_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights_state = args[:insights_state] if args.key?(:insights_state)
+        end
+      end
+      
+      # Request to enable insights for the customer.
+      class GoogleChromeManagementVersionsV1EnableInsightsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Organizational Units to set up required connectors for.
+        # Organizational Units are provided as paths relative to root. If this field is
+        # not set, connectors will be set up at root OU (as if it were set to ["/"]).
+        # Example: ["/corp/sales", "/eng"]
+        # Corresponds to the JSON property `targetOus`
+        # @return [Array<String>]
+        attr_accessor :target_ous
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_ous = args[:target_ous] if args.key?(:target_ous)
+        end
+      end
+      
+      # Response from enabling insights for the customer.
+      class GoogleChromeManagementVersionsV1EnableInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The state of the insights feature.
+        # Corresponds to the JSON property `insightsState`
+        # @return [String]
+        attr_accessor :insights_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights_state = args[:insights_state] if args.key?(:insights_state)
+        end
+      end
+      
       # Describes a generic Certificate Authority Connection.
       class GoogleChromeManagementVersionsV1GenericCaConnection
         include Google::Apis::Core::Hashable
       
         # Output only. A string that references the administrator-provided configuration
-        # for the certification authority service. This field can be missing if no
-        # configuration was given.
+        # for the certification authority service.
         # Corresponds to the JSON property `caConnectionAdapterConfigReference`
         # @return [String]
         attr_accessor :ca_connection_adapter_config_reference
@@ -4539,8 +5525,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. A string that references the administrator-provided configuration
-        # for the certificate provisioning profile. This field can be missing if no
-        # configuration was given.
+        # for the certificate provisioning profile.
         # Corresponds to the JSON property `profileAdapterConfigReference`
         # @return [String]
         attr_accessor :profile_adapter_config_reference
@@ -4552,6 +5537,70 @@ module Google
         # Update properties of this object
         def update!(**args)
           @profile_adapter_config_reference = args[:profile_adapter_config_reference] if args.key?(:profile_adapter_config_reference)
+        end
+      end
+      
+      # Google SecOps connector config.
+      class GoogleChromeManagementVersionsV1GoogleSecOpsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. API key to use on the ingestion API.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # Required. Host of ingestion API endpoint. Allows customer to upload events to
+        # servers in specific geographical regions. Existing configs that don't have
+        # this setting default to US.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Reporting settings for connector configs.
+        # Corresponds to the JSON property `reportingSettings`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingSettings]
+        attr_accessor :reporting_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @host = args[:host] if args.key?(:host)
+          @reporting_settings = args[:reporting_settings] if args.key?(:reporting_settings)
+        end
+      end
+      
+      # Response to ListChromeBrowserProfileCommands method.
+      class GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of commands returned.
+        # Corresponds to the JSON property `chromeBrowserProfileCommands`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>]
+        attr_accessor :chrome_browser_profile_commands
+      
+        # The pagination token that can be used to list the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Total size represents an estimated number of resources returned.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chrome_browser_profile_commands = args[:chrome_browser_profile_commands] if args.key?(:chrome_browser_profile_commands)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       
@@ -4584,6 +5633,270 @@ module Google
           @chrome_browser_profiles = args[:chrome_browser_profiles] if args.key?(:chrome_browser_profiles)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response to ListConnectorConfigs method.
+      class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of connector configs returned.
+        # Corresponds to the JSON property `connectorConfigs`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig>]
+        attr_accessor :connector_configs
+      
+        # The page token used to retrieve the next page of the listing request. If the
+        # token is empty, there are no more pages to retrieve.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connector_configs = args[:connector_configs] if args.key?(:connector_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # MIP label connector config.
+      class GoogleChromeManagementVersionsV1MipLabelConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Domain can be used optionally for the corner case where one Dasher
+        # customer ID maps to multiple Microsoft tenant ID. Each domain can be verified
+        # with at most one Microsoft tenant.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
+      
+        # Required. Microsoft tenant ID.
+        # Corresponds to the JSON property `microsoftTenantId`
+        # @return [String]
+        attr_accessor :microsoft_tenant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domains = args[:domains] if args.key?(:domains)
+          @microsoft_tenant_id = args[:microsoft_tenant_id] if args.key?(:microsoft_tenant_id)
+        end
+      end
+      
+      # Request to MoveThirdPartyProfileUser method.
+      class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Destination organizational unit where the third party chrome profile
+        # user will be moved to.
+        # Corresponds to the JSON property `destinationOrgUnit`
+        # @return [String]
+        attr_accessor :destination_org_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_org_unit = args[:destination_org_unit] if args.key?(:destination_org_unit)
+        end
+      end
+      
+      # Response for MoveThirdPartyProfileUser method.
+      class GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # A representation of non-Google (third party) user that is associated with a
+        # managed Chrome profile.
+        # Corresponds to the JSON property `thirdPartyProfileUser`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ThirdPartyProfileUser]
+        attr_accessor :third_party_profile_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @third_party_profile_user = args[:third_party_profile_user] if args.key?(:third_party_profile_user)
+        end
+      end
+      
+      # Palo Alto Networks connector config.
+      class GoogleChromeManagementVersionsV1PaloAltoNetworksConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. API key to use on the ingestion API.
+        # Corresponds to the JSON property `apiKey`
+        # @return [String]
+        attr_accessor :api_key
+      
+        # Required. Host to identify the customer specific server to receive the events.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Reporting settings for connector configs.
+        # Corresponds to the JSON property `reportingSettings`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingSettings]
+        attr_accessor :reporting_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key = args[:api_key] if args.key?(:api_key)
+          @host = args[:host] if args.key?(:host)
+          @reporting_settings = args[:reporting_settings] if args.key?(:reporting_settings)
+        end
+      end
+      
+      # Pub/Sub connector config.
+      class GoogleChromeManagementVersionsV1PubSubConfig
+        include Google::Apis::Core::Hashable
+      
+        # Reporting settings for connector configs.
+        # Corresponds to the JSON property `reportingSettings`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingSettings]
+        attr_accessor :reporting_settings
+      
+        # Required. The full path to the topic to send the event to.
+        # Corresponds to the JSON property `topicFullPath`
+        # @return [String]
+        attr_accessor :topic_full_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reporting_settings = args[:reporting_settings] if args.key?(:reporting_settings)
+          @topic_full_path = args[:topic_full_path] if args.key?(:topic_full_path)
+        end
+      end
+      
+      # Pub/Sub XDR connector config.
+      class GoogleChromeManagementVersionsV1PubSubXdrConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full path to the topic to send the event to.
+        # Corresponds to the JSON property `topicFullPath`
+        # @return [String]
+        attr_accessor :topic_full_path
+      
+        # XDR settings for connector configs.
+        # Corresponds to the JSON property `xdrSettings`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1XdrSettings]
+        attr_accessor :xdr_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topic_full_path = args[:topic_full_path] if args.key?(:topic_full_path)
+          @xdr_settings = args[:xdr_settings] if args.key?(:xdr_settings)
+        end
+      end
+      
+      # Response message for QueryContentTransfersBreakdowns.
+      class GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The content transfer breakdowns from the specified insight.
+        # Corresponds to the JSON property `contentTransfersBreakdowns`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersBreakdown>]
+        attr_accessor :content_transfers_breakdowns
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_transfers_breakdowns = args[:content_transfers_breakdowns] if args.key?(:content_transfers_breakdowns)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for QueryContentTransfers.
+      class GoogleChromeManagementVersionsV1QueryContentTransfersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A collection of summaries for various content transfers metrics.
+        # Corresponds to the JSON property `summaries`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ContentTransfersSummary>]
+        attr_accessor :summaries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summaries = args[:summaries] if args.key?(:summaries)
+        end
+      end
+      
+      # Response message for QueryUrlVisitsBreakdowns.
+      class GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The URL visit breakdowns from the specified insight.
+        # Corresponds to the JSON property `urlVisitsBreakdowns`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsBreakdown>]
+        attr_accessor :url_visits_breakdowns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @url_visits_breakdowns = args[:url_visits_breakdowns] if args.key?(:url_visits_breakdowns)
+        end
+      end
+      
+      # Response message for QueryUrlVisits.
+      class GoogleChromeManagementVersionsV1QueryUrlVisitsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A collection of summaries for various URL visit metrics.
+        # Corresponds to the JSON property `summaries`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsSummary>]
+        attr_accessor :summaries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @summaries = args[:summaries] if args.key?(:summaries)
         end
       end
       
@@ -4813,6 +6126,166 @@ module Google
         end
       end
       
+      # Reporting settings for connector configs.
+      class GoogleChromeManagementVersionsV1ReportingSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of user and browser events that are enabled for this
+        # connector. An empty list disables all default events, and using `
+        # ALL_DEFAULT_EVENTS` will enable all default events.
+        # Corresponds to the JSON property `enabledDefaultEvents`
+        # @return [Array<String>]
+        attr_accessor :enabled_default_events
+      
+        # Optional. The list of device events that are enabled for this config. An empty
+        # list disables all device events, and using `ALL_DEVICE_EVENTS` will enable all
+        # device events.
+        # Corresponds to the JSON property `enabledDeviceEvents`
+        # @return [Array<String>]
+        attr_accessor :enabled_device_events
+      
+        # Optional. The list of opt-in events that are enabled for this config. An empty
+        # list disables all opt-in events, and using `ALL_OPT_IN_EVENTS` will enable all
+        # opt-in events.
+        # Corresponds to the JSON property `enabledOptInEvents`
+        # @return [Array<String>]
+        attr_accessor :enabled_opt_in_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled_default_events = args[:enabled_default_events] if args.key?(:enabled_default_events)
+          @enabled_device_events = args[:enabled_device_events] if args.key?(:enabled_device_events)
+          @enabled_opt_in_events = args[:enabled_opt_in_events] if args.key?(:enabled_opt_in_events)
+        end
+      end
+      
+      # Describes a SCEP Certificate Authority Connection.
+      class GoogleChromeManagementVersionsV1ScepCaConnection
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A string that references the administrator-provided configuration
+        # for the certification authority service.
+        # Corresponds to the JSON property `caConnectionAdapterConfigReference`
+        # @return [String]
+        attr_accessor :ca_connection_adapter_config_reference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_connection_adapter_config_reference = args[:ca_connection_adapter_config_reference] if args.key?(:ca_connection_adapter_config_reference)
+        end
+      end
+      
+      # Describes a SCEP certificate provisioning profile.
+      class GoogleChromeManagementVersionsV1ScepProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The certificate template name as defined by the admin on their on-
+        # prem infrastructure. The Certificate Authority uses this name to identify the
+        # certificate template.
+        # Corresponds to the JSON property `certificateTemplateName`
+        # @return [String]
+        attr_accessor :certificate_template_name
+      
+        # Output only. The country of the subject.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # Output only. The allowed key usages for certificate's key.
+        # Corresponds to the JSON property `keyUsages`
+        # @return [Array<String>]
+        attr_accessor :key_usages
+      
+        # Output only. The locality of the subject.
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # Output only. The name of the organization the subject belongs to.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
+        # Output only. The organizational units of the subject.
+        # Corresponds to the JSON property `organizationalUnits`
+        # @return [Array<String>]
+        attr_accessor :organizational_units
+      
+        # Output only. The state of the subject.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The subject alternative names.
+        # Corresponds to the JSON property `subjectAltNames`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SubjectAltName>]
+        attr_accessor :subject_alt_names
+      
+        # Output only. The common name of the subject.
+        # Corresponds to the JSON property `subjectCommonName`
+        # @return [String]
+        attr_accessor :subject_common_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_template_name = args[:certificate_template_name] if args.key?(:certificate_template_name)
+          @country = args[:country] if args.key?(:country)
+          @key_usages = args[:key_usages] if args.key?(:key_usages)
+          @locality = args[:locality] if args.key?(:locality)
+          @organization = args[:organization] if args.key?(:organization)
+          @organizational_units = args[:organizational_units] if args.key?(:organizational_units)
+          @state = args[:state] if args.key?(:state)
+          @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
+          @subject_common_name = args[:subject_common_name] if args.key?(:subject_common_name)
+        end
+      end
+      
+      # Request message for marking a certificate provisioning process as failed.
+      class GoogleChromeManagementVersionsV1SetFailureRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A message describing the failure details. It is displayed on the
+        # ChromeOS client device.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
+      # Response message for publishing a failure for a certificate provisioning
+      # process.
+      class GoogleChromeManagementVersionsV1SetFailureResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata for the long-running operation returned by signData.
       class GoogleChromeManagementVersionsV1SignDataMetadata
         include Google::Apis::Core::Hashable
@@ -4829,6 +6302,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Request message for requesting a signature from the client that initated a
+      # certificate provisioning process.
+      class GoogleChromeManagementVersionsV1SignDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The data that the client was asked to sign.
+        # Corresponds to the JSON property `signData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sign_data
+      
+        # Required. The signature algorithm that the adapter expects the client and
+        # backend components to use when processing `sign_data`.
+        # Corresponds to the JSON property `signatureAlgorithm`
+        # @return [String]
+        attr_accessor :signature_algorithm
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sign_data = args[:sign_data] if args.key?(:sign_data)
+          @signature_algorithm = args[:signature_algorithm] if args.key?(:signature_algorithm)
         end
       end
       
@@ -4849,6 +6350,330 @@ module Google
         # Update properties of this object
         def update!(**args)
           @certificate_provisioning_process = args[:certificate_provisioning_process] if args.key?(:certificate_provisioning_process)
+        end
+      end
+      
+      # Splunk connector config.
+      class GoogleChromeManagementVersionsV1SplunkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. The data input's HTTP Event Collector token to use as an
+        # Authorization header.
+        # Corresponds to the JSON property `hecToken`
+        # @return [String]
+        attr_accessor :hec_token
+      
+        # Required. Host to identify the customer specific server to receive the events.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # Optional. The port number to use. If not set, the default Splunk port is used.
+        # Corresponds to the JSON property `portNumber`
+        # @return [Fixnum]
+        attr_accessor :port_number
+      
+        # Reporting settings for connector configs.
+        # Corresponds to the JSON property `reportingSettings`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingSettings]
+        attr_accessor :reporting_settings
+      
+        # Optional. Optional source name to override the default one set in the Splunk
+        # admin console.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Optional. Whether to use an unsecure HTTP scheme. Defaults to false (HTTPS).
+        # Corresponds to the JSON property `unsecureScheme`
+        # @return [Boolean]
+        attr_accessor :unsecure_scheme
+        alias_method :unsecure_scheme?, :unsecure_scheme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hec_token = args[:hec_token] if args.key?(:hec_token)
+          @host = args[:host] if args.key?(:host)
+          @port_number = args[:port_number] if args.key?(:port_number)
+          @reporting_settings = args[:reporting_settings] if args.key?(:reporting_settings)
+          @source = args[:source] if args.key?(:source)
+          @unsecure_scheme = args[:unsecure_scheme] if args.key?(:unsecure_scheme)
+        end
+      end
+      
+      # Describes a subject alternative name.
+      class GoogleChromeManagementVersionsV1SubjectAltName
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The type of the SubjectAltName extension.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. The value of the subject alternative name with respect to the `
+        # type`.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A representation of non-Google (third party) user that is associated with a
+      # managed Chrome profile.
+      class GoogleChromeManagementVersionsV1ThirdPartyProfileUser
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. Format: customers/`customer_id`/thirdPartyProfileUsers/`
+        # third_party_profile_user_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The ID of the organizational unit assigned to the user.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+        end
+      end
+      
+      # Request message for uploading an issued certificate for a certificate
+      # provisioning process.
+      class GoogleChromeManagementVersionsV1UploadCertificateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The issued certificate in PEM format.
+        # Corresponds to the JSON property `certificatePem`
+        # @return [String]
+        attr_accessor :certificate_pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_pem = args[:certificate_pem] if args.key?(:certificate_pem)
+        end
+      end
+      
+      # Response message for publishing an issued certificate for a certificate
+      # provisioning process.
+      class GoogleChromeManagementVersionsV1UploadCertificateResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A URL visits summary for a given breakdown dimension.
+      class GoogleChromeManagementVersionsV1UrlVisitsBreakdown
+        include Google::Apis::Core::Hashable
+      
+        # The event domain of the URL visits.
+        # Corresponds to the JSON property `eventDomain`
+        # @return [String]
+        attr_accessor :event_domain
+      
+        # Summary of URL visits for a given metric.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1UrlVisitsSummary]
+        attr_accessor :summary
+      
+        # The user that visited the URL.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_domain = args[:event_domain] if args.key?(:event_domain)
+          @summary = args[:summary] if args.key?(:summary)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
+      # Summary of URL visits for a given metric.
+      class GoogleChromeManagementVersionsV1UrlVisitsSummary
+        include Google::Apis::Core::Hashable
+      
+        # The count of the URL visits metric.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The type of URL visits metric.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @metric = args[:metric] if args.key?(:metric)
+        end
+      end
+      
+      # XDR settings for connector configs.
+      class GoogleChromeManagementVersionsV1XdrSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. Whether to enable all XDR events.
+        # Corresponds to the JSON property `enableAllXdrEvents`
+        # @return [Boolean]
+        attr_accessor :enable_all_xdr_events
+        alias_method :enable_all_xdr_events?, :enable_all_xdr_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_all_xdr_events = args[:enable_all_xdr_events] if args.key?(:enable_all_xdr_events)
+        end
+      end
+      
+      # The request message for Operations.CancelOperation.
+      class GoogleLongrunningCancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class GoogleLongrunningListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleLongrunningOperation>]
+        attr_accessor :operations
+      
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class GoogleLongrunningOperation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ChromemanagementV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
         end
       end
       

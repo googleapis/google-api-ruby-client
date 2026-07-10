@@ -910,6 +910,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadPrivateImageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UploadPrivateImageResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Uri
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1028,8 +1040,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blob_generation, :numeric_string => true, as: 'blobGeneration'
           property :blob_id, as: 'blobId'
+          property :download_external_read_token, :base64 => true, as: 'downloadExternalReadToken'
           property :download_read_handle, :base64 => true, as: 'downloadReadHandle'
           property :read_token, as: 'readToken'
+          property :upload_fragment_list_creation_info, :base64 => true, as: 'uploadFragmentListCreationInfo'
           property :upload_metadata_container, :base64 => true, as: 'uploadMetadataContainer'
         end
       end
@@ -1169,8 +1183,10 @@ module Google
           property :best_guess, as: 'bestGuess'
           property :from_bytes, as: 'fromBytes'
           property :from_file_name, as: 'fromFileName'
+          property :from_fusion_id, as: 'fromFusionId'
           property :from_header, as: 'fromHeader'
           property :from_url_path, as: 'fromUrlPath'
+          property :fusion_id_detection_metadata, :base64 => true, as: 'fusionIdDetectionMetadata'
         end
       end
       
@@ -2052,6 +2068,7 @@ module Google
           property :content_description, as: 'contentDescription', class: Google::Apis::WalletobjectsV1::LocalizedString, decorator: Google::Apis::WalletobjectsV1::LocalizedString::Representation
       
           property :kind, as: 'kind'
+          property :private_image_id, as: 'privateImageId'
           property :source_uri, as: 'sourceUri', class: Google::Apis::WalletobjectsV1::ImageUri, decorator: Google::Apis::WalletobjectsV1::ImageUri::Representation
       
         end
@@ -2442,6 +2459,7 @@ module Google
           property :reference_type, as: 'referenceType'
           property :sha1_hash, :base64 => true, as: 'sha1Hash'
           property :sha256_hash, :base64 => true, as: 'sha256Hash'
+          property :sha512_hash, :base64 => true, as: 'sha512Hash'
           property :timestamp, :numeric_string => true, as: 'timestamp'
           property :token, as: 'token'
         end
@@ -2455,6 +2473,7 @@ module Google
           property :diff_object_version, as: 'diffObjectVersion'
           property :final_status, as: 'finalStatus'
           property :notification_type, as: 'notificationType'
+          property :physical_headers, :base64 => true, as: 'physicalHeaders'
           property :request_id, as: 'requestId'
           property :request_received_params_serving_info, :base64 => true, as: 'requestReceivedParamsServingInfo'
           property :total_bytes, :numeric_string => true, as: 'totalBytes'
@@ -3241,6 +3260,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_notification, as: 'enableNotification'
+        end
+      end
+      
+      class UploadPrivateImageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UploadPrivateImageResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_image_id, as: 'privateImageId'
         end
       end
       

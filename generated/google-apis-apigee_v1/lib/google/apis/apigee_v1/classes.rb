@@ -358,6 +358,25 @@ module Google
         end
       end
       
+      # Request for AdjustAppGroupBalance.
+      class GoogleCloudApigeeV1AdjustAppGroupBalanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `adjustment`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeMoney]
+        attr_accessor :adjustment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjustment = args[:adjustment] if args.key?(:adjustment)
+        end
+      end
+      
       # Request for AdjustDeveloperBalance.
       class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest
         include Google::Apis::Core::Hashable
@@ -790,6 +809,11 @@ module Google
       class GoogleCloudApigeeV1ApiDocDocumentation
         include Google::Apis::Core::Hashable
       
+        # AsyncAPI Specification documentation for a catalog item.
+        # Corresponds to the JSON property `asyncApiDocumentation`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncApiDocumentation]
+        attr_accessor :async_api_documentation
+      
         # GraphQL documentation for a catalog item.
         # Corresponds to the JSON property `graphqlDocumentation`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1GraphqlDocumentation]
@@ -806,6 +830,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @async_api_documentation = args[:async_api_documentation] if args.key?(:async_api_documentation)
           @graphql_documentation = args[:graphql_documentation] if args.key?(:graphql_documentation)
           @oas_documentation = args[:oas_documentation] if args.key?(:oas_documentation)
         end
@@ -994,6 +1019,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_at
       
+        # List of LLM operation configuration details associated with Apigee API proxies.
+        # Corresponds to the JSON property `llmOperationGroup`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationGroup]
+        attr_accessor :llm_operation_group
+      
+        # Optional. Number of LLM tokens permitted per app by this API product for the
+        # specified `llm_quota_interval` and `llm_quota_time_unit`. For example, an `
+        # llm_quota` of 50,000, for an `llm_quota_interval` of 12 and an `
+        # llm_quota_time_unit` of hours means 50,000 llm tokens are allowed to be used
+        # every 12 hours.
+        # Corresponds to the JSON property `llmQuota`
+        # @return [String]
+        attr_accessor :llm_quota
+      
+        # Optional. Time interval over which the number of tokens from LLM responses is
+        # calculated.
+        # Corresponds to the JSON property `llmQuotaInterval`
+        # @return [String]
+        attr_accessor :llm_quota_interval
+      
+        # Optional. Time unit defined for the `llm_quota_interval`. Valid values include
+        # `minute`, `hour`, `day`, or `month`.
+        # Corresponds to the JSON property `llmQuotaTimeUnit`
+        # @return [String]
+        attr_accessor :llm_quota_time_unit
+      
         # Internal name of the API product. Characters you can use in the name are
         # restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be edited
         # when updating the API product.
@@ -1006,6 +1057,14 @@ module Google
         # Corresponds to the JSON property `operationGroup`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1OperationGroup]
         attr_accessor :operation_group
+      
+        # List of payload operation configuration details associated with Apigee API
+        # proxies. Payload operations enable governance of protocols where operations
+        # are embedded in the request body (such as JSON-RPC) rather than defined by the
+        # URL path.
+        # Corresponds to the JSON property `payloadOperationGroup`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationGroup]
+        attr_accessor :payload_operation_group
       
         # Comma-separated list of API proxy names to which this API product is bound. By
         # specifying API proxies, you can associate resources in the API product with
@@ -1079,8 +1138,13 @@ module Google
           @graphql_operation_group = args[:graphql_operation_group] if args.key?(:graphql_operation_group)
           @grpc_operation_group = args[:grpc_operation_group] if args.key?(:grpc_operation_group)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @llm_operation_group = args[:llm_operation_group] if args.key?(:llm_operation_group)
+          @llm_quota = args[:llm_quota] if args.key?(:llm_quota)
+          @llm_quota_interval = args[:llm_quota_interval] if args.key?(:llm_quota_interval)
+          @llm_quota_time_unit = args[:llm_quota_time_unit] if args.key?(:llm_quota_time_unit)
           @name = args[:name] if args.key?(:name)
           @operation_group = args[:operation_group] if args.key?(:operation_group)
+          @payload_operation_group = args[:payload_operation_group] if args.key?(:payload_operation_group)
           @proxies = args[:proxies] if args.key?(:proxies)
           @quota = args[:quota] if args.key?(:quota)
           @quota_counter_scope = args[:quota_counter_scope] if args.key?(:quota_counter_scope)
@@ -1251,6 +1315,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_at
       
+        # Output only. Whether this proxy revision is detected as an MCP (Model Context
+        # Protocol) proxy. A proxy revision is identified as MCP if it has a proxy
+        # endpoint with the `/mcp` base path that routes to the MCP target URL.
+        # Corresponds to the JSON property `mcp`
+        # @return [Boolean]
+        attr_accessor :mcp
+        alias_method :mcp?, :mcp
+      
         # Name of the API proxy.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1350,6 +1422,7 @@ module Google
           @has_extensible_policy = args[:has_extensible_policy] if args.key?(:has_extensible_policy)
           @integration_endpoints = args[:integration_endpoints] if args.key?(:integration_endpoints)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @mcp = args[:mcp] if args.key?(:mcp)
           @name = args[:name] if args.key?(:name)
           @policies = args[:policies] if args.key?(:policies)
           @proxies = args[:proxies] if args.key?(:proxies)
@@ -1438,6 +1511,160 @@ module Google
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # APIM Service Extension is a resource under an Apigee Organization that is used
+      # to create APIM Service Extension to route traffic to existing X instances.
+      class GoogleCloudApigeeV1ApimServiceExtension
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time that this resource was created on the server.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Name of the proxy deployed in the Apigee X instance.
+        # Corresponds to the JSON property `extensionProcessor`
+        # @return [String]
+        attr_accessor :extension_processor
+      
+        # Optional. List of extensions that are part of the service extension. Refer to
+        # https://cloud.google.com/service-extensions/docs/quotas#limits for any limits.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtensionExtension>]
+        attr_accessor :extensions
+      
+        # Required. Name of the Google Cloud LB forwarding rule. Format: projects/`
+        # project`/regions/`region`/forwardingRules/`forwarding_rule` projects/`project`/
+        # global/forwardingRules/`forwarding_rule`
+        # Corresponds to the JSON property `lbForwardingRule`
+        # @return [String]
+        attr_accessor :lb_forwarding_rule
+      
+        # Identifier. unique name of the APIM service extension. The name must conform
+        # with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and
+        # can have a maximum length of 63 characters. Additionally, the first character
+        # must be a letter and the last a letter or a number.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The network where the forwarding rule is created. Format: projects/`
+        # project`/global/networks/`network`
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Required. List of network configurations for the APIM service extension.
+        # Corresponds to the JSON property `networkConfigs`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig>]
+        attr_accessor :network_configs
+      
+        # Output only. State of the APIM service extension. Values other than `ACTIVE`
+        # mean the resource is not ready to use.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time that this resource was updated on the server.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @extension_processor = args[:extension_processor] if args.key?(:extension_processor)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @lb_forwarding_rule = args[:lb_forwarding_rule] if args.key?(:lb_forwarding_rule)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @network_configs = args[:network_configs] if args.key?(:network_configs)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Extension configuration for Apigee extension processor service extension.
+      class GoogleCloudApigeeV1ApimServiceExtensionExtension
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether this request should fail open.
+        # Corresponds to the JSON property `failOpen`
+        # @return [Boolean]
+        attr_accessor :fail_open
+        alias_method :fail_open?, :fail_open
+      
+        # Required. One of the hostnames of Apigee EnvGroup where the proxy is deployed.
+        # This hostname (i.e FDQN) will be used to route traffic from the specified
+        # forwarding rule to the environment in Apigee X instance where the proxy is
+        # deployed for handling extension traffic. Format: ^([a-zA-Z0-9. _-])+$
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Optional. Match Condition for CEL expression. Refer to https://cloud.google.
+        # com/service-extensions/docs/cel-matcher-language-reference for more details.
+        # Corresponds to the JSON property `matchCondition`
+        # @return [String]
+        attr_accessor :match_condition
+      
+        # Required. Name of the `LbTrafficExtension` resource. The name must conform
+        # with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and
+        # can have a maximum length of 63 characters. Additionally, the first character
+        # must be a letter and the last a letter or a number.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Supported events for the Service Extension. If not specified, all
+        # events are supported.
+        # Corresponds to the JSON property `supportedEvents`
+        # @return [Array<String>]
+        attr_accessor :supported_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fail_open = args[:fail_open] if args.key?(:fail_open)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @match_condition = args[:match_condition] if args.key?(:match_condition)
+          @name = args[:name] if args.key?(:name)
+          @supported_events = args[:supported_events] if args.key?(:supported_events)
+        end
+      end
+      
+      # Network configuration for the APIM service extension.
+      class GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The region for the PSC NEG.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Required. The subnet for the PSC NEG. Format: projects/`project`/regions/`
+        # region`/subnetworks/`subnet`
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region = args[:region] if args.key?(:region)
+          @subnet = args[:subnet] if args.key?(:subnet)
         end
       end
       
@@ -1586,6 +1813,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Email of the AppGroup.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
         # Output only. Modified time as milliseconds since epoch.
         # Corresponds to the JSON property `lastModifiedAt`
         # @return [Fixnum]
@@ -1621,6 +1853,7 @@ module Google
           @channel_uri = args[:channel_uri] if args.key?(:channel_uri)
           @created_at = args[:created_at] if args.key?(:created_at)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
           @organization = args[:organization] if args.key?(:organization)
@@ -1794,6 +2027,125 @@ module Google
         end
       end
       
+      # AppGroupBalance for the AppGroup.
+      class GoogleCloudApigeeV1AppGroupBalance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of all wallets. Each individual wallet stores the account
+        # balance for a particular currency.
+        # Corresponds to the JSON property `wallets`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalanceWallet>]
+        attr_accessor :wallets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wallets = args[:wallets] if args.key?(:wallets)
+        end
+      end
+      
+      # Wallet used to manage an account balance for a particular currency.
+      class GoogleCloudApigeeV1AppGroupBalanceWallet
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `balance`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeMoney]
+        attr_accessor :balance
+      
+        # Output only. Time at which the AppGroup last added credit to the account in
+        # milliseconds since epoch.
+        # Corresponds to the JSON property `lastCreditTime`
+        # @return [Fixnum]
+        attr_accessor :last_credit_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @balance = args[:balance] if args.key?(:balance)
+          @last_credit_time = args[:last_credit_time] if args.key?(:last_credit_time)
+        end
+      end
+      
+      # Monetization configuration for the AppGroup.
+      class GoogleCloudApigeeV1AppGroupMonetizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Billing type.
+        # Corresponds to the JSON property `billingType`
+        # @return [String]
+        attr_accessor :billing_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billing_type = args[:billing_type] if args.key?(:billing_type)
+        end
+      end
+      
+      # AppGroup Subscription details.
+      class GoogleCloudApigeeV1AppGroupSubscription
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the API product for which the appgroup is purchasing a
+        # subscription.
+        # Corresponds to the JSON property `apiproduct`
+        # @return [String]
+        attr_accessor :apiproduct
+      
+        # Output only. Time when the API product subscription was created in
+        # milliseconds since epoch.
+        # Corresponds to the JSON property `createdAt`
+        # @return [Fixnum]
+        attr_accessor :created_at
+      
+        # Output only. Time when the API product subscription ends in milliseconds since
+        # epoch.
+        # Corresponds to the JSON property `endTime`
+        # @return [Fixnum]
+        attr_accessor :end_time
+      
+        # Output only. Time when the API product subscription was last modified in
+        # milliseconds since epoch.
+        # Corresponds to the JSON property `lastModifiedAt`
+        # @return [Fixnum]
+        attr_accessor :last_modified_at
+      
+        # Output only. Name of the API product subscription.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Time when the API product subscription starts in milliseconds
+        # since epoch.
+        # Corresponds to the JSON property `startTime`
+        # @return [Fixnum]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apiproduct = args[:apiproduct] if args.key?(:apiproduct)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Archive Deployment information.
       class GoogleCloudApigeeV1ArchiveDeployment
         include Google::Apis::Core::Hashable
@@ -1851,6 +2203,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @operation = args[:operation] if args.key?(:operation)
           @updated_at = args[:updated_at] if args.key?(:updated_at)
+        end
+      end
+      
+      # AsyncAPI Specification documentation for a catalog item.
+      class GoogleCloudApigeeV1AsyncApiDocumentation
+        include Google::Apis::Core::Hashable
+      
+        # Documentation file contents for a catalog item.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DocumentationFile]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @spec = args[:spec] if args.key?(:spec)
         end
       end
       
@@ -2068,6 +2439,16 @@ module Google
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
         include Google::Apis::Core::Hashable
       
+        # Message for the array of API Hub APIs.
+        # Corresponds to the JSON property `apiHubApis`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray]
+        attr_accessor :api_hub_apis
+      
+        # Message for the array of API Hub Gateways.
+        # Corresponds to the JSON property `apiHubGateways`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray]
+        attr_accessor :api_hub_gateways
+      
         # Message for the array of resources. For Apigee, the proxies are resources.
         # Corresponds to the JSON property `include`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray]
@@ -2096,8 +2477,10 @@ module Google
         # @return [String]
         attr_accessor :profile
       
-        # Required. Scope of the resources for the computation. For Apigee, the
-        # environment is the scope of the resources.
+        # Optional. Scope of the resources for the computation. When computing scores
+        # for Apigee proxies, the scope should be set to the environment of the
+        # resources. When computing scores for API Hub deployments, api_hub_scope should
+        # be set instead.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -2108,12 +2491,54 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_hub_apis = args[:api_hub_apis] if args.key?(:api_hub_apis)
+          @api_hub_gateways = args[:api_hub_gateways] if args.key?(:api_hub_gateways)
           @include = args[:include] if args.key?(:include)
           @include_all_resources = args[:include_all_resources] if args.key?(:include_all_resources)
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
           @profile = args[:profile] if args.key?(:profile)
           @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Message for the array of API Hub APIs.
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray
+        include Google::Apis::Core::Hashable
+      
+        # Required. The array of API Hub API IDs. Format: `projects/`project`/locations/`
+        # location`/apis/`api``
+        # Corresponds to the JSON property `apis`
+        # @return [Array<String>]
+        attr_accessor :apis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apis = args[:apis] if args.key?(:apis)
+        end
+      end
+      
+      # Message for the array of API Hub Gateways.
+      class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray
+        include Google::Apis::Core::Hashable
+      
+        # Required. The array of API Hub Gateway IDs. Format: `projects/`project`/
+        # locations/`location`/plugins/`plugin`/instances/`instance``
+        # Corresponds to the JSON property `gateways`
+        # @return [Array<String>]
+        attr_accessor :gateways
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateways = args[:gateways] if args.key?(:gateways)
         end
       end
       
@@ -2153,7 +2578,9 @@ module Google
       class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource
         include Google::Apis::Core::Hashable
       
-        # Required. Name of this resource.
+        # Required. Name of this resource. For an Apigee API Proxy, this should be the
+        # id of the API proxy. For an API Hub Deployment, this should be the id of the
+        # deployment.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2723,6 +3150,33 @@ module Google
           @issued_at = args[:issued_at] if args.key?(:issued_at)
           @scopes = args[:scopes] if args.key?(:scopes)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Request for CreditAppGroupBalance.
+      class GoogleCloudApigeeV1CreditAppGroupBalanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `transactionAmount`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeMoney]
+        attr_accessor :transaction_amount
+      
+        # Required. Each transaction_id uniquely identifies a credit balance request. If
+        # multiple requests are received with the same transaction_id, only one of them
+        # will be considered.
+        # Corresponds to the JSON property `transactionId`
+        # @return [String]
+        attr_accessor :transaction_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @transaction_amount = args[:transaction_amount] if args.key?(:transaction_amount)
+          @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
         end
       end
       
@@ -4545,8 +4999,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :ip_header_index
       
-        # Required. The name of the header to extract the client ip from. We are
-        # currently only supporting the X-Forwarded-For header.
+        # Required. The name of the header to extract the client ip from.
         # Corresponds to the JSON property `ipHeaderName`
         # @return [String]
         attr_accessor :ip_header_name
@@ -4688,8 +5141,8 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig>]
         attr_accessor :targets
       
-        # NEXT ID: 8 RuntimeTraceConfig defines the configurations for distributed trace
-        # in an environment.
+        # NEXT ID: 10 RuntimeTraceConfig defines the configurations for distributed
+        # trace in an environment.
         # Corresponds to the JSON property `traceConfig`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfig]
         attr_accessor :trace_config
@@ -4922,6 +5375,19 @@ module Google
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @routing_rules = args[:routing_rules] if args.key?(:routing_rules)
           @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
+      # Request for ExpireAppGroupSubscription.
+      class GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5598,6 +6064,14 @@ module Google
         # @return [String]
         attr_accessor :ip_range
       
+        # Output only. Indicates whether the instance is version locked. If true, the
+        # instance will not be updated by automated runtime rollouts. This is only
+        # supported for Apigee X instances.
+        # Corresponds to the JSON property `isVersionLocked`
+        # @return [Boolean]
+        attr_accessor :is_version_locked
+        alias_method :is_version_locked?, :is_version_locked
+      
         # Output only. Time the instance was last modified in milliseconds since epoch.
         # Corresponds to the JSON property `lastModifiedAt`
         # @return [Fixnum]
@@ -5607,6 +6081,12 @@ module Google
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
+      
+        # MaintenanceUpdatePolicy specifies the preferred window to perform maintenance
+        # on the instance (day of the week and time of day).
+        # Corresponds to the JSON property `maintenanceUpdatePolicy`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicy]
+        attr_accessor :maintenance_update_policy
       
         # Required. Resource ID of the instance. Values must match the regular
         # expression `^a-z`0,30`[a-z\d]$`.
@@ -5632,6 +6112,11 @@ module Google
         # Corresponds to the JSON property `runtimeVersion`
         # @return [String]
         attr_accessor :runtime_version
+      
+        # Scheduled maintenance information for an instance.
+        # Corresponds to the JSON property `scheduledMaintenance`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ScheduledMaintenance]
+        attr_accessor :scheduled_maintenance
       
         # Output only. Resource name of the service attachment created for the instance
         # in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers
@@ -5661,12 +6146,15 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @host = args[:host] if args.key?(:host)
           @ip_range = args[:ip_range] if args.key?(:ip_range)
+          @is_version_locked = args[:is_version_locked] if args.key?(:is_version_locked)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @location = args[:location] if args.key?(:location)
+          @maintenance_update_policy = args[:maintenance_update_policy] if args.key?(:maintenance_update_policy)
           @name = args[:name] if args.key?(:name)
           @peering_cidr_range = args[:peering_cidr_range] if args.key?(:peering_cidr_range)
           @port = args[:port] if args.key?(:port)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
+          @scheduled_maintenance = args[:scheduled_maintenance] if args.key?(:scheduled_maintenance)
           @service_attachment = args[:service_attachment] if args.key?(:service_attachment)
           @state = args[:state] if args.key?(:state)
         end
@@ -5885,6 +6373,13 @@ module Google
         attr_accessor :encrypted
         alias_method :encrypted?, :encrypted
       
+        # Optional. Flag that specifies whether entry values will be masked when
+        # returned.
+        # Corresponds to the JSON property `maskedValues`
+        # @return [Boolean]
+        attr_accessor :masked_values
+        alias_method :masked_values?, :masked_values
+      
         # Required. ID of the key value map.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -5897,6 +6392,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @encrypted = args[:encrypted] if args.key?(:encrypted)
+          @masked_values = args[:masked_values] if args.key?(:masked_values)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -6111,6 +6607,32 @@ module Google
         end
       end
       
+      # Response for list service extensions.
+      class GoogleCloudApigeeV1ListApimServiceExtensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # service extension in a given organization.
+        # Corresponds to the JSON property `apimServiceExtensions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension>]
+        attr_accessor :apim_service_extensions
+      
+        # Page token that you can include in an `ListApimServiceExtensions` request to
+        # retrieve the next page. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apim_service_extensions = args[:apim_service_extensions] if args.key?(:apim_service_extensions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response for ListAppGroupApps
       class GoogleCloudApigeeV1ListAppGroupAppsResponse
         include Google::Apis::Core::Hashable
@@ -6133,6 +6655,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_group_apps = args[:app_group_apps] if args.key?(:app_group_apps)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for ListAppGroupSubscriptions.
+      class GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of subscriptions for an AppGroup.
+        # Corresponds to the JSON property `appGroupSubscriptions`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription>]
+        attr_accessor :app_group_subscriptions
+      
+        # Value that can be sent as `pageToken` to retrieve the next page of content. If
+        # this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_group_subscriptions = args[:app_group_subscriptions] if args.key?(:app_group_subscriptions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -6758,6 +7306,33 @@ module Google
         end
       end
       
+      # Response for ListSecurityFeedback
+      class GoogleCloudApigeeV1ListSecurityFeedbackResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` in `ListSecurityFeedbackRequest` to
+        # retrieve the next page. If this field is omitted, there are no subsequent
+        # pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of SecurityFeedback reports.
+        # Corresponds to the JSON property `securityFeedback`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback>]
+        attr_accessor :security_feedback
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @security_feedback = args[:security_feedback] if args.key?(:security_feedback)
+        end
+      end
+      
       # Response for ListSecurityIncidents.
       class GoogleCloudApigeeV1ListSecurityIncidentsResponse
         include Google::Apis::Core::Hashable
@@ -6987,6 +7562,197 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @trace_config_overrides = args[:trace_config_overrides] if args.key?(:trace_config_overrides)
+        end
+      end
+      
+      # Represents the pairing of REST resource path, model and the actions (verbs)
+      # allowed on the resource path.
+      class GoogleCloudApigeeV1LlmOperation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. methods refers to the REST verbs as in https://httpwg.org/specs/
+        # rfc9110.html For example: GET, POST, PUT, DELETE, etc. They need to be in
+        # uppercase. When none specified, all verb types are allowed.
+        # Corresponds to the JSON property `methods`
+        # @return [Array<String>]
+        attr_accessor :methods_prop
+      
+        # Required. LLM model name associated with the API proxy
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Required. REST resource path associated with the API proxy or remote service.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
+          @model = args[:model] if args.key?(:model)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # Binds the resources in an API proxy or remote service with the allowed REST
+      # methods and associated quota enforcement.
+      class GoogleCloudApigeeV1LlmOperationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the API proxy or remote service with which the resources,
+        # methods, and quota are associated.
+        # Corresponds to the JSON property `apiSource`
+        # @return [String]
+        attr_accessor :api_source
+      
+        # Optional. Custom attributes associated with the operation.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
+        attr_accessor :attributes
+      
+        # Required. List of resource/method/model for the API proxy to which quota will
+        # applied. **Note**: Currently, you can specify only a single resource/method/
+        # model mapping. The call will fail if more than one resource/method/model
+        # mappings are provided.
+        # Corresponds to the JSON property `llmOperations`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperation>]
+        attr_accessor :llm_operations
+      
+        # LLM Token Quota contains the essential parameters needed that can be applied
+        # on the resources, methods, models, API source combination associated with this
+        # API product. While LLM Token Quota is optional, setting it prevents requests
+        # from exceeding the provisioned parameters.
+        # Corresponds to the JSON property `llmTokenQuota`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmTokenQuota]
+        attr_accessor :llm_token_quota
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_source = args[:api_source] if args.key?(:api_source)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @llm_operations = args[:llm_operations] if args.key?(:llm_operations)
+          @llm_token_quota = args[:llm_token_quota] if args.key?(:llm_token_quota)
+        end
+      end
+      
+      # List of LLM operation configuration details associated with Apigee API proxies.
+      class GoogleCloudApigeeV1LlmOperationGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of LLM operation configurations for either Apigee API proxies
+        # that are associated with this API product.
+        # Corresponds to the JSON property `operationConfigs`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1LlmOperationConfig>]
+        attr_accessor :operation_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_configs = args[:operation_configs] if args.key?(:operation_configs)
+        end
+      end
+      
+      # LLM Token Quota contains the essential parameters needed that can be applied
+      # on the resources, methods, models, API source combination associated with this
+      # API product. While LLM Token Quota is optional, setting it prevents requests
+      # from exceeding the provisioned parameters.
+      class GoogleCloudApigeeV1LlmTokenQuota
+        include Google::Apis::Core::Hashable
+      
+        # Required. Time interval over which the number of request messages is
+        # calculated.
+        # Corresponds to the JSON property `interval`
+        # @return [String]
+        attr_accessor :interval
+      
+        # Required. Upper limit of LLM tokens allowed for the time interval and time
+        # unit specified. Requests exceeding this limit will be rejected.
+        # Corresponds to the JSON property `limit`
+        # @return [String]
+        attr_accessor :limit
+      
+        # Optional. Time unit defined for the `interval`. Valid values include `minute`,
+        # `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default
+        # value is `hour`; otherwise, the default is null.
+        # Corresponds to the JSON property `timeUnit`
+        # @return [String]
+        attr_accessor :time_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @limit = args[:limit] if args.key?(:limit)
+          @time_unit = args[:time_unit] if args.key?(:time_unit)
+        end
+      end
+      
+      # MaintenanceUpdatePolicy specifies the preferred window to perform maintenance
+      # on the instance (day of the week and time of day).
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Maintenance channel to specify relative scheduling for maintenance.
+        # Corresponds to the JSON property `maintenanceChannel`
+        # @return [String]
+        attr_accessor :maintenance_channel
+      
+        # Optional. Preferred windows to perform maintenance. Currently limited to 1.
+        # Corresponds to the JSON property `maintenanceWindows`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow>]
+        attr_accessor :maintenance_windows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maintenance_channel = args[:maintenance_channel] if args.key?(:maintenance_channel)
+          @maintenance_windows = args[:maintenance_windows] if args.key?(:maintenance_windows)
+        end
+      end
+      
+      # MaintenanceWindow specifies the preferred day of the week and time of day to
+      # perform maintenance.
+      class GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow
+        include Google::Apis::Core::Hashable
+      
+        # Required. Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::ApigeeV1::GoogleTypeTimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -7600,12 +8366,20 @@ module Google
         # @return [String]
         attr_accessor :billing_type
       
-        # Output only. Base64-encoded public certificate for the root CA of the Apigee
-        # organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
+        # Output only. Deprecated: Use `ca_certificates` instead. Base64-encoded public
+        # certificate for the root CA of the Apigee organization. Valid only when [
+        # RuntimeType](#RuntimeType) is `CLOUD`.
         # Corresponds to the JSON property `caCertificate`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :ca_certificate
+      
+        # Output only. Base64-encoded public certificates for the root CA of the Apigee
+        # organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`. Multiple
+        # certificates are used to support certificate rotation.
+        # Corresponds to the JSON property `caCertificates`
+        # @return [Array<String>]
+        attr_accessor :ca_certificates
       
         # Optional. Cloud KMS key name used for encrypting control plane data that is
         # stored in a multi region. Only used for the data residency region "US" or "EU".
@@ -7673,6 +8447,14 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. Flag that specifies if internet egress is restricted for VPC Service
+        # Controls. Valid only when runtime_type is `CLOUD` and disable_vpc_peering is `
+        # true`.
+        # Corresponds to the JSON property `networkEgressRestricted`
+        # @return [Boolean]
+        attr_accessor :network_egress_restricted
+        alias_method :network_egress_restricted?, :network_egress_restricted
       
         # Optional. Configuration for the Portals settings.
         # Corresponds to the JSON property `portalDisabled`
@@ -7747,6 +8529,7 @@ module Google
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
           @billing_type = args[:billing_type] if args.key?(:billing_type)
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @ca_certificates = args[:ca_certificates] if args.key?(:ca_certificates)
           @control_plane_encryption_key_name = args[:control_plane_encryption_key_name] if args.key?(:control_plane_encryption_key_name)
           @created_at = args[:created_at] if args.key?(:created_at)
           @customer_name = args[:customer_name] if args.key?(:customer_name)
@@ -7757,6 +8540,7 @@ module Google
           @expires_at = args[:expires_at] if args.key?(:expires_at)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
           @name = args[:name] if args.key?(:name)
+          @network_egress_restricted = args[:network_egress_restricted] if args.key?(:network_egress_restricted)
           @portal_disabled = args[:portal_disabled] if args.key?(:portal_disabled)
           @project_id = args[:project_id] if args.key?(:project_id)
           @properties = args[:properties] if args.key?(:properties)
@@ -7805,6 +8589,93 @@ module Google
           @organization = args[:organization] if args.key?(:organization)
           @project_id = args[:project_id] if args.key?(:project_id)
           @project_ids = args[:project_ids] if args.key?(:project_ids)
+        end
+      end
+      
+      # Represents a single operation identifier extracted from the request payload.
+      class GoogleCloudApigeeV1PayloadOperation
+        include Google::Apis::Core::Hashable
+      
+        # Required. The operation name extracted from the request payload at runtime by
+        # the ParsePayload policy. For example, for MCP protocol requests, this could be
+        # `"tools/list"` or `"tools/call/get_weather"`. Wildcards are not supported.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
+      # Binds the payload operations in an API proxy with the associated quota
+      # enforcement.
+      class GoogleCloudApigeeV1PayloadOperationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the API proxy with which the payload operations and quota
+        # are associated.
+        # Corresponds to the JSON property `apiSource`
+        # @return [String]
+        attr_accessor :api_source
+      
+        # Optional. Custom attributes associated with the operation.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
+        attr_accessor :attributes
+      
+        # Required. List of payload operations for the API proxy to which quota will be
+        # applied.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperation>]
+        attr_accessor :operations
+      
+        # Quota contains the essential parameters needed that can be applied on the
+        # resources, methods, API source combination associated with this API product.
+        # While Quota is optional, setting it prevents requests from exceeding the
+        # provisioned parameters.
+        # Corresponds to the JSON property `quota`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Quota]
+        attr_accessor :quota
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_source = args[:api_source] if args.key?(:api_source)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @operations = args[:operations] if args.key?(:operations)
+          @quota = args[:quota] if args.key?(:quota)
+        end
+      end
+      
+      # List of payload operation configuration details associated with Apigee API
+      # proxies. Payload operations enable governance of protocols where operations
+      # are embedded in the request body (such as JSON-RPC) rather than defined by the
+      # URL path.
+      class GoogleCloudApigeeV1PayloadOperationGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of payload operation configurations for Apigee API proxies that
+        # are associated with this API product.
+        # Corresponds to the JSON property `operationConfigs`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1PayloadOperationConfig>]
+        attr_accessor :operation_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_configs = args[:operation_configs] if args.key?(:operation_configs)
         end
       end
       
@@ -9428,8 +10299,8 @@ module Google
         end
       end
       
-      # NEXT ID: 8 RuntimeTraceConfig defines the configurations for distributed trace
-      # in an environment.
+      # NEXT ID: 10 RuntimeTraceConfig defines the configurations for distributed
+      # trace in an environment.
       class GoogleCloudApigeeV1RuntimeTraceConfig
         include Google::Apis::Core::Hashable
       
@@ -9450,6 +10321,17 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. If `true`, the runtime uses OpenTelemetry Protocol (OTLP) to send
+        # trace data. Configuration Requirements (if `open_telemetry_protocol_enabled`
+        # is `true`): - Allowed `Exporter`s: `CLOUD_TRACE` or `OPEN_TELEMETRY_COLLECTOR`.
+        # - If `Exporter` is `OPEN_TELEMETRY_COLLECTOR`: - `endpoint` refers to a valid
+        # OTLP collector URL. - If `Exporter` is `CLOUD_TRACE`: - `endpoint` refers to a
+        # valid project ID Deprecated: Use trace_protocol instead.
+        # Corresponds to the JSON property `openTelemetryProtocolEnabled`
+        # @return [Boolean]
+        attr_accessor :open_telemetry_protocol_enabled
+        alias_method :open_telemetry_protocol_enabled?, :open_telemetry_protocol_enabled
       
         # List of trace configuration overrides for spicific API proxies.
         # Corresponds to the JSON property `overrides`
@@ -9475,6 +10357,11 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig]
         attr_accessor :sampling_config
       
+        # Optional. The trace protocol to use.
+        # Corresponds to the JSON property `traceProtocol`
+        # @return [String]
+        attr_accessor :trace_protocol
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9484,14 +10371,16 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @exporter = args[:exporter] if args.key?(:exporter)
           @name = args[:name] if args.key?(:name)
+          @open_telemetry_protocol_enabled = args[:open_telemetry_protocol_enabled] if args.key?(:open_telemetry_protocol_enabled)
           @overrides = args[:overrides] if args.key?(:overrides)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+          @trace_protocol = args[:trace_protocol] if args.key?(:trace_protocol)
         end
       end
       
-      # NEXT ID: 7 Trace configuration override for a specific API proxy in an
+      # NEXT ID: 9 Trace configuration override for a specific API proxy in an
       # environment.
       class GoogleCloudApigeeV1RuntimeTraceConfigOverride
         include Google::Apis::Core::Hashable
@@ -9507,6 +10396,17 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. If `true`, the runtime uses OpenTelemetry Protocol (OTLP) to send
+        # trace data. Configuration Requirements (if `open_telemetry_protocol_enabled`
+        # is `true`): - Allowed `Exporter`s: `CLOUD_TRACE` or `OPEN_TELEMETRY_COLLECTOR`.
+        # - If `Exporter` is `OPEN_TELEMETRY_COLLECTOR`: - `endpoint` refers to a valid
+        # OTLP collector URL. - If `Exporter` is `CLOUD_TRACE`: - `endpoint` refers to a
+        # valid project ID Deprecated: Use trace_protocol instead.
+        # Corresponds to the JSON property `openTelemetryProtocolEnabled`
+        # @return [Boolean]
+        attr_accessor :open_telemetry_protocol_enabled
+        alias_method :open_telemetry_protocol_enabled?, :open_telemetry_protocol_enabled
       
         # The timestamp that the revision was created or updated.
         # Corresponds to the JSON property `revisionCreateTime`
@@ -9527,6 +10427,11 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig]
         attr_accessor :sampling_config
       
+        # Optional. The trace protocol to use.
+        # Corresponds to the JSON property `traceProtocol`
+        # @return [String]
+        attr_accessor :trace_protocol
+      
         # Unique ID for the configuration override. The ID will only change if the
         # override is deleted and recreated. Corresponds to name's "override" field.
         # Corresponds to the JSON property `uid`
@@ -9541,9 +10446,11 @@ module Google
         def update!(**args)
           @api_proxy = args[:api_proxy] if args.key?(:api_proxy)
           @name = args[:name] if args.key?(:name)
+          @open_telemetry_protocol_enabled = args[:open_telemetry_protocol_enabled] if args.key?(:open_telemetry_protocol_enabled)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+          @trace_protocol = args[:trace_protocol] if args.key?(:trace_protocol)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
@@ -9574,6 +10481,25 @@ module Google
         def update!(**args)
           @sampler = args[:sampler] if args.key?(:sampler)
           @sampling_rate = args[:sampling_rate] if args.key?(:sampling_rate)
+        end
+      end
+      
+      # Scheduled maintenance information for an instance.
+      class GoogleCloudApigeeV1ScheduledMaintenance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The start time (UTC) of the scheduled maintenance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -10199,7 +11125,19 @@ module Google
       class GoogleCloudApigeeV1SecurityAssessmentResultResource
         include Google::Apis::Core::Hashable
       
-        # Required. Name of this resource.
+        # Additional details if the resource is an API Hub deployment.
+        # Corresponds to the JSON property `apiHubDeploymentDetails`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails]
+        attr_accessor :api_hub_deployment_details
+      
+        # Optional.
+        # Corresponds to the JSON property `apiHubGatewayType`
+        # @return [String]
+        attr_accessor :api_hub_gateway_type
+      
+        # Required. Name of this resource. For an Apigee API Proxy, this should be the
+        # id of the API proxy. For an API Hub Deployment, this should be the id of the
+        # deployment.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -10220,9 +11158,55 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_hub_deployment_details = args[:api_hub_deployment_details] if args.key?(:api_hub_deployment_details)
+          @api_hub_gateway_type = args[:api_hub_gateway_type] if args.key?(:api_hub_gateway_type)
           @name = args[:name] if args.key?(:name)
           @resource_revision_id = args[:resource_revision_id] if args.key?(:resource_revision_id)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Additional details if the resource is an API Hub deployment.
+      class GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the API Hub deployment.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The gateway for the API Hub deployment. Format: `projects/`project`/locations/`
+        # location`/plugins/`plugin`/instances/`instance``
+        # Corresponds to the JSON property `gateway`
+        # @return [String]
+        attr_accessor :gateway
+      
+        # The gateway type for the API Hub deployment.
+        # Corresponds to the JSON property `gatewayType`
+        # @return [String]
+        attr_accessor :gateway_type
+      
+        # The resource uri for the API Hub deployment.
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        # The source project for the API Hub deployment.
+        # Corresponds to the JSON property `sourceProject`
+        # @return [String]
+        attr_accessor :source_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @gateway = args[:gateway] if args.key?(:gateway)
+          @gateway_type = args[:gateway_type] if args.key?(:gateway_type)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @source_project = args[:source_project] if args.key?(:source_project)
         end
       end
       
@@ -10367,6 +11351,94 @@ module Google
         end
       end
       
+      # Represents a feedback report from an Advanced API Security customer.
+      class GoogleCloudApigeeV1SecurityFeedback
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional text the user can provide for additional, unstructured
+        # context.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Output only. The time when this specific feedback id was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The display name of the feedback.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. One or more attribute/value pairs for constraining the feedback.
+        # Corresponds to the JSON property `feedbackContexts`
+        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedbackFeedbackContext>]
+        attr_accessor :feedback_contexts
+      
+        # Required. The type of feedback being submitted.
+        # Corresponds to the JSON property `feedbackType`
+        # @return [String]
+        attr_accessor :feedback_type
+      
+        # Output only. Identifier. The feedback name is intended to be a system-
+        # generated uuid.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The reason for the feedback.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Output only. The time when this specific feedback id was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @feedback_contexts = args[:feedback_contexts] if args.key?(:feedback_contexts)
+          @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
+          @name = args[:name] if args.key?(:name)
+          @reason = args[:reason] if args.key?(:reason)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # FeedbackContext captures the intent of the submitted feedback.
+      class GoogleCloudApigeeV1SecurityFeedbackFeedbackContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The attribute the user is providing feedback about.
+        # Corresponds to the JSON property `attribute`
+        # @return [String]
+        attr_accessor :attribute
+      
+        # Required. The values of the attribute the user is providing feedback about.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute = args[:attribute] if args.key?(:attribute)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Represents an SecurityIncident resource.
       class GoogleCloudApigeeV1SecurityIncident
         include Google::Apis::Core::Hashable
@@ -10443,6 +11515,13 @@ module Google
       class GoogleCloudApigeeV1SecurityMonitoringCondition
         include Google::Apis::Core::Hashable
       
+        # Optional. The API Hub gateway monitored by the security monitoring condition.
+        # This should only be set if risk_assessment_type is API_HUB. Format: `projects/`
+        # project`/locations/`location`/plugins/`plugin`/instances/`instance``
+        # Corresponds to the JSON property `apiHubGateway`
+        # @return [String]
+        attr_accessor :api_hub_gateway
+      
         # Output only. The time of the security monitoring condition creation.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -10470,8 +11549,15 @@ module Google
         # @return [String]
         attr_accessor :profile
       
-        # Required. Scope of the security monitoring condition. For Apigee, the
-        # environment is the scope of the resources.
+        # Optional. The risk assessment type of the security monitoring condition.
+        # Defaults to ADVANCED_API_SECURITY.
+        # Corresponds to the JSON property `riskAssessmentType`
+        # @return [String]
+        attr_accessor :risk_assessment_type
+      
+        # Optional. Scope of the security monitoring condition. When RiskAssessmentType
+        # is APIGEE, the scope should be set to the environment of the resources. When
+        # RiskAssessmentType is API_HUB, the scope should not be set.
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -10497,11 +11583,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_hub_gateway = args[:api_hub_gateway] if args.key?(:api_hub_gateway)
           @create_time = args[:create_time] if args.key?(:create_time)
           @include = args[:include] if args.key?(:include)
           @include_all_resources = args[:include_all_resources] if args.key?(:include_all_resources)
           @name = args[:name] if args.key?(:name)
           @profile = args[:profile] if args.key?(:profile)
+          @risk_assessment_type = args[:risk_assessment_type] if args.key?(:risk_assessment_type)
           @scope = args[:scope] if args.key?(:scope)
           @total_deployed_resources = args[:total_deployed_resources] if args.key?(:total_deployed_resources)
           @total_monitored_resources = args[:total_monitored_resources] if args.key?(:total_monitored_resources)
@@ -10718,6 +11806,12 @@ module Google
         # @return [Hash<String,Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig>]
         attr_accessor :profile_assessment_configs
       
+        # Optional. The risk assessment type of the security profile. Defaults to
+        # ADVANCED_API_SECURITY.
+        # Corresponds to the JSON property `riskAssessmentType`
+        # @return [String]
+        attr_accessor :risk_assessment_type
+      
         # Output only. The time of the security profile update.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -10734,6 +11828,7 @@ module Google
           @google_defined = args[:google_defined] if args.key?(:google_defined)
           @name = args[:name] if args.key?(:name)
           @profile_assessment_configs = args[:profile_assessment_configs] if args.key?(:profile_assessment_configs)
+          @risk_assessment_type = args[:risk_assessment_type] if args.key?(:risk_assessment_type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -10741,6 +11836,11 @@ module Google
       # The configuration definition for a specific assessment.
       class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig
         include Google::Apis::Core::Hashable
+      
+        # Message for the array of API Hub Gateway Types.
+        # Corresponds to the JSON property `include`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray]
+        attr_accessor :include
       
         # The weight of the assessment.
         # Corresponds to the JSON property `weight`
@@ -10753,7 +11853,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include = args[:include] if args.key?(:include)
           @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
+      # Message for the array of API Hub Gateway Types.
+      class GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray
+        include Google::Apis::Core::Hashable
+      
+        # Required. The array of API Hub Gateway Types.
+        # Corresponds to the JSON property `gatewayTypes`
+        # @return [Array<String>]
+        attr_accessor :gateway_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_types = args[:gateway_types] if args.key?(:gateway_types)
         end
       end
       
@@ -11953,8 +13073,9 @@ module Google
         attr_accessor :endpoint
       
         # Required. Exporter that is used to view the distributed trace captured using
-        # OpenCensus. An exporter sends traces to any backend that is capable of
-        # consuming them. Recorded spans can be exported by registered exporters.
+        # the chosen trace protocol. An exporter sends traces to any backend that is
+        # capable of consuming them. Recorded spans can be exported by registered
+        # exporters.
         # Corresponds to the JSON property `exporter`
         # @return [String]
         attr_accessor :exporter
@@ -11966,6 +13087,15 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig]
         attr_accessor :sampling_config
       
+        # Optional. The trace protocol to use. Configuration Requirements (if
+        # trace_protocol is OTLP): - Allowed Exporters: CLOUD_TRACE or
+        # OPEN_TELEMETRY_COLLECTOR. - If Exporter is OPEN_TELEMETRY_COLLECTOR: -
+        # endpoint refers to a valid OTLP collector URL. - If Exporter is CLOUD_TRACE: -
+        # endpoint refers to a valid project ID.
+        # Corresponds to the JSON property `traceProtocol`
+        # @return [String]
+        attr_accessor :trace_protocol
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11975,6 +13105,7 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @exporter = args[:exporter] if args.key?(:exporter)
           @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+          @trace_protocol = args[:trace_protocol] if args.key?(:trace_protocol)
         end
       end
       
@@ -12513,6 +13644,14 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -12521,6 +13660,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -12816,6 +13956,51 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and `google.protobuf.Timestamp`.
+      class GoogleTypeTimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
         end
       end
     end

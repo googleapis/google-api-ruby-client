@@ -458,6 +458,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -475,7 +483,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_config_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_instance_config_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
@@ -483,6 +491,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -599,6 +608,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -616,7 +633,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_config_ssd_cach_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_instance_config_ssd_cach_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
@@ -624,6 +641,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1041,7 +1059,7 @@ module Google
         # operation.
         # @param [String] parent
         #   Required. The instance of the backup operations. Values are of the form `
-        #   projects//instances/`.
+        #   projects/`project`/instances/`instance``.
         # @param [String] filter
         #   An expression that filters the list of returned backup operations. A filter
         #   expression consists of a field name, a comparison operator, and a value for
@@ -1130,7 +1148,7 @@ module Google
         # backup.
         # @param [String] parent
         #   Required. The name of the destination instance that will contain the backup
-        #   copy. Values are of the form: `projects//instances/`.
+        #   copy. Values are of the form: `projects/`project`/instances/`instance``.
         # @param [Google::Apis::SpannerV1::CopyBackupRequest] copy_backup_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1169,33 +1187,41 @@ module Google
         # delete the backup. There can be only one pending backup creation per database.
         # Backup creation of different databases can run concurrently.
         # @param [String] parent
-        #   Required. The name of the instance in which the backup will be created. This
-        #   must be the same instance that contains the database the backup will be
-        #   created from. The backup will be stored in the location(s) specified in the
-        #   instance configuration of this instance. Values are of the form `projects//
-        #   instances/`.
+        #   Required. The name of the instance in which the backup is created. This must
+        #   be the same instance that contains the database the backup is created from.
+        #   The backup will be stored in the locations specified in the instance
+        #   configuration of this instance. Values are of the form `projects/`project`/
+        #   instances/`instance``.
         # @param [Google::Apis::SpannerV1::Backup] backup_object
         # @param [String] backup_id
         #   Required. The id of the backup to be created. The `backup_id` appended to `
-        #   parent` forms the full backup name of the form `projects//instances//backups/`.
+        #   parent` forms the full backup name of the form `projects/`project`/instances/`
+        #   instance`/backups/`backup_id``.
         # @param [String] encryption_config_encryption_type
         #   Required. The encryption type of the backup.
         # @param [String] encryption_config_kms_key_name
-        #   Optional. The Cloud KMS key that will be used to protect the backup. This
-        #   field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`.
-        #   Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        #   Optional. This field is maintained for backwards compatibility. For new
+        #   callers, we recommend using `kms_key_names` to specify the KMS key. Only use `
+        #   kms_key_name` if the location of the KMS key matches the database instance's
+        #   configuration (location) exactly. For example, if the KMS location is in `us-
+        #   central1` or `nam3`, then the database instance must also be in `us-central1`
+        #   or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
+        #   database. Set this field only when encryption_type is `
+        #   CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects/`project`/
+        #   locations/`location`/keyRings/`key_ring`/cryptoKeys/`kms_key_name``.
         # @param [Array<String>, String] encryption_config_kms_key_names
         #   Optional. Specifies the KMS configuration for the one or more keys used to
-        #   protect the backup. Values are of the form `projects//locations//keyRings//
-        #   cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all
-        #   regions of the backup's instance configuration. Some examples: * For regional (
-        #   single-region) instance configurations, specify a regional location KMS key. *
-        #   For multi-region instance configurations of type `GOOGLE_MANAGED`, either
-        #   specify a multi-region location KMS key or multiple regional location KMS keys
-        #   that cover all regions in the instance configuration. * For an instance
-        #   configuration of type `USER_MANAGED`, specify only regional location KMS keys
-        #   to cover each region in the instance configuration. Multi-region location KMS
-        #   keys aren't supported for `USER_MANAGED` type instance configurations.
+        #   protect the backup. Values are of the form `projects/`project`/locations/`
+        #   location`/keyRings/`key_ring`/cryptoKeys/`kms_key_name``. The keys referenced
+        #   by `kms_key_names` must fully cover all regions of the backup's instance
+        #   configuration. Some examples: * For regional (single-region) instance
+        #   configurations, specify a regional location KMS key. * For multi-region
+        #   instance configurations of type `GOOGLE_MANAGED`, either specify a multi-
+        #   region location KMS key or multiple regional location KMS keys that cover all
+        #   regions in the instance configuration. * For an instance configuration of type
+        #   `USER_MANAGED`, specify only regional location KMS keys to cover each region
+        #   in the instance configuration. Multi-region location KMS keys aren't supported
+        #   for `USER_MANAGED` type instance configurations.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1231,8 +1257,8 @@ module Google
         
         # Deletes a pending or completed Backup.
         # @param [String] name
-        #   Required. Name of the backup to delete. Values are of the form `projects//
-        #   instances//backups/`.
+        #   Required. Name of the backup to delete. Values are of the form `projects/`
+        #   project`/instances/`instance`/backups/`backup``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1262,8 +1288,8 @@ module Google
         
         # Gets metadata on a pending or completed Backup.
         # @param [String] name
-        #   Required. Name of the backup. Values are of the form `projects//instances//
-        #   backups/`.
+        #   Required. Name of the backup. Values are of the form `projects/`project`/
+        #   instances/`instance`/backups/`backup``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1334,8 +1360,8 @@ module Google
         # Lists completed and pending backups. Backups returned are ordered by `
         # create_time` in descending order, starting from the most recent `create_time`.
         # @param [String] parent
-        #   Required. The instance to list backups from. Values are of the form `projects//
-        #   instances/`.
+        #   Required. The instance to list backups from. Values are of the form `projects/`
+        #   project`/instances/`instance``.
         # @param [String] filter
         #   An expression that filters the list of returned backups. A filter expression
         #   consists of a field name, a comparison operator, and a value for filtering.
@@ -1399,18 +1425,18 @@ module Google
         # @param [String] name
         #   Output only for the CreateBackup operation. Required for the UpdateBackup
         #   operation. A globally unique identifier for the backup which cannot be changed.
-        #   Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final
-        #   segment of the name must be between 2 and 60 characters in length. The backup
-        #   is stored in the location(s) specified in the instance configuration of the
-        #   instance containing the backup, identified by the prefix of the backup name of
-        #   the form `projects//instances/`.
+        #   Values are of the form `projects/`project`/instances/`instance`/backups/a-z*[
+        #   a-z0-9]` The final segment of the name must be between 2 and 60 characters in
+        #   length. The backup is stored in the location(s) specified in the instance
+        #   configuration of the instance containing the backup, identified by the prefix
+        #   of the backup name of the form `projects/`project`/instances/`instance``.
         # @param [Google::Apis::SpannerV1::Backup] backup_object
         # @param [String] update_mask
-        #   Required. A mask specifying which fields (e.g. `expire_time`) in the Backup
-        #   resource should be updated. This mask is relative to the Backup resource, not
-        #   to the request message. The field mask must always be specified; this prevents
-        #   any future fields from being erased accidentally by clients that do not know
-        #   about them.
+        #   Required. A mask specifying which fields (for example, `expire_time`) in the
+        #   backup resource should be updated. This mask is relative to the backup
+        #   resource, not to the request message. The field mask must always be specified;
+        #   this prevents any future fields from being erased accidentally by clients that
+        #   do not know about them.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1634,6 +1660,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1651,7 +1685,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_backup_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_instance_backup_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
@@ -1659,6 +1693,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1734,10 +1769,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds split points to specified tables, indexes of a database.
+        # Adds split points to specified tables and indexes of a database.
         # @param [String] database
-        #   Required. The database on whose tables/indexes split points are to be added.
-        #   Values are of the form `projects//instances//databases/`.
+        #   Required. The database on whose tables or indexes the split points are to be
+        #   added. Values are of the form `projects//instances//databases/`.
         # @param [Google::Apis::SpannerV1::AddSplitPointsRequest] add_split_points_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2252,7 +2287,7 @@ module Google
         # Updates the schema of a Cloud Spanner database by creating/altering/dropping
         # tables, columns, indexes, etc. The returned long-running operation will have a
         # name of the format `/operations/` and can be used to track execution of the
-        # schema change(s). The metadata field type is UpdateDatabaseDdlMetadata. The
+        # schema changes. The metadata field type is UpdateDatabaseDdlMetadata. The
         # operation has no response.
         # @param [String] database
         #   Required. The database to update.
@@ -2783,6 +2818,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2800,7 +2843,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_database_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_instance_database_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
@@ -2808,6 +2851,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3921,6 +3965,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3938,7 +3990,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_instance_partition_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_instance_instance_partition_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
@@ -3946,6 +3998,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4062,6 +4115,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4079,7 +4140,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_instance_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_instance_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SpannerV1::ListOperationsResponse
@@ -4087,6 +4148,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

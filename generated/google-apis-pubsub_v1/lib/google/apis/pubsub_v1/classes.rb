@@ -22,6 +22,45 @@ module Google
   module Apis
     module PubsubV1
       
+      # Configuration for making inference requests against Vertex AI models.
+      class AiInference
+        include Google::Apis::Core::Hashable
+      
+        # Required. An endpoint to a Vertex AI model of the form `projects/`project`/
+        # locations/`location`/endpoints/`endpoint`` or `projects/`project`/locations/`
+        # location`/publishers/`publisher`/models/`model``. Vertex AI API requests will
+        # be sent to this endpoint.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Optional. The service account to use to make prediction requests against
+        # endpoints. The resource creator or updater that specifies this field must have
+        # `iam.serviceAccounts.actAs` permission on the service account. If not
+        # specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/
+        # service-agents), service-`project_number`@gcp-sa-pubsub.iam.gserviceaccount.
+        # com, is used.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Configuration for making inferences using arbitrary JSON payloads.
+        # Corresponds to the JSON property `unstructuredInference`
+        # @return [Google::Apis::PubsubV1::UnstructuredInference]
+        attr_accessor :unstructured_inference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @unstructured_inference = args[:unstructured_inference] if args.key?(:unstructured_inference)
+        end
+      end
+      
       # Request for the Acknowledge method.
       class AcknowledgeRequest
         include Google::Apis::Core::Hashable
@@ -360,6 +399,67 @@ module Google
         end
       end
       
+      # Configuration for a Bigtable subscription. The Pub/Sub message will be written
+      # to a Bigtable row as follows: - row key: subscription name, message ID hash,
+      # and message ID delimited by `#`. - columns: message bytes written to a single
+      # column family `data` with an empty-string column qualifier. - cell timestamp:
+      # the message publish timestamp.
+      class BigtableConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The app profile to use for the Bigtable writes. If not specified,
+        # the "default" application profile will be used. The app profile must use
+        # single-cluster routing.
+        # Corresponds to the JSON property `appProfileId`
+        # @return [String]
+        attr_accessor :app_profile_id
+      
+        # Optional. The service account to use to write to Bigtable. The subscription
+        # creator or updater that specifies this field must have `iam.serviceAccounts.
+        # actAs` permission on the service account. If not specified, the Pub/Sub [
+        # service agent](https://cloud.google.com/iam/docs/service-agents), service-`
+        # project_number`@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Output only. An output-only field that indicates whether or not the
+        # subscription can receive messages.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The unique name of the table to write messages to. Values are of the
+        # form `projects//instances//tables/`.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        # Optional. When true, write the subscription name, message_id, publish_time,
+        # attributes, and ordering_key to additional columns in the table under the
+        # pubsub_metadata column family. The subscription name, message_id, and
+        # publish_time fields are put in their own columns while all other message
+        # properties (other than data) are written to a JSON object in the attributes
+        # column.
+        # Corresponds to the JSON property `writeMetadata`
+        # @return [Boolean]
+        attr_accessor :write_metadata
+        alias_method :write_metadata?, :write_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_profile_id = args[:app_profile_id] if args.key?(:app_profile_id)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @state = args[:state] if args.key?(:state)
+          @table = args[:table] if args.key?(:table)
+          @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -647,6 +747,32 @@ module Google
         end
       end
       
+      # Configuration for compressing/decompressing message data using a user-
+      # specified compression algorithm.
+      class Compression
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the compression algorithm to use.
+        # Corresponds to the JSON property `compressionAlgorithm`
+        # @return [String]
+        attr_accessor :compression_algorithm
+      
+        # Required. Specifies whether to compress or decompress the message.
+        # Corresponds to the JSON property `compressionMode`
+        # @return [String]
+        attr_accessor :compression_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compression_algorithm = args[:compression_algorithm] if args.key?(:compression_algorithm)
+          @compression_mode = args[:compression_mode] if args.key?(:compression_mode)
+        end
+      end
+      
       # Ingestion settings for Confluent Cloud.
       class ConfluentCloud
         include Google::Apis::Core::Hashable
@@ -723,6 +849,14 @@ module Google
         # @return [String]
         attr_accessor :subscription
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing" See https://`$universe.dns_names.final_documentation_domain`/pubsub/
+        # docs/tags for more information on using tags with Pub/Sub resources.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -731,6 +865,7 @@ module Google
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
           @subscription = args[:subscription] if args.key?(:subscription)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -1191,6 +1326,17 @@ module Google
       class MessageTransform
         include Google::Apis::Core::Hashable
       
+        # Configuration for making inference requests against Vertex AI models.
+        # Corresponds to the JSON property `aiInference`
+        # @return [Google::Apis::PubsubV1::AiInference]
+        attr_accessor :ai_inference
+      
+        # Configuration for compressing/decompressing message data using a user-
+        # specified compression algorithm.
+        # Corresponds to the JSON property `compression`
+        # @return [Google::Apis::PubsubV1::Compression]
+        attr_accessor :compression
+      
         # Optional. If true, the transform is disabled and will not be applied to
         # messages. Defaults to `false`.
         # Corresponds to the JSON property `disabled`
@@ -1217,6 +1363,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ai_inference = args[:ai_inference] if args.key?(:ai_inference)
+          @compression = args[:compression] if args.key?(:compression)
           @disabled = args[:disabled] if args.key?(:disabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @javascript_udf = args[:javascript_udf] if args.key?(:javascript_udf)
@@ -2020,9 +2168,10 @@ module Google
         end
       end
       
-      # A subscription resource. If none of `push_config`, `bigquery_config`, or `
-      # cloud_storage_config` is set, then the subscriber will pull and ack messages
-      # using API methods. At most one of these fields may be set.
+      # A subscription resource. If none of `push_config`, `bigquery_config`, `
+      # cloud_storage_config`, or `bigtable_config` is set, then the subscriber will
+      # pull and ack messages using API methods. At most one of these fields may be
+      # set.
       class Subscription
         include Google::Apis::Core::Hashable
       
@@ -2055,6 +2204,15 @@ module Google
         # Corresponds to the JSON property `bigqueryConfig`
         # @return [Google::Apis::PubsubV1::BigQueryConfig]
         attr_accessor :bigquery_config
+      
+        # Configuration for a Bigtable subscription. The Pub/Sub message will be written
+        # to a Bigtable row as follows: - row key: subscription name, message ID hash,
+        # and message ID delimited by `#`. - columns: message bytes written to a single
+        # column family `data` with an empty-string column qualifier. - cell timestamp:
+        # the message publish timestamp.
+        # Corresponds to the JSON property `bigtableConfig`
+        # @return [Google::Apis::PubsubV1::BigtableConfig]
+        attr_accessor :bigtable_config
       
         # Configuration for a Cloud Storage subscription.
         # Corresponds to the JSON property `cloudStorageConfig`
@@ -2136,12 +2294,12 @@ module Google
         # @return [Array<Google::Apis::PubsubV1::MessageTransform>]
         attr_accessor :message_transforms
       
-        # Required. The name of the subscription. It must have the format `"projects/`
-        # project`/subscriptions/`subscription`"`. ``subscription`` must start with a
-        # letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
-        # underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`
-        # %`). It must be between 3 and 255 characters in length, and it must not start
-        # with `"goog"`.
+        # Required. Identifier. The name of the subscription. It must have the format `"
+        # projects/`project`/subscriptions/`subscription`"`. ``subscription`` must start
+        # with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`),
+        # dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or
+        # percent signs (`%`). It must be between 3 and 255 characters in length, and it
+        # must not start with `"goog"`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2179,6 +2337,14 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing" See https://`$universe.dns_names.final_documentation_domain`/pubsub/
+        # docs/tags for more information on using tags with Pub/Sub resources.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Required. The name of the topic from which this subscription is receiving
         # messages. Format is `projects/`project`/topics/`topic``. The value of this
         # field will be `_deleted-topic_` if the topic has been deleted.
@@ -2205,6 +2371,7 @@ module Google
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
           @analytics_hub_subscription_info = args[:analytics_hub_subscription_info] if args.key?(:analytics_hub_subscription_info)
           @bigquery_config = args[:bigquery_config] if args.key?(:bigquery_config)
+          @bigtable_config = args[:bigtable_config] if args.key?(:bigtable_config)
           @cloud_storage_config = args[:cloud_storage_config] if args.key?(:cloud_storage_config)
           @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
           @detached = args[:detached] if args.key?(:detached)
@@ -2220,6 +2387,7 @@ module Google
           @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
           @topic = args[:topic] if args.key?(:topic)
           @topic_message_retention_duration = args[:topic_message_retention_duration] if args.key?(:topic_message_retention_duration)
         end
@@ -2345,11 +2513,12 @@ module Google
         # @return [Array<Google::Apis::PubsubV1::MessageTransform>]
         attr_accessor :message_transforms
       
-        # Required. The name of the topic. It must have the format `"projects/`project`/
-        # topics/`topic`"`. ``topic`` must start with a letter, and contain only letters
-        # (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`)
-        # , tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and
-        # 255 characters in length, and it must not start with `"goog"`.
+        # Required. Identifier. The name of the topic. It must have the format `"
+        # projects/`project`/topics/`topic`"`. ``topic`` must start with a letter, and
+        # contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        # underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%
+        # `). It must be between 3 and 255 characters in length, and it must not start
+        # with `"goog"`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2371,6 +2540,14 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing" See https://`$universe.dns_names.final_documentation_domain`/pubsub/
+        # docs/tags for more information on using tags with Pub/Sub resources.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2387,6 +2564,28 @@ module Google
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @schema_settings = args[:schema_settings] if args.key?(:schema_settings)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Configuration for making inferences using arbitrary JSON payloads.
+      class UnstructuredInference
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A parameters object to be included in each inference request. The
+        # parameters object is combined with the data field of the Pub/Sub message to
+        # form the inference request.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
       
@@ -2423,9 +2622,10 @@ module Google
       class UpdateSubscriptionRequest
         include Google::Apis::Core::Hashable
       
-        # A subscription resource. If none of `push_config`, `bigquery_config`, or `
-        # cloud_storage_config` is set, then the subscriber will pull and ack messages
-        # using API methods. At most one of these fields may be set.
+        # A subscription resource. If none of `push_config`, `bigquery_config`, `
+        # cloud_storage_config`, or `bigtable_config` is set, then the subscriber will
+        # pull and ack messages using API methods. At most one of these fields may be
+        # set.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::PubsubV1::Subscription]
         attr_accessor :subscription

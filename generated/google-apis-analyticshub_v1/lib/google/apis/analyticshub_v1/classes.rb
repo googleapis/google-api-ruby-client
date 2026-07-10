@@ -22,6 +22,58 @@ module Google
   module Apis
     module AnalyticshubV1
       
+      # Configuration for making inference requests against Vertex AI models.
+      class AiInference
+        include Google::Apis::Core::Hashable
+      
+        # Required. An endpoint to a Vertex AI model of the form `projects/`project`/
+        # locations/`location`/endpoints/`endpoint`` or `projects/`project`/locations/`
+        # location`/publishers/`publisher`/models/`model``. Vertex AI API requests will
+        # be sent to this endpoint.
+        # Corresponds to the JSON property `endpoint`
+        # @return [String]
+        attr_accessor :endpoint
+      
+        # Optional. The service account to use to make prediction requests against
+        # endpoints. The resource creator or updater that specifies this field must have
+        # `iam.serviceAccounts.actAs` permission on the service account. If not
+        # specified, the Pub/Sub [service agent](`$universe.dns_names.
+        # final_documentation_domain`/iam/docs/service-agents), service-`project_number`@
+        # gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Configuration for making inferences using arbitrary JSON payloads.
+        # Corresponds to the JSON property `unstructuredInference`
+        # @return [Google::Apis::AnalyticshubV1::UnstructuredInference]
+        attr_accessor :unstructured_inference
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint = args[:endpoint] if args.key?(:endpoint)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @unstructured_inference = args[:unstructured_inference] if args.key?(:unstructured_inference)
+        end
+      end
+      
+      # Message for approving a QueryTemplate.
+      class ApproveQueryTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -211,6 +263,19 @@ module Google
         # @return [String]
         attr_accessor :dataset
       
+        # Output only. Server-owned effective state of replicas. Contains both primary
+        # and secondary replicas. Each replica includes a system-computed (output-only)
+        # state and primary designation.
+        # Corresponds to the JSON property `effectiveReplicas`
+        # @return [Array<Google::Apis::AnalyticshubV1::Replica>]
+        attr_accessor :effective_replicas
+      
+        # Optional. A list of regions where the publisher has created shared dataset
+        # replicas.
+        # Corresponds to the JSON property `replicaLocations`
+        # @return [Array<String>]
+        attr_accessor :replica_locations
+      
         # Restricted export policy used to configure restricted export on linked dataset.
         # Corresponds to the JSON property `restrictedExportPolicy`
         # @return [Google::Apis::AnalyticshubV1::RestrictedExportPolicy]
@@ -229,8 +294,65 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset = args[:dataset] if args.key?(:dataset)
+          @effective_replicas = args[:effective_replicas] if args.key?(:effective_replicas)
+          @replica_locations = args[:replica_locations] if args.key?(:replica_locations)
           @restricted_export_policy = args[:restricted_export_policy] if args.key?(:restricted_export_policy)
           @selected_resources = args[:selected_resources] if args.key?(:selected_resources)
+        end
+      end
+      
+      # Configuration for a Bigtable subscription. The Pub/Sub message will be written
+      # to a Bigtable row as follows: - row key: subscription name, message ID hash,
+      # and message ID delimited by `#`. - columns: message bytes written to a single
+      # column family `data` with an empty-string column qualifier. - cell timestamp:
+      # the message publish timestamp.
+      class BigtableConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The app profile to use for the Bigtable writes. If not specified,
+        # the "default" application profile will be used. The app profile must use
+        # single-cluster routing.
+        # Corresponds to the JSON property `appProfileId`
+        # @return [String]
+        attr_accessor :app_profile_id
+      
+        # Optional. The service account to use to write to Bigtable. The subscription
+        # creator or updater that specifies this field must have `iam.serviceAccounts.
+        # actAs` permission on the service account. If not specified, the Pub/Sub [
+        # service agent](`$universe.dns_names.final_documentation_domain`/iam/docs/
+        # service-agents), service-`project_number`@gcp-sa-pubsub.iam.gserviceaccount.
+        # com, is used.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        # Optional. The unique name of the table to write messages to. Values are of the
+        # form `projects//instances//tables/`.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        # Optional. When true, write the subscription name, message_id, publish_time,
+        # attributes, and ordering_key to additional columns in the table under the
+        # pubsub_metadata column family. The subscription name, message_id, and
+        # publish_time fields are put in their own columns while all other message
+        # properties (other than data) are written to a JSON object in the attributes
+        # column.
+        # Corresponds to the JSON property `writeMetadata`
+        # @return [Boolean]
+        attr_accessor :write_metadata
+        alias_method :write_metadata?, :write_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_profile_id = args[:app_profile_id] if args.key?(:app_profile_id)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+          @table = args[:table] if args.key?(:table)
+          @write_metadata = args[:write_metadata] if args.key?(:write_metadata)
         end
       end
       
@@ -427,6 +549,32 @@ module Google
           @max_messages = args[:max_messages] if args.key?(:max_messages)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @text_config = args[:text_config] if args.key?(:text_config)
+        end
+      end
+      
+      # Configuration for compressing/decompressing message data using a user-
+      # specified compression algorithm.
+      class Compression
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the compression algorithm to use.
+        # Corresponds to the JSON property `compressionAlgorithm`
+        # @return [String]
+        attr_accessor :compression_algorithm
+      
+        # Required. Specifies whether to compress or decompress the message.
+        # Corresponds to the JSON property `compressionMode`
+        # @return [String]
+        attr_accessor :compression_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compression_algorithm = args[:compression_algorithm] if args.key?(:compression_algorithm)
+          @compression_mode = args[:compression_mode] if args.key?(:compression_mode)
         end
       end
       
@@ -670,6 +818,13 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Optional. The geographic locations where the dataset should be replicated. See
+        # [BigQuery locations](https://cloud.google.com/bigquery/docs/locations) for
+        # supported locations.
+        # Corresponds to the JSON property `replicaLocations`
+        # @return [Array<String>]
+        attr_accessor :replica_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -681,6 +836,7 @@ module Google
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
+          @replica_locations = args[:replica_locations] if args.key?(:replica_locations)
         end
       end
       
@@ -716,9 +872,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Defines the destination Pub/Sub subscription. If none of `push_config`, `
-        # bigquery_config`, `cloud_storage_config`, `pubsub_export_config`, or `
-        # pubsublite_export_config` is set, then the subscriber will pull and ack
-        # messages using API methods. At most one of these fields may be set.
+        # bigquery_config`, `cloud_storage_config`, `bigtable_config`, `
+        # pubsub_export_config`, or `pubsublite_export_config` is set, then the
+        # subscriber will pull and ack messages using API methods. At most one of these
+        # fields may be set.
         # Corresponds to the JSON property `pubsubSubscription`
         # @return [Google::Apis::AnalyticshubV1::GooglePubsubV1Subscription]
         attr_accessor :pubsub_subscription
@@ -961,9 +1118,10 @@ module Google
       end
       
       # Defines the destination Pub/Sub subscription. If none of `push_config`, `
-      # bigquery_config`, `cloud_storage_config`, `pubsub_export_config`, or `
-      # pubsublite_export_config` is set, then the subscriber will pull and ack
-      # messages using API methods. At most one of these fields may be set.
+      # bigquery_config`, `cloud_storage_config`, `bigtable_config`, `
+      # pubsub_export_config`, or `pubsublite_export_config` is set, then the
+      # subscriber will pull and ack messages using API methods. At most one of these
+      # fields may be set.
       class GooglePubsubV1Subscription
         include Google::Apis::Core::Hashable
       
@@ -990,6 +1148,15 @@ module Google
         # Corresponds to the JSON property `bigqueryConfig`
         # @return [Google::Apis::AnalyticshubV1::BigQueryConfig]
         attr_accessor :bigquery_config
+      
+        # Configuration for a Bigtable subscription. The Pub/Sub message will be written
+        # to a Bigtable row as follows: - row key: subscription name, message ID hash,
+        # and message ID delimited by `#`. - columns: message bytes written to a single
+        # column family `data` with an empty-string column qualifier. - cell timestamp:
+        # the message publish timestamp.
+        # Corresponds to the JSON property `bigtableConfig`
+        # @return [Google::Apis::AnalyticshubV1::BigtableConfig]
+        attr_accessor :bigtable_config
       
         # Configuration for a Cloud Storage subscription.
         # Corresponds to the JSON property `cloudStorageConfig`
@@ -1071,7 +1238,7 @@ module Google
         # @return [Array<Google::Apis::AnalyticshubV1::MessageTransform>]
         attr_accessor :message_transforms
       
-        # Required. Name of the subscription. Format is `projects/`project`/
+        # Required. Identifier. Name of the subscription. Format is `projects/`project`/
         # subscriptions/`sub``.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1104,6 +1271,14 @@ module Google
         # @return [Google::Apis::AnalyticshubV1::RetryPolicy]
         attr_accessor :retry_policy
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing" See https://`$universe.dns_names.final_documentation_domain`/pubsub/
+        # docs/tags for more information on using tags with Pub/Sub resources.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1112,6 +1287,7 @@ module Google
         def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
           @bigquery_config = args[:bigquery_config] if args.key?(:bigquery_config)
+          @bigtable_config = args[:bigtable_config] if args.key?(:bigtable_config)
           @cloud_storage_config = args[:cloud_storage_config] if args.key?(:cloud_storage_config)
           @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
           @detached = args[:detached] if args.key?(:detached)
@@ -1126,6 +1302,7 @@ module Google
           @push_config = args[:push_config] if args.key?(:push_config)
           @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -1274,6 +1451,31 @@ module Google
         end
       end
       
+      # Message for response to the list of QueryTemplates.
+      class ListQueryTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of QueryTemplates.
+        # Corresponds to the JSON property `queryTemplates`
+        # @return [Array<Google::Apis::AnalyticshubV1::QueryTemplate>]
+        attr_accessor :query_templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @query_templates = args[:query_templates] if args.key?(:query_templates)
+        end
+      end
+      
       # Message for response to the listing of shared resource subscriptions.
       class ListSharedResourceSubscriptionsResponse
         include Google::Apis::Core::Hashable
@@ -1347,7 +1549,7 @@ module Google
         # @return [Google::Apis::AnalyticshubV1::BigQueryDatasetSource]
         attr_accessor :bigquery_dataset
       
-        # Optional. Categories of the listing. Up to two categories are allowed.
+        # Optional. Categories of the listing. Up to five categories are allowed.
         # Corresponds to the JSON property `categories`
         # @return [Array<String>]
         attr_accessor :categories
@@ -1450,6 +1652,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Stored procedure configuration, used to configure stored procedure sharing on
+        # linked dataset.
+        # Corresponds to the JSON property `storedProcedureConfig`
+        # @return [Google::Apis::AnalyticshubV1::StoredProcedureConfig]
+        attr_accessor :stored_procedure_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1475,12 +1683,24 @@ module Google
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @restricted_export_config = args[:restricted_export_config] if args.key?(:restricted_export_config)
           @state = args[:state] if args.key?(:state)
+          @stored_procedure_config = args[:stored_procedure_config] if args.key?(:stored_procedure_config)
         end
       end
       
       # All supported message transforms types.
       class MessageTransform
         include Google::Apis::Core::Hashable
+      
+        # Configuration for making inference requests against Vertex AI models.
+        # Corresponds to the JSON property `aiInference`
+        # @return [Google::Apis::AnalyticshubV1::AiInference]
+        attr_accessor :ai_inference
+      
+        # Configuration for compressing/decompressing message data using a user-
+        # specified compression algorithm.
+        # Corresponds to the JSON property `compression`
+        # @return [Google::Apis::AnalyticshubV1::Compression]
+        attr_accessor :compression
       
         # Optional. If true, the transform is disabled and will not be applied to
         # messages. Defaults to `false`.
@@ -1508,6 +1728,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ai_inference = args[:ai_inference] if args.key?(:ai_inference)
+          @compression = args[:compression] if args.key?(:compression)
           @disabled = args[:disabled] if args.key?(:disabled)
           @enabled = args[:enabled] if args.key?(:enabled)
           @javascript_udf = args[:javascript_udf] if args.key?(:javascript_udf)
@@ -1913,6 +2135,89 @@ module Google
         end
       end
       
+      # A query template is a container for sharing table-valued functions defined by
+      # contributors in a data clean room.
+      class QueryTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp when the QueryTemplate was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Short description of the QueryTemplate. The description must not
+        # contain Unicode non-characters and C0 and C1 control codes except tabs (HT),
+        # new lines (LF), carriage returns (CR), and page breaks (FF). Default value is
+        # an empty string. Max length: 2000 bytes.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Human-readable display name of the QueryTemplate. The display name
+        # must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-),
+        # spaces ( ), ampersands (&) and can't start or end with spaces. Default value
+        # is an empty string. Max length: 63 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Documentation describing the QueryTemplate.
+        # Corresponds to the JSON property `documentation`
+        # @return [String]
+        attr_accessor :documentation
+      
+        # Output only. The resource name of the QueryTemplate. e.g. `projects/myproject/
+        # locations/us/dataExchanges/123/queryTemplates/456`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Email or URL of the primary point of contact of the QueryTemplate.
+        # Max Length: 1000 bytes.
+        # Corresponds to the JSON property `primaryContact`
+        # @return [String]
+        attr_accessor :primary_contact
+      
+        # Optional. Will be deprecated. Email or URL of the primary point of contact of
+        # the QueryTemplate. Max Length: 1000 bytes.
+        # Corresponds to the JSON property `proposer`
+        # @return [String]
+        attr_accessor :proposer
+      
+        # Represents a bigquery routine.
+        # Corresponds to the JSON property `routine`
+        # @return [Google::Apis::AnalyticshubV1::Routine]
+        attr_accessor :routine
+      
+        # Output only. The QueryTemplate lifecycle state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Timestamp when the QueryTemplate was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @documentation = args[:documentation] if args.key?(:documentation)
+          @name = args[:name] if args.key?(:name)
+          @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
+          @proposer = args[:proposer] if args.key?(:proposer)
+          @routine = args[:routine] if args.key?(:routine)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Message for refreshing a subscription.
       class RefreshSubscriptionRequest
         include Google::Apis::Core::Hashable
@@ -1944,6 +2249,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @subscription = args[:subscription] if args.key?(:subscription)
+        end
+      end
+      
+      # Represents the state of a replica of a shared dataset. It includes the
+      # geographic location of the replica and system-computed, output-only fields
+      # indicating its replication state and whether it is the primary replica.
+      class Replica
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The geographic location where the replica resides. See [BigQuery
+        # locations](https://cloud.google.com/bigquery/docs/locations) for supported
+        # locations. Eg. "us-central1".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Output only. Indicates that this replica is the primary replica.
+        # Corresponds to the JSON property `primaryState`
+        # @return [String]
+        attr_accessor :primary_state
+      
+        # Output only. Assigned by Analytics Hub based on real BigQuery replication
+        # state.
+        # Corresponds to the JSON property `replicaState`
+        # @return [String]
+        attr_accessor :replica_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @primary_state = args[:primary_state] if args.key?(:primary_state)
+          @replica_state = args[:replica_state] if args.key?(:replica_state)
         end
       end
       
@@ -2085,6 +2426,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents a bigquery routine.
+      class Routine
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The definition body of the routine.
+        # Corresponds to the JSON property `definitionBody`
+        # @return [String]
+        attr_accessor :definition_body
+      
+        # Required. The type of routine.
+        # Corresponds to the JSON property `routineType`
+        # @return [String]
+        attr_accessor :routine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @definition_body = args[:definition_body] if args.key?(:definition_body)
+          @routine_type = args[:routine_type] if args.key?(:routine_type)
         end
       end
       
@@ -2232,6 +2598,46 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Stored procedure configuration, used to configure stored procedure sharing on
+      # linked dataset.
+      class StoredProcedureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Types of stored procedure supported to share.
+        # Corresponds to the JSON property `allowedStoredProcedureTypes`
+        # @return [Array<String>]
+        attr_accessor :allowed_stored_procedure_types
+      
+        # Optional. If true, enable sharing of stored procedure.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_stored_procedure_types = args[:allowed_stored_procedure_types] if args.key?(:allowed_stored_procedure_types)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Message for submitting a QueryTemplate.
+      class SubmitQueryTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2505,6 +2911,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Configuration for making inferences using arbitrary JSON payloads.
+      class UnstructuredInference
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A parameters object to be included in each inference request. The
+        # parameters object is combined with the data field of the Pub/Sub message to
+        # form the inference request.
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
         end
       end
     end

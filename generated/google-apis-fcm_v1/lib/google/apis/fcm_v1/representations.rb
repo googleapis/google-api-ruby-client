@@ -113,6 +113,7 @@ module Google
       
           property :priority, as: 'priority'
           property :restricted_package_name, as: 'restrictedPackageName'
+          property :restricted_satellite_ok, as: 'restrictedSatelliteOk'
           property :ttl, as: 'ttl'
         end
       end
@@ -215,6 +216,7 @@ module Google
           hash :data, as: 'data'
           property :fcm_options, as: 'fcmOptions', class: Google::Apis::FcmV1::FcmOptions, decorator: Google::Apis::FcmV1::FcmOptions::Representation
       
+          property :fid, as: 'fid'
           property :name, as: 'name'
           property :notification, as: 'notification', class: Google::Apis::FcmV1::Notification, decorator: Google::Apis::FcmV1::Notification::Representation
       

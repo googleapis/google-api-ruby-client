@@ -22,6 +22,18 @@ module Google
   module Apis
     module FileV1beta1
       
+      class AcquireShareRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcquireShareResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PauseReplicaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PerformanceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,6 +274,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReleaseShareRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReleaseShareResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplicaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +299,12 @@ module Google
       end
       
       class RestoreInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumeReplicaRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -320,6 +356,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcquireShareRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_gb, as: 'capacityGb'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class AcquireShareResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :share_id, as: 'shareId'
+        end
       end
       
       class Backup
@@ -404,6 +456,7 @@ module Google
           collection :nfs_export_options, as: 'nfsExportOptions', class: Google::Apis::FileV1beta1::NfsExportOptions, decorator: Google::Apis::FileV1beta1::NfsExportOptions::Representation
       
           property :source_backup, as: 'sourceBackup'
+          property :source_backupdr_backup, as: 'sourceBackupdrBackup'
         end
       end
       
@@ -526,6 +579,7 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_type, as: 'backendType'
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
           property :capacity_step_size_gb, :numeric_string => true, as: 'capacityStepSizeGb'
           property :create_time, as: 'createTime'
@@ -542,6 +596,7 @@ module Google
           hash :labels, as: 'labels'
           property :max_capacity_gb, :numeric_string => true, as: 'maxCapacityGb'
           property :max_share_count, :numeric_string => true, as: 'maxShareCount'
+          property :min_capacity_gb, :numeric_string => true, as: 'minCapacityGb'
           property :multi_share_enabled, as: 'multiShareEnabled'
           property :name, as: 'name'
           collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
@@ -608,6 +663,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::FileV1beta1::Operation, decorator: Google::Apis::FileV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -725,6 +781,12 @@ module Google
         end
       end
       
+      class PauseReplicaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class PerformanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -760,6 +822,20 @@ module Google
         end
       end
       
+      class ReleaseShareRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :share_id, as: 'shareId'
+        end
+      end
+      
+      class ReleaseShareResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ReplicaConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -767,6 +843,7 @@ module Google
           property :peer_instance, as: 'peerInstance'
           property :state, as: 'state'
           collection :state_reasons, as: 'stateReasons'
+          property :state_update_time, as: 'stateUpdateTime'
         end
       end
       
@@ -785,6 +862,12 @@ module Google
           property :file_share, as: 'fileShare'
           property :source_backup, as: 'sourceBackup'
           property :source_snapshot, as: 'sourceSnapshot'
+        end
+      end
+      
+      class ResumeReplicaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -22,6 +22,18 @@ module Google
   module Apis
     module DocsV1
       
+      class AddDocumentTabRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddDocumentTabResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoText
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +166,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DateElement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DateElementProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DateElementPropertiesSuggestionState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteContentRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteTabRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteTableColumnRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +245,12 @@ module Google
       end
       
       class Document
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DocumentFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -352,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InsertDateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InsertInlineImageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -371,6 +419,18 @@ module Google
       end
       
       class InsertPageBreakRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertPersonRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertRichLinkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -730,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SuggestedDateElementProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SuggestedDocumentStyle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -916,6 +982,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateDocumentTabPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateNamedStyleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateParagraphStyleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -962,6 +1040,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddDocumentTabRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tab_properties, as: 'tabProperties', class: Google::Apis::DocsV1::TabProperties, decorator: Google::Apis::DocsV1::TabProperties::Representation
+      
+        end
+      end
+      
+      class AddDocumentTabResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tab_properties, as: 'tabProperties', class: Google::Apis::DocsV1::TabProperties, decorator: Google::Apis::DocsV1::TabProperties::Representation
+      
+        end
       end
       
       class AutoText
@@ -1165,6 +1259,46 @@ module Google
         end
       end
       
+      class DateElement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_element_properties, as: 'dateElementProperties', class: Google::Apis::DocsV1::DateElementProperties, decorator: Google::Apis::DocsV1::DateElementProperties::Representation
+      
+          property :date_id, as: 'dateId'
+          hash :suggested_date_element_properties_changes, as: 'suggestedDateElementPropertiesChanges', class: Google::Apis::DocsV1::SuggestedDateElementProperties, decorator: Google::Apis::DocsV1::SuggestedDateElementProperties::Representation
+      
+          collection :suggested_deletion_ids, as: 'suggestedDeletionIds'
+          collection :suggested_insertion_ids, as: 'suggestedInsertionIds'
+          hash :suggested_text_style_changes, as: 'suggestedTextStyleChanges', class: Google::Apis::DocsV1::SuggestedTextStyle, decorator: Google::Apis::DocsV1::SuggestedTextStyle::Representation
+      
+          property :text_style, as: 'textStyle', class: Google::Apis::DocsV1::TextStyle, decorator: Google::Apis::DocsV1::TextStyle::Representation
+      
+        end
+      end
+      
+      class DateElementProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_format, as: 'dateFormat'
+          property :display_text, as: 'displayText'
+          property :locale, as: 'locale'
+          property :time_format, as: 'timeFormat'
+          property :time_zone_id, as: 'timeZoneId'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class DateElementPropertiesSuggestionState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_format_suggested, as: 'dateFormatSuggested'
+          property :locale_suggested, as: 'localeSuggested'
+          property :time_format_suggested, as: 'timeFormatSuggested'
+          property :time_zone_id_suggested, as: 'timeZoneIdSuggested'
+          property :timestamp_suggested, as: 'timestampSuggested'
+        end
+      end
+      
       class DeleteContentRangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1211,6 +1345,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :object_id_prop, as: 'objectId'
+          property :tab_id, as: 'tabId'
+        end
+      end
+      
+      class DeleteTabRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :tab_id, as: 'tabId'
         end
       end
@@ -1275,6 +1416,13 @@ module Google
         end
       end
       
+      class DocumentFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_mode, as: 'documentMode'
+        end
+      end
+      
       class DocumentStyle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1282,6 +1430,8 @@ module Google
       
           property :default_footer_id, as: 'defaultFooterId'
           property :default_header_id, as: 'defaultHeaderId'
+          property :document_format, as: 'documentFormat', class: Google::Apis::DocsV1::DocumentFormat, decorator: Google::Apis::DocsV1::DocumentFormat::Representation
+      
           property :even_page_footer_id, as: 'evenPageFooterId'
           property :even_page_header_id, as: 'evenPageHeaderId'
           property :first_page_footer_id, as: 'firstPageFooterId'
@@ -1594,6 +1744,18 @@ module Google
         end
       end
       
+      class InsertDateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_element_properties, as: 'dateElementProperties', class: Google::Apis::DocsV1::DateElementProperties, decorator: Google::Apis::DocsV1::DateElementProperties::Representation
+      
+          property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+        end
+      end
+      
       class InsertInlineImageRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1627,6 +1789,30 @@ module Google
           property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
       
           property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+        end
+      end
+      
+      class InsertPersonRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+          property :person_properties, as: 'personProperties', class: Google::Apis::DocsV1::PersonProperties, decorator: Google::Apis::DocsV1::PersonProperties::Representation
+      
+        end
+      end
+      
+      class InsertRichLinkRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+          property :rich_link_properties, as: 'richLinkProperties', class: Google::Apis::DocsV1::RichLinkProperties, decorator: Google::Apis::DocsV1::RichLinkProperties::Representation
       
         end
       end
@@ -1913,6 +2099,8 @@ module Google
       
           property :column_break, as: 'columnBreak', class: Google::Apis::DocsV1::ColumnBreak, decorator: Google::Apis::DocsV1::ColumnBreak::Representation
       
+          property :date_element, as: 'dateElement', class: Google::Apis::DocsV1::DateElement, decorator: Google::Apis::DocsV1::DateElement::Representation
+      
           property :end_index, as: 'endIndex'
           property :equation, as: 'equation', class: Google::Apis::DocsV1::Equation, decorator: Google::Apis::DocsV1::Equation::Representation
       
@@ -2139,6 +2327,8 @@ module Google
       class Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_document_tab, as: 'addDocumentTab', class: Google::Apis::DocsV1::AddDocumentTabRequest, decorator: Google::Apis::DocsV1::AddDocumentTabRequest::Representation
+      
           property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterRequest, decorator: Google::Apis::DocsV1::CreateFooterRequest::Representation
       
           property :create_footnote, as: 'createFootnote', class: Google::Apis::DocsV1::CreateFootnoteRequest, decorator: Google::Apis::DocsV1::CreateFootnoteRequest::Representation
@@ -2161,13 +2351,21 @@ module Google
       
           property :delete_positioned_object, as: 'deletePositionedObject', class: Google::Apis::DocsV1::DeletePositionedObjectRequest, decorator: Google::Apis::DocsV1::DeletePositionedObjectRequest::Representation
       
+          property :delete_tab, as: 'deleteTab', class: Google::Apis::DocsV1::DeleteTabRequest, decorator: Google::Apis::DocsV1::DeleteTabRequest::Representation
+      
           property :delete_table_column, as: 'deleteTableColumn', class: Google::Apis::DocsV1::DeleteTableColumnRequest, decorator: Google::Apis::DocsV1::DeleteTableColumnRequest::Representation
       
           property :delete_table_row, as: 'deleteTableRow', class: Google::Apis::DocsV1::DeleteTableRowRequest, decorator: Google::Apis::DocsV1::DeleteTableRowRequest::Representation
       
+          property :insert_date, as: 'insertDate', class: Google::Apis::DocsV1::InsertDateRequest, decorator: Google::Apis::DocsV1::InsertDateRequest::Representation
+      
           property :insert_inline_image, as: 'insertInlineImage', class: Google::Apis::DocsV1::InsertInlineImageRequest, decorator: Google::Apis::DocsV1::InsertInlineImageRequest::Representation
       
           property :insert_page_break, as: 'insertPageBreak', class: Google::Apis::DocsV1::InsertPageBreakRequest, decorator: Google::Apis::DocsV1::InsertPageBreakRequest::Representation
+      
+          property :insert_person, as: 'insertPerson', class: Google::Apis::DocsV1::InsertPersonRequest, decorator: Google::Apis::DocsV1::InsertPersonRequest::Representation
+      
+          property :insert_rich_link, as: 'insertRichLink', class: Google::Apis::DocsV1::InsertRichLinkRequest, decorator: Google::Apis::DocsV1::InsertRichLinkRequest::Representation
       
           property :insert_section_break, as: 'insertSectionBreak', class: Google::Apis::DocsV1::InsertSectionBreakRequest, decorator: Google::Apis::DocsV1::InsertSectionBreakRequest::Representation
       
@@ -2193,6 +2391,10 @@ module Google
       
           property :update_document_style, as: 'updateDocumentStyle', class: Google::Apis::DocsV1::UpdateDocumentStyleRequest, decorator: Google::Apis::DocsV1::UpdateDocumentStyleRequest::Representation
       
+          property :update_document_tab_properties, as: 'updateDocumentTabProperties', class: Google::Apis::DocsV1::UpdateDocumentTabPropertiesRequest, decorator: Google::Apis::DocsV1::UpdateDocumentTabPropertiesRequest::Representation
+      
+          property :update_named_style, as: 'updateNamedStyle', class: Google::Apis::DocsV1::UpdateNamedStyleRequest, decorator: Google::Apis::DocsV1::UpdateNamedStyleRequest::Representation
+      
           property :update_paragraph_style, as: 'updateParagraphStyle', class: Google::Apis::DocsV1::UpdateParagraphStyleRequest, decorator: Google::Apis::DocsV1::UpdateParagraphStyleRequest::Representation
       
           property :update_section_style, as: 'updateSectionStyle', class: Google::Apis::DocsV1::UpdateSectionStyleRequest, decorator: Google::Apis::DocsV1::UpdateSectionStyleRequest::Representation
@@ -2211,6 +2413,8 @@ module Google
       class Response
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_document_tab, as: 'addDocumentTab', class: Google::Apis::DocsV1::AddDocumentTabResponse, decorator: Google::Apis::DocsV1::AddDocumentTabResponse::Representation
+      
           property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterResponse, decorator: Google::Apis::DocsV1::CreateFooterResponse::Representation
       
           property :create_footnote, as: 'createFootnote', class: Google::Apis::DocsV1::CreateFootnoteResponse, decorator: Google::Apis::DocsV1::CreateFootnoteResponse::Representation
@@ -2397,6 +2601,16 @@ module Google
         end
       end
       
+      class SuggestedDateElementProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_element_properties, as: 'dateElementProperties', class: Google::Apis::DocsV1::DateElementProperties, decorator: Google::Apis::DocsV1::DateElementProperties::Representation
+      
+          property :date_element_properties_suggestion_state, as: 'dateElementPropertiesSuggestionState', class: Google::Apis::DocsV1::DateElementPropertiesSuggestionState, decorator: Google::Apis::DocsV1::DateElementPropertiesSuggestionState::Representation
+      
+        end
+      end
+      
       class SuggestedDocumentStyle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2502,6 +2716,7 @@ module Google
       class TabProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :icon_emoji, as: 'iconEmoji'
           property :index, as: 'index'
           property :nesting_level, as: 'nestingLevel'
           property :parent_tab_id, as: 'parentTabId'
@@ -2758,6 +2973,25 @@ module Google
           property :document_style, as: 'documentStyle', class: Google::Apis::DocsV1::DocumentStyle, decorator: Google::Apis::DocsV1::DocumentStyle::Representation
       
           property :fields, as: 'fields'
+          property :tab_id, as: 'tabId'
+        end
+      end
+      
+      class UpdateDocumentTabPropertiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
+          property :tab_properties, as: 'tabProperties', class: Google::Apis::DocsV1::TabProperties, decorator: Google::Apis::DocsV1::TabProperties::Representation
+      
+        end
+      end
+      
+      class UpdateNamedStyleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
+          property :named_style, as: 'namedStyle', class: Google::Apis::DocsV1::NamedStyle, decorator: Google::Apis::DocsV1::NamedStyle::Representation
+      
           property :tab_id, as: 'tabId'
         end
       end

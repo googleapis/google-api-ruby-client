@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApkSplits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppBundle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -737,9 +743,19 @@ module Google
         end
       end
       
+      class ApkSplits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :bundle_splits, as: 'bundleSplits', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
+        end
+      end
+      
       class AppBundle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :apks, as: 'apks', class: Google::Apis::TestingV1::ApkSplits, decorator: Google::Apis::TestingV1::ApkSplits::Representation
+      
           property :bundle_location, as: 'bundleLocation', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
       
         end

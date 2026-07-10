@@ -126,6 +126,39 @@ module Google
         end
       end
       
+      # AutoMigrationConfig contains the automigration configuration for a project.
+      class AutoMigrationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the auto migration is enabled for the project.
+        # Corresponds to the JSON property `autoMigrationEnabled`
+        # @return [Boolean]
+        attr_accessor :auto_migration_enabled
+        alias_method :auto_migration_enabled?, :auto_migration_enabled
+      
+        # Identifier. The name of the AutoMigrationConfig. Format: 'projects/`project_id`
+        # /locations/`location`/AutoMigrationConfig'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Time the AutoMigrationConfig was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_migration_enabled = args[:auto_migration_enabled] if args.key?(:auto_migration_enabled)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -272,8 +305,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Optional. User-defined location of Cloud Build logs and artifacts in Google
-        # Cloud Storage. Format: `gs://`bucket`/`folder`` A default bucket will be
+        # User-defined location of Cloud Build logs and artifacts in Google Cloud
+        # Storage. Format: `gs://`bucket`/`folder`` A default bucket will be
         # bootstrapped if the field is not set or empty. Default bucket format: `gs://--
         # blueprint-config` Constraints: - The bucket needs to be in the same project as
         # the deployment - The path cannot be within the path of `gcs_source` - The
@@ -325,7 +358,7 @@ module Google
         attr_accessor :import_existing_resources
         alias_method :import_existing_resources?, :import_existing_resources
       
-        # User-defined metadata for the deployment.
+        # Optional. User-defined metadata for the deployment.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -341,11 +374,16 @@ module Google
         # @return [String]
         attr_accessor :lock_state
       
-        # Resource name of the deployment. Format: `projects/`project`/locations/`
-        # location`/deployments/`deployment``
+        # Identifier. Resource name of the deployment. Format: `projects/`project`/
+        # locations/`location`/deployments/`deployment``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # ProviderConfig contains the provider configurations.
+        # Corresponds to the JSON property `providerConfig`
+        # @return [Google::Apis::ConfigV1::ProviderConfig]
+        attr_accessor :provider_config
       
         # Optional. Input to control quota checks for resources in terraform
         # configuration files. There are limited resources on which quota validation
@@ -390,7 +428,7 @@ module Google
         # @return [String]
         attr_accessor :tf_version
       
-        # Optional. The user-specified Terraform version constraint. Example: "=1.3.10".
+        # The user-specified Terraform version constraint. Example: "=1.3.10".
         # Corresponds to the JSON property `tfVersionConstraint`
         # @return [String]
         attr_accessor :tf_version_constraint
@@ -400,10 +438,10 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Optional. The user-specified Cloud Build worker pool resource in which the
-        # Cloud Build job will execute. Format: `projects/`project`/locations/`location`/
-        # workerPools/`workerPoolId``. If this field is unspecified, the default Cloud
-        # Build worker pool will be used.
+        # The user-specified Cloud Build worker pool resource in which the Cloud Build
+        # job will execute. Format: `projects/`project`/locations/`location`/workerPools/
+        # `workerPoolId``. If this field is unspecified, the default Cloud Build worker
+        # pool will be used.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
         attr_accessor :worker_pool
@@ -427,6 +465,7 @@ module Google
           @latest_revision = args[:latest_revision] if args.key?(:latest_revision)
           @lock_state = args[:lock_state] if args.key?(:lock_state)
           @name = args[:name] if args.key?(:name)
+          @provider_config = args[:provider_config] if args.key?(:provider_config)
           @quota_validation = args[:quota_validation] if args.key?(:quota_validation)
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
@@ -437,6 +476,139 @@ module Google
           @tf_version_constraint = args[:tf_version_constraint] if args.key?(:tf_version_constraint)
           @update_time = args[:update_time] if args.key?(:update_time)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+        end
+      end
+      
+      # A DeploymentGroup is a collection of DeploymentUnits that in a DAG-like
+      # structure.
+      class DeploymentGroup
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Arbitrary key-value metadata storage e.g. to help client tools
+        # identify deployment group during automation. See https://google.aip.dev/148#
+        # annotations for details on format and size limitations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Time when the deployment group was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The deployment units of the deployment group in a DAG like structure. When a
+        # deployment group is being provisioned, the deployment units are deployed in a
+        # DAG order. The provided units must be in a DAG order, otherwise an error will
+        # be returned.
+        # Corresponds to the JSON property `deploymentUnits`
+        # @return [Array<Google::Apis::ConfigV1::DeploymentUnit>]
+        attr_accessor :deployment_units
+      
+        # Optional. User-defined metadata for the deployment group.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the deployment group. Format: 'projects/`project_id`/
+        # locations/`location`/deploymentGroups/`deployment_group`'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `provisioningError`
+        # @return [Google::Apis::ConfigV1::Status]
+        attr_accessor :provisioning_error
+      
+        # Output only. The provisioning state of the deployment group.
+        # Corresponds to the JSON property `provisioningState`
+        # @return [String]
+        attr_accessor :provisioning_state
+      
+        # Output only. Additional information regarding the current provisioning state.
+        # Corresponds to the JSON property `provisioningStateDescription`
+        # @return [String]
+        attr_accessor :provisioning_state_description
+      
+        # Output only. Current state of the deployment group.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Additional information regarding the current state.
+        # Corresponds to the JSON property `stateDescription`
+        # @return [String]
+        attr_accessor :state_description
+      
+        # Output only. Time when the deployment group was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deployment_units = args[:deployment_units] if args.key?(:deployment_units)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @provisioning_error = args[:provisioning_error] if args.key?(:provisioning_error)
+          @provisioning_state = args[:provisioning_state] if args.key?(:provisioning_state)
+          @provisioning_state_description = args[:provisioning_state_description] if args.key?(:provisioning_state_description)
+          @state = args[:state] if args.key?(:state)
+          @state_description = args[:state_description] if args.key?(:state_description)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A DeploymentGroupRevision represents a snapshot of a DeploymentGroup at a
+      # given point in time, created when a DeploymentGroup is provisioned or
+      # deprovisioned.
+      class DeploymentGroupRevision
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The alternative IDs of the deployment group revision.
+        # Corresponds to the JSON property `alternativeIds`
+        # @return [Array<String>]
+        attr_accessor :alternative_ids
+      
+        # Output only. Time when the deployment group revision was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The name of the deployment group revision. Format: 'projects/`
+        # project_id`/locations/`location`/deploymentGroups/`deployment_group`/revisions/
+        # `revision`'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A DeploymentGroup is a collection of DeploymentUnits that in a DAG-like
+        # structure.
+        # Corresponds to the JSON property `snapshot`
+        # @return [Google::Apis::ConfigV1::DeploymentGroup]
+        attr_accessor :snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternative_ids = args[:alternative_ids] if args.key?(:alternative_ids)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @snapshot = args[:snapshot] if args.key?(:snapshot)
         end
       end
       
@@ -475,6 +647,235 @@ module Google
           @build = args[:build] if args.key?(:build)
           @logs = args[:logs] if args.key?(:logs)
           @step = args[:step] if args.key?(:step)
+        end
+      end
+      
+      # The summary of the deployment operation.
+      class DeploymentOperationSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Location of Deployment operations artifacts in `gs://`bucket`/`
+        # object`` format.
+        # Corresponds to the JSON property `artifacts`
+        # @return [String]
+        attr_accessor :artifacts
+      
+        # Output only. Cloud Build instance UUID associated with this operation.
+        # Corresponds to the JSON property `build`
+        # @return [String]
+        attr_accessor :build
+      
+        # Output only. Location of Deployment operations content in `gs://`bucket`/`
+        # object`` format.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. The current step the deployment operation is running.
+        # Corresponds to the JSON property `deploymentStep`
+        # @return [String]
+        attr_accessor :deployment_step
+      
+        # Output only. Location of Deployment operations logs in `gs://`bucket`/`object``
+        # format.
+        # Corresponds to the JSON property `logs`
+        # @return [String]
+        attr_accessor :logs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifacts = args[:artifacts] if args.key?(:artifacts)
+          @build = args[:build] if args.key?(:build)
+          @content = args[:content] if args.key?(:content)
+          @deployment_step = args[:deployment_step] if args.key?(:deployment_step)
+          @logs = args[:logs] if args.key?(:logs)
+        end
+      end
+      
+      # Configuration for a value sourced from a Deployment.
+      class DeploymentSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the source Deployment to import the output from.
+        # Format: projects/`project`/locations/`location`/deployments/`deployment` The
+        # source deployment must be in the same project and location.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # Required. The name of the output variable in the source deployment's latest
+        # successfully applied revision.
+        # Corresponds to the JSON property `outputName`
+        # @return [String]
+        attr_accessor :output_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @output_name = args[:output_name] if args.key?(:output_name)
+        end
+      end
+      
+      # Spec for a deployment to be created.
+      class DeploymentSpec
+        include Google::Apis::Core::Hashable
+      
+        # A Deployment is a group of resources and configs managed and provisioned by
+        # Infra Manager.
+        # Corresponds to the JSON property `deployment`
+        # @return [Google::Apis::ConfigV1::Deployment]
+        attr_accessor :deployment
+      
+        # Required. The id of the deployment to be created which doesn't include the
+        # project id and location.
+        # Corresponds to the JSON property `deploymentId`
+        # @return [String]
+        attr_accessor :deployment_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
+        end
+      end
+      
+      # A DeploymentUnit is a container for a deployment and its dependencies. An
+      # existing deployment can be provided directly in the unit, or the unit can act
+      # as a placeholder to define the DAG, with the deployment specs supplied in a `
+      # provisionDeploymentRequest`.
+      class DeploymentUnit
+        include Google::Apis::Core::Hashable
+      
+        # Required. The IDs of the deployment units within the deployment group that
+        # this unit depends on.
+        # Corresponds to the JSON property `dependencies`
+        # @return [Array<String>]
+        attr_accessor :dependencies
+      
+        # Optional. The name of the deployment to be provisioned. Format: 'projects/`
+        # project_id`/locations/`location`/deployments/`deployment`'.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # The id of the deployment unit. Must be unique within the deployment group.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dependencies = args[:dependencies] if args.key?(:dependencies)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # The progress of a deployment unit provisioning or deprovisioning.
+      class DeploymentUnitProgress
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the deployment to be provisioned. Format: 'projects/`
+        # project`/locations/`location`/deployments/`deployment`'.
+        # Corresponds to the JSON property `deployment`
+        # @return [String]
+        attr_accessor :deployment
+      
+        # The summary of the deployment operation.
+        # Corresponds to the JSON property `deploymentOperationSummary`
+        # @return [Google::Apis::ConfigV1::DeploymentOperationSummary]
+        attr_accessor :deployment_operation_summary
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ConfigV1::Status]
+        attr_accessor :error
+      
+        # Output only. The intent of the deployment unit.
+        # Corresponds to the JSON property `intent`
+        # @return [String]
+        attr_accessor :intent
+      
+        # Output only. The current step of the deployment unit provisioning.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Additional information regarding the current state.
+        # Corresponds to the JSON property `stateDescription`
+        # @return [String]
+        attr_accessor :state_description
+      
+        # Output only. The unit id of the deployment unit to be provisioned.
+        # Corresponds to the JSON property `unitId`
+        # @return [String]
+        attr_accessor :unit_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @deployment_operation_summary = args[:deployment_operation_summary] if args.key?(:deployment_operation_summary)
+          @error = args[:error] if args.key?(:error)
+          @intent = args[:intent] if args.key?(:intent)
+          @state = args[:state] if args.key?(:state)
+          @state_description = args[:state_description] if args.key?(:state_description)
+          @unit_id = args[:unit_id] if args.key?(:unit_id)
+        end
+      end
+      
+      # The request message for the DeprovisionDeploymentGroup method.
+      class DeprovisionDeploymentGroupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Policy on how resources within each deployment should be handled
+        # during deletion. This policy is applied globally to the deletion of all
+        # deployments in this group. This corresponds to the 'delete_policy' field in
+        # DeleteDeploymentRequest.
+        # Corresponds to the JSON property `deletePolicy`
+        # @return [String]
+        attr_accessor :delete_policy
+      
+        # Optional. If set to true, this option is propagated to the deletion of each
+        # deployment in the group. This corresponds to the 'force' field in
+        # DeleteDeploymentRequest.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delete_policy = args[:delete_policy] if args.key?(:delete_policy)
+          @force = args[:force] if args.key?(:force)
         end
       end
       
@@ -615,21 +1016,40 @@ module Google
         end
       end
       
+      # Configuration for a source of an external value.
+      class ExternalValueSource
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a value sourced from a Deployment.
+        # Corresponds to the JSON property `deploymentSource`
+        # @return [Google::Apis::ConfigV1::DeploymentSource]
+        attr_accessor :deployment_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_source = args[:deployment_source] if args.key?(:deployment_source)
+        end
+      end
+      
       # A set of files in a Git repository.
       class GitSource
         include Google::Apis::Core::Hashable
       
-        # Optional. Subdirectory inside the repository. Example: 'staging/my-package'
+        # Subdirectory inside the repository. Example: 'staging/my-package'
         # Corresponds to the JSON property `directory`
         # @return [String]
         attr_accessor :directory
       
-        # Optional. Git reference (e.g. branch or tag).
+        # Git reference (e.g. branch or tag).
         # Corresponds to the JSON property `ref`
         # @return [String]
         attr_accessor :ref
       
-        # Optional. Repository URL. Example: 'https://github.com/kubernetes/examples.git'
+        # Repository URL. Example: 'https://github.com/kubernetes/examples.git'
         # Corresponds to the JSON property `repo`
         # @return [String]
         attr_accessor :repo
@@ -663,6 +1083,70 @@ module Google
         # Update properties of this object
         def update!(**args)
           @lock_id = args[:lock_id] if args.key?(:lock_id)
+        end
+      end
+      
+      # The response message for the ListDeploymentGroupRevisions method.
+      class ListDeploymentGroupRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The deployment group revisions from the specified collection.
+        # Corresponds to the JSON property `deploymentGroupRevisions`
+        # @return [Array<Google::Apis::ConfigV1::DeploymentGroupRevision>]
+        attr_accessor :deployment_group_revisions
+      
+        # Token to be supplied to the next ListDeploymentGroupRevisions request via `
+        # page_token` to obtain the next set of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_group_revisions = args[:deployment_group_revisions] if args.key?(:deployment_group_revisions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response message for the ListDeploymentGroups method.
+      class ListDeploymentGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The deployment groups from the specified collection.
+        # Corresponds to the JSON property `deploymentGroups`
+        # @return [Array<Google::Apis::ConfigV1::DeploymentGroup>]
+        attr_accessor :deployment_groups
+      
+        # Token to be supplied to the next ListDeploymentGroups request via `page_token`
+        # to obtain the next set of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_groups = args[:deployment_groups] if args.key?(:deployment_groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -737,6 +1221,14 @@ module Google
         # @return [Array<Google::Apis::ConfigV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -745,6 +1237,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -776,6 +1269,72 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @previews = args[:previews] if args.key?(:previews)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # A response to a 'ListResourceChanges' call. Contains a list of ResourceChanges.
+      class ListResourceChangesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the 'ListResourceChanges'
+        # method. The value of an empty string means that there are no more resources to
+        # return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of ResourceChanges.
+        # Corresponds to the JSON property `resourceChanges`
+        # @return [Array<Google::Apis::ConfigV1::ResourceChange>]
+        attr_accessor :resource_changes
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resource_changes = args[:resource_changes] if args.key?(:resource_changes)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # A response to a 'ListResourceDrifts' call. Contains a list of ResourceDrifts.
+      class ListResourceDriftsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to request the next page of resources from the 'ListResourceDrifts'
+        # method. The value of an empty string means that there are no more resources to
+        # return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of ResourceDrifts.
+        # Corresponds to the JSON property `resourceDrifts`
+        # @return [Array<Google::Apis::ConfigV1::ResourceDrift>]
+        attr_accessor :resource_drifts
+      
+        # Unreachable resources, if any.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resource_drifts = args[:resource_drifts] if args.key?(:resource_drifts)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -1076,6 +1635,12 @@ module Google
         # @return [Google::Apis::ConfigV1::PreviewOperationMetadata]
         attr_accessor :preview_metadata
       
+        # Operation metadata for `ProvisionDeploymentGroup` and `
+        # DeprovisionDeploymentGroup` long-running operations.
+        # Corresponds to the JSON property `provisionDeploymentGroupMetadata`
+        # @return [Google::Apis::ConfigV1::ProvisionDeploymentGroupOperationMetadata]
+        attr_accessor :provision_deployment_group_metadata
+      
         # Output only. Identifies whether the user has requested cancellation of the
         # operation. Operations that have successfully been cancelled have google.
         # longrunning.Operation.error value with a google.rpc.Status.code of `1`,
@@ -1111,6 +1676,7 @@ module Google
           @deployment_metadata = args[:deployment_metadata] if args.key?(:deployment_metadata)
           @end_time = args[:end_time] if args.key?(:end_time)
           @preview_metadata = args[:preview_metadata] if args.key?(:preview_metadata)
+          @provision_deployment_group_metadata = args[:provision_deployment_group_metadata] if args.key?(:provision_deployment_group_metadata)
           @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
@@ -1225,8 +1791,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Optional. User-defined location of Cloud Build logs, artifacts, and in Google
-        # Cloud Storage. Format: `gs://`bucket`/`folder`` A default bucket will be
+        # User-defined location of Cloud Build logs, artifacts, and in Google Cloud
+        # Storage. Format: `gs://`bucket`/`folder`` A default bucket will be
         # bootstrapped if the field is not set or empty Default Bucket Format: `gs://--
         # blueprint-config` Constraints: - The bucket needs to be in the same project as
         # the deployment - The path cannot be within the path of `gcs_source` If omitted
@@ -1303,6 +1869,11 @@ module Google
         # @return [String]
         attr_accessor :preview_mode
       
+        # ProviderConfig contains the provider configurations.
+        # Corresponds to the JSON property `providerConfig`
+        # @return [Google::Apis::ConfigV1::ProviderConfig]
+        attr_accessor :provider_config
+      
         # Required. User-specified Service Account (SA) credentials to be used when
         # previewing resources. Format: `projects/`projectID`/serviceAccounts/`
         # serviceAccount``
@@ -1333,13 +1904,13 @@ module Google
         # @return [String]
         attr_accessor :tf_version
       
-        # Optional. The user-specified Terraform version constraint. Example: "=1.3.10".
+        # The user-specified Terraform version constraint. Example: "=1.3.10".
         # Corresponds to the JSON property `tfVersionConstraint`
         # @return [String]
         attr_accessor :tf_version_constraint
       
-        # Optional. The user-specified Worker Pool resource in which the Cloud Build job
-        # will execute. Format projects/`project`/locations/`location`/workerPools/`
+        # The user-specified Worker Pool resource in which the Cloud Build job will
+        # execute. Format projects/`project`/locations/`location`/workerPools/`
         # workerPoolId` If this field is unspecified, the default Cloud Build worker
         # pool will be used. If omitted and deployment resource ref provided has
         # worker_pool defined, that worker pool is used.
@@ -1366,6 +1937,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @preview_artifacts = args[:preview_artifacts] if args.key?(:preview_artifacts)
           @preview_mode = args[:preview_mode] if args.key?(:preview_mode)
+          @provider_config = args[:provider_config] if args.key?(:provider_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
           @terraform_blueprint = args[:terraform_blueprint] if args.key?(:terraform_blueprint)
@@ -1465,6 +2037,167 @@ module Google
         end
       end
       
+      # A property change represents a change to a property in the state file.
+      class PropertyChange
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Representations of the object value after the actions.
+        # Corresponds to the JSON property `after`
+        # @return [Object]
+        attr_accessor :after
+      
+        # Output only. The paths of sensitive fields in `after`. Paths are relative to `
+        # path`.
+        # Corresponds to the JSON property `afterSensitivePaths`
+        # @return [Array<String>]
+        attr_accessor :after_sensitive_paths
+      
+        # Output only. Representations of the object value before the actions.
+        # Corresponds to the JSON property `before`
+        # @return [Object]
+        attr_accessor :before
+      
+        # Output only. The paths of sensitive fields in `before`. Paths are relative to `
+        # path`.
+        # Corresponds to the JSON property `beforeSensitivePaths`
+        # @return [Array<String>]
+        attr_accessor :before_sensitive_paths
+      
+        # Output only. The path of the property change.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @after = args[:after] if args.key?(:after)
+          @after_sensitive_paths = args[:after_sensitive_paths] if args.key?(:after_sensitive_paths)
+          @before = args[:before] if args.key?(:before)
+          @before_sensitive_paths = args[:before_sensitive_paths] if args.key?(:before_sensitive_paths)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # A property drift represents a drift to a property in the state file.
+      class PropertyDrift
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Representations of the object value after the actions.
+        # Corresponds to the JSON property `after`
+        # @return [Object]
+        attr_accessor :after
+      
+        # Output only. The paths of sensitive fields in `after`. Paths are relative to `
+        # path`.
+        # Corresponds to the JSON property `afterSensitivePaths`
+        # @return [Array<String>]
+        attr_accessor :after_sensitive_paths
+      
+        # Output only. Representations of the object value before the actions.
+        # Corresponds to the JSON property `before`
+        # @return [Object]
+        attr_accessor :before
+      
+        # Output only. The paths of sensitive fields in `before`. Paths are relative to `
+        # path`.
+        # Corresponds to the JSON property `beforeSensitivePaths`
+        # @return [Array<String>]
+        attr_accessor :before_sensitive_paths
+      
+        # Output only. The path of the property drift.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @after = args[:after] if args.key?(:after)
+          @after_sensitive_paths = args[:after_sensitive_paths] if args.key?(:after_sensitive_paths)
+          @before = args[:before] if args.key?(:before)
+          @before_sensitive_paths = args[:before_sensitive_paths] if args.key?(:before_sensitive_paths)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # ProviderConfig contains the provider configurations.
+      class ProviderConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. ProviderSource specifies the source type of the provider.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_type = args[:source_type] if args.key?(:source_type)
+        end
+      end
+      
+      # Operation metadata for `ProvisionDeploymentGroup` and `
+      # DeprovisionDeploymentGroup` long-running operations.
+      class ProvisionDeploymentGroupOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Progress information for each deployment unit within the
+        # operation.
+        # Corresponds to the JSON property `deploymentUnitProgresses`
+        # @return [Array<Google::Apis::ConfigV1::DeploymentUnitProgress>]
+        attr_accessor :deployment_unit_progresses
+      
+        # Output only. The current step of the deployment group operation.
+        # Corresponds to the JSON property `step`
+        # @return [String]
+        attr_accessor :step
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_unit_progresses = args[:deployment_unit_progresses] if args.key?(:deployment_unit_progresses)
+          @step = args[:step] if args.key?(:step)
+        end
+      end
+      
+      # The request message for the ProvisionDeploymentGroup method.
+      class ProvisionDeploymentGroupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The deployment specs of the deployment units to be created within
+        # the same project and location of the deployment group. The key is the unit ID,
+        # and the value is the `DeploymentSpec`. Provisioning will fail if a `
+        # deployment_spec` has a `deployment_id` that matches an existing deployment in
+        # the same project and location. If an existing deployment was part of the last
+        # successful revision but is no longer in the current DeploymentGroup's `
+        # deployment_units`, it will be recreated if included in `deployment_specs`.
+        # Corresponds to the JSON property `deploymentSpecs`
+        # @return [Hash<String,Google::Apis::ConfigV1::DeploymentSpec>]
+        attr_accessor :deployment_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_specs = args[:deployment_specs] if args.key?(:deployment_specs)
+        end
+      end
+      
       # Resource represents a Google Cloud Platform resource actuated by IM. Resources
       # are child resources of Revisions.
       class Resource
@@ -1529,6 +2262,156 @@ module Google
         # Update properties of this object
         def update!(**args)
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+        end
+      end
+      
+      # A resource change represents a change to a resource in the state file.
+      class ResourceChange
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The intent of the resource change.
+        # Corresponds to the JSON property `intent`
+        # @return [String]
+        attr_accessor :intent
+      
+        # Identifier. The name of the resource change. Format: 'projects/`project_id`/
+        # locations/`location`/previews/`preview`/resourceChanges/`resource_change`'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The property changes of the resource change.
+        # Corresponds to the JSON property `propertyChanges`
+        # @return [Array<Google::Apis::ConfigV1::PropertyChange>]
+        attr_accessor :property_changes
+      
+        # Terraform info of a ResourceChange.
+        # Corresponds to the JSON property `terraformInfo`
+        # @return [Google::Apis::ConfigV1::ResourceChangeTerraformInfo]
+        attr_accessor :terraform_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent = args[:intent] if args.key?(:intent)
+          @name = args[:name] if args.key?(:name)
+          @property_changes = args[:property_changes] if args.key?(:property_changes)
+          @terraform_info = args[:terraform_info] if args.key?(:terraform_info)
+        end
+      end
+      
+      # Terraform info of a ResourceChange.
+      class ResourceChangeTerraformInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. TF resource actions.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<String>]
+        attr_accessor :actions
+      
+        # Output only. TF resource address that uniquely identifies the resource.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Output only. TF resource provider.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. TF resource name.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. TF resource type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @address = args[:address] if args.key?(:address)
+          @provider = args[:provider] if args.key?(:provider)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A resource drift represents a drift to a resource in the state file.
+      class ResourceDrift
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the resource drift. Format: 'projects/`project_id`/
+        # locations/`location`/previews/`preview`/resourceDrifts/`resource_drift`'.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The property drifts of the resource drift.
+        # Corresponds to the JSON property `propertyDrifts`
+        # @return [Array<Google::Apis::ConfigV1::PropertyDrift>]
+        attr_accessor :property_drifts
+      
+        # Terraform info of a ResourceChange.
+        # Corresponds to the JSON property `terraformInfo`
+        # @return [Google::Apis::ConfigV1::ResourceDriftTerraformInfo]
+        attr_accessor :terraform_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @property_drifts = args[:property_drifts] if args.key?(:property_drifts)
+          @terraform_info = args[:terraform_info] if args.key?(:terraform_info)
+        end
+      end
+      
+      # Terraform info of a ResourceChange.
+      class ResourceDriftTerraformInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The address of the drifted resource.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Output only. The provider of the drifted resource.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. TF resource name.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Output only. The type of the drifted resource.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @provider = args[:provider] if args.key?(:provider)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1623,6 +2506,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # ProviderConfig contains the provider configurations.
+        # Corresponds to the JSON property `providerConfig`
+        # @return [Google::Apis::ConfigV1::ProviderConfig]
+        attr_accessor :provider_config
+      
         # Optional. Input to control quota checks for resources in terraform
         # configuration files. There are limited resources on which quota validation
         # applies.
@@ -1707,6 +2595,7 @@ module Google
           @import_existing_resources = args[:import_existing_resources] if args.key?(:import_existing_resources)
           @logs = args[:logs] if args.key?(:logs)
           @name = args[:name] if args.key?(:name)
+          @provider_config = args[:provider_config] if args.key?(:provider_config)
           @quota_validation = args[:quota_validation] if args.key?(:quota_validation)
           @quota_validation_results = args[:quota_validation_results] if args.key?(:quota_validation_results)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -1838,6 +2727,12 @@ module Google
       class TerraformBlueprint
         include Google::Apis::Core::Hashable
       
+        # Optional. Map of input variable names in this blueprint to configurations for
+        # importing values from external sources.
+        # Corresponds to the JSON property `externalValues`
+        # @return [Hash<String,Google::Apis::ConfigV1::ExternalValueSource>]
+        attr_accessor :external_values
+      
         # URI of an object in Google Cloud Storage. Format: `gs://`bucket`/`object`` URI
         # may also specify an object version for zipped objects. Format: `gs://`bucket`/`
         # object`#`version``
@@ -1861,6 +2756,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @external_values = args[:external_values] if args.key?(:external_values)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @git_source = args[:git_source] if args.key?(:git_source)
           @input_values = args[:input_values] if args.key?(:input_values)

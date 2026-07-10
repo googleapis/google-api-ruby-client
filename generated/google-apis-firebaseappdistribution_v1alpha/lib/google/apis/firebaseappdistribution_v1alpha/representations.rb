@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AndroidxCrawlerOutputRectangle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppdistroV1Release
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,7 +106,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -131,6 +161,24 @@ module Google
       end
       
       class GoogleFirebaseAppdistroV1alphaDeviceInteraction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionBack
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +346,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -312,6 +366,16 @@ module Google
         end
       end
       
+      class AndroidxCrawlerOutputRectangle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bottom, as: 'bottom'
+          property :left, as: 'left'
+          property :right, as: 'right'
+          property :top, as: 'top'
+        end
+      end
+      
       class GoogleFirebaseAppdistroV1Release
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -319,11 +383,13 @@ module Google
           property :build_version, as: 'buildVersion'
           property :create_time, as: 'createTime'
           property :display_version, as: 'displayVersion'
+          property :expire_time, as: 'expireTime'
           property :firebase_console_uri, as: 'firebaseConsoleUri'
           property :name, as: 'name'
           property :release_notes, as: 'releaseNotes', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1ReleaseNotes, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1ReleaseNotes::Representation
       
           property :testing_uri, as: 'testingUri'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -373,6 +439,7 @@ module Google
           property :goal, as: 'goal'
           property :hint, as: 'hint'
           property :success_criteria, as: 'successCriteria'
+          property :test_case, as: 'testCase'
         end
       end
       
@@ -428,7 +495,37 @@ module Google
         end
       end
       
+      class GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest::Representation
+      
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :test_cases, as: 'testCases', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase::Representation
+      
+        end
+      end
+      
       class GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :test_devices, as: 'testDevices', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice::Representation
+      
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -467,13 +564,18 @@ module Google
           property :crawl_graph_uri, as: 'crawlGraphUri'
           property :device, as: 'device', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice::Representation
       
+          property :execution_type, as: 'executionType'
           property :failed_reason, as: 'failedReason'
+          property :final_ai_assertion_missing, as: 'finalAiAssertionMissing'
           property :inconclusive_reason, as: 'inconclusiveReason'
+          property :name, as: 'name'
+          property :origin_device_execution, as: 'originDeviceExecution'
           property :results_storage_path, as: 'resultsStoragePath'
           property :robo_stats, as: 'roboStats', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaRoboStats, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaRoboStats::Representation
       
           collection :screenshot_uris, as: 'screenshotUris'
           property :state, as: 'state'
+          property :video_start_time, as: 'videoStartTime'
           property :video_uri, as: 'videoUri'
         end
       end
@@ -481,16 +583,51 @@ module Google
       class GoogleFirebaseAppdistroV1alphaDeviceInteraction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :back_action, as: 'backAction', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionBack, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionBack::Representation
+      
+          property :drag_and_drop, as: 'dragAndDrop', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop::Representation
+      
+          property :enter_text, as: 'enterText', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText::Representation
+      
           property :key_code, as: 'keyCode'
+          property :long_press, as: 'longPress', class: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint, decorator: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint::Representation
+      
           property :screenshot, as: 'screenshot', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaScreenshot, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaScreenshot::Representation
       
           property :swipe, as: 'swipe', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe::Representation
       
           property :tap_prop, as: 'tap', class: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint, decorator: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint::Representation
       
+          property :target_folded_state, as: 'targetFoldedState'
+          property :target_orientation, as: 'targetOrientation'
           property :text_input, as: 'textInput'
           property :wait, as: 'wait', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionWait, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionWait::Representation
       
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionBack
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, as: 'end', class: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint, decorator: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint::Representation
+      
+          property :start, as: 'start', class: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint, decorator: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint::Representation
+      
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :element_bounds, as: 'elementBounds', class: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputRectangle, decorator: Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputRectangle::Representation
+      
+          property :text, as: 'text'
         end
       end
       
@@ -557,11 +694,13 @@ module Google
       class GoogleFirebaseAppdistroV1alphaGoalAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :caching_type, as: 'cachingType'
           property :debug_info, as: 'debugInfo', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo::Representation
       
           property :device_action, as: 'deviceAction', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceAction, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceAction::Representation
       
           property :explanation, as: 'explanation'
+          property :start_time, as: 'startTime'
           property :terminal_action, as: 'terminalAction', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTerminalAction, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTerminalAction::Representation
       
         end
@@ -663,6 +802,7 @@ module Google
           property :login_credential, as: 'loginCredential', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaLoginCredential, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaLoginCredential::Representation
       
           property :name, as: 'name'
+          property :results_bucket, as: 'resultsBucket'
           property :test_case, as: 'testCase'
           property :test_state, as: 'testState'
         end
@@ -712,8 +852,10 @@ module Google
           property :ai_instructions, as: 'aiInstructions', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaAiInstructions::Representation
       
           property :create_time, as: 'createTime'
+          collection :dependent_test_cases, as: 'dependentTestCases'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :prerequisite_test_case, as: 'prerequisiteTestCase'
         end
       end
       
@@ -722,6 +864,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :results_bucket, as: 'resultsBucket'
           property :robo_crawler, as: 'roboCrawler', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaRoboCrawler, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaRoboCrawler::Representation
       
           collection :test_devices, as: 'testDevices', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice::Representation
@@ -754,6 +897,15 @@ module Google
           property :name, as: 'name'
           property :platform, as: 'platform'
           property :udid, as: 'udid'
+        end
+      end
+      
+      class GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_missing, as: 'allowMissing'
+          property :test_case, as: 'testCase', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase::Representation
+      
         end
       end
       

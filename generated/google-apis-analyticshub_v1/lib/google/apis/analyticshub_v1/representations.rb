@@ -22,6 +22,18 @@ module Google
   module Apis
     module AnalyticshubV1
       
+      class AiInference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApproveQueryTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigtableConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +77,12 @@ module Google
       end
       
       class CloudStorageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Compression
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListQueryTemplatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSharedResourceSubscriptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RefreshSubscriptionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +323,12 @@ module Google
       end
       
       class RefreshSubscriptionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Replica
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -322,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Routine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SelectedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +389,18 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoredProcedureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SubmitQueryTemplateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -394,6 +454,28 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnstructuredInference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AiInference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :unstructured_inference, as: 'unstructuredInference', class: Google::Apis::AnalyticshubV1::UnstructuredInference, decorator: Google::Apis::AnalyticshubV1::UnstructuredInference::Representation
+      
+        end
+      end
+      
+      class ApproveQueryTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -435,10 +517,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset'
+          collection :effective_replicas, as: 'effectiveReplicas', class: Google::Apis::AnalyticshubV1::Replica, decorator: Google::Apis::AnalyticshubV1::Replica::Representation
+      
+          collection :replica_locations, as: 'replicaLocations'
           property :restricted_export_policy, as: 'restrictedExportPolicy', class: Google::Apis::AnalyticshubV1::RestrictedExportPolicy, decorator: Google::Apis::AnalyticshubV1::RestrictedExportPolicy::Representation
       
           collection :selected_resources, as: 'selectedResources', class: Google::Apis::AnalyticshubV1::SelectedResource, decorator: Google::Apis::AnalyticshubV1::SelectedResource::Representation
       
+        end
+      end
+      
+      class BigtableConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_profile_id, as: 'appProfileId'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :table, as: 'table'
+          property :write_metadata, as: 'writeMetadata'
         end
       end
       
@@ -467,6 +562,14 @@ module Google
           property :service_account_email, as: 'serviceAccountEmail'
           property :text_config, as: 'textConfig', class: Google::Apis::AnalyticshubV1::TextConfig, decorator: Google::Apis::AnalyticshubV1::TextConfig::Representation
       
+        end
+      end
+      
+      class Compression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compression_algorithm, as: 'compressionAlgorithm'
+          property :compression_mode, as: 'compressionMode'
         end
       end
       
@@ -526,6 +629,7 @@ module Google
           property :friendly_name, as: 'friendlyName'
           hash :labels, as: 'labels'
           property :location, as: 'location'
+          collection :replica_locations, as: 'replicaLocations'
         end
       end
       
@@ -620,6 +724,8 @@ module Google
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
           property :bigquery_config, as: 'bigqueryConfig', class: Google::Apis::AnalyticshubV1::BigQueryConfig, decorator: Google::Apis::AnalyticshubV1::BigQueryConfig::Representation
       
+          property :bigtable_config, as: 'bigtableConfig', class: Google::Apis::AnalyticshubV1::BigtableConfig, decorator: Google::Apis::AnalyticshubV1::BigtableConfig::Representation
+      
           property :cloud_storage_config, as: 'cloudStorageConfig', class: Google::Apis::AnalyticshubV1::CloudStorageConfig, decorator: Google::Apis::AnalyticshubV1::CloudStorageConfig::Representation
       
           property :dead_letter_policy, as: 'deadLetterPolicy', class: Google::Apis::AnalyticshubV1::DeadLetterPolicy, decorator: Google::Apis::AnalyticshubV1::DeadLetterPolicy::Representation
@@ -640,6 +746,7 @@ module Google
           property :retain_acked_messages, as: 'retainAckedMessages'
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::AnalyticshubV1::RetryPolicy, decorator: Google::Apis::AnalyticshubV1::RetryPolicy::Representation
       
+          hash :tags, as: 'tags'
         end
       end
       
@@ -684,6 +791,15 @@ module Google
           collection :data_exchanges, as: 'dataExchanges', class: Google::Apis::AnalyticshubV1::DataExchange, decorator: Google::Apis::AnalyticshubV1::DataExchange::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListQueryTemplatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :query_templates, as: 'queryTemplates', class: Google::Apis::AnalyticshubV1::QueryTemplate, decorator: Google::Apis::AnalyticshubV1::QueryTemplate::Representation
+      
         end
       end
       
@@ -733,12 +849,18 @@ module Google
           property :restricted_export_config, as: 'restrictedExportConfig', class: Google::Apis::AnalyticshubV1::RestrictedExportConfig, decorator: Google::Apis::AnalyticshubV1::RestrictedExportConfig::Representation
       
           property :state, as: 'state'
+          property :stored_procedure_config, as: 'storedProcedureConfig', class: Google::Apis::AnalyticshubV1::StoredProcedureConfig, decorator: Google::Apis::AnalyticshubV1::StoredProcedureConfig::Representation
+      
         end
       end
       
       class MessageTransform
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ai_inference, as: 'aiInference', class: Google::Apis::AnalyticshubV1::AiInference, decorator: Google::Apis::AnalyticshubV1::AiInference::Representation
+      
+          property :compression, as: 'compression', class: Google::Apis::AnalyticshubV1::Compression, decorator: Google::Apis::AnalyticshubV1::Compression::Representation
+      
           property :disabled, as: 'disabled'
           property :enabled, as: 'enabled'
           property :javascript_udf, as: 'javascriptUdf', class: Google::Apis::AnalyticshubV1::JavaScriptUdf, decorator: Google::Apis::AnalyticshubV1::JavaScriptUdf::Representation
@@ -834,6 +956,23 @@ module Google
         end
       end
       
+      class QueryTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :documentation, as: 'documentation'
+          property :name, as: 'name'
+          property :primary_contact, as: 'primaryContact'
+          property :proposer, as: 'proposer'
+          property :routine, as: 'routine', class: Google::Apis::AnalyticshubV1::Routine, decorator: Google::Apis::AnalyticshubV1::Routine::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class RefreshSubscriptionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -845,6 +984,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :subscription, as: 'subscription', class: Google::Apis::AnalyticshubV1::Subscription, decorator: Google::Apis::AnalyticshubV1::Subscription::Representation
       
+        end
+      end
+      
+      class Replica
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+          property :primary_state, as: 'primaryState'
+          property :replica_state, as: 'replicaState'
         end
       end
       
@@ -887,6 +1035,14 @@ module Google
         end
       end
       
+      class Routine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :definition_body, as: 'definitionBody'
+          property :routine_type, as: 'routineType'
+        end
+      end
+      
       class SelectedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -920,6 +1076,20 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StoredProcedureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_stored_procedure_types, as: 'allowedStoredProcedureTypes'
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class SubmitQueryTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1002,6 +1172,13 @@ module Google
       class TextConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UnstructuredInference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :parameters, as: 'parameters'
         end
       end
     end

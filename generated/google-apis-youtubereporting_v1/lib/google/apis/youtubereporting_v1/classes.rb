@@ -53,6 +53,12 @@ module Google
         attr_accessor :blob_id
       
         # gdata
+        # Corresponds to the JSON property `downloadExternalReadToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :download_external_read_token
+      
+        # gdata
         # Corresponds to the JSON property `downloadReadHandle`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -62,6 +68,12 @@ module Google
         # Corresponds to the JSON property `readToken`
         # @return [String]
         attr_accessor :read_token
+      
+        # gdata
+        # Corresponds to the JSON property `uploadFragmentListCreationInfo`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :upload_fragment_list_creation_info
       
         # gdata
         # Corresponds to the JSON property `uploadMetadataContainer`
@@ -77,8 +89,10 @@ module Google
         def update!(**args)
           @blob_generation = args[:blob_generation] if args.key?(:blob_generation)
           @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @download_external_read_token = args[:download_external_read_token] if args.key?(:download_external_read_token)
           @download_read_handle = args[:download_read_handle] if args.key?(:download_read_handle)
           @read_token = args[:read_token] if args.key?(:read_token)
+          @upload_fragment_list_creation_info = args[:upload_fragment_list_creation_info] if args.key?(:upload_fragment_list_creation_info)
           @upload_metadata_container = args[:upload_metadata_container] if args.key?(:upload_metadata_container)
         end
       end
@@ -187,6 +201,11 @@ module Google
         attr_accessor :from_file_name
       
         # gdata
+        # Corresponds to the JSON property `fromFusionId`
+        # @return [String]
+        attr_accessor :from_fusion_id
+      
+        # gdata
         # Corresponds to the JSON property `fromHeader`
         # @return [String]
         attr_accessor :from_header
@@ -195,6 +214,12 @@ module Google
         # Corresponds to the JSON property `fromUrlPath`
         # @return [String]
         attr_accessor :from_url_path
+      
+        # gdata
+        # Corresponds to the JSON property `fusionIdDetectionMetadata`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fusion_id_detection_metadata
       
         def initialize(**args)
            update!(**args)
@@ -205,8 +230,10 @@ module Google
           @best_guess = args[:best_guess] if args.key?(:best_guess)
           @from_bytes = args[:from_bytes] if args.key?(:from_bytes)
           @from_file_name = args[:from_file_name] if args.key?(:from_file_name)
+          @from_fusion_id = args[:from_fusion_id] if args.key?(:from_fusion_id)
           @from_header = args[:from_header] if args.key?(:from_header)
           @from_url_path = args[:from_url_path] if args.key?(:from_url_path)
+          @fusion_id_detection_metadata = args[:fusion_id_detection_metadata] if args.key?(:fusion_id_detection_metadata)
         end
       end
       
@@ -535,6 +562,12 @@ module Google
         attr_accessor :sha256_hash
       
         # gdata
+        # Corresponds to the JSON property `sha512Hash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha512_hash
+      
+        # gdata
         # Corresponds to the JSON property `timestamp`
         # @return [Fixnum]
         attr_accessor :timestamp
@@ -578,6 +611,7 @@ module Google
           @reference_type = args[:reference_type] if args.key?(:reference_type)
           @sha1_hash = args[:sha1_hash] if args.key?(:sha1_hash)
           @sha256_hash = args[:sha256_hash] if args.key?(:sha256_hash)
+          @sha512_hash = args[:sha512_hash] if args.key?(:sha512_hash)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @token = args[:token] if args.key?(:token)
         end

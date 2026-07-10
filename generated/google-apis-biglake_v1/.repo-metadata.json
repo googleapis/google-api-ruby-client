@@ -1,6 +1,6 @@
 {
     "api_id": "biglake:v1",
-    "name_pretty": "BigLake API",
+    "name_pretty": "Lakehouse API",
     "distribution_name": "google-apis-biglake_v1",
     "language": "ruby",
     "library_type": "REST"

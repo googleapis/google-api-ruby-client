@@ -1,5 +1,83 @@
 # Release history for google-apis-securitycenter_v1beta1
 
+### v0.109.0 (2026-07-05)
+
+* Regenerated from discovery document revision 20260619
+
+### v0.108.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260615
+
+### v0.107.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260526
+* Regenerated using generator version 0.19.0
+
+### v0.106.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260424
+
+### v0.105.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260330
+
+### v0.104.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260223
+
+### v0.103.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260219
+
+### v0.102.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260123
+
+### v0.101.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20260105
+
+### v0.100.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251202
+
+### v0.99.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251017
+
+### v0.98.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251006
+
+### v0.97.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250905
+
+### v0.96.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250815
+
+### v0.95.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250721
+
+### v0.94.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250707
+
+### v0.93.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250625
+
+### v0.92.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250616
+
+### v0.91.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250609
+* Regenerated using generator version 0.18.0
+
 ### v0.90.0 (2025-05-21)
 
 * Regenerated from discovery document revision 20250519

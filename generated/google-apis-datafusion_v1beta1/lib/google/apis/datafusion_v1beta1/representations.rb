@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MonitoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Namespace
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -385,6 +391,8 @@ module Google
       
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::DatafusionV1beta1::MaintenancePolicy, decorator: Google::Apis::DatafusionV1beta1::MaintenancePolicy::Representation
       
+          property :monitoring_config, as: 'monitoringConfig', class: Google::Apis::DatafusionV1beta1::MonitoringConfig, decorator: Google::Apis::DatafusionV1beta1::MonitoringConfig::Representation
+      
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::DatafusionV1beta1::NetworkConfig, decorator: Google::Apis::DatafusionV1beta1::NetworkConfig::Representation
       
@@ -462,6 +470,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DatafusionV1beta1::Operation, decorator: Google::Apis::DatafusionV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -479,6 +488,7 @@ module Google
       class LoggingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_instance_v2_logs, as: 'enableInstanceV2Logs'
           property :instance_cloud_logging_disabled, as: 'instanceCloudLoggingDisabled'
         end
       end
@@ -507,6 +517,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :recurring_time_window, as: 'recurringTimeWindow', class: Google::Apis::DatafusionV1beta1::RecurringTimeWindow, decorator: Google::Apis::DatafusionV1beta1::RecurringTimeWindow::Representation
       
+        end
+      end
+      
+      class MonitoringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_instance_v2_metrics, as: 'enableInstanceV2Metrics'
         end
       end
       

@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportAppImageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FeatureSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -508,7 +514,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpcAccessConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpcNetworkInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -806,6 +824,13 @@ module Google
         end
       end
       
+      class ExportAppImageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_repository, as: 'destinationRepository'
+        end
+      end
+      
       class FeatureSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -972,6 +997,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::AppengineV1beta::Operation, decorator: Google::Apis::AppengineV1beta::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1156,6 +1182,7 @@ module Google
           property :consumer_project_state, as: 'consumerProjectState'
           collection :gce_tag, as: 'gceTag', class: Google::Apis::AppengineV1beta::GceTag, decorator: Google::Apis::AppengineV1beta::GceTag::Representation
       
+          property :is_gce_project_deprovisioning, as: 'isGceProjectDeprovisioning'
           property :p4_service_account, as: 'p4ServiceAccount'
           property :producer_project_id, as: 'producerProjectId'
           property :producer_project_number, :numeric_string => true, as: 'producerProjectNumber'
@@ -1353,6 +1380,7 @@ module Google
           property :api_config, as: 'apiConfig', class: Google::Apis::AppengineV1beta::ApiConfigHandler, decorator: Google::Apis::AppengineV1beta::ApiConfigHandler::Representation
       
           property :app_engine_apis, as: 'appEngineApis'
+          collection :app_engine_bundled_services, as: 'appEngineBundledServices'
           property :automatic_scaling, as: 'automaticScaling', class: Google::Apis::AppengineV1beta::AutomaticScaling, decorator: Google::Apis::AppengineV1beta::AutomaticScaling::Representation
       
           property :basic_scaling, as: 'basicScaling', class: Google::Apis::AppengineV1beta::BasicScaling, decorator: Google::Apis::AppengineV1beta::BasicScaling::Representation
@@ -1406,6 +1434,8 @@ module Google
           property :threadsafe, as: 'threadsafe'
           property :version_url, as: 'versionUrl'
           property :vm, as: 'vm'
+          property :vpc_access, as: 'vpcAccess', class: Google::Apis::AppengineV1beta::VpcAccess, decorator: Google::Apis::AppengineV1beta::VpcAccess::Representation
+      
           property :vpc_access_connector, as: 'vpcAccessConnector', class: Google::Apis::AppengineV1beta::VpcAccessConnector, decorator: Google::Apis::AppengineV1beta::VpcAccessConnector::Representation
       
           collection :zones, as: 'zones'
@@ -1421,11 +1451,29 @@ module Google
         end
       end
       
+      class VpcAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::AppengineV1beta::VpcNetworkInterface, decorator: Google::Apis::AppengineV1beta::VpcNetworkInterface::Representation
+      
+          property :vpc_egress, as: 'vpcEgress'
+        end
+      end
+      
       class VpcAccessConnector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :egress_setting, as: 'egressSetting'
           property :name, as: 'name'
+        end
+      end
+      
+      class VpcNetworkInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :subnet, as: 'subnet'
+          collection :tags, as: 'tags'
         end
       end
       

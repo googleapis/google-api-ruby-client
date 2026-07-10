@@ -1,5 +1,70 @@
 # Release history for google-apis-beyondcorp_v1alpha
 
+### v0.64.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.63.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260429
+
+### v0.62.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260401
+
+### v0.61.0 (2026-03-08)
+
+* Regenerated from discovery document revision 20260228
+
+### v0.60.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260128
+
+### v0.59.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260107
+
+### v0.58.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251210
+
+### v0.57.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251029
+
+### v0.56.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20250930
+
+### v0.55.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250922
+
+### v0.54.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250910
+
+### v0.53.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250818
+
+### v0.52.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250723
+
+### v0.51.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250714
+
+### v0.50.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250616
+
+### v0.49.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250604
+* Regenerated using generator version 0.18.0
+
 ### v0.48.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

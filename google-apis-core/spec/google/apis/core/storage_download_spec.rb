@@ -42,6 +42,12 @@ RSpec.describe Google::Apis::Core::StorageDownloadCommand do
               ).to have_been_made
       end
 
+      it 'should include an Accept-Encoding header for media downloads' do
+        command.execute(client)
+        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+          .with { |req| req.headers['Accept-Encoding'].include?('gzip') }).to have_been_made
+      end
+
       it 'should receive content' do
         expect(received).to eql 'Hello world'
       end
@@ -133,6 +139,27 @@ RSpec.describe Google::Apis::Core::StorageDownloadCommand do
       def write(data)
         io.write(data)
       end
+    end
+  end
+
+  context 'with streaming response' do
+    let(:dest) { Tempfile.new('test') }
+    let(:received) do
+      command.execute(client)
+      dest.rewind
+      dest.read
+    end
+
+    it 'should receive content' do
+      response = Faraday::Response.new(status: 200, body: 'Hello world')
+      expect(client).to receive(:get) do |_url, _params, _headers, &block|
+        request = Faraday::Request.new
+        request.options = Faraday::RequestOptions.new
+        block.call(request)
+        request.options.on_data.call('Hello world', 11, nil)
+        response
+      end
+      expect(received).to eql 'Hello world'
     end
   end
 end

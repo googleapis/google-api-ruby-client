@@ -52,18 +52,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Get the ContainerThreatDetectionSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetContainerThreatDetectionSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateContainerThreatDetectionSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the ContainerThreatDetectionSettings to retrieve.
-        #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
-        #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -91,16 +81,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the EventThreatDetectionSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetEventThreatDetectionSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateEventThreatDetectionSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
-        #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
-        #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -128,18 +110,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the RapidVulnerabilityDetectionSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetRapidVulnerabilityDetectionSettings does not calculate the effective
-        # service settings for the resource, which accounts for inherited settings and
-        # defaults. Instead, use CalculateRapidVulnerabilityDetectionSettings for this
-        # purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the RapidVulnerabilityDetectionSettings to retrieve.
-        #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
-        #   folders/`folder`/rapidVulnerabilityDetectionSettings * projects/`project`/
-        #   rapidVulnerabilityDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -167,11 +139,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the SecurityCenterSettings resource.
+        # 
         # @param [String] name
-        #   Required. The name of the SecurityCenterSettings to retrieve. Format:
-        #   organizations/`organization`/securityCenterSettings Format: folders/`folder`/
-        #   securityCenterSettings Format: projects/`project`/securityCenterSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -199,17 +168,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the SecurityHealthAnalyticsSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetSecurityHealthAnalyticsSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateSecurityHealthAnalyticsSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats:
-        #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
-        #   folder`/securityHealthAnalyticsSettings * projects/`project`/
-        #   securityHealthAnalyticsSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -237,18 +197,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the VirtualMachineThreatDetectionSettings resource. In the returned
-        # settings response, a missing field only indicates that it was not explicitly
-        # set, so no assumption should be made about these fields. In other words,
-        # GetVirtualMachineThreatDetectionSettings does not calculate the effective
-        # service settings for the resource, which accounts for inherited settings and
-        # defaults. Instead, use CalculateVirtualMachineThreatDetectionSettings for this
-        # purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the VirtualMachineThreatDetectionSettings to retrieve.
-        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
-        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
-        #   virtualMachineThreatDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -276,16 +226,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the WebSecurityScannerSettings resource. In the returned settings response,
-        # a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetWebSecurityScannerSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateWebSecurityScannerSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
-        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
-        #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -313,16 +255,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the ContainerThreatDetectionSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the ContainerThreatDetectionSettings. Formats:
-        #   * organizations/`organization`/containerThreatDetectionSettings * folders/`
-        #   folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings] container_threat_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -353,14 +289,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the EventThreatDetectionSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
-        #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
-        #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings] event_threat_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -391,15 +323,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the RapidVulnerabilityDetectionSettings resource.
+        # 
         # @param [String] name
-        #   The resource name of the RapidVulnerabilityDetectionSettings. Formats: *
-        #   organizations/`organization`/rapidVulnerabilityDetectionSettings * folders/`
-        #   folder`/rapidVulnerabilityDetectionSettings * projects/`project`/
-        #   rapidVulnerabilityDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::RapidVulnerabilityDetectionSettings] rapid_vulnerability_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -430,15 +357,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the SecurityHealthAnalyticsSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats:
-        #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
-        #   folder`/securityHealthAnalyticsSettings * projects/`project`/
-        #   securityHealthAnalyticsSettings
         # @param [Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings] security_health_analytics_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -469,15 +391,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the VirtualMachineThreatDetectionSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the VirtualMachineThreatDetectionSettings.
-        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
-        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
-        #   virtualMachineThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] virtual_machine_threat_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -508,14 +425,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the WebSecurityScannerSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
-        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
-        #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings] web_security_scanner_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -546,22 +459,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective ContainerThreatDetectionSettings based on its level
-        # in the resource hierarchy and its settings. Settings provided closer to the
-        # target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the ContainerThreatDetectionSettings to calculate.
-        #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
-        #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -590,20 +490,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective EventThreatDetectionSettings based on its level in
-        # the resource hierarchy and its settings. Settings provided closer to the
-        # target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
-        #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
-        #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -632,18 +521,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective RapidVulnerabilityDetectionSettings based on its
-        # level in the resource hierarchy and its settings. Settings provided closer to
-        # the target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the RapidVulnerabilityDetectionSettings to calculate.
-        #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
-        #   folders/`folder`/rapidVulnerabilityDetectionSettings * projects/`project`/
-        #   rapidVulnerabilityDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -671,21 +550,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective SecurityHealthAnalyticsSettings based on its level in
-        # the resource hierarchy and its settings. Settings provided closer to the
-        # target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the SecurityHealthAnalyticsSettings to calculate.
-        #   Formats: * organizations/`organization`/securityHealthAnalyticsSettings *
-        #   folders/`folder`/securityHealthAnalyticsSettings * projects/`project`/
-        #   securityHealthAnalyticsSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -714,21 +581,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective VirtualMachineThreatDetectionSettings based on its
-        # level in the resource hierarchy and its settings. Settings provided closer to
-        # the target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the VirtualMachineThreatDetectionSettings to calculate.
-        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
-        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
-        #   virtualMachineThreatDetectionSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -757,20 +612,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective WebSecurityScannerSettings based on its level in the
-        # resource hierarchy and its settings. Settings provided closer to the target
-        # resource take precedence over those further away (e.g. folder will override
-        # organization level settings). The default SCC setting for the detector service
-        # defaults can be overridden at organization, folder and project levels. No
-        # assumptions should be made about the SCC defaults as it is considered an
-        # internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
-        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
-        #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -799,18 +643,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the ContainerThreatDetectionSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetContainerThreatDetectionSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateContainerThreatDetectionSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the ContainerThreatDetectionSettings to retrieve.
-        #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
-        #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -838,16 +672,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the EventThreatDetectionSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetEventThreatDetectionSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateEventThreatDetectionSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
-        #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
-        #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -875,18 +701,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the RapidVulnerabilityDetectionSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetRapidVulnerabilityDetectionSettings does not calculate the effective
-        # service settings for the resource, which accounts for inherited settings and
-        # defaults. Instead, use CalculateRapidVulnerabilityDetectionSettings for this
-        # purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the RapidVulnerabilityDetectionSettings to retrieve.
-        #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
-        #   folders/`folder`/rapidVulnerabilityDetectionSettings * projects/`project`/
-        #   rapidVulnerabilityDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -914,11 +730,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the SecurityCenterSettings resource.
+        # 
         # @param [String] name
-        #   Required. The name of the SecurityCenterSettings to retrieve. Format:
-        #   organizations/`organization`/securityCenterSettings Format: folders/`folder`/
-        #   securityCenterSettings Format: projects/`project`/securityCenterSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -946,17 +759,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the SecurityHealthAnalyticsSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetSecurityHealthAnalyticsSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateSecurityHealthAnalyticsSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats:
-        #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
-        #   folder`/securityHealthAnalyticsSettings * projects/`project`/
-        #   securityHealthAnalyticsSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -984,10 +788,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the Subscription resource.
+        # 
         # @param [String] name
-        #   Required. The name of the subscription to retrieve. Format: organizations/`
-        #   organization`/subscription
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1015,18 +817,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the VirtualMachineThreatDetectionSettings resource. In the returned
-        # settings response, a missing field only indicates that it was not explicitly
-        # set, so no assumption should be made about these fields. In other words,
-        # GetVirtualMachineThreatDetectionSettings does not calculate the effective
-        # service settings for the resource, which accounts for inherited settings and
-        # defaults. Instead, use CalculateVirtualMachineThreatDetectionSettings for this
-        # purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the VirtualMachineThreatDetectionSettings to retrieve.
-        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
-        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
-        #   virtualMachineThreatDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1054,16 +846,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the WebSecurityScannerSettings resource. In the returned settings response,
-        # a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetWebSecurityScannerSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateWebSecurityScannerSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
-        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
-        #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1091,16 +875,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the ContainerThreatDetectionSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the ContainerThreatDetectionSettings. Formats:
-        #   * organizations/`organization`/containerThreatDetectionSettings * folders/`
-        #   folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings] container_threat_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1131,14 +909,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the EventThreatDetectionSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
-        #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
-        #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings] event_threat_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1169,15 +943,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the RapidVulnerabilityDetectionSettings resource.
+        # 
         # @param [String] name
-        #   The resource name of the RapidVulnerabilityDetectionSettings. Formats: *
-        #   organizations/`organization`/rapidVulnerabilityDetectionSettings * folders/`
-        #   folder`/rapidVulnerabilityDetectionSettings * projects/`project`/
-        #   rapidVulnerabilityDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::RapidVulnerabilityDetectionSettings] rapid_vulnerability_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1208,15 +977,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the SecurityHealthAnalyticsSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats:
-        #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
-        #   folder`/securityHealthAnalyticsSettings * projects/`project`/
-        #   securityHealthAnalyticsSettings
         # @param [Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings] security_health_analytics_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1247,15 +1011,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the VirtualMachineThreatDetectionSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the VirtualMachineThreatDetectionSettings.
-        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
-        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
-        #   virtualMachineThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] virtual_machine_threat_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1286,14 +1045,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the WebSecurityScannerSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
-        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
-        #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings] web_security_scanner_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1324,22 +1079,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective ContainerThreatDetectionSettings based on its level
-        # in the resource hierarchy and its settings. Settings provided closer to the
-        # target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the ContainerThreatDetectionSettings to calculate.
-        #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
-        #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1368,20 +1110,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective EventThreatDetectionSettings based on its level in
-        # the resource hierarchy and its settings. Settings provided closer to the
-        # target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
-        #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
-        #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1410,18 +1141,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective RapidVulnerabilityDetectionSettings based on its
-        # level in the resource hierarchy and its settings. Settings provided closer to
-        # the target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the RapidVulnerabilityDetectionSettings to calculate.
-        #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
-        #   folders/`folder`/rapidVulnerabilityDetectionSettings * projects/`project`/
-        #   rapidVulnerabilityDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1449,21 +1170,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective SecurityHealthAnalyticsSettings based on its level in
-        # the resource hierarchy and its settings. Settings provided closer to the
-        # target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the SecurityHealthAnalyticsSettings to calculate.
-        #   Formats: * organizations/`organization`/securityHealthAnalyticsSettings *
-        #   folders/`folder`/securityHealthAnalyticsSettings * projects/`project`/
-        #   securityHealthAnalyticsSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1492,21 +1201,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective VirtualMachineThreatDetectionSettings based on its
-        # level in the resource hierarchy and its settings. Settings provided closer to
-        # the target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the VirtualMachineThreatDetectionSettings to calculate.
-        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
-        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
-        #   virtualMachineThreatDetectionSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1535,20 +1232,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective WebSecurityScannerSettings based on its level in the
-        # resource hierarchy and its settings. Settings provided closer to the target
-        # resource take precedence over those further away (e.g. folder will override
-        # organization level settings). The default SCC setting for the detector service
-        # defaults can be overridden at organization, folder and project levels. No
-        # assumptions should be made about the SCC defaults as it is considered an
-        # internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
-        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
-        #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1577,18 +1263,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the ContainerThreatDetectionSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetContainerThreatDetectionSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateContainerThreatDetectionSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the ContainerThreatDetectionSettings to retrieve.
-        #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
-        #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1616,16 +1292,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the EventThreatDetectionSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetEventThreatDetectionSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateEventThreatDetectionSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the EventThreatDetectionSettings to retrieve. Formats: *
-        #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
-        #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1653,18 +1321,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the RapidVulnerabilityDetectionSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetRapidVulnerabilityDetectionSettings does not calculate the effective
-        # service settings for the resource, which accounts for inherited settings and
-        # defaults. Instead, use CalculateRapidVulnerabilityDetectionSettings for this
-        # purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the RapidVulnerabilityDetectionSettings to retrieve.
-        #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
-        #   folders/`folder`/rapidVulnerabilityDetectionSettings * projects/`project`/
-        #   rapidVulnerabilityDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1692,11 +1350,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the SecurityCenterSettings resource.
+        # 
         # @param [String] name
-        #   Required. The name of the SecurityCenterSettings to retrieve. Format:
-        #   organizations/`organization`/securityCenterSettings Format: folders/`folder`/
-        #   securityCenterSettings Format: projects/`project`/securityCenterSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1724,17 +1379,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the SecurityHealthAnalyticsSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetSecurityHealthAnalyticsSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateSecurityHealthAnalyticsSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the SecurityHealthAnalyticsSettings to retrieve. Formats:
-        #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
-        #   folder`/securityHealthAnalyticsSettings * projects/`project`/
-        #   securityHealthAnalyticsSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1762,18 +1408,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the VirtualMachineThreatDetectionSettings resource. In the returned
-        # settings response, a missing field only indicates that it was not explicitly
-        # set, so no assumption should be made about these fields. In other words,
-        # GetVirtualMachineThreatDetectionSettings does not calculate the effective
-        # service settings for the resource, which accounts for inherited settings and
-        # defaults. Instead, use CalculateVirtualMachineThreatDetectionSettings for this
-        # purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the VirtualMachineThreatDetectionSettings to retrieve.
-        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
-        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
-        #   virtualMachineThreatDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1801,16 +1437,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the WebSecurityScannerSettings resource. In the returned settings response,
-        # a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetWebSecurityScannerSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateWebSecurityScannerSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the WebSecurityScannerSettings to retrieve. Formats: *
-        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
-        #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1838,16 +1466,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the ContainerThreatDetectionSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the ContainerThreatDetectionSettings. Formats:
-        #   * organizations/`organization`/containerThreatDetectionSettings * folders/`
-        #   folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings] container_threat_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1878,14 +1500,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the EventThreatDetectionSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
-        #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
-        #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::EventThreatDetectionSettings] event_threat_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1916,15 +1534,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the RapidVulnerabilityDetectionSettings resource.
+        # 
         # @param [String] name
-        #   The resource name of the RapidVulnerabilityDetectionSettings. Formats: *
-        #   organizations/`organization`/rapidVulnerabilityDetectionSettings * folders/`
-        #   folder`/rapidVulnerabilityDetectionSettings * projects/`project`/
-        #   rapidVulnerabilityDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::RapidVulnerabilityDetectionSettings] rapid_vulnerability_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1955,15 +1568,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the SecurityHealthAnalyticsSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats:
-        #   * organizations/`organization`/securityHealthAnalyticsSettings * folders/`
-        #   folder`/securityHealthAnalyticsSettings * projects/`project`/
-        #   securityHealthAnalyticsSettings
         # @param [Google::Apis::SecuritycenterV1beta2::SecurityHealthAnalyticsSettings] security_health_analytics_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1994,15 +1602,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the VirtualMachineThreatDetectionSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the VirtualMachineThreatDetectionSettings.
-        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
-        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
-        #   virtualMachineThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::VirtualMachineThreatDetectionSettings] virtual_machine_threat_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2033,14 +1636,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the WebSecurityScannerSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
-        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
-        #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [Google::Apis::SecuritycenterV1beta2::WebSecurityScannerSettings] web_security_scanner_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2071,22 +1670,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective ContainerThreatDetectionSettings based on its level
-        # in the resource hierarchy and its settings. Settings provided closer to the
-        # target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the ContainerThreatDetectionSettings to calculate.
-        #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
-        #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2115,20 +1701,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective EventThreatDetectionSettings based on its level in
-        # the resource hierarchy and its settings. Settings provided closer to the
-        # target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the EventThreatDetectionSettings to calculate. Formats: *
-        #   organizations/`organization`/eventThreatDetectionSettings * folders/`folder`/
-        #   eventThreatDetectionSettings * projects/`project`/eventThreatDetectionSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2157,18 +1732,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the ContainerThreatDetectionSettings resource. In the returned settings
-        # response, a missing field only indicates that it was not explicitly set, so no
-        # assumption should be made about these fields. In other words,
-        # GetContainerThreatDetectionSettings does not calculate the effective service
-        # settings for the resource, which accounts for inherited settings and defaults.
-        # Instead, use CalculateContainerThreatDetectionSettings for this purpose.
+        # 
         # @param [String] name
-        #   Required. The name of the ContainerThreatDetectionSettings to retrieve.
-        #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
-        #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2196,16 +1761,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the ContainerThreatDetectionSettings resource.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the ContainerThreatDetectionSettings. Formats:
-        #   * organizations/`organization`/containerThreatDetectionSettings * folders/`
-        #   folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [Google::Apis::SecuritycenterV1beta2::ContainerThreatDetectionSettings] container_threat_detection_settings_object
         # @param [String] update_mask
-        #   The list of fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2236,22 +1795,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective ContainerThreatDetectionSettings based on its level
-        # in the resource hierarchy and its settings. Settings provided closer to the
-        # target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the ContainerThreatDetectionSettings to calculate.
-        #   Formats: * organizations/`organization`/containerThreatDetectionSettings *
-        #   folders/`folder`/containerThreatDetectionSettings * projects/`project`/
-        #   containerThreatDetectionSettings * projects/`project`/locations/`location`/
-        #   clusters/`cluster`/containerThreatDetectionSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2280,18 +1826,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective RapidVulnerabilityDetectionSettings based on its
-        # level in the resource hierarchy and its settings. Settings provided closer to
-        # the target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the RapidVulnerabilityDetectionSettings to calculate.
-        #   Formats: * organizations/`organization`/rapidVulnerabilityDetectionSettings *
-        #   folders/`folder`/rapidVulnerabilityDetectionSettings * projects/`project`/
-        #   rapidVulnerabilityDetectionSettings
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2319,21 +1855,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective SecurityHealthAnalyticsSettings based on its level in
-        # the resource hierarchy and its settings. Settings provided closer to the
-        # target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the SecurityHealthAnalyticsSettings to calculate.
-        #   Formats: * organizations/`organization`/securityHealthAnalyticsSettings *
-        #   folders/`folder`/securityHealthAnalyticsSettings * projects/`project`/
-        #   securityHealthAnalyticsSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2362,21 +1886,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective VirtualMachineThreatDetectionSettings based on its
-        # level in the resource hierarchy and its settings. Settings provided closer to
-        # the target resource take precedence over those further away (e.g. folder will
-        # override organization level settings). The default SCC setting for the
-        # detector service defaults can be overridden at organization, folder and
-        # project levels. No assumptions should be made about the SCC defaults as it is
-        # considered an internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the VirtualMachineThreatDetectionSettings to calculate.
-        #   Formats: * organizations/`organization`/virtualMachineThreatDetectionSettings *
-        #   folders/`folder`/virtualMachineThreatDetectionSettings * projects/`project`/
-        #   virtualMachineThreatDetectionSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2405,20 +1917,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Calculates the effective WebSecurityScannerSettings based on its level in the
-        # resource hierarchy and its settings. Settings provided closer to the target
-        # resource take precedence over those further away (e.g. folder will override
-        # organization level settings). The default SCC setting for the detector service
-        # defaults can be overridden at organization, folder and project levels. No
-        # assumptions should be made about the SCC defaults as it is considered an
-        # internal implementation detail.
+        # 
         # @param [String] name
-        #   Required. The name of the WebSecurityScannerSettings to calculate. Formats: *
-        #   organizations/`organization`/webSecurityScannerSettings * folders/`folder`/
-        #   webSecurityScannerSettings * projects/`project`/webSecurityScannerSettings
         # @param [Boolean] show_eligible_modules_only
-        #   Optional. When set, will only retrieve the modules that are in scope. By
-        #   default, all modules will be shown.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

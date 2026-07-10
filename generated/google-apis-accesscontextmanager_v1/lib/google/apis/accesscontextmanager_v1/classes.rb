@@ -779,11 +779,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of identities that are allowed access through [EgressPolicy].
-        # Identities can be an individual user, service account, Google group, or third-
-        # party identity. For third-party identity, only single identities are supported
-        # and other identity types are not supported. The `v1` identities that have the
-        # prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.
-        # google.com/iam/docs/principal-identifiers#v1 are supported.
+        # Identities can be an individual user, service account, Google group, third-
+        # party identity, or agent identity. For the list of supported identity types,
+        # see https://docs.cloud.google.com/vpc-service-controls/docs/supported-
+        # identities.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -1057,12 +1056,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :dry_run_access_levels
       
-        # Required. Immutable. Google Group id whose members are subject to this binding'
-        # s restrictions. See "id" in the [G Suite Directory API's Groups resource] (
-        # https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource)
-        # . If a group's email address/alias is changed, this resource will continue to
-        # point at the changed group. This field does not accept group email addresses
-        # or aliases. Example: "01d520gv4vjcrht"
+        # Optional. Immutable. Google Group id whose users are subject to this binding's
+        # restrictions. See "id" in the [Google Workspace Directory API's Group Resource]
+        # (https://developers.google.com/admin-sdk/directory/v1/reference/groups#
+        # resource). If a group's email address/alias is changed, this resource will
+        # continue to point at the changed group. This field does not accept group email
+        # addresses or aliases. Example: "01d520gv4vjcrht"
         # Corresponds to the JSON property `groupKey`
         # @return [String]
         attr_accessor :group_key
@@ -1181,11 +1180,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of identities that are allowed access through [IngressPolicy].
-        # Identities can be an individual user, service account, Google group, or third-
-        # party identity. For third-party identity, only single identities are supported
-        # and other identity types are not supported. The `v1` identities that have the
-        # prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.
-        # google.com/iam/docs/principal-identifiers#v1 are supported.
+        # Identities can be an individual user, service account, Google group, third-
+        # party identity, or agent identity. For the list of supported identity types,
+        # see https://docs.cloud.google.com/vpc-service-controls/docs/supported-
+        # identities.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -1457,6 +1455,14 @@ module Google
         # @return [Array<Google::Apis::AccesscontextmanagerV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1465,6 +1471,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1494,12 +1501,38 @@ module Google
         end
       end
       
+      # A response to `ListSupportedPermissionsRequest`.
+      class ListSupportedPermissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Use this pagination token to retrieve the next page of results. An empty value
+        # indicates that no further results are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of VPC Service Controls supported permissions.
+        # Corresponds to the JSON property `supportedPermissions`
+        # @return [Array<String>]
+        attr_accessor :supported_permissions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @supported_permissions = args[:supported_permissions] if args.key?(:supported_permissions)
+        end
+      end
+      
       # A response to `ListSupportedServicesRequest`.
       class ListSupportedServicesResponse
         include Google::Apis::Core::Hashable
       
-        # The pagination token to retrieve the next page of results. If the value is
-        # empty, no further results remain.
+        # Use this pagination token to retrieve the next page of results. An empty value
+        # indicates that no further results are available.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

@@ -204,7 +204,11 @@ module Google
         # @return [String]
         attr_accessor :debug_string
       
-        # Error codes that describe the result of the Check operation.
+        # Error codes that describe the result of the Check operation. NOTE: Error codes
+        # may be populated even when `linked` is true. The error codes do not
+        # necessarily imply that the request failed, but rather, specify any errors
+        # encountered in the statements file(s) which may or may not impact whether the
+        # server determines the requested source and target to be linked.
         # Corresponds to the JSON property `errorCode`
         # @return [Array<String>]
         attr_accessor :error_code

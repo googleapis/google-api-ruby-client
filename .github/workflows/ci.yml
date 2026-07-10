@@ -1,4 +1,7 @@
 name: CI
+
+permissions:
+  contents: read
 on:
   pull_request:
     branches:
@@ -14,9 +17,6 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            ruby: "3.1"
-            task: "--include-spec"
-          - os: ubuntu-latest
             ruby: "3.2"
             task: "--include-spec"
           - os: ubuntu-latest
@@ -24,21 +24,26 @@ jobs:
             task: "--include-spec"
           - os: ubuntu-latest
             ruby: "3.4"
+            task: "--include-spec"
+          - os: ubuntu-latest
+            ruby: "4.0"
             task: "--include-spec --include-yardoc --include-build"
             rubyopt: "--enable-frozen-string-literal --debug-frozen-string-literal"
           - os: macos-latest
-            ruby: "3.4"
+            ruby: "4.0"
             task: "--include-spec"
           - os: windows-latest
-            ruby: "3.4"
+            ruby: "4.0"
             task: "--include-spec"
       fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+      with:
+        persist-credentials: false
     - name: Install Ruby ${{ matrix.ruby }}
-      uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@9eb537ca036ebaed86729dcb9309076e4c5c3b74 # v1.314.0
       with:
         ruby-version: "${{ matrix.ruby }}"
     - name: Install tools
@@ -49,11 +54,13 @@ jobs:
       # See https://github.com/actions/runner-images/issues/10215
       # and https://github.com/rubygems/rubygems/issues/7983.
       shell: bash
+      # zizmor: ignore[template-injection]
       run: |
         if [ -d /opt/hostedtoolcache/Ruby ]; then
           chmod -R o-w /opt/hostedtoolcache/Ruby
         fi
     - name: Test ${{ matrix.task }} ${{ matrix.rubyopt }}
+      # zizmor: ignore[template-injection]
       run: |
         toys ci -v --only ${{ matrix.task }} --github-event-name=${{ github.event_name }} --github-event-payload=${{ github.event_path }}
       env:

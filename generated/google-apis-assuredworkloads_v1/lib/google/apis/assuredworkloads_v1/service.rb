@@ -51,6 +51,154 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Finds orphan ResourceEvents matching the criteria and moves them to the
+        # ArchivedResourceEvents table.
+        # @param [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest] google_cloud_assuredworkloads_v1_archive_resource_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def archive_assuredworkload_resource_events(google_cloud_assuredworkloads_v1_archive_resource_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/assuredworkloads:archiveResourceEvents', options)
+          command.request_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest::Representation
+          command.request_object = google_cloud_assuredworkloads_v1_archive_resource_events_request_object
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Finds matching ArchivedResourceEvents and moves them back to the
+        # ResourceEvents table.
+        # @param [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest] google_cloud_assuredworkloads_v1_revert_archived_resource_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revert_assuredworkload_archived_resource_events(google_cloud_assuredworkloads_v1_revert_archived_resource_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/assuredworkloads:revertArchivedResourceEvents', options)
+          command.request_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest::Representation
+          command.request_object = google_cloud_assuredworkloads_v1_revert_archived_resource_events_request_object
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the finding summary by category for a given scope.
+        # @param [String] parent
+        #   Required. The parent scope for the framework overview page. Formats: -
+        #   projects/`project`/locations/`location` - folders/`folder`/locations/`location`
+        #   - organizations/`organization`/locations/`location`
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [Fixnum] page_size
+        #   Optional. The requested page size. The server might return fewer items than
+        #   requested. If unspecified, the server picks an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token that identifies the page of results that the server should
+        #   return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_db_finding_summaries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbFindingSummaries', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the finding summary by category for a given scope.
+        # @param [String] parent
+        #   Required. The parent scope for the framework overview page. Formats: -
+        #   projects/`project`/locations/`location` - folders/`folder`/locations/`location`
+        #   - organizations/`organization`/locations/`location`
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [Fixnum] page_size
+        #   Optional. The requested page size. The server might return fewer items than
+        #   requested. If unspecified, the server picks an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token that identifies the page of results that the server should
+        #   return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_db_finding_summaries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbFindingSummaries', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -92,6 +240,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -109,7 +265,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::AssuredworkloadsV1::GoogleLongrunningListOperationsResponse
@@ -117,6 +273,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -625,6 +782,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Acknowledges multiple existing violations. By acknowledging violations, users
+        # acknowledge the existence of compliance violations in their workload and
+        # decide to ignore them due to a valid business justification. Acknowledgement
+        # is a permanent operation and it cannot be reverted. This is a batch version of
+        # AcknowledgeViolation.
+        # @param [String] parent
+        #   Optional. The parent resource shared by all violations being acknowledged.
+        #   Format: organizations/`organization`/locations/`location`/workloads/`workload`
+        # @param [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest] google_cloud_assuredworkloads_v1_batch_acknowledge_violations_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_organization_location_workload_violation_acknowledge_violations(parent, google_cloud_assuredworkloads_v1_batch_acknowledge_violations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/violations:batchAcknowledgeViolations', options)
+          command.request_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest::Representation
+          command.request_object = google_cloud_assuredworkloads_v1_batch_acknowledge_violations_request_object
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves Assured Workload Violation based on ID.
         # @param [String] name
         #   Required. The resource name of the Violation to fetch (ie. Violation.name).
@@ -671,6 +866,8 @@ module Google
         #   The end of the time window.
         # @param [String] interval_start_time
         #   The start of the time window.
+        # @param [String] order_by
+        #   Optional. Actionable sorting delegation.
         # @param [Fixnum] page_size
         #   Optional. Page size.
         # @param [String] page_token
@@ -692,7 +889,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_workload_violations(parent, filter: nil, interval_end_time: nil, interval_start_time: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_location_workload_violations(parent, filter: nil, interval_end_time: nil, interval_start_time: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/violations', options)
           command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListViolationsResponse::Representation
           command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListViolationsResponse
@@ -700,6 +897,50 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
           command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the finding summary by category for a given scope.
+        # @param [String] parent
+        #   Required. The parent scope for the framework overview page. Formats: -
+        #   projects/`project`/locations/`location` - folders/`folder`/locations/`location`
+        #   - organizations/`organization`/locations/`location`
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [Fixnum] page_size
+        #   Optional. The requested page size. The server might return fewer items than
+        #   requested. If unspecified, the server picks an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token that identifies the page of results that the server should
+        #   return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_db_finding_summaries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbFindingSummaries', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

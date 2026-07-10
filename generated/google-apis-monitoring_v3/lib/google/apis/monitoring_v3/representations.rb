@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Alert
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AlertPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAlertsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListGroupMembersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +443,12 @@ module Google
       end
       
       class LogMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -569,6 +587,12 @@ module Google
       end
       
       class PointData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicySnapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -791,6 +815,26 @@ module Google
           property :cross_series_reducer, as: 'crossSeriesReducer'
           collection :group_by_fields, as: 'groupByFields'
           property :per_series_aligner, as: 'perSeriesAligner'
+        end
+      end
+      
+      class Alert
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :close_time, as: 'closeTime'
+          property :log, as: 'log', class: Google::Apis::MonitoringV3::LogMetadata, decorator: Google::Apis::MonitoringV3::LogMetadata::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::MonitoringV3::MonitoredResourceMetadata, decorator: Google::Apis::MonitoringV3::MonitoredResourceMetadata::Representation
+      
+          property :metric, as: 'metric', class: Google::Apis::MonitoringV3::Metric, decorator: Google::Apis::MonitoringV3::Metric::Representation
+      
+          property :name, as: 'name'
+          property :open_time, as: 'openTime'
+          property :policy, as: 'policy', class: Google::Apis::MonitoringV3::PolicySnapshot, decorator: Google::Apis::MonitoringV3::PolicySnapshot::Representation
+      
+          property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
+      
+          property :state, as: 'state'
         end
       end
       
@@ -1351,6 +1395,16 @@ module Google
         end
       end
       
+      class ListAlertsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alerts, as: 'alerts', class: Google::Apis::MonitoringV3::Alert, decorator: Google::Apis::MonitoringV3::Alert::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
       class ListGroupMembersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1471,6 +1525,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filter, as: 'filter'
           hash :label_extractors, as: 'labelExtractors'
+        end
+      end
+      
+      class LogMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :extracted_labels, as: 'extractedLabels'
         end
       end
       
@@ -1715,6 +1776,16 @@ module Google
       
           collection :values, as: 'values', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
       
+        end
+      end
+      
+      class PolicySnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :severity, as: 'severity'
+          hash :user_labels, as: 'userLabels'
         end
       end
       

@@ -2238,9 +2238,9 @@ module Google
         # project_id.dataset_name.table_name" The specified table must already exist,
         # and the "Cloud ML Service Agent" for your project must have permission to
         # write to it. The table must have the following [schema](/bigquery/docs/schemas)
-        # : Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time
-        # TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE
-        # groundtruth STRING NULLABLE
+        # : Field name Type Mode model STRING REQUIRED model_version STRING REQUIRED
+        # time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING
+        # NULLABLE groundtruth STRING NULLABLE
         # Corresponds to the JSON property `bigqueryTableName`
         # @return [String]
         attr_accessor :bigquery_table_name
@@ -3704,6 +3704,14 @@ module Google
         # @return [Array<Google::Apis::MlV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3712,6 +3720,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

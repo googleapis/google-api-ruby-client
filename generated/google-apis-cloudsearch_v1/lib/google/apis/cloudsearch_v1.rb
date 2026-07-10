@@ -25,7 +25,7 @@ module Google
     # data. The Cloud Search API allows indexing of non-Google Workspace data into
     # Cloud Search.
     #
-    # @see https://developers.google.com/cloud-search/docs/guides/
+    # @see https://developers.google.com/workspace/cloud-search/docs/guides/
     module CloudsearchV1
       # Version of the Cloud Search API this client connects to.
       # This is NOT the gem version.

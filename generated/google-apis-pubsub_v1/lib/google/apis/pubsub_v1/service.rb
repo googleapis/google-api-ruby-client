@@ -906,12 +906,12 @@ module Google
         # is populated in the returned Subscription object. Note that for REST API
         # requests, you must specify a name in the request.
         # @param [String] name
-        #   Required. The name of the subscription. It must have the format `"projects/`
-        #   project`/subscriptions/`subscription`"`. ``subscription`` must start with a
-        #   letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
-        #   underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`
-        #   %`). It must be between 3 and 255 characters in length, and it must not start
-        #   with `"goog"`.
+        #   Required. Identifier. The name of the subscription. It must have the format `"
+        #   projects/`project`/subscriptions/`subscription`"`. ``subscription`` must start
+        #   with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`),
+        #   dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or
+        #   percent signs (`%`). It must be between 3 and 255 characters in length, and it
+        #   must not start with `"goog"`.
         # @param [Google::Apis::PubsubV1::Subscription] subscription_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1206,12 +1206,12 @@ module Google
         # update mask. Note that certain properties of a subscription, such as its topic,
         # are not modifiable.
         # @param [String] name
-        #   Required. The name of the subscription. It must have the format `"projects/`
-        #   project`/subscriptions/`subscription`"`. ``subscription`` must start with a
-        #   letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
-        #   underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`
-        #   %`). It must be between 3 and 255 characters in length, and it must not start
-        #   with `"goog"`.
+        #   Required. Identifier. The name of the subscription. It must have the format `"
+        #   projects/`project`/subscriptions/`subscription`"`. ``subscription`` must start
+        #   with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`),
+        #   dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or
+        #   percent signs (`%`). It must be between 3 and 255 characters in length, and it
+        #   must not start with `"goog"`.
         # @param [Google::Apis::PubsubV1::UpdateSubscriptionRequest] update_subscription_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1394,11 +1394,12 @@ module Google
         # Creates the given topic with the given name. See the [resource name rules] (
         # https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
         # @param [String] name
-        #   Required. The name of the topic. It must have the format `"projects/`project`/
-        #   topics/`topic`"`. ``topic`` must start with a letter, and contain only letters
-        #   (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`)
-        #   , tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and
-        #   255 characters in length, and it must not start with `"goog"`.
+        #   Required. Identifier. The name of the topic. It must have the format `"
+        #   projects/`project`/topics/`topic`"`. ``topic`` must start with a letter, and
+        #   contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        #   underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%
+        #   `). It must be between 3 and 255 characters in length, and it must not start
+        #   with `"goog"`.
         # @param [Google::Apis::PubsubV1::Topic] topic_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1582,11 +1583,12 @@ module Google
         # Updates an existing topic by updating the fields specified in the update mask.
         # Note that certain properties of a topic are not modifiable.
         # @param [String] name
-        #   Required. The name of the topic. It must have the format `"projects/`project`/
-        #   topics/`topic`"`. ``topic`` must start with a letter, and contain only letters
-        #   (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`)
-        #   , tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and
-        #   255 characters in length, and it must not start with `"goog"`.
+        #   Required. Identifier. The name of the topic. It must have the format `"
+        #   projects/`project`/topics/`topic`"`. ``topic`` must start with a letter, and
+        #   contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+        #   underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%
+        #   `). It must be between 3 and 255 characters in length, and it must not start
+        #   with `"goog"`.
         # @param [Google::Apis::PubsubV1::UpdateTopicRequest] update_topic_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

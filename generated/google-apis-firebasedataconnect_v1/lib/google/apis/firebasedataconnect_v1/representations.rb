@@ -28,13 +28,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientCache
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudSqlInstance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CodeChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Connector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataConnectProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,6 +100,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateQueryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateSchemaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateSchemaResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GraphqlError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +155,24 @@ module Google
       end
       
       class GraphqlResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GraphqlResponseExtensions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HttpGraphql
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImpersonateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Part
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PostgreSql
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,9 +274,29 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Workaround
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ClientCache
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_id_included, as: 'entityIdIncluded'
+          property :strict_validation_enabled, as: 'strictValidationEnabled'
         end
       end
       
@@ -215,10 +307,20 @@ module Google
         end
       end
       
+      class CodeChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :language_code, as: 'languageCode'
+        end
+      end
+      
       class Connector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client_cache, as: 'clientCache', class: Google::Apis::FirebasedataconnectV1::ClientCache, decorator: Google::Apis::FirebasedataconnectV1::ClientCache::Representation
+      
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
@@ -232,9 +334,21 @@ module Google
         end
       end
       
+      class DataConnectProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_id, as: 'entityId'
+          collection :entity_ids, as: 'entityIds'
+          property :max_age, as: 'maxAge'
+          collection :path, as: 'path'
+        end
+      end
+      
       class Datasource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_graphql, as: 'httpGraphql', class: Google::Apis::FirebasedataconnectV1::HttpGraphql, decorator: Google::Apis::FirebasedataconnectV1::HttpGraphql::Representation
+      
           property :postgresql, as: 'postgresql', class: Google::Apis::FirebasedataconnectV1::PostgreSql, decorator: Google::Apis::FirebasedataconnectV1::PostgreSql::Representation
       
         end
@@ -260,6 +374,8 @@ module Google
           hash :data, as: 'data'
           collection :errors, as: 'errors', class: Google::Apis::FirebasedataconnectV1::GraphqlError, decorator: Google::Apis::FirebasedataconnectV1::GraphqlError::Representation
       
+          property :extensions, as: 'extensions', class: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions, decorator: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions::Representation
+      
         end
       end
       
@@ -277,6 +393,8 @@ module Google
           hash :data, as: 'data'
           collection :errors, as: 'errors', class: Google::Apis::FirebasedataconnectV1::GraphqlError, decorator: Google::Apis::FirebasedataconnectV1::GraphqlError::Representation
       
+          property :extensions, as: 'extensions', class: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions, decorator: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions::Representation
+      
         end
       end
       
@@ -285,6 +403,50 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
           property :path, as: 'path'
+        end
+      end
+      
+      class GenerateQueryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt, as: 'prompt'
+          collection :schemas, as: 'schemas', class: Google::Apis::FirebasedataconnectV1::Schema, decorator: Google::Apis::FirebasedataconnectV1::Schema::Representation
+      
+        end
+      end
+      
+      class GenerateQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :part, as: 'part', class: Google::Apis::FirebasedataconnectV1::Part, decorator: Google::Apis::FirebasedataconnectV1::Part::Representation
+      
+          property :status, as: 'status', class: Google::Apis::FirebasedataconnectV1::GenerationStatus, decorator: Google::Apis::FirebasedataconnectV1::GenerationStatus::Representation
+      
+        end
+      end
+      
+      class GenerateSchemaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt, as: 'prompt'
+        end
+      end
+      
+      class GenerateSchemaResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :part, as: 'part', class: Google::Apis::FirebasedataconnectV1::Part, decorator: Google::Apis::FirebasedataconnectV1::Part::Representation
+      
+          property :status, as: 'status', class: Google::Apis::FirebasedataconnectV1::GenerationStatus, decorator: Google::Apis::FirebasedataconnectV1::GenerationStatus::Representation
+      
+        end
+      end
+      
+      class GenerationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :state, as: 'state'
         end
       end
       
@@ -303,7 +465,12 @@ module Google
       class GraphqlErrorExtensions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :debug_details, as: 'debugDetails'
           property :file, as: 'file'
+          property :warning_level, as: 'warningLevel'
+          collection :workarounds, as: 'workarounds', class: Google::Apis::FirebasedataconnectV1::Workaround, decorator: Google::Apis::FirebasedataconnectV1::Workaround::Representation
+      
         end
       end
       
@@ -332,6 +499,34 @@ module Google
           hash :data, as: 'data'
           collection :errors, as: 'errors', class: Google::Apis::FirebasedataconnectV1::GraphqlError, decorator: Google::Apis::FirebasedataconnectV1::GraphqlError::Representation
       
+          property :extensions, as: 'extensions', class: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions, decorator: Google::Apis::FirebasedataconnectV1::GraphqlResponseExtensions::Representation
+      
+        end
+      end
+      
+      class GraphqlResponseExtensions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data_connect, as: 'dataConnect', class: Google::Apis::FirebasedataconnectV1::DataConnectProperties, decorator: Google::Apis::FirebasedataconnectV1::DataConnectProperties::Representation
+      
+        end
+      end
+      
+      class HttpGraphql
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timeout, as: 'timeout'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class ImpersonateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :extensions, as: 'extensions', class: Google::Apis::FirebasedataconnectV1::GraphqlRequestExtensions, decorator: Google::Apis::FirebasedataconnectV1::GraphqlRequestExtensions::Representation
+      
+          property :operation_name, as: 'operationName'
+          hash :variables, as: 'variables'
         end
       end
       
@@ -339,6 +534,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :auth_claims, as: 'authClaims'
+          property :include_debug_details, as: 'includeDebugDetails'
           property :unauthenticated, as: 'unauthenticated'
         end
       end
@@ -368,6 +564,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::FirebasedataconnectV1::Operation, decorator: Google::Apis::FirebasedataconnectV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -427,12 +624,24 @@ module Google
         end
       end
       
+      class Part
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code_chunk, as: 'codeChunk', class: Google::Apis::FirebasedataconnectV1::CodeChunk, decorator: Google::Apis::FirebasedataconnectV1::CodeChunk::Representation
+      
+          property :text_chunk, as: 'textChunk', class: Google::Apis::FirebasedataconnectV1::TextChunk, decorator: Google::Apis::FirebasedataconnectV1::TextChunk::Representation
+      
+        end
+      end
+      
       class PostgreSql
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_sql, as: 'cloudSql', class: Google::Apis::FirebasedataconnectV1::CloudSqlInstance, decorator: Google::Apis::FirebasedataconnectV1::CloudSqlInstance::Representation
       
           property :database, as: 'database'
+          property :ephemeral, as: 'ephemeral'
+          property :schema, as: 'schema'
           property :schema_migration, as: 'schemaMigration'
           property :schema_validation, as: 'schemaValidation'
           property :unlinked, as: 'unlinked'
@@ -495,6 +704,22 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TextChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+        end
+      end
+      
+      class Workaround
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :reason, as: 'reason'
+          property :replace, as: 'replace'
         end
       end
     end

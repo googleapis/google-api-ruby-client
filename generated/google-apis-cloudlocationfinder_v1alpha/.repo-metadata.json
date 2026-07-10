@@ -1,0 +1,7 @@
+{
+    "api_id": "cloudlocationfinder:v1alpha",
+    "name_pretty": "Cloud Location Finder API",
+    "distribution_name": "google-apis-cloudlocationfinder_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}

@@ -1,5 +1,54 @@
 # Release history for google-apis-workspaceevents_v1
 
+### v0.25.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.24.0 (2026-05-24)
+
+* Regenerated from discovery document revision 20260517
+
+### v0.23.0 (2026-04-26)
+
+* Regenerated from discovery document revision 20260422
+
+### v0.22.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260407
+
+### v0.21.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251216
+
+### v0.20.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251118
+
+### v0.19.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251102
+
+### v0.18.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250930
+
+### v0.17.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250921
+
+### v0.16.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250708
+
+### v0.15.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250629
+
+### v0.14.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250615
+* Regenerated using generator version 0.18.0
+
 ### v0.13.0 (2025-05-04)
 
 * Regenerated from discovery document revision 20250427

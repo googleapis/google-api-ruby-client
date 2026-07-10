@@ -1,5 +1,102 @@
 # Release history for google-apis-androidpublisher_v3
 
+### v0.104.0 (2026-06-28)
+
+* Regenerated from discovery document revision 20260625
+
+### v0.103.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.102.0 (2026-05-31)
+
+* Regenerated from discovery document revision 20260528
+
+### v0.101.0 (2026-05-24)
+
+* Regenerated from discovery document revision 20260519
+
+### v0.100.0 (2026-05-10)
+
+* Regenerated from discovery document revision 20260506
+
+### v0.99.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260416
+
+### v0.98.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260318
+
+### v0.97.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260312
+
+### v0.96.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260204
+
+### v0.95.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260129
+
+### v0.94.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20260105
+
+### v0.93.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251215
+
+### v0.92.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251211
+
+### v0.91.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251203
+
+### v0.90.0 (2025-11-30)
+
+* Regenerated from discovery document revision 20251124
+
+### v0.89.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251119
+
+### v0.88.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251028
+
+### v0.87.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250904
+
+### v0.86.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250828
+
+### v0.85.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250807
+
+### v0.84.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250724
+
+### v0.83.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250710
+
+### v0.82.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250701
+
+### v0.81.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250529
+* Regenerated using generator version 0.18.0
+
 ### v0.80.0 (2025-05-21)
 
 * Regenerated from discovery document revision 20250520

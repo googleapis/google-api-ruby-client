@@ -230,6 +230,11 @@ module Google
         attr_accessor :immutable
         alias_method :immutable?, :immutable
       
+        # For list parameters, the max size of the list.
+        # Corresponds to the JSON property `maxListSize`
+        # @return [Fixnum]
+        attr_accessor :max_list_size
+      
         # For integer and double values specifies maximum allowed value.
         # Corresponds to the JSON property `maxValue`
         # @return [Float]
@@ -296,6 +301,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @fields = args[:fields] if args.key?(:fields)
           @immutable = args[:immutable] if args.key?(:immutable)
+          @max_list_size = args[:max_list_size] if args.key?(:max_list_size)
           @max_value = args[:max_value] if args.key?(:max_value)
           @min_value = args[:min_value] if args.key?(:min_value)
           @param_id = args[:param_id] if args.key?(:param_id)
@@ -306,6 +312,27 @@ module Google
           @validation_description = args[:validation_description] if args.key?(:validation_description)
           @validation_help_url = args[:validation_help_url] if args.key?(:validation_help_url)
           @validation_regex = args[:validation_regex] if args.key?(:validation_regex)
+        end
+      end
+      
+      # Configuration for Dataplex destination.
+      class DataplexConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Dataplex Universal Catalog entry group for importing the
+        # metadata. entry_group has the format of `projects/`project_id`/locations/`
+        # region`/entryGroups/`entry_group_id``.
+        # Corresponds to the JSON property `entryGroup`
+        # @return [String]
+        attr_accessor :entry_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entry_group = args[:entry_group] if args.key?(:entry_group)
         end
       end
       
@@ -403,6 +430,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @pubsub_subscription = args[:pubsub_subscription] if args.key?(:pubsub_subscription)
+        end
+      end
+      
+      # Details about the hierarchy.
+      class HierarchyDetail
+        include Google::Apis::Core::Hashable
+      
+        # Partition details related to hierarchy.
+        # Corresponds to the JSON property `partitionDetail`
+        # @return [Google::Apis::BigquerydatatransferV1::PartitionDetail]
+        attr_accessor :partition_detail
+      
+        # Table details related to hierarchy.
+        # Corresponds to the JSON property `tableDetail`
+        # @return [Google::Apis::BigquerydatatransferV1::TableDetail]
+        attr_accessor :table_detail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partition_detail = args[:partition_detail] if args.key?(:partition_detail)
+          @table_detail = args[:table_detail] if args.key?(:table_detail)
         end
       end
       
@@ -512,6 +564,32 @@ module Google
         end
       end
       
+      # Response for the `ListTransferResources` RPC.
+      class ListTransferResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A token, which can be sent as `page_token` to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. The transfer resources.
+        # Corresponds to the JSON property `transferResources`
+        # @return [Array<Google::Apis::BigquerydatatransferV1::TransferResource>]
+        attr_accessor :transfer_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @transfer_resources = args[:transfer_resources] if args.key?(:transfer_resources)
+        end
+      end
+      
       # The returned list of pipelines in the project.
       class ListTransferRunsResponse
         include Google::Apis::Core::Hashable
@@ -596,6 +674,44 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The metadata destination of the transfer config.
+      class MetadataDestination
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Dataplex destination.
+        # Corresponds to the JSON property `dataplexConfiguration`
+        # @return [Google::Apis::BigquerydatatransferV1::DataplexConfiguration]
+        attr_accessor :dataplex_configuration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataplex_configuration = args[:dataplex_configuration] if args.key?(:dataplex_configuration)
+        end
+      end
+      
+      # Partition details related to hierarchy.
+      class PartitionDetail
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the table which has the partitions.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table = args[:table] if args.key?(:table)
         end
       end
       
@@ -807,6 +923,25 @@ module Google
         end
       end
       
+      # Table details related to hierarchy.
+      class TableDetail
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Total number of partitions being tracked within the table.
+        # Corresponds to the JSON property `partitionCount`
+        # @return [Fixnum]
+        attr_accessor :partition_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partition_count = args[:partition_count] if args.key?(:partition_count)
+        end
+      end
+      
       # Options customizing the time based transfer schedule. Options are migrated
       # from the original ScheduleOptions message.
       class TimeBasedSchedule
@@ -950,6 +1085,16 @@ module Google
         # @return [Google::Apis::BigquerydatatransferV1::Status]
         attr_accessor :error
       
+        # The classification of the destination table.
+        # Corresponds to the JSON property `managedTableType`
+        # @return [String]
+        attr_accessor :managed_table_type
+      
+        # The metadata destination of the transfer config.
+        # Corresponds to the JSON property `metadataDestination`
+        # @return [Google::Apis::BigquerydatatransferV1::MetadataDestination]
+        attr_accessor :metadata_destination
+      
         # Identifier. The resource name of the transfer config. Transfer config names
         # have the form either `projects/`project_id`/locations/`region`/transferConfigs/
         # `config_id`` or `projects/`project_id`/transferConfigs/`config_id``, where `
@@ -1040,6 +1185,8 @@ module Google
           @email_preferences = args[:email_preferences] if args.key?(:email_preferences)
           @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @error = args[:error] if args.key?(:error)
+          @managed_table_type = args[:managed_table_type] if args.key?(:managed_table_type)
+          @metadata_destination = args[:metadata_destination] if args.key?(:metadata_destination)
           @name = args[:name] if args.key?(:name)
           @next_run_time = args[:next_run_time] if args.key?(:next_run_time)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
@@ -1085,6 +1232,109 @@ module Google
         end
       end
       
+      # Resource (table/partition) that is being transferred.
+      class TransferResource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Resource destination.
+        # Corresponds to the JSON property `destination`
+        # @return [String]
+        attr_accessor :destination
+      
+        # Details about the hierarchy.
+        # Corresponds to the JSON property `hierarchyDetail`
+        # @return [Google::Apis::BigquerydatatransferV1::HierarchyDetail]
+        attr_accessor :hierarchy_detail
+      
+        # Basic information about a transfer run.
+        # Corresponds to the JSON property `lastSuccessfulRun`
+        # @return [Google::Apis::BigquerydatatransferV1::TransferRunBrief]
+        attr_accessor :last_successful_run
+      
+        # Basic information about a transfer run.
+        # Corresponds to the JSON property `latestRun`
+        # @return [Google::Apis::BigquerydatatransferV1::TransferRunBrief]
+        attr_accessor :latest_run
+      
+        # Status details of the resource being transferred.
+        # Corresponds to the JSON property `latestStatusDetail`
+        # @return [Google::Apis::BigquerydatatransferV1::TransferResourceStatusDetail]
+        attr_accessor :latest_status_detail
+      
+        # Identifier. Resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Resource type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Time when the resource was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @hierarchy_detail = args[:hierarchy_detail] if args.key?(:hierarchy_detail)
+          @last_successful_run = args[:last_successful_run] if args.key?(:last_successful_run)
+          @latest_run = args[:latest_run] if args.key?(:latest_run)
+          @latest_status_detail = args[:latest_status_detail] if args.key?(:latest_status_detail)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Status details of the resource being transferred.
+      class TransferResourceStatusDetail
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Percentage of the transfer completed. Valid values: 0-100.
+        # Corresponds to the JSON property `completedPercentage`
+        # @return [Float]
+        attr_accessor :completed_percentage
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::BigquerydatatransferV1::Status]
+        attr_accessor :error
+      
+        # Optional. Transfer state of the resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Status summary of the resource being transferred.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::BigquerydatatransferV1::TransferStatusSummary]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completed_percentage = args[:completed_percentage] if args.key?(:completed_percentage)
+          @error = args[:error] if args.key?(:error)
+          @state = args[:state] if args.key?(:state)
+          @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
       # Represents a data transfer run.
       class TransferRun
         include Google::Apis::Core::Hashable
@@ -1119,6 +1369,11 @@ module Google
         # Corresponds to the JSON property `errorStatus`
         # @return [Google::Apis::BigquerydatatransferV1::Status]
         attr_accessor :error_status
+      
+        # The metadata destination of the transfer config.
+        # Corresponds to the JSON property `metadataDestination`
+        # @return [Google::Apis::BigquerydatatransferV1::MetadataDestination]
+        attr_accessor :metadata_destination
       
         # Identifier. The resource name of the transfer run. Transfer run names have the
         # form `projects/`project_id`/locations/`location`/transferConfigs/`config_id`/
@@ -1193,6 +1448,7 @@ module Google
           @email_preferences = args[:email_preferences] if args.key?(:email_preferences)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error_status = args[:error_status] if args.key?(:error_status)
+          @metadata_destination = args[:metadata_destination] if args.key?(:metadata_destination)
           @name = args[:name] if args.key?(:name)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
           @params = args[:params] if args.key?(:params)
@@ -1203,6 +1459,100 @@ module Google
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Basic information about a transfer run.
+      class TransferRunBrief
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Run URI. The format must be: `projects/`project`/locations/`location`
+        # /transferConfigs/`transfer_config`/run/`run``
+        # Corresponds to the JSON property `run`
+        # @return [String]
+        attr_accessor :run
+      
+        # Optional. Start time of the transfer run.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @run = args[:run] if args.key?(:run)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Metrics for tracking the transfer status.
+      class TransferStatusMetric
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of units transferred successfully.
+        # Corresponds to the JSON property `completed`
+        # @return [Fixnum]
+        attr_accessor :completed
+      
+        # Optional. Number of units that failed to transfer.
+        # Corresponds to the JSON property `failed`
+        # @return [Fixnum]
+        attr_accessor :failed
+      
+        # Optional. Number of units pending transfer.
+        # Corresponds to the JSON property `pending`
+        # @return [Fixnum]
+        attr_accessor :pending
+      
+        # Optional. Total number of units for the transfer.
+        # Corresponds to the JSON property `total`
+        # @return [Fixnum]
+        attr_accessor :total
+      
+        # Optional. Unit for measuring progress (e.g., BYTES).
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completed = args[:completed] if args.key?(:completed)
+          @failed = args[:failed] if args.key?(:failed)
+          @pending = args[:pending] if args.key?(:pending)
+          @total = args[:total] if args.key?(:total)
+          @unit = args[:unit] if args.key?(:unit)
+        end
+      end
+      
+      # Status summary of the resource being transferred.
+      class TransferStatusSummary
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of transfer status metrics.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::BigquerydatatransferV1::TransferStatusMetric>]
+        attr_accessor :metrics
+      
+        # Input only. Unit based on which transfer status progress should be calculated.
+        # Corresponds to the JSON property `progressUnit`
+        # @return [String]
+        attr_accessor :progress_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @progress_unit = args[:progress_unit] if args.key?(:progress_unit)
         end
       end
       

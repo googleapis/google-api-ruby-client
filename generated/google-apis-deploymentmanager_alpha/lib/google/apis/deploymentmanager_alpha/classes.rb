@@ -1034,6 +1034,72 @@ module Google
       end
       
       # 
+      class FirewallPolicyRuleOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The priority allocated for the firewall policy rule if query parameters
+        # specified minPriority/maxPriority.
+        # Corresponds to the JSON property `allocatedPriority`
+        # @return [Fixnum]
+        attr_accessor :allocated_priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_priority = args[:allocated_priority] if args.key?(:allocated_priority)
+        end
+      end
+      
+      # 
+      class GetVersionOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `inlineSbomInfo`
+        # @return [Google::Apis::DeploymentmanagerAlpha::GetVersionOperationMetadataSbomInfo]
+        attr_accessor :inline_sbom_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_sbom_info = args[:inline_sbom_info] if args.key?(:inline_sbom_info)
+        end
+      end
+      
+      # 
+      class GetVersionOperationMetadataSbomInfo
+        include Google::Apis::Core::Hashable
+      
+        # SBOM versions currently applied to the resource. The key is the component name
+        # and the value is the version.
+        # Corresponds to the JSON property `currentComponentVersions`
+        # @return [Hash<String,String>]
+        attr_accessor :current_component_versions
+      
+        # SBOM versions scheduled for the next maintenance. The key is the component
+        # name and the value is the version.
+        # Corresponds to the JSON property `targetComponentVersions`
+        # @return [Hash<String,String>]
+        attr_accessor :target_component_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_component_versions = args[:current_component_versions] if args.key?(:current_component_versions)
+          @target_component_versions = args[:target_component_versions] if args.key?(:target_component_versions)
+        end
+      end
+      
+      # 
       class GlobalSetPolicyRequest
         include Google::Apis::Core::Hashable
       
@@ -1081,7 +1147,7 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::Policy]
         attr_accessor :policy
       
-        # 
+        # Update mask for the policy.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -1451,6 +1517,16 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::Operation::Error]
         attr_accessor :error
       
+        # 
+        # Corresponds to the JSON property `firewallPolicyRuleOperationMetadata`
+        # @return [Google::Apis::DeploymentmanagerAlpha::FirewallPolicyRuleOperationMetadata]
+        attr_accessor :firewall_policy_rule_operation_metadata
+      
+        # 
+        # Corresponds to the JSON property `getVersionOperationMetadata`
+        # @return [Google::Apis::DeploymentmanagerAlpha::GetVersionOperationMetadata]
+        attr_accessor :get_version_operation_metadata
+      
         # [Output Only] If the operation fails, this field contains the HTTP error
         # message that was returned, such as `NOT FOUND`.
         # Corresponds to the JSON property `httpErrorMessage`
@@ -1481,8 +1557,8 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::InstancesBulkInsertOperationMetadata]
         attr_accessor :instances_bulk_insert_operation_metadata
       
-        # [Output Only] Type of the resource. Always `compute#operation` for Operation
-        # resources.
+        # Output only. [Output Only] Type of the resource. Always `compute#operation`
+        # for Operation resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1492,8 +1568,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] An ID that represents a group of operations, such as when a
-        # group of operations results from a `bulkInsert` API request.
+        # Output only. [Output Only] An ID that represents a group of operations, such
+        # as when a group of operations results from a `bulkInsert` API request.
         # Corresponds to the JSON property `operationGroupId`
         # @return [String]
         attr_accessor :operation_group_id
@@ -1523,7 +1599,8 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] Server-defined URL for this resource with the resource id.
+        # Output only. [Output Only] Server-defined URL for this resource with the
+        # resource id.
         # Corresponds to the JSON property `selfLinkWithId`
         # @return [String]
         attr_accessor :self_link_with_id
@@ -1534,8 +1611,9 @@ module Google
         # @return [Google::Apis::DeploymentmanagerAlpha::SetAutoscalerLinkOperationMetadata]
         attr_accessor :set_autoscaler_link_operation_metadata
       
-        # [Output Only] If the operation is for projects.setCommonInstanceMetadata, this
-        # field will contain information on all underlying zonal actions and their state.
+        # Output only. [Output Only] If the operation is for projects.
+        # setCommonInstanceMetadata, this field will contain information on all
+        # underlying zonal actions and their state.
         # Corresponds to the JSON property `setCommonInstanceMetadataOperationMetadata`
         # @return [Google::Apis::DeploymentmanagerAlpha::SetCommonInstanceMetadataOperationMetadata]
         attr_accessor :set_common_instance_metadata_operation_metadata
@@ -1600,6 +1678,8 @@ module Google
           @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
+          @firewall_policy_rule_operation_metadata = args[:firewall_policy_rule_operation_metadata] if args.key?(:firewall_policy_rule_operation_metadata)
+          @get_version_operation_metadata = args[:get_version_operation_metadata] if args.key?(:get_version_operation_metadata)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
           @id = args[:id] if args.key?(:id)
@@ -1648,10 +1728,10 @@ module Google
           class Error
             include Google::Apis::Core::Hashable
           
-            # [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE This is for
-            # internal use-only (like componentization) (thus the visibility "none") and in
-            # case of public exposure it is strongly recommended to follow pattern of: https:
-            # //aip.dev/193 and expose as details field.
+            # Output only. [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE
+            # This is for internal use-only (like componentization) (thus the visibility "
+            # none") and in case of public exposure it is strongly recommended to follow
+            # pattern of: https://aip.dev/193 and expose as details field.
             # Corresponds to the JSON property `arguments`
             # @return [Array<String>]
             attr_accessor :arguments
@@ -2360,10 +2440,10 @@ module Google
           class Error
             include Google::Apis::Core::Hashable
           
-            # [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE This is for
-            # internal use-only (like componentization) (thus the visibility "none") and in
-            # case of public exposure it is strongly recommended to follow pattern of: https:
-            # //aip.dev/193 and expose as details field.
+            # Output only. [Output Only] Optional error details WARNING: DO NOT MAKE VISIBLE
+            # This is for internal use-only (like componentization) (thus the visibility "
+            # none") and in case of public exposure it is strongly recommended to follow
+            # pattern of: https://aip.dev/193 and expose as details field.
             # Corresponds to the JSON property `arguments`
             # @return [Array<String>]
             attr_accessor :arguments
@@ -2581,6 +2661,11 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :zonal_igm_ids
       
+        # Map of zone to an ID of the zonal IGM belonging to the RMIG.
+        # Corresponds to the JSON property `zoneToIgmIds`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :zone_to_igm_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2588,6 +2673,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @zonal_igm_ids = args[:zonal_igm_ids] if args.key?(:zonal_igm_ids)
+          @zone_to_igm_ids = args[:zone_to_igm_ids] if args.key?(:zone_to_igm_ids)
         end
       end
       

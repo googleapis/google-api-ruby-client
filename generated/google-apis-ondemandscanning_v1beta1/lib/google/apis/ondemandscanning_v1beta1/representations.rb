@@ -22,6 +22,12 @@ module Google
   module Apis
     module OndemandscanningV1beta1
       
+      class AiSkillAnalysisOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AliasContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CisaKnownExploitedVulnerabilities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cvss
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExploitPredictionScoringSystem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class File
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +227,18 @@ module Google
       end
       
       class FileLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Finding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FindingLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -317,6 +347,12 @@ module Google
       end
       
       class InTotoStatement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestionSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -473,6 +509,12 @@ module Google
       end
       
       class ResourceDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Risk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -634,6 +676,16 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AiSkillAnalysisOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :findings, as: 'findings', class: Google::Apis::OndemandscanningV1beta1::Finding, decorator: Google::Apis::OndemandscanningV1beta1::Finding::Representation
+      
+          property :max_severity, as: 'maxSeverity'
+          property :skill_name, as: 'skillName'
+        end
+      end
+      
       class AliasContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -713,6 +765,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :layer_count, as: 'layerCount'
           property :name, as: 'name'
+          property :registry, as: 'registry'
           property :repository, as: 'repository'
         end
       end
@@ -791,21 +844,36 @@ module Google
         end
       end
       
+      class CisaKnownExploitedVulnerabilities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :known_ransomware_campaign_use, as: 'knownRansomwareCampaignUse'
+        end
+      end
+      
       class Cvss
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attack_complexity, as: 'attackComplexity'
+          property :attack_requirements, as: 'attackRequirements'
           property :attack_vector, as: 'attackVector'
           property :authentication, as: 'authentication'
           property :availability_impact, as: 'availabilityImpact'
           property :base_score, as: 'baseScore'
           property :confidentiality_impact, as: 'confidentialityImpact'
+          property :exploit_maturity, as: 'exploitMaturity'
           property :exploitability_score, as: 'exploitabilityScore'
           property :impact_score, as: 'impactScore'
           property :integrity_impact, as: 'integrityImpact'
           property :privileges_required, as: 'privilegesRequired'
           property :scope, as: 'scope'
+          property :subsequent_system_availability_impact, as: 'subsequentSystemAvailabilityImpact'
+          property :subsequent_system_confidentiality_impact, as: 'subsequentSystemConfidentialityImpact'
+          property :subsequent_system_integrity_impact, as: 'subsequentSystemIntegrityImpact'
           property :user_interaction, as: 'userInteraction'
+          property :vulnerable_system_availability_impact, as: 'vulnerableSystemAvailabilityImpact'
+          property :vulnerable_system_confidentiality_impact, as: 'vulnerableSystemConfidentialityImpact'
+          property :vulnerable_system_integrity_impact, as: 'vulnerableSystemIntegrityImpact'
         end
       end
       
@@ -908,6 +976,7 @@ module Google
           collection :files, as: 'files', class: Google::Apis::OndemandscanningV1beta1::File, decorator: Google::Apis::OndemandscanningV1beta1::File::Representation
       
           property :last_scan_time, as: 'lastScanTime'
+          property :last_vulnerability_update_time, as: 'lastVulnerabilityUpdateTime'
           property :sbom_status, as: 'sbomStatus', class: Google::Apis::OndemandscanningV1beta1::SbomStatus, decorator: Google::Apis::OndemandscanningV1beta1::SbomStatus::Representation
       
         end
@@ -937,6 +1006,14 @@ module Google
         end
       end
       
+      class ExploitPredictionScoringSystem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentile, as: 'percentile'
+          property :score, as: 'score'
+        end
+      end
+      
       class File
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -959,6 +1036,27 @@ module Google
           property :file_path, as: 'filePath'
           property :layer_details, as: 'layerDetails', class: Google::Apis::OndemandscanningV1beta1::LayerDetails, decorator: Google::Apis::OndemandscanningV1beta1::LayerDetails::Representation
       
+          property :line_number, as: 'lineNumber'
+        end
+      end
+      
+      class Finding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :details, as: 'details'
+          property :location, as: 'location', class: Google::Apis::OndemandscanningV1beta1::FindingLocation, decorator: Google::Apis::OndemandscanningV1beta1::FindingLocation::Representation
+      
+          property :scanner, as: 'scanner'
+          property :severity, as: 'severity'
+        end
+      end
+      
+      class FindingLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file_path, as: 'filePath'
+          property :line_number, :numeric_string => true, as: 'lineNumber'
         end
       end
       
@@ -995,6 +1093,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :layer_count, as: 'layerCount'
           property :name, as: 'name'
+          property :registry, as: 'registry'
           property :repository, as: 'repository'
         end
       end
@@ -1005,6 +1104,7 @@ module Google
           property :file_path, as: 'filePath'
           property :layer_details, as: 'layerDetails', class: Google::Apis::OndemandscanningV1beta1::GrafeasV1LayerDetails, decorator: Google::Apis::OndemandscanningV1beta1::GrafeasV1LayerDetails::Representation
       
+          property :line_number, as: 'lineNumber'
         end
       end
       
@@ -1144,6 +1244,15 @@ module Google
         end
       end
       
+      class IngestionSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_uri, as: 'attachmentUri'
+          property :resource_url, as: 'resourceUrl'
+          property :source, as: 'source'
+        end
+      end
+      
       class Justification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1201,6 +1310,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::OndemandscanningV1beta1::Operation, decorator: Google::Apis::OndemandscanningV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1265,6 +1375,9 @@ module Google
       class Occurrence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :advisory_publish_time, as: 'advisoryPublishTime'
+          property :ai_skill_analysis, as: 'aiSkillAnalysis', class: Google::Apis::OndemandscanningV1beta1::AiSkillAnalysisOccurrence, decorator: Google::Apis::OndemandscanningV1beta1::AiSkillAnalysisOccurrence::Representation
+      
           property :attestation, as: 'attestation', class: Google::Apis::OndemandscanningV1beta1::AttestationOccurrence, decorator: Google::Apis::OndemandscanningV1beta1::AttestationOccurrence::Representation
       
           property :build, as: 'build', class: Google::Apis::OndemandscanningV1beta1::BuildOccurrence, decorator: Google::Apis::OndemandscanningV1beta1::BuildOccurrence::Representation
@@ -1327,6 +1440,8 @@ module Google
           collection :file_location, as: 'fileLocation', class: Google::Apis::OndemandscanningV1beta1::FileLocation, decorator: Google::Apis::OndemandscanningV1beta1::FileLocation::Representation
       
           property :hash_digest, as: 'hashDigest'
+          collection :ingestion_sources, as: 'ingestionSources', class: Google::Apis::OndemandscanningV1beta1::IngestionSource, decorator: Google::Apis::OndemandscanningV1beta1::IngestionSource::Representation
+      
           property :layer_details, as: 'layerDetails', class: Google::Apis::OndemandscanningV1beta1::LayerDetails, decorator: Google::Apis::OndemandscanningV1beta1::LayerDetails::Representation
       
           collection :licenses, as: 'licenses'
@@ -1454,6 +1569,16 @@ module Google
           property :media_type, as: 'mediaType'
           property :name, as: 'name'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class Risk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cisa_kev, as: 'cisaKev', class: Google::Apis::OndemandscanningV1beta1::CisaKnownExploitedVulnerabilities, decorator: Google::Apis::OndemandscanningV1beta1::CisaKnownExploitedVulnerabilities::Representation
+      
+          property :epss, as: 'epss', class: Google::Apis::OndemandscanningV1beta1::ExploitPredictionScoringSystem, decorator: Google::Apis::OndemandscanningV1beta1::ExploitPredictionScoringSystem::Representation
+      
         end
       end
       
@@ -1726,6 +1851,8 @@ module Google
           property :cvss_score, as: 'cvssScore'
           property :cvss_v2, as: 'cvssV2', class: Google::Apis::OndemandscanningV1beta1::Cvss, decorator: Google::Apis::OndemandscanningV1beta1::Cvss::Representation
       
+          property :cvss_v4, as: 'cvssV4', class: Google::Apis::OndemandscanningV1beta1::Cvss, decorator: Google::Apis::OndemandscanningV1beta1::Cvss::Representation
+      
           property :cvss_version, as: 'cvssVersion'
           property :cvssv3, as: 'cvssv3', class: Google::Apis::OndemandscanningV1beta1::Cvss, decorator: Google::Apis::OndemandscanningV1beta1::Cvss::Representation
       
@@ -1736,6 +1863,8 @@ module Google
           collection :package_issue, as: 'packageIssue', class: Google::Apis::OndemandscanningV1beta1::PackageIssue, decorator: Google::Apis::OndemandscanningV1beta1::PackageIssue::Representation
       
           collection :related_urls, as: 'relatedUrls', class: Google::Apis::OndemandscanningV1beta1::RelatedUrl, decorator: Google::Apis::OndemandscanningV1beta1::RelatedUrl::Representation
+      
+          property :risk, as: 'risk', class: Google::Apis::OndemandscanningV1beta1::Risk, decorator: Google::Apis::OndemandscanningV1beta1::Risk::Representation
       
           property :severity, as: 'severity'
           property :short_description, as: 'shortDescription'

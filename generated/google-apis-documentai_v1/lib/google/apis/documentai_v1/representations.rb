@@ -22,6 +22,72 @@ module Google
   module Apis
     module DocumentaiV1
       
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -166,6 +232,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +287,18 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3EvaluationReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +340,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3FieldTierMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +401,54 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3Processor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3PropertyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +502,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3Schema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3SchemaEntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +533,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3SummaryOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -365,6 +587,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3UpdateProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -472,6 +700,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1DocumentAnnotations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentBlobAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1DocumentChunkedDocument
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,6 +719,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -502,6 +748,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1DocumentDocumentLayout
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +767,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -556,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1DocumentEntitiesRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1DocumentEntity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +839,18 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1DocumentEntityRelation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentEntityValidationOutput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -820,6 +1102,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1Documents
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1EnableProcessorMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -874,6 +1162,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1EvaluationEvaluationRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1EvaluationMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -916,6 +1210,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1GenerateSchemaVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1GenerateSchemaVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1HumanReviewStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -941,6 +1253,24 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1ListProcessorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1ListSchemaVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1ListSchemasResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1NextSchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1066,6 +1396,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1RawDocuments
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1079,6 +1415,24 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1ReviewDocumentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1SchemaGenerationHistory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1SchemaGenerationIteration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1SchemaVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1228,12 +1582,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1294,6 +1642,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3DocumentSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1306,6 +1684,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3EntityTypeMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1313,6 +1697,24 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3EvaluationMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3EvaluationReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3FieldExtractionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1366,6 +1768,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3Processor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionAlias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3PropertyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1391,6 +1841,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3SummaryOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1427,6 +1883,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3UpdateProcessorVersionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1502,6 +1964,122 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :validation_rules, as: 'validationRules', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule::Representation
+      
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :child_alignment_rule, as: 'childAlignmentRule', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule::Representation
+      
+          property :description, as: 'description'
+          property :entity_alignment_rule, as: 'entityAlignmentRule', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule::Representation
+      
+          property :field_occurrences, as: 'fieldOccurrences', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences::Representation
+      
+          property :field_regex, as: 'fieldRegex', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex::Representation
+      
+          property :form_validation, as: 'formValidation', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation::Representation
+      
+          property :name, as: 'name'
+          property :rule_id, as: 'ruleId'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alignment_type, as: 'alignmentType'
+          property :tolerance, as: 'tolerance'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alignment_rule, as: 'alignmentRule', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule::Representation
+      
+          collection :child_fields, as: 'childFields', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+          property :parent_field, as: 'parentField', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :float_value, as: 'floatValue'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alignment_rule, as: 'alignmentRule', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule::Representation
+      
+          collection :fields, as: 'fields', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_value, as: 'defaultValue', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant::Representation
+      
+          property :field_name, as: 'fieldName'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+          property :max_occurrences, as: 'maxOccurrences'
+          property :min_occurrences, as: 'minOccurrences'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+          property :pattern, as: 'pattern'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :left_operand, as: 'leftOperand', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation::Representation
+      
+          property :right_operand, as: 'rightOperand', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation::Representation
+      
+          property :validation_operator, as: 'validationOperator'
+        end
+      end
+      
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :constants, as: 'constants', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant::Representation
+      
+          collection :fields, as: 'fields', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField::Representation
+      
+          property :operation_type, as: 'operationType'
+          collection :operations, as: 'operations', class: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation, decorator: Google::Apis::DocumentaiV1::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation::Representation
+      
+        end
       end
       
       class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata
@@ -1711,6 +2289,66 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :document_prompt, as: 'documentPrompt'
+          collection :entity_types, as: 'entityTypes', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :base_types, as: 'baseTypes'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :entity_type_metadata, as: 'entityTypeMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata::Representation
+      
+          property :enum_values, as: 'enumValues', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues::Representation
+      
+          property :name, as: 'name'
+          collection :properties, as: 'properties', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :method_prop, as: 'method'
+          property :name, as: 'name'
+          property :occurrence_type, as: 'occurrenceType'
+          property :property_metadata, as: 'propertyMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3PropertyMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3PropertyMetadata::Representation
+      
+          property :value_type, as: 'valueType'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_allow_multiple_labels, as: 'documentAllowMultipleLabels'
+          property :document_splitter, as: 'documentSplitter'
+          property :prefixed_naming_on_properties, as: 'prefixedNamingOnProperties'
+          property :skip_naming_validation, as: 'skipNamingValidation'
+        end
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1722,6 +2360,23 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_tier_metadata, as: 'fieldTierMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3FieldTierMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3FieldTierMetadata::Representation
+      
+          property :human_review_labeling_metadata, as: 'humanReviewLabelingMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata::Representation
+      
+          property :human_review_metadata, as: 'humanReviewMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata::Representation
+      
+          property :inactive, as: 'inactive'
+          property :schema_editability_metadata, as: 'schemaEditabilityMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata::Representation
+      
+          property :schema_inference_metadata, as: 'schemaInferenceMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata::Representation
+      
         end
       end
       
@@ -1737,6 +2392,35 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :evaluation, as: 'evaluation'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :f1_score, as: 'f1Score'
+          property :false_negatives_count, as: 'falseNegativesCount'
+          property :false_positives_count, as: 'falsePositivesCount'
+          property :ground_truth_document_count, as: 'groundTruthDocumentCount'
+          property :ground_truth_occurrences_count, as: 'groundTruthOccurrencesCount'
+          property :precision, as: 'precision'
+          property :predicted_document_count, as: 'predictedDocumentCount'
+          property :predicted_occurrences_count, as: 'predictedOccurrencesCount'
+          property :recall, as: 'recall'
+          property :total_documents_count, as: 'totalDocumentsCount'
+          property :true_positives_count, as: 'truePositivesCount'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3EvaluationReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_metrics, as: 'aggregateMetrics', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics::Representation
+      
+          property :aggregate_metrics_exact, as: 'aggregateMetricsExact', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics::Representation
+      
+          property :evaluation, as: 'evaluation'
+          property :operation, as: 'operation'
         end
       end
       
@@ -1792,6 +2476,45 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_query, as: 'entityQuery', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery::Representation
+      
+          property :summary_options, as: 'summaryOptions', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SummaryOptions, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SummaryOptions::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_entity_query, as: 'userEntityQuery'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3FieldTierMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tier_level, as: 'tierLevel'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_normalization_editing, as: 'enableNormalizationEditing'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_threshold, as: 'confidenceThreshold'
+          property :enable_validation, as: 'enableValidation'
+        end
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1844,6 +2567,113 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :processor_version, as: 'processorVersion'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3Processor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_schema_version, as: 'activeSchemaVersion'
+          property :create_time, as: 'createTime'
+          property :default_processor_version, as: 'defaultProcessorVersion'
+          property :display_name, as: 'displayName'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :name, as: 'name'
+          property :process_endpoint, as: 'processEndpoint'
+          collection :processor_version_aliases, as: 'processorVersionAliases', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias::Representation
+      
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :state, as: 'state'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :deployment_allowed, as: 'deploymentAllowed'
+          property :deprecation_info, as: 'deprecationInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo::Representation
+      
+          property :display_name, as: 'displayName'
+          property :document_schema, as: 'documentSchema', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentSchema, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3DocumentSchema::Representation
+      
+          property :gen_ai_model_info, as: 'genAiModelInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo::Representation
+      
+          property :google_managed, as: 'googleManaged'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :kms_key_version_name, as: 'kmsKeyVersionName'
+          property :latest_evaluation, as: 'latestEvaluation', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3EvaluationReference, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3EvaluationReference::Representation
+      
+          property :model_type, as: 'modelType'
+          property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :schema, as: 'schema', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3Schema, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3Schema::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :processor_version, as: 'processorVersion'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deprecation_time, as: 'deprecationTime'
+          property :replacement_processor_version, as: 'replacementProcessorVersion'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_gen_ai_model_info, as: 'customGenAiModelInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo::Representation
+      
+          property :foundation_gen_ai_model_info, as: 'foundationGenAiModelInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_processor_version_id, as: 'baseProcessorVersionId'
+          property :custom_model_type, as: 'customModelType'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finetuning_allowed, as: 'finetuningAllowed'
+          property :min_train_labeled_documents, as: 'minTrainLabeledDocuments'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3PropertyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_extraction_metadata, as: 'fieldExtractionMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata::Representation
+      
+          property :field_tier_metadata, as: 'fieldTierMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3FieldTierMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3FieldTierMetadata::Representation
+      
+          property :human_review_labeling_metadata, as: 'humanReviewLabelingMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata::Representation
+      
+          property :human_review_metadata, as: 'humanReviewMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata::Representation
+      
+          property :inactive, as: 'inactive'
+          property :schema_editability_metadata, as: 'schemaEditabilityMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata::Representation
+      
+          property :schema_inference_metadata, as: 'schemaInferenceMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata::Representation
+      
         end
       end
       
@@ -1921,6 +2751,47 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiUiv1beta3Schema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :entity_types, as: 'entityTypes', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaEntityType, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaEntityType::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :editable, as: 'editable'
+          collection :processor_versions, as: 'processorVersions'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3SchemaEntityType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_type, as: 'baseType'
+          property :description, as: 'description'
+          collection :enum_values, as: 'enumValues'
+          property :hide, as: 'hide'
+          property :method_prop, as: 'method'
+          property :occurrence_type, as: 'occurrenceType'
+          collection :properties, as: 'properties', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaEntityType, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3SchemaEntityType::Representation
+      
+          property :source, as: 'source'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inferred, as: 'inferred'
+        end
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1932,6 +2803,14 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3SummaryOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :length, as: 'length'
         end
       end
       
@@ -1997,6 +2876,14 @@ module Google
       end
       
       class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiUiv1beta3UpdateProcessorVersionMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata::Representation
@@ -2147,6 +3034,8 @@ module Google
       class GoogleCloudDocumentaiV1Document
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blob_assets, as: 'blobAssets', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentBlobAsset, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentBlobAsset::Representation
+      
           property :chunked_document, as: 'chunkedDocument', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocument::Representation
       
           property :content, :base64 => true, as: 'content'
@@ -2155,7 +3044,12 @@ module Google
       
           collection :entities, as: 'entities', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntity, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntity::Representation
       
+          property :entities_revision_id, as: 'entitiesRevisionId'
+          collection :entities_revisions, as: 'entitiesRevisions', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntitiesRevision, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntitiesRevision::Representation
+      
           collection :entity_relations, as: 'entityRelations', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityRelation, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityRelation::Representation
+      
+          property :entity_validation_output, as: 'entityValidationOutput', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityValidationOutput, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityValidationOutput::Representation
       
           property :error, as: 'error', class: Google::Apis::DocumentaiV1::GoogleRpcStatus, decorator: Google::Apis::DocumentaiV1::GoogleRpcStatus::Representation
       
@@ -2175,6 +3069,22 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1DocumentAnnotations
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentBlobAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset_id, as: 'assetId'
+          property :content, :base64 => true, as: 'content'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1DocumentChunkedDocument
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2186,6 +3096,8 @@ module Google
       class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :chunk_fields, as: 'chunkFields', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField::Representation
+      
           property :chunk_id, as: 'chunkId'
           property :content, as: 'content'
           collection :page_footers, as: 'pageFooters', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter::Representation
@@ -2195,6 +3107,16 @@ module Google
           property :page_span, as: 'pageSpan', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan::Representation
       
           collection :source_block_ids, as: 'sourceBlockIds'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_chunk_field, as: 'imageChunkField', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField::Representation
+      
+          property :table_chunk_field, as: 'tableChunkField', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField::Representation
+      
         end
       end
       
@@ -2224,6 +3146,25 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkImageChunkField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotations, as: 'annotations', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations::Representation
+      
+          property :blob_asset_id, as: 'blobAssetId'
+          property :data_uri, as: 'dataUri'
+          property :gcs_uri, as: 'gcsUri'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkTableChunkField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotations, as: 'annotations', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations::Representation
+      
+        end
+      end
+      
       class GoogleCloudDocumentaiV1DocumentDocumentLayout
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2238,6 +3179,8 @@ module Google
           property :block_id, as: 'blockId'
           property :bounding_box, as: 'boundingBox', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BoundingPoly, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1BoundingPoly::Representation
       
+          property :image_block, as: 'imageBlock', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock::Representation
+      
           property :list_block, as: 'listBlock', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock::Representation
       
           property :page_span, as: 'pageSpan', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan::Representation
@@ -2246,6 +3189,19 @@ module Google
       
           property :text_block, as: 'textBlock', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock::Representation
       
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutImageBlock
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotations, as: 'annotations', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations::Representation
+      
+          property :blob_asset_id, as: 'blobAssetId'
+          property :data_uri, as: 'dataUri'
+          property :gcs_uri, as: 'gcsUri'
+          property :image_text, as: 'imageText'
+          property :mime_type, as: 'mimeType'
         end
       end
       
@@ -2277,6 +3233,8 @@ module Google
       class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotations, as: 'annotations', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations::Representation
+      
           collection :body_rows, as: 'bodyRows', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow::Representation
       
           property :caption, as: 'caption'
@@ -2306,10 +3264,25 @@ module Google
       class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotations, as: 'annotations', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations::Representation
+      
           collection :blocks, as: 'blocks', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock::Representation
       
           property :text, as: 'text'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentEntitiesRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entities, as: 'entities', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntity, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntity::Representation
+      
+          property :entity_validation_output, as: 'entityValidationOutput', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityValidationOutput, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityValidationOutput::Representation
+      
+          property :provenance, as: 'provenance', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentProvenance::Representation
+      
+          property :revision_id, as: 'revisionId'
         end
       end
       
@@ -2320,6 +3293,7 @@ module Google
           property :id, as: 'id'
           property :mention_id, as: 'mentionId'
           property :mention_text, as: 'mentionText'
+          property :method_prop, as: 'method'
           property :normalized_value, as: 'normalizedValue', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityNormalizedValue, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityNormalizedValue::Representation
       
           property :page_anchor, as: 'pageAnchor', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageAnchor, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentPageAnchor::Representation
@@ -2360,6 +3334,26 @@ module Google
           property :object_id_prop, as: 'objectId'
           property :relation, as: 'relation'
           property :subject_id, as: 'subjectId'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentEntityValidationOutput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pass_all_rules, as: 'passAllRules'
+          collection :validation_results, as: 'validationResults', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1DocumentEntityValidationOutputValidationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rule, as: 'rule'
+          property :rule_description, as: 'ruleDescription'
+          property :rule_name, as: 'ruleName'
+          property :validation_details, as: 'validationDetails'
+          property :validation_result_type, as: 'validationResultType'
         end
       end
       
@@ -2729,6 +3723,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :document_prompt, as: 'documentPrompt'
           collection :entity_types, as: 'entityTypes', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaEntityType, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaEntityType::Representation
       
           property :metadata, as: 'metadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchemaMetadata::Representation
@@ -2780,6 +3775,7 @@ module Google
       class GoogleCloudDocumentaiV1DocumentShardInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_offset, as: 'pageOffset'
           property :shard_count, :numeric_string => true, as: 'shardCount'
           property :shard_index, :numeric_string => true, as: 'shardIndex'
           property :text_offset, :numeric_string => true, as: 'textOffset'
@@ -2840,6 +3836,14 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1Documents
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :documents, as: 'documents', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Document, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Document::Representation
+      
+        end
+      end
+      
       class GoogleCloudDocumentaiV1EnableProcessorMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2896,6 +3900,8 @@ module Google
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :name, as: 'name'
+          collection :revisions, as: 'revisions', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationEvaluationRevision, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationEvaluationRevision::Representation
+      
         end
       end
       
@@ -2915,6 +3921,19 @@ module Google
           property :failed_documents_count, as: 'failedDocumentsCount'
           property :input_documents_count, as: 'inputDocumentsCount'
           property :invalid_documents_count, as: 'invalidDocumentsCount'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1EvaluationEvaluationRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :all_entities_metrics, as: 'allEntitiesMetrics', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics::Representation
+      
+          property :document_counters, as: 'documentCounters', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationCounters, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationCounters::Representation
+      
+          hash :entity_metrics, as: 'entityMetrics', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics::Representation
+      
+          property :revision_id, as: 'revisionId'
         end
       end
       
@@ -2993,6 +4012,40 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1GenerateSchemaVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_schema_version, as: 'baseSchemaVersion'
+          property :gcs_documents, as: 'gcsDocuments', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsDocuments, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsDocuments::Representation
+      
+          property :gcs_prefix, as: 'gcsPrefix', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsPrefix, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GcsPrefix::Representation
+      
+          property :generate_schema_version_params, as: 'generateSchemaVersionParams', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams::Representation
+      
+          property :inline_documents, as: 'inlineDocuments', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Documents, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Documents::Representation
+      
+          property :raw_documents, as: 'rawDocuments', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocuments, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocuments::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1GenerateSchemaVersionRequestGenerateSchemaVersionParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :history, as: 'history', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaGenerationHistory, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaGenerationHistory::Representation
+      
+          property :prompt, as: 'prompt'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1GenerateSchemaVersionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema_version, as: 'schemaVersion', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaVersion, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaVersion::Representation
+      
+        end
+      end
+      
       class GoogleCloudDocumentaiV1HumanReviewStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3035,6 +4088,35 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :processors, as: 'processors', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Processor, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1Processor::Representation
       
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1ListSchemaVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :schema_versions, as: 'schemaVersions', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaVersion, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaVersion::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1ListSchemasResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :schemas, as: 'schemas', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1NextSchema, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1NextSchema::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1NextSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -3106,6 +4188,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chunking_config, as: 'chunkingConfig', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig::Representation
       
+          property :enable_image_annotation, as: 'enableImageAnnotation'
+          property :enable_table_annotation, as: 'enableTableAnnotation'
           property :return_bounding_boxes, as: 'returnBoundingBoxes'
           property :return_images, as: 'returnImages'
         end
@@ -3150,6 +4234,7 @@ module Google
       class GoogleCloudDocumentaiV1Processor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_schema_version, as: 'activeSchemaVersion'
           property :create_time, as: 'createTime'
           property :default_processor_version, as: 'defaultProcessorVersion'
           property :display_name, as: 'displayName'
@@ -3261,6 +4346,14 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1RawDocuments
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :documents, as: 'documents', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1RawDocument::Representation
+      
+        end
+      end
+      
       class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3288,6 +4381,37 @@ module Google
           property :gcs_destination, as: 'gcsDestination'
           property :rejection_reason, as: 'rejectionReason'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1SchemaGenerationHistory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :iterations, as: 'iterations', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaGenerationIteration, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaGenerationIteration::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1SchemaGenerationIteration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjusted_schema, as: 'adjustedSchema', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaVersion, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaVersion::Representation
+      
+          property :generated_schema, as: 'generatedSchema', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaVersion, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1SchemaVersion::Representation
+      
+          property :prompt, as: 'prompt'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1SchemaVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :schema, as: 'schema', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentSchema::Representation
+      
         end
       end
       
@@ -3364,6 +4488,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :learning_rate_multiplier, as: 'learningRateMultiplier'
+          property :previous_fine_tuned_processor_version_name, as: 'previousFineTunedProcessorVersionName'
           property :train_steps, as: 'trainSteps'
         end
       end
@@ -3493,8 +4618,6 @@ module Google
           property :name, as: 'name'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
-          property :spanner_indexing_config, as: 'spannerIndexingConfig', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig::Representation
-      
           property :state, as: 'state'
           property :unmanaged_dataset_config, as: 'unmanagedDatasetConfig', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig::Representation
       
@@ -3514,12 +4637,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_prefix, as: 'gcsPrefix', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3GcsPrefix, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3GcsPrefix::Representation
       
-        end
-      end
-      
-      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -3600,6 +4717,66 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3DocumentSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :document_prompt, as: 'documentPrompt'
+          collection :entity_types, as: 'entityTypes', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType::Representation
+      
+          property :metadata, as: 'metadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :base_types, as: 'baseTypes'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :entity_type_metadata, as: 'entityTypeMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3EntityTypeMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3EntityTypeMetadata::Representation
+      
+          property :enum_values, as: 'enumValues', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues::Representation
+      
+          property :name, as: 'name'
+          collection :properties, as: 'properties', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :method_prop, as: 'method'
+          property :name, as: 'name'
+          property :occurrence_type, as: 'occurrenceType'
+          property :property_metadata, as: 'propertyMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3PropertyMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3PropertyMetadata::Representation
+      
+          property :value_type, as: 'valueType'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3DocumentSchemaMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_allow_multiple_labels, as: 'documentAllowMultipleLabels'
+          property :document_splitter, as: 'documentSplitter'
+          property :prefixed_naming_on_properties, as: 'prefixedNamingOnProperties'
+          property :skip_naming_validation, as: 'skipNamingValidation'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3611,6 +4788,13 @@ module Google
       class GoogleCloudDocumentaiV1beta3EnableProcessorResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3EntityTypeMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inactive, as: 'inactive'
         end
       end
       
@@ -3626,6 +4810,43 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :evaluation, as: 'evaluation'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3EvaluationMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :f1_score, as: 'f1Score'
+          property :false_negatives_count, as: 'falseNegativesCount'
+          property :false_positives_count, as: 'falsePositivesCount'
+          property :ground_truth_document_count, as: 'groundTruthDocumentCount'
+          property :ground_truth_occurrences_count, as: 'groundTruthOccurrencesCount'
+          property :precision, as: 'precision'
+          property :predicted_document_count, as: 'predictedDocumentCount'
+          property :predicted_occurrences_count, as: 'predictedOccurrencesCount'
+          property :recall, as: 'recall'
+          property :total_documents_count, as: 'totalDocumentsCount'
+          property :true_positives_count, as: 'truePositivesCount'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3EvaluationReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_metrics, as: 'aggregateMetrics', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3EvaluationMetrics, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3EvaluationMetrics::Representation
+      
+          property :aggregate_metrics_exact, as: 'aggregateMetricsExact', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3EvaluationMetrics, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3EvaluationMetrics::Representation
+      
+          property :evaluation, as: 'evaluation'
+          property :operation, as: 'operation'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3FieldExtractionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :summary_options, as: 'summaryOptions', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3SummaryOptions, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3SummaryOptions::Representation
+      
         end
       end
       
@@ -3699,6 +4920,100 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3Processor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_schema_version, as: 'activeSchemaVersion'
+          property :create_time, as: 'createTime'
+          property :default_processor_version, as: 'defaultProcessorVersion'
+          property :display_name, as: 'displayName'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :name, as: 'name'
+          property :process_endpoint, as: 'processEndpoint'
+          collection :processor_version_aliases, as: 'processorVersionAliases', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3ProcessorVersionAlias, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3ProcessorVersionAlias::Representation
+      
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :state, as: 'state'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :deprecation_info, as: 'deprecationInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo::Representation
+      
+          property :display_name, as: 'displayName'
+          property :document_schema, as: 'documentSchema', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchema, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3DocumentSchema::Representation
+      
+          property :gen_ai_model_info, as: 'genAiModelInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo::Representation
+      
+          property :google_managed, as: 'googleManaged'
+          property :kms_key_name, as: 'kmsKeyName'
+          property :kms_key_version_name, as: 'kmsKeyVersionName'
+          property :latest_evaluation, as: 'latestEvaluation', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3EvaluationReference, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3EvaluationReference::Representation
+      
+          property :model_type, as: 'modelType'
+          property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionAlias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alias, as: 'alias'
+          property :processor_version, as: 'processorVersion'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deprecation_time, as: 'deprecationTime'
+          property :replacement_processor_version, as: 'replacementProcessorVersion'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_gen_ai_model_info, as: 'customGenAiModelInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo::Representation
+      
+          property :foundation_gen_ai_model_info, as: 'foundationGenAiModelInfo', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_processor_version_id, as: 'baseProcessorVersionId'
+          property :custom_model_type, as: 'customModelType'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finetuning_allowed, as: 'finetuningAllowed'
+          property :min_train_labeled_documents, as: 'minTrainLabeledDocuments'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3PropertyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_extraction_metadata, as: 'fieldExtractionMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3FieldExtractionMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3FieldExtractionMetadata::Representation
+      
+          property :inactive, as: 'inactive'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3741,6 +5056,14 @@ module Google
       class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3SummaryOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :format, as: 'format'
+          property :length, as: 'length'
         end
       end
       
@@ -3797,6 +5120,14 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3UpdateProcessorVersionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_metadata, as: 'commonMetadata', class: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3CommonOperationMetadata, decorator: Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3CommonOperationMetadata::Representation
+      
+        end
+      end
+      
       class GoogleCloudLocationListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3823,6 +5154,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DocumentaiV1::GoogleLongrunningOperation, decorator: Google::Apis::DocumentaiV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

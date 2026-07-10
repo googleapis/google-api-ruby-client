@@ -5399,7 +5399,7 @@ module Google
       class GoogleCloudConnectorsV1ConfigVariable
         include Google::Apis::Core::Hashable
       
-        # Value is a bool.
+        # Optional. Value is a bool.
         # Corresponds to the JSON property `boolValue`
         # @return [Boolean]
         attr_accessor :bool_value
@@ -5410,7 +5410,7 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EncryptionKey]
         attr_accessor :encryption_key_value
       
-        # Value is an integer
+        # Optional. Value is an integer
         # Corresponds to the JSON property `intValue`
         # @return [Fixnum]
         attr_accessor :int_value
@@ -5425,7 +5425,7 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1Secret]
         attr_accessor :secret_value
       
-        # Value is a string.
+        # Optional. Value is a string.
         # Corresponds to the JSON property `stringValue`
         # @return [String]
         attr_accessor :string_value
@@ -5531,7 +5531,7 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig]
         attr_accessor :eua_oauth_auth_config
       
-        # Eventing Configuration of a connection next: 18
+        # Eventing Configuration of a connection next: 20
         # Corresponds to the JSON property `eventingConfig`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfig]
         attr_accessor :eventing_config
@@ -5819,7 +5819,8 @@ module Google
         # @return [String]
         attr_accessor :host
       
-        # The port is the target port number that is accepted by the destination.
+        # Optional. The port is the target port number that is accepted by the
+        # destination.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -5845,12 +5846,13 @@ module Google
       class GoogleCloudConnectorsV1DestinationConfig
         include Google::Apis::Core::Hashable
       
-        # The destinations for the key.
+        # Optional. The destinations for the key.
         # Corresponds to the JSON property `destinations`
         # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1Destination>]
         attr_accessor :destinations
       
-        # The key is the destination identifier that is supported by the Connector.
+        # Optional. The key is the destination identifier that is supported by the
+        # Connector.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -5877,7 +5879,7 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # Type.
+        # Optional. Specifies the type of the encryption key.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -5913,7 +5915,7 @@ module Google
         end
       end
       
-      # Eventing Configuration of a connection next: 18
+      # Eventing Configuration of a connection next: 20
       class GoogleCloudConnectorsV1EventingConfig
         include Google::Apis::Core::Hashable
       
@@ -5921,6 +5923,11 @@ module Google
         # Corresponds to the JSON property `additionalVariables`
         # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConfigVariable>]
         attr_accessor :additional_variables
+      
+        # Optional. List of allowed event types for the connection.
+        # Corresponds to the JSON property `allowedEventTypes`
+        # @return [Array<String>]
+        attr_accessor :allowed_event_types
       
         # AuthConfig defines details of a authentication type.
         # Corresponds to the JSON property `authConfig`
@@ -5943,7 +5950,7 @@ module Google
         attr_accessor :enrichment_enabled
         alias_method :enrichment_enabled?, :enrichment_enabled
       
-        # Optional. Ingress endpoint of the event listener. This is used only when
+        # Output only. Ingress endpoint of the event listener. This is used only when
         # private connectivity is enabled.
         # Corresponds to the JSON property `eventsListenerIngressEndpoint`
         # @return [String]
@@ -5953,6 +5960,12 @@ module Google
         # Corresponds to the JSON property `listenerAuthConfig`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig]
         attr_accessor :listener_auth_config
+      
+        # Optional. List of projects to be allowlisted for the service attachment
+        # created in the tenant project for eventing ingress.
+        # Corresponds to the JSON property `privateConnectivityAllowlistedProjects`
+        # @return [Array<String>]
+        attr_accessor :private_connectivity_allowlisted_projects
       
         # Optional. Private Connectivity Enabled.
         # Corresponds to the JSON property `privateConnectivityEnabled`
@@ -5982,12 +5995,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
+          @allowed_event_types = args[:allowed_event_types] if args.key?(:allowed_event_types)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @dead_letter_config = args[:dead_letter_config] if args.key?(:dead_letter_config)
           @enrichment_config = args[:enrichment_config] if args.key?(:enrichment_config)
           @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
           @events_listener_ingress_endpoint = args[:events_listener_ingress_endpoint] if args.key?(:events_listener_ingress_endpoint)
           @listener_auth_config = args[:listener_auth_config] if args.key?(:listener_auth_config)
+          @private_connectivity_allowlisted_projects = args[:private_connectivity_allowlisted_projects] if args.key?(:private_connectivity_allowlisted_projects)
           @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
           @proxy_destination_config = args[:proxy_destination_config] if args.key?(:proxy_destination_config)
           @registration_destination_config = args[:registration_destination_config] if args.key?(:registration_destination_config)
@@ -6422,16 +6437,16 @@ module Google
       class GoogleCloudConnectorsV1TrafficShapingConfig
         include Google::Apis::Core::Hashable
       
-        # Required. * The duration over which the API call quota limits are calculated.
-        # This duration is used to define the time window for evaluating if the number
-        # of API calls made by a user is within the allowed quota limits. For example: -
-        # To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a
-        # quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a
-        # quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and so on. It
-        # is important to note that this duration is not the time the quota is valid for,
-        # but rather the time window over which the quota is evaluated. For example, if
-        # the quota is 100 calls per 10 seconds, then this duration field would be set
-        # to 10 seconds.
+        # Required. Specifies the duration over which the API call quota limits are
+        # calculated. This duration is used to define the time window for evaluating if
+        # the number of API calls made by a user is within the allowed quota limits. For
+        # example: - To define a quota sampled over 16 seconds, set `seconds` to 16 - To
+        # define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To
+        # define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and
+        # so on. It is important to note that this duration is not the time the quota is
+        # valid for, but rather the time window over which the quota is evaluated. For
+        # example, if the quota is 100 calls per 10 seconds, then this duration field
+        # would be set to 10 seconds.
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
@@ -6495,67 +6510,6 @@ module Google
           @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
           @refresh_token_expire_time = args[:refresh_token_expire_time] if args.key?(:refresh_token_expire_time)
           @token_type = args[:token_type] if args.key?(:token_type)
-        end
-      end
-      
-      # AgentFlow configurations.
-      class GoogleCloudIntegrationsV1alphaAgentFlow
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The timestamp when the agent flow was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Output only. The user who created the agent flow.
-        # Corresponds to the JSON property `creator`
-        # @return [String]
-        attr_accessor :creator
-      
-        # Optional. Description of the agent flow.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional. Display name of the agent flow.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Required. The flow configuration, represented as a string.
-        # Corresponds to the JSON property `flowConfig`
-        # @return [String]
-        attr_accessor :flow_config
-      
-        # Required. Resource name of the agent flow.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Optional. Name of the NoCodeAgent.
-        # Corresponds to the JSON property `noCodeAgent`
-        # @return [String]
-        attr_accessor :no_code_agent
-      
-        # Output only. The timestamp when the agent flow was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @creator = args[:creator] if args.key?(:creator)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @flow_config = args[:flow_config] if args.key?(:flow_config)
-          @name = args[:name] if args.key?(:name)
-          @no_code_agent = args[:no_code_agent] if args.key?(:no_code_agent)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -6972,6 +6926,51 @@ module Google
         end
       end
       
+      # Request for the ChangeCustomerConfig rpc
+      class GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Customer configuration information for the given client
+        # Corresponds to the JSON property `customerConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig]
+        attr_accessor :customer_config
+      
+        # Required. Field mask specifying the fields in the customer config that have
+        # been modified and must be updated. If absent or empty, no fields are updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_config = args[:customer_config] if args.key?(:customer_config)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Response for the ChangeCustomerConfig rpc
+      class GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Customer configuration information for the given client
+        # Corresponds to the JSON property `customerConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig]
+        attr_accessor :customer_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_config = args[:customer_config] if args.key?(:customer_config)
+        end
+      end
+      
       # Contains client certificate information
       class GoogleCloudIntegrationsV1alphaClientCertificate
         include Google::Apis::Core::Hashable
@@ -7057,12 +7056,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Customer configuration information for the given client
+        # Corresponds to the JSON property `customerConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCustomerConfig]
+        attr_accessor :customer_config
+      
         # Description of what the client is used for
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. Indicates the client enables making HTTP call.
+        # Optional.
         # Corresponds to the JSON property `enableHttpCall`
         # @return [Boolean]
         attr_accessor :enable_http_call
@@ -7075,14 +7079,13 @@ module Google
         attr_accessor :enable_internal_ip
         alias_method :enable_internal_ip?, :enable_internal_ip
       
-        # Optional. Indicates if the Cloud Companion APIs will be used in the tenant
-        # project, i.e. if customer can use the managed AI features for free.
+        # Optional.
         # Corresponds to the JSON property `enableManagedAiFeatures`
         # @return [Boolean]
         attr_accessor :enable_managed_ai_features
         alias_method :enable_managed_ai_features?, :enable_managed_ai_features
       
-        # Optional. True if variable masking feature should be turned on for this region
+        # Optional.
         # Corresponds to the JSON property `enableVariableMasking`
         # @return [Boolean]
         attr_accessor :enable_variable_masking
@@ -7114,9 +7117,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Default run-as service account email, set up during project provision time,
-        # that will be used to generate auth token to be used in Connector task, Rest
-        # caller task, Cloud function task and Subworkflows.
+        # 
         # Corresponds to the JSON property `runAsServiceAccount`
         # @return [String]
         attr_accessor :run_as_service_account
@@ -7131,6 +7132,7 @@ module Google
           @client_state = args[:client_state] if args.key?(:client_state)
           @cloud_kms_config = args[:cloud_kms_config] if args.key?(:cloud_kms_config)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customer_config = args[:customer_config] if args.key?(:customer_config)
           @description = args[:description] if args.key?(:description)
           @enable_http_call = args[:enable_http_call] if args.key?(:enable_http_call)
           @enable_internal_ip = args[:enable_internal_ip] if args.key?(:enable_internal_ip)
@@ -7521,6 +7523,56 @@ module Google
           @oidc_token = args[:oidc_token] if args.key?(:oidc_token)
           @service_account_credentials = args[:service_account_credentials] if args.key?(:service_account_credentials)
           @username_and_password = args[:username_and_password] if args.key?(:username_and_password)
+        end
+      end
+      
+      # Customer configuration information for the given client
+      class GoogleCloudIntegrationsV1alphaCustomerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration information for Client's Cloud KMS information
+        # Corresponds to the JSON property `cloudKmsConfig`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig]
+        attr_accessor :cloud_kms_config
+      
+        # Optional. Indicates if the client should be allowed to make HTTP calls. True
+        # if http call feature should be turned on for this region.
+        # Corresponds to the JSON property `enableHttpCall`
+        # @return [Boolean]
+        attr_accessor :enable_http_call
+        alias_method :enable_http_call?, :enable_http_call
+      
+        # Optional. Indicates if the client should be allowed to use managed AI features,
+        # i.e. using Cloud Companion APIs of the tenant project. This will allow the
+        # customers to use features like Troubleshooting, OpenAPI spec enrichment, etc.
+        # for free.
+        # Corresponds to the JSON property `enableManagedAiFeatures`
+        # @return [Boolean]
+        attr_accessor :enable_managed_ai_features
+        alias_method :enable_managed_ai_features?, :enable_managed_ai_features
+      
+        # Optional. True if variable masking feature should be turned on for this region.
+        # Corresponds to the JSON property `enableVariableMasking`
+        # @return [Boolean]
+        attr_accessor :enable_variable_masking
+        alias_method :enable_variable_masking?, :enable_variable_masking
+      
+        # Optional. Run-as service account to be updated for the provisioned client.
+        # Corresponds to the JSON property `runAsServiceAccount`
+        # @return [String]
+        attr_accessor :run_as_service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_config = args[:cloud_kms_config] if args.key?(:cloud_kms_config)
+          @enable_http_call = args[:enable_http_call] if args.key?(:enable_http_call)
+          @enable_managed_ai_features = args[:enable_managed_ai_features] if args.key?(:enable_managed_ai_features)
+          @enable_variable_masking = args[:enable_variable_masking] if args.key?(:enable_variable_masking)
+          @run_as_service_account = args[:run_as_service_account] if args.key?(:run_as_service_account)
         end
       end
       
@@ -8374,108 +8426,6 @@ module Google
         end
       end
       
-      # Request message for GenerateAgentFlow.
-      class GoogleCloudIntegrationsV1alphaGenerateAgentFlowRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The creator id;
-        # Corresponds to the JSON property `creator`
-        # @return [String]
-        attr_accessor :creator
-      
-        # Optional. The description of the AgentFlow to be generated.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional. The display name of the AgentFlow to be generated.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Required. The intent, described in natural language, for the AgentFlow to
-        # generate.
-        # Corresponds to the JSON property `intent`
-        # @return [String]
-        attr_accessor :intent
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @creator = args[:creator] if args.key?(:creator)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @intent = args[:intent] if args.key?(:intent)
-        end
-      end
-      
-      # Response message for GenerateAgentFlow.
-      class GoogleCloudIntegrationsV1alphaGenerateAgentFlowResponse
-        include Google::Apis::Core::Hashable
-      
-        # AgentFlow configurations.
-        # Corresponds to the JSON property `agentFlow`
-        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow]
-        attr_accessor :agent_flow
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_flow = args[:agent_flow] if args.key?(:agent_flow)
-        end
-      end
-      
-      # Request message for GenerateAndUpdateAgentFlow.
-      class GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The intent, described in natural language, for the AgentFlow to
-        # update.
-        # Corresponds to the JSON property `intent`
-        # @return [String]
-        attr_accessor :intent
-      
-        # Optional. The updater id;
-        # Corresponds to the JSON property `updater`
-        # @return [String]
-        attr_accessor :updater
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @intent = args[:intent] if args.key?(:intent)
-          @updater = args[:updater] if args.key?(:updater)
-        end
-      end
-      
-      # Response message for GenerateAndUpdateAgentFlow.
-      class GoogleCloudIntegrationsV1alphaGenerateAndUpdateAgentFlowResponse
-        include Google::Apis::Core::Hashable
-      
-        # AgentFlow configurations.
-        # Corresponds to the JSON property `agentFlow`
-        # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow]
-        attr_accessor :agent_flow
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_flow = args[:agent_flow] if args.key?(:agent_flow)
-        end
-      end
-      
       # Request for GenerateOpenApiSpec.
       class GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest
         include Google::Apis::Core::Hashable
@@ -9306,32 +9256,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @script_id = args[:script_id] if args.key?(:script_id)
-        end
-      end
-      
-      # Response for ListAgentFlows.
-      class GoogleCloudIntegrationsV1alphaListAgentFlowsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The AgentFlows from the specified collection.
-        # Corresponds to the JSON property `agentFlows`
-        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaAgentFlow>]
-        attr_accessor :agent_flows
-      
-        # Output only. A token, which can be sent as `page_token` to retrieve the next
-        # page. If this field is omitted, there are no subsequent pages.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @agent_flows = args[:agent_flows] if args.key?(:agent_flows)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

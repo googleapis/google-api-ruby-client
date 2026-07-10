@@ -1,5 +1,70 @@
 # Release history for google-apis-containeranalysis_v1alpha1
 
+### v0.87.0 (2026-07-05)
+
+* Regenerated from discovery document revision 20260619
+
+### v0.86.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260610
+
+### v0.85.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.84.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260505
+
+### v0.83.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260423
+
+### v0.82.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260313
+
+### v0.81.0 (2026-03-01)
+
+* Regenerated from discovery document revision 20260220
+
+### v0.80.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260213
+
+### v0.79.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260123
+
+### v0.78.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251203
+
+### v0.77.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251030
+
+### v0.76.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250928
+
+### v0.75.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250829
+
+### v0.74.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250813
+
+### v0.73.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250704
+
+### v0.72.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250528
+* Regenerated using generator version 0.18.0
+
 ### v0.71.0 (2025-05-18)
 
 * Regenerated from discovery document revision 20250509

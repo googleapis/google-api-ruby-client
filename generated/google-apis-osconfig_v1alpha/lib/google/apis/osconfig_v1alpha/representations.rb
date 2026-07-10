@@ -1193,6 +1193,7 @@ module Google
       class VulnerabilityReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :highest_upgradable_cve_severity, as: 'highestUpgradableCveSeverity'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           collection :vulnerabilities, as: 'vulnerabilities', class: Google::Apis::OsconfigV1alpha::VulnerabilityReportVulnerability, decorator: Google::Apis::OsconfigV1alpha::VulnerabilityReportVulnerability::Representation

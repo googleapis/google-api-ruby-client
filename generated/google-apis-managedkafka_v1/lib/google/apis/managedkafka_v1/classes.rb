@@ -186,6 +186,37 @@ module Google
         end
       end
       
+      # Details of a broker in the Kafka cluster.
+      class BrokerDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The index of the broker.
+        # Corresponds to the JSON property `brokerIndex`
+        # @return [Fixnum]
+        attr_accessor :broker_index
+      
+        # Output only. The node id of the broker.
+        # Corresponds to the JSON property `nodeId`
+        # @return [Fixnum]
+        attr_accessor :node_id
+      
+        # Output only. The rack of the broker.
+        # Corresponds to the JSON property `rack`
+        # @return [String]
+        attr_accessor :rack
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @broker_index = args[:broker_index] if args.key?(:broker_index)
+          @node_id = args[:node_id] if args.key?(:node_id)
+          @rack = args[:rack] if args.key?(:rack)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -222,6 +253,27 @@ module Google
         def update!(**args)
           @memory_bytes = args[:memory_bytes] if args.key?(:memory_bytes)
           @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
+        end
+      end
+      
+      # A configuration for the Google Certificate Authority Service.
+      class CertificateAuthorityServiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the CA pool to pull CA certificates from. Structured
+        # like: projects/`project`/locations/`location`/caPools/`ca_pool`. The CA pool
+        # does not need to be in the same project or location as the Kafka cluster.
+        # Corresponds to the JSON property `caPool`
+        # @return [String]
+        attr_accessor :ca_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ca_pool = args[:ca_pool] if args.key?(:ca_pool)
         end
       end
       
@@ -295,6 +347,12 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
+        # Output only. Only populated when FULL view is requested. Details of each
+        # broker in the cluster.
+        # Corresponds to the JSON property `brokerDetails`
+        # @return [Array<Google::Apis::ManagedkafkaV1::BrokerDetails>]
+        attr_accessor :broker_details
+      
         # A capacity configuration of a Kafka cluster.
         # Corresponds to the JSON property `capacityConfig`
         # @return [Google::Apis::ManagedkafkaV1::CapacityConfig]
@@ -309,6 +367,12 @@ module Google
         # Corresponds to the JSON property `gcpConfig`
         # @return [Google::Apis::ManagedkafkaV1::GcpConfig]
         attr_accessor :gcp_config
+      
+        # Output only. Only populated when FULL view is requested. The Kafka version of
+        # the cluster.
+        # Corresponds to the JSON property `kafkaVersion`
+        # @return [String]
+        attr_accessor :kafka_version
       
         # Optional. Labels as key value pairs.
         # Corresponds to the JSON property `labels`
@@ -343,6 +407,18 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # The TLS configuration for the Kafka cluster.
+        # Corresponds to the JSON property `tlsConfig`
+        # @return [Google::Apis::ManagedkafkaV1::TlsConfig]
+        attr_accessor :tls_config
+      
+        # UpdateOptions specifies options that influence how a cluster update is applied.
+        # These options control the behavior of the update process, rather than
+        # defining the desired end-state of a cluster.
+        # Corresponds to the JSON property `updateOptions`
+        # @return [Google::Apis::ManagedkafkaV1::UpdateOptions]
+        attr_accessor :update_options
+      
         # Output only. The time when the cluster was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -354,15 +430,19 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @broker_details = args[:broker_details] if args.key?(:broker_details)
           @capacity_config = args[:capacity_config] if args.key?(:capacity_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @gcp_config = args[:gcp_config] if args.key?(:gcp_config)
+          @kafka_version = args[:kafka_version] if args.key?(:kafka_version)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @rebalance_config = args[:rebalance_config] if args.key?(:rebalance_config)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
+          @tls_config = args[:tls_config] if args.key?(:tls_config)
+          @update_options = args[:update_options] if args.key?(:update_options)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -397,9 +477,8 @@ module Google
         # @return [Google::Apis::ManagedkafkaV1::CapacityConfig]
         attr_accessor :capacity_config
       
-        # Optional. Configurations for the worker that are overridden from the defaults.
-        # The key of the map is a Kafka Connect worker property name, for example: `
-        # exactly.once.source.support`.
+        # Optional. Reserved for future use. This field is meant for worker config
+        # overrides, but is unsupported for now.
         # Corresponds to the JSON property `config`
         # @return [Hash<String,String>]
         attr_accessor :config
@@ -433,7 +512,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Output only. The current state of the cluster.
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # Output only. The current state of the Kafka Connect cluster.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -456,6 +547,8 @@ module Google
           @kafka_cluster = args[:kafka_cluster] if args.key?(:kafka_cluster)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -494,9 +587,11 @@ module Google
       class ConnectNetworkConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Additional subnets may be specified. They may be in another region,
-        # but must be in the same VPC network. The Connect workers can communicate with
-        # network endpoints in either the primary or additional subnets.
+        # Optional. Deprecated: Managed Kafka Connect clusters can now reach any
+        # endpoint accessible from the primary subnet without the need to define
+        # additional subnets. Please see https://cloud.google.com/managed-service-for-
+        # apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for
+        # more information.
         # Corresponds to the JSON property `additionalSubnets`
         # @return [Array<String>]
         attr_accessor :additional_subnets
@@ -554,13 +649,15 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Task Retry Policy is implemented on a best-effort basis. Retry delay will be
-        # exponential based on provided minimum and maximum backoffs. https://en.
-        # wikipedia.org/wiki/Exponential_backoff. Note that the delay between
-        # consecutive task restarts may not always precisely match the configured
-        # settings. This can happen when the ConnectCluster is in rebalancing state or
-        # if the ConnectCluster is unresponsive etc. The default values for minimum and
-        # maximum backoffs are 60 seconds and 30 minutes respectively.
+        # Task Retry Policy is implemented on a best-effort basis. The default policy
+        # retries tasks with a minimum_backoff of 60 seconds, and a maximum_backoff of
+        # 12 hours. You can disable the policy by setting the task_retry_disabled field
+        # to true. Retry delay will be exponential based on provided minimum and maximum
+        # backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the
+        # delay between consecutive task restarts may not always precisely match the
+        # configured settings. This can happen when the ConnectCluster is in rebalancing
+        # state or if the ConnectCluster is unresponsive etc. The default values for
+        # minimum and maximum backoffs are 60 seconds and 12 hours respectively.
         # Corresponds to the JSON property `taskRestartPolicy`
         # @return [Google::Apis::ManagedkafkaV1::TaskRetryPolicy]
         attr_accessor :task_restart_policy
@@ -1062,6 +1159,14 @@ module Google
         # @return [Array<Google::Apis::ManagedkafkaV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1070,6 +1175,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1556,18 +1662,18 @@ module Google
       end
       
       # SchemaMode represents the mode of a schema registry or a specific subject.
-      # Four modes are supported: * NONE: This is the default mode for a subject and
-      # essentially means that the subject does not have any mode set. This means the
-      # subject will follow the schema registry's mode. * READONLY: The schema
-      # registry is in read-only mode. * READWRITE: The schema registry is in read-
-      # write mode, which allows limited write operations on the schema. * IMPORT: The
-      # schema registry is in import mode, which allows more editing operations on the
-      # schema for data importing purposes.
+      # Four modes are supported: * NONE: deprecated. This was the default mode for a
+      # subject, but now the default is unset (which means use the global schema
+      # registry setting) * READONLY: The schema registry is in read-only mode. *
+      # READWRITE: The schema registry is in read-write mode, which allows limited
+      # write operations on the schema. * IMPORT: The schema registry is in import
+      # mode, which allows more editing operations on the schema for data importing
+      # purposes.
       class SchemaMode
         include Google::Apis::Core::Hashable
       
         # Required. The mode type of a schema registry (READWRITE by default) or of a
-        # subject (NONE by default, which means use the global schema registry setting).
+        # subject (unset by default, which means use the global schema registry setting).
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
@@ -1638,6 +1744,37 @@ module Google
         def update!(**args)
           @contexts = args[:contexts] if args.key?(:contexts)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Subject defines the evolution scope of schemas as a holder of schema versions.
+      class SchemaSubject
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the subject. Structured like: `projects/`project`/
+        # locations/`location`/schemaRegistries/`schema_registry`/subjects/`subject`` or
+        # `projects/`project`/locations/`location`/schemaRegistries/`schema_registry`/
+        # contexts/`context`/subjects/`subject`` Subject name `subject` can contain the
+        # following: * Up to 255 UTF-8 bytes. * Allowed characters: letters (uppercase
+        # or lowercase), numbers, and the following special characters: `.`, `-`, `_`, `+
+        # `, `%`, and `~`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The versions of the subject.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<String>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @versions = args[:versions] if args.key?(:versions)
         end
       end
       
@@ -1755,13 +1892,15 @@ module Google
         end
       end
       
-      # Task Retry Policy is implemented on a best-effort basis. Retry delay will be
-      # exponential based on provided minimum and maximum backoffs. https://en.
-      # wikipedia.org/wiki/Exponential_backoff. Note that the delay between
-      # consecutive task restarts may not always precisely match the configured
-      # settings. This can happen when the ConnectCluster is in rebalancing state or
-      # if the ConnectCluster is unresponsive etc. The default values for minimum and
-      # maximum backoffs are 60 seconds and 30 minutes respectively.
+      # Task Retry Policy is implemented on a best-effort basis. The default policy
+      # retries tasks with a minimum_backoff of 60 seconds, and a maximum_backoff of
+      # 12 hours. You can disable the policy by setting the task_retry_disabled field
+      # to true. Retry delay will be exponential based on provided minimum and maximum
+      # backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the
+      # delay between consecutive task restarts may not always precisely match the
+      # configured settings. This can happen when the ConnectCluster is in rebalancing
+      # state or if the ConnectCluster is unresponsive etc. The default values for
+      # minimum and maximum backoffs are 60 seconds and 12 hours respectively.
       class TaskRetryPolicy
         include Google::Apis::Core::Hashable
       
@@ -1777,6 +1916,12 @@ module Google
         # @return [String]
         attr_accessor :minimum_backoff
       
+        # Optional. If true, task retry is disabled.
+        # Corresponds to the JSON property `taskRetryDisabled`
+        # @return [Boolean]
+        attr_accessor :task_retry_disabled
+        alias_method :task_retry_disabled?, :task_retry_disabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1785,6 +1930,38 @@ module Google
         def update!(**args)
           @maximum_backoff = args[:maximum_backoff] if args.key?(:maximum_backoff)
           @minimum_backoff = args[:minimum_backoff] if args.key?(:minimum_backoff)
+          @task_retry_disabled = args[:task_retry_disabled] if args.key?(:task_retry_disabled)
+        end
+      end
+      
+      # The TLS configuration for the Kafka cluster.
+      class TlsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of rules for mapping from SSL principal names to short names.
+        # These are applied in order by Kafka. Refer to the Apache Kafka documentation
+        # for `ssl.principal.mapping.rules` for the precise formatting details and
+        # syntax. Example: "RULE:^CN=(.*?),OU=ServiceUsers.*$/$1@example.com/,DEFAULT"
+        # This is a static Kafka broker configuration. Setting or modifying this field
+        # will trigger a rolling restart of the Kafka brokers to apply the change. An
+        # empty string means no rules are applied (Kafka default).
+        # Corresponds to the JSON property `sslPrincipalMappingRules`
+        # @return [String]
+        attr_accessor :ssl_principal_mapping_rules
+      
+        # Sources of CA certificates to install in the broker's truststore.
+        # Corresponds to the JSON property `trustConfig`
+        # @return [Google::Apis::ManagedkafkaV1::TrustConfig]
+        attr_accessor :trust_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ssl_principal_mapping_rules = args[:ssl_principal_mapping_rules] if args.key?(:ssl_principal_mapping_rules)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
         end
       end
       
@@ -1830,6 +2007,53 @@ module Google
           @name = args[:name] if args.key?(:name)
           @partition_count = args[:partition_count] if args.key?(:partition_count)
           @replication_factor = args[:replication_factor] if args.key?(:replication_factor)
+        end
+      end
+      
+      # Sources of CA certificates to install in the broker's truststore.
+      class TrustConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configuration for the Google Certificate Authority Service. Maximum
+        # 10.
+        # Corresponds to the JSON property `casConfigs`
+        # @return [Array<Google::Apis::ManagedkafkaV1::CertificateAuthorityServiceConfig>]
+        attr_accessor :cas_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cas_configs = args[:cas_configs] if args.key?(:cas_configs)
+        end
+      end
+      
+      # UpdateOptions specifies options that influence how a cluster update is applied.
+      # These options control the behavior of the update process, rather than
+      # defining the desired end-state of a cluster.
+      class UpdateOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, allows an update operation that increases the total vCPU
+        # and/or memory allocation of the cluster to significantly decrease the per-
+        # broker vCPU and/or memory allocation. This can result in reduced performance
+        # and availability. By default, the update operation will fail if an upscale
+        # request results in a vCPU or memory allocation for the brokers that is smaller
+        # than 90% of the current broker size.
+        # Corresponds to the JSON property `allowBrokerDownscaleOnClusterUpscale`
+        # @return [Boolean]
+        attr_accessor :allow_broker_downscale_on_cluster_upscale
+        alias_method :allow_broker_downscale_on_cluster_upscale?, :allow_broker_downscale_on_cluster_upscale
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_broker_downscale_on_cluster_upscale = args[:allow_broker_downscale_on_cluster_upscale] if args.key?(:allow_broker_downscale_on_cluster_upscale)
         end
       end
       

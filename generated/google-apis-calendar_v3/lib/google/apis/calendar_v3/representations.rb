@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventLabel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventOutOfOfficeProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LabelProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Setting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -339,8 +351,10 @@ module Google
       class Calendar
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_accept_invitations, as: 'autoAcceptInvitations'
           property :conference_properties, as: 'conferenceProperties', class: Google::Apis::CalendarV3::ConferenceProperties, decorator: Google::Apis::CalendarV3::ConferenceProperties::Representation
       
+          property :data_owner, as: 'dataOwner'
           property :description, as: 'description'
           property :etag, as: 'etag'
           property :id, as: 'id'
@@ -367,10 +381,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_role, as: 'accessRole'
+          property :auto_accept_invitations, as: 'autoAcceptInvitations'
           property :background_color, as: 'backgroundColor'
           property :color_id, as: 'colorId'
           property :conference_properties, as: 'conferenceProperties', class: Google::Apis::CalendarV3::ConferenceProperties, decorator: Google::Apis::CalendarV3::ConferenceProperties::Representation
       
+          property :data_owner, as: 'dataOwner'
           collection :default_reminders, as: 'defaultReminders', class: Google::Apis::CalendarV3::EventReminder, decorator: Google::Apis::CalendarV3::EventReminder::Representation
       
           property :deleted, as: 'deleted'
@@ -683,6 +699,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :additional_guests, as: 'additionalGuests'
+          property :async_operation, as: 'asyncOperation'
           property :comment, as: 'comment'
           property :display_name, as: 'displayName'
           property :email, as: 'email'
@@ -721,6 +738,12 @@ module Google
           property :auto_decline_mode, as: 'autoDeclineMode'
           property :chat_status, as: 'chatStatus'
           property :decline_message, as: 'declineMessage'
+        end
+      end
+      
+      class EventLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -843,6 +866,12 @@ module Google
       
           property :time_min, as: 'timeMin', type: DateTime
       
+        end
+      end
+      
+      class LabelProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

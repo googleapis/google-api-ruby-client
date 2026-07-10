@@ -1,5 +1,54 @@
 # Release history for google-apis-classroom_v1
 
+### v0.55.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260610
+
+### v0.54.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.53.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260511
+
+### v0.52.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260414
+
+### v0.51.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260310
+
+### v0.50.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260111
+
+### v0.49.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20260106
+
+### v0.48.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251202
+
+### v0.47.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251104
+
+### v0.46.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250827
+
+### v0.45.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250810
+
+### v0.44.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250526
+* Regenerated using generator version 0.18.0
+
 ### v0.43.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

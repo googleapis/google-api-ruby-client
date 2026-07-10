@@ -113,6 +113,28 @@ module Google
         end
       end
       
+      # LRO response metadata for InboundOidcSsoProfilesService.
+      # CreateInboundOidcSsoProfile.
+      class CreateInboundOidcSsoProfileOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # State of this Operation Will be "awaiting-multi-party-approval" when the
+        # operation is deferred due to the target customer having enabled [Multi-party
+        # approval for sensitive actions](https://support.google.com/a/answer/13790448).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # LRO response metadata for InboundSamlSsoProfilesService.
       # CreateInboundSamlSsoProfile.
       class CreateInboundSamlSsoProfileOperationMetadata
@@ -177,6 +199,20 @@ module Google
       
       # LRO response metadata for InboundSamlSsoProfilesService.DeleteIdpCredential.
       class DeleteIdpCredentialOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # LRO response metadata for InboundOidcSsoProfilesService.
+      # DeleteInboundOidcSsoProfile.
+      class DeleteInboundOidcSsoProfileOperationMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -683,7 +719,8 @@ module Google
         attr_accessor :is_bulk_data_entry_analysis_enabled
         alias_method :is_bulk_data_entry_analysis_enabled?, :is_bulk_data_entry_analysis_enabled
       
-        # Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#
+        # Deprecated: This field is not used for Chrome version 118 and later. Current
+        # state of [Chrome Cleanup](https://chromeenterprise.google/policies/#
         # ChromeCleanupEnabled).
         # Corresponds to the JSON property `isChromeCleanupEnabled`
         # @return [Boolean]
@@ -1828,16 +1865,18 @@ module Google
         # @return [Google::Apis::CloudidentityV1::EntityKey]
         attr_accessor :group_key
       
-        # Required. One or more label entries that apply to the Group. Currently
-        # supported labels contain a key with an empty value. Google Groups are the
-        # default type of group and have a label with a key of `cloudidentity.googleapis.
-        # com/groups.discussion_forum` and an empty value. Existing Google Groups can
-        # have an additional label with a key of `cloudidentity.googleapis.com/groups.
-        # security` and an empty value added to them. **This is an immutable change and
-        # the security label cannot be removed once added.** Dynamic groups have a label
-        # with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped
-        # groups for Cloud Search have a label with a key of `system/groups/external`
-        # and an empty value.
+        # Required. One or more label entries that apply to the Group. Labels contain a
+        # key with an empty value. Google Groups are the default type of group and have
+        # a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum`
+        # and an empty value. Existing Google Groups can have an additional label with a
+        # key of `cloudidentity.googleapis.com/groups.security` and an empty value added
+        # to them. **This is an immutable change and the security label cannot be
+        # removed once added.** Dynamic groups have a label with a key of `cloudidentity.
+        # googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a
+        # label with a key of `system/groups/external` and an empty value. Google Groups
+        # can be [locked](https://support.google.com/a?p=locked-groups). To lock a group,
+        # add a label with a key of `cloudidentity.googleapis.com/groups.locked` and an
+        # empty value. Doing so locks the group. To unlock the group, remove this label.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1973,6 +2012,51 @@ module Google
         end
       end
       
+      # An [OIDC](https://openid.net/developers/how-connect-works/) federation between
+      # a Google enterprise customer and an OIDC identity provider.
+      class InboundOidcSsoProfile
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The customer. For example: `customers/C0123abc`.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Human-readable name of the OIDC SSO profile.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # OIDC IDP (identity provider) configuration.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Google::Apis::CloudidentityV1::OidcIdpConfig]
+        attr_accessor :idp_config
+      
+        # Output only. [Resource name](https://cloud.google.com/apis/design/
+        # resource_names) of the OIDC SSO profile.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # OIDC RP (relying party) configuration.
+        # Corresponds to the JSON property `rpConfig`
+        # @return [Google::Apis::CloudidentityV1::OidcRpConfig]
+        attr_accessor :rp_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
+          @name = args[:name] if args.key?(:name)
+          @rp_config = args[:rp_config] if args.key?(:rp_config)
+        end
+      end
+      
       # A [SAML 2.0](https://www.oasis-open.org/standards#samlv2.0) federation between
       # a Google enterprise customer and a SAML identity provider.
       class InboundSamlSsoProfile
@@ -2033,6 +2117,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Details that are applicable when `sso_mode` is set to `OIDC_SSO`.
+        # Corresponds to the JSON property `oidcSsoInfo`
+        # @return [Google::Apis::CloudidentityV1::OidcSsoInfo]
+        attr_accessor :oidc_sso_info
+      
         # Must be zero (which is the default value so it can be omitted) for assignments
         # with `target_org_unit` set and must be greater-than-or-equal-to one for
         # assignments with `target_group` set.
@@ -2073,6 +2162,7 @@ module Google
         def update!(**args)
           @customer = args[:customer] if args.key?(:customer)
           @name = args[:name] if args.key?(:name)
+          @oidc_sso_info = args[:oidc_sso_info] if args.key?(:oidc_sso_info)
           @rank = args[:rank] if args.key?(:rank)
           @saml_sso_info = args[:saml_sso_info] if args.key?(:saml_sso_info)
           @sign_in_behavior = args[:sign_in_behavior] if args.key?(:sign_in_behavior)
@@ -2150,6 +2240,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @idp_credentials = args[:idp_credentials] if args.key?(:idp_credentials)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response of the InboundOidcSsoProfilesService.ListInboundOidcSsoProfiles
+      # method.
+      class ListInboundOidcSsoProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of InboundOidcSsoProfiles.
+        # Corresponds to the JSON property `inboundOidcSsoProfiles`
+        # @return [Array<Google::Apis::CloudidentityV1::InboundOidcSsoProfile>]
+        attr_accessor :inbound_oidc_sso_profiles
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inbound_oidc_sso_profiles = args[:inbound_oidc_sso_profiles] if args.key?(:inbound_oidc_sso_profiles)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2664,6 +2781,87 @@ module Google
         end
       end
       
+      # OIDC IDP (identity provider) configuration.
+      class OidcIdpConfig
+        include Google::Apis::Core::Hashable
+      
+        # The **Change Password URL** of the identity provider. Users will be sent to
+        # this URL when changing their passwords at `myaccount.google.com`. This takes
+        # precedence over the change password URL configured at customer-level. Must use
+        # `HTTPS`.
+        # Corresponds to the JSON property `changePasswordUri`
+        # @return [String]
+        attr_accessor :change_password_uri
+      
+        # Required. The Issuer identifier for the IdP. Must be a URL. The discovery URL
+        # will be derived from this as described in Section 4 of [the OIDC specification]
+        # (https://openid.net/specs/openid-connect-discovery-1_0.html).
+        # Corresponds to the JSON property `issuerUri`
+        # @return [String]
+        attr_accessor :issuer_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_password_uri = args[:change_password_uri] if args.key?(:change_password_uri)
+          @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
+        end
+      end
+      
+      # OIDC RP (relying party) configuration.
+      class OidcRpConfig
+        include Google::Apis::Core::Hashable
+      
+        # OAuth2 client ID for OIDC.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Input only. OAuth2 client secret for OIDC.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        # Output only. The URL(s) that this client may use in authentication requests.
+        # Corresponds to the JSON property `redirectUris`
+        # @return [Array<String>]
+        attr_accessor :redirect_uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @redirect_uris = args[:redirect_uris] if args.key?(:redirect_uris)
+        end
+      end
+      
+      # Details that are applicable when `sso_mode` is set to `OIDC_SSO`.
+      class OidcSsoInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the `InboundOidcSsoProfile` to use. Must be of the form `
+        # inboundOidcSsoProfiles/`inbound_oidc_sso_profile``.
+        # Corresponds to the JSON property `inboundOidcSsoProfile`
+        # @return [String]
+        attr_accessor :inbound_oidc_sso_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inbound_oidc_sso_profile = args[:inbound_oidc_sso_profile] if args.key?(:inbound_oidc_sso_profile)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -2799,11 +2997,12 @@ module Google
         # orgUnitId`')) The Group the Policy applies to are represented by a clause like
         # so: entity.groups.exists(group, group.group_id == groupId('`groupId`')) The
         # Licenses the Policy applies to are represented by a clause like so: entity.
-        # licenses.exists(license, license in ['/product/`productId`/sku/`skuId`']) The
-        # above clauses can be present in any combination, and used in conjunction with
-        # the &&, || and ! operators. The org_unit and group fields below are helper
-        # fields that contain the corresponding value(s) as the query to make the query
-        # easier to use.
+        # licenses.exists(license, license in ['/product/`productId`/sku/`skuId`']) **
+        # Note:** The licenses clause is not supported in mutate endpoints. The above
+        # clauses can be present in any combination, and used in conjunction with the &&,
+        # || and ! operators. The org_unit and group fields below are helper fields
+        # that contain the corresponding value(s) as the query to make the query easier
+        # to use.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -3234,6 +3433,28 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # LRO response metadata for InboundOidcSsoProfilesService.
+      # UpdateInboundOidcSsoProfile.
+      class UpdateInboundOidcSsoProfileOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # State of this Operation Will be "awaiting-multi-party-approval" when the
+        # operation is deferred due to the target customer having enabled [Multi-party
+        # approval for sensitive actions](https://support.google.com/a/answer/13790448).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

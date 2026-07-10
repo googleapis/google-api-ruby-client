@@ -141,6 +141,12 @@ module Google
         attr_accessor :blob_id
       
         # # gdata.* are outside protos with mising documentation
+        # Corresponds to the JSON property `downloadExternalReadToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :download_external_read_token
+      
+        # # gdata.* are outside protos with mising documentation
         # Corresponds to the JSON property `downloadReadHandle`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -150,6 +156,12 @@ module Google
         # Corresponds to the JSON property `readToken`
         # @return [String]
         attr_accessor :read_token
+      
+        # # gdata.* are outside protos with mising documentation
+        # Corresponds to the JSON property `uploadFragmentListCreationInfo`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :upload_fragment_list_creation_info
       
         # # gdata.* are outside protos with mising documentation
         # Corresponds to the JSON property `uploadMetadataContainer`
@@ -165,8 +177,10 @@ module Google
         def update!(**args)
           @blob_generation = args[:blob_generation] if args.key?(:blob_generation)
           @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @download_external_read_token = args[:download_external_read_token] if args.key?(:download_external_read_token)
           @download_read_handle = args[:download_read_handle] if args.key?(:download_read_handle)
           @read_token = args[:read_token] if args.key?(:read_token)
+          @upload_fragment_list_creation_info = args[:upload_fragment_list_creation_info] if args.key?(:upload_fragment_list_creation_info)
           @upload_metadata_container = args[:upload_metadata_container] if args.key?(:upload_metadata_container)
         end
       end
@@ -513,6 +527,11 @@ module Google
         attr_accessor :from_file_name
       
         # # gdata.* are outside protos with mising documentation
+        # Corresponds to the JSON property `fromFusionId`
+        # @return [String]
+        attr_accessor :from_fusion_id
+      
+        # # gdata.* are outside protos with mising documentation
         # Corresponds to the JSON property `fromHeader`
         # @return [String]
         attr_accessor :from_header
@@ -521,6 +540,12 @@ module Google
         # Corresponds to the JSON property `fromUrlPath`
         # @return [String]
         attr_accessor :from_url_path
+      
+        # # gdata.* are outside protos with mising documentation
+        # Corresponds to the JSON property `fusionIdDetectionMetadata`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fusion_id_detection_metadata
       
         def initialize(**args)
            update!(**args)
@@ -531,8 +556,10 @@ module Google
           @best_guess = args[:best_guess] if args.key?(:best_guess)
           @from_bytes = args[:from_bytes] if args.key?(:from_bytes)
           @from_file_name = args[:from_file_name] if args.key?(:from_file_name)
+          @from_fusion_id = args[:from_fusion_id] if args.key?(:from_fusion_id)
           @from_header = args[:from_header] if args.key?(:from_header)
           @from_url_path = args[:from_url_path] if args.key?(:from_url_path)
+          @fusion_id_detection_metadata = args[:fusion_id_detection_metadata] if args.key?(:fusion_id_detection_metadata)
         end
       end
       
@@ -966,6 +993,32 @@ module Google
         end
       end
       
+      # Response message for ListSupportEventSubscriptions.
+      class ListSupportEventSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The support event subscriptions.
+        # Corresponds to the JSON property `supportEventSubscriptions`
+        # @return [Array<Google::Apis::CloudsupportV2beta::SupportEventSubscription>]
+        attr_accessor :support_event_subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @support_event_subscriptions = args[:support_event_subscriptions] if args.key?(:support_event_subscriptions)
+        end
+      end
+      
       # # gdata.* are outside protos with mising documentation
       class Media
         include Google::Apis::Core::Hashable
@@ -1121,6 +1174,12 @@ module Google
         attr_accessor :sha256_hash
       
         # # gdata.* are outside protos with mising documentation
+        # Corresponds to the JSON property `sha512Hash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha512_hash
+      
+        # # gdata.* are outside protos with mising documentation
         # Corresponds to the JSON property `timestamp`
         # @return [Fixnum]
         attr_accessor :timestamp
@@ -1164,6 +1223,7 @@ module Google
           @reference_type = args[:reference_type] if args.key?(:reference_type)
           @sha1_hash = args[:sha1_hash] if args.key?(:sha1_hash)
           @sha256_hash = args[:sha256_hash] if args.key?(:sha256_hash)
+          @sha512_hash = args[:sha512_hash] if args.key?(:sha512_hash)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @token = args[:token] if args.key?(:token)
         end
@@ -1301,6 +1361,69 @@ module Google
         end
       end
       
+      # A support event subscription.
+      class SupportEventSubscription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the subscription was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time at which the subscription was deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. Reason why subscription is failing. State of subscription must be
+        # FAILING in order for this to have a value.
+        # Corresponds to the JSON property `failureReason`
+        # @return [String]
+        attr_accessor :failure_reason
+      
+        # Identifier. The resource name of the support event subscription.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The name of the Pub/Sub topic to publish notifications to. Format:
+        # projects/`project`/topics/`topic`
+        # Corresponds to the JSON property `pubSubTopic`
+        # @return [String]
+        attr_accessor :pub_sub_topic
+      
+        # Output only. The time at which the subscription will be purged.
+        # Corresponds to the JSON property `purgeTime`
+        # @return [String]
+        attr_accessor :purge_time
+      
+        # Output only. The state of the subscription.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time at which the subscription was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
+          @name = args[:name] if args.key?(:name)
+          @pub_sub_topic = args[:pub_sub_topic] if args.key?(:pub_sub_topic)
+          @purge_time = args[:purge_time] if args.key?(:purge_time)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Stores text attached to a support object.
       class TextContent
         include Google::Apis::Core::Hashable
@@ -1320,25 +1443,9 @@ module Google
         end
       end
       
-      # Metadata about the operation. Used to lookup the current status.
-      class WorkflowOperationMetadata
+      # Request message for UndeleteSupportEventSubscription.
+      class UndeleteSupportEventSubscriptionRequest
         include Google::Apis::Core::Hashable
-      
-        # The namespace that the job was scheduled in. Must be included in the workflow
-        # metadata so the workflow status can be retrieved.
-        # Corresponds to the JSON property `namespace`
-        # @return [String]
-        attr_accessor :namespace
-      
-        # The type of action the operation is classified as.
-        # Corresponds to the JSON property `operationAction`
-        # @return [String]
-        attr_accessor :operation_action
-      
-        # Which version of the workflow service this operation came from.
-        # Corresponds to the JSON property `workflowOperationType`
-        # @return [String]
-        attr_accessor :workflow_operation_type
       
         def initialize(**args)
            update!(**args)
@@ -1346,9 +1453,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @namespace = args[:namespace] if args.key?(:namespace)
-          @operation_action = args[:operation_action] if args.key?(:operation_action)
-          @workflow_operation_type = args[:workflow_operation_type] if args.key?(:workflow_operation_type)
         end
       end
     end

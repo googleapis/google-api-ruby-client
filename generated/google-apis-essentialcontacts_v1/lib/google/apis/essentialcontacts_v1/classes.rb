@@ -82,8 +82,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :notification_category_subscriptions
       
-        # The last time the validation_state was updated, either manually or
-        # automatically. A contact is considered stale if its validation state was
+        # Output only. The last time the validation_state was updated, either manually
+        # or automatically. A contact is considered stale if its validation state was
         # updated more than 1 year ago.
         # Corresponds to the JSON property `validateTime`
         # @return [String]
@@ -143,8 +143,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The list of names of the contacts to send a test message to. Format:
-        # organizations/`organization_id`/contacts/`contact_id`, folders/`folder_id`/
-        # contacts/`contact_id` or projects/`project_id`/contacts/`contact_id`
+        # organizations/`organization`/contacts/`contact`, folders/`folder`/contacts/`
+        # contact` or projects/`project`/contacts/`contact` (where `project` is the
+        # project number)
         # Corresponds to the JSON property `contacts`
         # @return [Array<String>]
         attr_accessor :contacts

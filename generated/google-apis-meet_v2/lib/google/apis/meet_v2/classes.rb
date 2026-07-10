@@ -230,6 +230,36 @@ module Google
         end
       end
       
+      # Details how to join the conference through a SIP gateway.
+      class GatewaySipAccess
+        include Google::Apis::Core::Hashable
+      
+        # The permanent numeric code for manual entry on specially configured devices.
+        # Corresponds to the JSON property `sipAccessCode`
+        # @return [String]
+        attr_accessor :sip_access_code
+      
+        # The Session Initiation Protocol (SIP) URI the conference can be reached
+        # through. The string is in one of these formats: * "sip:USER_ID@GATEWAY_ADDRESS"
+        # * "sips:USER_ID@GATEWAY_ADDRESS" where USER_ID is the 13-digit universal pin (
+        # with the future option to support using a Meet meeting code as well), and
+        # GATEWAY_ADDRESS is a valid address to be resolved using a DNS SRV lookup, or a
+        # dotted quad.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sip_access_code = args[:sip_access_code] if args.key?(:sip_access_code)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Response of ListConferenceRecords method.
       class ListConferenceRecordsResponse
         include Google::Apis::Core::Hashable
@@ -339,6 +369,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @recordings = args[:recordings] if args.key?(:recordings)
+        end
+      end
+      
+      # Response for ListSmartNotes method.
+      class ListSmartNotesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to be circulated back for further List call if current List doesn't
+        # include all the smart notes. Unset if all smart notes are returned.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of smart notes in one page.
+        # Corresponds to the JSON property `smartNotes`
+        # @return [Array<Google::Apis::MeetV2::SmartNote>]
+        attr_accessor :smart_notes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @smart_notes = args[:smart_notes] if args.key?(:smart_notes)
         end
       end
       
@@ -521,6 +577,49 @@ module Google
         end
       end
       
+      # Phone access contains information required to dial into a conference using a
+      # regional phone number and a PIN that is specific to that phone number.
+      class PhoneAccess
+        include Google::Apis::Core::Hashable
+      
+        # The BCP 47/LDML language code for the language associated with this phone
+        # access. To be parsed by the i18n LanguageCode utility. Examples: "es-419" for
+        # Latin American Spanish, "fr-CA" for Canadian French.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # The phone number to dial for this meeting space in E.164 format. Full phone
+        # number with a leading '+' character.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # The PIN that users must enter after dialing the given number. The PIN consists
+        # of only decimal digits and the length may vary.
+        # Corresponds to the JSON property `pin`
+        # @return [String]
+        attr_accessor :pin
+      
+        # The CLDR/ISO 3166 region code for the country associated with this phone
+        # access. To be parsed by the i18n RegionCode utility. Example: "SE" for Sweden.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @pin = args[:pin] if args.key?(:pin)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
       # User dialing in from a phone where the user's identity is unknown because they
       # haven't signed in with a Google Account.
       class PhoneUser
@@ -636,6 +735,53 @@ module Google
         end
       end
       
+      # Metadata for a smart note generated from a conference. It refers to the notes
+      # generated from Take Notes with Gemini during the conference.
+      class SmartNote
+        include Google::Apis::Core::Hashable
+      
+        # Google Docs location where the transcript file is saved.
+        # Corresponds to the JSON property `docsDestination`
+        # @return [Google::Apis::MeetV2::DocsDestination]
+        attr_accessor :docs_destination
+      
+        # Output only. Timestamp when the smart notes stopped.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifier. Resource name of the smart notes. Format: `
+        # conferenceRecords/`conference_record`/smartNotes/`smart_note``, where ``
+        # smart_note`` is a 1:1 mapping to each unique smart notes session of the
+        # conference.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when the smart notes started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. Current state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @docs_destination = args[:docs_destination] if args.key?(:docs_destination)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Configuration related to smart notes in a meeting space. For more information
       # about smart notes, see ["Take notes for me" in Google Meet](https://support.
       # google.com/meet/answer/14754931).
@@ -674,6 +820,12 @@ module Google
         # @return [Google::Apis::MeetV2::SpaceConfig]
         attr_accessor :config
       
+        # Output only. The SIP-based access methods that can be used to join the
+        # conference. Can be empty.
+        # Corresponds to the JSON property `gatewaySipAccess`
+        # @return [Array<Google::Apis::MeetV2::GatewaySipAccess>]
+        attr_accessor :gateway_sip_access
+      
         # Output only. Type friendly unique string used to join the meeting. Format: `[a-
         # z]+-[a-z]+-[a-z]+`. For example, `abc-mnop-xyz`. The maximum length is 128
         # characters. Can only be used as an alias of the space name to get the space.
@@ -697,6 +849,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. All regional phone access methods for this meeting space. Can be
+        # empty.
+        # Corresponds to the JSON property `phoneAccess`
+        # @return [Array<Google::Apis::MeetV2::PhoneAccess>]
+        attr_accessor :phone_access
+      
         def initialize(**args)
            update!(**args)
         end
@@ -705,9 +863,11 @@ module Google
         def update!(**args)
           @active_conference = args[:active_conference] if args.key?(:active_conference)
           @config = args[:config] if args.key?(:config)
+          @gateway_sip_access = args[:gateway_sip_access] if args.key?(:gateway_sip_access)
           @meeting_code = args[:meeting_code] if args.key?(:meeting_code)
           @meeting_uri = args[:meeting_uri] if args.key?(:meeting_uri)
           @name = args[:name] if args.key?(:name)
+          @phone_access = args[:phone_access] if args.key?(:phone_access)
         end
       end
       

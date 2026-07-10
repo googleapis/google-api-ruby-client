@@ -460,6 +460,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Chip
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChipRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClearBasicFilterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1078,6 +1090,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PersonProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PieChartSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1193,6 +1211,12 @@ module Google
       end
       
       class Response
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RichLinkProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2245,6 +2269,8 @@ module Google
       class CellData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :chip_runs, as: 'chipRuns', class: Google::Apis::SheetsV4::ChipRun, decorator: Google::Apis::SheetsV4::ChipRun::Representation
+      
           property :data_source_formula, as: 'dataSourceFormula', class: Google::Apis::SheetsV4::DataSourceFormula, decorator: Google::Apis::SheetsV4::DataSourceFormula::Representation
       
           property :data_source_table, as: 'dataSourceTable', class: Google::Apis::SheetsV4::DataSourceTable, decorator: Google::Apis::SheetsV4::DataSourceTable::Representation
@@ -2403,6 +2429,25 @@ module Google
       
           property :waterfall_chart, as: 'waterfallChart', class: Google::Apis::SheetsV4::WaterfallChartSpec, decorator: Google::Apis::SheetsV4::WaterfallChartSpec::Representation
       
+        end
+      end
+      
+      class Chip
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :person_properties, as: 'personProperties', class: Google::Apis::SheetsV4::PersonProperties, decorator: Google::Apis::SheetsV4::PersonProperties::Representation
+      
+          property :rich_link_properties, as: 'richLinkProperties', class: Google::Apis::SheetsV4::RichLinkProperties, decorator: Google::Apis::SheetsV4::RichLinkProperties::Representation
+      
+        end
+      end
+      
+      class ChipRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chip, as: 'chip', class: Google::Apis::SheetsV4::Chip, decorator: Google::Apis::SheetsV4::Chip::Representation
+      
+          property :start_index, as: 'startIndex'
         end
       end
       
@@ -3433,6 +3478,14 @@ module Google
         end
       end
       
+      class PersonProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_format, as: 'displayFormat'
+          property :email, as: 'email'
+        end
+      end
+      
       class PieChartSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3840,6 +3893,14 @@ module Google
       
           property :update_embedded_object_position, as: 'updateEmbeddedObjectPosition', class: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionResponse, decorator: Google::Apis::SheetsV4::UpdateEmbeddedObjectPositionResponse::Representation
       
+        end
+      end
+      
+      class RichLinkProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mime_type, as: 'mimeType'
+          property :uri, as: 'uri'
         end
       end
       

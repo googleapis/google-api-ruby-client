@@ -93,6 +93,286 @@ module Google
         end
       end
       
+      # Log entry for BDRBackupPlanJobLog for resources using BackupPlan based
+      # protection.
+      class BdrBackupPlanJobLog
+        include Google::Apis::Core::Hashable
+      
+        # Canonical resource name for Backup Plan Plan of the job.
+        # Corresponds to the JSON property `backupPlanName`
+        # @return [String]
+        attr_accessor :backup_plan_name
+      
+        # End time of the job.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The error code. Only populated in error scenarios.
+        # Corresponds to the JSON property `errorCode`
+        # @return [Fixnum]
+        attr_accessor :error_code
+      
+        # The user readable error message. Only populated in error scenarios.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # The name of the error type eg. PERMISSION_DENIED. Only populated in error
+        # scenarios.
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
+        # The category field displays the category of the job. Can be one of [
+        # UPDATE_BACKUP_PLAN].
+        # Corresponds to the JSON property `jobCategory`
+        # @return [String]
+        attr_accessor :job_category
+      
+        # The job_id field displays the identifier of the job being reported.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # The status field displays the status of the job. Can be one of [RUNNING,
+        # SUCCESSFUL, FAILED].
+        # Corresponds to the JSON property `jobStatus`
+        # @return [String]
+        attr_accessor :job_status
+      
+        # User friendly revision id e.g. v0, v1 etc.
+        # Corresponds to the JSON property `newBackupPlanRevisionId`
+        # @return [String]
+        attr_accessor :new_backup_plan_revision_id
+      
+        # Full resource name for new backup plan revision
+        # Corresponds to the JSON property `newBackupPlanRevisionName`
+        # @return [String]
+        attr_accessor :new_backup_plan_revision_name
+      
+        # User friendly revision id e.g. v0, v1 etc.
+        # Corresponds to the JSON property `previousBackupPlanRevisionId`
+        # @return [String]
+        attr_accessor :previous_backup_plan_revision_id
+      
+        # Full resource name for previous backup plan revision
+        # Corresponds to the JSON property `previousBackupPlanRevisionName`
+        # @return [String]
+        attr_accessor :previous_backup_plan_revision_name
+      
+        # Previous Backup Plan rules.
+        # Corresponds to the JSON property `previousBackupRules`
+        # @return [Array<Google::Apis::GkebackupV1::BackupRuleDetail>]
+        attr_accessor :previous_backup_rules
+      
+        # The resource_type field displays the type of the protected resource.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Revised Backup Plan rules.
+        # Corresponds to the JSON property `revisedBackupRules`
+        # @return [Array<Google::Apis::GkebackupV1::BackupRuleDetail>]
+        attr_accessor :revised_backup_rules
+      
+        # Start time of the job.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The total number of workloads affected by the job.
+        # Corresponds to the JSON property `workloadsAffectedCount`
+        # @return [Fixnum]
+        attr_accessor :workloads_affected_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan_name = args[:backup_plan_name] if args.key?(:backup_plan_name)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @error_type = args[:error_type] if args.key?(:error_type)
+          @job_category = args[:job_category] if args.key?(:job_category)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @job_status = args[:job_status] if args.key?(:job_status)
+          @new_backup_plan_revision_id = args[:new_backup_plan_revision_id] if args.key?(:new_backup_plan_revision_id)
+          @new_backup_plan_revision_name = args[:new_backup_plan_revision_name] if args.key?(:new_backup_plan_revision_name)
+          @previous_backup_plan_revision_id = args[:previous_backup_plan_revision_id] if args.key?(:previous_backup_plan_revision_id)
+          @previous_backup_plan_revision_name = args[:previous_backup_plan_revision_name] if args.key?(:previous_backup_plan_revision_name)
+          @previous_backup_rules = args[:previous_backup_rules] if args.key?(:previous_backup_rules)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @revised_backup_rules = args[:revised_backup_rules] if args.key?(:revised_backup_rules)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @workloads_affected_count = args[:workloads_affected_count] if args.key?(:workloads_affected_count)
+        end
+      end
+      
+      # Log entry for Backup and Restore Job for resources using BackupPlan based
+      # protection. Next Id: 25
+      class BdrBackupRestoreJobLog
+        include Google::Apis::Core::Hashable
+      
+        # Backup consistency time.
+        # Corresponds to the JSON property `backupConsistencyTime`
+        # @return [String]
+        attr_accessor :backup_consistency_time
+      
+        # Full resource name of the backup created in backup jobs and used in restore
+        # jobs.
+        # Corresponds to the JSON property `backupName`
+        # @return [String]
+        attr_accessor :backup_name
+      
+        # Full resource name for Backup Plan of the job. Only populated for Scheduled
+        # Backup and Adhoc Backup.
+        # Corresponds to the JSON property `backupPlanName`
+        # @return [String]
+        attr_accessor :backup_plan_name
+      
+        # Backup retention in days.
+        # Corresponds to the JSON property `backupRetentionDays`
+        # @return [Fixnum]
+        attr_accessor :backup_retention_days
+      
+        # Name of the backup rule. Only populated for Scheduled Backup and Adhoc Backup.
+        # Corresponds to the JSON property `backupRule`
+        # @return [String]
+        attr_accessor :backup_rule
+      
+        # Full resource name backup vault name
+        # Corresponds to the JSON property `backupVaultName`
+        # @return [String]
+        attr_accessor :backup_vault_name
+      
+        # Canonical Data Source Name
+        # Corresponds to the JSON property `dataSourceName`
+        # @return [String]
+        attr_accessor :data_source_name
+      
+        # End time of the job.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The error code. Only populated in error scenarios.
+        # Corresponds to the JSON property `errorCode`
+        # @return [Fixnum]
+        attr_accessor :error_code
+      
+        # The user readable error message. Only populated in error scenarios.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # The name of the error type eg. PERMISSION_DENIED. Only populated in error
+        # scenarios.
+        # Corresponds to the JSON property `errorType`
+        # @return [String]
+        attr_accessor :error_type
+      
+        # The amount of incremental backup data copied.
+        # Corresponds to the JSON property `incrementalBackupSizeGib`
+        # @return [Float]
+        attr_accessor :incremental_backup_size_gib
+      
+        # The category field displays the category of the job.
+        # Corresponds to the JSON property `jobCategory`
+        # @return [String]
+        attr_accessor :job_category
+      
+        # The job_id field displays the identifier of the job being logged.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # The status field displays the status of the job.
+        # Corresponds to the JSON property `jobStatus`
+        # @return [String]
+        attr_accessor :job_status
+      
+        # Recovery point time.
+        # Corresponds to the JSON property `recoveryPointTime`
+        # @return [String]
+        attr_accessor :recovery_point_time
+      
+        # The resource_type field displays the type of the protected resource.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        # Restore resource location.
+        # Corresponds to the JSON property `restoreResourceLocation`
+        # @return [String]
+        attr_accessor :restore_resource_location
+      
+        # Full resource name of the restore resource. Only populated in restore jobs.
+        # Corresponds to the JSON property `restoreResourceName`
+        # @return [String]
+        attr_accessor :restore_resource_name
+      
+        # The source resource ID.
+        # Corresponds to the JSON property `sourceResourceId`
+        # @return [String]
+        attr_accessor :source_resource_id
+      
+        # Source resource location.
+        # Corresponds to the JSON property `sourceResourceLocation`
+        # @return [String]
+        attr_accessor :source_resource_location
+      
+        # Full resource name of the protected resource.
+        # Corresponds to the JSON property `sourceResourceName`
+        # @return [String]
+        attr_accessor :source_resource_name
+      
+        # Start time of the job.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The target resource type for restore jobs.
+        # Corresponds to the JSON property `targetResourceType`
+        # @return [String]
+        attr_accessor :target_resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_consistency_time = args[:backup_consistency_time] if args.key?(:backup_consistency_time)
+          @backup_name = args[:backup_name] if args.key?(:backup_name)
+          @backup_plan_name = args[:backup_plan_name] if args.key?(:backup_plan_name)
+          @backup_retention_days = args[:backup_retention_days] if args.key?(:backup_retention_days)
+          @backup_rule = args[:backup_rule] if args.key?(:backup_rule)
+          @backup_vault_name = args[:backup_vault_name] if args.key?(:backup_vault_name)
+          @data_source_name = args[:data_source_name] if args.key?(:data_source_name)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @error_type = args[:error_type] if args.key?(:error_type)
+          @incremental_backup_size_gib = args[:incremental_backup_size_gib] if args.key?(:incremental_backup_size_gib)
+          @job_category = args[:job_category] if args.key?(:job_category)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @job_status = args[:job_status] if args.key?(:job_status)
+          @recovery_point_time = args[:recovery_point_time] if args.key?(:recovery_point_time)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @restore_resource_location = args[:restore_resource_location] if args.key?(:restore_resource_location)
+          @restore_resource_name = args[:restore_resource_name] if args.key?(:restore_resource_name)
+          @source_resource_id = args[:source_resource_id] if args.key?(:source_resource_id)
+          @source_resource_location = args[:source_resource_location] if args.key?(:source_resource_location)
+          @source_resource_name = args[:source_resource_name] if args.key?(:source_resource_name)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @target_resource_type = args[:target_resource_type] if args.key?(:target_resource_type)
+        end
+      end
+      
       # Represents a request to perform a single point-in-time capture of some portion
       # of the state of a GKE cluster, the record of the backup operation itself, and
       # an anchor for the underlying artifacts that comprise the Backup (the config
@@ -191,11 +471,17 @@ module Google
         attr_accessor :manual
         alias_method :manual?, :manual
       
-        # Output only. The fully qualified name of the Backup. `projects/*/locations/*/
-        # backupPlans/*/backups/*`
+        # Output only. Identifier. The fully qualified name of the Backup. `projects/*/
+        # locations/*/backupPlans/*/backups/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The total number of user managed namespaces contained in the
+        # Backup.
+        # Corresponds to the JSON property `namespaceCount`
+        # @return [Fixnum]
+        attr_accessor :namespace_count
       
         # Output only. If false, Backup will fail when Backup for GKE detects Kubernetes
         # configuration that is non-standard or requires additional setup to restore.
@@ -247,6 +533,11 @@ module Google
         # @return [Google::Apis::GkebackupV1::NamespacedNames]
         attr_accessor :selected_applications
       
+        # A list of Kubernetes labels.
+        # Corresponds to the JSON property `selectedNamespaceLabels`
+        # @return [Google::Apis::GkebackupV1::ResourceLabels]
+        attr_accessor :selected_namespace_labels
+      
         # A list of Kubernetes Namespaces.
         # Corresponds to the JSON property `selectedNamespaces`
         # @return [Google::Apis::GkebackupV1::Namespaces]
@@ -269,6 +560,13 @@ module Google
         # Corresponds to the JSON property `stateReason`
         # @return [String]
         attr_accessor :state_reason
+      
+        # Stores information about troubleshooting doc for debugging a particular state
+        # of an operation (eg - backup/restore). This will be used by the end user to
+        # debug their operation failure scenario easily.
+        # Corresponds to the JSON property `troubleshootingInfo`
+        # @return [Google::Apis::GkebackupV1::TroubleshootingInfo]
+        attr_accessor :troubleshooting_info
       
         # Output only. Server generated global unique identifier of [UUID4](https://en.
         # wikipedia.org/wiki/Universally_unique_identifier)
@@ -307,6 +605,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @manual = args[:manual] if args.key?(:manual)
           @name = args[:name] if args.key?(:name)
+          @namespace_count = args[:namespace_count] if args.key?(:namespace_count)
           @permissive_mode = args[:permissive_mode] if args.key?(:permissive_mode)
           @pod_count = args[:pod_count] if args.key?(:pod_count)
           @resource_count = args[:resource_count] if args.key?(:resource_count)
@@ -315,10 +614,12 @@ module Google
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @selected_applications = args[:selected_applications] if args.key?(:selected_applications)
+          @selected_namespace_labels = args[:selected_namespace_labels] if args.key?(:selected_namespace_labels)
           @selected_namespaces = args[:selected_namespaces] if args.key?(:selected_namespaces)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
+          @troubleshooting_info = args[:troubleshooting_info] if args.key?(:troubleshooting_info)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @volume_count = args[:volume_count] if args.key?(:volume_count)
@@ -449,6 +750,11 @@ module Google
         # @return [Google::Apis::GkebackupV1::NamespacedNames]
         attr_accessor :selected_applications
       
+        # A list of Kubernetes labels.
+        # Corresponds to the JSON property `selectedNamespaceLabels`
+        # @return [Google::Apis::GkebackupV1::ResourceLabels]
+        attr_accessor :selected_namespace_labels
+      
         # A list of Kubernetes Namespaces.
         # Corresponds to the JSON property `selectedNamespaces`
         # @return [Google::Apis::GkebackupV1::Namespaces]
@@ -466,6 +772,7 @@ module Google
           @include_volume_data = args[:include_volume_data] if args.key?(:include_volume_data)
           @permissive_mode = args[:permissive_mode] if args.key?(:permissive_mode)
           @selected_applications = args[:selected_applications] if args.key?(:selected_applications)
+          @selected_namespace_labels = args[:selected_namespace_labels] if args.key?(:selected_namespace_labels)
           @selected_namespaces = args[:selected_namespaces] if args.key?(:selected_namespaces)
         end
       end
@@ -600,11 +907,17 @@ module Google
         # @return [String]
         attr_accessor :last_successful_backup_time
       
-        # Output only. The full name of the BackupPlan resource. Format: `projects/*/
-        # locations/*/backupPlans/*`
+        # Output only. Identifier. The full name of the BackupPlan resource. Format: `
+        # projects/*/locations/*/backupPlans/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. The number of user managed namespaces backed up in the last
+        # successful Backup created via this BackupPlan.
+        # Corresponds to the JSON property `protectedNamespaceCount`
+        # @return [Fixnum]
+        attr_accessor :protected_namespace_count
       
         # Output only. The number of Kubernetes Pods backed up in the last successful
         # Backup created via this BackupPlan.
@@ -671,6 +984,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @last_successful_backup_time = args[:last_successful_backup_time] if args.key?(:last_successful_backup_time)
           @name = args[:name] if args.key?(:name)
+          @protected_namespace_count = args[:protected_namespace_count] if args.key?(:protected_namespace_count)
           @protected_pod_count = args[:protected_pod_count] if args.key?(:protected_pod_count)
           @retention_policy = args[:retention_policy] if args.key?(:retention_policy)
           @rpo_risk_level = args[:rpo_risk_level] if args.key?(:rpo_risk_level)
@@ -822,6 +1136,55 @@ module Google
           @retention_policy_details = args[:retention_policy_details] if args.key?(:retention_policy_details)
           @rpo_risk_level = args[:rpo_risk_level] if args.key?(:rpo_risk_level)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # 
+      class BackupRuleDetail
+        include Google::Apis::Core::Hashable
+      
+        # Backup Window For Eg. “00:00 to 06:00”
+        # Corresponds to the JSON property `backupWindow`
+        # @return [String]
+        attr_accessor :backup_window
+      
+        # Backup Window Timezone in IANA format. For Eg. “America/Los_Angeles”
+        # Corresponds to the JSON property `backupWindowTimezone`
+        # @return [String]
+        attr_accessor :backup_window_timezone
+      
+        # Recurrence Type. For Eg. “Weekly”,” Monthly” or “Daily”.
+        # Corresponds to the JSON property `recurrence`
+        # @return [String]
+        attr_accessor :recurrence
+      
+        # Recurrence Repeat Schedule. For Eg. “1st and 25th day of the month.”
+        # Corresponds to the JSON property `recurrenceSchedule`
+        # @return [String]
+        attr_accessor :recurrence_schedule
+      
+        # Backup Retention in Days.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        # Backup Rule Name.
+        # Corresponds to the JSON property `ruleName`
+        # @return [String]
+        attr_accessor :rule_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_window = args[:backup_window] if args.key?(:backup_window)
+          @backup_window_timezone = args[:backup_window_timezone] if args.key?(:backup_window_timezone)
+          @recurrence = args[:recurrence] if args.key?(:recurrence)
+          @recurrence_schedule = args[:recurrence_schedule] if args.key?(:recurrence_schedule)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+          @rule_name = args[:rule_name] if args.key?(:rule_name)
         end
       end
       
@@ -1292,6 +1655,59 @@ module Google
         end
       end
       
+      # Request message for GetTags.
+      class GetTagsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Response message for GetTags.
+      class GetTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A checksum based on the current bindings. This field is always set in server
+        # responses.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Tag keys/values directly bound to this resource. Each item in the
+        # map must be expressed as " : ". For example: "123/environment" : "production",
+        # "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class GoogleLongrunningCancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -1319,6 +1735,14 @@ module Google
         # @return [Array<Google::Apis::GkebackupV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1327,6 +1751,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1486,6 +1911,31 @@ module Google
         def update!(**args)
           @requiring = args[:requiring] if args.key?(:requiring)
           @satisfying = args[:satisfying] if args.key?(:satisfying)
+        end
+      end
+      
+      # A single Kubernetes label-value pair.
+      class Label
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The key/name of the label.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. The value of the label.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -2139,6 +2589,25 @@ module Google
         end
       end
       
+      # A list of Kubernetes labels.
+      class ResourceLabels
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of Kubernetes label-value pairs.
+        # Corresponds to the JSON property `resourceLabels`
+        # @return [Array<Google::Apis::GkebackupV1::Label>]
+        attr_accessor :resource_labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
+        end
+      end
+      
       # Defines a selector to identify a single or a group of resources. Conditions in
       # the selector are optional, but at least one field should be set to a non-empty
       # value. If a condition is not specified, no restrictions will be applied on
@@ -2252,8 +2721,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The full name of the Restore resource. Format: `projects/*/
-        # locations/*/restorePlans/*/restores/*`
+        # Output only. Identifier. The full name of the Restore resource. Format: `
+        # projects/*/locations/*/restorePlans/*/restores/*`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2290,6 +2759,13 @@ module Google
         # Corresponds to the JSON property `stateReason`
         # @return [String]
         attr_accessor :state_reason
+      
+        # Stores information about troubleshooting doc for debugging a particular state
+        # of an operation (eg - backup/restore). This will be used by the end user to
+        # debug their operation failure scenario easily.
+        # Corresponds to the JSON property `troubleshootingInfo`
+        # @return [Google::Apis::GkebackupV1::TroubleshootingInfo]
+        attr_accessor :troubleshooting_info
       
         # Output only. Server generated global unique identifier of [UUID](https://en.
         # wikipedia.org/wiki/Universally_unique_identifier) format.
@@ -2334,6 +2810,7 @@ module Google
           @restore_config = args[:restore_config] if args.key?(:restore_config)
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
+          @troubleshooting_info = args[:troubleshooting_info] if args.key?(:troubleshooting_info)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
           @volume_data_restore_policy_overrides = args[:volume_data_restore_policy_overrides] if args.key?(:volume_data_restore_policy_overrides)
@@ -2613,8 +3090,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The full name of the RestorePlan resource. Format: `projects/*/
-        # locations/*/restorePlans/*`.
+        # Output only. Identifier. The full name of the RestorePlan resource. Format: `
+        # projects/*/locations/*/restorePlans/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2965,6 +3442,81 @@ module Google
         end
       end
       
+      # Request message for SetTags.
+      class SetTagsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A checksum based on the current bindings which can be passed to
+        # prevent race conditions. If not passed, etag check would be skipped.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A unique identifier for this request. Must be a valid UUID. This
+        # request is only idempotent if a `request_id` is provided.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. These bindings will override any bindings previously set and will be
+        # effective immediately. Each item in the map must be expressed as " : ". For
+        # example: "123/environment" : "production", "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Response message for SetTags.
+      class SetTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A checksum based on the current bindings. This field is always set in server
+        # responses.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Tag keys/values directly bound to this resource. Each item in the
+        # map must be expressed as " : ". For example: "123/environment" : "production",
+        # "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # A transformation rule to be applied against Kubernetes resources as they are
       # selected for restoration from a Backup. A rule contains both filtering logic (
       # which resources are subject to substitution) and substitution logic.
@@ -3194,6 +3746,35 @@ module Google
           @op = args[:op] if args.key?(:op)
           @path = args[:path] if args.key?(:path)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Stores information about troubleshooting doc for debugging a particular state
+      # of an operation (eg - backup/restore). This will be used by the end user to
+      # debug their operation failure scenario easily.
+      class TroubleshootingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Unique code for each backup/restore operation failure message
+        # which helps user identify the failure.
+        # Corresponds to the JSON property `stateReasonCode`
+        # @return [String]
+        attr_accessor :state_reason_code
+      
+        # Output only. URL for the troubleshooting doc which will help the user fix the
+        # failing backup/restore operation.
+        # Corresponds to the JSON property `stateReasonUri`
+        # @return [String]
+        attr_accessor :state_reason_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state_reason_code = args[:state_reason_code] if args.key?(:state_reason_code)
+          @state_reason_uri = args[:state_reason_uri] if args.key?(:state_reason_uri)
         end
       end
       

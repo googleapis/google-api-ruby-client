@@ -16,13 +16,13 @@ module Google
   module Apis
     module ConnectorsV2
       # Version of the google-apis-connectors_v2 gem
-      GEM_VERSION = "0.25.0"
+      GEM_VERSION = "0.34.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.18.0"
+      GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20250521"
+      REVISION = "20260617"
     end
   end
 end

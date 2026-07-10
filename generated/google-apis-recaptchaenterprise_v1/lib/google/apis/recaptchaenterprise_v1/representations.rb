@@ -28,6 +28,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -274,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -436,6 +460,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleProtobufEmpty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -451,7 +487,34 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_takeover_verdict, as: 'accountTakeoverVerdict', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict::Representation
+      
           collection :labels, as: 'labels'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :risk, as: 'risk'
+          collection :risk_reasons, as: 'riskReasons', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason::Representation
+      
+          collection :trust_reasons, as: 'trustReasons', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
         end
       end
       
@@ -495,6 +558,8 @@ module Google
           property :account_id, as: 'accountId'
           property :annotation, as: 'annotation'
           property :hashed_account_id, :base64 => true, as: 'hashedAccountId'
+          property :phone_authentication_event, as: 'phoneAuthenticationEvent', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent::Representation
+      
           collection :reasons, as: 'reasons'
           property :transaction_event, as: 'transactionEvent', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionEvent, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TransactionEvent::Representation
       
@@ -862,6 +927,14 @@ module Google
         end
       end
       
+      class GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_time, as: 'eventTime'
+          property :phone_number, as: 'phoneNumber'
+        end
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1120,7 +1193,26 @@ module Google
           property :allow_amp_traffic, as: 'allowAmpTraffic'
           collection :allowed_domains, as: 'allowedDomains'
           property :challenge_security_preference, as: 'challengeSecurityPreference'
+          property :challenge_settings, as: 'challengeSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings::Representation
+      
           property :integration_type, as: 'integrationType'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score_threshold, as: 'scoreThreshold'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :action_settings, as: 'actionSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings::Representation
+      
+          property :default_settings, as: 'defaultSettings', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings::Representation
+      
         end
       end
       

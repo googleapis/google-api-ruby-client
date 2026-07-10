@@ -133,7 +133,7 @@ module Google
       end
       
       # Aggregate information about the resources protected by a Cloud KMS key in the
-      # same Cloud organization as the key.
+      # same Cloud organization/project as the key.
       class GoogleCloudKmsInventoryV1ProtectedResourcesSummary
         include Google::Apis::Core::Hashable
       
@@ -171,6 +171,13 @@ module Google
         # @return [Hash<String,Fixnum>]
         attr_accessor :resource_types
       
+        # Warning messages for the state of response ProtectedResourcesSummary For
+        # example, if the organization service account is not configured,
+        # INSUFFICIENT_PERMISSIONS_PARTIAL_DATA warning will be returned.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::KmsinventoryV1::GoogleCloudKmsInventoryV1Warning>]
+        attr_accessor :warnings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -183,6 +190,7 @@ module Google
           @project_count = args[:project_count] if args.key?(:project_count)
           @resource_count = args[:resource_count] if args.key?(:resource_count)
           @resource_types = args[:resource_types] if args.key?(:resource_types)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -212,6 +220,31 @@ module Google
         end
       end
       
+      # A warning message that indicates potential problems with the response data.
+      class GoogleCloudKmsInventoryV1Warning
+        include Google::Apis::Core::Hashable
+      
+        # The literal message providing context and details about the warnings.
+        # Corresponds to the JSON property `displayMessage`
+        # @return [String]
+        attr_accessor :display_message
+      
+        # The specific warning code for the displayed message.
+        # Corresponds to the JSON property `warningCode`
+        # @return [String]
+        attr_accessor :warning_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_message = args[:display_message] if args.key?(:display_message)
+          @warning_code = args[:warning_code] if args.key?(:warning_code)
+        end
+      end
+      
       # A CryptoKey represents a logical key that can be used for cryptographic
       # operations. A CryptoKey is made up of zero or more versions, which represent
       # the actual key material used in cryptographic operations.
@@ -227,8 +260,11 @@ module Google
         # for all CryptoKeyVersions associated with this CryptoKey reside and where all
         # related cryptographic operations are performed. Only applicable if
         # CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource
-        # name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list
-        # is non-exhaustive and may apply to additional ProtectionLevels in the future.
+        # name in the format `projects/*/locations/*/ekmConnections/*`. Only applicable
+        # if CryptoKeyVersions have a ProtectionLevel of HSM_SINGLE_TENANT, with the
+        # resource name in the format `projects/*/locations/*/singleTenantHsmInstances/*`
+        # . Note, this list is non-exhaustive and may apply to additional
+        # ProtectionLevels in the future.
         # Corresponds to the JSON property `cryptoKeyBackend`
         # @return [String]
         attr_accessor :crypto_key_backend
@@ -247,7 +283,9 @@ module Google
         alias_method :import_only?, :import_only
       
         # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-        # values for encrypt, decrypt, and sign operations on a CryptoKey.
+        # values for encrypt, decrypt, and sign operations on a CryptoKey or
+        # KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+        # policy).
         # Corresponds to the JSON property `keyAccessJustificationsPolicy`
         # @return [Google::Apis::KmsinventoryV1::GoogleCloudKmsV1KeyAccessJustificationsPolicy]
         attr_accessor :key_access_justifications_policy
@@ -516,13 +554,16 @@ module Google
       end
       
       # A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
-      # values for encrypt, decrypt, and sign operations on a CryptoKey.
+      # values for encrypt, decrypt, and sign operations on a CryptoKey or
+      # KeyAccessJustificationsPolicyConfig (the default Key Access Justifications
+      # policy).
       class GoogleCloudKmsV1KeyAccessJustificationsPolicy
         include Google::Apis::Core::Hashable
       
-        # The list of allowed reasons for access to a CryptoKey. Zero allowed access
-        # reasons means all encrypt, decrypt, and sign operations for the CryptoKey
-        # associated with this policy will fail.
+        # The list of allowed reasons for access to a CryptoKey. Note that empty
+        # allowed_access_reasons has a different meaning depending on where this message
+        # appears. If this is under KeyAccessJustificationsPolicyConfig, it means allow-
+        # all. If this is under CryptoKey, it means deny-all.
         # Corresponds to the JSON property `allowedAccessReasons`
         # @return [Array<String>]
         attr_accessor :allowed_access_reasons

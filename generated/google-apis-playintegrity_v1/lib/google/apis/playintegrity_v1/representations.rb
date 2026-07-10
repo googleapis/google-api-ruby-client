@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PcAccountDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PcDeviceIntegrity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,12 @@ module Google
       end
       
       class PcRequestDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PcTestingDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -263,6 +275,13 @@ module Google
         end
       end
       
+      class PcAccountDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_licensing_verdict, as: 'appLicensingVerdict'
+        end
+      end
+      
       class PcDeviceIntegrity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -279,12 +298,23 @@ module Google
         end
       end
       
+      class PcTestingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_testing_response, as: 'isTestingResponse'
+        end
+      end
+      
       class PcTokenPayloadExternal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_details, as: 'accountDetails', class: Google::Apis::PlayintegrityV1::PcAccountDetails, decorator: Google::Apis::PlayintegrityV1::PcAccountDetails::Representation
+      
           property :device_integrity, as: 'deviceIntegrity', class: Google::Apis::PlayintegrityV1::PcDeviceIntegrity, decorator: Google::Apis::PlayintegrityV1::PcDeviceIntegrity::Representation
       
           property :request_details, as: 'requestDetails', class: Google::Apis::PlayintegrityV1::PcRequestDetails, decorator: Google::Apis::PlayintegrityV1::PcRequestDetails::Representation
+      
+          property :testing_details, as: 'testingDetails', class: Google::Apis::PlayintegrityV1::PcTestingDetails, decorator: Google::Apis::PlayintegrityV1::PcTestingDetails::Representation
       
         end
       end

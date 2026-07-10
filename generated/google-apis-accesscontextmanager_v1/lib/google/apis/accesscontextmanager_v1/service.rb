@@ -309,7 +309,9 @@ module Google
         
         # Returns the IAM permissions that the caller has on the specified Access
         # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
-        # ServicePerimeter. This method does not support other resources.
+        # ServicePerimeter. This method does not support other resources. **IAM
+        # Permissions**: No specific IAM permission is required to call this method. It
+        # returns the subset of the requested permissions that the caller possesses.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See [
         #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
@@ -581,7 +583,9 @@ module Google
         
         # Returns the IAM permissions that the caller has on the specified Access
         # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
-        # ServicePerimeter. This method does not support other resources.
+        # ServicePerimeter. This method does not support other resources. **IAM
+        # Permissions**: No specific IAM permission is required to call this method. It
+        # returns the subset of the requested permissions that the caller possesses.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See [
         #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
@@ -1031,7 +1035,7 @@ module Google
         # perimeters provided. This is done atomically. The long-running operation from
         # this RPC has a successful status after all replacements propagate to long-
         # lasting storage. Replacements containing errors result in an error response
-        # for the first error encountered. Upon an error, replacement are cancelled and
+        # for the first error encountered. Upon an error, replacements are cancelled and
         # existing service perimeters are not affected. The Operation.response field
         # contains ReplaceServicePerimetersResponse.
         # @param [String] parent
@@ -1069,7 +1073,9 @@ module Google
         
         # Returns the IAM permissions that the caller has on the specified Access
         # Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or
-        # ServicePerimeter. This method does not support other resources.
+        # ServicePerimeter. This method does not support other resources. **IAM
+        # Permissions**: No specific IAM permission is required to call this method. It
+        # returns the subset of the requested permissions that the caller possesses.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested. See [
         #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
@@ -1218,6 +1224,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1235,7 +1249,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::ListOperationsResponse
@@ -1243,6 +1257,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1440,7 +1455,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a VPC-SC supported service based on the service name.
+        # Lists all supported permissions in VPC Service Controls ingress and egress
+        # rules for Granular Controls.
+        # @param [Fixnum] page_size
+        #   Optional. This flag specifies the maximum number of services to return per
+        #   page. Default value is 100.
+        # @param [String] page_token
+        #   Optional. Use this token to retrieve a specific page of results. Default is
+        #   the first page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::ListSupportedPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::ListSupportedPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_permissions(page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/permissions', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::ListSupportedPermissionsResponse::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::ListSupportedPermissionsResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a VPC-SC supported service based on the service name. **IAM
+        # Permissions**: Requires the following IAM permissions to use this method: - `
+        # serviceusage.services.use` on the project.
         # @param [String] name
         #   The name of the service to get information about. The names must be in the
         #   same format as used in defining a service perimeter, for example, `storage.
@@ -1472,12 +1525,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all VPC-SC supported services.
+        # Lists all VPC-SC supported services. **IAM Permissions**: Requires the
+        # following IAM permissions to use this method: - `serviceusage.services.use` on
+        # the project.
         # @param [Fixnum] page_size
         #   This flag specifies the maximum number of services to return per page. Default
-        #   is 100.
+        #   value is 100.
         # @param [String] page_token
-        #   Token to start on a later page. Default is the first page.
+        #   Use this token to retrieve a specific page of results. Default is the first
+        #   page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

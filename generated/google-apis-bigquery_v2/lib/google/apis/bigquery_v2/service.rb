@@ -54,7 +54,8 @@ module Google
         # Deletes the dataset specified by the datasetId value. Before you can delete a
         # dataset, you must delete all its tables, either manually or by specifying
         # deleteContents. Immediately after deletion, you can create another dataset
-        # with the same name.
+        # with the same name. # IAM Permissions Requires the `bigquery.datasets.delete`
+        # permission on the dataset.
         # @param [String] project_id
         #   Required. Project ID of the dataset being deleted
         # @param [String] dataset_id
@@ -89,7 +90,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the dataset specified by datasetID.
+        # Returns the dataset specified by datasetID. # IAM Permissions Requires the `
+        # bigquery.datasets.get` permission on the dataset.
         # @param [String] project_id
         #   Required. Project ID of the requested dataset
         # @param [String] dataset_id
@@ -141,7 +143,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new empty dataset.
+        # Creates a new empty dataset. # IAM Permissions Requires the `bigquery.datasets.
+        # create` permission on the project.
         # @param [String] project_id
         #   Required. Project ID of the new dataset
         # @param [Google::Apis::BigqueryV2::Dataset] dataset_object
@@ -188,7 +191,9 @@ module Google
         end
         
         # Lists all datasets in the specified project to which the user has been granted
-        # the READER dataset role.
+        # the READER dataset role. # IAM Permissions Requires no specific IAM permission(
+        # s) to use this method. Results are filtered to only include datasets on which
+        # the caller has the `bigquery.datasets.get` permission.
         # @param [String] project_id
         #   Required. Project ID of the datasets to be listed
         # @param [Boolean] all
@@ -238,7 +243,9 @@ module Google
         # Updates information in an existing dataset. The update method replaces the
         # entire dataset resource, whereas the patch method only replaces fields that
         # are provided in the submitted dataset resource. This method supports RFC5789
-        # patch semantics.
+        # patch semantics. # IAM Permissions Requires the following IAM permission(s) to
+        # use this method: - `bigquery.datasets.update` on the dataset. - `bigquery.
+        # datasets.get` on the dataset.
         # @param [String] project_id
         #   Required. Project ID of the dataset being updated
         # @param [String] dataset_id
@@ -295,7 +302,9 @@ module Google
         
         # Undeletes a dataset which is within time travel window based on datasetId. If
         # a time is specified, the dataset version deleted at that time is undeleted,
-        # else the last live version is undeleted.
+        # else the last live version is undeleted. # IAM Permissions Requires the
+        # following IAM permission(s) to use this method: - `bigquery.datasets.create`
+        # on the project. - `bigquery.datasets.get` on the dataset.
         # @param [String] project_id
         #   Required. Project ID of the dataset to be undeleted
         # @param [String] dataset_id
@@ -333,7 +342,8 @@ module Google
         
         # Updates information in an existing dataset. The update method replaces the
         # entire dataset resource, whereas the patch method only replaces fields that
-        # are provided in the submitted dataset resource.
+        # are provided in the submitted dataset resource. # IAM Permissions Requires the
+        # `bigquery.datasets.update` permission on the dataset.
         # @param [String] project_id
         #   Required. Project ID of the dataset being updated
         # @param [String] dataset_id
@@ -390,7 +400,10 @@ module Google
         
         # Requests that a job be cancelled. This call will return immediately, and the
         # client will need to poll for the job status to see if the cancel completed
-        # successfully. Cancelled jobs may still incur costs.
+        # successfully. Cancelled jobs may still incur costs. # IAM Permissions Requires
+        # the `bigquery.jobs.update` permission on the job resource. If the user matches
+        # the creator of the job, the `bigquery.jobs.create` permission on the project
+        # is required instead.
         # @param [String] project_id
         #   Required. Project ID of the job to cancel
         # @param [String] job_id
@@ -431,7 +444,8 @@ module Google
         end
         
         # Requests the deletion of the metadata of a job. This call returns when the job'
-        # s metadata is deleted.
+        # s metadata is deleted. # IAM Permissions Requires the `bigquery.jobs.delete`
+        # permission on the job resource.
         # @param [String] project_id
         #   Required. Project ID of the job for which metadata is to be deleted.
         # @param [String] job_id
@@ -471,7 +485,10 @@ module Google
         
         # Returns information about a specific job. Job information is available for a
         # six month period after creation. Requires that you're the person who ran the
-        # job, or have the Is Owner project role.
+        # job, or have the Is Owner project role. # IAM Permissions Requires the `
+        # bigquery.jobs.get` permission on the job resource. If the user matches the
+        # creator of the job, the `bigquery.jobs.create` permission on the project is
+        # required instead.
         # @param [String] project_id
         #   Required. Project ID of the requested job.
         # @param [String] job_id
@@ -511,11 +528,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # RPC to get the results of a query job.
+        # RPC to get the results of a query job. # IAM Permissions Requires the
+        # following IAM permission(s) to use this method: - `bigquery.jobs.get` on the
+        # job. - `bigquery.tables.getData` on the destination table. If the user matches
+        # the creator of the job, the following IAM permission(s) are required instead: -
+        # `bigquery.jobs.create` on the project. - `bigquery.tables.getData` on the
+        # destination table.
         # @param [String] project_id
         #   Required. Project ID of the query job.
         # @param [String] job_id
         #   Required. Job ID of the query job.
+        # @param [String] format_options_timestamp_output_format
+        #   Optional. The API output format for a timestamp. This offers more explicit
+        #   control over the timestamp output format as compared to the existing `
+        #   use_int64_timestamp` option.
         # @param [Boolean] format_options_use_int64_timestamp
         #   Optional. Output timestamp as usec int64. Default is false.
         # @param [String] location
@@ -558,12 +584,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_job_query_results(project_id, job_id, format_options_use_int64_timestamp: nil, location: nil, max_results: nil, page_token: nil, start_index: nil, timeout_ms: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_job_query_results(project_id, job_id, format_options_timestamp_output_format: nil, format_options_use_int64_timestamp: nil, location: nil, max_results: nil, page_token: nil, start_index: nil, timeout_ms: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{+projectId}/queries/{+jobId}', options)
           command.response_representation = Google::Apis::BigqueryV2::GetQueryResultsResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::GetQueryResultsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['jobId'] = job_id unless job_id.nil?
+          command.query['formatOptions.timestampOutputFormat'] = format_options_timestamp_output_format unless format_options_timestamp_output_format.nil?
           command.query['formatOptions.useInt64Timestamp'] = format_options_use_int64_timestamp unless format_options_use_int64_timestamp.nil?
           command.query['location'] = location unless location.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -580,7 +607,14 @@ module Google
         # used for most interactions, as it accepts the job configuration directly. *
         # The *Upload* URI is ONLY for the case when you're sending both a load job
         # configuration and a data stream together. In this case, the Upload URI accepts
-        # the job configuration and the data as two distinct multipart MIME parts.
+        # the job configuration and the data as two distinct multipart MIME parts. # IAM
+        # Permissions Requires the `bigquery.jobs.create` permission on the project
+        # resource. Additional permissions are required depending on the job type: - **
+        # Load, Export, and Copy jobs**: Generally require data-level permissions such
+        # as `bigquery.tables.export` or access to external storage. - **Query jobs**:
+        # Permissions are dependent on the SQL statement. Complex queries (DDL, DCL) may
+        # require additional permissions to create reservations, modify IAM policies, or
+        # update project settings.
         # @param [String] project_id
         #   Project ID of project that will be billed for the job.
         # @param [Google::Apis::BigqueryV2::Job] job_object
@@ -626,7 +660,13 @@ module Google
         # Lists all jobs that you started in the specified project. Job information is
         # available for a six month period after creation. The job list is sorted in
         # reverse chronological order, by job creation time. Requires the Can View
-        # project role, or the Is Owner project role if you set the allUsers property.
+        # project role, or the Is Owner project role if you set the allUsers property. #
+        # IAM Permissions Requires no specific IAM permission(s) to use this method.
+        # Users are able to list the jobs they created. Additional access is granted
+        # based on the following permissions: - Users with the `bigquery.jobs.listAll`
+        # permission can list all jobs with all metadata. - Users with the `bigquery.
+        # jobs.list` permission can list all jobs, but with redacted information for
+        # jobs they did not create.
         # @param [String] project_id
         #   Project ID of the jobs to list.
         # @param [Boolean] all_users
@@ -685,7 +725,12 @@ module Google
         end
         
         # Runs a BigQuery SQL query synchronously and returns query results if the query
-        # completes within a specified timeout.
+        # completes within a specified timeout. # IAM Permissions Requires the `bigquery.
+        # jobs.create` permission on the project resource. Data-level permissions are
+        # highly dependent on the SQL statement being executed. While standard queries
+        # require data access (such as `bigquery.tables.getData`), complex operations
+        # like DDL or DCL may require permissions to manage reservations, IAM policies,
+        # or project settings.
         # @param [String] project_id
         #   Required. Project ID of the query request.
         # @param [Google::Apis::BigqueryV2::QueryRequest] query_request_object
@@ -718,7 +763,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the model specified by modelId from the dataset.
+        # Deletes the model specified by modelId from the dataset. # IAM Permissions
+        # Requires the `bigquery.models.delete` permission on the model.
         # @param [String] project_id
         #   Required. Project ID of the model to delete.
         # @param [String] dataset_id
@@ -752,7 +798,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified model resource by model ID.
+        # Gets the specified model resource by model ID. # IAM Permissions Requires the `
+        # bigquery.models.getMetadata` permission on the model.
         # @param [String] project_id
         #   Required. Project ID of the requested model.
         # @param [String] dataset_id
@@ -790,7 +837,8 @@ module Google
         
         # Lists all models in the specified dataset. Requires the READER dataset role.
         # After retrieving the list of models, you can get information about a
-        # particular model by calling the models.get method.
+        # particular model by calling the models.get method. # IAM Permissions Requires
+        # the `bigquery.models.list` permission on the dataset.
         # @param [String] project_id
         #   Required. Project ID of the models to list.
         # @param [String] dataset_id
@@ -830,7 +878,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch specific fields in the specified model.
+        # Patch specific fields in the specified model. # IAM Permissions Requires the `
+        # bigquery.models.updateMetadata` permission on the model.
         # @param [String] project_id
         #   Required. Project ID of the model to patch.
         # @param [String] dataset_id
@@ -870,7 +919,10 @@ module Google
         end
         
         # RPC to get the service account for a project used for interactions with Google
-        # Cloud KMS
+        # Cloud KMS. Requires the `bigquery.jobs.create` permission on the project
+        # resource. This permission is required to authorize the retrieval of the
+        # project's service identity for technical management tasks like encryption
+        # configuration.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] fields
@@ -903,7 +955,11 @@ module Google
         # RPC to list projects to which the user has been granted any project role.
         # Users of this method are encouraged to consider the [Resource Manager](https://
         # cloud.google.com/resource-manager/docs/) API, which provides the underlying
-        # data for this method and has more capabilities.
+        # data for this method and has more capabilities. # IAM Permissions Requires no
+        # specific IAM permission(s) to use this method. The results are filtered to
+        # only include projects on which the caller has been granted a project-level
+        # role such as a BigQuery predefined IAM role or a basic role such as Viewer or
+        # Owner.
         # @param [Fixnum] max_results
         #   `maxResults` unset returns all results, up to 50 per page. Additionally, the
         #   number of projects in a page may be fewer than `maxResults` because projects
@@ -939,7 +995,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the routine specified by routineId from the dataset.
+        # Deletes the routine specified by routineId from the dataset. # IAM Permissions
+        # Requires the `bigquery.routines.delete` permission on the routine.
         # @param [String] project_id
         #   Required. Project ID of the routine to delete
         # @param [String] dataset_id
@@ -973,7 +1030,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified routine resource by routine ID.
+        # Gets the specified routine resource by routine ID. # IAM Permissions Requires
+        # the `bigquery.routines.get` permission on the routine.
         # @param [String] project_id
         #   Required. Project ID of the requested routine
         # @param [String] dataset_id
@@ -1049,7 +1107,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new routine in the dataset.
+        # Creates a new routine in the dataset. # IAM Permissions Requires the `bigquery.
+        # routines.create` permission on the dataset.
         # @param [String] project_id
         #   Required. Project ID of the new routine
         # @param [String] dataset_id
@@ -1086,6 +1145,8 @@ module Google
         end
         
         # Lists all routines in the specified dataset. Requires the READER dataset role.
+        # # IAM Permissions Requires the `bigquery.routines.list` permission on the
+        # dataset.
         # @param [String] project_id
         #   Required. Project ID of the routines to list
         # @param [String] dataset_id
@@ -1173,8 +1234,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::BigqueryV2::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryV2::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryV2::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_routine_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, '{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::BigqueryV2::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::BigqueryV2::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::BigqueryV2::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates information in an existing routine. The update method replaces the
-        # entire Routine resource.
+        # entire Routine resource. # IAM Permissions Requires the `bigquery.routines.
+        # update` permission on the routine.
         # @param [String] project_id
         #   Required. Project ID of the routine to update
         # @param [String] dataset_id
@@ -1213,7 +1314,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes provided row access policies.
+        # Deletes provided row access policies. # IAM Permissions Requires the following
+        # IAM permission(s) on the table: - `bigquery.rowAccessPolicies.delete` - `
+        # bigquery.rowAccessPolicies.setIamPolicy`
         # @param [String] project_id
         #   Required. Project ID of the table to delete the row access policies.
         # @param [String] dataset_id
@@ -1250,7 +1353,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a row access policy.
+        # Deletes a row access policy. # IAM Permissions Requires the following IAM
+        # permission(s) on the table: - `bigquery.rowAccessPolicies.delete` - `bigquery.
+        # rowAccessPolicies.setIamPolicy`
         # @param [String] project_id
         #   Required. Project ID of the table to delete the row access policy.
         # @param [String] dataset_id
@@ -1292,7 +1397,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified row access policy by policy ID.
+        # Gets the specified row access policy by policy ID. # IAM Permissions Requires
+        # the `bigquery.rowAccessPolicies.get` permission on the table.
         # @param [String] project_id
         #   Required. Project ID of the table to get the row access policy.
         # @param [String] dataset_id
@@ -1367,7 +1473,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a row access policy.
+        # Creates a row access policy. # IAM Permissions Requires the following IAM
+        # permission(s) on the table: - `bigquery.rowAccessPolicies.create` - `bigquery.
+        # rowAccessPolicies.setIamPolicy` - `bigquery.tables.getData`
         # @param [String] project_id
         #   Required. Project ID of the table to get the row access policy.
         # @param [String] dataset_id
@@ -1406,7 +1514,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all row access policies on the specified table.
+        # Lists all row access policies on the specified table. # IAM Permissions
+        # Requires the `bigquery.rowAccessPolicies.list` permission on the table.
         # @param [String] project_id
         #   Required. Project ID of the row access policies to list.
         # @param [String] dataset_id
@@ -1488,7 +1597,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a row access policy.
+        # Updates a row access policy. # IAM Permissions Requires the following IAM
+        # permission(s) on the table: - `bigquery.rowAccessPolicies.update` - `bigquery.
+        # rowAccessPolicies.setIamPolicy` - `bigquery.tables.getData`
         # @param [String] project_id
         #   Required. Project ID of the table to get the row access policy.
         # @param [String] dataset_id
@@ -1531,7 +1642,9 @@ module Google
         end
         
         # Streams data into BigQuery one record at a time without needing to run a load
-        # job.
+        # job. # IAM Permissions Requires the following IAM permission(s) to use this
+        # method: - `bigquery.tables.updateData` on the table. - `bigquery.tables.get`
+        # on the table. - `bigquery.datasets.get` on the dataset.
         # @param [String] project_id
         #   Required. Project ID of the destination.
         # @param [String] dataset_id
@@ -1570,13 +1683,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List the content of a table in rows.
+        # List the content of a table in rows. # IAM Permissions Requires the `bigquery.
+        # tables.getData` permission on the table.
         # @param [String] project_id
         #   Required. Project id of the table to list.
         # @param [String] dataset_id
         #   Required. Dataset id of the table to list.
         # @param [String] table_id
         #   Required. Table id of the table to list.
+        # @param [String] format_options_timestamp_output_format
+        #   Optional. The API output format for a timestamp. This offers more explicit
+        #   control over the timestamp output format as compared to the existing `
+        #   use_int64_timestamp` option.
         # @param [Boolean] format_options_use_int64_timestamp
         #   Optional. Output timestamp as usec int64. Default is false.
         # @param [Fixnum] max_results
@@ -1607,13 +1725,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_table_data(project_id, dataset_id, table_id, format_options_use_int64_timestamp: nil, max_results: nil, page_token: nil, selected_fields: nil, start_index: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_table_data(project_id, dataset_id, table_id, format_options_timestamp_output_format: nil, format_options_use_int64_timestamp: nil, max_results: nil, page_token: nil, selected_fields: nil, start_index: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/data', options)
           command.response_representation = Google::Apis::BigqueryV2::TableDataList::Representation
           command.response_class = Google::Apis::BigqueryV2::TableDataList
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.params['tableId'] = table_id unless table_id.nil?
+          command.query['formatOptions.timestampOutputFormat'] = format_options_timestamp_output_format unless format_options_timestamp_output_format.nil?
           command.query['formatOptions.useInt64Timestamp'] = format_options_use_int64_timestamp unless format_options_use_int64_timestamp.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1625,7 +1744,8 @@ module Google
         end
         
         # Deletes the table specified by tableId from the dataset. If the table contains
-        # data, all the data will be deleted.
+        # data, all the data will be deleted. # IAM Permissions Requires the `bigquery.
+        # tables.delete` permission on the table.
         # @param [String] project_id
         #   Required. Project ID of the table to delete
         # @param [String] dataset_id
@@ -1661,7 +1781,8 @@ module Google
         
         # Gets the specified table resource by table ID. This method does not return the
         # data in the table, it only returns the table resource, which describes the
-        # structure of this table.
+        # structure of this table. # IAM Permissions Requires the `bigquery.tables.get`
+        # permission on the table.
         # @param [String] project_id
         #   Required. Project ID of the requested table
         # @param [String] dataset_id
@@ -1745,7 +1866,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new, empty table in the dataset.
+        # Creates a new, empty table in the dataset. # IAM Permissions Requires the `
+        # bigquery.tables.create` permission on the dataset.
         # @param [String] project_id
         #   Required. Project ID of the new table
         # @param [String] dataset_id
@@ -1781,7 +1903,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all tables in the specified dataset. Requires the READER dataset role.
+        # Lists all tables in the specified dataset. Requires the READER dataset role. #
+        # IAM Permissions Requires the `bigquery.tables.list` permission on the dataset.
         # @param [String] project_id
         #   Required. Project ID of the tables to list
         # @param [String] dataset_id
@@ -1824,7 +1947,8 @@ module Google
         # Updates information in an existing table. The update method replaces the
         # entire table resource, whereas the patch method only replaces fields that are
         # provided in the submitted table resource. This method supports RFC5789 patch
-        # semantics.
+        # semantics. # IAM Permissions Requires the following IAM permission(s) on the
+        # table: - `bigquery.tables.update` - `bigquery.tables.get`
         # @param [String] project_id
         #   Required. Project ID of the table to update
         # @param [String] dataset_id
@@ -1944,7 +2068,8 @@ module Google
         
         # Updates information in an existing table. The update method replaces the
         # entire Table resource, whereas the patch method only replaces fields that are
-        # provided in the submitted Table resource.
+        # provided in the submitted Table resource. # IAM Permissions Requires the `
+        # bigquery.tables.update` permission on the table.
         # @param [String] project_id
         #   Required. Project ID of the table to update
         # @param [String] dataset_id

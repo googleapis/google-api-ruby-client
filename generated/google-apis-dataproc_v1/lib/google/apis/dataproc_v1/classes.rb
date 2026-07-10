@@ -38,11 +38,10 @@ module Google
         # google.com/compute/docs/reference/v1/acceleratorTypes).Examples: https://www.
         # googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/acceleratorTypes/
         # nvidia-tesla-t4 projects/[project_id]/zones/[zone]/acceleratorTypes/nvidia-
-        # tesla-t4 nvidia-tesla-t4Auto Zone Exception: If you are using the Dataproc
-        # Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/
-        # configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must
-        # use the short name of the accelerator type resource, for example, nvidia-tesla-
-        # t4.
+        # tesla-t4 nvidia-tesla-t4Auto Zone Exception: If you are using Auto Zone
+        # Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-
+        # clusters/auto-zone#using_auto_zone_placement), you must use the short name of
+        # the accelerator type resource, for example, nvidia-tesla-t4.
         # Corresponds to the JSON property `acceleratorTypeUri`
         # @return [String]
         attr_accessor :accelerator_type_uri
@@ -382,6 +381,12 @@ module Google
         # @return [String]
         attr_accessor :request_id
       
+        # Optional. The requestor ID is used to identify if the request comes from a GCA
+        # investigation or the old Ask Gemini Experience.
+        # Corresponds to the JSON property `requestorId`
+        # @return [String]
+        attr_accessor :requestor_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -389,6 +394,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
+          @requestor_id = args[:requestor_id] if args.key?(:requestor_id)
         end
       end
       
@@ -663,6 +669,47 @@ module Google
         end
       end
       
+      # Specifies the config of attached disk options for single VM instance.
+      class AttachedDiskConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Disk size in GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
+        # Optional. Disk type.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. Indicates how many IOPS to provision for the attached disk. This
+        # sets the number of I/O operations per second that the disk can handle. See
+        # https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # Optional. Indicates how much throughput to provision for the attached disk.
+        # This sets the number of throughput mb per second that the disk can handle. See
+        # https://cloud.google.com/compute/docs/disks/hyperdisks#hyperdisk-features
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+        end
+      end
+      
       # Authentication configuration for a workload is used to set the default
       # identity for the workload execution. The config specifies the type of identity
       # (service account or user) that will be used by workloads to access resources
@@ -694,7 +741,7 @@ module Google
         # googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/
         # autoscalingPolicies/[policy_id] projects/[project_id]/locations/[
         # dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be
-        # in the same project and Dataproc region.
+        # in the same project and region.
         # Corresponds to the JSON property `policyUri`
         # @return [String]
         attr_accessor :policy_uri
@@ -803,8 +850,8 @@ module Google
       class AuxiliaryNodeGroup
         include Google::Apis::Core::Hashable
       
-        # Dataproc Node Group. The Dataproc NodeGroup resource is not related to the
-        # Dataproc NodeGroupAffinity resource.
+        # Node Group. The NodeGroup resource is not related to the NodeGroupAffinity
+        # resource.
         # Corresponds to the JSON property `nodeGroup`
         # @return [Google::Apis::DataprocV1::NodeGroup]
         attr_accessor :node_group
@@ -996,6 +1043,11 @@ module Google
         # @return [Google::Apis::DataprocV1::PySparkBatch]
         attr_accessor :pyspark_batch
       
+        # A configuration for running a PySpark Notebook batch workload.
+        # Corresponds to the JSON property `pysparkNotebookBatch`
+        # @return [Google::Apis::DataprocV1::PySparkNotebookBatch]
+        attr_accessor :pyspark_notebook_batch
+      
         # Runtime configuration for a workload.
         # Corresponds to the JSON property `runtimeConfig`
         # @return [Google::Apis::DataprocV1::RuntimeConfig]
@@ -1064,6 +1116,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @operation = args[:operation] if args.key?(:operation)
           @pyspark_batch = args[:pyspark_batch] if args.key?(:pyspark_batch)
+          @pyspark_notebook_batch = args[:pyspark_notebook_batch] if args.key?(:pyspark_notebook_batch)
           @runtime_config = args[:runtime_config] if args.key?(:runtime_config)
           @runtime_info = args[:runtime_info] if args.key?(:runtime_info)
           @spark_batch = args[:spark_batch] if args.key?(:spark_batch)
@@ -1276,8 +1329,7 @@ module Google
         end
       end
       
-      # Describes the identifying information, config, and status of a Dataproc
-      # cluster
+      # Describes the identifying information, config, and status of a cluster
       class Cluster
         include Google::Apis::Core::Hashable
       
@@ -1289,8 +1341,8 @@ module Google
         # @return [String]
         attr_accessor :cluster_name
       
-        # Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates
-        # this value when it creates the cluster.
+        # Output only. A cluster UUID (Unique Universal Identifier). The service
+        # generates this value when it creates the cluster.
         # Corresponds to the JSON property `clusterUuid`
         # @return [String]
         attr_accessor :cluster_uuid
@@ -1331,9 +1383,9 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::ClusterStatus>]
         attr_accessor :status_history
       
-        # The Dataproc cluster config for a cluster that does not directly control the
-        # underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.
-        # google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
+        # The cluster config for a cluster that does not directly control the underlying
+        # compute resources, such as a GKE cluster (https://cloud.google.com/dataproc/
+        # docs/guides/dpgke/dataproc-gke-overview).
         # Corresponds to the JSON property `virtualClusterConfig`
         # @return [Google::Apis::DataprocV1::VirtualClusterConfig]
         attr_accessor :virtual_cluster_config
@@ -1370,28 +1422,43 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::AuxiliaryNodeGroup>]
         attr_accessor :auxiliary_node_groups
       
+        # Optional. The cluster tier.
+        # Corresponds to the JSON property `clusterTier`
+        # @return [String]
+        attr_accessor :cluster_tier
+      
         # Optional. The type of the cluster.
         # Corresponds to the JSON property `clusterType`
         # @return [String]
         attr_accessor :cluster_type
       
         # Optional. A Cloud Storage bucket used to stage job dependencies, config files,
-        # and job driver console output. If you do not specify a staging bucket, Cloud
-        # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
+        # and job driver console output. If you do not specify a staging bucket, the
+        # service will determine a Cloud Storage location (US, ASIA, or EU) for your
         # cluster's staging bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
-        # location bucket (see Dataproc staging and temp buckets (https://cloud.google.
-        # com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
+        # location bucket (see staging and temp buckets (https://cloud.google.com/
+        # dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
         # requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage
         # bucket.
         # Corresponds to the JSON property `configBucket`
         # @return [String]
         attr_accessor :config_bucket
       
-        # Dataproc metric config.
+        # Metric config.
         # Corresponds to the JSON property `dataprocMetricConfig`
         # @return [Google::Apis::DataprocV1::DataprocMetricConfig]
         attr_accessor :dataproc_metric_config
+      
+        # Optional. A Cloud Storage bucket used to collect checkpoint diagnostic data (
+        # https://cloud.google.com/dataproc/docs/support/diagnose-clusters#
+        # checkpoint_diagnostic_data). If you do not specify a diagnostic bucket, The
+        # service will use the temp bucket to collect the checkpoint diagnostic data.
+        # This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud
+        # Storage bucket.
+        # Corresponds to the JSON property `diagnosticBucket`
+        # @return [String]
+        attr_accessor :diagnostic_bucket
       
         # Encryption settings for the cluster.
         # Corresponds to the JSON property `encryptionConfig`
@@ -1402,6 +1469,11 @@ module Google
         # Corresponds to the JSON property `endpointConfig`
         # @return [Google::Apis::DataprocV1::EndpointConfig]
         attr_accessor :endpoint_config
+      
+        # Optional. The cluster engine.
+        # Corresponds to the JSON property `engine`
+        # @return [String]
+        attr_accessor :engine
       
         # Common config settings for resources of Compute Engine cluster instances,
         # applicable to all instances in the cluster.
@@ -1459,14 +1531,14 @@ module Google
       
         # Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data,
         # such as Spark and MapReduce history files. If you do not specify a temp
-        # bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for
-        # your cluster's temp bucket according to the Compute Engine zone where your
+        # bucket, the service will determine a Cloud Storage location (US, ASIA, or EU)
+        # for your cluster's temp bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
         # location bucket. The default bucket has a TTL of 90 days, but you can use any
-        # TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (
-        # https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-
-        # bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI
-        # to a Cloud Storage bucket.
+        # TTL (or none) if you specify a bucket (see staging and temp buckets (https://
+        # cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        # This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud
+        # Storage bucket.
         # Corresponds to the JSON property `tempBucket`
         # @return [String]
         attr_accessor :temp_bucket
@@ -1485,11 +1557,14 @@ module Google
         def update!(**args)
           @autoscaling_config = args[:autoscaling_config] if args.key?(:autoscaling_config)
           @auxiliary_node_groups = args[:auxiliary_node_groups] if args.key?(:auxiliary_node_groups)
+          @cluster_tier = args[:cluster_tier] if args.key?(:cluster_tier)
           @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
           @config_bucket = args[:config_bucket] if args.key?(:config_bucket)
           @dataproc_metric_config = args[:dataproc_metric_config] if args.key?(:dataproc_metric_config)
+          @diagnostic_bucket = args[:diagnostic_bucket] if args.key?(:diagnostic_bucket)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @endpoint_config = args[:endpoint_config] if args.key?(:endpoint_config)
+          @engine = args[:engine] if args.key?(:engine)
           @gce_cluster_config = args[:gce_cluster_config] if args.key?(:gce_cluster_config)
           @gke_cluster_config = args[:gke_cluster_config] if args.key?(:gke_cluster_config)
           @initialization_actions = args[:initialization_actions] if args.key?(:initialization_actions)
@@ -1752,13 +1827,43 @@ module Google
         end
       end
       
+      # Information about the cohort that the workload belongs to.
+      class CohortInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Final cohort that was used to tune the workload.
+        # Corresponds to the JSON property `cohort`
+        # @return [String]
+        attr_accessor :cohort
+      
+        # Output only. Source of the cohort.
+        # Corresponds to the JSON property `cohortSource`
+        # @return [String]
+        attr_accessor :cohort_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cohort = args[:cohort] if args.key?(:cohort)
+          @cohort_source = args[:cohort_source] if args.key?(:cohort_source)
+        end
+      end
+      
       # Confidential Instance Config for clusters using Confidential VMs (https://
-      # cloud.google.com/compute/confidential-vm/docs)
+      # cloud.google.com/confidential-computing/confidential-vm/docs)
       class ConfidentialInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Defines whether the instance should have confidential compute
-        # enabled.
+        # Optional. Defines the type of Confidential Compute technology to use.
+        # Corresponds to the JSON property `confidentialInstanceType`
+        # @return [String]
+        attr_accessor :confidential_instance_type
+      
+        # Optional. Deprecated: Use 'confidential_instance_type' instead. Defines
+        # whether the instance should have confidential compute enabled.
         # Corresponds to the JSON property `enableConfidentialCompute`
         # @return [Boolean]
         attr_accessor :enable_confidential_compute
@@ -1770,6 +1875,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidential_instance_type = args[:confidential_instance_type] if args.key?(:confidential_instance_type)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
         end
       end
@@ -1889,7 +1995,7 @@ module Google
         end
       end
       
-      # Dataproc metric config.
+      # Metric config.
       class DataprocMetricConfig
         include Google::Apis::Core::Hashable
       
@@ -1998,6 +2104,11 @@ module Google
       class DiskConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of attached disk configs for a group of VM instances.
+        # Corresponds to the JSON property `attachedDiskConfigs`
+        # @return [Array<Google::Apis::DataprocV1::AttachedDiskConfig>]
+        attr_accessor :attached_disk_configs
+      
         # Optional. Indicates how many IOPS to provision for the disk. This sets the
         # number of I/O operations per second that the disk can handle. This field is
         # supported only if boot_disk_type is hyperdisk-balanced.
@@ -2018,18 +2129,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
       
-        # Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-
-        # balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent
-        # Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive).
-        # See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
+        # Optional. Type of the boot disk (default is pd-standard). Valid values: pd-
+        # balanced (Persistent Disk Balanced Solid State Drive), pd-ssd (Persistent Disk
+        # Solid State Drive), or pd-standard (Persistent Disk Hard Disk Drive). See Disk
+        # types (https://cloud.google.com/compute/docs/disks#disk-types).
         # Corresponds to the JSON property `bootDiskType`
         # @return [String]
         attr_accessor :boot_disk_type
       
-        # Optional. Interface type of local SSDs (default is "scsi"). Valid values: "
-        # scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
-        # See local SSD performance (https://cloud.google.com/compute/docs/disks/local-
-        # ssd#performance).
+        # Optional. Interface type of local SSDs (default is scsi). Valid values: scsi (
+        # Small Computer System Interface), nvme (Non-Volatile Memory Express). See
+        # local SSD performance (https://cloud.google.com/compute/docs/disks/local-ssd#
+        # performance).
         # Corresponds to the JSON property `localSsdInterface`
         # @return [String]
         attr_accessor :local_ssd_interface
@@ -2050,6 +2161,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attached_disk_configs = args[:attached_disk_configs] if args.key?(:attached_disk_configs)
           @boot_disk_provisioned_iops = args[:boot_disk_provisioned_iops] if args.key?(:boot_disk_provisioned_iops)
           @boot_disk_provisioned_throughput = args[:boot_disk_provisioned_throughput] if args.key?(:boot_disk_provisioned_throughput)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
@@ -2238,6 +2350,14 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
+        # Optional. Associates Resource Manager tags with the workload nodes. There is a
+        # max limit of 30 tags. Keys and values can be either in numeric format, such as
+        # tagKeys/`tag_key_id` and tagValues/`tag_value_id`, or in namespaced format,
+        # such as `org_id|project_id`/`tag_key_short_name` and `tag_value_short_name`.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
         # Optional. Service account that used to execute workload.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -2286,6 +2406,7 @@ module Google
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
           @service_account = args[:service_account] if args.key?(:service_account)
           @staging_bucket = args[:staging_bucket] if args.key?(:staging_bucket)
           @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
@@ -2947,8 +3068,21 @@ module Google
       class GceClusterConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. An optional list of Compute Engine zones where the cluster will not
+        # be located when Auto Zone is enabled. Only one of zone_uri or
+        # auto_zone_exclude_zone_uris can be set. If both are omitted, the service will
+        # pick a zone in the cluster Compute Engine region. If
+        # auto_zone_exclude_zone_uris is set and there is more than one non-excluded
+        # zone, the service will pick one of the non-excluded zones. Otherwise, cluster
+        # creation will fail with INVALID_ARGUMENT error.A full URL, partial URI, or
+        # short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/
+        # [project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone]
+        # Corresponds to the JSON property `autoZoneExcludeZoneUris`
+        # @return [Array<String>]
+        attr_accessor :auto_zone_exclude_zone_uris
+      
         # Confidential Instance Config for clusters using Confidential VMs (https://
-        # cloud.google.com/compute/confidential-vm/docs)
+        # cloud.google.com/confidential-computing/confidential-vm/docs)
         # Corresponds to the JSON property `confidentialInstanceConfig`
         # @return [Google::Apis::DataprocV1::ConfidentialInstanceConfig]
         attr_accessor :confidential_instance_config
@@ -2956,8 +3090,8 @@ module Google
         # Optional. This setting applies to subnetwork-enabled networks. It is set to
         # true by default in clusters created with image versions 2.2.x.When set to true:
         # All cluster VMs have internal IP addresses. Google Private Access (https://
-        # cloud.google.com/vpc/docs/private-google-access) must be enabled to access
-        # Dataproc and other Google Cloud APIs. Off-cluster dependencies must be
+        # cloud.google.com/vpc/docs/private-google-access) must be enabled to access the
+        # Dataproc API and other Google Cloud APIs. Off-cluster dependencies must be
         # configured to be accessible without external IP addresses.When set to false:
         # Cluster VMs are not restricted to internal IP addresses. Ephemeral external IP
         # addresses are assigned to each cluster VM.
@@ -2976,7 +3110,7 @@ module Google
         # Optional. The Compute Engine network to be used for machine communications.
         # Cannot be specified with subnetwork_uri. If neither network_uri nor
         # subnetwork_uri is specified, the "default" network of the project is used, if
-        # it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://
+        # it exists. Cannot be a Custom Subnet Network (see Using Subnetworks (https://
         # cloud.google.com/compute/docs/subnetworks) for more information).A full URL,
         # partial URI, or short name are valid. Examples: https://www.googleapis.com/
         # compute/v1/projects/[project_id]/global/networks/default projects/[project_id]/
@@ -2985,8 +3119,8 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
-        # Node Group Affinity for clusters using sole-tenant node groups. The Dataproc
-        # NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
+        # Node Group Affinity for clusters using sole-tenant node groups. The
+        # NodeGroupAffinity resource is not related to the NodeGroup resource.
         # Corresponds to the JSON property `nodeGroupAffinity`
         # @return [Google::Apis::DataprocV1::NodeGroupAffinity]
         attr_accessor :node_group_affinity
@@ -3003,20 +3137,18 @@ module Google
       
         # Optional. Resource manager tags (https://cloud.google.com/resource-manager/
         # docs/tags/tags-creating-and-managing) to add to all instances (see Use secure
-        # tags in Dataproc (https://cloud.google.com/dataproc/docs/guides/attach-secure-
-        # tags)).
+        # tags (https://cloud.google.com/dataproc/docs/guides/use-secure-tags)).
         # Corresponds to the JSON property `resourceManagerTags`
         # @return [Hash<String,String>]
         attr_accessor :resource_manager_tags
       
-        # Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/
+        # Optional. The VM service account (https://cloud.google.com/dataproc/docs/
         # concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (
         # also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/
         # concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used
-        # by Dataproc cluster VM instances to access Google Cloud Platform services.If
-        # not specified, the Compute Engine default service account (https://cloud.
-        # google.com/compute/docs/access/service-accounts#default_service_account) is
-        # used.
+        # by cluster VM instances to access Google Cloud Platform services.If not
+        # specified, the Compute Engine default service account (https://cloud.google.
+        # com/compute/docs/access/service-accounts#default_service_account) is used.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -3054,11 +3186,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
-        # Optional. The Compute Engine zone where the Dataproc cluster will be located.
-        # If omitted, the service will pick a zone in the cluster's Compute Engine
-        # region. On a get request, zone will always be present.A full URL, partial URI,
-        # or short name are valid. Examples: https://www.googleapis.com/compute/v1/
-        # projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone]
+        # Optional. The Compute Engine zone where the cluster will be located. If
+        # omitted, the service will pick a zone in the cluster's Compute Engine region.
+        # On a get request, zone will always be present.A full URL, partial URI, or
+        # short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/
+        # [project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone]
         # Corresponds to the JSON property `zoneUri`
         # @return [String]
         attr_accessor :zone_uri
@@ -3069,6 +3201,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_zone_exclude_zone_uris = args[:auto_zone_exclude_zone_uris] if args.key?(:auto_zone_exclude_zone_uris)
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
           @metadata = args[:metadata] if args.key?(:metadata)
@@ -3223,6 +3356,15 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
+        # Optional. Specifies the service account (https://cloud.google.com/dataproc/
+        # docs/guides/dpgke/dataproc-gke-iam) to be used by the node pools. Specify the
+        # email address of the service account or its full resource name.Format:
+        # projects/`project`/serviceAccounts/`service_account_email` or `
+        # service_account_email`.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
         # Optional. Whether the nodes are created as Spot VM instances (https://cloud.
         # google.com/compute/docs/instances/spot). Spot VMs are the latest update to
         # legacy preemptible VMs. Spot VMs do not have a maximum lifetime. Legacy and
@@ -3246,6 +3388,7 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @spot = args[:spot] if args.key?(:spot)
         end
       end
@@ -3662,6 +3805,14 @@ module Google
       class InstanceFlexibilityPolicy
         include Google::Apis::Core::Hashable
       
+        # Output only. A map of instance short name to machine type. The key is the
+        # short name of the Compute Engine instance, and the value is the full machine-
+        # type name (e.g., 'n1-standard-16'). See Machine types for more information on
+        # valid machine type strings.
+        # Corresponds to the JSON property `instanceMachineTypes`
+        # @return [Hash<String,String>]
+        attr_accessor :instance_machine_types
+      
         # Optional. List of instance selection options that the group will use when
         # creating new VMs.
         # Corresponds to the JSON property `instanceSelectionList`
@@ -3673,7 +3824,7 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::InstanceSelectionResult>]
         attr_accessor :instance_selection_results
       
-        # Defines how Dataproc should create VMs with a mixture of provisioning models.
+        # Defines how to create VMs with a mixture of provisioning models.
         # Corresponds to the JSON property `provisioningModelMix`
         # @return [Google::Apis::DataprocV1::ProvisioningModelMix]
         attr_accessor :provisioning_model_mix
@@ -3684,6 +3835,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_machine_types = args[:instance_machine_types] if args.key?(:instance_machine_types)
           @instance_selection_list = args[:instance_selection_list] if args.key?(:instance_selection_list)
           @instance_selection_results = args[:instance_selection_results] if args.key?(:instance_selection_results)
           @provisioning_model_mix = args[:provisioning_model_mix] if args.key?(:provisioning_model_mix)
@@ -3760,9 +3912,9 @@ module Google
         # Optional. The Compute Engine image resource used for cluster instances.The URI
         # can represent an image or image family.Image examples: https://www.googleapis.
         # com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[
-        # project_id]/global/images/[image-id] image-idImage family examples. Dataproc
-        # will use the most recent image from the family: https://www.googleapis.com/
-        # compute/v1/projects/[project_id]/global/images/family/[custom-image-family-
+        # project_id]/global/images/[image-id] image-idImage family examples. The
+        # service will use the most recent image from the family: https://www.googleapis.
+        # com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-
         # name] projects/[project_id]/global/images/family/[custom-image-family-name]If
         # the URI is unspecified, it will be inferred from SoftwareConfig.image_version
         # or the system default.
@@ -3776,8 +3928,8 @@ module Google
         # @return [Google::Apis::DataprocV1::InstanceFlexibilityPolicy]
         attr_accessor :instance_flexibility_policy
       
-        # Output only. The list of instance names. Dataproc derives the names from
-        # cluster_name, num_instances, and the instance group.
+        # Output only. The list of instance names, derived from cluster_name,
+        # num_instances, and the instance group.
         # Corresponds to the JSON property `instanceNames`
         # @return [Array<String>]
         attr_accessor :instance_names
@@ -3797,10 +3949,10 @@ module Google
         # URL, partial URI, or short name are valid. Examples: https://www.googleapis.
         # com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2
         # projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-
-        # 2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https:
-        # //cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#
-        # using_auto_zone_placement) feature, you must use the short name of the machine
-        # type resource, for example, n1-standard-2.
+        # 2Auto Zone Exception: If you are using Auto Zone Placement (https://cloud.
+        # google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#
+        # using_auto_zone_placement), you must use the short name of the machine type
+        # resource, for example, n1-standard-2.
         # Corresponds to the JSON property `machineTypeUri`
         # @return [String]
         attr_accessor :machine_type_uri
@@ -3811,8 +3963,8 @@ module Google
         attr_accessor :managed_group_config
       
         # Optional. Specifies the minimum cpu platform for the Instance Group. See
-        # Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/
-        # concepts/compute/dataproc-min-cpu).
+        # Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/
+        # dataproc-min-cpu).
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -3913,15 +4065,22 @@ module Google
       class InstanceSelection
         include Google::Apis::Core::Hashable
       
+        # Specifies the config of boot disk and attached disk options for a group of VM
+        # instances.
+        # Corresponds to the JSON property `diskConfig`
+        # @return [Google::Apis::DataprocV1::DiskConfig]
+        attr_accessor :disk_config
+      
         # Optional. Full machine-type names, e.g. "n1-standard-16".
         # Corresponds to the JSON property `machineTypes`
         # @return [Array<String>]
         attr_accessor :machine_types
       
         # Optional. Preference of this instance selection. Lower number means higher
-        # preference. Dataproc will first try to create a VM based on the machine-type
-        # with priority rank and fallback to next rank based on availability. Machine
-        # types and instance selections with the same priority have the same preference.
+        # preference. The service will first try to create a VM based on the machine-
+        # type with priority rank and fallback to next rank based on availability.
+        # Machine types and instance selections with the same priority have the same
+        # preference.
         # Corresponds to the JSON property `rank`
         # @return [Fixnum]
         attr_accessor :rank
@@ -3932,6 +4091,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disk_config = args[:disk_config] if args.key?(:disk_config)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
           @rank = args[:rank] if args.key?(:rank)
         end
@@ -4615,8 +4775,8 @@ module Google
         # @return [String]
         attr_accessor :cross_realm_trust_kdc
       
-        # Optional. The remote realm the Dataproc on-cluster KDC will trust, should the
-        # user enable cross realm trust.
+        # Optional. The remote realm the on-cluster KDC will trust, should the user
+        # enable cross realm trust.
         # Corresponds to the JSON property `crossRealmTrustRealm`
         # @return [String]
         attr_accessor :cross_realm_trust_realm
@@ -4643,20 +4803,20 @@ module Google
       
         # Optional. The Cloud Storage URI of a KMS encrypted file containing the
         # password to the user provided key. For the self-signed certificate, this
-        # password is generated by Dataproc.
+        # password is generated by the service.
         # Corresponds to the JSON property `keyPasswordUri`
         # @return [String]
         attr_accessor :key_password_uri
       
         # Optional. The Cloud Storage URI of a KMS encrypted file containing the
         # password to the user provided keystore. For the self-signed certificate, this
-        # password is generated by Dataproc.
+        # password is generated by the service.
         # Corresponds to the JSON property `keystorePasswordUri`
         # @return [String]
         attr_accessor :keystore_password_uri
       
         # Optional. The Cloud Storage URI of the keystore file used for SSL encryption.
-        # If not provided, Dataproc will provide a self-signed certificate.
+        # If not provided, the service will provide a self-signed certificate.
         # Corresponds to the JSON property `keystoreUri`
         # @return [String]
         attr_accessor :keystore_uri
@@ -4686,13 +4846,13 @@ module Google
       
         # Optional. The Cloud Storage URI of a KMS encrypted file containing the
         # password to the user provided truststore. For the self-signed certificate,
-        # this password is generated by Dataproc.
+        # this password is generated by the service.
         # Corresponds to the JSON property `truststorePasswordUri`
         # @return [String]
         attr_accessor :truststore_password_uri
       
         # Optional. The Cloud Storage URI of the truststore file used for SSL encryption.
-        # If not provided, Dataproc will provide a self-signed certificate.
+        # If not provided, the service will provide a self-signed certificate.
         # Corresponds to the JSON property `truststoreUri`
         # @return [String]
         attr_accessor :truststore_uri
@@ -4996,6 +5156,13 @@ module Google
         # @return [Array<Google::Apis::DataprocV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets
+        # ListOperationsRequest.return_partial_success and reads across collections. For
+        # example, when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5004,6 +5171,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -5227,8 +5395,8 @@ module Google
       class MetastoreConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Resource name of an existing Dataproc Metastore service.Example:
-        # projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+        # Required. Resource name of an existing Metastore service.Example: projects/[
+        # project_id]/locations/[dataproc_region]/services/[service-name]
         # Corresponds to the JSON property `dataprocMetastoreService`
         # @return [String]
         attr_accessor :dataproc_metastore_service
@@ -5243,7 +5411,7 @@ module Google
         end
       end
       
-      # A Dataproc custom metric.
+      # A custom metric.
       class Metric
         include Google::Apis::Core::Hashable
       
@@ -5384,8 +5552,8 @@ module Google
         end
       end
       
-      # Dataproc Node Group. The Dataproc NodeGroup resource is not related to the
-      # Dataproc NodeGroupAffinity resource.
+      # Node Group. The NodeGroup resource is not related to the NodeGroupAffinity
+      # resource.
       class NodeGroup
         include Google::Apis::Core::Hashable
       
@@ -5427,8 +5595,8 @@ module Google
         end
       end
       
-      # Node Group Affinity for clusters using sole-tenant node groups. The Dataproc
-      # NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
+      # Node Group Affinity for clusters using sole-tenant node groups. The
+      # NodeGroupAffinity resource is not related to the NodeGroup resource.
       class NodeGroupAffinity
         include Google::Apis::Core::Hashable
       
@@ -6181,17 +6349,17 @@ module Google
         end
       end
       
-      # Defines how Dataproc should create VMs with a mixture of provisioning models.
+      # Defines how to create VMs with a mixture of provisioning models.
       class ProvisioningModelMix
         include Google::Apis::Core::Hashable
       
         # Optional. The base capacity that will always use Standard VMs to avoid risk of
-        # more preemption than the minimum capacity you need. Dataproc will create only
-        # standard VMs until it reaches standard_capacity_base, then it will start using
-        # standard_capacity_percent_above_base to mix Spot with Standard VMs. eg. If 15
-        # instances are requested and standard_capacity_base is 5, Dataproc will create
-        # 5 standard VMs and then start mixing spot and standard VMs for remaining 10
-        # instances.
+        # more preemption than the minimum capacity you need. The service will create
+        # only standard VMs until it reaches standard_capacity_base, then it will start
+        # using standard_capacity_percent_above_base to mix Spot with Standard VMs. eg.
+        # If 15 instances are requested and standard_capacity_base is 5, the service
+        # will create 5 standard VMs and thenstart mixing spot and standard VMs for
+        # remaining 10 instances.
         # Corresponds to the JSON property `standardCapacityBase`
         # @return [Fixnum]
         attr_accessor :standard_capacity_base
@@ -6200,7 +6368,7 @@ module Google
         # remaining percentage will use Spot VMs. The percentage applies only to the
         # capacity above standard_capacity_base. eg. If 15 instances are requested and
         # standard_capacity_base is 5 and standard_capacity_percent_above_base is 30,
-        # Dataproc will create 5 standard VMs and then start mixing spot and standard
+        # the service will create 5 standard VMs and then start mixing spot and standard
         # VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
         # Corresponds to the JSON property `standardCapacityPercentAboveBase`
         # @return [Fixnum]
@@ -6221,7 +6389,8 @@ module Google
       class PyPiRepositoryConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. PyPi repository address
+        # Optional. The PyPi repository address. Note: This field is not available for
+        # batch workloads.
         # Corresponds to the JSON property `pypiRepository`
         # @return [String]
         attr_accessor :pypi_repository
@@ -6299,7 +6468,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. HCFS URIs of archives to be extracted into the working directory of
-        # each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        # each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.Note:
+        # Spark applications must be deployed in cluster mode (https://spark.apache.org/
+        # docs/latest/cluster-overview.html) for correct environment propagation.
         # Corresponds to the JSON property `archiveUris`
         # @return [Array<String>]
         attr_accessor :archive_uris
@@ -6361,6 +6532,57 @@ module Google
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @main_python_file_uri = args[:main_python_file_uri] if args.key?(:main_python_file_uri)
           @properties = args[:properties] if args.key?(:properties)
+          @python_file_uris = args[:python_file_uris] if args.key?(:python_file_uris)
+        end
+      end
+      
+      # A configuration for running a PySpark Notebook batch workload.
+      class PySparkNotebookBatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. HCFS URIs of archives to be extracted into the working directory of
+        # each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        # Corresponds to the JSON property `archiveUris`
+        # @return [Array<String>]
+        attr_accessor :archive_uris
+      
+        # Optional. HCFS URIs of files to be placed in the working directory of each
+        # executor
+        # Corresponds to the JSON property `fileUris`
+        # @return [Array<String>]
+        attr_accessor :file_uris
+      
+        # Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        # Corresponds to the JSON property `jarFileUris`
+        # @return [Array<String>]
+        attr_accessor :jar_file_uris
+      
+        # Required. The HCFS URI of the notebook file to execute.
+        # Corresponds to the JSON property `notebookFileUri`
+        # @return [String]
+        attr_accessor :notebook_file_uri
+      
+        # Optional. The parameters to pass to the notebook.
+        # Corresponds to the JSON property `params`
+        # @return [Hash<String,String>]
+        attr_accessor :params
+      
+        # Optional. HCFS URIs of Python files to pass to the PySpark framework.
+        # Corresponds to the JSON property `pythonFileUris`
+        # @return [Array<String>]
+        attr_accessor :python_file_uris
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_uris = args[:archive_uris] if args.key?(:archive_uris)
+          @file_uris = args[:file_uris] if args.key?(:file_uris)
+          @jar_file_uris = args[:jar_file_uris] if args.key?(:jar_file_uris)
+          @notebook_file_uri = args[:notebook_file_uri] if args.key?(:notebook_file_uri)
+          @params = args[:params] if args.key?(:params)
           @python_file_uris = args[:python_file_uris] if args.key?(:python_file_uris)
         end
       end
@@ -6807,13 +7029,22 @@ module Google
         # @return [String]
         attr_accessor :cluster_uuid
       
+        # Optional. Whether the request is submitted by a super user. If true, IAM will
+        # check 'dataproc.clusters.repair' permission instead of 'dataproc.clusters.
+        # update' permission. This is to give Dataproc superuser the ability to repair
+        # clusters without granting the overly broad update permission.
+        # Corresponds to the JSON property `dataprocSuperUser`
+        # @return [Boolean]
+        attr_accessor :dataproc_super_user
+        alias_method :dataproc_super_user?, :dataproc_super_user
+      
         # Optional. Timeout for graceful YARN decommissioning. Graceful decommissioning
         # facilitates the removal of cluster nodes without interrupting jobs in progress.
         # The timeout specifies the amount of time to wait for jobs finish before
         # forcefully removing nodes. The default timeout is 0 for forceful
         # decommissioning, and the maximum timeout period is 1 day. (see JSON Mapping—
         # Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        # graceful_decommission_timeout is supported in Dataproc image versions 1.2+.
+        # graceful_decommission_timeout is supported in image versions 1.2+.
         # Corresponds to the JSON property `gracefulDecommissionTimeout`
         # @return [String]
         attr_accessor :graceful_decommission_timeout
@@ -6849,6 +7080,7 @@ module Google
         def update!(**args)
           @cluster = args[:cluster] if args.key?(:cluster)
           @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
+          @dataproc_super_user = args[:dataproc_super_user] if args.key?(:dataproc_super_user)
           @graceful_decommission_timeout = args[:graceful_decommission_timeout] if args.key?(:graceful_decommission_timeout)
           @node_pools = args[:node_pools] if args.key?(:node_pools)
           @parent_operation_id = args[:parent_operation_id] if args.key?(:parent_operation_id)
@@ -7065,8 +7297,8 @@ module Google
         # @return [Google::Apis::DataprocV1::AutotuningConfig]
         attr_accessor :autotuning_config
       
-        # Optional. Cohort identifier. Identifies families of the workloads having the
-        # same shape, e.g. daily ETL jobs.
+        # Optional. Cohort identifier. Identifies families of the workloads that have
+        # the same shape, for example, daily ETL jobs.
         # Corresponds to the JSON property `cohort`
         # @return [String]
         attr_accessor :cohort
@@ -7117,6 +7349,11 @@ module Google
         # @return [Google::Apis::DataprocV1::UsageMetrics]
         attr_accessor :approximate_usage
       
+        # Information about the cohort that the workload belongs to.
+        # Corresponds to the JSON property `cohortInfo`
+        # @return [Google::Apis::DataprocV1::CohortInfo]
+        attr_accessor :cohort_info
+      
         # The usage snapshot represents the resources consumed by a workload at a
         # specified time.
         # Corresponds to the JSON property `currentUsage`
@@ -7152,6 +7389,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @approximate_usage = args[:approximate_usage] if args.key?(:approximate_usage)
+          @cohort_info = args[:cohort_info] if args.key?(:cohort_info)
           @current_usage = args[:current_usage] if args.key?(:current_usage)
           @diagnostic_output_uri = args[:diagnostic_output_uri] if args.key?(:diagnostic_output_uri)
           @endpoints = args[:endpoints] if args.key?(:endpoints)
@@ -7868,7 +8106,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The resource name of the session template.
+        # Required. Identifier. The resource name of the session template.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -8387,7 +8625,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The version of software inside the cluster. It must be one of the
-        # supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/
+        # supported Image Versions (https://cloud.google.com/dataproc/docs/concepts/
         # versioning/dataproc-versions#supported-dataproc-image-versions), such as "1.2"
         # (including a subminor version, such as "1.2.29"), or the "preview" version (
         # https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#
@@ -8580,6 +8818,140 @@ module Google
         end
       end
       
+      # Represents the lifecycle and details of an Execution via Spark Connect
+      class SparkConnectExecutionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp when the execution was closed.
+        # Corresponds to the JSON property `closeTimestamp`
+        # @return [Fixnum]
+        attr_accessor :close_timestamp
+      
+        # Detailed information about the execution.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # Timestamp when the execution finished.
+        # Corresponds to the JSON property `finishTimestamp`
+        # @return [Fixnum]
+        attr_accessor :finish_timestamp
+      
+        # Optional. List of job ids associated with the execution.
+        # Corresponds to the JSON property `jobIds`
+        # @return [Array<String>]
+        attr_accessor :job_ids
+      
+        # Required. Job tag of the execution.
+        # Corresponds to the JSON property `jobTag`
+        # @return [String]
+        attr_accessor :job_tag
+      
+        # Unique identifier for the operation.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # Required. Session ID, ties the execution to a specific Spark Connect session.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Optional. Tags associated with the Spark session.
+        # Corresponds to the JSON property `sparkSessionTags`
+        # @return [Array<String>]
+        attr_accessor :spark_session_tags
+      
+        # Optional. List of sql execution ids associated with the execution.
+        # Corresponds to the JSON property `sqlExecIds`
+        # @return [Array<String>]
+        attr_accessor :sql_exec_ids
+      
+        # Timestamp when the execution started.
+        # Corresponds to the JSON property `startTimestamp`
+        # @return [Fixnum]
+        attr_accessor :start_timestamp
+      
+        # Output only. Current state of the execution.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # statement of the execution.
+        # Corresponds to the JSON property `statement`
+        # @return [String]
+        attr_accessor :statement
+      
+        # User ID of the user who started the execution.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @close_timestamp = args[:close_timestamp] if args.key?(:close_timestamp)
+          @detail = args[:detail] if args.key?(:detail)
+          @finish_timestamp = args[:finish_timestamp] if args.key?(:finish_timestamp)
+          @job_ids = args[:job_ids] if args.key?(:job_ids)
+          @job_tag = args[:job_tag] if args.key?(:job_tag)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @spark_session_tags = args[:spark_session_tags] if args.key?(:spark_session_tags)
+          @sql_exec_ids = args[:sql_exec_ids] if args.key?(:sql_exec_ids)
+          @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
+          @state = args[:state] if args.key?(:state)
+          @statement = args[:statement] if args.key?(:statement)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Represents session-level information for Spark Connect
+      class SparkConnectSessionInfo
+        include Google::Apis::Core::Hashable
+      
+        # Timestamp when the session finished.
+        # Corresponds to the JSON property `finishTimestamp`
+        # @return [Fixnum]
+        attr_accessor :finish_timestamp
+      
+        # Required. Session ID of the session.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Timestamp when the session started.
+        # Corresponds to the JSON property `startTimestamp`
+        # @return [Fixnum]
+        attr_accessor :start_timestamp
+      
+        # Optional. Total number of executions in the session.
+        # Corresponds to the JSON property `totalExecution`
+        # @return [Fixnum]
+        attr_accessor :total_execution
+      
+        # User ID of the user who started the session.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finish_timestamp = args[:finish_timestamp] if args.key?(:finish_timestamp)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @start_timestamp = args[:start_timestamp] if args.key?(:start_timestamp)
+          @total_execution = args[:total_execution] if args.key?(:total_execution)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
       # Spark History Server configuration for the workload.
       class SparkHistoryServerConfig
         include Google::Apis::Core::Hashable
@@ -8712,6 +9084,11 @@ module Google
         # @return [String]
         attr_accessor :desc
       
+        # Optional. Additional metadata for the spark plan graph cluster.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
         # 
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::DataprocV1::SqlPlanMetric>]
@@ -8739,6 +9116,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @desc = args[:desc] if args.key?(:desc)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @metrics = args[:metrics] if args.key?(:metrics)
           @name = args[:name] if args.key?(:name)
           @nodes = args[:nodes] if args.key?(:nodes)
@@ -8780,6 +9158,11 @@ module Google
         # @return [String]
         attr_accessor :desc
       
+        # Optional. Additional metadata for the spark plan graph cluster.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
         # 
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::DataprocV1::SqlPlanMetric>]
@@ -8802,6 +9185,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @desc = args[:desc] if args.key?(:desc)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @metrics = args[:metrics] if args.key?(:metrics)
           @name = args[:name] if args.key?(:name)
           @spark_plan_graph_node_id = args[:spark_plan_graph_node_id] if args.key?(:spark_plan_graph_node_id)
@@ -9202,6 +9586,16 @@ module Google
         # @return [Google::Apis::DataprocV1::ResourceProfileInfo]
         attr_accessor :resource_profile_info
       
+        # Represents the lifecycle and details of an Execution via Spark Connect
+        # Corresponds to the JSON property `sparkConnectExecutionInfo`
+        # @return [Google::Apis::DataprocV1::SparkConnectExecutionInfo]
+        attr_accessor :spark_connect_execution_info
+      
+        # Represents session-level information for Spark Connect
+        # Corresponds to the JSON property `sparkConnectSessionInfo`
+        # @return [Google::Apis::DataprocV1::SparkConnectSessionInfo]
+        attr_accessor :spark_connect_session_info
+      
         # A graph used for storing information of an executionPlan of DataFrame.
         # Corresponds to the JSON property `sparkPlanGraph`
         # @return [Google::Apis::DataprocV1::SparkPlanGraph]
@@ -9263,6 +9657,8 @@ module Google
           @rdd_operation_graph = args[:rdd_operation_graph] if args.key?(:rdd_operation_graph)
           @rdd_storage_info = args[:rdd_storage_info] if args.key?(:rdd_storage_info)
           @resource_profile_info = args[:resource_profile_info] if args.key?(:resource_profile_info)
+          @spark_connect_execution_info = args[:spark_connect_execution_info] if args.key?(:spark_connect_execution_info)
+          @spark_connect_session_info = args[:spark_connect_session_info] if args.key?(:spark_connect_session_info)
           @spark_plan_graph = args[:spark_plan_graph] if args.key?(:spark_plan_graph)
           @speculation_stage_summary = args[:speculation_stage_summary] if args.key?(:speculation_stage_summary)
           @sql_execution_ui_data = args[:sql_execution_ui_data] if args.key?(:sql_execution_ui_data)
@@ -11372,16 +11768,38 @@ module Google
       class UsageMetrics
         include Google::Apis::Core::Hashable
       
-        # Optional. Accelerator type being used, if any
+        # Optional. Accelerator type being used, if any Deprecated: This field is only
+        # used in runtime versions below 3.0.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
       
         # Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc
         # Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        # Deprecated: This field is only used in runtime versions below 3.0.
         # Corresponds to the JSON property `milliAcceleratorSeconds`
         # @return [Fixnum]
         attr_accessor :milli_accelerator_seconds
+      
+        # Optional. A100-40 accelerator usage in (milliAccelerator x seconds) (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing)).
+        # Corresponds to the JSON property `milliAcceleratorSecondsA10040`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_seconds_a10040
+      
+        # Optional. A100-80 accelerator usage in (milliAccelerator x seconds) (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing)).
+        # Corresponds to the JSON property `milliAcceleratorSecondsA10080`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_seconds_a10080
+      
+        # Optional. L4 accelerator usage in (milliAccelerator x seconds) (see Dataproc
+        # Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        # Corresponds to the JSON property `milliAcceleratorSecondsL4`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_seconds_l4
       
         # Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see
         # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
@@ -11389,11 +11807,6 @@ module Google
         # Corresponds to the JSON property `milliDcuSeconds`
         # @return [Fixnum]
         attr_accessor :milli_dcu_seconds
-      
-        # Optional. Slot usage in (milliSlot x seconds).
-        # Corresponds to the JSON property `milliSlotSeconds`
-        # @return [Fixnum]
-        attr_accessor :milli_slot_seconds
       
         # Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless
         # pricing (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -11414,8 +11827,10 @@ module Google
         def update!(**args)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @milli_accelerator_seconds = args[:milli_accelerator_seconds] if args.key?(:milli_accelerator_seconds)
+          @milli_accelerator_seconds_a10040 = args[:milli_accelerator_seconds_a10040] if args.key?(:milli_accelerator_seconds_a10040)
+          @milli_accelerator_seconds_a10080 = args[:milli_accelerator_seconds_a10080] if args.key?(:milli_accelerator_seconds_a10080)
+          @milli_accelerator_seconds_l4 = args[:milli_accelerator_seconds_l4] if args.key?(:milli_accelerator_seconds_l4)
           @milli_dcu_seconds = args[:milli_dcu_seconds] if args.key?(:milli_dcu_seconds)
-          @milli_slot_seconds = args[:milli_slot_seconds] if args.key?(:milli_slot_seconds)
           @shuffle_storage_gb_seconds = args[:shuffle_storage_gb_seconds] if args.key?(:shuffle_storage_gb_seconds)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -11426,16 +11841,39 @@ module Google
       class UsageSnapshot
         include Google::Apis::Core::Hashable
       
-        # Optional. Accelerator type being used, if any
+        # Optional. Accelerator type being used, if any Deprecated: This field is only
+        # used in runtime versions below 3.0.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
       
         # Optional. Milli (one-thousandth) accelerator. (see Dataproc Serverless pricing
-        # (https://cloud.google.com/dataproc-serverless/pricing))
+        # (https://cloud.google.com/dataproc-serverless/pricing)) Deprecated: This field
+        # is only used in runtime versions below 3.0.
         # Corresponds to the JSON property `milliAccelerator`
         # @return [Fixnum]
         attr_accessor :milli_accelerator
+      
+        # Optional. Milli (one-thousandth) accelerator for A100-40 accelerators. (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing))
+        # Corresponds to the JSON property `milliAcceleratorA10040`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_a10040
+      
+        # Optional. Milli (one-thousandth) accelerator for A100-80 accelerators. (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing))
+        # Corresponds to the JSON property `milliAcceleratorA10080`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_a10080
+      
+        # Optional. Milli (one-thousandth) accelerator for L4 accelerators. (see
+        # Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/
+        # pricing))
+        # Corresponds to the JSON property `milliAcceleratorL4`
+        # @return [Fixnum]
+        attr_accessor :milli_accelerator_l4
       
         # Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc
         # Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -11449,11 +11887,6 @@ module Google
         # Corresponds to the JSON property `milliDcuPremium`
         # @return [Fixnum]
         attr_accessor :milli_dcu_premium
-      
-        # Optional. Milli (one-thousandth) Slot usage of the workload.
-        # Corresponds to the JSON property `milliSlot`
-        # @return [Fixnum]
-        attr_accessor :milli_slot
       
         # Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (
         # https://cloud.google.com/dataproc-serverless/pricing))
@@ -11481,9 +11914,11 @@ module Google
         def update!(**args)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @milli_accelerator = args[:milli_accelerator] if args.key?(:milli_accelerator)
+          @milli_accelerator_a10040 = args[:milli_accelerator_a10040] if args.key?(:milli_accelerator_a10040)
+          @milli_accelerator_a10080 = args[:milli_accelerator_a10080] if args.key?(:milli_accelerator_a10080)
+          @milli_accelerator_l4 = args[:milli_accelerator_l4] if args.key?(:milli_accelerator_l4)
           @milli_dcu = args[:milli_dcu] if args.key?(:milli_dcu)
           @milli_dcu_premium = args[:milli_dcu_premium] if args.key?(:milli_dcu_premium)
-          @milli_slot = args[:milli_slot] if args.key?(:milli_slot)
           @shuffle_storage_gb = args[:shuffle_storage_gb] if args.key?(:shuffle_storage_gb)
           @shuffle_storage_gb_premium = args[:shuffle_storage_gb_premium] if args.key?(:shuffle_storage_gb_premium)
           @snapshot_time = args[:snapshot_time] if args.key?(:snapshot_time)
@@ -11540,9 +11975,9 @@ module Google
         end
       end
       
-      # The Dataproc cluster config for a cluster that does not directly control the
-      # underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.
-      # google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview).
+      # The cluster config for a cluster that does not directly control the underlying
+      # compute resources, such as a GKE cluster (https://cloud.google.com/dataproc/
+      # docs/guides/dpgke/dataproc-gke-overview).
       class VirtualClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -11557,12 +11992,12 @@ module Google
         attr_accessor :kubernetes_cluster_config
       
         # Optional. A Cloud Storage bucket used to stage job dependencies, config files,
-        # and job driver console output. If you do not specify a staging bucket, Cloud
-        # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
+        # and job driver console output. If you do not specify a staging bucket, the
+        # service will determine a Cloud Storage location (US, ASIA, or EU) for your
         # cluster's staging bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
-        # location bucket (see Dataproc staging and temp buckets (https://cloud.google.
-        # com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
+        # location bucket (see staging and temp buckets (https://cloud.google.com/
+        # dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field
         # requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage
         # bucket.
         # Corresponds to the JSON property `stagingBucket`
@@ -11964,6 +12399,12 @@ module Google
       class YarnApplication
         include Google::Apis::Core::Hashable
       
+        # Optional. The cumulative memory usage of the application for a job, measured
+        # in mb-seconds.
+        # Corresponds to the JSON property `memoryMbSeconds`
+        # @return [Fixnum]
+        attr_accessor :memory_mb_seconds
+      
         # Required. The application name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -11987,16 +12428,24 @@ module Google
         # @return [String]
         attr_accessor :tracking_url
       
+        # Optional. The cumulative CPU time consumed by the application for a job,
+        # measured in vcore-seconds.
+        # Corresponds to the JSON property `vcoreSeconds`
+        # @return [Fixnum]
+        attr_accessor :vcore_seconds
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @memory_mb_seconds = args[:memory_mb_seconds] if args.key?(:memory_mb_seconds)
           @name = args[:name] if args.key?(:name)
           @progress = args[:progress] if args.key?(:progress)
           @state = args[:state] if args.key?(:state)
           @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
+          @vcore_seconds = args[:vcore_seconds] if args.key?(:vcore_seconds)
         end
       end
     end

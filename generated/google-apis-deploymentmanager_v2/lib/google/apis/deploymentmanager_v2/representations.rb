@@ -112,6 +112,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallPolicyRuleOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetVersionOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetVersionOperationMetadataSbomInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalSetPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -477,6 +495,29 @@ module Google
         end
       end
       
+      class FirewallPolicyRuleOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_priority, as: 'allocatedPriority'
+        end
+      end
+      
+      class GetVersionOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inline_sbom_info, as: 'inlineSbomInfo', class: Google::Apis::DeploymentmanagerV2::GetVersionOperationMetadataSbomInfo, decorator: Google::Apis::DeploymentmanagerV2::GetVersionOperationMetadataSbomInfo::Representation
+      
+        end
+      end
+      
+      class GetVersionOperationMetadataSbomInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :current_component_versions, as: 'currentComponentVersions'
+          hash :target_component_versions, as: 'targetComponentVersions'
+        end
+      end
+      
       class GlobalSetPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -565,6 +606,10 @@ module Google
           property :description, as: 'description'
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::DeploymentmanagerV2::Operation::Error, decorator: Google::Apis::DeploymentmanagerV2::Operation::Error::Representation
+      
+          property :firewall_policy_rule_operation_metadata, as: 'firewallPolicyRuleOperationMetadata', class: Google::Apis::DeploymentmanagerV2::FirewallPolicyRuleOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2::FirewallPolicyRuleOperationMetadata::Representation
+      
+          property :get_version_operation_metadata, as: 'getVersionOperationMetadata', class: Google::Apis::DeploymentmanagerV2::GetVersionOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2::GetVersionOperationMetadata::Representation
       
           property :http_error_message, as: 'httpErrorMessage'
           property :http_error_status_code, as: 'httpErrorStatusCode'
@@ -813,6 +858,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :zonal_igm_ids, as: 'zonalIgmIds'
+          hash :zone_to_igm_ids, as: 'zoneToIgmIds'
         end
       end
       

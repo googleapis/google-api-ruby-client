@@ -22,6 +22,24 @@ module Google
   module Apis
     module CloudkmsV1
       
+      class AddQuorumMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApproveSingleTenantHsmInstanceProposalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApproveSingleTenantHsmInstanceProposalResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AsymmetricDecryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Challenge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChallengeReply
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChecksummedData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DecapsulateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DecapsulateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DecryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +155,12 @@ module Google
       end
       
       class DecryptResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteSingleTenantHsmInstance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableSingleTenantHsmInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EkmConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableSingleTenantHsmInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EncryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +215,12 @@ module Google
       end
       
       class EncryptResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteSingleTenantHsmInstanceProposalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -268,6 +340,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRetiredResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSingleTenantHsmInstanceProposalsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSingleTenantHsmInstancesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -322,6 +412,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QuorumAuth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuorumParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuorumReply
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RawDecryptRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,7 +454,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RefreshSingleTenantHsmInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegisterTwoFactorAuthKeys
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveQuorumMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequiredActionQuorumParameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequiredActionQuorumReply
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreCryptoKeyVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetiredResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -377,6 +521,18 @@ module Google
       end
       
       class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SingleTenantHsmInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SingleTenantHsmInstanceProposal
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -416,6 +572,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddQuorumMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :two_factor_public_key_pem, as: 'twoFactorPublicKeyPem'
+        end
+      end
+      
+      class ApproveSingleTenantHsmInstanceProposalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :quorum_reply, as: 'quorumReply', class: Google::Apis::CloudkmsV1::QuorumReply, decorator: Google::Apis::CloudkmsV1::QuorumReply::Representation
+      
+          property :required_action_quorum_reply, as: 'requiredActionQuorumReply', class: Google::Apis::CloudkmsV1::RequiredActionQuorumReply, decorator: Google::Apis::CloudkmsV1::RequiredActionQuorumReply::Representation
+      
+        end
+      end
+      
+      class ApproveSingleTenantHsmInstanceProposalResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
       end
       
       class AsymmetricDecryptRequest
@@ -481,6 +660,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
           property :key_project, as: 'keyProject'
+          property :key_project_resolution_mode, as: 'keyProjectResolutionMode'
           property :name, as: 'name'
           property :state, as: 'state'
         end
@@ -517,6 +697,22 @@ module Google
           collection :cavium_certs, as: 'caviumCerts'
           collection :google_card_certs, as: 'googleCardCerts'
           collection :google_partition_certs, as: 'googlePartitionCerts'
+        end
+      end
+      
+      class Challenge
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :challenge, :base64 => true, as: 'challenge'
+          property :public_key_pem, as: 'publicKeyPem'
+        end
+      end
+      
+      class ChallengeReply
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_key_pem, as: 'publicKeyPem'
+          property :signed_challenge, :base64 => true, as: 'signedChallenge'
         end
       end
       
@@ -581,6 +777,25 @@ module Google
         end
       end
       
+      class DecapsulateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ciphertext, :base64 => true, as: 'ciphertext'
+          property :ciphertext_crc32c, :numeric_string => true, as: 'ciphertextCrc32c'
+        end
+      end
+      
+      class DecapsulateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :protection_level, as: 'protectionLevel'
+          property :shared_secret, :base64 => true, as: 'sharedSecret'
+          property :shared_secret_crc32c, :numeric_string => true, as: 'sharedSecretCrc32c'
+          property :verified_ciphertext_crc32c, as: 'verifiedCiphertextCrc32c'
+        end
+      end
+      
       class DecryptRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -601,6 +816,12 @@ module Google
         end
       end
       
+      class DeleteSingleTenantHsmInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DestroyCryptoKeyVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -610,9 +831,16 @@ module Google
       class Digest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_mu, :base64 => true, as: 'externalMu'
           property :sha256, :base64 => true, as: 'sha256'
           property :sha384, :base64 => true, as: 'sha384'
           property :sha512, :base64 => true, as: 'sha512'
+        end
+      end
+      
+      class DisableSingleTenantHsmInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -637,6 +865,18 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableSingleTenantHsmInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class EncryptRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -656,6 +896,12 @@ module Google
           property :protection_level, as: 'protectionLevel'
           property :verified_additional_authenticated_data_crc32c, as: 'verifiedAdditionalAuthenticatedDataCrc32c'
           property :verified_plaintext_crc32c, as: 'verifiedPlaintextCrc32c'
+        end
+      end
+      
+      class ExecuteSingleTenantHsmInstanceProposalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -710,6 +956,7 @@ module Google
           property :attestation, as: 'attestation', class: Google::Apis::CloudkmsV1::KeyOperationAttestation, decorator: Google::Apis::CloudkmsV1::KeyOperationAttestation::Representation
       
           property :create_time, as: 'createTime'
+          property :crypto_key_backend, as: 'cryptoKeyBackend'
           property :expire_event_time, as: 'expireEventTime'
           property :expire_time, as: 'expireTime'
           property :generate_time, as: 'generateTime'
@@ -718,6 +965,7 @@ module Google
           property :protection_level, as: 'protectionLevel'
           property :public_key, as: 'publicKey', class: Google::Apis::CloudkmsV1::WrappingPublicKey, decorator: Google::Apis::CloudkmsV1::WrappingPublicKey::Representation
       
+          property :public_key_format, as: 'publicKeyFormat'
           property :state, as: 'state'
         end
       end
@@ -742,6 +990,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_key_access_justification_policy, as: 'defaultKeyAccessJustificationPolicy', class: Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicy, decorator: Google::Apis::CloudkmsV1::KeyAccessJustificationsPolicy::Representation
       
+          property :default_policy_available, as: 'defaultPolicyAvailable'
           property :name, as: 'name'
         end
       end
@@ -841,6 +1090,36 @@ module Google
         end
       end
       
+      class ListRetiredResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :retired_resources, as: 'retiredResources', class: Google::Apis::CloudkmsV1::RetiredResource, decorator: Google::Apis::CloudkmsV1::RetiredResource::Representation
+      
+          property :total_size, :numeric_string => true, as: 'totalSize'
+        end
+      end
+      
+      class ListSingleTenantHsmInstanceProposalsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :single_tenant_hsm_instance_proposals, as: 'singleTenantHsmInstanceProposals', class: Google::Apis::CloudkmsV1::SingleTenantHsmInstanceProposal, decorator: Google::Apis::CloudkmsV1::SingleTenantHsmInstanceProposal::Representation
+      
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
+      class ListSingleTenantHsmInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :single_tenant_hsm_instances, as: 'singleTenantHsmInstances', class: Google::Apis::CloudkmsV1::SingleTenantHsmInstance, decorator: Google::Apis::CloudkmsV1::SingleTenantHsmInstance::Representation
+      
+          property :total_size, as: 'totalSize'
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -857,6 +1136,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ekm_available, as: 'ekmAvailable'
           property :hsm_available, as: 'hsmAvailable'
+          property :hsm_single_tenant_available, as: 'hsmSingleTenantAvailable'
         end
       end
       
@@ -939,6 +1219,33 @@ module Google
         end
       end
       
+      class QuorumAuth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_approver_count, as: 'requiredApproverCount'
+          property :total_approver_count, as: 'totalApproverCount'
+          collection :two_factor_public_key_pems, as: 'twoFactorPublicKeyPems'
+        end
+      end
+      
+      class QuorumParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :approved_two_factor_public_key_pems, as: 'approvedTwoFactorPublicKeyPems'
+          collection :challenges, as: 'challenges', class: Google::Apis::CloudkmsV1::Challenge, decorator: Google::Apis::CloudkmsV1::Challenge::Representation
+      
+          property :required_approver_count, as: 'requiredApproverCount'
+        end
+      end
+      
+      class QuorumReply
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :challenge_replies, as: 'challengeReplies', class: Google::Apis::CloudkmsV1::ChallengeReply, decorator: Google::Apis::CloudkmsV1::ChallengeReply::Representation
+      
+        end
+      end
+      
       class RawDecryptRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -992,9 +1299,62 @@ module Google
         end
       end
       
+      class RefreshSingleTenantHsmInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RegisterTwoFactorAuthKeys
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_approver_count, as: 'requiredApproverCount'
+          collection :two_factor_public_key_pems, as: 'twoFactorPublicKeyPems'
+        end
+      end
+      
+      class RemoveQuorumMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :two_factor_public_key_pem, as: 'twoFactorPublicKeyPem'
+        end
+      end
+      
+      class RequiredActionQuorumParameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :approved_two_factor_public_key_pems, as: 'approvedTwoFactorPublicKeyPems'
+          collection :quorum_challenges, as: 'quorumChallenges', class: Google::Apis::CloudkmsV1::Challenge, decorator: Google::Apis::CloudkmsV1::Challenge::Representation
+      
+          property :required_approver_count, as: 'requiredApproverCount'
+          collection :required_challenges, as: 'requiredChallenges', class: Google::Apis::CloudkmsV1::Challenge, decorator: Google::Apis::CloudkmsV1::Challenge::Representation
+      
+        end
+      end
+      
+      class RequiredActionQuorumReply
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :quorum_challenge_replies, as: 'quorumChallengeReplies', class: Google::Apis::CloudkmsV1::ChallengeReply, decorator: Google::Apis::CloudkmsV1::ChallengeReply::Representation
+      
+          collection :required_challenge_replies, as: 'requiredChallengeReplies', class: Google::Apis::CloudkmsV1::ChallengeReply, decorator: Google::Apis::CloudkmsV1::ChallengeReply::Representation
+      
+        end
+      end
+      
       class RestoreCryptoKeyVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RetiredResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_time, as: 'deleteTime'
+          property :name, as: 'name'
+          property :original_resource, as: 'originalResource'
+          property :resource_type, as: 'resourceType'
         end
       end
       
@@ -1045,6 +1405,53 @@ module Google
         end
       end
       
+      class SingleTenantHsmInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :disable_time, as: 'disableTime'
+          property :key_portability_enabled, as: 'keyPortabilityEnabled'
+          property :name, as: 'name'
+          property :quorum_auth, as: 'quorumAuth', class: Google::Apis::CloudkmsV1::QuorumAuth, decorator: Google::Apis::CloudkmsV1::QuorumAuth::Representation
+      
+          property :state, as: 'state'
+          property :unrefreshed_duration_until_disable, as: 'unrefreshedDurationUntilDisable'
+        end
+      end
+      
+      class SingleTenantHsmInstanceProposal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_quorum_member, as: 'addQuorumMember', class: Google::Apis::CloudkmsV1::AddQuorumMember, decorator: Google::Apis::CloudkmsV1::AddQuorumMember::Representation
+      
+          property :create_time, as: 'createTime'
+          property :delete_single_tenant_hsm_instance, as: 'deleteSingleTenantHsmInstance', class: Google::Apis::CloudkmsV1::DeleteSingleTenantHsmInstance, decorator: Google::Apis::CloudkmsV1::DeleteSingleTenantHsmInstance::Representation
+      
+          property :delete_time, as: 'deleteTime'
+          property :disable_single_tenant_hsm_instance, as: 'disableSingleTenantHsmInstance', class: Google::Apis::CloudkmsV1::DisableSingleTenantHsmInstance, decorator: Google::Apis::CloudkmsV1::DisableSingleTenantHsmInstance::Representation
+      
+          property :enable_single_tenant_hsm_instance, as: 'enableSingleTenantHsmInstance', class: Google::Apis::CloudkmsV1::EnableSingleTenantHsmInstance, decorator: Google::Apis::CloudkmsV1::EnableSingleTenantHsmInstance::Representation
+      
+          property :expire_time, as: 'expireTime'
+          property :failure_reason, as: 'failureReason'
+          property :name, as: 'name'
+          property :purge_time, as: 'purgeTime'
+          property :quorum_parameters, as: 'quorumParameters', class: Google::Apis::CloudkmsV1::QuorumParameters, decorator: Google::Apis::CloudkmsV1::QuorumParameters::Representation
+      
+          property :refresh_single_tenant_hsm_instance, as: 'refreshSingleTenantHsmInstance', class: Google::Apis::CloudkmsV1::RefreshSingleTenantHsmInstance, decorator: Google::Apis::CloudkmsV1::RefreshSingleTenantHsmInstance::Representation
+      
+          property :register_two_factor_auth_keys, as: 'registerTwoFactorAuthKeys', class: Google::Apis::CloudkmsV1::RegisterTwoFactorAuthKeys, decorator: Google::Apis::CloudkmsV1::RegisterTwoFactorAuthKeys::Representation
+      
+          property :remove_quorum_member, as: 'removeQuorumMember', class: Google::Apis::CloudkmsV1::RemoveQuorumMember, decorator: Google::Apis::CloudkmsV1::RemoveQuorumMember::Representation
+      
+          property :required_action_quorum_parameters, as: 'requiredActionQuorumParameters', class: Google::Apis::CloudkmsV1::RequiredActionQuorumParameters, decorator: Google::Apis::CloudkmsV1::RequiredActionQuorumParameters::Representation
+      
+          property :state, as: 'state'
+          property :ttl, as: 'ttl'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1084,6 +1491,7 @@ module Google
       class WrappingPublicKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
           property :pem, as: 'pem'
         end
       end

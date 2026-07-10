@@ -550,6 +550,72 @@ module Google
           @full_hashes = args[:full_hashes] if args.key?(:full_hashes)
         end
       end
+      
+      # The response returned after searching threats matching the specified URLs. If
+      # nothing is found, the server will return an OK status (HTTP status code 200)
+      # with the `threats` field empty, rather than returning a NOT_FOUND status (HTTP
+      # status code 404).
+      class GoogleSecuritySafebrowsingV5SearchUrlsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The client-side cache duration. The client MUST add this duration to the
+        # current time to determine the expiration time. The expiration time then
+        # applies to every URL queried by the client in the request, regardless of how
+        # many URLs are returned in the response. Even if the server returns no matches
+        # for a particular URL, this fact MUST also be cached by the client. If and only
+        # if the field `threats` is empty, the client MAY increase the `cache_duration`
+        # to determine a new expiration that is later than that specified by the server.
+        # In any case, the increased cache duration must not be longer than 24 hours.
+        # Important: the client MUST NOT assume that the server will return the same
+        # cache duration for all responses. The server MAY choose different cache
+        # durations for different responses depending on the situation.
+        # Corresponds to the JSON property `cacheDuration`
+        # @return [String]
+        attr_accessor :cache_duration
+      
+        # Unordered list. The unordered list of threat matches found. Each entry
+        # contains a URL and the threat types that were found matching that URL. The
+        # list size can be greater than the number of URLs in the request as the all
+        # expressions of the URL would've been considered.
+        # Corresponds to the JSON property `threats`
+        # @return [Array<Google::Apis::SafebrowsingV5::GoogleSecuritySafebrowsingV5ThreatUrl>]
+        attr_accessor :threats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_duration = args[:cache_duration] if args.key?(:cache_duration)
+          @threats = args[:threats] if args.key?(:threats)
+        end
+      end
+      
+      # A URL matching one or more threats.
+      class GoogleSecuritySafebrowsingV5ThreatUrl
+        include Google::Apis::Core::Hashable
+      
+        # Unordered list. The unordered list of threat that the URL is classified as.
+        # Corresponds to the JSON property `threatTypes`
+        # @return [Array<String>]
+        attr_accessor :threat_types
+      
+        # The requested URL that was matched by one or more threats.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @threat_types = args[:threat_types] if args.key?(:threat_types)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
     end
   end
 end

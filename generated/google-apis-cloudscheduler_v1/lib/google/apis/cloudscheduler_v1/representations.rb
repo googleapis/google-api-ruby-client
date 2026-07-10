@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CmekConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -176,6 +182,14 @@ module Google
         end
       end
       
+      class CmekConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+          property :name, as: 'name'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -211,6 +225,7 @@ module Google
       
           property :retry_config, as: 'retryConfig', class: Google::Apis::CloudschedulerV1::RetryConfig, decorator: Google::Apis::CloudschedulerV1::RetryConfig::Representation
       
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :schedule, as: 'schedule'
           property :schedule_time, as: 'scheduleTime'
           property :state, as: 'state'
@@ -245,6 +260,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::CloudschedulerV1::Operation, decorator: Google::Apis::CloudschedulerV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

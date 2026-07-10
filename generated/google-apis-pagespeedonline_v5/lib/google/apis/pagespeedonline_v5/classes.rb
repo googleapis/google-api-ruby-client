@@ -108,6 +108,11 @@ module Google
         attr_accessor :accessibility
       
         # A Lighthouse category.
+        # Corresponds to the JSON property `agentic-browsing`
+        # @return [Google::Apis::PagespeedonlineV5::LighthouseCategoryV5]
+        attr_accessor :agentic_browsing
+      
+        # A Lighthouse category.
         # Corresponds to the JSON property `best-practices`
         # @return [Google::Apis::PagespeedonlineV5::LighthouseCategoryV5]
         attr_accessor :best_practices
@@ -134,6 +139,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accessibility = args[:accessibility] if args.key?(:accessibility)
+          @agentic_browsing = args[:agentic_browsing] if args.key?(:agentic_browsing)
           @best_practices = args[:best_practices] if args.key?(:best_practices)
           @performance = args[:performance] if args.key?(:performance)
           @pwa = args[:pwa] if args.key?(:pwa)
@@ -421,6 +427,11 @@ module Google
         # @return [Array<Google::Apis::PagespeedonlineV5::AuditRefs>]
         attr_accessor :audit_refs
       
+        # Optional. How the category score should be displayed (e.g. as a fraction).
+        # Corresponds to the JSON property `categoryScoreDisplayMode`
+        # @return [String]
+        attr_accessor :category_score_display_mode
+      
         # A more detailed description of the category and its importance.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -454,6 +465,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audit_refs = args[:audit_refs] if args.key?(:audit_refs)
+          @category_score_display_mode = args[:category_score_display_mode] if args.key?(:category_score_display_mode)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @manual_description = args[:manual_description] if args.key?(:manual_description)

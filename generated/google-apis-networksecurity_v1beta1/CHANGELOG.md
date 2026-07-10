@@ -1,5 +1,91 @@
 # Release history for google-apis-networksecurity_v1beta1
 
+### v0.67.0 (2026-07-05)
+
+* Regenerated from discovery document revision 20260617
+
+### v0.66.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260524
+* Regenerated using generator version 0.19.0
+
+### v0.65.0 (2026-05-24)
+
+* Regenerated from discovery document revision 20260518
+
+### v0.64.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260426
+
+### v0.63.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260407
+
+### v0.62.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260226
+
+### v0.61.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260131
+
+### v0.60.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260125
+
+### v0.59.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251203
+
+### v0.58.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251001
+
+### v0.57.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250925
+
+### v0.56.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250903
+
+### v0.55.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250822
+
+### v0.54.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250806
+
+### v0.53.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250804
+
+### v0.52.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250721
+
+### v0.51.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250714
+
+### v0.50.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250608
+
+### v0.49.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250604
+
+### v0.48.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250527
+
+### v0.47.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250514
+* Regenerated using generator version 0.18.0
+
 ### v0.46.0 (2025-05-11)
 
 * Regenerated from discovery document revision 20250428

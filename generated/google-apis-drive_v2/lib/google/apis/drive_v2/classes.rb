@@ -44,8 +44,13 @@ module Google
         attr_accessor :can_create_team_drives
         alias_method :can_create_team_drives?, :can_create_team_drives
       
+        # Deprecated: Does not granularly represent allowlisted domains or Trust Rules.
         # The domain sharing policy for the current user. Possible values are: * `
-        # allowed` * `allowedWithWarning` * `incomingOnly` * `disallowed`
+        # allowed` * `allowedWithWarning` * `incomingOnly` * `disallowed` Note that if
+        # the user is enrolled in Trust Rules, `disallowed` will always be returned. If
+        # sharing is restricted to allowlisted domains, either `incomingOnly` or `
+        # allowedWithWarning` will be returned, depending on whether receiving files
+        # from outside the allowlisted domains is permitted.
         # Corresponds to the JSON property `domainSharingPolicy`
         # @return [String]
         attr_accessor :domain_sharing_policy
@@ -1035,15 +1040,39 @@ module Google
         end
       end
       
-      # A comment on a file in Google Drive. Some resource methods (such as `comments.
-      # update`) require a `commentId`. Use the `comments.list` method to retrieve the
-      # ID for a comment in a file.
+      # Details about the client-side encryption applied to the file.
+      class ClientEncryptionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Representation of the CSE DecryptionMetadata.
+        # Corresponds to the JSON property `decryptionMetadata`
+        # @return [Google::Apis::DriveV2::DecryptionMetadata]
+        attr_accessor :decryption_metadata
+      
+        # The encryption state of the file. The values expected here are: - encrypted -
+        # unencrypted
+        # Corresponds to the JSON property `encryptionState`
+        # @return [String]
+        attr_accessor :encryption_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @decryption_metadata = args[:decryption_metadata] if args.key?(:decryption_metadata)
+          @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
+        end
+      end
+      
+      # A comment on a file in Google Drive.
       class Comment
         include Google::Apis::Core::Hashable
       
         # A region of the document represented as a JSON string. For details on defining
-        # anchor properties, refer to [Add comments and replies](https://developers.
-        # google.com/workspace/drive/api/v2/manage-comments).
+        # anchor properties, refer to [Manage comments and replies](https://developers.
+        # google.com/workspace/drive/api/v3/manage-comments).
         # Corresponds to the JSON property `anchor`
         # @return [String]
         attr_accessor :anchor
@@ -1053,7 +1082,7 @@ module Google
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :author
       
-        # Output only. The ID of the comment.
+        # The ID of the comment.
         # Corresponds to the JSON property `commentId`
         # @return [String]
         attr_accessor :comment_id
@@ -1064,7 +1093,7 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # The context of the file which is being commented on.
+        # Context of a file which is being commented on.
         # Corresponds to the JSON property `context`
         # @return [Google::Apis::DriveV2::Comment::Context]
         attr_accessor :context
@@ -1074,30 +1103,30 @@ module Google
         # @return [DateTime]
         attr_accessor :created_date
       
-        # Output only. Whether this comment has been deleted. If a comment has been
-        # deleted the content will be cleared and this will only represent a comment
-        # that once existed.
+        # Whether this comment has been deleted. If a comment has been deleted the
+        # content will be cleared and this will only represent a comment that once
+        # existed.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # Output only. The file which this comment is addressing.
+        # The file which this comment is addressing.
         # Corresponds to the JSON property `fileId`
         # @return [String]
         attr_accessor :file_id
       
-        # Output only. The title of the file which this comment is addressing.
+        # The title of the file which this comment is addressing.
         # Corresponds to the JSON property `fileTitle`
         # @return [String]
         attr_accessor :file_title
       
-        # Output only. HTML formatted content for this comment.
+        # HTML formatted content for this comment.
         # Corresponds to the JSON property `htmlContent`
         # @return [String]
         attr_accessor :html_content
       
-        # Output only. This is always `drive#comment`.
+        # This is always drive#comment.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1107,19 +1136,20 @@ module Google
         # @return [DateTime]
         attr_accessor :modified_date
       
-        # Output only. Replies to this post.
+        # Replies to this post.
         # Corresponds to the JSON property `replies`
         # @return [Array<Google::Apis::DriveV2::CommentReply>]
         attr_accessor :replies
       
-        # Output only. A link back to this comment.
+        # A link back to this comment.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
-        # Output only. The status of this comment. Status can be changed by posting a
-        # reply to a comment with the desired status. * `open` - The comment is still
-        # open. * `resolved` - The comment has been resolved by one of its replies.
+        # The status of this comment. Status can be changed by posting a reply to a
+        # comment with the desired status. Possible values are: * `open` - The comment
+        # is still open. * `resolved` - The comment has been resolved by one of its
+        # replies.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -1147,7 +1177,7 @@ module Google
           @status = args[:status] if args.key?(:status)
         end
         
-        # The context of the file which is being commented on.
+        # Context of a file which is being commented on.
         class Context
           include Google::Apis::Core::Hashable
         
@@ -1185,7 +1215,7 @@ module Google
         # @return [Array<Google::Apis::DriveV2::Comment>]
         attr_accessor :items
       
-        # This is always `drive#commentList`.
+        # This is always drive#commentList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1222,9 +1252,7 @@ module Google
         end
       end
       
-      # A comment on a file in Google Drive. Some resource methods (such as `replies.
-      # update`) require a `replyId`. Use the `replies.list` method to retrieve the ID
-      # for a reply.
+      # A reply to a comment on a file in Google Drive.
       class CommentReply
         include Google::Apis::Core::Hashable
       
@@ -1245,20 +1273,19 @@ module Google
         # @return [DateTime]
         attr_accessor :created_date
       
-        # Output only. Whether this reply has been deleted. If a reply has been deleted
-        # the content will be cleared and this will only represent a reply that once
-        # existed.
+        # Whether this reply has been deleted. If a reply has been deleted the content
+        # will be cleared and this will only represent a reply that once existed.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # Output only. HTML formatted content for this reply.
+        # HTML formatted content for this reply.
         # Corresponds to the JSON property `htmlContent`
         # @return [String]
         attr_accessor :html_content
       
-        # Output only. This is always `drive#commentReply`.
+        # This is always drive#commentReply.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1268,13 +1295,13 @@ module Google
         # @return [DateTime]
         attr_accessor :modified_date
       
-        # Output only. The ID of the reply.
+        # The ID of the reply.
         # Corresponds to the JSON property `replyId`
         # @return [String]
         attr_accessor :reply_id
       
         # The action this reply performed to the parent comment. When creating a new
-        # reply this is the action to be perform to the parent comment. Possible values
+        # reply this is the action to be perform tSo the parent comment. Possible values
         # are: * `resolve` - To resolve a comment. * `reopen` - To reopen (un-resolve) a
         # comment.
         # Corresponds to the JSON property `verb`
@@ -1410,6 +1437,67 @@ module Google
           @restriction_date = args[:restriction_date] if args.key?(:restriction_date)
           @system_restricted = args[:system_restricted] if args.key?(:system_restricted)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Representation of the CSE DecryptionMetadata.
+      class DecryptionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Chunk size used if content was encrypted with the AES 256 GCM Cipher. Possible
+        # values are: - default - small
+        # Corresponds to the JSON property `aes256GcmChunkSize`
+        # @return [String]
+        attr_accessor :aes256_gcm_chunk_size
+      
+        # The URL-safe Base64 encoded HMAC-SHA256 digest of the resource metadata with
+        # its DEK (Data Encryption Key); see https://developers.google.com/workspace/cse/
+        # reference
+        # Corresponds to the JSON property `encryptionResourceKeyHash`
+        # @return [String]
+        attr_accessor :encryption_resource_key_hash
+      
+        # The signed JSON Web Token (JWT) which can be used to authorize the requesting
+        # user with the Key ACL Service (KACLS). The JWT asserts that the requesting
+        # user has at least read permissions on the file.
+        # Corresponds to the JSON property `jwt`
+        # @return [String]
+        attr_accessor :jwt
+      
+        # The ID of the KACLS (Key ACL Service) used to encrypt the file.
+        # Corresponds to the JSON property `kaclsId`
+        # @return [Fixnum]
+        attr_accessor :kacls_id
+      
+        # The name of the KACLS (Key ACL Service) used to encrypt the file.
+        # Corresponds to the JSON property `kaclsName`
+        # @return [String]
+        attr_accessor :kacls_name
+      
+        # Key format for the unwrapped key. Must be `tinkAesGcmKey`.
+        # Corresponds to the JSON property `keyFormat`
+        # @return [String]
+        attr_accessor :key_format
+      
+        # The URL-safe Base64 encoded wrapped key used to encrypt the contents of the
+        # file.
+        # Corresponds to the JSON property `wrappedKey`
+        # @return [String]
+        attr_accessor :wrapped_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aes256_gcm_chunk_size = args[:aes256_gcm_chunk_size] if args.key?(:aes256_gcm_chunk_size)
+          @encryption_resource_key_hash = args[:encryption_resource_key_hash] if args.key?(:encryption_resource_key_hash)
+          @jwt = args[:jwt] if args.key?(:jwt)
+          @kacls_id = args[:kacls_id] if args.key?(:kacls_id)
+          @kacls_name = args[:kacls_name] if args.key?(:kacls_name)
+          @key_format = args[:key_format] if args.key?(:key_format)
+          @wrapped_key = args[:wrapped_key] if args.key?(:wrapped_key)
         end
       end
       
@@ -1859,6 +1947,11 @@ module Google
         # Corresponds to the JSON property `capabilities`
         # @return [Google::Apis::DriveV2::File::Capabilities]
         attr_accessor :capabilities
+      
+        # Details about the client-side encryption applied to the file.
+        # Corresponds to the JSON property `clientEncryptionDetails`
+        # @return [Google::Apis::DriveV2::ClientEncryptionDetails]
+        attr_accessor :client_encryption_details
       
         # Restrictions for accessing the content of the file. Only populated if such a
         # restriction exists.
@@ -2314,6 +2407,7 @@ module Google
           @can_comment = args[:can_comment] if args.key?(:can_comment)
           @can_read_revisions = args[:can_read_revisions] if args.key?(:can_read_revisions)
           @capabilities = args[:capabilities] if args.key?(:capabilities)
+          @client_encryption_details = args[:client_encryption_details] if args.key?(:client_encryption_details)
           @content_restrictions = args[:content_restrictions] if args.key?(:content_restrictions)
           @copy_requires_writer_permission = args[:copy_requires_writer_permission] if args.key?(:copy_requires_writer_permission)
           @copyable = args[:copyable] if args.key?(:copyable)
@@ -3197,6 +3291,50 @@ module Google
           @next_link = args[:next_link] if args.key?(:next_link)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # JWT and associated metadata used to generate CSE files.
+      class GenerateCseTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # The current Key ACL Service (KACLS) ID associated with the JWT.
+        # Corresponds to the JSON property `currentKaclsId`
+        # @return [Fixnum]
+        attr_accessor :current_kacls_id
+      
+        # Name of the KACLs that the returned KACLs ID points to.
+        # Corresponds to the JSON property `currentKaclsName`
+        # @return [String]
+        attr_accessor :current_kacls_name
+      
+        # The fileId for which the JWT was generated.
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
+        # The signed JSON Web Token (JWT) for the file.
+        # Corresponds to the JSON property `jwt`
+        # @return [String]
+        attr_accessor :jwt
+      
+        # Output only. Identifies what kind of resource this is. Value: the fixed string
+        # `"drive#generateCseTokenResponse"`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_kacls_id = args[:current_kacls_id] if args.key?(:current_kacls_id)
+          @current_kacls_name = args[:current_kacls_name] if args.key?(:current_kacls_name)
+          @file_id = args[:file_id] if args.key?(:file_id)
+          @jwt = args[:jwt] if args.key?(:jwt)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       

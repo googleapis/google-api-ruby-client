@@ -100,6 +100,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Network information of the user doing the action.
+        # Corresponds to the JSON property `networkInfo`
+        # @return [Google::Apis::AdminReportsV1::ActivityNetworkInfo]
+        attr_accessor :network_info
+      
         # This is the domain that is affected by the report's event. For example domain
         # of Admin console or the Drive application's document owner.
         # Corresponds to the JSON property `ownerDomain`
@@ -123,6 +128,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @kind = args[:kind] if args.key?(:kind)
+          @network_info = args[:network_info] if args.key?(:network_info)
           @owner_domain = args[:owner_domain] if args.key?(:owner_domain)
           @resource_details = args[:resource_details] if args.key?(:resource_details)
         end
@@ -234,6 +240,16 @@ module Google
           # @return [Array<String>]
           attr_accessor :resource_ids
         
+          # Includes sensitive parameter value pairs for various applications.
+          # Corresponds to the JSON property `sensitiveParameters`
+          # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter>]
+          attr_accessor :sensitive_parameters
+        
+          # Status of the event. Note: Not all events have status.
+          # Corresponds to the JSON property `status`
+          # @return [Google::Apis::AdminReportsV1::ActivityEventsStatus]
+          attr_accessor :status
+        
           # Type of event. The Google Workspace service or feature that an administrator
           # changes is identified in the `type` property which identifies an event using
           # the `eventName` property. For a full list of the API's `type` categories, see
@@ -251,6 +267,8 @@ module Google
             @name = args[:name] if args.key?(:name)
             @parameters = args[:parameters] if args.key?(:parameters)
             @resource_ids = args[:resource_ids] if args.key?(:resource_ids)
+            @sensitive_parameters = args[:sensitive_parameters] if args.key?(:sensitive_parameters)
+            @status = args[:status] if args.key?(:status)
             @type = args[:type] if args.key?(:type)
           end
           
@@ -285,6 +303,112 @@ module Google
             # List of `messageValue` objects.
             # Corresponds to the JSON property `multiMessageValue`
             # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::Parameter::MultiMessageValue>]
+            attr_accessor :multi_message_value
+          
+            # String values of the parameter.
+            # Corresponds to the JSON property `multiValue`
+            # @return [Array<String>]
+            attr_accessor :multi_value
+          
+            # The name of the parameter.
+            # Corresponds to the JSON property `name`
+            # @return [String]
+            attr_accessor :name
+          
+            # String value of the parameter.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @bool_value = args[:bool_value] if args.key?(:bool_value)
+              @int_value = args[:int_value] if args.key?(:int_value)
+              @message_value = args[:message_value] if args.key?(:message_value)
+              @multi_int_value = args[:multi_int_value] if args.key?(:multi_int_value)
+              @multi_message_value = args[:multi_message_value] if args.key?(:multi_message_value)
+              @multi_value = args[:multi_value] if args.key?(:multi_value)
+              @name = args[:name] if args.key?(:name)
+              @value = args[:value] if args.key?(:value)
+            end
+            
+            # Nested parameter value pairs associated with this parameter. Complex value
+            # type for a parameter are returned as a list of parameter values. For example,
+            # the address parameter may have a value as `[`parameter: [`name: city, value:
+            # abc`]`]`
+            class MessageValue
+              include Google::Apis::Core::Hashable
+            
+              # Parameter values
+              # Corresponds to the JSON property `parameter`
+              # @return [Array<Google::Apis::AdminReportsV1::NestedParameter>]
+              attr_accessor :parameter
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @parameter = args[:parameter] if args.key?(:parameter)
+              end
+            end
+            
+            # 
+            class MultiMessageValue
+              include Google::Apis::Core::Hashable
+            
+              # Parameter values
+              # Corresponds to the JSON property `parameter`
+              # @return [Array<Google::Apis::AdminReportsV1::NestedParameter>]
+              attr_accessor :parameter
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @parameter = args[:parameter] if args.key?(:parameter)
+              end
+            end
+          end
+          
+          # 
+          class SensitiveParameter
+            include Google::Apis::Core::Hashable
+          
+            # Boolean value of the parameter.
+            # Corresponds to the JSON property `boolValue`
+            # @return [Boolean]
+            attr_accessor :bool_value
+            alias_method :bool_value?, :bool_value
+          
+            # Integer value of the parameter.
+            # Corresponds to the JSON property `intValue`
+            # @return [Fixnum]
+            attr_accessor :int_value
+          
+            # Nested parameter value pairs associated with this parameter. Complex value
+            # type for a parameter are returned as a list of parameter values. For example,
+            # the address parameter may have a value as `[`parameter: [`name: city, value:
+            # abc`]`]`
+            # Corresponds to the JSON property `messageValue`
+            # @return [Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MessageValue]
+            attr_accessor :message_value
+          
+            # Integer values of the parameter.
+            # Corresponds to the JSON property `multiIntValue`
+            # @return [Array<Fixnum>]
+            attr_accessor :multi_int_value
+          
+            # List of `messageValue` objects.
+            # Corresponds to the JSON property `multiMessageValue`
+            # @return [Array<Google::Apis::AdminReportsV1::Activity::Event::SensitiveParameter::MultiMessageValue>]
             attr_accessor :multi_message_value
           
             # String values of the parameter.
@@ -397,6 +521,76 @@ module Google
             @time = args[:time] if args.key?(:time)
             @unique_qualifier = args[:unique_qualifier] if args.key?(:unique_qualifier)
           end
+        end
+      end
+      
+      # Status of the event. Note: Not all events have status.
+      class ActivityEventsStatus
+        include Google::Apis::Core::Hashable
+      
+        # Error code of the event. Note: Field can be empty.
+        # Corresponds to the JSON property `errorCode`
+        # @return [String]
+        attr_accessor :error_code
+      
+        # Error message of the event. Note: Field can be empty.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Status of the event. Possible values if not empty: - UNKNOWN_EVENT_STATUS -
+        # SUCCEEDED - SUCCEEDED_WITH_WARNINGS - FAILED - SKIPPED
+        # Corresponds to the JSON property `eventStatus`
+        # @return [String]
+        attr_accessor :event_status
+      
+        # Status code of the event. Note: Field can be empty.
+        # Corresponds to the JSON property `httpStatusCode`
+        # @return [Fixnum]
+        attr_accessor :http_status_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @event_status = args[:event_status] if args.key?(:event_status)
+          @http_status_code = args[:http_status_code] if args.key?(:http_status_code)
+        end
+      end
+      
+      # Network information of the user doing the action.
+      class ActivityNetworkInfo
+        include Google::Apis::Core::Hashable
+      
+        # IP Address of the user doing the action.
+        # Corresponds to the JSON property `ipAsn`
+        # @return [Array<Fixnum>]
+        attr_accessor :ip_asn
+      
+        # ISO 3166-1 alpha-2 region code of the user doing the action.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # ISO 3166-2 region code (states and provinces) for countries of the user doing
+        # the action.
+        # Corresponds to the JSON property `subdivisionCode`
+        # @return [String]
+        attr_accessor :subdivision_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_asn = args[:ip_asn] if args.key?(:ip_asn)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @subdivision_code = args[:subdivision_code] if args.key?(:subdivision_code)
         end
       end
       
@@ -518,6 +712,25 @@ module Google
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
           @token = args[:token] if args.key?(:token)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Identity of the Google Workspace customer who owns the resource.
+      class CustomerIdentity
+        include Google::Apis::Core::Hashable
+      
+        # Customer id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -775,6 +988,31 @@ module Google
         end
       end
       
+      # Identity of the group who owns the resource.
+      class GroupIdentity
+        include Google::Apis::Core::Hashable
+      
+        # Group email.
+        # Corresponds to the JSON property `groupEmail`
+        # @return [String]
+        attr_accessor :group_email
+      
+        # Group gaia id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group_email = args[:group_email] if args.key?(:group_email)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # JSON template for a parameter used in various reports.
       class NestedParameter
         include Google::Apis::Core::Hashable
@@ -831,6 +1069,62 @@ module Google
         end
       end
       
+      # Details of the owner of the resource.
+      class OwnerDetails
+        include Google::Apis::Core::Hashable
+      
+        # Identity details of the owner(s) of the resource.
+        # Corresponds to the JSON property `ownerIdentity`
+        # @return [Array<Google::Apis::AdminReportsV1::OwnerIdentity>]
+        attr_accessor :owner_identity
+      
+        # Type of the owner of the resource.
+        # Corresponds to the JSON property `ownerType`
+        # @return [String]
+        attr_accessor :owner_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @owner_identity = args[:owner_identity] if args.key?(:owner_identity)
+          @owner_type = args[:owner_type] if args.key?(:owner_type)
+        end
+      end
+      
+      # Identity details of the owner of the resource.
+      class OwnerIdentity
+        include Google::Apis::Core::Hashable
+      
+        # Identity of the Google Workspace customer who owns the resource.
+        # Corresponds to the JSON property `customerIdentity`
+        # @return [Google::Apis::AdminReportsV1::CustomerIdentity]
+        attr_accessor :customer_identity
+      
+        # Identity of the group who owns the resource.
+        # Corresponds to the JSON property `groupIdentity`
+        # @return [Google::Apis::AdminReportsV1::GroupIdentity]
+        attr_accessor :group_identity
+      
+        # Identity of the user who owns the resource.
+        # Corresponds to the JSON property `userIdentity`
+        # @return [Google::Apis::AdminReportsV1::UserIdentity]
+        attr_accessor :user_identity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_identity = args[:customer_identity] if args.key?(:customer_identity)
+          @group_identity = args[:group_identity] if args.key?(:group_identity)
+          @user_identity = args[:user_identity] if args.key?(:user_identity)
+        end
+      end
+      
       # The reason why the label/field was applied.
       class Reason
         include Google::Apis::Core::Hashable
@@ -859,10 +1153,17 @@ module Google
         # @return [Array<Google::Apis::AdminReportsV1::AppliedLabel>]
         attr_accessor :applied_labels
       
-        # Identifier of the resource.
+        # Identifier of the resource, such as a doc_id for a Drive document, a
+        # conference_id for a Meet conference, or a "gaia_id/rfc2822_message_id" for an
+        # email.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Details of the owner of the resource.
+        # Corresponds to the JSON property `ownerDetails`
+        # @return [Google::Apis::AdminReportsV1::OwnerDetails]
+        attr_accessor :owner_details
       
         # Defines relationship of the resource to the events
         # Corresponds to the JSON property `relation`
@@ -888,6 +1189,7 @@ module Google
         def update!(**args)
           @applied_labels = args[:applied_labels] if args.key?(:applied_labels)
           @id = args[:id] if args.key?(:id)
+          @owner_details = args[:owner_details] if args.key?(:owner_details)
           @relation = args[:relation] if args.key?(:relation)
           @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
@@ -921,7 +1223,8 @@ module Google
       
         # Output only. Parameter value pairs for various applications. For the Entity
         # Usage Report parameters and values, see [the Entity Usage parameters reference]
-        # (/admin-sdk/reports/v1/reference/usage-ref-appendix-a/entities).
+        # (https://developers.google.com/workspace/admin/reports/v1/reference/usage-ref-
+        # appendix-a/entities).
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::AdminReportsV1::UsageReport::Parameter>]
         attr_accessor :parameters
@@ -1142,6 +1445,31 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Identity of the user who owns the resource.
+      class UserIdentity
+        include Google::Apis::Core::Hashable
+      
+        # User gaia id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # User email.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @user_email = args[:user_email] if args.key?(:user_email)
         end
       end
     end

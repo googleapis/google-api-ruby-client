@@ -165,6 +165,76 @@ module Google
         end
       end
       
+      # Request for archiving resource events.
+      class GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Time to set as ArchiveTime in the archive table. If not provided,
+        # the current time is used.
+        # Corresponds to the JSON property `archiveTime`
+        # @return [String]
+        attr_accessor :archive_time
+      
+        # Required. The number of events to process in a single transaction batch.
+        # Corresponds to the JSON property `batchSize`
+        # @return [Fixnum]
+        attr_accessor :batch_size
+      
+        # Required. Only events with EventTime earlier than this cutoff will be archived.
+        # Corresponds to the JSON property `eventCutoffTime`
+        # @return [String]
+        attr_accessor :event_cutoff_time
+      
+        # Required. The maximum total number of events to move in this request.
+        # Corresponds to the JSON property `maxEventsMove`
+        # @return [Fixnum]
+        attr_accessor :max_events_move
+      
+        # Required. The organization ID for which to archive events.
+        # Corresponds to the JSON property `organizationId`
+        # @return [Fixnum]
+        attr_accessor :organization_id
+      
+        # Required. The region of the workload(s) whose events should be archived. This
+        # is used to filter workloads based on AssurantWorkloadData.region.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_time = args[:archive_time] if args.key?(:archive_time)
+          @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @event_cutoff_time = args[:event_cutoff_time] if args.key?(:event_cutoff_time)
+          @max_events_move = args[:max_events_move] if args.key?(:max_events_move)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+          @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # Response for archiving resource events.
+      class GoogleCloudAssuredworkloadsV1beta1ArchiveResourceEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total number of events successfully moved to the archive table.
+        # Corresponds to the JSON property `movedEventsCount`
+        # @return [Fixnum]
+        attr_accessor :moved_events_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @moved_events_count = args[:moved_events_count] if args.key?(:moved_events_count)
+        end
+      end
+      
       # Represents move analysis results for an asset.
       class GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis
         include Google::Apis::Core::Hashable
@@ -196,6 +266,59 @@ module Google
           @analysis_groups = args[:analysis_groups] if args.key?(:analysis_groups)
           @asset = args[:asset] if args.key?(:asset)
           @asset_type = args[:asset_type] if args.key?(:asset_type)
+        end
+      end
+      
+      # Request for acknowledging the violations in a batch
+      class GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Acknowledge type of specified violations.
+        # Corresponds to the JSON property `acknowledgeType`
+        # @return [String]
+        attr_accessor :acknowledge_type
+      
+        # Required. Business justification explaining the need for violations
+        # acknowledgement
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Required. The resource names of the Violations to acknowledge. Format for each
+        # name: organizations/`organization`/locations/`location`/workloads/`workload`/
+        # violations/`violation`
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledge_type = args[:acknowledge_type] if args.key?(:acknowledge_type)
+          @comment = args[:comment] if args.key?(:comment)
+          @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # Response for batch violation acknowledgement
+      class GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Count of acknowledged violations.
+        # Corresponds to the JSON property `acknowledgedViolationsCount`
+        # @return [Fixnum]
+        attr_accessor :acknowledged_violations_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledged_violations_count = args[:acknowledged_violations_count] if args.key?(:acknowledged_violations_count)
         end
       end
       
@@ -279,6 +402,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The total number of violations.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         # List of Violations under a Workload.
         # Corresponds to the JSON property `violations`
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1Violation>]
@@ -291,6 +419,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
           @violations = args[:violations] if args.key?(:violations)
         end
       end
@@ -607,6 +736,77 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request for reverting archived resource events.
+      class GoogleCloudAssuredworkloadsV1beta1RevertArchivedResourceEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Only events within this time range will be reverted. This helps
+        # prevent reverting everything when something goes wrong.
+        # Corresponds to the JSON property `archiveEndTime`
+        # @return [String]
+        attr_accessor :archive_end_time
+      
+        # Required. Only events within this time range will be reverted. This helps
+        # prevent reverting everything when something goes wrong.
+        # Corresponds to the JSON property `archiveStartTime`
+        # @return [String]
+        attr_accessor :archive_start_time
+      
+        # Required. The number of events to process in a single transaction batch.
+        # Corresponds to the JSON property `batchSize`
+        # @return [Fixnum]
+        attr_accessor :batch_size
+      
+        # Required. The maximum total number of events to move in this request.
+        # Corresponds to the JSON property `maxEventsMove`
+        # @return [Fixnum]
+        attr_accessor :max_events_move
+      
+        # Required. The organization ID for which to revert events.
+        # Corresponds to the JSON property `organizationId`
+        # @return [Fixnum]
+        attr_accessor :organization_id
+      
+        # Required. The region of the workload(s) whose events should be reverted. This
+        # is used to filter workloads based on AssurantWorkloadData.region.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_end_time = args[:archive_end_time] if args.key?(:archive_end_time)
+          @archive_start_time = args[:archive_start_time] if args.key?(:archive_start_time)
+          @batch_size = args[:batch_size] if args.key?(:batch_size)
+          @max_events_move = args[:max_events_move] if args.key?(:max_events_move)
+          @organization_id = args[:organization_id] if args.key?(:organization_id)
+          @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # Response for reverting archived resource events.
+      class GoogleCloudAssuredworkloadsV1beta1RevertArchivedResourceEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total number of events successfully moved to the original table.
+        # Corresponds to the JSON property `movedEventsCount`
+        # @return [Fixnum]
+        attr_accessor :moved_events_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @moved_events_count = args[:moved_events_count] if args.key?(:moved_events_count)
         end
       end
       
@@ -1064,10 +1264,10 @@ module Google
         attr_accessor :partner_permissions
       
         # Optional. Billing account necessary for purchasing services from Sovereign
-        # Partners. This field is required for creating SIA/PSN/CNTXT partner workloads.
-        # The caller should have 'billing.resourceAssociations.create' IAM permission on
-        # this billing-account. The format of this string is billingAccounts/AAAAAA-
-        # BBBBBB-CCCCCC
+        # Partners. This field is required for creating SIA/PSN/CNTXT/Telefonica partner
+        # workloads. The caller should have 'billing.resourceAssociations.create' IAM
+        # permission on this billing-account. The format of this string is
+        # billingAccounts/AAAAAA-BBBBBB-CCCCCC
         # Corresponds to the JSON property `partnerServicesBillingAccount`
         # @return [String]
         attr_accessor :partner_services_billing_account
@@ -1539,6 +1739,14 @@ module Google
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1547,6 +1755,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

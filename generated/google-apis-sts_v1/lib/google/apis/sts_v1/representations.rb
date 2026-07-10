@@ -52,6 +52,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityStsV1Jwk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1Jwks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityStsV1OpenIdProviderConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityStsV1Options
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -134,11 +152,44 @@ module Google
         end
       end
       
+      class GoogleIdentityStsV1Jwk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :e, as: 'e'
+          property :kid, as: 'kid'
+          property :kty, as: 'kty'
+          property :n, as: 'n'
+          property :use, as: 'use'
+        end
+      end
+      
+      class GoogleIdentityStsV1Jwks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :keys, as: 'keys', class: Google::Apis::StsV1::GoogleIdentityStsV1Jwk, decorator: Google::Apis::StsV1::GoogleIdentityStsV1Jwk::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityStsV1OpenIdProviderConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_endpoint, as: 'authorization_endpoint'
+          collection :id_token_signing_alg_values_supported, as: 'id_token_signing_alg_values_supported'
+          property :issuer, as: 'issuer'
+          property :jwks_uri, as: 'jwks_uri'
+          collection :response_types_supported, as: 'response_types_supported'
+          collection :subject_types_supported, as: 'subject_types_supported'
+          property :token_endpoint, as: 'token_endpoint'
+        end
+      end
+      
       class GoogleIdentityStsV1Options
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_boundary, as: 'accessBoundary', class: Google::Apis::StsV1::GoogleIdentityStsV1AccessBoundary, decorator: Google::Apis::StsV1::GoogleIdentityStsV1AccessBoundary::Representation
       
+          property :bind_cert_fingerprint, as: 'bindCertFingerprint'
           property :user_project, as: 'userProject'
         end
       end

@@ -31,7 +31,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_image_links
       
-        # Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise.
+        # Used to group items in an arbitrary way. Only for CPA, discouraged otherwise.
+        # For more information, see [Display ads attribute](https://support.google.com/
+        # merchants/answer/6069387).
         # Corresponds to the JSON property `adsGrouping`
         # @return [String]
         attr_accessor :ads_grouping
@@ -64,7 +66,8 @@ module Google
         # @return [Google::Apis::MerchantapiProductsV1beta::Price]
         attr_accessor :auto_pricing_min_price
       
-        # Availability status of the item.
+        # [Availability](https://support.google.com/merchants/answer/6324448) status of
+        # the item. For example, "in_stock" or "out_of_stock".
         # Corresponds to the JSON property `availability`
         # @return [String]
         attr_accessor :availability
@@ -75,7 +78,8 @@ module Google
         # @return [String]
         attr_accessor :availability_date
       
-        # Brand of the item.
+        # [Brand](https://support.google.com/merchants/answer/6324351) of the item. For
+        # example, "Google".
         # Corresponds to the JSON property `brand`
         # @return [String]
         attr_accessor :brand
@@ -98,12 +102,14 @@ module Google
         # @return [Array<Google::Apis::MerchantapiProductsV1beta::CloudExportAdditionalProperties>]
         attr_accessor :cloud_export_additional_properties
       
-        # Color of the item.
+        # [Color](https://support.google.com/merchants/answer/6324487) of the item. For
+        # example, "red".
         # Corresponds to the JSON property `color`
         # @return [String]
         attr_accessor :color
       
-        # Condition or state of the item.
+        # [Condition](https://support.google.com/merchants/answer/6324469) or state of
+        # the item. For example, "new" or "used".
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
@@ -113,27 +119,32 @@ module Google
         # @return [Google::Apis::MerchantapiProductsV1beta::Price]
         attr_accessor :cost_of_goods_sold
       
-        # Custom label 0 for custom grouping of items in a Shopping campaign.
+        # [Custom label 0](https://support.google.com/merchants/answer/6324473) for
+        # custom grouping of items in a Shopping campaign.
         # Corresponds to the JSON property `customLabel0`
         # @return [String]
         attr_accessor :custom_label0
       
-        # Custom label 1 for custom grouping of items in a Shopping campaign.
+        # [Custom label 1](https://support.google.com/merchants/answer/6324473) for
+        # custom grouping of items in a Shopping campaign.
         # Corresponds to the JSON property `customLabel1`
         # @return [String]
         attr_accessor :custom_label1
       
-        # Custom label 2 for custom grouping of items in a Shopping campaign.
+        # [Custom label 2](https://support.google.com/merchants/answer/6324473) for
+        # custom grouping of items in a Shopping campaign.
         # Corresponds to the JSON property `customLabel2`
         # @return [String]
         attr_accessor :custom_label2
       
-        # Custom label 3 for custom grouping of items in a Shopping campaign.
+        # [Custom label 3](https://support.google.com/merchants/answer/6324473) for
+        # custom grouping of items in a Shopping campaign.
         # Corresponds to the JSON property `customLabel3`
         # @return [String]
         attr_accessor :custom_label3
       
-        # Custom label 4 for custom grouping of items in a Shopping campaign.
+        # [Custom label 4](https://support.google.com/merchants/answer/6324473) for
+        # custom grouping of items in a Shopping campaign.
         # Corresponds to the JSON property `customLabel4`
         # @return [String]
         attr_accessor :custom_label4
@@ -145,7 +156,7 @@ module Google
       
         # The date time when an offer becomes visible in search results across Google’s
         # YouTube surfaces, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format.
-        # See [Disclosure date]( https://support.google.com/merchants/answer/13034208)
+        # See [Disclosure date](https://support.google.com/merchants/answer/13034208)
         # for more information.
         # Corresponds to the JSON property `disclosureDate`
         # @return [String]
@@ -161,7 +172,8 @@ module Google
         # @return [String]
         attr_accessor :display_ads_link
       
-        # Advertiser-specified recommendations.
+        # Advertiser-specified recommendations. For more information, see [Display ads
+        # attribute specification](https://support.google.com/merchants/answer/6069387).
         # Corresponds to the JSON property `displayAdsSimilarIds`
         # @return [Array<String>]
         attr_accessor :display_ads_similar_ids
@@ -171,7 +183,8 @@ module Google
         # @return [String]
         attr_accessor :display_ads_title
       
-        # Offer margin for dynamic remarketing campaigns.
+        # Offer margin for dynamic remarketing campaigns. For more information, see [
+        # Display ads attribute](https://support.google.com/merchants/answer/6069387).
         # Corresponds to the JSON property `displayAdsValue`
         # @return [Float]
         attr_accessor :display_ads_value
@@ -181,8 +194,13 @@ module Google
         # @return [String]
         attr_accessor :energy_efficiency_class
       
-        # The list of destinations to exclude for this target (corresponds to unchecked
-        # check boxes in Merchant Center).
+        # Destinations also known as [Marketing methods](https://support.google.com/
+        # merchants/answer/15130232) selections. The list of destinations to exclude for
+        # this target (corresponds to unchecked check boxes in Merchant Center). For
+        # more information, see [Excluded destination](https://support.google.com/
+        # merchants/answer/6324486). Note: We recommend setting destinations on
+        # datasources level for most use cases. Use this field within products to only
+        # setup exceptions.
         # Corresponds to the JSON property `excludedDestinations`
         # @return [Array<String>]
         attr_accessor :excluded_destinations
@@ -207,7 +225,8 @@ module Google
         # @return [Array<Google::Apis::MerchantapiProductsV1beta::FreeShippingThreshold>]
         attr_accessor :free_shipping_threshold
       
-        # Target gender of the item.
+        # Target [gender](https://support.google.com/merchants/answer/6324479) of the
+        # item. For example, "male" or "female".
         # Corresponds to the JSON property `gender`
         # @return [String]
         attr_accessor :gender
@@ -221,10 +240,17 @@ module Google
         attr_accessor :google_product_category
       
         # Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/
-        # 188494#gtin)) of the item. You can provide up to 10 GTINs.
+        # 6324461)) of the item. You can provide up to 10 GTINs. Deprecated: Use `gtins`
+        # instead.
         # Corresponds to the JSON property `gtin`
         # @return [Array<String>]
         attr_accessor :gtin
+      
+        # A list of Global Trade Item Numbers ([GTIN](https://support.google.com/
+        # merchants/answer/6324461)) of the item. You can provide up to 10 GTINs.
+        # Corresponds to the JSON property `gtins`
+        # @return [Array<String>]
+        attr_accessor :gtins
       
         # Set this value to false when the item does not have unique product identifiers
         # appropriate to its category, such as GTIN, MPN, and brand. Defaults to true,
@@ -239,9 +265,14 @@ module Google
         # @return [String]
         attr_accessor :image_link
       
-        # The list of destinations to include for this target (corresponds to checked
-        # check boxes in Merchant Center). Default destinations are always included
-        # unless provided in `excludedDestinations`.
+        # Destinations also known as [Marketing methods](https://support.google.com/
+        # merchants/answer/15130232) selections. The list of destinations to include for
+        # this target (corresponds to checked check boxes in Merchant Center). Default
+        # destinations are always included unless provided in `excludedDestinations`.
+        # For more information, see [Included destination](https://support.google.com/
+        # merchants/answer/7501026). Note: We recommend setting destinations on
+        # datasources level for most use cases. Use this field within products to only
+        # setup exceptions.
         # Corresponds to the JSON property `includedDestinations`
         # @return [Array<String>]
         attr_accessor :included_destinations
@@ -251,8 +282,9 @@ module Google
         # @return [Google::Apis::MerchantapiProductsV1beta::Installment]
         attr_accessor :installment
       
-        # Whether the item is a merchant-defined bundle. A bundle is a custom grouping
-        # of different products sold by a merchant for a single price.
+        # Whether the item is a business-defined sub-API. A [sub-API] (https://support.
+        # google.com/merchants/answer/6324449) is a custom grouping of different
+        # products sold by a business for a single price.
         # Corresponds to the JSON property `isBundle`
         # @return [Boolean]
         attr_accessor :is_bundle
@@ -276,7 +308,8 @@ module Google
         # @return [String]
         attr_accessor :link
       
-        # Link template for merchant hosted local storefront.
+        # [Link template](https://support.google.com/merchants/answer/13871172) for
+        # business hosted local storefront.
         # Corresponds to the JSON property `linkTemplate`
         # @return [String]
         attr_accessor :link_template
@@ -292,7 +325,8 @@ module Google
         # @return [Array<Google::Apis::MerchantapiProductsV1beta::LoyaltyProgram>]
         attr_accessor :loyalty_programs
       
-        # The material of which the item is made.
+        # The [material](https://support.google.com/merchants/answer/6324410) of which
+        # the item is made. For example, "Leather" or "Cotton".
         # Corresponds to the JSON property `material`
         # @return [String]
         attr_accessor :material
@@ -306,6 +340,11 @@ module Google
         # Corresponds to the JSON property `maxHandlingTime`
         # @return [Fixnum]
         attr_accessor :max_handling_time
+      
+        # The price represented as a number and currency.
+        # Corresponds to the JSON property `maximumRetailPrice`
+        # @return [Google::Apis::MerchantapiProductsV1beta::Price]
+        attr_accessor :maximum_retail_price
       
         # The energy efficiency class as defined in EU directive 2010/30/EU.
         # Corresponds to the JSON property `minEnergyEfficiencyClass`
@@ -322,24 +361,25 @@ module Google
         # @return [String]
         attr_accessor :mobile_link
       
-        # Link template for merchant hosted local storefront optimized for mobile
-        # devices.
+        # [Link template](https://support.google.com/merchants/answer/13870216) for
+        # business hosted local storefront optimized for mobile devices.
         # Corresponds to the JSON property `mobileLinkTemplate`
         # @return [String]
         attr_accessor :mobile_link_template
       
         # Manufacturer Part Number ([MPN](https://support.google.com/merchants/answer/
-        # 188494#mpn)) of the item.
+        # 6324482)) of the item.
         # Corresponds to the JSON property `mpn`
         # @return [String]
         attr_accessor :mpn
       
-        # The number of identical products in a merchant-defined multipack.
+        # The number of identical products in a business-defined multipack.
         # Corresponds to the JSON property `multipack`
         # @return [Fixnum]
         attr_accessor :multipack
       
-        # The item's pattern (for example, polka dots).
+        # The item's [pattern](https://support.google.com/merchants/answer/6324483). For
+        # example, polka dots.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
@@ -350,12 +390,14 @@ module Google
         # @return [String]
         attr_accessor :pause
       
-        # The pick up option for the item.
+        # The [pickup](https://support.google.com/merchants/answer/14634021) option for
+        # the item.
         # Corresponds to the JSON property `pickupMethod`
         # @return [String]
         attr_accessor :pickup_method
       
-        # Item store pickup timeline.
+        # Item store pickup timeline. For more information, see [Pickup SLA](https://
+        # support.google.com/merchants/answer/14635400).
         # Corresponds to the JSON property `pickupSla`
         # @return [String]
         attr_accessor :pickup_sla
@@ -375,7 +417,8 @@ module Google
         # @return [Google::Apis::MerchantapiProductsV1beta::ProductDimension]
         attr_accessor :product_height
       
-        # Bullet points describing the most relevant highlights of a product.
+        # Bullet points describing the most relevant [product highlights](https://
+        # support.google.com/merchants/answer/9216100).
         # Corresponds to the JSON property `productHighlights`
         # @return [Array<String>]
         attr_accessor :product_highlights
@@ -386,7 +429,7 @@ module Google
         attr_accessor :product_length
       
         # Categories of the item (formatted as in [product data specification](https://
-        # support.google.com/merchants/answer/188494#product_type)).
+        # support.google.com/merchants/answer/7052112#product_category)).
         # Corresponds to the JSON property `productTypes`
         # @return [Array<String>]
         attr_accessor :product_types
@@ -456,28 +499,32 @@ module Google
         # @return [Google::Apis::MerchantapiProductsV1beta::ShippingDimension]
         attr_accessor :shipping_width
       
-        # List of country codes (ISO 3166-1 alpha-2) to exclude the offer from Shopping
-        # Ads destination. Countries from this list are removed from countries
-        # configured in data source settings.
+        # List of country codes [(ISO 3166-1 alpha-2)](https://en.wikipedia.org/wiki/
+        # ISO_3166-1_alpha-2) to exclude the offer from Shopping Ads destination.
+        # Countries from this list are removed from countries configured in data source
+        # settings.
         # Corresponds to the JSON property `shoppingAdsExcludedCountries`
         # @return [Array<String>]
         attr_accessor :shopping_ads_excluded_countries
       
         # Size of the item. Only one value is allowed. For variants with different sizes,
-        # insert a separate product for each size with the same `itemGroupId` value (
-        # see [https://support.google.com/merchants/answer/6324492](size definition)).
+        # insert a separate product for each size with the same `itemGroupId` value,
+        # see [Size](https://support.google.com/merchants/answer/6324492).
         # Corresponds to the JSON property `size`
         # @return [String]
         attr_accessor :size
       
-        # System in which the size is specified. Recommended for apparel items.
+        # System in which the size is specified. Recommended for apparel items. For
+        # example, "US", "UK", "DE". For more information, see [Size system](https://
+        # support.google.com/merchants/answer/6324502).
         # Corresponds to the JSON property `sizeSystem`
         # @return [String]
         attr_accessor :size_system
       
         # The cut of the item. It can be used to represent combined size types for
-        # apparel items. Maximum two of size types can be provided (see [https://support.
-        # google.com/merchants/answer/6324497](size type)).
+        # apparel items. Maximum two of size types can be provided, see [Size type](
+        # https://support.google.com/merchants/answer/6324497). For example, "petite", "
+        # plus size".
         # Corresponds to the JSON property `sizeTypes`
         # @return [Array<String>]
         attr_accessor :size_types
@@ -502,7 +549,8 @@ module Google
         # @return [Array<Google::Apis::MerchantapiProductsV1beta::ProductSustainabilityIncentive>]
         attr_accessor :sustainability_incentives
       
-        # The tax category of the product.
+        # The [tax category](https://support.google.com/merchants/answer/7569847) of the
+        # product.
         # Corresponds to the JSON property `taxCategory`
         # @return [String]
         attr_accessor :tax_category
@@ -581,6 +629,7 @@ module Google
           @gender = args[:gender] if args.key?(:gender)
           @google_product_category = args[:google_product_category] if args.key?(:google_product_category)
           @gtin = args[:gtin] if args.key?(:gtin)
+          @gtins = args[:gtins] if args.key?(:gtins)
           @identifier_exists = args[:identifier_exists] if args.key?(:identifier_exists)
           @image_link = args[:image_link] if args.key?(:image_link)
           @included_destinations = args[:included_destinations] if args.key?(:included_destinations)
@@ -595,6 +644,7 @@ module Google
           @material = args[:material] if args.key?(:material)
           @max_energy_efficiency_class = args[:max_energy_efficiency_class] if args.key?(:max_energy_efficiency_class)
           @max_handling_time = args[:max_handling_time] if args.key?(:max_handling_time)
+          @maximum_retail_price = args[:maximum_retail_price] if args.key?(:maximum_retail_price)
           @min_energy_efficiency_class = args[:min_energy_efficiency_class] if args.key?(:min_energy_efficiency_class)
           @min_handling_time = args[:min_handling_time] if args.key?(:min_handling_time)
           @mobile_link = args[:mobile_link] if args.key?(:mobile_link)
@@ -820,7 +870,8 @@ module Google
         end
       end
       
-      # The destination status of the product status.
+      # The destination status of the product status. Equivalent to `
+      # StatusPerReportingContext` in Reports API.
       class DestinationStatus
         include Google::Apis::Core::Hashable
       
@@ -1005,7 +1056,7 @@ module Google
         # @return [String]
         attr_accessor :reporting_context
       
-        # Whether the issue can be resolved by the merchant.
+        # Whether the issue can be resolved by the business.
         # Corresponds to the JSON property `resolution`
         # @return [String]
         attr_accessor :resolution
@@ -1121,10 +1172,10 @@ module Google
         attr_accessor :price
       
         # The label of the loyalty program. This is an internal label that uniquely
-        # identifies the relationship between a merchant entity and a loyalty program
+        # identifies the relationship between a business entity and a loyalty program
         # entity. The label must be provided so that the system can associate the assets
-        # below (for example, price and points) with a merchant. The corresponding
-        # program must be linked to the merchant account.
+        # below (for example, price and points) with a business. The corresponding
+        # program must be linked to the Merchant Center account.
         # Corresponds to the JSON property `programLabel`
         # @return [String]
         attr_accessor :program_label
@@ -1197,6 +1248,15 @@ module Google
       class Product
         include Google::Apis::Core::Hashable
       
+        # Output only. Determines whether the product is [archived](https://support.
+        # google.com/merchants/answer/11909930). To archive or restore your product,
+        # visit Merchant Center products page. Learn also more about [offer visibility](
+        # https://support.google.com/merchants/answer/12488713).
+        # Corresponds to the JSON property `archived`
+        # @return [Boolean]
+        attr_accessor :archived
+        alias_method :archived?, :archived
+      
         # Attributes.
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::MerchantapiProductsV1beta::Attributes]
@@ -1206,6 +1266,18 @@ module Google
         # Corresponds to the JSON property `automatedDiscounts`
         # @return [Google::Apis::MerchantapiProductsV1beta::AutomatedDiscounts]
         attr_accessor :automated_discounts
+      
+        # Output only. The **unpadded base64url encoded name** of the product. Format: `
+        # accounts/`account`/products/`product`` where the last section `product` is the
+        # unpadded base64url encoding of the `content_language~feed_label~offer_id` name.
+        # Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw` for the decoded product
+        # name `accounts/123/products/en~US~sku/123`. This field can be used directly as
+        # input to the API methods that require the product name to be encoded if it
+        # contains special characters, for example [`GetProduct`](https://developers.
+        # google.com/merchant/api/reference/rest/products_v1beta/accounts.products/get).
+        # Corresponds to the JSON property `base64EncodedName`
+        # @return [String]
+        attr_accessor :base64_encoded_name
       
         # Output only. The [channel](https://support.google.com/merchants/answer/7361332)
         # of the product.
@@ -1233,15 +1305,22 @@ module Google
         # @return [String]
         attr_accessor :data_source
       
-        # Output only. The feed label for the product.
+        # Output only. The feed label lets you categorize and identify your products.
+        # The maximum allowed characters is 20 and the supported characters are`A-Z`, `0-
+        # 9`, hyphen and underscore. The feed label must not include any spaces. For
+        # more information, see [Using feed labels](//support.google.com/merchants/
+        # answer/14994087)
         # Corresponds to the JSON property `feedLabel`
         # @return [String]
         attr_accessor :feed_label
       
         # The name of the product. Format: `accounts/`account`/products/`product`` where
-        # the last section `product` consists of 4 parts: `channel~content_language~
-        # feed_label~offer_id` example for product name is `accounts/123/products/online~
-        # en~US~sku123`
+        # the last section `product` consists of: `content_language~feed_label~offer_id`
+        # example for product name is `accounts/123/products/en~US~sku123`. A legacy
+        # local product name would be `accounts/123/products/local~en~US~sku123`. Note:
+        # For calls to the v1beta version, the `product` section consists of: `channel~
+        # content_language~feed_label~offer_id`, for example: `accounts/123/products/
+        # online~en~US~sku123`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1278,8 +1357,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @archived = args[:archived] if args.key?(:archived)
           @attributes = args[:attributes] if args.key?(:attributes)
           @automated_discounts = args[:automated_discounts] if args.key?(:automated_discounts)
+          @base64_encoded_name = args[:base64_encoded_name] if args.key?(:base64_encoded_name)
           @channel = args[:channel] if args.key?(:channel)
           @content_language = args[:content_language] if args.key?(:content_language)
           @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
@@ -1399,13 +1480,14 @@ module Google
       # This resource represents input data you submit for a product, not the
       # processed product that you see in Merchant Center, in Shopping ads, or across
       # Google surfaces. Product inputs, rules and supplemental data source data are
-      # combined to create the processed Product. Required product input attributes to
-      # pass data validation checks are primarily defined in the [Products Data
-      # Specification](https://support.google.com/merchants/answer/188494). The
-      # following attributes are required: feedLabel, contentLanguage and offerId.
-      # After inserting, updating, or deleting a product input, it may take several
-      # minutes before the processed product can be retrieved. All fields in the
-      # product input and its sub-messages match the English name of their
+      # combined to create the processed Product. For more information, see [Manage
+      # products](/merchant/api/guides/products/overview). Required product input
+      # attributes to pass data validation checks are primarily defined in the [
+      # Products Data Specification](https://support.google.com/merchants/answer/
+      # 188494). The following attributes are required: feedLabel, contentLanguage and
+      # offerId. After inserting, updating, or deleting a product input, it may take
+      # several minutes before the processed product can be retrieved. All fields in
+      # the product input and its sub-messages match the English name of their
       # corresponding attribute in the [Products Data Specification](https://support.
       # google.com/merchants/answer/188494) with [some exceptions](https://support.
       # google.com/merchants/answer/7052112). The following reference documentation
@@ -1418,6 +1500,33 @@ module Google
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::MerchantapiProductsV1beta::Attributes]
         attr_accessor :attributes
+      
+        # Output only. The **unpadded base64url encoded name** of the product input.
+        # Format: `accounts/`account`/productInputs/`productinput`` where the last
+        # section `productinput` is the unpadded base64url encoding of the `
+        # content_language~feed_label~offer_id` name. Example: `accounts/123/
+        # productInputs/ZW5-VVN-c2t1LzEyMw` for the decoded product input name `accounts/
+        # 123/productInputs/en~US~sku/123`. This field can be used directly as input to
+        # the API methods that require the product input name to be encoded if it
+        # contains special characters, for example [`GetProductInput`](https://
+        # developers.google.com/merchant/api/reference/rest/products_v1beta/accounts.
+        # productInputs/get).
+        # Corresponds to the JSON property `base64EncodedName`
+        # @return [String]
+        attr_accessor :base64_encoded_name
+      
+        # Output only. The **unpadded base64url encoded name** of the processed product.
+        # Format: `accounts/`account`/products/`product`` where the last section `
+        # product` is the unpadded base64url encoding of the `content_language~
+        # feed_label~offer_id` name. Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw`
+        # for the decoded product name `accounts/123/products/en~US~sku/123`. This field
+        # can be used directly as input to the API methods that require the product name
+        # to be encoded if it contains special characters, for example [`GetProduct`](
+        # https://developers.google.com/merchant/api/reference/rest/products_v1beta/
+        # accounts.products/get).
+        # Corresponds to the JSON property `base64EncodedProduct`
+        # @return [String]
+        attr_accessor :base64_encoded_product
       
         # Immutable. The [channel](https://support.google.com/merchants/answer/7361332)
         # of the product.
@@ -1443,16 +1552,38 @@ module Google
         # @return [Array<Google::Apis::MerchantapiProductsV1beta::CustomAttribute>]
         attr_accessor :custom_attributes
       
-        # Required. Immutable. The [feed label](https://developers.google.com/shopping-
-        # content/guides/products/feed-labels) for the product.
+        # Required. Immutable. The feed label that lets you categorize and identify your
+        # products. The maximum allowed characters are 20, and the supported characters
+        # are `A-Z`, `0-9`, hyphen, and underscore. The feed label must not include any
+        # spaces. For more information, see [Using feed labels](//support.google.com/
+        # merchants/answer/14994087).
         # Corresponds to the JSON property `feedLabel`
         # @return [String]
         attr_accessor :feed_label
       
-        # Identifier. The name of the product input. Format: `accounts/`account`/
-        # productInputs/`productinput`` where the last section `productinput` consists
-        # of 4 parts: `channel~content_language~feed_label~offer_id` example for product
-        # input name is `accounts/123/productInputs/online~en~US~sku123`
+        # Identifier. The name of the product. Format: `accounts/`account`/productInputs/
+        # `productinput`` The `productinput` segment is a unique identifier for the
+        # product. This identifier must be unique within a merchant account and
+        # generally follows the structure: `content_language~feed_label~offer_id`.
+        # Example: `en~US~sku123` For legacy local products, the structure is: `local~
+        # content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The
+        # format of the `productinput` segment in the URL is automatically detected by
+        # the server, supporting two options: 1. **Encoded Format**: The ``productinput``
+        # segment is an unpadded base64url encoded string (RFC 4648 Section 5). The
+        # decoded string must result in the `content_language~feed_label~offer_id`
+        # structure. This encoding MUST be used if any part of the product identifier (
+        # like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To
+        # represent the product ID `en~US~sku/123`, the ``productinput`` segment must be
+        # the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`.
+        # The full resource name for the product would be `accounts/123/productInputs/
+        # ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The ``productinput`` segment is the
+        # tilde-separated string `content_language~feed_label~offer_id`. This format is
+        # suitable only when `content_language`, `feed_label`, and `offer_id` do not
+        # contain URL-problematic characters like `/`, `%`, or `~`. We recommend using
+        # the **Encoded Format** for all product IDs to ensure correct parsing,
+        # especially those containing special characters. The presence of tilde (`~`)
+        # characters in the ``productinput`` segment is used to differentiate between
+        # the two formats.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1492,6 +1623,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @base64_encoded_name = args[:base64_encoded_name] if args.key?(:base64_encoded_name)
+          @base64_encoded_product = args[:base64_encoded_product] if args.key?(:base64_encoded_product)
           @channel = args[:channel] if args.key?(:channel)
           @content_language = args[:content_language] if args.key?(:content_language)
           @custom_attributes = args[:custom_attributes] if args.key?(:custom_attributes)
@@ -1579,7 +1712,7 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Optional. The product expiration time. This field will not bet set if the
+        # Optional. The product expiration time. This field will not be set if the
         # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
@@ -1747,6 +1880,23 @@ module Google
         # @return [String]
         attr_accessor :country
       
+        # The handling cutoff time until which an order has to be placed to be processed
+        # in the same day. This is a string in format of HHMM (e.g. `1530`) for 3:30 PM.
+        # If not configured, the cutoff time will be defaulted to 8AM PST and `
+        # handling_cutoff_timezone` will be ignored.
+        # Corresponds to the JSON property `handlingCutoffTime`
+        # @return [String]
+        attr_accessor :handling_cutoff_time
+      
+        # [Timezone identifier](https://developers.google.com/adwords/api/docs/appendix/
+        # codes-formats#timezone-ids) For example `Europe/Zurich`. This field only
+        # applies if `handling_cutoff_time` is set. If `handling_cutoff_time` is set but
+        # this field is not set, the shipping destination timezone will be used. If both
+        # fields are not set, the handling cutoff time will default to 8AM PST.
+        # Corresponds to the JSON property `handlingCutoffTimezone`
+        # @return [String]
+        attr_accessor :handling_cutoff_timezone
+      
         # The location where the shipping is applicable, represented by a location group
         # name.
         # Corresponds to the JSON property `locationGroupName`
@@ -1759,6 +1909,24 @@ module Google
         # Corresponds to the JSON property `locationId`
         # @return [Fixnum]
         attr_accessor :location_id
+      
+        # Optional. The label of the [loyalty program](https://support.google.com/
+        # merchants/answer/6324484). Must match one of the program labels set in
+        # loyalty_programs. When set (in combination with [loyalty_tier_label](https://
+        # support.google.com/merchants/answer/6324484)), this shipping option is only
+        # applicable to loyalty program members of the specified tier.
+        # Corresponds to the JSON property `loyaltyProgramLabel`
+        # @return [String]
+        attr_accessor :loyalty_program_label
+      
+        # Optional. The label of the [loyalty tier](https://support.google.com/merchants/
+        # answer/6324484) within the loyalty program. Must match one of the tiers set in
+        # the loyalty_programs. When set (in combination with [loyalty_program_label](
+        # https://support.google.com/merchants/answer/6324484)), this shipping option is
+        # only applicable to loyalty program members of the specified tier.
+        # Corresponds to the JSON property `loyaltyTierLabel`
+        # @return [String]
+        attr_accessor :loyalty_tier_label
       
         # Maximum handling time (inclusive) between when the order is received and
         # shipped in business days. 0 means that the order is shipped on the same day as
@@ -1825,8 +1993,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @country = args[:country] if args.key?(:country)
+          @handling_cutoff_time = args[:handling_cutoff_time] if args.key?(:handling_cutoff_time)
+          @handling_cutoff_timezone = args[:handling_cutoff_timezone] if args.key?(:handling_cutoff_timezone)
           @location_group_name = args[:location_group_name] if args.key?(:location_group_name)
           @location_id = args[:location_id] if args.key?(:location_id)
+          @loyalty_program_label = args[:loyalty_program_label] if args.key?(:loyalty_program_label)
+          @loyalty_tier_label = args[:loyalty_tier_label] if args.key?(:loyalty_tier_label)
           @max_handling_time = args[:max_handling_time] if args.key?(:max_handling_time)
           @max_transit_time = args[:max_transit_time] if args.key?(:max_transit_time)
           @min_handling_time = args[:min_handling_time] if args.key?(:min_handling_time)
@@ -1897,7 +2069,8 @@ module Google
         # @return [Google::Apis::MerchantapiProductsV1beta::Price]
         attr_accessor :amount
       
-        # The type of subscription period. Supported values are: * "`month`" * "`year`"
+        # The type of subscription period. Supported values are: * "`month`" * "`year`" *
+        # "`week`"
         # Corresponds to the JSON property `period`
         # @return [String]
         attr_accessor :period

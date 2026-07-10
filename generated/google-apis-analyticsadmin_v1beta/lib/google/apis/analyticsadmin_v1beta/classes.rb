@@ -596,7 +596,7 @@ module Google
         # @return [String]
         attr_accessor :gmp_organization
       
-        # Output only. Resource name of this account. Format: accounts/`account` Example:
+        # Identifier. Resource name of this account. Format: accounts/`account` Example:
         # "accounts/100"
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -644,8 +644,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name for this account summary. Format: accountSummaries/`account_id`
-        # Example: "accountSummaries/1000"
+        # Identifier. Resource name for this account summary. Format: accountSummaries/`
+        # account_id` Example: "accountSummaries/1000"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -935,7 +935,7 @@ module Google
         # @return [String]
         attr_accessor :event_name
       
-        # Output only. Resource name of this conversion event. Format: properties/`
+        # Identifier. Resource name of this conversion event. Format: properties/`
         # property`/conversionEvents/`conversion_event`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1011,7 +1011,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Resource name for this CustomDimension resource. Format:
+        # Identifier. Resource name for this CustomDimension resource. Format:
         # properties/`property`/customDimensions/`customDimension`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1070,7 +1070,7 @@ module Google
         # @return [String]
         attr_accessor :measurement_unit
       
-        # Output only. Resource name for this CustomMetric resource. Format: properties/`
+        # Identifier. Resource name for this CustomMetric resource. Format: properties/`
         # property`/customMetrics/`customMetric`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1121,7 +1121,7 @@ module Google
         # @return [String]
         attr_accessor :event_data_retention
       
-        # Output only. Resource name for this DataRetentionSetting resource. Format:
+        # Identifier. Resource name for this DataRetentionSetting resource. Format:
         # properties/`property`/dataRetentionSettings
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1157,7 +1157,7 @@ module Google
       class GoogleAnalyticsAdminV1betaDataSharingSettings
         include Google::Apis::Core::Hashable
       
-        # Output only. Resource name. Format: accounts/`account`/dataSharingSettings
+        # Identifier. Resource name. Format: accounts/`account`/dataSharingSettings
         # Example: "accounts/1000/dataSharingSettings"
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1249,9 +1249,8 @@ module Google
         # @return [Google::Apis::AnalyticsadminV1beta::GoogleAnalyticsAdminV1betaDataStreamIosAppStreamData]
         attr_accessor :ios_app_stream_data
       
-        # Output only. Resource name of this Data Stream. Format: properties/`
-        # property_id`/dataStreams/`stream_id` Example: "properties/1000/dataStreams/
-        # 2000"
+        # Identifier. Resource name of this Data Stream. Format: properties/`property_id`
+        # /dataStreams/`stream_id` Example: "properties/1000/dataStreams/2000"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1384,7 +1383,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Example format: properties/1234/firebaseLinks/5678
+        # Identifier. Example format: properties/1234/firebaseLinks/5678
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1445,7 +1444,7 @@ module Google
         # @return [String]
         attr_accessor :customer_id
       
-        # Output only. Format: properties/`propertyId`/googleAdsLinks/`googleAdsLinkId`
+        # Identifier. Format: properties/`propertyId`/googleAdsLinks/`googleAdsLinkId`
         # Note: googleAdsLinkId is not the Google Ads customer ID.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1862,7 +1861,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Resource name of this secret. This secret may be a child of any
+        # Identifier. Resource name of this secret. This secret may be a child of any
         # type of stream. Format: properties/`property`/dataStreams/`dataStream`/
         # measurementProtocolSecrets/`measurementProtocolSecret`
         # Corresponds to the JSON property `name`
@@ -1958,7 +1957,7 @@ module Google
         # @return [String]
         attr_accessor :industry_category
       
-        # Output only. Resource name of this property. Format: properties/`property_id`
+        # Identifier. Resource name of this property. Format: properties/`property_id`
         # Example: "properties/1000"
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2023,6 +2022,13 @@ module Google
       class GoogleAnalyticsAdminV1betaPropertySummary
         include Google::Apis::Core::Hashable
       
+        # If true, then the user has a Google Analytics role that permits them to edit
+        # the property.
+        # Corresponds to the JSON property `canEdit`
+        # @return [Boolean]
+        attr_accessor :can_edit
+        alias_method :can_edit?, :can_edit
+      
         # Display name for the property referred to in this property summary.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -2052,6 +2058,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @can_edit = args[:can_edit] if args.key?(:can_edit)
           @display_name = args[:display_name] if args.key?(:display_name)
           @parent = args[:parent] if args.key?(:parent)
           @property = args[:property] if args.key?(:property)

@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildConfigOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitFunctionUpgradeAsGen2Request
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CommitFunctionUpgradeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +83,12 @@ module Google
       end
       
       class DetachFunctionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DirectVpcNetworkInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -250,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceConfigOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -366,6 +390,19 @@ module Google
         end
       end
       
+      class BuildConfigOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :runtime, as: 'runtime'
+        end
+      end
+      
+      class CommitFunctionUpgradeAsGen2Request
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CommitFunctionUpgradeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -384,6 +421,15 @@ module Google
       class DetachFunctionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DirectVpcNetworkInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :subnetwork, as: 'subnetwork'
+          collection :tags, as: 'tags'
         end
       end
       
@@ -553,6 +599,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::CloudfunctionsV2beta::Operation, decorator: Google::Apis::CloudfunctionsV2beta::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -695,6 +742,9 @@ module Google
           property :available_cpu, as: 'availableCpu'
           property :available_memory, as: 'availableMemory'
           property :binary_authorization_policy, as: 'binaryAuthorizationPolicy'
+          property :direct_vpc_egress, as: 'directVpcEgress'
+          collection :direct_vpc_network_interface, as: 'directVpcNetworkInterface', class: Google::Apis::CloudfunctionsV2beta::DirectVpcNetworkInterface, decorator: Google::Apis::CloudfunctionsV2beta::DirectVpcNetworkInterface::Representation
+      
           hash :environment_variables, as: 'environmentVariables'
           property :ingress_settings, as: 'ingressSettings'
           property :max_instance_count, as: 'maxInstanceCount'
@@ -715,6 +765,13 @@ module Google
         end
       end
       
+      class ServiceConfigOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_instance_count, as: 'maxInstanceCount'
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -727,6 +784,10 @@ module Google
       class SetupFunctionUpgradeConfigRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_config_overrides, as: 'buildConfigOverrides', class: Google::Apis::CloudfunctionsV2beta::BuildConfigOverrides, decorator: Google::Apis::CloudfunctionsV2beta::BuildConfigOverrides::Representation
+      
+          property :service_config_overrides, as: 'serviceConfigOverrides', class: Google::Apis::CloudfunctionsV2beta::ServiceConfigOverrides, decorator: Google::Apis::CloudfunctionsV2beta::ServiceConfigOverrides::Representation
+      
           property :trigger_service_account, as: 'triggerServiceAccount'
         end
       end

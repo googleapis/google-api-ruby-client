@@ -212,6 +212,13 @@ module Google
         # @return [Google::Apis::StsV1beta::GoogleIdentityStsV1AccessBoundary]
         attr_accessor :access_boundary
       
+        # The unpadded, url-escaped, base64-encoded SHA-256 hash of the certificate's
+        # DER encoding. It must be 43 characters long. The resulting token will be bound
+        # to this value.
+        # Corresponds to the JSON property `bindCertFingerprint`
+        # @return [String]
+        attr_accessor :bind_cert_fingerprint
+      
         # A Google project used for quota and billing purposes when the credential is
         # used to access Google APIs. The provided project overrides the project bound
         # to the credential. The value must be a project number or a project ID. Example:
@@ -227,6 +234,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_boundary = args[:access_boundary] if args.key?(:access_boundary)
+          @bind_cert_fingerprint = args[:bind_cert_fingerprint] if args.key?(:bind_cert_fingerprint)
           @user_project = args[:user_project] if args.key?(:user_project)
         end
       end
@@ -338,8 +346,11 @@ module Google
         attr_accessor :requested_token_type
       
         # The OAuth 2.0 scopes to include on the resulting access token, formatted as a
-        # list of space-delimited, case-sensitive strings. Required when exchanging an
-        # external credential for a Google access token.
+        # list of space-delimited, case-sensitive strings; for example, `https://www.
+        # googleapis.com/auth/cloud-platform`. Required when exchanging an external
+        # credential for a Google access token. For a list of OAuth 2.0 scopes, see [
+        # OAuth 2.0 Scopes for Google APIs](https://developers.google.com/identity/
+        # protocols/oauth2/scopes).
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -359,18 +370,20 @@ module Google
         # formatted according to section 4.2 of the [OIDC 1.0 Discovery specification](
         # https://openid.net/specs/openid-connect-discovery-1_0.html#
         # ProviderConfigurationResponse). - `iat`: The issue time, in seconds, since the
-        # Unix epoch. Must be in the past. - `exp`: The expiration time, in seconds,
-        # since the Unix epoch. Must be less than 48 hours after `iat`. Shorter
-        # expiration times are more secure. If possible, we recommend setting an
-        # expiration time less than 6 hours. - `sub`: The identity asserted in the JWT. -
-        # `aud`: For workload identity pools, this must be a value specified in the
-        # allowed audiences for the workload identity pool provider, or one of the
-        # audiences allowed by default if no audiences were specified. See https://cloud.
-        # google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.
-        # providers#oidc Example header: ``` ` "alg": "RS256", "kid": "us-east-11" ` ```
-        # Example payload: ``` ` "iss": "https://accounts.google.com", "iat": 1517963104,
-        # "exp": 1517966704, "aud": "//iam.googleapis.com/projects/1234567890123/
-        # locations/global/workloadIdentityPools/my-pool/providers/my-provider", "sub": "
+        # Unix epoch. This timestamp must be in the past and no more than 24 hours in
+        # the past, or the token will be rejected. Note that this implies the token is
+        # only acceptable within a time window of at most 24 hours. - `exp`: The
+        # expiration time, in seconds, since the Unix epoch. Shorter expiration times
+        # are more secure. If possible, we recommend setting an expiration time less
+        # than 6 hours. - `sub`: The identity asserted in the JWT. - `aud`: For workload
+        # identity pools, this must be a value specified in the allowed audiences for
+        # the workload identity pool provider, or one of the audiences allowed by
+        # default if no audiences were specified. See https://cloud.google.com/iam/docs/
+        # reference/rest/v1/projects.locations.workloadIdentityPools.providers#oidc
+        # Example header: ``` ` "alg": "RS256", "kid": "us-east-11" ` ``` Example
+        # payload: ``` ` "iss": "https://accounts.google.com", "iat": 1517963104, "exp":
+        # 1517966704, "aud": "//iam.googleapis.com/projects/1234567890123/locations/
+        # global/workloadIdentityPools/my-pool/providers/my-provider", "sub": "
         # 113475438248934895348", "my_claims": ` "additional_claim": "value" ` ` ``` If `
         # subject_token` is for AWS, it must be a serialized `GetCallerIdentity` token.
         # This token contains the same information as a request to the AWS [`

@@ -130,7 +130,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Progress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,6 +203,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -371,6 +395,33 @@ module Google
         end
       end
       
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::SecretmanagerV1::Status, decorator: Google::Apis::SecretmanagerV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :progress, as: 'progress', class: Google::Apis::SecretmanagerV1::Progress, decorator: Google::Apis::SecretmanagerV1::Progress::Representation
+      
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -380,6 +431,15 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class Progress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_version_count, as: 'completedVersionCount'
+          property :failed_version_count, as: 'failedVersionCount'
+          property :total_version_count, as: 'totalVersionCount'
         end
       end
       
@@ -444,6 +504,7 @@ module Google
       
           property :rotation, as: 'rotation', class: Google::Apis::SecretmanagerV1::Rotation, decorator: Google::Apis::SecretmanagerV1::Rotation::Representation
       
+          hash :tags, as: 'tags'
           collection :topics, as: 'topics', class: Google::Apis::SecretmanagerV1::Topic, decorator: Google::Apis::SecretmanagerV1::Topic::Representation
       
           property :ttl, as: 'ttl'
@@ -483,6 +544,15 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::SecretmanagerV1::Policy, decorator: Google::Apis::SecretmanagerV1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       

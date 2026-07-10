@@ -592,6 +592,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadIdentityIdentityProviderStateDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppDevExperienceState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -967,6 +979,7 @@ module Google
       
           property :hierarchy_controller_state, as: 'hierarchyControllerState', class: Google::Apis::GkehubV2alpha::ConfigManagementHierarchyControllerState, decorator: Google::Apis::GkehubV2alpha::ConfigManagementHierarchyControllerState::Representation
       
+          property :kubernetes_api_server_version, as: 'kubernetesApiServerVersion'
           property :membership_spec, as: 'membershipSpec', class: Google::Apis::GkehubV2alpha::ConfigManagementSpec, decorator: Google::Apis::GkehubV2alpha::ConfigManagementSpec::Representation
       
           property :operator_state, as: 'operatorState', class: Google::Apis::GkehubV2alpha::ConfigManagementOperatorState, decorator: Google::Apis::GkehubV2alpha::ConfigManagementOperatorState::Representation
@@ -1048,6 +1061,8 @@ module Google
           property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV2alpha::ServiceMeshState, decorator: Google::Apis::GkehubV2alpha::ServiceMeshState::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV2alpha::State, decorator: Google::Apis::GkehubV2alpha::State::Representation
+      
+          property :workloadidentity, as: 'workloadidentity', class: Google::Apis::GkehubV2alpha::WorkloadIdentityState, decorator: Google::Apis::GkehubV2alpha::WorkloadIdentityState::Representation
       
         end
       end
@@ -1262,6 +1277,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GkehubV2alpha::Operation, decorator: Google::Apis::GkehubV2alpha::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1591,6 +1607,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate_management, as: 'certificateManagement'
+        end
+      end
+      
+      class WorkloadIdentityIdentityProviderStateDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
+        end
+      end
+      
+      class WorkloadIdentityState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          hash :identity_provider_state_details, as: 'identityProviderStateDetails', class: Google::Apis::GkehubV2alpha::WorkloadIdentityIdentityProviderStateDetail, decorator: Google::Apis::GkehubV2alpha::WorkloadIdentityIdentityProviderStateDetail::Representation
+      
         end
       end
     end

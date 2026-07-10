@@ -21,7 +21,7 @@ RSpec.describe "Google::Apis::AppsmarketV2" do
       require "google/apis/appsmarket_v2"
     end.not_to raise_error
     expect do
-      Google::Apis::AppsmarketV2::GoogleWorkspaceMarketplaceAPIService.new
+      Google::Apis::AppsmarketV2::GSuiteMarketplaceAPIService.new
     end.not_to raise_error
   end
 end

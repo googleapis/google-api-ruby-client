@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssetException
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttachedResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityAccesscontextmanagerV1AddRequestHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1ApiOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -484,7 +496,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityAccesscontextmanagerV1Modifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1OsConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1ServicePattern
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -976,6 +1006,8 @@ module Google
           property :access_policy, as: 'accessPolicy', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessPolicy, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessPolicy::Representation
       
           collection :ancestors, as: 'ancestors'
+          collection :asset_exceptions, as: 'assetExceptions', class: Google::Apis::CloudassetV1::AssetException, decorator: Google::Apis::CloudassetV1::AssetException::Representation
+      
           property :asset_type, as: 'assetType'
           property :iam_policy, as: 'iamPolicy', class: Google::Apis::CloudassetV1::Policy, decorator: Google::Apis::CloudassetV1::Policy::Representation
       
@@ -1001,6 +1033,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_owners, as: 'resourceOwners', class: Google::Apis::CloudassetV1::ResourceOwners, decorator: Google::Apis::CloudassetV1::ResourceOwners::Representation
       
+        end
+      end
+      
+      class AssetException
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :exception_type, as: 'exceptionType'
         end
       end
       
@@ -1523,6 +1563,14 @@ module Google
         end
       end
       
+      class GoogleIdentityAccesscontextmanagerV1AddRequestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1ApiOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1603,6 +1651,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_level, as: 'accessLevel'
+          property :psc_endpoint, as: 'pscEndpoint', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint::Representation
+      
           property :resource, as: 'resource'
         end
       end
@@ -1643,6 +1693,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_level, as: 'accessLevel'
+          property :psc_endpoint, as: 'pscEndpoint', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint::Representation
+      
           property :resource, as: 'resource'
         end
       end
@@ -1665,12 +1717,37 @@ module Google
         end
       end
       
+      class GoogleIdentityAccesscontextmanagerV1Modifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_request_header, as: 'addRequestHeader', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AddRequestHeader, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AddRequestHeader::Representation
+      
+        end
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1OsConstraint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :minimum_version, as: 'minimumVersion'
           property :os_type, as: 'osType'
           property :require_verified_chrome_os, as: 'requireVerifiedChromeOs'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rule, as: 'forwardingRule'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1ServicePattern
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :modifiers, as: 'modifiers', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1Modifier, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1Modifier::Representation
+      
+          property :pattern, as: 'pattern'
+          property :service, as: 'service'
         end
       end
       
@@ -1708,8 +1785,11 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_service_patterns, as: 'allowedServicePatterns', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePattern, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePattern::Representation
+      
           collection :allowed_services, as: 'allowedServices'
           property :enable_restriction, as: 'enableRestriction'
+          collection :service_patterns_enforcement_scopes, as: 'servicePatternsEnforcementScopes'
         end
       end
       
@@ -2306,6 +2386,8 @@ module Google
       class VersionedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asset_exceptions, as: 'assetExceptions', class: Google::Apis::CloudassetV1::AssetException, decorator: Google::Apis::CloudassetV1::AssetException::Representation
+      
           hash :resource, as: 'resource'
           property :version, as: 'version'
         end

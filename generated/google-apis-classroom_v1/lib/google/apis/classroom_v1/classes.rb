@@ -128,6 +128,19 @@ module Google
       class AddOnAttachmentStudentSubmission
         include Google::Apis::Core::Hashable
       
+        # Output only. Identifier of the course work submission under which this
+        # attachment submission was made.
+        # Corresponds to the JSON property `courseWorkSubmissionId`
+        # @return [String]
+        attr_accessor :course_work_submission_id
+      
+        # Output only. Classroom-assigned identifier for this student submission. This
+        # is unique among submissions for the relevant course work and add-on attachment
+        # combination.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Student grade on this attachment. If unset, no grade was set.
         # Corresponds to the JSON property `pointsEarned`
         # @return [Float]
@@ -138,14 +151,26 @@ module Google
         # @return [String]
         attr_accessor :post_submission_state
       
+        # Identifier for the student that owns this submission. Requires the user to be
+        # a teacher in the course and have permission to read student submissions. See [`
+        # courseWork.studentSubmissions.get`](/workspace/classroom/reference/rest/v1/
+        # courses.courseWork.studentSubmissions/get#authorization-scopes) for the list
+        # of acceptable OAuth scopes for this field. Read-only.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @course_work_submission_id = args[:course_work_submission_id] if args.key?(:course_work_submission_id)
+          @id = args[:id] if args.key?(:id)
           @points_earned = args[:points_earned] if args.key?(:points_earned)
           @post_submission_state = args[:post_submission_state] if args.key?(:post_submission_state)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -516,6 +541,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Optional. Levels for the course. Examples: "9th grade", "Middle school", "4th -
+        # 5th", "K-2", "3000". If set, this field must be a valid UTF-8 string and
+        # fewer than 1000 characters. This field can only be cleared using the `
+        # PatchCourse` method.
+        # Corresponds to the JSON property `levels`
+        # @return [String]
+        attr_accessor :levels
+      
         # Name of the course. For example, "10th Grade Biology". The name is required.
         # It must be between 1 and 750 characters and a valid UTF-8 string.
         # Corresponds to the JSON property `name`
@@ -543,6 +576,11 @@ module Google
         # Corresponds to the JSON property `section`
         # @return [String]
         attr_accessor :section
+      
+        # Optional. The subject of the course.
+        # Corresponds to the JSON property `subject`
+        # @return [String]
+        attr_accessor :subject
       
         # Representation of a Google Drive folder.
         # Corresponds to the JSON property `teacherFolder`
@@ -580,10 +618,12 @@ module Google
           @gradebook_settings = args[:gradebook_settings] if args.key?(:gradebook_settings)
           @guardians_enabled = args[:guardians_enabled] if args.key?(:guardians_enabled)
           @id = args[:id] if args.key?(:id)
+          @levels = args[:levels] if args.key?(:levels)
           @name = args[:name] if args.key?(:name)
           @owner_id = args[:owner_id] if args.key?(:owner_id)
           @room = args[:room] if args.key?(:room)
           @section = args[:section] if args.key?(:section)
+          @subject = args[:subject] if args.key?(:subject)
           @teacher_folder = args[:teacher_folder] if args.key?(:teacher_folder)
           @teacher_group_email = args[:teacher_group_email] if args.key?(:teacher_group_email)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1265,6 +1305,37 @@ module Google
           @response_url = args[:response_url] if args.key?(:response_url)
           @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Gemini Gem link.
+      class GeminiGem
+        include Google::Apis::Core::Hashable
+      
+        # Gems resource id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Title of the Gem.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URL that can be used to access the Gem.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @title = args[:title] if args.key?(:title)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -1969,6 +2040,58 @@ module Google
         end
       end
       
+      # Response when listing students in a group.
+      class ListStudentGroupMembersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token identifying the next page of results to return. If empty, no further
+        # results are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The student group members.
+        # Corresponds to the JSON property `studentGroupMembers`
+        # @return [Array<Google::Apis::ClassroomV1::StudentGroupMember>]
+        attr_accessor :student_group_members
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @student_group_members = args[:student_group_members] if args.key?(:student_group_members)
+        end
+      end
+      
+      # Response when listing student groups.
+      class ListStudentGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token identifying the next page of results to return. If empty, no further
+        # results are available.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The student groups.
+        # Corresponds to the JSON property `studentGroups`
+        # @return [Array<Google::Apis::ClassroomV1::StudentGroup>]
+        attr_accessor :student_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @student_groups = args[:student_groups] if args.key?(:student_groups)
+        end
+      end
+      
       # Response when listing student submissions.
       class ListStudentSubmissionsResponse
         include Google::Apis::Core::Hashable
@@ -2074,7 +2197,7 @@ module Google
       end
       
       # Material attached to course work. When creating attachments, setting the `form`
-      # field is not supported.
+      # , `gem`, or `notebook` field is not supported.
       class Material
         include Google::Apis::Core::Hashable
       
@@ -2088,10 +2211,20 @@ module Google
         # @return [Google::Apis::ClassroomV1::Form]
         attr_accessor :form
       
+        # Gemini Gem link.
+        # Corresponds to the JSON property `gem`
+        # @return [Google::Apis::ClassroomV1::GeminiGem]
+        attr_accessor :gem_prop
+      
         # URL item.
         # Corresponds to the JSON property `link`
         # @return [Google::Apis::ClassroomV1::Link]
         attr_accessor :link
+      
+        # NotebookLM Notebook link.
+        # Corresponds to the JSON property `notebook`
+        # @return [Google::Apis::ClassroomV1::NotebookLmNotebook]
+        attr_accessor :notebook
       
         # YouTube video item.
         # Corresponds to the JSON property `youtubeVideo`
@@ -2106,7 +2239,9 @@ module Google
         def update!(**args)
           @drive_file = args[:drive_file] if args.key?(:drive_file)
           @form = args[:form] if args.key?(:form)
+          @gem_prop = args[:gem_prop] if args.key?(:gem_prop)
           @link = args[:link] if args.key?(:link)
+          @notebook = args[:notebook] if args.key?(:notebook)
           @youtube_video = args[:youtube_video] if args.key?(:youtube_video)
         end
       end
@@ -2279,6 +2414,37 @@ module Google
           @family_name = args[:family_name] if args.key?(:family_name)
           @full_name = args[:full_name] if args.key?(:full_name)
           @given_name = args[:given_name] if args.key?(:given_name)
+        end
+      end
+      
+      # NotebookLM Notebook link.
+      class NotebookLmNotebook
+        include Google::Apis::Core::Hashable
+      
+        # Notebook resource id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Title of the Notebook.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # URL that can be used to access the Notebook.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @title = args[:title] if args.key?(:title)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -2580,6 +2746,68 @@ module Google
         # Update properties of this object
         def update!(**args)
           @submission_id = args[:submission_id] if args.key?(:submission_id)
+        end
+      end
+      
+      # A student group in a course.
+      class StudentGroup
+        include Google::Apis::Core::Hashable
+      
+        # The identifier of the course.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        # The identifier of the student group.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The title of the student group.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @id = args[:id] if args.key?(:id)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A student member in a student group.
+      class StudentGroupMember
+        include Google::Apis::Core::Hashable
+      
+        # The identifier of the course.
+        # Corresponds to the JSON property `courseId`
+        # @return [String]
+        attr_accessor :course_id
+      
+        # The identifier of the student group.
+        # Corresponds to the JSON property `studentGroupId`
+        # @return [String]
+        attr_accessor :student_group_id
+      
+        # Identifier of the student.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @course_id = args[:course_id] if args.key?(:course_id)
+          @student_group_id = args[:student_group_id] if args.key?(:student_group_id)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       

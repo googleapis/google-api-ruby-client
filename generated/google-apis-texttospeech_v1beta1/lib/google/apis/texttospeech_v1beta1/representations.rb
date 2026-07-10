@@ -76,7 +76,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiSpeakerVoiceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MultispeakerPrebuiltVoice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SafetySetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SafetySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -151,7 +175,11 @@ module Google
       class AdvancedVoiceOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_textnorm, as: 'enableTextnorm'
           property :low_latency_journey_synthesis, as: 'lowLatencyJourneySynthesis'
+          property :relax_safety_filters, as: 'relaxSafetyFilters'
+          property :safety_settings, as: 'safetySettings', class: Google::Apis::TexttospeechV1beta1::SafetySettings, decorator: Google::Apis::TexttospeechV1beta1::SafetySettings::Representation
+      
         end
       end
       
@@ -207,6 +235,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::TexttospeechV1beta1::Operation, decorator: Google::Apis::TexttospeechV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -226,6 +255,22 @@ module Google
         end
       end
       
+      class MultiSpeakerVoiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :speaker_voice_configs, as: 'speakerVoiceConfigs', class: Google::Apis::TexttospeechV1beta1::MultispeakerPrebuiltVoice, decorator: Google::Apis::TexttospeechV1beta1::MultispeakerPrebuiltVoice::Representation
+      
+        end
+      end
+      
+      class MultispeakerPrebuiltVoice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speaker_alias, as: 'speakerAlias'
+          property :speaker_id, as: 'speakerId'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -235,6 +280,22 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class SafetySetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :threshold, as: 'threshold'
+        end
+      end
+      
+      class SafetySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :settings, as: 'settings', class: Google::Apis::TexttospeechV1beta1::SafetySetting, decorator: Google::Apis::TexttospeechV1beta1::SafetySetting::Representation
+      
         end
       end
       
@@ -255,6 +316,7 @@ module Google
           property :markup, as: 'markup'
           property :multi_speaker_markup, as: 'multiSpeakerMarkup', class: Google::Apis::TexttospeechV1beta1::MultiSpeakerMarkup, decorator: Google::Apis::TexttospeechV1beta1::MultiSpeakerMarkup::Representation
       
+          property :prompt, as: 'prompt'
           property :ssml, as: 'ssml'
           property :text, as: 'text'
         end
@@ -347,6 +409,9 @@ module Google
           property :custom_voice, as: 'customVoice', class: Google::Apis::TexttospeechV1beta1::CustomVoiceParams, decorator: Google::Apis::TexttospeechV1beta1::CustomVoiceParams::Representation
       
           property :language_code, as: 'languageCode'
+          property :model_name, as: 'modelName'
+          property :multi_speaker_voice_config, as: 'multiSpeakerVoiceConfig', class: Google::Apis::TexttospeechV1beta1::MultiSpeakerVoiceConfig, decorator: Google::Apis::TexttospeechV1beta1::MultiSpeakerVoiceConfig::Representation
+      
           property :name, as: 'name'
           property :ssml_gender, as: 'ssmlGender'
           property :voice_clone, as: 'voiceClone', class: Google::Apis::TexttospeechV1beta1::VoiceCloneParams, decorator: Google::Apis::TexttospeechV1beta1::VoiceCloneParams::Representation

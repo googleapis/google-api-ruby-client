@@ -30,7 +30,7 @@ module Google
       #    Versionhistory = Google::Apis::VersionhistoryV1 # Alias the module
       #    service = Versionhistory::VersionHistoryService.new
       #
-      # @see https://developers.chrome.com/versionhistory
+      # @see https://developer.chrome.com/docs/web-platform/versionhistory/guide
       class VersionHistoryService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://versionhistory.$UNIVERSE_DOMAIN$/"
 

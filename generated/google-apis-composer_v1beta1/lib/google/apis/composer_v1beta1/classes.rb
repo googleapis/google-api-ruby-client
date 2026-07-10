@@ -121,6 +121,12 @@ module Google
         # @return [String]
         attr_accessor :build_log_uri
       
+        # Output only. Contains information about environment configuration that is
+        # incompatible with the new image version, except for pypi modules conflicts.
+        # Corresponds to the JSON property `configConflicts`
+        # @return [Array<Google::Apis::ComposerV1beta1::ConfigConflict>]
+        attr_accessor :config_conflicts
+      
         # Output only. Whether build has succeeded or failed on modules conflicts.
         # Corresponds to the JSON property `containsPypiModulesConflict`
         # @return [String]
@@ -150,6 +156,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @build_log_uri = args[:build_log_uri] if args.key?(:build_log_uri)
+          @config_conflicts = args[:config_conflicts] if args.key?(:config_conflicts)
           @contains_pypi_modules_conflict = args[:contains_pypi_modules_conflict] if args.key?(:contains_pypi_modules_conflict)
           @image_version = args[:image_version] if args.key?(:image_version)
           @pypi_conflict_build_log_extract = args[:pypi_conflict_build_log_extract] if args.key?(:pypi_conflict_build_log_extract)
@@ -261,6 +268,31 @@ module Google
           @detailed_status_message = args[:detailed_status_message] if args.key?(:detailed_status_message)
           @state = args[:state] if args.key?(:state)
           @status_message = args[:status_message] if args.key?(:status_message)
+        end
+      end
+      
+      # Environment configuration conflict.
+      class ConfigConflict
+        include Google::Apis::Core::Hashable
+      
+        # Conflict message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Conflict type. It can be blocking or non-blocking.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1071,6 +1103,14 @@ module Google
         # @return [Array<Google::Apis::ComposerV1beta1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1079,6 +1119,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1456,6 +1497,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # Configuration for network traffic routing from the Cloud Composer environment
+        # to other services.
+        # Corresponds to the JSON property `trafficRoutingConfig`
+        # @return [Google::Apis::ComposerV1beta1::TrafficRoutingConfig]
+        attr_accessor :traffic_routing_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1475,6 +1522,7 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @tags = args[:tags] if args.key?(:tags)
+          @traffic_routing_config = args[:traffic_routing_config] if args.key?(:traffic_routing_config)
         end
       end
       
@@ -1750,6 +1798,7 @@ module Google
         # Optional. If `true`, a Private IP Cloud Composer environment is created. If
         # this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to
         # true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        # This field is going to be deprecated. Use `networking_type` instead.
         # Corresponds to the JSON property `enablePrivateEnvironment`
         # @return [Boolean]
         attr_accessor :enable_private_environment
@@ -1767,6 +1816,11 @@ module Google
         # Corresponds to the JSON property `networkingConfig`
         # @return [Google::Apis::ComposerV1beta1::NetworkingConfig]
         attr_accessor :networking_config
+      
+        # Optional. Networking type for the environment, either private or public.
+        # Corresponds to the JSON property `networkingType`
+        # @return [String]
+        attr_accessor :networking_type
       
         # Configuration options for the private GKE cluster in a Cloud Composer
         # environment.
@@ -1803,6 +1857,7 @@ module Google
           @enable_private_environment = args[:enable_private_environment] if args.key?(:enable_private_environment)
           @enable_privately_used_public_ips = args[:enable_privately_used_public_ips] if args.key?(:enable_privately_used_public_ips)
           @networking_config = args[:networking_config] if args.key?(:networking_config)
+          @networking_type = args[:networking_type] if args.key?(:networking_type)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
           @web_server_ipv4_cidr_block = args[:web_server_ipv4_cidr_block] if args.key?(:web_server_ipv4_cidr_block)
           @web_server_ipv4_reserved_range = args[:web_server_ipv4_reserved_range] if args.key?(:web_server_ipv4_reserved_range)
@@ -2212,6 +2267,26 @@ module Google
         end
       end
       
+      # Configuration for network traffic routing from the Cloud Composer environment
+      # to other services.
+      class TrafficRoutingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Controls how network traffic to Cloud Run functions is routed.
+        # Corresponds to the JSON property `cloudRunFunctionsRouting`
+        # @return [String]
+        attr_accessor :cloud_run_functions_routing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_run_functions_routing = args[:cloud_run_functions_routing] if args.key?(:cloud_run_functions_routing)
+        end
+      end
+      
       # Configuration for resources used by Airflow triggerers.
       class TriggererResource
         include Google::Apis::Core::Hashable
@@ -2295,6 +2370,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The "type" field of Kubernetes Secret. For details see: https://
+        # kubernetes.io/docs/concepts/configuration/secret/#secret-types
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2303,6 +2384,7 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

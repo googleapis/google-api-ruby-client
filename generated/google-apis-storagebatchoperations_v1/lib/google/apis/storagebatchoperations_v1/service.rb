@@ -81,12 +81,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -130,8 +139,8 @@ module Google
         
         # Cancels a batch job.
         # @param [String] name
-        #   Required. The `name` of the job to cancel. Format: projects/`project_id`/
-        #   locations/global/jobs/`job_id`.
+        #   Required. The `name` of the job to cancel. Format: `projects/`project_id`/
+        #   locations/global/jobs/`job_id``.
         # @param [Google::Apis::StoragebatchoperationsV1::CancelJobRequest] cancel_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -164,17 +173,17 @@ module Google
         
         # Creates a batch job.
         # @param [String] parent
-        #   Required. Value for parent.
+        #   Required. The value for parent.
         # @param [Google::Apis::StoragebatchoperationsV1::Job] job_object
         # @param [String] job_id
-        #   Required. The optional `job_id` for this Job . If not specified, an id is
-        #   generated. `job_id` should be no more than 128 characters and must include
-        #   only characters available in DNS names, as defined by RFC-1123.
+        #   Required. A unique identifier for the job. `job_id` must be up to 128
+        #   characters and must include only characters available in DNS names, as defined
+        #   by RFC-1123.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID in case you need to retry your request. Requests with same `
-        #   request_id` will be ignored for at least 60 minutes since the first request.
-        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   request_id` are ignored for at least 60 minutes since the first request. The
+        #   request ID must be a valid UUID with the exception that zero UUID isn't
         #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -209,13 +218,18 @@ module Google
         
         # Deletes a batch job.
         # @param [String] name
-        #   Required. The `name` of the job to delete. Format: projects/`project_id`/
-        #   locations/global/jobs/`job_id` .
+        #   Required. The `name` of the job to delete. Format: `projects/`project_id`/
+        #   locations/global/jobs/`job_id``.
+        # @param [Boolean] force
+        #   Optional. If set to true, any child bucket operations of the job are deleted.
+        #   We recommend setting this to `true`. You can't mutate bucket operations
+        #   directly, so only the `jobs.delete` permission is required to delete a job (
+        #   and its child bucket operations).
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID in case you need to retry your request. Requests with same `
-        #   request_id` will be ignored for at least 60 minutes since the first request.
-        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   request_id` are ignored for at least 60 minutes since the first request. The
+        #   request ID must be a valid UUID with the exception that zero UUID isn't
         #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -234,11 +248,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_job(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_job(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::StoragebatchoperationsV1::Empty::Representation
           command.response_class = Google::Apis::StoragebatchoperationsV1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -247,8 +262,8 @@ module Google
         
         # Gets a batch job.
         # @param [String] name
-        #   Required. `name` of the job to retrieve. Format: projects/`project_id`/
-        #   locations/global/jobs/`job_id` .
+        #   Required. The `name` of the job to retrieve. Format: `projects/`project_id`/
+        #   locations/global/jobs/`job_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -282,9 +297,9 @@ module Google
         # @param [String] filter
         #   Optional. Filters results as defined by https://google.aip.dev/160.
         # @param [String] order_by
-        #   Optional. Field to sort by. Supported fields are name, create_time.
+        #   Optional. Field to sort by. Supported fields are `name` and `create_time`.
         # @param [Fixnum] page_size
-        #   Optional. The list page size. default page size is 100.
+        #   Optional. The list page size. The default page size is 100.
         # @param [String] page_token
         #   Optional. The list page token.
         # @param [String] fields
@@ -308,6 +323,80 @@ module Google
           command = make_simple_command(:get, 'v1/{+parent}/jobs', options)
           command.response_representation = Google::Apis::StoragebatchoperationsV1::ListJobsResponse::Representation
           command.response_class = Google::Apis::StoragebatchoperationsV1::ListJobsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a BucketOperation.
+        # @param [String] name
+        #   Required. The `name` of the bucket operation to retrieve. Format: `projects/`
+        #   project_id`/locations/global/jobs/`job_id`/bucketOperations/`
+        #   bucket_operation_id``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragebatchoperationsV1::BucketOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragebatchoperationsV1::BucketOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_job_bucket_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::StoragebatchoperationsV1::BucketOperation::Representation
+          command.response_class = Google::Apis::StoragebatchoperationsV1::BucketOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists BucketOperations in a given project and job.
+        # @param [String] parent
+        #   Required. Format: `projects/`project_id`/locations/global/jobs/`job_id``.
+        # @param [String] filter
+        #   Optional. Filters results as defined by https://google.aip.dev/160.
+        # @param [String] order_by
+        #   Optional. Field to sort by. Supported fields are `name` and `create_time`.
+        # @param [Fixnum] page_size
+        #   Optional. The list page size. Default page size is 100.
+        # @param [String] page_token
+        #   Optional. The list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StoragebatchoperationsV1::ListBucketOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StoragebatchoperationsV1::ListBucketOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_job_bucket_operations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/bucketOperations', options)
+          command.response_representation = Google::Apis::StoragebatchoperationsV1::ListBucketOperationsResponse::Representation
+          command.response_class = Google::Apis::StoragebatchoperationsV1::ListBucketOperationsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
@@ -432,6 +521,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -449,7 +546,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::StoragebatchoperationsV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::StoragebatchoperationsV1::ListOperationsResponse
@@ -457,6 +554,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

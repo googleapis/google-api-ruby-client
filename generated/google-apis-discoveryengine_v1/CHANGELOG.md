@@ -1,5 +1,141 @@
 # Release history for google-apis-discoveryengine_v1
 
+### v0.73.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260317
+
+### v0.72.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260310
+
+### v0.71.0 (2026-03-01)
+
+* Regenerated from discovery document revision 20260226
+
+### v0.70.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260215
+
+### v0.69.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260209
+
+### v0.68.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260130
+
+### v0.67.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260125
+
+### v0.66.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260118
+
+### v0.65.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260112
+
+### v0.64.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20260107
+
+### v0.63.0 (2025-12-28)
+
+* Regenerated from discovery document revision 20251221
+
+### v0.62.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251217
+
+### v0.61.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251209
+
+### v0.60.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251203
+
+### v0.59.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251116
+
+### v0.58.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251109
+
+### v0.57.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251030
+
+### v0.56.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251020
+
+### v0.55.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251017
+
+### v0.54.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250929
+
+### v0.53.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250924
+
+### v0.52.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250918
+
+### v0.51.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250908
+
+### v0.50.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250902
+
+### v0.49.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250824
+
+### v0.48.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250816
+
+### v0.47.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250803
+
+### v0.46.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250728
+
+### v0.45.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250716
+
+### v0.44.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250701
+
+### v0.43.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250619
+
+### v0.42.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250617
+
+### v0.41.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250609
+
+### v0.40.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250604
+
 ### v0.39.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250521

@@ -56,11 +56,21 @@ def run
     dirs.each { |dir| puts "  #{dir}" }
   end
 
+  if dirs.include? 'google-apis-core'
+    puts 'Installing local google-apis-core changes...'
+    Dir.chdir 'google-apis-core' do
+      exec ['toys', 'install', '--yes']
+    end
+  end
+
   dirs.each { |dir| run_in_dir dir }
 end
 
 def run_in_dir dir
   Dir.chdir dir do
+    puts "\nRunning bundle install in #{dir}...", :bold
+    exec ["bundle", "install"]
+
     if include_spec
       puts
       puts "Running spec in #{dir}...", :bold

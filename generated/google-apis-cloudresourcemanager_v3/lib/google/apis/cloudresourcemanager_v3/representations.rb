@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EffectiveTagBindingCollection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +317,12 @@ module Google
       end
       
       class TagBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TagBindingCollection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -538,6 +550,15 @@ module Google
         end
       end
       
+      class EffectiveTagBindingCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :effective_tags, as: 'effectiveTags'
+          property :full_resource_name, as: 'fullResourceName'
+          property :name, as: 'name'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -757,6 +778,7 @@ module Google
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :configured_capabilities, as: 'configuredCapabilities'
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
@@ -835,6 +857,16 @@ module Google
         end
       end
       
+      class TagBindingCollection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :full_resource_name, as: 'fullResourceName'
+          property :name, as: 'name'
+          hash :tags, as: 'tags'
+        end
+      end
+      
       class TagHold
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -849,6 +881,7 @@ module Google
       class TagKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allowed_values_regex, as: 'allowedValuesRegex'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :etag, as: 'etag'

@@ -585,12 +585,19 @@ module Google
       class CompleteSetupRequest
         include Google::Apis::Core::Hashable
       
+        # The external deal ids of the deals to mark as setup completed. If empty, all
+        # the deals in the proposal will be marked as setup completed.
+        # Corresponds to the JSON property `externalDealIds`
+        # @return [Array<String>]
+        attr_accessor :external_deal_ids
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @external_deal_ids = args[:external_deal_ids] if args.key?(:external_deal_ids)
         end
       end
       

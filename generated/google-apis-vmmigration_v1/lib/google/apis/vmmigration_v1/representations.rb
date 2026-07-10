@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdaptationModifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdaptingOsStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,12 @@ module Google
       end
       
       class AwsSourceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AwsSourceDiskDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelDiskMigrationJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelImageImportJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +185,12 @@ module Google
       end
       
       class CloneStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeEngineDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -202,7 +226,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CopyingSourceDiskSnapshotStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreatingImageStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreatingSourceDiskSnapshotStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -262,6 +298,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskMigrationJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskMigrationJobTargetDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskMigrationStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisksMigrationDisksTargetDefaults
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -298,7 +352,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expiration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtendMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchInventoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchStorageInventoryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -377,6 +449,12 @@ module Google
       end
       
       class ListDatacenterConnectorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDiskMigrationJobsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,6 +628,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ProvisioningTargetDiskStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoveGroupMigrationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -575,6 +659,12 @@ module Google
       end
       
       class ResumeMigrationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RunDiskMigrationJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -617,6 +707,12 @@ module Google
       end
       
       class Source
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceStorageResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -727,6 +823,14 @@ module Google
         end
       end
       
+      class AdaptationModifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :modifier, as: 'modifier'
+          property :value, as: 'value'
+        end
+      end
+      
       class AdaptingOsStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -802,6 +906,16 @@ module Google
         end
       end
       
+      class AwsSourceDiskDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_type, as: 'diskType'
+          property :size_gib, :numeric_string => true, as: 'sizeGib'
+          hash :tags, as: 'tags'
+          property :volume_id, as: 'volumeId'
+        end
+      end
+      
       class AwsSourceVmDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -833,6 +947,7 @@ module Google
           property :source_description, as: 'sourceDescription'
           property :source_id, as: 'sourceId'
           hash :tags, as: 'tags'
+          property :vcpu_count, as: 'vcpuCount'
           property :virtualization_type, as: 'virtualizationType'
           property :vm_id, as: 'vmId'
           property :vpc_id, as: 'vpcId'
@@ -941,6 +1056,12 @@ module Google
         end
       end
       
+      class CancelDiskMigrationJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CancelImageImportJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -995,6 +1116,16 @@ module Google
         end
       end
       
+      class ComputeEngineDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_id, as: 'diskId'
+          property :disk_type, as: 'diskType'
+          collection :replica_zones, as: 'replicaZones'
+          property :zone, as: 'zone'
+        end
+      end
+      
       class ComputeEngineDisksTargetDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1024,6 +1155,8 @@ module Google
       class ComputeEngineTargetDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adaptation_modifiers, as: 'adaptationModifiers', class: Google::Apis::VmmigrationV1::AdaptationModifier, decorator: Google::Apis::VmmigrationV1::AdaptationModifier::Representation
+      
           collection :additional_licenses, as: 'additionalLicenses'
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1::AppliedLicense, decorator: Google::Apis::VmmigrationV1::AppliedLicense::Representation
       
@@ -1031,7 +1164,10 @@ module Google
           property :boot_option, as: 'bootOption'
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
       
+          collection :disk_replica_zones, as: 'diskReplicaZones'
           property :disk_type, as: 'diskType'
+          collection :disks, as: 'disks', class: Google::Apis::VmmigrationV1::PersistentDiskDefaults, decorator: Google::Apis::VmmigrationV1::PersistentDiskDefaults::Representation
+      
           property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_vtpm, as: 'enableVtpm'
           property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1::Encryption, decorator: Google::Apis::VmmigrationV1::Encryption::Representation
@@ -1047,6 +1183,7 @@ module Google
           collection :network_tags, as: 'networkTags'
           property :secure_boot, as: 'secureBoot'
           property :service_account, as: 'serviceAccount'
+          property :storage_pool, as: 'storagePool'
           property :target_project, as: 'targetProject'
           property :vm_name, as: 'vmName'
           property :zone, as: 'zone'
@@ -1056,6 +1193,8 @@ module Google
       class ComputeEngineTargetDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adaptation_modifiers, as: 'adaptationModifiers', class: Google::Apis::VmmigrationV1::AdaptationModifier, decorator: Google::Apis::VmmigrationV1::AdaptationModifier::Representation
+      
           collection :additional_licenses, as: 'additionalLicenses'
           property :applied_license, as: 'appliedLicense', class: Google::Apis::VmmigrationV1::AppliedLicense, decorator: Google::Apis::VmmigrationV1::AppliedLicense::Representation
       
@@ -1063,6 +1202,7 @@ module Google
           property :boot_option, as: 'bootOption'
           property :compute_scheduling, as: 'computeScheduling', class: Google::Apis::VmmigrationV1::ComputeScheduling, decorator: Google::Apis::VmmigrationV1::ComputeScheduling::Representation
       
+          collection :disk_replica_zones, as: 'diskReplicaZones'
           property :disk_type, as: 'diskType'
           property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_vtpm, as: 'enableVtpm'
@@ -1080,6 +1220,7 @@ module Google
           property :project, as: 'project'
           property :secure_boot, as: 'secureBoot'
           property :service_account, as: 'serviceAccount'
+          property :storage_pool, as: 'storagePool'
           property :vm_name, as: 'vmName'
           property :zone, as: 'zone'
         end
@@ -1096,7 +1237,19 @@ module Google
         end
       end
       
+      class CopyingSourceDiskSnapshotStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CreatingImageStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CreatingSourceDiskSnapshotStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1165,6 +1318,7 @@ module Google
       class DataDiskImageImport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :guest_os_features, as: 'guestOsFeatures'
         end
       end
       
@@ -1226,6 +1380,50 @@ module Google
         end
       end
       
+      class DiskMigrationJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_source_disk_details, as: 'awsSourceDiskDetails', class: Google::Apis::VmmigrationV1::AwsSourceDiskDetails, decorator: Google::Apis::VmmigrationV1::AwsSourceDiskDetails::Representation
+      
+          property :create_time, as: 'createTime'
+          collection :errors, as: 'errors', class: Google::Apis::VmmigrationV1::Status, decorator: Google::Apis::VmmigrationV1::Status::Representation
+      
+          property :name, as: 'name'
+          property :state, as: 'state'
+          collection :steps, as: 'steps', class: Google::Apis::VmmigrationV1::DiskMigrationStep, decorator: Google::Apis::VmmigrationV1::DiskMigrationStep::Representation
+      
+          property :target_details, as: 'targetDetails', class: Google::Apis::VmmigrationV1::DiskMigrationJobTargetDetails, decorator: Google::Apis::VmmigrationV1::DiskMigrationJobTargetDetails::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class DiskMigrationJobTargetDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption, as: 'encryption', class: Google::Apis::VmmigrationV1::Encryption, decorator: Google::Apis::VmmigrationV1::Encryption::Representation
+      
+          hash :labels, as: 'labels'
+          property :target_disk, as: 'targetDisk', class: Google::Apis::VmmigrationV1::ComputeEngineDisk, decorator: Google::Apis::VmmigrationV1::ComputeEngineDisk::Representation
+      
+          property :target_project, as: 'targetProject'
+        end
+      end
+      
+      class DiskMigrationStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :copying_source_disk_snapshot, as: 'copyingSourceDiskSnapshot', class: Google::Apis::VmmigrationV1::CopyingSourceDiskSnapshotStep, decorator: Google::Apis::VmmigrationV1::CopyingSourceDiskSnapshotStep::Representation
+      
+          property :creating_source_disk_snapshot, as: 'creatingSourceDiskSnapshot', class: Google::Apis::VmmigrationV1::CreatingSourceDiskSnapshotStep, decorator: Google::Apis::VmmigrationV1::CreatingSourceDiskSnapshotStep::Representation
+      
+          property :end_time, as: 'endTime'
+          property :provisioning_target_disk, as: 'provisioningTargetDisk', class: Google::Apis::VmmigrationV1::ProvisioningTargetDiskStep, decorator: Google::Apis::VmmigrationV1::ProvisioningTargetDiskStep::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class DisksMigrationDisksTargetDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1284,6 +1482,21 @@ module Google
         end
       end
       
+      class Expiration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :extendable, as: 'extendable'
+          property :extension_count, as: 'extensionCount'
+        end
+      end
+      
+      class ExtendMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class FetchInventoryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1295,6 +1508,16 @@ module Google
           property :update_time, as: 'updateTime'
           property :vmware_vms, as: 'vmwareVms', class: Google::Apis::VmmigrationV1::VmwareVmsDetails, decorator: Google::Apis::VmmigrationV1::VmwareVmsDetails::Representation
       
+        end
+      end
+      
+      class FetchStorageInventoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::VmmigrationV1::SourceStorageResource, decorator: Google::Apis::VmmigrationV1::SourceStorageResource::Representation
+      
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1358,6 +1581,8 @@ module Google
       class ImageImportOsAdaptationParameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adaptation_modifiers, as: 'adaptationModifiers', class: Google::Apis::VmmigrationV1::AdaptationModifier, decorator: Google::Apis::VmmigrationV1::AdaptationModifier::Representation
+      
           property :boot_conversion, as: 'bootConversion'
           property :generalize, as: 'generalize'
           property :license_type, as: 'licenseType'
@@ -1436,6 +1661,16 @@ module Google
         end
       end
       
+      class ListDiskMigrationJobsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disk_migration_jobs, as: 'diskMigrationJobs', class: Google::Apis::VmmigrationV1::DiskMigrationJob, decorator: Google::Apis::VmmigrationV1::DiskMigrationJob::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListGroupsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1491,6 +1726,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::VmmigrationV1::Operation, decorator: Google::Apis::VmmigrationV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1612,6 +1848,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :error, as: 'error', class: Google::Apis::VmmigrationV1::Status, decorator: Google::Apis::VmmigrationV1::Status::Representation
+      
+          property :expiration, as: 'expiration', class: Google::Apis::VmmigrationV1::Expiration, decorator: Google::Apis::VmmigrationV1::Expiration::Representation
       
           property :group, as: 'group'
           hash :labels, as: 'labels'
@@ -1758,6 +1996,12 @@ module Google
         end
       end
       
+      class ProvisioningTargetDiskStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class RemoveGroupMigrationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1802,6 +2046,12 @@ module Google
       end
       
       class ResumeMigrationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RunDiskMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1868,6 +2118,14 @@ module Google
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           property :vmware, as: 'vmware', class: Google::Apis::VmmigrationV1::VmwareSourceDetails, decorator: Google::Apis::VmmigrationV1::VmwareSourceDetails::Representation
+      
+        end
+      end
+      
+      class SourceStorageResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aws_disk_details, as: 'awsDiskDetails', class: Google::Apis::VmmigrationV1::AwsSourceDiskDetails, decorator: Google::Apis::VmmigrationV1::AwsSourceDiskDetails::Representation
       
         end
       end

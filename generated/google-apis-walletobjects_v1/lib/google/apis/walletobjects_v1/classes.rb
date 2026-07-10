@@ -358,6 +358,14 @@ module Google
         # @return [String]
         attr_accessor :blob_id
       
+        # A serialized External Read Token passed from Bigstore -> Scotty for a GCS
+        # download. This field must never be consumed outside of Bigstore, and is not
+        # applicable to non-GCS media uploads.
+        # Corresponds to the JSON property `downloadExternalReadToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :download_external_read_token
+      
         # Read handle passed from Bigstore -> Scotty for a GCS download. This is a
         # signed, serialized blobstore2.ReadHandle proto which must never be set outside
         # of Bigstore, and is not applicable to non-GCS media downloads.
@@ -371,6 +379,14 @@ module Google
         # Corresponds to the JSON property `readToken`
         # @return [String]
         attr_accessor :read_token
+      
+        # A serialized Object Fragment List Creation Info passed from Bigstore -> Scotty
+        # for a GCS upload. This field must never be consumed outside of Bigstore, and
+        # is not applicable to non-GCS media uploads.
+        # Corresponds to the JSON property `uploadFragmentListCreationInfo`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :upload_fragment_list_creation_info
       
         # Metadata passed from Blobstore -> Scotty for a new GCS upload. This is a
         # signed, serialized blobstore2.BlobMetadataContainer proto which must never be
@@ -388,8 +404,10 @@ module Google
         def update!(**args)
           @blob_generation = args[:blob_generation] if args.key?(:blob_generation)
           @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @download_external_read_token = args[:download_external_read_token] if args.key?(:download_external_read_token)
           @download_read_handle = args[:download_read_handle] if args.key?(:download_read_handle)
           @read_token = args[:read_token] if args.key?(:read_token)
+          @upload_fragment_list_creation_info = args[:upload_fragment_list_creation_info] if args.key?(:upload_fragment_list_creation_info)
           @upload_metadata_container = args[:upload_metadata_container] if args.key?(:upload_metadata_container)
         end
       end
@@ -861,6 +879,11 @@ module Google
         # @return [String]
         attr_accessor :from_file_name
       
+        # The content type of the file detected by Fusion ID. go/fusionid
+        # Corresponds to the JSON property `fromFusionId`
+        # @return [String]
+        attr_accessor :from_fusion_id
+      
         # The content type of the file as specified in the request headers, multipart
         # headers, or RUPIO start request.
         # Corresponds to the JSON property `fromHeader`
@@ -874,6 +897,13 @@ module Google
         # @return [String]
         attr_accessor :from_url_path
       
+        # Metadata information from Fusion ID detection. Serialized
+        # FusionIdDetectionMetadata proto. Only set if from_fusion_id is set.
+        # Corresponds to the JSON property `fusionIdDetectionMetadata`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fusion_id_detection_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -883,8 +913,10 @@ module Google
           @best_guess = args[:best_guess] if args.key?(:best_guess)
           @from_bytes = args[:from_bytes] if args.key?(:from_bytes)
           @from_file_name = args[:from_file_name] if args.key?(:from_file_name)
+          @from_fusion_id = args[:from_fusion_id] if args.key?(:from_fusion_id)
           @from_header = args[:from_header] if args.key?(:from_header)
           @from_url_path = args[:from_url_path] if args.key?(:from_url_path)
+          @fusion_id_detection_metadata = args[:fusion_id_detection_metadata] if args.key?(:fusion_id_detection_metadata)
         end
       end
       
@@ -1774,8 +1806,8 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -2142,7 +2174,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -2726,8 +2759,8 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -3114,7 +3147,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -3338,8 +3372,8 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -3603,7 +3637,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -3939,8 +3974,8 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -4272,7 +4307,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -4412,7 +4448,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The URI for the image.
+        # An ID for an already uploaded private image. Either this or source_uri should
+        # be set. Requests setting both or neither will be rejected. Please contact
+        # support to use private images.
+        # Corresponds to the JSON property `privateImageId`
+        # @return [String]
+        attr_accessor :private_image_id
+      
+        # A URI for the image. Either this or private_image_id should be set. Requests
+        # setting both or neither will be rejected.
         # Corresponds to the JSON property `sourceUri`
         # @return [Google::Apis::WalletobjectsV1::ImageUri]
         attr_accessor :source_uri
@@ -4425,6 +4469,7 @@ module Google
         def update!(**args)
           @content_description = args[:content_description] if args.key?(:content_description)
           @kind = args[:kind] if args.key?(:kind)
+          @private_image_id = args[:private_image_id] if args.key?(:private_image_id)
           @source_uri = args[:source_uri] if args.key?(:source_uri)
         end
       end
@@ -4688,12 +4733,12 @@ module Google
         end
       end
       
-      # 
+      # A JWT representation of a pass.
       class JwtResource
         include Google::Apis::Core::Hashable
       
-        # A string representing a JWT of the format described at https://developers.
-        # google.com/wallet/reference/rest/v1/Jwt
+        # Required. A string representing a JWT of the format described at https://
+        # developers.google.com/wallet/reference/rest/v1/Jwt
         # Corresponds to the JSON property `jwt`
         # @return [String]
         attr_accessor :jwt
@@ -5168,8 +5213,8 @@ module Google
         # @return [Array<Google::Apis::WalletobjectsV1::TextModuleData>]
         attr_accessor :text_modules_data
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -5512,7 +5557,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -5877,6 +5923,12 @@ module Google
         # @return [String]
         attr_accessor :sha256_hash
       
+        # Scotty-provided SHA512 hash for an upload.
+        # Corresponds to the JSON property `sha512Hash`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :sha512_hash
+      
         # Time at which the media data was last updated, in milliseconds since UNIX
         # epoch
         # Corresponds to the JSON property `timestamp`
@@ -5922,6 +5974,7 @@ module Google
           @reference_type = args[:reference_type] if args.key?(:reference_type)
           @sha1_hash = args[:sha1_hash] if args.key?(:sha1_hash)
           @sha256_hash = args[:sha256_hash] if args.key?(:sha256_hash)
+          @sha512_hash = args[:sha512_hash] if args.key?(:sha512_hash)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
           @token = args[:token] if args.key?(:token)
         end
@@ -5964,6 +6017,13 @@ module Google
         # @return [String]
         attr_accessor :notification_type
       
+        # The physical headers provided by RequestReceivedParameters in Scotty request.
+        # type is uploader_service.KeyValuePairs.
+        # Corresponds to the JSON property `physicalHeaders`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :physical_headers
+      
         # The Scotty request ID.
         # Corresponds to the JSON property `requestId`
         # @return [String]
@@ -5999,6 +6059,7 @@ module Google
           @diff_object_version = args[:diff_object_version] if args.key?(:diff_object_version)
           @final_status = args[:final_status] if args.key?(:final_status)
           @notification_type = args[:notification_type] if args.key?(:notification_type)
+          @physical_headers = args[:physical_headers] if args.key?(:physical_headers)
           @request_id = args[:request_id] if args.key?(:request_id)
           @request_received_params_serving_info = args[:request_received_params_serving_info] if args.key?(:request_received_params_serving_info)
           @total_bytes = args[:total_bytes] if args.key?(:total_bytes)
@@ -6533,8 +6594,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::Image]
         attr_accessor :title_image
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -6842,7 +6903,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -8317,8 +8379,8 @@ module Google
         # @return [String]
         attr_accessor :transit_type
       
-        # Optional value added module data. Maximum of ten on the class. For a pass only
-        # ten will be displayed, prioritizing those from the object.
+        # Optional value added module data. Maximum of fifteen on the class. For a pass
+        # only fifteen will be displayed, prioritizing those from the object.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -8739,7 +8801,8 @@ module Google
         # @return [Google::Apis::WalletobjectsV1::TimeInterval]
         attr_accessor :valid_time_interval
       
-        # Optional value added module data. Maximum of ten on the object.
+        # Optional value added module data. Maximum of fifteen on the object. For a pass
+        # only fifteen will be displayed.
         # Corresponds to the JSON property `valueAddedModuleData`
         # @return [Array<Google::Apis::WalletobjectsV1::ValueAddedModuleData>]
         attr_accessor :value_added_module_data
@@ -8934,6 +8997,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_notification = args[:enable_notification] if args.key?(:enable_notification)
+        end
+      end
+      
+      # Request to upload a private image to use in a pass.
+      class UploadPrivateImageRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for uploading the private image.
+      class UploadPrivateImageResponse
+        include Google::Apis::Core::Hashable
+      
+        # Unique ID of the uploaded image to be referenced later in Image.
+        # private_image_id.
+        # Corresponds to the JSON property `privateImageId`
+        # @return [String]
+        attr_accessor :private_image_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_image_id = args[:private_image_id] if args.key?(:private_image_id)
         end
       end
       

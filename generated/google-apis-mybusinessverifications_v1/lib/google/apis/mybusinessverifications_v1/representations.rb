@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateInstantVerificationTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateInstantVerificationTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListVerificationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -194,6 +206,21 @@ module Google
         end
       end
       
+      class GenerateInstantVerificationTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location_id, as: 'locationId'
+        end
+      end
+      
+      class GenerateInstantVerificationTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instant_verification_token, as: 'instantVerificationToken'
+          property :result, as: 'result'
+        end
+      end
+      
       class ListVerificationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -284,6 +311,7 @@ module Google
           property :phone_number, as: 'phoneNumber'
           property :token, as: 'token', class: Google::Apis::MybusinessverificationsV1::VerificationToken, decorator: Google::Apis::MybusinessverificationsV1::VerificationToken::Representation
       
+          property :trusted_partner_token, as: 'trustedPartnerToken'
         end
       end
       

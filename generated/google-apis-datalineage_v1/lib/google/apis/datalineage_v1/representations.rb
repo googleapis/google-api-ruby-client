@@ -22,6 +22,36 @@ module Google
   module Apis
     module DatalineageV1
       
+      class GoogleCloudDatacatalogLineageConfigmanagementV1Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +59,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageV1DependencyInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -52,7 +88,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogLineageV1LineageLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogLineageV1Link
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageV1LinkDependencyInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -71,6 +131,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogLineageV1ListRunsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageV1MultipleEntityReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,6 +184,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogLineageV1SearchLinksRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,6 +256,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleTypeInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :ingestion, as: 'ingestion', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rules, as: 'rules', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration_selector, as: 'integrationSelector', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector::Representation
+      
+          property :lineage_enablement, as: 'lineageEnablement', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integration, as: 'integration'
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -178,9 +322,17 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogLineageV1DependencyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dependency_type, as: 'dependencyType'
+        end
+      end
+      
       class GoogleCloudDatacatalogLineageV1EntityReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field, as: 'field'
           property :fully_qualified_name, as: 'fullyQualifiedName'
         end
       end
@@ -188,6 +340,8 @@ module Google
       class GoogleCloudDatacatalogLineageV1EventLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dependency_info, as: 'dependencyInfo', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1DependencyInfo, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1DependencyInfo::Representation
+      
           property :source, as: 'source', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference::Representation
       
           property :target, as: 'target', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference::Representation
@@ -206,9 +360,42 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogLineageV1LineageLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dependency_info, as: 'dependencyInfo', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo::Representation
+      
+          property :depth, as: 'depth'
+          property :location, as: 'location'
+          collection :processes, as: 'processes', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess::Representation
+      
+          property :source, as: 'source', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference::Representation
+      
+          property :target, as: 'target', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dependency_type, as: 'dependencyType'
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :process, as: 'process', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Process, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Process::Representation
+      
+        end
+      end
+      
       class GoogleCloudDatacatalogLineageV1Link
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dependency_info, as: 'dependencyInfo', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1LinkDependencyInfo, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1LinkDependencyInfo::Representation
+      
           property :end_time, as: 'endTime'
           property :name, as: 'name'
           property :source, as: 'source', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference::Representation
@@ -216,6 +403,13 @@ module Google
           property :start_time, as: 'startTime'
           property :target, as: 'target', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageV1LinkDependencyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dependency_type, as: 'dependencyType'
         end
       end
       
@@ -242,6 +436,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :runs, as: 'runs', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Run, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Run::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageV1MultipleEntityReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entities, as: 'entities', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference::Representation
       
         end
       end
@@ -316,6 +518,56 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :direction, as: 'direction'
+          property :filters, as: 'filters', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters::Representation
+      
+          property :limits, as: 'limits', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits::Representation
+      
+          collection :locations, as: 'locations'
+          property :root_criteria, as: 'rootCriteria', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entities, as: 'entities', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1MultipleEntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1MultipleEntityReference::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dependency_types, as: 'dependencyTypes'
+          property :entity_set, as: 'entitySet'
+          property :time_range, as: 'timeRange', class: Google::Apis::DatalineageV1::GoogleTypeInterval, decorator: Google::Apis::DatalineageV1::GoogleTypeInterval::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_depth, as: 'maxDepth'
+          property :max_process_per_link, as: 'maxProcessPerLink'
+          property :max_results, as: 'maxResults'
+        end
+      end
+      
+      class GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :links, as: 'links', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1LineageLink, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1LineageLink::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class GoogleCloudDatacatalogLineageV1SearchLinksRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -323,7 +575,11 @@ module Google
           property :page_token, as: 'pageToken'
           property :source, as: 'source', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference::Representation
       
+          property :sources, as: 'sources', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1MultipleEntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1MultipleEntityReference::Representation
+      
           property :target, as: 'target', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1EntityReference::Representation
+      
+          property :targets, as: 'targets', class: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1MultipleEntityReference, decorator: Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1MultipleEntityReference::Representation
       
         end
       end
@@ -349,6 +605,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DatalineageV1::GoogleLongrunningOperation, decorator: Google::Apis::DatalineageV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -376,6 +633,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class GoogleTypeInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
     end

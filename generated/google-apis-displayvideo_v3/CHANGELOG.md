@@ -1,5 +1,67 @@
 # Release history for google-apis-displayvideo_v3
 
+### v0.43.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260617
+
+### v0.42.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260606
+* Regenerated using generator version 0.19.0
+
+### v0.41.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260204
+
+### v0.40.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260127
+
+### v0.39.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20260107
+
+### v0.38.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251201
+
+### v0.37.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251118
+
+### v0.36.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251027
+
+### v0.35.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251023
+
+### v0.34.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250925
+
+### v0.33.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250819
+
+### v0.32.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250812
+
+### v0.31.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250709
+
+### v0.30.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250625
+
+### v0.29.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250529
+* Regenerated using generator version 0.18.0
+
 ### v0.28.0 (2025-05-11)
 
 * Regenerated from discovery document revision 20250501

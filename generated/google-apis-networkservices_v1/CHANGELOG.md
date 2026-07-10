@@ -1,5 +1,71 @@
 # Release history for google-apis-networkservices_v1
 
+### v0.73.0 (2026-06-28)
+
+* Regenerated from discovery document revision 20260610
+
+### v0.72.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260605
+* Regenerated using generator version 0.19.0
+
+### v0.71.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260424
+
+### v0.70.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260330
+
+### v0.69.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260312
+
+### v0.68.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260226
+
+### v0.67.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260204
+
+### v0.66.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251203
+
+### v0.65.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251029
+
+### v0.64.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251017
+
+### v0.63.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251015
+
+### v0.62.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250723
+
+### v0.61.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250709
+
+### v0.60.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250616
+
+### v0.59.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250611
+
+### v0.58.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250521
+* Regenerated using generator version 0.18.0
+
 ### v0.57.0 (2025-05-18)
 
 * Regenerated from discovery document revision 20250508

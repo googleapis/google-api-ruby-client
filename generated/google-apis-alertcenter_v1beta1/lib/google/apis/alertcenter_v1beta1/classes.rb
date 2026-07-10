@@ -203,12 +203,19 @@ module Google
       class ActionInfo
         include Google::Apis::Core::Hashable
       
+        # Google Cloud Storage location of the content that violated the rule. This
+        # field has format: "/"
+        # Corresponds to the JSON property `evidenceLockerFilePath`
+        # @return [String]
+        attr_accessor :evidence_locker_file_path
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @evidence_locker_file_path = args[:evidence_locker_file_path] if args.key?(:evidence_locker_file_path)
         end
       end
       
@@ -834,6 +841,31 @@ module Google
         end
       end
       
+      # Alerts for client-side encryption outages.
+      class ClientSideEncryptionServiceUnavailable
+        include Google::Apis::Core::Hashable
+      
+        # Identity providers impacted by an outage or misconfiguration.
+        # Corresponds to the JSON property `idpError`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::IdentityProviderError>]
+        attr_accessor :idp_error
+      
+        # External key services impacted by an outage or misconfiguration.
+        # Corresponds to the JSON property `keyServiceError`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::KeyServiceError>]
+        attr_accessor :key_service_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @idp_error = args[:idp_error] if args.key?(:idp_error)
+          @key_service_error = args[:key_service_error] if args.key?(:key_service_error)
+        end
+      end
+      
       # A reference to a Cloud Pubsub topic. To register for notifications, the owner
       # of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.
       # com` the `projects.topics.publish` permission.
@@ -1129,6 +1161,44 @@ module Google
         end
       end
       
+      # Alerts for when a user is restricted from syncing content from clients such as
+      # Drive for Desktop.
+      class DriveSyncStateChanged
+        include Google::Apis::Core::Hashable
+      
+        # Email of the user affected.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Time at which sync was paused.
+        # Corresponds to the JSON property `syncPauseStartTime`
+        # @return [String]
+        attr_accessor :sync_pause_start_time
+      
+        # The current sync state.
+        # Corresponds to the JSON property `syncState`
+        # @return [String]
+        attr_accessor :sync_state
+      
+        # The reason for the sync state change.
+        # Corresponds to the JSON property `syncStateChangeReason`
+        # @return [String]
+        attr_accessor :sync_state_change_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @sync_pause_start_time = args[:sync_pause_start_time] if args.key?(:sync_pause_start_time)
+          @sync_state = args[:sync_state] if args.key?(:sync_state)
+          @sync_state_change_reason = args[:sync_state_change_reason] if args.key?(:sync_state_change_reason)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1327,6 +1397,74 @@ module Google
           @domain = args[:domain] if args.key?(:domain)
           @header = args[:header] if args.key?(:header)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Error related to an identity provider.
+      class IdentityProviderError
+        include Google::Apis::Core::Hashable
+      
+        # Authorization base url of the identity provider.
+        # Corresponds to the JSON property `authorizationBaseUrl`
+        # @return [String]
+        attr_accessor :authorization_base_url
+      
+        # Number of similar errors encountered.
+        # Corresponds to the JSON property `errorCount`
+        # @return [Fixnum]
+        attr_accessor :error_count
+      
+        # Info on the identity provider error.
+        # Corresponds to the JSON property `errorInfo`
+        # @return [String]
+        attr_accessor :error_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_base_url = args[:authorization_base_url] if args.key?(:authorization_base_url)
+          @error_count = args[:error_count] if args.key?(:error_count)
+          @error_info = args[:error_info] if args.key?(:error_info)
+        end
+      end
+      
+      # Error related to an external key service.
+      class KeyServiceError
+        include Google::Apis::Core::Hashable
+      
+        # Number of similar errors encountered.
+        # Corresponds to the JSON property `errorCount`
+        # @return [Fixnum]
+        attr_accessor :error_count
+      
+        # Info on the key service error.
+        # Corresponds to the JSON property `errorInfo`
+        # @return [String]
+        attr_accessor :error_info
+      
+        # HTTP response status code from the key service.
+        # Corresponds to the JSON property `httpResponseCode`
+        # @return [Fixnum]
+        attr_accessor :http_response_code
+      
+        # Url of the external key service.
+        # Corresponds to the JSON property `keyServiceUrl`
+        # @return [String]
+        attr_accessor :key_service_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_count = args[:error_count] if args.key?(:error_count)
+          @error_info = args[:error_info] if args.key?(:error_info)
+          @http_response_code = args[:http_response_code] if args.key?(:http_response_code)
+          @key_service_url = args[:key_service_url] if args.key?(:key_service_url)
         end
       end
       
@@ -1766,6 +1904,11 @@ module Google
         # @return [String]
         attr_accessor :document_id
       
+        # RFC2822 message ID.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
         # Title of the resource, for example email subject, or document title.
         # Corresponds to the JSON property `resourceTitle`
         # @return [String]
@@ -1781,6 +1924,7 @@ module Google
           @chat_message_id = args[:chat_message_id] if args.key?(:chat_message_id)
           @device_id = args[:device_id] if args.key?(:device_id)
           @document_id = args[:document_id] if args.key?(:document_id)
+          @message_id = args[:message_id] if args.key?(:message_id)
           @resource_title = args[:resource_title] if args.key?(:resource_title)
         end
       end
@@ -1814,6 +1958,11 @@ module Google
       # Workspace administrators.
       class RuleViolationInfo
         include Google::Apis::Core::Hashable
+      
+        # Optional. Agent type that triggered the rule.
+        # Corresponds to the JSON property `agentType`
+        # @return [String]
+        attr_accessor :agent_type
       
         # Source of the data.
         # Corresponds to the JSON property `dataSource`
@@ -1881,6 +2030,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_type = args[:agent_type] if args.key?(:agent_type)
           @data_source = args[:data_source] if args.key?(:data_source)
           @event_type = args[:event_type] if args.key?(:event_type)
           @match_info = args[:match_info] if args.key?(:match_info)

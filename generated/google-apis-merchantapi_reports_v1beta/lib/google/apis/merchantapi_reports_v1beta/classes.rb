@@ -667,13 +667,16 @@ module Google
       class ItemIssueSeverity
         include Google::Apis::Core::Hashable
       
-        # Aggregated severity of the issue for all reporting contexts it affects. **This
-        # field can be used for filtering the results.**
+        # Aggregated severity of the issue for all reporting contexts it affects.
+        # Reporting contexts included in the computation of the aggregated severity can
+        # be restricted using a filter on the `reporting_context` field. **This field
+        # can be used for filtering the results.**
         # Corresponds to the JSON property `aggregatedSeverity`
         # @return [String]
         attr_accessor :aggregated_severity
       
-        # Issue severity per reporting context.
+        # Issue severity per reporting context. Reporting contexts included in this list
+        # can be restricted using a filter on the `reporting_context` field.
         # Corresponds to the JSON property `severityPerReportingContext`
         # @return [Array<Google::Apis::MerchantapiReportsV1beta::IssueSeverityPerReportingContext>]
         attr_accessor :severity_per_reporting_context
@@ -1316,6 +1319,13 @@ module Google
         # @return [String]
         attr_accessor :product_type_l5
       
+        # Store type to which metrics apply. Can be `ONLINE_STORE` or `LOCAL_STORES`.
+        # Segment. For `LOCAL_STORES` store type, further segmentation by a specific
+        # store is not available.
+        # Corresponds to the JSON property `storeType`
+        # @return [String]
+        attr_accessor :store_type
+      
         # Title of the product. Segment.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -1365,6 +1375,7 @@ module Google
           @product_type_l3 = args[:product_type_l3] if args.key?(:product_type_l3)
           @product_type_l4 = args[:product_type_l4] if args.key?(:product_type_l4)
           @product_type_l5 = args[:product_type_l5] if args.key?(:product_type_l5)
+          @store_type = args[:store_type] if args.key?(:store_type)
           @title = args[:title] if args.key?(:title)
           @week = args[:week] if args.key?(:week)
         end
@@ -1399,7 +1410,7 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Optional. The product expiration time. This field will not bet set if the
+        # Optional. The product expiration time. This field will not be set if the
         # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
@@ -1445,16 +1456,20 @@ module Google
       end
       
       # Fields available for query in `product_view` table. Products in the current
-      # inventory. Products in this table are the same as in Products sub-API but not
-      # all product attributes from Products sub-API are available for query in this
-      # table. In contrast to Products sub-API, this table allows to filter the
-      # returned list of products by product attributes. To retrieve a single product
-      # by `id` or list all products, Products sub-API should be used. Values are only
-      # set for fields requested explicitly in the request's search query.
+      # inventory. Products in this table are the same as a [Product resource in
+      # Products sub-API](https://developers.google.com/merchant/api/reference/rest/
+      # products_v1/accounts.products) but not all product attributes from Products
+      # sub-API are available for query in this table. In contrast to Products sub-API,
+      # this table allows to filter the returned list of products by product
+      # attributes. To retrieve a single product by `id` or list all products,
+      # Products sub-API should be used. Values are only set for fields requested
+      # explicitly in the request's search query.
       class ProductView
         include Google::Apis::Core::Hashable
       
-        # Aggregated status.
+        # Aggregated status across all reporting contexts. Reporting contexts included
+        # in the computation of the aggregated status can be restricted using a filter
+        # on the `reporting_context` field.
         # Corresponds to the JSON property `aggregatedReportingContextStatus`
         # @return [String]
         attr_accessor :aggregated_reporting_context_status
@@ -1511,9 +1526,8 @@ module Google
         # @return [String]
         attr_accessor :click_potential
       
-        # Rank of the product based on its click potential. A product with `
-        # click_potential_rank` 1 has the highest click potential among the merchant's
-        # products that fulfill the search query conditions.
+        # Normalized click potential of the product. Values range from 1 to 1000, where
+        # 1 is the highest click potential and 1000 is the theoretical lowest.
         # Corresponds to the JSON property `clickPotentialRank`
         # @return [Fixnum]
         attr_accessor :click_potential_rank
@@ -1616,11 +1630,27 @@ module Google
         # @return [String]
         attr_accessor :product_type_l5
       
+        # Reporting context to restrict the query to. Restricts the reporting contexts
+        # returned in `status_per_reporting_context` and `item_issues`, and used to
+        # compute `aggregated_reporting_context_status`. **This field can only be used
+        # in the `WHERE` clause and cannot be selected in the `SELECT` clause.**
+        # Corresponds to the JSON property `reportingContext`
+        # @return [String]
+        attr_accessor :reporting_context
+      
         # Normalized [shipping label](https://support.google.com/merchants/answer/
         # 6324504) specified in the data source.
         # Corresponds to the JSON property `shippingLabel`
         # @return [String]
         attr_accessor :shipping_label
+      
+        # Detailed product status per reporting context. Reporting contexts included in
+        # this list can be restricted using a filter on the `reporting_context` field.
+        # Equivalent to `ProductStatus.destination_statuses` in Products API. **This
+        # field cannot be used for sorting or filtering the results.**
+        # Corresponds to the JSON property `statusPerReportingContext`
+        # @return [Array<Google::Apis::MerchantapiReportsV1beta::StatusPerReportingContext>]
+        attr_accessor :status_per_reporting_context
       
         # Link to the processed image of the product, hosted on the Google
         # infrastructure.
@@ -1666,7 +1696,9 @@ module Google
           @product_type_l3 = args[:product_type_l3] if args.key?(:product_type_l3)
           @product_type_l4 = args[:product_type_l4] if args.key?(:product_type_l4)
           @product_type_l5 = args[:product_type_l5] if args.key?(:product_type_l5)
+          @reporting_context = args[:reporting_context] if args.key?(:reporting_context)
           @shipping_label = args[:shipping_label] if args.key?(:shipping_label)
+          @status_per_reporting_context = args[:status_per_reporting_context] if args.key?(:status_per_reporting_context)
           @thumbnail_link = args[:thumbnail_link] if args.key?(:thumbnail_link)
           @title = args[:title] if args.key?(:title)
         end
@@ -1758,12 +1790,14 @@ module Google
         attr_accessor :product_performance_view
       
         # Fields available for query in `product_view` table. Products in the current
-        # inventory. Products in this table are the same as in Products sub-API but not
-        # all product attributes from Products sub-API are available for query in this
-        # table. In contrast to Products sub-API, this table allows to filter the
-        # returned list of products by product attributes. To retrieve a single product
-        # by `id` or list all products, Products sub-API should be used. Values are only
-        # set for fields requested explicitly in the request's search query.
+        # inventory. Products in this table are the same as a [Product resource in
+        # Products sub-API](https://developers.google.com/merchant/api/reference/rest/
+        # products_v1/accounts.products) but not all product attributes from Products
+        # sub-API are available for query in this table. In contrast to Products sub-API,
+        # this table allows to filter the returned list of products by product
+        # attributes. To retrieve a single product by `id` or list all products,
+        # Products sub-API should be used. Values are only set for fields requested
+        # explicitly in the request's search query.
         # Corresponds to the JSON property `productView`
         # @return [Google::Apis::MerchantapiReportsV1beta::ProductView]
         attr_accessor :product_view
@@ -1792,7 +1826,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Number of `ReportRows` to retrieve in a single page. Defaults to
-        # 1000. Values above 5000 are coerced to 5000.
+        # 1000. Values above 100,000 are coerced to 100,000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
@@ -1807,8 +1841,7 @@ module Google
         # Required. Query that defines a report to be retrieved. For details on how to
         # construct your query, see the [Query Language guide](/merchant/api/guides/
         # reports/query-language). For the full list of available tables and fields, see
-        # the [Available fields](/merchant/api/reference/rest/reports_v1beta/accounts.
-        # reports).
+        # the Available fields.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -1848,6 +1881,48 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Status of the product for a specific reporting context. Equivalent to `
+      # DestinationStatus` in Products API.
+      class StatusPerReportingContext
+        include Google::Apis::Core::Hashable
+      
+        # List of approved countries in the reporting context, represented in [ISO 3166](
+        # https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`.
+        # Corresponds to the JSON property `approvedCountries`
+        # @return [Array<String>]
+        attr_accessor :approved_countries
+      
+        # List of disapproved countries in the reporting context, represented in [ISO
+        # 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `
+        # US`.
+        # Corresponds to the JSON property `disapprovedCountries`
+        # @return [Array<String>]
+        attr_accessor :disapproved_countries
+      
+        # List of pending countries in the reporting context, represented in [ISO 3166](
+        # https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`.
+        # Corresponds to the JSON property `pendingCountries`
+        # @return [Array<String>]
+        attr_accessor :pending_countries
+      
+        # Reporting context the status applies to.
+        # Corresponds to the JSON property `reportingContext`
+        # @return [String]
+        attr_accessor :reporting_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approved_countries = args[:approved_countries] if args.key?(:approved_countries)
+          @disapproved_countries = args[:disapproved_countries] if args.key?(:disapproved_countries)
+          @pending_countries = args[:pending_countries] if args.key?(:pending_countries)
+          @reporting_context = args[:reporting_context] if args.key?(:reporting_context)
         end
       end
     end

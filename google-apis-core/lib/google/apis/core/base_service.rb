@@ -18,13 +18,13 @@ require 'google/apis'
 require 'google/apis/core/version'
 require 'google/apis/core/api_command'
 require 'google/apis/core/batch'
+require 'google/apis/core/faraday_integration'
 require 'google/apis/core/upload'
 require 'google/apis/core/storage_upload'
 require 'google/apis/core/download'
 require 'google/apis/core/storage_download'
 require 'google/apis/options'
 require 'googleauth'
-require 'httpclient'
 
 module Google
   module Apis
@@ -149,8 +149,8 @@ module Google
         # @return [Addressable::URI]
         attr_accessor :batch_path
 
-        # HTTP client
-        # @return [HTTPClient]
+        # Faraday HTTP connection
+        # @return [Faraday::Connection]
         attr_writer :client
 
         # General settings
@@ -263,8 +263,8 @@ module Google
           batch_command.execute(client)
         end
 
-        # Get the current HTTP client
-        # @return [HTTPClient]
+        # Get the current HTTP connection
+        # @return [Faraday::Connection]
         def client
           @client ||= new_client
         end
@@ -376,7 +376,7 @@ module Google
           command = make_storage_upload_command(:delete, 'b/{bucket}/o', options)
           command.upload_id = upload_id
           command.params['bucket'] = bucket unless bucket.nil?
-          command.delete_upload = options[:delete_upload] unless options[:delete_upload].nil?
+          command.delete_upload = true
           execute_or_queue_command(command)
         end
 
@@ -421,6 +421,10 @@ module Google
           template = Addressable::Template.new(root_url + upload_path + path)
           command = StorageUploadCommand.new(method, template, client_version: client_version)
           command.options = request_options.merge(options)
+          command.options.header = command.options.header&.dup || {}
+          unless command.options.header.any? { |k, _| k.to_s.casecmp('accept-encoding') == 0 }
+            command.options.header['Accept-Encoding'] = 'gzip'
+          end
           apply_command_defaults(command)
           command
         end
@@ -459,6 +463,10 @@ module Google
           template = Addressable::Template.new(root_url + base_path + path)
           command = StorageDownloadCommand.new(method, template, client_version: client_version)
           command.options = request_options.merge(options)
+          command.options.header = command.options.header&.dup || {}
+          unless command.options.header.any? { |k, _| k.to_s.casecmp('accept-encoding') == 0 }
+            command.options.header['Accept-Encoding'] = 'gzip'
+          end
           command.query['alt'] = 'media'
           apply_command_defaults(command)
           command
@@ -542,39 +550,22 @@ module Google
           Thread.current[:google_api_batch_service] = nil
         end
 
-        # Create a new HTTP client
-        # @return [HTTPClient]
+        # Create a new HTTP connection
+        # @return [Faraday::Connection]
         def new_client
-          client = ::HTTPClient.new
+          options = {}
+          request_options = {params_encoder: Faraday::FlatParamsEncoder}
+          options[:proxy] = {uri: client_options.proxy_url} if client_options.proxy_url
+          request_options[:open_timeout] = client_options.open_timeout_sec if client_options.open_timeout_sec
+          request_options[:read_timeout] = client_options.read_timeout_sec if client_options.read_timeout_sec
+          request_options[:write_timeout] = client_options.send_timeout_sec if client_options.send_timeout_sec
+          options[:request] = request_options unless request_options.empty?
+          options[:headers] = { 'User-Agent' => user_agent }
 
-          if client_options.transparent_gzip_decompression
-            client.transparent_gzip_decompression = client_options.transparent_gzip_decompression
+          Faraday.new options do |faraday|
+            faraday.response :logger, Google::Apis.logger if client_options.log_http_requests
+            faraday.response :follow_redirects_google_apis_core, limit: 5
           end
-          
-          client.proxy = client_options.proxy_url if client_options.proxy_url
-
-          if client_options.open_timeout_sec
-            client.connect_timeout = client_options.open_timeout_sec
-          end
-
-          if client_options.read_timeout_sec
-            client.receive_timeout = client_options.read_timeout_sec
-          end
-
-          if client_options.send_timeout_sec
-            client.send_timeout = client_options.send_timeout_sec
-          end
-
-          client.follow_redirect_count = 5
-          client.default_header = { 'User-Agent' => user_agent }
-
-          client.debug_dev = logger if client_options.log_http_requests
-
-          # Make HttpClient use system default root CA path
-          # https://github.com/nahi/httpclient/issues/445
-          client.ssl_config.clear_cert_store
-          client.ssl_config.cert_store.set_default_paths
-          client
         end
 
 

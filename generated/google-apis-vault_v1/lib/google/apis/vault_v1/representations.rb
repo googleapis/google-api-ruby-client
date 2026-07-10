@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HeldGeminiQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HeldGroupsQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -566,6 +572,8 @@ module Google
       
           property :drive_query, as: 'driveQuery', class: Google::Apis::VaultV1::HeldDriveQuery, decorator: Google::Apis::VaultV1::HeldDriveQuery::Representation
       
+          property :gemini_query, as: 'geminiQuery', class: Google::Apis::VaultV1::HeldGeminiQuery, decorator: Google::Apis::VaultV1::HeldGeminiQuery::Representation
+      
           property :groups_query, as: 'groupsQuery', class: Google::Apis::VaultV1::HeldGroupsQuery, decorator: Google::Apis::VaultV1::HeldGroupsQuery::Representation
       
           property :hangouts_chat_query, as: 'hangoutsChatQuery', class: Google::Apis::VaultV1::HeldHangoutsChatQuery, decorator: Google::Apis::VaultV1::HeldHangoutsChatQuery::Representation
@@ -636,6 +644,7 @@ module Google
           property :client_side_encrypted_option, as: 'clientSideEncryptedOption'
           property :include_shared_drives, as: 'includeSharedDrives'
           property :include_team_drives, as: 'includeTeamDrives'
+          property :shared_drives_option, as: 'sharedDrivesOption'
           property :version_date, as: 'versionDate'
         end
       end
@@ -777,6 +786,12 @@ module Google
         end
       end
       
+      class HeldGeminiQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class HeldGroupsQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -874,6 +889,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::VaultV1::Operation, decorator: Google::Apis::VaultV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

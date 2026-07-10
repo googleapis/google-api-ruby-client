@@ -194,10 +194,9 @@ module Google
         end
       end
       
-      # A representation of the Channel resource. A Channel is a resource on which
-      # event providers publish their events. The published events are delivered
-      # through the transport associated with the channel. Note that a channel is
-      # associated with exactly one event provider.
+      # Represents a subscriber's intent to receive events from an event provider.
+      # Published events are delivered using the transport associated with the Channel
+      # resource. A channel is associated with exactly one event provider.
       class Channel
         include Google::Apis::Core::Hashable
       
@@ -212,9 +211,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Resource name of a KMS crypto key (managed by the user) used to encrypt/
-        # decrypt their event data. It must match the pattern `projects/*/locations/*/
-        # keyRings/*/cryptoKeys/*`.
+        # Optional. Resource name of a KMS crypto key (managed by the user) used to
+        # encrypt/decrypt their event data. It must match the pattern `projects/*/
+        # locations/*/keyRings/*/cryptoKeys/*`.
         # Corresponds to the JSON property `cryptoKeyName`
         # @return [String]
         attr_accessor :crypto_key_name
@@ -772,7 +771,9 @@ module Google
         end
       end
       
-      # A GoogleApiSource represents a subscription of 1P events from a MessageBus.
+      # Represents a subscription to first-party events for a MessageBus resource. A
+      # GoogleApiSource resource lets you configure the delivery of events from Google
+      # API sources to a designated bus.
       class GoogleApiSource
         include Google::Apis::Core::Hashable
       
@@ -830,6 +831,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Config to enabled subscribing to events from other projects in the org.
+        # Corresponds to the JSON property `organizationSubscription`
+        # @return [Google::Apis::EventarcV1::OrganizationSubscription]
+        attr_accessor :organization_subscription
+      
+        # Config to enable subscribing to all events from a list of projects.
+        # Corresponds to the JSON property `projectSubscriptions`
+        # @return [Google::Apis::EventarcV1::ProjectSubscriptions]
+        attr_accessor :project_subscriptions
+      
         # Output only. Server assigned unique identifier for the channel. The value is a
         # UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         # Corresponds to the JSON property `uid`
@@ -856,15 +867,17 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @name = args[:name] if args.key?(:name)
+          @organization_subscription = args[:organization_subscription] if args.key?(:organization_subscription)
+          @project_subscriptions = args[:project_subscriptions] if args.key?(:project_subscriptions)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
-      # A GoogleChannelConfig is a resource that stores the custom settings respected
-      # by Eventarc first-party triggers in the matching region. Once configured,
-      # first-party event data will be protected using the specified custom managed
-      # encryption key instead of Google-managed encryption keys.
+      # Can be used to customize security settings for Eventarc first-party triggers
+      # in a specific region. Once the GoogleChannelConfig resource is configured,
+      # first-party event data is protected using the specified customer-managed
+      # encryption key instead of a Google-managed encryption key.
       class GoogleChannelConfig
         include Google::Apis::Core::Hashable
       
@@ -973,9 +986,10 @@ module Google
       class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig
         include Google::Apis::Core::Hashable
       
-        # Represents a config used to authenticate with a Google OIDC token using a GCP
-        # service account. Use this authentication method to invoke your Cloud Run and
-        # Cloud Functions destinations or HTTP endpoints that support Google OIDC.
+        # Represents a config used to authenticate with a Google OIDC token using a
+        # Google Cloud service account. Use this authentication method to invoke your
+        # Cloud Run and Cloud Functions destinations or HTTP endpoints that support
+        # Google OIDC.
         # Corresponds to the JSON property `googleOidc`
         # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken]
         attr_accessor :google_oidc
@@ -1032,9 +1046,10 @@ module Google
         end
       end
       
-      # Represents a config used to authenticate with a Google OIDC token using a GCP
-      # service account. Use this authentication method to invoke your Cloud Run and
-      # Cloud Functions destinations or HTTP endpoints that support Google OIDC.
+      # Represents a config used to authenticate with a Google OIDC token using a
+      # Google Cloud service account. Use this authentication method to invoke your
+      # Cloud Run and Cloud Functions destinations or HTTP endpoints that support
+      # Google OIDC.
       class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken
         include Google::Apis::Core::Hashable
       
@@ -1433,6 +1448,14 @@ module Google
         # @return [Array<Google::Apis::EventarcV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1441,6 +1464,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2113,6 +2137,26 @@ module Google
         end
       end
       
+      # Config to enabled subscribing to events from other projects in the org.
+      class OrganizationSubscription
+        include Google::Apis::Core::Hashable
+      
+        # Required. Enable org level subscription.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # A representation of the Pipeline resource.
       class Pipeline
         include Google::Apis::Core::Hashable
@@ -2197,6 +2241,13 @@ module Google
         # @return [Google::Apis::EventarcV1::GoogleCloudEventarcV1PipelineRetryPolicy]
         attr_accessor :retry_policy
       
+        # Output only. Whether or not this Pipeline satisfies the requirements of
+        # physical zone separation
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Server-assigned unique identifier for the Pipeline. The value is
         # a UUID4 string and guaranteed to remain unchanged until the resource is
         # deleted.
@@ -2229,6 +2280,7 @@ module Google
           @mediations = args[:mediations] if args.key?(:mediations)
           @name = args[:name] if args.key?(:name)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2329,6 +2381,28 @@ module Google
         end
       end
       
+      # Config to enable subscribing to all events from a list of projects.
+      class ProjectSubscriptions
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of projects to receive events from. All the projects must be
+        # in the same org. The listed projects should have the format project/`
+        # identifier` where identifier can be either the project id for project number.
+        # A single list may contain both formats. At most 100 projects can be listed.
+        # Corresponds to the JSON property `list`
+        # @return [Array<String>]
+        attr_accessor :list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @list = args[:list] if args.key?(:list)
+        end
+      end
+      
       # A representation of the Provider resource.
       class Provider
         include Google::Apis::Core::Hashable
@@ -2389,6 +2463,27 @@ module Google
         def update!(**args)
           @subscription = args[:subscription] if args.key?(:subscription)
           @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # The retry policy configuration for the Trigger. Can only be set with Cloud Run
+      # destinations.
+      class RetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum number of delivery attempts for any message. The only
+        # valid value is 1.
+        # Corresponds to the JSON property `maxAttempts`
+        # @return [Fixnum]
+        attr_accessor :max_attempts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_attempts = args[:max_attempts] if args.key?(:max_attempts)
         end
       end
       
@@ -2589,6 +2684,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The retry policy configuration for the Trigger. Can only be set with Cloud Run
+        # destinations.
+        # Corresponds to the JSON property `retryPolicy`
+        # @return [Google::Apis::EventarcV1::RetryPolicy]
+        attr_accessor :retry_policy
+      
         # Output only. Whether or not this Trigger satisfies the requirements of
         # physical zone separation
         # Corresponds to the JSON property `satisfiesPzs`
@@ -2638,6 +2739,7 @@ module Google
           @event_filters = args[:event_filters] if args.key?(:event_filters)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @transport = args[:transport] if args.key?(:transport)

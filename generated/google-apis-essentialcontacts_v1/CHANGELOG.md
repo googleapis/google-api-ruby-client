@@ -1,5 +1,18 @@
 # Release history for google-apis-essentialcontacts_v1
 
+### v0.26.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.25.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260319
+
+### v0.24.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250522
+* Regenerated using generator version 0.18.0
+
 ### v0.23.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

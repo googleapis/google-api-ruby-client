@@ -235,7 +235,8 @@ module Google
       class AddFilterViewRequest
         include Google::Apis::Core::Hashable
       
-        # A filter view.
+        # A filter view. For more information, see [Manage data visibility with filters](
+        # https://developers.google.com/workspace/sheets/api/guides/filters).
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::SheetsV4::FilterView]
         attr_accessor :filter
@@ -254,7 +255,8 @@ module Google
       class AddFilterViewResponse
         include Google::Apis::Core::Hashable
       
-        # A filter view.
+        # A filter view. For more information, see [Manage data visibility with filters](
+        # https://developers.google.com/workspace/sheets/api/guides/filters).
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::SheetsV4::FilterView]
         attr_accessor :filter
@@ -1405,7 +1407,9 @@ module Google
         end
       end
       
-      # The default filter associated with a sheet.
+      # The default filter associated with a sheet. For more information, see [Manage
+      # data visibility with filters](https://developers.google.com/workspace/sheets/
+      # api/guides/filters).
       class BasicFilter
         include Google::Apis::Core::Hashable
       
@@ -1574,7 +1578,7 @@ module Google
       
         # The ranges that were cleared, in [A1 notation](https://developers.google.com/
         # workspace/sheets/api/guides/concepts#cell). If the requests are for an
-        # unbounded range or a ranger larger than the bounds of the sheet, this is the
+        # unbounded range or a range larger than the bounds of the sheet, this is the
         # actual ranges that were cleared, bounded to the sheet's limits.
         # Corresponds to the JSON property `clearedRanges`
         # @return [Array<String>]
@@ -1621,7 +1625,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The ranges that were cleared, in A1 notation. If the requests are for an
-        # unbounded range or a ranger larger than the bounds of the sheet, this is the
+        # unbounded range or a range larger than the bounds of the sheet, this is the
         # actual ranges that were cleared, bounded to the sheet's limits.
         # Corresponds to the JSON property `clearedRanges`
         # @return [Array<String>]
@@ -2610,6 +2614,17 @@ module Google
       class CellData
         include Google::Apis::Core::Hashable
       
+        # Optional. Runs of chips applied to subsections of the cell. Properties of a
+        # run start at a specific index in the text and continue until the next run.
+        # When reading, all chipped and non-chipped runs are included. Non-chipped runs
+        # will have an empty Chip. When writing, only runs with chips are included. Runs
+        # containing chips are of length 1 and are represented in the user-entered text
+        # by an “@” placeholder symbol. New runs will overwrite any prior runs. Writing
+        # a new user_entered_value will erase previous runs.
+        # Corresponds to the JSON property `chipRuns`
+        # @return [Array<Google::Apis::SheetsV4::ChipRun>]
+        attr_accessor :chip_runs
+      
         # A data source formula.
         # Corresponds to the JSON property `dataSourceFormula`
         # @return [Google::Apis::SheetsV4::DataSourceFormula]
@@ -2689,6 +2704,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chip_runs = args[:chip_runs] if args.key?(:chip_runs)
           @data_source_formula = args[:data_source_formula] if args.key?(:data_source_formula)
           @data_source_table = args[:data_source_table] if args.key?(:data_source_table)
           @data_validation = args[:data_validation] if args.key?(:data_validation)
@@ -3278,6 +3294,61 @@ module Google
         end
       end
       
+      # The Smart Chip.
+      class Chip
+        include Google::Apis::Core::Hashable
+      
+        # Properties specific to a linked person.
+        # Corresponds to the JSON property `personProperties`
+        # @return [Google::Apis::SheetsV4::PersonProperties]
+        attr_accessor :person_properties
+      
+        # Properties of a link to a Google resource (such as a file in Drive, a YouTube
+        # video, a Maps address, or a Calendar event). Only Drive files can be written
+        # as chips. All other rich link types are read only. URIs cannot exceed 2000
+        # bytes when writing. NOTE: Writing Drive file chips requires at least one of
+        # the `drive.file`, `drive.readonly`, or `drive` OAuth scopes.
+        # Corresponds to the JSON property `richLinkProperties`
+        # @return [Google::Apis::SheetsV4::RichLinkProperties]
+        attr_accessor :rich_link_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @person_properties = args[:person_properties] if args.key?(:person_properties)
+          @rich_link_properties = args[:rich_link_properties] if args.key?(:rich_link_properties)
+        end
+      end
+      
+      # The run of a chip. The chip continues until the start index of the next run.
+      class ChipRun
+        include Google::Apis::Core::Hashable
+      
+        # The Smart Chip.
+        # Corresponds to the JSON property `chip`
+        # @return [Google::Apis::SheetsV4::Chip]
+        attr_accessor :chip
+      
+        # Required. The zero-based character index where this run starts, in UTF-16 code
+        # units.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chip = args[:chip] if args.key?(:chip)
+          @start_index = args[:start_index] if args.key?(:start_index)
+        end
+      end
+      
       # Clears the basic filter, if any exists on the sheet.
       class ClearBasicFilterRequest
         include Google::Apis::Core::Hashable
@@ -3315,7 +3386,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The range (in A1 notation) that was cleared. (If the request was for an
-        # unbounded range or a ranger larger than the bounds of the sheet, this will be
+        # unbounded range or a range larger than the bounds of the sheet, this will be
         # the actual range that was cleared, bounded to the sheet's limits.)
         # Corresponds to the JSON property `clearedRange`
         # @return [String]
@@ -3641,14 +3712,16 @@ module Google
       class CreateDeveloperMetadataRequest
         include Google::Apis::Core::Hashable
       
-        # Developer metadata associated with a location or object in a spreadsheet.
-        # Developer metadata may be used to associate arbitrary data with various parts
-        # of a spreadsheet and will remain associated at those locations as they move
-        # around and the spreadsheet is edited. For example, if developer metadata is
-        # associated with row 5 and another row is then subsequently inserted above row
-        # 5, that original metadata will still be associated with the row it was first
-        # associated with (what is now row 6). If the associated object is deleted its
-        # metadata is deleted too.
+        # Developer metadata associated with a location or object in a spreadsheet. For
+        # more information, see [Read, write, and search metadata](https://developers.
+        # google.com/workspace/sheets/api/guides/metadata). Developer metadata may be
+        # used to associate arbitrary data with various parts of a spreadsheet and it
+        # will remain associated at those locations as they move around and the
+        # spreadsheet is edited. For example, if developer metadata is associated with
+        # row 5 and another row is then subsequently inserted above row 5, that original
+        # metadata is still associated with the row it was first associated with (what
+        # is now row 6). If the associated object is deleted then its metadata is
+        # deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
@@ -3667,14 +3740,16 @@ module Google
       class CreateDeveloperMetadataResponse
         include Google::Apis::Core::Hashable
       
-        # Developer metadata associated with a location or object in a spreadsheet.
-        # Developer metadata may be used to associate arbitrary data with various parts
-        # of a spreadsheet and will remain associated at those locations as they move
-        # around and the spreadsheet is edited. For example, if developer metadata is
-        # associated with row 5 and another row is then subsequently inserted above row
-        # 5, that original metadata will still be associated with the row it was first
-        # associated with (what is now row 6). If the associated object is deleted its
-        # metadata is deleted too.
+        # Developer metadata associated with a location or object in a spreadsheet. For
+        # more information, see [Read, write, and search metadata](https://developers.
+        # google.com/workspace/sheets/api/guides/metadata). Developer metadata may be
+        # used to associate arbitrary data with various parts of a spreadsheet and it
+        # will remain associated at those locations as they move around and the
+        # spreadsheet is edited. For example, if developer metadata is associated with
+        # row 5 and another row is then subsequently inserted above row 5, that original
+        # metadata is still associated with the row it was first associated with (what
+        # is now row 6). If the associated object is deleted then its metadata is
+        # deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
@@ -3779,6 +3854,8 @@ module Google
       end
       
       # Filter that describes what data should be selected or returned from a request.
+      # For more information, see [Read, write, and search metadata](https://
+      # developers.google.com/workspace/sheets/api/guides/metadata).
       class DataFilter
         include Google::Apis::Core::Hashable
       
@@ -3793,7 +3870,7 @@ module Google
         # specified, this considers all developer metadata with that key. If a key,
         # visibility, and location type are all specified, this considers all developer
         # metadata with that key and visibility that are associated with a location of
-        # that type. In general, this selects all DeveloperMetadata that matches the
+        # that type. In general, this selects all DeveloperMetadata that match the
         # intersection of all the specified fields; any field or combination of fields
         # may be specified.
         # Corresponds to the JSON property `developerMetadataLookup`
@@ -3834,6 +3911,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Filter that describes what data should be selected or returned from a request.
+        # For more information, see [Read, write, and search metadata](https://
+        # developers.google.com/workspace/sheets/api/guides/metadata).
         # Corresponds to the JSON property `dataFilter`
         # @return [Google::Apis::SheetsV4::DataFilter]
         attr_accessor :data_filter
@@ -4623,6 +4702,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Filter that describes what data should be selected or returned from a request.
+        # For more information, see [Read, write, and search metadata](https://
+        # developers.google.com/workspace/sheets/api/guides/metadata).
         # Corresponds to the JSON property `dataFilter`
         # @return [Google::Apis::SheetsV4::DataFilter]
         attr_accessor :data_filter
@@ -4938,14 +5019,16 @@ module Google
         end
       end
       
-      # Developer metadata associated with a location or object in a spreadsheet.
-      # Developer metadata may be used to associate arbitrary data with various parts
-      # of a spreadsheet and will remain associated at those locations as they move
-      # around and the spreadsheet is edited. For example, if developer metadata is
-      # associated with row 5 and another row is then subsequently inserted above row
-      # 5, that original metadata will still be associated with the row it was first
-      # associated with (what is now row 6). If the associated object is deleted its
-      # metadata is deleted too.
+      # Developer metadata associated with a location or object in a spreadsheet. For
+      # more information, see [Read, write, and search metadata](https://developers.
+      # google.com/workspace/sheets/api/guides/metadata). Developer metadata may be
+      # used to associate arbitrary data with various parts of a spreadsheet and it
+      # will remain associated at those locations as they move around and the
+      # spreadsheet is edited. For example, if developer metadata is associated with
+      # row 5 and another row is then subsequently inserted above row 5, that original
+      # metadata is still associated with the row it was first associated with (what
+      # is now row 6). If the associated object is deleted then its metadata is
+      # deleted too.
       class DeveloperMetadata
         include Google::Apis::Core::Hashable
       
@@ -4972,7 +5055,7 @@ module Google
         # @return [String]
         attr_accessor :metadata_value
       
-        # The metadata visibility. Developer metadata must always have a visibility
+        # The metadata visibility. Developer metadata must always have visibility
         # specified.
         # Corresponds to the JSON property `visibility`
         # @return [String]
@@ -5038,7 +5121,7 @@ module Google
       # specified, this considers all developer metadata with that key. If a key,
       # visibility, and location type are all specified, this considers all developer
       # metadata with that key and visibility that are associated with a location of
-      # that type. In general, this selects all DeveloperMetadata that matches the
+      # that type. In general, this selects all DeveloperMetadata that match the
       # intersection of all the specified fields; any field or combination of fields
       # may be specified.
       class DeveloperMetadataLookup
@@ -5060,7 +5143,7 @@ module Google
         # rows. If the field is left unspecified, all location types are considered.
         # This field cannot be specified as SPREADSHEET when the
         # locationMatchingStrategy is specified as INTERSECTING or when the
-        # metadataLocation is specified as a non-spreadsheet location: spreadsheet
+        # metadataLocation is specified as a non-spreadsheet location. Spreadsheet
         # metadata cannot intersect any other developer metadata location. This field
         # also must be left unspecified when the locationMatchingStrategy is specified
         # as EXACT.
@@ -5263,7 +5346,8 @@ module Google
       class DuplicateFilterViewResponse
         include Google::Apis::Core::Hashable
       
-        # A filter view.
+        # A filter view. For more information, see [Manage data visibility with filters](
+        # https://developers.google.com/workspace/sheets/api/guides/filters).
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::SheetsV4::FilterView]
         attr_accessor :filter
@@ -5584,7 +5668,7 @@ module Google
         end
       end
       
-      # Criteria for showing/hiding rows in a filter or filter view.
+      # Criteria for showing or hiding rows in a filter or filter view.
       class FilterCriteria
         include Google::Apis::Core::Hashable
       
@@ -5736,7 +5820,7 @@ module Google
         # @return [Google::Apis::SheetsV4::DataSourceColumnReference]
         attr_accessor :data_source_column_reference
       
-        # Criteria for showing/hiding rows in a filter or filter view.
+        # Criteria for showing or hiding rows in a filter or filter view.
         # Corresponds to the JSON property `filterCriteria`
         # @return [Google::Apis::SheetsV4::FilterCriteria]
         attr_accessor :filter_criteria
@@ -5753,7 +5837,8 @@ module Google
         end
       end
       
-      # A filter view.
+      # A filter view. For more information, see [Manage data visibility with filters](
+      # https://developers.google.com/workspace/sheets/api/guides/filters).
       class FilterView
         include Google::Apis::Core::Hashable
       
@@ -5764,7 +5849,7 @@ module Google
         # @return [Hash<String,Google::Apis::SheetsV4::FilterCriteria>]
         attr_accessor :criteria
       
-        # The filter criteria for showing/hiding values per column. Both criteria and
+        # The filter criteria for showing or hiding values per column. Both criteria and
         # filter_specs are populated in responses. If both fields are specified in an
         # update request, this field takes precedence.
         # Corresponds to the JSON property `filterSpecs`
@@ -5777,7 +5862,7 @@ module Google
         attr_accessor :filter_view_id
       
         # The named range this filter view is backed by, if any. When writing, only one
-        # of range or named_range_id or table_id may be set.
+        # of range, named_range_id, or table_id may be set.
         # Corresponds to the JSON property `namedRangeId`
         # @return [String]
         attr_accessor :named_range_id
@@ -5806,7 +5891,7 @@ module Google
         attr_accessor :sort_specs
       
         # The table this filter view is backed by, if any. When writing, only one of
-        # range or named_range_id or table_id may be set.
+        # range, named_range_id, or table_id may be set.
         # Corresponds to the JSON property `tableId`
         # @return [String]
         attr_accessor :table_id
@@ -6797,14 +6882,16 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DataFilter>]
         attr_accessor :data_filters
       
-        # Developer metadata associated with a location or object in a spreadsheet.
-        # Developer metadata may be used to associate arbitrary data with various parts
-        # of a spreadsheet and will remain associated at those locations as they move
-        # around and the spreadsheet is edited. For example, if developer metadata is
-        # associated with row 5 and another row is then subsequently inserted above row
-        # 5, that original metadata will still be associated with the row it was first
-        # associated with (what is now row 6). If the associated object is deleted its
-        # metadata is deleted too.
+        # Developer metadata associated with a location or object in a spreadsheet. For
+        # more information, see [Read, write, and search metadata](https://developers.
+        # google.com/workspace/sheets/api/guides/metadata). Developer metadata may be
+        # used to associate arbitrary data with various parts of a spreadsheet and it
+        # will remain associated at those locations as they move around and the
+        # spreadsheet is edited. For example, if developer metadata is associated with
+        # row 5 and another row is then subsequently inserted above row 5, that original
+        # metadata is still associated with the row it was first associated with (what
+        # is now row 6). If the associated object is deleted then its metadata is
+        # deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
@@ -6965,9 +7052,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Pattern string used for formatting. If not set, a default pattern based on the
-        # user's locale will be used if necessary for the given type. See the [Date and
-        # Number Formats guide](https://developers.google.com/workspace/sheets/api/
-        # guides/formats) for more information about the supported patterns.
+        # spreadsheet's locale will be used if necessary for the given type. See the [
+        # Date and Number Formats guide](https://developers.google.com/workspace/sheets/
+        # api/guides/formats) for more information about the supported patterns.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
@@ -7267,6 +7354,33 @@ module Google
           @delimiter = args[:delimiter] if args.key?(:delimiter)
           @html = args[:html] if args.key?(:html)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Properties specific to a linked person.
+      class PersonProperties
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The display format of the person chip. If not set, the default
+        # display format is used.
+        # Corresponds to the JSON property `displayFormat`
+        # @return [String]
+        attr_accessor :display_format
+      
+        # Required. The email address linked to this person. This field is always
+        # present.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_format = args[:display_format] if args.key?(:display_format)
+          @email = args[:email] if args.key?(:email)
         end
       end
       
@@ -8777,6 +8891,36 @@ module Google
         end
       end
       
+      # Properties of a link to a Google resource (such as a file in Drive, a YouTube
+      # video, a Maps address, or a Calendar event). Only Drive files can be written
+      # as chips. All other rich link types are read only. URIs cannot exceed 2000
+      # bytes when writing. NOTE: Writing Drive file chips requires at least one of
+      # the `drive.file`, `drive.readonly`, or `drive` OAuth scopes.
+      class RichLinkProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The [MIME type](https://developers.google.com/drive/api/v3/mime-
+        # types) of the link, if there's one (for example, when it's a file in Drive).
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Required. The URI to the link. This is always present.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Data about each cell in a row.
       class RowData
         include Google::Apis::Core::Hashable
@@ -8910,7 +9054,9 @@ module Google
       class SetBasicFilterRequest
         include Google::Apis::Core::Hashable
       
-        # The default filter associated with a sheet.
+        # The default filter associated with a sheet. For more information, see [Manage
+        # data visibility with filters](https://developers.google.com/workspace/sheets/
+        # api/guides/filters).
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::SheetsV4::BasicFilter]
         attr_accessor :filter
@@ -8980,7 +9126,9 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::BandedRange>]
         attr_accessor :banded_ranges
       
-        # The default filter associated with a sheet.
+        # The default filter associated with a sheet. For more information, see [Manage
+        # data visibility with filters](https://developers.google.com/workspace/sheets/
+        # api/guides/filters).
         # Corresponds to the JSON property `basicFilter`
         # @return [Google::Apis::SheetsV4::BasicFilter]
         attr_accessor :basic_filter
@@ -9322,7 +9470,7 @@ module Google
         # @return [Google::Apis::SheetsV4::GridRange]
         attr_accessor :data_range
       
-        # Criteria for showing/hiding rows in a filter or filter view.
+        # Criteria for showing or hiding rows in a filter or filter view.
         # Corresponds to the JSON property `filterCriteria`
         # @return [Google::Apis::SheetsV4::FilterCriteria]
         attr_accessor :filter_criteria
@@ -11003,14 +11151,16 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DataFilter>]
         attr_accessor :data_filters
       
-        # Developer metadata associated with a location or object in a spreadsheet.
-        # Developer metadata may be used to associate arbitrary data with various parts
-        # of a spreadsheet and will remain associated at those locations as they move
-        # around and the spreadsheet is edited. For example, if developer metadata is
-        # associated with row 5 and another row is then subsequently inserted above row
-        # 5, that original metadata will still be associated with the row it was first
-        # associated with (what is now row 6). If the associated object is deleted its
-        # metadata is deleted too.
+        # Developer metadata associated with a location or object in a spreadsheet. For
+        # more information, see [Read, write, and search metadata](https://developers.
+        # google.com/workspace/sheets/api/guides/metadata). Developer metadata may be
+        # used to associate arbitrary data with various parts of a spreadsheet and it
+        # will remain associated at those locations as they move around and the
+        # spreadsheet is edited. For example, if developer metadata is associated with
+        # row 5 and another row is then subsequently inserted above row 5, that original
+        # metadata is still associated with the row it was first associated with (what
+        # is now row 6). If the associated object is deleted then its metadata is
+        # deleted too.
         # Corresponds to the JSON property `developerMetadata`
         # @return [Google::Apis::SheetsV4::DeveloperMetadata]
         attr_accessor :developer_metadata
@@ -11222,7 +11372,8 @@ module Google
         # @return [String]
         attr_accessor :fields
       
-        # A filter view.
+        # A filter view. For more information, see [Manage data visibility with filters](
+        # https://developers.google.com/workspace/sheets/api/guides/filters).
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::SheetsV4::FilterView]
         attr_accessor :filter
@@ -11412,6 +11563,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Filter that describes what data should be selected or returned from a request.
+        # For more information, see [Read, write, and search metadata](https://
+        # developers.google.com/workspace/sheets/api/guides/metadata).
         # Corresponds to the JSON property `dataFilter`
         # @return [Google::Apis::SheetsV4::DataFilter]
         attr_accessor :data_filter

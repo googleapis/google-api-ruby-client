@@ -1,5 +1,55 @@
 # Release history for google-apis-config_v1
 
+### v0.21.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260610
+
+### v0.20.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260527
+* Regenerated using generator version 0.19.0
+
+### v0.19.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260422
+
+### v0.18.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260324
+
+### v0.17.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260128
+
+### v0.16.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251202
+
+### v0.15.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251029
+
+### v0.14.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250924
+
+### v0.13.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250907
+
+### v0.12.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250813
+
+### v0.11.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250604
+
+### v0.10.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250528
+* Regenerated using generator version 0.18.0
+
 ### v0.9.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

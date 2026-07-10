@@ -195,6 +195,59 @@ module Google
         end
       end
       
+      # Request message for GetTags.
+      class GetTagsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Response message for GetTags.
+      class GetTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A checksum based on the current bindings. This field is always set in server
+        # responses.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Tag keys/values directly bound to this resource. Each item in the
+        # map must be expressed as " : ". For example: "123/environment" : "production",
+        # "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # Metadata for the given google.cloud.location.Location.
       class GoogleCloudMemcacheV1LocationMetadata
         include Google::Apis::Core::Hashable
@@ -804,6 +857,12 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
+        # Output only. The available maintenance versions that can be applied to the
+        # instance.
+        # Corresponds to the JSON property `availableMaintenanceVersions`
+        # @return [Array<String>]
+        attr_accessor :available_maintenance_versions
+      
         # Output only. The time the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -819,6 +878,11 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Output only. The effective maintenance version of the instance.
+        # Corresponds to the JSON property `effectiveMaintenanceVersion`
+        # @return [String]
+        attr_accessor :effective_maintenance_version
       
         # List of messages that describe the current state of the Memcached instance.
         # Corresponds to the JSON property `instanceMessages`
@@ -841,6 +905,13 @@ module Google
         # Corresponds to the JSON property `maintenanceSchedule`
         # @return [Google::Apis::MemcacheV1::MaintenanceSchedule]
         attr_accessor :maintenance_schedule
+      
+        # Optional. Last self service update maintenance version triggered by the
+        # customer. If it is empty, it means that the maintenance version is not set by
+        # the user.
+        # Corresponds to the JSON property `maintenanceVersion`
+        # @return [String]
+        attr_accessor :maintenance_version
       
         # Output only. The full version of memcached server running on this instance.
         # System automatically determines the full memcached version for an instance
@@ -931,13 +1002,16 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @available_maintenance_versions = args[:available_maintenance_versions] if args.key?(:available_maintenance_versions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @discovery_endpoint = args[:discovery_endpoint] if args.key?(:discovery_endpoint)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @effective_maintenance_version = args[:effective_maintenance_version] if args.key?(:effective_maintenance_version)
           @instance_messages = args[:instance_messages] if args.key?(:instance_messages)
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
+          @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
           @memcache_full_version = args[:memcache_full_version] if args.key?(:memcache_full_version)
           @memcache_nodes = args[:memcache_nodes] if args.key?(:memcache_nodes)
           @memcache_version = args[:memcache_version] if args.key?(:memcache_version)
@@ -1053,6 +1127,14 @@ module Google
         # @return [Array<Google::Apis::MemcacheV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1061,6 +1143,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1550,6 +1633,81 @@ module Google
           @day = args[:day] if args.key?(:day)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Request message for SetTags.
+      class SetTagsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A checksum based on the current bindings which can be passed to
+        # prevent race conditions. If not passed, etag check would be skipped.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A unique identifier for this request. Must be a valid UUID. This
+        # request is only idempotent if a `request_id` is provided.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. These bindings will override any bindings previously set and will be
+        # effective immediately. Each item in the map must be expressed as " : ". For
+        # example: "123/environment" : "production", "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Response message for SetTags.
+      class SetTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A checksum based on the current bindings. This field is always set in server
+        # responses.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The full resource name of the service resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Tag keys/values directly bound to this resource. Each item in the
+        # map must be expressed as " : ". For example: "123/environment" : "production",
+        # "123/costCenter" : "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       

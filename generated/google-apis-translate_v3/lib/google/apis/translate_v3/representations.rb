@@ -376,6 +376,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RefineTextRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefineTextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RefinementEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Romanization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -555,6 +573,7 @@ module Google
           hash :models, as: 'models'
           property :output_config, as: 'outputConfig', class: Google::Apis::TranslateV3::BatchDocumentOutputConfig, decorator: Google::Apis::TranslateV3::BatchDocumentOutputConfig::Representation
       
+          property :pdf_native_only, as: 'pdfNativeOnly'
           property :source_language_code, as: 'sourceLanguageCode'
           collection :target_language_codes, as: 'targetLanguageCodes'
         end
@@ -618,6 +637,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
+          property :document_input_config, as: 'documentInputConfig', class: Google::Apis::TranslateV3::DocumentInputConfig, decorator: Google::Apis::TranslateV3::DocumentInputConfig::Representation
+      
           hash :labels, as: 'labels'
           property :mime_type, as: 'mimeType'
           property :model, as: 'model'
@@ -947,6 +968,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::TranslateV3::Operation, decorator: Google::Apis::TranslateV3::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1020,6 +1042,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :reference_sentence_pairs, as: 'referenceSentencePairs', class: Google::Apis::TranslateV3::ReferenceSentencePair, decorator: Google::Apis::TranslateV3::ReferenceSentencePair::Representation
       
+        end
+      end
+      
+      class RefineTextRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :refinement_entries, as: 'refinementEntries', class: Google::Apis::TranslateV3::RefinementEntry, decorator: Google::Apis::TranslateV3::RefinementEntry::Representation
+      
+          property :source_language_code, as: 'sourceLanguageCode'
+          property :target_language_code, as: 'targetLanguageCode'
+        end
+      end
+      
+      class RefineTextResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :refined_translations, as: 'refinedTranslations'
+        end
+      end
+      
+      class RefinementEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :original_translation, as: 'originalTranslation'
+          property :source_text, as: 'sourceText'
         end
       end
       

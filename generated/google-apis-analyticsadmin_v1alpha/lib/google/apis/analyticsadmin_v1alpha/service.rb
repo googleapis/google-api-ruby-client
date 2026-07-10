@@ -58,15 +58,15 @@ module Google
         
         # Returns summaries of all accounts accessible by the caller.
         # @param [Fixnum] page_size
-        #   The maximum number of AccountSummary resources to return. The service may
-        #   return fewer than this value, even if there are additional pages. If
-        #   unspecified, at most 50 resources will be returned. The maximum value is 200; (
-        #   higher values will be coerced to the maximum)
+        #   Optional. The maximum number of AccountSummary resources to return. The
+        #   service may return fewer than this value, even if there are additional pages.
+        #   If unspecified, at most 50 resources will be returned. The maximum value is
+        #   200; (higher values will be coerced to the maximum)
         # @param [String] page_token
-        #   A page token, received from a previous `ListAccountSummaries` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListAccountSummaries` must match the call that provided the page
-        #   token.
+        #   Optional. A page token, received from a previous `ListAccountSummaries` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListAccountSummaries` must match the call that
+        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -198,14 +198,14 @@ module Google
         # not currently have GA properties. Soft-deleted (ie: "trashed") accounts are
         # excluded by default. Returns an empty list if no relevant accounts are found.
         # @param [Fixnum] page_size
-        #   The maximum number of resources to return. The service may return fewer than
-        #   this value, even if there are additional pages. If unspecified, at most 50
-        #   resources will be returned. The maximum value is 200; (higher values will be
-        #   coerced to the maximum)
+        #   Optional. The maximum number of resources to return. The service may return
+        #   fewer than this value, even if there are additional pages. If unspecified, at
+        #   most 50 resources will be returned. The maximum value is 200; (higher values
+        #   will be coerced to the maximum)
         # @param [String] page_token
-        #   A page token, received from a previous `ListAccounts` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListAccounts` must match the call that provided the page token.
+        #   Optional. A page token, received from a previous `ListAccounts` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListAccounts` must match the call that provided the page token.
         # @param [Boolean] show_deleted
         #   Whether to include soft-deleted (ie: "trashed") Accounts in the results.
         #   Accounts can be inspected to determine whether they are deleted or not.
@@ -240,7 +240,7 @@ module Google
         
         # Updates an account.
         # @param [String] name
-        #   Output only. Resource name of this account. Format: accounts/`account` Example:
+        #   Identifier. Resource name of this account. Format: accounts/`account` Example:
         #   "accounts/100"
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaAccount] google_analytics_admin_v1alpha_account_object
         # @param [String] update_mask
@@ -779,38 +779,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a connected site tag for a Universal Analytics property. You can
-        # create a maximum of 20 connected site tags per property. Note: This API cannot
-        # be used on GA4 properties.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest] google_analytics_admin_v1alpha_create_connected_site_tag_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_property_connected_site_tag(google_analytics_admin_v1alpha_create_connected_site_tag_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:createConnectedSiteTag', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_create_connected_site_tag_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Create a roll-up property and all roll-up property source links.
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest] google_analytics_admin_v1alpha_create_rollup_property_request_object
         # @param [String] fields
@@ -872,102 +840,6 @@ module Google
           command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty::Representation
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a connected site tag for a Universal Analytics property. Note: this
-        # has no effect on GA4 properties.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest] google_analytics_admin_v1alpha_delete_connected_site_tag_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_property_connected_site_tag(google_analytics_admin_v1alpha_delete_connected_site_tag_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:deleteConnectedSiteTag', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_delete_connected_site_tag_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleProtobufEmpty
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Fetches the opt out status for the automated GA4 setup process for a UA
-        # property. Note: this has no effect on GA4 property.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest] google_analytics_admin_v1alpha_fetch_automated_ga4_configuration_opt_out_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def fetch_property_automated_ga4_configuration_opt_out(google_analytics_admin_v1alpha_fetch_automated_ga4_configuration_opt_out_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:fetchAutomatedGa4ConfigurationOptOut', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_fetch_automated_ga4_configuration_opt_out_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Given a specified UA property, looks up the GA4 property connected to it. Note:
-        # this cannot be used with GA4 properties.
-        # @param [String] property
-        #   Required. The UA property for which to look up the connected GA4 property.
-        #   Note this request uses the internal property ID, not the tracking ID of the
-        #   form UA-XXXXXX-YY. Format: properties/`internal_web_property_id` Example:
-        #   properties/1234
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def fetch_property_connected_ga4_property(property: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/properties:fetchConnectedGa4Property', options)
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse
-          command.query['property'] = property unless property.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1097,6 +969,68 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the reporting identity settings for this property.
+        # @param [String] name
+        #   Required. The name of the settings to lookup. Format: properties/`property`/
+        #   reportingIdentitySettings Example: "properties/1000/reportingIdentitySettings"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_reporting_identity_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Looks up settings related to user-provided data for a property.
+        # @param [String] name
+        #   Required. The name of the user provided data settings to retrieve. Format:
+        #   properties/`property`/userProvidedDataSettings
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserProvidedDataSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserProvidedDataSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_user_provided_data_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserProvidedDataSettings::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaUserProvidedDataSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns child Properties under the specified parent Account. Properties will
         # be excluded if the caller does not have access. Soft-deleted (ie: "trashed")
         # properties are excluded by default. Returns an empty list if no relevant
@@ -1113,14 +1047,15 @@ module Google
         #   | | firebase_project:project-id | The firebase project with id: project-id. |
         #   | firebase_project:123 | The firebase project with number: 123. | ```
         # @param [Fixnum] page_size
-        #   The maximum number of resources to return. The service may return fewer than
-        #   this value, even if there are additional pages. If unspecified, at most 50
-        #   resources will be returned. The maximum value is 200; (higher values will be
-        #   coerced to the maximum)
+        #   Optional. The maximum number of resources to return. The service may return
+        #   fewer than this value, even if there are additional pages. If unspecified, at
+        #   most 50 resources will be returned. The maximum value is 200; (higher values
+        #   will be coerced to the maximum)
         # @param [String] page_token
-        #   A page token, received from a previous `ListProperties` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListProperties` must match the call that provided the page token.
+        #   Optional. A page token, received from a previous `ListProperties` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListProperties` must match the call that provided the
+        #   page token.
         # @param [Boolean] show_deleted
         #   Whether to include soft-deleted (ie: "trashed") Properties in the results.
         #   Properties can be inspected to determine whether they are deleted or not.
@@ -1154,41 +1089,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the connected site tags for a Universal Analytics property. A maximum of
-        # 20 connected site tags will be returned. Note: this has no effect on GA4
-        # property.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest] google_analytics_admin_v1alpha_list_connected_site_tags_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_property_connected_site_tags(google_analytics_admin_v1alpha_list_connected_site_tags_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:listConnectedSiteTags', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_list_connected_site_tags_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates a property.
         # @param [String] name
-        #   Output only. Resource name of this property. Format: properties/`property_id`
+        #   Identifier. Resource name of this property. Format: properties/`property_id`
         #   Example: "properties/1000"
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaProperty] google_analytics_admin_v1alpha_property_object
         # @param [String] update_mask
@@ -1308,9 +1211,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the opt out status for the automated GA4 setup process for a UA property.
-        # Note: this has no effect on GA4 property.
-        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest] google_analytics_admin_v1alpha_set_automated_ga4_configuration_opt_out_request_object
+        # Submits a request for user deletion for a property.
+        # @param [String] name
+        #   Required. The name of the property to submit user deletion for.
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest] google_analytics_admin_v1alpha_submit_user_deletion_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1320,20 +1224,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse] parsed result object
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse]
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_property_automated_ga4_configuration_opt_out(google_analytics_admin_v1alpha_set_automated_ga4_configuration_opt_out_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha/properties:setAutomatedGa4ConfigurationOptOut', options)
-          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest::Representation
-          command.request_object = google_analytics_admin_v1alpha_set_automated_ga4_configuration_opt_out_request_object
-          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse::Representation
-          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
+        def submit_property_user_deletion(name, google_analytics_admin_v1alpha_submit_user_deletion_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+name}:submitUserDeletion', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest::Representation
+          command.request_object = google_analytics_admin_v1alpha_submit_user_deletion_request_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1381,7 +1286,7 @@ module Google
         
         # Updates the singleton data retention settings for this property.
         # @param [String] name
-        #   Output only. Resource name for this DataRetentionSetting resource. Format:
+        #   Identifier. Resource name for this DataRetentionSetting resource. Format:
         #   properties/`property`/dataRetentionSettings
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataRetentionSettings] google_analytics_admin_v1alpha_data_retention_settings_object
         # @param [String] update_mask
@@ -1450,6 +1355,48 @@ module Google
           command.request_object = google_analytics_admin_v1alpha_google_signals_settings_object
           command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleSignalsSettings::Representation
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleSignalsSettings
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the reporting identity settings for this property.
+        # @param [String] name
+        #   Output only. Identifier. Resource name for this reporting identity settings
+        #   singleton resource. Format: properties/`property_id`/reportingIdentitySettings
+        #   Example: "properties/1234/reportingIdentitySettings"
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings] google_analytics_admin_v1alpha_reporting_identity_settings_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to be updated. Field names must be in snake case (
+        #   for example, "field_to_update"). Omitted fields will not be updated. To
+        #   replace the entire entity, use one path with the string "*" to match all
+        #   fields. If omitted, the service will treat it as an implied field mask
+        #   equivalent to all fields that are populated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_property_reporting_identity_settings(name, google_analytics_admin_v1alpha_reporting_identity_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings::Representation
+          command.request_object = google_analytics_admin_v1alpha_reporting_identity_settings_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaReportingIdentitySettings
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2418,7 +2365,7 @@ module Google
         
         # Updates a CalculatedMetric on a property.
         # @param [String] name
-        #   Output only. Resource name for this CalculatedMetric. Format: 'properties/`
+        #   Identifier. Resource name for this CalculatedMetric. Format: 'properties/`
         #   property_id`/calculatedMetrics/`calculated_metric_id`'
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCalculatedMetric] google_analytics_admin_v1alpha_calculated_metric_object
         # @param [String] update_mask
@@ -2738,14 +2685,14 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the parent property. Example: 'properties/123'
         # @param [Fixnum] page_size
-        #   The maximum number of resources to return. If unspecified, at most 50
-        #   resources will be returned. The maximum value is 200; (higher values will be
-        #   coerced to the maximum)
+        #   Optional. The maximum number of resources to return. If unspecified, at most
+        #   50 resources will be returned. The maximum value is 200; (higher values will
+        #   be coerced to the maximum)
         # @param [String] page_token
-        #   A page token, received from a previous `ListConversionEvents` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListConversionEvents` must match the call that provided the page
-        #   token.
+        #   Optional. A page token, received from a previous `ListConversionEvents` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListConversionEvents` must match the call that
+        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2778,7 +2725,7 @@ module Google
         # Deprecated: Use `UpdateKeyEvent` instead. Updates a conversion event with the
         # specified attributes.
         # @param [String] name
-        #   Output only. Resource name of this conversion event. Format: properties/`
+        #   Identifier. Resource name of this conversion event. Format: properties/`
         #   property`/conversionEvents/`conversion_event`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaConversionEvent] google_analytics_admin_v1alpha_conversion_event_object
         # @param [String] update_mask
@@ -2917,14 +2864,14 @@ module Google
         # @param [String] parent
         #   Required. Example format: properties/1234
         # @param [Fixnum] page_size
-        #   The maximum number of resources to return. If unspecified, at most 50
-        #   resources will be returned. The maximum value is 200 (higher values will be
+        #   Optional. The maximum number of resources to return. If unspecified, at most
+        #   50 resources will be returned. The maximum value is 200 (higher values will be
         #   coerced to the maximum).
         # @param [String] page_token
-        #   A page token, received from a previous `ListCustomDimensions` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListCustomDimensions` must match the call that provided the page
-        #   token.
+        #   Optional. A page token, received from a previous `ListCustomDimensions` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListCustomDimensions` must match the call that
+        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2956,7 +2903,7 @@ module Google
         
         # Updates a CustomDimension on a property.
         # @param [String] name
-        #   Output only. Resource name for this CustomDimension resource. Format:
+        #   Identifier. Resource name for this CustomDimension resource. Format:
         #   properties/`property`/customDimensions/`customDimension`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension] google_analytics_admin_v1alpha_custom_dimension_object
         # @param [String] update_mask
@@ -3134,7 +3081,7 @@ module Google
         
         # Updates a CustomMetric on a property.
         # @param [String] name
-        #   Output only. Resource name for this CustomMetric resource. Format: properties/`
+        #   Identifier. Resource name for this CustomMetric resource. Format: properties/`
         #   property`/customMetrics/`customMetric`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomMetric] google_analytics_admin_v1alpha_custom_metric_object
         # @param [String] update_mask
@@ -3407,9 +3354,8 @@ module Google
         
         # Updates a DataStream on a property.
         # @param [String] name
-        #   Output only. Resource name of this Data Stream. Format: properties/`
-        #   property_id`/dataStreams/`stream_id` Example: "properties/1000/dataStreams/
-        #   2000"
+        #   Identifier. Resource name of this Data Stream. Format: properties/`property_id`
+        #   /dataStreams/`stream_id` Example: "properties/1000/dataStreams/2000"
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDataStream] google_analytics_admin_v1alpha_data_stream_object
         # @param [String] update_mask
         #   Required. The list of fields to be updated. Omitted fields will not be updated.
@@ -4011,14 +3957,15 @@ module Google
         #   Required. The resource name of the parent stream. Format: properties/`property`
         #   /dataStreams/`dataStream`/measurementProtocolSecrets
         # @param [Fixnum] page_size
-        #   The maximum number of resources to return. If unspecified, at most 10
-        #   resources will be returned. The maximum value is 10. Higher values will be
+        #   Optional. The maximum number of resources to return. If unspecified, at most
+        #   10 resources will be returned. The maximum value is 10. Higher values will be
         #   coerced to the maximum.
         # @param [String] page_token
-        #   A page token, received from a previous `ListMeasurementProtocolSecrets` call.
-        #   Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListMeasurementProtocolSecrets` must match the call
-        #   that provided the page token.
+        #   Optional. A page token, received from a previous `
+        #   ListMeasurementProtocolSecrets` call. Provide this to retrieve the subsequent
+        #   page. When paginating, all other parameters provided to `
+        #   ListMeasurementProtocolSecrets` must match the call that provided the page
+        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4050,7 +3997,7 @@ module Google
         
         # Updates a measurement protocol secret.
         # @param [String] name
-        #   Output only. Resource name of this secret. This secret may be a child of any
+        #   Identifier. Resource name of this secret. This secret may be a child of any
         #   type of stream. Format: properties/`property`/dataStreams/`dataStream`/
         #   measurementProtocolSecrets/`measurementProtocolSecret`
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret] google_analytics_admin_v1alpha_measurement_protocol_secret_object
@@ -4191,15 +4138,16 @@ module Google
         #   property_id`/dataStreams/`dataStream` Example: properties/1234/dataStreams/
         #   5678
         # @param [Fixnum] page_size
-        #   The maximum number of resources to return. The service may return fewer than
-        #   this value, even if there are additional pages. If unspecified, at most 50
-        #   resources will be returned. The maximum value is 200; (higher values will be
-        #   coerced to the maximum)
+        #   Optional. The maximum number of resources to return. The service may return
+        #   fewer than this value, even if there are additional pages. If unspecified, at
+        #   most 50 resources will be returned. The maximum value is 200; (higher values
+        #   will be coerced to the maximum)
         # @param [String] page_token
-        #   A page token, received from a previous `ListSKAdNetworkConversionValueSchemas`
-        #   call. Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListSKAdNetworkConversionValueSchema` must match the
-        #   call that provided the page token.
+        #   Optional. A page token, received from a previous `
+        #   ListSKAdNetworkConversionValueSchemas` call. Provide this to retrieve the
+        #   subsequent page. When paginating, all other parameters provided to `
+        #   ListSKAdNetworkConversionValueSchema` must match the call that provided the
+        #   page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4231,7 +4179,7 @@ module Google
         
         # Updates a SKAdNetworkConversionValueSchema.
         # @param [String] name
-        #   Output only. Resource name of the schema. This will be child of ONLY an iOS
+        #   Identifier. Resource name of the schema. This will be child of ONLY an iOS
         #   stream, and there can be at most one such child under an iOS stream. Format:
         #   properties/`property`/dataStreams/`dataStream`/
         #   sKAdNetworkConversionValueSchema
@@ -4621,7 +4569,7 @@ module Google
         
         # Updates a DisplayVideo360AdvertiserLink on a property.
         # @param [String] name
-        #   Output only. The resource name for this DisplayVideo360AdvertiserLink resource.
+        #   Identifier. The resource name for this DisplayVideo360AdvertiserLink resource.
         #   Format: properties/`propertyId`/displayVideo360AdvertiserLinks/`linkId` Note:
         #   linkId is not the Display & Video 360 Advertiser ID
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink] google_analytics_admin_v1alpha_display_video360_advertiser_link_object
@@ -4902,15 +4850,15 @@ module Google
         # @param [String] parent
         #   Required. Format: properties/`property_id` Example: `properties/1234`
         # @param [Fixnum] page_size
-        #   The maximum number of resources to return. The service may return fewer than
-        #   this value, even if there are additional pages. If unspecified, at most 50
-        #   resources will be returned. The maximum value is 200; (higher values will be
-        #   coerced to the maximum)
+        #   Optional. The maximum number of resources to return. The service may return
+        #   fewer than this value, even if there are additional pages. If unspecified, at
+        #   most 50 resources will be returned. The maximum value is 200; (higher values
+        #   will be coerced to the maximum)
         # @param [String] page_token
-        #   A page token, received from a previous `ListFirebaseLinks` call. Provide this
-        #   to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListFirebaseLinks` must match the call that provided the page
-        #   token.
+        #   Optional. A page token, received from a previous `ListFirebaseLinks` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListFirebaseLinks` must match the call that provided
+        #   the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5007,14 +4955,14 @@ module Google
         # @param [String] parent
         #   Required. Example format: properties/1234
         # @param [Fixnum] page_size
-        #   The maximum number of resources to return. If unspecified, at most 50
-        #   resources will be returned. The maximum value is 200 (higher values will be
+        #   Optional. The maximum number of resources to return. If unspecified, at most
+        #   50 resources will be returned. The maximum value is 200 (higher values will be
         #   coerced to the maximum).
         # @param [String] page_token
-        #   A page token, received from a previous `ListGoogleAdsLinks` call. Provide this
-        #   to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListGoogleAdsLinks` must match the call that provided the page
-        #   token.
+        #   Optional. A page token, received from a previous `ListGoogleAdsLinks` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListGoogleAdsLinks` must match the call that provided
+        #   the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5046,7 +4994,7 @@ module Google
         
         # Updates a GoogleAdsLink on a property
         # @param [String] name
-        #   Output only. Format: properties/`propertyId`/googleAdsLinks/`googleAdsLinkId`
+        #   Identifier. Format: properties/`propertyId`/googleAdsLinks/`googleAdsLinkId`
         #   Note: googleAdsLinkId is not the Google Ads customer ID.
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaGoogleAdsLink] google_analytics_admin_v1alpha_google_ads_link_object
         # @param [String] update_mask
@@ -5184,13 +5132,13 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the parent property. Example: 'properties/123'
         # @param [Fixnum] page_size
-        #   The maximum number of resources to return. If unspecified, at most 50
-        #   resources will be returned. The maximum value is 200; (higher values will be
-        #   coerced to the maximum)
+        #   Optional. The maximum number of resources to return. If unspecified, at most
+        #   50 resources will be returned. The maximum value is 200; (higher values will
+        #   be coerced to the maximum)
         # @param [String] page_token
-        #   A page token, received from a previous `ListKeyEvents` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListKeyEvents` must match the call that provided the page token.
+        #   Optional. A page token, received from a previous `ListKeyEvents` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListKeyEvents` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5748,7 +5696,7 @@ module Google
         
         # Updates a SearchAds360Link on a property.
         # @param [String] name
-        #   Output only. The resource name for this SearchAds360Link resource. Format:
+        #   Identifier. The resource name for this SearchAds360Link resource. Format:
         #   properties/`propertyId`/searchAds360Links/`linkId` Note: linkId is not the
         #   Search Ads 360 advertiser ID
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSearchAds360Link] google_analytics_admin_v1alpha_search_ads360_link_object
@@ -5960,6 +5908,121 @@ module Google
           command.request_object = google_analytics_admin_v1alpha_subproperty_event_filter_object
           command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter::Representation
           command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertyEventFilter
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lookup for a single `SubpropertySyncConfig`.
+        # @param [String] name
+        #   Required. Resource name of the SubpropertySyncConfig to lookup. Format:
+        #   properties/`ordinary_property_id`/subpropertySyncConfigs/`subproperty_id`
+        #   Example: properties/1234/subpropertySyncConfigs/5678
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_property_subproperty_sync_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all `SubpropertySyncConfig` resources for a property.
+        # @param [String] parent
+        #   Required. Resource name of the property. Format: properties/property_id
+        #   Example: properties/123
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of resources to return. The service may return
+        #   fewer than this value, even if there are additional pages. If unspecified, at
+        #   most 50 resources will be returned. The maximum value is 200; (higher values
+        #   will be coerced to the maximum)
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListSubpropertySyncConfig`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListSubpropertySyncConfig` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_property_subproperty_sync_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/subpropertySyncConfigs', options)
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a `SubpropertySyncConfig`.
+        # @param [String] name
+        #   Output only. Identifier. Format: properties/`ordinary_property_id`/
+        #   subpropertySyncConfigs/`subproperty_id` Example: properties/1234/
+        #   subpropertySyncConfigs/5678
+        # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig] google_analytics_admin_v1alpha_subproperty_sync_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. Field names must be in snake case (for
+        #   example, "field_to_update"). Omitted fields will not be updated. To replace
+        #   the entire entity, use one path with the string "*" to match all fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_property_subproperty_sync_config(name, google_analytics_admin_v1alpha_subproperty_sync_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig::Representation
+          command.request_object = google_analytics_admin_v1alpha_subproperty_sync_config_object
+          command.response_representation = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig::Representation
+          command.response_class = Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaSubpropertySyncConfig
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?

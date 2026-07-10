@@ -88,7 +88,8 @@ module Google
         
         # Gets information about an application.
         # @param [String] apps_id
-        #   Part of `name`. Name of the Application resource to get. Example: apps/myapp.
+        #   Part of `name`. Required. Name of the Application resource to get. Example:
+        #   apps/myapp.
         # @param [String] include_extra_data
         #   Optional. Options to include extra data
         # @param [String] fields
@@ -158,8 +159,8 @@ module Google
         # to the application. default_cookie_expiration - Cookie expiration policy for
         # the application. iap - Identity-Aware Proxy properties for the application.
         # @param [String] apps_id
-        #   Part of `name`. Name of the Application resource to update. Example: apps/
-        #   myapp.
+        #   Part of `name`. Required. Name of the Application resource to update. Example:
+        #   apps/myapp.
         # @param [Google::Apis::AppengineV1beta::Application] application_object
         # @param [String] update_mask
         #   Required. Standard field mask for the set of fields to be updated.
@@ -204,7 +205,8 @@ module Google
         # 7D . If the deletion was recent, the numeric ID can be found in the Cloud
         # Console Activity Log.
         # @param [String] apps_id
-        #   Part of `name`. Name of the application to repair. Example: apps/myapp
+        #   Part of `name`. Required. Name of the application to repair. Example: apps/
+        #   myapp
         # @param [Google::Apis::AppengineV1beta::RepairApplicationRequest] repair_application_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -237,7 +239,8 @@ module Google
         
         # Uploads the specified SSL certificate.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Google::Apis::AppengineV1beta::AuthorizedCertificate] authorized_certificate_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -270,7 +273,7 @@ module Google
         
         # Deletes the specified SSL certificate.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] authorized_certificates_id
         #   Part of `name`. See documentation of `appsId`.
@@ -304,7 +307,7 @@ module Google
         
         # Gets the specified SSL certificate.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] authorized_certificates_id
         #   Part of `name`. See documentation of `appsId`.
@@ -341,7 +344,8 @@ module Google
         
         # Lists all SSL certificates the user is authorized to administer.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -383,7 +387,7 @@ module Google
         # new certificate must be applicable to the same domains as the original
         # certificate. The certificate display_name may also be updated.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
         #   authorizedCertificates/12345.
         # @param [String] authorized_certificates_id
         #   Part of `name`. See documentation of `appsId`.
@@ -424,7 +428,8 @@ module Google
         
         # Lists all domains the user is authorized to administer.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -462,7 +467,8 @@ module Google
         # domain in order to map it to an application. For a list of available
         # authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Google::Apis::AppengineV1beta::DomainMapping] domain_mapping_object
         # @param [String] override_strategy
         #   Whether the domain creation should override any existing mappings for this
@@ -500,7 +506,7 @@ module Google
         # Deletes the specified domain mapping. A user must be authorized to administer
         # the associated domain in order to delete a DomainMapping resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to delete. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] domain_mappings_id
         #   Part of `name`. See documentation of `appsId`.
@@ -534,7 +540,7 @@ module Google
         
         # Gets the specified domain mapping.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] domain_mappings_id
         #   Part of `name`. See documentation of `appsId`.
@@ -568,7 +574,8 @@ module Google
         
         # Lists the domain mappings on an application.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -607,7 +614,7 @@ module Google
         # A user must be authorized to administer the associated domain in order to
         # update a DomainMapping resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] domain_mappings_id
         #   Part of `name`. See documentation of `appsId`.
@@ -684,8 +691,8 @@ module Google
         
         # Creates a firewall rule for the application.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Firewall collection in which to create a
-        #   new rule. Example: apps/myapp/firewall/ingressRules.
+        #   Part of `parent`. Required. Name of the parent Firewall collection in which to
+        #   create a new rule. Example: apps/myapp/firewall/ingressRules.
         # @param [Google::Apis::AppengineV1beta::FirewallRule] firewall_rule_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -898,12 +905,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service.This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: Global locations: If name is empty, the
+        # method lists the public locations available to all projects. Project-specific
+        # locations: If name follows the format projects/`project`, the method lists
+        # locations visible to that specific project. This includes public, private, or
+        # other project-specific locations enabled for the project.For gRPC and client
+        # library implementations, the resource name is passed as the name field. For
+        # direct service calls, the resource name is incorporated into the request path
+        # based on the specific service implementation and version.
         # @param [String] apps_id
         #   Part of `name`. The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -989,6 +1005,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to true, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1006,7 +1030,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_app_operations(apps_id, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_app_operations(apps_id, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/apps/{appsId}/operations', options)
           command.response_representation = Google::Apis::AppengineV1beta::ListOperationsResponse::Representation
           command.response_class = Google::Apis::AppengineV1beta::ListOperationsResponse
@@ -1014,6 +1038,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1021,8 +1046,8 @@ module Google
         
         # Deletes the specified service and all enclosed versions.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] fields
@@ -1055,8 +1080,8 @@ module Google
         
         # Gets the current configuration of the specified service.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] include_extra_data
@@ -1092,7 +1117,8 @@ module Google
         
         # Lists all the services in the application.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [Fixnum] page_size
         #   Maximum results to return per page.
         # @param [String] page_token
@@ -1128,8 +1154,8 @@ module Google
         
         # Updates the configuration of the specified service.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
-        #   default.
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
+        #   services/default.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [Google::Apis::AppengineV1beta::Service] service_object
@@ -1182,8 +1208,8 @@ module Google
         
         # Deploys code and resource files to a new version.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent resource to create this version under.
-        #   Example: apps/myapp/services/default.
+        #   Part of `parent`. Required. Name of the parent resource to create this version
+        #   under. Example: apps/myapp/services/default.
         # @param [String] services_id
         #   Part of `parent`. See documentation of `appsId`.
         # @param [Google::Apis::AppengineV1beta::Version] version_object
@@ -1219,8 +1245,8 @@ module Google
         
         # Deletes an existing Version resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1254,11 +1280,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Exports a user image to Artifact Registry.
+        # @param [String] apps_id
+        #   Part of `name`. Required. Name of the App Engine version resource. Format:
+        #   apps/`app`/services/`service`/versions/`version`
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [String] versions_id
+        #   Part of `name`. See documentation of `appsId`.
+        # @param [Google::Apis::AppengineV1beta::ExportAppImageRequest] export_app_image_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_app_service_version_app_image(apps_id, services_id, versions_id, export_app_image_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', options)
+          command.request_representation = Google::Apis::AppengineV1beta::ExportAppImageRequest::Representation
+          command.request_object = export_app_image_request_object
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['appsId'] = apps_id unless apps_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the specified Version resource. By default, only a BASIC_VIEW will be
         # returned. Specify the FULL_VIEW parameter to get the full resource.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1300,8 +1366,8 @@ module Google
         
         # Lists the versions of a service.
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Service resource. Example: apps/myapp/
-        #   services/default.
+        #   Part of `parent`. Required. Name of the parent Service resource. Example: apps/
+        #   myapp/services/default.
         # @param [String] services_id
         #   Part of `parent`. See documentation of `appsId`.
         # @param [Fixnum] page_size
@@ -1381,8 +1447,8 @@ module Google
         # instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/
         # v1beta/apps.services.versions#manualscaling)
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
-        #   default/versions/1.
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
+        #   services/default/versions/1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1429,8 +1495,8 @@ module Google
         # determine if another instance should be started.Only applicable for instances
         # in App Engine flexible environment.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1/instances/instance-1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1/instances/instance-1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1481,8 +1547,8 @@ module Google
         # versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/
         # rest/v1/apps.services.versions/patch) method.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1/instances/instance-1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1/instances/instance-1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1521,8 +1587,8 @@ module Google
         
         # Gets instance information.
         # @param [String] apps_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1/instances/instance-1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1/instances/instance-1.
         # @param [String] services_id
         #   Part of `name`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1563,8 +1629,8 @@ module Google
         # over time, see the Stackdriver Monitoring API (https://cloud.google.com/
         # monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
         # @param [String] apps_id
-        #   Part of `parent`. Name of the parent Version resource. Example: apps/myapp/
-        #   services/default/versions/v1.
+        #   Part of `parent`. Required. Name of the parent Version resource. Example: apps/
+        #   myapp/services/default/versions/v1.
         # @param [String] services_id
         #   Part of `parent`. See documentation of `appsId`.
         # @param [String] versions_id
@@ -1637,12 +1703,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service.This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: Global locations: If name is empty, the
+        # method lists the public locations available to all projects. Project-specific
+        # locations: If name follows the format projects/`project`, the method lists
+        # locations visible to that specific project. This includes public, private, or
+        # other project-specific locations enabled for the project.For gRPC and client
+        # library implementations, the resource name is passed as the name field. For
+        # direct service calls, the resource name is incorporated into the request path
+        # based on the specific service implementation and version.
         # @param [String] projects_id
         #   Part of `name`. The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like "displayName=tokyo", and is documented in more detail in
@@ -1689,8 +1764,8 @@ module Google
         # to the application. default_cookie_expiration - Cookie expiration policy for
         # the application. iap - Identity-Aware Proxy properties for the application.
         # @param [String] projects_id
-        #   Part of `name`. Name of the Application resource to update. Example: apps/
-        #   myapp.
+        #   Part of `name`. Required. Name of the Application resource to update. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -1730,9 +1805,229 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads the specified SSL certificate.
+        # @param [String] projects_id
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
+        # @param [String] locations_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1beta::AuthorizedCertificate] authorized_certificate_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::AuthorizedCertificate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::AuthorizedCertificate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_application_authorized_certificate(projects_id, locations_id, applications_id, authorized_certificate_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', options)
+          command.request_representation = Google::Apis::AppengineV1beta::AuthorizedCertificate::Representation
+          command.request_object = authorized_certificate_object
+          command.response_representation = Google::Apis::AppengineV1beta::AuthorizedCertificate::Representation
+          command.response_class = Google::Apis::AppengineV1beta::AuthorizedCertificate
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified SSL certificate.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/
+        #   authorizedCertificates/12345.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] authorized_certificates_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_application_authorized_certificate(projects_id, locations_id, applications_id, authorized_certificates_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command.response_representation = Google::Apis::AppengineV1beta::Empty::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Empty
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['authorizedCertificatesId'] = authorized_certificates_id unless authorized_certificates_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified SSL certificate.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   authorizedCertificates/12345.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] authorized_certificates_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] view
+        #   Controls the set of fields returned in the GET response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::AuthorizedCertificate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::AuthorizedCertificate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_application_authorized_certificate(projects_id, locations_id, applications_id, authorized_certificates_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command.response_representation = Google::Apis::AppengineV1beta::AuthorizedCertificate::Representation
+          command.response_class = Google::Apis::AppengineV1beta::AuthorizedCertificate
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['authorizedCertificatesId'] = authorized_certificates_id unless authorized_certificates_id.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all SSL certificates the user is authorized to administer.
+        # @param [String] projects_id
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
+        # @param [String] locations_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [Fixnum] page_size
+        #   Maximum results to return per page.
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] view
+        #   Controls the set of fields returned in the LIST response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::ListAuthorizedCertificatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::ListAuthorizedCertificatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_application_authorized_certificates(projects_id, locations_id, applications_id, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', options)
+          command.response_representation = Google::Apis::AppengineV1beta::ListAuthorizedCertificatesResponse::Representation
+          command.response_class = Google::Apis::AppengineV1beta::ListAuthorizedCertificatesResponse
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified SSL certificate. To renew a certificate and maintain its
+        # existing domain mappings, update certificate_data with a new certificate. The
+        # new certificate must be applicable to the same domains as the original
+        # certificate. The certificate display_name may also be updated.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
+        #   authorizedCertificates/12345.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] authorized_certificates_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1beta::AuthorizedCertificate] authorized_certificate_object
+        # @param [String] update_mask
+        #   Standard field mask for the set of fields to be updated. Updates are only
+        #   supported on the certificate_raw_data and display_name fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::AuthorizedCertificate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::AuthorizedCertificate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_application_authorized_certificate(projects_id, locations_id, applications_id, authorized_certificates_id, authorized_certificate_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', options)
+          command.request_representation = Google::Apis::AppengineV1beta::AuthorizedCertificate::Representation
+          command.request_object = authorized_certificate_object
+          command.response_representation = Google::Apis::AppengineV1beta::AuthorizedCertificate::Representation
+          command.response_class = Google::Apis::AppengineV1beta::AuthorizedCertificate
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['authorizedCertificatesId'] = authorized_certificates_id unless authorized_certificates_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all domains the user is authorized to administer.
         # @param [String] projects_id
-        #   Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
         # @param [String] locations_id
         #   Part of `parent`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -1772,9 +2067,96 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Maps a domain to an application. A user must be authorized to administer a
+        # domain in order to map it to an application. For a list of available
+        # authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
+        # @param [String] projects_id
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
+        # @param [String] locations_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1beta::DomainMapping] domain_mapping_object
+        # @param [String] override_strategy
+        #   Whether the domain creation should override any existing mappings for this
+        #   domain. By default, overrides are rejected.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_application_domain_mapping(projects_id, locations_id, applications_id, domain_mapping_object = nil, override_strategy: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings', options)
+          command.request_representation = Google::Apis::AppengineV1beta::DomainMapping::Representation
+          command.request_object = domain_mapping_object
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.query['overrideStrategy'] = override_strategy unless override_strategy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified domain mapping. A user must be authorized to administer
+        # the associated domain in order to delete a DomainMapping resource.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/
+        #   domainMappings/example.com.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] domain_mappings_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_application_domain_mapping(projects_id, locations_id, applications_id, domain_mappings_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', options)
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['domainMappingsId'] = domain_mappings_id unless domain_mappings_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the specified domain mapping.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
         #   domainMappings/example.com.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
@@ -1812,10 +2194,102 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the domain mappings on an application.
+        # @param [String] projects_id
+        #   Part of `parent`. Required. Name of the parent Application resource. Example:
+        #   apps/myapp.
+        # @param [String] locations_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `parent`. See documentation of `projectsId`.
+        # @param [Fixnum] page_size
+        #   Maximum results to return per page.
+        # @param [String] page_token
+        #   Continuation token for fetching the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::ListDomainMappingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::ListDomainMappingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_application_domain_mappings(projects_id, locations_id, applications_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings', options)
+          command.response_representation = Google::Apis::AppengineV1beta::ListDomainMappingsResponse::Representation
+          command.response_class = Google::Apis::AppengineV1beta::ListDomainMappingsResponse
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified domain mapping. To map an SSL certificate to a domain
+        # mapping, update certificate_id to point to an AuthorizedCertificate resource.
+        # A user must be authorized to administer the associated domain in order to
+        # update a DomainMapping resource.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
+        #   domainMappings/example.com.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] domain_mappings_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1beta::DomainMapping] domain_mapping_object
+        # @param [String] update_mask
+        #   Required. Standard field mask for the set of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_application_domain_mapping(projects_id, locations_id, applications_id, domain_mappings_id, domain_mapping_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', options)
+          command.request_representation = Google::Apis::AppengineV1beta::DomainMapping::Representation
+          command.request_object = domain_mapping_object
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['domainMappingsId'] = domain_mappings_id unless domain_mappings_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified service and all enclosed versions.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -1854,8 +2328,8 @@ module Google
         
         # Updates the configuration of the specified service.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
-        #   default.
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
+        #   services/default.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -1914,8 +2388,8 @@ module Google
         
         # Deletes an existing Version resource.
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
-        #   default/versions/v1.
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -1943,6 +2417,52 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_application_service_version(projects_id, locations_id, applications_id, services_id, versions_id, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', options)
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Exports a user image to Artifact Registry.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the App Engine version resource. Format:
+        #   apps/`app`/services/`service`/versions/`version`
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] versions_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1beta::ExportAppImageRequest] export_app_image_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_application_service_version_app_image(projects_id, locations_id, applications_id, services_id, versions_id, export_app_image_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', options)
+          command.request_representation = Google::Apis::AppengineV1beta::ExportAppImageRequest::Representation
+          command.request_object = export_app_image_request_object
           command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
           command.response_class = Google::Apis::AppengineV1beta::Operation
           command.params['projectsId'] = projects_id unless projects_id.nil?
@@ -1995,8 +2515,8 @@ module Google
         # instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/
         # v1beta/apps.services.versions#manualscaling)
         # @param [String] projects_id
-        #   Part of `name`. Name of the resource to update. Example: apps/myapp/services/
-        #   default/versions/1.
+        #   Part of `name`. Required. Name of the resource to update. Example: apps/myapp/
+        #   services/default/versions/1.
         # @param [String] locations_id
         #   Part of `name`. See documentation of `projectsId`.
         # @param [String] applications_id
@@ -2037,6 +2557,115 @@ module Google
           command.params['servicesId'] = services_id unless services_id.nil?
           command.params['versionsId'] = versions_id unless versions_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enables debugging on a VM instance. This allows you to use the SSH command to
+        # connect to the virtual machine where the instance lives. While in "debug mode",
+        # the instance continues to serve live traffic. You should delete the instance
+        # when you are done debugging and then allow the system to take over and
+        # determine if another instance should be started.Only applicable for instances
+        # in App Engine flexible environment.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1/instances/instance-1.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] versions_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] instances_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [Google::Apis::AppengineV1beta::DebugInstanceRequest] debug_instance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def debug_project_location_application_service_version_instance(projects_id, locations_id, applications_id, services_id, versions_id, instances_id, debug_instance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', options)
+          command.request_representation = Google::Apis::AppengineV1beta::DebugInstanceRequest::Representation
+          command.request_object = debug_instance_request_object
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.params['instancesId'] = instances_id unless instances_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops a running instance.The instance might be automatically recreated based
+        # on the scaling settings of the version. For more information, see "How
+        # Instances are Managed" (standard environment (https://cloud.google.com/
+        # appengine/docs/standard/python/how-instances-are-managed) | flexible
+        # environment (https://cloud.google.com/appengine/docs/flexible/python/how-
+        # instances-are-managed)).To ensure that instances are not re-created and avoid
+        # getting billed, you can stop all instances within the target version by
+        # changing the serving status of the version to STOPPED with the apps.services.
+        # versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/
+        # rest/v1/apps.services.versions/patch) method.
+        # @param [String] projects_id
+        #   Part of `name`. Required. Name of the resource requested. Example: apps/myapp/
+        #   services/default/versions/v1/instances/instance-1.
+        # @param [String] locations_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] applications_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] services_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] versions_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] instances_id
+        #   Part of `name`. See documentation of `projectsId`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AppengineV1beta::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AppengineV1beta::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_application_service_version_instance(projects_id, locations_id, applications_id, services_id, versions_id, instances_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', options)
+          command.response_representation = Google::Apis::AppengineV1beta::Operation::Representation
+          command.response_class = Google::Apis::AppengineV1beta::Operation
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.params['applicationsId'] = applications_id unless applications_id.nil?
+          command.params['servicesId'] = services_id unless services_id.nil?
+          command.params['versionsId'] = versions_id unless versions_id.nil?
+          command.params['instancesId'] = instances_id unless instances_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2091,6 +2720,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to true, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2108,7 +2745,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(projects_id, locations_id, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(projects_id, locations_id, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/projects/{projectsId}/locations/{locationsId}/operations', options)
           command.response_representation = Google::Apis::AppengineV1beta::ListOperationsResponse::Representation
           command.response_class = Google::Apis::AppengineV1beta::ListOperationsResponse
@@ -2117,6 +2754,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

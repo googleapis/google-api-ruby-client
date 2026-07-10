@@ -81,12 +81,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -514,6 +523,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Pause the standby instance (replica). WARNING: This operation makes the
+        # standby instance's NFS filesystem writable. Any data written to the standby
+        # instance while paused will be lost when the replica is resumed or promoted.
+        # @param [String] name
+        #   Required. The resource name of the instance, in the format `projects/`
+        #   project_id`/locations/`location_id`/instances/`instance_id``.
+        # @param [Google::Apis::FileV1beta1::PauseReplicaRequest] pause_replica_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def pause_instance_replica(name, pause_replica_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:pauseReplica', options)
+          command.request_representation = Google::Apis::FileV1beta1::PauseReplicaRequest::Representation
+          command.request_object = pause_replica_request_object
+          command.response_representation = Google::Apis::FileV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FileV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Promote the standby instance (replica).
         # @param [String] name
         #   Required. The resource name of the instance, in the format `projects/`
@@ -576,6 +621,41 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+name}:restore', options)
           command.request_representation = Google::Apis::FileV1beta1::RestoreInstanceRequest::Representation
           command.request_object = restore_instance_request_object
+          command.response_representation = Google::Apis::FileV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FileV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resume the standby instance (replica). WARNING: Any data written to the
+        # standby instance while paused will be lost when the replica is resumed.
+        # @param [String] name
+        #   Required. The resource name of the instance, in the format `projects/`
+        #   project_id`/locations/`location_id`/instances/`instance_id``.
+        # @param [Google::Apis::FileV1beta1::ResumeReplicaRequest] resume_replica_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_instance_replica(name, resume_replica_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:resumeReplica', options)
+          command.request_representation = Google::Apis::FileV1beta1::ResumeReplicaRequest::Representation
+          command.request_object = resume_replica_request_object
           command.response_representation = Google::Apis::FileV1beta1::Operation::Representation
           command.response_class = Google::Apis::FileV1beta1::Operation
           command.params['name'] = name unless name.nil?
@@ -1105,6 +1185,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1122,7 +1210,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}/operations', options)
           command.response_representation = Google::Apis::FileV1beta1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::FileV1beta1::ListOperationsResponse
@@ -1130,6 +1218,75 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Acquires a share synchronously from the pre-provisioned share pool.
+        # @param [String] parent
+        #   Required. The parent share pool path, in the format `projects/`project`/
+        #   locations/`location`/sharePools/`share_pool``.
+        # @param [Google::Apis::FileV1beta1::AcquireShareRequest] acquire_share_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::AcquireShareResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::AcquireShareResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def acquire_share_pool_share(parent, acquire_share_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:acquireShare', options)
+          command.request_representation = Google::Apis::FileV1beta1::AcquireShareRequest::Representation
+          command.request_object = acquire_share_request_object
+          command.response_representation = Google::Apis::FileV1beta1::AcquireShareResponse::Representation
+          command.response_class = Google::Apis::FileV1beta1::AcquireShareResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Releases a share synchronously, marking it for background scrubbing.
+        # @param [String] parent
+        #   Required. The parent share pool path, in the format `projects/`project`/
+        #   locations/`location`/sharePools/`share_pool``.
+        # @param [Google::Apis::FileV1beta1::ReleaseShareRequest] release_share_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::ReleaseShareResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::ReleaseShareResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def release_share_pool_share(parent, release_share_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:releaseShare', options)
+          command.request_representation = Google::Apis::FileV1beta1::ReleaseShareRequest::Representation
+          command.request_object = release_share_request_object
+          command.response_representation = Google::Apis::FileV1beta1::ReleaseShareResponse::Representation
+          command.response_class = Google::Apis::FileV1beta1::ReleaseShareResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

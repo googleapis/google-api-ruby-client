@@ -1,5 +1,83 @@
 # Release history for google-apis-workloadmanager_v1
 
+### v0.54.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260602
+* Regenerated using generator version 0.19.0
+
+### v0.53.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260429
+
+### v0.52.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260401
+
+### v0.51.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260217
+
+### v0.50.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260204
+
+### v0.49.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260128
+
+### v0.48.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260121
+
+### v0.47.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260107
+
+### v0.46.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251112
+
+### v0.45.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251022
+
+### v0.44.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251001
+
+### v0.43.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250910
+
+### v0.42.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250903
+
+### v0.41.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250820
+
+### v0.40.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250813
+
+### v0.39.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250806
+
+### v0.38.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250727
+
+### v0.37.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250630
+
+### v0.36.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250528
+* Regenerated using generator version 0.18.0
+
 ### v0.35.0 (2025-05-04)
 
 * Regenerated from discovery document revision 20250416

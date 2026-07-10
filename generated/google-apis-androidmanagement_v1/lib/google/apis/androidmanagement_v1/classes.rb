@@ -55,6 +55,32 @@ module Google
         end
       end
       
+      # Parameters associated with the ADD_ESIM command to add an eSIM profile to the
+      # device.
+      class AddEsimParams
+        include Google::Apis::Core::Hashable
+      
+        # Required. The activation code for the eSIM profile.
+        # Corresponds to the JSON property `activationCode`
+        # @return [String]
+        attr_accessor :activation_code
+      
+        # Required. The activation state of the eSIM profile once it is downloaded.
+        # Corresponds to the JSON property `activationState`
+        # @return [String]
+        attr_accessor :activation_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activation_code = args[:activation_code] if args.key?(:activation_code)
+          @activation_state = args[:activation_state] if args.key?(:activation_state)
+        end
+      end
+      
       # Advanced security settings. In most cases, setting these is not needed.
       class AdvancedSecurityOverrides
         include Google::Apis::Core::Hashable
@@ -81,7 +107,9 @@ module Google
       
         # Controls access to developer settings: developer options and safe boot.
         # Replaces safeBootDisabled (deprecated) and debuggingFeaturesAllowed (
-        # deprecated).
+        # deprecated). On personally-owned devices with a work profile, setting this
+        # policy will not disable safe boot. In this case, a NonComplianceDetail with
+        # MANAGEMENT_MODE is reported.
         # Corresponds to the JSON property `developerSettings`
         # @return [String]
         attr_accessor :developer_settings
@@ -94,7 +122,9 @@ module Google
       
         # Optional. Controls Memory Tagging Extension (MTE) (https://source.android.com/
         # docs/security/test/memory-safety/arm-mte) on the device. The device needs to
-        # be rebooted to apply changes to the MTE policy.
+        # be rebooted to apply changes to the MTE policy. On Android 15 and above, a
+        # NonComplianceDetail with PENDING is reported if the policy change is pending a
+        # device reboot.
         # Corresponds to the JSON property `mtePolicy`
         # @return [String]
         attr_accessor :mte_policy
@@ -193,8 +223,8 @@ module Google
         # some of the APN settings result in non-compliance of INVALID_VALUE , they will
         # be ignored. This can be set on fully managed devices on Android 10 and above.
         # This can also be set on work profiles on Android 13 and above and only with
-        # ApnSetting's with ENTERPRISE APN type. A nonComplianceDetail with API_LEVEL is
-        # reported if the Android version is less than 10. A nonComplianceDetail with
+        # ApnSetting's with ENTERPRISE APN type. A NonComplianceDetail with API_LEVEL is
+        # reported if the Android version is less than 10. A NonComplianceDetail with
         # MANAGEMENT_MODE is reported for work profiles on Android versions less than 13.
         # Corresponds to the JSON property `apnSettings`
         # @return [Array<Google::Apis::AndroidmanagementV1::ApnSetting>]
@@ -242,11 +272,11 @@ module Google
         # Required. Usage categories for the APN. Policy will be rejected if this field
         # is empty or contains APN_TYPE_UNSPECIFIED or duplicates. Multiple APN types
         # can be set on fully managed devices. ENTERPRISE is the only allowed APN type
-        # on work profiles. A nonComplianceDetail with MANAGEMENT_MODE is reported for
+        # on work profiles. A NonComplianceDetail with MANAGEMENT_MODE is reported for
         # any other value on work profiles. APN types that are not supported on the
         # device or management mode will be ignored. If this results in the empty list,
         # the APN setting will be ignored, because apnTypes is a required field. A
-        # nonComplianceDetail with INVALID_VALUE is reported if none of the APN types
+        # NonComplianceDetail with INVALID_VALUE is reported if none of the APN types
         # are supported on the device or management mode.
         # Corresponds to the JSON property `apnTypes`
         # @return [Array<String>]
@@ -289,7 +319,7 @@ module Google
         # Optional. The default MTU (Maximum Transmission Unit) size in bytes of the
         # IPv4 routes brought up by this APN setting. A value of 0 (default) means not
         # set and negative values are rejected. Supported on Android 13 and above. A
-        # nonComplianceDetail with API_LEVEL is reported if the Android version is less
+        # NonComplianceDetail with API_LEVEL is reported if the Android version is less
         # than 13.
         # Corresponds to the JSON property `mtuV4`
         # @return [Fixnum]
@@ -298,7 +328,7 @@ module Google
         # Optional. The MTU (Maximum Transmission Unit) size of the IPv6 mobile
         # interface to which the APN connected. A value of 0 (default) means not set and
         # negative values are rejected. Supported on Android 13 and above. A
-        # nonComplianceDetail with API_LEVEL is reported if the Android version is less
+        # NonComplianceDetail with API_LEVEL is reported if the Android version is less
         # than 13.
         # Corresponds to the JSON property `mtuV6`
         # @return [Fixnum]
@@ -785,6 +815,11 @@ module Google
         # @return [String]
         attr_accessor :credential_provider_policy
       
+        # Configuration for a custom app.
+        # Corresponds to the JSON property `customAppConfig`
+        # @return [Google::Apis::AndroidmanagementV1::CustomAppConfig]
+        attr_accessor :custom_app_config
+      
         # The default policy for all permissions requested by the app. If specified,
         # this overrides the policy-level default_permission_policy which applies to all
         # apps. It does not override the permission_grants which applies to all apps.
@@ -849,7 +884,8 @@ module Google
         # in the managed configuration must match the key field of the ManagedProperty.
         # The field value must be compatible with the type of the ManagedProperty: *type*
         # *JSON value* BOOL true or false STRING string INTEGER number CHOICE string
-        # MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects
+        # MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects Note:
+        # string values cannot be longer than 65535 characters.
         # Corresponds to the JSON property `managedConfiguration`
         # @return [Hash<String,Object>]
         attr_accessor :managed_configuration
@@ -894,9 +930,49 @@ module Google
         # @return [String]
         attr_accessor :preferential_network_id
       
+        # Optional. Roles the app has.Apps having certain roles can be exempted from
+        # power and background execution restrictions, suspension and hibernation on
+        # Android 14 and above. The user control can also be disallowed for apps with
+        # certain roles on Android 11 and above. Refer to the documentation of each
+        # RoleType for more details.The app is notified about the roles that are set for
+        # it if the app has a notification receiver service with . The app is notified
+        # whenever its roles are updated or after the app is installed when it has
+        # nonempty list of roles. The app can use this notification to bootstrap itself
+        # after the installation. See Integrate with the AMAPI SDK (https://developers.
+        # google.com/android/management/sdk-integration) and Manage app roles (https://
+        # developers.google.com/android/management/app-roles) guides for more details on
+        # the requirements for the service.For the exemptions to be applied and the app
+        # to be notified about the roles, the signing key certificate fingerprint of the
+        # app on the device must match one of the signing key certificate fingerprints
+        # obtained from Play Store or one of the entries in ApplicationPolicy.
+        # signingKeyCerts. Otherwise, a NonComplianceDetail with
+        # APP_SIGNING_CERT_MISMATCH is reported.There must not be duplicate roles with
+        # the same roleType. Multiple apps cannot hold a role with the same roleType. A
+        # role with type ROLE_TYPE_UNSPECIFIED is not allowed.
+        # Corresponds to the JSON property `roles`
+        # @return [Array<Google::Apis::AndroidmanagementV1::Role>]
+        attr_accessor :roles
+      
+        # Optional. Signing key certificates of the app.This field is required in the
+        # following cases: The app has installType set to CUSTOM (i.e. a custom app).
+        # The app has roles set to a nonempty list and the app does not exist on the
+        # Play Store. The app has extensionConfig set (i.e. an extension app) but
+        # ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) is not set and the
+        # app does not exist on the Play Store.If this field is not set for a custom app,
+        # the policy is rejected. If it is not set when required for a non-custom app,
+        # a NonComplianceDetail with INVALID_VALUE is reported.For other cases, this
+        # field is optional and the signing key certificates obtained from Play Store
+        # are used.See following policy settings to see how this field is used:
+        # choosePrivateKeyRules ApplicationPolicy.InstallType.CUSTOM ApplicationPolicy.
+        # extensionConfig ApplicationPolicy.roles
+        # Corresponds to the JSON property `signingKeyCerts`
+        # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert>]
+        attr_accessor :signing_key_certs
+      
         # Optional. Specifies whether user control is permitted for the app. User
         # control includes user actions like force-stopping and clearing app data.
-        # Supported on Android 11 and above.
+        # Certain types of apps have special treatment, see
+        # USER_CONTROL_SETTINGS_UNSPECIFIED and USER_CONTROL_ALLOWED for more details.
         # Corresponds to the JSON property `userControlSettings`
         # @return [String]
         attr_accessor :user_control_settings
@@ -918,6 +994,7 @@ module Google
           @auto_update_mode = args[:auto_update_mode] if args.key?(:auto_update_mode)
           @connected_work_and_personal_app = args[:connected_work_and_personal_app] if args.key?(:connected_work_and_personal_app)
           @credential_provider_policy = args[:credential_provider_policy] if args.key?(:credential_provider_policy)
+          @custom_app_config = args[:custom_app_config] if args.key?(:custom_app_config)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @delegated_scopes = args[:delegated_scopes] if args.key?(:delegated_scopes)
           @disabled = args[:disabled] if args.key?(:disabled)
@@ -932,8 +1009,38 @@ module Google
           @package_name = args[:package_name] if args.key?(:package_name)
           @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
           @preferential_network_id = args[:preferential_network_id] if args.key?(:preferential_network_id)
+          @roles = args[:roles] if args.key?(:roles)
+          @signing_key_certs = args[:signing_key_certs] if args.key?(:signing_key_certs)
           @user_control_settings = args[:user_control_settings] if args.key?(:user_control_settings)
           @work_profile_widgets = args[:work_profile_widgets] if args.key?(:work_profile_widgets)
+        end
+      end
+      
+      # A change to be made to a single ApplicationPolicy object.
+      class ApplicationPolicyChange
+        include Google::Apis::Core::Hashable
+      
+        # Policy for an individual app. Note: Application availability on a given device
+        # cannot be changed using this policy if installAppsDisabled is enabled. The
+        # maximum number of applications that you can specify per policy is 3,000.
+        # Corresponds to the JSON property `application`
+        # @return [Google::Apis::AndroidmanagementV1::ApplicationPolicy]
+        attr_accessor :application
+      
+        # The field mask indicating the fields to update. If omitted, all modifiable
+        # fields are updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application = args[:application] if args.key?(:application)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -978,13 +1085,18 @@ module Google
         # @return [String]
         attr_accessor :package_sha256_hash
       
-        # The SHA-1 hash of each android.content.pm.Signature (https://developer.android.
-        # com/reference/android/content/pm/Signature.html) associated with the app
-        # package. Each byte of each hash value is represented as a two-digit
-        # hexadecimal number.
+        # Deprecated. Use signingKeyCerts instead. The SHA-1 hash of each android.
+        # content.pm.Signature (https://developer.android.com/reference/android/content/
+        # pm/Signature.html) associated with the app package. Each byte of each hash
+        # value is represented as a two-digit hexadecimal number.
         # Corresponds to the JSON property `signingKeyCertFingerprints`
         # @return [Array<String>]
         attr_accessor :signing_key_cert_fingerprints
+      
+        # Output only. Signing key certificates of the app.
+        # Corresponds to the JSON property `signingKeyCerts`
+        # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert>]
+        attr_accessor :signing_key_certs
       
         # Application state.
         # Corresponds to the JSON property `state`
@@ -1021,6 +1133,7 @@ module Google
           @package_name = args[:package_name] if args.key?(:package_name)
           @package_sha256_hash = args[:package_sha256_hash] if args.key?(:package_sha256_hash)
           @signing_key_cert_fingerprints = args[:signing_key_cert_fingerprints] if args.key?(:signing_key_cert_fingerprints)
+          @signing_key_certs = args[:signing_key_certs] if args.key?(:signing_key_certs)
           @state = args[:state] if args.key?(:state)
           @user_facing_type = args[:user_facing_type] if args.key?(:user_facing_type)
           @version_code = args[:version_code] if args.key?(:version_code)
@@ -1045,6 +1158,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @include_removed_apps = args[:include_removed_apps] if args.key?(:include_removed_apps)
+        end
+      end
+      
+      # The application signing key certificate.
+      class ApplicationSigningKeyCert
+        include Google::Apis::Core::Hashable
+      
+        # Required. The SHA-256 hash value of the signing key certificate of the app.
+        # This must be a valid SHA-256 hash value, i.e. 32 bytes.
+        # Corresponds to the JSON property `signingKeyCertFingerprintSha256`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signing_key_cert_fingerprint_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signing_key_cert_fingerprint_sha256 = args[:signing_key_cert_fingerprint_sha256] if args.key?(:signing_key_cert_fingerprint_sha256)
         end
       end
       
@@ -1260,10 +1394,11 @@ module Google
       class ChoosePrivateKeyRule
         include Google::Apis::Core::Hashable
       
-        # The package names to which this rule applies. The hash of the signing
-        # certificate for each app is verified against the hash provided by Play. If no
-        # package names are specified, then the alias is provided to all apps that call
-        # KeyChain.choosePrivateKeyAlias (https://developer.android.com/reference/
+        # The package names to which this rule applies. The signing key certificate
+        # fingerprint of the app is verified against the signing key certificate
+        # fingerprints provided by Play Store and ApplicationPolicy.signingKeyCerts . If
+        # no package names are specified, then the alias is provided to all apps that
+        # call KeyChain.choosePrivateKeyAlias (https://developer.android.com/reference/
         # android/security/KeyChain#choosePrivateKeyAlias%28android.app.Activity,%
         # 20android.security.KeyChainAliasCallback,%20java.lang.String[],%20java.
         # security.Principal[],%20java.lang.String,%20int,%20java.lang.String%29) or any
@@ -1344,6 +1479,12 @@ module Google
       class Command
         include Google::Apis::Core::Hashable
       
+        # Parameters associated with the ADD_ESIM command to add an eSIM profile to the
+        # device.
+        # Corresponds to the JSON property `addEsimParams`
+        # @return [Google::Apis::AndroidmanagementV1::AddEsimParams]
+        attr_accessor :add_esim_params
+      
         # Parameters associated with the CLEAR_APP_DATA command to clear the data of
         # specified apps from the device.
         # Corresponds to the JSON property `clearAppsDataParams`
@@ -1379,12 +1520,23 @@ module Google
         # @return [String]
         attr_accessor :error_code
       
+        # Status and error details (if present) of an ADD_ESIM or REMOVE_ESIM command.
+        # Corresponds to the JSON property `esimStatus`
+        # @return [Google::Apis::AndroidmanagementV1::EsimCommandStatus]
+        attr_accessor :esim_status
+      
         # For commands of type RESET_PASSWORD, optionally specifies the new password.
         # Note: The new password must be at least 6 characters long if it is numeric in
         # case of Android 14 devices. Else the command will fail with INVALID_VALUE.
         # Corresponds to the JSON property `newPassword`
         # @return [String]
         attr_accessor :new_password
+      
+        # Parameters associated with the REMOVE_ESIM command to remove an eSIM profile
+        # from the device.
+        # Corresponds to the JSON property `removeEsimParams`
+        # @return [Google::Apis::AndroidmanagementV1::RemoveEsimParams]
+        attr_accessor :remove_esim_params
       
         # Parameters associated with the REQUEST_DEVICE_INFO command to get device
         # related information.
@@ -1437,18 +1589,26 @@ module Google
         # @return [String]
         attr_accessor :user_name
       
+        # Parameters associated with the WIPE command to wipe the device.
+        # Corresponds to the JSON property `wipeParams`
+        # @return [Google::Apis::AndroidmanagementV1::WipeParams]
+        attr_accessor :wipe_params
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @add_esim_params = args[:add_esim_params] if args.key?(:add_esim_params)
           @clear_apps_data_params = args[:clear_apps_data_params] if args.key?(:clear_apps_data_params)
           @clear_apps_data_status = args[:clear_apps_data_status] if args.key?(:clear_apps_data_status)
           @create_time = args[:create_time] if args.key?(:create_time)
           @duration = args[:duration] if args.key?(:duration)
           @error_code = args[:error_code] if args.key?(:error_code)
+          @esim_status = args[:esim_status] if args.key?(:esim_status)
           @new_password = args[:new_password] if args.key?(:new_password)
+          @remove_esim_params = args[:remove_esim_params] if args.key?(:remove_esim_params)
           @request_device_info_params = args[:request_device_info_params] if args.key?(:request_device_info_params)
           @request_device_info_status = args[:request_device_info_status] if args.key?(:request_device_info_status)
           @reset_password_flags = args[:reset_password_flags] if args.key?(:reset_password_flags)
@@ -1458,6 +1618,7 @@ module Google
           @stop_lost_mode_status = args[:stop_lost_mode_status] if args.key?(:stop_lost_mode_status)
           @type = args[:type] if args.key?(:type)
           @user_name = args[:user_name] if args.key?(:user_name)
+          @wipe_params = args[:wipe_params] if args.key?(:wipe_params)
         end
       end
       
@@ -1665,10 +1826,16 @@ module Google
       end
       
       # Controls the data from the work profile that can be accessed from the personal
-      # profile and vice versa. A nonComplianceDetail with MANAGEMENT_MODE is reported
+      # profile and vice versa. A NonComplianceDetail with MANAGEMENT_MODE is reported
       # if the device does not have a work profile.
       class CrossProfilePolicies
         include Google::Apis::Core::Hashable
+      
+        # Optional. Controls whether personal profile apps can invoke app functions
+        # exposed by apps in the work profile.
+        # Corresponds to the JSON property `crossProfileAppFunctions`
+        # @return [String]
+        attr_accessor :cross_profile_app_functions
       
         # Whether text copied from one profile (personal or work) can be pasted in the
         # other profile.
@@ -1709,6 +1876,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cross_profile_app_functions = args[:cross_profile_app_functions] if args.key?(:cross_profile_app_functions)
           @cross_profile_copy_paste = args[:cross_profile_copy_paste] if args.key?(:cross_profile_copy_paste)
           @cross_profile_data_sharing = args[:cross_profile_data_sharing] if args.key?(:cross_profile_data_sharing)
           @exemptions_to_show_work_contacts_in_personal_profile = args[:exemptions_to_show_work_contacts_in_personal_profile] if args.key?(:exemptions_to_show_work_contacts_in_personal_profile)
@@ -1736,6 +1904,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @success = args[:success] if args.key?(:success)
+        end
+      end
+      
+      # Configuration for a custom app.
+      class CustomAppConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User uninstall settings of the custom app.
+        # Corresponds to the JSON property `userUninstallSettings`
+        # @return [String]
+        attr_accessor :user_uninstall_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_uninstall_settings = args[:user_uninstall_settings] if args.key?(:user_uninstall_settings)
         end
       end
       
@@ -1780,6 +1967,157 @@ module Google
         end
       end
       
+      # Information about the application to be set as the default.
+      class DefaultApplication
+        include Google::Apis::Core::Hashable
+      
+        # Required. The package name that should be set as the default application. The
+        # policy is rejected if the package name is invalid.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
+      # Additional context for non-compliance related to default application settings.
+      class DefaultApplicationContext
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The scope of non-compliant default application setting.
+        # Corresponds to the JSON property `defaultApplicationScope`
+        # @return [String]
+        attr_accessor :default_application_scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_application_scope = args[:default_application_scope] if args.key?(:default_application_scope)
+        end
+      end
+      
+      # The default application information for a specific DefaultApplicationType.
+      class DefaultApplicationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Details on the default application setting attempts, in the same
+        # order as listed in defaultApplications.
+        # Corresponds to the JSON property `defaultApplicationSettingAttempts`
+        # @return [Array<Google::Apis::AndroidmanagementV1::DefaultApplicationSettingAttempt>]
+        attr_accessor :default_application_setting_attempts
+      
+        # Output only. The default application type.
+        # Corresponds to the JSON property `defaultApplicationType`
+        # @return [String]
+        attr_accessor :default_application_type
+      
+        # Output only. The package name of the current default application.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_application_setting_attempts = args[:default_application_setting_attempts] if args.key?(:default_application_setting_attempts)
+          @default_application_type = args[:default_application_type] if args.key?(:default_application_type)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
+      # The default application setting for a DefaultApplicationType.
+      class DefaultApplicationSetting
+        include Google::Apis::Core::Hashable
+      
+        # Required. The scopes to which the policy should be applied. This list must not
+        # be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE
+        # reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is
+        # reported if none of the specified scopes can be applied to the management mode
+        # (e.g. a fully managed device receives a policy with only
+        # SCOPE_PERSONAL_PROFILE in the list).
+        # Corresponds to the JSON property `defaultApplicationScopes`
+        # @return [Array<String>]
+        attr_accessor :default_application_scopes
+      
+        # Required. The app type to set the default application.
+        # Corresponds to the JSON property `defaultApplicationType`
+        # @return [String]
+        attr_accessor :default_application_type
+      
+        # Required. The list of applications that can be set as the default app for a
+        # given type. This list must not be empty or contain duplicates. The first app
+        # in the list that is installed and qualified for the defaultApplicationType (e.
+        # g. SMS app for DEFAULT_SMS) is set as the default app. The signing key
+        # certificate fingerprint of the app on the device must also match one of the
+        # signing key certificate fingerprints obtained from Play Store or one of the
+        # entries in ApplicationPolicy.signingKeyCerts in order to be set as the default.
+        # If the defaultApplicationScopes contains SCOPE_FULLY_MANAGED or
+        # SCOPE_WORK_PROFILE, the app must have an entry in applications with
+        # installType set to a value other than BLOCKED.A NonComplianceDetail with
+        # APP_NOT_INSTALLED reason and DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE
+        # specific reason is reported if none of the apps in the list are installed. A
+        # NonComplianceDetail with INVALID_VALUE reason and
+        # DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported if at
+        # least one app is installed but the policy fails to apply due to other reasons (
+        # e.g. the app is not of the right type).When applying to SCOPE_PERSONAL_PROFILE
+        # on a company-owned device with a work profile, only pre-installed system apps
+        # can be set as the default. A NonComplianceDetail with INVALID_VALUE reason and
+        # DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported if
+        # the policy fails to apply to the personal profile.
+        # Corresponds to the JSON property `defaultApplications`
+        # @return [Array<Google::Apis::AndroidmanagementV1::DefaultApplication>]
+        attr_accessor :default_applications
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_application_scopes = args[:default_application_scopes] if args.key?(:default_application_scopes)
+          @default_application_type = args[:default_application_type] if args.key?(:default_application_type)
+          @default_applications = args[:default_applications] if args.key?(:default_applications)
+        end
+      end
+      
+      # Details on a default application setting attempt.
+      class DefaultApplicationSettingAttempt
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The outcome of setting the app as the default.
+        # Corresponds to the JSON property `attemptOutcome`
+        # @return [String]
+        attr_accessor :attempt_outcome
+      
+        # Output only. The package name of the attempted application.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attempt_outcome = args[:attempt_outcome] if args.key?(:attempt_outcome)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
       # A device owned by an enterprise. Unless otherwise noted, all fields are read-
       # only and can't be modified by enterprises.devices.patch.
       class Device
@@ -1796,9 +2134,12 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationReport>]
         attr_accessor :application_reports
       
-        # The password requirements currently applied to the device. The applied
-        # requirements may be slightly different from those specified in
-        # passwordPolicies in some cases. fieldPath is set based on passwordPolicies.
+        # The password requirements currently applied to the device. This field exists
+        # because the applied requirements may be slightly different from those
+        # specified in passwordPolicies in some cases. Note that this field does not
+        # provide information about password compliance. For non-compliance information,
+        # see nonComplianceDetails. NonComplianceDetail.fieldPath, is set based on
+        # passwordPolicies, not based on this field.
         # Corresponds to the JSON property `appliedPasswordPolicies`
         # @return [Array<Google::Apis::AndroidmanagementV1::PasswordRequirements>]
         attr_accessor :applied_password_policies
@@ -1826,6 +2167,19 @@ module Google
         # Corresponds to the JSON property `commonCriteriaModeInfo`
         # @return [Google::Apis::AndroidmanagementV1::CommonCriteriaModeInfo]
         attr_accessor :common_criteria_mode_info
+      
+        # Output only. The default application information for the
+        # DefaultApplicationType. This information is only available if
+        # defaultApplicationInfoReportingEnabled is true in the device's policy.
+        # Available on Android 16 and above.All app types are reported on fully managed
+        # devices. DEFAULT_BROWSER, DEFAULT_CALL_REDIRECTION, DEFAULT_CALL_SCREENING and
+        # DEFAULT_DIALER types are reported for the work profiles on company-owned
+        # devices with a work profile and personally-owned devices. DEFAULT_WALLET is
+        # also reported for company-owned devices with a work profile, but will only
+        # include work profile information.
+        # Corresponds to the JSON property `defaultApplicationInfo`
+        # @return [Array<Google::Apis::AndroidmanagementV1::DefaultApplicationInfo>]
+        attr_accessor :default_application_info
       
         # Information about security related device settings on device.
         # Corresponds to the JSON property `deviceSettings`
@@ -2016,6 +2370,7 @@ module Google
           @applied_policy_version = args[:applied_policy_version] if args.key?(:applied_policy_version)
           @applied_state = args[:applied_state] if args.key?(:applied_state)
           @common_criteria_mode_info = args[:common_criteria_mode_info] if args.key?(:common_criteria_mode_info)
+          @default_application_info = args[:default_application_info] if args.key?(:default_application_info)
           @device_settings = args[:device_settings] if args.key?(:device_settings)
           @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
           @displays = args[:displays] if args.key?(:displays)
@@ -2076,6 +2431,11 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceSettings]
         attr_accessor :preferential_network_service_settings
       
+        # Controls the device's private DNS settings.
+        # Corresponds to the JSON property `privateDnsSettings`
+        # @return [Google::Apis::AndroidmanagementV1::PrivateDnsSettings]
+        attr_accessor :private_dns_settings
+      
         # Controls tethering settings. Based on the value set, the user is partially or
         # fully disallowed from using different forms of tethering.
         # Corresponds to the JSON property `tetheringSettings`
@@ -2116,6 +2476,7 @@ module Google
           @bluetooth_sharing = args[:bluetooth_sharing] if args.key?(:bluetooth_sharing)
           @configure_wifi = args[:configure_wifi] if args.key?(:configure_wifi)
           @preferential_network_service_settings = args[:preferential_network_service_settings] if args.key?(:preferential_network_service_settings)
+          @private_dns_settings = args[:private_dns_settings] if args.key?(:private_dns_settings)
           @tethering_settings = args[:tethering_settings] if args.key?(:tethering_settings)
           @usb_data_access = args[:usb_data_access] if args.key?(:usb_data_access)
           @wifi_direct_settings = args[:wifi_direct_settings] if args.key?(:wifi_direct_settings)
@@ -2150,6 +2511,11 @@ module Google
         # @return [String]
         attr_accessor :ultra_wideband_state
       
+        # Optional. Controls whether the user is allowed to add eSIM profiles.
+        # Corresponds to the JSON property `userInitiatedAddEsimSettings`
+        # @return [String]
+        attr_accessor :user_initiated_add_esim_settings
+      
         # Controls current state of Wi-Fi and if user can change its state.
         # Corresponds to the JSON property `wifiState`
         # @return [String]
@@ -2165,6 +2531,7 @@ module Google
           @cellular_two_g_state = args[:cellular_two_g_state] if args.key?(:cellular_two_g_state)
           @minimum_wifi_security_level = args[:minimum_wifi_security_level] if args.key?(:minimum_wifi_security_level)
           @ultra_wideband_state = args[:ultra_wideband_state] if args.key?(:ultra_wideband_state)
+          @user_initiated_add_esim_settings = args[:user_initiated_add_esim_settings] if args.key?(:user_initiated_add_esim_settings)
           @wifi_state = args[:wifi_state] if args.key?(:wifi_state)
         end
       end
@@ -2490,6 +2857,20 @@ module Google
         # @return [String]
         attr_accessor :expiration_timestamp
       
+        # Options for Google authentication during the enrollment.When triggering the
+        # enrollment with a SigninDetail, these options are enforced after the user
+        # completes third-party sign-in and an EnrollmentToken is created. If this token'
+        # s authentication_requirement is set to REQUIRED, these options interact with
+        # the SigninDetail.googleAuthenticationOptions that initiated the flow in the
+        # following ways: - If the user skipped Google sign-in earlier (permitted by
+        # SigninDetail.googleAuthenticationOptions), an error will occur and the user
+        # will be prompted to sign in again. - If required_account_email is set on this
+        # token and the user signed in with a different email earlier, an error will
+        # occur and the user will be asked to sign in again with the correct account.
+        # Corresponds to the JSON property `googleAuthenticationOptions`
+        # @return [Google::Apis::AndroidmanagementV1::GoogleAuthenticationOptions]
+        attr_accessor :google_authentication_options
+      
         # The name of the enrollment token, which is generated by the server during
         # creation, in the form enterprises/`enterpriseId`/enrollmentTokens/`
         # enrollmentTokenId`.
@@ -2544,6 +2925,7 @@ module Google
           @allow_personal_usage = args[:allow_personal_usage] if args.key?(:allow_personal_usage)
           @duration = args[:duration] if args.key?(:duration)
           @expiration_timestamp = args[:expiration_timestamp] if args.key?(:expiration_timestamp)
+          @google_authentication_options = args[:google_authentication_options] if args.key?(:google_authentication_options)
           @name = args[:name] if args.key?(:name)
           @one_time_only = args[:one_time_only] if args.key?(:one_time_only)
           @policy_name = args[:policy_name] if args.key?(:policy_name)
@@ -2687,6 +3069,56 @@ module Google
         end
       end
       
+      # Status and error details (if present) of an ADD_ESIM or REMOVE_ESIM command.
+      class EsimCommandStatus
+        include Google::Apis::Core::Hashable
+      
+        # Details of the eSIM added or removed.
+        # Corresponds to the JSON property `esimInfo`
+        # @return [Google::Apis::AndroidmanagementV1::EsimInfo]
+        attr_accessor :esim_info
+      
+        # Internal error details if present for the ADD_ESIM or REMOVE_ESIM command.
+        # Corresponds to the JSON property `internalErrorDetails`
+        # @return [Google::Apis::AndroidmanagementV1::InternalErrorDetails]
+        attr_accessor :internal_error_details
+      
+        # Output only. Status of an ADD_ESIM or REMOVE_ESIM command.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @esim_info = args[:esim_info] if args.key?(:esim_info)
+          @internal_error_details = args[:internal_error_details] if args.key?(:internal_error_details)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Details of the eSIM added or removed.
+      class EsimInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. ICC ID of the eSIM.
+        # Corresponds to the JSON property `iccId`
+        # @return [String]
+        attr_accessor :icc_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @icc_id = args[:icc_id] if args.key?(:icc_id)
+        end
+      end
+      
       # Information related to the eUICC chip.
       class EuiccChipInfo
         include Google::Apis::Core::Hashable
@@ -2720,20 +3152,29 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Fully qualified class name of the receiver service class for Android Device
-        # Policy to notify the extension app of any local command status updates.
+        # Policy to notify the extension app of any local command status updates. The
+        # service must be exported in the extension app's AndroidManifest.xml and extend
+        # NotificationReceiverService (https://developers.google.com/android/management/
+        # reference/amapi/com/google/android/managementapi/notification/
+        # NotificationReceiverService) (see Integrate with the AMAPI SDK (https://
+        # developers.google.com/android/management/sdk-integration) guide for more
+        # details).
         # Corresponds to the JSON property `notificationReceiver`
         # @return [String]
         attr_accessor :notification_receiver
       
-        # Hex-encoded SHA-256 hash of the signing certificate of the extension app. Only
-        # hexadecimal string representations of 64 characters are valid.If not specified,
-        # the signature for the corresponding package name is obtained from the Play
-        # Store instead.If this list is empty, the signature of the extension app on the
-        # device must match the signature obtained from the Play Store for the app to be
-        # able to communicate with Android Device Policy.If this list is not empty, the
-        # signature of the extension app on the device must match one of the entries in
-        # this list for the app to be able to communicate with Android Device Policy.In
-        # production use cases, it is recommended to leave this empty.
+        # Hex-encoded SHA-256 hashes of the signing key certificates of the extension
+        # app. Only hexadecimal string representations of 64 characters are valid.The
+        # signing key certificate fingerprints are always obtained from the Play Store
+        # and this field is used to provide additional signing key certificate
+        # fingerprints. However, if the application is not available on the Play Store,
+        # this field needs to be set. A NonComplianceDetail with INVALID_VALUE is
+        # reported if this field is not set when the application is not available on the
+        # Play Store.The signing key certificate fingerprint of the extension app on the
+        # device must match one of the signing key certificate fingerprints obtained
+        # from the Play Store or the ones provided in this field for the app to be able
+        # to communicate with Android Device Policy.In production use cases, it is
+        # recommended to leave this empty.
         # Corresponds to the JSON property `signingKeyFingerprintsSha256`
         # @return [Array<String>]
         attr_accessor :signing_key_fingerprints_sha256
@@ -2924,6 +3365,45 @@ module Google
         end
       end
       
+      # Options for Google authentication during the enrollment.When triggering the
+      # enrollment with a SigninDetail, these options are enforced after the user
+      # completes third-party sign-in and an EnrollmentToken is created. If this token'
+      # s authentication_requirement is set to REQUIRED, these options interact with
+      # the SigninDetail.googleAuthenticationOptions that initiated the flow in the
+      # following ways: - If the user skipped Google sign-in earlier (permitted by
+      # SigninDetail.googleAuthenticationOptions), an error will occur and the user
+      # will be prompted to sign in again. - If required_account_email is set on this
+      # token and the user signed in with a different email earlier, an error will
+      # occur and the user will be asked to sign in again with the correct account.
+      class GoogleAuthenticationOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies whether user should authenticate with Google during
+        # enrollment. If this is set to any value other than
+        # AUTHENTICATION_REQUIREMENT_UNSPECIFIED, the enterprise-level setting
+        # googleAuthenticationSettings is ignored for devices enrolled with this token.
+        # Corresponds to the JSON property `authenticationRequirement`
+        # @return [String]
+        attr_accessor :authentication_requirement
+      
+        # Optional. Specifies the managed Google account that the user must use during
+        # enrollment. This field can only be set if AuthenticationRequirement is set to
+        # REQUIRED.
+        # Corresponds to the JSON property `requiredAccountEmail`
+        # @return [String]
+        attr_accessor :required_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_requirement = args[:authentication_requirement] if args.key?(:authentication_requirement)
+          @required_account_email = args[:required_account_email] if args.key?(:required_account_email)
+        end
+      end
+      
       # Contains settings for Google-provided user authentication.
       class GoogleAuthenticationSettings
         include Google::Apis::Core::Hashable
@@ -2934,7 +3414,9 @@ module Google
         # via the Google Admin Console. Google authentication can be used with
         # signin_url In the case where Google authentication is required and a
         # signin_url is specified, Google authentication will be launched before
-        # signin_url.
+        # signin_url. This value is overridden by EnrollmentToken.
+        # googleAuthenticationOptions and SigninDetail.googleAuthenticationOptions, if
+        # they are set.
         # Corresponds to the JSON property `googleAuthenticationRequired`
         # @return [String]
         attr_accessor :google_authentication_required
@@ -3026,7 +3508,8 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # The device serial number.
+        # The device serial number. However, for personally-owned devices running
+        # Android 12 and above, this is the same as the enterpriseSpecificId.
         # Corresponds to the JSON property `serialNumber`
         # @return [String]
         attr_accessor :serial_number
@@ -3156,6 +3639,49 @@ module Google
           @charging_constraint = args[:charging_constraint] if args.key?(:charging_constraint)
           @device_idle_constraint = args[:device_idle_constraint] if args.key?(:device_idle_constraint)
           @network_type_constraint = args[:network_type_constraint] if args.key?(:network_type_constraint)
+        end
+      end
+      
+      # Internal error details if present for the ADD_ESIM or REMOVE_ESIM command.
+      class InternalErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Integer representation of the error code as specified here (https:
+        # //developer.android.com/reference/android/telephony/euicc/EuiccManager#
+        # EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE). See also,
+        # OPERATION_SMDX_SUBJECT_REASON_CODE. See error_code_detail for more details.
+        # Corresponds to the JSON property `errorCode`
+        # @return [Fixnum]
+        attr_accessor :error_code
+      
+        # Output only. The error code detail corresponding to the error_code.
+        # Corresponds to the JSON property `errorCodeDetail`
+        # @return [String]
+        attr_accessor :error_code_detail
+      
+        # Output only. Integer representation of the operation code as specified here (
+        # https://developer.android.com/reference/android/telephony/euicc/EuiccManager#
+        # EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE). See operation_code_detail for more
+        # details.
+        # Corresponds to the JSON property `operationCode`
+        # @return [Fixnum]
+        attr_accessor :operation_code
+      
+        # Output only. The operation code detail corresponding to the operation_code.
+        # Corresponds to the JSON property `operationCodeDetail`
+        # @return [String]
+        attr_accessor :operation_code_detail
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_code = args[:error_code] if args.key?(:error_code)
+          @error_code_detail = args[:error_code_detail] if args.key?(:error_code_detail)
+          @operation_code = args[:operation_code] if args.key?(:operation_code)
+          @operation_code_detail = args[:operation_code_detail] if args.key?(:operation_code_detail)
         end
       end
       
@@ -3598,6 +4124,13 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets
+        # ListOperationsRequest.return_partial_success and reads across collections. For
+        # example, when attempting to list all resources across all supported locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3606,6 +4139,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -4086,6 +4620,47 @@ module Google
         end
       end
       
+      # Request to update or create ApplicationPolicy objects in the given Policy.
+      class ModifyPolicyApplicationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The changes to be made to the ApplicationPolicy objects. There must
+        # be at least one ApplicationPolicyChange.
+        # Corresponds to the JSON property `changes`
+        # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPolicyChange>]
+        attr_accessor :changes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @changes = args[:changes] if args.key?(:changes)
+        end
+      end
+      
+      # Response to a request to update or create ApplicationPolicy objects in the
+      # given policy.
+      class ModifyPolicyApplicationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A policy resource represents a group of settings that govern the behavior of a
+        # managed device and the apps installed on it.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::AndroidmanagementV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # Device network info.
       class NetworkInfo
         include Google::Apis::Core::Hashable
@@ -4106,7 +4681,7 @@ module Google
         attr_accessor :network_operator_name
       
         # Provides telephony information associated with each SIM card on the device.
-        # Only supported on fully managed devices starting from Android API level 23.
+        # Only supported on fully managed devices starting from Android 6.
         # Corresponds to the JSON property `telephonyInfos`
         # @return [Array<Google::Apis::AndroidmanagementV1::TelephonyInfo>]
         attr_accessor :telephony_infos
@@ -4698,7 +5273,8 @@ module Google
         # @return [String]
         attr_accessor :private_space_policy
       
-        # If true, screen capture is disabled for all users.
+        # If true, screen capture is disabled for all users. This also blocks Circle to
+        # Search (https://support.google.com/android/answer/14508957).
         # Corresponds to the JSON property `screenCaptureDisabled`
         # @return [Boolean]
         attr_accessor :screen_capture_disabled
@@ -4770,6 +5346,13 @@ module Google
         # @return [String]
         attr_accessor :app_auto_update_policy
       
+        # Optional. Controls whether apps on the device for fully managed devices or in
+        # the work profile for devices with work profiles are allowed to expose app
+        # functions.
+        # Corresponds to the JSON property `appFunctions`
+        # @return [String]
+        attr_accessor :app_functions
+      
         # Policy applied to apps. This can have at most 3,000 elements.
         # Corresponds to the JSON property `applications`
         # @return [Array<Google::Apis::AndroidmanagementV1::ApplicationPolicy>]
@@ -4797,10 +5380,12 @@ module Google
         attr_accessor :auto_time_required
         alias_method :auto_time_required?, :auto_time_required
       
-        # Whether applications other than the ones configured in applications are
-        # blocked from being installed. When set, applications that were installed under
-        # a previous policy but no longer appear in the policy are automatically
-        # uninstalled.
+        # Optional. The policy for the autofill service.
+        # Corresponds to the JSON property `autofillPolicy`
+        # @return [String]
+        attr_accessor :autofill_policy
+      
+        # This field has no effect.
         # Corresponds to the JSON property `blockApplicationsEnabled`
         # @return [Boolean]
         attr_accessor :block_applications_enabled
@@ -4870,11 +5455,11 @@ module Google
         attr_accessor :create_windows_disabled
         alias_method :create_windows_disabled?, :create_windows_disabled
       
-        # Controls which apps are allowed to act as credential providers on Android 14
-        # and above. These apps store credentials, see this (https://developer.android.
-        # com/training/sign-in/passkeys) and this (https://developer.android.com/
-        # reference/androidx/credentials/CredentialManager) for details. See also
-        # credentialProviderPolicy.
+        # Optional. Controls which apps are allowed to act as credential providers on
+        # Android 14 and above. These apps store credentials, see this (https://
+        # developer.android.com/training/sign-in/passkeys) and this (https://developer.
+        # android.com/reference/androidx/credentials/CredentialManager) for details. See
+        # also credentialProviderPolicy.
         # Corresponds to the JSON property `credentialProviderPolicyDefault`
         # @return [String]
         attr_accessor :credential_provider_policy_default
@@ -4886,7 +5471,7 @@ module Google
         alias_method :credentials_config_disabled?, :credentials_config_disabled
       
         # Controls the data from the work profile that can be accessed from the personal
-        # profile and vice versa. A nonComplianceDetail with MANAGEMENT_MODE is reported
+        # profile and vice versa. A NonComplianceDetail with MANAGEMENT_MODE is reported
         # if the device does not have a work profile.
         # Corresponds to the JSON property `crossProfilePolicies`
         # @return [Google::Apis::AndroidmanagementV1::CrossProfilePolicies]
@@ -4903,6 +5488,16 @@ module Google
         # @return [Boolean]
         attr_accessor :debugging_features_allowed
         alias_method :debugging_features_allowed?, :debugging_features_allowed
+      
+        # Optional. The default application setting for supported types. If the default
+        # application is successfully set for at least one app type on a profile, users
+        # are prevented from changing any default applications on that profile.Only one
+        # DefaultApplicationSetting is allowed for each DefaultApplicationType.See
+        # Default application settings (https://developers.google.com/android/management/
+        # default-application-settings) guide for more details.
+        # Corresponds to the JSON property `defaultApplicationSettings`
+        # @return [Array<Google::Apis::AndroidmanagementV1::DefaultApplicationSetting>]
+        attr_accessor :default_application_settings
       
         # The default permission policy for runtime permission requests.
         # Corresponds to the JSON property `defaultPermissionPolicy`
@@ -5079,7 +5674,9 @@ module Google
         attr_accessor :network_escape_hatch_enabled
         alias_method :network_escape_hatch_enabled?, :network_escape_hatch_enabled
       
-        # Whether resetting network settings is disabled.
+        # Whether resetting network settings is disabled. This applies only on fully
+        # managed devices. A NonComplianceDetail with MANAGEMENT_MODE is reported for
+        # other management modes.
         # Corresponds to the JSON property `networkResetDisabled`
         # @return [Boolean]
         attr_accessor :network_reset_disabled
@@ -5203,14 +5800,15 @@ module Google
         attr_accessor :safe_boot_disabled
         alias_method :safe_boot_disabled?, :safe_boot_disabled
       
-        # Whether screen capture is disabled.
+        # Whether screen capture is disabled. This also blocks Circle to Search (https://
+        # support.google.com/android/answer/14508957).
         # Corresponds to the JSON property `screenCaptureDisabled`
         # @return [Boolean]
         attr_accessor :screen_capture_disabled
         alias_method :screen_capture_disabled?, :screen_capture_disabled
       
-        # Whether changing the user icon is disabled. The setting has effect only on
-        # fully managed devices.
+        # Whether changing the user icon is disabled. This applies only on devices
+        # running Android 7 and above.
         # Corresponds to the JSON property `setUserIconDisabled`
         # @return [Boolean]
         attr_accessor :set_user_icon_disabled
@@ -5227,8 +5825,7 @@ module Google
         # @return [Array<Google::Apis::AndroidmanagementV1::SetupAction>]
         attr_accessor :setup_actions
       
-        # Whether location sharing is disabled. share_location_disabled is supported for
-        # both fully managed devices and personally owned work profiles.
+        # Whether location sharing is disabled.
         # Corresponds to the JSON property `shareLocationDisabled`
         # @return [Boolean]
         attr_accessor :share_location_disabled
@@ -5362,6 +5959,20 @@ module Google
         attr_accessor :wifi_configs_lockdown_enabled
         alias_method :wifi_configs_lockdown_enabled?, :wifi_configs_lockdown_enabled
       
+        # Optional. Wipe flags to indicate what data is wiped when a device or profile
+        # wipe is triggered due to any reason (for example, non-compliance). This does
+        # not apply to the enterprises.devices.delete method. . This list must not have
+        # duplicates.
+        # Corresponds to the JSON property `wipeDataFlags`
+        # @return [Array<String>]
+        attr_accessor :wipe_data_flags
+      
+        # Controls the work account setup configuration, such as details of whether a
+        # Google authenticated account is required.
+        # Corresponds to the JSON property `workAccountSetupConfig`
+        # @return [Google::Apis::AndroidmanagementV1::WorkAccountSetupConfig]
+        attr_accessor :work_account_setup_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5375,10 +5986,12 @@ module Google
           @always_on_vpn_package = args[:always_on_vpn_package] if args.key?(:always_on_vpn_package)
           @android_device_policy_tracks = args[:android_device_policy_tracks] if args.key?(:android_device_policy_tracks)
           @app_auto_update_policy = args[:app_auto_update_policy] if args.key?(:app_auto_update_policy)
+          @app_functions = args[:app_functions] if args.key?(:app_functions)
           @applications = args[:applications] if args.key?(:applications)
           @assist_content_policy = args[:assist_content_policy] if args.key?(:assist_content_policy)
           @auto_date_and_time_zone = args[:auto_date_and_time_zone] if args.key?(:auto_date_and_time_zone)
           @auto_time_required = args[:auto_time_required] if args.key?(:auto_time_required)
+          @autofill_policy = args[:autofill_policy] if args.key?(:autofill_policy)
           @block_applications_enabled = args[:block_applications_enabled] if args.key?(:block_applications_enabled)
           @bluetooth_config_disabled = args[:bluetooth_config_disabled] if args.key?(:bluetooth_config_disabled)
           @bluetooth_contact_sharing_disabled = args[:bluetooth_contact_sharing_disabled] if args.key?(:bluetooth_contact_sharing_disabled)
@@ -5394,6 +6007,7 @@ module Google
           @cross_profile_policies = args[:cross_profile_policies] if args.key?(:cross_profile_policies)
           @data_roaming_disabled = args[:data_roaming_disabled] if args.key?(:data_roaming_disabled)
           @debugging_features_allowed = args[:debugging_features_allowed] if args.key?(:debugging_features_allowed)
+          @default_application_settings = args[:default_application_settings] if args.key?(:default_application_settings)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @device_connectivity_management = args[:device_connectivity_management] if args.key?(:device_connectivity_management)
           @device_owner_lock_screen_info = args[:device_owner_lock_screen_info] if args.key?(:device_owner_lock_screen_info)
@@ -5463,6 +6077,8 @@ module Google
           @vpn_config_disabled = args[:vpn_config_disabled] if args.key?(:vpn_config_disabled)
           @wifi_config_disabled = args[:wifi_config_disabled] if args.key?(:wifi_config_disabled)
           @wifi_configs_lockdown_enabled = args[:wifi_configs_lockdown_enabled] if args.key?(:wifi_configs_lockdown_enabled)
+          @wipe_data_flags = args[:wipe_data_flags] if args.key?(:wipe_data_flags)
+          @work_account_setup_config = args[:work_account_setup_config] if args.key?(:work_account_setup_config)
         end
       end
       
@@ -5647,6 +6263,42 @@ module Google
         end
       end
       
+      # Controls the device's private DNS settings.
+      class PrivateDnsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The hostname of the DNS server. This must be set if and only if
+        # private_dns_mode is set to PRIVATE_DNS_SPECIFIED_HOST. Supported on Android 10
+        # and above on fully managed devices. A NonComplianceDetail with MANAGEMENT_MODE
+        # is reported on other management modes. A NonComplianceDetail with API_LEVEL is
+        # reported if the Android version is less than 10. A NonComplianceDetail with
+        # PENDING is reported if the device is not connected to a network. A
+        # NonComplianceDetail with nonComplianceReason INVALID_VALUE and
+        # specificNonComplianceReason PRIVATE_DNS_HOST_NOT_SERVING is reported if the
+        # specified host is not a DNS server or not supported on Android. A
+        # NonComplianceDetail with INVALID_VALUE is reported if applying this setting
+        # fails for any other reason.
+        # Corresponds to the JSON property `privateDnsHost`
+        # @return [String]
+        attr_accessor :private_dns_host
+      
+        # Optional. The configuration mode for device's global private DNS settings. If
+        # this is set to PRIVATE_DNS_SPECIFIED_HOST, then private_dns_host must be set.
+        # Corresponds to the JSON property `privateDnsMode`
+        # @return [String]
+        attr_accessor :private_dns_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_dns_host = args[:private_dns_host] if args.key?(:private_dns_host)
+          @private_dns_mode = args[:private_dns_mode] if args.key?(:private_dns_mode)
+        end
+      end
+      
       # Information about a device that is available during setup.
       class ProvisioningInfo
         include Google::Apis::Core::Hashable
@@ -5799,6 +6451,66 @@ module Google
         end
       end
       
+      # Parameters associated with the REMOVE_ESIM command to remove an eSIM profile
+      # from the device.
+      class RemoveEsimParams
+        include Google::Apis::Core::Hashable
+      
+        # Required. ICC ID of the eSIM profile to be deleted.
+        # Corresponds to the JSON property `iccId`
+        # @return [String]
+        attr_accessor :icc_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @icc_id = args[:icc_id] if args.key?(:icc_id)
+        end
+      end
+      
+      # Request to remove ApplicationPolicy objects in the given policy.
+      class RemovePolicyApplicationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Package names to be removed. Entries that are not found are ignored.
+        # There must be at least one entry in package_names.
+        # Corresponds to the JSON property `packageNames`
+        # @return [Array<String>]
+        attr_accessor :package_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_names = args[:package_names] if args.key?(:package_names)
+        end
+      end
+      
+      # Response to a request to remove ApplicationPolicy objects in the given policy.
+      class RemovePolicyApplicationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A policy resource represents a group of settings that govern the behavior of a
+        # managed device and the apps installed on it.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::AndroidmanagementV1::Policy]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # Parameters associated with the REQUEST_DEVICE_INFO command to get device
       # related information.
       class RequestDeviceInfoParams
@@ -5841,6 +6553,25 @@ module Google
         def update!(**args)
           @eid_info = args[:eid_info] if args.key?(:eid_info)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Role an app can have.
+      class Role
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of the role an app can have.
+        # Corresponds to the JSON property `roleType`
+        # @return [String]
+        attr_accessor :role_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @role_type = args[:role_type] if args.key?(:role_type)
         end
       end
       
@@ -6012,6 +6743,15 @@ module Google
         # @return [String]
         attr_accessor :default_status
       
+        # Options for Google authentication during the enrollment.These options control
+        # whether the Google authentication screen is shown, and whether it can be
+        # skipped, at the start of the sign-in flow. More requirements can be enforced
+        # by EnrollmentToken.googleAuthenticationOptions on the EnrollmentToken that is
+        # created later.
+        # Corresponds to the JSON property `googleAuthenticationOptions`
+        # @return [Google::Apis::AndroidmanagementV1::SigninDetailGoogleAuthenticationOptions]
+        attr_accessor :google_authentication_options
+      
         # A JSON string whose UTF-8 representation can be used to generate a QR code to
         # enroll a device with this enrollment token. To enroll a device using NFC, the
         # NFC record must contain a serialized java.util.Properties representation of
@@ -6048,10 +6788,38 @@ module Google
         def update!(**args)
           @allow_personal_usage = args[:allow_personal_usage] if args.key?(:allow_personal_usage)
           @default_status = args[:default_status] if args.key?(:default_status)
+          @google_authentication_options = args[:google_authentication_options] if args.key?(:google_authentication_options)
           @qr_code = args[:qr_code] if args.key?(:qr_code)
           @signin_enrollment_token = args[:signin_enrollment_token] if args.key?(:signin_enrollment_token)
           @signin_url = args[:signin_url] if args.key?(:signin_url)
           @token_tag = args[:token_tag] if args.key?(:token_tag)
+        end
+      end
+      
+      # Options for Google authentication during the enrollment.These options control
+      # whether the Google authentication screen is shown, and whether it can be
+      # skipped, at the start of the sign-in flow. More requirements can be enforced
+      # by EnrollmentToken.googleAuthenticationOptions on the EnrollmentToken that is
+      # created later.
+      class SigninDetailGoogleAuthenticationOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies whether user should authenticate with Google during
+        # enrollment. If this is set to any value other than
+        # AUTHENTICATION_REQUIREMENT_UNSPECIFIED, the enterprise-level setting
+        # googleAuthenticationSettings is ignored for devices enrolled with this sign-in
+        # detail.
+        # Corresponds to the JSON property `authenticationRequirement`
+        # @return [String]
+        attr_accessor :authentication_requirement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_requirement = args[:authentication_requirement] if args.key?(:authentication_requirement)
         end
       end
       
@@ -6169,6 +6937,11 @@ module Google
       class SpecificNonComplianceContext
         include Google::Apis::Core::Hashable
       
+        # Additional context for non-compliance related to default application settings.
+        # Corresponds to the JSON property `defaultApplicationContext`
+        # @return [Google::Apis::AndroidmanagementV1::DefaultApplicationContext]
+        attr_accessor :default_application_context
+      
         # Additional context for non-compliance related to Wi-Fi configuration.
         # Corresponds to the JSON property `oncWifiContext`
         # @return [Google::Apis::AndroidmanagementV1::OncWifiContext]
@@ -6185,6 +6958,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_application_context = args[:default_application_context] if args.key?(:default_application_context)
           @onc_wifi_context = args[:onc_wifi_context] if args.key?(:onc_wifi_context)
           @password_policies_context = args[:password_policies_context] if args.key?(:password_policies_context)
         end
@@ -6319,6 +7093,12 @@ module Google
         attr_accessor :common_criteria_mode_enabled
         alias_method :common_criteria_mode_enabled?, :common_criteria_mode_enabled
       
+        # Optional. Whether defaultApplicationInfo reporting is enabled.
+        # Corresponds to the JSON property `defaultApplicationInfoReportingEnabled`
+        # @return [Boolean]
+        attr_accessor :default_application_info_reporting_enabled
+        alias_method :default_application_info_reporting_enabled?, :default_application_info_reporting_enabled
+      
         # Whether device settings reporting is enabled.
         # Corresponds to the JSON property `deviceSettingsEnabled`
         # @return [Boolean]
@@ -6379,6 +7159,7 @@ module Google
           @application_reporting_settings = args[:application_reporting_settings] if args.key?(:application_reporting_settings)
           @application_reports_enabled = args[:application_reports_enabled] if args.key?(:application_reports_enabled)
           @common_criteria_mode_enabled = args[:common_criteria_mode_enabled] if args.key?(:common_criteria_mode_enabled)
+          @default_application_info_reporting_enabled = args[:default_application_info_reporting_enabled] if args.key?(:default_application_info_reporting_enabled)
           @device_settings_enabled = args[:device_settings_enabled] if args.key?(:device_settings_enabled)
           @display_info_enabled = args[:display_info_enabled] if args.key?(:display_info_enabled)
           @hardware_status_enabled = args[:hardware_status_enabled] if args.key?(:hardware_status_enabled)
@@ -6520,15 +7301,33 @@ module Google
         end
       end
       
-      # Telephony information associated with a given SIM card on the device. Only
-      # supported on fully managed devices starting from Android API level 23.
+      # Telephony information associated with a given SIM card on the device. This is
+      # supported for all SIM cards on fully managed devices on Android 6 and above.
+      # In addition, this is supported for admin-added eSIMs on all devices for
+      # Android 15 and above.
       class TelephonyInfo
         include Google::Apis::Core::Hashable
+      
+        # Output only. Activation state of the SIM card on the device. This is
+        # applicable for eSIMs only. This is supported on all devices for Android 15 and
+        # above. This is always ACTIVATION_STATE_UNSPECIFIED for physical SIMs and for
+        # devices below Android 15.
+        # Corresponds to the JSON property `activationState`
+        # @return [String]
+        attr_accessor :activation_state
       
         # The carrier name associated with this SIM card.
         # Corresponds to the JSON property `carrierName`
         # @return [String]
         attr_accessor :carrier_name
+      
+        # Output only. The configuration mode of the SIM card on the device. This is
+        # applicable for eSIMs only. This is supported on all devices for Android 15 and
+        # above. This is always CONFIG_MODE_UNSPECIFIED for physical SIMs and for
+        # devices below Android 15.
+        # Corresponds to the JSON property `configMode`
+        # @return [String]
+        attr_accessor :config_mode
       
         # Output only. The ICCID associated with this SIM card.
         # Corresponds to the JSON property `iccId`
@@ -6546,7 +7345,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @activation_state = args[:activation_state] if args.key?(:activation_state)
           @carrier_name = args[:carrier_name] if args.key?(:carrier_name)
+          @config_mode = args[:config_mode] if args.key?(:config_mode)
           @icc_id = args[:icc_id] if args.key?(:icc_id)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
@@ -7122,9 +7923,9 @@ module Google
       
         # Optional. List of Wi-Fi SSIDs that should be applied in the policy. This field
         # must be non-empty when WifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST. If
-        # this is set to a non-empty list, then a nonComplianceDetail detail with
+        # this is set to a non-empty list, then a NonComplianceDetail detail with
         # API_LEVEL is reported if the Android version is less than 13 and a
-        # nonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned
+        # NonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned
         # devices.
         # Corresponds to the JSON property `wifiSsids`
         # @return [Array<Google::Apis::AndroidmanagementV1::WifiSsid>]
@@ -7182,6 +7983,62 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Parameters associated with the WIPE command to wipe the device.
+      class WipeParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Flags to determine what data to wipe.
+        # Corresponds to the JSON property `wipeDataFlags`
+        # @return [Array<String>]
+        attr_accessor :wipe_data_flags
+      
+        # Provides a user-facing message with locale info. The maximum message length is
+        # 4096 characters.
+        # Corresponds to the JSON property `wipeReason`
+        # @return [Google::Apis::AndroidmanagementV1::UserFacingMessage]
+        attr_accessor :wipe_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wipe_data_flags = args[:wipe_data_flags] if args.key?(:wipe_data_flags)
+          @wipe_reason = args[:wipe_reason] if args.key?(:wipe_reason)
+        end
+      end
+      
+      # Controls the work account setup configuration, such as details of whether a
+      # Google authenticated account is required.
+      class WorkAccountSetupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The authentication type of the user on the device.
+        # Corresponds to the JSON property `authenticationType`
+        # @return [String]
+        attr_accessor :authentication_type
+      
+        # Optional. The specific google work account email address to be added. This
+        # field is only relevant if authenticationType is GOOGLE_AUTHENTICATED. This
+        # must be an enterprise account and not a consumer account. Once set and a
+        # Google authenticated account is added to the device, changing this field will
+        # have no effect, and thus recommended to be set only once.
+        # Corresponds to the JSON property `requiredAccountEmail`
+        # @return [String]
+        attr_accessor :required_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_type = args[:authentication_type] if args.key?(:authentication_type)
+          @required_account_email = args[:required_account_email] if args.key?(:required_account_email)
         end
       end
     end

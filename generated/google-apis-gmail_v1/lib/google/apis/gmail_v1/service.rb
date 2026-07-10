@@ -83,7 +83,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Stop receiving push notifications for the given user mailbox.
+        # Turn off push notification delivery for the given user mailbox. For more
+        # information, see [Configure push notifications in Gmail API](https://
+        # developers.google.com/workspace/gmail/api/guides/push).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -112,7 +114,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Set up or update a push notification watch on the given user mailbox.
+        # Set up or update a push notification watch on the given user mailbox. For more
+        # information, see [Configure push notifications in Gmail API](https://
+        # developers.google.com/workspace/gmail/api/guides/push).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -146,7 +150,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new draft with the `DRAFT` label.
+        # Creates a draft with the `DRAFT` label. For more information, see [Create and
+        # send draft emails](https://developers.google.com/workspace/gmail/api/guides/
+        # drafts).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -191,7 +197,8 @@ module Google
         end
         
         # Immediately and permanently deletes the specified draft. Does not simply trash
-        # it.
+        # it. For more information, see [Create and send draft emails](https://
+        # developers.google.com/workspace/gmail/api/guides/drafts).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -223,7 +230,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified draft.
+        # Gets the specified draft. For more information, see [Create and send draft
+        # emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -260,7 +268,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the drafts in the user's mailbox.
+        # Lists the drafts in the user's mailbox. For more information, see [Create and
+        # send draft emails](https://developers.google.com/workspace/gmail/api/guides/
+        # drafts).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -307,7 +317,8 @@ module Google
         end
         
         # Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `
-        # Bcc` headers.
+        # Bcc` headers. For more information, see [Create and send draft emails](https://
+        # developers.google.com/workspace/gmail/api/guides/drafts).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -351,7 +362,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replaces a draft's content.
+        # Replaces a draft's content. For more information, see [Create and send draft
+        # emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -399,7 +411,9 @@ module Google
         end
         
         # Lists the history of all changes to the given mailbox. History results are
-        # returned in chronological order (increasing `historyId`).
+        # returned in chronological order (increasing `historyId`). For more information,
+        # see [Synchronize clients with Gmail](https://developers.google.com/workspace/
+        # gmail/api/guides/sync).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -455,7 +469,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new label.
+        # Creates a label. For more information, see [Manage labels](https://developers.
+        # google.com/workspace/gmail/api/guides/labels).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -490,7 +505,9 @@ module Google
         end
         
         # Immediately and permanently deletes the specified label and removes it from
-        # any messages and threads that it is applied to.
+        # any messages and threads that it's applied to. For more information, see [
+        # Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels)
+        # .
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -522,7 +539,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified label.
+        # Gets the specified label. For more information, see [Manage labels](https://
+        # developers.google.com/workspace/gmail/api/guides/labels).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -556,7 +574,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all labels in the user's mailbox.
+        # Lists all labels in the user's mailbox. For more information, see [Manage
+        # labels](https://developers.google.com/workspace/gmail/api/guides/labels).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -587,7 +606,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch the specified label.
+        # Patch the specified label. For more information, see [Manage labels](https://
+        # developers.google.com/workspace/gmail/api/guides/labels).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -624,7 +644,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified label.
+        # Updates the specified label. For more information, see [Manage labels](https://
+        # developers.google.com/workspace/gmail/api/guides/labels).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -694,7 +715,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the labels on the specified messages.
+        # Modifies the labels and the Classification Label values on the specified
+        # messages. For administrators modifying messages for users in their
+        # organization, requests require authorization with a [service account](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+        # domain-wide delegation authority](https://developers.google.com/identity/
+        # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+        # the `https://www.googleapis.com/auth/gmail.modify.restricted` scope.
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -805,6 +832,7 @@ module Google
         # scanning and classification similar to receiving via SMTP. This method doesn't
         # perform SPF checks, so it might not work for some spam messages, such as those
         # attempting to perform domain spoofing. This method does not send a message.
+        # Note that the maximum size of the message is 150 MB.
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -865,6 +893,8 @@ module Google
         
         # Directly inserts a message into only this user's mailbox similar to `IMAP
         # APPEND`, bypassing most scanning and classification. Does not send a message.
+        # For more information, see [Create and send email messages](https://developers.
+        # google.com/workspace/gmail/api/guides/sending).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -915,7 +945,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the messages in the user's mailbox.
+        # Lists the messages in the user's mailbox. For more information, see [List
+        # Gmail messages](https://developers.google.com/workspace/gmail/api/guides/list-
+        # messages).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -969,7 +1001,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Modifies the labels on the specified message.
+        # Modifies the labels and the Classification Label values on the specified
+        # message. For administrators modifying message for users in their organization,
+        # requests require authorization with a [service account](https://developers.
+        # google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide
+        # delegation authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.modify.restricted` scope.
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -1007,8 +1045,8 @@ module Google
         end
         
         # Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc`
-        # headers. For example usage, see [Sending email](https://developers.google.com/
-        # workspace/gmail/api/guides/sending).
+        # headers. For more information, see [Create and send email messages](https://
+        # developers.google.com/workspace/gmail/api/guides/sending).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -1157,7 +1195,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the auto-forwarding setting for the specified account.
+        # Gets the auto-forwarding setting for the specified account. For more
+        # information, see [Manage email forwarding](https://developers.google.com/
+        # workspace/gmail/api/guides/forwarding_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1188,7 +1228,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets IMAP settings.
+        # Gets IMAP settings. For more information, see [Configure POP and IMAP settings
+        # with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/
+        # pop_imap_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1219,7 +1261,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets language settings.
+        # Gets language settings. For more information, see [Manage language settings](
+        # https://developers.google.com/workspace/gmail/api/guides/language-settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1250,7 +1293,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets POP settings.
+        # Gets POP settings. For more information, see [Configure POP and IMAP settings
+        # with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/
+        # pop_imap_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1281,7 +1326,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets vacation responder settings.
+        # Gets vacation responder settings. For more information, see [Manage vacation
+        # settings with the Gmail API](https://developers.google.com/workspace/gmail/api/
+        # guides/vacation_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1313,9 +1360,10 @@ module Google
         end
         
         # Updates the auto-forwarding setting for the specified account. A verified
-        # forwarding address must be specified when auto-forwarding is enabled. This
-        # method is only available to service account clients that have been delegated
-        # domain-wide authority.
+        # forwarding address must be specified when auto-forwarding is enabled. For more
+        # information, see [Manage email forwarding](https://developers.google.com/
+        # workspace/gmail/api/guides/forwarding_settings). This method is only available
+        # to service account clients that have been delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1349,7 +1397,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates IMAP settings.
+        # Updates IMAP settings. For more information, see [Configure POP and IMAP
+        # settings with the Gmail API](https://developers.google.com/workspace/gmail/api/
+        # guides/pop_imap_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1383,11 +1433,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates language settings. If successful, the return object contains the `
-        # displayLanguage` that was saved for the user, which may differ from the value
-        # passed into the request. This is because the requested `displayLanguage` may
-        # not be directly supported by Gmail but have a close variant that is, and so
-        # the variant may be chosen and saved instead.
+        # Updates language settings. For more information, see [Manage language settings]
+        # (https://developers.google.com/workspace/gmail/api/guides/language-settings).
+        # If successful, the return object contains the `displayLanguage` that was saved
+        # for the user, which may differ from the value passed into the request. This is
+        # because the requested `displayLanguage` may not be directly supported by Gmail
+        # but have a close variant that is, and so the variant may be chosen and saved
+        # instead.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1421,7 +1473,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates POP settings.
+        # Updates POP settings. For more information, see [Configure POP and IMAP
+        # settings with the Gmail API](https://developers.google.com/workspace/gmail/api/
+        # guides/pop_imap_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1455,7 +1509,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates vacation responder settings.
+        # Updates vacation responder settings. For more information, see [Manage
+        # vacation settings with the Gmail API](https://developers.google.com/workspace/
+        # gmail/api/guides/vacation_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1492,7 +1548,15 @@ module Google
         # Creates and configures a client-side encryption identity that's authorized to
         # send mail from the user account. Google publishes the S/MIME certificate to a
         # shared domain-wide directory so that people within a Google Workspace
-        # organization can encrypt and send mail to the identity.
+        # organization can encrypt and send mail to the identity. For administrators
+        # managing identities and keypairs for users in their organization, requests
+        # require authorization with a [service account](https://developers.google.com/
+        # identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+        # authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+        # their own identities and keypairs, requests require [hardware key encryption](
+        # https://support.google.com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1529,7 +1593,15 @@ module Google
         # Deletes a client-side encryption identity. The authenticated user can no
         # longer use the identity to send encrypted messages. You cannot restore the
         # identity after you delete it. Instead, use the CreateCseIdentity method to
-        # create another identity with the same configuration.
+        # create another identity with the same configuration. For administrators
+        # managing identities and keypairs for users in their organization, requests
+        # require authorization with a [service account](https://developers.google.com/
+        # identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+        # authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+        # their own identities and keypairs, requests require [hardware key encryption](
+        # https://support.google.com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1562,7 +1634,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a client-side encryption identity configuration.
+        # Retrieves a client-side encryption identity configuration. For administrators
+        # managing identities and keypairs for users in their organization, requests
+        # require authorization with a [service account](https://developers.google.com/
+        # identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+        # authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+        # their own identities and keypairs, requests require [hardware key encryption](
+        # https://support.google.com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1597,7 +1677,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the client-side encrypted identities for an authenticated user.
+        # Lists the client-side encrypted identities for an authenticated user. For
+        # administrators managing identities and keypairs for users in their
+        # organization, requests require authorization with a [service account](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+        # domain-wide delegation authority](https://developers.google.com/identity/
+        # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+        # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+        # managing their own identities and keypairs, requests require [hardware key
+        # encryption](https://support.google.com/a/answer/14153163) turned on and
+        # configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1638,7 +1727,16 @@ module Google
         
         # Associates a different key pair with an existing client-side encryption
         # identity. The updated key pair must validate against Google's [S/MIME
-        # certificate profiles](https://support.google.com/a/answer/7300887).
+        # certificate profiles](https://support.google.com/a/answer/7300887). For
+        # administrators managing identities and keypairs for users in their
+        # organization, requests require authorization with a [service account](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+        # domain-wide delegation authority](https://developers.google.com/identity/
+        # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+        # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+        # managing their own identities and keypairs, requests require [hardware key
+        # encryption](https://support.google.com/a/answer/14153163) turned on and
+        # configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1676,7 +1774,15 @@ module Google
         end
         
         # Creates and uploads a client-side encryption S/MIME public key certificate
-        # chain and private key metadata for the authenticated user.
+        # chain and private key metadata for the authenticated user. For administrators
+        # managing identities and keypairs for users in their organization, requests
+        # require authorization with a [service account](https://developers.google.com/
+        # identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+        # authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+        # their own identities and keypairs, requests require [hardware key encryption](
+        # https://support.google.com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1714,7 +1820,15 @@ module Google
         # longer use the key pair to decrypt incoming CSE message texts or sign outgoing
         # CSE mail. To regain access, use the EnableCseKeyPair to turn on the key pair.
         # After 30 days, you can permanently delete the key pair by using the
-        # ObliterateCseKeyPair method.
+        # ObliterateCseKeyPair method. For administrators managing identities and
+        # keypairs for users in their organization, requests require authorization with
+        # a [service account](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount) that has [domain-wide delegation authority](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount#
+        # delegatingauthority) to impersonate users with the `https://www.googleapis.com/
+        # auth/gmail.settings.basic` scope. For users managing their own identities and
+        # keypairs, requests require [hardware key encryption](https://support.google.
+        # com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1752,7 +1866,16 @@ module Google
         end
         
         # Turns on a client-side encryption key pair that was turned off. The key pair
-        # becomes active again for any associated client-side encryption identities.
+        # becomes active again for any associated client-side encryption identities. For
+        # administrators managing identities and keypairs for users in their
+        # organization, requests require authorization with a [service account](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+        # domain-wide delegation authority](https://developers.google.com/identity/
+        # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+        # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+        # managing their own identities and keypairs, requests require [hardware key
+        # encryption](https://support.google.com/a/answer/14153163) turned on and
+        # configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1789,7 +1912,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an existing client-side encryption key pair.
+        # Retrieves an existing client-side encryption key pair. For administrators
+        # managing identities and keypairs for users in their organization, requests
+        # require authorization with a [service account](https://developers.google.com/
+        # identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation
+        # authority](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https:
+        # //www.googleapis.com/auth/gmail.settings.basic` scope. For users managing
+        # their own identities and keypairs, requests require [hardware key encryption](
+        # https://support.google.com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1823,7 +1954,16 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists client-side encryption key pairs for an authenticated user.
+        # Lists client-side encryption key pairs for an authenticated user. For
+        # administrators managing identities and keypairs for users in their
+        # organization, requests require authorization with a [service account](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [
+        # domain-wide delegation authority](https://developers.google.com/identity/
+        # protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with
+        # the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users
+        # managing their own identities and keypairs, requests require [hardware key
+        # encryption](https://support.google.com/a/answer/14153163) turned on and
+        # configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1867,7 +2007,15 @@ module Google
         # days. To turn off a key pair, use the DisableCseKeyPair method. Gmail can't
         # restore or decrypt any messages that were encrypted by an obliterated key.
         # Authenticated users and Google Workspace administrators lose access to reading
-        # the encrypted messages.
+        # the encrypted messages. For administrators managing identities and keypairs
+        # for users in their organization, requests require authorization with a [
+        # service account](https://developers.google.com/identity/protocols/
+        # OAuth2ServiceAccount) that has [domain-wide delegation authority](https://
+        # developers.google.com/identity/protocols/OAuth2ServiceAccount#
+        # delegatingauthority) to impersonate users with the `https://www.googleapis.com/
+        # auth/gmail.settings.basic` scope. For users managing their own identities and
+        # keypairs, requests require [hardware key encryption](https://support.google.
+        # com/a/answer/14153163) turned on and configured.
         # @param [String] user_id
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
@@ -1904,15 +2052,16 @@ module Google
         
         # Adds a delegate with its verification status set directly to `accepted`,
         # without sending any verification email. The delegate user must be a member of
-        # the same Google Workspace organization as the delegator user. Gmail imposes
-        # limitations on the number of delegates and delegators each user in a Google
-        # Workspace organization can have. These limits depend on your organization, but
-        # in general each user can have up to 25 delegates and up to 10 delegators. Note
-        # that a delegate user must be referred to by their primary email address, and
-        # not an email alias. Also note that when a new delegate is created, there may
-        # be up to a one minute delay before the new delegate is available for use. This
-        # method is only available to service account clients that have been delegated
-        # domain-wide authority.
+        # the same Google Workspace organization as the delegator user. For more
+        # information, see [Manage delegates](https://developers.google.com/workspace/
+        # gmail/api/guides/delegate_settings). Gmail imposes limitations on the number
+        # of delegates and delegators each user in a Google Workspace organization can
+        # have. These limits depend on your organization, but in general each user can
+        # have up to 25 delegates and up to 10 delegators. A delegate user must be
+        # referred to by their primary email address, and not an email alias. When a new
+        # delegate is created, there may be up to a one minute delay before the new
+        # delegate is available for use. This method is only available to service
+        # account clients that have been delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1947,10 +2096,12 @@ module Google
         end
         
         # Removes the specified delegate (which can be of any verification status), and
-        # revokes any verification that may have been required for using it. Note that a
-        # delegate user must be referred to by their primary email address, and not an
-        # email alias. This method is only available to service account clients that
-        # have been delegated domain-wide authority.
+        # revokes any verification that may have been required for using it. For more
+        # information, see [Manage delegates](https://developers.google.com/workspace/
+        # gmail/api/guides/delegate_settings). A delegate user must be referred to by
+        # their primary email address, and not an email alias. This method is only
+        # available to service account clients that have been delegated domain-wide
+        # authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -1982,10 +2133,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified delegate. Note that a delegate user must be referred to by
-        # their primary email address, and not an email alias. This method is only
-        # available to service account clients that have been delegated domain-wide
-        # authority.
+        # Gets the specified delegate. For more information, see [Manage delegates](
+        # https://developers.google.com/workspace/gmail/api/guides/delegate_settings). A
+        # delegate user must be referred to by their primary email address, and not an
+        # email alias. This method is only available to service account clients that
+        # have been delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2019,8 +2171,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the delegates for the specified account. This method is only available
-        # to service account clients that have been delegated domain-wide authority.
+        # Lists the delegates for the specified account. For more information, see [
+        # Manage delegates](https://developers.google.com/workspace/gmail/api/guides/
+        # delegate_settings). This method is only available to service account clients
+        # that have been delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2051,7 +2205,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a filter. Note: you can only create a maximum of 1,000 filters.
+        # Creates a filter. Note: you can only create a maximum of 1,000 filters. For
+        # more information, see [Manage Gmail filters](https://developers.google.com/
+        # workspace/gmail/api/guides/filter_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2085,7 +2241,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Immediately and permanently deletes the specified filter.
+        # Immediately and permanently deletes the specified filter. For more information,
+        # see [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/
+        # guides/filter_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2117,7 +2275,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a filter.
+        # Gets a filter. For more information, see [Manage Gmail filters](https://
+        # developers.google.com/workspace/gmail/api/guides/filter_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2151,7 +2310,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the message filters of a Gmail user.
+        # Lists the message filters of a Gmail user. For more information, see [Manage
+        # Gmail filters](https://developers.google.com/workspace/gmail/api/guides/
+        # filter_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2185,8 +2346,10 @@ module Google
         # Creates a forwarding address. If ownership verification is required, a message
         # will be sent to the recipient and the resource's verification status will be
         # set to `pending`; otherwise, the resource will be created with verification
-        # status set to `accepted`. This method is only available to service account
-        # clients that have been delegated domain-wide authority.
+        # status set to `accepted`. For more information, see [Manage email forwarding](
+        # https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+        # This method is only available to service account clients that have been
+        # delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2221,8 +2384,10 @@ module Google
         end
         
         # Deletes the specified forwarding address and revokes any verification that may
-        # have been required. This method is only available to service account clients
-        # that have been delegated domain-wide authority.
+        # have been required. For more information, see [Manage email forwarding](https:/
+        # /developers.google.com/workspace/gmail/api/guides/forwarding_settings). This
+        # method is only available to service account clients that have been delegated
+        # domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2254,7 +2419,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified forwarding address.
+        # Gets the specified forwarding address. For more information, see [Manage email
+        # forwarding](https://developers.google.com/workspace/gmail/api/guides/
+        # forwarding_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2288,7 +2455,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the forwarding addresses for the specified account.
+        # Lists the forwarding addresses for the specified account. For more information,
+        # see [Manage email forwarding](https://developers.google.com/workspace/gmail/
+        # api/guides/forwarding_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2325,8 +2494,10 @@ module Google
         # message will be sent to the email address and the resource's verification
         # status will be set to `pending`; otherwise, the resource will be created with
         # verification status set to `accepted`. If a signature is provided, Gmail will
-        # sanitize the HTML before saving it with the alias. This method is only
-        # available to service account clients that have been delegated domain-wide
+        # sanitize the HTML before saving it with the alias. For more information, see [
+        # Manage aliases and signatures with the Gmail API](https://developers.google.
+        # com/workspace/gmail/api/guides/alias_and_signature_settings). This method is
+        # only available to service account clients that have been delegated domain-wide
         # authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
@@ -2362,8 +2533,10 @@ module Google
         end
         
         # Deletes the specified send-as alias. Revokes any verification that may have
-        # been required for using it. This method is only available to service account
-        # clients that have been delegated domain-wide authority.
+        # been required for using it. For more information, see [Manage aliases and
+        # signatures with the Gmail API](https://developers.google.com/workspace/gmail/
+        # api/guides/alias_and_signature_settings). This method is only available to
+        # service account clients that have been delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2396,7 +2569,9 @@ module Google
         end
         
         # Gets the specified send-as alias. Fails with an HTTP 404 error if the
-        # specified address is not a member of the collection.
+        # specified address is not a member of the collection. For more information, see
+        # [Manage aliases and signatures with the Gmail API](https://developers.google.
+        # com/workspace/gmail/api/guides/alias_and_signature_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2432,7 +2607,9 @@ module Google
         
         # Lists the send-as aliases for the specified account. The result includes the
         # primary send-as address associated with the account as well as any custom "
-        # from" aliases.
+        # from" aliases. For more information, see [Manage aliases and signatures with
+        # the Gmail API](https://developers.google.com/workspace/gmail/api/guides/
+        # alias_and_signature_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2463,7 +2640,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch the specified send-as alias.
+        # Patch the specified send-as alias. For more information, see [Manage aliases
+        # and signatures with the Gmail API](https://developers.google.com/workspace/
+        # gmail/api/guides/alias_and_signature_settings).
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2501,9 +2680,11 @@ module Google
         end
         
         # Updates a send-as alias. If a signature is provided, Gmail will sanitize the
-        # HTML before saving it with the alias. Addresses other than the primary address
-        # for the account can only be updated by service account clients that have been
-        # delegated domain-wide authority.
+        # HTML before saving it with the alias. For more information, see [Manage
+        # aliases and signatures with the Gmail API](https://developers.google.com/
+        # workspace/gmail/api/guides/alias_and_signature_settings). Addresses other than
+        # the primary address for the account can only be updated by service account
+        # clients that have been delegated domain-wide authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2541,8 +2722,11 @@ module Google
         end
         
         # Sends a verification email to the specified send-as alias address. The
-        # verification status must be `pending`. This method is only available to
-        # service account clients that have been delegated domain-wide authority.
+        # verification status must be `pending`. For more information, see [Manage
+        # aliases and signatures with the Gmail API](https://developers.google.com/
+        # workspace/gmail/api/guides/alias_and_signature_settings). This method is only
+        # available to service account clients that have been delegated domain-wide
+        # authority.
         # @param [String] user_id
         #   User's email address. The special value "me" can be used to indicate the
         #   authenticated user.
@@ -2574,7 +2758,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified S/MIME config for the specified send-as alias.
+        # Deletes the specified S/MIME config for the specified send-as alias. For more
+        # information, see [Manage S/MIME certificates with the Gmail API](https://
+        # developers.google.com/workspace/gmail/api/guides/smime_certs).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2610,7 +2796,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified S/MIME config for the specified send-as alias.
+        # Gets the specified S/MIME config for the specified send-as alias. For more
+        # information, see [Manage S/MIME certificates with the Gmail API](https://
+        # developers.google.com/workspace/gmail/api/guides/smime_certs).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2649,7 +2837,9 @@ module Google
         end
         
         # Insert (upload) the given S/MIME config for the specified send-as alias. Note
-        # that pkcs12 format is required for the key.
+        # that `pkcs12` format is required for the key. For more information, see [
+        # Manage S/MIME certificates with the Gmail API](https://developers.google.com/
+        # workspace/gmail/api/guides/smime_certs).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2687,7 +2877,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists S/MIME configs for the specified send-as alias.
+        # Lists S/MIME configs for the specified send-as alias. For more information,
+        # see [Manage S/MIME certificates with the Gmail API](https://developers.google.
+        # com/workspace/gmail/api/guides/smime_certs).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2722,7 +2914,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the default S/MIME config for the specified send-as alias.
+        # Sets the default S/MIME config for the specified send-as alias. For more
+        # information, see [Manage S/MIME certificates with the Gmail API](https://
+        # developers.google.com/workspace/gmail/api/guides/smime_certs).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2760,7 +2954,8 @@ module Google
         
         # Immediately and permanently deletes the specified thread. Any messages that
         # belong to the thread are also deleted. This operation cannot be undone. Prefer
-        # `threads.trash` instead.
+        # `threads.trash` instead. For more information, see [Manage threads](https://
+        # developers.google.com/workspace/gmail/api/guides/threads).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2792,7 +2987,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the specified thread.
+        # Gets the specified thread. For more information, see [Manage threads](https://
+        # developers.google.com/workspace/gmail/api/guides/threads).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2832,7 +3028,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the threads in the user's mailbox.
+        # Lists the threads in the user's mailbox. For more information, see [Manage
+        # threads](https://developers.google.com/workspace/gmail/api/guides/threads).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2883,7 +3080,8 @@ module Google
         end
         
         # Modifies the labels applied to the thread. This applies to all messages in the
-        # thread.
+        # thread. For more information, see [Manage threads](https://developers.google.
+        # com/workspace/gmail/api/guides/threads).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2921,7 +3119,8 @@ module Google
         end
         
         # Moves the specified thread to the trash. Any messages that belong to the
-        # thread are also moved to the trash.
+        # thread are also moved to the trash. For more information, see [Manage threads](
+        # https://developers.google.com/workspace/gmail/api/guides/threads).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.
@@ -2956,7 +3155,8 @@ module Google
         end
         
         # Removes the specified thread from the trash. Any messages that belong to the
-        # thread are also removed from the trash.
+        # thread are also removed from the trash. For more information, see [Manage
+        # threads](https://developers.google.com/workspace/gmail/api/guides/threads).
         # @param [String] user_id
         #   The user's email address. The special value `me` can be used to indicate the
         #   authenticated user.

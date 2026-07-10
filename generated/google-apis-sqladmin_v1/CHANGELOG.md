@@ -1,5 +1,82 @@
 # Release history for google-apis-sqladmin_v1
 
+### v0.99.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260529
+* Regenerated using generator version 0.19.0
+
+### v0.98.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260510
+
+### v0.97.0 (2026-05-10)
+
+* Regenerated from discovery document revision 20260424
+
+### v0.96.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260317
+
+### v0.95.0 (2026-03-08)
+
+* Regenerated from discovery document revision 20260303
+
+### v0.94.0 (2026-03-01)
+
+* Regenerated from discovery document revision 20260222
+
+### v0.93.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260204
+
+### v0.92.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260119
+
+### v0.91.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260106
+
+### v0.90.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251201
+
+### v0.89.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251107
+
+### v0.88.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251019
+
+### v0.87.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251006
+
+### v0.86.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250915
+
+### v0.85.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250908
+
+### v0.84.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250823
+
+### v0.83.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250807
+
+### v0.82.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250613
+
+### v0.81.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250526
+
 ### v0.80.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250516

@@ -970,8 +970,8 @@ module Google
         
         # Lists the user's shared drives. This method accepts the `q` parameter, which
         # is a search query combining one or more search terms. For more information,
-        # see the [Search for shared drives](/workspace/drive/api/guides/search-
-        # shareddrives) guide.
+        # see the [Search for shared drives](https://developers.google.com/workspace/
+        # drive/api/guides/search-shareddrives) guide.
         # @param [Fixnum] max_results
         #   Maximum number of shared drives to return per page.
         # @param [String] page_token
@@ -1110,8 +1110,9 @@ module Google
         # @param [String] timed_text_track_name
         #   The timed text track name.
         # @param [String] visibility
-        #   The visibility of the new file. This parameter is only relevant when the
-        #   source is not a native Google Doc and convert=false.
+        #   The visibility of the new file. Permissions are still inherited from parent
+        #   folders. This parameter is only relevant when the source is not a Google Doc
+        #   file and when `convert=false`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1265,6 +1266,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates a CSE token which can be used to create or update CSE files.
+        # @param [String] file_id
+        #   The ID of the file for which the JWT should be generated. If not provided, an
+        #   id will be generated.
+        # @param [String] parent
+        #   The ID of the expected parent of the file. Used when generating a JWT for a
+        #   new CSE file. If specified, the parent will be fetched, and if the parent is a
+        #   shared drive item, the shared drive's policy will be used to determine the
+        #   KACLS that should be used. It is invalid to specify both file_id and parent in
+        #   a single request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DriveV2::GenerateCseTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DriveV2::GenerateCseTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_file_cse_token(file_id: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'files/generateCseToken', options)
+          command.response_representation = Google::Apis::DriveV2::GenerateCseTokenResponse::Representation
+          command.response_class = Google::Apis::DriveV2::GenerateCseTokenResponse
+          command.query['fileId'] = file_id unless file_id.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generates a set of file IDs which can be provided in insert or copy requests.
         # @param [Fixnum] max_results
         #   Maximum number of IDs to return.
@@ -1307,9 +1346,10 @@ module Google
         # Gets a file's metadata or content by ID. If you provide the URL parameter `
         # alt=media`, then the response includes the file contents in the response body.
         # Downloading content with `alt=media` only works if the file is stored in Drive.
-        # To download Google Docs, Sheets, and Slides use [`files.export`](/workspace/
-        # drive/api/reference/rest/v2/files/export) instead. For more information, see [
-        # Download & export files](/workspace/drive/api/guides/manage-downloads).
+        # To download Google Docs, Sheets, and Slides use [`files.export`](https://
+        # developers.google.com/workspace/drive/api/reference/rest/v2/files/export)
+        # instead. For more information, see [Download & export files](https://
+        # developers.google.com/workspace/drive/api/guides/manage-downloads).
         # @param [String] file_id
         #   The ID for the file in question.
         # @param [Boolean] acknowledge_abuse
@@ -1382,18 +1422,18 @@ module Google
         # 120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME type,
         # rather than the literal `*/*` value. The literal `*/*` is only used to
         # indicate that any valid MIME type can be uploaded. For more information on
-        # uploading files, see [Upload file data](/workspace/drive/api/guides/manage-
-        # uploads). Apps creating shortcuts with `files.insert` must specify the MIME
-        # type `application/vnd.google-apps.shortcut`. Apps should specify a file
-        # extension in the `title` property when inserting files with the API. For
-        # example, an operation to insert a JPEG file should specify something like `"
-        # title": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-
-        # only `fileExtension` property populated with the extension originally
-        # specified in the `title` property. When a Google Drive user requests to
-        # download a file, or when the file is downloaded through the sync client, Drive
-        # builds a full filename (with extension) based on the title. In cases where the
-        # extension is missing, Drive attempts to determine the extension based on the
-        # file's MIME type.
+        # uploading files, see [Upload file data](https://developers.google.com/
+        # workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `
+        # files.insert` must specify the MIME type `application/vnd.google-apps.shortcut`
+        # . Apps should specify a file extension in the `title` property when inserting
+        # files with the API. For example, an operation to insert a JPEG file should
+        # specify something like `"title": "cat.jpg"` in the metadata. Subsequent `GET`
+        # requests include the read-only `fileExtension` property populated with the
+        # extension originally specified in the `title` property. When a Google Drive
+        # user requests to download a file, or when the file is downloaded through the
+        # sync client, Drive builds a full filename (with extension) based on the title.
+        # In cases where the extension is missing, Drive attempts to determine the
+        # extension based on the file's MIME type.
         # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Docs Editors format.
@@ -1423,8 +1463,8 @@ module Google
         # @param [Boolean] use_content_as_indexable_text
         #   Whether to use the content as indexable text.
         # @param [String] visibility
-        #   The visibility of the new file. This parameter is only relevant when convert=
-        #   false.
+        #   The visibility of the new file. Permissions are still inherited from parent
+        #   folders. This parameter is only relevant when `convert=false`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1476,12 +1516,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the user's files. This method accepts the `q` parameter, which is a
-        # search query combining one or more search terms. For more information, see the
-        # [Search for files & folders](/workspace/drive/api/guides/search-files) guide. *
-        # Note:* This method returns *all* files by default, including trashed files. If
-        # you don't want trashed files to appear in the list, use the `trashed=false`
-        # query parameter to remove trashed files from the results.
+        # Lists the user's files. For more information, see [Search for files and
+        # folders](https://developers.google.com/workspace/drive/api/guides/search-files)
+        # . This method accepts the `q` parameter, which is a search query combining one
+        # or more search terms. This method returns *all* files by default, including
+        # trashed files. If you don't want trashed files to appear in the list, use the `
+        # trashed=false` query parameter to remove trashed files from the results.
         # @param [String] corpora
         #   Bodies of items (files/documents) to which the query applies. Supported bodies
         #   are `default`, `domain`, `drive` and `allDrives`. Prefer `default` or `drive`
@@ -1889,16 +1929,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a file's metadata and/or content. When calling this method, only
+        # Updates a file's metadata, content, or both. When calling this method, only
         # populate fields in the request that you want to modify. When updating fields,
         # some fields might be changed automatically, such as `modifiedDate`. This
         # method supports patch semantics. This method supports an */upload* URI and
         # accepts uploaded media with the following characteristics: - *Maximum file
-        # size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME
+        # size:* 5,120 GB - *Accepted Media MIME types:* `*/*` (Specify a valid MIME
         # type, rather than the literal `*/*` value. The literal `*/*` is only used to
-        # indicate that any valid MIME type can be uploaded. For more information on
-        # uploading files, see [Upload file data](/workspace/drive/api/guides/manage-
-        # uploads).
+        # indicate that any valid MIME type can be uploaded. For more information, see [
+        # Google Workspace and Google Drive supported MIME types](https://developers.
+        # google.com/workspace/drive/api/guides/mime-types).) For more information on
+        # uploading files, see [Upload file data](https://developers.google.com/
+        # workspace/drive/api/guides/manage-uploads).
         # @param [String] file_id
         #   The ID of the file to update.
         # @param [Google::Apis::DriveV2::File] file_object
@@ -2222,7 +2264,7 @@ module Google
         # @param [String] permission_id
         #   The ID for the permission.
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] supports_all_drives
         #   Whether the requesting application supports both My Drives and shared drives.
         # @param [Boolean] supports_team_drives
@@ -2346,7 +2388,7 @@ module Google
         # @param [String] email_message
         #   A plain text custom message to include in notification emails.
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] enforce_single_parent
         #   Deprecated: See `moveToNewOwnersRoot` for details.
         # @param [Boolean] move_to_new_owners_root
@@ -2467,7 +2509,7 @@ module Google
         #   The ID for the permission.
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
         # @param [Boolean] supports_all_drives
@@ -2526,7 +2568,7 @@ module Google
         #   The ID for the permission.
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [Boolean] enforce_expansive_access
-        #   Whether the request should enforce expansive access rules.
+        #   Deprecated: All requests use the expansive access rules.
         # @param [Boolean] remove_expiration
         #   Whether to remove the expiration date.
         # @param [Boolean] supports_all_drives
@@ -3088,7 +3130,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists a file's revisions.
+        # Lists a file's revisions. **Important:** The list of revisions returned by
+        # this method might be incomplete for files with a large revision history,
+        # including frequently edited Google Docs, Sheets, and Slides. Older revisions
+        # might be omitted from the response, meaning the first revision returned may
+        # not be the oldest existing revision. The revision history visible in the
+        # Workspace editor user interface might be more complete than the list returned
+        # by the API.
         # @param [String] file_id
         #   The ID of the file.
         # @param [Fixnum] max_results

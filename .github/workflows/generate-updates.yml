@@ -1,4 +1,7 @@
 name: Generate-Updates
+
+permissions:
+  contents: read
 on:
   workflow_dispatch:
     inputs:
@@ -14,14 +17,18 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
-      - name: Install Ruby 3.4
-        uses: ruby/setup-ruby@v1
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
-          ruby-version: "3.4"
+          persist-credentials: false
+      - name: Install Ruby 4.0
+        uses: ruby/setup-ruby@9eb537ca036ebaed86729dcb9309076e4c5c3b74 # v1.314.0
+        with:
+          ruby-version: "4.0"
       - name: Install tools
         run: |
           gem install --no-document toys
       - name: execute
         run: |
-          toys generate-updates -v --fork ${{ github.event.inputs.args }}
+          toys generate-updates -v --fork ${GITHUB_EVENT_INPUTS_ARGS}
+        env:
+          GITHUB_EVENT_INPUTS_ARGS: ${{ github.event.inputs.args }}

@@ -215,6 +215,36 @@ module Google
         end
       end
       
+      # Status of exporting annotation response to user specified `output_uri`.
+      class GoogleCloudVideointelligenceV1ExportToOutputUriStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of the `output_uri` export.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # Deprecated. No effect.
       class GoogleCloudVideointelligenceV1FaceAnnotation
         include Google::Apis::Core::Hashable
@@ -498,7 +528,7 @@ module Google
       # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
       # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
       # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-      # or greater than 1 due to trignometric calculations for location of the box.
+      # or greater than 1 due to trigonometric calculations for location of the box.
       class GoogleCloudVideointelligenceV1NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
@@ -764,7 +794,7 @@ module Google
         # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
         # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
         # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-        # or greater than 1 due to trignometric calculations for location of the box.
+        # or greater than 1 due to trigonometric calculations for location of the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
         # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box
@@ -898,6 +928,11 @@ module Google
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Status of exporting annotation response to user specified `output_uri`.
+        # Corresponds to the JSON property `exportStatus`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1ExportToOutputUriStatus]
+        attr_accessor :export_status
+      
         # Specifies which feature is being tracked if the request contains more than one
         # feature.
         # Corresponds to the JSON property `feature`
@@ -936,6 +971,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_status = args[:export_status] if args.key?(:export_status)
           @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
@@ -1131,6 +1167,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct string value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from 1 up to diarization_speaker_count, and is
@@ -1160,6 +1203,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
@@ -1356,6 +1400,36 @@ module Google
         def update!(**args)
           @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Status of exporting annotation response to user specified `output_uri`.
+      class GoogleCloudVideointelligenceV1beta2ExportToOutputUriStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of the `output_uri` export.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -1642,7 +1716,7 @@ module Google
       # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
       # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
       # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-      # or greater than 1 due to trignometric calculations for location of the box.
+      # or greater than 1 due to trigonometric calculations for location of the box.
       class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
@@ -1908,7 +1982,7 @@ module Google
         # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
         # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
         # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-        # or greater than 1 due to trignometric calculations for location of the box.
+        # or greater than 1 due to trigonometric calculations for location of the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
         # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box
@@ -2042,6 +2116,11 @@ module Google
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Status of exporting annotation response to user specified `output_uri`.
+        # Corresponds to the JSON property `exportStatus`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2ExportToOutputUriStatus]
+        attr_accessor :export_status
+      
         # Specifies which feature is being tracked if the request contains more than one
         # feature.
         # Corresponds to the JSON property `feature`
@@ -2080,6 +2159,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_status = args[:export_status] if args.key?(:export_status)
           @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
@@ -2275,6 +2355,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct string value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from 1 up to diarization_speaker_count, and is
@@ -2304,6 +2391,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
@@ -2500,6 +2588,36 @@ module Google
         def update!(**args)
           @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Status of exporting annotation response to user specified `output_uri`.
+      class GoogleCloudVideointelligenceV1p1beta1ExportToOutputUriStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of the `output_uri` export.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -2786,7 +2904,7 @@ module Google
       # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
       # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
       # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-      # or greater than 1 due to trignometric calculations for location of the box.
+      # or greater than 1 due to trigonometric calculations for location of the box.
       class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
@@ -3052,7 +3170,7 @@ module Google
         # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
         # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
         # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-        # or greater than 1 due to trignometric calculations for location of the box.
+        # or greater than 1 due to trigonometric calculations for location of the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
         # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box
@@ -3186,6 +3304,11 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Status of exporting annotation response to user specified `output_uri`.
+        # Corresponds to the JSON property `exportStatus`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1ExportToOutputUriStatus]
+        attr_accessor :export_status
+      
         # Specifies which feature is being tracked if the request contains more than one
         # feature.
         # Corresponds to the JSON property `feature`
@@ -3224,6 +3347,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_status = args[:export_status] if args.key?(:export_status)
           @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
@@ -3419,6 +3543,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct string value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from 1 up to diarization_speaker_count, and is
@@ -3448,6 +3579,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
@@ -3644,6 +3776,36 @@ module Google
         def update!(**args)
           @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Status of exporting annotation response to user specified `output_uri`.
+      class GoogleCloudVideointelligenceV1p2beta1ExportToOutputUriStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of the `output_uri` export.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -3930,7 +4092,7 @@ module Google
       # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
       # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
       # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-      # or greater than 1 due to trignometric calculations for location of the box.
+      # or greater than 1 due to trigonometric calculations for location of the box.
       class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
@@ -4196,7 +4358,7 @@ module Google
         # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
         # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
         # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-        # or greater than 1 due to trignometric calculations for location of the box.
+        # or greater than 1 due to trigonometric calculations for location of the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
         # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box
@@ -4330,6 +4492,11 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Status of exporting annotation response to user specified `output_uri`.
+        # Corresponds to the JSON property `exportStatus`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1ExportToOutputUriStatus]
+        attr_accessor :export_status
+      
         # Specifies which feature is being tracked if the request contains more than one
         # feature.
         # Corresponds to the JSON property `feature`
@@ -4368,6 +4535,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_status = args[:export_status] if args.key?(:export_status)
           @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
@@ -4563,6 +4731,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct string value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from 1 up to diarization_speaker_count, and is
@@ -4592,6 +4767,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
@@ -4961,6 +5137,36 @@ module Google
         def update!(**args)
           @pornography_likelihood = args[:pornography_likelihood] if args.key?(:pornography_likelihood)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
+        end
+      end
+      
+      # Status of exporting annotation response to user specified `output_uri`.
+      class GoogleCloudVideointelligenceV1p3beta1ExportToOutputUriStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. State of the `output_uri` export.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -5338,7 +5544,7 @@ module Google
       # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
       # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
       # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-      # or greater than 1 due to trignometric calculations for location of the box.
+      # or greater than 1 due to trigonometric calculations for location of the box.
       class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly
         include Google::Apis::Core::Hashable
       
@@ -5690,6 +5896,12 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1SpeechTranscriptionConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Legacy field. This field must be a Cloud Storage URI prefix. (e.g., `
+        # gs://bucket/path/`).
+        # Corresponds to the JSON property `audioOutputUriPrefix`
+        # @return [String]
+        attr_accessor :audio_output_uri_prefix
+      
         # Optional. For file formats, such as MXF or MKV, supporting multiple audio
         # tracks, specify up to two tracks. Default: track 0.
         # Corresponds to the JSON property `audioTracks`
@@ -5769,6 +5981,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio_output_uri_prefix = args[:audio_output_uri_prefix] if args.key?(:audio_output_uri_prefix)
           @audio_tracks = args[:audio_tracks] if args.key?(:audio_tracks)
           @diarization_speaker_count = args[:diarization_speaker_count] if args.key?(:diarization_speaker_count)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
@@ -5944,7 +6157,7 @@ module Google
         # horizontal it might look like: 0----1 | | 3----2 When it's clockwise rotated
         # 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the
         # vertex order will still be (0, 1, 2, 3). Note that values can be less than 0,
-        # or greater than 1 due to trignometric calculations for location of the box.
+        # or greater than 1 due to trigonometric calculations for location of the box.
         # Corresponds to the JSON property `rotatedBoundingBox`
         # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly]
         attr_accessor :rotated_bounding_box
@@ -6078,6 +6291,11 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress
         include Google::Apis::Core::Hashable
       
+        # Status of exporting annotation response to user specified `output_uri`.
+        # Corresponds to the JSON property `exportStatus`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1ExportToOutputUriStatus]
+        attr_accessor :export_status
+      
         # Specifies which feature is being tracked if the request contains more than one
         # feature.
         # Corresponds to the JSON property `feature`
@@ -6116,6 +6334,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @export_status = args[:export_status] if args.key?(:export_status)
           @feature = args[:feature] if args.key?(:feature)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
@@ -6386,6 +6605,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. A distinct string value is assigned for every speaker within the
+        # audio. This field specifies which one of those speakers was detected to have
+        # spoken this word.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
         # Output only. A distinct integer value is assigned for every speaker within the
         # audio. This field specifies which one of those speakers was detected to have
         # spoken this word. Value ranges from 1 up to diarization_speaker_count, and is
@@ -6415,6 +6641,7 @@ module Google
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)

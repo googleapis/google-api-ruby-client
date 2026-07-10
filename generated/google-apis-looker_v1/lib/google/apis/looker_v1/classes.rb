@@ -54,6 +54,40 @@ module Google
         end
       end
       
+      # Controlled egress configuration.
+      class ControlledEgressConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of fully qualified domain names to be added to the allowlist
+        # for outbound traffic.
+        # Corresponds to the JSON property `egressFqdns`
+        # @return [Array<String>]
+        attr_accessor :egress_fqdns
+      
+        # Optional. Whether marketplace is enabled.
+        # Corresponds to the JSON property `marketplaceEnabled`
+        # @return [Boolean]
+        attr_accessor :marketplace_enabled
+        alias_method :marketplace_enabled?, :marketplace_enabled
+      
+        # Output only. The list of IP addresses used by Secure Web Proxy for outbound
+        # traffic.
+        # Corresponds to the JSON property `webProxyIps`
+        # @return [Array<String>]
+        attr_accessor :web_proxy_ips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_fqdns = args[:egress_fqdns] if args.key?(:egress_fqdns)
+          @marketplace_enabled = args[:marketplace_enabled] if args.key?(:marketplace_enabled)
+          @web_proxy_ips = args[:web_proxy_ips] if args.key?(:web_proxy_ips)
+        end
+      end
+      
       # Custom domain information.
       class CustomDomain
         include Google::Apis::Core::Hashable
@@ -367,14 +401,91 @@ module Google
         end
       end
       
+      # Ingress IP allowlist configuration.
+      class IngressIpAllowlistConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of IP range rules to allow ingress traffic.
+        # Corresponds to the JSON property `allowlistRules`
+        # @return [Array<Google::Apis::LookerV1::IngressIpAllowlistRule>]
+        attr_accessor :allowlist_rules
+      
+        # Optional. Whether ingress IP allowlist functionality is enabled on the Looker
+        # instance.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. Whether google service connections are enabled for the instance.
+        # Corresponds to the JSON property `googleServicesEnabled`
+        # @return [Boolean]
+        attr_accessor :google_services_enabled
+        alias_method :google_services_enabled?, :google_services_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowlist_rules = args[:allowlist_rules] if args.key?(:allowlist_rules)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @google_services_enabled = args[:google_services_enabled] if args.key?(:google_services_enabled)
+        end
+      end
+      
+      # Ingress IP allowlist rule.
+      class IngressIpAllowlistRule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description for the IP range.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The IP range to allow ingress traffic from.
+        # Corresponds to the JSON property `ipRange`
+        # @return [String]
+        attr_accessor :ip_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @ip_range = args[:ip_range] if args.key?(:ip_range)
+        end
+      end
+      
       # A Looker instance.
       class Instance
         include Google::Apis::Core::Hashable
+      
+        # Optional. Accelerated security patch enabled for the instance.
+        # Corresponds to the JSON property `acceleratedSecurityPatchEnabled`
+        # @return [Boolean]
+        attr_accessor :accelerated_security_patch_enabled
+        alias_method :accelerated_security_patch_enabled?, :accelerated_security_patch_enabled
       
         # Looker instance Admin settings fields.
         # Corresponds to the JSON property `adminSettings`
         # @return [Google::Apis::LookerV1::AdminSettings]
         attr_accessor :admin_settings
+      
+        # Optional. Indicates whether catalog integration is disabled for the Looker
+        # instance.
+        # Corresponds to the JSON property `catalogIntegrationOptOut`
+        # @return [Boolean]
+        attr_accessor :catalog_integration_opt_out
+        alias_method :catalog_integration_opt_out?, :catalog_integration_opt_out
+      
+        # Optional. Storage class of the instance.
+        # Corresponds to the JSON property `classType`
+        # @return [String]
+        attr_accessor :class_type
       
         # Network name in the consumer project. Format: `projects/`project`/global/
         # networks/`network``. Note that the consumer network may be in a different GCP
@@ -382,6 +493,17 @@ module Google
         # Corresponds to the JSON property `consumerNetwork`
         # @return [String]
         attr_accessor :consumer_network
+      
+        # Controlled egress configuration.
+        # Corresponds to the JSON property `controlledEgressConfig`
+        # @return [Google::Apis::LookerV1::ControlledEgressConfig]
+        attr_accessor :controlled_egress_config
+      
+        # Optional. Whether controlled egress is enabled on the Looker instance.
+        # Corresponds to the JSON property `controlledEgressEnabled`
+        # @return [Boolean]
+        attr_accessor :controlled_egress_enabled
+        alias_method :controlled_egress_enabled?, :controlled_egress_enabled
       
         # Output only. The time when the Looker instance provisioning was first
         # requested.
@@ -420,6 +542,11 @@ module Google
         # @return [Boolean]
         attr_accessor :gemini_enabled
         alias_method :gemini_enabled?, :gemini_enabled
+      
+        # Ingress IP allowlist configuration.
+        # Corresponds to the JSON property `ingressIpAllowlistConfig`
+        # @return [Google::Apis::LookerV1::IngressIpAllowlistConfig]
+        attr_accessor :ingress_ip_allowlist_config
       
         # Output only. Private Ingress IP (IPv4).
         # Corresponds to the JSON property `ingressPrivateIp`
@@ -473,6 +600,11 @@ module Google
         # @return [Google::Apis::LookerV1::OAuthConfig]
         attr_accessor :oauth_config
       
+        # Configuration for periodic export.
+        # Corresponds to the JSON property `periodicExportConfig`
+        # @return [Google::Apis::LookerV1::PeriodicExportConfig]
+        attr_accessor :periodic_export_config
+      
         # Platform edition.
         # Corresponds to the JSON property `platformEdition`
         # @return [String]
@@ -503,6 +635,11 @@ module Google
         attr_accessor :public_ip_enabled
         alias_method :public_ip_enabled?, :public_ip_enabled
       
+        # Optional. The selected release channel for the instance.
+        # Corresponds to the JSON property `releaseChannel`
+        # @return [String]
+        attr_accessor :release_channel
+      
         # Name of a reserved IP address range within the Instance.consumer_network, to
         # be used for private services access connection. May or may not be specified in
         # a create request.
@@ -522,10 +659,20 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
+        # Output only. The reason for the instance being in a soft-deleted state.
+        # Corresponds to the JSON property `softDeleteReason`
+        # @return [String]
+        attr_accessor :soft_delete_reason
+      
         # Output only. The state of the instance.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
+      
+        # Output only. The time when the Looker instance was suspended (soft deleted).
+        # Corresponds to the JSON property `suspendedTime`
+        # @return [String]
+        attr_accessor :suspended_time
       
         # Output only. The time when the Looker instance was last updated.
         # Corresponds to the JSON property `updateTime`
@@ -543,8 +690,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerated_security_patch_enabled = args[:accelerated_security_patch_enabled] if args.key?(:accelerated_security_patch_enabled)
           @admin_settings = args[:admin_settings] if args.key?(:admin_settings)
+          @catalog_integration_opt_out = args[:catalog_integration_opt_out] if args.key?(:catalog_integration_opt_out)
+          @class_type = args[:class_type] if args.key?(:class_type)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
+          @controlled_egress_config = args[:controlled_egress_config] if args.key?(:controlled_egress_config)
+          @controlled_egress_enabled = args[:controlled_egress_enabled] if args.key?(:controlled_egress_enabled)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_domain = args[:custom_domain] if args.key?(:custom_domain)
           @deny_maintenance_period = args[:deny_maintenance_period] if args.key?(:deny_maintenance_period)
@@ -552,6 +704,7 @@ module Google
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @fips_enabled = args[:fips_enabled] if args.key?(:fips_enabled)
           @gemini_enabled = args[:gemini_enabled] if args.key?(:gemini_enabled)
+          @ingress_ip_allowlist_config = args[:ingress_ip_allowlist_config] if args.key?(:ingress_ip_allowlist_config)
           @ingress_private_ip = args[:ingress_private_ip] if args.key?(:ingress_private_ip)
           @ingress_public_ip = args[:ingress_public_ip] if args.key?(:ingress_public_ip)
           @last_deny_maintenance_period = args[:last_deny_maintenance_period] if args.key?(:last_deny_maintenance_period)
@@ -562,15 +715,19 @@ module Google
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @name = args[:name] if args.key?(:name)
           @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
+          @periodic_export_config = args[:periodic_export_config] if args.key?(:periodic_export_config)
           @platform_edition = args[:platform_edition] if args.key?(:platform_edition)
           @private_ip_enabled = args[:private_ip_enabled] if args.key?(:private_ip_enabled)
           @psc_config = args[:psc_config] if args.key?(:psc_config)
           @psc_enabled = args[:psc_enabled] if args.key?(:psc_enabled)
           @public_ip_enabled = args[:public_ip_enabled] if args.key?(:public_ip_enabled)
+          @release_channel = args[:release_channel] if args.key?(:release_channel)
           @reserved_range = args[:reserved_range] if args.key?(:reserved_range)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @soft_delete_reason = args[:soft_delete_reason] if args.key?(:soft_delete_reason)
           @state = args[:state] if args.key?(:state)
+          @suspended_time = args[:suspended_time] if args.key?(:suspended_time)
           @update_time = args[:update_time] if args.key?(:update_time)
           @user_metadata = args[:user_metadata] if args.key?(:user_metadata)
         end
@@ -726,6 +883,14 @@ module Google
         # @return [Array<Google::Apis::LookerV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -734,6 +899,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -852,6 +1018,13 @@ module Google
         # @return [String]
         attr_accessor :client_secret
       
+        # Optional. Whether to use the shared OAuth client. Instances specifying this
+        # field do not need to provide client_id and client_secret.
+        # Corresponds to the JSON property `sharedOauthClientEnabled`
+        # @return [Boolean]
+        attr_accessor :shared_oauth_client_enabled
+        alias_method :shared_oauth_client_enabled?, :shared_oauth_client_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -860,6 +1033,7 @@ module Google
         def update!(**args)
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
+          @shared_oauth_client_enabled = args[:shared_oauth_client_enabled] if args.key?(:shared_oauth_client_enabled)
         end
       end
       
@@ -983,6 +1157,41 @@ module Google
         end
       end
       
+      # Configuration for periodic export.
+      class PeriodicExportConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Cloud Storage bucket URI for periodic export. Format: gs://`
+        # bucket_name`
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # Required. Name of the CMEK key in KMS. Format: projects/`project`/locations/`
+        # location`/keyRings/`key_ring`/cryptoKeys/`crypto_key`
+        # Corresponds to the JSON property `kmsKey`
+        # @return [String]
+        attr_accessor :kms_key
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `startTime`
+        # @return [Google::Apis::LookerV1::TimeOfDay]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @kms_key = args[:kms_key] if args.key?(:kms_key)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Information for Private Service Connect (PSC) setup for a Looker instance.
       class PscConfig
         include Google::Apis::Core::Hashable
@@ -1057,11 +1266,24 @@ module Google
         # @return [String]
         attr_accessor :connection_status
       
-        # Required. Fully qualified domain name that will be used in the private DNS
+        # Output only. Reason the service attachment creation failed. This value will
+        # only be populated if the service attachment encounters an issue during
+        # provisioning.
+        # Corresponds to the JSON property `failureReason`
+        # @return [String]
+        attr_accessor :failure_reason
+      
+        # Optional. Fully qualified domain name that will be used in the private DNS
         # record created for the service attachment.
         # Corresponds to the JSON property `localFqdn`
         # @return [String]
         attr_accessor :local_fqdn
+      
+        # Optional. List of fully qualified domain names that will be used in the
+        # private DNS record created for the service attachment.
+        # Corresponds to the JSON property `localFqdns`
+        # @return [Array<String>]
+        attr_accessor :local_fqdns
       
         # Required. URI of the service attachment to connect to. Format: projects/`
         # project`/regions/`region`/serviceAttachments/`service_attachment`
@@ -1076,7 +1298,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connection_status = args[:connection_status] if args.key?(:connection_status)
+          @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @local_fqdn = args[:local_fqdn] if args.key?(:local_fqdn)
+          @local_fqdns = args[:local_fqdns] if args.key?(:local_fqdns)
           @target_service_attachment_uri = args[:target_service_attachment_uri] if args.key?(:target_service_attachment_uri)
         end
       end
@@ -1162,6 +1386,19 @@ module Google
           @minutes = args[:minutes] if args.key?(:minutes)
           @nanos = args[:nanos] if args.key?(:nanos)
           @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # Request options for undeleting an instance.
+      class UndeleteInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

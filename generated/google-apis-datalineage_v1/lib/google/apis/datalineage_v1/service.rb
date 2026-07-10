@@ -51,6 +51,144 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Get the Config for a given resource.
+        # @param [String] name
+        #   Required. REQUIRED: The resource name of the config to be fetched. Format: `
+        #   organizations/`organization_id`/locations/global/config` `folders/`folder_id`/
+        #   locations/global/config` `projects/`project_id`/locations/global/config` `
+        #   projects/`project_number`/locations/global/config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_location_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config::Representation
+          command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the Config for a given resource.
+        # @param [String] name
+        #   Identifier. The resource name of the config. Format: `organizations/`
+        #   organization_id`/locations/global/config` `folders/`folder_id`/locations/
+        #   global/config` `projects/`project_id`/locations/global/config` `projects/`
+        #   project_number`/locations/global/config`
+        # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config] google_cloud_datacatalog_lineage_configmanagement_v1_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_location_config(name, google_cloud_datacatalog_lineage_configmanagement_v1_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config::Representation
+          command.request_object = google_cloud_datacatalog_lineage_configmanagement_v1_config_object
+          command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config::Representation
+          command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the Config for a given resource.
+        # @param [String] name
+        #   Required. REQUIRED: The resource name of the config to be fetched. Format: `
+        #   organizations/`organization_id`/locations/global/config` `folders/`folder_id`/
+        #   locations/global/config` `projects/`project_id`/locations/global/config` `
+        #   projects/`project_number`/locations/global/config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config::Representation
+          command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the Config for a given resource.
+        # @param [String] name
+        #   Identifier. The resource name of the config. Format: `organizations/`
+        #   organization_id`/locations/global/config` `folders/`folder_id`/locations/
+        #   global/config` `projects/`project_id`/locations/global/config` `projects/`
+        #   project_number`/locations/global/config`
+        # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config] google_cloud_datacatalog_lineage_configmanagement_v1_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_location_config(name, google_cloud_datacatalog_lineage_configmanagement_v1_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config::Representation
+          command.request_object = google_cloud_datacatalog_lineage_configmanagement_v1_config_object
+          command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config::Representation
+          command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieve information about LineageProcesses associated with specific links.
         # LineageProcesses are transformation pipelines that result in data flowing from
         # **source** to **target** assets. Links between assets represent this operation.
@@ -100,9 +238,9 @@ module Google
         #   Required. The name of the project and its location that should own the process,
         #   run, and lineage event.
         # @param [String] request_id
-        #   A unique identifier for this request. Restricted to 36 ASCII characters. A
-        #   random UUID is recommended. This request is idempotent only if a `request_id`
-        #   is provided.
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is idempotent only if a
+        #   `request_id` is provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -126,6 +264,57 @@ module Google
           command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a streaming response of lineage links connected to the requested
+        # assets by performing a breadth-first search in the given direction. Links
+        # represent the data flow between **source** (upstream) and **target** (
+        # downstream) assets in transformation pipelines. Links are stored in the same
+        # project as the Lineage Events that create them. This method retrieves links
+        # from all valid locations provided in the request. This method supports Column-
+        # Level Lineage (CLL) along with wildcard support to retrieve all CLL for an
+        # Entity FQN. Following permissions are required to retrieve links: * `
+        # datalineage.events.get` permission for the project where the link is stored
+        # for entity-level lineage. * `datalineage.events.getFields` permission for the
+        # project where the link is stored for column-level lineage. This method also
+        # returns processes that created the links if explicitly requested by setting [
+        # max_process_per_link](google.cloud.datacatalog.lineage.v1.
+        # SearchLineageStreamingRequest.limits.max_process_per_link) is non-zero and
+        # full process details are requested via `links.processes.process` in the [
+        # FieldMask](https://developers.google.com/workspace/docs/api/how-tos/field-
+        # masks#read_with_a_field_mask). Permission required to retrieve processes: * `
+        # datalineage.processes.get` permission for the project where the process is
+        # stored.
+        # @param [String] parent
+        #   Required. The project and location to initiate the search from.
+        # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest] google_cloud_datacatalog_lineage_v1_search_lineage_streaming_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_lineage_streaming(parent, google_cloud_datacatalog_lineage_v1_search_lineage_streaming_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:searchLineageStreaming', options)
+          command.request_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequest::Representation
+          command.request_object = google_cloud_datacatalog_lineage_v1_search_lineage_streaming_request_object
+          command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse::Representation
+          command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -164,6 +353,75 @@ module Google
           command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLinksResponse::Representation
           command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1SearchLinksResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the Config for a given resource.
+        # @param [String] name
+        #   Required. REQUIRED: The resource name of the config to be fetched. Format: `
+        #   organizations/`organization_id`/locations/global/config` `folders/`folder_id`/
+        #   locations/global/config` `projects/`project_id`/locations/global/config` `
+        #   projects/`project_number`/locations/global/config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config::Representation
+          command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the Config for a given resource.
+        # @param [String] name
+        #   Identifier. The resource name of the config. Format: `organizations/`
+        #   organization_id`/locations/global/config` `folders/`folder_id`/locations/
+        #   global/config` `projects/`project_id`/locations/global/config` `projects/`
+        #   project_number`/locations/global/config`
+        # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config] google_cloud_datacatalog_lineage_configmanagement_v1_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_config(name, google_cloud_datacatalog_lineage_configmanagement_v1_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config::Representation
+          command.request_object = google_cloud_datacatalog_lineage_configmanagement_v1_config_object
+          command.response_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config::Representation
+          command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageConfigmanagementV1Config
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -283,6 +541,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -300,7 +566,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::DatalineageV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::DatalineageV1::GoogleLongrunningListOperationsResponse
@@ -308,6 +574,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -318,9 +585,9 @@ module Google
         #   Required. The name of the project and its location that should own the process.
         # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Process] google_cloud_datacatalog_lineage_v1_process_object
         # @param [String] request_id
-        #   A unique identifier for this request. Restricted to 36 ASCII characters. A
-        #   random UUID is recommended. This request is idempotent only if a `request_id`
-        #   is provided.
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is idempotent only if a
+        #   `request_id` is provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -355,8 +622,8 @@ module Google
         # @param [String] name
         #   Required. The name of the process to delete.
         # @param [Boolean] allow_missing
-        #   If set to true and the process is not found, the request succeeds but the
-        #   server doesn't perform any actions.
+        #   Optional. If set to true and the process is not found, the request succeeds
+        #   but the server doesn't perform any actions.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -421,13 +688,14 @@ module Google
         #   Required. The name of the project and its location that owns this collection
         #   of processes.
         # @param [Fixnum] page_size
-        #   The maximum number of processes to return. The service may return fewer than
-        #   this value. If unspecified, at most 50 processes are returned. The maximum
-        #   value is 100; values greater than 100 are cut to 100.
+        #   Optional. The maximum number of processes to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 processes are returned. The
+        #   maximum value is 100; values greater than 100 are cut to 100.
         # @param [String] page_token
-        #   The page token received from a previous `ListProcesses` call. Specify it to
-        #   get the next page. When paginating, all other parameters specified in this
-        #   call must match the parameters of the call that provided the page token.
+        #   Optional. The page token received from a previous `ListProcesses` call.
+        #   Specify it to get the next page. When paginating, all other parameters
+        #   specified in this call must match the parameters of the call that provided the
+        #   page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -465,9 +733,14 @@ module Google
         #   characters in a set: `a-zA-Z0-9_-:.`
         # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Process] google_cloud_datacatalog_lineage_v1_process_object
         # @param [Boolean] allow_missing
-        #   If set to true and the process is not found, the request inserts it.
+        #   Optional. If set to true and the process is not found, the request inserts it.
+        # @param [String] request_id
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is idempotent only if a
+        #   `request_id` is provided.
         # @param [String] update_mask
-        #   The list of fields to update. Currently not used. The whole message is updated.
+        #   Optional. The list of fields to update. Currently not used. The whole message
+        #   is updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -485,7 +758,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_process(name, google_cloud_datacatalog_lineage_v1_process_object = nil, allow_missing: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_process(name, google_cloud_datacatalog_lineage_v1_process_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Process::Representation
           command.request_object = google_cloud_datacatalog_lineage_v1_process_object
@@ -493,6 +766,7 @@ module Google
           command.response_class = Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Process
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -504,9 +778,9 @@ module Google
         #   Required. The name of the process that should own the run.
         # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Run] google_cloud_datacatalog_lineage_v1_run_object
         # @param [String] request_id
-        #   A unique identifier for this request. Restricted to 36 ASCII characters. A
-        #   random UUID is recommended. This request is idempotent only if a `request_id`
-        #   is provided.
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is idempotent only if a
+        #   `request_id` is provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -541,8 +815,8 @@ module Google
         # @param [String] name
         #   Required. The name of the run to delete.
         # @param [Boolean] allow_missing
-        #   If set to true and the run is not found, the request succeeds but the server
-        #   doesn't perform any actions.
+        #   Optional. If set to true and the run is not found, the request succeeds but
+        #   the server doesn't perform any actions.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -606,13 +880,13 @@ module Google
         # @param [String] parent
         #   Required. The name of process that owns this collection of runs.
         # @param [Fixnum] page_size
-        #   The maximum number of runs to return. The service may return fewer than this
-        #   value. If unspecified, at most 50 runs are returned. The maximum value is 100;
-        #   values greater than 100 are cut to 100.
+        #   Optional. The maximum number of runs to return. The service may return fewer
+        #   than this value. If unspecified, at most 50 runs are returned. The maximum
+        #   value is 100; values greater than 100 are cut to 100.
         # @param [String] page_token
-        #   The page token received from a previous `ListRuns` call. Specify it to get the
-        #   next page. When paginating, all other parameters specified in this call must
-        #   match the parameters of the call that provided the page token.
+        #   Optional. The page token received from a previous `ListRuns` call. Specify it
+        #   to get the next page. When paginating, all other parameters specified in this
+        #   call must match the parameters of the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -650,9 +924,10 @@ module Google
         #   set: `a-zA-Z0-9_-:.`
         # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1Run] google_cloud_datacatalog_lineage_v1_run_object
         # @param [Boolean] allow_missing
-        #   If set to true and the run is not found, the request creates it.
+        #   Optional. If set to true and the run is not found, the request creates it.
         # @param [String] update_mask
-        #   The list of fields to update. Currently not used. The whole message is updated.
+        #   Optional. The list of fields to update. Currently not used. The whole message
+        #   is updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -689,9 +964,9 @@ module Google
         #   Required. The name of the run that should own the lineage event.
         # @param [Google::Apis::DatalineageV1::GoogleCloudDatacatalogLineageV1LineageEvent] google_cloud_datacatalog_lineage_v1_lineage_event_object
         # @param [String] request_id
-        #   A unique identifier for this request. Restricted to 36 ASCII characters. A
-        #   random UUID is recommended. This request is idempotent only if a `request_id`
-        #   is provided.
+        #   Optional. A unique identifier for this request. Restricted to 36 ASCII
+        #   characters. A random UUID is recommended. This request is idempotent only if a
+        #   `request_id` is provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -726,8 +1001,8 @@ module Google
         # @param [String] name
         #   Required. The name of the lineage event to delete.
         # @param [Boolean] allow_missing
-        #   If set to true and the lineage event is not found, the request succeeds but
-        #   the server doesn't perform any actions.
+        #   Optional. If set to true and the lineage event is not found, the request
+        #   succeeds but the server doesn't perform any actions.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -792,13 +1067,14 @@ module Google
         #   Required. The name of the run that owns the collection of lineage events to
         #   get.
         # @param [Fixnum] page_size
-        #   The maximum number of lineage events to return. The service may return fewer
-        #   events than this value. If unspecified, at most 50 events are returned. The
-        #   maximum value is 100; values greater than 100 are cut to 100.
+        #   Optional. The maximum number of lineage events to return. The service may
+        #   return fewer events than this value. If unspecified, at most 50 events are
+        #   returned. The maximum value is 100; values greater than 100 are cut to 100.
         # @param [String] page_token
-        #   The page token received from a previous `ListLineageEvents` call. Specify it
-        #   to get the next page. When paginating, all other parameters specified in this
-        #   call must match the parameters of the call that provided the page token.
+        #   Optional. The page token received from a previous `ListLineageEvents` call.
+        #   Specify it to get the next page. When paginating, all other parameters
+        #   specified in this call must match the parameters of the call that provided the
+        #   page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

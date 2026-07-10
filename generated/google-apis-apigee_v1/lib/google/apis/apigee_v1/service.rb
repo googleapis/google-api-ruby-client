@@ -828,6 +828,191 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an APIM ServiceExtension in an organization.
+        # @param [String] parent
+        #   Required. Name of the organization in which the service extension will be
+        #   created. Use the following structure in your request: `organizations/`org``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension] google_cloud_apigee_v1_apim_service_extension_object
+        # @param [String] apim_service_extension_id
+        #   Optional. ID used to uniquely identify of the service extension. It must
+        #   conform with RFC-1034, is restricted to lower-cased letters, numbers and
+        #   hyphens, and can have a maximum length of 63 characters. Additionally, the
+        #   first character must be a letter and the last a letter or a number.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_apim_service_extension(parent, google_cloud_apigee_v1_apim_service_extension_object = nil, apim_service_extension_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/apimServiceExtensions', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension::Representation
+          command.request_object = google_cloud_apigee_v1_apim_service_extension_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['apimServiceExtensionId'] = apim_service_extension_id unless apim_service_extension_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes APIM service extension from an organization.
+        # @param [String] name
+        #   Required. Name of the service extension. Use the following structure in your
+        #   request: `organizations/`org`/apimServiceExtensions/`extension_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_apim_service_extension(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets APIM service extension details.
+        # @param [String] name
+        #   Required. Name of the service extension. Use the following structure in your
+        #   request: `organizations/`org`/apimServiceExtensions/`extension_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_apim_service_extension(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all APIM service extensions in an organization.
+        # @param [String] parent
+        #   Required. Name of the organization for which to list the service extension.
+        #   Use the following structure in your request: `organizations/`org`/
+        #   apimServiceExtensions`
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of items to return. If unspecified, at most 25
+        #   service extension will be returned.
+        # @param [String] page_token
+        #   Optional. Page token, returned from a previous `ListApimServiceExtensions`
+        #   call, that you can use to retrieve the next page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApimServiceExtensionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApimServiceExtensionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_apim_service_extensions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/apimServiceExtensions', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApimServiceExtensionsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListApimServiceExtensionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an APIM service extension in an organization.
+        # @param [String] name
+        #   Identifier. unique name of the APIM service extension. The name must conform
+        #   with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and
+        #   can have a maximum length of 63 characters. Additionally, the first character
+        #   must be a letter and the last a letter or a number.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension] google_cloud_apigee_v1_apim_service_extension_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the service extension is not found, a new
+        #   service extension will be created. In this situation, `update_mask` is ignored.
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_apim_service_extension(name, google_cloud_apigee_v1_apim_service_extension_object = nil, allow_missing: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ApimServiceExtension::Representation
+          command.request_object = google_cloud_apigee_v1_apim_service_extension_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates or creates API product attributes. This API **replaces** the current
         # list of attributes with the attributes specified in the request body. In this
         # way, you can update existing attributes, add new attributes, or delete
@@ -1114,7 +1299,10 @@ module Google
         # updating. The API product name required in the request URL is the internal
         # name of the product, not the display name. While they may be the same, it
         # depends on whether the API product was created via UI or API. View the list of
-        # API products to identify their internal names.
+        # API products to identify their internal names. **Note:** We recommend that you
+        # avoid making concurrent update requests for the same resource. Near-
+        # simultaneous writes to the same entity can result in conflicts and unexpected
+        # behavior. Ensure operations are sequential when modifying a single resource.
         # @param [String] name
         #   Required. Name of the API product. Use the following structure in your request:
         #   `organizations/`org`/apiproducts/`apiproduct`` If the resource has the `space`
@@ -1921,6 +2109,85 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get the key value map scoped to an organization, environment, or API proxy.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to fetch the key value map.
+        #   Use **one** of the following structures in your request: * `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``. If the KeyValueMap
+        #   is under an API Proxy resource that has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_api_keyvaluemap(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the key value map scoped to an organization, environment, or API proxy.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to fetch the key value map.
+        #   Use **one** of the following structures in your request: * `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``. If the KeyValueMap
+        #   is under an API Proxy resource that has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] google_cloud_apigee_v1_key_value_map_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_api_keyvaluemap(name, google_cloud_apigee_v1_key_value_map_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap::Representation
+          command.request_object = google_cloud_apigee_v1_key_value_map_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates key value entries in a key value map scoped to an organization,
         # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
         # higher.
@@ -2401,6 +2668,69 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the account balance for the AppGroup.
+        # @param [String] name
+        #   Required. Account balance for the AppGroup. Use the following structure in
+        #   your request: `organizations/`org`/appgroups/`app_group`/balance`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_appgroup_balance(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the monetization configuration for the AppGroup.
+        # @param [String] name
+        #   Required. Monetization configuration for the AppGroup. Use the following
+        #   structure in your request: `organizations/`org`/appgroups/`app_group`/
+        #   monetizationConfig`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupMonetizationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupMonetizationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_appgroup_monetization_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupMonetizationConfig::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupMonetizationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all AppGroups in an organization. A maximum of 1000 AppGroups are
         # returned in the response if PageSize is not specified, or if the PageSize is
         # greater than 1000.
@@ -2450,7 +2780,11 @@ module Google
         # Updates an AppGroup. This API replaces the existing AppGroup details with
         # those specified in the request. Include or exclude any existing details that
         # you want to retain or delete, respectively. Note that the state of the
-        # AppGroup should be updated using `action`, and not via AppGroup.
+        # AppGroup should be updated using `action`, and not via AppGroup. **Note:** We
+        # recommend that you avoid making concurrent update requests for the same
+        # resource. Near-simultaneous writes to the same entity can result in conflicts
+        # and unexpected behavior. Ensure operations are sequential when modifying a
+        # single resource.
         # @param [String] name
         #   Required. Name of the AppGroup. Use the following structure in your request: `
         #   organizations/`org`/appgroups/`app_group_name``
@@ -2484,6 +2818,45 @@ module Google
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroup
           command.params['name'] = name unless name.nil?
           command.query['action'] = action unless action.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the monetization configuration for the AppGroup. **Note:** We
+        # recommend that you avoid making concurrent update requests for the same
+        # resource. Near-simultaneous writes to the same entity can result in conflicts
+        # and unexpected behavior. Ensure operations are sequential when modifying a
+        # single resource.
+        # @param [String] name
+        #   Required. Monetization configuration for the AppGroup. Use the following
+        #   structure in your request: `organizations/`org`/appgroups/`app_group`/
+        #   monetizationConfig`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupMonetizationConfig] google_cloud_apigee_v1_app_group_monetization_config_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupMonetizationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupMonetizationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_appgroup_monetization_config(name, google_cloud_apigee_v1_app_group_monetization_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupMonetizationConfig::Representation
+          command.request_object = google_cloud_apigee_v1_app_group_monetization_config_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupMonetizationConfig::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupMonetizationConfig
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2641,7 +3014,10 @@ module Google
         # it is the primary key used to identify the app and cannot be changed. This API
         # replaces the existing attributes with those specified in the request. Include
         # or exclude any existing attributes that you want to retain or delete,
-        # respectively.
+        # respectively. **Note:** We recommend that you avoid making concurrent update
+        # requests for the same resource. Near-simultaneous writes to the same entity
+        # can result in conflicts and unexpected behavior. Ensure operations are
+        # sequential when modifying a single resource.
         # @param [String] name
         #   Required. Name of the AppGroup app. Use the following structure in your
         #   request: `organizations/`org`/appgroups/`app_group_name`/apps/`app``
@@ -2903,6 +3279,219 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adjust the prepaid balance for the AppGroup. This API will be used in
+        # scenarios where the AppGroup has been under-charged or over-charged.
+        # @param [String] name
+        #   Required. Account balance for the AppGroup. Use the following structure in
+        #   your request: `organizations/`org`/appgroups/`app_group`/balance`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdjustAppGroupBalanceRequest] google_cloud_apigee_v1_adjust_app_group_balance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def adjust_organization_appgroup_balance(name, google_cloud_apigee_v1_adjust_app_group_balance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:adjust', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AdjustAppGroupBalanceRequest::Representation
+          command.request_object = google_cloud_apigee_v1_adjust_app_group_balance_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Credits the account balance for the AppGroup.
+        # @param [String] name
+        #   Required. Account balance for the AppGroup. Use the following structure in
+        #   your request: `organizations/`org`/appgroups/`app_group`/balance`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CreditAppGroupBalanceRequest] google_cloud_apigee_v1_credit_app_group_balance_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def credit_organization_appgroup_balance(name, google_cloud_apigee_v1_credit_app_group_balance_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:credit', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CreditAppGroupBalanceRequest::Representation
+          command.request_object = google_cloud_apigee_v1_credit_app_group_balance_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupBalance
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a subscription to an API product.
+        # @param [String] parent
+        #   Required. Name of the appgroup that is purchasing a subscription to the API
+        #   product. Use the following structure in your request: `organizations/`org`/
+        #   appgroups/`appgroup``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription] google_cloud_apigee_v1_app_group_subscription_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_appgroup_subscription(parent, google_cloud_apigee_v1_app_group_subscription_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/subscriptions', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription::Representation
+          command.request_object = google_cloud_apigee_v1_app_group_subscription_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Expires an API product subscription immediately.
+        # @param [String] name
+        #   Required. Name of the API product subscription. Use the following structure in
+        #   your request: `organizations/`org`/appgroups/`appgroup`/subscriptions/`
+        #   subscription``
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest] google_cloud_apigee_v1_expire_app_group_subscription_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def expire_organization_appgroup_subscription(name, google_cloud_apigee_v1_expire_app_group_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:expire', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest::Representation
+          command.request_object = google_cloud_apigee_v1_expire_app_group_subscription_request_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get an api product subscription for an appgroup.
+        # @param [String] name
+        #   Required. The name of the AppGroupSubscription to retrieve. Format: `
+        #   organizations/`org`/appgroups/`appgroup`/subscriptions/`subscription``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_appgroup_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AppGroupSubscription
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List all api product subscriptions for an appgroup.
+        # @param [String] parent
+        #   Required. Name of the appgroup. Use the following structure in your request: `
+        #   organizations/`org`/appgroups/`appgroup``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of subscriptions to return. The service may
+        #   return fewer than this value. If unspecified, at most 100 subscriptions will
+        #   be returned. The maximum value is 1000; values above 1000 will be coerced to
+        #   1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListAppGroupSubscriptions`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListAppGroupSubscriptions` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_appgroup_subscriptions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/subscriptions', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the app profile for the specified app ID.
         # @param [String] name
         #   Required. App ID in the following format: `organizations/`org`/apps/`app``
@@ -2960,13 +3549,16 @@ module Google
         #   Defaults to `approved`.
         # @param [Fixnum] page_size
         #   Optional. Count of apps a single page can have in the response. If unspecified,
-        #   at most 100 apps will be returned. The maximum value is 100; values above 100
-        #   will be coerced to 100. "page_size" is supported from ver 1.10.0 and above.
+        #   at most 1000 apps will be returned. The maximum value is 1000; values above
+        #   1000 will be coerced to 1000. "page_size" is supported from ver 1.10.0 and
+        #   above.
         # @param [String] page_token
         #   Optional. The starting index record for listing the developers. "page_token"
         #   is supported from ver 1.10.0 and above.
         # @param [Fixnum] rows
-        #   Optional. Maximum number of app IDs to return. Defaults to 10000.
+        #   Optional. Maximum number of app IDs to return. Defaults to 1000, which is also
+        #   the upper limit. To get more than 1000, use pagination with 'pageSize' and '
+        #   pageToken' parameters.
         # @param [String] start_key
         #   Returns the list of apps starting from the specified app ID.
         # @param [String] status
@@ -3550,7 +4142,10 @@ module Google
         # Any custom attributes associated with these entities are cached for at least
         # 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn`
         # element on the OAuthV2 policy won't be able to expire an access token in less
-        # than 180 seconds.
+        # than 180 seconds. **Note:** We recommend that you avoid making concurrent
+        # update requests for the same resource. Near-simultaneous writes to the same
+        # entity can result in conflicts and unexpected behavior. Ensure operations are
+        # sequential when modifying a single resource.
         # @param [String] name
         #   Required. Email address of the developer. Use the following structure in your
         #   request: `organizations/`org`/developers/`developer_email``
@@ -3839,10 +4434,12 @@ module Google
         # @param [Boolean] expand
         #   Optional. Specifies whether to expand the results. Set to `true` to expand the
         #   results. This query parameter is not valid if you use the `count` or `startKey`
-        #   query parameters.
+        #   query parameters. **Note**: If set to `true`, the `apigee.developerapps.get`
+        #   permission is required.
         # @param [Boolean] shallow_expand
         #   Optional. Specifies whether to expand the results in shallow mode. Set to `
-        #   true` to expand the results in shallow mode.
+        #   true` to expand the results in shallow mode. **Note**: If set to `true`, the `
+        #   apigee.developerapps.get` permission is required.
         # @param [String] start_key
         #   **Note**: Must be used in conjunction with the `count` parameter. Name of the
         #   developer app from which to start displaying the list of developer apps. For
@@ -3889,7 +4486,10 @@ module Google
         # changed. * Scopes associated with the app. Instead, use the
         # ReplaceDeveloperAppKey API. This API replaces the existing attributes with
         # those specified in the request. Include or exclude any existing attributes
-        # that you want to retain or delete, respectively.
+        # that you want to retain or delete, respectively. **Note:** We recommend that
+        # you avoid making concurrent update requests for the same resource. Near-
+        # simultaneous writes to the same entity can result in conflicts and unexpected
+        # behavior. Ensure operations are sequential when modifying a single resource.
         # @param [String] name
         #   Required. Name of the developer app. Use the following structure in your
         #   request: `organizations/`org`/developers/`developer_email`/apps/`app``
@@ -6527,10 +7127,10 @@ module Google
         # @param [String] name
         #   Required. The name of the debug session to retrieve. Must be of the form: `
         #   organizations/`organization`/environments/`environment`/apis/`api`/revisions/`
-        #   revision`/debugsessions/`session``. If the API proxy resource has the `space`
-        #   attribute set, IAM permissions are checked differently . To learn more, read
-        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
-        #   system-administration/spaces/apigee-spaces-overview).
+        #   revision`/debugsessions/`debug_session``. If the API proxy resource has the `
+        #   space` attribute set, IAM permissions are checked differently . To learn more,
+        #   read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-
+        #   platform/system-administration/spaces/apigee-spaces-overview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6568,10 +7168,11 @@ module Google
         #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
         #   overview).
         # @param [Fixnum] page_size
-        #   Maximum number of debug sessions to return. The page size defaults to 25.
+        #   Optional. Maximum number of debug sessions to return. The page size defaults
+        #   to 25.
         # @param [String] page_token
-        #   Page token, returned from a previous ListDebugSessions call, that you can use
-        #   to retrieve the next page.
+        #   Optional. Page token, returned from a previous ListDebugSessions call, that
+        #   you can use to retrieve the next page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6605,7 +7206,7 @@ module Google
         # @param [String] name
         #   Required. The name of the debug session transaction. Must be of the form: `
         #   organizations/`organization`/environments/`environment`/apis/`api`/revisions/`
-        #   revision`/debugsessions/`session`/data/`transaction``. If the API proxy
+        #   revision`/debugsessions/`debug_session`/data/`transaction``. If the API proxy
         #   resource has the `space` attribute set, IAM permissions are checked
         #   differently . To learn more, read the [Apigee Spaces Overview](https://cloud.
         #   google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-
@@ -7709,6 +8310,85 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get the key value map scoped to an organization, environment, or API proxy.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to fetch the key value map.
+        #   Use **one** of the following structures in your request: * `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``. If the KeyValueMap
+        #   is under an API Proxy resource that has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_keyvaluemap(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the key value map scoped to an organization, environment, or API proxy.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to fetch the key value map.
+        #   Use **one** of the following structures in your request: * `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``. If the KeyValueMap
+        #   is under an API Proxy resource that has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] google_cloud_apigee_v1_key_value_map_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_environment_keyvaluemap(name, google_cloud_apigee_v1_key_value_map_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap::Representation
+          command.request_object = google_cloud_apigee_v1_key_value_map_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates key value entries in a key value map scoped to an organization,
         # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
         # higher.
@@ -8618,6 +9298,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Delete a SecurityAction.
+        # @param [String] name
+        #   Required. The name of the security action to delete. Format: `organizations/`
+        #   org`/environment/`env`/securityActions/`security_action``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_environment_security_action(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Disable a SecurityAction. The `state` of the SecurityAction after disabling is
         # `DISABLED`. `DisableSecurityAction` can be called on SecurityActions in the
         # state `ENABLED`; SecurityActions in a different state (including `DISABLED`)
@@ -8767,6 +9478,47 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a SecurityAction.
+        # @param [String] name
+        #   Immutable. This field is ignored during creation as per AIP-133. Please set
+        #   the `security_action_id` field in the CreateSecurityActionRequest when
+        #   creating a new SecurityAction. Format: organizations/`org`/environments/`env`/
+        #   securityActions/`security_action`
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAction] google_cloud_apigee_v1_security_action_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. Valid fields to update are `
+        #   description`, `state`, `allow`, `deny`, and `flag`, `expire_time`, and `ttl`, `
+        #   api_proxies`, and `condition_config`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAction] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAction]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_environment_security_action(name, google_cloud_apigee_v1_security_action_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAction::Representation
+          command.request_object = google_cloud_apigee_v1_security_action_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAction::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityAction
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -10887,6 +11639,85 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get the key value map scoped to an organization, environment, or API proxy.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to fetch the key value map.
+        #   Use **one** of the following structures in your request: * `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``. If the KeyValueMap
+        #   is under an API Proxy resource that has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_keyvaluemap(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the key value map scoped to an organization, environment, or API proxy.
+        # @param [String] name
+        #   Required. Scope as indicated by the URI in which to fetch the key value map.
+        #   Use **one** of the following structures in your request: * `organizations/`
+        #   organization`/apis/`api`/keyvaluemaps/`keyvaluemap``. * `organizations/`
+        #   organization`/environments/`environment`/keyvaluemaps/`keyvaluemap`` * `
+        #   organizations/`organization`/keyvaluemaps/`keyvaluemap``. If the KeyValueMap
+        #   is under an API Proxy resource that has the `space` attribute set, IAM
+        #   permissions are checked against the Space resource path. To learn more, read
+        #   the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/
+        #   system-administration/spaces/apigee-spaces-overview).
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] google_cloud_apigee_v1_key_value_map_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_keyvaluemap(name, google_cloud_apigee_v1_key_value_map_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap::Representation
+          command.request_object = google_cloud_apigee_v1_key_value_map_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyValueMap
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates key value entries in a key value map scoped to an organization,
         # environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and
         # higher.
@@ -11145,6 +11976,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11162,7 +12001,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleLongrunningListOperationsResponse
@@ -11170,6 +12009,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -11464,6 +12304,189 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new report containing customer feedback.
+        # @param [String] parent
+        #   Required. Name of the organization. Use the following structure in your
+        #   request: `organizations/`org``.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback] google_cloud_apigee_v1_security_feedback_object
+        # @param [String] security_feedback_id
+        #   Optional. The id for this feedback report. If not provided, it will be set to
+        #   a system-generated UUID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_security_feedback(parent, google_cloud_apigee_v1_security_feedback_object = nil, security_feedback_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/securityFeedback', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback::Representation
+          command.request_object = google_cloud_apigee_v1_security_feedback_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback
+          command.params['parent'] = parent unless parent.nil?
+          command.query['securityFeedbackId'] = security_feedback_id unless security_feedback_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a specific feedback report. Used for "undo" of a feedback submission.
+        # @param [String] name
+        #   Required. Name of the SecurityFeedback to delete. Use the following structure
+        #   in your request: `organizations/`org`/securityFeedback/`feedback_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_security_feedback(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a specific customer feedback report.
+        # @param [String] name
+        #   Required. Name of the SecurityFeedback. Format: `organizations/`org`/
+        #   securityFeedback/`feedback_id`` Example: organizations/apigee-organization-
+        #   name/securityFeedback/feedback-id
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_security_feedback(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all feedback reports which have already been submitted.
+        # @param [String] parent
+        #   Required. Name of the organization. Format: `organizations/`org``. Example:
+        #   organizations/apigee-organization-name/securityFeedback
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of feedback reports to return. The service may
+        #   return fewer than this value. LINT.IfChange(documented_page_size_limits) If
+        #   unspecified, at most 10 feedback reports will be returned. The maximum value
+        #   is 100; values above 100 will be coerced to 100. LINT.ThenChange( //depot/
+        #   google3/edge/sense/boq/service/v1/securityfeedback/securityfeedback_rpc.go:
+        #   page_size_limits )
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListSecurityFeedback` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListSecurityFeedback` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityFeedbackResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityFeedbackResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_security_feedbacks(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/securityFeedback', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityFeedbackResponse::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityFeedbackResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a specific feedback report.
+        # @param [String] name
+        #   Output only. Identifier. The feedback name is intended to be a system-
+        #   generated uuid.
+        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback] google_cloud_apigee_v1_security_feedback_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_security_feedback(name, google_cloud_apigee_v1_security_feedback_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback::Representation
+          command.request_object = google_cloud_apigee_v1_security_feedback_object
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityFeedback
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a security monitoring condition.
         # @param [String] parent
         #   Required. The parent resource name. Format: `organizations/`org``
@@ -11507,6 +12530,9 @@ module Google
         #   Required. The name of the security monitoring condition to delete. Format: `
         #   organizations/`org`/securityMonitoringConditions/`
         #   security_monitoring_condition``
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security monitoring condition.
+        #   Defaults to ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11524,11 +12550,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_organization_security_monitoring_condition(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_organization_security_monitoring_condition(name, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -11539,6 +12566,9 @@ module Google
         #   Required. The name of the security monitoring condition to get. Format: `
         #   organizations/`org`/securityMonitoringConditions/`
         #   security_monitoring_condition``
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security monitoring condition.
+        #   Defaults to ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11556,11 +12586,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_security_monitoring_condition(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_security_monitoring_condition(name, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition
           command.params['name'] = name unless name.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -11571,14 +12602,20 @@ module Google
         #   Required. For a specific organization, list all the security monitoring
         #   conditions. Format: `organizations/`org``
         # @param [String] filter
-        #   Optional. Filter for the monitoring conditions. For example: `profile=profile1
-        #   AND scope=env1`
+        #   Optional. Filter for the monitoring conditions. When RiskAssessmentType is
+        #   APIGEE, monitoring conditions can be filtered by profile and scope. For
+        #   example: `profile=profile1 AND scope=env1` When RiskAssessmentType is API_HUB,
+        #   monitoring conditions can be filtered by profile and api_hub_gateway. For
+        #   example: `profile=profile1 AND api_hub_gateway=gateway1`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of monitoring conditions to return.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `
         #   ListSecurityMonitoringConditions` call. Provide this to retrieve the
         #   subsequent page.
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security monitoring condition.
+        #   Defaults to ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11596,7 +12633,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_security_monitoring_conditions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_security_monitoring_conditions(parent, filter: nil, page_size: nil, page_token: nil, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/securityMonitoringConditions', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse
@@ -11604,6 +12641,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -11616,8 +12654,8 @@ module Google
         #   security_monitoring_condition`
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityMonitoringCondition] google_cloud_apigee_v1_security_monitoring_condition_object
         # @param [String] update_mask
-        #   Optional. The list of fields to update. Valid fields to update are `profile`, `
-        #   scope`, `include_all_resources`, `include`, and `exclude`.
+        #   Optional. The list of fields to update. Valid fields to update are `
+        #   include_all_resources` and `include`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12010,6 +13048,9 @@ module Google
         # @param [String] name
         #   Required. The name of the security profile v2 to delete. Format: `
         #   organizations/`org`/securityProfilesV2/`profile``
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security profile. Defaults to
+        #   ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12027,11 +13068,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_organization_security_profiles_v2(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_organization_security_profiles_v2(name, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -12041,6 +13083,9 @@ module Google
         # @param [String] name
         #   Required. The name of the security profile v2 to get. Format: `organizations/`
         #   org`/securityProfilesV2/`profile``
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security profile. Defaults to
+        #   ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12058,11 +13103,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_security_profiles_v2(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_security_profiles_v2(name, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1SecurityProfileV2
           command.params['name'] = name unless name.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -12077,6 +13123,9 @@ module Google
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListSecurityProfilesV2` call.
         #   Provide this to retrieve the subsequent page.
+        # @param [String] risk_assessment_type
+        #   Optional. The risk assessment type of the security profiles. Defaults to
+        #   ADVANCED_API_SECURITY.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12094,13 +13143,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_security_profiles_v2s(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_security_profiles_v2s(parent, page_size: nil, page_token: nil, risk_assessment_type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/securityProfilesV2', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfilesV2Response::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListSecurityProfilesV2Response
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['riskAssessmentType'] = risk_assessment_type unless risk_assessment_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

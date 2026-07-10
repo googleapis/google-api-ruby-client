@@ -434,7 +434,7 @@ module Google
         # If the destination table already exists and this flag is `TRUE`, the table
         # will be overwritten by the contents of assets snapshot. If the flag is `FALSE`
         # or unset and the destination table already exists, the export call returns an
-        # INVALID_ARGUMEMT error.
+        # INVALID_ARGUMENT error.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
@@ -561,10 +561,10 @@ module Google
       class GoogleCloudAssetV1p7beta1GcsDestination
         include Google::Apis::Core::Hashable
       
-        # The URI of the Cloud Storage object. It's the same URI that is used by gsutil.
-        # Example: "gs://bucket_name/object_name". See [Viewing and Editing Object
-        # Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for
-        # more information.
+        # The URI of the Cloud Storage object. It's the same URI that is used by gcloud
+        # storage. Example: "gs://bucket_name/object_name". See [Viewing and Editing
+        # Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-
+        # metadata) for more information.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1208,6 +1208,31 @@ module Google
         end
       end
       
+      # Adds a request header to the API.
+      class GoogleIdentityAccesscontextmanagerV1AddRequestHeader
+        include Google::Apis::Core::Hashable
+      
+        # HTTP header key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # HTTP header value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Identification for an API Operation.
       class GoogleIdentityAccesscontextmanagerV1ApiOperation
         include Google::Apis::Core::Hashable
@@ -1453,11 +1478,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of identities that are allowed access through [EgressPolicy].
-        # Identities can be an individual user, service account, Google group, or third-
-        # party identity. For third-party identity, only single identities are supported
-        # and other identity types are not supported. The `v1` identities that have the
-        # prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.
-        # google.com/iam/docs/principal-identifiers#v1 are supported.
+        # Identities can be an individual user, service account, Google group, third-
+        # party identity, or agent identity. For the list of supported identity types,
+        # see https://docs.cloud.google.com/vpc-service-controls/docs/supported-
+        # identities.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -1567,6 +1591,11 @@ module Google
         # @return [String]
         attr_accessor :access_level
       
+        # Specifies the PSC an API call refers to.
+        # Corresponds to the JSON property `pscEndpoint`
+        # @return [Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint]
+        attr_accessor :psc_endpoint
+      
         # A Google Cloud resource from the service perimeter that you want to allow to
         # access data outside the perimeter. This field supports only projects. The
         # project format is `projects/`project_number``. You can't use `*` in this field
@@ -1582,6 +1611,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_level = args[:access_level] if args.key?(:access_level)
+          @psc_endpoint = args[:psc_endpoint] if args.key?(:psc_endpoint)
           @resource = args[:resource] if args.key?(:resource)
         end
       end
@@ -1649,11 +1679,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of identities that are allowed access through [IngressPolicy].
-        # Identities can be an individual user, service account, Google group, or third-
-        # party identity. For third-party identity, only single identities are supported
-        # and other identity types are not supported. The `v1` identities that have the
-        # prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.
-        # google.com/iam/docs/principal-identifiers#v1 are supported.
+        # Identities can be an individual user, service account, Google group, third-
+        # party identity, or agent identity. For the list of supported identity types,
+        # see https://docs.cloud.google.com/vpc-service-controls/docs/supported-
+        # identities.
         # Corresponds to the JSON property `identities`
         # @return [Array<String>]
         attr_accessor :identities
@@ -1747,6 +1776,11 @@ module Google
         # @return [String]
         attr_accessor :access_level
       
+        # Specifies the PSC an API call refers to.
+        # Corresponds to the JSON property `pscEndpoint`
+        # @return [Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint]
+        attr_accessor :psc_endpoint
+      
         # A Google Cloud resource that is allowed to ingress the perimeter. Requests
         # from these resources will be allowed to access perimeter data. Currently only
         # projects and VPCs are allowed. Project format: `projects/`project_number`` VPC
@@ -1765,6 +1799,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_level = args[:access_level] if args.key?(:access_level)
+          @psc_endpoint = args[:psc_endpoint] if args.key?(:psc_endpoint)
           @resource = args[:resource] if args.key?(:resource)
         end
       end
@@ -1836,6 +1871,25 @@ module Google
         end
       end
       
+      # Modifier to apply to the API requests.
+      class GoogleIdentityAccesscontextmanagerV1Modifier
+        include Google::Apis::Core::Hashable
+      
+        # Adds a request header to the API.
+        # Corresponds to the JSON property `addRequestHeader`
+        # @return [Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1AddRequestHeader]
+        attr_accessor :add_request_header
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_request_header = args[:add_request_header] if args.key?(:add_request_header)
+        end
+      end
+      
       # A restriction on the OS type and version of devices making requests.
       class GoogleIdentityAccesscontextmanagerV1OsConstraint
         include Google::Apis::Core::Hashable
@@ -1870,6 +1924,60 @@ module Google
           @minimum_version = args[:minimum_version] if args.key?(:minimum_version)
           @os_type = args[:os_type] if args.key?(:os_type)
           @require_verified_chrome_os = args[:require_verified_chrome_os] if args.key?(:require_verified_chrome_os)
+        end
+      end
+      
+      # Specifies the PSC an API call refers to.
+      class GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # The global forwarding rule identifier. Forwarding rule format: `//compute.
+        # googleapis.com/projects/`PROJECT_ID`/global/forwardingRules/`
+        # FORWARDING_RULE_ID``.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+        end
+      end
+      
+      # Service patterns used to allow access.
+      class GoogleIdentityAccesscontextmanagerV1ServicePattern
+        include Google::Apis::Core::Hashable
+      
+        # Modifiers to apply to the requests that match the URL pattern.
+        # Corresponds to the JSON property `modifiers`
+        # @return [Array<Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1Modifier>]
+        attr_accessor :modifiers
+      
+        # URL pattern to allow. Only patterns of ".googleapis.com/*", "www.googleapis.
+        # com//*" and "*.appspot.com/* forms are supported, where should be
+        # alphanumerical name.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        # Supported service to allow.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @modifiers = args[:modifiers] if args.key?(:modifiers)
+          @pattern = args[:pattern] if args.key?(:pattern)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -2033,6 +2141,12 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
         include Google::Apis::Core::Hashable
       
+        # Specifies which Google services are allowed to be accessed from VPC networks
+        # in the service perimeter.
+        # Corresponds to the JSON property `allowedServicePatterns`
+        # @return [Array<Google::Apis::CloudassetV1p7beta1::GoogleIdentityAccesscontextmanagerV1ServicePattern>]
+        attr_accessor :allowed_service_patterns
+      
         # The list of APIs usable within the Service Perimeter. Must be empty unless '
         # enable_restriction' is True. You can specify a list of individual services, as
         # well as include the 'RESTRICTED-SERVICES' value, which automatically includes
@@ -2048,14 +2162,21 @@ module Google
         attr_accessor :enable_restriction
         alias_method :enable_restriction?, :enable_restriction
       
+        # Defines the enforcement scopes of service patterns.
+        # Corresponds to the JSON property `servicePatternsEnforcementScopes`
+        # @return [Array<String>]
+        attr_accessor :service_patterns_enforcement_scopes
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @allowed_service_patterns = args[:allowed_service_patterns] if args.key?(:allowed_service_patterns)
           @allowed_services = args[:allowed_services] if args.key?(:allowed_services)
           @enable_restriction = args[:enable_restriction] if args.key?(:enable_restriction)
+          @service_patterns_enforcement_scopes = args[:service_patterns_enforcement_scopes] if args.key?(:service_patterns_enforcement_scopes)
         end
       end
       

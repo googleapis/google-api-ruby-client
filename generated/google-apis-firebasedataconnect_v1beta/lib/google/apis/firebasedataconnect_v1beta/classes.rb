@@ -35,6 +35,44 @@ module Google
         end
       end
       
+      # Client caching settings of a connector.
+      class ClientCache
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A field that, if true, means that responses served by this connector
+        # will include entityIds in GraphQL response extensions. This helps the client
+        # SDK cache responses in an improved way, known as "normalized caching", if
+        # caching is enabled on the client. Each entityId is a stable key based on
+        # primary key values. Therefore, this field should only be set to true if the
+        # primary keys of accessed tables do not contain sensitive information.
+        # Corresponds to the JSON property `entityIdIncluded`
+        # @return [Boolean]
+        attr_accessor :entity_id_included
+        alias_method :entity_id_included?, :entity_id_included
+      
+        # Optional. A field that, if true, enables stricter validation on the connector
+        # source code to make sure the operation response shapes are suitable for client-
+        # side caching. This can include additional errors and warnings. For example,
+        # using the same alias for different fields is disallowed, as it may cause
+        # conflicts or confusion with normalized caching. (This field is off by default
+        # for compatibility, but enabling it is highly recommended to catch common
+        # caching pitfalls.)
+        # Corresponds to the JSON property `strictValidationEnabled`
+        # @return [Boolean]
+        attr_accessor :strict_validation_enabled
+        alias_method :strict_validation_enabled?, :strict_validation_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_id_included = args[:entity_id_included] if args.key?(:entity_id_included)
+          @strict_validation_enabled = args[:strict_validation_enabled] if args.key?(:strict_validation_enabled)
+        end
+      end
+      
       # Settings for CloudSQL instance configuration.
       class CloudSqlInstance
         include Google::Apis::Core::Hashable
@@ -55,6 +93,32 @@ module Google
         end
       end
       
+      # A chunk of code.
+      class CodeChunk
+        include Google::Apis::Core::Hashable
+      
+        # Required. The code content string.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Optional. Specifies the language if we expand support beyond GraphQL (e.g.,
+        # SQL or JSON) The standard is BCP-47 language code.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @language_code = args[:language_code] if args.key?(:language_code)
+        end
+      end
+      
       # Connector consists of a set of operations, i.e. queries and mutations.
       class Connector
         include Google::Apis::Core::Hashable
@@ -63,6 +127,11 @@ module Google
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
+      
+        # Client caching settings of a connector.
+        # Corresponds to the JSON property `clientCache`
+        # @return [Google::Apis::FirebasedataconnectV1beta::ClientCache]
+        attr_accessor :client_cache
       
         # Output only. [Output only] Create time stamp.
         # Corresponds to the JSON property `createTime`
@@ -123,6 +192,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @client_cache = args[:client_cache] if args.key?(:client_cache)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
@@ -135,9 +205,54 @@ module Google
         end
       end
       
-      # A data source that backs Firebase Data Connect services.
+      # SQL Connect specific properties for a path under response.data.
+      class DataConnectProperties
+        include Google::Apis::Core::Hashable
+      
+        # A single Entity ID. Set if the path points to a single entity.
+        # Corresponds to the JSON property `entityId`
+        # @return [String]
+        attr_accessor :entity_id
+      
+        # A list of Entity IDs. Set if the path points to an array of entities. An ID is
+        # present for each element of the array at the corresponding index.
+        # Corresponds to the JSON property `entityIds`
+        # @return [Array<String>]
+        attr_accessor :entity_ids
+      
+        # The server-suggested duration before data under path is considered stale.
+        # Corresponds to the JSON property `maxAge`
+        # @return [String]
+        attr_accessor :max_age
+      
+        # The path under response.data where the rest of the fields apply. Each element
+        # may be a string (field name) or number (array index). The root of response.
+        # data is denoted by the empty list `[]`.
+        # Corresponds to the JSON property `path`
+        # @return [Array<Object>]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_id = args[:entity_id] if args.key?(:entity_id)
+          @entity_ids = args[:entity_ids] if args.key?(:entity_ids)
+          @max_age = args[:max_age] if args.key?(:max_age)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # A data source that backs Firebase SQL Connect services.
       class Datasource
         include Google::Apis::Core::Hashable
+      
+        # Settings for HTTP GraphQL server webhook.
+        # Corresponds to the JSON property `httpGraphql`
+        # @return [Google::Apis::FirebasedataconnectV1beta::HttpGraphql]
+        attr_accessor :http_graphql
       
         # Settings for PostgreSQL data source.
         # Corresponds to the JSON property `postgresql`
@@ -150,6 +265,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @http_graphql = args[:http_graphql] if args.key?(:http_graphql)
           @postgresql = args[:postgresql] if args.key?(:postgresql)
         end
       end
@@ -170,7 +286,7 @@ module Google
         end
       end
       
-      # The ExecuteMutation request to Firebase Data Connect.
+      # The ExecuteMutation request to Firebase SQL Connect.
       class ExecuteMutationRequest
         include Google::Apis::Core::Hashable
       
@@ -197,7 +313,7 @@ module Google
         end
       end
       
-      # The ExecuteMutation response from Firebase Data Connect.
+      # The ExecuteMutation response from Firebase SQL Connect.
       class ExecuteMutationResponse
         include Google::Apis::Core::Hashable
       
@@ -211,6 +327,12 @@ module Google
         # @return [Array<Google::Apis::FirebasedataconnectV1beta::GraphqlError>]
         attr_accessor :errors
       
+        # GraphqlResponseExtensions contains additional information of `GraphqlResponse`
+        # or `ExecuteQueryResponse`.
+        # Corresponds to the JSON property `extensions`
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponseExtensions]
+        attr_accessor :extensions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -219,10 +341,11 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @errors = args[:errors] if args.key?(:errors)
+          @extensions = args[:extensions] if args.key?(:extensions)
         end
       end
       
-      # The ExecuteQuery request to Firebase Data Connect.
+      # The ExecuteQuery request to Firebase SQL Connect.
       class ExecuteQueryRequest
         include Google::Apis::Core::Hashable
       
@@ -249,7 +372,7 @@ module Google
         end
       end
       
-      # The ExecuteQuery response from Firebase Data Connect.
+      # The ExecuteQuery response from Firebase SQL Connect.
       class ExecuteQueryResponse
         include Google::Apis::Core::Hashable
       
@@ -263,6 +386,12 @@ module Google
         # @return [Array<Google::Apis::FirebasedataconnectV1beta::GraphqlError>]
         attr_accessor :errors
       
+        # GraphqlResponseExtensions contains additional information of `GraphqlResponse`
+        # or `ExecuteQueryResponse`.
+        # Corresponds to the JSON property `extensions`
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponseExtensions]
+        attr_accessor :extensions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -271,6 +400,7 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @errors = args[:errors] if args.key?(:errors)
+          @extensions = args[:extensions] if args.key?(:extensions)
         end
       end
       
@@ -301,14 +431,139 @@ module Google
         end
       end
       
+      # Request message for GenerateQuery.
+      class GenerateQueryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The natural language description of the desired query. Example: "
+        # Find all users who signed up in the last 7 days."
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        # Optional. The user's locally defined FDC Schema(s). If not defined, the
+        # backend will fetch the user's deployed schema.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::FirebasedataconnectV1beta::Schema>]
+        attr_accessor :schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt = args[:prompt] if args.key?(:prompt)
+          @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # Output for streaming generate query requests
+      class GenerateQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a chunk of content.
+        # Corresponds to the JSON property `part`
+        # @return [Google::Apis::FirebasedataconnectV1beta::Part]
+        attr_accessor :part
+      
+        # Represents the progress of the server side generation request.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::FirebasedataconnectV1beta::GenerationStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @part = args[:part] if args.key?(:part)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Request message for GenerateSchema.
+      class GenerateSchemaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The natural language description of the data model to generate.
+        # Example: "A blog system with Users, Posts, and Comments. Users can have
+        # multiple posts."
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt = args[:prompt] if args.key?(:prompt)
+        end
+      end
+      
+      # Output for streaming generate schema requests
+      class GenerateSchemaResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a chunk of content.
+        # Corresponds to the JSON property `part`
+        # @return [Google::Apis::FirebasedataconnectV1beta::Part]
+        attr_accessor :part
+      
+        # Represents the progress of the server side generation request.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::FirebasedataconnectV1beta::GenerationStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @part = args[:part] if args.key?(:part)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Represents the progress of the server side generation request.
+      class GenerationStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A message providing more details about the state.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. The state of generation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # GraphqlError conforms to the GraphQL error spec. https://spec.graphql.org/
-      # draft/#sec-Errors Firebase Data Connect API surfaces `GraphqlError` in various
+      # draft/#sec-Errors Firebase SQL Connect API surfaces `GraphqlError` in various
       # APIs: - Upon compile error, `UpdateSchema` and `UpdateConnector` return Code.
       # Invalid_Argument with a list of `GraphqlError` in error details. - Upon query
-      # compile error, `ExecuteGraphql` and `ExecuteGraphqlRead` return Code.OK with a
-      # list of `GraphqlError` in response body. - Upon query execution error, `
-      # ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation` and `ExecuteQuery`
-      # all return Code.OK with a list of `GraphqlError` in response body.
+      # compile error, `ExecuteGraphql`, `ExecuteGraphqlRead` and `IntrospectGraphql`
+      # return Code.OK with a list of `GraphqlError` in response body. - Upon query
+      # execution error, `ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation`, `
+      # ExecuteQuery`, `IntrospectGraphql`, `ImpersonateQuery` and `
+      # ImpersonateMutation` all return Code.OK with a list of `GraphqlError` in
+      # response body.
       class GraphqlError
         include Google::Apis::Core::Hashable
       
@@ -319,10 +574,11 @@ module Google
       
         # The source locations where the error occurred. Locations should help
         # developers and toolings identify the source of error quickly. Included in
-        # admin endpoints (`ExecuteGraphql`, `ExecuteGraphqlRead`, `UpdateSchema` and `
-        # UpdateConnector`) to reference the provided GraphQL GQL document. Omitted in `
-        # ExecuteMutation` and `ExecuteQuery` since the caller shouldn't have access
-        # access the underlying GQL source.
+        # admin endpoints (`ExecuteGraphql`, `ExecuteGraphqlRead`, `IntrospectGraphql`, `
+        # ImpersonateQuery`, `ImpersonateMutation`, `UpdateSchema` and `UpdateConnector`)
+        # to reference the provided GraphQL GQL document. Omitted in `ExecuteMutation`
+        # and `ExecuteQuery` since the caller shouldn't have access access the
+        # underlying GQL source.
         # Corresponds to the JSON property `locations`
         # @return [Array<Google::Apis::FirebasedataconnectV1beta::SourceLocation>]
         attr_accessor :locations
@@ -358,11 +614,38 @@ module Google
       class GraphqlErrorExtensions
         include Google::Apis::Core::Hashable
       
+        # Maps to canonical gRPC codes. If not specified, it represents `Code.INTERNAL`.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # More detailed error message to assist debugging. It contains application
+        # business logic that are inappropriate to leak publicly. In the emulator, SQL
+        # Connect API always includes it to assist local development and debugging. In
+        # the backend, ConnectorService always hides it. GraphqlService without
+        # impersonation always include it. GraphqlService with impersonation includes it
+        # only if explicitly opted-in with `include_debug_details` in `
+        # GraphqlRequestExtensions`.
+        # Corresponds to the JSON property `debugDetails`
+        # @return [String]
+        attr_accessor :debug_details
+      
         # The source file name where the error occurred. Included only for `UpdateSchema`
         # and `UpdateConnector`, it corresponds to `File.path` of the provided `Source`.
         # Corresponds to the JSON property `file`
         # @return [String]
         attr_accessor :file
+      
+        # Warning level describes the severity and required action to suppress this
+        # warning when Firebase CLI run into it.
+        # Corresponds to the JSON property `warningLevel`
+        # @return [String]
+        attr_accessor :warning_level
+      
+        # Workarounds provide suggestions to address the compile errors or warnings.
+        # Corresponds to the JSON property `workarounds`
+        # @return [Array<Google::Apis::FirebasedataconnectV1beta::Workaround>]
+        attr_accessor :workarounds
       
         def initialize(**args)
            update!(**args)
@@ -370,11 +653,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @debug_details = args[:debug_details] if args.key?(:debug_details)
           @file = args[:file] if args.key?(:file)
+          @warning_level = args[:warning_level] if args.key?(:warning_level)
+          @workarounds = args[:workarounds] if args.key?(:workarounds)
         end
       end
       
-      # The GraphQL request to Firebase Data Connect. It strives to match the GraphQL
+      # The GraphQL request to Firebase SQL Connect. It strives to match the GraphQL
       # over HTTP spec. https://github.com/graphql/graphql-over-http/blob/main/spec/
       # GraphQLOverHTTP.md#post
       class GraphqlRequest
@@ -434,8 +721,8 @@ module Google
         end
       end
       
-      # The GraphQL response from Firebase Data Connect. It strives to match the
-      # GraphQL over HTTP spec. Note: Firebase Data Connect always responds with `
+      # The GraphQL response from Firebase SQL Connect. It strives to match the
+      # GraphQL over HTTP spec. Note: Firebase SQL Connect always responds with `
       # Content-Type: application/json`. https://github.com/graphql/graphql-over-http/
       # blob/main/spec/GraphQLOverHTTP.md#body
       class GraphqlResponse
@@ -453,10 +740,16 @@ module Google
       
         # Errors of this response. If the data entry in the response is not present, the
         # errors entry must be present. It conforms to https://spec.graphql.org/draft/#
-        # sec-Errors.
+        # sec-Errors .
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::FirebasedataconnectV1beta::GraphqlError>]
         attr_accessor :errors
+      
+        # GraphqlResponseExtensions contains additional information of `GraphqlResponse`
+        # or `ExecuteQueryResponse`.
+        # Corresponds to the JSON property `extensions`
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponseExtensions]
+        attr_accessor :extensions
       
         def initialize(**args)
            update!(**args)
@@ -466,6 +759,85 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @errors = args[:errors] if args.key?(:errors)
+          @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # GraphqlResponseExtensions contains additional information of `GraphqlResponse`
+      # or `ExecuteQueryResponse`.
+      class GraphqlResponseExtensions
+        include Google::Apis::Core::Hashable
+      
+        # SQL Connect specific GraphQL extension, a list of paths and properties.
+        # Corresponds to the JSON property `dataConnect`
+        # @return [Array<Google::Apis::FirebasedataconnectV1beta::DataConnectProperties>]
+        attr_accessor :data_connect
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_connect = args[:data_connect] if args.key?(:data_connect)
+        end
+      end
+      
+      # Settings for HTTP GraphQL server webhook.
+      class HttpGraphql
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Timeout duration for the HTTP request.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
+        # Required. The endpoint of the HTTP GraphQL server.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The Impersonate request to Firebase SQL Connect.
+      class ImpersonateRequest
+        include Google::Apis::Core::Hashable
+      
+        # GraphqlRequestExtensions contains additional information of `GraphqlRequest`.
+        # Corresponds to the JSON property `extensions`
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlRequestExtensions]
+        attr_accessor :extensions
+      
+        # Required. The name of the GraphQL operation name. Required because all
+        # Connector operations must be named. See https://graphql.org/learn/queries/#
+        # operation-name.
+        # Corresponds to the JSON property `operationName`
+        # @return [String]
+        attr_accessor :operation_name
+      
+        # Optional. Values for GraphQL variables provided in this request.
+        # Corresponds to the JSON property `variables`
+        # @return [Hash<String,Object>]
+        attr_accessor :variables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @operation_name = args[:operation_name] if args.key?(:operation_name)
+          @variables = args[:variables] if args.key?(:variables)
         end
       end
       
@@ -481,6 +853,12 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :auth_claims
       
+        # Optional. If set, include debug details in GraphQL error extensions.
+        # Corresponds to the JSON property `includeDebugDetails`
+        # @return [Boolean]
+        attr_accessor :include_debug_details
+        alias_method :include_debug_details?, :include_debug_details
+      
         # Evaluate the auth policy as an unauthenticated request. Can only be set to
         # true.
         # Corresponds to the JSON property `unauthenticated`
@@ -495,6 +873,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth_claims = args[:auth_claims] if args.key?(:auth_claims)
+          @include_debug_details = args[:include_debug_details] if args.key?(:include_debug_details)
           @unauthenticated = args[:unauthenticated] if args.key?(:unauthenticated)
         end
       end
@@ -573,6 +952,14 @@ module Google
         # @return [Array<Google::Apis::FirebasedataconnectV1beta::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -581,6 +968,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -825,6 +1213,31 @@ module Google
         end
       end
       
+      # Represents a chunk of content.
+      class Part
+        include Google::Apis::Core::Hashable
+      
+        # A chunk of code.
+        # Corresponds to the JSON property `codeChunk`
+        # @return [Google::Apis::FirebasedataconnectV1beta::CodeChunk]
+        attr_accessor :code_chunk
+      
+        # A chunk of conversational text.
+        # Corresponds to the JSON property `textChunk`
+        # @return [Google::Apis::FirebasedataconnectV1beta::TextChunk]
+        attr_accessor :text_chunk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code_chunk = args[:code_chunk] if args.key?(:code_chunk)
+          @text_chunk = args[:text_chunk] if args.key?(:text_chunk)
+        end
+      end
+      
       # Settings for PostgreSQL data source.
       class PostgreSql
         include Google::Apis::Core::Hashable
@@ -839,12 +1252,35 @@ module Google
         # @return [String]
         attr_accessor :database
       
-        # Optional. Configure how to perform Postgresql schema migration.
+        # Output only. Ephemeral is true if this SQL Connect service is served from
+        # temporary in-memory emulation of Postgres. While Cloud SQL is being
+        # provisioned, the SQL Connect service provides the ephemeral service to help
+        # developers get started. Once the Cloud SQL is provisioned, SQL Connect service
+        # will transfer its data on a best-effort basis to the Cloud SQL instance.
+        # WARNING: Ephemeral data sources will expire after 24 hour. The data will be
+        # lost if they aren't transferred to the Cloud SQL instance. WARNING: When `
+        # ephemeral=true`, mutations to the database are not guaranteed to be durably
+        # persisted, even if an OK status code is returned. All or parts of the data may
+        # be lost or reverted to earlier versions.
+        # Corresponds to the JSON property `ephemeral`
+        # @return [Boolean]
+        attr_accessor :ephemeral
+        alias_method :ephemeral?, :ephemeral
+      
+        # Optional. User-configured PostgreSQL schema. Defaults to "public" if not
+        # specified.
+        # Corresponds to the JSON property `schema`
+        # @return [String]
+        attr_accessor :schema
+      
+        # Optional. Configure how to perform automatic PostgreSQL schema migration
+        # before deploying the FDC schema. This is an additive-only operation.
         # Corresponds to the JSON property `schemaMigration`
         # @return [String]
         attr_accessor :schema_migration
       
-        # Optional. Configure how much Postgresql schema validation to perform.
+        # Optional. Configure how much PostgreSQL schema validation to perform against
+        # the live database before deploying the FDC schema.
         # Corresponds to the JSON property `schemaValidation`
         # @return [String]
         attr_accessor :schema_validation
@@ -864,13 +1300,15 @@ module Google
         def update!(**args)
           @cloud_sql = args[:cloud_sql] if args.key?(:cloud_sql)
           @database = args[:database] if args.key?(:database)
+          @ephemeral = args[:ephemeral] if args.key?(:ephemeral)
+          @schema = args[:schema] if args.key?(:schema)
           @schema_migration = args[:schema_migration] if args.key?(:schema_migration)
           @schema_validation = args[:schema_validation] if args.key?(:schema_validation)
           @unlinked = args[:unlinked] if args.key?(:unlinked)
         end
       end
       
-      # The application schema of a Firebase Data Connect service.
+      # The application schema of a Firebase SQL Connect service.
       class Schema
         include Google::Apis::Core::Hashable
       
@@ -956,7 +1394,7 @@ module Google
         end
       end
       
-      # A Firebase Data Connect service.
+      # A Firebase SQL Connect service.
       class Service
         include Google::Apis::Core::Hashable
       
@@ -988,9 +1426,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Identifier. The relative resource name of the Firebase Data Connect service,
-        # in the format: ``` projects/`project`/locations/`location`/services/`service` `
-        # `` Note that the service ID is specific to Firebase Data Connect and does not
+        # Identifier. The relative resource name of the Firebase SQL Connect service, in
+        # the format: ``` projects/`project`/locations/`location`/services/`service` ```
+        # Note that the service ID is specific to Firebase SQL Connect and does not
         # correspond to any of the instance IDs of the underlying data source
         # connections.
         # Corresponds to the JSON property `name`
@@ -1112,6 +1550,56 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # A chunk of conversational text.
+      class TextChunk
+        include Google::Apis::Core::Hashable
+      
+        # Required. The text content string.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Workaround provides suggestions to address errors and warnings.
+      class Workaround
+        include Google::Apis::Core::Hashable
+      
+        # Description of this workaround.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Why would this workaround address the error and warning.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # A suggested code snippet to fix the error and warning.
+        # Corresponds to the JSON property `replace`
+        # @return [String]
+        attr_accessor :replace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @reason = args[:reason] if args.key?(:reason)
+          @replace = args[:replace] if args.key?(:replace)
         end
       end
     end

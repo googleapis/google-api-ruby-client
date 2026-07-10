@@ -1,5 +1,74 @@
 # Release history for google-apis-cloudkms_v1
 
+### v0.76.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260608
+* Regenerated using generator version 0.19.0
+
+### v0.75.0 (2026-05-24)
+
+* Regenerated from discovery document revision 20260514
+
+### v0.74.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260423
+
+### v0.73.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260409
+
+### v0.72.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260312
+
+### v0.71.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260213
+
+### v0.70.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260206
+
+### v0.69.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260123
+
+### v0.68.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260116
+
+### v0.67.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260108
+
+### v0.66.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20251231
+
+### v0.65.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251201
+
+### v0.64.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251023
+
+### v0.63.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250926
+
+### v0.62.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250911
+
+### v0.61.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250818
+
+### v0.60.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250731
+
 ### v0.59.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250516

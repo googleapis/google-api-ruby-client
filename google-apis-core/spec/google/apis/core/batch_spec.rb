@@ -118,7 +118,10 @@ Goodbye!
 --123abc--
 
 EOF
-    expect(a_request(:post, 'https://www.googleapis.com/batch').with(body: expected_body)).to have_been_made
+    expect(
+      a_request(:post, 'https://www.googleapis.com/batch')
+        .with(body: expected_body, headers: {"Content-Length" => expected_body.size.to_s})
+    ).to have_been_made
   end
 
   it 'should send content with authorization header when set' do

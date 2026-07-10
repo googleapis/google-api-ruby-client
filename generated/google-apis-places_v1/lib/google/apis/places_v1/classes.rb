@@ -234,6 +234,13 @@ module Google
       class GoogleMapsPlacesV1AutocompletePlacesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, include businesses that are not yet open but will open in
+        # the future.
+        # Corresponds to the JSON property `includeFutureOpeningBusinesses`
+        # @return [Boolean]
+        attr_accessor :include_future_opening_businesses
+        alias_method :include_future_opening_businesses?, :include_future_opening_businesses
+      
         # Optional. Include pure service area businesses if the field is set to true.
         # Pure service area business is a business that visits or delivers to customers
         # directly but does not serve customers at their business address. For example,
@@ -346,6 +353,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @include_future_opening_businesses = args[:include_future_opening_businesses] if args.key?(:include_future_opening_businesses)
           @include_pure_service_area_businesses = args[:include_pure_service_area_businesses] if args.key?(:include_pure_service_area_businesses)
           @include_query_predictions = args[:include_query_predictions] if args.key?(:include_query_predictions)
           @included_primary_types = args[:included_primary_types] if args.key?(:included_primary_types)
@@ -716,26 +724,22 @@ module Google
         end
       end
       
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details. Content that is
-      # contextual to the place query.
+      # Content that is contextual to the place query.
       class GoogleMapsPlacesV1ContextualContent
         include Google::Apis::Core::Hashable
       
-        # Experimental: See https://developers.google.com/maps/documentation/places/web-
-        # service/experimental/places-generative for more details. Justifications for
-        # the place.
+        # Justifications for the place.
         # Corresponds to the JSON property `justifications`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustification>]
         attr_accessor :justifications
       
-        # Information (including references) about photos of this place, contexual to
+        # Information (including references) about photos of this place, contextual to
         # the place query.
         # Corresponds to the JSON property `photos`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Photo>]
         attr_accessor :photos
       
-        # List of reviews about this place, contexual to the place query.
+        # List of reviews about this place, contextual to the place query.
         # Corresponds to the JSON property `reviews`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1Review>]
         attr_accessor :reviews
@@ -752,26 +756,21 @@ module Google
         end
       end
       
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details. Justifications for
-      # the place. Justifications answers the question of why a place could interest
-      # an end user.
+      # Justifications for the place. Justifications answers the question of why a
+      # place could interest an end user.
       class GoogleMapsPlacesV1ContextualContentJustification
         include Google::Apis::Core::Hashable
       
-        # Experimental: See https://developers.google.com/maps/documentation/places/web-
-        # service/experimental/places-generative for more details.
         # BusinessAvailabilityAttributes justifications. This shows some attributes a
         # business has that could interest an end user.
         # Corresponds to the JSON property `businessAvailabilityAttributesJustification`
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification]
         attr_accessor :business_availability_attributes_justification
       
-        # Experimental: See https://developers.google.com/maps/documentation/places/web-
-        # service/experimental/places-generative for more details. User review
-        # justifications. This highlights a section of the user review that would
-        # interest an end user. For instance, if the search query is "firewood pizza",
-        # the review justification highlights the text relevant to the search query.
+        # User review justifications. This highlights a section of the user review that
+        # would interest an end user. For instance, if the search query is "firewood
+        # pizza", the review justification highlights the text relevant to the search
+        # query.
         # Corresponds to the JSON property `reviewJustification`
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1ContextualContentJustificationReviewJustification]
         attr_accessor :review_justification
@@ -787,8 +786,6 @@ module Google
         end
       end
       
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details.
       # BusinessAvailabilityAttributes justifications. This shows some attributes a
       # business has that could interest an end user.
       class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification
@@ -824,11 +821,10 @@ module Google
         end
       end
       
-      # Experimental: See https://developers.google.com/maps/documentation/places/web-
-      # service/experimental/places-generative for more details. User review
-      # justifications. This highlights a section of the user review that would
-      # interest an end user. For instance, if the search query is "firewood pizza",
-      # the review justification highlights the text relevant to the search query.
+      # User review justifications. This highlights a section of the user review that
+      # would interest an end user. For instance, if the search query is "firewood
+      # pizza", the review justification highlights the text relevant to the search
+      # query.
       class GoogleMapsPlacesV1ContextualContentJustificationReviewJustification
         include Google::Apis::Core::Hashable
       
@@ -1172,6 +1168,12 @@ module Google
         # @return [String]
         attr_accessor :business_status
       
+        # The consumer alert message for the place when we detect suspicious review
+        # activity on a business or a business violates our policies.
+        # Corresponds to the JSON property `consumerAlert`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlert]
+        attr_accessor :consumer_alert
+      
         # List of places in which the current place is located.
         # Corresponds to the JSON property `containingPlaces`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceContainingPlace>]
@@ -1276,6 +1278,11 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceGoogleMapsLinks]
         attr_accessor :google_maps_links
       
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `googleMapsTypeLabel`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :google_maps_type_label
+      
         # A URL providing more information about this place.
         # Corresponds to the JSON property `googleMapsUri`
         # @return [String]
@@ -1322,6 +1329,22 @@ module Google
         attr_accessor :menu_for_children
         alias_method :menu_for_children?, :menu_for_children
       
+        # If this Place is permanently closed and has moved to a new Place, this field
+        # contains the new Place's resource name, in `places/`place_id`` format. If this
+        # Place moved multiple times, this field will represent the first moved place.
+        # This field will not be populated if this Place has not moved.
+        # Corresponds to the JSON property `movedPlace`
+        # @return [String]
+        attr_accessor :moved_place
+      
+        # If this Place is permanently closed and has moved to a new Place, this field
+        # contains the new Place's place ID. If this Place moved multiple times, this
+        # field will represent the first moved Place. This field will not be populated
+        # if this Place has not moved.
+        # Corresponds to the JSON property `movedPlaceId`
+        # @return [String]
+        attr_accessor :moved_place_id
+      
         # This Place's resource name, in `places/`place_id`` format. Can be used to look
         # up the Place.
         # Corresponds to the JSON property `name`
@@ -1337,6 +1360,18 @@ module Google
         # Corresponds to the JSON property `neighborhoodSummary`
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNeighborhoodSummary]
         attr_accessor :neighborhood_summary
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `openingDate`
+        # @return [Google::Apis::PlacesV1::GoogleTypeDate]
+        attr_accessor :opening_date
       
         # Place provides outdoor seating.
         # Corresponds to the JSON property `outdoorSeating`
@@ -1368,16 +1403,17 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlacePlusCode]
         attr_accessor :plus_code
       
-        # Represents a postal address (for example, for postal delivery or payments
-        # addresses). Given a postal address, a postal service can deliver items to a
-        # premise, P.O. box or similar. It is not intended to model geographical
-        # locations (roads, towns, mountains). In typical usage, an address would be
-        # created by user input or from importing existing data, depending on the type
-        # of process. Advice on address input or editing: - Use an internationalization-
-        # ready address widget such as https://github.com/google/libaddressinput. -
-        # Users should not be presented with UI elements for input or editing of fields
-        # outside countries where that field is used. For more guidance on how to use
-        # this schema, see: https://support.google.com/business/answer/6397478.
+        # Represents a postal address, such as for postal delivery or payments addresses.
+        # With a postal address, a postal service can deliver items to a premise, P.O.
+        # box, or similar. A postal address is not intended to model geographical
+        # locations like roads, towns, or mountains. In typical usage, an address would
+        # be created by user input or from importing existing data, depending on the
+        # type of process. Advice on address input or editing: - Use an
+        # internationalization-ready address widget such as https://github.com/google/
+        # libaddressinput. - Users should not be presented with UI elements for input or
+        # editing of fields outside countries where that field is used. For more
+        # guidance on how to use this schema, see: https://support.google.com/business/
+        # answer/6397478.
         # Corresponds to the JSON property `postalAddress`
         # @return [Google::Apis::PlacesV1::GoogleTypePostalAddress]
         attr_accessor :postal_address
@@ -1393,11 +1429,13 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PriceRange]
         attr_accessor :price_range
       
-        # The primary type of the given result. This type must one of the Places API
+        # The primary type of the given result. This type must be one of the Places API
         # supported types. For example, "restaurant", "cafe", "airport", etc. A place
         # can only have a single primary type. For the complete list of possible values,
         # see Table A and Table B at https://developers.google.com/maps/documentation/
-        # places/web-service/place-types
+        # places/web-service/place-types. The primary type may be missing if the place's
+        # primary type is not a supported type. When a primary type is present, it is
+        # always one of the types in the `types` field.
         # Corresponds to the JSON property `primaryType`
         # @return [String]
         attr_accessor :primary_type
@@ -1542,6 +1580,11 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeTimeZone]
         attr_accessor :time_zone
       
+        # Represents transit-specific information for a place.
+        # Corresponds to the JSON property `transitStation`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStation]
+        attr_accessor :transit_station
+      
         # A set of type tags for this result. For example, "political" and "locality".
         # For the complete list of possible values, see Table A and Table B at https://
         # developers.google.com/maps/documentation/places/web-service/place-types
@@ -1601,6 +1644,7 @@ module Google
           @allows_dogs = args[:allows_dogs] if args.key?(:allows_dogs)
           @attributions = args[:attributions] if args.key?(:attributions)
           @business_status = args[:business_status] if args.key?(:business_status)
+          @consumer_alert = args[:consumer_alert] if args.key?(:consumer_alert)
           @containing_places = args[:containing_places] if args.key?(:containing_places)
           @curbside_pickup = args[:curbside_pickup] if args.key?(:curbside_pickup)
           @current_opening_hours = args[:current_opening_hours] if args.key?(:current_opening_hours)
@@ -1618,6 +1662,7 @@ module Google
           @good_for_groups = args[:good_for_groups] if args.key?(:good_for_groups)
           @good_for_watching_sports = args[:good_for_watching_sports] if args.key?(:good_for_watching_sports)
           @google_maps_links = args[:google_maps_links] if args.key?(:google_maps_links)
+          @google_maps_type_label = args[:google_maps_type_label] if args.key?(:google_maps_type_label)
           @google_maps_uri = args[:google_maps_uri] if args.key?(:google_maps_uri)
           @icon_background_color = args[:icon_background_color] if args.key?(:icon_background_color)
           @icon_mask_base_uri = args[:icon_mask_base_uri] if args.key?(:icon_mask_base_uri)
@@ -1626,9 +1671,12 @@ module Google
           @live_music = args[:live_music] if args.key?(:live_music)
           @location = args[:location] if args.key?(:location)
           @menu_for_children = args[:menu_for_children] if args.key?(:menu_for_children)
+          @moved_place = args[:moved_place] if args.key?(:moved_place)
+          @moved_place_id = args[:moved_place_id] if args.key?(:moved_place_id)
           @name = args[:name] if args.key?(:name)
           @national_phone_number = args[:national_phone_number] if args.key?(:national_phone_number)
           @neighborhood_summary = args[:neighborhood_summary] if args.key?(:neighborhood_summary)
+          @opening_date = args[:opening_date] if args.key?(:opening_date)
           @outdoor_seating = args[:outdoor_seating] if args.key?(:outdoor_seating)
           @parking_options = args[:parking_options] if args.key?(:parking_options)
           @payment_options = args[:payment_options] if args.key?(:payment_options)
@@ -1661,6 +1709,7 @@ module Google
           @sub_destinations = args[:sub_destinations] if args.key?(:sub_destinations)
           @takeout = args[:takeout] if args.key?(:takeout)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @transit_station = args[:transit_station] if args.key?(:transit_station)
           @types = args[:types] if args.key?(:types)
           @user_rating_count = args[:user_rating_count] if args.key?(:user_rating_count)
           @utc_offset_minutes = args[:utc_offset_minutes] if args.key?(:utc_offset_minutes)
@@ -1774,6 +1823,95 @@ module Google
         def update!(**args)
           @provider = args[:provider] if args.key?(:provider)
           @provider_uri = args[:provider_uri] if args.key?(:provider_uri)
+        end
+      end
+      
+      # The consumer alert message for the place when we detect suspicious review
+      # activity on a business or a business violates our policies.
+      class GoogleMapsPlacesV1PlaceConsumerAlert
+        include Google::Apis::Core::Hashable
+      
+        # The details of the consumer alert message.
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetails]
+        attr_accessor :details
+      
+        # The language code of the consumer alert message. This is a BCP 47 language
+        # code.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # The overview of the consumer alert message.
+        # Corresponds to the JSON property `overview`
+        # @return [String]
+        attr_accessor :overview
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @overview = args[:overview] if args.key?(:overview)
+        end
+      end
+      
+      # The details of the consumer alert message.
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetails
+        include Google::Apis::Core::Hashable
+      
+        # The link to show together with the description to provide more information.
+        # Corresponds to the JSON property `aboutLink`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink]
+        attr_accessor :about_link
+      
+        # The description of the consumer alert message.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The title to show together with the description.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @about_link = args[:about_link] if args.key?(:about_link)
+          @description = args[:description] if args.key?(:description)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # The link to show together with the description to provide more information.
+      class GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink
+        include Google::Apis::Core::Hashable
+      
+        # The title to show for the link.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # The uri of the link.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1894,7 +2032,7 @@ module Google
         # @return [String]
         attr_accessor :directions_uri
       
-        # A link to show reviews of this place on Google Maps.
+        # A link to show photos of this place on Google Maps.
         # Corresponds to the JSON property `photosUri`
         # @return [String]
         attr_accessor :photos_uri
@@ -1993,9 +2131,15 @@ module Google
         alias_method :open_now?, :open_now
       
         # The periods that this place is open during the week. The periods are in
-        # chronological order, starting with Sunday in the place-local timezone. An
-        # empty (but not absent) value indicates a place that is never open, e.g.
-        # because it is closed temporarily for renovations.
+        # chronological order, in the place-local timezone. An empty (but not absent)
+        # value indicates a place that is never open, e.g. because it is closed
+        # temporarily for renovations. The starting day of `periods` is NOT fixed and
+        # should not be assumed to be Sunday. The API determines the start day based on
+        # a variety of factors. For example, for a 24/7 business, the first period may
+        # begin on the day of the request. For other businesses, it might be the first
+        # day of the week that they are open. NOTE: The ordering of the `periods` array
+        # is independent of the ordering of the `weekday_descriptions` array. Do not
+        # assume they will begin on the same day.
         # Corresponds to the JSON property `periods`
         # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceOpeningHoursPeriod>]
         attr_accessor :periods
@@ -2014,8 +2158,12 @@ module Google
         attr_accessor :special_days
       
         # Localized strings describing the opening hours of this place, one string for
-        # each day of the week. Will be empty if the hours are unknown or could not be
-        # converted to localized text. Example: "Sun: 18:00–06:00"
+        # each day of the week. NOTE: The order of the days and the start of the week is
+        # determined by the locale (language and region). The ordering of the `periods`
+        # array is independent of the ordering of the `weekday_descriptions` array. Do
+        # not assume they will begin on the same day. Will be empty if the hours are
+        # unknown or could not be converted to localized text. Example: "Sun: 18:00–06:
+        # 00"
         # Corresponds to the JSON property `weekdayDescriptions`
         # @return [Array<String>]
         attr_accessor :weekday_descriptions
@@ -2452,6 +2600,18 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :text
       
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `visitDate`
+        # @return [Google::Apis::PlacesV1::GoogleTypeDate]
+        attr_accessor :visit_date
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2467,6 +2627,7 @@ module Google
           @rating = args[:rating] if args.key?(:rating)
           @relative_publish_time_description = args[:relative_publish_time_description] if args.key?(:relative_publish_time_description)
           @text = args[:text] if args.key?(:text)
+          @visit_date = args[:visit_date] if args.key?(:visit_date)
         end
       end
       
@@ -2666,6 +2827,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :excluded_types
       
+        # Optional. If true, include businesses that are not yet open but will open in
+        # the future.
+        # Corresponds to the JSON property `includeFutureOpeningBusinesses`
+        # @return [Boolean]
+        attr_accessor :include_future_opening_businesses
+        alias_method :include_future_opening_businesses?, :include_future_opening_businesses
+      
         # Included primary Place type (e.g. "restaurant" or "gas_station") from https://
         # developers.google.com/maps/documentation/places/web-service/place-types. A
         # place can only have a single primary type from the supported types table
@@ -2749,6 +2917,7 @@ module Google
         def update!(**args)
           @excluded_primary_types = args[:excluded_primary_types] if args.key?(:excluded_primary_types)
           @excluded_types = args[:excluded_types] if args.key?(:excluded_types)
+          @include_future_opening_businesses = args[:include_future_opening_businesses] if args.key?(:include_future_opening_businesses)
           @included_primary_types = args[:included_primary_types] if args.key?(:included_primary_types)
           @included_types = args[:included_types] if args.key?(:included_types)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -2816,6 +2985,13 @@ module Google
         # Corresponds to the JSON property `evOptions`
         # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1SearchTextRequestEvOptions]
         attr_accessor :ev_options
+      
+        # Optional. If true, include businesses that are not yet open but will open in
+        # the future.
+        # Corresponds to the JSON property `includeFutureOpeningBusinesses`
+        # @return [Boolean]
+        attr_accessor :include_future_opening_businesses
+        alias_method :include_future_opening_businesses?, :include_future_opening_businesses
       
         # Optional. Include pure service area businesses if the field is set to true.
         # Pure service area business is a business that visits or delivers to customers
@@ -2968,6 +3144,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ev_options = args[:ev_options] if args.key?(:ev_options)
+          @include_future_opening_businesses = args[:include_future_opening_businesses] if args.key?(:include_future_opening_businesses)
           @include_pure_service_area_businesses = args[:include_pure_service_area_businesses] if args.key?(:include_pure_service_area_businesses)
           @included_type = args[:included_type] if args.key?(:included_type)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -3178,6 +3355,245 @@ module Google
         end
       end
       
+      # Represents a transit agency.
+      class GoogleMapsPlacesV1TransitAgency
+        include Google::Apis::Core::Hashable
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # The URL of the agency's fare details page.
+        # Corresponds to the JSON property `fareUrl`
+        # @return [String]
+        attr_accessor :fare_url
+      
+        # Icon for a transit line, vehicle, or agency.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon]
+        attr_accessor :icon
+      
+        # The transit lines that are served by this agency.
+        # Corresponds to the JSON property `lines`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitLine>]
+        attr_accessor :lines
+      
+        # The URL of the agency's homepage.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @fare_url = args[:fare_url] if args.key?(:fare_url)
+          @icon = args[:icon] if args.key?(:icon)
+          @lines = args[:lines] if args.key?(:lines)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Icon for a transit line, vehicle, or agency.
+      class GoogleMapsPlacesV1TransitIcon
+        include Google::Apis::Core::Hashable
+      
+        # Whether the name is contained in the icon and there is no need to display it
+        # next to the icon.
+        # Corresponds to the JSON property `nameIncluded`
+        # @return [Boolean]
+        attr_accessor :name_included
+        alias_method :name_included?, :name_included
+      
+        # The URL of the icon.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name_included = args[:name_included] if args.key?(:name_included)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Represents a single transit line.
+      class GoogleMapsPlacesV1TransitLine
+        include Google::Apis::Core::Hashable
+      
+        # The background color of the labels for this transit line in #RRGGBB hex format,
+        # e.g. #909CE1. This color can also be used for drawing shapes for this transit
+        # line.
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [String]
+        attr_accessor :background_color
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # Icon for a transit line, vehicle, or agency.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon]
+        attr_accessor :icon
+      
+        # The id of the transit line that can be used to uniquely identify the line
+        # among other transit lines in the same transit station. This identifier is not
+        # guaranteed to be stable across different responses.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `shortDisplayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :short_display_name
+      
+        # The text color of labels for this transit line in #RRGGBB hex format, e.g. #
+        # 909CE1.
+        # Corresponds to the JSON property `textColor`
+        # @return [String]
+        attr_accessor :text_color
+      
+        # The URL of a webpage with details about this line.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # Icon for a transit line, vehicle, or agency.
+        # Corresponds to the JSON property `vehicleIcon`
+        # @return [Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitIcon]
+        attr_accessor :vehicle_icon
+      
+        # The type of vehicle using this line.
+        # Corresponds to the JSON property `vehicleType`
+        # @return [String]
+        attr_accessor :vehicle_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @icon = args[:icon] if args.key?(:icon)
+          @id = args[:id] if args.key?(:id)
+          @short_display_name = args[:short_display_name] if args.key?(:short_display_name)
+          @text_color = args[:text_color] if args.key?(:text_color)
+          @url = args[:url] if args.key?(:url)
+          @vehicle_icon = args[:vehicle_icon] if args.key?(:vehicle_icon)
+          @vehicle_type = args[:vehicle_type] if args.key?(:vehicle_type)
+        end
+      end
+      
+      # Represents transit-specific information for a place.
+      class GoogleMapsPlacesV1TransitStation
+        include Google::Apis::Core::Hashable
+      
+        # The transit agencies that serve this station.
+        # Corresponds to the JSON property `agencies`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitAgency>]
+        attr_accessor :agencies
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # Transit stops at this station.
+        # Corresponds to the JSON property `stops`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1TransitStop>]
+        attr_accessor :stops
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agencies = args[:agencies] if args.key?(:agencies)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @stops = args[:stops] if args.key?(:stops)
+        end
+      end
+      
+      # Represents a transit stop within a station. This is a specific location where
+      # passengers board and alight transit vehicles, such as a platform or bus bay.
+      # This is distinct from a `Departure`, which is an event of a vehicle leaving a
+      # stop at a specific time.
+      class GoogleMapsPlacesV1TransitStop
+        include Google::Apis::Core::Hashable
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # The id of the transit stop that can be used to uniquely identify the stop
+        # among other transit stops in the same transit station. This identifier is not
+        # guaranteed to be stable across different responses.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLatLng]
+        attr_accessor :location
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `platformCode`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :platform_code
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `signageText`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :signage_text
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `stopCode`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :stop_code
+      
+        # Wheelchair accessibility of this stop. This field indicates whether there is
+        # an accessible path from outside the station to the stop. It does not indicate
+        # whether it is possible to board a vehicle from the stop.
+        # Corresponds to the JSON property `wheelchairAccessibleEntrance`
+        # @return [Boolean]
+        attr_accessor :wheelchair_accessible_entrance
+        alias_method :wheelchair_accessible_entrance?, :wheelchair_accessible_entrance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @location = args[:location] if args.key?(:location)
+          @platform_code = args[:platform_code] if args.key?(:platform_code)
+          @signage_text = args[:signage_text] if args.key?(:signage_text)
+          @stop_code = args[:stop_code] if args.key?(:stop_code)
+          @wheelchair_accessible_entrance = args[:wheelchair_accessible_entrance] if args.key?(:wheelchair_accessible_entrance)
+        end
+      end
+      
       # Represents a whole or partial calendar date, such as a birthday. The time of
       # day and time zone are either specified elsewhere or are insignificant. The
       # date is relative to the Gregorian Calendar. This can represent one of the
@@ -3310,16 +3726,17 @@ module Google
         end
       end
       
-      # Represents a postal address (for example, for postal delivery or payments
-      # addresses). Given a postal address, a postal service can deliver items to a
-      # premise, P.O. box or similar. It is not intended to model geographical
-      # locations (roads, towns, mountains). In typical usage, an address would be
-      # created by user input or from importing existing data, depending on the type
-      # of process. Advice on address input or editing: - Use an internationalization-
-      # ready address widget such as https://github.com/google/libaddressinput. -
-      # Users should not be presented with UI elements for input or editing of fields
-      # outside countries where that field is used. For more guidance on how to use
-      # this schema, see: https://support.google.com/business/answer/6397478.
+      # Represents a postal address, such as for postal delivery or payments addresses.
+      # With a postal address, a postal service can deliver items to a premise, P.O.
+      # box, or similar. A postal address is not intended to model geographical
+      # locations like roads, towns, or mountains. In typical usage, an address would
+      # be created by user input or from importing existing data, depending on the
+      # type of process. Advice on address input or editing: - Use an
+      # internationalization-ready address widget such as https://github.com/google/
+      # libaddressinput. - Users should not be presented with UI elements for input or
+      # editing of fields outside countries where that field is used. For more
+      # guidance on how to use this schema, see: https://support.google.com/business/
+      # answer/6397478.
       class GoogleTypePostalAddress
         include Google::Apis::Core::Hashable
       

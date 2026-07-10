@@ -43,9 +43,8 @@ module Google
         # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize-chat-user) - [App authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize-chat-app) with [administrator approval](
-        # https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope
-        # in [Developer Preview](https://developers.google.com/workspace/preview). This
-        # field is not populated when using the `chat.bot` scope with [app
+        # https://support.google.com/a?p=chat-app-auth) with the `chat.app.spaces` scope.
+        # This field is not populated when using the `chat.bot` scope with [app
         # authentication](https://developers.google.com/workspace/chat/authenticate-
         # authorize-chat-app). Setting the target audience requires [user authentication]
         # (https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
@@ -184,14 +183,15 @@ module Google
         end
       end
       
-      # Output only. Annotations associated with the plain-text body of the message.
-      # To add basic formatting to a text message, see [Format text messages](https://
-      # developers.google.com/workspace/chat/format-messages). Example plain-text
-      # message body: ``` Hello @FooBot how are you!" ``` The corresponding
-      # annotations metadata: ``` "annotations":[` "type":"USER_MENTION", "startIndex":
-      # 6, "length":7, "userMention": ` "user": ` "name":"users/`user`", "displayName":
-      # "FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "type":"MENTION"
-      # ` `] ```
+      # Output only. Annotations can be associated with the plain-text body of the
+      # message or with chips that link to Google Workspace resources like Google Docs
+      # or Sheets with `start_index` and `length` of 0. To add basic formatting to a
+      # text message, see [Format text messages](https://developers.google.com/
+      # workspace/chat/format-messages). Example plain-text message body: ``` Hello @
+      # FooBot how are you!" ``` The corresponding annotations metadata: ``` "
+      # annotations":[` "type":"USER_MENTION", "startIndex":6, "length":7, "
+      # userMention": ` "user": ` "name":"users/`user`", "displayName":"FooBot", "
+      # avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "type":"MENTION" ` `] ```
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -201,12 +201,14 @@ module Google
         attr_accessor :custom_emoji_metadata
       
         # Length of the substring in the plain-text message body this annotation
-        # corresponds to.
+        # corresponds to. If not present, indicates a length of 0.
         # Corresponds to the JSON property `length`
         # @return [Fixnum]
         attr_accessor :length
       
-        # A rich link to a resource.
+        # A rich link to a resource. Rich links can be associated with the plain-text
+        # body of the message or represent chips that link to Google Workspace resources
+        # like Google Docs or Sheets with `start_index` and `length` of 0.
         # Corresponds to the JSON property `richLinkMetadata`
         # @return [Google::Apis::ChatV1::RichLinkMetadata]
         attr_accessor :rich_link_metadata
@@ -324,8 +326,8 @@ module Google
         # @return [Google::Apis::ChatV1::DriveDataRef]
         attr_accessor :drive_data_ref
       
-        # Optional. Resource name of the attachment, in the form `spaces/`space`/
-        # messages/`message`/attachments/`attachment``.
+        # Identifier. Resource name of the attachment. Format: `spaces/`space`/messages/`
+        # message`/attachments/`attachment``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -387,6 +389,51 @@ module Google
         end
       end
       
+      # Represents a user's current availability information in Google Chat, including
+      # their state (for example, Active, Away, Do Not Disturb) and any custom status.
+      class Availability
+        include Google::Apis::Core::Hashable
+      
+        # Represents a user's custom status in Google Chat. This includes a short text
+        # message with an optional emoji that a user sets to give more context about
+        # their availability.
+        # Corresponds to the JSON property `customStatus`
+        # @return [Google::Apis::ChatV1::CustomStatus]
+        attr_accessor :custom_status
+      
+        # Metadata associated with the `DO_NOT_DISTURB` availability state, specifying
+        # when the state is set to expire.
+        # Corresponds to the JSON property `doNotDisturbMetadata`
+        # @return [Google::Apis::ChatV1::DoNotDisturbMetadata]
+        attr_accessor :do_not_disturb_metadata
+      
+        # Identifier. Resource name of the user's availability. Format: `users/`user`/
+        # availability` ``user`` is the id for the Person in the People API or Admin SDK
+        # directory API. For example, `users/123456789`. The user's email address or `me`
+        # can also be used as an alias to refer to the caller. For example, `users/user@
+        # example.com` or `users/me`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The user's current availability state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_status = args[:custom_status] if args.key?(:custom_status)
+          @do_not_disturb_metadata = args[:do_not_disturb_metadata] if args.key?(:do_not_disturb_metadata)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # A button. Can be a text button or an image button.
       class Button
         include Google::Apis::Core::Hashable
@@ -409,6 +456,33 @@ module Google
         def update!(**args)
           @image_button = args[:image_button] if args.key?(:image_button)
           @text_button = args[:text_button] if args.key?(:text_button)
+        end
+      end
+      
+      # Data for Calendar event links.
+      class CalendarEventLinkData
+        include Google::Apis::Core::Hashable
+      
+        # The [Calendar identifier](https://developers.google.com/workspace/calendar/api/
+        # v3/reference/calendars) of the linked Calendar.
+        # Corresponds to the JSON property `calendarId`
+        # @return [String]
+        attr_accessor :calendar_id
+      
+        # The [Event identifier](https://developers.google.com/workspace/calendar/api/v3/
+        # reference/events) of the linked Calendar event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calendar_id = args[:calendar_id] if args.key?(:calendar_id)
+          @event_id = args[:event_id] if args.key?(:event_id)
         end
       end
       
@@ -516,10 +590,16 @@ module Google
       end
       
       # A [card](https://developers.google.com/workspace/chat/api/reference/rest/v1/
-      # cards) in a Google Chat message. Only Chat apps can create cards. If your Chat
-      # app [authenticates as a user](https://developers.google.com/workspace/chat/
-      # authenticate-authorize-chat-user), the message can't contain cards. [Card
-      # builder](https://addons.gsuite.google.com/uikit/builder)
+      # cards) in a Google Chat message. Chat apps can create cards with [app
+      # authentication](https://developers.google.com/workspace/chat/authenticate-
+      # authorize-chat-app). As part of the [Developer Preview Program](https://
+      # developers.google.com/workspace/preview), if your Chat app [authenticates as a
+      # user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-
+      # user), it can create card messages. If your Chat app is not part of Developer
+      # Preview Program, it can't create cards with user authentication. To learn how
+      # to create a message that contains cards, see [Send a message](https://
+      # developers.google.com/workspace/chat/create-messages). [Card builder](https://
+      # addons.gsuite.google.com/uikit/builder)
       class CardWithId
         include Google::Apis::Core::Hashable
       
@@ -532,14 +612,15 @@ module Google
         # components of a card or dialog](https://developers.google.com/workspace/chat/
         # design-components-card-dialog). * For Google Workspace add-ons, see [Card-
         # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
-        # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
-        # limit are ignored. This limit applies to both card messages and dialogs in
-        # Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card
-        # message for a Google Chat app** ![Example contact card](https://developers.
-        # google.com/workspace/chat/images/card_api_reference.png) To create the sample
-        # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
-        # cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle":
-        # "Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
+        # cards). Note: You can add up to 100 widgets per card. If a section's widgets
+        # push the total count above 100, that entire section and all following sections
+        # are ignored. This limit applies to both card messages and dialogs in Google
+        # Chat apps, and to cards in Google Workspace add-ons. **Example: Card message
+        # for a Google Chat app** ![Example contact card](https://developers.google.com/
+        # workspace/chat/images/card_api_reference.png) To create the sample card
+        # message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "cardId":
+        # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
+        # Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
         # images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "
         # Avatar for Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible":
         # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
@@ -756,35 +837,85 @@ module Google
         end
       end
       
-      # Represents information about the user's client, such as locale, host app, and
-      # platform. For Chat apps, `CommonEventObject` includes data submitted by users
-      # interacting with cards, like data entered in [dialogs](https://developers.
-      # google.com/chat/how-tos/dialogs).
+      # The common event object is the portion of the overall event object that
+      # carries general, host-independent information to the add-on from the user's
+      # client. This information includes details such as the user's locale, host app,
+      # and platform. In addition to homepage and contextual triggers, add-ons
+      # construct and pass event objects to [action callback functions](https://
+      # developers.google.com/workspace/add-ons/concepts/actions#callback_functions)
+      # when the user interacts with widgets. Your add-on's callback function can
+      # query the common event object to determine the contents of open widgets in the
+      # user's client. For example, your add-on can locate the text a user has entered
+      # into a [TextInput](https://developers.google.com/apps-script/reference/card-
+      # service/text-input) widget in the `eventObject.commentEventObject.formInputs`
+      # object. For Chat apps, the name of the function that the user invoked when
+      # interacting with a widget.
       class CommonEventObject
         include Google::Apis::Core::Hashable
       
-        # A map containing the values that a user inputs in a widget from a card or
-        # dialog. The map keys are the string IDs assigned to each widget, and the
-        # values represent inputs to the widget. For details, see [Process information
-        # inputted by users](https://developers.google.com/chat/ui/read-form-data).
+        # A map containing the current values of the widgets in the displayed card. The
+        # map keys are the string IDs assigned with each widget. The structure of the
+        # map value object is dependent on the widget type: **Note**: The following
+        # examples are formatted for Apps Script's V8 runtime. If you're using Rhino
+        # runtime, you must add `[""]` after the value. For example, instead of `e.
+        # commonEventObject.formInputs.employeeName.stringInputs.value[0]`, format the
+        # event object as `e.commonEventObject.formInputs.employeeName[""].stringInputs.
+        # value[0]`. To learn more about runtimes in Apps Script, see the [V8 Runtime
+        # Overview](https://developers.google.com/apps-script/guides/v8-runtime). *
+        # Single-valued widgets (for example, a text box): a list of strings (only one
+        # element). **Example**: for a text input widget with `employeeName` as its ID,
+        # access the text input value with: `e.commonEventObject.formInputs.employeeName.
+        # stringInputs.value[0]`. * Multi-valued widgets (for example, checkbox groups):
+        # a list of strings. **Example**: for a multi-value widget with `participants`
+        # as its ID, access the value array with: `e.commonEventObject.formInputs.
+        # participants.stringInputs.value`. * **A date-time picker**: a [`DateTimeInput
+        # object`](https://developers.google.com/workspace/add-ons/concepts/event-
+        # objects#date-time-input). **Example**: For a picker with an ID of `myDTPicker`,
+        # access the [`DateTimeInput`](https://developers.google.com/workspace/add-ons/
+        # concepts/event-objects#date-time-input) object using `e.commonEventObject.
+        # formInputs.myDTPicker.dateTimeInput`. * **A date-only picker**: a [`DateInput
+        # object`](https://developers.google.com/workspace/add-ons/concepts/event-
+        # objects#date-input). **Example**: For a picker with an ID of `myDatePicker`,
+        # access the [`DateInput`](https://developers.google.com/workspace/add-ons/
+        # concepts/event-objects#date-input) object using `e.commonEventObject.
+        # formInputs.myDatePicker.dateInput`. * **A time-only picker**: a [`TimeInput
+        # object`](https://developers.google.com/workspace/add-ons/concepts/event-
+        # objects#time-input). **Example**: For a picker with an ID of `myTimePicker`,
+        # access the [`TimeInput`](https://developers.google.com/workspace/add-ons/
+        # concepts/event-objects#time-input) object using `e.commonEventObject.
+        # formInputs.myTimePicker.timeInput`.
         # Corresponds to the JSON property `formInputs`
         # @return [Hash<String,Google::Apis::ChatV1::Inputs>]
         attr_accessor :form_inputs
       
-        # The hostApp enum which indicates the app the add-on is invoked from. Always `
-        # CHAT` for Chat apps.
+        # Indicates the host app the add-on is active in when the event object is
+        # generated. Possible values include the following: * `GMAIL` * `CALENDAR` * `
+        # DRIVE` * `DOCS` * `SHEETS` * `SLIDES` * `CHAT`
         # Corresponds to the JSON property `hostApp`
         # @return [String]
         attr_accessor :host_app
       
-        # Name of the invoked function associated with the widget. Only set for Chat
-        # apps.
+        # Name of the function to invoke. This field doesn't populate for Google
+        # Workspace Add-ons that extend Google Chat. Instead, to receive function data
+        # like identifiers, add-ons that extend Chat should use the `parameters` field.
+        # See [Build interactive interfaces for Chat apps](https://developers.google.com/
+        # workspace/add-ons/chat/build).
         # Corresponds to the JSON property `invokedFunction`
         # @return [String]
         attr_accessor :invoked_function
       
-        # Custom [parameters](/chat/api/reference/rest/v1/cards#ActionParameter) passed
-        # to the invoked function. Both keys and values must be strings.
+        # Any additional parameters you supply to an action using [`actionParameters`](
+        # https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.
+        # v1#google.apps.card.v1.Action.ActionParameter) or [`Action.setParameters()`](
+        # https://developers.google.com/apps-script/reference/card-service/action#
+        # setparametersparameters). **Developer Preview:** For [add-ons that extend
+        # Google Chat](https://developers.google.com/workspace/add-ons/chat), to suggest
+        # items based on what the users type in multiselect menus, use the value of the `
+        # "autocomplete_widget_query"` key (`event.commonEventObject.parameters["
+        # autocomplete_widget_query"]`). You can use this value to query a database and
+        # suggest selectable items to users as they type. For details, see [Collect and
+        # process information from Google Chat users](https://developers.google.com/
+        # workspace/add-ons/chat/collect-information).
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,String>]
         attr_accessor :parameters
@@ -804,8 +935,14 @@ module Google
         # @return [Google::Apis::ChatV1::TimeZone]
         attr_accessor :time_zone
       
-        # The full `locale.displayName` in the format of [ISO 639 language code]-[ISO
-        # 3166 country/region code] such as "en-US".
+        # **Disabled by default.** The user's language and country/region identifier in
+        # the format of [ISO 639](https://wikipedia.org/wiki/ISO_639_macrolanguage)
+        # language code-[ISO 3166](https://wikipedia.org/wiki/ISO_3166) country/region
+        # code. For example, `en-US`. To turn on this field, you must set `addOns.common.
+        # useLocaleFromApp` to `true` in your add-on's manifest. Your add-on's scope
+        # list must also include `https://www.googleapis.com/auth/script.locale`. See [
+        # Accessing user locale and timezone](https://developers.google.com/workspace/
+        # add-ons/how-tos/access-user-locale) for more details.
         # Corresponds to the JSON property `userLocale`
         # @return [String]
         attr_accessor :user_locale
@@ -958,6 +1095,46 @@ module Google
         end
       end
       
+      # Represents a user's custom status in Google Chat. This includes a short text
+      # message with an optional emoji that a user sets to give more context about
+      # their availability.
+      class CustomStatus
+        include Google::Apis::Core::Hashable
+      
+        # An emoji that is used as a reaction to a message.
+        # Corresponds to the JSON property `emoji`
+        # @return [Google::Apis::ChatV1::Emoji]
+        attr_accessor :emoji
+      
+        # The timestamp when the custom status expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Required. The text of the custom status. This will be a string with maximum
+        # length of 64.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Input only. The time-to-live duration after which the custom status expires.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @emoji = args[:emoji] if args.key?(:emoji)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @text = args[:text] if args.key?(:text)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
       # Date input values.
       class DateInput
         include Google::Apis::Core::Hashable
@@ -1037,7 +1214,12 @@ module Google
       # addition to receiving events from user interactions, Chat apps can receive
       # events about changes to spaces, such as when a new member is added to a space.
       # To learn about space events, see [Work with events from Google Chat](https://
-      # developers.google.com/workspace/chat/events-overview).
+      # developers.google.com/workspace/chat/events-overview). Note: This event is
+      # only used for [Chat interaction events](https://developers.google.com/
+      # workspace/chat/receive-respond-interactions). If your Chat app is built as a [
+      # Google Workspace add-on](https://developers.google.com/workspace/add-ons/chat/
+      # build), see [Chat event objects](https://developers.google.com/workspace/add-
+      # ons/concepts/event-objects#chat-event-object) in the add-ons documentation.
       class DeprecatedEvent
         include Google::Apis::Core::Hashable
       
@@ -1053,10 +1235,19 @@ module Google
         # @return [Google::Apis::ChatV1::AppCommandMetadata]
         attr_accessor :app_command_metadata
       
-        # Represents information about the user's client, such as locale, host app, and
-        # platform. For Chat apps, `CommonEventObject` includes data submitted by users
-        # interacting with cards, like data entered in [dialogs](https://developers.
-        # google.com/chat/how-tos/dialogs).
+        # The common event object is the portion of the overall event object that
+        # carries general, host-independent information to the add-on from the user's
+        # client. This information includes details such as the user's locale, host app,
+        # and platform. In addition to homepage and contextual triggers, add-ons
+        # construct and pass event objects to [action callback functions](https://
+        # developers.google.com/workspace/add-ons/concepts/actions#callback_functions)
+        # when the user interacts with widgets. Your add-on's callback function can
+        # query the common event object to determine the contents of open widgets in the
+        # user's client. For example, your add-on can locate the text a user has entered
+        # into a [TextInput](https://developers.google.com/apps-script/reference/card-
+        # service/text-input) widget in the `eventObject.commentEventObject.formInputs`
+        # object. For Chat apps, the name of the function that the user invoked when
+        # interacting with a widget.
         # Corresponds to the JSON property `common`
         # @return [Google::Apis::ChatV1::CommonEventObject]
         attr_accessor :common
@@ -1179,14 +1370,15 @@ module Google
         # components of a card or dialog](https://developers.google.com/workspace/chat/
         # design-components-card-dialog). * For Google Workspace add-ons, see [Card-
         # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
-        # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
-        # limit are ignored. This limit applies to both card messages and dialogs in
-        # Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card
-        # message for a Google Chat app** ![Example contact card](https://developers.
-        # google.com/workspace/chat/images/card_api_reference.png) To create the sample
-        # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
-        # cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle":
-        # "Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
+        # cards). Note: You can add up to 100 widgets per card. If a section's widgets
+        # push the total count above 100, that entire section and all following sections
+        # are ignored. This limit applies to both card messages and dialogs in Google
+        # Chat apps, and to cards in Google Workspace add-ons. **Example: Card message
+        # for a Google Chat app** ![Example contact card](https://developers.google.com/
+        # workspace/chat/images/card_api_reference.png) To create the sample card
+        # message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "cardId":
+        # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
+        # Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
         # images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "
         # Avatar for Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible":
         # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
@@ -1235,6 +1427,27 @@ module Google
         def update!(**args)
           @action_status = args[:action_status] if args.key?(:action_status)
           @dialog = args[:dialog] if args.key?(:dialog)
+        end
+      end
+      
+      # Metadata associated with the `DO_NOT_DISTURB` availability state, specifying
+      # when the state is set to expire.
+      class DoNotDisturbMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp until which the user should be marked as DO_NOT_DISTURB.
+        # This can be maximum of 1 year in the future.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
         end
       end
       
@@ -1348,6 +1561,33 @@ module Google
         end
       end
       
+      # A response containing group chat spaces with exactly the calling user and the
+      # requested users.
+      class FindGroupChatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that you can send as `pageToken` to retrieve the next page of results.
+        # If empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of spaces in the requested (or first) page.
+        # Corresponds to the JSON property `spaces`
+        # @return [Array<Google::Apis::ChatV1::Space>]
+        attr_accessor :spaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spaces = args[:spaces] if args.key?(:spaces)
+        end
+      end
+      
       # A form action describes the behavior when the form is submitted. For example,
       # you can invoke Apps Script to handle the form.
       class FormAction
@@ -1374,6 +1614,35 @@ module Google
         def update!(**args)
           @action_method_name = args[:action_method_name] if args.key?(:action_method_name)
           @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Metadata about the source space from which a message was forwarded.
+      class ForwardedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the source space. Format: spaces/`space`
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        # Output only. The display name of the source space or DM at the time of
+        # forwarding. For `SPACE`, this is the space name. For `DIRECT_MESSAGE`, this is
+        # the other participant's name (e.g., "User A"). For `GROUP_CHAT`, this is a
+        # generated name based on members' first names, limited to 5 including the
+        # creator (e.g., "User A, User B").
+        # Corresponds to the JSON property `spaceDisplayName`
+        # @return [String]
+        attr_accessor :space_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space = args[:space] if args.key?(:space)
+          @space_display_name = args[:space_display_name] if args.key?(:space_display_name)
         end
       end
       
@@ -1727,14 +1996,15 @@ module Google
       # components of a card or dialog](https://developers.google.com/workspace/chat/
       # design-components-card-dialog). * For Google Workspace add-ons, see [Card-
       # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
-      # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
-      # limit are ignored. This limit applies to both card messages and dialogs in
-      # Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card
-      # message for a Google Chat app** ![Example contact card](https://developers.
-      # google.com/workspace/chat/images/card_api_reference.png) To create the sample
-      # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
-      # cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle":
-      # "Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
+      # cards). Note: You can add up to 100 widgets per card. If a section's widgets
+      # push the total count above 100, that entire section and all following sections
+      # are ignored. This limit applies to both card messages and dialogs in Google
+      # Chat apps, and to cards in Google Workspace add-ons. **Example: Card message
+      # for a Google Chat app** ![Example contact card](https://developers.google.com/
+      # workspace/chat/images/card_api_reference.png) To create the sample card
+      # message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "cardId":
+      # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
+      # Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
       # images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "
       # Avatar for Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible":
       # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
@@ -1766,6 +2036,12 @@ module Google
         # Corresponds to the JSON property `displayStyle`
         # @return [String]
         attr_accessor :display_style
+      
+        # The expression data for the card. Available for Google Workspace add-ons that
+        # extend Google Workspace Studio. Unavailable for Google Chat apps.
+        # Corresponds to the JSON property `expressionData`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1ExpressionData>]
+        attr_accessor :expression_data
       
         # A persistent (sticky) footer that that appears at the bottom of the card.
         # Setting `fixedFooter` without specifying a `primaryButton` or a `
@@ -1823,6 +2099,7 @@ module Google
         def update!(**args)
           @card_actions = args[:card_actions] if args.key?(:card_actions)
           @display_style = args[:display_style] if args.key?(:display_style)
+          @expression_data = args[:expression_data] if args.key?(:expression_data)
           @fixed_footer = args[:fixed_footer] if args.key?(:fixed_footer)
           @header = args[:header] if args.key?(:header)
           @name = args[:name] if args.key?(:name)
@@ -1955,15 +2232,15 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview): A
-      # carousel, also known as a slider, rotates and displays a list of widgets in a
-      # slideshow format, with buttons navigating to the previous or next widget. For
-      # example, this is a JSON representation of a carousel that contains three text
-      # paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "textParagraph": `
-      # "text": "First text paragraph in carousel", ` ` ] `, ` "widgets": [ ` "
-      # textParagraph": ` "text": "Second text paragraph in carousel", ` ` ] `, ` "
-      # widgets": [ ` "textParagraph": ` "text": "Third text paragraph in carousel", `
-      # ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/workspace/chat):
+      # A carousel, also known as a slider, rotates and displays a list of widgets in
+      # a slideshow format, with buttons navigating to the previous or next widget.
+      # For example, this is a JSON representation of a carousel that contains three
+      # text paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "
+      # textParagraph": ` "text": "First text paragraph in carousel", ` ` ] `, ` "
+      # widgets": [ ` "textParagraph": ` "text": "Second text paragraph in carousel", `
+      # ` ] `, ` "widgets": [ ` "textParagraph": ` "text": "Third text paragraph in
+      # carousel", ` ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/
+      # workspace/chat):
       class GoogleAppsCardV1Carousel
         include Google::Apis::Core::Hashable
       
@@ -1982,8 +2259,7 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview): A card
-      # that can be displayed as a carousel item. [Google Chat apps](https://
+      # A card that can be displayed as a carousel item. [Google Chat apps](https://
       # developers.google.com/workspace/chat):
       class GoogleAppsCardV1CarouselCard
         include Google::Apis::Core::Hashable
@@ -2223,6 +2499,97 @@ module Google
         end
       end
       
+      # Represents an action that is not specific to a widget. Available for Google
+      # Workspace add-ons that extend Google Workspace Studio. Unavailable for Google
+      # Chat apps.
+      class GoogleAppsCardV1CommonWidgetAction
+        include Google::Apis::Core::Hashable
+      
+        # Represents an action that updates the visibility of a widget. Available for
+        # Google Workspace add-ons that extend Google Workspace Studio. Unavailable for
+        # Google Chat apps.
+        # Corresponds to the JSON property `updateVisibilityAction`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1UpdateVisibilityAction]
+        attr_accessor :update_visibility_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @update_visibility_action = args[:update_visibility_action] if args.key?(:update_visibility_action)
+        end
+      end
+      
+      # Represents a condition that can be used to trigger an action. Available for
+      # Google Workspace add-ons that extend Google Workspace Studio. Unavailable for
+      # Google Chat apps.
+      class GoogleAppsCardV1Condition
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the ActionRule.
+        # Corresponds to the JSON property `actionRuleId`
+        # @return [String]
+        attr_accessor :action_rule_id
+      
+        # Represents a condition that is evaluated using CEL. Available for Google
+        # Workspace add-ons that extend Google Workspace Studio. Unavailable for Google
+        # Chat apps.
+        # Corresponds to the JSON property `expressionDataCondition`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1ExpressionDataCondition]
+        attr_accessor :expression_data_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_rule_id = args[:action_rule_id] if args.key?(:action_rule_id)
+          @expression_data_condition = args[:expression_data_condition] if args.key?(:expression_data_condition)
+        end
+      end
+      
+      # A configuration object that helps configure the data sources for a widget.
+      # Available for Google Chat apps and Google Workspace add-ons that extend Google
+      # Workspace Studio.
+      class GoogleAppsCardV1DataSourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # The minimum number of characters the user must enter before this data provider
+        # is triggered (i.e., before it starts returning results).
+        # Corresponds to the JSON property `minCharactersTrigger`
+        # @return [Fixnum]
+        attr_accessor :min_characters_trigger
+      
+        # For a `SelectionInput` widget that uses a multiselect menu, a data source from
+        # Google Workspace. Used to populate items in a multiselect menu. [Google Chat
+        # apps](https://developers.google.com/workspace/chat):
+        # Corresponds to the JSON property `platformDataSource`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1PlatformDataSource]
+        attr_accessor :platform_data_source
+      
+        # An action that describes the behavior when the form is submitted. For example,
+        # you can invoke an Apps Script script to handle the form. If the action is
+        # triggered, the form values are sent to the server. [Google Workspace add-ons
+        # and Chat apps](https://developers.google.com/workspace/extend):
+        # Corresponds to the JSON property `remoteDataSource`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
+        attr_accessor :remote_data_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_characters_trigger = args[:min_characters_trigger] if args.key?(:min_characters_trigger)
+          @platform_data_source = args[:platform_data_source] if args.key?(:platform_data_source)
+          @remote_data_source = args[:remote_data_source] if args.key?(:remote_data_source)
+        end
+      end
+      
       # Lets users input a date, a time, or both a date and a time. Supports form
       # submission validation. When `Action.all_widgets_are_required` is set to `true`
       # or this widget is specified in `Action.required_widgets`, the submission
@@ -2235,6 +2602,12 @@ module Google
       # https://developers.google.com/workspace/extend):
       class GoogleAppsCardV1DateTimePicker
         include Google::Apis::Core::Hashable
+      
+        # A data source from a Google Workspace application. The data source populates
+        # available items for a widget.
+        # Corresponds to the JSON property `hostAppDataSource`
+        # @return [Google::Apis::ChatV1::HostAppDataSourceMarkup]
+        attr_accessor :host_app_data_source
       
         # The text that prompts users to input a date, a time, or a date and time. For
         # example, if users are scheduling an appointment, use a label such as `
@@ -2288,6 +2661,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @host_app_data_source = args[:host_app_data_source] if args.key?(:host_app_data_source)
           @label = args[:label] if args.key?(:label)
           @name = args[:name] if args.key?(:name)
           @on_change_action = args[:on_change_action] if args.key?(:on_change_action)
@@ -2311,6 +2685,19 @@ module Google
         # @return [String]
         attr_accessor :bottom_label
       
+        # A paragraph of text that supports formatting. For an example in Google Chat
+        # apps, see [Add a paragraph of formatted text](https://developers.google.com/
+        # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
+        # For more information about formatting text, see [Formatting text in Google
+        # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
+        # formatting) and [Formatting text in Google Workspace add-ons](https://
+        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend):
+        # Corresponds to the JSON property `bottomLabelText`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
+        attr_accessor :bottom_label_text
+      
         # A text, icon, or text and icon button that users can click. For an example in
         # Google Chat apps, see [Add a button](https://developers.google.com/workspace/
         # chat/design-interactive-card-dialog#add_a_button). To make an image a
@@ -2320,6 +2707,19 @@ module Google
         # Corresponds to the JSON property `button`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Button]
         attr_accessor :button
+      
+        # A paragraph of text that supports formatting. For an example in Google Chat
+        # apps, see [Add a paragraph of formatted text](https://developers.google.com/
+        # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
+        # For more information about formatting text, see [Formatting text in Google
+        # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
+        # formatting) and [Formatting text in Google Workspace add-ons](https://
+        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend):
+        # Corresponds to the JSON property `contentText`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
+        attr_accessor :content_text
       
         # An icon displayed in a widget on a card. For an example in Google Chat apps,
         # see [Add an icon](https://developers.google.com/workspace/chat/add-text-image-
@@ -2361,6 +2761,13 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Icon]
         attr_accessor :start_icon
       
+        # Optional. Vertical alignment of the start icon. If not set, the icon will be
+        # vertically centered. [Google Chat apps](https://developers.google.com/
+        # workspace/chat):
+        # Corresponds to the JSON property `startIconVerticalAlignment`
+        # @return [String]
+        attr_accessor :start_icon_vertical_alignment
+      
         # Either a toggle-style switch or a checkbox inside a `decoratedText` widget. [
         # Google Workspace add-ons and Chat apps](https://developers.google.com/
         # workspace/extend): Only supported in the `decoratedText` widget.
@@ -2382,6 +2789,19 @@ module Google
         # @return [String]
         attr_accessor :top_label
       
+        # A paragraph of text that supports formatting. For an example in Google Chat
+        # apps, see [Add a paragraph of formatted text](https://developers.google.com/
+        # workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text).
+        # For more information about formatting text, see [Formatting text in Google
+        # Chat apps](https://developers.google.com/workspace/chat/format-messages#card-
+        # formatting) and [Formatting text in Google Workspace add-ons](https://
+        # developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [
+        # Google Workspace add-ons and Chat apps](https://developers.google.com/
+        # workspace/extend):
+        # Corresponds to the JSON property `topLabelText`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
+        attr_accessor :top_label_text
+      
         # The wrap text setting. If `true`, the text wraps and displays on multiple
         # lines. Otherwise, the text is truncated. Only applies to `text`, not `topLabel`
         # and `bottomLabel`.
@@ -2397,14 +2817,18 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bottom_label = args[:bottom_label] if args.key?(:bottom_label)
+          @bottom_label_text = args[:bottom_label_text] if args.key?(:bottom_label_text)
           @button = args[:button] if args.key?(:button)
+          @content_text = args[:content_text] if args.key?(:content_text)
           @end_icon = args[:end_icon] if args.key?(:end_icon)
           @icon = args[:icon] if args.key?(:icon)
           @on_click = args[:on_click] if args.key?(:on_click)
           @start_icon = args[:start_icon] if args.key?(:start_icon)
+          @start_icon_vertical_alignment = args[:start_icon_vertical_alignment] if args.key?(:start_icon_vertical_alignment)
           @switch_control = args[:switch_control] if args.key?(:switch_control)
           @text = args[:text] if args.key?(:text)
           @top_label = args[:top_label] if args.key?(:top_label)
+          @top_label_text = args[:top_label_text] if args.key?(:top_label_text)
           @wrap_text = args[:wrap_text] if args.key?(:wrap_text)
         end
       end
@@ -2424,6 +2848,101 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents an actionthat can be performed on an ui element. Available for
+      # Google Workspace add-ons that extend Google Workspace Studio. Unavailable for
+      # Google Chat apps.
+      class GoogleAppsCardV1EventAction
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the ActionRule.
+        # Corresponds to the JSON property `actionRuleId`
+        # @return [String]
+        attr_accessor :action_rule_id
+      
+        # Represents an action that is not specific to a widget. Available for Google
+        # Workspace add-ons that extend Google Workspace Studio. Unavailable for Google
+        # Chat apps.
+        # Corresponds to the JSON property `commonWidgetAction`
+        # @return [Google::Apis::ChatV1::GoogleAppsCardV1CommonWidgetAction]
+        attr_accessor :common_widget_action
+      
+        # The list of triggers that will be triggered after the EventAction is executed.
+        # Corresponds to the JSON property `postEventTriggers`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Trigger>]
+        attr_accessor :post_event_triggers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_rule_id = args[:action_rule_id] if args.key?(:action_rule_id)
+          @common_widget_action = args[:common_widget_action] if args.key?(:common_widget_action)
+          @post_event_triggers = args[:post_event_triggers] if args.key?(:post_event_triggers)
+        end
+      end
+      
+      # Represents the data that is used to evaluate an expression. Available for
+      # Google Workspace add-ons that extend Google Workspace Studio. Unavailable for
+      # Google Chat apps.
+      class GoogleAppsCardV1ExpressionData
+        include Google::Apis::Core::Hashable
+      
+        # The list of conditions that are determined by the expression evaluation result.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Condition>]
+        attr_accessor :conditions
+      
+        # The list of actions that the ExpressionData can be used.
+        # Corresponds to the JSON property `eventActions`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1EventAction>]
+        attr_accessor :event_actions
+      
+        # The uncompiled expression.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # The unique identifier of the ExpressionData.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @event_actions = args[:event_actions] if args.key?(:event_actions)
+          @expression = args[:expression] if args.key?(:expression)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Represents a condition that is evaluated using CEL. Available for Google
+      # Workspace add-ons that extend Google Workspace Studio. Unavailable for Google
+      # Chat apps.
+      class GoogleAppsCardV1ExpressionDataCondition
+        include Google::Apis::Core::Hashable
+      
+        # The type of the condition.
+        # Corresponds to the JSON property `conditionType`
+        # @return [String]
+        attr_accessor :condition_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition_type = args[:condition_type] if args.key?(:condition_type)
         end
       end
       
@@ -2769,8 +3288,7 @@ module Google
         end
       end
       
-      # [Developer Preview](https://developers.google.com/workspace/preview): A list
-      # of widgets that can be displayed in a containing layout, such as a `
+      # A list of widgets that can be displayed in a containing layout, such as a `
       # CarouselCard`. [Google Chat apps](https://developers.google.com/workspace/chat)
       # :
       class GoogleAppsCardV1NestedWidget
@@ -2840,14 +3358,15 @@ module Google
         # components of a card or dialog](https://developers.google.com/workspace/chat/
         # design-components-card-dialog). * For Google Workspace add-ons, see [Card-
         # based interfaces](https://developers.google.com/apps-script/add-ons/concepts/
-        # cards). Note: You can add up to 100 widgets per card. Any widgets beyond this
-        # limit are ignored. This limit applies to both card messages and dialogs in
-        # Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card
-        # message for a Google Chat app** ![Example contact card](https://developers.
-        # google.com/workspace/chat/images/card_api_reference.png) To create the sample
-        # card message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "
-        # cardId": "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle":
-        # "Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
+        # cards). Note: You can add up to 100 widgets per card. If a section's widgets
+        # push the total count above 100, that entire section and all following sections
+        # are ignored. This limit applies to both card messages and dialogs in Google
+        # Chat apps, and to cards in Google Workspace add-ons. **Example: Card message
+        # for a Google Chat app** ![Example contact card](https://developers.google.com/
+        # workspace/chat/images/card_api_reference.png) To create the sample card
+        # message in Google Chat, use the following JSON: ``` ` "cardsV2": [ ` "cardId":
+        # "unique-card-id", "card": ` "header": ` "title": "Sasha", "subtitle": "
+        # Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/
         # images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "
         # Avatar for Sasha" `, "sections": [ ` "header": "Contact Info", "collapsible":
         # true, "uncollapsibleWidgetsCount": 1, "widgets": [ ` "decoratedText": ` "
@@ -2918,7 +3437,7 @@ module Google
         # @return [String]
         attr_accessor :open_as
       
-        # The URL to open.
+        # The URL to open. HTTP URLs are converted to HTTPS.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -3018,10 +3537,8 @@ module Google
         # @return [String]
         attr_accessor :common_data_source
       
-        # For a `SelectionInput` widget that uses a multiselect menu, a data source from
-        # a Google Workspace application. The data source populates selection items for
-        # the multiselect menu. [Google Chat apps](https://developers.google.com/
-        # workspace/chat):
+        # A data source from a Google Workspace application. The data source populates
+        # available items for a widget.
         # Corresponds to the JSON property `hostAppDataSource`
         # @return [Google::Apis::ChatV1::HostAppDataSourceMarkup]
         attr_accessor :host_app_data_source
@@ -3068,6 +3585,14 @@ module Google
         # @return [String]
         attr_accessor :header
       
+        # A unique ID assigned to the section that's used to identify the section to be
+        # mutated. The ID has a character limit of 64 characters and should be in the
+        # format of `[a-zA-Z0-9-]+`. Available for Google Workspace add-ons that extend
+        # Google Workspace Studio. Unavailable for Google Chat apps.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # The number of uncollapsible widgets which remain visible even when a section
         # is collapsed. For example, when a section contains five widgets and the `
         # uncollapsibleWidgetsCount` is set to `2`, the first two widgets are always
@@ -3092,6 +3617,7 @@ module Google
           @collapse_control = args[:collapse_control] if args.key?(:collapse_control)
           @collapsible = args[:collapsible] if args.key?(:collapsible)
           @header = args[:header] if args.key?(:header)
+          @id = args[:id] if args.key?(:id)
           @uncollapsible_widgets_count = args[:uncollapsible_widgets_count] if args.key?(:uncollapsible_widgets_count)
           @widgets = args[:widgets] if args.key?(:widgets)
         end
@@ -3113,6 +3639,18 @@ module Google
       class GoogleAppsCardV1SelectionInput
         include Google::Apis::Core::Hashable
       
+        # Optional. The data source configs for the selection control. This field
+        # provides more fine-grained control over the data source. If specified, the `
+        # multi_select_max_selected_items` field, `multi_select_min_query_length` field,
+        # `external_data_source` field and `platform_data_source` field are ignored.
+        # Available for Google Workspace add-ons that extend Google Workspace Studio.
+        # Available for the `Dropdown widget` in Google Chat apps. For the `Dropdown`
+        # widget in Google Chat apps, only one `DataSourceConfig` is supported. If
+        # multiple `DataSourceConfig`s are set, only the first one is used.
+        # Corresponds to the JSON property `dataSourceConfigs`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1DataSourceConfig>]
+        attr_accessor :data_source_configs
+      
         # An action that describes the behavior when the form is submitted. For example,
         # you can invoke an Apps Script script to handle the form. If the action is
         # triggered, the form values are sent to the server. [Google Workspace add-ons
@@ -3120,6 +3658,14 @@ module Google
         # Corresponds to the JSON property `externalDataSource`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :external_data_source
+      
+        # Optional. Text that appears below the selection input field meant to assist
+        # users by prompting them to enter a certain value. This text is always visible.
+        # Available for Google Workspace add-ons that extend Google Workspace Studio.
+        # Unavailable for Google Chat apps.
+        # Corresponds to the JSON property `hintText`
+        # @return [String]
+        attr_accessor :hint_text
       
         # An array of selectable items. For example, an array of radio buttons or
         # checkboxes. Supports up to 100 items.
@@ -3188,7 +3734,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_source_configs = args[:data_source_configs] if args.key?(:data_source_configs)
           @external_data_source = args[:external_data_source] if args.key?(:external_data_source)
+          @hint_text = args[:hint_text] if args.key?(:hint_text)
           @items = args[:items] if args.key?(:items)
           @label = args[:label] if args.key?(:label)
           @multi_select_max_selected_items = args[:multi_select_max_selected_items] if args.key?(:multi_select_max_selected_items)
@@ -3388,6 +3936,12 @@ module Google
         # @return [String]
         attr_accessor :hint_text
       
+        # A data source from a Google Workspace application. The data source populates
+        # available items for a widget.
+        # Corresponds to the JSON property `hostAppDataSource`
+        # @return [Google::Apis::ChatV1::HostAppDataSourceMarkup]
+        attr_accessor :host_app_data_source
+      
         # Suggested values that users can enter. These values appear when users click
         # inside the text input field. As users type, the suggested values dynamically
         # filter to match what the users have typed. For example, a text input field for
@@ -3462,6 +4016,7 @@ module Google
         def update!(**args)
           @auto_complete_action = args[:auto_complete_action] if args.key?(:auto_complete_action)
           @hint_text = args[:hint_text] if args.key?(:hint_text)
+          @host_app_data_source = args[:host_app_data_source] if args.key?(:host_app_data_source)
           @initial_suggestions = args[:initial_suggestions] if args.key?(:initial_suggestions)
           @label = args[:label] if args.key?(:label)
           @name = args[:name] if args.key?(:name)
@@ -3500,6 +4055,12 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # The syntax of the text. If not set, the text is rendered as HTML. [Google Chat
+        # apps](https://developers.google.com/workspace/chat):
+        # Corresponds to the JSON property `textSyntax`
+        # @return [String]
+        attr_accessor :text_syntax
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3508,6 +4069,48 @@ module Google
         def update!(**args)
           @max_lines = args[:max_lines] if args.key?(:max_lines)
           @text = args[:text] if args.key?(:text)
+          @text_syntax = args[:text_syntax] if args.key?(:text_syntax)
+        end
+      end
+      
+      # Represents a trigger. Available for Google Workspace add-ons that extend
+      # Google Workspace Studio. Unavailable for Google Chat apps.
+      class GoogleAppsCardV1Trigger
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the ActionRule.
+        # Corresponds to the JSON property `actionRuleId`
+        # @return [String]
+        attr_accessor :action_rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_rule_id = args[:action_rule_id] if args.key?(:action_rule_id)
+        end
+      end
+      
+      # Represents an action that updates the visibility of a widget. Available for
+      # Google Workspace add-ons that extend Google Workspace Studio. Unavailable for
+      # Google Chat apps.
+      class GoogleAppsCardV1UpdateVisibilityAction
+        include Google::Apis::Core::Hashable
+      
+        # The new visibility.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -3554,15 +4157,15 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
       
-        # [Developer Preview](https://developers.google.com/workspace/preview): A
-        # carousel, also known as a slider, rotates and displays a list of widgets in a
-        # slideshow format, with buttons navigating to the previous or next widget. For
-        # example, this is a JSON representation of a carousel that contains three text
-        # paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "textParagraph": `
-        # "text": "First text paragraph in carousel", ` ` ] `, ` "widgets": [ ` "
-        # textParagraph": ` "text": "Second text paragraph in carousel", ` ` ] `, ` "
-        # widgets": [ ` "textParagraph": ` "text": "Third text paragraph in carousel", `
-        # ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/workspace/chat):
+        # A carousel, also known as a slider, rotates and displays a list of widgets in
+        # a slideshow format, with buttons navigating to the previous or next widget.
+        # For example, this is a JSON representation of a carousel that contains three
+        # text paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "
+        # textParagraph": ` "text": "First text paragraph in carousel", ` ` ] `, ` "
+        # widgets": [ ` "textParagraph": ` "text": "Second text paragraph in carousel", `
+        # ` ] `, ` "widgets": [ ` "textParagraph": ` "text": "Third text paragraph in
+        # carousel", ` ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/
+        # workspace/chat):
         # Corresponds to the JSON property `carousel`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Carousel]
         attr_accessor :carousel
@@ -3633,6 +4236,13 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Divider]
         attr_accessor :divider
       
+        # Specifies the event actions that can be performed on the widget. Available for
+        # Google Workspace add-ons that extend Google Workspace Studio. Unavailable for
+        # Google Chat apps.
+        # Corresponds to the JSON property `eventActions`
+        # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1EventAction>]
+        attr_accessor :event_actions
+      
         # Displays a grid with a collection of items. Items can only include text or
         # images. For responsive columns, or to include more than text or images, use `
         # Columns`. For an example in Google Chat apps, see [Display a Grid with a
@@ -3656,6 +4266,14 @@ module Google
         # Corresponds to the JSON property `horizontalAlignment`
         # @return [String]
         attr_accessor :horizontal_alignment
+      
+        # A unique ID assigned to the widget that's used to identify the widget to be
+        # mutated. The ID has a character limit of 64 characters and should be in the
+        # format of `[a-zA-Z0-9-]+`. Available for Google Workspace add-ons that extend
+        # Google Workspace Studio. Unavailable for Google Chat apps.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
       
         # An image that is specified by a URL and can have an `onClick` action. For an
         # example, see [Add an image](https://developers.google.com/workspace/chat/add-
@@ -3712,6 +4330,13 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1TextParagraph]
         attr_accessor :text_paragraph
       
+        # Specifies whether the widget is visible or hidden. The default value is `
+        # VISIBLE`. Available for Google Workspace add-ons that extend Google Workspace
+        # Studio. Unavailable for Google Chat apps.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3725,12 +4350,15 @@ module Google
           @date_time_picker = args[:date_time_picker] if args.key?(:date_time_picker)
           @decorated_text = args[:decorated_text] if args.key?(:decorated_text)
           @divider = args[:divider] if args.key?(:divider)
+          @event_actions = args[:event_actions] if args.key?(:event_actions)
           @grid = args[:grid] if args.key?(:grid)
           @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
+          @id = args[:id] if args.key?(:id)
           @image = args[:image] if args.key?(:image)
           @selection_input = args[:selection_input] if args.key?(:selection_input)
           @text_input = args[:text_input] if args.key?(:text_input)
           @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -3850,6 +4478,59 @@ module Google
         end
       end
       
+      # Represents a [section](https://support.google.com/chat/answer/16059854) in
+      # Google Chat. Sections help users organize their spaces. There are two types of
+      # sections: 1. **System Sections:** These are predefined sections managed by
+      # Google Chat. Their resource names are fixed, and they cannot be created,
+      # deleted, or have their `display_name` modified. Examples include: * `users/`
+      # user`/sections/default-direct-messages` * `users/`user`/sections/default-
+      # spaces` * `users/`user`/sections/default-apps` 2. **Custom Sections:** These
+      # are sections created and managed by the user. Creating a custom section using `
+      # CreateSection` **requires** a `display_name`. Custom sections can be updated
+      # using `UpdateSection` and deleted using `DeleteSection`.
+      class GoogleChatV1Section
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The section's display name. Only populated for sections of type `
+        # CUSTOM_SECTION`. Supports up to 80 characters. Required when creating a `
+        # CUSTOM_SECTION`.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Resource name of the section. For system sections, the section ID
+        # is a constant string: - DEFAULT_DIRECT_MESSAGES: `users/`user`/sections/
+        # default-direct-messages` - DEFAULT_SPACES: `users/`user`/sections/default-
+        # spaces` - DEFAULT_APPS: `users/`user`/sections/default-apps` Format: `users/`
+        # user`/sections/`section``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The order of the section in relation to other sections. Sections
+        # with a lower `sort_order` value appear before sections with a higher value.
+        # Corresponds to the JSON property `sortOrder`
+        # @return [Fixnum]
+        attr_accessor :sort_order
+      
+        # Required. The type of the section.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @sort_order = args[:sort_order] if args.key?(:sort_order)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A Google Group in Google Chat.
       class Group
         include Google::Apis::Core::Hashable
@@ -3871,10 +4552,8 @@ module Google
         end
       end
       
-      # For a `SelectionInput` widget that uses a multiselect menu, a data source from
-      # a Google Workspace application. The data source populates selection items for
-      # the multiselect menu. [Google Chat apps](https://developers.google.com/
-      # workspace/chat):
+      # A data source from a Google Workspace application. The data source populates
+      # available items for a widget.
       class HostAppDataSourceMarkup
         include Google::Apis::Core::Hashable
       
@@ -3886,6 +4565,13 @@ module Google
         # @return [Google::Apis::ChatV1::ChatClientDataSourceMarkup]
         attr_accessor :chat_data_source
       
+        # * Only supported by Google Workspace Workflow, but not Google Chat apps or
+        # Google Workspace add-ons. In a `TextInput` or `SelectionInput` widget with
+        # MULTI_SELECT type or a `DateTimePicker`, provide data source from Google.
+        # Corresponds to the JSON property `workflowDataSource`
+        # @return [Google::Apis::ChatV1::WorkflowDataSourceMarkup]
+        attr_accessor :workflow_data_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3893,6 +4579,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @chat_data_source = args[:chat_data_source] if args.key?(:chat_data_source)
+          @workflow_data_source = args[:workflow_data_source] if args.key?(:workflow_data_source)
         end
       end
       
@@ -4189,6 +4876,58 @@ module Google
         end
       end
       
+      # Response message for listing section items.
+      class ListSectionItemsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The section items from the specified section.
+        # Corresponds to the JSON property `sectionItems`
+        # @return [Array<Google::Apis::ChatV1::SectionItem>]
+        attr_accessor :section_items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @section_items = args[:section_items] if args.key?(:section_items)
+        end
+      end
+      
+      # Response message for listing sections.
+      class ListSectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The sections from the specified user.
+        # Corresponds to the JSON property `sections`
+        # @return [Array<Google::Apis::ChatV1::GoogleChatV1Section>]
+        attr_accessor :sections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sections = args[:sections] if args.key?(:sections)
+        end
+      end
+      
       # Response message for listing space events.
       class ListSpaceEventsResponse
         include Google::Apis::Core::Hashable
@@ -4244,6 +4983,71 @@ module Google
         end
       end
       
+      # Request message for the `MarkAsActive` method.
+      class MarkAsActiveRequest
+        include Google::Apis::Core::Hashable
+      
+        # The absolute timestamp when the ACTIVE state expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The duration from the current time until the ACTIVE state expires. Using a
+        # short TTL can effectively reset the user's state to be based on activity after
+        # this brief duration.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # Request message for the `MarkAsAway` method.
+      class MarkAsAwayRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for the `MarkAsDoNotDisturb` method.
+      class MarkAsDoNotDisturbRequest
+        include Google::Apis::Core::Hashable
+      
+        # The absolute timestamp when the DND state expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The duration from the current time until the DND state expires.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
       # A matched URL in a Chat message. Chat apps can preview matched URLs. For more
       # information, see [Preview links](https://developers.google.com/chat/how-tos/
       # preview-links).
@@ -4284,10 +5088,49 @@ module Google
         end
       end
       
+      # Data for Meet space links.
+      class MeetSpaceLinkData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. If the Meet is a Huddle, indicates the status of the
+        # huddle. Otherwise, this is unset.
+        # Corresponds to the JSON property `huddleStatus`
+        # @return [String]
+        attr_accessor :huddle_status
+      
+        # Meeting code of the linked Meet space.
+        # Corresponds to the JSON property `meetingCode`
+        # @return [String]
+        attr_accessor :meeting_code
+      
+        # Indicates the type of the Meet space.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @huddle_status = args[:huddle_status] if args.key?(:huddle_status)
+          @meeting_code = args[:meeting_code] if args.key?(:meeting_code)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Represents a membership relation in Google Chat, such as whether a user or
       # Chat app is invited to, part of, or absent from a space.
       class Membership
         include Google::Apis::Core::Hashable
+      
+        # Output only. A user's relationship to the Workspace organization that owns the
+        # space. In spaces owned by consumer accounts, the affiliation of all members is
+        # `EXTERNAL`.
+        # Corresponds to the JSON property `affiliation`
+        # @return [String]
+        attr_accessor :affiliation
       
         # Optional. Immutable. The creation time of the membership, such as when a
         # member joined or was invited to join a space. This field is output only,
@@ -4340,6 +5183,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @affiliation = args[:affiliation] if args.key?(:affiliation)
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @group_member = args[:group_member] if args.key?(:group_member)
@@ -4519,7 +5363,9 @@ module Google
         # @return [Google::Apis::ChatV1::ActionResponse]
         attr_accessor :action_response
       
-        # Output only. Annotations associated with the `text` in this message.
+        # Output only. Annotations can be associated with the plain-text body of the
+        # message or with chips that link to Google Workspace resources like Google Docs
+        # or Sheets with `start_index` and `length` of 0.
         # Corresponds to the JSON property `annotations`
         # @return [Array<Google::Apis::ChatV1::Annotation>]
         attr_accessor :annotations
@@ -4549,12 +5395,16 @@ module Google
         attr_accessor :cards
       
         # Optional. An array of [cards](https://developers.google.com/workspace/chat/api/
-        # reference/rest/v1/cards). Only Chat apps can create cards. If your Chat app [
-        # authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the messages can't contain cards. To learn
-        # how to create a message that contains cards, see [Send a message](https://
-        # developers.google.com/workspace/chat/create-messages). [Card builder](https://
-        # addons.gsuite.google.com/uikit/builder)
+        # reference/rest/v1/cards). Chat apps can create cards with [app authentication](
+        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+        # As part of the [Developer Preview Program](https://developers.google.com/
+        # workspace/preview), if your Chat app [authenticates as a user](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-user), it can
+        # create card messages. If your Chat app is not part of Developer Preview
+        # Program, it can't create cards with user authentication. To learn how to
+        # create a message that contains cards, see [Send a message](https://developers.
+        # google.com/workspace/chat/create-messages). [Card builder](https://addons.
+        # gsuite.google.com/uikit/builder)
         # Corresponds to the JSON property `cardsV2`
         # @return [Array<Google::Apis::ChatV1::CardWithId>]
         attr_accessor :cards_v2
@@ -4605,12 +5455,13 @@ module Google
         # formatting. This field might not capture all formatting visible in the UI, but
         # includes the following: * [Markup syntax](https://developers.google.com/
         # workspace/chat/format-messages) for bold, italic, strikethrough, monospace,
-        # monospace block, and bulleted list. * [User mentions](https://developers.
-        # google.com/workspace/chat/format-messages#messages-@mention) using the format `
-        # `. * Custom hyperlinks using the format `<`url`|`rendered_text`>` where the
-        # first string is the URL and the second is the rendered text—for example, ``. *
-        # Custom emoji using the format `:`emoji_name`:`—for example, `:smile:`. This
-        # doesn't apply to Unicode emoji, such as `U+1F600` for a grinning face emoji.
+        # monospace block, bulleted list, and block quote. * [User mentions](https://
+        # developers.google.com/workspace/chat/format-messages#messages-@mention) using
+        # the format ``. * Custom hyperlinks using the format `<`url`|`rendered_text`>`
+        # where the first string is the URL and the second is the rendered text—for
+        # example, ``. * Custom emoji using the format `:`emoji_name`:`—for example, `:
+        # smile:`. This doesn't apply to Unicode emoji, such as `U+1F600` for a grinning
+        # face emoji. * Bullet list items using asterisks (`*`)—for example, `* item`.
         # For more information, see [View text formatting sent in a message](https://
         # developers.google.com/workspace/chat/format-messages#
         # view_text_formatting_sent_in_a_message)
@@ -4652,7 +5503,10 @@ module Google
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :private_message_viewer
       
-        # Information about a quoted message.
+        # Information about a message that another message quotes. When you update a
+        # message, you can't add or replace the `quotedMessageMetadata` field, but you
+        # can remove it. For example usage, see [Quote another message](https://
+        # developers.google.com/workspace/chat/create-messages#quote-a-message).
         # Corresponds to the JSON property `quotedMessageMetadata`
         # @return [Google::Apis::ChatV1::QuotedMessageMetadata]
         attr_accessor :quoted_message_metadata
@@ -4664,6 +5518,13 @@ module Google
         # Corresponds to the JSON property `sender`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :sender
+      
+        # Output only. Whether this is a silent message. Silent messages are messages
+        # where Chat suppresses push notifications for recipients.
+        # Corresponds to the JSON property `silent`
+        # @return [Boolean]
+        attr_accessor :silent
+        alias_method :silent?, :silent
       
         # Metadata about a [slash command](https://developers.google.com/workspace/chat/
         # commands) in Google Chat.
@@ -4733,6 +5594,7 @@ module Google
           @private_message_viewer = args[:private_message_viewer] if args.key?(:private_message_viewer)
           @quoted_message_metadata = args[:quoted_message_metadata] if args.key?(:quoted_message_metadata)
           @sender = args[:sender] if args.key?(:sender)
+          @silent = args[:silent] if args.key?(:silent)
           @slash_command = args[:slash_command] if args.key?(:slash_command)
           @space = args[:space] if args.key?(:space)
           @text = args[:text] if args.key?(:text)
@@ -4861,6 +5723,46 @@ module Google
         end
       end
       
+      # Request message for moving a section item across sections.
+      class MoveSectionItemRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the section to move the section item to. Format:
+        # `users/`user`/sections/`section``
+        # Corresponds to the JSON property `targetSection`
+        # @return [String]
+        attr_accessor :target_section
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_section = args[:target_section] if args.key?(:target_section)
+        end
+      end
+      
+      # Response message for moving a section item.
+      class MoveSectionItemResponse
+        include Google::Apis::Core::Hashable
+      
+        # A user's defined section item. This is used to represent section items, such
+        # as spaces, grouped under a section.
+        # Corresponds to the JSON property `sectionItem`
+        # @return [Google::Apis::ChatV1::SectionItem]
+        attr_accessor :section_item
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @section_item = args[:section_item] if args.key?(:section_item)
+        end
+      end
+      
       # An `onclick` action (for example, open a link).
       class OnClick
         include Google::Apis::Core::Hashable
@@ -4910,13 +5812,20 @@ module Google
       class PermissionSetting
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether spaces managers have this permission.
+        # Optional. Whether space managers `ROLE_ASSISTANT_MANAGER`) have this
+        # permission.
+        # Corresponds to the JSON property `assistantManagersAllowed`
+        # @return [Boolean]
+        attr_accessor :assistant_managers_allowed
+        alias_method :assistant_managers_allowed?, :assistant_managers_allowed
+      
+        # Optional. Whether space owners (`ROLE_MANAGER`) have this permission.
         # Corresponds to the JSON property `managersAllowed`
         # @return [Boolean]
         attr_accessor :managers_allowed
         alias_method :managers_allowed?, :managers_allowed
       
-        # Optional. Whether non-manager members have this permission.
+        # Optional. Whether basic space members (`ROLE_MEMBER`) have this permission.
         # Corresponds to the JSON property `membersAllowed`
         # @return [Boolean]
         attr_accessor :members_allowed
@@ -4928,6 +5837,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assistant_managers_allowed = args[:assistant_managers_allowed] if args.key?(:assistant_managers_allowed)
           @managers_allowed = args[:managers_allowed] if args.key?(:managers_allowed)
           @members_allowed = args[:members_allowed] if args.key?(:members_allowed)
         end
@@ -4997,21 +5907,23 @@ module Google
         end
       end
       
-      # Information about a quoted message.
-      class QuotedMessageMetadata
+      # Request message for positioning a section.
+      class PositionSectionRequest
         include Google::Apis::Core::Hashable
       
-        # Output only. The timestamp when the quoted message was created or when the
-        # quoted message was last updated.
-        # Corresponds to the JSON property `lastUpdateTime`
+        # Optional. The relative position of the section in the list of sections.
+        # Corresponds to the JSON property `relativePosition`
         # @return [String]
-        attr_accessor :last_update_time
+        attr_accessor :relative_position
       
-        # Output only. Resource name of the quoted message. Format: `spaces/`space`/
-        # messages/`message``
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
+        # Optional. The absolute position of the section in the list of sections. The
+        # position must be greater than 0. If the position is greater than the number of
+        # sections, the section will be appended to the end of the list. This operation
+        # inserts the section at the given position and shifts the original section at
+        # that position, and those below it, to the next position.
+        # Corresponds to the JSON property `sortOrder`
+        # @return [Fixnum]
+        attr_accessor :sort_order
       
         def initialize(**args)
            update!(**args)
@@ -5019,8 +5931,139 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @relative_position = args[:relative_position] if args.key?(:relative_position)
+          @sort_order = args[:sort_order] if args.key?(:sort_order)
+        end
+      end
+      
+      # Response message for positioning a section.
+      class PositionSectionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a [section](https://support.google.com/chat/answer/16059854) in
+        # Google Chat. Sections help users organize their spaces. There are two types of
+        # sections: 1. **System Sections:** These are predefined sections managed by
+        # Google Chat. Their resource names are fixed, and they cannot be created,
+        # deleted, or have their `display_name` modified. Examples include: * `users/`
+        # user`/sections/default-direct-messages` * `users/`user`/sections/default-
+        # spaces` * `users/`user`/sections/default-apps` 2. **Custom Sections:** These
+        # are sections created and managed by the user. Creating a custom section using `
+        # CreateSection` **requires** a `display_name`. Custom sections can be updated
+        # using `UpdateSection` and deleted using `DeleteSection`.
+        # Corresponds to the JSON property `section`
+        # @return [Google::Apis::ChatV1::GoogleChatV1Section]
+        attr_accessor :section
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @section = args[:section] if args.key?(:section)
+        end
+      end
+      
+      # Information about a message that another message quotes. When you update a
+      # message, you can't add or replace the `quotedMessageMetadata` field, but you
+      # can remove it. For example usage, see [Quote another message](https://
+      # developers.google.com/workspace/chat/create-messages#quote-a-message).
+      class QuotedMessageMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata about the source space from which a message was forwarded.
+        # Corresponds to the JSON property `forwardedMetadata`
+        # @return [Google::Apis::ChatV1::ForwardedMetadata]
+        attr_accessor :forwarded_metadata
+      
+        # Required. The timestamp when the quoted message was created or when the quoted
+        # message was last updated. If the message was edited, use this field, `
+        # last_update_time`. If the message was never edited, use `create_time`. If `
+        # last_update_time` doesn't match the latest version of the quoted message, the
+        # request fails.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # Required. Resource name of the message that is quoted. Format: `spaces/`space`/
+        # messages/`message``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Specifies the quote type. If not set, defaults to REPLY in the
+        # message read/write path for backward compatibility.
+        # Corresponds to the JSON property `quoteType`
+        # @return [String]
+        attr_accessor :quote_type
+      
+        # Provides a snapshot of the content of the quoted message at the time of
+        # quoting or forwarding
+        # Corresponds to the JSON property `quotedMessageSnapshot`
+        # @return [Google::Apis::ChatV1::QuotedMessageSnapshot]
+        attr_accessor :quoted_message_snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @forwarded_metadata = args[:forwarded_metadata] if args.key?(:forwarded_metadata)
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @name = args[:name] if args.key?(:name)
+          @quote_type = args[:quote_type] if args.key?(:quote_type)
+          @quoted_message_snapshot = args[:quoted_message_snapshot] if args.key?(:quoted_message_snapshot)
+        end
+      end
+      
+      # Provides a snapshot of the content of the quoted message at the time of
+      # quoting or forwarding
+      class QuotedMessageSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Annotations parsed from the text body of the quoted message.
+        # Populated only for FORWARD quote type.
+        # Corresponds to the JSON property `annotations`
+        # @return [Array<Google::Apis::ChatV1::Annotation>]
+        attr_accessor :annotations
+      
+        # Output only. Attachments that were part of the quoted message. These are
+        # copies of the quoted message's attachment metadata. Populated only for FORWARD
+        # quote type.
+        # Corresponds to the JSON property `attachments`
+        # @return [Array<Google::Apis::ChatV1::Attachment>]
+        attr_accessor :attachments
+      
+        # Output only. Contains the quoted message `text` with markups added to support
+        # rich formatting like hyperlinks,custom emojis, markup, etc. Populated only for
+        # FORWARD quote type.
+        # Corresponds to the JSON property `formattedText`
+        # @return [String]
+        attr_accessor :formatted_text
+      
+        # Output only. The quoted message's author name. Populated for both REPLY &
+        # FORWARD quote types.
+        # Corresponds to the JSON property `sender`
+        # @return [String]
+        attr_accessor :sender
+      
+        # Output only. Snapshot of the quoted message's text content.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @attachments = args[:attachments] if args.key?(:attachments)
+          @formatted_text = args[:formatted_text] if args.key?(:formatted_text)
+          @sender = args[:sender] if args.key?(:sender)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -5139,9 +6182,16 @@ module Google
         end
       end
       
-      # A rich link to a resource.
+      # A rich link to a resource. Rich links can be associated with the plain-text
+      # body of the message or represent chips that link to Google Workspace resources
+      # like Google Docs or Sheets with `start_index` and `length` of 0.
       class RichLinkMetadata
         include Google::Apis::Core::Hashable
+      
+        # Data for Calendar event links.
+        # Corresponds to the JSON property `calendarEventLinkData`
+        # @return [Google::Apis::ChatV1::CalendarEventLinkData]
+        attr_accessor :calendar_event_link_data
       
         # Data for Chat space links.
         # Corresponds to the JSON property `chatSpaceLinkData`
@@ -5152,6 +6202,11 @@ module Google
         # Corresponds to the JSON property `driveLinkData`
         # @return [Google::Apis::ChatV1::DriveLinkData]
         attr_accessor :drive_link_data
+      
+        # Data for Meet space links.
+        # Corresponds to the JSON property `meetSpaceLinkData`
+        # @return [Google::Apis::ChatV1::MeetSpaceLinkData]
+        attr_accessor :meet_space_link_data
       
         # The rich link type.
         # Corresponds to the JSON property `richLinkType`
@@ -5169,8 +6224,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @calendar_event_link_data = args[:calendar_event_link_data] if args.key?(:calendar_event_link_data)
           @chat_space_link_data = args[:chat_space_link_data] if args.key?(:chat_space_link_data)
           @drive_link_data = args[:drive_link_data] if args.key?(:drive_link_data)
+          @meet_space_link_data = args[:meet_space_link_data] if args.key?(:meet_space_link_data)
           @rich_link_type = args[:rich_link_type] if args.key?(:rich_link_type)
           @uri = args[:uri] if args.key?(:uri)
         end
@@ -5186,7 +6243,9 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # A page of the requested spaces.
+        # Deprecated: Please use the new `results` field instead. A page of the
+        # requested spaces. This field will be populated only when `useAdminAccess` is
+        # set to `true` and deprecated in favor of the new `results` field.
         # Corresponds to the JSON property `spaces`
         # @return [Array<Google::Apis::ChatV1::Space>]
         attr_accessor :spaces
@@ -5238,6 +6297,33 @@ module Google
         def update!(**args)
           @header = args[:header] if args.key?(:header)
           @widgets = args[:widgets] if args.key?(:widgets)
+        end
+      end
+      
+      # A user's defined section item. This is used to represent section items, such
+      # as spaces, grouped under a section.
+      class SectionItem
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the section item. Format: `users/`user`/
+        # sections/`section`/items/`item``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The space resource name. Format: `spaces/`space``
+        # Corresponds to the JSON property `space`
+        # @return [String]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @space = args[:space] if args.key?(:space)
         end
       end
       
@@ -5410,6 +6496,20 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Immutable. The customer id of the domain of the space. Required only
+        # when creating a space with [app authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-app) and `SpaceType` is `SPACE`,
+        # otherwise should not be set. In the format `customers/`customer``, where `
+        # customer` is the `id` from the [Admin SDK customer resource](https://
+        # developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
+        # Private apps can also use the `customers/my_customer` alias to create the
+        # space in the same Google Workspace organization as the app. This field isn't
+        # populated for direct messages (DMs) or when the space is created by non-Google
+        # Workspace users.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
         # Optional. The space's display name. Required when [creating a space](https://
         # developers.google.com/workspace/chat/api/reference/rest/v1/spaces/create) with
         # a `spaceType` of `SPACE`. If you receive the error message `ALREADY_EXISTS`
@@ -5481,9 +6581,8 @@ module Google
         # Optional. Input only. Predefined space permission settings, input only when
         # creating a space. If the field is not set, a collaboration space is created.
         # After you create the space, settings are populated in the `PermissionSettings`
-        # field. Setting predefined permission settings supports: - In [Developer
-        # Preview](https://developers.google.com/workspace/preview), [App authentication]
-        # (https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+        # field. Setting predefined permission settings supports: - [App authentication](
+        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
         # with [administrator approval](https://support.google.com/a?p=chat-app-auth)
         # with the `chat.app.spaces` or `chat.app.spaces.create` scopes. - [User
         # authentication](https://developers.google.com/workspace/chat/authenticate-
@@ -5545,6 +6644,7 @@ module Google
           @access_settings = args[:access_settings] if args.key?(:access_settings)
           @admin_installed = args[:admin_installed] if args.key?(:admin_installed)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @customer = args[:customer] if args.key?(:customer)
           @display_name = args[:display_name] if args.key?(:display_name)
           @external_user_allowed = args[:external_user_allowed] if args.key?(:external_user_allowed)
           @import_mode = args[:import_mode] if args.key?(:import_mode)
@@ -6322,6 +7422,34 @@ module Google
           @image = args[:image] if args.key?(:image)
           @key_value = args[:key_value] if args.key?(:key_value)
           @text_paragraph = args[:text_paragraph] if args.key?(:text_paragraph)
+        end
+      end
+      
+      # * Only supported by Google Workspace Workflow, but not Google Chat apps or
+      # Google Workspace add-ons. In a `TextInput` or `SelectionInput` widget with
+      # MULTI_SELECT type or a `DateTimePicker`, provide data source from Google.
+      class WorkflowDataSourceMarkup
+        include Google::Apis::Core::Hashable
+      
+        # Whether to include variables from the previous step in the data source.
+        # Corresponds to the JSON property `includeVariables`
+        # @return [Boolean]
+        attr_accessor :include_variables
+        alias_method :include_variables?, :include_variables
+      
+        # The type of data source.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_variables = args[:include_variables] if args.key?(:include_variables)
+          @type = args[:type] if args.key?(:type)
         end
       end
     end

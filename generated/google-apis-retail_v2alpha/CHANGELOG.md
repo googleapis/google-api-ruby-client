@@ -1,5 +1,86 @@
 # Release history for google-apis-retail_v2alpha
 
+### v0.137.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.136.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260507
+
+### v0.135.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260423
+
+### v0.134.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260219
+
+### v0.133.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260129
+
+### v0.132.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260122
+
+### v0.131.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251113
+
+### v0.130.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251030
+
+### v0.129.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251023
+
+### v0.128.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251002
+
+### v0.127.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250911
+
+### v0.126.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250807
+
+### v0.125.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250724
+
+### v0.124.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250717
+
+### v0.123.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250710
+
+### v0.122.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250703
+
+### v0.121.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250626
+
+### v0.120.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250613
+
+### v0.119.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250605
+
+### v0.118.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250522
+* Regenerated using generator version 0.18.0
+
 ### v0.117.0 (2025-05-21)
 
 * Regenerated from discovery document revision 20250515

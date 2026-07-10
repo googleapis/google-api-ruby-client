@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddReviewer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class App
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +77,30 @@ module Google
       end
       
       class AppList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Approval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApprovalList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApproveApprovalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelApprovalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientEncryptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Comment
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -102,6 +138,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommentApprovalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -118,7 +160,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeclineApprovalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DecryptionMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DownloadRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DownloadRestrictionsMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -220,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateCseTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeneratedIds
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,12 +323,6 @@ module Google
       end
       
       class ListAccessProposalsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +370,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReassignApprovalRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplaceReviewer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reply
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -328,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReviewerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Revision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +413,12 @@ module Google
       end
       
       class RevisionList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartApprovalRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -469,6 +553,13 @@ module Google
         end
       end
       
+      class AddReviewer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :added_reviewer_email, as: 'addedReviewerEmail'
+        end
+      end
+      
       class App
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -520,6 +611,48 @@ module Google
         end
       end
       
+      class Approval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :approval_id, as: 'approvalId'
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :due_time, as: 'dueTime'
+          property :initiator, as: 'initiator', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
+      
+          property :kind, as: 'kind'
+          property :modify_time, as: 'modifyTime'
+          collection :reviewer_responses, as: 'reviewerResponses', class: Google::Apis::DriveV3::ReviewerResponse, decorator: Google::Apis::DriveV3::ReviewerResponse::Representation
+      
+          property :status, as: 'status'
+          property :target_file_id, as: 'targetFileId'
+        end
+      end
+      
+      class ApprovalList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::DriveV3::Approval, decorator: Google::Apis::DriveV3::Approval::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ApproveApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+        end
+      end
+      
+      class CancelApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+        end
+      end
+      
       class Change
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -568,10 +701,20 @@ module Google
         end
       end
       
+      class ClientEncryptionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :decryption_metadata, as: 'decryptionMetadata', class: Google::Apis::DriveV3::DecryptionMetadata, decorator: Google::Apis::DriveV3::DecryptionMetadata::Representation
+      
+          property :encryption_state, as: 'encryptionState'
+        end
+      end
+      
       class Comment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :anchor, as: 'anchor'
+          property :assignee_email_address, as: 'assigneeEmailAddress'
           property :author, as: 'author', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
           property :content, as: 'content'
@@ -581,6 +724,7 @@ module Google
           property :html_content, as: 'htmlContent'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          collection :mentioned_email_addresses, as: 'mentionedEmailAddresses'
           property :modified_time, as: 'modifiedTime', type: DateTime
       
           property :quoted_file_content, as: 'quotedFileContent', class: Google::Apis::DriveV3::Comment::QuotedFileContent, decorator: Google::Apis::DriveV3::Comment::QuotedFileContent::Representation
@@ -596,6 +740,13 @@ module Google
             property :mime_type, as: 'mimeType'
             property :value, as: 'value'
           end
+        end
+      end
+      
+      class CommentApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
         end
       end
       
@@ -624,11 +775,41 @@ module Google
         end
       end
       
+      class DeclineApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+        end
+      end
+      
+      class DecryptionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aes256_gcm_chunk_size, as: 'aes256GcmChunkSize'
+          property :encryption_resource_key_hash, as: 'encryptionResourceKeyHash'
+          property :jwt, as: 'jwt'
+          property :kacls_id, :numeric_string => true, as: 'kaclsId'
+          property :kacls_name, as: 'kaclsName'
+          property :key_format, as: 'keyFormat'
+          property :wrapped_key, as: 'wrappedKey'
+        end
+      end
+      
       class DownloadRestriction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :restricted_for_readers, as: 'restrictedForReaders'
           property :restricted_for_writers, as: 'restrictedForWriters'
+        end
+      end
+      
+      class DownloadRestrictionsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_download_restriction_with_context, as: 'effectiveDownloadRestrictionWithContext', class: Google::Apis::DriveV3::DownloadRestriction, decorator: Google::Apis::DriveV3::DownloadRestriction::Representation
+      
+          property :item_download_restriction, as: 'itemDownloadRestriction', class: Google::Apis::DriveV3::DownloadRestriction, decorator: Google::Apis::DriveV3::DownloadRestriction::Representation
+      
         end
       end
       
@@ -669,6 +850,7 @@ module Google
             property :can_add_children, as: 'canAddChildren'
             property :can_change_copy_requires_writer_permission_restriction, as: 'canChangeCopyRequiresWriterPermissionRestriction'
             property :can_change_domain_users_only_restriction, as: 'canChangeDomainUsersOnlyRestriction'
+            property :can_change_download_restriction, as: 'canChangeDownloadRestriction'
             property :can_change_drive_background, as: 'canChangeDriveBackground'
             property :can_change_drive_members_only_restriction, as: 'canChangeDriveMembersOnlyRestriction'
             property :can_change_sharing_folders_requires_organizer_permission_restriction, as: 'canChangeSharingFoldersRequiresOrganizerPermissionRestriction'
@@ -719,6 +901,8 @@ module Google
           hash :app_properties, as: 'appProperties'
           property :capabilities, as: 'capabilities', class: Google::Apis::DriveV3::File::Capabilities, decorator: Google::Apis::DriveV3::File::Capabilities::Representation
       
+          property :client_encryption_details, as: 'clientEncryptionDetails', class: Google::Apis::DriveV3::ClientEncryptionDetails, decorator: Google::Apis::DriveV3::ClientEncryptionDetails::Representation
+      
           property :content_hints, as: 'contentHints', class: Google::Apis::DriveV3::File::ContentHints, decorator: Google::Apis::DriveV3::File::ContentHints::Representation
       
           collection :content_restrictions, as: 'contentRestrictions', class: Google::Apis::DriveV3::ContentRestriction, decorator: Google::Apis::DriveV3::ContentRestriction::Representation
@@ -727,6 +911,8 @@ module Google
           property :created_time, as: 'createdTime', type: DateTime
       
           property :description, as: 'description'
+          property :download_restrictions, as: 'downloadRestrictions', class: Google::Apis::DriveV3::DownloadRestrictionsMetadata, decorator: Google::Apis::DriveV3::DownloadRestrictionsMetadata::Representation
+      
           property :drive_id, as: 'driveId'
           property :explicitly_trashed, as: 'explicitlyTrashed'
           hash :export_links, as: 'exportLinks'
@@ -804,10 +990,12 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :can_accept_ownership, as: 'canAcceptOwnership'
+            property :can_access_via_gen_ai, as: 'canAccessViaGenAi'
             property :can_add_children, as: 'canAddChildren'
             property :can_add_folder_from_another_drive, as: 'canAddFolderFromAnotherDrive'
             property :can_add_my_drive_parent, as: 'canAddMyDriveParent'
             property :can_change_copy_requires_writer_permission, as: 'canChangeCopyRequiresWriterPermission'
+            property :can_change_item_download_restriction, as: 'canChangeItemDownloadRestriction'
             property :can_change_security_update_enabled, as: 'canChangeSecurityUpdateEnabled'
             property :can_change_viewers_can_copy_content, as: 'canChangeViewersCanCopyContent'
             property :can_comment, as: 'canComment'
@@ -843,6 +1031,7 @@ module Google
             property :can_remove_my_drive_parent, as: 'canRemoveMyDriveParent'
             property :can_rename, as: 'canRename'
             property :can_share, as: 'canShare'
+            property :can_start_approval, as: 'canStartApproval'
             property :can_trash, as: 'canTrash'
             property :can_trash_children, as: 'canTrashChildren'
             property :can_untrash, as: 'canUntrash'
@@ -949,6 +1138,17 @@ module Google
         end
       end
       
+      class GenerateCseTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_kacls_id, :numeric_string => true, as: 'currentKaclsId'
+          property :current_kacls_name, as: 'currentKaclsName'
+          property :file_id, as: 'fileId'
+          property :jwt, as: 'jwt'
+          property :kind, as: 'kind'
+        end
+      end
+      
       class GeneratedIds
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1027,15 +1227,6 @@ module Google
           collection :access_proposals, as: 'accessProposals', class: Google::Apis::DriveV3::AccessProposal, decorator: Google::Apis::DriveV3::AccessProposal::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::DriveV3::Operation, decorator: Google::Apis::DriveV3::Operation::Representation
-      
         end
       end
       
@@ -1124,10 +1315,30 @@ module Google
         end
       end
       
+      class ReassignApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_reviewers, as: 'addReviewers', class: Google::Apis::DriveV3::AddReviewer, decorator: Google::Apis::DriveV3::AddReviewer::Representation
+      
+          property :message, as: 'message'
+          collection :replace_reviewers, as: 'replaceReviewers', class: Google::Apis::DriveV3::ReplaceReviewer, decorator: Google::Apis::DriveV3::ReplaceReviewer::Representation
+      
+        end
+      end
+      
+      class ReplaceReviewer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :added_reviewer_email, as: 'addedReviewerEmail'
+          property :removed_reviewer_email, as: 'removedReviewerEmail'
+        end
+      end
+      
       class Reply
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :assignee_email_address, as: 'assigneeEmailAddress'
           property :author, as: 'author', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
           property :content, as: 'content'
@@ -1137,6 +1348,7 @@ module Google
           property :html_content, as: 'htmlContent'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          collection :mentioned_email_addresses, as: 'mentionedEmailAddresses'
           property :modified_time, as: 'modifiedTime', type: DateTime
       
         end
@@ -1159,6 +1371,16 @@ module Google
           collection :role, as: 'role'
           property :send_notification, as: 'sendNotification'
           property :view, as: 'view'
+        end
+      end
+      
+      class ReviewerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :response, as: 'response'
+          property :reviewer, as: 'reviewer', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
+      
         end
       end
       
@@ -1191,6 +1413,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :revisions, as: 'revisions', class: Google::Apis::DriveV3::Revision, decorator: Google::Apis::DriveV3::Revision::Representation
       
+        end
+      end
+      
+      class StartApprovalRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :due_time, as: 'dueTime'
+          property :lock_file, as: 'lockFile'
+          property :message, as: 'message'
+          collection :reviewer_emails, as: 'reviewerEmails'
         end
       end
       
@@ -1247,6 +1479,7 @@ module Google
             property :can_add_children, as: 'canAddChildren'
             property :can_change_copy_requires_writer_permission_restriction, as: 'canChangeCopyRequiresWriterPermissionRestriction'
             property :can_change_domain_users_only_restriction, as: 'canChangeDomainUsersOnlyRestriction'
+            property :can_change_download_restriction, as: 'canChangeDownloadRestriction'
             property :can_change_sharing_folders_requires_organizer_permission_restriction, as: 'canChangeSharingFoldersRequiresOrganizerPermissionRestriction'
             property :can_change_team_drive_background, as: 'canChangeTeamDriveBackground'
             property :can_change_team_members_only_restriction, as: 'canChangeTeamMembersOnlyRestriction'

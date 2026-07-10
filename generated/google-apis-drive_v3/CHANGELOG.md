@@ -1,5 +1,74 @@
 # Release history for google-apis-drive_v3
 
+### v0.83.0 (2026-06-28)
+
+* Regenerated from discovery document revision 20260624
+
+### v0.82.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.81.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260428
+
+### v0.80.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260405
+
+### v0.79.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260305
+
+### v0.78.0 (2026-03-01)
+
+* Regenerated from discovery document revision 20260220
+
+### v0.77.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260128
+
+### v0.76.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251210
+
+### v0.75.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251201
+
+### v0.74.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251114
+
+### v0.73.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251019
+
+### v0.72.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251013
+
+### v0.71.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250910
+
+### v0.70.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250829
+
+### v0.69.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250819
+
+### v0.68.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250723
+
+### v0.67.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250701
+* Regenerated using generator version 0.18.0
+
 ### v0.66.0 (2025-05-18)
 
 * Regenerated from discovery document revision 20250511

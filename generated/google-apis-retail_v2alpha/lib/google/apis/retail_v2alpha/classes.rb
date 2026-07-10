@@ -1746,14 +1746,16 @@ module Google
         attr_accessor :name
       
         # Output only. Statistics for number of products in the branch, provided for
-        # different scopes. This field is not populated in BranchView.BASIC view.
+        # different scopes. This field is not populated in BranchView.BRANCH_VIEW_BASIC
+        # view.
         # Corresponds to the JSON property `productCountStats`
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchProductCountStatistic>]
         attr_accessor :product_count_stats
       
         # Output only. The quality metrics measured among products of this branch. See
         # QualityMetric.requirement_key for supported metrics. Metrics could be missing
-        # if failed to retrieve. This field is not populated in BranchView.BASIC view.
+        # if failed to retrieve. This field is not populated in BranchView.
+        # BRANCH_VIEW_BASIC view.
         # Corresponds to the JSON property `qualityMetrics`
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaBranchQualityMetric>]
         attr_accessor :quality_metrics
@@ -2724,11 +2726,6 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A facet specification to perform faceted search.
-        # Corresponds to the JSON property `facetSpec`
-        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestFacetSpec]
-        attr_accessor :facet_spec
-      
         # Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/
         # controls/*`
         # Corresponds to the JSON property `name`
@@ -2766,11 +2763,45 @@ module Google
         def update!(**args)
           @associated_serving_config_ids = args[:associated_serving_config_ids] if args.key?(:associated_serving_config_ids)
           @display_name = args[:display_name] if args.key?(:display_name)
-          @facet_spec = args[:facet_spec] if args.key?(:facet_spec)
           @name = args[:name] if args.key?(:name)
           @rule = args[:rule] if args.key?(:rule)
           @search_solution_use_case = args[:search_solution_use_case] if args.key?(:search_solution_use_case)
           @solution_types = args[:solution_types] if args.key?(:solution_types)
+        end
+      end
+      
+      # The public proto to represent the conversational search customization config.
+      # It will be converted to the internal proto in the backend.
+      class GoogleCloudRetailV2alphaConversationalSearchCustomizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource name of the catalog. Format: projects/`project`/locations/`
+        # location`/catalogs/`catalog`
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # The public proto to represent the intent classification config. It will be
+        # converted to the internal proto in the backend.
+        # Corresponds to the JSON property `intentClassificationConfig`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfig]
+        attr_accessor :intent_classification_config
+      
+        # Optional. The retailer's display name that could be used in our LLM answers.
+        # Example - "Google"
+        # Corresponds to the JSON property `retailerDisplayName`
+        # @return [String]
+        attr_accessor :retailer_display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @intent_classification_config = args[:intent_classification_config] if args.key?(:intent_classification_config)
+          @retailer_display_name = args[:retailer_display_name] if args.key?(:retailer_display_name)
         end
       end
       
@@ -2801,11 +2832,12 @@ module Google
       
         # Optional. The categories associated with a category page. Must be set for
         # category navigation queries to achieve good search quality. The format should
-        # be the same as UserEvent.page_categories; To represent full path of category,
-        # use '>' sign to separate different hierarchies. If '>' is part of the category
-        # name, replace it with other character(s). Category pages include special pages
-        # such as sales or promotions. For instance, a special sale page may have the
-        # category hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"].
+        # be the same as UserEvent.page_categories; To represent the full path of
+        # category, use the '>' sign, with one space on each side, to separate different
+        # hierarchies. If '>' is part of the category name, replace it with other
+        # character(s). Category pages include special pages such as sales or promotions.
+        # For instance, a special sale page may have the category hierarchy: "
+        # pageCategories" : ["Sales > 2017 Black Friday Deals"].
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -2816,6 +2848,11 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # Optional. The safety settings to be applied to the generated content.
+        # Corresponds to the JSON property `safetySettings`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSafetySetting>]
+        attr_accessor :safety_settings
+      
         # Search parameters.
         # Corresponds to the JSON property `searchParams`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchRequestSearchParams]
@@ -2825,6 +2862,21 @@ module Google
         # Corresponds to the JSON property `userInfo`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserInfo]
         attr_accessor :user_info
+      
+        # Optional. The user labels applied to a resource must meet the following
+        # requirements: * Each resource can have multiple labels, up to a maximum of 64.
+        # * Each label must be a key-value pair. * Keys have a minimum length of 1
+        # character and a maximum length of 63 characters and cannot be empty. Values
+        # can be empty and have a maximum length of 63 characters. * Keys and values can
+        # contain only lowercase letters, numeric characters, underscores, and dashes.
+        # All characters must use UTF-8 encoding, and international characters are
+        # allowed. * The key portion of a label must be unique. However, you can use the
+        # same key with multiple resources. * Keys must start with a lowercase letter or
+        # international character. See [Google Cloud Document](https://cloud.google.com/
+        # resource-manager/docs/creating-managing-labels#requirements) for more details.
+        # Corresponds to the JSON property `userLabels`
+        # @return [Hash<String,String>]
+        attr_accessor :user_labels
       
         # Required. A unique identifier for tracking visitors. For example, this could
         # be implemented with an HTTP cookie, which should be able to uniquely identify
@@ -2847,8 +2899,10 @@ module Google
           @conversational_filtering_spec = args[:conversational_filtering_spec] if args.key?(:conversational_filtering_spec)
           @page_categories = args[:page_categories] if args.key?(:page_categories)
           @query = args[:query] if args.key?(:query)
+          @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
           @search_params = args[:search_params] if args.key?(:search_params)
           @user_info = args[:user_info] if args.key?(:user_info)
+          @user_labels = args[:user_labels] if args.key?(:user_labels)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
         end
       end
@@ -2912,7 +2966,7 @@ module Google
         attr_accessor :filter
       
         # Optional. The sort string to specify the sorting of search results. The syntax
-        # of the sort string is the same as SearchRequest.sort.
+        # of the sort string is the same as SearchRequest.order_by.
         # Corresponds to the JSON property `sortBy`
         # @return [String]
         attr_accessor :sort_by
@@ -2997,12 +3051,36 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseConversationalFilteringResult]
         attr_accessor :conversational_filtering_result
       
+        # The conversational answer-based text response generated by the Server.
+        # Corresponds to the JSON property `conversationalTextResponse`
+        # @return [String]
+        attr_accessor :conversational_text_response
+      
+        # The conversational followup question generated for Intent refinement.
+        # Corresponds to the JSON property `followupQuestion`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestion]
+        attr_accessor :followup_question
+      
         # The proposed refined search queries. They can be used to fetch the relevant
         # search results. When using CONVERSATIONAL_FILTER_ONLY mode, the refined_query
         # from search response will be populated here.
         # Corresponds to the JSON property `refinedSearch`
         # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaConversationalSearchResponseRefinedSearch>]
         attr_accessor :refined_search
+      
+        # Output only. The state of the response generation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The types Retail classifies the search query as. Supported values are: - "
+        # ORDER_SUPPORT" - "SIMPLE_PRODUCT_SEARCH" - "INTENT_REFINEMENT" - "
+        # PRODUCT_DETAILS" - "PRODUCT_COMPARISON" - "DEALS_AND_COUPONS" - "
+        # STORE_RELEVANT" - "BLOCKLISTED" - "BEST_PRODUCT" - "RETAIL_SUPPORT" - "
+        # DISABLED"
+        # Corresponds to the JSON property `userQueryTypes`
+        # @return [Array<String>]
+        attr_accessor :user_query_types
       
         def initialize(**args)
            update!(**args)
@@ -3012,7 +3090,11 @@ module Google
         def update!(**args)
           @conversation_id = args[:conversation_id] if args.key?(:conversation_id)
           @conversational_filtering_result = args[:conversational_filtering_result] if args.key?(:conversational_filtering_result)
+          @conversational_text_response = args[:conversational_text_response] if args.key?(:conversational_text_response)
+          @followup_question = args[:followup_question] if args.key?(:followup_question)
           @refined_search = args[:refined_search] if args.key?(:refined_search)
+          @state = args[:state] if args.key?(:state)
+          @user_query_types = args[:user_query_types] if args.key?(:user_query_types)
         end
       end
       
@@ -3088,7 +3170,9 @@ module Google
         end
       end
       
-      # Suggested answers to the follow-up question.
+      # Suggested answers to the follow-up question. If it's numerical attribute, only
+      # ProductAttributeInterval will be set. If it's textual attribute, only
+      # productAttributeValue will be set.
       class GoogleCloudRetailV2alphaConversationalSearchResponseFollowupQuestionSuggestedAnswer
         include Google::Apis::Core::Hashable
       
@@ -3480,34 +3564,7 @@ module Google
       class GoogleCloudRetailV2alphaExportProductsRequest
         include Google::Apis::Core::Hashable
       
-        # A filtering expression to specify restrictions on returned events. The
-        # expression is a sequence of terms. Each term applies a restriction to the
-        # returned products. Use this expression to restrict results to a specific time
-        # range, tag, or stock state or to filter products by product type. For example,
-        # `lastModifiedTime > "2012-04-23T18:25:43.511Z" lastModifiedTime<"2012-04-23T18:
-        # 25:43.511Z" productType=primary` We expect only four types of fields: * `
-        # lastModifiedTime`: This can be specified twice, once with a less than operator
-        # and once with a greater than operator. The `lastModifiedTime` restriction
-        # should result in one, contiguous, valid, last-modified, time range. * `
-        # productType`: Supported values are `primary` and `variant`. The Boolean
-        # operators `OR` and `NOT` are supported if the expression is enclosed in
-        # parentheses and must be separated from the `productType` values by a space. * `
-        # availability`: Supported values are `IN_STOCK`, `OUT_OF_STOCK`, `PREORDER`,
-        # and `BACKORDER`. Boolean operators `OR` and `NOT` are supported if the
-        # expression is enclosed in parentheses and must be separated from the `
-        # availability` values by a space. * `Tag expressions`: Restricts output to
-        # products that match all of the specified tags. Boolean operators `OR` and `NOT`
-        # are supported if the expression is enclosed in parentheses and the operators
-        # are separated from the tag values by a space. Also supported is '`-"tagA"`',
-        # which is equivalent to '`NOT "tagA"`'. Tag values must be double-quoted, UTF-8
-        # encoded strings and have a size limit of 1,000 characters. Some examples of
-        # valid filters expressions: * Example 1: `lastModifiedTime > "2012-04-23T18:25:
-        # 43.511Z" lastModifiedTime < "2012-04-23T18:30:43.511Z"` * Example 2: `
-        # lastModifiedTime > "2012-04-23T18:25:43.511Z" productType = "variant"` *
-        # Example 3: `tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT "promotional")
-        # productType = "primary" lastModifiedTime < "2018-04-23T18:30:43.511Z"` *
-        # Example 4: `lastModifiedTime > "2012-04-23T18:25:43.511Z"` * Example 5: `
-        # availability = (IN_STOCK OR BACKORDER)`
+        # Deprecated: This field is deprecated. Any filter provided will be ignored.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -3566,27 +3623,7 @@ module Google
       class GoogleCloudRetailV2alphaExportUserEventsRequest
         include Google::Apis::Core::Hashable
       
-        # A filtering expression to specify restrictions on returned events. The
-        # expression is a sequence of terms. Each term applies a restriction to the
-        # returned user events. Use this expression to restrict results to a specific
-        # time range or to filter events by eventType. For example, `eventTime > "2012-
-        # 04-23T18:25:43.511Z" eventsMissingCatalogItems eventTime<"2012-04-23T18:25:43.
-        # 511Z" eventType=search` We expect only three types of fields: * `eventTime`:
-        # This can be specified twice, once with a less than operator and once with a
-        # greater than operator. The `eventTime` restriction should result in one,
-        # contiguous, valid, `eventTime` range. * `eventType`: Boolean operators `OR`
-        # and `NOT` are supported if the expression is enclosed in parentheses and the
-        # operators are separated from the tag values by a space. * `
-        # eventsMissingCatalogItems`: This restricts results to events for which catalog
-        # items were not found in the catalog. The default behavior is to return only
-        # those events for which catalog items were found. Some examples of valid
-        # filters expressions: * Example 1: `eventTime > "2012-04-23T18:25:43.511Z"
-        # eventTime < "2012-04-23T18:30:43.511Z"` * Example 2: `eventTime > "2012-04-
-        # 23T18:25:43.511Z" eventType = detail-page-view` * Example 3: `
-        # eventsMissingCatalogItems eventType = (NOT search) eventTime < "2018-04-23T18:
-        # 30:43.511Z"` * Example 4: `eventTime > "2012-04-23T18:25:43.511Z"` * Example 5:
-        # `eventType = (detail-page-view OR search)` * Example 6: `
-        # eventsMissingCatalogItems`
+        # Deprecated: This field is deprecated. Any filter provided will be ignored.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -4185,6 +4222,149 @@ module Google
           @error_samples = args[:error_samples] if args.key?(:error_samples)
           @errors_config = args[:errors_config] if args.key?(:errors_config)
           @import_summary = args[:import_summary] if args.key?(:import_summary)
+        end
+      end
+      
+      # The public proto to represent the intent classification config. It will be
+      # converted to the internal proto in the backend.
+      class GoogleCloudRetailV2alphaIntentClassificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of keywords that will be used to classify the query to the "
+        # BLOCKLISTED" intent type. The keywords are case insensitive.
+        # Corresponds to the JSON property `blocklistKeywords`
+        # @return [Array<String>]
+        attr_accessor :blocklist_keywords
+      
+        # Optional. A list of intent types that will be disabled for this customer. The
+        # intent types must match one of the predefined intent types defined at https://
+        # cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#
+        # querytype
+        # Corresponds to the JSON property `disabledIntentTypes`
+        # @return [Array<String>]
+        attr_accessor :disabled_intent_types
+      
+        # Optional. A list of examples for intent classification.
+        # Corresponds to the JSON property `example`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigExample>]
+        attr_accessor :example
+      
+        # Inline source for intent classifications.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource]
+        attr_accessor :inline_source
+      
+        # Optional. Customers can use the preamble to specify any requirements for
+        # blocklisting intent classification. This preamble will be added to the
+        # blocklisting intent classification model prompt.
+        # Corresponds to the JSON property `modelPreamble`
+        # @return [String]
+        attr_accessor :model_preamble
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blocklist_keywords = args[:blocklist_keywords] if args.key?(:blocklist_keywords)
+          @disabled_intent_types = args[:disabled_intent_types] if args.key?(:disabled_intent_types)
+          @example = args[:example] if args.key?(:example)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+          @model_preamble = args[:model_preamble] if args.key?(:model_preamble)
+        end
+      end
+      
+      # An example for intent classification.
+      class GoogleCloudRetailV2alphaIntentClassificationConfigExample
+        include Google::Apis::Core::Hashable
+      
+        # Required. Whether the example is classified positively.
+        # Corresponds to the JSON property `classifiedPositive`
+        # @return [Boolean]
+        attr_accessor :classified_positive
+        alias_method :classified_positive?, :classified_positive
+      
+        # Optional. The intent_type must match one of the predefined intent types
+        # defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.
+        # retail.v2alpha#querytype
+        # Corresponds to the JSON property `intentType`
+        # @return [String]
+        attr_accessor :intent_type
+      
+        # Required. Example query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Optional. The reason for the intent classification. This is used to explain
+        # the intent classification decision.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classified_positive = args[:classified_positive] if args.key?(:classified_positive)
+          @intent_type = args[:intent_type] if args.key?(:intent_type)
+          @query = args[:query] if args.key?(:query)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # An inline force intent classification configuration.
+      class GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The intent_type must match one of the predefined intent types
+        # defined at https://cloud.google.com/retail/docs/reference/rpc/google.cloud.
+        # retail.v2alpha#querytype
+        # Corresponds to the JSON property `intentType`
+        # @return [String]
+        attr_accessor :intent_type
+      
+        # Optional. The operation to perform for the query.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        # Optional. A example query.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @intent_type = args[:intent_type] if args.key?(:intent_type)
+          @operation = args[:operation] if args.key?(:operation)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # Inline source for intent classifications.
+      class GoogleCloudRetailV2alphaIntentClassificationConfigInlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of inline force intent classifications.
+        # Corresponds to the JSON property `inlineForceIntents`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaIntentClassificationConfigInlineForceIntent>]
+        attr_accessor :inline_force_intents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_force_intents = args[:inline_force_intents] if args.key?(:inline_force_intents)
         end
       end
       
@@ -5270,6 +5450,57 @@ module Google
         end
       end
       
+      # Detailed panel information associated with a user event.
+      class GoogleCloudRetailV2alphaPanelInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The attribution token of the panel.
+        # Corresponds to the JSON property `attributionToken`
+        # @return [String]
+        attr_accessor :attribution_token
+      
+        # Optional. The display name of the panel.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The panel ID.
+        # Corresponds to the JSON property `panelId`
+        # @return [String]
+        attr_accessor :panel_id
+      
+        # Optional. The ordered position of the panel, if shown to the user with other
+        # panels. If set, then total_panels must also be set.
+        # Corresponds to the JSON property `panelPosition`
+        # @return [Fixnum]
+        attr_accessor :panel_position
+      
+        # Optional. The product details associated with the panel.
+        # Corresponds to the JSON property `productDetails`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaProductDetail>]
+        attr_accessor :product_details
+      
+        # Optional. The total number of panels, including this one, shown to the user.
+        # Must be set if panel_position is set.
+        # Corresponds to the JSON property `totalPanels`
+        # @return [Fixnum]
+        attr_accessor :total_panels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @panel_id = args[:panel_id] if args.key?(:panel_id)
+          @panel_position = args[:panel_position] if args.key?(:panel_position)
+          @product_details = args[:product_details] if args.key?(:product_details)
+          @total_panels = args[:total_panels] if args.key?(:total_panels)
+        end
+      end
+      
       # Request for pausing training of a model.
       class GoogleCloudRetailV2alphaPauseModelRequest
         include Google::Apis::Core::Hashable
@@ -5675,20 +5906,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :brands
       
-        # Product categories. This field is repeated for supporting one product
-        # belonging to several parallel categories. Strongly recommended using the full
-        # path for better search / recommendation quality. To represent full path of
-        # category, use '>' sign to separate different hierarchies. If '>' is part of
-        # the category name, replace it with other character(s). For example, if a shoes
-        # product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports &
-        # Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "
-        # categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic
-        # Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an
-        # INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product
-        # unless overridden through the Google Cloud console. Empty values are not
-        # allowed. Each value must be a UTF-8 encoded string with a length limit of 5,
-        # 000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-        # Corresponding properties: Google Merchant Center property
+        # Optional. Product categories. This field is repeated for supporting one
+        # product belonging to several parallel categories. Strongly recommended using
+        # the full path for better search / recommendation quality. To represent the
+        # full path of category, use the '>' sign, with one space on each side, to
+        # separate different hierarchies. If '>' is part of the category name, replace
+        # it with other character(s). For example, if a shoes product belongs to both ["
+        # Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing"
+        # -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories
+        # > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for
+        # Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most
+        # 250 values are allowed per Product unless overridden through the Google Cloud
+        # console. Empty values are not allowed. Each value must be a UTF-8 encoded
+        # string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned. Corresponding properties: Google Merchant Center property
         # google_product_category. Schema.org property [Product.category] (https://
         # schema.org/category). [mc_google_product_category]: https://support.google.com/
         # merchants/answer/6324436
@@ -6752,9 +6983,9 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCatalogAttribute]
         attr_accessor :catalog_attribute
       
-        # Indicates which fields in the provided CatalogAttribute to update. The
-        # following are NOT supported: * CatalogAttribute.key If not set, all supported
-        # fields are updated.
+        # Optional. Indicates which fields in the provided CatalogAttribute to update.
+        # The following are NOT supported: * CatalogAttribute.key If not set, all
+        # supported fields are updated.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -7279,6 +7510,38 @@ module Google
         end
       end
       
+      # Safety settings.
+      class GoogleCloudRetailV2alphaSafetySetting
+        include Google::Apis::Core::Hashable
+      
+        # Harm category.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Optional. Specify if the threshold is used for probability or severity score.
+        # If not specified, the threshold is used for probability score.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # The harm block threshold.
+        # Corresponds to the JSON property `threshold`
+        # @return [String]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
       # Request message for SearchService.Search method.
       class GoogleCloudRetailV2alphaSearchRequest
         include Google::Apis::Core::Hashable
@@ -7325,6 +7588,11 @@ module Google
         # Corresponds to the JSON property `entity`
         # @return [String]
         attr_accessor :entity
+      
+        # Optional. An ID for the experiment group this search belongs to.
+        # Corresponds to the JSON property `experimentId`
+        # @return [String]
+        attr_accessor :experiment_id
       
         # Facet specifications for faceted search. If empty, no facets are returned. A
         # maximum of 200 values are allowed. Otherwise, an INVALID_ARGUMENT error is
@@ -7384,13 +7652,14 @@ module Google
         # @return [String]
         attr_accessor :order_by
       
-        # The categories associated with a category page. Must be set for category
-        # navigation queries to achieve good search quality. The format should be the
-        # same as UserEvent.page_categories; To represent full path of category, use '>'
-        # sign to separate different hierarchies. If '>' is part of the category name,
-        # replace it with other character(s). Category pages include special pages such
-        # as sales or promotions. For instance, a special sale page may have the
-        # category hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"].
+        # Optional. The categories associated with a category page. Must be set for
+        # category navigation queries to achieve good search quality. The format should
+        # be the same as UserEvent.page_categories; To represent the full path of
+        # category, use '>' sign, with one space on each side, to separate different
+        # hierarchies. If '>' is part of the category name, replace it with other
+        # character(s). Category pages include special pages such as sales or promotions.
+        # For instance, a special sale page may have the category hierarchy: "
+        # pageCategories" : ["Sales > 2017 Black Friday Deals"].
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -7418,7 +7687,8 @@ module Google
       
         # Optional. An id corresponding to a place, such as a store id or region id.
         # When specified, we use the price from the local inventory with the matching
-        # product's LocalInventory.place_id for revenue optimization.
+        # product's LocalInventory.place_id for revenue optimization. Note, the currency
+        # of the local inventory's price must match the currency of the product's price.
         # Corresponds to the JSON property `placeId`
         # @return [String]
         attr_accessor :place_id
@@ -7466,6 +7736,15 @@ module Google
         # Corresponds to the JSON property `tileNavigationSpec`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestTileNavigationSpec]
         attr_accessor :tile_navigation_spec
+      
+        # Optional. The user attributes that could be used for personalization of search
+        # results. * Populate at most 100 key-value pairs per query. * Only supports
+        # string keys and repeated string values. * Duplicate keys are not allowed
+        # within a single query. Example: user_attributes: [ ` key: "pets" value `
+        # values: "dog" values: "cat" ` `, ` key: "state" value ` values: "CA" ` ` ]
+        # Corresponds to the JSON property `userAttributes`
+        # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaStringList>]
+        attr_accessor :user_attributes
       
         # Information of an end user.
         # Corresponds to the JSON property `userInfo`
@@ -7524,6 +7803,7 @@ module Google
           @conversational_search_spec = args[:conversational_search_spec] if args.key?(:conversational_search_spec)
           @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
           @entity = args[:entity] if args.key?(:entity)
+          @experiment_id = args[:experiment_id] if args.key?(:experiment_id)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
@@ -7542,6 +7822,7 @@ module Google
           @search_mode = args[:search_mode] if args.key?(:search_mode)
           @spell_correction_spec = args[:spell_correction_spec] if args.key?(:spell_correction_spec)
           @tile_navigation_spec = args[:tile_navigation_spec] if args.key?(:tile_navigation_spec)
+          @user_attributes = args[:user_attributes] if args.key?(:user_attributes)
           @user_info = args[:user_info] if args.key?(:user_info)
           @variant_rollup_keys = args[:variant_rollup_keys] if args.key?(:variant_rollup_keys)
           @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
@@ -7624,8 +7905,8 @@ module Google
       
         # This field specifies the conversation id, which maintains the state of the
         # conversation between client side and server side. Use the value from the
-        # previous ConversationalSearchResult.conversation_id. For the initial request,
-        # this should be empty.
+        # previous SearchResponse.ConversationalSearchResult.conversation_id. For the
+        # initial request, this should be empty.
         # Corresponds to the JSON property `conversationId`
         # @return [String]
         attr_accessor :conversation_id
@@ -7952,9 +8233,9 @@ module Google
         # @return [String]
         attr_accessor :condition
       
-        # Whether to pin unexpanded results. If this field is set to true, unexpanded
-        # products are always at the top of the search results, followed by the expanded
-        # results.
+        # Whether to pin unexpanded results. The default value is false. If this field
+        # is set to true, unexpanded products are always at the top of the search
+        # results, followed by the expanded results.
         # Corresponds to the JSON property `pinUnexpandedResults`
         # @return [Boolean]
         attr_accessor :pin_unexpanded_results
@@ -8046,9 +8327,10 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponseConversationalSearchResult]
         attr_accessor :conversational_search_result
       
-        # Contains the spell corrected query, if found. If the spell correction type is
-        # AUTOMATIC, then the search results are based on corrected_query. Otherwise the
-        # original query is used for search.
+        # Contains the spell corrected query, if found. The search results are based on
+        # corrected_query by default. However, if SearchRequest.SpellCorrectionSpec.mode
+        # is set to SearchRequest.SpellCorrectionSpec.Mode.SUGGESTION_ONLY, the original
+        # query is used for search.
         # Corresponds to the JSON property `correctedQuery`
         # @return [String]
         attr_accessor :corrected_query
@@ -8749,6 +9031,25 @@ module Google
         end
       end
       
+      # A list of string values.
+      class GoogleCloudRetailV2alphaStringList
+        include Google::Apis::Core::Hashable
+      
+        # String values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # This field specifies the tile information including an attribute key,
       # attribute value. More fields will be added in the future, eg: product id or
       # product counts, etc.
@@ -8998,15 +9299,15 @@ module Google
         # @return [String]
         attr_accessor :order_by
       
-        # The categories associated with a category page. To represent full path of
-        # category, use '>' sign to separate different hierarchies. If '>' is part of
-        # the category name, replace it with other character(s). Category pages include
-        # special pages such as sales or promotions. For instance, a special sale page
-        # may have the category hierarchy: "pageCategories" : ["Sales > 2017 Black
-        # Friday Deals"]. Required for `category-page-view` events. At least one of
-        # search_query or page_categories is required for `search` events. Other event
-        # types should not set this field. Otherwise, an INVALID_ARGUMENT error is
-        # returned.
+        # Optional. The categories associated with a category page. To represent the
+        # full path of category, use the '>' sign, with one space on each side, to
+        # separate different hierarchies. If '>' is part of the category name, replace
+        # it with other character(s). Category pages include special pages such as sales
+        # or promotions. For instance, a special sale page may have the category
+        # hierarchy: "pageCategories" : ["Sales > 2017 Black Friday Deals"]. Required
+        # for `category-page-view` events. At least one of search_query or
+        # page_categories is required for `search` events. Other event types should not
+        # set this field. Otherwise, an INVALID_ARGUMENT error is returned.
         # Corresponds to the JSON property `pageCategories`
         # @return [Array<String>]
         attr_accessor :page_categories
@@ -9021,6 +9322,12 @@ module Google
         # Corresponds to the JSON property `pageViewId`
         # @return [String]
         attr_accessor :page_view_id
+      
+        # Optional. List of panels associated with this event. Used for panel-level
+        # impression data.
+        # Corresponds to the JSON property `panels`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaPanelInfo>]
+        attr_accessor :panels
       
         # The main product details related to the event. This field is optional except
         # for the following event types: * `add-to-cart` * `detail-page-view` * `
@@ -9057,9 +9364,9 @@ module Google
       
         # A unique identifier for tracking a visitor session with a length limit of 128
         # bytes. A session is an aggregation of an end user behavior in a time span. A
-        # general guideline to populate the sesion_id: 1. If user has no activity for 30
-        # min, a new session_id should be assigned. 2. The session_id should be unique
-        # across users, suggest use uuid or add visitor_id as prefix.
+        # general guideline to populate the session_id: 1. If user has no activity for
+        # 30 min, a new session_id should be assigned. 2. The session_id should be
+        # unique across users, suggest use uuid or add visitor_id as prefix.
         # Corresponds to the JSON property `sessionId`
         # @return [String]
         attr_accessor :session_id
@@ -9109,6 +9416,7 @@ module Google
           @order_by = args[:order_by] if args.key?(:order_by)
           @page_categories = args[:page_categories] if args.key?(:page_categories)
           @page_view_id = args[:page_view_id] if args.key?(:page_view_id)
+          @panels = args[:panels] if args.key?(:panels)
           @product_details = args[:product_details] if args.key?(:product_details)
           @purchase_transaction = args[:purchase_transaction] if args.key?(:purchase_transaction)
           @referrer_uri = args[:referrer_uri] if args.key?(:referrer_uri)
@@ -10217,6 +10525,14 @@ module Google
         # @return [Array<Google::Apis::RetailV2alpha::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10225,6 +10541,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

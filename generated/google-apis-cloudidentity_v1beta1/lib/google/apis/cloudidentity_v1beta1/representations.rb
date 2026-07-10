@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AntivirusInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApproveDeviceUserRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChromePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClientState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +143,12 @@ module Google
       end
       
       class CreateDeviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateInboundOidcSsoProfileOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +173,12 @@ module Google
       end
       
       class DeleteIdpCredentialOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteInboundOidcSsoProfileOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InboundOidcSsoProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InboundSamlSsoProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +497,12 @@ module Google
       end
       
       class ListIdpCredentialsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListInboundOidcSsoProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -586,6 +622,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OidcIdpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OidcRpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OidcSsoInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -599,6 +653,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyConflict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -712,6 +772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateInboundOidcSsoProfileOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateInboundSamlSsoProfileOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -731,6 +797,12 @@ module Google
       end
       
       class UserInvitation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WindowsSpecificDeviceAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -785,6 +857,15 @@ module Google
           property :supports_work_profile, as: 'supportsWorkProfile'
           property :verified_boot, as: 'verifiedBoot'
           property :verify_apps_enabled, as: 'verifyAppsEnabled'
+        end
+      end
+      
+      class AntivirusInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :product_guid, as: 'productGuid'
+          property :product_state, as: 'productState'
         end
       end
       
@@ -844,6 +925,8 @@ module Google
           property :is_site_isolation_enabled, as: 'isSiteIsolationEnabled'
           property :is_third_party_blocking_enabled, as: 'isThirdPartyBlockingEnabled'
           property :password_protection_warning_trigger, as: 'passwordProtectionWarningTrigger'
+          collection :policies, as: 'policies', class: Google::Apis::CloudidentityV1beta1::ChromePolicy, decorator: Google::Apis::CloudidentityV1beta1::ChromePolicy::Representation
+      
           property :safe_browsing_protection_level, as: 'safeBrowsingProtectionLevel'
         end
       end
@@ -916,6 +999,18 @@ module Google
         end
       end
       
+      class ChromePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conflicts, as: 'conflicts', class: Google::Apis::CloudidentityV1beta1::PolicyConflict, decorator: Google::Apis::CloudidentityV1beta1::PolicyConflict::Representation
+      
+          property :name, as: 'name'
+          property :scope, as: 'scope'
+          property :source, as: 'source'
+          property :value, as: 'value'
+        end
+      end
+      
       class ClientState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -941,6 +1036,13 @@ module Google
           property :customer, as: 'customer'
           property :device, as: 'device', class: Google::Apis::CloudidentityV1beta1::Device, decorator: Google::Apis::CloudidentityV1beta1::Device::Representation
       
+        end
+      end
+      
+      class CreateInboundOidcSsoProfileOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
         end
       end
       
@@ -972,6 +1074,12 @@ module Google
         end
       end
       
+      class DeleteInboundOidcSsoProfileOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DeleteInboundSamlSsoProfileOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -989,10 +1097,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_specific_attributes, as: 'androidSpecificAttributes', class: Google::Apis::CloudidentityV1beta1::AndroidAttributes, decorator: Google::Apis::CloudidentityV1beta1::AndroidAttributes::Representation
       
+          collection :antivirus_info, as: 'antivirusInfo', class: Google::Apis::CloudidentityV1beta1::AntivirusInfo, decorator: Google::Apis::CloudidentityV1beta1::AntivirusInfo::Representation
+      
           property :asset_tag, as: 'assetTag'
           property :baseband_version, as: 'basebandVersion'
           property :bootloader_version, as: 'bootloaderVersion'
           property :brand, as: 'brand'
+          collection :browser_profiles, as: 'browserProfiles', class: Google::Apis::CloudidentityV1beta1::BrowserAttributes, decorator: Google::Apis::CloudidentityV1beta1::BrowserAttributes::Representation
+      
           property :build_number, as: 'buildNumber'
           collection :client_types, as: 'clientTypes'
           property :compromised_state, as: 'compromisedState'
@@ -1014,6 +1126,7 @@ module Google
           property :model, as: 'model'
           property :name, as: 'name'
           property :network_operator, as: 'networkOperator'
+          property :os_firewall_status, as: 'osFirewallStatus'
           property :os_version, as: 'osVersion'
           collection :other_accounts, as: 'otherAccounts'
           property :owner_type, as: 'ownerType'
@@ -1022,6 +1135,8 @@ module Google
           property :serial_number, as: 'serialNumber'
           property :unified_device_id, as: 'unifiedDeviceId'
           collection :wifi_mac_addresses, as: 'wifiMacAddresses'
+          property :windows_specific_device_attributes, as: 'windowsSpecificDeviceAttributes', class: Google::Apis::CloudidentityV1beta1::WindowsSpecificDeviceAttributes, decorator: Google::Apis::CloudidentityV1beta1::WindowsSpecificDeviceAttributes::Representation
+      
         end
       end
       
@@ -1447,6 +1562,19 @@ module Google
         end
       end
       
+      class InboundOidcSsoProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+          property :display_name, as: 'displayName'
+          property :idp_config, as: 'idpConfig', class: Google::Apis::CloudidentityV1beta1::OidcIdpConfig, decorator: Google::Apis::CloudidentityV1beta1::OidcIdpConfig::Representation
+      
+          property :name, as: 'name'
+          property :rp_config, as: 'rpConfig', class: Google::Apis::CloudidentityV1beta1::OidcRpConfig, decorator: Google::Apis::CloudidentityV1beta1::OidcRpConfig::Representation
+      
+        end
+      end
+      
       class InboundSamlSsoProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1465,6 +1593,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer, as: 'customer'
           property :name, as: 'name'
+          property :oidc_sso_info, as: 'oidcSsoInfo', class: Google::Apis::CloudidentityV1beta1::OidcSsoInfo, decorator: Google::Apis::CloudidentityV1beta1::OidcSsoInfo::Representation
+      
           property :rank, as: 'rank'
           property :saml_sso_info, as: 'samlSsoInfo', class: Google::Apis::CloudidentityV1beta1::SamlSsoInfo, decorator: Google::Apis::CloudidentityV1beta1::SamlSsoInfo::Representation
       
@@ -1523,6 +1653,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :idp_credentials, as: 'idpCredentials', class: Google::Apis::CloudidentityV1beta1::IdpCredential, decorator: Google::Apis::CloudidentityV1beta1::IdpCredential::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListInboundOidcSsoProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inbound_oidc_sso_profiles, as: 'inboundOidcSsoProfiles', class: Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile, decorator: Google::Apis::CloudidentityV1beta1::InboundOidcSsoProfile::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1712,6 +1851,30 @@ module Google
         end
       end
       
+      class OidcIdpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_password_uri, as: 'changePasswordUri'
+          property :issuer_uri, as: 'issuerUri'
+        end
+      end
+      
+      class OidcRpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+          collection :redirect_uris, as: 'redirectUris'
+        end
+      end
+      
+      class OidcSsoInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inbound_oidc_sso_profile, as: 'inboundOidcSsoProfile'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1744,6 +1907,15 @@ module Google
           property :setting, as: 'setting', class: Google::Apis::CloudidentityV1beta1::Setting, decorator: Google::Apis::CloudidentityV1beta1::Setting::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class PolicyConflict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
+          property :source, as: 'source'
+          property :value, as: 'value'
         end
       end
       
@@ -1895,6 +2067,13 @@ module Google
         end
       end
       
+      class UpdateInboundOidcSsoProfileOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+        end
+      end
+      
       class UpdateInboundSamlSsoProfileOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1924,6 +2103,16 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class WindowsSpecificDeviceAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :hotfixes, as: 'hotfixes'
+          property :secure_boot_mode, as: 'secureBootMode'
+          property :windows_machine_domain, as: 'windowsMachineDomain'
+          property :windows_user_domain, as: 'windowsUserDomain'
         end
       end
       

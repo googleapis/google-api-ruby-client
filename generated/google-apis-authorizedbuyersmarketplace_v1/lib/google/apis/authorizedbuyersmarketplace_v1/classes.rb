@@ -182,6 +182,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :eligible_seat_ids
       
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `floorPriceCpm`
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::Money]
+        attr_accessor :floor_price_cpm
+      
         # Immutable. The unique identifier for the auction package. Format: `buyers/`
         # accountId`/auctionPackages/`auctionPackageId`` The auction_package_id part of
         # name is sent in the BidRequest to all RTB bidders and is returned as deal_id
@@ -230,6 +235,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @eligible_seat_ids = args[:eligible_seat_ids] if args.key?(:eligible_seat_ids)
+          @floor_price_cpm = args[:floor_price_cpm] if args.key?(:floor_price_cpm)
           @name = args[:name] if args.key?(:name)
           @subscribed_buyers = args[:subscribed_buyers] if args.key?(:subscribed_buyers)
           @subscribed_clients = args[:subscribed_clients] if args.key?(:subscribed_clients)
@@ -665,7 +671,7 @@ module Google
         # @return [String]
         attr_accessor :flight_start_time
       
-        # Describes a single Media Planner account.
+        # Represents a media planner account.
         # Corresponds to the JSON property `mediaPlanner`
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1::MediaPlanner]
         attr_accessor :media_planner
@@ -1287,7 +1293,7 @@ module Google
         end
       end
       
-      # Describes a single Media Planner account.
+      # Represents a media planner account.
       class MediaPlanner
         include Google::Apis::Core::Hashable
       
@@ -1296,6 +1302,26 @@ module Google
         # @return [String]
         attr_accessor :account_id
       
+        # Output only. The ancestor names of the media planner. Format: `mediaPlanners/`
+        # mediaPlannerAccountId`` Can be used to filter the response of the
+        # mediaPlanners.list method.
+        # Corresponds to the JSON property `ancestorNames`
+        # @return [Array<String>]
+        attr_accessor :ancestor_names
+      
+        # Output only. The display name of the media planner. Can be used to filter the
+        # response of the mediaPlanners.list method.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The unique resource name of the media planner. Format: `
+        # mediaPlanners/`mediaPlannerAccountId`` Can be used to filter the response of
+        # the mediaPlanners.list method.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1303,6 +1329,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
+          @ancestor_names = args[:ancestor_names] if args.key?(:ancestor_names)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
         end
       end
       

@@ -1,5 +1,50 @@
 # Release history for google-apis-contactcenteraiplatform_v1alpha1
 
+### v0.41.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.40.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260423
+
+### v0.39.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260319
+
+### v0.38.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260129
+
+### v0.37.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260108
+
+### v0.36.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251204
+
+### v0.35.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251115
+
+### v0.34.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251022
+
+### v0.33.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250925
+
+### v0.32.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250821
+
+### v0.31.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250703
+* Regenerated using generator version 0.18.0
+
 ### v0.30.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

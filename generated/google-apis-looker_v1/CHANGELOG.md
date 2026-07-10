@@ -1,5 +1,63 @@
 # Release history for google-apis-looker_v1
 
+### v0.30.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260609
+* Regenerated using generator version 0.19.0
+
+### v0.29.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260502
+
+### v0.28.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260326
+
+### v0.27.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260216
+
+### v0.26.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260119
+
+### v0.25.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251203
+
+### v0.24.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251113
+
+### v0.23.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251021
+
+### v0.22.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251017
+
+### v0.21.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251001
+
+### v0.20.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250906
+
+### v0.19.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250824
+
+### v0.18.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250721
+
+### v0.17.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250604
+* Regenerated using generator version 0.18.0
+
 ### v0.16.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

@@ -237,9 +237,9 @@ module Google
       class CryptoKeyConfig
         include Google::Apis::Core::Hashable
       
-        # The name of the key which is used to encrypt/decrypt customer data. For key in
-        # Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/
-        # */cryptoKeys/*`.
+        # Optional. The name of the key which is used to encrypt/decrypt customer data.
+        # For key in Cloud KMS, the key should be in the format of `projects/*/locations/
+        # */keyRings/*/cryptoKeys/*`.
         # Corresponds to the JSON property `keyReference`
         # @return [String]
         attr_accessor :key_reference
@@ -269,8 +269,8 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Required. The resource name of the dns peering zone. Format: projects/`project`
-        # /locations/`location`/instances/`instance`/dnsPeerings/`dns_peering`
+        # Identifier. The resource name of the dns peering zone. Format: projects/`
+        # project`/locations/`location`/instances/`instance`/dnsPeerings/`dns_peering`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -490,14 +490,14 @@ module Google
         attr_accessor :dataplex_data_lineage_integration_enabled
         alias_method :dataplex_data_lineage_integration_enabled?, :dataplex_data_lineage_integration_enabled
       
-        # User-managed service account to set on Dataproc when Cloud Data Fusion creates
-        # Dataproc to run data processing pipelines. This allows users to have fine-
-        # grained access control on Dataproc's accesses to cloud resources.
+        # Optional. User-managed service account to set on Dataproc when Cloud Data
+        # Fusion creates Dataproc to run data processing pipelines. This allows users to
+        # have fine-grained access control on Dataproc's accesses to cloud resources.
         # Corresponds to the JSON property `dataprocServiceAccount`
         # @return [String]
         attr_accessor :dataproc_service_account
       
-        # A description of this instance.
+        # Optional. A description of this instance.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -508,30 +508,30 @@ module Google
         # @return [Array<String>]
         attr_accessor :disabled_reason
       
-        # Display name for an instance.
+        # Optional. Display name for an instance.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Option to enable granular role-based access control.
+        # Optional. Option to enable granular role-based access control.
         # Corresponds to the JSON property `enableRbac`
         # @return [Boolean]
         attr_accessor :enable_rbac
         alias_method :enable_rbac?, :enable_rbac
       
-        # Option to enable Dataproc Stackdriver Logging.
+        # Optional. Option to enable Dataproc Stackdriver Logging.
         # Corresponds to the JSON property `enableStackdriverLogging`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_logging
         alias_method :enable_stackdriver_logging?, :enable_stackdriver_logging
       
-        # Option to enable Stackdriver Monitoring.
+        # Optional. Option to enable Stackdriver Monitoring.
         # Corresponds to the JSON property `enableStackdriverMonitoring`
         # @return [Boolean]
         attr_accessor :enable_stackdriver_monitoring
         alias_method :enable_stackdriver_monitoring?, :enable_stackdriver_monitoring
       
-        # Option to enable zone separation.
+        # Output only. Option to enable zone separation.
         # Corresponds to the JSON property `enableZoneSeparation`
         # @return [Boolean]
         attr_accessor :enable_zone_separation
@@ -570,6 +570,11 @@ module Google
         # @return [Google::Apis::DatafusionV1beta1::MaintenancePolicy]
         attr_accessor :maintenance_policy
       
+        # Monitoring configuration for a Data Fusion instance.
+        # Corresponds to the JSON property `monitoringConfig`
+        # @return [Google::Apis::DatafusionV1beta1::MonitoringConfig]
+        attr_accessor :monitoring_config
+      
         # Output only. The name of this instance is in the form of projects/`project`/
         # locations/`location`/instances/`instance`.
         # Corresponds to the JSON property `name`
@@ -586,8 +591,8 @@ module Google
         # @return [Google::Apis::DatafusionV1beta1::NetworkConfig]
         attr_accessor :network_config
       
-        # Map of additional options used to configure the behavior of Data Fusion
-        # instance.
+        # Optional. Map of additional options used to configure the behavior of Data
+        # Fusion instance.
         # Corresponds to the JSON property `options`
         # @return [Hash<String,String>]
         attr_accessor :options
@@ -602,9 +607,9 @@ module Google
         # @return [String]
         attr_accessor :patch_revision
       
-        # Specifies whether the Data Fusion instance should be private. If set to true,
-        # all Data Fusion nodes will have private IP addresses and will not be able to
-        # access the public internet.
+        # Optional. Specifies whether the Data Fusion instance should be private. If set
+        # to true, all Data Fusion nodes will have private IP addresses and will not be
+        # able to access the public internet.
         # Corresponds to the JSON property `privateInstance`
         # @return [Boolean]
         attr_accessor :private_instance
@@ -666,7 +671,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Current version of Data Fusion.
+        # Optional. Current version of Data Fusion.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -677,8 +682,8 @@ module Google
         # @return [String]
         attr_accessor :workforce_identity_service_endpoint
       
-        # Name of the zone in which the Data Fusion instance will be created. Only
-        # DEVELOPER instances use this field.
+        # Optional. Name of the zone in which the Data Fusion instance will be created.
+        # Only DEVELOPER instances use this field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -709,6 +714,7 @@ module Google
           @logging_config = args[:logging_config] if args.key?(:logging_config)
           @maintenance_events = args[:maintenance_events] if args.key?(:maintenance_events)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
+          @monitoring_config = args[:monitoring_config] if args.key?(:monitoring_config)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @options = args[:options] if args.key?(:options)
@@ -887,6 +893,14 @@ module Google
         # @return [Array<Google::Apis::DatafusionV1beta1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -895,6 +909,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -949,6 +964,13 @@ module Google
       class LoggingConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Option to enable the InstanceV2 logging for this instance. This
+        # field is supported only in CDF patch revision versions 6.11.1.1 and above.
+        # Corresponds to the JSON property `enableInstanceV2Logs`
+        # @return [Boolean]
+        attr_accessor :enable_instance_v2_logs
+        alias_method :enable_instance_v2_logs?, :enable_instance_v2_logs
+      
         # Optional. Option to determine whether instance logs should be written to Cloud
         # Logging. By default, instance logs are written to Cloud Logging.
         # Corresponds to the JSON property `instanceCloudLoggingDisabled`
@@ -962,6 +984,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_instance_v2_logs = args[:enable_instance_v2_logs] if args.key?(:enable_instance_v2_logs)
           @instance_cloud_logging_disabled = args[:instance_cloud_logging_disabled] if args.key?(:instance_cloud_logging_disabled)
         end
       end
@@ -1042,6 +1065,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @recurring_time_window = args[:recurring_time_window] if args.key?(:recurring_time_window)
+        end
+      end
+      
+      # Monitoring configuration for a Data Fusion instance.
+      class MonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Option to enable the instance v2 metrics for this instance. This
+        # field is supported only in CDF versions 6.11.1.1 and above.
+        # Corresponds to the JSON property `enableInstanceV2Metrics`
+        # @return [Boolean]
+        attr_accessor :enable_instance_v2_metrics
+        alias_method :enable_instance_v2_metrics?, :enable_instance_v2_metrics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_instance_v2_metrics = args[:enable_instance_v2_metrics] if args.key?(:enable_instance_v2_metrics)
         end
       end
       

@@ -30,7 +30,7 @@ module Google
       #    Merchantapi = Google::Apis::MerchantapiDatasourcesV1beta # Alias the module
       #    service = Merchantapi::MerchantService.new
       #
-      # @see https://developers.devsite.corp.google.com/merchant/api
+      # @see https://developers.google.com/merchant/api
       class MerchantService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://merchantapi.$UNIVERSE_DOMAIN$/"
 
@@ -237,7 +237,9 @@ module Google
         #   Required. The list of data source fields to be updated. Fields specified in
         #   the update mask without a value specified in the body will be deleted from the
         #   data source. Providing special "*" value for full data source replacement is
-        #   not supported.
+        #   not supported. For example, If you insert `updateMask=displayName` in the
+        #   request, it will only update the `displayName` leaving all other fields
+        #   untouched.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

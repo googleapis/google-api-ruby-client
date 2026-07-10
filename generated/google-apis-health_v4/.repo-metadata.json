@@ -1,0 +1,7 @@
+{
+    "api_id": "health:v4",
+    "name_pretty": "Google Health API",
+    "distribution_name": "google-apis-health_v4",
+    "language": "ruby",
+    "library_type": "REST"
+}

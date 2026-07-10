@@ -1,5 +1,50 @@
 # Release history for google-apis-analyticshub_v1
 
+### v0.45.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260607
+
+### v0.44.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.43.0 (2026-05-10)
+
+* Regenerated from discovery document revision 20260427
+
+### v0.42.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260406
+
+### v0.41.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260308
+
+### v0.40.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260111
+
+### v0.39.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20251208
+
+### v0.38.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251020
+
+### v0.37.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250901
+
+### v0.36.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250807
+
+### v0.35.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250623
+* Regenerated using generator version 0.18.0
+
 ### v0.34.0 (2025-05-18)
 
 * Regenerated from discovery document revision 20250507

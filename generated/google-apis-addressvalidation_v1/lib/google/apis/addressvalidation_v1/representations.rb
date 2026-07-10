@@ -335,8 +335,10 @@ module Google
           property :geocode_granularity, as: 'geocodeGranularity'
           property :has_inferred_components, as: 'hasInferredComponents'
           property :has_replaced_components, as: 'hasReplacedComponents'
+          property :has_spell_corrected_components, as: 'hasSpellCorrectedComponents'
           property :has_unconfirmed_components, as: 'hasUnconfirmedComponents'
           property :input_granularity, as: 'inputGranularity'
+          property :possible_next_action, as: 'possibleNextAction'
           property :validation_granularity, as: 'validationGranularity'
         end
       end

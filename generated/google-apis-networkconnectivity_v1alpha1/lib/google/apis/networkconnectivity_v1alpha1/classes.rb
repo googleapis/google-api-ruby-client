@@ -320,6 +320,14 @@ module Google
         # @return [Array<Google::Apis::NetworkconnectivityV1alpha1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -328,6 +336,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -513,12 +522,12 @@ module Google
         # @return [Google::Apis::NetworkconnectivityV1alpha1::AllocationOptions]
         attr_accessor :allocation_options
       
-        # Time when the internal range was created.
+        # Output only. Time when the internal range was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # A description of this resource.
+        # Optional. A description of this resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -537,14 +546,14 @@ module Google
         attr_accessor :immutable
         alias_method :immutable?, :immutable
       
-        # IP range that this internal range defines. NOTE: IPv6 ranges are limited to
-        # usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges this field
-        # is compulsory, i.e. the address range must be specified explicitly.
+        # Optional. IP range that this internal range defines. NOTE: IPv6 ranges are
+        # limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges
+        # this field is compulsory, i.e. the address range must be specified explicitly.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
       
-        # User-defined labels.
+        # Optional. User-defined labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -554,18 +563,19 @@ module Google
         # @return [Google::Apis::NetworkconnectivityV1alpha1::Migration]
         attr_accessor :migration
       
-        # Immutable. The name of an internal range. Format: projects/`project`/locations/
-        # `location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
-        # fields-representing-resource-names
+        # Identifier. The name of an internal range. Format: projects/`project`/
+        # locations/`location`/internalRanges/`internal_range` See: https://google.aip.
+        # dev/122#fields-representing-resource-names
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The URL or resource ID of the network in which to reserve the internal range.
-        # The network cannot be deleted if there are any reserved internal ranges
-        # referring to it. Legacy networks are not supported. For example: https://www.
-        # googleapis.com/compute/v1/projects/`project`/locations/global/networks/`
-        # network` projects/`project`/locations/global/networks/`network` `network`
+        # Optional. The URL or resource ID of the network in which to reserve the
+        # internal range. The network cannot be deleted if there are any reserved
+        # internal ranges referring to it. Legacy networks are not supported. For
+        # example: https://www.googleapis.com/compute/v1/projects/`project`/locations/
+        # global/networks/`network` projects/`project`/locations/global/networks/`
+        # network` `network`
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -576,36 +586,43 @@ module Google
         # @return [Array<String>]
         attr_accessor :overlaps
       
-        # The type of peering set for this internal range.
+        # Optional. The type of peering set for this internal range.
         # Corresponds to the JSON property `peering`
         # @return [String]
         attr_accessor :peering
       
-        # An alternative to ip_cidr_range. Can be set when trying to create an IPv4
-        # reservation that automatically finds a free range of the given size. If both
-        # ip_cidr_range and prefix_length are set, there is an error if the range sizes
-        # do not match. Can also be used during updates to change the range size. NOTE:
-        # For IPv6 this field only works if ip_cidr_range is set as well, and both
+        # Optional. An alternative to ip_cidr_range. Can be set when trying to create an
+        # IPv4 reservation that automatically finds a free range of the given size. If
+        # both ip_cidr_range and prefix_length are set, there is an error if the range
+        # sizes do not match. Can also be used during updates to change the range size.
+        # NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both
         # fields must match. In other words, with IPv6 this field only works as a
         # redundant parameter.
         # Corresponds to the JSON property `prefixLength`
         # @return [Fixnum]
         attr_accessor :prefix_length
       
+        # Output only. Status of the Internal Range.
+        # Corresponds to the JSON property `rangeStatus`
+        # @return [String]
+        attr_accessor :range_status
+      
         # Optional. Can be set to narrow down or pick a different address space while
-        # searching for a free range. If not set, defaults to the "10.0.0.0/8" address
-        # space. This can be used to search in other rfc-1918 address spaces like "172.
-        # 16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
+        # searching for a free range. If not set, defaults to the ["10.0.0.0/8", "172.16.
+        # 0.0/12", "192.168.0.0/16"] address space (for auto-mode networks, the "10.0.0.
+        # 0/9" range is used instead of "10.0.0.0/8"). This can be used to target the
+        # search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/
+        # 16" or non-rfc-1918 address spaces used in the VPC.
         # Corresponds to the JSON property `targetCidrRange`
         # @return [Array<String>]
         attr_accessor :target_cidr_range
       
-        # Time when the internal range was updated.
+        # Output only. Time when the internal range was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # The type of usage set for this internal range.
+        # Optional. The type of usage set for this internal range.
         # Corresponds to the JSON property `usage`
         # @return [String]
         attr_accessor :usage
@@ -639,6 +656,7 @@ module Google
           @overlaps = args[:overlaps] if args.key?(:overlaps)
           @peering = args[:peering] if args.key?(:peering)
           @prefix_length = args[:prefix_length] if args.key?(:prefix_length)
+          @range_status = args[:range_status] if args.key?(:range_status)
           @target_cidr_range = args[:target_cidr_range] if args.key?(:target_cidr_range)
           @update_time = args[:update_time] if args.key?(:update_time)
           @usage = args[:usage] if args.key?(:usage)

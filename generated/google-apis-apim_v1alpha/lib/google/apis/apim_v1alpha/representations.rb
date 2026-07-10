@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Entitlement
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GclbObservationSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -285,6 +291,17 @@ module Google
         end
       end
       
+      class Entitlement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_observation_entitled, as: 'apiObservationEntitled'
+          property :billing_project_number, :numeric_string => true, as: 'billingProjectNumber'
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GclbObservationSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -421,6 +438,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ApimV1alpha::Operation, decorator: Google::Apis::ApimV1alpha::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

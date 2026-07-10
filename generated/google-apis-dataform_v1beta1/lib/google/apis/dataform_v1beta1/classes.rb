@@ -328,6 +328,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # `CancelWorkflowInvocation` request message.
       class CancelWorkflowInvocationRequest
         include Google::Apis::Core::Hashable
@@ -736,6 +749,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Metadata used to identify if a resource is user scoped.
+        # Corresponds to the JSON property `privateResourceMetadata`
+        # @return [Google::Apis::DataformV1beta1::PrivateResourceMetadata]
+        attr_accessor :private_resource_metadata
+      
         # Immutable. The name of the release config to compile. Must be in the format `
         # projects/*/locations/*/repositories/*/releaseConfigs/*`.
         # Corresponds to the JSON property `releaseConfig`
@@ -768,6 +786,7 @@ module Google
           @git_commitish = args[:git_commitish] if args.key?(:git_commitish)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
+          @private_resource_metadata = args[:private_resource_metadata] if args.key?(:private_resource_metadata)
           @release_config = args[:release_config] if args.key?(:release_config)
           @resolved_git_commit_sha = args[:resolved_git_commit_sha] if args.key?(:resolved_git_commit_sha)
           @workspace = args[:workspace] if args.key?(:workspace)
@@ -882,6 +901,13 @@ module Google
         # @return [String]
         attr_accessor :default_kms_key_name
       
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
         # Identifier. The config name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -894,6 +920,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @default_kms_key_name = args[:default_kms_key_name] if args.key?(:default_kms_key_name)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
         end
       end
@@ -1034,19 +1061,99 @@ module Google
         end
       end
       
+      # `DeleteFolderTree` request message.
+      class DeleteFolderTreeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If `false` (default): The operation will fail if any Repository
+        # within the folder hierarchy has associated Release Configs or Workflow Configs.
+        # If `true`: The operation will attempt to delete everything, including any
+        # Release Configs and Workflow Configs linked to Repositories within the folder
+        # hierarchy. This permanently removes schedules and resources.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+        end
+      end
+      
+      # `DeleteRepositoryLongRunning` request message.
+      class DeleteRepositoryLongRunningRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, child resources of this repository (compilation
+        # results and workflow invocations) will also be deleted. Otherwise, the request
+        # will only succeed if the repository has no child resources. **Note:** *This
+        # flag doesn't support deletion of workspaces, release configs or workflow
+        # configs. If any of such resources exists in the repository, the request will
+        # fail.*
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+        end
+      end
+      
+      # `DeleteTeamFolderTree` request message.
+      class DeleteTeamFolderTreeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If `false` (default): The operation will fail if any Repository
+        # within the folder hierarchy has associated Release Configs or Workflow Configs.
+        # If `true`: The operation will attempt to delete everything, including any
+        # Release Configs and Workflow Configs linked to Repositories within the folder
+        # hierarchy. This permanently removes schedules and resources.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+        end
+      end
+      
       # Represents a single entry in a directory.
       class DirectoryEntry
         include Google::Apis::Core::Hashable
       
-        # A child directory in the directory.
+        # A child directory in the directory. The path is returned including the full
+        # folder structure from the root.
         # Corresponds to the JSON property `directory`
         # @return [String]
         attr_accessor :directory
       
-        # A file in the directory.
+        # A file in the directory. The path is returned including the full folder
+        # structure from the root.
         # Corresponds to the JSON property `file`
         # @return [String]
         attr_accessor :file
+      
+        # Represents metadata for a single entry in a filesystem.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::DataformV1beta1::FilesystemEntryMetadata]
+        attr_accessor :metadata
       
         def initialize(**args)
            update!(**args)
@@ -1056,6 +1163,7 @@ module Google
         def update!(**args)
           @directory = args[:directory] if args.key?(:directory)
           @file = args[:file] if args.key?(:file)
+          @metadata = args[:metadata] if args.key?(:metadata)
         end
       end
       
@@ -1327,6 +1435,128 @@ module Google
         end
       end
       
+      # Represents metadata for a single entry in a filesystem.
+      class FilesystemEntryMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Provides the size of the entry in bytes. For directories, this
+        # will be 0.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        # Output only. Represents the time of the last modification of the entry.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a Dataform Folder. This is a resource that is used to organize
+      # Files and other Folders and provide hierarchical access controls.
+      class Folder
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The containing Folder resource name. This should take the format:
+        # projects/`project`/locations/`location`/folders/`folder`, projects/`project`/
+        # locations/`location`/teamFolders/`teamFolder`, or just "" if this is a root
+        # Folder. This field can only be updated through MoveFolder.
+        # Corresponds to the JSON property `containingFolder`
+        # @return [String]
+        attr_accessor :containing_folder
+      
+        # Output only. The timestamp of when the Folder was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The IAM principal identifier of the creator of the Folder.
+        # Corresponds to the JSON property `creatorIamPrincipal`
+        # @return [String]
+        attr_accessor :creator_iam_principal
+      
+        # Required. The Folder's user-friendly name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
+        # Identifier. The Folder's name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The resource name of the TeamFolder that this Folder is
+        # associated with. This should take the format: projects/`project`/locations/`
+        # location`/teamFolders/`teamFolder`. If this is not set, the Folder is not
+        # associated with a TeamFolder and is a UserFolder.
+        # Corresponds to the JSON property `teamFolderName`
+        # @return [String]
+        attr_accessor :team_folder_name
+      
+        # Output only. The timestamp of when the Folder was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @containing_folder = args[:containing_folder] if args.key?(:containing_folder)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator_iam_principal = args[:creator_iam_principal] if args.key?(:creator_iam_principal)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
+          @name = args[:name] if args.key?(:name)
+          @team_folder_name = args[:team_folder_name] if args.key?(:team_folder_name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a single content entry.
+      class FolderContentsEntry
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Dataform Folder. This is a resource that is used to organize
+        # Files and other Folders and provide hierarchical access controls.
+        # Corresponds to the JSON property `folder`
+        # @return [Google::Apis::DataformV1beta1::Folder]
+        attr_accessor :folder
+      
+        # Represents a Dataform Git repository.
+        # Corresponds to the JSON property `repository`
+        # @return [Google::Apis::DataformV1beta1::Repository]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder = args[:folder] if args.key?(:folder)
+          @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
       # Controls Git remote configuration for a repository.
       class GitRemoteSettings
         include Google::Apis::Core::Hashable
@@ -1338,10 +1568,24 @@ module Google
         # @return [String]
         attr_accessor :authentication_token_secret_version
       
-        # Required. The Git remote's default branch name.
+        # Optional. The Git remote's default branch name. If not set, `main` will be
+        # used.
         # Corresponds to the JSON property `defaultBranch`
         # @return [String]
         attr_accessor :default_branch
+      
+        # Output only. The Git remote's effective default branch name. This is the
+        # default branch name of the Git remote if it is set, otherwise it is `main`.
+        # Corresponds to the JSON property `effectiveDefaultBranch`
+        # @return [String]
+        attr_accessor :effective_default_branch
+      
+        # Optional. Resource name for the `GitRepositoryLink` used for machine
+        # credentials. Must be in the format `projects/*/locations/*/connections/*/
+        # gitRepositoryLinks/*`
+        # Corresponds to the JSON property `gitRepositoryLink`
+        # @return [String]
+        attr_accessor :git_repository_link
       
         # Configures fields for performing SSH authentication.
         # Corresponds to the JSON property `sshAuthenticationConfig`
@@ -1368,9 +1612,42 @@ module Google
         def update!(**args)
           @authentication_token_secret_version = args[:authentication_token_secret_version] if args.key?(:authentication_token_secret_version)
           @default_branch = args[:default_branch] if args.key?(:default_branch)
+          @effective_default_branch = args[:effective_default_branch] if args.key?(:effective_default_branch)
+          @git_repository_link = args[:git_repository_link] if args.key?(:git_repository_link)
           @ssh_authentication_config = args[:ssh_authentication_config] if args.key?(:ssh_authentication_config)
           @token_status = args[:token_status] if args.key?(:token_status)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Contains metadata about the IAM policy override for a given Dataform resource.
+      # If is_active is true, this the policy encoded in iam_policy_name is the source
+      # of truth for this resource. Will be provided in internal ESV2 views for:
+      # Workspaces, Repositories, Folders, TeamFolders.
+      class IamPolicyOverrideView
+        include Google::Apis::Core::Hashable
+      
+        # An internal name for an IAM policy, based on the resource to which the policy
+        # applies. Not to be confused with a resource's external full resource name. For
+        # more information on this distinction, see go/iam-full-resource-names.
+        # Corresponds to the JSON property `iamPolicyName`
+        # @return [Google::Apis::DataformV1beta1::PolicyName]
+        attr_accessor :iam_policy_name
+      
+        # Whether the IAM policy encoded in this view is active.
+        # Corresponds to the JSON property `isActive`
+        # @return [Boolean]
+        attr_accessor :is_active
+        alias_method :is_active?, :is_active
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_policy_name = args[:iam_policy_name] if args.key?(:iam_policy_name)
+          @is_active = args[:is_active] if args.key?(:is_active)
         end
       end
       
@@ -1525,6 +1802,13 @@ module Google
         # @return [Array<Google::Apis::DataformV1beta1::Target>]
         attr_accessor :included_targets
       
+        # Optional. Specifies the priority for query execution in BigQuery. More
+        # information can be found at https://cloud.google.com/bigquery/docs/running-
+        # queries#queries.
+        # Corresponds to the JSON property `queryPriority`
+        # @return [String]
+        attr_accessor :query_priority
+      
         # Optional. The service account to run workflow invocations under.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
@@ -1553,6 +1837,7 @@ module Google
           @fully_refresh_incremental_tables_enabled = args[:fully_refresh_incremental_tables_enabled] if args.key?(:fully_refresh_incremental_tables_enabled)
           @included_tags = args[:included_tags] if args.key?(:included_tags)
           @included_targets = args[:included_targets] if args.key?(:included_targets)
+          @query_priority = args[:query_priority] if args.key?(:query_priority)
           @service_account = args[:service_account] if args.key?(:service_account)
           @transitive_dependencies_included = args[:transitive_dependencies_included] if args.key?(:transitive_dependencies_included)
           @transitive_dependents_included = args[:transitive_dependents_included] if args.key?(:transitive_dependents_included)
@@ -1613,6 +1898,40 @@ module Google
         def update!(**args)
           @locations = args[:locations] if args.key?(:locations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class ListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::DataformV1beta1::Operation>]
+        attr_accessor :operations
+      
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1973,6 +2292,48 @@ module Google
         end
       end
       
+      # `MoveFolder` request message.
+      class MoveFolderRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the Folder, TeamFolder, or root location to move the
+        # Folder to. Can be in the format of: "" to move into the root User folder, `
+        # projects/*/locations/*/folders/*`, `projects/*/locations/*/teamFolders/*`
+        # Corresponds to the JSON property `destinationContainingFolder`
+        # @return [String]
+        attr_accessor :destination_containing_folder
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_containing_folder = args[:destination_containing_folder] if args.key?(:destination_containing_folder)
+        end
+      end
+      
+      # `MoveRepository` request message.
+      class MoveRepositoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the Folder, TeamFolder, or root location to move the
+        # repository to. Can be in the format of: "" to move into the root User folder, `
+        # projects/*/locations/*/folders/*`, `projects/*/locations/*/teamFolders/*`
+        # Corresponds to the JSON property `destinationContainingFolder`
+        # @return [String]
+        attr_accessor :destination_containing_folder
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_containing_folder = args[:destination_containing_folder] if args.key?(:destination_containing_folder)
+        end
+      end
+      
       # Represents a notebook.
       class Notebook
         include Google::Apis::Core::Hashable
@@ -2020,9 +2381,9 @@ module Google
         # @return [String]
         attr_accessor :contents
       
-        # Output only. The ID of the Vertex job that executed the notebook in contents
-        # and also the ID used for the outputs created in Google Cloud Storage buckets.
-        # Only set once the job has started to run.
+        # Output only. The ID of the Gemini Enterprise Agent Platform job that executed
+        # the notebook in contents and also the ID used for the outputs created in
+        # Google Cloud Storage buckets. Only set once the job has started to run.
         # Corresponds to the JSON property `jobId`
         # @return [String]
         attr_accessor :job_id
@@ -2064,6 +2425,68 @@ module Google
         def update!(**args)
           @ai_platform_notebook_runtime_template = args[:ai_platform_notebook_runtime_template] if args.key?(:ai_platform_notebook_runtime_template)
           @gcs_output_bucket = args[:gcs_output_bucket] if args.key?(:gcs_output_bucket)
+        end
+      end
+      
+      # This resource represents a long-running operation that is the result of a
+      # network API call.
+      class Operation
+        include Google::Apis::Core::Hashable
+      
+        # If the value is `false`, it means the operation is still in progress. If `true`
+        # , the operation is completed, and either `error` or `response` is available.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::DataformV1beta1::Status]
+        attr_accessor :error
+      
+        # Service-specific metadata associated with the operation. It typically contains
+        # progress information and common metadata such as create time. Some services
+        # might not provide such metadata. Any method that returns a long-running
+        # operation should document the metadata type, if any.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the `name` should
+        # be a resource name ending with `operations/`unique_id``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The normal, successful response of the operation. If the original method
+        # returns no data on success, such as `Delete`, the response is `google.protobuf.
+        # Empty`. If the original method is standard `Get`/`Create`/`Update`, the
+        # response should be the resource. For other methods, the response should have
+        # the type `XxxResponse`, where `Xxx` is the original method name. For example,
+        # if the original method name is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+        # Corresponds to the JSON property `response`
+        # @return [Hash<String,Object>]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @done = args[:done] if args.key?(:done)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @response = args[:response] if args.key?(:response)
         end
       end
       
@@ -2266,6 +2689,67 @@ module Google
         end
       end
       
+      # An internal name for an IAM policy, based on the resource to which the policy
+      # applies. Not to be confused with a resource's external full resource name. For
+      # more information on this distinction, see go/iam-full-resource-names.
+      class PolicyName
+        include Google::Apis::Core::Hashable
+      
+        # Identifies an instance of the type. ID format varies by type. The ID format is
+        # defined in the IAM .service file that defines the type, either in path_mapping
+        # or in a comment.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # For Cloud IAM: The location of the Policy. Must be empty or "global" for
+        # Policies owned by global IAM. Must name a region from prodspec/cloud-iam-
+        # cloudspec for Regional IAM Policies, see go/iam-faq#where-is-iam-currently-
+        # deployed. For Local IAM: This field should be set to "local".
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Resource type. Types are defined in IAM's .service files. Valid values for
+        # type might be 'storage_buckets', 'compute_instances', '
+        # resourcemanager_customers', 'billing_accounts', etc.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @region = args[:region] if args.key?(:region)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Metadata used to identify if a resource is user scoped.
+      class PrivateResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If true, this resource is user-scoped, meaning it is either a
+        # workspace or sourced from a workspace.
+        # Corresponds to the JSON property `userScoped`
+        # @return [Boolean]
+        attr_accessor :user_scoped
+        alias_method :user_scoped?, :user_scoped
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_scoped = args[:user_scoped] if args.key?(:user_scoped)
+        end
+      end
+      
       # `PullGitCommits` request message.
       class PullGitCommitsRequest
         include Google::Apis::Core::Hashable
@@ -2390,6 +2874,32 @@ module Google
         end
       end
       
+      # `QueryFolderContents` response message.
+      class QueryFolderContentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of entries in the folder.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::DataformV1beta1::FolderContentsEntry>]
+        attr_accessor :entries
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # `QueryRepositoryDirectoryContents` response message.
       class QueryRepositoryDirectoryContentsResponse
         include Google::Apis::Core::Hashable
@@ -2412,6 +2922,58 @@ module Google
         # Update properties of this object
         def update!(**args)
           @directory_entries = args[:directory_entries] if args.key?(:directory_entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # `QueryTeamFolderContents` response message.
+      class QueryTeamFolderContentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of entries in the TeamFolder.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::DataformV1beta1::TeamFolderContentsEntry>]
+        attr_accessor :entries
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # `QueryUserRootContents` response message.
+      class QueryUserRootContentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of entries in the folder.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::DataformV1beta1::RootContentsEntry>]
+        attr_accessor :entries
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2499,6 +3061,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :cluster_expressions
       
+        # Optional. The connection specifying the credentials to be used to read and
+        # write to external storage, such as Cloud Storage. The connection can have the
+        # form ``project`.`location`.`connection_id`` or `projects/`project`/locations/`
+        # location`/connections/`connection_id``, or be set to DEFAULT.
+        # Corresponds to the JSON property `connection`
+        # @return [String]
+        attr_accessor :connection
+      
         # A list of actions that this action depends on.
         # Corresponds to the JSON property `dependencyTargets`
         # @return [Array<Google::Apis::DataformV1beta1::Target>]
@@ -2509,6 +3079,11 @@ module Google
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
+      
+        # Optional. The file format for the BigQuery table.
+        # Corresponds to the JSON property `fileFormat`
+        # @return [String]
+        attr_accessor :file_format
       
         # Contains settings for relations of type `INCREMENTAL_TABLE`.
         # Corresponds to the JSON property `incrementalTableConfig`
@@ -2557,6 +3132,18 @@ module Google
         # @return [String]
         attr_accessor :select_query
       
+        # Optional. The fully qualified location prefix of the external folder where
+        # table data is stored. The URI should be in the format `gs://bucket/
+        # path_to_table/`.
+        # Corresponds to the JSON property `storageUri`
+        # @return [String]
+        attr_accessor :storage_uri
+      
+        # Optional. The table format for the BigQuery table.
+        # Corresponds to the JSON property `tableFormat`
+        # @return [String]
+        attr_accessor :table_format
+      
         # Arbitrary, user-defined tags on this action.
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
@@ -2570,8 +3157,10 @@ module Google
         def update!(**args)
           @additional_options = args[:additional_options] if args.key?(:additional_options)
           @cluster_expressions = args[:cluster_expressions] if args.key?(:cluster_expressions)
+          @connection = args[:connection] if args.key?(:connection)
           @dependency_targets = args[:dependency_targets] if args.key?(:dependency_targets)
           @disabled = args[:disabled] if args.key?(:disabled)
+          @file_format = args[:file_format] if args.key?(:file_format)
           @incremental_table_config = args[:incremental_table_config] if args.key?(:incremental_table_config)
           @partition_expiration_days = args[:partition_expiration_days] if args.key?(:partition_expiration_days)
           @partition_expression = args[:partition_expression] if args.key?(:partition_expression)
@@ -2581,6 +3170,8 @@ module Google
           @relation_type = args[:relation_type] if args.key?(:relation_type)
           @require_partition_filter = args[:require_partition_filter] if args.key?(:require_partition_filter)
           @select_query = args[:select_query] if args.key?(:select_query)
+          @storage_uri = args[:storage_uri] if args.key?(:storage_uri)
+          @table_format = args[:table_format] if args.key?(:table_format)
           @tags = args[:tags] if args.key?(:tags)
         end
       end
@@ -2769,6 +3360,13 @@ module Google
       class Repository
         include Google::Apis::Core::Hashable
       
+        # Optional. The name of the containing folder of the repository. The field is
+        # immutable and it can be modified via a MoveRepository operation. Format: `
+        # projects/*/locations/*/folders/*`. or `projects/*/locations/*/teamFolders/*`.
+        # Corresponds to the JSON property `containingFolder`
+        # @return [String]
+        attr_accessor :containing_folder
+      
         # Output only. The timestamp of when the repository was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2837,6 +3435,14 @@ module Google
         attr_accessor :set_authenticated_user_admin
         alias_method :set_authenticated_user_admin?, :set_authenticated_user_admin
       
+        # Output only. The resource name of the TeamFolder that this Repository is
+        # associated with. This should take the format: projects/`project`/locations/`
+        # location`/teamFolders/`teamFolder`. If this is not set, the Repository is not
+        # associated with a TeamFolder.
+        # Corresponds to the JSON property `teamFolderName`
+        # @return [String]
+        attr_accessor :team_folder_name
+      
         # Configures workspace compilation overrides for a repository. Primarily used by
         # the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can
         # have a special expression - `$`workspaceName``, which refers to the workspace
@@ -2855,6 +3461,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @containing_folder = args[:containing_folder] if args.key?(:containing_folder)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -2866,6 +3473,7 @@ module Google
           @npmrc_environment_variables_secret_version = args[:npmrc_environment_variables_secret_version] if args.key?(:npmrc_environment_variables_secret_version)
           @service_account = args[:service_account] if args.key?(:service_account)
           @set_authenticated_user_admin = args[:set_authenticated_user_admin] if args.key?(:set_authenticated_user_admin)
+          @team_folder_name = args[:team_folder_name] if args.key?(:team_folder_name)
           @workspace_compilation_overrides = args[:workspace_compilation_overrides] if args.key?(:workspace_compilation_overrides)
         end
       end
@@ -2907,6 +3515,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents a single content entry.
+      class RootContentsEntry
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Dataform Folder. This is a resource that is used to organize
+        # Files and other Folders and provide hierarchical access controls.
+        # Corresponds to the JSON property `folder`
+        # @return [Google::Apis::DataformV1beta1::Folder]
+        attr_accessor :folder
+      
+        # Represents a Dataform Git repository.
+        # Corresponds to the JSON property `repository`
+        # @return [Google::Apis::DataformV1beta1::Repository]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder = args[:folder] if args.key?(:folder)
+          @repository = args[:repository] if args.key?(:repository)
         end
       end
       
@@ -3035,6 +3669,32 @@ module Google
         def update!(**args)
           @directory = args[:directory] if args.key?(:directory)
           @file = args[:file] if args.key?(:file)
+        end
+      end
+      
+      # `SearchTeamFolders` response message.
+      class SearchTeamFoldersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of TeamFolders that match the search query.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::DataformV1beta1::TeamFolderSearchResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
@@ -3195,6 +3855,34 @@ module Google
         end
       end
       
+      # Represents a table update trigger configuration.
+      class TableUpdateTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Represents an action identifier. If the action writes output, the output will
+        # be written to the referenced database object.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::DataformV1beta1::Target]
+        attr_accessor :table
+      
+        # Output only. The modification time of this table that resulted in an
+        # invocation of the workflow. This would be updated by the triggering service
+        # after a successful workflow invocation.
+        # Corresponds to the JSON property `triggerUpdateTime`
+        # @return [String]
+        attr_accessor :trigger_update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table = args[:table] if args.key?(:table)
+          @trigger_update_time = args[:trigger_update_time] if args.key?(:trigger_update_time)
+        end
+      end
+      
       # Represents an action identifier. If the action writes output, the output will
       # be written to the referenced database object.
       class Target
@@ -3224,6 +3912,106 @@ module Google
           @database = args[:database] if args.key?(:database)
           @name = args[:name] if args.key?(:name)
           @schema = args[:schema] if args.key?(:schema)
+        end
+      end
+      
+      # Represents a Dataform TeamFolder. This is a resource that sits at the project
+      # level and is used to organize Repositories and Folders with hierarchical
+      # access controls. They provide a team context and stricter access controls.
+      class TeamFolder
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp of when the TeamFolder was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The IAM principal identifier of the creator of the TeamFolder.
+        # Corresponds to the JSON property `creatorIamPrincipal`
+        # @return [String]
+        attr_accessor :creator_iam_principal
+      
+        # Required. The TeamFolder's user-friendly name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. All the metadata information that is used internally to serve the
+        # resource. For example: timestamps, flags, status fields, etc. The format of
+        # this field is a JSON string.
+        # Corresponds to the JSON property `internalMetadata`
+        # @return [String]
+        attr_accessor :internal_metadata
+      
+        # Identifier. The TeamFolder's name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp of when the TeamFolder was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator_iam_principal = args[:creator_iam_principal] if args.key?(:creator_iam_principal)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a single content entry.
+      class TeamFolderContentsEntry
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Dataform Folder. This is a resource that is used to organize
+        # Files and other Folders and provide hierarchical access controls.
+        # Corresponds to the JSON property `folder`
+        # @return [Google::Apis::DataformV1beta1::Folder]
+        attr_accessor :folder
+      
+        # Represents a Dataform Git repository.
+        # Corresponds to the JSON property `repository`
+        # @return [Google::Apis::DataformV1beta1::Repository]
+        attr_accessor :repository
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @folder = args[:folder] if args.key?(:folder)
+          @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
+      # Represents a single content entry.
+      class TeamFolderSearchResult
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Dataform TeamFolder. This is a resource that sits at the project
+        # level and is used to organize Repositories and Folders with hierarchical
+        # access controls. They provide a team context and stricter access controls.
+        # Corresponds to the JSON property `teamFolder`
+        # @return [Google::Apis::DataformV1beta1::TeamFolder]
+        attr_accessor :team_folder
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @team_folder = args[:team_folder] if args.key?(:team_folder)
         end
       end
       
@@ -3264,6 +4052,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A record of an attempt to evaluate trigger conditions.
+      class TriggerEvaluationRecord
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp of this trigger evaluation attempt.
+        # Corresponds to the JSON property `evaluationTime`
+        # @return [String]
+        attr_accessor :evaluation_time
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DataformV1beta1::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_time = args[:evaluation_time] if args.key?(:evaluation_time)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -3357,6 +4175,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Represents a trigger configuration for a workflow.
+        # Corresponds to the JSON property `workflowTriggerConfig`
+        # @return [Google::Apis::DataformV1beta1::WorkflowTriggerConfig]
+        attr_accessor :workflow_trigger_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3373,6 +4196,7 @@ module Google
           @release_config = args[:release_config] if args.key?(:release_config)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @workflow_trigger_config = args[:workflow_trigger_config] if args.key?(:workflow_trigger_config)
         end
       end
       
@@ -3417,6 +4241,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Metadata used to identify if a resource is user scoped.
+        # Corresponds to the JSON property `privateResourceMetadata`
+        # @return [Google::Apis::DataformV1beta1::PrivateResourceMetadata]
+        attr_accessor :private_resource_metadata
+      
         # Output only. The resolved compilation result that was used to create this
         # invocation. Will be in the format `projects/*/locations/*/repositories/*/
         # compilationResults/*`.
@@ -3447,6 +4276,7 @@ module Google
           @invocation_config = args[:invocation_config] if args.key?(:invocation_config)
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
           @name = args[:name] if args.key?(:name)
+          @private_resource_metadata = args[:private_resource_metadata] if args.key?(:private_resource_metadata)
           @resolved_compilation_result = args[:resolved_compilation_result] if args.key?(:resolved_compilation_result)
           @state = args[:state] if args.key?(:state)
           @workflow_config = args[:workflow_config] if args.key?(:workflow_config)
@@ -3527,6 +4357,80 @@ module Google
         end
       end
       
+      # The trigger definition to invoke a workflow.
+      class WorkflowTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Represents a table update trigger configuration.
+        # Corresponds to the JSON property `tableUpdateTrigger`
+        # @return [Google::Apis::DataformV1beta1::TableUpdateTrigger]
+        attr_accessor :table_update_trigger
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table_update_trigger = args[:table_update_trigger] if args.key?(:table_update_trigger)
+        end
+      end
+      
+      # Represents a trigger configuration for a workflow.
+      class WorkflowTriggerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The condition to use when triggering the workflow.
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # Output only. The timestamp of the last successful trigger evaluation.
+        # Corresponds to the JSON property `lastSuccessfulEvaluationTime`
+        # @return [String]
+        attr_accessor :last_successful_evaluation_time
+      
+        # Optional. The effective maximum wait time duration for the trigger condition
+        # to be met. If not specified, the workflow won't be triggered until conditions
+        # are met.
+        # Corresponds to the JSON property `maxWaitDuration`
+        # @return [String]
+        attr_accessor :max_wait_duration
+      
+        # Optional. Minimum duration between two consecutive executions. If not
+        # specified, the workflow will be executed every time trigger conditions are met
+        # and no ongoing workflow execution.
+        # Corresponds to the JSON property `minExecutionDuration`
+        # @return [String]
+        attr_accessor :min_execution_duration
+      
+        # Output only. Records of the 10 most recent trigger evaluations, ordered in
+        # descending order of `evaluation_time`. Updated whenever the service evaluates
+        # the trigger conditions (via polling or upon receiving a push event).
+        # Corresponds to the JSON property `recentTriggerEvaluationRecords`
+        # @return [Array<Google::Apis::DataformV1beta1::TriggerEvaluationRecord>]
+        attr_accessor :recent_trigger_evaluation_records
+      
+        # Required. The trigger definitions to invoke a workflow.
+        # Corresponds to the JSON property `workflowTriggers`
+        # @return [Array<Google::Apis::DataformV1beta1::WorkflowTrigger>]
+        attr_accessor :workflow_triggers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @condition = args[:condition] if args.key?(:condition)
+          @last_successful_evaluation_time = args[:last_successful_evaluation_time] if args.key?(:last_successful_evaluation_time)
+          @max_wait_duration = args[:max_wait_duration] if args.key?(:max_wait_duration)
+          @min_execution_duration = args[:min_execution_duration] if args.key?(:min_execution_duration)
+          @recent_trigger_evaluation_records = args[:recent_trigger_evaluation_records] if args.key?(:recent_trigger_evaluation_records)
+          @workflow_triggers = args[:workflow_triggers] if args.key?(:workflow_triggers)
+        end
+      end
+      
       # Represents a Dataform Git workspace.
       class Workspace
         include Google::Apis::Core::Hashable
@@ -3541,6 +4445,13 @@ module Google
         # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
         attr_accessor :data_encryption_state
       
+        # Optional. If set to true, workspaces will not be moved if its linked
+        # Repository is moved. Instead, it will be deleted.
+        # Corresponds to the JSON property `disableMoves`
+        # @return [Boolean]
+        attr_accessor :disable_moves
+        alias_method :disable_moves?, :disable_moves
+      
         # Output only. All the metadata information that is used internally to serve the
         # resource. For example: timestamps, flags, status fields, etc. The format of
         # this field is a JSON string.
@@ -3553,6 +4464,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Metadata used to identify if a resource is user scoped.
+        # Corresponds to the JSON property `privateResourceMetadata`
+        # @return [Google::Apis::DataformV1beta1::PrivateResourceMetadata]
+        attr_accessor :private_resource_metadata
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3561,8 +4477,10 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
+          @disable_moves = args[:disable_moves] if args.key?(:disable_moves)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
+          @private_resource_metadata = args[:private_resource_metadata] if args.key?(:private_resource_metadata)
         end
       end
       

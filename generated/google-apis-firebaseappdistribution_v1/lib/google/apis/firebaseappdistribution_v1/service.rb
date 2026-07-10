@@ -55,7 +55,8 @@ module Google
         # an update to an existing release, or a no-op if a release with the same
         # binary already exists.
         # @param [String] app
-        #   The name of the app resource. Format: `projects/`project_number`/apps/`app_id``
+        #   Required. The name of the app resource. Format: `projects/`project_number`/
+        #   apps/`app``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1UploadReleaseRequest] google_firebase_appdistro_v1_upload_release_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -99,7 +100,7 @@ module Google
         # Gets Android App Bundle (AAB) information for a Firebase app.
         # @param [String] name
         #   Required. The name of the `AabInfo` resource to retrieve. Format: `projects/`
-        #   project_number`/apps/`app_id`/aabInfo`
+        #   project_number`/apps/`app`/aabInfo`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -130,7 +131,7 @@ module Google
         # Deletes releases. A maximum of 100 releases can be deleted per request.
         # @param [String] parent
         #   Required. The name of the app resource, which is the parent of the release
-        #   resources. Format: `projects/`project_number`/apps/`app_id``
+        #   resources. Format: `projects/`project_number`/apps/`app``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest] google_firebase_appdistro_v1_batch_delete_releases_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -168,7 +169,7 @@ module Google
         # INVALID_ARGUMENT` if it contains a group that doesn't exist.
         # @param [String] name
         #   Required. The name of the release resource to distribute. Format: `projects/`
-        #   project_number`/apps/`app_id`/releases/`release_id``
+        #   project_number`/apps/`app`/releases/`release``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1DistributeReleaseRequest] google_firebase_appdistro_v1_distribute_release_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -202,7 +203,7 @@ module Google
         # Gets a release.
         # @param [String] name
         #   Required. The name of the release resource to retrieve. Format: projects/`
-        #   project_number`/apps/`app_id`/releases/`release_id`
+        #   project_number`/apps/`app`/releases/`release`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -233,28 +234,28 @@ module Google
         # Lists releases. By default, sorts by `createTime` in descending order.
         # @param [String] parent
         #   Required. The name of the app resource, which is the parent of the release
-        #   resources. Format: `projects/`project_number`/apps/`app_id``
+        #   resources. Format: `projects/`project_number`/apps/`app``
         # @param [String] filter
-        #   The expression to filter releases listed in the response. To learn more about
-        #   filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported
-        #   fields: - `releaseNotes.text` supports `=` (can contain a wildcard character (`
-        #   *`) at the beginning or end of the string) - `createTime` supports `<`, `<=`, `
-        #   >` and `>=`, and expects an RFC-3339 formatted string Examples: - `createTime <
-        #   = "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime >= "
-        #   2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
+        #   Optional. The expression to filter releases listed in the response. To learn
+        #   more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160).
+        #   Supported fields: - `releaseNotes.text` supports `=` (can contain a wildcard
+        #   character (`*`) at the beginning or end of the string) - `createTime` supports
+        #   `<`, `<=`, `>` and `>=`, and expects an RFC-3339 formatted string Examples: - `
+        #   createTime <= "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND
+        #   createTime >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
         # @param [String] order_by
-        #   The fields used to order releases. Supported fields: - `createTime` To specify
-        #   descending order for a field, append a "desc" suffix, for example, `createTime
-        #   desc`. If this parameter is not set, releases are ordered by `createTime` in
-        #   descending order.
+        #   Optional. The fields used to order releases. Supported fields: - `createTime`
+        #   To specify descending order for a field, append a "desc" suffix, for example, `
+        #   createTime desc`. If this parameter is not set, releases are ordered by `
+        #   createTime` in descending order.
         # @param [Fixnum] page_size
-        #   The maximum number of releases to return. The service may return fewer than
-        #   this value. The valid range is [1-100]; If unspecified (0), at most 25
-        #   releases are returned. Values above 100 are coerced to 100.
+        #   Optional. The maximum number of releases to return. The service may return
+        #   fewer than this value. The valid range is [1-100]; If unspecified (0), at most
+        #   25 releases are returned. Values above 100 are coerced to 100.
         # @param [String] page_token
-        #   A page token, received from a previous `ListReleases` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListReleases` must match the call that provided the page token.
+        #   Optional. A page token, received from a previous `ListReleases` call. Provide
+        #   this to retrieve the subsequent page. When paginating, all other parameters
+        #   provided to `ListReleases` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -288,11 +289,11 @@ module Google
         
         # Updates a release.
         # @param [String] name
-        #   The name of the release resource. Format: `projects/`project_number`/apps/`
-        #   app_id`/releases/`release_id``
+        #   The name of the release resource. Format: `projects/`project_number`/apps/`app`
+        #   /releases/`release``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1Release] google_firebase_appdistro_v1_release_object
         # @param [String] update_mask
-        #   The list of fields to update.
+        #   Optional. The list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -391,14 +392,14 @@ module Google
         #   feedback report resources. Format: `projects/`project_number`/apps/`app`/
         #   releases/`release``
         # @param [Fixnum] page_size
-        #   The maximum number of feedback reports to return. The service may return fewer
-        #   than this value. The valid range is [1-100]; If unspecified (0), at most 25
-        #   feedback reports are returned. Values above 100 are coerced to 100.
+        #   Output only. The maximum number of feedback reports to return. The service may
+        #   return fewer than this value. The valid range is [1-100]; If unspecified (0),
+        #   at most 25 feedback reports are returned. Values above 100 are coerced to 100.
         # @param [String] page_token
-        #   A page token, received from a previous `ListFeedbackReports` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListFeedbackReports` must match the call that provided the page
-        #   token.
+        #   Output only. A page token, received from a previous `ListFeedbackReports` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListFeedbackReports` must match the call that provided
+        #   the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -542,6 +543,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -559,7 +568,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_app_release_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_app_release_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::FirebaseappdistributionV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::FirebaseappdistributionV1::GoogleLongrunningListOperationsResponse
@@ -567,6 +576,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -832,7 +842,7 @@ module Google
         #   group_alias``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1Group] google_firebase_appdistro_v1_group_object
         # @param [String] update_mask
-        #   The list of fields to update.
+        #   Optional. The list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -987,7 +997,7 @@ module Google
         #   email_address``
         # @param [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1Tester] google_firebase_appdistro_v1_tester_object
         # @param [String] update_mask
-        #   The list of fields to update.
+        #   Optional. The list of fields to update.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

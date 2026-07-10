@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2CloudStorageSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2Condition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +83,12 @@ module Google
       end
       
       class GoogleCloudRunV2ContainerPort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ContainerStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,6 +184,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2InlinedSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2Instance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2InstanceSplit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +215,12 @@ module Google
       end
       
       class GoogleCloudRunV2ListExecutionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2ListInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -227,6 +257,12 @@ module Google
       end
       
       class GoogleCloudRunV2Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2MultiRegionSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -323,6 +359,30 @@ module Google
       end
       
       class GoogleCloudRunV2ServiceScaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2SourceCode
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2SourceFile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2StartInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2StopInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -478,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1BuildStepResults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1BuiltImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +575,18 @@ module Google
       end
       
       class GoogleDevtoolsCloudbuildV1FileHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GenericArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GenericArtifactDependency
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -574,6 +652,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1Oci
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1PoolOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -628,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1StepResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1StorageSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,6 +731,12 @@ module Google
       end
       
       class GoogleDevtoolsCloudbuildV1TimeSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsCloudbuildV1UploadedGenericArtifact
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -832,6 +928,15 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2CloudStorageSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :object, as: 'object'
+        end
+      end
+      
       class GoogleCloudRunV2Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -863,7 +968,12 @@ module Google
           property :name, as: 'name'
           collection :ports, as: 'ports', class: Google::Apis::RunV2::GoogleCloudRunV2ContainerPort, decorator: Google::Apis::RunV2::GoogleCloudRunV2ContainerPort::Representation
       
+          property :readiness_probe, as: 'readinessProbe', class: Google::Apis::RunV2::GoogleCloudRunV2Probe, decorator: Google::Apis::RunV2::GoogleCloudRunV2Probe::Representation
+      
           property :resources, as: 'resources', class: Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements, decorator: Google::Apis::RunV2::GoogleCloudRunV2ResourceRequirements::Representation
+      
+          property :sandbox_launcher, as: 'sandboxLauncher'
+          property :source_code, as: 'sourceCode', class: Google::Apis::RunV2::GoogleCloudRunV2SourceCode, decorator: Google::Apis::RunV2::GoogleCloudRunV2SourceCode::Representation
       
           property :startup_probe, as: 'startupProbe', class: Google::Apis::RunV2::GoogleCloudRunV2Probe, decorator: Google::Apis::RunV2::GoogleCloudRunV2Probe::Representation
       
@@ -888,6 +998,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :container_port, as: 'containerPort'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudRunV2ContainerStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_digest, as: 'imageDigest'
           property :name, as: 'name'
         end
       end
@@ -929,6 +1047,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
           property :cancelled_count, as: 'cancelledCount'
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
           property :completion_time, as: 'completionTime'
           collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
@@ -975,6 +1095,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
           hash :labels, as: 'labels'
           property :parallelism, as: 'parallelism'
           property :task_count, as: 'taskCount'
@@ -1053,6 +1175,67 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2InlinedSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sources, as: 'sources', class: Google::Apis::RunV2::GoogleCloudRunV2SourceFile, decorator: Google::Apis::RunV2::GoogleCloudRunV2SourceFile::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRunV2Instance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization, decorator: Google::Apis::RunV2::GoogleCloudRunV2BinaryAuthorization::Representation
+      
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
+      
+          collection :container_statuses, as: 'containerStatuses', class: Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus, decorator: Google::Apis::RunV2::GoogleCloudRunV2ContainerStatus::Representation
+      
+          collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
+      
+          property :create_time, as: 'createTime'
+          property :creator, as: 'creator'
+          property :default_uri_disabled, as: 'defaultUriDisabled'
+          property :delete_time, as: 'deleteTime'
+          property :description, as: 'description'
+          property :encryption_key, as: 'encryptionKey'
+          property :encryption_key_revocation_action, as: 'encryptionKeyRevocationAction'
+          property :encryption_key_shutdown_duration, as: 'encryptionKeyShutdownDuration'
+          property :etag, as: 'etag'
+          property :expire_time, as: 'expireTime'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :gpu_zonal_redundancy_disabled, as: 'gpuZonalRedundancyDisabled'
+          property :iap_enabled, as: 'iapEnabled'
+          property :ingress, as: 'ingress'
+          property :invoker_iam_disabled, as: 'invokerIamDisabled'
+          hash :labels, as: 'labels'
+          property :last_modifier, as: 'lastModifier'
+          property :launch_stage, as: 'launchStage'
+          property :log_uri, as: 'logUri'
+          property :name, as: 'name'
+          property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
+      
+          property :observed_generation, :numeric_string => true, as: 'observedGeneration'
+          property :reconciling, as: 'reconciling'
+          property :restart_policy, as: 'restartPolicy'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :service_account, as: 'serviceAccount'
+          property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+          collection :urls, as: 'urls'
+          collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
+      
+          property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation
+      
+        end
+      end
+      
       class GoogleCloudRunV2InstanceSplit
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1117,6 +1300,15 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2ListInstancesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::RunV2::GoogleCloudRunV2Instance, decorator: Google::Apis::RunV2::GoogleCloudRunV2Instance::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudRunV2ListJobsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1141,6 +1333,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :services, as: 'services', class: Google::Apis::RunV2::GoogleCloudRunV2Service, decorator: Google::Apis::RunV2::GoogleCloudRunV2Service::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1166,6 +1359,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metadata, as: 'metadata'
+        end
+      end
+      
+      class GoogleCloudRunV2MultiRegionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :multi_region_id, as: 'multiRegionId'
+          collection :regions, as: 'regions'
         end
       end
       
@@ -1233,6 +1434,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
           collection :conditions, as: 'conditions', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
           collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
@@ -1280,6 +1483,8 @@ module Google
       class GoogleCloudRunV2RevisionScaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency_utilization, as: 'concurrencyUtilization'
+          property :cpu_utilization, as: 'cpuUtilization'
           property :max_instance_count, as: 'maxInstanceCount'
           property :min_instance_count, as: 'minInstanceCount'
         end
@@ -1296,6 +1501,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
           collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
       
           property :encryption_key, as: 'encryptionKey'
@@ -1380,6 +1587,8 @@ module Google
           property :latest_created_revision, as: 'latestCreatedRevision'
           property :latest_ready_revision, as: 'latestReadyRevision'
           property :launch_stage, as: 'launchStage'
+          property :multi_region_settings, as: 'multiRegionSettings', class: Google::Apis::RunV2::GoogleCloudRunV2MultiRegionSettings, decorator: Google::Apis::RunV2::GoogleCloudRunV2MultiRegionSettings::Representation
+      
           property :name, as: 'name'
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
@@ -1419,6 +1628,40 @@ module Google
         end
       end
       
+      class GoogleCloudRunV2SourceCode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_source, as: 'cloudStorageSource', class: Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource::Representation
+      
+          property :inlined_source, as: 'inlinedSource', class: Google::Apis::RunV2::GoogleCloudRunV2InlinedSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2InlinedSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRunV2SourceFile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :filename, as: 'filename'
+        end
+      end
+      
+      class GoogleCloudRunV2StartInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleCloudRunV2StopInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
       class GoogleCloudRunV2StorageSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1433,9 +1676,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :buildpack_build, as: 'buildpackBuild', class: Google::Apis::RunV2::GoogleCloudRunV2BuildpacksBuild, decorator: Google::Apis::RunV2::GoogleCloudRunV2BuildpacksBuild::Representation
       
+          property :client, as: 'client'
           property :docker_build, as: 'dockerBuild', class: Google::Apis::RunV2::GoogleCloudRunV2DockerBuild, decorator: Google::Apis::RunV2::GoogleCloudRunV2DockerBuild::Representation
       
           property :image_uri, as: 'imageUri'
+          property :machine_type, as: 'machineType'
+          property :release_track, as: 'releaseTrack'
           property :service_account, as: 'serviceAccount'
           property :storage_source, as: 'storageSource', class: Google::Apis::RunV2::GoogleCloudRunV2StorageSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2StorageSource::Representation
       
@@ -1512,6 +1758,7 @@ module Google
           property :exit_code, as: 'exitCode'
           property :status, as: 'status', class: Google::Apis::RunV2::GoogleRpcStatus, decorator: Google::Apis::RunV2::GoogleRpcStatus::Representation
       
+          property :term_signal, as: 'termSignal'
         end
       end
       
@@ -1522,6 +1769,7 @@ module Google
       
           property :encryption_key, as: 'encryptionKey'
           property :execution_environment, as: 'executionEnvironment'
+          property :gpu_zonal_redundancy_disabled, as: 'gpuZonalRedundancyDisabled'
           property :max_retries, as: 'maxRetries'
           property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
       
@@ -1586,6 +1834,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mount_path, as: 'mountPath'
           property :name, as: 'name'
+          property :sub_path, as: 'subPath'
         end
       end
       
@@ -1636,6 +1885,7 @@ module Google
       
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
+          property :threat_detection_enabled, as: 'threatDetectionEnabled'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -1645,11 +1895,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :client, as: 'client'
+          property :client_version, as: 'clientVersion'
           collection :containers, as: 'containers', class: Google::Apis::RunV2::GoogleCloudRunV2Container, decorator: Google::Apis::RunV2::GoogleCloudRunV2Container::Representation
       
           property :encryption_key, as: 'encryptionKey'
           property :encryption_key_revocation_action, as: 'encryptionKeyRevocationAction'
           property :encryption_key_shutdown_duration, as: 'encryptionKeyShutdownDuration'
+          property :gpu_zonal_redundancy_disabled, as: 'gpuZonalRedundancyDisabled'
           hash :labels, as: 'labels'
           property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
       
@@ -1657,7 +1910,6 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :service_mesh, as: 'serviceMesh', class: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh, decorator: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh::Representation
       
-          property :session_affinity, as: 'sessionAffinity'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
       
           property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation
@@ -1703,6 +1955,8 @@ module Google
       class GoogleDevtoolsCloudbuildV1Artifacts
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :generic_artifacts, as: 'genericArtifacts', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GenericArtifact, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GenericArtifact::Representation
+      
           collection :go_modules, as: 'goModules', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GoModule, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GoModule::Representation
       
           collection :images, as: 'images'
@@ -1711,6 +1965,8 @@ module Google
           collection :npm_packages, as: 'npmPackages', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1NpmPackage, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1NpmPackage::Representation
       
           property :objects, as: 'objects', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1ArtifactObjects, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1ArtifactObjects::Representation
+      
+          collection :oci, as: 'oci', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Oci, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Oci::Representation
       
           collection :python_packages, as: 'pythonPackages', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1PythonPackage, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1PythonPackage::Representation
       
@@ -1827,6 +2083,8 @@ module Google
           property :name, as: 'name'
           property :pull_timing, as: 'pullTiming', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
       
+          collection :results, as: 'results', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1StepResult, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1StepResult::Representation
+      
           property :script, as: 'script'
           collection :secret_env, as: 'secretEnv'
           property :status, as: 'status'
@@ -1839,11 +2097,20 @@ module Google
         end
       end
       
+      class GoogleDevtoolsCloudbuildV1BuildStepResults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :results, as: 'results'
+        end
+      end
+      
       class GoogleDevtoolsCloudbuildV1BuiltImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :digest, as: 'digest'
           property :name, as: 'name'
+          property :oci_media_type, as: 'ociMediaType'
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
       
         end
@@ -1862,6 +2129,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :empty, as: 'empty'
+          property :generic_artifact, as: 'genericArtifact', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GenericArtifactDependency, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GenericArtifactDependency::Representation
+      
           property :git_source, as: 'gitSource', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitSourceDependency, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitSourceDependency::Representation
       
         end
@@ -1889,6 +2158,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :file_hash, as: 'fileHash', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Hash, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1Hash::Representation
       
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GenericArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :folder, as: 'folder'
+          property :registry_path, as: 'registryPath'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1GenericArtifactDependency
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dest_path, as: 'destPath'
+          property :resource, as: 'resource'
         end
       end
       
@@ -1968,6 +2253,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :artifact_id, as: 'artifactId'
+          property :deploy_folder, as: 'deployFolder'
           property :group_id, as: 'groupId'
           property :path, as: 'path'
           property :repository, as: 'repository'
@@ -1980,6 +2266,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :package_path, as: 'packagePath'
           property :repository, as: 'repository'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1Oci
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file, as: 'file'
+          property :registry_path, as: 'registryPath'
+          collection :tags, as: 'tags'
         end
       end
       
@@ -2020,6 +2315,10 @@ module Google
       
           collection :build_step_images, as: 'buildStepImages'
           collection :build_step_outputs, as: 'buildStepOutputs'
+          hash :build_step_results, as: 'buildStepResults', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuildStepResults, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuildStepResults::Representation
+      
+          collection :generic_artifacts, as: 'genericArtifacts', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGenericArtifact, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGenericArtifact::Representation
+      
           collection :go_modules, as: 'goModules', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGoModule, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedGoModule::Representation
       
           collection :images, as: 'images', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuiltImage, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuiltImage::Representation
@@ -2096,6 +2395,15 @@ module Google
         end
       end
       
+      class GoogleDevtoolsCloudbuildV1StepResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attestation_content, as: 'attestationContent'
+          property :attestation_type, as: 'attestationType'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleDevtoolsCloudbuildV1StorageSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2123,9 +2431,24 @@ module Google
         end
       end
       
+      class GoogleDevtoolsCloudbuildV1UploadedGenericArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_fingerprint, as: 'artifactFingerprint', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
+          hash :file_hashes, as: 'fileHashes', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes::Representation
+      
+          property :push_timing, as: 'pushTiming', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
+      
+          property :uri, as: 'uri'
+        end
+      end
+      
       class GoogleDevtoolsCloudbuildV1UploadedGoModule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -2137,6 +2460,7 @@ module Google
       class GoogleDevtoolsCloudbuildV1UploadedMavenArtifact
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -2148,6 +2472,7 @@ module Google
       class GoogleDevtoolsCloudbuildV1UploadedNpmPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -2159,6 +2484,7 @@ module Google
       class GoogleDevtoolsCloudbuildV1UploadedPythonPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_registry_package, as: 'artifactRegistryPackage'
           property :file_hashes, as: 'fileHashes', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1FileHashes::Representation
       
           property :push_timing, as: 'pushTiming', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1TimeSpan::Representation
@@ -2251,6 +2577,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::RunV2::GoogleLongrunningOperation, decorator: Google::Apis::RunV2::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

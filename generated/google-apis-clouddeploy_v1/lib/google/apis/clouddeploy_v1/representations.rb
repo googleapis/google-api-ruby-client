@@ -70,6 +70,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlertPolicyCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AlertPolicyCheckStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Analysis
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalysisJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalysisJobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnthosCluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContainerTask
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateChildRolloutJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +293,18 @@ module Google
       end
       
       class CustomCanaryDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomCheckStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -281,6 +329,12 @@ module Google
       end
       
       class CustomTargetSkaffoldActions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomTargetTasks
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -406,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FailedAlertPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GatewayServiceMesh
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +473,12 @@ module Google
       end
       
       class GkeCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAnalysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -449,6 +515,12 @@ module Google
       end
       
       class KubernetesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KubernetesRenderMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -628,6 +700,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PostdeployJobRunMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Predeploy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,6 +719,12 @@ module Google
       end
       
       class PredeployJobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PredeployJobRunMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -946,6 +1030,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Task
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TerminateJobRunRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1000,6 +1090,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ToolVersionSupportedCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ToolVersions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Verify
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VerifyJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1007,6 +1115,12 @@ module Google
       end
       
       class VerifyJobRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VerifyJobRunMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1076,6 +1190,60 @@ module Google
           property :id, as: 'id'
           collection :source_phases, as: 'sourcePhases'
           property :wait, as: 'wait'
+        end
+      end
+      
+      class AlertPolicyCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_policies, as: 'alertPolicies'
+          property :id, as: 'id'
+          hash :labels, as: 'labels'
+        end
+      end
+      
+      class AlertPolicyCheckStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_policies, as: 'alertPolicies'
+          collection :failed_alert_policies, as: 'failedAlertPolicies', class: Google::Apis::ClouddeployV1::FailedAlertPolicy, decorator: Google::Apis::ClouddeployV1::FailedAlertPolicy::Representation
+      
+          property :failure_message, as: 'failureMessage'
+          property :id, as: 'id'
+          hash :labels, as: 'labels'
+        end
+      end
+      
+      class Analysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_checks, as: 'customChecks', class: Google::Apis::ClouddeployV1::CustomCheck, decorator: Google::Apis::ClouddeployV1::CustomCheck::Representation
+      
+          property :duration, as: 'duration'
+          property :google_cloud, as: 'googleCloud', class: Google::Apis::ClouddeployV1::GoogleCloudAnalysis, decorator: Google::Apis::ClouddeployV1::GoogleCloudAnalysis::Representation
+      
+        end
+      end
+      
+      class AnalysisJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_checks, as: 'customChecks', class: Google::Apis::ClouddeployV1::CustomCheck, decorator: Google::Apis::ClouddeployV1::CustomCheck::Representation
+      
+          property :duration, as: 'duration'
+          property :google_cloud, as: 'googleCloud', class: Google::Apis::ClouddeployV1::GoogleCloudAnalysis, decorator: Google::Apis::ClouddeployV1::GoogleCloudAnalysis::Representation
+      
+        end
+      end
+      
+      class AnalysisJobRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_policy_analyses, as: 'alertPolicyAnalyses', class: Google::Apis::ClouddeployV1::AlertPolicyCheckStatus, decorator: Google::Apis::ClouddeployV1::AlertPolicyCheckStatus::Representation
+      
+          collection :custom_check_analyses, as: 'customCheckAnalyses', class: Google::Apis::ClouddeployV1::CustomCheckStatus, decorator: Google::Apis::ClouddeployV1::CustomCheckStatus::Representation
+      
+          property :failed_check_id, as: 'failedCheckId'
         end
       end
       
@@ -1223,6 +1391,7 @@ module Google
           property :target_id, as: 'targetId'
           property :timed_promote_release_operation, as: 'timedPromoteReleaseOperation', class: Google::Apis::ClouddeployV1::TimedPromoteReleaseOperation, decorator: Google::Apis::ClouddeployV1::TimedPromoteReleaseOperation::Representation
       
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :wait_until_time, as: 'waitUntilTime'
         end
@@ -1274,12 +1443,16 @@ module Google
       class CanaryDeployment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis, as: 'analysis', class: Google::Apis::ClouddeployV1::Analysis, decorator: Google::Apis::ClouddeployV1::Analysis::Representation
+      
           collection :percentages, as: 'percentages'
           property :postdeploy, as: 'postdeploy', class: Google::Apis::ClouddeployV1::Postdeploy, decorator: Google::Apis::ClouddeployV1::Postdeploy::Representation
       
           property :predeploy, as: 'predeploy', class: Google::Apis::ClouddeployV1::Predeploy, decorator: Google::Apis::ClouddeployV1::Predeploy::Representation
       
           property :verify, as: 'verify'
+          property :verify_config, as: 'verifyConfig', class: Google::Apis::ClouddeployV1::Verify, decorator: Google::Apis::ClouddeployV1::Verify::Representation
+      
         end
       end
       
@@ -1345,16 +1518,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job, as: 'job'
+          property :previous_revision, as: 'previousRevision'
           property :revision, as: 'revision'
           property :service, as: 'service'
           collection :service_urls, as: 'serviceUrls'
+          property :worker_pool, as: 'workerPool'
         end
       end
       
       class CloudRunRenderMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :job, as: 'job'
+          property :revision, as: 'revision'
           property :service, as: 'service'
+          property :worker_pool, as: 'workerPool'
         end
       end
       
@@ -1362,9 +1540,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default_skaffold_version, as: 'defaultSkaffoldVersion'
+          property :default_tool_versions, as: 'defaultToolVersions', class: Google::Apis::ClouddeployV1::ToolVersions, decorator: Google::Apis::ClouddeployV1::ToolVersions::Representation
+      
           property :name, as: 'name'
           collection :supported_versions, as: 'supportedVersions', class: Google::Apis::ClouddeployV1::SkaffoldVersion, decorator: Google::Apis::ClouddeployV1::SkaffoldVersion::Representation
       
+        end
+      end
+      
+      class ContainerTask
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          collection :command, as: 'command'
+          hash :env, as: 'env'
+          property :image, as: 'image'
         end
       end
       
@@ -1386,6 +1576,31 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :phase_configs, as: 'phaseConfigs', class: Google::Apis::ClouddeployV1::PhaseConfig, decorator: Google::Apis::ClouddeployV1::PhaseConfig::Representation
+      
+        end
+      end
+      
+      class CustomCheck
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :frequency, as: 'frequency'
+          property :id, as: 'id'
+          property :task, as: 'task', class: Google::Apis::ClouddeployV1::Task, decorator: Google::Apis::ClouddeployV1::Task::Representation
+      
+        end
+      end
+      
+      class CustomCheckStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_cause, as: 'failureCause'
+          property :failure_message, as: 'failureMessage'
+          property :frequency, as: 'frequency'
+          property :id, as: 'id'
+          property :latest_build, as: 'latestBuild'
+          property :metadata, as: 'metadata', class: Google::Apis::ClouddeployV1::CustomMetadata, decorator: Google::Apis::ClouddeployV1::CustomMetadata::Representation
+      
+          property :task, as: 'task', class: Google::Apis::ClouddeployV1::Task, decorator: Google::Apis::ClouddeployV1::Task::Representation
       
         end
       end
@@ -1421,6 +1636,16 @@ module Google
         end
       end
       
+      class CustomTargetTasks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deploy, as: 'deploy', class: Google::Apis::ClouddeployV1::Task, decorator: Google::Apis::ClouddeployV1::Task::Representation
+      
+          property :render, as: 'render', class: Google::Apis::ClouddeployV1::Task, decorator: Google::Apis::ClouddeployV1::Task::Representation
+      
+        end
+      end
+      
       class CustomTargetType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1433,6 +1658,8 @@ module Google
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :tasks, as: 'tasks', class: Google::Apis::ClouddeployV1::CustomTargetTasks, decorator: Google::Apis::ClouddeployV1::CustomTargetTasks::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -1610,6 +1837,8 @@ module Google
       class DeploymentJobs
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis_job, as: 'analysisJob', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
+      
           property :deploy_job, as: 'deployJob', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
       
           property :postdeploy_job, as: 'postdeployJob', class: Google::Apis::ClouddeployV1::Job, decorator: Google::Apis::ClouddeployV1::Job::Representation
@@ -1653,6 +1882,14 @@ module Google
         end
       end
       
+      class FailedAlertPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_policy, as: 'alertPolicy'
+          collection :alerts, as: 'alerts'
+        end
+      end
+      
       class GatewayServiceMesh
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1677,6 +1914,14 @@ module Google
         end
       end
       
+      class GoogleCloudAnalysis
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_policy_checks, as: 'alertPolicyChecks', class: Google::Apis::ClouddeployV1::AlertPolicyCheck, decorator: Google::Apis::ClouddeployV1::AlertPolicyCheck::Representation
+      
+        end
+      end
+      
       class IgnoreJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1696,6 +1941,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advance_child_rollout_job, as: 'advanceChildRolloutJob', class: Google::Apis::ClouddeployV1::AdvanceChildRolloutJob, decorator: Google::Apis::ClouddeployV1::AdvanceChildRolloutJob::Representation
+      
+          property :analysis_job, as: 'analysisJob', class: Google::Apis::ClouddeployV1::AnalysisJob, decorator: Google::Apis::ClouddeployV1::AnalysisJob::Representation
       
           property :create_child_rollout_job, as: 'createChildRolloutJob', class: Google::Apis::ClouddeployV1::CreateChildRolloutJob, decorator: Google::Apis::ClouddeployV1::CreateChildRolloutJob::Representation
       
@@ -1718,6 +1965,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advance_child_rollout_job_run, as: 'advanceChildRolloutJobRun', class: Google::Apis::ClouddeployV1::AdvanceChildRolloutJobRun, decorator: Google::Apis::ClouddeployV1::AdvanceChildRolloutJobRun::Representation
+      
+          property :analysis_job_run, as: 'analysisJobRun', class: Google::Apis::ClouddeployV1::AnalysisJobRun, decorator: Google::Apis::ClouddeployV1::AnalysisJobRun::Representation
       
           property :create_child_rollout_job_run, as: 'createChildRolloutJobRun', class: Google::Apis::ClouddeployV1::CreateChildRolloutJobRun, decorator: Google::Apis::ClouddeployV1::CreateChildRolloutJobRun::Representation
       
@@ -1763,6 +2012,15 @@ module Google
       
           property :service_networking, as: 'serviceNetworking', class: Google::Apis::ClouddeployV1::ServiceNetworking, decorator: Google::Apis::ClouddeployV1::ServiceNetworking::Representation
       
+        end
+      end
+      
+      class KubernetesRenderMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canary_deployment, as: 'canaryDeployment'
+          property :deployment, as: 'deployment'
+          property :kubernetes_namespace, as: 'kubernetesNamespace'
         end
       end
       
@@ -1841,6 +2099,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ClouddeployV1::Operation, decorator: Google::Apis::ClouddeployV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1968,6 +2227,8 @@ module Google
       class PhaseConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis, as: 'analysis', class: Google::Apis::ClouddeployV1::Analysis, decorator: Google::Apis::ClouddeployV1::Analysis::Representation
+      
           property :percentage, as: 'percentage'
           property :phase_id, as: 'phaseId'
           property :postdeploy, as: 'postdeploy', class: Google::Apis::ClouddeployV1::Postdeploy, decorator: Google::Apis::ClouddeployV1::Postdeploy::Representation
@@ -1976,6 +2237,8 @@ module Google
       
           collection :profiles, as: 'profiles'
           property :verify, as: 'verify'
+          property :verify_config, as: 'verifyConfig', class: Google::Apis::ClouddeployV1::Verify, decorator: Google::Apis::ClouddeployV1::Verify::Representation
+      
         end
       end
       
@@ -2040,6 +2303,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :actions, as: 'actions'
+          collection :tasks, as: 'tasks', class: Google::Apis::ClouddeployV1::Task, decorator: Google::Apis::ClouddeployV1::Task::Representation
+      
         end
       end
       
@@ -2047,6 +2312,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :actions, as: 'actions'
+          collection :tasks, as: 'tasks', class: Google::Apis::ClouddeployV1::Task, decorator: Google::Apis::ClouddeployV1::Task::Representation
+      
         end
       end
       
@@ -2056,6 +2323,16 @@ module Google
           property :build, as: 'build'
           property :failure_cause, as: 'failureCause'
           property :failure_message, as: 'failureMessage'
+          property :metadata, as: 'metadata', class: Google::Apis::ClouddeployV1::PostdeployJobRunMetadata, decorator: Google::Apis::ClouddeployV1::PostdeployJobRunMetadata::Representation
+      
+        end
+      end
+      
+      class PostdeployJobRunMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom, as: 'custom', class: Google::Apis::ClouddeployV1::CustomMetadata, decorator: Google::Apis::ClouddeployV1::CustomMetadata::Representation
+      
         end
       end
       
@@ -2063,6 +2340,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :actions, as: 'actions'
+          collection :tasks, as: 'tasks', class: Google::Apis::ClouddeployV1::Task, decorator: Google::Apis::ClouddeployV1::Task::Representation
+      
         end
       end
       
@@ -2070,6 +2349,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :actions, as: 'actions'
+          collection :tasks, as: 'tasks', class: Google::Apis::ClouddeployV1::Task, decorator: Google::Apis::ClouddeployV1::Task::Representation
+      
         end
       end
       
@@ -2079,6 +2360,16 @@ module Google
           property :build, as: 'build'
           property :failure_cause, as: 'failureCause'
           property :failure_message, as: 'failureMessage'
+          property :metadata, as: 'metadata', class: Google::Apis::ClouddeployV1::PredeployJobRunMetadata, decorator: Google::Apis::ClouddeployV1::PredeployJobRunMetadata::Representation
+      
+        end
+      end
+      
+      class PredeployJobRunMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom, as: 'custom', class: Google::Apis::ClouddeployV1::CustomMetadata, decorator: Google::Apis::ClouddeployV1::CustomMetadata::Representation
+      
         end
       end
       
@@ -2144,6 +2435,8 @@ module Google
       
           collection :target_snapshots, as: 'targetSnapshots', class: Google::Apis::ClouddeployV1::Target, decorator: Google::Apis::ClouddeployV1::Target::Representation
       
+          property :tool_versions, as: 'toolVersions', class: Google::Apis::ClouddeployV1::ToolVersions, decorator: Google::Apis::ClouddeployV1::ToolVersions::Representation
+      
           property :uid, as: 'uid'
         end
       end
@@ -2151,9 +2444,21 @@ module Google
       class ReleaseCondition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :docker_version_supported_condition, as: 'dockerVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
+      
+          property :helm_version_supported_condition, as: 'helmVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
+      
+          property :kpt_version_supported_condition, as: 'kptVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
+      
+          property :kubectl_version_supported_condition, as: 'kubectlVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
+      
+          property :kustomize_version_supported_condition, as: 'kustomizeVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
+      
           property :release_ready_condition, as: 'releaseReadyCondition', class: Google::Apis::ClouddeployV1::ReleaseReadyCondition, decorator: Google::Apis::ClouddeployV1::ReleaseReadyCondition::Representation
       
           property :skaffold_supported_condition, as: 'skaffoldSupportedCondition', class: Google::Apis::ClouddeployV1::SkaffoldSupportedCondition, decorator: Google::Apis::ClouddeployV1::SkaffoldSupportedCondition::Representation
+      
+          property :skaffold_version_supported_condition, as: 'skaffoldVersionSupportedCondition', class: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition, decorator: Google::Apis::ClouddeployV1::ToolVersionSupportedCondition::Representation
       
         end
       end
@@ -2193,6 +2498,8 @@ module Google
           property :cloud_run, as: 'cloudRun', class: Google::Apis::ClouddeployV1::CloudRunRenderMetadata, decorator: Google::Apis::ClouddeployV1::CloudRunRenderMetadata::Representation
       
           property :custom, as: 'custom', class: Google::Apis::ClouddeployV1::CustomMetadata, decorator: Google::Apis::ClouddeployV1::CustomMetadata::Representation
+      
+          property :kubernetes, as: 'kubernetes', class: Google::Apis::ClouddeployV1::KubernetesRenderMetadata, decorator: Google::Apis::ClouddeployV1::KubernetesRenderMetadata::Representation
       
         end
       end
@@ -2526,11 +2833,15 @@ module Google
       class Standard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analysis, as: 'analysis', class: Google::Apis::ClouddeployV1::Analysis, decorator: Google::Apis::ClouddeployV1::Analysis::Representation
+      
           property :postdeploy, as: 'postdeploy', class: Google::Apis::ClouddeployV1::Postdeploy, decorator: Google::Apis::ClouddeployV1::Postdeploy::Representation
       
           property :predeploy, as: 'predeploy', class: Google::Apis::ClouddeployV1::Predeploy, decorator: Google::Apis::ClouddeployV1::Predeploy::Representation
       
           property :verify, as: 'verify'
+          property :verify_config, as: 'verifyConfig', class: Google::Apis::ClouddeployV1::Verify, decorator: Google::Apis::ClouddeployV1::Verify::Representation
+      
         end
       end
       
@@ -2649,6 +2960,14 @@ module Google
         end
       end
       
+      class Task
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container, as: 'container', class: Google::Apis::ClouddeployV1::ContainerTask, decorator: Google::Apis::ClouddeployV1::ContainerTask::Representation
+      
+        end
+      end
+      
       class TerminateJobRunRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2728,9 +3047,41 @@ module Google
         end
       end
       
+      class ToolVersionSupportedCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maintenance_mode_time, as: 'maintenanceModeTime'
+          property :status, as: 'status'
+          property :support_expiration_time, as: 'supportExpirationTime'
+          property :tool_version_support_state, as: 'toolVersionSupportState'
+        end
+      end
+      
+      class ToolVersions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :docker, as: 'docker'
+          property :helm, as: 'helm'
+          property :kpt, as: 'kpt'
+          property :kubectl, as: 'kubectl'
+          property :kustomize, as: 'kustomize'
+          property :skaffold, as: 'skaffold'
+        end
+      end
+      
+      class Verify
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tasks, as: 'tasks', class: Google::Apis::ClouddeployV1::Task, decorator: Google::Apis::ClouddeployV1::Task::Representation
+      
+        end
+      end
+      
       class VerifyJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :tasks, as: 'tasks', class: Google::Apis::ClouddeployV1::Task, decorator: Google::Apis::ClouddeployV1::Task::Representation
+      
         end
       end
       
@@ -2742,6 +3093,16 @@ module Google
           property :event_log_path, as: 'eventLogPath'
           property :failure_cause, as: 'failureCause'
           property :failure_message, as: 'failureMessage'
+          property :metadata, as: 'metadata', class: Google::Apis::ClouddeployV1::VerifyJobRunMetadata, decorator: Google::Apis::ClouddeployV1::VerifyJobRunMetadata::Representation
+      
+        end
+      end
+      
+      class VerifyJobRunMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom, as: 'custom', class: Google::Apis::ClouddeployV1::CustomMetadata, decorator: Google::Apis::ClouddeployV1::CustomMetadata::Representation
+      
         end
       end
       

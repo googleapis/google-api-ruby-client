@@ -56,7 +56,8 @@ module Google
         # resources.
         # @param [String] parent
         #   Required. The name of the resource to compute contacts for. Format:
-        #   organizations/`organization_id`, folders/`folder_id` or projects/`project_id`
+        #   organizations/`organization`, folders/`folder` or projects/`project` (where `
+        #   project` is the project number)
         # @param [Array<String>, String] notification_categories
         #   The categories of notifications to compute contacts for. If ALL is included in
         #   this list, contacts subscribed to any notification category will be returned.
@@ -103,7 +104,8 @@ module Google
         # Adds a new contact for a resource.
         # @param [String] parent
         #   Required. The resource to save this contact for. Format: organizations/`
-        #   organization_id`, folders/`folder_id` or projects/`project_id`
+        #   organization`, folders/`folder` or projects/`project` (where `project` is the
+        #   project number)
         # @param [Google::Apis::EssentialcontactsV1::GoogleCloudEssentialcontactsV1Contact] google_cloud_essentialcontacts_v1_contact_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -137,8 +139,8 @@ module Google
         # Deletes a contact.
         # @param [String] name
         #   Required. The name of the contact to delete. Format: organizations/`
-        #   organization_id`/contacts/`contact_id`, folders/`folder_id`/contacts/`
-        #   contact_id` or projects/`project_id`/contacts/`contact_id`
+        #   organization`/contacts/`contact`, folders/`folder`/contacts/`contact` or
+        #   projects/`project`/contacts/`contact` (where `project` is the project number)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -169,8 +171,8 @@ module Google
         # Gets a single contact.
         # @param [String] name
         #   Required. The name of the contact to retrieve. Format: organizations/`
-        #   organization_id`/contacts/`contact_id`, folders/`folder_id`/contacts/`
-        #   contact_id` or projects/`project_id`/contacts/`contact_id`
+        #   organization`/contacts/`contact`, folders/`folder`/contacts/`contact` or
+        #   projects/`project`/contacts/`contact` (where `project` is the project number)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -200,8 +202,8 @@ module Google
         
         # Lists the contacts that have been set on a resource.
         # @param [String] parent
-        #   Required. The parent resource name. Format: organizations/`organization_id`,
-        #   folders/`folder_id` or projects/`project_id`
+        #   Required. The parent resource name. Format: organizations/`organization`,
+        #   folders/`folder` or projects/`project` (where `project` is the project number)
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of `next_page_token` in the response
@@ -285,8 +287,8 @@ module Google
         # @param [String] resource
         #   Required. The name of the resource to send the test message for. All contacts
         #   must either be set directly on this resource or inherited from another
-        #   resource that is an ancestor of this one. Format: organizations/`
-        #   organization_id`, folders/`folder_id` or projects/`project_id`
+        #   resource that is an ancestor of this one. Format: organizations/`organization`,
+        #   folders/`folder` or projects/`project` (where `project` is the project number)
         # @param [Google::Apis::EssentialcontactsV1::GoogleCloudEssentialcontactsV1SendTestMessageRequest] google_cloud_essentialcontacts_v1_send_test_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -322,7 +324,8 @@ module Google
         # resources.
         # @param [String] parent
         #   Required. The name of the resource to compute contacts for. Format:
-        #   organizations/`organization_id`, folders/`folder_id` or projects/`project_id`
+        #   organizations/`organization`, folders/`folder` or projects/`project` (where `
+        #   project` is the project number)
         # @param [Array<String>, String] notification_categories
         #   The categories of notifications to compute contacts for. If ALL is included in
         #   this list, contacts subscribed to any notification category will be returned.
@@ -369,7 +372,8 @@ module Google
         # Adds a new contact for a resource.
         # @param [String] parent
         #   Required. The resource to save this contact for. Format: organizations/`
-        #   organization_id`, folders/`folder_id` or projects/`project_id`
+        #   organization`, folders/`folder` or projects/`project` (where `project` is the
+        #   project number)
         # @param [Google::Apis::EssentialcontactsV1::GoogleCloudEssentialcontactsV1Contact] google_cloud_essentialcontacts_v1_contact_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -403,8 +407,8 @@ module Google
         # Deletes a contact.
         # @param [String] name
         #   Required. The name of the contact to delete. Format: organizations/`
-        #   organization_id`/contacts/`contact_id`, folders/`folder_id`/contacts/`
-        #   contact_id` or projects/`project_id`/contacts/`contact_id`
+        #   organization`/contacts/`contact`, folders/`folder`/contacts/`contact` or
+        #   projects/`project`/contacts/`contact` (where `project` is the project number)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -435,8 +439,8 @@ module Google
         # Gets a single contact.
         # @param [String] name
         #   Required. The name of the contact to retrieve. Format: organizations/`
-        #   organization_id`/contacts/`contact_id`, folders/`folder_id`/contacts/`
-        #   contact_id` or projects/`project_id`/contacts/`contact_id`
+        #   organization`/contacts/`contact`, folders/`folder`/contacts/`contact` or
+        #   projects/`project`/contacts/`contact` (where `project` is the project number)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -466,8 +470,8 @@ module Google
         
         # Lists the contacts that have been set on a resource.
         # @param [String] parent
-        #   Required. The parent resource name. Format: organizations/`organization_id`,
-        #   folders/`folder_id` or projects/`project_id`
+        #   Required. The parent resource name. Format: organizations/`organization`,
+        #   folders/`folder` or projects/`project` (where `project` is the project number)
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of `next_page_token` in the response
@@ -551,8 +555,8 @@ module Google
         # @param [String] resource
         #   Required. The name of the resource to send the test message for. All contacts
         #   must either be set directly on this resource or inherited from another
-        #   resource that is an ancestor of this one. Format: organizations/`
-        #   organization_id`, folders/`folder_id` or projects/`project_id`
+        #   resource that is an ancestor of this one. Format: organizations/`organization`,
+        #   folders/`folder` or projects/`project` (where `project` is the project number)
         # @param [Google::Apis::EssentialcontactsV1::GoogleCloudEssentialcontactsV1SendTestMessageRequest] google_cloud_essentialcontacts_v1_send_test_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -588,7 +592,8 @@ module Google
         # resources.
         # @param [String] parent
         #   Required. The name of the resource to compute contacts for. Format:
-        #   organizations/`organization_id`, folders/`folder_id` or projects/`project_id`
+        #   organizations/`organization`, folders/`folder` or projects/`project` (where `
+        #   project` is the project number)
         # @param [Array<String>, String] notification_categories
         #   The categories of notifications to compute contacts for. If ALL is included in
         #   this list, contacts subscribed to any notification category will be returned.
@@ -635,7 +640,8 @@ module Google
         # Adds a new contact for a resource.
         # @param [String] parent
         #   Required. The resource to save this contact for. Format: organizations/`
-        #   organization_id`, folders/`folder_id` or projects/`project_id`
+        #   organization`, folders/`folder` or projects/`project` (where `project` is the
+        #   project number)
         # @param [Google::Apis::EssentialcontactsV1::GoogleCloudEssentialcontactsV1Contact] google_cloud_essentialcontacts_v1_contact_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -669,8 +675,8 @@ module Google
         # Deletes a contact.
         # @param [String] name
         #   Required. The name of the contact to delete. Format: organizations/`
-        #   organization_id`/contacts/`contact_id`, folders/`folder_id`/contacts/`
-        #   contact_id` or projects/`project_id`/contacts/`contact_id`
+        #   organization`/contacts/`contact`, folders/`folder`/contacts/`contact` or
+        #   projects/`project`/contacts/`contact` (where `project` is the project number)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -701,8 +707,8 @@ module Google
         # Gets a single contact.
         # @param [String] name
         #   Required. The name of the contact to retrieve. Format: organizations/`
-        #   organization_id`/contacts/`contact_id`, folders/`folder_id`/contacts/`
-        #   contact_id` or projects/`project_id`/contacts/`contact_id`
+        #   organization`/contacts/`contact`, folders/`folder`/contacts/`contact` or
+        #   projects/`project`/contacts/`contact` (where `project` is the project number)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -732,8 +738,8 @@ module Google
         
         # Lists the contacts that have been set on a resource.
         # @param [String] parent
-        #   Required. The parent resource name. Format: organizations/`organization_id`,
-        #   folders/`folder_id` or projects/`project_id`
+        #   Required. The parent resource name. Format: organizations/`organization`,
+        #   folders/`folder` or projects/`project` (where `project` is the project number)
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of `next_page_token` in the response
@@ -817,8 +823,8 @@ module Google
         # @param [String] resource
         #   Required. The name of the resource to send the test message for. All contacts
         #   must either be set directly on this resource or inherited from another
-        #   resource that is an ancestor of this one. Format: organizations/`
-        #   organization_id`, folders/`folder_id` or projects/`project_id`
+        #   resource that is an ancestor of this one. Format: organizations/`organization`,
+        #   folders/`folder` or projects/`project` (where `project` is the project number)
         # @param [Google::Apis::EssentialcontactsV1::GoogleCloudEssentialcontactsV1SendTestMessageRequest] google_cloud_essentialcontacts_v1_send_test_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

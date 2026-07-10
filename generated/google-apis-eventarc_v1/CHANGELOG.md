@@ -1,5 +1,66 @@
 # Release history for google-apis-eventarc_v1
 
+### v0.79.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260612
+
+### v0.78.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.77.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260506
+
+### v0.76.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260424
+
+### v0.75.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260320
+
+### v0.74.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260130
+
+### v0.73.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251219
+
+### v0.72.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251202
+
+### v0.71.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251024
+
+### v0.70.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251007
+
+### v0.69.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250912
+
+### v0.68.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250905
+
+### v0.67.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250815
+
+### v0.66.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250801
+
+### v0.65.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250624
+* Regenerated using generator version 0.18.0
+
 ### v0.64.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

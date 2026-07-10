@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AspectRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class BillingDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CleanupConnectionMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -711,6 +723,7 @@ module Google
       class Api
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           collection :methods_prop, as: 'methods', class: Google::Apis::ServicenetworkingV1beta::MethodProp, decorator: Google::Apis::ServicenetworkingV1beta::MethodProp::Representation
       
           collection :mixins, as: 'mixins', class: Google::Apis::ServicenetworkingV1beta::Mixin, decorator: Google::Apis::ServicenetworkingV1beta::Mixin::Representation
@@ -729,7 +742,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          collection :rules, as: 'rules', class: Google::Apis::ServicenetworkingV1beta::AspectRule, decorator: Google::Apis::ServicenetworkingV1beta::AspectRule::Representation
+      
           hash :spec, as: 'spec'
+        end
+      end
+      
+      class AspectRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config, as: 'config'
+          property :selector, as: 'selector'
         end
       end
       
@@ -851,6 +874,12 @@ module Google
         end
       end
       
+      class CleanupConnectionMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ClientLibrarySettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -914,6 +943,7 @@ module Google
           property :consumer_export_subnet_routes_with_public_ip, as: 'consumerExportSubnetRoutesWithPublicIp'
           property :consumer_import_custom_routes, as: 'consumerImportCustomRoutes'
           property :consumer_import_subnet_routes_with_public_ip, as: 'consumerImportSubnetRoutesWithPublicIp'
+          property :consumer_peering_active, as: 'consumerPeeringActive'
           property :producer_export_custom_routes, as: 'producerExportCustomRoutes'
           property :producer_export_subnet_routes_with_public_ip, as: 'producerExportSubnetRoutesWithPublicIp'
           property :producer_import_custom_routes, as: 'producerImportCustomRoutes'
@@ -1277,6 +1307,7 @@ module Google
       class MethodProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           property :name, as: 'name'
           collection :options, as: 'options', class: Google::Apis::ServicenetworkingV1beta::Option, decorator: Google::Apis::ServicenetworkingV1beta::Option::Representation
       
@@ -1455,6 +1486,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings, decorator: Google::Apis::ServicenetworkingV1beta::CommonLanguageSettings::Representation
       
+          property :library_package, as: 'libraryPackage'
         end
       end
       

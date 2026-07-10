@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetMaintenanceInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Guaranteed
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +233,12 @@ module Google
       end
       
       class NodeSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeUpcomingMaintenanceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -462,6 +474,7 @@ module Google
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :source_image, as: 'sourceImage'
+          property :storage_pool, as: 'storagePool'
         end
       end
       
@@ -524,6 +537,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :guest_attributes, as: 'guestAttributes', class: Google::Apis::TpuV2alpha1::GuestAttributes, decorator: Google::Apis::TpuV2alpha1::GuestAttributes::Representation
+      
+        end
+      end
+      
+      class GetMaintenanceInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_upcoming_maintenances, as: 'nodeUpcomingMaintenances', class: Google::Apis::TpuV2alpha1::NodeUpcomingMaintenanceInfo, decorator: Google::Apis::TpuV2alpha1::NodeUpcomingMaintenanceInfo::Representation
       
         end
       end
@@ -605,6 +626,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::TpuV2alpha1::Operation, decorator: Google::Apis::TpuV2alpha1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -732,6 +754,16 @@ module Google
       
           property :node_id, as: 'nodeId'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class NodeUpcomingMaintenanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_name, as: 'nodeName'
+          property :node_uid, :numeric_string => true, as: 'nodeUid'
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::TpuV2alpha1::UpcomingMaintenance, decorator: Google::Apis::TpuV2alpha1::UpcomingMaintenance::Representation
+      
         end
       end
       
@@ -876,6 +908,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preemptible, as: 'preemptible'
           property :provisioning_model, as: 'provisioningModel'
+          property :reservation_name, as: 'reservationName'
           property :reserved, as: 'reserved'
           property :spot, as: 'spot'
           property :termination_timestamp, as: 'terminationTimestamp'

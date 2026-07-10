@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoUpgradeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BinaryAuthorizationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelRolloutRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAuditLoggingFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,12 @@ module Google
       end
       
       class CloudBuildMembershipSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -514,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ForceCompleteRolloutStageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenerateConnectManifestResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -706,6 +730,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRolloutSequencesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListRolloutsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListScopeNamespacesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -856,7 +892,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationalState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Origin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PauseRolloutRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -988,7 +1036,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResumeRolloutRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Role
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Rollout
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutCreationScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutMembershipState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutSequence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutStage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RolloutTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1096,6 +1186,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Stage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1115,6 +1211,12 @@ module Google
       end
       
       class TypeMeta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeRolloutSequenceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1144,6 +1246,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VersionUpgrade
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadIdentityFeatureSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1151,6 +1259,12 @@ module Google
       end
       
       class WorkloadIdentityFeatureState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadIdentityIdentityProviderStateDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1224,6 +1338,15 @@ module Google
         end
       end
       
+      class AutoUpgradeConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :enforced_rollouts, as: 'enforcedRollouts'
+          property :rollout_creation_scope, as: 'rolloutCreationScope', class: Google::Apis::GkehubV1alpha::RolloutCreationScope, decorator: Google::Apis::GkehubV1alpha::RolloutCreationScope::Representation
+      
+        end
+      end
+      
       class BinaryAuthorizationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1249,6 +1372,12 @@ module Google
         end
       end
       
+      class CancelRolloutRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CloudAuditLoggingFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1264,6 +1393,13 @@ module Google
         end
       end
       
+      class ClusterSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_selector, as: 'labelSelector'
+        end
+      end
+      
       class ClusterUpgradeFleetSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1271,6 +1407,7 @@ module Google
       
           property :post_conditions, as: 'postConditions', class: Google::Apis::GkehubV1alpha::ClusterUpgradePostConditions, decorator: Google::Apis::GkehubV1alpha::ClusterUpgradePostConditions::Representation
       
+          property :upgrade_engine, as: 'upgradeEngine'
           collection :upstream_fleets, as: 'upstreamFleets'
         end
       end
@@ -1709,6 +1846,7 @@ module Google
       
           property :hierarchy_controller_state, as: 'hierarchyControllerState', class: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementHierarchyControllerState::Representation
       
+          property :kubernetes_api_server_version, as: 'kubernetesApiServerVersion'
           property :membership_spec, as: 'membershipSpec', class: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec, decorator: Google::Apis::GkehubV1alpha::ConfigManagementMembershipSpec::Representation
       
           property :operator_state, as: 'operatorState', class: Google::Apis::GkehubV1alpha::ConfigManagementOperatorState, decorator: Google::Apis::GkehubV1alpha::ConfigManagementOperatorState::Representation
@@ -2020,6 +2158,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :mode, as: 'mode'
+        end
+      end
+      
+      class ForceCompleteRolloutStageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stage_number, as: 'stageNumber'
         end
       end
       
@@ -2340,6 +2485,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::GkehubV1alpha::Operation, decorator: Google::Apis::GkehubV1alpha::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -2348,6 +2494,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :scopes, as: 'scopes', class: Google::Apis::GkehubV1alpha::Scope, decorator: Google::Apis::GkehubV1alpha::Scope::Representation
+      
+        end
+      end
+      
+      class ListRolloutSequencesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rollout_sequences, as: 'rolloutSequences', class: Google::Apis::GkehubV1alpha::RolloutSequence, decorator: Google::Apis::GkehubV1alpha::RolloutSequence::Representation
+      
+        end
+      end
+      
+      class ListRolloutsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rollouts, as: 'rollouts', class: Google::Apis::GkehubV1alpha::Rollout, decorator: Google::Apis::GkehubV1alpha::Rollout::Representation
       
         end
       end
@@ -2404,6 +2568,7 @@ module Google
           property :external_id, as: 'externalId'
           hash :labels, as: 'labels'
           property :last_connection_time, as: 'lastConnectionTime'
+          property :membership_type, as: 'membershipType'
           property :monitoring_config, as: 'monitoringConfig', class: Google::Apis::GkehubV1alpha::MonitoringConfig, decorator: Google::Apis::GkehubV1alpha::MonitoringConfig::Representation
       
           property :name, as: 'name'
@@ -2641,10 +2806,25 @@ module Google
         end
       end
       
+      class OperationalState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :reasons, as: 'reasons'
+          property :state, as: 'state'
+          property :state_change_time, as: 'stateChangeTime'
+        end
+      end
+      
       class Origin
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
+        end
+      end
+      
+      class PauseRolloutRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2848,8 +3028,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connect_version, as: 'connectVersion'
+          property :k8s_git_version, as: 'k8sGitVersion'
           property :k8s_version, as: 'k8sVersion'
           property :v1beta1_crd, as: 'v1beta1Crd'
+        end
+      end
+      
+      class ResumeRolloutRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schedule_offset, as: 'scheduleOffset'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
@@ -2858,6 +3047,104 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_role, as: 'customRole'
           property :predefined_role, as: 'predefinedRole'
+        end
+      end
+      
+      class Rollout
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :complete_time, as: 'completeTime'
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :intent, as: 'intent'
+          hash :labels, as: 'labels'
+          hash :membership_states, as: 'membershipStates', class: Google::Apis::GkehubV1alpha::RolloutMembershipState, decorator: Google::Apis::GkehubV1alpha::RolloutMembershipState::Representation
+      
+          property :name, as: 'name'
+          property :rollout_sequence, as: 'rolloutSequence'
+          collection :stages, as: 'stages', class: Google::Apis::GkehubV1alpha::RolloutStage, decorator: Google::Apis::GkehubV1alpha::RolloutStage::Representation
+      
+          property :state, as: 'state'
+          property :state_reason, as: 'stateReason'
+          property :state_reason_type, as: 'stateReasonType'
+          property :trigger, as: 'trigger'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+          property :version_upgrade, as: 'versionUpgrade', class: Google::Apis::GkehubV1alpha::VersionUpgrade, decorator: Google::Apis::GkehubV1alpha::VersionUpgrade::Representation
+      
+        end
+      end
+      
+      class RolloutCreationScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :upgrade_types, as: 'upgradeTypes'
+        end
+      end
+      
+      class RolloutMembershipState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_update_time, as: 'lastUpdateTime'
+          property :stage_assignment, as: 'stageAssignment'
+          collection :targets, as: 'targets', class: Google::Apis::GkehubV1alpha::RolloutTarget, decorator: Google::Apis::GkehubV1alpha::RolloutTarget::Representation
+      
+        end
+      end
+      
+      class RolloutSequence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_upgrade_config, as: 'autoUpgradeConfig', class: Google::Apis::GkehubV1alpha::AutoUpgradeConfig, decorator: Google::Apis::GkehubV1alpha::AutoUpgradeConfig::Representation
+      
+          property :computed_release_channel, as: 'computedReleaseChannel'
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :effective_auto_upgrade_config, as: 'effectiveAutoUpgradeConfig', class: Google::Apis::GkehubV1alpha::AutoUpgradeConfig, decorator: Google::Apis::GkehubV1alpha::AutoUpgradeConfig::Representation
+      
+          property :etag, as: 'etag'
+          property :ignored_clusters_selector, as: 'ignoredClustersSelector', class: Google::Apis::GkehubV1alpha::ClusterSelector, decorator: Google::Apis::GkehubV1alpha::ClusterSelector::Representation
+      
+          hash :labels, as: 'labels'
+          property :last_qualified_control_plane_version, as: 'lastQualifiedControlPlaneVersion'
+          property :last_qualified_node_version, as: 'lastQualifiedNodeVersion'
+          property :name, as: 'name'
+          property :operational_state, as: 'operationalState', class: Google::Apis::GkehubV1alpha::OperationalState, decorator: Google::Apis::GkehubV1alpha::OperationalState::Representation
+      
+          collection :stages, as: 'stages', class: Google::Apis::GkehubV1alpha::Stage, decorator: Google::Apis::GkehubV1alpha::Stage::Representation
+      
+          property :target_control_plane_version, as: 'targetControlPlaneVersion'
+          property :target_node_version, as: 'targetNodeVersion'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class RolloutStage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_selector, as: 'clusterSelector', class: Google::Apis::GkehubV1alpha::ClusterSelector, decorator: Google::Apis::GkehubV1alpha::ClusterSelector::Representation
+      
+          property :end_time, as: 'endTime'
+          collection :fleet_projects, as: 'fleetProjects'
+          property :soak_duration, as: 'soakDuration'
+          property :stage_number, as: 'stageNumber'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+        end
+      end
+      
+      class RolloutTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster, as: 'cluster'
+          property :node_pool, as: 'nodePool'
+          property :operation, as: 'operation'
+          property :reason, as: 'reason'
+          property :state, as: 'state'
         end
       end
       
@@ -3029,6 +3316,16 @@ module Google
         end
       end
       
+      class Stage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_selector, as: 'clusterSelector', class: Google::Apis::GkehubV1alpha::ClusterSelector, decorator: Google::Apis::GkehubV1alpha::ClusterSelector::Representation
+      
+          collection :fleet_projects, as: 'fleetProjects'
+          property :soak_duration, as: 'soakDuration'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3056,6 +3353,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class UpgradeRolloutSequenceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
+          property :upgrade_type, as: 'upgradeType'
+          property :version, as: 'version'
         end
       end
       
@@ -3093,6 +3399,14 @@ module Google
         end
       end
       
+      class VersionUpgrade
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :desired_version, as: 'desiredVersion'
+          property :type, as: 'type'
+        end
+      end
+      
       class WorkloadIdentityFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3113,10 +3427,20 @@ module Google
         end
       end
       
+      class WorkloadIdentityIdentityProviderStateDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :description, as: 'description'
+        end
+      end
+      
       class WorkloadIdentityMembershipState
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          hash :identity_provider_state_details, as: 'identityProviderStateDetails', class: Google::Apis::GkehubV1alpha::WorkloadIdentityIdentityProviderStateDetail, decorator: Google::Apis::GkehubV1alpha::WorkloadIdentityIdentityProviderStateDetail::Representation
+      
         end
       end
       

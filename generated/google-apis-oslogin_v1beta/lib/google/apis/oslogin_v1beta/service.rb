@@ -91,9 +91,9 @@ module Google
         # @param [String] name
         #   Required. The unique ID for the user in format `users/`user``.
         # @param [String] project_id
-        #   The project ID of the Google Cloud Platform project.
+        #   Required. The project ID of the Google Cloud Platform project.
         # @param [String] system_id
-        #   A system ID for filtering the results of the request.
+        #   Optional. A system ID for filtering the results of the request.
         # @param [String] view
         #   The view configures whether to retrieve security keys information.
         # @param [String] fields
@@ -240,7 +240,7 @@ module Google
         
         # Signs an SSH public key for a user to authenticate to an instance.
         # @param [String] parent
-        #   The parent project and region for the signing request.
+        #   Required. The parent project and region for the signing request.
         # @param [Google::Apis::OsloginV1beta::SignSshPublicKeyRequest] sign_ssh_public_key_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -273,7 +273,7 @@ module Google
         
         # Signs an SSH public key for a user to authenticate to an instance.
         # @param [String] parent
-        #   The parent project and region for the signing request.
+        #   Required. The parent project and region for the signing request.
         # @param [Google::Apis::OsloginV1beta::SignSshPublicKeyRequest] sign_ssh_public_key_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

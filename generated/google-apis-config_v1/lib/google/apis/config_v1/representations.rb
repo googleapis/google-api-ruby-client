@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoMigrationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,7 +70,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeploymentGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentGroupRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeploymentOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentOperationSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentUnit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentUnitProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeprovisionDeploymentGroupRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalValueSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GitSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +173,18 @@ module Google
       end
       
       class ImportStatefileRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDeploymentGroupRevisionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDeploymentGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +209,18 @@ module Google
       end
       
       class ListPreviewsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListResourceChangesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListResourceDriftsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -220,6 +304,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PropertyChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PropertyDrift
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProviderConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProvisionDeploymentGroupOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProvisionDeploymentGroupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -227,6 +341,30 @@ module Google
       end
       
       class ResourceCaiInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceChangeTerraformInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceDrift
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceDriftTerraformInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -337,6 +475,15 @@ module Google
         end
       end
       
+      class AutoMigrationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_migration_enabled, as: 'autoMigrationEnabled'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -377,6 +524,8 @@ module Google
           property :latest_revision, as: 'latestRevision'
           property :lock_state, as: 'lockState'
           property :name, as: 'name'
+          property :provider_config, as: 'providerConfig', class: Google::Apis::ConfigV1::ProviderConfig, decorator: Google::Apis::ConfigV1::ProviderConfig::Representation
+      
           property :quota_validation, as: 'quotaValidation'
           property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
@@ -392,6 +541,36 @@ module Google
         end
       end
       
+      class DeploymentGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          collection :deployment_units, as: 'deploymentUnits', class: Google::Apis::ConfigV1::DeploymentUnit, decorator: Google::Apis::ConfigV1::DeploymentUnit::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :provisioning_error, as: 'provisioningError', class: Google::Apis::ConfigV1::Status, decorator: Google::Apis::ConfigV1::Status::Representation
+      
+          property :provisioning_state, as: 'provisioningState'
+          property :provisioning_state_description, as: 'provisioningStateDescription'
+          property :state, as: 'state'
+          property :state_description, as: 'stateDescription'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class DeploymentGroupRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternative_ids, as: 'alternativeIds'
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :snapshot, as: 'snapshot', class: Google::Apis::ConfigV1::DeploymentGroup, decorator: Google::Apis::ConfigV1::DeploymentGroup::Representation
+      
+        end
+      end
+      
       class DeploymentOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -400,6 +579,66 @@ module Google
           property :build, as: 'build'
           property :logs, as: 'logs'
           property :step, as: 'step'
+        end
+      end
+      
+      class DeploymentOperationSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifacts, as: 'artifacts'
+          property :build, as: 'build'
+          property :content, as: 'content'
+          property :deployment_step, as: 'deploymentStep'
+          property :logs, as: 'logs'
+        end
+      end
+      
+      class DeploymentSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment'
+          property :output_name, as: 'outputName'
+        end
+      end
+      
+      class DeploymentSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment', class: Google::Apis::ConfigV1::Deployment, decorator: Google::Apis::ConfigV1::Deployment::Representation
+      
+          property :deployment_id, as: 'deploymentId'
+        end
+      end
+      
+      class DeploymentUnit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dependencies, as: 'dependencies'
+          property :deployment, as: 'deployment'
+          property :id, as: 'id'
+        end
+      end
+      
+      class DeploymentUnitProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment'
+          property :deployment_operation_summary, as: 'deploymentOperationSummary', class: Google::Apis::ConfigV1::DeploymentOperationSummary, decorator: Google::Apis::ConfigV1::DeploymentOperationSummary::Representation
+      
+          property :error, as: 'error', class: Google::Apis::ConfigV1::Status, decorator: Google::Apis::ConfigV1::Status::Representation
+      
+          property :intent, as: 'intent'
+          property :state, as: 'state'
+          property :state_description, as: 'stateDescription'
+          property :unit_id, as: 'unitId'
+        end
+      end
+      
+      class DeprovisionDeploymentGroupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_policy, as: 'deletePolicy'
+          property :force, as: 'force'
         end
       end
       
@@ -446,6 +685,14 @@ module Google
         end
       end
       
+      class ExternalValueSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_source, as: 'deploymentSource', class: Google::Apis::ConfigV1::DeploymentSource, decorator: Google::Apis::ConfigV1::DeploymentSource::Representation
+      
+        end
+      end
+      
       class GitSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -459,6 +706,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :lock_id, :numeric_string => true, as: 'lockId'
+        end
+      end
+      
+      class ListDeploymentGroupRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployment_group_revisions, as: 'deploymentGroupRevisions', class: Google::Apis::ConfigV1::DeploymentGroupRevision, decorator: Google::Apis::ConfigV1::DeploymentGroupRevision::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListDeploymentGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployment_groups, as: 'deploymentGroups', class: Google::Apis::ConfigV1::DeploymentGroup, decorator: Google::Apis::ConfigV1::DeploymentGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -487,6 +754,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ConfigV1::Operation, decorator: Google::Apis::ConfigV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -495,6 +763,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :previews, as: 'previews', class: Google::Apis::ConfigV1::Preview, decorator: Google::Apis::ConfigV1::Preview::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListResourceChangesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resource_changes, as: 'resourceChanges', class: Google::Apis::ConfigV1::ResourceChange, decorator: Google::Apis::ConfigV1::ResourceChange::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListResourceDriftsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :resource_drifts, as: 'resourceDrifts', class: Google::Apis::ConfigV1::ResourceDrift, decorator: Google::Apis::ConfigV1::ResourceDrift::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -581,6 +869,8 @@ module Google
           property :end_time, as: 'endTime'
           property :preview_metadata, as: 'previewMetadata', class: Google::Apis::ConfigV1::PreviewOperationMetadata, decorator: Google::Apis::ConfigV1::PreviewOperationMetadata::Representation
       
+          property :provision_deployment_group_metadata, as: 'provisionDeploymentGroupMetadata', class: Google::Apis::ConfigV1::ProvisionDeploymentGroupOperationMetadata, decorator: Google::Apis::ConfigV1::ProvisionDeploymentGroupOperationMetadata::Representation
+      
           property :requested_cancellation, as: 'requestedCancellation'
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
@@ -618,6 +908,8 @@ module Google
           property :preview_artifacts, as: 'previewArtifacts', class: Google::Apis::ConfigV1::PreviewArtifacts, decorator: Google::Apis::ConfigV1::PreviewArtifacts::Representation
       
           property :preview_mode, as: 'previewMode'
+          property :provider_config, as: 'providerConfig', class: Google::Apis::ConfigV1::ProviderConfig, decorator: Google::Apis::ConfigV1::ProviderConfig::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
           property :terraform_blueprint, as: 'terraformBlueprint', class: Google::Apis::ConfigV1::TerraformBlueprint, decorator: Google::Apis::ConfigV1::TerraformBlueprint::Representation
@@ -657,6 +949,52 @@ module Google
         end
       end
       
+      class PropertyChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :after, as: 'after'
+          collection :after_sensitive_paths, as: 'afterSensitivePaths'
+          property :before, as: 'before'
+          collection :before_sensitive_paths, as: 'beforeSensitivePaths'
+          property :path, as: 'path'
+        end
+      end
+      
+      class PropertyDrift
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :after, as: 'after'
+          collection :after_sensitive_paths, as: 'afterSensitivePaths'
+          property :before, as: 'before'
+          collection :before_sensitive_paths, as: 'beforeSensitivePaths'
+          property :path, as: 'path'
+        end
+      end
+      
+      class ProviderConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_type, as: 'sourceType'
+        end
+      end
+      
+      class ProvisionDeploymentGroupOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployment_unit_progresses, as: 'deploymentUnitProgresses', class: Google::Apis::ConfigV1::DeploymentUnitProgress, decorator: Google::Apis::ConfigV1::DeploymentUnitProgress::Representation
+      
+          property :step, as: 'step'
+        end
+      end
+      
+      class ProvisionDeploymentGroupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :deployment_specs, as: 'deploymentSpecs', class: Google::Apis::ConfigV1::DeploymentSpec, decorator: Google::Apis::ConfigV1::DeploymentSpec::Representation
+      
+        end
+      end
+      
       class Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -674,6 +1012,50 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :full_resource_name, as: 'fullResourceName'
+        end
+      end
+      
+      class ResourceChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :intent, as: 'intent'
+          property :name, as: 'name'
+          collection :property_changes, as: 'propertyChanges', class: Google::Apis::ConfigV1::PropertyChange, decorator: Google::Apis::ConfigV1::PropertyChange::Representation
+      
+          property :terraform_info, as: 'terraformInfo', class: Google::Apis::ConfigV1::ResourceChangeTerraformInfo, decorator: Google::Apis::ConfigV1::ResourceChangeTerraformInfo::Representation
+      
+        end
+      end
+      
+      class ResourceChangeTerraformInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actions, as: 'actions'
+          property :address, as: 'address'
+          property :provider, as: 'provider'
+          property :resource_name, as: 'resourceName'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ResourceDrift
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :property_drifts, as: 'propertyDrifts', class: Google::Apis::ConfigV1::PropertyDrift, decorator: Google::Apis::ConfigV1::PropertyDrift::Representation
+      
+          property :terraform_info, as: 'terraformInfo', class: Google::Apis::ConfigV1::ResourceDriftTerraformInfo, decorator: Google::Apis::ConfigV1::ResourceDriftTerraformInfo::Representation
+      
+        end
+      end
+      
+      class ResourceDriftTerraformInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :provider, as: 'provider'
+          property :resource_name, as: 'resourceName'
+          property :type, as: 'type'
         end
       end
       
@@ -699,6 +1081,8 @@ module Google
           property :import_existing_resources, as: 'importExistingResources'
           property :logs, as: 'logs'
           property :name, as: 'name'
+          property :provider_config, as: 'providerConfig', class: Google::Apis::ConfigV1::ProviderConfig, decorator: Google::Apis::ConfigV1::ProviderConfig::Representation
+      
           property :quota_validation, as: 'quotaValidation'
           property :quota_validation_results, as: 'quotaValidationResults'
           property :service_account, as: 'serviceAccount'
@@ -743,6 +1127,8 @@ module Google
       class TerraformBlueprint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :external_values, as: 'externalValues', class: Google::Apis::ConfigV1::ExternalValueSource, decorator: Google::Apis::ConfigV1::ExternalValueSource::Representation
+      
           property :gcs_source, as: 'gcsSource'
           property :git_source, as: 'gitSource', class: Google::Apis::ConfigV1::GitSource, decorator: Google::Apis::ConfigV1::GitSource::Representation
       

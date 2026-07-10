@@ -101,6 +101,182 @@ module Google
         end
       end
       
+      # The additional spec content for the spec. This contains the metadata and the
+      # last update time for the additional spec content.
+      class GoogleCloudApihubV1AdditionalSpecContent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the spec content was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The labels of the spec content e.g. specboost addon version.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. The type of the spec content.
+        # Corresponds to the JSON property `specContentType`
+        # @return [String]
+        attr_accessor :spec_content_type
+      
+        # The spec contents.
+        # Corresponds to the JSON property `specContents`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1SpecContents]
+        attr_accessor :spec_contents
+      
+        # Output only. The time at which the spec content was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @spec_content_type = args[:spec_content_type] if args.key?(:spec_content_type)
+          @spec_contents = args[:spec_contents] if args.key?(:spec_contents)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Addon resource.
+      class GoogleCloudApihubV1Addon
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for the addon.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig]
+        attr_accessor :config
+      
+        # Output only. The time at which the addon was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The data source on which the addon operates. This determines which
+        # field in the `config` oneof is used.
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # Optional. The description of the addon.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the addon.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The name of the addon to enable. Format: `projects/`project`/
+        # locations/`location`/addons/`addon``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the addon.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time at which the addon was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration for the addon.
+      class GoogleCloudApihubV1AddonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for addons which act on all data in the API hub. This is used to
+        # specify if the addon is enabled for all data in the API hub.
+        # Corresponds to the JSON property `allDataAddonConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AllDataAddonConfig]
+        attr_accessor :all_data_addon_config
+      
+        # Configuration for gateway plugin addons. This is used to specify the list of
+        # gateway plugin configs for which the addon is enabled.
+        # Corresponds to the JSON property `gatewayPluginAddonConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1GatewayPluginAddonConfig]
+        attr_accessor :gateway_plugin_addon_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_data_addon_config = args[:all_data_addon_config] if args.key?(:all_data_addon_config)
+          @gateway_plugin_addon_config = args[:gateway_plugin_addon_config] if args.key?(:gateway_plugin_addon_config)
+        end
+      end
+      
+      # The configuration for Agent Registry sync.
+      class GoogleCloudApihubV1AgentRegistrySyncConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the MCP data sync to the Agent Registry will be disabled.
+        # The default value is false.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # Configuration for addons which act on all data in the API hub. This is used to
+      # specify if the addon is enabled for all data in the API hub.
+      class GoogleCloudApihubV1AllDataAddonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. If true, the addon is enabled for all data in the API hub.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # The value that can be assigned to the attribute when the data type is enum.
       class GoogleCloudApihubV1AllowedValue
         include Google::Apis::Core::Hashable
@@ -203,7 +379,9 @@ module Google
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Documentation]
         attr_accessor :documentation
       
-        # Optional. Fingerprint of the API resource.
+        # Optional. Fingerprint of the API resource. This must be unique for each API
+        # resource. It can neither be unset nor be updated to an existing fingerprint of
+        # another API resource.
         # Corresponds to the JSON property `fingerprint`
         # @return [String]
         attr_accessor :fingerprint
@@ -563,6 +741,99 @@ module Google
         end
       end
       
+      # The view of an API.
+      class GoogleCloudApihubV1ApiView
+        include Google::Apis::Core::Hashable
+      
+        # A flattened view of an API, its version and one of the linked deployments.
+        # Corresponds to the JSON property `mcpServerView`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1FlattenedApiVersionDeploymentView]
+        attr_accessor :mcp_server_view
+      
+        # A flattened view of an API, its version, one of its operations and one of the
+        # linked deployments. If there are no deployments linked to the operation then
+        # the result will be empty.
+        # Corresponds to the JSON property `mcpToolView`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView]
+        attr_accessor :mcp_tool_view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mcp_server_view = args[:mcp_server_view] if args.key?(:mcp_server_view)
+          @mcp_tool_view = args[:mcp_tool_view] if args.key?(:mcp_tool_view)
+        end
+      end
+      
+      # Configuration for Apigee Edge gateways. Applicability of a filter is
+      # determined by the filter being provided. If none of the filters are provided
+      # the addon will be enabled for all data brought in by the gateway plugin
+      # instance.
+      class GoogleCloudApihubV1ApigeeEdgeConfig
+        include Google::Apis::Core::Hashable
+      
+        # Filter for environments.
+        # Corresponds to the JSON property `environmentFilter`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter]
+        attr_accessor :environment_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_filter = args[:environment_filter] if args.key?(:environment_filter)
+        end
+      end
+      
+      # Configuration for Apigee OPDK gateways. Applicability of a filter is
+      # determined by the filter being provided. If none of the filters are provided
+      # the addon will be enabled for all data brought in by the gateway plugin
+      # instance.
+      class GoogleCloudApihubV1ApigeeOpdkConfig
+        include Google::Apis::Core::Hashable
+      
+        # Filter for environments.
+        # Corresponds to the JSON property `environmentFilter`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter]
+        attr_accessor :environment_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_filter = args[:environment_filter] if args.key?(:environment_filter)
+        end
+      end
+      
+      # Configuration for Apigee X and Apigee Hybrid gateways. Applicability of a
+      # filter is determined by the filter being provided. If none of the filters are
+      # provided the addon will be enabled for all data brought in by the gateway
+      # plugin instance.
+      class GoogleCloudApihubV1ApigeeXHybridConfig
+        include Google::Apis::Core::Hashable
+      
+        # Filter for environments.
+        # Corresponds to the JSON property `environmentFilter`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1EnvironmentFilter]
+        attr_accessor :environment_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment_filter = args[:environment_filter] if args.key?(:environment_filter)
+        end
+      end
+      
       # The details of the Application Integration endpoint to be triggered for
       # curation.
       class GoogleCloudApihubV1ApplicationIntegrationEndpointDetails
@@ -842,6 +1113,11 @@ module Google
       class GoogleCloudApihubV1Config
         include Google::Apis::Core::Hashable
       
+        # The configuration for Agent Registry sync.
+        # Corresponds to the JSON property `agentRegistrySyncConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AgentRegistrySyncConfig]
+        attr_accessor :agent_registry_sync_config
+      
         # Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
         # The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/
         # keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the location must match the
@@ -876,6 +1152,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_registry_sync_config = args[:agent_registry_sync_config] if args.key?(:agent_registry_sync_config)
           @cmek_key_name = args[:cmek_key_name] if args.key?(:cmek_key_name)
           @disable_search = args[:disable_search] if args.key?(:disable_search)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
@@ -1461,15 +1738,22 @@ module Google
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
         attr_accessor :environment
       
+        # The attribute values associated with resource.
+        # Corresponds to the JSON property `managementUrl`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
+        attr_accessor :management_url
+      
         # Identifier. The name of the deployment. Format: `projects/`project`/locations/`
         # location`/deployments/`deployment``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. A uri that uniquely identfies the deployment within a particular
-        # gateway. For example, if the runtime resource is of type APIGEE_PROXY, then
-        # this field will be a combination of org, proxy name and environment.
+        # Required. The resource URI identifies the deployment within its gateway. For
+        # Apigee gateways, its recommended to use the format: organizations/`org`/
+        # environments/`env`/apis/`api`. For ex: if a proxy with name `orders` is
+        # deployed in `staging` environment of `cymbal` organization, the resource URI
+        # would be: `organizations/cymbal/environments/staging/apis/orders`.
         # Corresponds to the JSON property `resourceUri`
         # @return [String]
         attr_accessor :resource_uri
@@ -1479,11 +1763,29 @@ module Google
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
         attr_accessor :slo
       
+        # Optional. The environment at source for the deployment. For example: prod, dev,
+        # staging, etc.
+        # Corresponds to the JSON property `sourceEnvironment`
+        # @return [String]
+        attr_accessor :source_environment
+      
         # Output only. The list of sources and metadata from the sources of the
         # deployment.
         # Corresponds to the JSON property `sourceMetadata`
         # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata>]
         attr_accessor :source_metadata
+      
+        # Optional. The project to which the deployment belongs. For Google Cloud
+        # gateways, this will refer to the project identifier. For others like Edge/OPDK,
+        # this will refer to the org identifier.
+        # Corresponds to the JSON property `sourceProject`
+        # @return [String]
+        attr_accessor :source_project
+      
+        # The attribute values associated with resource.
+        # Corresponds to the JSON property `sourceUri`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
+        attr_accessor :source_uri
       
         # Output only. The time at which the deployment was last updated.
         # Corresponds to the JSON property `updateTime`
@@ -1505,10 +1807,14 @@ module Google
           @documentation = args[:documentation] if args.key?(:documentation)
           @endpoints = args[:endpoints] if args.key?(:endpoints)
           @environment = args[:environment] if args.key?(:environment)
+          @management_url = args[:management_url] if args.key?(:management_url)
           @name = args[:name] if args.key?(:name)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
           @slo = args[:slo] if args.key?(:slo)
+          @source_environment = args[:source_environment] if args.key?(:source_environment)
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
+          @source_project = args[:source_project] if args.key?(:source_project)
+          @source_uri = args[:source_uri] if args.key?(:source_uri)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1584,6 +1890,187 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Respresents an API Observation observed in one of the sources.
+      class GoogleCloudApihubV1DiscoveredApiObservation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of observed API Operations.
+        # Corresponds to the JSON property `apiOperationCount`
+        # @return [Fixnum]
+        attr_accessor :api_operation_count
+      
+        # Output only. Create time stamp of the observation in API Hub.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The hostname of requests processed for this Observation.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Output only. The number of known API Operations.
+        # Corresponds to the JSON property `knownOperationsCount`
+        # @return [Fixnum]
+        attr_accessor :known_operations_count
+      
+        # Optional. Last event detected time stamp
+        # Corresponds to the JSON property `lastEventDetectedTime`
+        # @return [String]
+        attr_accessor :last_event_detected_time
+      
+        # Identifier. The name of the discovered API Observation. Format: `projects/`
+        # project`/locations/`location`/discoveredApiObservations/`
+        # discovered_api_observation``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. For an observation pushed from a Google Cloud resource, this would
+        # be the Google Cloud project id.
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
+        # Optional. The IP address (IPv4 or IPv6) of the origin server that the request
+        # was sent to. This field can include port information. Examples: `"192.168.1.1"`
+        # , `"10.0.0.1:80"`, `"FE80::0202:B3FF:FE1E:8329"`.
+        # Corresponds to the JSON property `serverIps`
+        # @return [Array<String>]
+        attr_accessor :server_ips
+      
+        # Optional. The location of the observation source.
+        # Corresponds to the JSON property `sourceLocations`
+        # @return [Array<String>]
+        attr_accessor :source_locations
+      
+        # SourceMetadata represents the metadata for a resource at the source.
+        # Corresponds to the JSON property `sourceMetadata`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata]
+        attr_accessor :source_metadata
+      
+        # Optional. The type of the source from which the observation was collected.
+        # Corresponds to the JSON property `sourceTypes`
+        # @return [Array<String>]
+        attr_accessor :source_types
+      
+        # Optional. Style of ApiObservation
+        # Corresponds to the JSON property `style`
+        # @return [String]
+        attr_accessor :style
+      
+        # Output only. The number of unknown API Operations.
+        # Corresponds to the JSON property `unknownOperationsCount`
+        # @return [Fixnum]
+        attr_accessor :unknown_operations_count
+      
+        # Output only. Update time stamp of the observation in API Hub.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_operation_count = args[:api_operation_count] if args.key?(:api_operation_count)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @known_operations_count = args[:known_operations_count] if args.key?(:known_operations_count)
+          @last_event_detected_time = args[:last_event_detected_time] if args.key?(:last_event_detected_time)
+          @name = args[:name] if args.key?(:name)
+          @origin = args[:origin] if args.key?(:origin)
+          @server_ips = args[:server_ips] if args.key?(:server_ips)
+          @source_locations = args[:source_locations] if args.key?(:source_locations)
+          @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
+          @source_types = args[:source_types] if args.key?(:source_types)
+          @style = args[:style] if args.key?(:style)
+          @unknown_operations_count = args[:unknown_operations_count] if args.key?(:unknown_operations_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # DiscoveredApiOperation represents an API Operation observed in one of the
+      # sources.
+      class GoogleCloudApihubV1DiscoveredApiOperation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The classification of the discovered API operation.
+        # Corresponds to the JSON property `classification`
+        # @return [String]
+        attr_accessor :classification
+      
+        # Optional. The number of occurrences of this API Operation.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Output only. Create time stamp of the discovered API operation in API Hub.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. First seen time stamp
+        # Corresponds to the JSON property `firstSeenTime`
+        # @return [String]
+        attr_accessor :first_seen_time
+      
+        # An HTTP-based API Operation, sometimes called a "REST" Operation.
+        # Corresponds to the JSON property `httpOperation`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperationDetails]
+        attr_accessor :http_operation
+      
+        # Optional. Last seen time stamp
+        # Corresponds to the JSON property `lastSeenTime`
+        # @return [String]
+        attr_accessor :last_seen_time
+      
+        # Output only. The list of matched results for the discovered API operation.
+        # This will be populated only if the classification is known. The current
+        # usecase is for a single match. Keeping it repeated to support multiple matches
+        # in future.
+        # Corresponds to the JSON property `matchResults`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1MatchResult>]
+        attr_accessor :match_results
+      
+        # Identifier. The name of the discovered API Operation. Format: `projects/`
+        # project`/locations/`location`/discoveredApiObservations/`
+        # discovered_api_observation`/discoveredApiOperations/`discovered_api_operation``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # SourceMetadata represents the metadata for a resource at the source.
+        # Corresponds to the JSON property `sourceMetadata`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata]
+        attr_accessor :source_metadata
+      
+        # Output only. Update time stamp of the discovered API operation in API Hub.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classification = args[:classification] if args.key?(:classification)
+          @count = args[:count] if args.key?(:count)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @first_seen_time = args[:first_seen_time] if args.key?(:first_seen_time)
+          @http_operation = args[:http_operation] if args.key?(:http_operation)
+          @last_seen_time = args[:last_seen_time] if args.key?(:last_seen_time)
+          @match_results = args[:match_results] if args.key?(:match_results)
+          @name = args[:name] if args.key?(:name)
+          @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1676,6 +2163,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Filter for environments.
+      class GoogleCloudApihubV1EnvironmentFilter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates if this filter should match all environments or only a
+        # subset of environments. If set to true, all environments are matched.
+        # Corresponds to the JSON property `allEnvironments`
+        # @return [Boolean]
+        attr_accessor :all_environments
+        alias_method :all_environments?, :all_environments
+      
+        # Optional. If provided, only environments in this list are matched. This field
+        # is ignored if `all_environments` is true.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<String>]
+        attr_accessor :environments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_environments = args[:all_environments] if args.key?(:all_environments)
+          @environments = args[:environments] if args.key?(:environments)
         end
       end
       
@@ -1797,6 +2312,181 @@ module Google
         end
       end
       
+      # The FetchAdditionalSpecContent method's response.
+      class GoogleCloudApihubV1FetchAdditionalSpecContentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The additional spec content for the spec. This contains the metadata and the
+        # last update time for the additional spec content.
+        # Corresponds to the JSON property `additionalSpecContent`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AdditionalSpecContent]
+        attr_accessor :additional_spec_content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_spec_content = args[:additional_spec_content] if args.key?(:additional_spec_content)
+        end
+      end
+      
+      # A flattened view of an API, its version and one of the linked deployments.
+      class GoogleCloudApihubV1FlattenedApiVersionDeploymentView
+        include Google::Apis::Core::Hashable
+      
+        # An API resource in the API Hub.
+        # Corresponds to the JSON property `api`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Api]
+        attr_accessor :api
+      
+        # Details of the deployment where APIs are hosted. A deployment could represent
+        # an Apigee proxy, API gateway, other Google Cloud services or non-Google Cloud
+        # services as well. A deployment entity is a root level entity in the API hub
+        # and exists independent of any API.
+        # Corresponds to the JSON property `deployment`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Deployment]
+        attr_accessor :deployment
+      
+        # Represents a version of the API resource in API hub. This is also referred to
+        # as the API version.
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Version]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api = args[:api] if args.key?(:api)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # A flattened view of an API, its version, one of its operations and one of the
+      # linked deployments. If there are no deployments linked to the operation then
+      # the result will be empty.
+      class GoogleCloudApihubV1FlattenedApiVersionOperationDeploymentView
+        include Google::Apis::Core::Hashable
+      
+        # An API resource in the API Hub.
+        # Corresponds to the JSON property `api`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Api]
+        attr_accessor :api
+      
+        # Represents an operation contained in an API version in the API Hub. An
+        # operation is added/updated/deleted in an API version when a new spec is added
+        # or an existing spec is updated/deleted in a version. Currently, an operation
+        # will be created only corresponding to OpenAPI spec as parsing is supported for
+        # OpenAPI spec. Alternatively operations can be managed via create,update and
+        # delete APIs, creation of apiOperation can be possible only for version with no
+        # parsed operations and update/delete can be possible only for operations
+        # created via create API.
+        # Corresponds to the JSON property `apiOperation`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ApiOperation]
+        attr_accessor :api_operation
+      
+        # Details of the deployment where APIs are hosted. A deployment could represent
+        # an Apigee proxy, API gateway, other Google Cloud services or non-Google Cloud
+        # services as well. A deployment entity is a root level entity in the API hub
+        # and exists independent of any API.
+        # Corresponds to the JSON property `deployment`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Deployment]
+        attr_accessor :deployment
+      
+        # Represents a version of the API resource in API hub. This is also referred to
+        # as the API version.
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Version]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api = args[:api] if args.key?(:api)
+          @api_operation = args[:api_operation] if args.key?(:api_operation)
+          @deployment = args[:deployment] if args.key?(:deployment)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for gateway plugin addons. This is used to specify the list of
+      # gateway plugin configs for which the addon is enabled.
+      class GoogleCloudApihubV1GatewayPluginAddonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of gateway plugin configs for which the addon is enabled.
+        # Each gateway plugin config should have a unique plugin instance.
+        # Corresponds to the JSON property `gatewayPluginConfigs`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1GatewayPluginConfig>]
+        attr_accessor :gateway_plugin_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_plugin_configs = args[:gateway_plugin_configs] if args.key?(:gateway_plugin_configs)
+        end
+      end
+      
+      # Configuration for a gateway plugin. This is used to specify configs for
+      # different gateways.
+      class GoogleCloudApihubV1GatewayPluginConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Apigee Edge gateways. Applicability of a filter is
+        # determined by the filter being provided. If none of the filters are provided
+        # the addon will be enabled for all data brought in by the gateway plugin
+        # instance.
+        # Corresponds to the JSON property `apigeeEdgeConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeEdgeConfig]
+        attr_accessor :apigee_edge_config
+      
+        # Configuration for Apigee OPDK gateways. Applicability of a filter is
+        # determined by the filter being provided. If none of the filters are provided
+        # the addon will be enabled for all data brought in by the gateway plugin
+        # instance.
+        # Corresponds to the JSON property `apigeeOpdkConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeOpdkConfig]
+        attr_accessor :apigee_opdk_config
+      
+        # Configuration for Apigee X and Apigee Hybrid gateways. Applicability of a
+        # filter is determined by the filter being provided. If none of the filters are
+        # provided the addon will be enabled for all data brought in by the gateway
+        # plugin instance.
+        # Corresponds to the JSON property `apigeeXHybridConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeXHybridConfig]
+        attr_accessor :apigee_x_hybrid_config
+      
+        # Required. The name of the gateway plugin instance for which the config is to
+        # be specified. Format: projects/`project`/locations/`location`/plugins/`plugin`/
+        # pluginInstances/`plugin_instance`
+        # Corresponds to the JSON property `pluginInstance`
+        # @return [String]
+        attr_accessor :plugin_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apigee_edge_config = args[:apigee_edge_config] if args.key?(:apigee_edge_config)
+          @apigee_opdk_config = args[:apigee_opdk_config] if args.key?(:apigee_opdk_config)
+          @apigee_x_hybrid_config = args[:apigee_x_hybrid_config] if args.key?(:apigee_x_hybrid_config)
+          @plugin_instance = args[:plugin_instance] if args.key?(:plugin_instance)
+        end
+      end
+      
       # Config for Google service account authentication.
       class GoogleCloudApihubV1GoogleServiceAccountConfig
         include Google::Apis::Core::Hashable
@@ -1815,6 +2505,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # An aggregation of HTTP header occurrences.
+      class GoogleCloudApihubV1Header
+        include Google::Apis::Core::Hashable
+      
+        # The number of occurrences of this Header across transactions.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Data type of header
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Header name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1906,6 +2627,93 @@ module Google
         end
       end
       
+      # An HTTP-based API Operation, sometimes called a "REST" Operation.
+      class GoogleCloudApihubV1HttpOperationDetails
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP Operation.
+        # Corresponds to the JSON property `httpOperation`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperation]
+        attr_accessor :http_operation
+      
+        # Optional. Path params of HttpOperation
+        # Corresponds to the JSON property `pathParams`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1PathParam>]
+        attr_accessor :path_params
+      
+        # Optional. Query params of HttpOperation
+        # Corresponds to the JSON property `queryParams`
+        # @return [Hash<String,Google::Apis::ApihubV1::GoogleCloudApihubV1QueryParam>]
+        attr_accessor :query_params
+      
+        # An aggregation of HTTP requests.
+        # Corresponds to the JSON property `request`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1HttpRequest]
+        attr_accessor :request
+      
+        # An aggregation of HTTP responses.
+        # Corresponds to the JSON property `response`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1HttpResponse]
+        attr_accessor :response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_operation = args[:http_operation] if args.key?(:http_operation)
+          @path_params = args[:path_params] if args.key?(:path_params)
+          @query_params = args[:query_params] if args.key?(:query_params)
+          @request = args[:request] if args.key?(:request)
+          @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # An aggregation of HTTP requests.
+      class GoogleCloudApihubV1HttpRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Unordered map from header name to header metadata
+        # Corresponds to the JSON property `headers`
+        # @return [Hash<String,Google::Apis::ApihubV1::GoogleCloudApihubV1Header>]
+        attr_accessor :headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+        end
+      end
+      
+      # An aggregation of HTTP responses.
+      class GoogleCloudApihubV1HttpResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Unordered map from header name to header metadata
+        # Corresponds to the JSON property `headers`
+        # @return [Hash<String,Google::Apis::ApihubV1::GoogleCloudApihubV1Header>]
+        attr_accessor :headers
+      
+        # Optional. Map of status code to observed count
+        # Corresponds to the JSON property `responseCodes`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :response_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+          @response_codes = args[:response_codes] if args.key?(:response_codes)
+        end
+      end
+      
       # Issue contains the details of a single issue found by the linter.
       class GoogleCloudApihubV1Issue
         include Google::Apis::Core::Hashable
@@ -1970,6 +2778,13 @@ module Google
         # @return [String]
         attr_accessor :result
       
+        # Output only. The result metadata of the last execution of the plugin instance.
+        # This will be a string representation of a JSON object and will be available on
+        # successful execution.
+        # Corresponds to the JSON property `resultMetadata`
+        # @return [String]
+        attr_accessor :result_metadata
+      
         # Output only. The last execution start time of the plugin instance.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -1984,6 +2799,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @error_message = args[:error_message] if args.key?(:error_message)
           @result = args[:result] if args.key?(:result)
+          @result_metadata = args[:result_metadata] if args.key?(:result_metadata)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
@@ -2047,6 +2863,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The ListAddons method's response.
+      class GoogleCloudApihubV1ListAddonsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of addons.
+        # Corresponds to the JSON property `addons`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1Addon>]
+        attr_accessor :addons
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @addons = args[:addons] if args.key?(:addons)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -2202,6 +3044,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deployments = args[:deployments] if args.key?(:deployments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing DiscoveredApiObservations
+      class GoogleCloudApihubV1ListDiscoveredApiObservationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The DiscoveredApiObservation from the specified project and location.
+        # Corresponds to the JSON property `discoveredApiObservations`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiObservation>]
+        attr_accessor :discovered_api_observations
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovered_api_observations = args[:discovered_api_observations] if args.key?(:discovered_api_observations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing DiscoveredApiOperations
+      class GoogleCloudApihubV1ListDiscoveredApiOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The DiscoveredApiOperations from the specified project, location and
+        # DiscoveredApiObservation.
+        # Corresponds to the JSON property `discoveredApiOperations`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1DiscoveredApiOperation>]
+        attr_accessor :discovered_api_operations
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovered_api_operations = args[:discovered_api_operations] if args.key?(:discovered_api_operations)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2430,6 +3325,146 @@ module Google
         end
       end
       
+      # The ManageAddonConfig method's request.
+      class GoogleCloudApihubV1ManageAddonConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for the addon.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig]
+        attr_accessor :config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+        end
+      end
+      
+      # The ManagePluginInstanceSourceData method's request.
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Action to be performed.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. Data to be managed.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Required. Type of data to be managed.
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Required. Relative path of data being managed for a given plugin instance.
+        # Corresponds to the JSON property `relativePath`
+        # @return [String]
+        attr_accessor :relative_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @data = args[:data] if args.key?(:data)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @relative_path = args[:relative_path] if args.key?(:relative_path)
+        end
+      end
+      
+      # The ManagePluginInstanceSourceData method's response.
+      class GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # MatchResult represents the result of matching a discovered API operation with
+      # a catalog API operation.
+      class GoogleCloudApihubV1MatchResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the matched API Operation. Format: `projects/`project`
+        # /locations/`location`/apis/`api`/versions/`version`/operations/`operation``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Details describing an MCP Tool.
+      class GoogleCloudApihubV1McpTool
+        include Google::Apis::Core::Hashable
+      
+        # Annotations for a Tool.
+        # Corresponds to the JSON property `annotations`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ToolAnnotations]
+        attr_accessor :annotations
+      
+        # Optional. Description of what the tool does.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The operation schema needed for an operation.
+        # Corresponds to the JSON property `inputSchema`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1OperationSchema]
+        attr_accessor :input_schema
+      
+        # Required. The name of the tool, unique within its parent scope (version).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The operation schema needed for an operation.
+        # Corresponds to the JSON property `outputSchema`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1OperationSchema]
+        attr_accessor :output_schema
+      
+        # Optional. Optional title for the tool.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @description = args[:description] if args.key?(:description)
+          @input_schema = args[:input_schema] if args.key?(:input_schema)
+          @name = args[:name] if args.key?(:name)
+          @output_schema = args[:output_schema] if args.key?(:output_schema)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # The config variable value of data type multi int.
       class GoogleCloudApihubV1MultiIntValues
         include Google::Apis::Core::Hashable
@@ -2574,6 +3609,11 @@ module Google
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperation]
         attr_accessor :http_operation
       
+        # Details describing an MCP Tool.
+        # Corresponds to the JSON property `mcpTool`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1McpTool]
+        attr_accessor :mcp_tool
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2584,6 +3624,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @documentation = args[:documentation] if args.key?(:documentation)
           @http_operation = args[:http_operation] if args.key?(:http_operation)
+          @mcp_tool = args[:mcp_tool] if args.key?(:mcp_tool)
         end
       end
       
@@ -2646,6 +3687,26 @@ module Google
         end
       end
       
+      # The operation schema needed for an operation.
+      class GoogleCloudApihubV1OperationSchema
+        include Google::Apis::Core::Hashable
+      
+        # The JSON schema. Only valid JSON is accepted but semantic validation of schema
+        # is not supported right now.
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Hash<String,Object>]
+        attr_accessor :json_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
+        end
+      end
+      
       # Owner details.
       class GoogleCloudApihubV1Owner
         include Google::Apis::Core::Hashable
@@ -2698,11 +3759,38 @@ module Google
         end
       end
       
+      # HTTP Path parameter.
+      class GoogleCloudApihubV1PathParam
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Data type of path param
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Optional. Segment location in the path, 1-indexed
+        # Corresponds to the JSON property `position`
+        # @return [Fixnum]
+        attr_accessor :position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @position = args[:position] if args.key?(:position)
+        end
+      end
+      
       # A plugin resource in the API Hub.
       class GoogleCloudApihubV1Plugin
         include Google::Apis::Core::Hashable
       
-        # Optional. The configuration of actions supported by the plugin.
+        # Optional. The configuration of actions supported by the plugin. **REQUIRED**:
+        # This field must be provided when creating or updating a Plugin. The server
+        # will reject requests if this field is missing.
         # Corresponds to the JSON property `actionsConfig`
         # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1PluginActionConfig>]
         attr_accessor :actions_config
@@ -2733,6 +3821,11 @@ module Google
         # Corresponds to the JSON property `documentation`
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1Documentation]
         attr_accessor :documentation
+      
+        # Optional. The type of the gateway.
+        # Corresponds to the JSON property `gatewayType`
+        # @return [String]
+        attr_accessor :gateway_type
       
         # The information related to the service implemented by the plugin developer,
         # used to invoke the plugin's functionality.
@@ -2787,6 +3880,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @documentation = args[:documentation] if args.key?(:documentation)
+          @gateway_type = args[:gateway_type] if args.key?(:gateway_type)
           @hosting_service = args[:hosting_service] if args.key?(:hosting_service)
           @name = args[:name] if args.key?(:name)
           @ownership_type = args[:ownership_type] if args.key?(:ownership_type)
@@ -2885,6 +3979,21 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The source environment's config present in the gateway instance
+        # linked to the plugin instance. The key is the `source_environment` name from
+        # the SourceEnvironment message.
+        # Corresponds to the JSON property `sourceEnvironmentsConfig`
+        # @return [Hash<String,Google::Apis::ApihubV1::GoogleCloudApihubV1SourceEnvironment>]
+        attr_accessor :source_environments_config
+      
+        # Optional. The source project id of the plugin instance. This will be the id of
+        # runtime project in case of Google Cloud based plugins and org id in case of
+        # non-Google Cloud based plugins. This field will be a required field for Google
+        # provided on-ramp plugins.
+        # Corresponds to the JSON property `sourceProjectId`
+        # @return [String]
+        attr_accessor :source_project_id
+      
         # Output only. The current state of the plugin instance (e.g., enabled, disabled,
         # provisioning).
         # Corresponds to the JSON property `state`
@@ -2909,6 +4018,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @error_message = args[:error_message] if args.key?(:error_message)
           @name = args[:name] if args.key?(:name)
+          @source_environments_config = args[:source_environments_config] if args.key?(:source_environments_config)
+          @source_project_id = args[:source_project_id] if args.key?(:source_project_id)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -2935,6 +4046,11 @@ module Google
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ExecutionStatus]
         attr_accessor :hub_instance_action
       
+        # The configuration of resources created for a given plugin instance action.
+        # Corresponds to the JSON property `resourceConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ResourceConfig]
+        attr_accessor :resource_config
+      
         # Optional. The schedule for this plugin instance action. This can only be set
         # if the plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
         # Corresponds to the JSON property `scheduleCronExpression`
@@ -2946,6 +4062,12 @@ module Google
         # Corresponds to the JSON property `scheduleTimeZone`
         # @return [String]
         attr_accessor :schedule_time_zone
+      
+        # Optional. The service account used to publish data. Note, the service account
+        # will only be accepted for non-Google Cloud plugins like OPDK.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
       
         # Output only. The current state of the plugin action in the plugin instance.
         # Corresponds to the JSON property `state`
@@ -2961,8 +4083,10 @@ module Google
           @action_id = args[:action_id] if args.key?(:action_id)
           @curation_config = args[:curation_config] if args.key?(:curation_config)
           @hub_instance_action = args[:hub_instance_action] if args.key?(:hub_instance_action)
+          @resource_config = args[:resource_config] if args.key?(:resource_config)
           @schedule_cron_expression = args[:schedule_cron_expression] if args.key?(:schedule_cron_expression)
           @schedule_time_zone = args[:schedule_time_zone] if args.key?(:schedule_time_zone)
+          @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -3045,6 +4169,38 @@ module Google
         end
       end
       
+      # An aggregation of HTTP query parameter occurrences.
+      class GoogleCloudApihubV1QueryParam
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of occurrences of this query parameter across
+        # transactions.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Optional. Data type of path param
+        # Corresponds to the JSON property `dataType`
+        # @return [String]
+        attr_accessor :data_type
+      
+        # Required. Name of query param
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @data_type = args[:data_type] if args.key?(:data_type)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Object describing where in the file the issue was found.
       class GoogleCloudApihubV1Range
         include Google::Apis::Core::Hashable
@@ -3067,6 +4223,57 @@ module Google
         def update!(**args)
           @end = args[:end] if args.key?(:end)
           @start = args[:start] if args.key?(:start)
+        end
+      end
+      
+      # The configuration of resources created for a given plugin instance action.
+      class GoogleCloudApihubV1ResourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The type of the action.
+        # Corresponds to the JSON property `actionType`
+        # @return [String]
+        attr_accessor :action_type
+      
+        # Output only. The pubsub topic to publish the data to. Format is projects/`
+        # project`/topics/`topic`
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_type = args[:action_type] if args.key?(:action_type)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+        end
+      end
+      
+      # The RetrieveApiViews method's response.
+      class GoogleCloudApihubV1RetrieveApiViewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of API views.
+        # Corresponds to the JSON property `apiViews`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1ApiView>]
+        attr_accessor :api_views
+      
+        # Next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_views = args[:api_views] if args.key?(:api_views)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -3264,6 +4471,46 @@ module Google
         end
       end
       
+      # Message representing the source environment details.
+      class GoogleCloudApihubV1SourceEnvironment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The time at which the environment was created at the source.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The name of the environment at the source. This should map to
+        # Deployment.
+        # Corresponds to the JSON property `sourceEnvironment`
+        # @return [String]
+        attr_accessor :source_environment
+      
+        # The location where additional information about source environments can be
+        # found. The location should be relative path of the environment manifest with
+        # respect to a plugin instance.
+        # Corresponds to the JSON property `sourceEnvironmentUri`
+        # @return [String]
+        attr_accessor :source_environment_uri
+      
+        # Optional. The time at which the environment was last updated at the source.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @source_environment = args[:source_environment] if args.key?(:source_environment)
+          @source_environment_uri = args[:source_environment_uri] if args.key?(:source_environment_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # SourceMetadata represents the metadata for a resource at the source.
       class GoogleCloudApihubV1SourceMetadata
         include Google::Apis::Core::Hashable
@@ -3312,6 +4559,11 @@ module Google
       # supported for OpenAPI spec currently.
       class GoogleCloudApihubV1Spec
         include Google::Apis::Core::Hashable
+      
+        # Output only. The additional spec contents for the spec.
+        # Corresponds to the JSON property `additionalSpecContents`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1AdditionalSpecContent>]
+        attr_accessor :additional_spec_contents
       
         # Optional. The list of user defined attributes associated with the spec. The
         # key is the attribute name. It will be of the format: `projects/`project`/
@@ -3391,6 +4643,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @additional_spec_contents = args[:additional_spec_contents] if args.key?(:additional_spec_contents)
           @attributes = args[:attributes] if args.key?(:attributes)
           @contents = args[:contents] if args.key?(:contents)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -3600,6 +4853,60 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # Annotations for a Tool.
+      class GoogleCloudApihubV1ToolAnnotations
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional hints which may help tools and not covered in defaults.
+        # Corresponds to the JSON property `additionalHints`
+        # @return [Hash<String,String>]
+        attr_accessor :additional_hints
+      
+        # Optional. Hint indicating if the tool may have destructive side effects.
+        # Corresponds to the JSON property `destructiveHint`
+        # @return [Boolean]
+        attr_accessor :destructive_hint
+        alias_method :destructive_hint?, :destructive_hint
+      
+        # Optional. Hint indicating if the tool is idempotent.
+        # Corresponds to the JSON property `idempotentHint`
+        # @return [Boolean]
+        attr_accessor :idempotent_hint
+        alias_method :idempotent_hint?, :idempotent_hint
+      
+        # Optional. Hint indicating if the tool interacts with the open world (e.g.,
+        # internet).
+        # Corresponds to the JSON property `openWorldHint`
+        # @return [Boolean]
+        attr_accessor :open_world_hint
+        alias_method :open_world_hint?, :open_world_hint
+      
+        # Optional. Hint indicating if the tool is read-only.
+        # Corresponds to the JSON property `readOnlyHint`
+        # @return [Boolean]
+        attr_accessor :read_only_hint
+        alias_method :read_only_hint?, :read_only_hint
+      
+        # Optional. A human-readable title for the tool (if different from Tool.title).
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_hints = args[:additional_hints] if args.key?(:additional_hints)
+          @destructive_hint = args[:destructive_hint] if args.key?(:destructive_hint)
+          @idempotent_hint = args[:idempotent_hint] if args.key?(:idempotent_hint)
+          @open_world_hint = args[:open_world_hint] if args.key?(:open_world_hint)
+          @read_only_hint = args[:read_only_hint] if args.key?(:read_only_hint)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -3968,6 +5275,14 @@ module Google
         # @return [Array<Google::Apis::ApihubV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3976,6 +5291,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

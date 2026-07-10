@@ -1759,6 +1759,7 @@ module Google
       class GetWorkerStacktracesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
           property :worker_id, as: 'workerId'
         end
       end
@@ -1870,6 +1871,7 @@ module Google
           hash :labels, as: 'labels'
           property :location, as: 'location'
           property :name, as: 'name'
+          property :pausable, as: 'pausable'
           property :pipeline_description, as: 'pipelineDescription', class: Google::Apis::DataflowV1b3::PipelineDescription, decorator: Google::Apis::DataflowV1b3::PipelineDescription::Representation
       
           property :project_id, as: 'projectId'
@@ -2202,6 +2204,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :location, as: 'location'
           property :name, as: 'name'
+          property :sha256, as: 'sha256'
         end
       end
       
@@ -2479,6 +2482,9 @@ module Google
       class RuntimeUpdatableParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :acceptable_backlog_duration, as: 'acceptableBacklogDuration'
+          property :autoscaling_tier, as: 'autoscalingTier'
+          property :latency_tier, as: 'latencyTier'
           property :max_num_workers, as: 'maxNumWorkers'
           property :min_num_workers, as: 'minNumWorkers'
           property :worker_utilization_hint, as: 'workerUtilizationHint'
@@ -2952,6 +2958,7 @@ module Google
       
           collection :streaming_computation_configs, as: 'streamingComputationConfigs', class: Google::Apis::DataflowV1b3::StreamingComputationConfig, decorator: Google::Apis::DataflowV1b3::StreamingComputationConfig::Representation
       
+          property :streaming_engine_state_tag_encoding_version, as: 'streamingEngineStateTagEncodingVersion'
           hash :user_step_to_state_family_name_map, as: 'userStepToStateFamilyNameMap'
           property :user_worker_runner_v1_settings, :base64 => true, as: 'userWorkerRunnerV1Settings'
           property :user_worker_runner_v2_settings, :base64 => true, as: 'userWorkerRunnerV2Settings'
@@ -3312,6 +3319,8 @@ module Google
           collection :data_disks, as: 'dataDisks', class: Google::Apis::DataflowV1b3::Disk, decorator: Google::Apis::DataflowV1b3::Disk::Representation
       
           property :default_package_set, as: 'defaultPackageSet'
+          property :disk_provisioned_iops, :numeric_string => true, as: 'diskProvisionedIops'
+          property :disk_provisioned_throughput_mibps, :numeric_string => true, as: 'diskProvisionedThroughputMibps'
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_source_image, as: 'diskSourceImage'
           property :disk_type, as: 'diskType'

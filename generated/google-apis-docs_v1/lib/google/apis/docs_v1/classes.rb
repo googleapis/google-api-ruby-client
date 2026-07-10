@@ -22,6 +22,45 @@ module Google
   module Apis
     module DocsV1
       
+      # Adds a document tab. When a tab is added at a given index, all subsequent tabs'
+      # indexes are incremented.
+      class AddDocumentTabRequest
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a tab.
+        # Corresponds to the JSON property `tabProperties`
+        # @return [Google::Apis::DocsV1::TabProperties]
+        attr_accessor :tab_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tab_properties = args[:tab_properties] if args.key?(:tab_properties)
+        end
+      end
+      
+      # The result of adding a document tab.
+      class AddDocumentTabResponse
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a tab.
+        # Corresponds to the JSON property `tabProperties`
+        # @return [Google::Apis::DocsV1::TabProperties]
+        attr_accessor :tab_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tab_properties = args[:tab_properties] if args.key?(:tab_properties)
+        end
+      end
+      
       # A ParagraphElement representing a spot in the text that's dynamically replaced
       # with content that can change over time, like a page number.
       class AutoText
@@ -692,6 +731,196 @@ module Google
         end
       end
       
+      # A date instance mentioned in a document.
+      class DateElement
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a DateElement.
+        # Corresponds to the JSON property `dateElementProperties`
+        # @return [Google::Apis::DocsV1::DateElementProperties]
+        attr_accessor :date_element_properties
+      
+        # Output only. The unique ID of this date.
+        # Corresponds to the JSON property `dateId`
+        # @return [String]
+        attr_accessor :date_id
+      
+        # The suggested changes to the date element properties, keyed by suggestion ID.
+        # Corresponds to the JSON property `suggestedDateElementPropertiesChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedDateElementProperties>]
+        attr_accessor :suggested_date_element_properties_changes
+      
+        # IDs for suggestions that remove this date from the document. A DateElement
+        # might have multiple deletion IDs if, for example, multiple users suggest
+        # deleting it. If empty, then this date isn't suggested for deletion.
+        # Corresponds to the JSON property `suggestedDeletionIds`
+        # @return [Array<String>]
+        attr_accessor :suggested_deletion_ids
+      
+        # IDs for suggestions that insert this date into the document. A DateElement
+        # might have multiple insertion IDs if it's a nested suggested change (a
+        # suggestion within a suggestion made by a different user, for example). If
+        # empty, then this date isn't a suggested insertion.
+        # Corresponds to the JSON property `suggestedInsertionIds`
+        # @return [Array<String>]
+        attr_accessor :suggested_insertion_ids
+      
+        # The suggested text style changes to this DateElement, keyed by suggestion ID.
+        # Corresponds to the JSON property `suggestedTextStyleChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
+        attr_accessor :suggested_text_style_changes
+      
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that's contained in a table may
+        # inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
+        # Corresponds to the JSON property `textStyle`
+        # @return [Google::Apis::DocsV1::TextStyle]
+        attr_accessor :text_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_element_properties = args[:date_element_properties] if args.key?(:date_element_properties)
+          @date_id = args[:date_id] if args.key?(:date_id)
+          @suggested_date_element_properties_changes = args[:suggested_date_element_properties_changes] if args.key?(:suggested_date_element_properties_changes)
+          @suggested_deletion_ids = args[:suggested_deletion_ids] if args.key?(:suggested_deletion_ids)
+          @suggested_insertion_ids = args[:suggested_insertion_ids] if args.key?(:suggested_insertion_ids)
+          @suggested_text_style_changes = args[:suggested_text_style_changes] if args.key?(:suggested_text_style_changes)
+          @text_style = args[:text_style] if args.key?(:text_style)
+        end
+      end
+      
+      # Properties of a DateElement.
+      class DateElementProperties
+        include Google::Apis::Core::Hashable
+      
+        # Determines how the date part of the DateElement will be displayed in the
+        # document. If unset, the default value is
+        # DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED, indicating the DateElement will be
+        # formatted as `MMM d, y` in `en`, or locale specific equivalent.
+        # Corresponds to the JSON property `dateFormat`
+        # @return [String]
+        attr_accessor :date_format
+      
+        # Output only. Indicates how the DateElement is displayed in the document.
+        # Corresponds to the JSON property `displayText`
+        # @return [String]
+        attr_accessor :display_text
+      
+        # The language code of the DateElement. For example, `en`. If unset, the default
+        # locale is `en`. Limited to the following locales: `af`, `am`, `ar`, `as`, `az`,
+        # `be`, `bg`, `bn`, `ca`, `cs`, `da`, `de`, `el`, `en`, `en-CA`, `en-GB`, `es`,
+        # `es-419`, `et`, `eu`, `fa`, `fi`, `fil`, `fr`, `fr-CA`, `gl`, `gu`, `hi`, `hr`,
+        # `hu`, `hy`, `id`, `is`, `it`, `iw`, `ja`, `ka`, `kk`, `km`, `kn`, `ko`, `lo`,
+        # `lt`, `lv`, `mk`, `ml`, `mn`, `mr`, `ms`, `ne`, `nl`, `no`, `or`, `pa`, `pl`, `
+        # pt-BR`, `pt-PT`, `ro`, `ru`, `si`, `sk`, `sl`, `sq`, `sr`, `sv`, `sw`, `ta`, `
+        # te`, `th`, `tr`, `uk`, `ur`, `uz`, `vi`, `zh-CN`, `zh-HK`, `zh-TW`, `zu`, `cy`,
+        # `my`.
+        # Corresponds to the JSON property `locale`
+        # @return [String]
+        attr_accessor :locale
+      
+        # Determines how the time part of the DateElement will be displayed in the
+        # document. If unset, the default value is TIME_FORMAT_DISABLED, indicating no
+        # time should be shown.
+        # Corresponds to the JSON property `timeFormat`
+        # @return [String]
+        attr_accessor :time_format
+      
+        # The time zone of the DateElement, as defined by the Unicode Common Locale Data
+        # Repository (CLDR) project. For example, `America/New_York`. If unset, the
+        # default time zone is `etc/UTC`.
+        # Corresponds to the JSON property `timeZoneId`
+        # @return [String]
+        attr_accessor :time_zone_id
+      
+        # The point in time to represent, in seconds and nanoseconds since Unix epoch:
+        # January 1, 1970 at midnight UTC. Timestamp is expected to be in UTC. If
+        # time_zone_id is set, the timestamp is adjusted according to the time zone. For
+        # example, a timestamp of `18000` with a date format of `DATE_FORMAT_ISO8601`
+        # and time format of `TIME_FORMAT_HOUR_MINUTE` would be displayed as `1970-01-01
+        # 5:00 AM`. A timestamp of `18000` with date format of `DATE_FORMAT_ISO8601`,
+        # time format of `TIME_FORMAT_HOUR_MINUTE`, and time zone set to `America/
+        # New_York` will instead be `1970-01-01 12:00 AM`.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_format = args[:date_format] if args.key?(:date_format)
+          @display_text = args[:display_text] if args.key?(:display_text)
+          @locale = args[:locale] if args.key?(:locale)
+          @time_format = args[:time_format] if args.key?(:time_format)
+          @time_zone_id = args[:time_zone_id] if args.key?(:time_zone_id)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # A mask that indicates which of the fields on the base DateElementProperties
+      # have been changed in this suggestion. For any field set to true, there's a new
+      # suggested value.
+      class DateElementPropertiesSuggestionState
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if there was a suggested change to date_format.
+        # Corresponds to the JSON property `dateFormatSuggested`
+        # @return [Boolean]
+        attr_accessor :date_format_suggested
+        alias_method :date_format_suggested?, :date_format_suggested
+      
+        # Indicates if there was a suggested change to locale.
+        # Corresponds to the JSON property `localeSuggested`
+        # @return [Boolean]
+        attr_accessor :locale_suggested
+        alias_method :locale_suggested?, :locale_suggested
+      
+        # Indicates if there was a suggested change to time_format.
+        # Corresponds to the JSON property `timeFormatSuggested`
+        # @return [Boolean]
+        attr_accessor :time_format_suggested
+        alias_method :time_format_suggested?, :time_format_suggested
+      
+        # Indicates if there was a suggested change to time_zone_id.
+        # Corresponds to the JSON property `timeZoneIdSuggested`
+        # @return [Boolean]
+        attr_accessor :time_zone_id_suggested
+        alias_method :time_zone_id_suggested?, :time_zone_id_suggested
+      
+        # Indicates if there was a suggested change to timestamp.
+        # Corresponds to the JSON property `timestampSuggested`
+        # @return [Boolean]
+        attr_accessor :timestamp_suggested
+        alias_method :timestamp_suggested?, :timestamp_suggested
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_format_suggested = args[:date_format_suggested] if args.key?(:date_format_suggested)
+          @locale_suggested = args[:locale_suggested] if args.key?(:locale_suggested)
+          @time_format_suggested = args[:time_format_suggested] if args.key?(:time_format_suggested)
+          @time_zone_id_suggested = args[:time_zone_id_suggested] if args.key?(:time_zone_id_suggested)
+          @timestamp_suggested = args[:timestamp_suggested] if args.key?(:timestamp_suggested)
+        end
+      end
+      
       # Deletes content from the document.
       class DeleteContentRangeRequest
         include Google::Apis::Core::Hashable
@@ -858,6 +1087,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
+        end
+      end
+      
+      # Deletes a tab. If the tab has child tabs, they are deleted as well.
+      class DeleteTabRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the tab to delete.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
@@ -1091,6 +1339,25 @@ module Google
         end
       end
       
+      # Represents document-level format settings.
+      class DocumentFormat
+        include Google::Apis::Core::Hashable
+      
+        # Whether the document has pages or is pageless.
+        # Corresponds to the JSON property `documentMode`
+        # @return [String]
+        attr_accessor :document_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_mode = args[:document_mode] if args.key?(:document_mode)
+        end
+      end
+      
       # The style of the document.
       class DocumentStyle
         include Google::Apis::Core::Hashable
@@ -1100,22 +1367,30 @@ module Google
         # @return [Google::Apis::DocsV1::Background]
         attr_accessor :background
       
-        # The ID of the default footer. If not set, there's no default footer. This
-        # property is read-only.
+        # The ID of the default footer. If not set, there's no default footer. If
+        # DocumentMode is PAGELESS, this property will not be rendered. This property is
+        # read-only.
         # Corresponds to the JSON property `defaultFooterId`
         # @return [String]
         attr_accessor :default_footer_id
       
-        # The ID of the default header. If not set, there's no default header. This
-        # property is read-only.
+        # The ID of the default header. If not set, there's no default header. If
+        # DocumentMode is PAGELESS, this property will not be rendered. This property is
+        # read-only.
         # Corresponds to the JSON property `defaultHeaderId`
         # @return [String]
         attr_accessor :default_header_id
       
+        # Represents document-level format settings.
+        # Corresponds to the JSON property `documentFormat`
+        # @return [Google::Apis::DocsV1::DocumentFormat]
+        attr_accessor :document_format
+      
         # The ID of the footer used only for even pages. The value of
         # use_even_page_header_footer determines whether to use the default_footer_id or
         # this value for the footer on even pages. If not set, there's no even page
-        # footer. This property is read-only.
+        # footer. If DocumentMode is PAGELESS, this property will not be rendered. This
+        # property is read-only.
         # Corresponds to the JSON property `evenPageFooterId`
         # @return [String]
         attr_accessor :even_page_footer_id
@@ -1123,7 +1398,8 @@ module Google
         # The ID of the header used only for even pages. The value of
         # use_even_page_header_footer determines whether to use the default_header_id or
         # this value for the header on even pages. If not set, there's no even page
-        # header. This property is read-only.
+        # header. If DocumentMode is PAGELESS, this property will not be rendered. This
+        # property is read-only.
         # Corresponds to the JSON property `evenPageHeaderId`
         # @return [String]
         attr_accessor :even_page_header_id
@@ -1132,7 +1408,8 @@ module Google
         # footer for the first page does not exist. The value of
         # use_first_page_header_footer determines whether to use the default_footer_id
         # or this value for the footer on the first page. If not set, there's no first
-        # page footer. This property is read-only.
+        # page footer. If DocumentMode is PAGELESS, this property will not be rendered.
+        # This property is read-only.
         # Corresponds to the JSON property `firstPageFooterId`
         # @return [String]
         attr_accessor :first_page_footer_id
@@ -1141,13 +1418,15 @@ module Google
         # header for the first page does not exist. The value of
         # use_first_page_header_footer determines whether to use the default_header_id
         # or this value for the header on the first page. If not set, there's no first
-        # page header. This property is read-only.
+        # page header. If DocumentMode is PAGELESS, this property will not be rendered.
+        # This property is read-only.
         # Corresponds to the JSON property `firstPageHeaderId`
         # @return [String]
         attr_accessor :first_page_header_id
       
         # Optional. Indicates whether to flip the dimensions of the page_size, which
-        # allows changing the page orientation between portrait and landscape.
+        # allows changing the page orientation between portrait and landscape. If
+        # DocumentMode is PAGELESS, this property will not be rendered.
         # Corresponds to the JSON property `flipPageOrientation`
         # @return [Boolean]
         attr_accessor :flip_page_orientation
@@ -1183,7 +1462,8 @@ module Google
         # @return [Google::Apis::DocsV1::Dimension]
         attr_accessor :margin_top
       
-        # The page number from which to start counting the number of pages.
+        # The page number from which to start counting the number of pages. If
+        # DocumentMode is PAGELESS, this property will not be rendered.
         # Corresponds to the JSON property `pageNumberStart`
         # @return [Fixnum]
         attr_accessor :page_number_start
@@ -1196,19 +1476,22 @@ module Google
         # Indicates whether DocumentStyle margin_header, SectionStyle margin_header and
         # DocumentStyle margin_footer, SectionStyle margin_footer are respected. When
         # false, the default values in the Docs editor for header and footer margin is
-        # used. This property is read-only.
+        # used. If DocumentMode is PAGELESS, this property will not be rendered. This
+        # property is read-only.
         # Corresponds to the JSON property `useCustomHeaderFooterMargins`
         # @return [Boolean]
         attr_accessor :use_custom_header_footer_margins
         alias_method :use_custom_header_footer_margins?, :use_custom_header_footer_margins
       
         # Indicates whether to use the even page header / footer IDs for the even pages.
+        # If DocumentMode is PAGELESS, this property will not be rendered.
         # Corresponds to the JSON property `useEvenPageHeaderFooter`
         # @return [Boolean]
         attr_accessor :use_even_page_header_footer
         alias_method :use_even_page_header_footer?, :use_even_page_header_footer
       
         # Indicates whether to use the first page header / footer IDs for the first page.
+        # If DocumentMode is PAGELESS, this property will not be rendered.
         # Corresponds to the JSON property `useFirstPageHeaderFooter`
         # @return [Boolean]
         attr_accessor :use_first_page_header_footer
@@ -1223,6 +1506,7 @@ module Google
           @background = args[:background] if args.key?(:background)
           @default_footer_id = args[:default_footer_id] if args.key?(:default_footer_id)
           @default_header_id = args[:default_header_id] if args.key?(:default_header_id)
+          @document_format = args[:document_format] if args.key?(:document_format)
           @even_page_footer_id = args[:even_page_footer_id] if args.key?(:even_page_footer_id)
           @even_page_header_id = args[:even_page_header_id] if args.key?(:even_page_header_id)
           @first_page_footer_id = args[:first_page_footer_id] if args.key?(:first_page_footer_id)
@@ -2318,6 +2602,38 @@ module Google
         end
       end
       
+      # Inserts a date at the specified location.
+      class InsertDateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a DateElement.
+        # Corresponds to the JSON property `dateElementProperties`
+        # @return [Google::Apis::DocsV1::DateElementProperties]
+        attr_accessor :date_element_properties
+      
+        # Location at the end of a body, header, footer or footnote. The location is
+        # immediately before the last newline in the document segment.
+        # Corresponds to the JSON property `endOfSegmentLocation`
+        # @return [Google::Apis::DocsV1::EndOfSegmentLocation]
+        attr_accessor :end_of_segment_location
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_element_properties = args[:date_element_properties] if args.key?(:date_element_properties)
+          @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
       # Inserts an InlineObject containing an image at the given location.
       class InsertInlineImageRequest
         include Google::Apis::Core::Hashable
@@ -2422,6 +2738,70 @@ module Google
         def update!(**args)
           @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
           @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Inserts a person mention.
+      class InsertPersonRequest
+        include Google::Apis::Core::Hashable
+      
+        # Location at the end of a body, header, footer or footnote. The location is
+        # immediately before the last newline in the document segment.
+        # Corresponds to the JSON property `endOfSegmentLocation`
+        # @return [Google::Apis::DocsV1::EndOfSegmentLocation]
+        attr_accessor :end_of_segment_location
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :location
+      
+        # Properties specific to a linked Person.
+        # Corresponds to the JSON property `personProperties`
+        # @return [Google::Apis::DocsV1::PersonProperties]
+        attr_accessor :person_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
+          @location = args[:location] if args.key?(:location)
+          @person_properties = args[:person_properties] if args.key?(:person_properties)
+        end
+      end
+      
+      # Inserts a RichLink at the specified location.
+      class InsertRichLinkRequest
+        include Google::Apis::Core::Hashable
+      
+        # Location at the end of a body, header, footer or footnote. The location is
+        # immediately before the last newline in the document segment.
+        # Corresponds to the JSON property `endOfSegmentLocation`
+        # @return [Google::Apis::DocsV1::EndOfSegmentLocation]
+        attr_accessor :end_of_segment_location
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :location
+      
+        # Properties specific to a RichLink.
+        # Corresponds to the JSON property `richLinkProperties`
+        # @return [Google::Apis::DocsV1::RichLinkProperties]
+        attr_accessor :rich_link_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
+          @location = args[:location] if args.key?(:location)
+          @rich_link_properties = args[:rich_link_properties] if args.key?(:rich_link_properties)
         end
       end
       
@@ -3421,6 +3801,11 @@ module Google
         # @return [Google::Apis::DocsV1::ColumnBreak]
         attr_accessor :column_break
       
+        # A date instance mentioned in a document.
+        # Corresponds to the JSON property `dateElement`
+        # @return [Google::Apis::DocsV1::DateElement]
+        attr_accessor :date_element
+      
         # The zero-base end index of this paragraph element, exclusive, in UTF-16 code
         # units.
         # Corresponds to the JSON property `endIndex`
@@ -3484,6 +3869,7 @@ module Google
         def update!(**args)
           @auto_text = args[:auto_text] if args.key?(:auto_text)
           @column_break = args[:column_break] if args.key?(:column_break)
+          @date_element = args[:date_element] if args.key?(:date_element)
           @end_index = args[:end_index] if args.key?(:end_index)
           @equation = args[:equation] if args.key?(:equation)
           @footnote_reference = args[:footnote_reference] if args.key?(:footnote_reference)
@@ -3901,14 +4287,13 @@ module Google
       class PersonProperties
         include Google::Apis::Core::Hashable
       
-        # Output only. The email address linked to this Person. This field is always
-        # present.
+        # The email address linked to this Person. This field is always present.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
-        # Output only. The name of the person if it's displayed in the link text instead
-        # of the person's email address.
+        # The name of the person if it's displayed in the link text instead of the
+        # person's email address.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4317,6 +4702,12 @@ module Google
       class Request
         include Google::Apis::Core::Hashable
       
+        # Adds a document tab. When a tab is added at a given index, all subsequent tabs'
+        # indexes are incremented.
+        # Corresponds to the JSON property `addDocumentTab`
+        # @return [Google::Apis::DocsV1::AddDocumentTabRequest]
+        attr_accessor :add_document_tab
+      
         # Creates a Footer. The new footer is applied to the SectionStyle at the
         # location of the SectionBreak if specified, otherwise it is applied to the
         # DocumentStyle. If a footer of the specified type already exists, a 400 bad
@@ -4388,6 +4779,11 @@ module Google
         # @return [Google::Apis::DocsV1::DeletePositionedObjectRequest]
         attr_accessor :delete_positioned_object
       
+        # Deletes a tab. If the tab has child tabs, they are deleted as well.
+        # Corresponds to the JSON property `deleteTab`
+        # @return [Google::Apis::DocsV1::DeleteTabRequest]
+        attr_accessor :delete_tab
+      
         # Deletes a column from a table.
         # Corresponds to the JSON property `deleteTableColumn`
         # @return [Google::Apis::DocsV1::DeleteTableColumnRequest]
@@ -4398,6 +4794,11 @@ module Google
         # @return [Google::Apis::DocsV1::DeleteTableRowRequest]
         attr_accessor :delete_table_row
       
+        # Inserts a date at the specified location.
+        # Corresponds to the JSON property `insertDate`
+        # @return [Google::Apis::DocsV1::InsertDateRequest]
+        attr_accessor :insert_date
+      
         # Inserts an InlineObject containing an image at the given location.
         # Corresponds to the JSON property `insertInlineImage`
         # @return [Google::Apis::DocsV1::InsertInlineImageRequest]
@@ -4407,6 +4808,16 @@ module Google
         # Corresponds to the JSON property `insertPageBreak`
         # @return [Google::Apis::DocsV1::InsertPageBreakRequest]
         attr_accessor :insert_page_break
+      
+        # Inserts a person mention.
+        # Corresponds to the JSON property `insertPerson`
+        # @return [Google::Apis::DocsV1::InsertPersonRequest]
+        attr_accessor :insert_person
+      
+        # Inserts a RichLink at the specified location.
+        # Corresponds to the JSON property `insertRichLink`
+        # @return [Google::Apis::DocsV1::InsertRichLinkRequest]
+        attr_accessor :insert_rich_link
       
         # Inserts a section break at the given location. A newline character will be
         # inserted before the section break.
@@ -4477,6 +4888,16 @@ module Google
         # @return [Google::Apis::DocsV1::UpdateDocumentStyleRequest]
         attr_accessor :update_document_style
       
+        # Update the properties of a document tab.
+        # Corresponds to the JSON property `updateDocumentTabProperties`
+        # @return [Google::Apis::DocsV1::UpdateDocumentTabPropertiesRequest]
+        attr_accessor :update_document_tab_properties
+      
+        # Updates a named style.
+        # Corresponds to the JSON property `updateNamedStyle`
+        # @return [Google::Apis::DocsV1::UpdateNamedStyleRequest]
+        attr_accessor :update_named_style
+      
         # Update the styling of all paragraphs that overlap with the given range.
         # Corresponds to the JSON property `updateParagraphStyle`
         # @return [Google::Apis::DocsV1::UpdateParagraphStyleRequest]
@@ -4513,6 +4934,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_document_tab = args[:add_document_tab] if args.key?(:add_document_tab)
           @create_footer = args[:create_footer] if args.key?(:create_footer)
           @create_footnote = args[:create_footnote] if args.key?(:create_footnote)
           @create_header = args[:create_header] if args.key?(:create_header)
@@ -4524,10 +4946,14 @@ module Google
           @delete_named_range = args[:delete_named_range] if args.key?(:delete_named_range)
           @delete_paragraph_bullets = args[:delete_paragraph_bullets] if args.key?(:delete_paragraph_bullets)
           @delete_positioned_object = args[:delete_positioned_object] if args.key?(:delete_positioned_object)
+          @delete_tab = args[:delete_tab] if args.key?(:delete_tab)
           @delete_table_column = args[:delete_table_column] if args.key?(:delete_table_column)
           @delete_table_row = args[:delete_table_row] if args.key?(:delete_table_row)
+          @insert_date = args[:insert_date] if args.key?(:insert_date)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
           @insert_page_break = args[:insert_page_break] if args.key?(:insert_page_break)
+          @insert_person = args[:insert_person] if args.key?(:insert_person)
+          @insert_rich_link = args[:insert_rich_link] if args.key?(:insert_rich_link)
           @insert_section_break = args[:insert_section_break] if args.key?(:insert_section_break)
           @insert_table = args[:insert_table] if args.key?(:insert_table)
           @insert_table_column = args[:insert_table_column] if args.key?(:insert_table_column)
@@ -4540,6 +4966,8 @@ module Google
           @replace_named_range_content = args[:replace_named_range_content] if args.key?(:replace_named_range_content)
           @unmerge_table_cells = args[:unmerge_table_cells] if args.key?(:unmerge_table_cells)
           @update_document_style = args[:update_document_style] if args.key?(:update_document_style)
+          @update_document_tab_properties = args[:update_document_tab_properties] if args.key?(:update_document_tab_properties)
+          @update_named_style = args[:update_named_style] if args.key?(:update_named_style)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
           @update_section_style = args[:update_section_style] if args.key?(:update_section_style)
           @update_table_cell_style = args[:update_table_cell_style] if args.key?(:update_table_cell_style)
@@ -4552,6 +4980,11 @@ module Google
       # A single response from an update.
       class Response
         include Google::Apis::Core::Hashable
+      
+        # The result of adding a document tab.
+        # Corresponds to the JSON property `addDocumentTab`
+        # @return [Google::Apis::DocsV1::AddDocumentTabResponse]
+        attr_accessor :add_document_tab
       
         # The result of creating a footer.
         # Corresponds to the JSON property `createFooter`
@@ -4594,6 +5027,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_document_tab = args[:add_document_tab] if args.key?(:add_document_tab)
           @create_footer = args[:create_footer] if args.key?(:create_footer)
           @create_footnote = args[:create_footnote] if args.key?(:create_footnote)
           @create_header = args[:create_header] if args.key?(:create_header)
@@ -4703,21 +5137,20 @@ module Google
       class RichLinkProperties
         include Google::Apis::Core::Hashable
       
-        # Output only. The [MIME type](https://developers.google.com/drive/api/v3/mime-
-        # types) of the RichLink, if there's one (for example, when it's a file in Drive)
-        # .
+        # The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of the
+        # RichLink, if there's one (for example, when it's a file in Drive).
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
       
-        # Output only. The title of the RichLink as displayed in the link. This title
-        # matches the title of the linked resource at the time of the insertion or last
-        # update of the link. This field is always present.
+        # The title of the RichLink as displayed in the link. This title matches the
+        # title of the linked resource at the time of the insertion or last update of
+        # the link. This field is always present.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
       
-        # Output only. The URI to the RichLink. This is always present.
+        # The URI to the RichLink. This is always present.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -4825,14 +5258,16 @@ module Google
       
         # The ID of the default footer. If unset, the value inherits from the previous
         # SectionBreak's SectionStyle. If the value is unset in the first SectionBreak,
-        # it inherits from DocumentStyle's default_footer_id. This property is read-only.
+        # it inherits from DocumentStyle's default_footer_id. If DocumentMode is
+        # PAGELESS, this property will not be rendered. This property is read-only.
         # Corresponds to the JSON property `defaultFooterId`
         # @return [String]
         attr_accessor :default_footer_id
       
         # The ID of the default header. If unset, the value inherits from the previous
         # SectionBreak's SectionStyle. If the value is unset in the first SectionBreak,
-        # it inherits from DocumentStyle's default_header_id. This property is read-only.
+        # it inherits from DocumentStyle's default_header_id. If DocumentMode is
+        # PAGELESS, this property will not be rendered. This property is read-only.
         # Corresponds to the JSON property `defaultHeaderId`
         # @return [String]
         attr_accessor :default_header_id
@@ -4842,7 +5277,8 @@ module Google
         # even pages in the section. If it is false, the footers on even pages use the
         # default_footer_id. If unset, the value inherits from the previous SectionBreak'
         # s SectionStyle. If the value is unset in the first SectionBreak, it inherits
-        # from DocumentStyle's even_page_footer_id. This property is read-only.
+        # from DocumentStyle's even_page_footer_id. If DocumentMode is PAGELESS, this
+        # property will not be rendered. This property is read-only.
         # Corresponds to the JSON property `evenPageFooterId`
         # @return [String]
         attr_accessor :even_page_footer_id
@@ -4852,7 +5288,8 @@ module Google
         # even pages in the section. If it is false, the headers on even pages use the
         # default_header_id. If unset, the value inherits from the previous SectionBreak'
         # s SectionStyle. If the value is unset in the first SectionBreak, it inherits
-        # from DocumentStyle's even_page_header_id. This property is read-only.
+        # from DocumentStyle's even_page_header_id. If DocumentMode is PAGELESS, this
+        # property will not be rendered. This property is read-only.
         # Corresponds to the JSON property `evenPageHeaderId`
         # @return [String]
         attr_accessor :even_page_header_id
@@ -4862,8 +5299,9 @@ module Google
         # first page of the section. If it's false, the footer on the first page of the
         # section uses the default_footer_id. If unset, the value inherits from the
         # previous SectionBreak's SectionStyle. If the value is unset in the first
-        # SectionBreak, it inherits from DocumentStyle's first_page_footer_id. This
-        # property is read-only.
+        # SectionBreak, it inherits from DocumentStyle's first_page_footer_id. If
+        # DocumentMode is PAGELESS, this property will not be rendered. This property is
+        # read-only.
         # Corresponds to the JSON property `firstPageFooterId`
         # @return [String]
         attr_accessor :first_page_footer_id
@@ -4873,8 +5311,9 @@ module Google
         # first page of the section. If it's false, the header on the first page of the
         # section uses the default_header_id. If unset, the value inherits from the
         # previous SectionBreak's SectionStyle. If the value is unset in the first
-        # SectionBreak, it inherits from DocumentStyle's first_page_header_id. This
-        # property is read-only.
+        # SectionBreak, it inherits from DocumentStyle's first_page_header_id. If
+        # DocumentMode is PAGELESS, this property will not be rendered. This property is
+        # read-only.
         # Corresponds to the JSON property `firstPageHeaderId`
         # @return [String]
         attr_accessor :first_page_header_id
@@ -4882,8 +5321,9 @@ module Google
         # Optional. Indicates whether to flip the dimensions of DocumentStyle's
         # page_size for this section, which allows changing the page orientation between
         # portrait and landscape. If unset, the value inherits from DocumentStyle's
-        # flip_page_orientation. When updating this property, setting a concrete value
-        # is required. Unsetting this property results in a 400 bad request error.
+        # flip_page_orientation. If DocumentMode is PAGELESS, this property will not be
+        # rendered. When updating this property, setting a concrete value is required.
+        # Unsetting this property results in a 400 bad request error.
         # Corresponds to the JSON property `flipPageOrientation`
         # @return [Boolean]
         attr_accessor :flip_page_orientation
@@ -4922,8 +5362,9 @@ module Google
         # The page number from which to start counting the number of pages for this
         # section. If unset, page numbering continues from the previous section. If the
         # value is unset in the first SectionBreak, refer to DocumentStyle's
-        # page_number_start. When updating this property, setting a concrete value is
-        # required. Unsetting this property results in a 400 bad request error.
+        # page_number_start. If DocumentMode is PAGELESS, this property will not be
+        # rendered. When updating this property, setting a concrete value is required.
+        # Unsetting this property results in a 400 bad request error.
         # Corresponds to the JSON property `pageNumberStart`
         # @return [Fixnum]
         attr_accessor :page_number_start
@@ -4936,9 +5377,10 @@ module Google
         # Indicates whether to use the first page header / footer IDs for the first page
         # of the section. If unset, it inherits from DocumentStyle's
         # use_first_page_header_footer for the first section. If the value is unset for
-        # subsequent sectors, it should be interpreted as false. When updating this
-        # property, setting a concrete value is required. Unsetting this property
-        # results in a 400 bad request error.
+        # subsequent sectors, it should be interpreted as false. If DocumentMode is
+        # PAGELESS, this property will not be rendered. When updating this property,
+        # setting a concrete value is required. Unsetting this property results in a 400
+        # bad request error.
         # Corresponds to the JSON property `useFirstPageHeaderFooter`
         # @return [Boolean]
         attr_accessor :use_first_page_header_footer
@@ -5235,6 +5677,33 @@ module Google
         def update!(**args)
           @bullet = args[:bullet] if args.key?(:bullet)
           @bullet_suggestion_state = args[:bullet_suggestion_state] if args.key?(:bullet_suggestion_state)
+        end
+      end
+      
+      # A suggested change to a DateElementProperties.
+      class SuggestedDateElementProperties
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a DateElement.
+        # Corresponds to the JSON property `dateElementProperties`
+        # @return [Google::Apis::DocsV1::DateElementProperties]
+        attr_accessor :date_element_properties
+      
+        # A mask that indicates which of the fields on the base DateElementProperties
+        # have been changed in this suggestion. For any field set to true, there's a new
+        # suggested value.
+        # Corresponds to the JSON property `dateElementPropertiesSuggestionState`
+        # @return [Google::Apis::DocsV1::DateElementPropertiesSuggestionState]
+        attr_accessor :date_element_properties_suggestion_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_element_properties = args[:date_element_properties] if args.key?(:date_element_properties)
+          @date_element_properties_suggestion_state = args[:date_element_properties_suggestion_state] if args.key?(:date_element_properties_suggestion_state)
         end
       end
       
@@ -5536,6 +6005,15 @@ module Google
       class TabProperties
         include Google::Apis::Core::Hashable
       
+        # Optional. The emoji icon displayed with the tab. A valid emoji icon is
+        # represented by a non-empty Unicode string. Any set of characters that don't
+        # represent a single emoji is invalid. If an emoji is invalid, a 400 bad request
+        # error is returned. If this value is unset or empty, the tab will display the
+        # default tab icon.
+        # Corresponds to the JSON property `iconEmoji`
+        # @return [String]
+        attr_accessor :icon_emoji
+      
         # The zero-based index of the tab within the parent.
         # Corresponds to the JSON property `index`
         # @return [Fixnum]
@@ -5553,7 +6031,7 @@ module Google
         # @return [String]
         attr_accessor :parent_tab_id
       
-        # Output only. The ID of the tab. This field can't be changed.
+        # The immutable ID of the tab.
         # Corresponds to the JSON property `tabId`
         # @return [String]
         attr_accessor :tab_id
@@ -5569,6 +6047,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @icon_emoji = args[:icon_emoji] if args.key?(:icon_emoji)
           @index = args[:index] if args.key?(:index)
           @nesting_level = args[:nesting_level] if args.key?(:nesting_level)
           @parent_tab_id = args[:parent_tab_id] if args.key?(:parent_tab_id)
@@ -6518,6 +6997,74 @@ module Google
         def update!(**args)
           @document_style = args[:document_style] if args.key?(:document_style)
           @fields = args[:fields] if args.key?(:fields)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
+        end
+      end
+      
+      # Update the properties of a document tab.
+      class UpdateDocumentTabPropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fields that should be updated. At least one field must be specified. The
+        # root `tab_properties` is implied and should not be specified. A single `"*"`
+        # can be used as short-hand for listing every field.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # Properties of a tab.
+        # Corresponds to the JSON property `tabProperties`
+        # @return [Google::Apis::DocsV1::TabProperties]
+        attr_accessor :tab_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @tab_properties = args[:tab_properties] if args.key?(:tab_properties)
+        end
+      end
+      
+      # Updates a named style.
+      class UpdateNamedStyleRequest
+        include Google::Apis::Core::Hashable
+      
+        # The NamedStyle fields that should be updated. At least `named_style_type` must
+        # be specified. The root `named_style` is implied and should not be specified. A
+        # single `"*"` can be used as short-hand for listing every field. For example,
+        # to update the text style to bold, set `fields` to include `"text_style"` and `"
+        # text_style.bold"`. To update the paragraph style's alignment property, set `
+        # fields` to include `"paragraph_style"` and `"paragraph_style.alignment"`. To
+        # reset a property to its default value, include its field name in the field
+        # mask but leave the field itself unset. Specifying `"text_style"` or `"
+        # paragraph_style"` with an empty TextStyle or ParagraphStyle will reset all of
+        # its nested fields.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # A named style. Paragraphs in the document can inherit their TextStyle and
+        # ParagraphStyle from this named style when they have the same named style type.
+        # Corresponds to the JSON property `namedStyle`
+        # @return [Google::Apis::DocsV1::NamedStyle]
+        attr_accessor :named_style
+      
+        # The document tab to update. By default, the update is applied to the first tab.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @named_style = args[:named_style] if args.key?(:named_style)
           @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end

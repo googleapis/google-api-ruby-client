@@ -220,7 +220,8 @@ module Google
       
         # A set of features that Security Token Service supports, in addition to the
         # standard OAuth 2.0 token exchange, formatted as a serialized JSON object of
-        # Options. The size of the parameter value must not exceed 4096 characters.
+        # Options. The size of the parameter value must not exceed 4 * 1024 * 1024
+        # characters (4 MB).
         # Corresponds to the JSON property `options`
         # @return [String]
         attr_accessor :options
@@ -233,8 +234,11 @@ module Google
         attr_accessor :requested_token_type
       
         # The OAuth 2.0 scopes to include on the resulting access token, formatted as a
-        # list of space-delimited, case-sensitive strings. Required when exchanging an
-        # external credential for a Google access token.
+        # list of space-delimited, case-sensitive strings; for example, `https://www.
+        # googleapis.com/auth/cloud-platform`. Required when exchanging an external
+        # credential for a Google access token. For a list of OAuth 2.0 scopes, see [
+        # OAuth 2.0 Scopes for Google APIs](https://developers.google.com/identity/
+        # protocols/oauth2/scopes).
         # Corresponds to the JSON property `scope`
         # @return [String]
         attr_accessor :scope
@@ -254,26 +258,28 @@ module Google
         # formatted according to section 4.2 of the [OIDC 1.0 Discovery specification](
         # https://openid.net/specs/openid-connect-discovery-1_0.html#
         # ProviderConfigurationResponse). - `iat`: The issue time, in seconds, since the
-        # Unix epoch. Must be in the past. - `exp`: The expiration time, in seconds,
-        # since the Unix epoch. Must be less than 48 hours after `iat`. Shorter
-        # expiration times are more secure. If possible, we recommend setting an
-        # expiration time less than 6 hours. - `sub`: The identity asserted in the JWT. -
-        # `aud`: For workload identity pools, this must be a value specified in the
-        # allowed audiences for the workload identity pool provider, or one of the
-        # audiences allowed by default if no audiences were specified. See https://cloud.
-        # google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.
-        # providers#oidc. For workforce pools, this must match the client ID specified
-        # in the provider configuration. See https://cloud.google.com/iam/docs/reference/
-        # rest/v1/locations.workforcePools.providers#oidc. Example header: ``` ` "alg": "
-        # RS256", "kid": "us-east-11" ` ``` Example payload: ``` ` "iss": "https://
-        # accounts.google.com", "iat": 1517963104, "exp": 1517966704, "aud": "//iam.
-        # googleapis.com/projects/1234567890123/locations/global/workloadIdentityPools/
-        # my-pool/providers/my-provider", "sub": "113475438248934895348", "my_claims": `
-        # "additional_claim": "value" ` ` ``` If `subject_token` is for AWS, it must be
-        # a serialized `GetCallerIdentity` token. This token contains the same
-        # information as a request to the AWS [`GetCallerIdentity()`](https://docs.aws.
-        # amazon.com/STS/latest/APIReference/API_GetCallerIdentity) method, as well as
-        # the AWS [signature](https://docs.aws.amazon.com/general/latest/gr/
+        # Unix epoch. This timestamp must be in the past and no more than 24 hours in
+        # the past, or the token will be rejected. Note that this implies the token is
+        # only acceptable within a time window of at most 24 hours. - `exp`: The
+        # expiration time, in seconds, since the Unix epoch. Shorter expiration times
+        # are more secure. If possible, we recommend setting an expiration time less
+        # than 6 hours. - `sub`: The identity asserted in the JWT. - `aud`: For workload
+        # identity pools, this must be a value specified in the allowed audiences for
+        # the workload identity pool provider, or one of the audiences allowed by
+        # default if no audiences were specified. See https://cloud.google.com/iam/docs/
+        # reference/rest/v1/projects.locations.workloadIdentityPools.providers#oidc. For
+        # workforce pools, this must match the client ID specified in the provider
+        # configuration. See https://cloud.google.com/iam/docs/reference/rest/v1/
+        # locations.workforcePools.providers#oidc. Example header: ``` ` "alg": "RS256",
+        # "kid": "us-east-11" ` ``` Example payload: ``` ` "iss": "https://accounts.
+        # google.com", "iat": 1517963104, "exp": 1517966704, "aud": "//iam.googleapis.
+        # com/projects/1234567890123/locations/global/workloadIdentityPools/my-pool/
+        # providers/my-provider", "sub": "113475438248934895348", "my_claims": ` "
+        # additional_claim": "value" ` ` ``` If `subject_token` is for AWS, it must be a
+        # serialized `GetCallerIdentity` token. This token contains the same information
+        # as a request to the AWS [`GetCallerIdentity()`](https://docs.aws.amazon.com/
+        # STS/latest/APIReference/API_GetCallerIdentity) method, as well as the AWS [
+        # signature](https://docs.aws.amazon.com/general/latest/gr/
         # signing_aws_api_requests.html) for the request information. Use Signature
         # Version 4. Format the request as URL-encoded JSON, and set the `
         # subject_token_type` parameter to `urn:ietf:params:aws:token-type:aws4_request`.
@@ -313,7 +319,13 @@ module Google
         # new security attributes applied, such as a Credential Access Boundary. In this
         # case, set `subject_token_type` to `urn:ietf:params:oauth:token-type:
         # access_token`. If an access token already contains security attributes, you
-        # cannot apply additional security attributes.
+        # cannot apply additional security attributes. If the request is for X.509
+        # certificate-based authentication, the `subject_token` must be a JSON-formatted
+        # list of X.509 certificates in DER format, as defined in [RFC 7515](https://www.
+        # rfc-editor.org/rfc/rfc7515#section-4.1.6). `subject_token_type` must be `urn:
+        # ietf:params:oauth:token-type:mtls`. The following example shows a JSON-
+        # formatted list of X.509 certificate in DER format: ``` [\"MIIEYDCCA0i...\", \"
+        # MCIFFGAGTT0...\"] ```
         # Corresponds to the JSON property `subjectToken`
         # @return [String]
         attr_accessor :subject_token
@@ -321,8 +333,9 @@ module Google
         # Required. An identifier that indicates the type of the security token in the `
         # subject_token` parameter. Supported values are `urn:ietf:params:oauth:token-
         # type:jwt`, `urn:ietf:params:oauth:token-type:id_token`, `urn:ietf:params:aws:
-        # token-type:aws4_request`, `urn:ietf:params:oauth:token-type:access_token`, and
-        # `urn:ietf:params:oauth:token-type:saml2`.
+        # token-type:aws4_request`, `urn:ietf:params:oauth:token-type:access_token`, `
+        # urn:ietf:params:oauth:token-type:mtls`, and `urn:ietf:params:oauth:token-type:
+        # saml2`.
         # Corresponds to the JSON property `subjectTokenType`
         # @return [String]
         attr_accessor :subject_token_type
@@ -399,6 +412,134 @@ module Google
         end
       end
       
+      # A JSON web key set (JWK) See also https://datatracker.ietf.org/doc/html/
+      # rfc7517 and https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-
+      # representation-in-the-spiffe-bundle
+      class GoogleIdentityStsV1Jwk
+        include Google::Apis::Core::Hashable
+      
+        # Exponent value for kty="RSA".
+        # Corresponds to the JSON property `e`
+        # @return [String]
+        attr_accessor :e
+      
+        # Key ID.
+        # Corresponds to the JSON property `kid`
+        # @return [String]
+        attr_accessor :kid
+      
+        # Key type. Currently "RSA".
+        # Corresponds to the JSON property `kty`
+        # @return [String]
+        attr_accessor :kty
+      
+        # Modulus value for kty="RSA".
+        # Corresponds to the JSON property `n`
+        # @return [String]
+        attr_accessor :n
+      
+        # Public key use. Currently "jwt-svid".
+        # Corresponds to the JSON property `use`
+        # @return [String]
+        attr_accessor :use
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @e = args[:e] if args.key?(:e)
+          @kid = args[:kid] if args.key?(:kid)
+          @kty = args[:kty] if args.key?(:kty)
+          @n = args[:n] if args.key?(:n)
+          @use = args[:use] if args.key?(:use)
+        end
+      end
+      
+      # Response message for GetJwks.
+      class GoogleIdentityStsV1Jwks
+        include Google::Apis::Core::Hashable
+      
+        # The JWKS for this OP.
+        # Corresponds to the JSON property `keys`
+        # @return [Array<Google::Apis::StsV1::GoogleIdentityStsV1Jwk>]
+        attr_accessor :keys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keys = args[:keys] if args.key?(:keys)
+        end
+      end
+      
+      # Response message for GetOpenIdProviderConfig. Message fields are defined in
+      # https://openid.net/specs/openid-connect-discovery-1_0.html#
+      # ProviderConfigurationResponse
+      class GoogleIdentityStsV1OpenIdProviderConfig
+        include Google::Apis::Core::Hashable
+      
+        # URL pointing to an authorization endpoint under this issuer. Note: Currently
+        # this endpoint returns a 404.
+        # Corresponds to the JSON property `authorization_endpoint`
+        # @return [String]
+        attr_accessor :authorization_endpoint
+      
+        # JSON array containing a list of the JWS signing algorithms (alg values)
+        # supported by the OP for the ID token to encode the claims in a JWT [JWT]. Note:
+        # Currently always "["RS256"]".
+        # Corresponds to the JSON property `id_token_signing_alg_values_supported`
+        # @return [Array<String>]
+        attr_accessor :id_token_signing_alg_values_supported
+      
+        # URL using the https scheme with no query or fragment components that the OP
+        # asserts as its issuer identifier.
+        # Corresponds to the JSON property `issuer`
+        # @return [String]
+        attr_accessor :issuer
+      
+        # URL of the OP's JWK Set [JWK] document, which MUST use the https scheme.
+        # Corresponds to the JSON property `jwks_uri`
+        # @return [String]
+        attr_accessor :jwks_uri
+      
+        # JSON array containing a list of the OAuth 2.0 response_type values that this
+        # OP supports. Note: Currently always "["id_token"]".
+        # Corresponds to the JSON property `response_types_supported`
+        # @return [Array<String>]
+        attr_accessor :response_types_supported
+      
+        # JSON array containing a list of the subject identifier types that this OP
+        # supports. Note: Currently always "["public"]".
+        # Corresponds to the JSON property `subject_types_supported`
+        # @return [Array<String>]
+        attr_accessor :subject_types_supported
+      
+        # URL pointing to a token endpoint under this issuer. Note: Currently this
+        # endpoint returns a 404.
+        # Corresponds to the JSON property `token_endpoint`
+        # @return [String]
+        attr_accessor :token_endpoint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_endpoint = args[:authorization_endpoint] if args.key?(:authorization_endpoint)
+          @id_token_signing_alg_values_supported = args[:id_token_signing_alg_values_supported] if args.key?(:id_token_signing_alg_values_supported)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @jwks_uri = args[:jwks_uri] if args.key?(:jwks_uri)
+          @response_types_supported = args[:response_types_supported] if args.key?(:response_types_supported)
+          @subject_types_supported = args[:subject_types_supported] if args.key?(:subject_types_supported)
+          @token_endpoint = args[:token_endpoint] if args.key?(:token_endpoint)
+        end
+      end
+      
       # An `Options` object configures features that the Security Token Service
       # supports, but that are not supported by standard OAuth 2.0 token exchange
       # endpoints, as defined in https://tools.ietf.org/html/rfc8693.
@@ -411,6 +552,13 @@ module Google
         # Corresponds to the JSON property `accessBoundary`
         # @return [Google::Apis::StsV1::GoogleIdentityStsV1AccessBoundary]
         attr_accessor :access_boundary
+      
+        # The unpadded, url-escaped, base64-encoded SHA-256 hash of the certificate's
+        # DER encoding. It must be 43 characters long. The resulting token will be bound
+        # to this value.
+        # Corresponds to the JSON property `bindCertFingerprint`
+        # @return [String]
+        attr_accessor :bind_cert_fingerprint
       
         # A Google project used for quota and billing purposes when the credential is
         # used to access Google APIs. The provided project overrides the project bound
@@ -427,6 +575,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_boundary = args[:access_boundary] if args.key?(:access_boundary)
+          @bind_cert_fingerprint = args[:bind_cert_fingerprint] if args.key?(:bind_cert_fingerprint)
           @user_project = args[:user_project] if args.key?(:user_project)
         end
       end

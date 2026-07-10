@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigConflict
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DagProcessorResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrafficRoutingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TriggererResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -427,6 +439,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :build_log_uri, as: 'buildLogUri'
+          collection :config_conflicts, as: 'configConflicts', class: Google::Apis::ComposerV1beta1::ConfigConflict, decorator: Google::Apis::ComposerV1beta1::ConfigConflict::Representation
+      
           property :contains_pypi_modules_conflict, as: 'containsPypiModulesConflict'
           property :image_version, as: 'imageVersion'
           property :pypi_conflict_build_log_extract, as: 'pypiConflictBuildLogExtract'
@@ -465,6 +479,14 @@ module Google
           property :detailed_status_message, as: 'detailedStatusMessage'
           property :state, as: 'state'
           property :status_message, as: 'statusMessage'
+        end
+      end
+      
+      class ConfigConflict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :type, as: 'type'
         end
       end
       
@@ -678,6 +700,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ComposerV1beta1::Operation, decorator: Google::Apis::ComposerV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -767,6 +790,8 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :subnetwork, as: 'subnetwork'
           collection :tags, as: 'tags'
+          property :traffic_routing_config, as: 'trafficRoutingConfig', class: Google::Apis::ComposerV1beta1::TrafficRoutingConfig, decorator: Google::Apis::ComposerV1beta1::TrafficRoutingConfig::Representation
+      
         end
       end
       
@@ -836,6 +861,7 @@ module Google
           property :enable_privately_used_public_ips, as: 'enablePrivatelyUsedPublicIps'
           property :networking_config, as: 'networkingConfig', class: Google::Apis::ComposerV1beta1::NetworkingConfig, decorator: Google::Apis::ComposerV1beta1::NetworkingConfig::Representation
       
+          property :networking_type, as: 'networkingType'
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ComposerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ComposerV1beta1::PrivateClusterConfig::Representation
       
           property :web_server_ipv4_cidr_block, as: 'webServerIpv4CidrBlock'
@@ -947,6 +973,13 @@ module Google
         end
       end
       
+      class TrafficRoutingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_run_functions_routing, as: 'cloudRunFunctionsRouting'
+        end
+      end
+      
       class TriggererResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -969,6 +1002,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :data, as: 'data'
           property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       

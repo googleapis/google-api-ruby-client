@@ -54,6 +54,33 @@ module Google
         end
       end
       
+      # AdaptationModifier a modifier to be used for configuration of the OS
+      # adaptation process.
+      class AdaptationModifier
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The modifier name.
+        # Corresponds to the JSON property `modifier`
+        # @return [String]
+        attr_accessor :modifier
+      
+        # Optional. The value of the modifier. The actual value depends on the modifier
+        # and can also be empty.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @modifier = args[:modifier] if args.key?(:modifier)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # AdaptingOSStep contains specific step details.
       class AdaptingOsStep
         include Google::Apis::Core::Hashable
@@ -300,6 +327,43 @@ module Google
         end
       end
       
+      # Represents the source AWS Disk details.
+      class AwsSourceDiskDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. Disk type.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Output only. Size in GiB.
+        # Corresponds to the JSON property `sizeGib`
+        # @return [Fixnum]
+        attr_accessor :size_gib
+      
+        # Optional. Output only. A map of AWS volume tags.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        # Required. AWS volume ID.
+        # Corresponds to the JSON property `volumeId`
+        # @return [String]
+        attr_accessor :volume_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @size_gib = args[:size_gib] if args.key?(:size_gib)
+          @tags = args[:tags] if args.key?(:tags)
+          @volume_id = args[:volume_id] if args.key?(:volume_id)
+        end
+      end
+      
       # Represent the source AWS VM details.
       class AwsSourceVmDetails
         include Google::Apis::Core::Hashable
@@ -363,7 +427,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :committed_storage_mb
       
-        # The number of cpus the VM has.
+        # The number of CPU cores the VM has.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
@@ -418,6 +482,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
+        # The number of vCPUs the VM has. It is calculated as the number of CPU cores *
+        # threads per CPU the VM has.
+        # Corresponds to the JSON property `vcpuCount`
+        # @return [Fixnum]
+        attr_accessor :vcpu_count
+      
         # The virtualization type.
         # Corresponds to the JSON property `virtualizationType`
         # @return [String]
@@ -458,6 +528,7 @@ module Google
           @source_description = args[:source_description] if args.key?(:source_description)
           @source_id = args[:source_id] if args.key?(:source_id)
           @tags = args[:tags] if args.key?(:tags)
+          @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
           @virtualization_type = args[:virtualization_type] if args.key?(:virtualization_type)
           @vm_id = args[:vm_id] if args.key?(:vm_id)
           @vpc_id = args[:vpc_id] if args.key?(:vpc_id)
@@ -816,6 +887,19 @@ module Google
         end
       end
       
+      # Request message for 'CancelDiskMigrationJob' request.
+      class CancelDiskMigrationJobRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for 'CancelImageImportJob' request.
       class CancelImageImportJobRequest
         include Google::Apis::Core::Hashable
@@ -999,6 +1083,48 @@ module Google
         end
       end
       
+      # Compute Engine disk target details.
+      class ComputeEngineDisk
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Target Compute Engine Disk ID. This is the resource ID segment of
+        # the Compute Engine Disk to create. In the resource name compute/v1/projects/`
+        # project`/zones/`zone`/disks/disk1 "disk1" is the resource ID for the disk.
+        # Corresponds to the JSON property `diskId`
+        # @return [String]
+        attr_accessor :disk_id
+      
+        # Required. The disk type to use.
+        # Corresponds to the JSON property `diskType`
+        # @return [String]
+        attr_accessor :disk_type
+      
+        # Optional. Replication zones of the regional disk. Should be of the form:
+        # projects/`target-project`/locations/`replica-zone` Currently only one replica
+        # zone is supported.
+        # Corresponds to the JSON property `replicaZones`
+        # @return [Array<String>]
+        attr_accessor :replica_zones
+      
+        # Required. The Compute Engine zone in which to create the disk. Should be of
+        # the form: projects/`target-project`/locations/`zone`
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_id = args[:disk_id] if args.key?(:disk_id)
+          @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
       # ComputeEngineDisksTargetDefaults is a collection of details for creating
       # Persistent Disks in a target Compute Engine project.
       class ComputeEngineDisksTargetDefaults
@@ -1081,6 +1207,12 @@ module Google
       class ComputeEngineTargetDefaults
         include Google::Apis::Core::Hashable
       
+        # Optional. AdaptationModifiers are the set of modifiers used during OS
+        # adaptation.
+        # Corresponds to the JSON property `adaptationModifiers`
+        # @return [Array<Google::Apis::VmmigrationV1::AdaptationModifier>]
+        attr_accessor :adaptation_modifiers
+      
         # Additional licenses to assign to the VM.
         # Corresponds to the JSON property `additionalLicenses`
         # @return [Array<String>]
@@ -1110,10 +1242,26 @@ module Google
         # @return [Google::Apis::VmmigrationV1::ComputeScheduling]
         attr_accessor :compute_scheduling
       
+        # Optional. Additional replica zones of the target regional disks. If this list
+        # is not empty a regional disk will be created. The first supported zone would
+        # be the one stated in the zone field. The rest are taken from this list. Please
+        # refer to the [regional disk creation API](https://cloud.google.com/compute/
+        # docs/regions-zones/global-regional-zonal-resources) for further details about
+        # regional vs zonal disks. If not specified, a zonal disk will be created in the
+        # same zone the VM is created.
+        # Corresponds to the JSON property `diskReplicaZones`
+        # @return [Array<String>]
+        attr_accessor :disk_replica_zones
+      
         # The disk type to use in the VM.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
+      
+        # Optional. The details of each disk to create.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::VmmigrationV1::PersistentDiskDefaults>]
+        attr_accessor :disks
       
         # Optional. Defines whether the instance has integrity monitoring enabled. This
         # can be set to true only if the VM boot option is EFI, and vTPM is enabled.
@@ -1181,10 +1329,19 @@ module Google
         attr_accessor :secure_boot
         alias_method :secure_boot?, :secure_boot
       
-        # The service account to associate the VM with.
+        # Optional. The service account to associate the VM with.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
+      
+        # Optional. If specified this will be the storage pool in which the disk is
+        # created. This is the full path of the storage pool resource, for example: "
+        # projects/my-project/zones/us-central1-a/storagePools/my-storage-pool". The
+        # storage pool must be in the same project and zone as the target disks. The
+        # storage pool's type must match the disk type.
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
       
         # The full path of the resource of type TargetProject which represents the
         # Compute Engine project in which to create this VM.
@@ -1208,12 +1365,15 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adaptation_modifiers = args[:adaptation_modifiers] if args.key?(:adaptation_modifiers)
           @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
           @applied_license = args[:applied_license] if args.key?(:applied_license)
           @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
+          @disk_replica_zones = args[:disk_replica_zones] if args.key?(:disk_replica_zones)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
+          @disks = args[:disks] if args.key?(:disks)
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
           @encryption = args[:encryption] if args.key?(:encryption)
@@ -1227,6 +1387,7 @@ module Google
           @network_tags = args[:network_tags] if args.key?(:network_tags)
           @secure_boot = args[:secure_boot] if args.key?(:secure_boot)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
           @target_project = args[:target_project] if args.key?(:target_project)
           @vm_name = args[:vm_name] if args.key?(:vm_name)
           @zone = args[:zone] if args.key?(:zone)
@@ -1237,6 +1398,11 @@ module Google
       # target Compute Engine project.
       class ComputeEngineTargetDetails
         include Google::Apis::Core::Hashable
+      
+        # Optional. Modifiers to be used as configuration of the OS adaptation process.
+        # Corresponds to the JSON property `adaptationModifiers`
+        # @return [Array<Google::Apis::VmmigrationV1::AdaptationModifier>]
+        attr_accessor :adaptation_modifiers
       
         # Additional licenses to assign to the VM.
         # Corresponds to the JSON property `additionalLicenses`
@@ -1266,6 +1432,17 @@ module Google
         # Corresponds to the JSON property `computeScheduling`
         # @return [Google::Apis::VmmigrationV1::ComputeScheduling]
         attr_accessor :compute_scheduling
+      
+        # Optional. Additional replica zones of the target regional disks. If this list
+        # is not empty a regional disk will be created. The first supported zone would
+        # be the one stated in the zone field. The rest are taken from this list. Please
+        # refer to the [regional disk creation API](https://cloud.google.com/compute/
+        # docs/regions-zones/global-regional-zonal-resources) for further details about
+        # regional vs zonal disks. If not specified, a zonal disk will be created in the
+        # same zone the VM is created.
+        # Corresponds to the JSON property `diskReplicaZones`
+        # @return [Array<String>]
+        attr_accessor :disk_replica_zones
       
         # The disk type to use in the VM.
         # Corresponds to the JSON property `diskType`
@@ -1346,6 +1523,15 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Optional. The storage pool used for the VM disks. If specified this will be
+        # the storage pool in which the disk is created. This is the full path of the
+        # storage pool resource, for example: "projects/my-project/zones/us-central1-a/
+        # storagePools/my-storage-pool". The storage pool must be in the same project
+        # and zone as the target disks. The storage pool's type must match the disk type.
+        # Corresponds to the JSON property `storagePool`
+        # @return [String]
+        attr_accessor :storage_pool
+      
         # The name of the VM to create.
         # Corresponds to the JSON property `vmName`
         # @return [String]
@@ -1362,11 +1548,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adaptation_modifiers = args[:adaptation_modifiers] if args.key?(:adaptation_modifiers)
           @additional_licenses = args[:additional_licenses] if args.key?(:additional_licenses)
           @applied_license = args[:applied_license] if args.key?(:applied_license)
           @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @boot_option = args[:boot_option] if args.key?(:boot_option)
           @compute_scheduling = args[:compute_scheduling] if args.key?(:compute_scheduling)
+          @disk_replica_zones = args[:disk_replica_zones] if args.key?(:disk_replica_zones)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_vtpm = args[:enable_vtpm] if args.key?(:enable_vtpm)
@@ -1382,6 +1570,7 @@ module Google
           @project = args[:project] if args.key?(:project)
           @secure_boot = args[:secure_boot] if args.key?(:secure_boot)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @storage_pool = args[:storage_pool] if args.key?(:storage_pool)
           @vm_name = args[:vm_name] if args.key?(:vm_name)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -1432,8 +1621,34 @@ module Google
         end
       end
       
+      # CopyingSourceDiskSnapshotStep contains specific step details.
+      class CopyingSourceDiskSnapshotStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # CreatingImageStep contains specific step details.
       class CreatingImageStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # CreatingSourceDiskSnapshotStep contains specific step details.
+      class CreatingSourceDiskSnapshotStep
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1654,9 +1869,20 @@ module Google
         end
       end
       
-      # Mentions that the image import is not using OS adaptation process.
+      # Used when the image import is not using OS adaptation process.
       class DataDiskImageImport
         include Google::Apis::Core::Hashable
+      
+        # Optional. A list of guest OS features to apply to the imported image. These
+        # features are flags that are used by Compute Engine to enable certain
+        # capabilities for virtual machine instances that are created from the image.
+        # This field does not change the OS of the image; it only marks the image with
+        # the specified features. The user must ensure that the OS is compatible with
+        # the features. For a list of available features, see https://cloud.google.com/
+        # compute/docs/images/create-custom#guest-os-features.
+        # Corresponds to the JSON property `guestOsFeatures`
+        # @return [Array<String>]
+        attr_accessor :guest_os_features
       
         def initialize(**args)
            update!(**args)
@@ -1664,6 +1890,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
         end
       end
       
@@ -1844,7 +2071,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :additional_licenses
       
-        # Mentions that the image import is not using OS adaptation process.
+        # Used when the image import is not using OS adaptation process.
         # Corresponds to the JSON property `dataDiskImageImport`
         # @return [Google::Apis::VmmigrationV1::DataDiskImageImport]
         attr_accessor :data_disk_image_import
@@ -1908,6 +2135,151 @@ module Google
           @os_adaptation_parameters = args[:os_adaptation_parameters] if args.key?(:os_adaptation_parameters)
           @single_region_storage = args[:single_region_storage] if args.key?(:single_region_storage)
           @target_project = args[:target_project] if args.key?(:target_project)
+        end
+      end
+      
+      # Describes the disk which will be migrated from the source environment. The
+      # source disk has to be unattached.
+      class DiskMigrationJob
+        include Google::Apis::Core::Hashable
+      
+        # Represents the source AWS Disk details.
+        # Corresponds to the JSON property `awsSourceDiskDetails`
+        # @return [Google::Apis::VmmigrationV1::AwsSourceDiskDetails]
+        attr_accessor :aws_source_disk_details
+      
+        # Output only. The time the DiskMigrationJob resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Provides details on the errors that led to the disk migration job'
+        # s state in case of an error.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::VmmigrationV1::Status>]
+        attr_accessor :errors
+      
+        # Output only. Identifier. The identifier of the DiskMigrationJob.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the DiskMigrationJob.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The disk migration steps list representing its progress.
+        # Corresponds to the JSON property `steps`
+        # @return [Array<Google::Apis::VmmigrationV1::DiskMigrationStep>]
+        attr_accessor :steps
+      
+        # Details of the target disk in Compute Engine.
+        # Corresponds to the JSON property `targetDetails`
+        # @return [Google::Apis::VmmigrationV1::DiskMigrationJobTargetDetails]
+        attr_accessor :target_details
+      
+        # Output only. The last time the DiskMigrationJob resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_source_disk_details = args[:aws_source_disk_details] if args.key?(:aws_source_disk_details)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @errors = args[:errors] if args.key?(:errors)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @steps = args[:steps] if args.key?(:steps)
+          @target_details = args[:target_details] if args.key?(:target_details)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Details of the target disk in Compute Engine.
+      class DiskMigrationJobTargetDetails
+        include Google::Apis::Core::Hashable
+      
+        # Encryption message describes the details of the applied encryption.
+        # Corresponds to the JSON property `encryption`
+        # @return [Google::Apis::VmmigrationV1::Encryption]
+        attr_accessor :encryption
+      
+        # Optional. A map of labels to associate with the disk.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Compute Engine disk target details.
+        # Corresponds to the JSON property `targetDisk`
+        # @return [Google::Apis::VmmigrationV1::ComputeEngineDisk]
+        attr_accessor :target_disk
+      
+        # Required. The name of the resource of type TargetProject which represents the
+        # Compute Engine project in which to create the disk. Should be of the form:
+        # projects/`project`/locations/global/targetProjects/`target-project`
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption = args[:encryption] if args.key?(:encryption)
+          @labels = args[:labels] if args.key?(:labels)
+          @target_disk = args[:target_disk] if args.key?(:target_disk)
+          @target_project = args[:target_project] if args.key?(:target_project)
+        end
+      end
+      
+      # DiskMigrationStep holds information about the disk migration step progress.
+      class DiskMigrationStep
+        include Google::Apis::Core::Hashable
+      
+        # CopyingSourceDiskSnapshotStep contains specific step details.
+        # Corresponds to the JSON property `copyingSourceDiskSnapshot`
+        # @return [Google::Apis::VmmigrationV1::CopyingSourceDiskSnapshotStep]
+        attr_accessor :copying_source_disk_snapshot
+      
+        # CreatingSourceDiskSnapshotStep contains specific step details.
+        # Corresponds to the JSON property `creatingSourceDiskSnapshot`
+        # @return [Google::Apis::VmmigrationV1::CreatingSourceDiskSnapshotStep]
+        attr_accessor :creating_source_disk_snapshot
+      
+        # Output only. The time the step has ended.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # ProvisioningTargetDiskStep contains specific step details.
+        # Corresponds to the JSON property `provisioningTargetDisk`
+        # @return [Google::Apis::VmmigrationV1::ProvisioningTargetDiskStep]
+        attr_accessor :provisioning_target_disk
+      
+        # Output only. The time the step has started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @copying_source_disk_snapshot = args[:copying_source_disk_snapshot] if args.key?(:copying_source_disk_snapshot)
+          @creating_source_disk_snapshot = args[:creating_source_disk_snapshot] if args.key?(:creating_source_disk_snapshot)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @provisioning_target_disk = args[:provisioning_target_disk] if args.key?(:provisioning_target_disk)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -2106,6 +2478,51 @@ module Google
         end
       end
       
+      # Expiration holds information about the expiration of a MigratingVm.
+      class Expiration
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp of when this resource is considered expired.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. Describes whether the expiration can be extended.
+        # Corresponds to the JSON property `extendable`
+        # @return [Boolean]
+        attr_accessor :extendable
+        alias_method :extendable?, :extendable
+      
+        # Output only. The number of times expiration was extended.
+        # Corresponds to the JSON property `extensionCount`
+        # @return [Fixnum]
+        attr_accessor :extension_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @extendable = args[:extendable] if args.key?(:extendable)
+          @extension_count = args[:extension_count] if args.key?(:extension_count)
+        end
+      end
+      
+      # Request message for 'ExtendMigrationRequest' request.
+      class ExtendMigrationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Response message for fetchInventory.
       class FetchInventoryResponse
         include Google::Apis::Core::Hashable
@@ -2148,6 +2565,39 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vmware_vms = args[:vmware_vms] if args.key?(:vmware_vms)
+        end
+      end
+      
+      # Response message for fetchStorageInventory.
+      class FetchStorageInventoryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A token, which can be sent as `page_token` to retrieve the next
+        # page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of storage resources in the source.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::VmmigrationV1::SourceStorageResource>]
+        attr_accessor :resources
+      
+        # Output only. The timestamp when the source was last queried (if the result is
+        # from the cache).
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -2362,6 +2812,11 @@ module Google
       class ImageImportOsAdaptationParameters
         include Google::Apis::Core::Hashable
       
+        # Optional. Modifiers to be used as configuration of the OS adaptation process.
+        # Corresponds to the JSON property `adaptationModifiers`
+        # @return [Array<Google::Apis::VmmigrationV1::AdaptationModifier>]
+        attr_accessor :adaptation_modifiers
+      
         # Optional. By default the image will keep its existing boot option. Setting
         # this property will trigger an internal process which will convert the image
         # from using the existing boot option to another. The size of the boot disk
@@ -2391,6 +2846,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @adaptation_modifiers = args[:adaptation_modifiers] if args.key?(:adaptation_modifiers)
           @boot_conversion = args[:boot_conversion] if args.key?(:boot_conversion)
           @generalize = args[:generalize] if args.key?(:generalize)
           @license_type = args[:license_type] if args.key?(:license_type)
@@ -2606,6 +3062,38 @@ module Google
         end
       end
       
+      # Response message for 'ListDiskMigrationJobs' request.
+      class ListDiskMigrationJobsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The list of the disk migration jobs.
+        # Corresponds to the JSON property `diskMigrationJobs`
+        # @return [Array<Google::Apis::VmmigrationV1::DiskMigrationJob>]
+        attr_accessor :disk_migration_jobs
+      
+        # Optional. Output only. A token, which can be sent as `page_token` to retrieve
+        # the next page. If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_migration_jobs = args[:disk_migration_jobs] if args.key?(:disk_migration_jobs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for 'ListGroups' request.
       class ListGroupsResponse
         include Google::Apis::Core::Hashable
@@ -2773,6 +3261,14 @@ module Google
         # @return [Array<Google::Apis::VmmigrationV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2781,6 +3277,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3062,8 +3559,8 @@ module Google
         attr_accessor :machine_image_parameters_overrides
       
         # Optional. The network interfaces to create with the instance created by the
-        # machine image. Internal and external IP addresses are ignored for machine
-        # image import.
+        # machine image. Internal and external IP addresses, and network tiers are
+        # ignored for machine image import.
         # Corresponds to the JSON property `networkInterfaces`
         # @return [Array<Google::Apis::VmmigrationV1::NetworkInterface>]
         attr_accessor :network_interfaces
@@ -3193,6 +3690,11 @@ module Google
         # @return [Google::Apis::VmmigrationV1::Status]
         attr_accessor :error
       
+        # Expiration holds information about the expiration of a MigratingVm.
+        # Corresponds to the JSON property `expiration`
+        # @return [Google::Apis::VmmigrationV1::Expiration]
+        attr_accessor :expiration
+      
         # Output only. The group this migrating vm is included in, if any. The group is
         # represented by the full path of the appropriate Group resource.
         # Corresponds to the JSON property `group`
@@ -3284,6 +3786,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @error = args[:error] if args.key?(:error)
+          @expiration = args[:expiration] if args.key?(:expiration)
           @group = args[:group] if args.key?(:group)
           @labels = args[:labels] if args.key?(:labels)
           @last_replication_cycle = args[:last_replication_cycle] if args.key?(:last_replication_cycle)
@@ -3411,7 +3914,7 @@ module Google
         # @return [String]
         attr_accessor :internal_ip
       
-        # The network to connect the NIC to.
+        # Optional. The network to connect the NIC to.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -3649,12 +4152,12 @@ module Google
       class PersistentDisk
         include Google::Apis::Core::Hashable
       
-        # The URI of the Persistent Disk.
+        # Output only. The URI of the Persistent Disk.
         # Corresponds to the JSON property `diskUri`
         # @return [String]
         attr_accessor :disk_uri
       
-        # The ordinal number of the source VM disk.
+        # Output only. The ordinal number of the source VM disk.
         # Corresponds to the JSON property `sourceDiskNumber`
         # @return [Fixnum]
         attr_accessor :source_disk_number
@@ -3734,6 +4237,19 @@ module Google
       
       # PreparingVMDisksStep contains specific step details.
       class PreparingVmDisksStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # ProvisioningTargetDiskStep contains specific step details.
+      class ProvisioningTargetDiskStep
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -3902,6 +4418,19 @@ module Google
       
       # Request message for 'ResumeMigration' request.
       class ResumeMigrationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for 'RunDiskMigrationJobRequest' request.
+      class RunDiskMigrationJobRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -4130,6 +4659,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vmware = args[:vmware] if args.key?(:vmware)
+        end
+      end
+      
+      # SourceStorageResource describes a storage resource in the source.
+      class SourceStorageResource
+        include Google::Apis::Core::Hashable
+      
+        # Represents the source AWS Disk details.
+        # Corresponds to the JSON property `awsDiskDetails`
+        # @return [Google::Apis::VmmigrationV1::AwsSourceDiskDetails]
+        attr_accessor :aws_disk_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aws_disk_details = args[:aws_disk_details] if args.key?(:aws_disk_details)
         end
       end
       

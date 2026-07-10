@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ControlledEgressConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomDomain
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,18 @@ module Google
       end
       
       class ImportInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngressIpAllowlistConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngressIpAllowlistRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PeriodicExportConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PscConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UndeleteInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -218,6 +248,15 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ControlledEgressConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :egress_fqdns, as: 'egressFqdns'
+          property :marketplace_enabled, as: 'marketplaceEnabled'
+          collection :web_proxy_ips, as: 'webProxyIps'
         end
       end
       
@@ -310,12 +349,36 @@ module Google
         end
       end
       
+      class IngressIpAllowlistConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowlist_rules, as: 'allowlistRules', class: Google::Apis::LookerV1::IngressIpAllowlistRule, decorator: Google::Apis::LookerV1::IngressIpAllowlistRule::Representation
+      
+          property :enabled, as: 'enabled'
+          property :google_services_enabled, as: 'googleServicesEnabled'
+        end
+      end
+      
+      class IngressIpAllowlistRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :ip_range, as: 'ipRange'
+        end
+      end
+      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerated_security_patch_enabled, as: 'acceleratedSecurityPatchEnabled'
           property :admin_settings, as: 'adminSettings', class: Google::Apis::LookerV1::AdminSettings, decorator: Google::Apis::LookerV1::AdminSettings::Representation
       
+          property :catalog_integration_opt_out, as: 'catalogIntegrationOptOut'
+          property :class_type, as: 'classType'
           property :consumer_network, as: 'consumerNetwork'
+          property :controlled_egress_config, as: 'controlledEgressConfig', class: Google::Apis::LookerV1::ControlledEgressConfig, decorator: Google::Apis::LookerV1::ControlledEgressConfig::Representation
+      
+          property :controlled_egress_enabled, as: 'controlledEgressEnabled'
           property :create_time, as: 'createTime'
           property :custom_domain, as: 'customDomain', class: Google::Apis::LookerV1::CustomDomain, decorator: Google::Apis::LookerV1::CustomDomain::Representation
       
@@ -326,6 +389,8 @@ module Google
       
           property :fips_enabled, as: 'fipsEnabled'
           property :gemini_enabled, as: 'geminiEnabled'
+          property :ingress_ip_allowlist_config, as: 'ingressIpAllowlistConfig', class: Google::Apis::LookerV1::IngressIpAllowlistConfig, decorator: Google::Apis::LookerV1::IngressIpAllowlistConfig::Representation
+      
           property :ingress_private_ip, as: 'ingressPrivateIp'
           property :ingress_public_ip, as: 'ingressPublicIp'
           property :last_deny_maintenance_period, as: 'lastDenyMaintenancePeriod', class: Google::Apis::LookerV1::DenyMaintenancePeriod, decorator: Google::Apis::LookerV1::DenyMaintenancePeriod::Representation
@@ -340,16 +405,21 @@ module Google
           property :name, as: 'name'
           property :oauth_config, as: 'oauthConfig', class: Google::Apis::LookerV1::OAuthConfig, decorator: Google::Apis::LookerV1::OAuthConfig::Representation
       
+          property :periodic_export_config, as: 'periodicExportConfig', class: Google::Apis::LookerV1::PeriodicExportConfig, decorator: Google::Apis::LookerV1::PeriodicExportConfig::Representation
+      
           property :platform_edition, as: 'platformEdition'
           property :private_ip_enabled, as: 'privateIpEnabled'
           property :psc_config, as: 'pscConfig', class: Google::Apis::LookerV1::PscConfig, decorator: Google::Apis::LookerV1::PscConfig::Representation
       
           property :psc_enabled, as: 'pscEnabled'
           property :public_ip_enabled, as: 'publicIpEnabled'
+          property :release_channel, as: 'releaseChannel'
           property :reserved_range, as: 'reservedRange'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :soft_delete_reason, as: 'softDeleteReason'
           property :state, as: 'state'
+          property :suspended_time, as: 'suspendedTime'
           property :update_time, as: 'updateTime'
           property :user_metadata, as: 'userMetadata', class: Google::Apis::LookerV1::UserMetadata, decorator: Google::Apis::LookerV1::UserMetadata::Representation
       
@@ -403,6 +473,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::LookerV1::Operation, decorator: Google::Apis::LookerV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -439,6 +510,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_id, as: 'clientId'
           property :client_secret, as: 'clientSecret'
+          property :shared_oauth_client_enabled, as: 'sharedOauthClientEnabled'
         end
       end
       
@@ -464,6 +536,16 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PeriodicExportConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_uri, as: 'gcsUri'
+          property :kms_key, as: 'kmsKey'
+          property :start_time, as: 'startTime', class: Google::Apis::LookerV1::TimeOfDay, decorator: Google::Apis::LookerV1::TimeOfDay::Representation
+      
         end
       end
       
@@ -494,7 +576,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connection_status, as: 'connectionStatus'
+          property :failure_reason, as: 'failureReason'
           property :local_fqdn, as: 'localFqdn'
+          collection :local_fqdns, as: 'localFqdns'
           property :target_service_attachment_uri, as: 'targetServiceAttachmentUri'
         end
       end
@@ -515,6 +599,12 @@ module Google
           property :minutes, as: 'minutes'
           property :nanos, as: 'nanos'
           property :seconds, as: 'seconds'
+        end
+      end
+      
+      class UndeleteInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -52,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CheckAuthorizationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckAuthorizationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckInstanceUpgradabilityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +137,18 @@ module Google
       end
       
       class GceSetup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateAccessTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateAccessTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -351,6 +375,22 @@ module Google
         end
       end
       
+      class CheckAuthorizationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :authorization_details, as: 'authorizationDetails'
+        end
+      end
+      
+      class CheckAuthorizationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :oauth_uri, as: 'oauth_uri'
+          property :success, as: 'success'
+        end
+      end
+      
       class CheckInstanceUpgradabilityResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -396,6 +436,7 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :kms_key, as: 'kmsKey'
+          collection :resource_policies, as: 'resourcePolicies'
         end
       end
       
@@ -476,6 +517,7 @@ module Google
           property :enable_ip_forwarding, as: 'enableIpForwarding'
           property :gpu_driver_config, as: 'gpuDriverConfig', class: Google::Apis::NotebooksV2::GpuDriverConfig, decorator: Google::Apis::NotebooksV2::GpuDriverConfig::Representation
       
+          property :instance_id, as: 'instanceId'
           property :machine_type, as: 'machineType'
           hash :metadata, as: 'metadata'
           property :min_cpu_platform, as: 'minCpuPlatform'
@@ -493,9 +535,28 @@ module Google
         end
       end
       
+      class GenerateAccessTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :vm_token, as: 'vmToken'
+        end
+      end
+      
+      class GenerateAccessTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_token, as: 'access_token'
+          property :expires_in, as: 'expires_in'
+          property :scope, as: 'scope'
+          property :token_type, as: 'token_type'
+        end
+      end
+      
       class ImageRelease
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :image_family, as: 'imageFamily'
           property :image_name, as: 'imageName'
           property :release_name, as: 'releaseName'
         end
@@ -508,6 +569,7 @@ module Google
           property :creator, as: 'creator'
           property :disable_proxy_access, as: 'disableProxyAccess'
           property :enable_deletion_protection, as: 'enableDeletionProtection'
+          property :enable_managed_euc, as: 'enableManagedEuc'
           property :enable_third_party_identity, as: 'enableThirdPartyIdentity'
           property :gce_setup, as: 'gceSetup', class: Google::Apis::NotebooksV2::GceSetup, decorator: Google::Apis::NotebooksV2::GceSetup::Representation
       
@@ -553,6 +615,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NotebooksV2::Operation, decorator: Google::Apis::NotebooksV2::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -758,6 +821,7 @@ module Google
       class UpgradeInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_family, as: 'imageFamily'
         end
       end
       

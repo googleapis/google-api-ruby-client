@@ -41,6 +41,32 @@ module Google
         end
       end
       
+      # Configuration for autoscaling.
+      class AutoScalingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Policy for the autoscaler.
+        # Corresponds to the JSON property `policy`
+        # @return [Google::Apis::AlloydbV1beta::Policy]
+        attr_accessor :policy
+      
+        # Optional list of schedules for the MIG autoscaler. If not set, no schedules
+        # are created.
+        # Corresponds to the JSON property `schedules`
+        # @return [Array<Google::Apis::AlloydbV1beta::Schedule>]
+        attr_accessor :schedules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+          @schedules = args[:schedules] if args.key?(:schedules)
+        end
+      end
+      
       # Message describing the user-specified automated backup policy. All fields in
       # the automated backup policy are optional. Defaults for each field are provided
       # if they are not set.
@@ -127,6 +153,14 @@ module Google
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
+      
+        # Output only. Set to true if the cluster corresponding to this backup is
+        # deleted. This field is only populated for when using the
+        # BACKUP_VIEW_CLUSTER_DELETED view.
+        # Corresponds to the JSON property `clusterDeleted`
+        # @return [Boolean]
+        attr_accessor :cluster_deleted
+        alias_method :cluster_deleted?, :cluster_deleted
       
         # Required. The full resource name of the backup source cluster (e.g., projects/`
         # project`/locations/`region`/clusters/`cluster_id`).
@@ -278,6 +312,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @cluster_deleted = args[:cluster_deleted] if args.key?(:cluster_deleted)
           @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
           @cluster_uid = args[:cluster_uid] if args.key?(:cluster_uid)
           @create_completion_time = args[:create_completion_time] if args.key?(:create_completion_time)
@@ -301,6 +336,157 @@ module Google
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing a BackupDrBackupSource.
+      class BackupDrBackupSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the backup resource with the format: * projects/`project`
+        # /locations/`location`/backupVaults/`backupvault_id`/dataSources/`datasource_id`
+        # /backups/`backup_id`
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+        end
+      end
+      
+      # Information about a single window when BackupDR was enabled for this cluster.
+      class BackupDrEnabledWindow
+        include Google::Apis::Core::Hashable
+      
+        # Whether automated backup was previously enabled prior to enabling BackupDR
+        # protection for this cluster.
+        # Corresponds to the JSON property `automatedBackupPreviouslyEnabled`
+        # @return [Boolean]
+        attr_accessor :automated_backup_previously_enabled
+        alias_method :automated_backup_previously_enabled?, :automated_backup_previously_enabled
+      
+        # The BackupPlanAssociation resource that was used to enable BackupDR protection
+        # for this cluster.
+        # Corresponds to the JSON property `backupPlanAssociation`
+        # @return [String]
+        attr_accessor :backup_plan_association
+      
+        # The retention set for the continuous backup that was previously enabled prior
+        # to enabling BackupDR protection for this cluster.
+        # Corresponds to the JSON property `continuousBackupPreviousRecoveryWindowDays`
+        # @return [Fixnum]
+        attr_accessor :continuous_backup_previous_recovery_window_days
+      
+        # Whether continuous backup was previously enabled prior to enabling BackupDR
+        # protection for this cluster.
+        # Corresponds to the JSON property `continuousBackupPreviouslyEnabled`
+        # @return [Boolean]
+        attr_accessor :continuous_backup_previously_enabled
+        alias_method :continuous_backup_previously_enabled?, :continuous_backup_previously_enabled
+      
+        # The time when continuous backup was previously enabled prior to enabling
+        # BackupDR protection for this cluster.
+        # Corresponds to the JSON property `continuousBackupPreviouslyEnabledTime`
+        # @return [String]
+        attr_accessor :continuous_backup_previously_enabled_time
+      
+        # The DataSource resource that represents the cluster in BackupDR.
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # Time when the BackupDR protection for this cluster was disabled. This field
+        # will be empty if this BackupDR window is the `current_window`.
+        # Corresponds to the JSON property `disabledTime`
+        # @return [String]
+        attr_accessor :disabled_time
+      
+        # Time when the BackupDR protection for this cluster was enabled.
+        # Corresponds to the JSON property `enabledTime`
+        # @return [String]
+        attr_accessor :enabled_time
+      
+        # The retention period for logs generated by BackupDR for this cluster.
+        # Corresponds to the JSON property `logRetentionPeriod`
+        # @return [String]
+        attr_accessor :log_retention_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automated_backup_previously_enabled = args[:automated_backup_previously_enabled] if args.key?(:automated_backup_previously_enabled)
+          @backup_plan_association = args[:backup_plan_association] if args.key?(:backup_plan_association)
+          @continuous_backup_previous_recovery_window_days = args[:continuous_backup_previous_recovery_window_days] if args.key?(:continuous_backup_previous_recovery_window_days)
+          @continuous_backup_previously_enabled = args[:continuous_backup_previously_enabled] if args.key?(:continuous_backup_previously_enabled)
+          @continuous_backup_previously_enabled_time = args[:continuous_backup_previously_enabled_time] if args.key?(:continuous_backup_previously_enabled_time)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @disabled_time = args[:disabled_time] if args.key?(:disabled_time)
+          @enabled_time = args[:enabled_time] if args.key?(:enabled_time)
+          @log_retention_period = args[:log_retention_period] if args.key?(:log_retention_period)
+        end
+      end
+      
+      # Information about BackupDR protection for this cluster.
+      class BackupDrInfo
+        include Google::Apis::Core::Hashable
+      
+        # Information about a single window when BackupDR was enabled for this cluster.
+        # Corresponds to the JSON property `currentWindow`
+        # @return [Google::Apis::AlloydbV1beta::BackupDrEnabledWindow]
+        attr_accessor :current_window
+      
+        # Windows during which BackupDR was enabled for this cluster, along with
+        # associated configuration for that window. These are used to determine points-
+        # in-time for which restores can be performed. The windows are ordered with the
+        # most recent window last. Windows are mutally exclusive. Windows which closed
+        # more than 1 year ago will be removed from this list.
+        # Corresponds to the JSON property `previousWindows`
+        # @return [Array<Google::Apis::AlloydbV1beta::BackupDrEnabledWindow>]
+        attr_accessor :previous_windows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_window = args[:current_window] if args.key?(:current_window)
+          @previous_windows = args[:previous_windows] if args.key?(:previous_windows)
+        end
+      end
+      
+      # Message describing a BackupDrPitrSource.
+      class BackupDrPitrSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the backup resource with the format: * projects/`project`
+        # /locations/`location`/backupVaults/`backupvault_id`/dataSources/`datasource_id`
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # Required. The point in time to restore to.
+        # Corresponds to the JSON property `pointInTime`
+        # @return [String]
+        attr_accessor :point_in_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
         end
       end
       
@@ -441,6 +627,16 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::BackupSource]
         attr_accessor :backup_source
       
+        # Message describing a BackupDrBackupSource.
+        # Corresponds to the JSON property `backupdrBackupSource`
+        # @return [Google::Apis::AlloydbV1beta::BackupDrBackupSource]
+        attr_accessor :backupdr_backup_source
+      
+        # Information about BackupDR protection for this cluster.
+        # Corresponds to the JSON property `backupdrInfo`
+        # @return [Google::Apis::AlloydbV1beta::BackupDrInfo]
+        attr_accessor :backupdr_info
+      
         # The source CloudSQL backup resource.
         # Corresponds to the JSON property `cloudsqlBackupRunSource`
         # @return [Google::Apis::AlloydbV1beta::CloudSqlBackupRunSource]
@@ -478,6 +674,11 @@ module Google
         # @return [String]
         attr_accessor :database_version
       
+        # Configuration for Dataplex integration.
+        # Corresponds to the JSON property `dataplexConfig`
+        # @return [Google::Apis::AlloydbV1beta::DataplexConfig]
+        attr_accessor :dataplex_config
+      
         # Output only. Delete time stamp
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
@@ -504,7 +705,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Deprecated and unused. This field will be removed in the near future.
+        # Deprecated and unused. This message will be removed in the near future.
         # Corresponds to the JSON property `geminiConfig`
         # @return [Google::Apis::AlloydbV1beta::GeminiClusterConfig]
         attr_accessor :gemini_config
@@ -533,6 +734,12 @@ module Google
         # Corresponds to the JSON property `maintenanceUpdatePolicy`
         # @return [Google::Apis::AlloydbV1beta::MaintenanceUpdatePolicy]
         attr_accessor :maintenance_update_policy
+      
+        # Input only. Policy to use to automatically select the maintenance version to
+        # which to update the cluster's instances.
+        # Corresponds to the JSON property `maintenanceVersionSelectionPolicy`
+        # @return [String]
+        attr_accessor :maintenance_version_selection_policy
       
         # Subset of the source instance configuration that is available when reading the
         # cluster resource.
@@ -597,6 +804,13 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::SecondaryConfig]
         attr_accessor :secondary_config
       
+        # Output only. AlloyDB per-cluster service account. This service account is
+        # created per-cluster per-project, and is different from the per-project service
+        # account. The per-cluster service account naming format is subject to change.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
         # SSL configuration.
         # Corresponds to the JSON property `sslConfig`
         # @return [Google::Apis::AlloydbV1beta::SslConfig]
@@ -644,12 +858,15 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @automated_backup_policy = args[:automated_backup_policy] if args.key?(:automated_backup_policy)
           @backup_source = args[:backup_source] if args.key?(:backup_source)
+          @backupdr_backup_source = args[:backupdr_backup_source] if args.key?(:backupdr_backup_source)
+          @backupdr_info = args[:backupdr_info] if args.key?(:backupdr_info)
           @cloudsql_backup_run_source = args[:cloudsql_backup_run_source] if args.key?(:cloudsql_backup_run_source)
           @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
           @continuous_backup_config = args[:continuous_backup_config] if args.key?(:continuous_backup_config)
           @continuous_backup_info = args[:continuous_backup_info] if args.key?(:continuous_backup_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @database_version = args[:database_version] if args.key?(:database_version)
+          @dataplex_config = args[:dataplex_config] if args.key?(:dataplex_config)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
@@ -660,6 +877,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
           @maintenance_update_policy = args[:maintenance_update_policy] if args.key?(:maintenance_update_policy)
+          @maintenance_version_selection_policy = args[:maintenance_version_selection_policy] if args.key?(:maintenance_version_selection_policy)
           @migration_source = args[:migration_source] if args.key?(:migration_source)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -669,6 +887,7 @@ module Google
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @secondary_config = args[:secondary_config] if args.key?(:secondary_config)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @ssl_config = args[:ssl_config] if args.key?(:ssl_config)
           @state = args[:state] if args.key?(:state)
           @subscription_type = args[:subscription_type] if args.key?(:subscription_type)
@@ -759,6 +978,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :pem_certificate_chain
       
+        # Output only. Specifies the DNS name to use with PSC service automation for the
+        # Instance.
+        # Corresponds to the JSON property `pscAutoDnsName`
+        # @return [String]
+        attr_accessor :psc_auto_dns_name
+      
         # Output only. The DNS name to use with PSC for the Instance.
         # Corresponds to the JSON property `pscDnsName`
         # @return [String]
@@ -781,6 +1006,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @name = args[:name] if args.key?(:name)
           @pem_certificate_chain = args[:pem_certificate_chain] if args.key?(:pem_certificate_chain)
+          @psc_auto_dns_name = args[:psc_auto_dns_name] if args.key?(:psc_auto_dns_name)
           @psc_dns_name = args[:psc_dns_name] if args.key?(:psc_dns_name)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
         end
@@ -790,17 +1016,10 @@ module Google
       class ConnectionPoolConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Deprecated. Use 'flags' instead. The default pool size. Defaults to
-        # 20.
-        # Corresponds to the JSON property `defaultPoolSize`
-        # @return [String]
-        attr_accessor :default_pool_size
-      
-        # Optional. Deprecated; Prefer 'enabled' as this will be removed soon.
-        # Corresponds to the JSON property `enable`
-        # @return [Boolean]
-        attr_accessor :enable
-        alias_method :enable?, :enable
+        # Output only. The number of running AuthProxy poolers per instance.
+        # Corresponds to the JSON property `authproxyPoolerCount`
+        # @return [Fixnum]
+        attr_accessor :authproxy_pooler_count
       
         # Optional. Whether to enable Managed Connection Pool (MCP).
         # Corresponds to the JSON property `enabled`
@@ -813,57 +1032,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :flags
       
-        # Optional. Deprecated. Use 'flags' instead. The list of startup parameters to
-        # ignore. Defaults to ["extra_float_digits"]
-        # Corresponds to the JSON property `ignoreStartupParameters`
-        # @return [Array<String>]
-        attr_accessor :ignore_startup_parameters
-      
-        # Optional. Deprecated. Use 'flags' instead. The maximum number of client
-        # connections allowed.
-        # Corresponds to the JSON property `maxClientConn`
-        # @return [String]
-        attr_accessor :max_client_conn
-      
-        # Optional. Deprecated. Use 'flags' instead. The maximum number of prepared
-        # statements allowed. MCP makes sure that any statement prepared by a client, up
-        # to this limit, is available on the backing server connection in transaction
-        # and statement pooling mode. Even if the statement was originally prepared on
-        # another server connection. Defaults to 0.
-        # Corresponds to the JSON property `maxPreparedStatements`
-        # @return [String]
-        attr_accessor :max_prepared_statements
-      
-        # Optional. Deprecated. Use 'flags' instead. The minimum pool size. Defaults to
-        # 0.
-        # Corresponds to the JSON property `minPoolSize`
-        # @return [String]
-        attr_accessor :min_pool_size
-      
-        # Optional. Deprecated. Use 'flags' instead. The pool mode. Defaults to `
-        # POOL_MODE_TRANSACTION`.
-        # Corresponds to the JSON property `poolMode`
-        # @return [String]
-        attr_accessor :pool_mode
-      
-        # Optional. Deprecated. Use 'flags' instead. The maximum number of seconds
-        # queries are allowed to spend waiting for execution. If the query is not
-        # assigned to a server during that time, the client is disconnected. 0 disables.
-        # Corresponds to the JSON property `queryWaitTimeout`
-        # @return [String]
-        attr_accessor :query_wait_timeout
-      
-        # Optional. Deprecated. Use 'flags' instead. The maximum number of seconds a
-        # server is allowed to be idle before it is disconnected. 0 disables.
-        # Corresponds to the JSON property `serverIdleTimeout`
-        # @return [String]
-        attr_accessor :server_idle_timeout
-      
-        # Optional. Deprecated. Use 'flags' instead. The list of users that are allowed
-        # to connect to the MCP stats console. The users must exist in the database.
-        # Corresponds to the JSON property `statsUsers`
-        # @return [Array<String>]
-        attr_accessor :stats_users
+        # Output only. The number of running poolers per instance.
+        # Corresponds to the JSON property `poolerCount`
+        # @return [Fixnum]
+        attr_accessor :pooler_count
       
         def initialize(**args)
            update!(**args)
@@ -871,18 +1043,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @default_pool_size = args[:default_pool_size] if args.key?(:default_pool_size)
-          @enable = args[:enable] if args.key?(:enable)
+          @authproxy_pooler_count = args[:authproxy_pooler_count] if args.key?(:authproxy_pooler_count)
           @enabled = args[:enabled] if args.key?(:enabled)
           @flags = args[:flags] if args.key?(:flags)
-          @ignore_startup_parameters = args[:ignore_startup_parameters] if args.key?(:ignore_startup_parameters)
-          @max_client_conn = args[:max_client_conn] if args.key?(:max_client_conn)
-          @max_prepared_statements = args[:max_prepared_statements] if args.key?(:max_prepared_statements)
-          @min_pool_size = args[:min_pool_size] if args.key?(:min_pool_size)
-          @pool_mode = args[:pool_mode] if args.key?(:pool_mode)
-          @query_wait_timeout = args[:query_wait_timeout] if args.key?(:query_wait_timeout)
-          @server_idle_timeout = args[:server_idle_timeout] if args.key?(:server_idle_timeout)
-          @stats_users = args[:stats_users] if args.key?(:stats_users)
+          @pooler_count = args[:pooler_count] if args.key?(:pooler_count)
         end
       end
       
@@ -996,6 +1160,25 @@ module Google
         end
       end
       
+      # CPU utilization policy for the autoscaler.
+      class CpuUtilization
+        include Google::Apis::Core::Hashable
+      
+        # Target CPU utilization as a float between 0 and 1.
+        # Corresponds to the JSON property `utilizationTarget`
+        # @return [Float]
+        attr_accessor :utilization_target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
+        end
+      end
+      
       # Options for exporting data in CSV format.
       class CsvExportOptions
         include Google::Apis::Core::Hashable
@@ -1086,6 +1269,55 @@ module Google
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
           @quote_character = args[:quote_character] if args.key?(:quote_character)
           @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # The DNS config for the endpoint, containing the DNS record name, type and
+      # targets.
+      class DnsConfig
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified domain name (FQDN) of the DNS record, e.g., ".location.
+        # alloydb-psa.goog".
+        # Corresponds to the JSON property `dnsName`
+        # @return [String]
+        attr_accessor :dns_name
+      
+        # The type of the DNS record, e.g., "A", "AAAA", "CNAME".
+        # Corresponds to the JSON property `dnsRecordType`
+        # @return [String]
+        attr_accessor :dns_record_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_name = args[:dns_name] if args.key?(:dns_name)
+          @dns_record_type = args[:dns_record_type] if args.key?(:dns_record_type)
+        end
+      end
+      
+      # Configuration for Dataplex integration.
+      class DataplexConfig
+        include Google::Apis::Core::Hashable
+      
+        # Dataplex is enabled by default for resources such as clusters and instances.
+        # This flag controls the integration of AlloyDB PG resources (like databases,
+        # schemas, and tables) with Dataplex."
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -1199,6 +1431,131 @@ module Google
         def update!(**args)
           @encryption_type = args[:encryption_type] if args.key?(:encryption_type)
           @kms_key_versions = args[:kms_key_versions] if args.key?(:kms_key_versions)
+        end
+      end
+      
+      # Endpoint resource.
+      class Endpoint
+        include Google::Apis::Core::Hashable
+      
+        # Annotations to allow client tools to store small amount of arbitrary data.
+        # This is distinct from labels. https://google.aip.dev/128
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Delete time stamp
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # User-settable and human-readable display name for the Endpoint.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The DNS config for the endpoint, containing the DNS record name, type and
+        # targets.
+        # Corresponds to the JSON property `dnsConfig`
+        # @return [Google::Apis::AlloydbV1beta::DnsConfig]
+        attr_accessor :dns_config
+      
+        # Output only. The effective target instances that the endpoint is associated
+        # with. This is a list of target instance names, e.g. projects/`project_number`/
+        # locations/`location`/clusters/`cluster_id`/instances/`instance_id` For write
+        # endpoint, there is only one effective target instance which has to be a
+        # primary instance. Effective target instances are only different from target
+        # instances after a switchover or cross-region failover operation. Otherwise,
+        # effective_target_instances are the same as target_instances. Note that after a
+        # cross-region failover operation, the effective_target_instances can be stale
+        # until the operation to update the endpoint is complete.
+        # Corresponds to the JSON property `effectiveTargetInstances`
+        # @return [Array<String>]
+        attr_accessor :effective_target_instances
+      
+        # The type of the endpoint, either write or read.
+        # Corresponds to the JSON property `endpointType`
+        # @return [String]
+        attr_accessor :endpoint_type
+      
+        # For Resource freshness validation (https://google.aip.dev/154)
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. Identifier. The name of the endpoint resource with the format: *
+        # projects/`project`/locations/`region`/endpoints/`endpoint_id` where the
+        # endpoint ID segment should satisfy the regex expression `[a-z0-9-]+`. For more
+        # details see https://google.aip.dev/122. The prefix of the endpoint resource
+        # name is the name of the parent resource: * projects/`project`/locations/`
+        # region`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to
+        # true if the current state of Endpoint does not match the user's intended state,
+        # and the service is actively updating the Endpoint to reconcile them. This can
+        # happen due to user-triggered updates or system actions like failover or
+        # maintenance.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Output only. The state of the endpoint.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The names of the target instances for the endpoint, should be of format
+        # projects/`project`/locations/`region`/clusters/`cluster`/instances/`instance`.
+        # For write endpoint, there is only one target instance which has to be a
+        # primary instance. For read endpoint, there can be multiple target instances
+        # which can be read or secondary instances. After a cross-region failover or
+        # switchover operation, the endpoint will be associated with a different target
+        # instance. This change will be reflected in the effective_target_instances
+        # field.
+        # Corresponds to the JSON property `targetInstances`
+        # @return [Array<String>]
+        attr_accessor :target_instances
+      
+        # Output only. The system-generated UID of the resource. The UID is assigned
+        # when the resource is created, and it is retained until it is deleted.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @dns_config = args[:dns_config] if args.key?(:dns_config)
+          @effective_target_instances = args[:effective_target_instances] if args.key?(:effective_target_instances)
+          @endpoint_type = args[:endpoint_type] if args.key?(:endpoint_type)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @state = args[:state] if args.key?(:state)
+          @target_instances = args[:target_instances] if args.key?(:target_instances)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1318,7 +1675,7 @@ module Google
         end
       end
       
-      # Deprecated and unused. This field will be removed in the near future.
+      # Deprecated and unused. This message will be removed in the near future.
       class GeminiClusterConfig
         include Google::Apis::Core::Hashable
       
@@ -1339,7 +1696,7 @@ module Google
         end
       end
       
-      # Deprecated and unused. This field will be removed in the near future.
+      # Deprecated and unused. This message will be removed in the near future.
       class GeminiInstanceConfig
         include Google::Apis::Core::Hashable
       
@@ -1655,6 +2012,16 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Controls whether the Data API is enabled for this instance. When
+        # enabled, this allows authorized users to connect to the instance from the
+        # public internet using the `executeSql` API, even for private IP instances. If
+        # this is not specified, the data API is enabled by default for Google internal
+        # services like AlloyDB Studio. Disable it explicitly to disallow Google
+        # internal services as well.
+        # Corresponds to the JSON property `dataApiAccess`
+        # @return [String]
+        attr_accessor :data_api_access
+      
         # Database flags. Set at the instance level. They are copied from the primary
         # instance on secondary instance creation. Flags that have restrictions default
         # to the value at primary instance on read instances during creation. Read
@@ -1700,7 +2067,7 @@ module Google
         # @return [String]
         attr_accessor :gce_zone
       
-        # Deprecated and unused. This field will be removed in the near future.
+        # Deprecated and unused. This message will be removed in the near future.
         # Corresponds to the JSON property `geminiConfig`
         # @return [Google::Apis::AlloydbV1beta::GeminiInstanceConfig]
         attr_accessor :gemini_config
@@ -1725,6 +2092,13 @@ module Google
         # Corresponds to the JSON property `machineConfig`
         # @return [Google::Apis::AlloydbV1beta::MachineConfig]
         attr_accessor :machine_config
+      
+        # Output only. Maintenance version of the instance, for example: POSTGRES_15.
+        # 2025_07_15.04_00. Output only. Update this field via the parent cluster's
+        # maintenance_version field(s).
+        # Corresponds to the JSON property `maintenanceVersionName`
+        # @return [String]
+        attr_accessor :maintenance_version_name
       
         # Output only. The name of the instance resource with the format: * projects/`
         # project`/locations/`region`/clusters/`cluster_id`/instances/`instance_id`
@@ -1837,6 +2211,7 @@ module Google
           @client_connection_config = args[:client_connection_config] if args.key?(:client_connection_config)
           @connection_pool_config = args[:connection_pool_config] if args.key?(:connection_pool_config)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_api_access = args[:data_api_access] if args.key?(:data_api_access)
           @database_flags = args[:database_flags] if args.key?(:database_flags)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -1848,6 +2223,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @labels = args[:labels] if args.key?(:labels)
           @machine_config = args[:machine_config] if args.key?(:machine_config)
+          @maintenance_version_name = args[:maintenance_version_name] if args.key?(:maintenance_version_name)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
@@ -1874,9 +2250,9 @@ module Google
         # Optional. Name of the allocated IP range for the private IP AlloyDB instance,
         # for example: "google-managed-services-default". If set, the instance IPs will
         # be created from this allocated range and will override the IP range used by
-        # the parent cluster. The range name must comply with [RFC 1035](http://go/rfc/
-        # 1035). Specifically, the name must be 1-63 characters long and match the
-        # regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
+        # the parent cluster. The range name must comply with [RFC 1035](https://
+        # datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63
+        # characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
         # Corresponds to the JSON property `allocatedIpRangeOverride`
         # @return [String]
         attr_accessor :allocated_ip_range_override
@@ -1921,7 +2297,7 @@ module Google
         end
       end
       
-      # Details regarding the upgrade of instaces associated with a cluster.
+      # Details regarding the upgrade of instances associated with a cluster.
       class InstanceUpgradeDetails
         include Google::Apis::Core::Hashable
       
@@ -2039,6 +2415,37 @@ module Google
         end
       end
       
+      # Message for response to listing Endpoints
+      class ListEndpointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Endpoints
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::AlloydbV1beta::Endpoint>]
+        attr_accessor :endpoints
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Message for response to listing Instances
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
@@ -2084,6 +2491,14 @@ module Google
         # @return [Array<Google::Apis::AlloydbV1beta::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2092,6 +2507,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -2335,6 +2751,13 @@ module Google
         # @return [String]
         attr_accessor :ip
       
+        # Output only. Indicates whether the node set up to be configured as a hot
+        # standby.
+        # Corresponds to the JSON property `isHotStandby`
+        # @return [Boolean]
+        attr_accessor :is_hot_standby
+        alias_method :is_hot_standby?, :is_hot_standby
+      
         # Output only. Determined by state of the compute VM and postgres-service health.
         # Compute VM state can have values listed in https://cloud.google.com/compute/
         # docs/instances/instance-life-cycle and postgres-service health can have values:
@@ -2356,6 +2779,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @ip = args[:ip] if args.key?(:ip)
+          @is_hot_standby = args[:is_hot_standby] if args.key?(:is_hot_standby)
           @state = args[:state] if args.key?(:state)
           @zone_id = args[:zone_id] if args.key?(:zone_id)
         end
@@ -2410,6 +2834,19 @@ module Google
         attr_accessor :track_active_queries
         alias_method :track_active_queries?, :track_active_queries
       
+        # Indicates whether to track active query plans for an instance. If not set, the
+        # default value is "off". Can only be enabled if track_active_queries is enabled.
+        # Corresponds to the JSON property `trackActiveQueryPlan`
+        # @return [Boolean]
+        attr_accessor :track_active_query_plan
+        alias_method :track_active_query_plan?, :track_active_query_plan
+      
+        # Track client address for an instance. If not set, default value is "off".
+        # Corresponds to the JSON property `trackClientAddress`
+        # @return [Boolean]
+        attr_accessor :track_client_address
+        alias_method :track_client_address?, :track_client_address
+      
         # Output only. Track wait event types during query execution for an instance.
         # This flag is turned "on" by default but tracking is enabled only after
         # observability enabled flag is also turned on. This is read-only flag and only
@@ -2440,6 +2877,8 @@ module Google
           @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
           @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
           @track_active_queries = args[:track_active_queries] if args.key?(:track_active_queries)
+          @track_active_query_plan = args[:track_active_query_plan] if args.key?(:track_active_query_plan)
+          @track_client_address = args[:track_client_address] if args.key?(:track_client_address)
           @track_wait_event_types = args[:track_wait_event_types] if args.key?(:track_wait_event_types)
           @track_wait_events = args[:track_wait_events] if args.key?(:track_wait_events)
         end
@@ -2572,6 +3011,47 @@ module Google
         end
       end
       
+      # Policy for the autoscaler.
+      class Policy
+        include Google::Apis::Core::Hashable
+      
+        # The period of time in seconds after a new node is created before the
+        # autoscaler will incorporate its resource usage (e.g. CPU utilization) into the
+        # autoscaling recommendation algorithm.
+        # Corresponds to the JSON property `coolDownPeriodSec`
+        # @return [Fixnum]
+        attr_accessor :cool_down_period_sec
+      
+        # CPU utilization policy for the autoscaler.
+        # Corresponds to the JSON property `cpuUtilization`
+        # @return [Google::Apis::AlloydbV1beta::CpuUtilization]
+        attr_accessor :cpu_utilization
+      
+        # If true, autoscaling is enabled for the instance. If not set, the default
+        # value is false.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Maximum number of nodes for the autoscaler.
+        # Corresponds to the JSON property `maxNodeCount`
+        # @return [Fixnum]
+        attr_accessor :max_node_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cool_down_period_sec = args[:cool_down_period_sec] if args.key?(:cool_down_period_sec)
+          @cpu_utilization = args[:cpu_utilization] if args.key?(:cpu_utilization)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
+        end
+      end
+      
       # Configuration for the primary cluster. It has the list of clusters that are
       # replicating from this cluster. This should be set if and only if the cluster
       # is of type PRIMARY.
@@ -2604,6 +3084,15 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Optional. If set, the promote operation will attempt to recreate the original
+        # primary cluster as a secondary cluster when it comes back online. Otherwise,
+        # the promoted cluster will be a standalone cluster. Currently only supported
+        # when there is a single secondary cluster.
+        # Corresponds to the JSON property `failover`
+        # @return [Boolean]
+        attr_accessor :failover
+        alias_method :failover?, :failover
+      
         # Optional. An optional request ID to identify requests. Specify a unique
         # request ID so that if you must retry your request, the server ignores the
         # request if it has already been completed. The server guarantees that for at
@@ -2633,6 +3122,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
+          @failover = args[:failover] if args.key?(:failover)
           @request_id = args[:request_id] if args.key?(:request_id)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
@@ -2902,6 +3392,11 @@ module Google
       class ReadPoolConfig
         include Google::Apis::Core::Hashable
       
+        # Configuration for autoscaling.
+        # Corresponds to the JSON property `autoScalingConfig`
+        # @return [Google::Apis::AlloydbV1beta::AutoScalingConfig]
+        attr_accessor :auto_scaling_config
+      
         # Read capacity, i.e. number of nodes in a read pool instance.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
@@ -2913,6 +3408,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_scaling_config = args[:auto_scaling_config] if args.key?(:auto_scaling_config)
           @node_count = args[:node_count] if args.key?(:node_count)
         end
       end
@@ -2990,6 +3486,16 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::BackupSource]
         attr_accessor :backup_source
       
+        # Message describing a BackupDrBackupSource.
+        # Corresponds to the JSON property `backupdrBackupSource`
+        # @return [Google::Apis::AlloydbV1beta::BackupDrBackupSource]
+        attr_accessor :backupdr_backup_source
+      
+        # Message describing a BackupDrPitrSource.
+        # Corresponds to the JSON property `backupdrPitrSource`
+        # @return [Google::Apis::AlloydbV1beta::BackupDrPitrSource]
+        attr_accessor :backupdr_pitr_source
+      
         # A cluster is a collection of regional AlloyDB resources. It can include a
         # primary instance and one or more read pool instances. All cluster resources
         # share a storage layer, which scales as needed.
@@ -3036,6 +3542,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup_source = args[:backup_source] if args.key?(:backup_source)
+          @backupdr_backup_source = args[:backupdr_backup_source] if args.key?(:backupdr_backup_source)
+          @backupdr_pitr_source = args[:backupdr_pitr_source] if args.key?(:backupdr_pitr_source)
           @cluster = args[:cluster] if args.key?(:cluster)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @continuous_backup_source = args[:continuous_backup_source] if args.key?(:continuous_backup_source)
@@ -3074,6 +3582,64 @@ module Google
           @cloudsql_backup_run_source = args[:cloudsql_backup_run_source] if args.key?(:cloudsql_backup_run_source)
           @cluster = args[:cluster] if args.key?(:cluster)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
+        end
+      end
+      
+      # A schedule for the autoscaler.
+      class Schedule
+        include Google::Apis::Core::Hashable
+      
+        # Cron expression for the triggering the schedule. See https://cloud.google.com/
+        # compute/docs/autoscaler/scaling-schedules#cron_expressions for the syntax.
+        # Corresponds to the JSON property `cronExpression`
+        # @return [String]
+        attr_accessor :cron_expression
+      
+        # Description of the schedule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # If true, the schedule is disabled.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Duration of the schedule.
+        # Corresponds to the JSON property `durationSec`
+        # @return [Fixnum]
+        attr_accessor :duration_sec
+      
+        # Minimum number of nodes in while the schedule is active.
+        # Corresponds to the JSON property `minNodeCount`
+        # @return [Fixnum]
+        attr_accessor :min_node_count
+      
+        # Name of the schedule.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The location-based IANA time zone for interpreting the schedule's start time.
+        # If no time zone is provided, UTC is used by default.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cron_expression = args[:cron_expression] if args.key?(:cron_expression)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @duration_sec = args[:duration_sec] if args.key?(:duration_sec)
+          @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+          @name = args[:name] if args.key?(:name)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
         end
       end
       
@@ -3407,6 +3973,78 @@ module Google
         end
       end
       
+      # BackupDRConfiguration to capture the backup and disaster recovery details of
+      # database resource.
+      class StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if the resource is managed by BackupDR.
+        # Corresponds to the JSON property `backupdrManaged`
+        # @return [Boolean]
+        attr_accessor :backupdr_managed
+        alias_method :backupdr_managed?, :backupdr_managed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backupdr_managed = args[:backupdr_managed] if args.key?(:backupdr_managed)
+        end
+      end
+      
+      # BackupDRMetadata contains information about the backup and disaster recovery
+      # metadata of a database resource.
+      class StorageDatabasecenterPartnerapiV1mainBackupDrMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for automatic backups
+        # Corresponds to the JSON property `backupConfiguration`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration]
+        attr_accessor :backup_configuration
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
+      
+        # BackupDRConfiguration to capture the backup and disaster recovery details of
+        # database resource.
+        # Corresponds to the JSON property `backupdrConfiguration`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration]
+        attr_accessor :backupdr_configuration
+      
+        # Required. Full resource name of this instance.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Required. Last time backup configuration was refreshed.
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
+        attr_accessor :resource_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @backupdr_configuration = args[:backupdr_configuration] if args.key?(:backupdr_configuration)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+        end
+      end
+      
       # A backup run.
       class StorageDatabasecenterPartnerapiV1mainBackupRun
         include Google::Apis::Core::Hashable
@@ -3470,6 +4108,52 @@ module Google
         end
       end
       
+      # Config based signal data. This is used to send signals to Condor which are
+      # based on the DB level configurations. These will be used to send signals for
+      # self managed databases.
+      class StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full Resource name of the source resource.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Required. Last time signal was refreshed
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Signal data for boolean signals.
+        # Corresponds to the JSON property `signalBoolValue`
+        # @return [Boolean]
+        attr_accessor :signal_bool_value
+        alias_method :signal_bool_value?, :signal_bool_value
+      
+        # Required. Signal type of the signal
+        # Corresponds to the JSON property `signalType`
+        # @return [String]
+        attr_accessor :signal_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
+        end
+      end
+      
       # Any custom metadata associated with the resource. e.g. A spanner instance can
       # have multiple databases with its own unique metadata. Information for these
       # individual databases can be captured in custom metadata data
@@ -3493,9 +4177,29 @@ module Google
       end
       
       # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform.
+      # database resource level events into Condor platform. Next ID: 13
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         include Google::Apis::Core::Hashable
+      
+        # BackupDRMetadata contains information about the backup and disaster recovery
+        # metadata of a database resource.
+        # Corresponds to the JSON property `backupdrMetadata`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata]
+        attr_accessor :backupdr_metadata
+      
+        # Config based signal data. This is used to send signals to Condor which are
+        # based on the DB level configurations. These will be used to send signals for
+        # self managed databases.
+        # Corresponds to the JSON property `configBasedSignalData`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData]
+        attr_accessor :config_based_signal_data
+      
+        # Database resource signal data. This is used to send signals to Condor which
+        # are based on the DB/Instance/Fleet level configurations. These will be used to
+        # send signals for all inventory types. Next ID: 10
+        # Corresponds to the JSON property `databaseResourceSignalData`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData]
+        attr_accessor :database_resource_signal_data
       
         # Required. Timestamp when feed is generated.
         # Corresponds to the JSON property `feedTimestamp`
@@ -3527,10 +4231,20 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 25
+        # Common model for database resource instance metadata. Next ID: 35
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
+      
+        # Optional. If true, the feed won't be ingested by DB Center. This indicates
+        # that the feed is intentionally skipped. For example, BackupDR feeds are only
+        # needed for resources integrated with DB Center (e.g., CloudSQL, AlloyDB).
+        # Feeds for non-integrated resources (e.g., Compute Engine, Persistent Disk) can
+        # be skipped.
+        # Corresponds to the JSON property `skipIngestion`
+        # @return [Boolean]
+        attr_accessor :skip_ingestion
+        alias_method :skip_ingestion?, :skip_ingestion
       
         def initialize(**args)
            update!(**args)
@@ -3538,6 +4252,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backupdr_metadata = args[:backupdr_metadata] if args.key?(:backupdr_metadata)
+          @config_based_signal_data = args[:config_based_signal_data] if args.key?(:config_based_signal_data)
+          @database_resource_signal_data = args[:database_resource_signal_data] if args.key?(:database_resource_signal_data)
           @feed_timestamp = args[:feed_timestamp] if args.key?(:feed_timestamp)
           @feed_type = args[:feed_type] if args.key?(:feed_type)
           @observability_metric_data = args[:observability_metric_data] if args.key?(:observability_metric_data)
@@ -3545,6 +4262,7 @@ module Google
           @resource_health_signal_data = args[:resource_health_signal_data] if args.key?(:resource_health_signal_data)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @resource_metadata = args[:resource_metadata] if args.key?(:resource_metadata)
+          @skip_ingestion = args[:skip_ingestion] if args.key?(:skip_ingestion)
         end
       end
       
@@ -3583,6 +4301,11 @@ module Google
         # Corresponds to the JSON property `externalUri`
         # @return [String]
         attr_accessor :external_uri
+      
+        # This is used to identify the location of the resource. Example: "us-central1"
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE,
         # SQL_LOG_ERROR_VERBOSITY etc.
@@ -3647,6 +4370,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @event_time = args[:event_time] if args.key?(:event_time)
           @external_uri = args[:external_uri] if args.key?(:external_uri)
+          @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
           @provider = args[:provider] if args.key?(:provider)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
@@ -3673,12 +4397,15 @@ module Google
         # @return [String]
         attr_accessor :provider_description
       
-        # Required. The type of resource this ID is identifying. Ex redis.googleapis.com/
-        # Instance, redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster,
-        # alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance, spanner.
-        # googleapis.com/Database, firestore.googleapis.com/Database, sqladmin.
-        # googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster, bigtableadmin.
-        # googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
+        # Required. The type of resource this ID is identifying. Ex go/keep-sorted start
+        # alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.
+        # googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.
+        # googleapis.com/Instance firestore.googleapis.com/Database, redis.googleapis.
+        # com/Instance, redis.googleapis.com/Cluster, oracledatabase.googleapis.com/
+        # CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
+        # oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/
+        # Instance, spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance,
+        # go/keep-sorted end REQUIRED Please refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -3702,9 +4429,14 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 25
+      # Common model for database resource instance metadata. Next ID: 35
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
+      
+        # Field to ingest additional metadata whichd does not support proto format.
+        # Corresponds to the JSON property `additionalMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :additional_metadata
       
         # Configuration for availability of database instance
         # Corresponds to the JSON property `availabilityConfiguration`
@@ -3720,6 +4452,12 @@ module Google
         # Corresponds to the JSON property `backupRun`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
         attr_accessor :backup_run
+      
+        # BackupDRConfiguration to capture the backup and disaster recovery details of
+        # database resource.
+        # Corresponds to the JSON property `backupdrConfiguration`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration]
+        attr_accessor :backupdr_configuration
       
         # The creation time of the resource, i.e. the time when resource is created and
         # recorded in partner service.
@@ -3773,6 +4511,22 @@ module Google
         # @return [String]
         attr_accessor :instance_type
       
+        # Field to ingest additional metadata which support proto format.
+        # Corresponds to the JSON property `internalAdditionalMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :internal_additional_metadata
+      
+        # Used to send IP address information for a database resource.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainIpAddress]
+        attr_accessor :ip_address
+      
+        # Optional. Whether deletion protection is enabled for this resource.
+        # Corresponds to the JSON property `isDeletionProtectionEnabled`
+        # @return [Boolean]
+        attr_accessor :is_deletion_protection_enabled
+        alias_method :is_deletion_protection_enabled?, :is_deletion_protection_enabled
+      
         # The resource location. REQUIRED
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -3783,6 +4537,16 @@ module Google
         # Corresponds to the JSON property `machineConfiguration`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainMachineConfiguration]
         attr_accessor :machine_configuration
+      
+        # MaintenanceInfo to capture the maintenance details of database resource.
+        # Corresponds to the JSON property `maintenanceInfo`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo]
+        attr_accessor :maintenance_info
+      
+        # Optional. The modes of the database resource.
+        # Corresponds to the JSON property `modes`
+        # @return [Array<String>]
+        attr_accessor :modes
       
         # DatabaseResourceId will serve as primary key for any resource ingestion event.
         # Corresponds to the JSON property `primaryResourceId`
@@ -3806,6 +4570,11 @@ module Google
         # Corresponds to the JSON property `resourceContainer`
         # @return [String]
         attr_accessor :resource_container
+      
+        # Optional. List of resource flags for the database resource.
+        # Corresponds to the JSON property `resourceFlags`
+        # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceFlags>]
+        attr_accessor :resource_flags
       
         # Required. Different from DatabaseResourceId.unique_id, a resource name can be
         # reused over time. That is, after a resource named "ABC" is deleted, the name "
@@ -3840,15 +4609,23 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUserLabels]
         attr_accessor :user_label_set
       
+        # The resource zone. This is only applicable for zonal resources and will be
+        # empty for regional and multi-regional resources.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @additional_metadata = args[:additional_metadata] if args.key?(:additional_metadata)
           @availability_configuration = args[:availability_configuration] if args.key?(:availability_configuration)
           @backup_configuration = args[:backup_configuration] if args.key?(:backup_configuration)
           @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @backupdr_configuration = args[:backupdr_configuration] if args.key?(:backupdr_configuration)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @current_state = args[:current_state] if args.key?(:current_state)
           @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
@@ -3858,17 +4635,24 @@ module Google
           @gcbdr_configuration = args[:gcbdr_configuration] if args.key?(:gcbdr_configuration)
           @id = args[:id] if args.key?(:id)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
+          @internal_additional_metadata = args[:internal_additional_metadata] if args.key?(:internal_additional_metadata)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @is_deletion_protection_enabled = args[:is_deletion_protection_enabled] if args.key?(:is_deletion_protection_enabled)
           @location = args[:location] if args.key?(:location)
           @machine_configuration = args[:machine_configuration] if args.key?(:machine_configuration)
+          @maintenance_info = args[:maintenance_info] if args.key?(:maintenance_info)
+          @modes = args[:modes] if args.key?(:modes)
           @primary_resource_id = args[:primary_resource_id] if args.key?(:primary_resource_id)
           @primary_resource_location = args[:primary_resource_location] if args.key?(:primary_resource_location)
           @product = args[:product] if args.key?(:product)
           @resource_container = args[:resource_container] if args.key?(:resource_container)
+          @resource_flags = args[:resource_flags] if args.key?(:resource_flags)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
           @tags_set = args[:tags_set] if args.key?(:tags_set)
           @updation_time = args[:updation_time] if args.key?(:updation_time)
           @user_label_set = args[:user_label_set] if args.key?(:user_label_set)
+          @zone = args[:zone] if args.key?(:zone)
         end
       end
       
@@ -3941,6 +4725,77 @@ module Google
           @recommender_id = args[:recommender_id] if args.key?(:recommender_id)
           @recommender_subtype = args[:recommender_subtype] if args.key?(:recommender_subtype)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @signal_type = args[:signal_type] if args.key?(:signal_type)
+        end
+      end
+      
+      # Database resource signal data. This is used to send signals to Condor which
+      # are based on the DB/Instance/Fleet level configurations. These will be used to
+      # send signals for all inventory types. Next ID: 10
+      class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
+        include Google::Apis::Core::Hashable
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
+      
+        # Required. Full Resource name of the source resource.
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Required. Last time signal was refreshed
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # Required. Resource location.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Corresponds to the JSON property `resourceId`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
+        attr_accessor :resource_id
+      
+        # Deprecated: Use signal_metadata_list instead.
+        # Corresponds to the JSON property `signalBoolValue`
+        # @return [Boolean]
+        attr_accessor :signal_bool_value
+        alias_method :signal_bool_value?, :signal_bool_value
+      
+        # This will support array of OneOf signal metadata information for a given
+        # signal type.
+        # Corresponds to the JSON property `signalMetadataList`
+        # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainSignalMetadata>]
+        attr_accessor :signal_metadata_list
+      
+        # Required. Output only. Signal state of the signal
+        # Corresponds to the JSON property `signalState`
+        # @return [String]
+        attr_accessor :signal_state
+      
+        # Required. Signal type of the signal
+        # Corresponds to the JSON property `signalType`
+        # @return [String]
+        attr_accessor :signal_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @location = args[:location] if args.key?(:location)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
+          @signal_metadata_list = args[:signal_metadata_list] if args.key?(:signal_metadata_list)
+          @signal_state = args[:signal_state] if args.key?(:signal_state)
           @signal_type = args[:signal_type] if args.key?(:signal_type)
         end
       end
@@ -4044,16 +4899,56 @@ module Google
         end
       end
       
+      # Used to send IP address information for a database resource.
+      class StorageDatabasecenterPartnerapiV1mainIpAddress
+        include Google::Apis::Core::Hashable
+      
+        # The private IP address assigned to the resource within a Virtual Private Cloud
+        # (VPC). This IP is only reachable from within the same VPC network. Stored in
+        # standard string format (e.g., "10.0.0.2").
+        # Corresponds to the JSON property `privateIp`
+        # @return [String]
+        attr_accessor :private_ip
+      
+        # The public IP address assigned to the resource. This IP is reachable from the
+        # internet. Stored in standard string format (e.g., "34.72.1.1").
+        # Corresponds to the JSON property `publicIp`
+        # @return [String]
+        attr_accessor :public_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_ip = args[:private_ip] if args.key?(:private_ip)
+          @public_ip = args[:public_ip] if args.key?(:public_ip)
+        end
+      end
+      
       # MachineConfiguration describes the configuration of a machine specific to
       # Database Resource.
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         include Google::Apis::Core::Hashable
+      
+        # Optional. Baseline slots for BigQuery Reservations. Baseline slots are in
+        # increments of 50.
+        # Corresponds to the JSON property `baselineSlots`
+        # @return [Fixnum]
+        attr_accessor :baseline_slots
       
         # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add
         # proto validations again after bug fix.
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
+      
+        # Optional. Max slots for BigQuery Reservations. Max slots are in increments of
+        # 50.
+        # Corresponds to the JSON property `maxReservationSlots`
+        # @return [Fixnum]
+        attr_accessor :max_reservation_slots
       
         # Memory size in bytes. TODO(b/342344482) add proto validations again after bug
         # fix.
@@ -4078,7 +4973,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @baseline_slots = args[:baseline_slots] if args.key?(:baseline_slots)
           @cpu_count = args[:cpu_count] if args.key?(:cpu_count)
+          @max_reservation_slots = args[:max_reservation_slots] if args.key?(:max_reservation_slots)
           @memory_size_in_bytes = args[:memory_size_in_bytes] if args.key?(:memory_size_in_bytes)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
           @vcpu_count = args[:vcpu_count] if args.key?(:vcpu_count)
@@ -4161,6 +5058,193 @@ module Google
         end
       end
       
+      # Message type for storing resource flags.
+      class StorageDatabasecenterPartnerapiV1mainResourceFlags
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Key of the resource flag.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Value of the resource flag.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Deny maintenance period for the database resource. It specifies the time range
+      # during which the maintenance cannot start. This is configured by the customer.
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::AlloydbV1beta::GoogleTypeDate]
+        attr_accessor :end_date
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::AlloydbV1beta::GoogleTypeDate]
+        attr_accessor :start_date
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `time`
+        # @return [Google::Apis::AlloydbV1beta::GoogleTypeTimeOfDay]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
+      # MaintenanceInfo to capture the maintenance details of database resource.
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `currentVersionReleaseDate`
+        # @return [Google::Apis::AlloydbV1beta::GoogleTypeDate]
+        attr_accessor :current_version_release_date
+      
+        # Optional. List of Deny maintenance period for the database resource.
+        # Corresponds to the JSON property `denyMaintenanceSchedules`
+        # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule>]
+        attr_accessor :deny_maintenance_schedules
+      
+        # Optional. Whether the instance is in stopped state. This information is
+        # temporarily being captured in maintenanceInfo, till STOPPED state is supported
+        # by DB Center.
+        # Corresponds to the JSON property `isInstanceStopped`
+        # @return [Boolean]
+        attr_accessor :is_instance_stopped
+        alias_method :is_instance_stopped?, :is_instance_stopped
+      
+        # Maintenance window for the database resource. It specifies preferred time and
+        # day of the week and phase in some cases, when the maintenance can start. This
+        # is configured by the customer.
+        # Corresponds to the JSON property `maintenanceSchedule`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule]
+        attr_accessor :maintenance_schedule
+      
+        # Output only. Current state of maintenance on the database resource.
+        # Corresponds to the JSON property `maintenanceState`
+        # @return [String]
+        attr_accessor :maintenance_state
+      
+        # Optional. Current Maintenance version of the database resource. Example: "
+        # MYSQL_8_0_41.R20250531.01_15"
+        # Corresponds to the JSON property `maintenanceVersion`
+        # @return [String]
+        attr_accessor :maintenance_version
+      
+        # Optional. List of next available maintenance versions.
+        # Corresponds to the JSON property `nextAvailableMaintenanceVersions`
+        # @return [Array<String>]
+        attr_accessor :next_available_maintenance_versions
+      
+        # Upcoming maintenance for the database resource. This is generated by SLM once
+        # the upcoming maintenance schedule is published.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_version_release_date = args[:current_version_release_date] if args.key?(:current_version_release_date)
+          @deny_maintenance_schedules = args[:deny_maintenance_schedules] if args.key?(:deny_maintenance_schedules)
+          @is_instance_stopped = args[:is_instance_stopped] if args.key?(:is_instance_stopped)
+          @maintenance_schedule = args[:maintenance_schedule] if args.key?(:maintenance_schedule)
+          @maintenance_state = args[:maintenance_state] if args.key?(:maintenance_state)
+          @maintenance_version = args[:maintenance_version] if args.key?(:maintenance_version)
+          @next_available_maintenance_versions = args[:next_available_maintenance_versions] if args.key?(:next_available_maintenance_versions)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
+        end
+      end
+      
+      # Maintenance window for the database resource. It specifies preferred time and
+      # day of the week and phase in some cases, when the maintenance can start. This
+      # is configured by the customer.
+      class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        # Corresponds to the JSON property `day`
+        # @return [String]
+        attr_accessor :day
+      
+        # Optional. Phase of the maintenance window. This is to capture order of
+        # maintenance. For example, for Cloud SQL resources, this can be used to capture
+        # if the maintenance window is in Week1, Week2, Week5, etc. Non production
+        # resources are usually part of early phase. For more details, refer to Cloud
+        # SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance
+        # Corresponds to the JSON property `phase`
+        # @return [String]
+        attr_accessor :phase
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and `google.protobuf.Timestamp`.
+        # Corresponds to the JSON property `time`
+        # @return [Google::Apis::AlloydbV1beta::GoogleTypeTimeOfDay]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @phase = args[:phase] if args.key?(:phase)
+          @time = args[:time] if args.key?(:time)
+        end
+      end
+      
       # 
       class StorageDatabasecenterPartnerapiV1mainRetentionSettings
         include Google::Apis::Core::Hashable
@@ -4204,6 +5288,34 @@ module Google
         end
       end
       
+      # SignalMetadata contains one of the signal metadata proto messages associated
+      # with a SignalType. This proto will be mapped to SignalMetadata message in
+      # storage.proto. Next ID: 3
+      class StorageDatabasecenterPartnerapiV1mainSignalMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A backup run.
+        # Corresponds to the JSON property `backupRun`
+        # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
+        attr_accessor :backup_run
+      
+        # Signal data for boolean signals.
+        # Corresponds to the JSON property `signalBoolValue`
+        # @return [Boolean]
+        attr_accessor :signal_bool_value
+        alias_method :signal_bool_value?, :signal_bool_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_run = args[:backup_run] if args.key?(:backup_run)
+          @signal_bool_value = args[:signal_bool_value] if args.key?(:signal_bool_value)
+        end
+      end
+      
       # Message type for storing tags. Tags provide a way to create annotations for
       # resources, and in some cases conditionally allow or deny policies based on
       # whether a resource has a specific tag.
@@ -4222,6 +5334,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Upcoming maintenance for the database resource. This is generated by SLM once
+      # the upcoming maintenance schedule is published.
+      class StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The end time of the upcoming maintenance.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. The start time of the upcoming maintenance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -4255,6 +5393,13 @@ module Google
         # @return [String]
         attr_accessor :engine
       
+        # Minor version of the underlying database engine. Example values: For MySQL, it
+        # could be "8.0.32", "5.7.32" etc.. For Postgres, it could be "14.3", "15.3" etc.
+        # .
+        # Corresponds to the JSON property `minorVersion`
+        # @return [String]
+        attr_accessor :minor_version
+      
         # Type of specific database product. It could be CloudSQL, AlloyDB etc..
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -4273,6 +5418,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @engine = args[:engine] if args.key?(:engine)
+          @minor_version = args[:minor_version] if args.key?(:minor_version)
           @type = args[:type] if args.key?(:type)
           @version = args[:version] if args.key?(:version)
         end

@@ -31,6 +31,12 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # See, edit, configure, and delete your Google Cloud Dataproc data and see the email address for your Google Account
+      AUTH_DATAPROC = 'https://www.googleapis.com/auth/dataproc'
+
+      # See your Google Cloud Dataproc data and the email address of your Google Account
+      AUTH_DATAPROC_READ_ONLY = 'https://www.googleapis.com/auth/dataproc.read-only'
     end
   end
 end

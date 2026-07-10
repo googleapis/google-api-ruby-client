@@ -1,5 +1,110 @@
 # Release history for google-apis-contactcenterinsights_v1
 
+### v0.90.0 (2026-06-28)
+
+* Regenerated from discovery document revision 20260623
+
+### v0.89.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260612
+* Regenerated using generator version 0.19.0
+
+### v0.88.0 (2026-05-31)
+
+* Regenerated from discovery document revision 20260527
+
+### v0.87.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260510
+
+### v0.86.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260410
+
+### v0.85.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260313
+
+### v0.84.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260219
+
+### v0.83.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260202
+
+### v0.82.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260121
+
+### v0.81.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260112
+
+### v0.80.0 (2025-12-21)
+
+* Regenerated from discovery document revision 20251219
+
+### v0.79.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251208
+
+### v0.78.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251112
+
+### v0.77.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251023
+
+### v0.76.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251007
+
+### v0.75.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250926
+
+### v0.74.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250901
+
+### v0.73.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250825
+
+### v0.72.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250821
+
+### v0.71.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250811
+
+### v0.70.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250729
+
+### v0.69.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250721
+
+### v0.68.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250711
+
+### v0.67.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250701
+
+### v0.66.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250624
+
+### v0.65.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250526
+
 ### v0.64.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250521

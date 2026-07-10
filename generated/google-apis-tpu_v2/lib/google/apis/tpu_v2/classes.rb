@@ -150,6 +150,25 @@ module Google
         end
       end
       
+      # Sets the boot disk configuration for the TPU node.
+      class BootDiskConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines the customer encryption key for disk encryption.
+        # Corresponds to the JSON property `customerEncryptionKey`
+        # @return [Google::Apis::TpuV2::CustomerEncryptionKey]
+        attr_accessor :customer_encryption_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer_encryption_key = args[:customer_encryption_key] if args.key?(:customer_encryption_key)
+        end
+      end
+      
       # Further data for the creating state.
       class CreatingData
         include Google::Apis::Core::Hashable
@@ -160,6 +179,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Defines the customer encryption key for disk encryption.
+      class CustomerEncryptionKey
+        include Google::Apis::Core::Hashable
+      
+        # The name of the encryption key that is stored in Google Cloud KMS. For example:
+        # "kmsKeyName": "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/
+        # cryptoKeys/KEY The fully-qualifed key name may be returned for resource GET
+        # requests. For example: "kmsKeyName": "projects/KMS_PROJECT_ID/locations/REGION/
+        # keyRings/KEY_REGION/cryptoKeys/KEY/cryptoKeyVersions/1
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
       
@@ -521,6 +563,14 @@ module Google
         # @return [Array<Google::Apis::TpuV2::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -529,6 +579,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -773,6 +824,11 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
+        # Sets the boot disk configuration for the TPU node.
+        # Corresponds to the JSON property `bootDiskConfig`
+        # @return [Google::Apis::TpuV2::BootDiskConfig]
+        attr_accessor :boot_disk_config
+      
         # The CIDR block that the TPU node will use when selecting an IP address. This
         # CIDR block must be a /29 block; the Compute Engine networks API forbids a
         # smaller block, and using a larger block would be wasteful (a node can only
@@ -912,6 +968,7 @@ module Google
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
           @api_version = args[:api_version] if args.key?(:api_version)
+          @boot_disk_config = args[:boot_disk_config] if args.key?(:boot_disk_config)
           @cidr_block = args[:cidr_block] if args.key?(:cidr_block)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_disks = args[:data_disks] if args.key?(:data_disks)

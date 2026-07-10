@@ -31,6 +31,18 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Search your organization's data in the Cloud Search index
+      AUTH_CLOUD_SEARCH_QUERY = 'https://www.googleapis.com/auth/cloud_search.query'
+
+      # View your Agentspace chat history, including uploaded files and generated reports and visualizations, and interact with the Agentspace assistant on your behalf.
+      AUTH_DISCOVERYENGINE_ASSIST_READWRITE = 'https://www.googleapis.com/auth/discoveryengine.assist.readwrite'
+
+      # View, edit, create, and delete all your data associated with any Discovery Engine API product, such as Agentspace, Vertex AI Search, or NotebookLM Enterprise, including both end user data and administration or configuration data.
+      AUTH_DISCOVERYENGINE_READWRITE = 'https://www.googleapis.com/auth/discoveryengine.readwrite'
+
+      # Interact with Discovery Engine API products, such as Agentspace, Vertex AI Search, or NotebookLM Enterprise, on your behalf. It will also allow the app to view all data that you have access to when you use or interact with a Discovery Engine API product.
+      AUTH_DISCOVERYENGINE_SERVING_READWRITE = 'https://www.googleapis.com/auth/discoveryengine.serving.readwrite'
     end
   end
 end

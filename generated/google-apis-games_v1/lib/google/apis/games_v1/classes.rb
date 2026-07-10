@@ -26,6 +26,11 @@ module Google
       class AchievementDefinition
         include Google::Apis::Core::Hashable
       
+        # Output only. The lifecycle state of the achievement.
+        # Corresponds to the JSON property `achievementLifecycleState`
+        # @return [String]
+        attr_accessor :achievement_lifecycle_state
+      
         # The type of the achievement.
         # Corresponds to the JSON property `achievementType`
         # @return [String]
@@ -102,6 +107,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @achievement_lifecycle_state = args[:achievement_lifecycle_state] if args.key?(:achievement_lifecycle_state)
           @achievement_type = args[:achievement_type] if args.key?(:achievement_type)
           @description = args[:description] if args.key?(:description)
           @experience_points = args[:experience_points] if args.key?(:experience_points)

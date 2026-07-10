@@ -52,11 +52,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Filters an organization's assets and groups them by their specified properties.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent to group the assets by. Its format is `
-        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -87,90 +84,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists an organization's assets.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent resource that contains the assets. The value
-        #   that you can specify on parent depends on the method in which you specify
-        #   parent. You can specify one of the following values: `organizations/[
-        #   organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
         # @param [String] compare_duration
-        #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
-        #   is updated to indicate whether the asset was added, removed, or remained
-        #   present during the compare_duration period of time that precedes the read_time.
-        #   This is the time between (read_time - compare_duration) and read_time. The
-        #   state_change value is derived based on the presence of the asset at the two
-        #   points in time. Intermediate state changes between the two times don't affect
-        #   the result. For example, the results aren't affected if the asset is removed
-        #   and re-created again. Possible "state_change" values when compare_duration is
-        #   specified: * "ADDED": indicates that the asset was not present at the start of
-        #   compare_duration, but present at read_time. * "REMOVED": indicates that the
-        #   asset was present at the start of compare_duration, but not present at
-        #   read_time. * "ACTIVE": indicates that the asset was present at both the start
-        #   and the end of the time period defined by compare_duration and read_time. If
-        #   compare_duration is not specified, then the only possible state_change is "
-        #   UNUSED", which will be the state_change set for all assets present at
-        #   read_time.
         # @param [String] field_mask
-        #   A field mask to specify the ListAssetsResult fields to be listed in the
-        #   response. An empty field mask will list all fields.
         # @param [String] filter
-        #   Expression that defines the filter to apply across assets. The expression is a
-        #   list of zero or more restrictions combined via logical operators `AND` and `OR`
-        #   . Parentheses are supported, and `OR` has higher precedence than `AND`.
-        #   Restrictions have the form ` ` and may have a `-` character in front of them
-        #   to indicate negation. The fields map to those defined in the Asset resource.
-        #   Examples include: * name * security_center_properties.resource_name *
-        #   resource_properties.a_property * security_marks.marks.marka The supported
-        #   operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer
-        #   values. * `:`, meaning substring matching, for strings. The supported value
-        #   types are: * string literals in quotes. * integer literals without quotes. *
-        #   boolean literals `true` and `false` without quotes. The following are the
-        #   allowed field and operator combinations: * name: `=` * update_time: `=`, `>`, `
-        #   <`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
-        #   string. Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time =
-        #   1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be
-        #   milliseconds since epoch or an RFC3339 string. Examples: `create_time = "2019-
-        #   06-10T16:07:18-07:00"` `create_time = 1560208038000` * iam_policy.policy_blob:
-        #   `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` *
-        #   security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`,
-        #   `:` * security_center_properties.resource_display_name: `=`, `:` *
-        #   security_center_properties.resource_type: `=`, `:` *
-        #   security_center_properties.resource_parent: `=`, `:` *
-        #   security_center_properties.resource_parent_display_name: `=`, `:` *
-        #   security_center_properties.resource_project: `=`, `:` *
-        #   security_center_properties.resource_project_display_name: `=`, `:` *
-        #   security_center_properties.resource_owners: `=`, `:` For example, `
-        #   resource_properties.size = 100` is a valid filter string. Use a partial match
-        #   on the empty string to filter based on a property existing: `
-        #   resource_properties.my_property : ""` Use a negated partial match on the empty
-        #   string to filter based on a property not existing: `-resource_properties.
-        #   my_property : ""`
         # @param [String] order_by
-        #   Expression that defines what fields and order to use for sorting. The string
-        #   value should follow SQL syntax: comma separated list of fields. For example: "
-        #   name,resource_properties.a_property". The default sorting order is ascending.
-        #   To specify descending order for a field, a suffix " desc" should be appended
-        #   to the field name. For example: "name desc,resource_properties.a_property".
-        #   Redundant space characters in the syntax are insignificant. "name desc,
-        #   resource_properties.a_property" and " name desc , resource_properties.
-        #   a_property " are equivalent. The following fields are supported: name
-        #   update_time resource_properties security_marks.marks
-        #   security_center_properties.resource_name security_center_properties.
-        #   resource_display_name security_center_properties.resource_parent
-        #   security_center_properties.resource_parent_display_name
-        #   security_center_properties.resource_project security_center_properties.
-        #   resource_project_display_name security_center_properties.resource_type
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListAssetsResponse`; indicates that this is a
-        #   continuation of a prior `ListAssets` call, and that the system should return
-        #   the next page of data.
         # @param [String] read_time
-        #   Time used as a reference point when filtering assets. The filter is limited to
-        #   assets existing at the supplied time and their values are those at that
-        #   specific time. Absence of this field will default to the API's version of NOW.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -205,22 +127,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates security marks.
+        # 
         # @param [String] name
-        #   The relative resource name of the SecurityMarks. See: https://cloud.google.com/
-        #   apis/design/resource_names#relative_resource_name Examples: "organizations/`
-        #   organization_id`/assets/`asset_id`/securityMarks" "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`/securityMarks".
         # @param [Google::Apis::SecuritycenterV1::SecurityMarks] security_marks_object
         # @param [String] start_time
-        #   The time at which the updated SecurityMarks take effect. If not set uses
-        #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time. Must be earlier or equal to the server
-        #   time.
         # @param [String] update_mask
-        #   The FieldMask to use when updating the security marks resource. The field mask
-        #   must not contain duplicate fields. If empty or set to "marks", all marks will
-        #   be replaced. Individual marks can be updated using "marks.".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -252,17 +163,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a BigQuery export.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent resource of the new BigQuery export. Its
-        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, or `
-        #   projects/[project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
-        #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of only lowercase letters, numbers, and hyphens, must start with
-        #   a letter, must end with either a letter or a number, and must be 63 characters
-        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -293,12 +197,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing BigQuery export.
+        # 
         # @param [String] name
-        #   Required. The name of the BigQuery export to delete. Its format is `
-        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
-        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
-        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -326,12 +226,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a BigQuery export.
+        # 
         # @param [String] name
-        #   Required. Name of the BigQuery export to retrieve. Its format is `
-        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
-        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
-        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -359,24 +255,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists BigQuery exports. Note that when requesting BigQuery exports at a given
-        # level all exports under that level are also returned e.g. if requesting
-        # BigQuery exports under a folder, then all BigQuery exports immediately under
-        # the folder plus the ones created under the projects within the folder are
-        # returned.
+        # 
         # @param [String] parent
-        #   Required. The parent, which owns the collection of BigQuery exports. Its
-        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
-        #   project_id]`.
         # @param [Fixnum] page_size
-        #   The maximum number of configs to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListBigQueryExports` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListBigQueryExports` must match the call that provided the page
-        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -406,17 +288,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a BigQuery export.
+        # 
         # @param [String] name
-        #   The relative resource name of this export. See: https://cloud.google.com/apis/
-        #   design/resource_names#relative_resource_name. Example format: "organizations/`
-        #   organization_id`/bigQueryExports/`export_id`" Example format: "folders/`
-        #   folder_id`/bigQueryExports/`export_id`" Example format: "projects/`project_id`/
-        #   bigQueryExports/`export_id`" This field is provided in responses, and is
-        #   ignored when provided in create requests.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -447,12 +322,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Validates the given Event Threat Detection custom module.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the parent to validate the Custom Module under. Its
-        #   format is: * `organizations/`organization`/eventThreatDetectionSettings`. * `
-        #   folders/`folder`/eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest] validate_event_threat_detection_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -483,14 +354,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a resident Event Threat Detection custom module at the scope of the
-        # given Resource Manager parent, and also creates inherited custom modules for
-        # all descendants of the given parent. These modules are enabled by default.
+        # 
         # @param [String] parent
-        #   Required. The new custom module's parent. Its format is: * `organizations/`
-        #   organization`/eventThreatDetectionSettings`. * `folders/`folder`/
-        #   eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -521,14 +386,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified Event Threat Detection custom module and all of its
-        # descendants in the Resource Manager hierarchy. This method is only supported
-        # for resident custom modules.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is: * `organizations/
-        #   `organization`/eventThreatDetectionSettings/customModules/`module``. * `
-        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module``. * `
-        #   projects/`project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -556,12 +415,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an Event Threat Detection custom module.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is: * `organizations/`
-        #   organization`/eventThreatDetectionSettings/customModules/`module``. * `folders/
-        #   `folder`/eventThreatDetectionSettings/customModules/`module``. * `projects/`
-        #   project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -589,23 +444,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all Event Threat Detection custom modules for the given Resource Manager
-        # parent. This includes resident modules defined at the scope of the parent
-        # along with modules inherited from ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * `
-        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
-        #   /eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
-        #   The maximum number of modules to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListEventThreatDetectionCustomModules`
-        #   call. Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListEventThreatDetectionCustomModules` must match the
-        #   call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -635,23 +477,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all resident Event Threat Detection custom modules under the given
-        # Resource Manager parent and its descendants.
+        # 
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * `
-        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
-        #   /eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
-        #   The maximum number of modules to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `
-        #   ListDescendantEventThreatDetectionCustomModules` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListDescendantEventThreatDetectionCustomModules` must match the call that
-        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -681,21 +510,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the Event Threat Detection custom module with the given name based on
-        # the given update mask. Updating the enablement state is supported for both
-        # resident and inherited modules (though resident modules cannot have an
-        # enablement state of "inherited"). Updating the display name or configuration
-        # of a module is supported for resident modules only. The type of a module
-        # cannot be changed.
+        # 
         # @param [String] name
-        #   Immutable. The resource name of the Event Threat Detection custom module. Its
-        #   format is: * `organizations/`organization`/eventThreatDetectionSettings/
-        #   customModules/`module``. * `folders/`folder`/eventThreatDetectionSettings/
-        #   customModules/`module``. * `projects/`project`/eventThreatDetectionSettings/
-        #   customModules/`module``.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -726,14 +544,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an effective Event Threat Detection custom module at the given level.
+        # 
         # @param [String] name
-        #   Required. The resource name of the effective Event Threat Detection custom
-        #   module. Its format is: * `organizations/`organization`/
-        #   eventThreatDetectionSettings/effectiveCustomModules/`module``. * `folders/`
-        #   folder`/eventThreatDetectionSettings/effectiveCustomModules/`module``. * `
-        #   projects/`project`/eventThreatDetectionSettings/effectiveCustomModules/`module`
-        #   `.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -761,24 +573,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all effective Event Threat Detection custom modules for the given parent.
-        # This includes resident modules defined at the scope of the parent along with
-        # modules inherited from its ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules for. Its format is: * `
-        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
-        #   /eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
-        #   The maximum number of modules to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `
-        #   ListEffectiveEventThreatDetectionCustomModules` call. Provide this to retrieve
-        #   the subsequent page. When paginating, all other parameters provided to `
-        #   ListEffectiveEventThreatDetectionCustomModules` must match the call that
-        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -808,13 +606,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Kicks off an LRO to bulk mute findings for a parent based on a filter. The
-        # parent can be either an organization, folder or project. The findings matched
-        # by the filter will be muted after the LRO is done.
+        # 
         # @param [String] parent
-        #   Required. The parent, at which bulk action needs to be applied. Its format is `
-        #   organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]
-        #   `.
         # @param [Google::Apis::SecuritycenterV1::BulkMuteFindingsRequest] bulk_mute_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -845,14 +638,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -880,14 +667,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -915,17 +696,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a mute config.
+        # 
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format `
-        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
-        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
-        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -956,17 +730,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a mute config.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new mute configs's parent. Its format is `
-        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
-        #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of only lowercase letters, numbers, and hyphens, must start with
-        #   a letter, must end with either a letter or a number, and must be 63 characters
-        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -997,14 +764,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1032,14 +793,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1067,19 +822,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists mute configs.
+        # 
         # @param [String] parent
-        #   Required. The parent, which owns the collection of mute configs. Its format is
-        #   `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
-        #   project_id]`.
         # @param [Fixnum] page_size
-        #   The maximum number of configs to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListMuteConfigs` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListMuteConfigs` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1109,17 +855,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a mute config.
+        # 
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format `
-        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
-        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
-        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1150,16 +889,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a notification config.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new notification config's parent. Its format is
-        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
-        #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must be between 1 and 128 characters and contain alphanumeric characters,
-        #   underscores, or hyphens only.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1190,12 +923,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a notification config.
+        # 
         # @param [String] name
-        #   Required. Name of the notification config to delete. Its format is `
-        #   organizations/[organization_id]/notificationConfigs/[config_id]`, `folders/[
-        #   folder_id]/notificationConfigs/[config_id]`, or `projects/[project_id]/
-        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1223,12 +952,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a notification config.
+        # 
         # @param [String] name
-        #   Required. Name of the notification config to get. Its format is `organizations/
-        #   [organization_id]/notificationConfigs/[config_id]`, `folders/[folder_id]/
-        #   notificationConfigs/[config_id]`, or `projects/[project_id]/
-        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1256,18 +981,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists notification configs.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent in which to list the notification
-        #   configurations. Its format is "organizations/[organization_id]", "folders/[
-        #   folder_id]", or "projects/[project_id]".
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListNotificationConfigsResponse`; indicates
-        #   that this is a continuation of a prior `ListNotificationConfigs` call, and
-        #   that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1297,18 +1014,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a notification config. The following update fields are allowed:
-        # description, pubsub_topic, streaming_config.filter
+        # 
         # @param [String] name
-        #   The relative resource name of this notification config. See: https://cloud.
-        #   google.com/apis/design/resource_names#relative_resource_name Example: "
-        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket", "
-        #   folders/`folder_id`/notificationConfigs/notify_public_bucket", or "projects/`
-        #   project_id`/notificationConfigs/notify_public_bucket".
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the notification config. If empty all
-        #   mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1339,15 +1048,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
-        # given CRM parent, and also creates inherited
-        # SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
-        # parent. These modules are enabled by default.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new custom module's parent. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
-        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1378,15 +1080,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
-        # descendants in the CRM hierarchy. This method is only supported for resident
-        # custom modules.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is `organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
-        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1414,13 +1109,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a SecurityHealthAnalyticsCustomModule.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is `organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
-        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1448,19 +1138,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of all SecurityHealthAnalyticsCustomModules for the given
-        # parent. This includes resident modules defined at the scope of the parent, and
-        # inherited modules, inherited from CRM ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list custom modules. Its format is `organizations/`
-        #   organization`/securityHealthAnalyticsSettings`, `folders/`folder`/
-        #   securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last call indicating a continuation
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1490,18 +1171,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of all resident SecurityHealthAnalyticsCustomModules under the
-        # given CRM parent and all of the parent’s CRM descendants.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list descendant custom modules. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
-        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last call indicating a continuation
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1531,24 +1204,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the SecurityHealthAnalyticsCustomModule under the given name based on
-        # the given update mask. Updating the enablement state is supported on both
-        # resident and inherited modules (though resident modules cannot have an
-        # enablement state of "inherited"). Updating the display name and custom config
-        # of a module is supported on resident modules only.
+        # 
         # @param [String] name
-        #   Immutable. The resource name of the custom module. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule`", or "folders/`folder`/securityHealthAnalyticsSettings/
-        #   customModules/`customModule`", or "projects/`project`/
-        #   securityHealthAnalyticsSettings/customModules/`customModule`" The id `
-        #   customModule` is server-generated and is not user settable. It will be a
-        #   numeric id containing 1-20 digits.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
         # @param [String] update_mask
-        #   The list of fields to be updated. The only fields that can be updated are `
-        #   enablement_state` and `custom_config`. If empty or set to the wildcard value `*
-        #   `, both `enablement_state` and `custom_config` are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1579,12 +1238,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
+        # 
         # @param [String] parent
-        #   Required. The relative resource name of the organization, project, or folder.
-        #   For more information about relative resource names, see [Relative Resource
-        #   Name](https://cloud.google.com/apis/design/resource_names#
-        #   relative_resource_name) Example: `organizations/`organization_id``
         # @param [Google::Apis::SecuritycenterV1::SimulateSecurityHealthAnalyticsCustomModuleRequest] simulate_security_health_analytics_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1615,14 +1270,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
+        # 
         # @param [String] name
-        #   Required. Name of the effective custom module to get. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings/
-        #   effectiveCustomModules/`customModule``, `folders/`folder`/
-        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule``, or `
-        #   projects/`project`/securityHealthAnalyticsSettings/effectiveCustomModules/`
-        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1650,19 +1299,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the
-        # given parent. This includes resident modules defined at the scope of the
-        # parent, and inherited modules, inherited from CRM ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list effective custom modules. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
-        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last call indicating a continuation
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1692,18 +1332,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all sources belonging to an organization.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the parent of sources to list. Its format should be
-        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListSourcesResponse`; indicates that this is a
-        #   continuation of a prior `ListSources` call, and that the system should return
-        #   the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1733,18 +1365,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Filters an organization or source's findings and groups them by their
-        # specified properties. To group across all sources provide a `-` as the source
-        # id. Example: /v1/organizations/`organization_id`/sources/-/findings, /v1/
-        # folders/`folder_id`/sources/-/findings, /v1/projects/`project_id`/sources/-/
-        # findings
+        # 
         # @param [String] parent
-        #   Required. Name of the source to groupBy. Its format is `organizations/[
-        #   organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]
-        #   `, or `projects/[project_id]/sources/[source_id]`. To groupBy across all
-        #   sources provide a source_id of `-`. For example: `organizations/`
-        #   organization_id`/sources/-, folders/`folder_id`/sources/-`, or `projects/`
-        #   project_id`/sources/-`
         # @param [Google::Apis::SecuritycenterV1::GroupFindingsRequest] group_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1775,86 +1397,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists an organization or source's findings. To list across all sources provide
-        # a `-` as the source id. Example: /v1/organizations/`organization_id`/sources/-/
-        # findings
+        # 
         # @param [String] parent
-        #   Required. Name of the source the findings belong to. Its format is `
-        #   organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/
-        #   sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To list
-        #   across all sources provide a source_id of `-`. For example: `organizations/`
-        #   organization_id`/sources/-`, `folders/`folder_id`/sources/-` or `projects/`
-        #   projects_id`/sources/-`
         # @param [String] compare_duration
-        #   When compare_duration is set, the ListFindingsResult's "state_change"
-        #   attribute is updated to indicate whether the finding had its state changed,
-        #   the finding's state remained unchanged, or if the finding was added in any
-        #   state during the compare_duration period of time that precedes the read_time.
-        #   This is the time between (read_time - compare_duration) and read_time. The
-        #   state_change value is derived based on the presence and state of the finding
-        #   at the two points in time. Intermediate state changes between the two times
-        #   don't affect the result. For example, the results aren't affected if the
-        #   finding is made inactive and then active again. Possible "state_change" values
-        #   when compare_duration is specified: * "CHANGED": indicates that the finding
-        #   was present and matched the given filter at the start of compare_duration, but
-        #   changed its state at read_time. * "UNCHANGED": indicates that the finding was
-        #   present and matched the given filter at the start of compare_duration and did
-        #   not change state at read_time. * "ADDED": indicates that the finding did not
-        #   match the given filter or was not present at the start of compare_duration,
-        #   but was present at read_time. * "REMOVED": indicates that the finding was
-        #   present and matched the filter at the start of compare_duration, but did not
-        #   match the filter at read_time. If compare_duration is not specified, then the
-        #   only possible state_change is "UNUSED", which will be the state_change set for
-        #   all findings present at read_time.
         # @param [String] field_mask
-        #   A field mask to specify the Finding fields to be listed in the response. An
-        #   empty field mask will list all fields.
         # @param [String] filter
-        #   Expression that defines the filter to apply across findings. The expression is
-        #   a list of one or more restrictions combined via logical operators `AND` and `
-        #   OR`. Parentheses are supported, and `OR` has higher precedence than `AND`.
-        #   Restrictions have the form ` ` and may have a `-` character in front of them
-        #   to indicate negation. Examples include: * name * source_properties.a_property *
-        #   security_marks.marks.marka The supported operators are: * `=` for all value
-        #   types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring
-        #   matching, for strings. The supported value types are: * string literals in
-        #   quotes. * integer literals without quotes. * boolean literals `true` and `
-        #   false` without quotes. The following field and operator combinations are
-        #   supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=
-        #   `, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<
-        #   `, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
-        #   string. Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
-        #   1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` *
-        #   security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `
-        #   <=` For example, `source_properties.size = 100` is a valid filter string. Use
-        #   a partial match on the empty string to filter based on a property existing: `
-        #   source_properties.my_property : ""` Use a negated partial match on the empty
-        #   string to filter based on a property not existing: `-source_properties.
-        #   my_property : ""` * resource: * resource.name: `=`, `:` * resource.parent_name:
-        #   `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`
-        #   , `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
-        #   resource.folders.resource_folder: `=`, `:` * resource.display_name: `=`, `:`
         # @param [String] order_by
-        #   Expression that defines what fields and order to use for sorting. The string
-        #   value should follow SQL syntax: comma separated list of fields. For example: "
-        #   name,resource_properties.a_property". The default sorting order is ascending.
-        #   To specify descending order for a field, a suffix " desc" should be appended
-        #   to the field name. For example: "name desc,source_properties.a_property".
-        #   Redundant space characters in the syntax are insignificant. "name desc,
-        #   source_properties.a_property" and " name desc , source_properties.a_property "
-        #   are equivalent. The following fields are supported: name parent state category
-        #   resource_name event_time source_properties security_marks.marks
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListFindingsResponse`; indicates that this is
-        #   a continuation of a prior `ListFindings` call, and that the system should
-        #   return the next page of data.
         # @param [String] read_time
-        #   Time used as a reference point when filtering findings. The filter is limited
-        #   to findings existing at the supplied time and their values are those at that
-        #   specific time. Absence of this field will default to the API's version of NOW.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1889,21 +1440,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates or updates a finding. The corresponding source must exist for a
-        # finding creation to succeed.
+        # 
         # @param [String] name
-        #   The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::Finding] finding_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the finding resource. This field should not
-        #   be specified when creating a finding. When updating a finding, an empty mask
-        #   is treated as updating all mutable fields and replacing source_properties.
-        #   Individual source_properties can be added/updated by using "source_properties."
-        #   in the field mask.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1934,13 +1474,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the mute state of a finding.
+        # 
         # @param [String] name
-        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1971,13 +1506,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the state of a finding.
+        # 
         # @param [String] name
-        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2008,22 +1538,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates security marks.
+        # 
         # @param [String] name
-        #   The relative resource name of the SecurityMarks. See: https://cloud.google.com/
-        #   apis/design/resource_names#relative_resource_name Examples: "organizations/`
-        #   organization_id`/assets/`asset_id`/securityMarks" "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`/securityMarks".
         # @param [Google::Apis::SecuritycenterV1::SecurityMarks] security_marks_object
         # @param [String] start_time
-        #   The time at which the updated SecurityMarks take effect. If not set uses
-        #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time. Must be earlier or equal to the server
-        #   time.
         # @param [String] update_mask
-        #   The FieldMask to use when updating the security marks resource. The field mask
-        #   must not contain duplicate fields. If empty or set to "marks", all marks will
-        #   be replaced. Individual marks can be updated using "marks.".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2055,16 +1574,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates external system. This is for a given finding.
+        # 
         # @param [String] name
-        #   Full resource name of the external system, for example: "organizations/1234/
-        #   sources/5678/findings/123456/externalSystems/jira", "folders/1234/sources/5678/
-        #   findings/123456/externalSystems/jira", "projects/1234/sources/5678/findings/
-        #   123456/externalSystems/jira"
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem] google_cloud_securitycenter_v1_external_system_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the external system resource. If empty all
-        #   mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2095,10 +1608,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the settings for an organization.
+        # 
         # @param [String] name
-        #   Required. Name of the organization to get organization settings for. Its
-        #   format is `organizations/[organization_id]/organizationSettings`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2126,15 +1637,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an organization's settings.
+        # 
         # @param [String] name
-        #   The relative resource name of the settings. See: https://cloud.google.com/apis/
-        #   design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/organizationSettings".
         # @param [Google::Apis::SecuritycenterV1::OrganizationSettings] organization_settings_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the settings resource. If empty all mutable
-        #   fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2165,11 +1671,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Filters an organization's assets and groups them by their specified properties.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent to group the assets by. Its format is `
-        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2200,90 +1703,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists an organization's assets.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent resource that contains the assets. The value
-        #   that you can specify on parent depends on the method in which you specify
-        #   parent. You can specify one of the following values: `organizations/[
-        #   organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
         # @param [String] compare_duration
-        #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
-        #   is updated to indicate whether the asset was added, removed, or remained
-        #   present during the compare_duration period of time that precedes the read_time.
-        #   This is the time between (read_time - compare_duration) and read_time. The
-        #   state_change value is derived based on the presence of the asset at the two
-        #   points in time. Intermediate state changes between the two times don't affect
-        #   the result. For example, the results aren't affected if the asset is removed
-        #   and re-created again. Possible "state_change" values when compare_duration is
-        #   specified: * "ADDED": indicates that the asset was not present at the start of
-        #   compare_duration, but present at read_time. * "REMOVED": indicates that the
-        #   asset was present at the start of compare_duration, but not present at
-        #   read_time. * "ACTIVE": indicates that the asset was present at both the start
-        #   and the end of the time period defined by compare_duration and read_time. If
-        #   compare_duration is not specified, then the only possible state_change is "
-        #   UNUSED", which will be the state_change set for all assets present at
-        #   read_time.
         # @param [String] field_mask
-        #   A field mask to specify the ListAssetsResult fields to be listed in the
-        #   response. An empty field mask will list all fields.
         # @param [String] filter
-        #   Expression that defines the filter to apply across assets. The expression is a
-        #   list of zero or more restrictions combined via logical operators `AND` and `OR`
-        #   . Parentheses are supported, and `OR` has higher precedence than `AND`.
-        #   Restrictions have the form ` ` and may have a `-` character in front of them
-        #   to indicate negation. The fields map to those defined in the Asset resource.
-        #   Examples include: * name * security_center_properties.resource_name *
-        #   resource_properties.a_property * security_marks.marks.marka The supported
-        #   operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer
-        #   values. * `:`, meaning substring matching, for strings. The supported value
-        #   types are: * string literals in quotes. * integer literals without quotes. *
-        #   boolean literals `true` and `false` without quotes. The following are the
-        #   allowed field and operator combinations: * name: `=` * update_time: `=`, `>`, `
-        #   <`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
-        #   string. Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time =
-        #   1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be
-        #   milliseconds since epoch or an RFC3339 string. Examples: `create_time = "2019-
-        #   06-10T16:07:18-07:00"` `create_time = 1560208038000` * iam_policy.policy_blob:
-        #   `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` *
-        #   security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`,
-        #   `:` * security_center_properties.resource_display_name: `=`, `:` *
-        #   security_center_properties.resource_type: `=`, `:` *
-        #   security_center_properties.resource_parent: `=`, `:` *
-        #   security_center_properties.resource_parent_display_name: `=`, `:` *
-        #   security_center_properties.resource_project: `=`, `:` *
-        #   security_center_properties.resource_project_display_name: `=`, `:` *
-        #   security_center_properties.resource_owners: `=`, `:` For example, `
-        #   resource_properties.size = 100` is a valid filter string. Use a partial match
-        #   on the empty string to filter based on a property existing: `
-        #   resource_properties.my_property : ""` Use a negated partial match on the empty
-        #   string to filter based on a property not existing: `-resource_properties.
-        #   my_property : ""`
         # @param [String] order_by
-        #   Expression that defines what fields and order to use for sorting. The string
-        #   value should follow SQL syntax: comma separated list of fields. For example: "
-        #   name,resource_properties.a_property". The default sorting order is ascending.
-        #   To specify descending order for a field, a suffix " desc" should be appended
-        #   to the field name. For example: "name desc,resource_properties.a_property".
-        #   Redundant space characters in the syntax are insignificant. "name desc,
-        #   resource_properties.a_property" and " name desc , resource_properties.
-        #   a_property " are equivalent. The following fields are supported: name
-        #   update_time resource_properties security_marks.marks
-        #   security_center_properties.resource_name security_center_properties.
-        #   resource_display_name security_center_properties.resource_parent
-        #   security_center_properties.resource_parent_display_name
-        #   security_center_properties.resource_project security_center_properties.
-        #   resource_project_display_name security_center_properties.resource_type
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListAssetsResponse`; indicates that this is a
-        #   continuation of a prior `ListAssets` call, and that the system should return
-        #   the next page of data.
         # @param [String] read_time
-        #   Time used as a reference point when filtering assets. The filter is limited to
-        #   assets existing at the supplied time and their values are those at that
-        #   specific time. Absence of this field will default to the API's version of NOW.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2318,12 +1746,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Runs asset discovery. The discovery is tracked with a long-running operation.
-        # This API can only be called with limited frequency for an organization. If it
-        # is called too frequently the caller will receive a TOO_MANY_REQUESTS error.
+        # 
         # @param [String] parent
-        #   Required. Name of the organization to run asset discovery for. Its format is `
-        #   organizations/[organization_id]`.
         # @param [Google::Apis::SecuritycenterV1::RunAssetDiscoveryRequest] run_asset_discovery_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2354,22 +1778,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates security marks.
+        # 
         # @param [String] name
-        #   The relative resource name of the SecurityMarks. See: https://cloud.google.com/
-        #   apis/design/resource_names#relative_resource_name Examples: "organizations/`
-        #   organization_id`/assets/`asset_id`/securityMarks" "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`/securityMarks".
         # @param [Google::Apis::SecuritycenterV1::SecurityMarks] security_marks_object
         # @param [String] start_time
-        #   The time at which the updated SecurityMarks take effect. If not set uses
-        #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time. Must be earlier or equal to the server
-        #   time.
         # @param [String] update_mask
-        #   The FieldMask to use when updating the security marks resource. The field mask
-        #   must not contain duplicate fields. If empty or set to "marks", all marks will
-        #   be replaced. Individual marks can be updated using "marks.".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2401,24 +1814,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the attack paths for a set of simulation results or valued resources and
-        # filter.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list attack paths. Valid formats: `organizations/`
-        #   organization``, `organizations/`organization`/simulations/`simulation`` `
-        #   organizations/`organization`/simulations/`simulation`/attackExposureResults/`
-        #   attack_exposure_result_v2`` `organizations/`organization`/simulations/`
-        #   simulation`/valuedResources/`valued_resource``
         # @param [String] filter
-        #   The filter expression that filters the attack path in the response. Supported
-        #   fields: * `valued_resources` supports =
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListAttackPathsResponse`; indicates that this
-        #   is a continuation of a prior `ListAttackPaths` call, and that the system
-        #   should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2449,17 +1849,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a BigQuery export.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent resource of the new BigQuery export. Its
-        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, or `
-        #   projects/[project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
-        #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of only lowercase letters, numbers, and hyphens, must start with
-        #   a letter, must end with either a letter or a number, and must be 63 characters
-        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2490,12 +1883,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing BigQuery export.
+        # 
         # @param [String] name
-        #   Required. The name of the BigQuery export to delete. Its format is `
-        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
-        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
-        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2523,12 +1912,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a BigQuery export.
+        # 
         # @param [String] name
-        #   Required. Name of the BigQuery export to retrieve. Its format is `
-        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
-        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
-        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2556,24 +1941,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists BigQuery exports. Note that when requesting BigQuery exports at a given
-        # level all exports under that level are also returned e.g. if requesting
-        # BigQuery exports under a folder, then all BigQuery exports immediately under
-        # the folder plus the ones created under the projects within the folder are
-        # returned.
+        # 
         # @param [String] parent
-        #   Required. The parent, which owns the collection of BigQuery exports. Its
-        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
-        #   project_id]`.
         # @param [Fixnum] page_size
-        #   The maximum number of configs to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListBigQueryExports` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListBigQueryExports` must match the call that provided the page
-        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2603,17 +1974,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a BigQuery export.
+        # 
         # @param [String] name
-        #   The relative resource name of this export. See: https://cloud.google.com/apis/
-        #   design/resource_names#relative_resource_name. Example format: "organizations/`
-        #   organization_id`/bigQueryExports/`export_id`" Example format: "folders/`
-        #   folder_id`/bigQueryExports/`export_id`" Example format: "projects/`project_id`/
-        #   bigQueryExports/`export_id`" This field is provided in responses, and is
-        #   ignored when provided in create requests.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2644,12 +2008,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Validates the given Event Threat Detection custom module.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the parent to validate the Custom Module under. Its
-        #   format is: * `organizations/`organization`/eventThreatDetectionSettings`. * `
-        #   folders/`folder`/eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest] validate_event_threat_detection_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2680,14 +2040,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a resident Event Threat Detection custom module at the scope of the
-        # given Resource Manager parent, and also creates inherited custom modules for
-        # all descendants of the given parent. These modules are enabled by default.
+        # 
         # @param [String] parent
-        #   Required. The new custom module's parent. Its format is: * `organizations/`
-        #   organization`/eventThreatDetectionSettings`. * `folders/`folder`/
-        #   eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2718,14 +2072,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified Event Threat Detection custom module and all of its
-        # descendants in the Resource Manager hierarchy. This method is only supported
-        # for resident custom modules.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is: * `organizations/
-        #   `organization`/eventThreatDetectionSettings/customModules/`module``. * `
-        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module``. * `
-        #   projects/`project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2753,12 +2101,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an Event Threat Detection custom module.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is: * `organizations/`
-        #   organization`/eventThreatDetectionSettings/customModules/`module``. * `folders/
-        #   `folder`/eventThreatDetectionSettings/customModules/`module``. * `projects/`
-        #   project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2786,23 +2130,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all Event Threat Detection custom modules for the given Resource Manager
-        # parent. This includes resident modules defined at the scope of the parent
-        # along with modules inherited from ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * `
-        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
-        #   /eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
-        #   The maximum number of modules to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListEventThreatDetectionCustomModules`
-        #   call. Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListEventThreatDetectionCustomModules` must match the
-        #   call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2832,23 +2163,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all resident Event Threat Detection custom modules under the given
-        # Resource Manager parent and its descendants.
+        # 
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * `
-        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
-        #   /eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
-        #   The maximum number of modules to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `
-        #   ListDescendantEventThreatDetectionCustomModules` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListDescendantEventThreatDetectionCustomModules` must match the call that
-        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2878,21 +2196,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the Event Threat Detection custom module with the given name based on
-        # the given update mask. Updating the enablement state is supported for both
-        # resident and inherited modules (though resident modules cannot have an
-        # enablement state of "inherited"). Updating the display name or configuration
-        # of a module is supported for resident modules only. The type of a module
-        # cannot be changed.
+        # 
         # @param [String] name
-        #   Immutable. The resource name of the Event Threat Detection custom module. Its
-        #   format is: * `organizations/`organization`/eventThreatDetectionSettings/
-        #   customModules/`module``. * `folders/`folder`/eventThreatDetectionSettings/
-        #   customModules/`module``. * `projects/`project`/eventThreatDetectionSettings/
-        #   customModules/`module``.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2923,14 +2230,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an effective Event Threat Detection custom module at the given level.
+        # 
         # @param [String] name
-        #   Required. The resource name of the effective Event Threat Detection custom
-        #   module. Its format is: * `organizations/`organization`/
-        #   eventThreatDetectionSettings/effectiveCustomModules/`module``. * `folders/`
-        #   folder`/eventThreatDetectionSettings/effectiveCustomModules/`module``. * `
-        #   projects/`project`/eventThreatDetectionSettings/effectiveCustomModules/`module`
-        #   `.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2958,24 +2259,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all effective Event Threat Detection custom modules for the given parent.
-        # This includes resident modules defined at the scope of the parent along with
-        # modules inherited from its ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules for. Its format is: * `
-        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
-        #   /eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
-        #   The maximum number of modules to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `
-        #   ListEffectiveEventThreatDetectionCustomModules` call. Provide this to retrieve
-        #   the subsequent page. When paginating, all other parameters provided to `
-        #   ListEffectiveEventThreatDetectionCustomModules` must match the call that
-        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3005,13 +2292,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Kicks off an LRO to bulk mute findings for a parent based on a filter. The
-        # parent can be either an organization, folder or project. The findings matched
-        # by the filter will be muted after the LRO is done.
+        # 
         # @param [String] parent
-        #   Required. The parent, at which bulk action needs to be applied. Its format is `
-        #   organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]
-        #   `.
         # @param [Google::Apis::SecuritycenterV1::BulkMuteFindingsRequest] bulk_mute_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3042,14 +2324,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3077,14 +2353,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3112,17 +2382,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a mute config.
+        # 
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format `
-        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
-        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
-        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3153,17 +2416,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a mute config.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new mute configs's parent. Its format is `
-        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
-        #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of only lowercase letters, numbers, and hyphens, must start with
-        #   a letter, must end with either a letter or a number, and must be 63 characters
-        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3194,14 +2450,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3229,14 +2479,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3264,19 +2508,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists mute configs.
+        # 
         # @param [String] parent
-        #   Required. The parent, which owns the collection of mute configs. Its format is
-        #   `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
-        #   project_id]`.
         # @param [Fixnum] page_size
-        #   The maximum number of configs to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListMuteConfigs` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListMuteConfigs` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3306,17 +2541,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a mute config.
+        # 
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format `
-        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
-        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
-        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3347,16 +2575,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a notification config.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new notification config's parent. Its format is
-        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
-        #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must be between 1 and 128 characters and contain alphanumeric characters,
-        #   underscores, or hyphens only.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3387,12 +2609,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a notification config.
+        # 
         # @param [String] name
-        #   Required. Name of the notification config to delete. Its format is `
-        #   organizations/[organization_id]/notificationConfigs/[config_id]`, `folders/[
-        #   folder_id]/notificationConfigs/[config_id]`, or `projects/[project_id]/
-        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3420,12 +2638,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a notification config.
+        # 
         # @param [String] name
-        #   Required. Name of the notification config to get. Its format is `organizations/
-        #   [organization_id]/notificationConfigs/[config_id]`, `folders/[folder_id]/
-        #   notificationConfigs/[config_id]`, or `projects/[project_id]/
-        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3453,18 +2667,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists notification configs.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent in which to list the notification
-        #   configurations. Its format is "organizations/[organization_id]", "folders/[
-        #   folder_id]", or "projects/[project_id]".
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListNotificationConfigsResponse`; indicates
-        #   that this is a continuation of a prior `ListNotificationConfigs` call, and
-        #   that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3494,18 +2700,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a notification config. The following update fields are allowed:
-        # description, pubsub_topic, streaming_config.filter
+        # 
         # @param [String] name
-        #   The relative resource name of this notification config. See: https://cloud.
-        #   google.com/apis/design/resource_names#relative_resource_name Example: "
-        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket", "
-        #   folders/`folder_id`/notificationConfigs/notify_public_bucket", or "projects/`
-        #   project_id`/notificationConfigs/notify_public_bucket".
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the notification config. If empty all
-        #   mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3536,16 +2734,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation. The server makes
-        # a best effort to cancel the operation, but success is not guaranteed. If the
-        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-        # Clients can use Operations.GetOperation or other methods to check whether the
-        # cancellation succeeded or whether the operation completed despite cancellation.
-        # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
-        # , corresponding to `Code.CANCELLED`.
+        # 
         # @param [String] name
-        #   The name of the operation resource to be cancelled.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3573,12 +2763,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a long-running operation. This method indicates that the client is no
-        # longer interested in the operation result. It does not cancel the operation.
-        # If the server doesn't support this method, it returns `google.rpc.Code.
-        # UNIMPLEMENTED`.
+        # 
         # @param [String] name
-        #   The name of the operation resource to be deleted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3606,10 +2792,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running operation. Clients can use this method
-        # to poll the operation result at intervals as recommended by the API service.
+        # 
         # @param [String] name
-        #   The name of the operation resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3637,16 +2821,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`.
+        # 
         # @param [String] name
-        #   The name of the operation's parent resource.
         # @param [String] filter
-        #   The standard list filter.
         # @param [Fixnum] page_size
-        #   The standard list page size.
         # @param [String] page_token
-        #   The standard list page token.
+        # @param [Boolean] return_partial_success
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3664,7 +2844,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SecuritycenterV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::SecuritycenterV1::ListOperationsResponse
@@ -3672,17 +2852,14 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a ResourceValueConfig for an organization. Maps user's tags to
-        # difference resource values for use by the attack path simulation.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new ResourceValueConfig's parent. The parent
-        #   field in the CreateResourceValueConfigRequest messages must either be empty or
-        #   match this field.
         # @param [Google::Apis::SecuritycenterV1::BatchCreateResourceValueConfigsRequest] batch_create_resource_value_configs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3713,9 +2890,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a ResourceValueConfig.
+        # 
         # @param [String] name
-        #   Required. Name of the ResourceValueConfig to delete
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3743,10 +2919,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a ResourceValueConfig.
+        # 
         # @param [String] name
-        #   Required. Name of the resource value config to retrieve. Its format is `
-        #   organizations/`organization`/resourceValueConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3774,20 +2948,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all ResourceValueConfigs.
+        # 
         # @param [String] parent
-        #   Required. The parent, which owns the collection of resource value configs. Its
-        #   format is `organizations/[organization_id]`
         # @param [Fixnum] page_size
-        #   The number of results to return. The service may return fewer than this value.
-        #   If unspecified, at most 10 configs will be returned. The maximum value is 1000;
-        #   values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListResourceValueConfigs` call.
-        #   Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListResourceValueConfigs` must match the call that
-        #   provided the page token. page_size can be specified, and the new page_size
-        #   will be used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3817,12 +2981,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing ResourceValueConfigs with new rules.
+        # 
         # @param [String] name
-        #   Name for the resource value configuration
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ResourceValueConfig] google_cloud_securitycenter_v1_resource_value_config_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3853,15 +3015,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
-        # given CRM parent, and also creates inherited
-        # SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
-        # parent. These modules are enabled by default.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new custom module's parent. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
-        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3892,15 +3047,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
-        # descendants in the CRM hierarchy. This method is only supported for resident
-        # custom modules.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is `organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
-        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3928,13 +3076,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a SecurityHealthAnalyticsCustomModule.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is `organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
-        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3962,19 +3105,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of all SecurityHealthAnalyticsCustomModules for the given
-        # parent. This includes resident modules defined at the scope of the parent, and
-        # inherited modules, inherited from CRM ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list custom modules. Its format is `organizations/`
-        #   organization`/securityHealthAnalyticsSettings`, `folders/`folder`/
-        #   securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last call indicating a continuation
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4004,18 +3138,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of all resident SecurityHealthAnalyticsCustomModules under the
-        # given CRM parent and all of the parent’s CRM descendants.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list descendant custom modules. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
-        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last call indicating a continuation
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4045,24 +3171,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the SecurityHealthAnalyticsCustomModule under the given name based on
-        # the given update mask. Updating the enablement state is supported on both
-        # resident and inherited modules (though resident modules cannot have an
-        # enablement state of "inherited"). Updating the display name and custom config
-        # of a module is supported on resident modules only.
+        # 
         # @param [String] name
-        #   Immutable. The resource name of the custom module. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule`", or "folders/`folder`/securityHealthAnalyticsSettings/
-        #   customModules/`customModule`", or "projects/`project`/
-        #   securityHealthAnalyticsSettings/customModules/`customModule`" The id `
-        #   customModule` is server-generated and is not user settable. It will be a
-        #   numeric id containing 1-20 digits.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
         # @param [String] update_mask
-        #   The list of fields to be updated. The only fields that can be updated are `
-        #   enablement_state` and `custom_config`. If empty or set to the wildcard value `*
-        #   `, both `enablement_state` and `custom_config` are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4093,12 +3205,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
+        # 
         # @param [String] parent
-        #   Required. The relative resource name of the organization, project, or folder.
-        #   For more information about relative resource names, see [Relative Resource
-        #   Name](https://cloud.google.com/apis/design/resource_names#
-        #   relative_resource_name) Example: `organizations/`organization_id``
         # @param [Google::Apis::SecuritycenterV1::SimulateSecurityHealthAnalyticsCustomModuleRequest] simulate_security_health_analytics_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4129,14 +3237,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
+        # 
         # @param [String] name
-        #   Required. Name of the effective custom module to get. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings/
-        #   effectiveCustomModules/`customModule``, `folders/`folder`/
-        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule``, or `
-        #   projects/`project`/securityHealthAnalyticsSettings/effectiveCustomModules/`
-        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4164,19 +3266,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the
-        # given parent. This includes resident modules defined at the scope of the
-        # parent, and inherited modules, inherited from CRM ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list effective custom modules. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
-        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last call indicating a continuation
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4206,11 +3299,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the simulation by name or the latest simulation for the given organization.
+        # 
         # @param [String] name
-        #   Required. The organization name or simulation name of this simulation Valid
-        #   format: `organizations/`organization`/simulations/latest` `organizations/`
-        #   organization`/simulations/`simulation``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4238,24 +3328,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the attack paths for a set of simulation results or valued resources and
-        # filter.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list attack paths. Valid formats: `organizations/`
-        #   organization``, `organizations/`organization`/simulations/`simulation`` `
-        #   organizations/`organization`/simulations/`simulation`/attackExposureResults/`
-        #   attack_exposure_result_v2`` `organizations/`organization`/simulations/`
-        #   simulation`/valuedResources/`valued_resource``
         # @param [String] filter
-        #   The filter expression that filters the attack path in the response. Supported
-        #   fields: * `valued_resources` supports =
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListAttackPathsResponse`; indicates that this
-        #   is a continuation of a prior `ListAttackPaths` call, and that the system
-        #   should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4286,29 +3363,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the valued resources for a set of simulation results and filter.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list valued resources. Valid formats: `
-        #   organizations/`organization``, `organizations/`organization`/simulations/`
-        #   simulation`` `organizations/`organization`/simulations/`simulation`/
-        #   attackExposureResults/`attack_exposure_result_v2``
         # @param [String] filter
-        #   The filter expression that filters the valued resources in the response.
-        #   Supported fields: * `resource_value` supports = * `resource_type` supports =
         # @param [String] order_by
-        #   Optional. The fields by which to order the valued resources response.
-        #   Supported fields: * `exposed_score` * `resource_value` * `resource_type` * `
-        #   resource` * `display_name` Values should be a comma separated list of fields.
-        #   For example: `exposed_score,resource_value`. The default sorting order is
-        #   descending. To specify ascending or descending order for a field, append a `
-        #   ASC` or a ` DESC` suffix, respectively; for example: `exposed_score DESC`.
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListValuedResourcesResponse`; indicates that
-        #   this is a continuation of a prior `ListValuedResources` call, and that the
-        #   system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4340,24 +3400,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the attack paths for a set of simulation results or valued resources and
-        # filter.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list attack paths. Valid formats: `organizations/`
-        #   organization``, `organizations/`organization`/simulations/`simulation`` `
-        #   organizations/`organization`/simulations/`simulation`/attackExposureResults/`
-        #   attack_exposure_result_v2`` `organizations/`organization`/simulations/`
-        #   simulation`/valuedResources/`valued_resource``
         # @param [String] filter
-        #   The filter expression that filters the attack path in the response. Supported
-        #   fields: * `valued_resources` supports =
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListAttackPathsResponse`; indicates that this
-        #   is a continuation of a prior `ListAttackPaths` call, and that the system
-        #   should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4388,10 +3435,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the valued resource by name
+        # 
         # @param [String] name
-        #   Required. The name of this valued resource Valid format: `organizations/`
-        #   organization`/simulations/`simulation`/valuedResources/`valued_resource``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4419,29 +3464,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the valued resources for a set of simulation results and filter.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list valued resources. Valid formats: `
-        #   organizations/`organization``, `organizations/`organization`/simulations/`
-        #   simulation`` `organizations/`organization`/simulations/`simulation`/
-        #   attackExposureResults/`attack_exposure_result_v2``
         # @param [String] filter
-        #   The filter expression that filters the valued resources in the response.
-        #   Supported fields: * `resource_value` supports = * `resource_type` supports =
         # @param [String] order_by
-        #   Optional. The fields by which to order the valued resources response.
-        #   Supported fields: * `exposed_score` * `resource_value` * `resource_type` * `
-        #   resource` * `display_name` Values should be a comma separated list of fields.
-        #   For example: `exposed_score,resource_value`. The default sorting order is
-        #   descending. To specify ascending or descending order for a field, append a `
-        #   ASC` or a ` DESC` suffix, respectively; for example: `exposed_score DESC`.
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListValuedResourcesResponse`; indicates that
-        #   this is a continuation of a prior `ListValuedResources` call, and that the
-        #   system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4473,24 +3501,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the attack paths for a set of simulation results or valued resources and
-        # filter.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list attack paths. Valid formats: `organizations/`
-        #   organization``, `organizations/`organization`/simulations/`simulation`` `
-        #   organizations/`organization`/simulations/`simulation`/attackExposureResults/`
-        #   attack_exposure_result_v2`` `organizations/`organization`/simulations/`
-        #   simulation`/valuedResources/`valued_resource``
         # @param [String] filter
-        #   The filter expression that filters the attack path in the response. Supported
-        #   fields: * `valued_resources` supports =
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListAttackPathsResponse`; indicates that this
-        #   is a continuation of a prior `ListAttackPaths` call, and that the system
-        #   should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4521,10 +3536,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a source.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new source's parent. Its format should be `
-        #   organizations/[organization_id]`.
         # @param [Google::Apis::SecuritycenterV1::Source] source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4555,10 +3568,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a source.
+        # 
         # @param [String] name
-        #   Required. Relative resource name of the source. Its format is `organizations/[
-        #   organization_id]/source/[source_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4586,11 +3597,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy on the specified Source.
+        # 
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested. See [Resource
-        #   names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
         # @param [Google::Apis::SecuritycenterV1::GetIamPolicyRequest] get_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4621,18 +3629,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all sources belonging to an organization.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the parent of sources to list. Its format should be
-        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListSourcesResponse`; indicates that this is a
-        #   continuation of a prior `ListSources` call, and that the system should return
-        #   the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4662,15 +3662,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a source.
+        # 
         # @param [String] name
-        #   The relative resource name of this source. See: https://cloud.google.com/apis/
-        #   design/resource_names#relative_resource_name Example: "organizations/`
-        #   organization_id`/sources/`source_id`"
         # @param [Google::Apis::SecuritycenterV1::Source] source_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the source resource. If empty all mutable
-        #   fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4701,11 +3696,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on the specified Source.
+        # 
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified. See [Resource
-        #   names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
         # @param [Google::Apis::SecuritycenterV1::SetIamPolicyRequest] set_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4736,11 +3728,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the permissions that a caller has on the specified source.
+        # 
         # @param [String] resource
-        #   REQUIRED: The resource for which the policy detail is being requested. See [
-        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
-        #   appropriate value for this field.
         # @param [Google::Apis::SecuritycenterV1::TestIamPermissionsRequest] test_iam_permissions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4771,16 +3760,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a finding. The corresponding source must exist for finding creation to
-        # succeed.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new finding's parent. Its format should be `
-        #   organizations/[organization_id]/sources/[source_id]`.
         # @param [Google::Apis::SecuritycenterV1::Finding] finding_object
         # @param [String] finding_id
-        #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must be alphanumeric and less than or equal to 32 characters and greater than
-        #   0 characters in length.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4811,18 +3794,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Filters an organization or source's findings and groups them by their
-        # specified properties. To group across all sources provide a `-` as the source
-        # id. Example: /v1/organizations/`organization_id`/sources/-/findings, /v1/
-        # folders/`folder_id`/sources/-/findings, /v1/projects/`project_id`/sources/-/
-        # findings
+        # 
         # @param [String] parent
-        #   Required. Name of the source to groupBy. Its format is `organizations/[
-        #   organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]
-        #   `, or `projects/[project_id]/sources/[source_id]`. To groupBy across all
-        #   sources provide a source_id of `-`. For example: `organizations/`
-        #   organization_id`/sources/-, folders/`folder_id`/sources/-`, or `projects/`
-        #   project_id`/sources/-`
         # @param [Google::Apis::SecuritycenterV1::GroupFindingsRequest] group_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4853,86 +3826,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists an organization or source's findings. To list across all sources provide
-        # a `-` as the source id. Example: /v1/organizations/`organization_id`/sources/-/
-        # findings
+        # 
         # @param [String] parent
-        #   Required. Name of the source the findings belong to. Its format is `
-        #   organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/
-        #   sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To list
-        #   across all sources provide a source_id of `-`. For example: `organizations/`
-        #   organization_id`/sources/-`, `folders/`folder_id`/sources/-` or `projects/`
-        #   projects_id`/sources/-`
         # @param [String] compare_duration
-        #   When compare_duration is set, the ListFindingsResult's "state_change"
-        #   attribute is updated to indicate whether the finding had its state changed,
-        #   the finding's state remained unchanged, or if the finding was added in any
-        #   state during the compare_duration period of time that precedes the read_time.
-        #   This is the time between (read_time - compare_duration) and read_time. The
-        #   state_change value is derived based on the presence and state of the finding
-        #   at the two points in time. Intermediate state changes between the two times
-        #   don't affect the result. For example, the results aren't affected if the
-        #   finding is made inactive and then active again. Possible "state_change" values
-        #   when compare_duration is specified: * "CHANGED": indicates that the finding
-        #   was present and matched the given filter at the start of compare_duration, but
-        #   changed its state at read_time. * "UNCHANGED": indicates that the finding was
-        #   present and matched the given filter at the start of compare_duration and did
-        #   not change state at read_time. * "ADDED": indicates that the finding did not
-        #   match the given filter or was not present at the start of compare_duration,
-        #   but was present at read_time. * "REMOVED": indicates that the finding was
-        #   present and matched the filter at the start of compare_duration, but did not
-        #   match the filter at read_time. If compare_duration is not specified, then the
-        #   only possible state_change is "UNUSED", which will be the state_change set for
-        #   all findings present at read_time.
         # @param [String] field_mask
-        #   A field mask to specify the Finding fields to be listed in the response. An
-        #   empty field mask will list all fields.
         # @param [String] filter
-        #   Expression that defines the filter to apply across findings. The expression is
-        #   a list of one or more restrictions combined via logical operators `AND` and `
-        #   OR`. Parentheses are supported, and `OR` has higher precedence than `AND`.
-        #   Restrictions have the form ` ` and may have a `-` character in front of them
-        #   to indicate negation. Examples include: * name * source_properties.a_property *
-        #   security_marks.marks.marka The supported operators are: * `=` for all value
-        #   types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring
-        #   matching, for strings. The supported value types are: * string literals in
-        #   quotes. * integer literals without quotes. * boolean literals `true` and `
-        #   false` without quotes. The following field and operator combinations are
-        #   supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=
-        #   `, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<
-        #   `, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
-        #   string. Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
-        #   1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` *
-        #   security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `
-        #   <=` For example, `source_properties.size = 100` is a valid filter string. Use
-        #   a partial match on the empty string to filter based on a property existing: `
-        #   source_properties.my_property : ""` Use a negated partial match on the empty
-        #   string to filter based on a property not existing: `-source_properties.
-        #   my_property : ""` * resource: * resource.name: `=`, `:` * resource.parent_name:
-        #   `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`
-        #   , `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
-        #   resource.folders.resource_folder: `=`, `:` * resource.display_name: `=`, `:`
         # @param [String] order_by
-        #   Expression that defines what fields and order to use for sorting. The string
-        #   value should follow SQL syntax: comma separated list of fields. For example: "
-        #   name,resource_properties.a_property". The default sorting order is ascending.
-        #   To specify descending order for a field, a suffix " desc" should be appended
-        #   to the field name. For example: "name desc,source_properties.a_property".
-        #   Redundant space characters in the syntax are insignificant. "name desc,
-        #   source_properties.a_property" and " name desc , source_properties.a_property "
-        #   are equivalent. The following fields are supported: name parent state category
-        #   resource_name event_time source_properties security_marks.marks
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListFindingsResponse`; indicates that this is
-        #   a continuation of a prior `ListFindings` call, and that the system should
-        #   return the next page of data.
         # @param [String] read_time
-        #   Time used as a reference point when filtering findings. The filter is limited
-        #   to findings existing at the supplied time and their values are those at that
-        #   specific time. Absence of this field will default to the API's version of NOW.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4967,21 +3869,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates or updates a finding. The corresponding source must exist for a
-        # finding creation to succeed.
+        # 
         # @param [String] name
-        #   The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::Finding] finding_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the finding resource. This field should not
-        #   be specified when creating a finding. When updating a finding, an empty mask
-        #   is treated as updating all mutable fields and replacing source_properties.
-        #   Individual source_properties can be added/updated by using "source_properties."
-        #   in the field mask.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5012,13 +3903,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the mute state of a finding.
+        # 
         # @param [String] name
-        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5049,13 +3935,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the state of a finding.
+        # 
         # @param [String] name
-        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5086,22 +3967,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates security marks.
+        # 
         # @param [String] name
-        #   The relative resource name of the SecurityMarks. See: https://cloud.google.com/
-        #   apis/design/resource_names#relative_resource_name Examples: "organizations/`
-        #   organization_id`/assets/`asset_id`/securityMarks" "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`/securityMarks".
         # @param [Google::Apis::SecuritycenterV1::SecurityMarks] security_marks_object
         # @param [String] start_time
-        #   The time at which the updated SecurityMarks take effect. If not set uses
-        #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time. Must be earlier or equal to the server
-        #   time.
         # @param [String] update_mask
-        #   The FieldMask to use when updating the security marks resource. The field mask
-        #   must not contain duplicate fields. If empty or set to "marks", all marks will
-        #   be replaced. Individual marks can be updated using "marks.".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5133,16 +4003,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates external system. This is for a given finding.
+        # 
         # @param [String] name
-        #   Full resource name of the external system, for example: "organizations/1234/
-        #   sources/5678/findings/123456/externalSystems/jira", "folders/1234/sources/5678/
-        #   findings/123456/externalSystems/jira", "projects/1234/sources/5678/findings/
-        #   123456/externalSystems/jira"
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem] google_cloud_securitycenter_v1_external_system_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the external system resource. If empty all
-        #   mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5173,29 +4037,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the valued resources for a set of simulation results and filter.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list valued resources. Valid formats: `
-        #   organizations/`organization``, `organizations/`organization`/simulations/`
-        #   simulation`` `organizations/`organization`/simulations/`simulation`/
-        #   attackExposureResults/`attack_exposure_result_v2``
         # @param [String] filter
-        #   The filter expression that filters the valued resources in the response.
-        #   Supported fields: * `resource_value` supports = * `resource_type` supports =
         # @param [String] order_by
-        #   Optional. The fields by which to order the valued resources response.
-        #   Supported fields: * `exposed_score` * `resource_value` * `resource_type` * `
-        #   resource` * `display_name` Values should be a comma separated list of fields.
-        #   For example: `exposed_score,resource_value`. The default sorting order is
-        #   descending. To specify ascending or descending order for a field, append a `
-        #   ASC` or a ` DESC` suffix, respectively; for example: `exposed_score DESC`.
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListValuedResourcesResponse`; indicates that
-        #   this is a continuation of a prior `ListValuedResources` call, and that the
-        #   system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5227,11 +4074,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Filters an organization's assets and groups them by their specified properties.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent to group the assets by. Its format is `
-        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5262,90 +4106,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists an organization's assets.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent resource that contains the assets. The value
-        #   that you can specify on parent depends on the method in which you specify
-        #   parent. You can specify one of the following values: `organizations/[
-        #   organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
         # @param [String] compare_duration
-        #   When compare_duration is set, the ListAssetsResult's "state_change" attribute
-        #   is updated to indicate whether the asset was added, removed, or remained
-        #   present during the compare_duration period of time that precedes the read_time.
-        #   This is the time between (read_time - compare_duration) and read_time. The
-        #   state_change value is derived based on the presence of the asset at the two
-        #   points in time. Intermediate state changes between the two times don't affect
-        #   the result. For example, the results aren't affected if the asset is removed
-        #   and re-created again. Possible "state_change" values when compare_duration is
-        #   specified: * "ADDED": indicates that the asset was not present at the start of
-        #   compare_duration, but present at read_time. * "REMOVED": indicates that the
-        #   asset was present at the start of compare_duration, but not present at
-        #   read_time. * "ACTIVE": indicates that the asset was present at both the start
-        #   and the end of the time period defined by compare_duration and read_time. If
-        #   compare_duration is not specified, then the only possible state_change is "
-        #   UNUSED", which will be the state_change set for all assets present at
-        #   read_time.
         # @param [String] field_mask
-        #   A field mask to specify the ListAssetsResult fields to be listed in the
-        #   response. An empty field mask will list all fields.
         # @param [String] filter
-        #   Expression that defines the filter to apply across assets. The expression is a
-        #   list of zero or more restrictions combined via logical operators `AND` and `OR`
-        #   . Parentheses are supported, and `OR` has higher precedence than `AND`.
-        #   Restrictions have the form ` ` and may have a `-` character in front of them
-        #   to indicate negation. The fields map to those defined in the Asset resource.
-        #   Examples include: * name * security_center_properties.resource_name *
-        #   resource_properties.a_property * security_marks.marks.marka The supported
-        #   operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer
-        #   values. * `:`, meaning substring matching, for strings. The supported value
-        #   types are: * string literals in quotes. * integer literals without quotes. *
-        #   boolean literals `true` and `false` without quotes. The following are the
-        #   allowed field and operator combinations: * name: `=` * update_time: `=`, `>`, `
-        #   <`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
-        #   string. Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time =
-        #   1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be
-        #   milliseconds since epoch or an RFC3339 string. Examples: `create_time = "2019-
-        #   06-10T16:07:18-07:00"` `create_time = 1560208038000` * iam_policy.policy_blob:
-        #   `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` *
-        #   security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`,
-        #   `:` * security_center_properties.resource_display_name: `=`, `:` *
-        #   security_center_properties.resource_type: `=`, `:` *
-        #   security_center_properties.resource_parent: `=`, `:` *
-        #   security_center_properties.resource_parent_display_name: `=`, `:` *
-        #   security_center_properties.resource_project: `=`, `:` *
-        #   security_center_properties.resource_project_display_name: `=`, `:` *
-        #   security_center_properties.resource_owners: `=`, `:` For example, `
-        #   resource_properties.size = 100` is a valid filter string. Use a partial match
-        #   on the empty string to filter based on a property existing: `
-        #   resource_properties.my_property : ""` Use a negated partial match on the empty
-        #   string to filter based on a property not existing: `-resource_properties.
-        #   my_property : ""`
         # @param [String] order_by
-        #   Expression that defines what fields and order to use for sorting. The string
-        #   value should follow SQL syntax: comma separated list of fields. For example: "
-        #   name,resource_properties.a_property". The default sorting order is ascending.
-        #   To specify descending order for a field, a suffix " desc" should be appended
-        #   to the field name. For example: "name desc,resource_properties.a_property".
-        #   Redundant space characters in the syntax are insignificant. "name desc,
-        #   resource_properties.a_property" and " name desc , resource_properties.
-        #   a_property " are equivalent. The following fields are supported: name
-        #   update_time resource_properties security_marks.marks
-        #   security_center_properties.resource_name security_center_properties.
-        #   resource_display_name security_center_properties.resource_parent
-        #   security_center_properties.resource_parent_display_name
-        #   security_center_properties.resource_project security_center_properties.
-        #   resource_project_display_name security_center_properties.resource_type
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListAssetsResponse`; indicates that this is a
-        #   continuation of a prior `ListAssets` call, and that the system should return
-        #   the next page of data.
         # @param [String] read_time
-        #   Time used as a reference point when filtering assets. The filter is limited to
-        #   assets existing at the supplied time and their values are those at that
-        #   specific time. Absence of this field will default to the API's version of NOW.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5380,22 +4149,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates security marks.
+        # 
         # @param [String] name
-        #   The relative resource name of the SecurityMarks. See: https://cloud.google.com/
-        #   apis/design/resource_names#relative_resource_name Examples: "organizations/`
-        #   organization_id`/assets/`asset_id`/securityMarks" "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`/securityMarks".
         # @param [Google::Apis::SecuritycenterV1::SecurityMarks] security_marks_object
         # @param [String] start_time
-        #   The time at which the updated SecurityMarks take effect. If not set uses
-        #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time. Must be earlier or equal to the server
-        #   time.
         # @param [String] update_mask
-        #   The FieldMask to use when updating the security marks resource. The field mask
-        #   must not contain duplicate fields. If empty or set to "marks", all marks will
-        #   be replaced. Individual marks can be updated using "marks.".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5427,17 +4185,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a BigQuery export.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent resource of the new BigQuery export. Its
-        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, or `
-        #   projects/[project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] big_query_export_id
-        #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of only lowercase letters, numbers, and hyphens, must start with
-        #   a letter, must end with either a letter or a number, and must be 63 characters
-        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5468,12 +4219,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing BigQuery export.
+        # 
         # @param [String] name
-        #   Required. The name of the BigQuery export to delete. Its format is `
-        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
-        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
-        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5501,12 +4248,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a BigQuery export.
+        # 
         # @param [String] name
-        #   Required. Name of the BigQuery export to retrieve. Its format is `
-        #   organizations/`organization`/bigQueryExports/`export_id``, `folders/`folder`/
-        #   bigQueryExports/`export_id``, or `projects/`project`/bigQueryExports/`
-        #   export_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5534,24 +4277,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists BigQuery exports. Note that when requesting BigQuery exports at a given
-        # level all exports under that level are also returned e.g. if requesting
-        # BigQuery exports under a folder, then all BigQuery exports immediately under
-        # the folder plus the ones created under the projects within the folder are
-        # returned.
+        # 
         # @param [String] parent
-        #   Required. The parent, which owns the collection of BigQuery exports. Its
-        #   format is `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
-        #   project_id]`.
         # @param [Fixnum] page_size
-        #   The maximum number of configs to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListBigQueryExports` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListBigQueryExports` must match the call that provided the page
-        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5581,17 +4310,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a BigQuery export.
+        # 
         # @param [String] name
-        #   The relative resource name of this export. See: https://cloud.google.com/apis/
-        #   design/resource_names#relative_resource_name. Example format: "organizations/`
-        #   organization_id`/bigQueryExports/`export_id`" Example format: "folders/`
-        #   folder_id`/bigQueryExports/`export_id`" Example format: "projects/`project_id`/
-        #   bigQueryExports/`export_id`" This field is provided in responses, and is
-        #   ignored when provided in create requests.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1BigQueryExport] google_cloud_securitycenter_v1_big_query_export_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5622,12 +4344,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Validates the given Event Threat Detection custom module.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the parent to validate the Custom Module under. Its
-        #   format is: * `organizations/`organization`/eventThreatDetectionSettings`. * `
-        #   folders/`folder`/eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::ValidateEventThreatDetectionCustomModuleRequest] validate_event_threat_detection_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5658,14 +4376,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a resident Event Threat Detection custom module at the scope of the
-        # given Resource Manager parent, and also creates inherited custom modules for
-        # all descendants of the given parent. These modules are enabled by default.
+        # 
         # @param [String] parent
-        #   Required. The new custom module's parent. Its format is: * `organizations/`
-        #   organization`/eventThreatDetectionSettings`. * `folders/`folder`/
-        #   eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5696,14 +4408,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified Event Threat Detection custom module and all of its
-        # descendants in the Resource Manager hierarchy. This method is only supported
-        # for resident custom modules.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is: * `organizations/
-        #   `organization`/eventThreatDetectionSettings/customModules/`module``. * `
-        #   folders/`folder`/eventThreatDetectionSettings/customModules/`module``. * `
-        #   projects/`project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5731,12 +4437,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an Event Threat Detection custom module.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is: * `organizations/`
-        #   organization`/eventThreatDetectionSettings/customModules/`module``. * `folders/
-        #   `folder`/eventThreatDetectionSettings/customModules/`module``. * `projects/`
-        #   project`/eventThreatDetectionSettings/customModules/`module``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5764,23 +4466,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all Event Threat Detection custom modules for the given Resource Manager
-        # parent. This includes resident modules defined at the scope of the parent
-        # along with modules inherited from ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * `
-        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
-        #   /eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
-        #   The maximum number of modules to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListEventThreatDetectionCustomModules`
-        #   call. Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListEventThreatDetectionCustomModules` must match the
-        #   call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5810,23 +4499,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all resident Event Threat Detection custom modules under the given
-        # Resource Manager parent and its descendants.
+        # 
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules under. Its format is: * `
-        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
-        #   /eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
-        #   The maximum number of modules to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `
-        #   ListDescendantEventThreatDetectionCustomModules` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListDescendantEventThreatDetectionCustomModules` must match the call that
-        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5856,21 +4532,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the Event Threat Detection custom module with the given name based on
-        # the given update mask. Updating the enablement state is supported for both
-        # resident and inherited modules (though resident modules cannot have an
-        # enablement state of "inherited"). Updating the display name or configuration
-        # of a module is supported for resident modules only. The type of a module
-        # cannot be changed.
+        # 
         # @param [String] name
-        #   Immutable. The resource name of the Event Threat Detection custom module. Its
-        #   format is: * `organizations/`organization`/eventThreatDetectionSettings/
-        #   customModules/`module``. * `folders/`folder`/eventThreatDetectionSettings/
-        #   customModules/`module``. * `projects/`project`/eventThreatDetectionSettings/
-        #   customModules/`module``.
         # @param [Google::Apis::SecuritycenterV1::EventThreatDetectionCustomModule] event_threat_detection_custom_module_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5901,14 +4566,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an effective Event Threat Detection custom module at the given level.
+        # 
         # @param [String] name
-        #   Required. The resource name of the effective Event Threat Detection custom
-        #   module. Its format is: * `organizations/`organization`/
-        #   eventThreatDetectionSettings/effectiveCustomModules/`module``. * `folders/`
-        #   folder`/eventThreatDetectionSettings/effectiveCustomModules/`module``. * `
-        #   projects/`project`/eventThreatDetectionSettings/effectiveCustomModules/`module`
-        #   `.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5936,24 +4595,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all effective Event Threat Detection custom modules for the given parent.
-        # This includes resident modules defined at the scope of the parent along with
-        # modules inherited from its ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of the parent to list custom modules for. Its format is: * `
-        #   organizations/`organization`/eventThreatDetectionSettings`. * `folders/`folder`
-        #   /eventThreatDetectionSettings`. * `projects/`project`/
-        #   eventThreatDetectionSettings`.
         # @param [Fixnum] page_size
-        #   The maximum number of modules to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `
-        #   ListEffectiveEventThreatDetectionCustomModules` call. Provide this to retrieve
-        #   the subsequent page. When paginating, all other parameters provided to `
-        #   ListEffectiveEventThreatDetectionCustomModules` must match the call that
-        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5983,13 +4628,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Kicks off an LRO to bulk mute findings for a parent based on a filter. The
-        # parent can be either an organization, folder or project. The findings matched
-        # by the filter will be muted after the LRO is done.
+        # 
         # @param [String] parent
-        #   Required. The parent, at which bulk action needs to be applied. Its format is `
-        #   organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]
-        #   `.
         # @param [Google::Apis::SecuritycenterV1::BulkMuteFindingsRequest] bulk_mute_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6020,14 +4660,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6055,14 +4689,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6090,17 +4718,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a mute config.
+        # 
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format `
-        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
-        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
-        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6131,17 +4752,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a mute config.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new mute configs's parent. Its format is `
-        #   organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] mute_config_id
-        #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must consist of only lowercase letters, numbers, and hyphens, must start with
-        #   a letter, must end with either a letter or a number, and must be 63 characters
-        #   or less.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6172,14 +4786,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an existing mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to delete. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6207,14 +4815,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a mute config.
+        # 
         # @param [String] name
-        #   Required. Name of the mute config to retrieve. Its format is `organizations/`
-        #   organization`/muteConfigs/`config_id``, `folders/`folder`/muteConfigs/`
-        #   config_id``, `projects/`project`/muteConfigs/`config_id``, `organizations/`
-        #   organization`/locations/global/muteConfigs/`config_id``, `folders/`folder`/
-        #   locations/global/muteConfigs/`config_id``, or `projects/`project`/locations/
-        #   global/muteConfigs/`config_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6242,19 +4844,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists mute configs.
+        # 
         # @param [String] parent
-        #   Required. The parent, which owns the collection of mute configs. Its format is
-        #   `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[
-        #   project_id]`.
         # @param [Fixnum] page_size
-        #   The maximum number of configs to return. The service may return fewer than
-        #   this value. If unspecified, at most 10 configs will be returned. The maximum
-        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   A page token, received from a previous `ListMuteConfigs` call. Provide this to
-        #   retrieve the subsequent page. When paginating, all other parameters provided
-        #   to `ListMuteConfigs` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6284,17 +4877,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a mute config.
+        # 
         # @param [String] name
-        #   This field will be ignored if provided on config creation. Format `
-        #   organizations/`organization`/muteConfigs/`mute_config`` `folders/`folder`/
-        #   muteConfigs/`mute_config`` `projects/`project`/muteConfigs/`mute_config`` `
-        #   organizations/`organization`/locations/global/muteConfigs/`mute_config`` `
-        #   folders/`folder`/locations/global/muteConfigs/`mute_config`` `projects/`
-        #   project`/locations/global/muteConfigs/`mute_config``
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1MuteConfig] google_cloud_securitycenter_v1_mute_config_object
         # @param [String] update_mask
-        #   The list of fields to be updated. If empty all mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6325,16 +4911,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a notification config.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new notification config's parent. Its format is
-        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] config_id
-        #   Required. Unique identifier provided by the client within the parent scope. It
-        #   must be between 1 and 128 characters and contain alphanumeric characters,
-        #   underscores, or hyphens only.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6365,12 +4945,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a notification config.
+        # 
         # @param [String] name
-        #   Required. Name of the notification config to delete. Its format is `
-        #   organizations/[organization_id]/notificationConfigs/[config_id]`, `folders/[
-        #   folder_id]/notificationConfigs/[config_id]`, or `projects/[project_id]/
-        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6398,12 +4974,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a notification config.
+        # 
         # @param [String] name
-        #   Required. Name of the notification config to get. Its format is `organizations/
-        #   [organization_id]/notificationConfigs/[config_id]`, `folders/[folder_id]/
-        #   notificationConfigs/[config_id]`, or `projects/[project_id]/
-        #   notificationConfigs/[config_id]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6431,18 +5003,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists notification configs.
+        # 
         # @param [String] parent
-        #   Required. The name of the parent in which to list the notification
-        #   configurations. Its format is "organizations/[organization_id]", "folders/[
-        #   folder_id]", or "projects/[project_id]".
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListNotificationConfigsResponse`; indicates
-        #   that this is a continuation of a prior `ListNotificationConfigs` call, and
-        #   that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6472,18 +5036,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a notification config. The following update fields are allowed:
-        # description, pubsub_topic, streaming_config.filter
+        # 
         # @param [String] name
-        #   The relative resource name of this notification config. See: https://cloud.
-        #   google.com/apis/design/resource_names#relative_resource_name Example: "
-        #   organizations/`organization_id`/notificationConfigs/notify_public_bucket", "
-        #   folders/`folder_id`/notificationConfigs/notify_public_bucket", or "projects/`
-        #   project_id`/notificationConfigs/notify_public_bucket".
         # @param [Google::Apis::SecuritycenterV1::NotificationConfig] notification_config_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the notification config. If empty all
-        #   mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6514,15 +5070,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the
-        # given CRM parent, and also creates inherited
-        # SecurityHealthAnalyticsCustomModules for all CRM descendants of the given
-        # parent. These modules are enabled by default.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the new custom module's parent. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
-        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6553,15 +5102,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified SecurityHealthAnalyticsCustomModule and all of its
-        # descendants in the CRM hierarchy. This method is only supported for resident
-        # custom modules.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to delete. Its format is `organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
-        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6589,13 +5131,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a SecurityHealthAnalyticsCustomModule.
+        # 
         # @param [String] name
-        #   Required. Name of the custom module to get. Its format is `organizations/`
-        #   organization`/securityHealthAnalyticsSettings/customModules/`customModule``, `
-        #   folders/`folder`/securityHealthAnalyticsSettings/customModules/`customModule``,
-        #   or `projects/`project`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6623,19 +5160,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of all SecurityHealthAnalyticsCustomModules for the given
-        # parent. This includes resident modules defined at the scope of the parent, and
-        # inherited modules, inherited from CRM ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list custom modules. Its format is `organizations/`
-        #   organization`/securityHealthAnalyticsSettings`, `folders/`folder`/
-        #   securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last call indicating a continuation
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6665,18 +5193,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of all resident SecurityHealthAnalyticsCustomModules under the
-        # given CRM parent and all of the parent’s CRM descendants.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list descendant custom modules. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
-        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last call indicating a continuation
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6706,24 +5226,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the SecurityHealthAnalyticsCustomModule under the given name based on
-        # the given update mask. Updating the enablement state is supported on both
-        # resident and inherited modules (though resident modules cannot have an
-        # enablement state of "inherited"). Updating the display name and custom config
-        # of a module is supported on resident modules only.
+        # 
         # @param [String] name
-        #   Immutable. The resource name of the custom module. Its format is "
-        #   organizations/`organization`/securityHealthAnalyticsSettings/customModules/`
-        #   customModule`", or "folders/`folder`/securityHealthAnalyticsSettings/
-        #   customModules/`customModule`", or "projects/`project`/
-        #   securityHealthAnalyticsSettings/customModules/`customModule`" The id `
-        #   customModule` is server-generated and is not user settable. It will be a
-        #   numeric id containing 1-20 digits.
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule] google_cloud_securitycenter_v1_security_health_analytics_custom_module_object
         # @param [String] update_mask
-        #   The list of fields to be updated. The only fields that can be updated are `
-        #   enablement_state` and `custom_config`. If empty or set to the wildcard value `*
-        #   `, both `enablement_state` and `custom_config` are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6754,12 +5260,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
+        # 
         # @param [String] parent
-        #   Required. The relative resource name of the organization, project, or folder.
-        #   For more information about relative resource names, see [Relative Resource
-        #   Name](https://cloud.google.com/apis/design/resource_names#
-        #   relative_resource_name) Example: `organizations/`organization_id``
         # @param [Google::Apis::SecuritycenterV1::SimulateSecurityHealthAnalyticsCustomModuleRequest] simulate_security_health_analytics_custom_module_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6790,14 +5292,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.
+        # 
         # @param [String] name
-        #   Required. Name of the effective custom module to get. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings/
-        #   effectiveCustomModules/`customModule``, `folders/`folder`/
-        #   securityHealthAnalyticsSettings/effectiveCustomModules/`customModule``, or `
-        #   projects/`project`/securityHealthAnalyticsSettings/effectiveCustomModules/`
-        #   customModule``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6825,19 +5321,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the
-        # given parent. This includes resident modules defined at the scope of the
-        # parent, and inherited modules, inherited from CRM ancestors.
+        # 
         # @param [String] parent
-        #   Required. Name of parent to list effective custom modules. Its format is `
-        #   organizations/`organization`/securityHealthAnalyticsSettings`, `folders/`
-        #   folder`/securityHealthAnalyticsSettings`, or `projects/`project`/
-        #   securityHealthAnalyticsSettings`
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last call indicating a continuation
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6867,18 +5354,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all sources belonging to an organization.
+        # 
         # @param [String] parent
-        #   Required. Resource name of the parent of sources to list. Its format should be
-        #   `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[
-        #   project_id]`.
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListSourcesResponse`; indicates that this is a
-        #   continuation of a prior `ListSources` call, and that the system should return
-        #   the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6908,18 +5387,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Filters an organization or source's findings and groups them by their
-        # specified properties. To group across all sources provide a `-` as the source
-        # id. Example: /v1/organizations/`organization_id`/sources/-/findings, /v1/
-        # folders/`folder_id`/sources/-/findings, /v1/projects/`project_id`/sources/-/
-        # findings
+        # 
         # @param [String] parent
-        #   Required. Name of the source to groupBy. Its format is `organizations/[
-        #   organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]
-        #   `, or `projects/[project_id]/sources/[source_id]`. To groupBy across all
-        #   sources provide a source_id of `-`. For example: `organizations/`
-        #   organization_id`/sources/-, folders/`folder_id`/sources/-`, or `projects/`
-        #   project_id`/sources/-`
         # @param [Google::Apis::SecuritycenterV1::GroupFindingsRequest] group_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -6950,86 +5419,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists an organization or source's findings. To list across all sources provide
-        # a `-` as the source id. Example: /v1/organizations/`organization_id`/sources/-/
-        # findings
+        # 
         # @param [String] parent
-        #   Required. Name of the source the findings belong to. Its format is `
-        #   organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/
-        #   sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To list
-        #   across all sources provide a source_id of `-`. For example: `organizations/`
-        #   organization_id`/sources/-`, `folders/`folder_id`/sources/-` or `projects/`
-        #   projects_id`/sources/-`
         # @param [String] compare_duration
-        #   When compare_duration is set, the ListFindingsResult's "state_change"
-        #   attribute is updated to indicate whether the finding had its state changed,
-        #   the finding's state remained unchanged, or if the finding was added in any
-        #   state during the compare_duration period of time that precedes the read_time.
-        #   This is the time between (read_time - compare_duration) and read_time. The
-        #   state_change value is derived based on the presence and state of the finding
-        #   at the two points in time. Intermediate state changes between the two times
-        #   don't affect the result. For example, the results aren't affected if the
-        #   finding is made inactive and then active again. Possible "state_change" values
-        #   when compare_duration is specified: * "CHANGED": indicates that the finding
-        #   was present and matched the given filter at the start of compare_duration, but
-        #   changed its state at read_time. * "UNCHANGED": indicates that the finding was
-        #   present and matched the given filter at the start of compare_duration and did
-        #   not change state at read_time. * "ADDED": indicates that the finding did not
-        #   match the given filter or was not present at the start of compare_duration,
-        #   but was present at read_time. * "REMOVED": indicates that the finding was
-        #   present and matched the filter at the start of compare_duration, but did not
-        #   match the filter at read_time. If compare_duration is not specified, then the
-        #   only possible state_change is "UNUSED", which will be the state_change set for
-        #   all findings present at read_time.
         # @param [String] field_mask
-        #   A field mask to specify the Finding fields to be listed in the response. An
-        #   empty field mask will list all fields.
         # @param [String] filter
-        #   Expression that defines the filter to apply across findings. The expression is
-        #   a list of one or more restrictions combined via logical operators `AND` and `
-        #   OR`. Parentheses are supported, and `OR` has higher precedence than `AND`.
-        #   Restrictions have the form ` ` and may have a `-` character in front of them
-        #   to indicate negation. Examples include: * name * source_properties.a_property *
-        #   security_marks.marks.marka The supported operators are: * `=` for all value
-        #   types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring
-        #   matching, for strings. The supported value types are: * string literals in
-        #   quotes. * integer literals without quotes. * boolean literals `true` and `
-        #   false` without quotes. The following field and operator combinations are
-        #   supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=
-        #   `, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<
-        #   `, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339
-        #   string. Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
-        #   1560208038000` * severity: `=`, `:` * workflow_state: `=`, `:` *
-        #   security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `
-        #   <=` For example, `source_properties.size = 100` is a valid filter string. Use
-        #   a partial match on the empty string to filter based on a property existing: `
-        #   source_properties.my_property : ""` Use a negated partial match on the empty
-        #   string to filter based on a property not existing: `-source_properties.
-        #   my_property : ""` * resource: * resource.name: `=`, `:` * resource.parent_name:
-        #   `=`, `:` * resource.parent_display_name: `=`, `:` * resource.project_name: `=`
-        #   , `:` * resource.project_display_name: `=`, `:` * resource.type: `=`, `:` *
-        #   resource.folders.resource_folder: `=`, `:` * resource.display_name: `=`, `:`
         # @param [String] order_by
-        #   Expression that defines what fields and order to use for sorting. The string
-        #   value should follow SQL syntax: comma separated list of fields. For example: "
-        #   name,resource_properties.a_property". The default sorting order is ascending.
-        #   To specify descending order for a field, a suffix " desc" should be appended
-        #   to the field name. For example: "name desc,source_properties.a_property".
-        #   Redundant space characters in the syntax are insignificant. "name desc,
-        #   source_properties.a_property" and " name desc , source_properties.a_property "
-        #   are equivalent. The following fields are supported: name parent state category
-        #   resource_name event_time source_properties security_marks.marks
         # @param [Fixnum] page_size
-        #   The maximum number of results to return in a single response. Default is 10,
-        #   minimum is 1, maximum is 1000.
         # @param [String] page_token
-        #   The value returned by the last `ListFindingsResponse`; indicates that this is
-        #   a continuation of a prior `ListFindings` call, and that the system should
-        #   return the next page of data.
         # @param [String] read_time
-        #   Time used as a reference point when filtering findings. The filter is limited
-        #   to findings existing at the supplied time and their values are those at that
-        #   specific time. Absence of this field will default to the API's version of NOW.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7064,21 +5462,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates or updates a finding. The corresponding source must exist for a
-        # finding creation to succeed.
+        # 
         # @param [String] name
-        #   The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: "organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id`", "folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id`", "projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::Finding] finding_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the finding resource. This field should not
-        #   be specified when creating a finding. When updating a finding, an empty mask
-        #   is treated as updating all mutable fields and replacing source_properties.
-        #   Individual source_properties can be added/updated by using "source_properties."
-        #   in the field mask.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7109,13 +5496,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the mute state of a finding.
+        # 
         # @param [String] name
-        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetMuteRequest] set_mute_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7146,13 +5528,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the state of a finding.
+        # 
         # @param [String] name
-        #   Required. The [relative resource name](https://cloud.google.com/apis/design/
-        #   resource_names#relative_resource_name) of the finding. Example: `organizations/
-        #   `organization_id`/sources/`source_id`/findings/`finding_id``, `folders/`
-        #   folder_id`/sources/`source_id`/findings/`finding_id``, `projects/`project_id`/
-        #   sources/`source_id`/findings/`finding_id``.
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -7183,22 +5560,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates security marks.
+        # 
         # @param [String] name
-        #   The relative resource name of the SecurityMarks. See: https://cloud.google.com/
-        #   apis/design/resource_names#relative_resource_name Examples: "organizations/`
-        #   organization_id`/assets/`asset_id`/securityMarks" "organizations/`
-        #   organization_id`/sources/`source_id`/findings/`finding_id`/securityMarks".
         # @param [Google::Apis::SecuritycenterV1::SecurityMarks] security_marks_object
         # @param [String] start_time
-        #   The time at which the updated SecurityMarks take effect. If not set uses
-        #   current server time. Updates will be applied to the SecurityMarks that are
-        #   active immediately preceding this time. Must be earlier or equal to the server
-        #   time.
         # @param [String] update_mask
-        #   The FieldMask to use when updating the security marks resource. The field mask
-        #   must not contain duplicate fields. If empty or set to "marks", all marks will
-        #   be replaced. Individual marks can be updated using "marks.".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7230,16 +5596,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates external system. This is for a given finding.
+        # 
         # @param [String] name
-        #   Full resource name of the external system, for example: "organizations/1234/
-        #   sources/5678/findings/123456/externalSystems/jira", "folders/1234/sources/5678/
-        #   findings/123456/externalSystems/jira", "projects/1234/sources/5678/findings/
-        #   123456/externalSystems/jira"
         # @param [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1ExternalSystem] google_cloud_securitycenter_v1_external_system_object
         # @param [String] update_mask
-        #   The FieldMask to use when updating the external system resource. If empty all
-        #   mutable fields will be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

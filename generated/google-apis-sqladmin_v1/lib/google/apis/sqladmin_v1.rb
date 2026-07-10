@@ -21,9 +21,9 @@ module Google
   module Apis
     # Cloud SQL Admin API
     #
-    # API for Cloud SQL database instance management
+    # Cloud SQL Admin API
     #
-    # @see https://developers.google.com/cloud-sql/
+    # @see https://cloud.google.com/sql/docs
     module SqladminV1
       # Version of the Cloud SQL Admin API this client connects to.
       # This is NOT the gem version.

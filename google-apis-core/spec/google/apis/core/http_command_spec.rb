@@ -219,7 +219,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
     before(:example) do
       stub_request(:get, 'https://www.googleapis.com/zoo/animals')
-        .to_raise(HTTPClient::BadResponseError) # empty error, no res value
+        .to_raise(Faraday::ConnectionFailed) # empty error, no res value
     end
 
     it 'should raise transmission error' do
@@ -233,8 +233,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       end
 
       expect(err).to be_a(Google::Apis::TransmissionError)
-      expect(err.cause).to be_a(HTTPClient::BadResponseError)
-      expect(err.cause.res).to be_nil # no res value
+      expect(err.cause).to be_a(Faraday::ConnectionFailed)
     end
   end
 
@@ -446,7 +445,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
   end
 
   it 'should form encode parameters when method is POST and no body present' do
-    stub_request(:post, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&b=hello&c&d=0')
+    stub_request(:post, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&b=hello&c=true&d=0')
         .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
     command.query['a'] = [1,2,3]
@@ -474,8 +473,15 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
   end
 
-  it 'should raise transmission error instead of connection reset' do
-    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_raise(HTTPClient::KeepAliveDisconnected)
+  it 'should raise transmission error instead of connection failure' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_raise(Faraday::ConnectionFailed)
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    command.options.retries = 0
+    expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)
+  end
+
+  it 'should raise transmission error instead of SSL failure' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_raise(Faraday::SSLError)
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     command.options.retries = 0
     expect { command.execute(client) }.to raise_error(Google::Apis::TransmissionError)

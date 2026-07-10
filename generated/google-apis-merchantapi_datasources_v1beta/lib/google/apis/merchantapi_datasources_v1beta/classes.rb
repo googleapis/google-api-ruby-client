@@ -50,7 +50,8 @@ module Google
         # @return [String]
         attr_accessor :input
       
-        # The local inventory data source.
+        # The local inventory data source type is only available for file inputs and can'
+        # t be used to create API local inventory data sources.
         # Corresponds to the JSON property `localInventoryDataSource`
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::LocalInventoryDataSource]
         attr_accessor :local_inventory_data_source
@@ -81,14 +82,16 @@ module Google
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::PromotionDataSource]
         attr_accessor :promotion_data_source
       
-        # The regional inventory data source.
+        # The [regional inventory](https://support.google.com/merchants/answer/7439058)
+        # data source.
         # Corresponds to the JSON property `regionalInventoryDataSource`
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::RegionalInventoryDataSource]
         attr_accessor :regional_inventory_data_source
       
-        # The supplemental data source for local and online products. After creation,
-        # you should make sure to link the supplemental product data source into one or
-        # more primary product data sources.
+        # The [supplemental data source](https://developers.google.com/merchant/api/
+        # guides/data-sources/api-sources#link-supplemental-data-source) for local and
+        # online products. After creation,you should make sure to link the supplemental
+        # product data source into one or more primary product data sources.
         # Corresponds to the JSON property `supplementalProductDataSource`
         # @return [Google::Apis::MerchantapiDatasourcesV1beta::SupplementalProductDataSource]
         attr_accessor :supplemental_product_data_source
@@ -163,7 +166,11 @@ module Google
         # order of this list will result in changing the priority of data sources in the
         # default rule. For example, providing the following list: [`1001`, `self`] will
         # take attribute values from supplemental data source `1001`, and fallback to `
-        # self` if the attribute is not set in `1001`.
+        # self` if the attribute is not set in `1001`. Warning: The update (patch) and
+        # create call replaces the entire default rule setup. It doesn't work as an
+        # addition or append. If `self` is missing from the list of `
+        # take_from_data_sources`, the API will ignore attributes from the primary data
+        # source itself.
         # Corresponds to the JSON property `takeFromDataSources`
         # @return [Array<Google::Apis::MerchantapiDatasourcesV1beta::DataSourceReference>]
         attr_accessor :take_from_data_sources
@@ -489,7 +496,8 @@ module Google
         end
       end
       
-      # The local inventory data source.
+      # The local inventory data source type is only available for file inputs and can'
+      # t be used to create API local inventory data sources.
       class LocalInventoryDataSource
         include Google::Apis::Core::Hashable
       
@@ -501,8 +509,7 @@ module Google
       
         # Required. Immutable. The feed label of the offers to which the local inventory
         # is provided. Must be less than or equal to 20 uppercase letters (A-Z), numbers
-        # (0-9), and dashes (-). See also [migration to feed labels](https://developers.
-        # google.com/shopping-content/guides/products/feed-labels).
+        # (0-9), and dashes (-).
         # Corresponds to the JSON property `feedLabel`
         # @return [String]
         attr_accessor :feed_label
@@ -576,8 +583,9 @@ module Google
       
         # Optional. Immutable. The feed label that is specified on the data source level.
         # Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and
-        # dashes (-). See also [migration to feed labels](https://developers.google.com/
-        # shopping-content/guides/products/feed-labels). `feedLabel` and `
+        # dashes (-). For more information about feed label, see [Create a primary data
+        # source for products](https://developers.google.com/merchant/api/guides/data-
+        # sources/api-sources#create-primary-data-source). `feedLabel` and `
         # contentLanguage` must be either both set or unset for data sources with
         # product content type. They must be set for data sources with a file input. If
         # set, the data source will only accept products matching this combination. If
@@ -690,7 +698,7 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Optional. The product expiration time. This field will not bet set if the
+        # Optional. The product expiration time. This field will not be set if the
         # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]
@@ -764,7 +772,7 @@ module Google
         end
       end
       
-      # The regional inventory data source.
+      # 
       class RegionalInventoryDataSource
         include Google::Apis::Core::Hashable
       
@@ -776,8 +784,7 @@ module Google
       
         # Required. Immutable. The feed label of the offers to which the regional
         # inventory is provided. Must be less than or equal to 20 uppercase letters (A-Z)
-        # , numbers (0-9), and dashes (-). See also [migration to feed labels](https://
-        # developers.google.com/shopping-content/guides/products/feed-labels).
+        # , numbers (0-9), and dashes (-).
         # Corresponds to the JSON property `feedLabel`
         # @return [String]
         attr_accessor :feed_label
@@ -793,9 +800,10 @@ module Google
         end
       end
       
-      # The supplemental data source for local and online products. After creation,
-      # you should make sure to link the supplemental product data source into one or
-      # more primary product data sources.
+      # The [supplemental data source](https://developers.google.com/merchant/api/
+      # guides/data-sources/api-sources#link-supplemental-data-source) for local and
+      # online products. After creation,you should make sure to link the supplemental
+      # product data source into one or more primary product data sources.
       class SupplementalProductDataSource
         include Google::Apis::Core::Hashable
       
@@ -810,13 +818,12 @@ module Google
       
         # Optional. Immutable. The feed label that is specified on the data source level.
         # Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and
-        # dashes (-). See also [migration to feed labels](https://developers.google.com/
-        # shopping-content/guides/products/feed-labels). `feedLabel` and `
-        # contentLanguage` must be either both set or unset for data sources with
-        # product content type. They must be set for data sources with a file input. The
-        # fields must be unset for data sources without file input. If set, the data
-        # source will only accept products matching this combination. If unset, the data
-        # source will accept produts without that restriction.
+        # dashes (-). `feedLabel` and `contentLanguage` must be either both set or unset
+        # for data sources with product content type. They must be set for data sources
+        # with a file input. The fields must be unset for data sources without file
+        # input. If set, the data source will only accept products matching this
+        # combination. If unset, the data source will accept produts without that
+        # restriction.
         # Corresponds to the JSON property `feedLabel`
         # @return [String]
         attr_accessor :feed_label

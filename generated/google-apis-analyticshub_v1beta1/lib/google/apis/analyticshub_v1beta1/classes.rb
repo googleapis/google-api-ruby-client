@@ -366,6 +366,13 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # Optional. The geographic locations where the dataset should be replicated. See
+        # [BigQuery locations](https://cloud.google.com/bigquery/docs/locations) for
+        # supported locations.
+        # Corresponds to the JSON property `replicaLocations`
+        # @return [Array<String>]
+        attr_accessor :replica_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -377,6 +384,7 @@ module Google
           @friendly_name = args[:friendly_name] if args.key?(:friendly_name)
           @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
+          @replica_locations = args[:replica_locations] if args.key?(:replica_locations)
         end
       end
       
@@ -748,7 +756,7 @@ module Google
         # @return [Google::Apis::AnalyticshubV1beta1::BigQueryDatasetSource]
         attr_accessor :bigquery_dataset
       
-        # Optional. Categories of the listing. Up to two categories are allowed.
+        # Optional. Categories of the listing. Up to five categories are allowed.
         # Corresponds to the JSON property `categories`
         # @return [Array<String>]
         attr_accessor :categories

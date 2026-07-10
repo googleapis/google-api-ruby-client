@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BrokerDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class CapacityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CertificateAuthorityServiceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -328,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchemaSubject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchemaVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,7 +376,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TlsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Topic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrustConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -416,6 +452,15 @@ module Google
         end
       end
       
+      class BrokerDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :broker_index, :numeric_string => true, as: 'brokerIndex'
+          property :node_id, :numeric_string => true, as: 'nodeId'
+          property :rack, as: 'rack'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -427,6 +472,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :memory_bytes, :numeric_string => true, as: 'memoryBytes'
           property :vcpu_count, :numeric_string => true, as: 'vcpuCount'
+        end
+      end
+      
+      class CertificateAuthorityServiceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_pool, as: 'caPool'
         end
       end
       
@@ -452,11 +504,14 @@ module Google
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :broker_details, as: 'brokerDetails', class: Google::Apis::ManagedkafkaV1::BrokerDetails, decorator: Google::Apis::ManagedkafkaV1::BrokerDetails::Representation
+      
           property :capacity_config, as: 'capacityConfig', class: Google::Apis::ManagedkafkaV1::CapacityConfig, decorator: Google::Apis::ManagedkafkaV1::CapacityConfig::Representation
       
           property :create_time, as: 'createTime'
           property :gcp_config, as: 'gcpConfig', class: Google::Apis::ManagedkafkaV1::GcpConfig, decorator: Google::Apis::ManagedkafkaV1::GcpConfig::Representation
       
+          property :kafka_version, as: 'kafkaVersion'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :rebalance_config, as: 'rebalanceConfig', class: Google::Apis::ManagedkafkaV1::RebalanceConfig, decorator: Google::Apis::ManagedkafkaV1::RebalanceConfig::Representation
@@ -464,6 +519,10 @@ module Google
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
+          property :tls_config, as: 'tlsConfig', class: Google::Apis::ManagedkafkaV1::TlsConfig, decorator: Google::Apis::ManagedkafkaV1::TlsConfig::Representation
+      
+          property :update_options, as: 'updateOptions', class: Google::Apis::ManagedkafkaV1::UpdateOptions, decorator: Google::Apis::ManagedkafkaV1::UpdateOptions::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -488,6 +547,8 @@ module Google
           property :kafka_cluster, as: 'kafkaCluster'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
         end
@@ -670,6 +731,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ManagedkafkaV1::Operation, decorator: Google::Apis::ManagedkafkaV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -840,6 +902,14 @@ module Google
         end
       end
       
+      class SchemaSubject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :versions, as: 'versions'
+        end
+      end
+      
       class SchemaVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -879,6 +949,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :maximum_backoff, as: 'maximumBackoff'
           property :minimum_backoff, as: 'minimumBackoff'
+          property :task_retry_disabled, as: 'taskRetryDisabled'
+        end
+      end
+      
+      class TlsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ssl_principal_mapping_rules, as: 'sslPrincipalMappingRules'
+          property :trust_config, as: 'trustConfig', class: Google::Apis::ManagedkafkaV1::TrustConfig, decorator: Google::Apis::ManagedkafkaV1::TrustConfig::Representation
+      
         end
       end
       
@@ -889,6 +969,21 @@ module Google
           property :name, as: 'name'
           property :partition_count, as: 'partitionCount'
           property :replication_factor, as: 'replicationFactor'
+        end
+      end
+      
+      class TrustConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cas_configs, as: 'casConfigs', class: Google::Apis::ManagedkafkaV1::CertificateAuthorityServiceConfig, decorator: Google::Apis::ManagedkafkaV1::CertificateAuthorityServiceConfig::Representation
+      
+        end
+      end
+      
+      class UpdateOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_broker_downscale_on_cluster_upscale, as: 'allowBrokerDownscaleOnClusterUpscale'
         end
       end
       

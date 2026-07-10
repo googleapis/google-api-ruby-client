@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Boundary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExtendedMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtendedMetadataSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FindUnregisteredServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +143,18 @@ module Google
       end
       
       class FindUnregisteredWorkloadsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FunctionalType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Identity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -143,6 +173,12 @@ module Google
       end
       
       class ListDiscoveredWorkloadsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListExtendedMetadataSchemasResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +251,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegistrationType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -352,6 +394,17 @@ module Google
         end
       end
       
+      class Boundary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :crm_node, as: 'crmNode'
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -442,6 +495,22 @@ module Google
         end
       end
       
+      class ExtendedMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata_struct, as: 'metadataStruct'
+        end
+      end
+      
+      class ExtendedMetadataSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_schema, as: 'jsonSchema'
+          property :name, as: 'name'
+          property :schema_version, :numeric_string => true, as: 'schemaVersion'
+        end
+      end
+      
       class FindUnregisteredServicesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -459,6 +528,20 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class FunctionalType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class Identity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal, as: 'principal'
         end
       end
       
@@ -492,6 +575,15 @@ module Google
         end
       end
       
+      class ListExtendedMetadataSchemasResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extended_metadata_schemas, as: 'extendedMetadataSchemas', class: Google::Apis::ApphubV1alpha::ExtendedMetadataSchema, decorator: Google::Apis::ApphubV1alpha::ExtendedMetadataSchema::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -507,6 +599,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ApphubV1alpha::Operation, decorator: Google::Apis::ApphubV1alpha::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -612,6 +705,13 @@ module Google
         end
       end
       
+      class RegistrationType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
       class Scope
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -653,8 +753,16 @@ module Google
       class ServiceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :extended_metadata, as: 'extendedMetadata', class: Google::Apis::ApphubV1alpha::ExtendedMetadata, decorator: Google::Apis::ApphubV1alpha::ExtendedMetadata::Representation
+      
+          property :functional_type, as: 'functionalType', class: Google::Apis::ApphubV1alpha::FunctionalType, decorator: Google::Apis::ApphubV1alpha::FunctionalType::Representation
+      
           property :gcp_project, as: 'gcpProject'
+          property :identity, as: 'identity', class: Google::Apis::ApphubV1alpha::Identity, decorator: Google::Apis::ApphubV1alpha::Identity::Representation
+      
           property :location, as: 'location'
+          property :registration_type, as: 'registrationType', class: Google::Apis::ApphubV1alpha::RegistrationType, decorator: Google::Apis::ApphubV1alpha::RegistrationType::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -722,7 +830,13 @@ module Google
       class WorkloadProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :extended_metadata, as: 'extendedMetadata', class: Google::Apis::ApphubV1alpha::ExtendedMetadata, decorator: Google::Apis::ApphubV1alpha::ExtendedMetadata::Representation
+      
+          property :functional_type, as: 'functionalType', class: Google::Apis::ApphubV1alpha::FunctionalType, decorator: Google::Apis::ApphubV1alpha::FunctionalType::Representation
+      
           property :gcp_project, as: 'gcpProject'
+          property :identity, as: 'identity', class: Google::Apis::ApphubV1alpha::Identity, decorator: Google::Apis::ApphubV1alpha::Identity::Representation
+      
           property :location, as: 'location'
           property :zone, as: 'zone'
         end

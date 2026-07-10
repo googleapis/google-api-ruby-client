@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudRunJobInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudRunRevisionEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +125,12 @@ module Google
       end
       
       class EdgeLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EffectiveVpcFlowLogsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,13 +184,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GkeNetworkPolicyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkeNetworkPolicySkippedInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GkePodInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleServiceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HybridSubnetInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectAttachmentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IpMasqueradingSkippedInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NgfwPacketInspectionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -274,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivateConnectionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProbingDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +341,12 @@ module Google
       end
       
       class ProxyConnectionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryOrgVpcFlowLogsConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +395,12 @@ module Google
       end
       
       class SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShowEffectiveFlowLogsConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -477,9 +549,19 @@ module Google
         end
       end
       
+      class CloudRunJobInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :location, as: 'location'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class CloudRunRevisionEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
         end
       end
@@ -559,9 +641,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cause, as: 'cause'
+          property :destination_geolocation_code, as: 'destinationGeolocationCode'
           property :destination_ip, as: 'destinationIp'
           property :region, as: 'region'
           property :resource_uri, as: 'resourceUri'
+          property :source_geolocation_code, as: 'sourceGeolocationCode'
           property :source_ip, as: 'sourceIp'
         end
       end
@@ -570,6 +654,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metropolitan_area, as: 'metropolitanArea'
+        end
+      end
+      
+      class EffectiveVpcFlowLogsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_interval, as: 'aggregationInterval'
+          property :cross_project_metadata, as: 'crossProjectMetadata'
+          property :filter_expr, as: 'filterExpr'
+          property :flow_sampling, as: 'flowSampling'
+          property :interconnect_attachment, as: 'interconnectAttachment'
+          property :metadata, as: 'metadata'
+          collection :metadata_fields, as: 'metadataFields'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :scope, as: 'scope'
+          property :state, as: 'state'
+          property :subnet, as: 'subnet'
+          property :vpn_tunnel, as: 'vpnTunnel'
         end
       end
       
@@ -582,18 +685,21 @@ module Google
       class Endpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :alloy_db_instance, as: 'alloyDbInstance'
           property :app_engine_version, as: 'appEngineVersion', class: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionEndpoint, decorator: Google::Apis::NetworkmanagementV1beta1::AppEngineVersionEndpoint::Representation
       
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint, decorator: Google::Apis::NetworkmanagementV1beta1::CloudFunctionEndpoint::Representation
       
+          property :cloud_run_job, as: 'cloudRunJob'
           property :cloud_run_revision, as: 'cloudRunRevision', class: Google::Apis::NetworkmanagementV1beta1::CloudRunRevisionEndpoint, decorator: Google::Apis::NetworkmanagementV1beta1::CloudRunRevisionEndpoint::Representation
       
           property :cloud_sql_instance, as: 'cloudSqlInstance'
+          property :datastream_private_connection, as: 'datastreamPrivateConnection'
+          property :dms_private_connection, as: 'dmsPrivateConnection'
           property :forwarding_rule, as: 'forwardingRule'
           property :forwarding_rule_target, as: 'forwardingRuleTarget'
           property :fqdn, as: 'fqdn'
           property :gke_master_cluster, as: 'gkeMasterCluster'
+          property :gke_pod, as: 'gkePod'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :load_balancer_id, as: 'loadBalancerId'
@@ -640,10 +746,12 @@ module Google
           property :firewall_rule_type, as: 'firewallRuleType'
           property :network_uri, as: 'networkUri'
           property :policy, as: 'policy'
+          property :policy_priority, as: 'policyPriority'
           property :policy_uri, as: 'policyUri'
           property :priority, as: 'priority'
           collection :target_service_accounts, as: 'targetServiceAccounts'
           collection :target_tags, as: 'targetTags'
+          property :target_type, as: 'targetType'
           property :uri, as: 'uri'
         end
       end
@@ -685,11 +793,46 @@ module Google
         end
       end
       
+      class GkeNetworkPolicyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :direction, as: 'direction'
+          property :display_name, as: 'displayName'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GkeNetworkPolicySkippedInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class GkePodInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :network_uri, as: 'networkUri'
+          property :pod_uri, as: 'podUri'
+        end
+      end
+      
       class GoogleServiceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :google_service_type, as: 'googleServiceType'
           property :source_ip, as: 'sourceIp'
+        end
+      end
+      
+      class HybridSubnetInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :region, as: 'region'
+          property :uri, as: 'uri'
         end
       end
       
@@ -705,7 +848,29 @@ module Google
           property :psc_network_attachment_uri, as: 'pscNetworkAttachmentUri'
           property :running, as: 'running'
           property :service_account, as: 'serviceAccount'
+          property :status, as: 'status'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class InterconnectAttachmentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_router_uri, as: 'cloudRouterUri'
+          property :display_name, as: 'displayName'
+          property :interconnect_uri, as: 'interconnectUri'
+          property :l2_attachment_matched_ip_address, as: 'l2AttachmentMatchedIpAddress'
+          property :region, as: 'region'
+          property :type, as: 'type'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class IpMasqueradingSkippedInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :non_masquerade_range, as: 'nonMasqueradeRange'
+          property :reason, as: 'reason'
         end
       end
       
@@ -750,6 +915,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetworkmanagementV1beta1::Operation, decorator: Google::Apis::NetworkmanagementV1beta1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -816,6 +982,7 @@ module Google
       class NatInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_nat_gateway_type, as: 'cloudNatGatewayType'
           property :nat_gateway_name, as: 'natGatewayName'
           property :network_uri, as: 'networkUri'
           property :new_destination_ip, as: 'newDestinationIp'
@@ -840,6 +1007,13 @@ module Google
           property :matched_subnet_uri, as: 'matchedSubnetUri'
           property :region, as: 'region'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class NgfwPacketInspectionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :security_profile_group_uri, as: 'securityProfileGroupUri'
         end
       end
       
@@ -880,6 +1054,13 @@ module Google
         end
       end
       
+      class PrivateConnectionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
       class ProbingDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -916,6 +1097,16 @@ module Google
           property :old_source_port, as: 'oldSourcePort'
           property :protocol, as: 'protocol'
           property :subnet_uri, as: 'subnetUri'
+        end
+      end
+      
+      class QueryOrgVpcFlowLogsConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :vpc_flow_logs_configs, as: 'vpcFlowLogsConfigs', class: Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig, decorator: Google::Apis::NetworkmanagementV1beta1::VpcFlowLogsConfig::Representation
+      
         end
       end
       
@@ -1014,6 +1205,16 @@ module Google
         end
       end
       
+      class ShowEffectiveFlowLogsConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :effective_flow_logs_configs, as: 'effectiveFlowLogsConfigs', class: Google::Apis::NetworkmanagementV1beta1::EffectiveVpcFlowLogsConfig, decorator: Google::Apis::NetworkmanagementV1beta1::EffectiveVpcFlowLogsConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class SingleEdgeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1047,14 +1248,20 @@ module Google
           property :causes_drop, as: 'causesDrop'
           property :cloud_function, as: 'cloudFunction', class: Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::CloudFunctionInfo::Representation
       
+          property :cloud_run_job, as: 'cloudRunJob', class: Google::Apis::NetworkmanagementV1beta1::CloudRunJobInfo, decorator: Google::Apis::NetworkmanagementV1beta1::CloudRunJobInfo::Representation
+      
           property :cloud_run_revision, as: 'cloudRunRevision', class: Google::Apis::NetworkmanagementV1beta1::CloudRunRevisionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::CloudRunRevisionInfo::Representation
       
           property :cloud_sql_instance, as: 'cloudSqlInstance', class: Google::Apis::NetworkmanagementV1beta1::CloudSqlInstanceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::CloudSqlInstanceInfo::Representation
+      
+          property :datastream_private_connection, as: 'datastreamPrivateConnection', class: Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo::Representation
       
           property :deliver, as: 'deliver', class: Google::Apis::NetworkmanagementV1beta1::DeliverInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DeliverInfo::Representation
       
           property :description, as: 'description'
           property :direct_vpc_egress_connection, as: 'directVpcEgressConnection', class: Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo::Representation
+      
+          property :dms_private_connection, as: 'dmsPrivateConnection', class: Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo::Representation
       
           property :drop, as: 'drop', class: Google::Apis::NetworkmanagementV1beta1::DropInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DropInfo::Representation
       
@@ -1068,9 +1275,21 @@ module Google
       
           property :gke_master, as: 'gkeMaster', class: Google::Apis::NetworkmanagementV1beta1::GkeMasterInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GkeMasterInfo::Representation
       
+          property :gke_network_policy, as: 'gkeNetworkPolicy', class: Google::Apis::NetworkmanagementV1beta1::GkeNetworkPolicyInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GkeNetworkPolicyInfo::Representation
+      
+          property :gke_network_policy_skipped, as: 'gkeNetworkPolicySkipped', class: Google::Apis::NetworkmanagementV1beta1::GkeNetworkPolicySkippedInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GkeNetworkPolicySkippedInfo::Representation
+      
+          property :gke_pod, as: 'gkePod', class: Google::Apis::NetworkmanagementV1beta1::GkePodInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GkePodInfo::Representation
+      
           property :google_service, as: 'googleService', class: Google::Apis::NetworkmanagementV1beta1::GoogleServiceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::GoogleServiceInfo::Representation
       
+          property :hybrid_subnet, as: 'hybridSubnet', class: Google::Apis::NetworkmanagementV1beta1::HybridSubnetInfo, decorator: Google::Apis::NetworkmanagementV1beta1::HybridSubnetInfo::Representation
+      
           property :instance, as: 'instance', class: Google::Apis::NetworkmanagementV1beta1::InstanceInfo, decorator: Google::Apis::NetworkmanagementV1beta1::InstanceInfo::Representation
+      
+          property :interconnect_attachment, as: 'interconnectAttachment', class: Google::Apis::NetworkmanagementV1beta1::InterconnectAttachmentInfo, decorator: Google::Apis::NetworkmanagementV1beta1::InterconnectAttachmentInfo::Representation
+      
+          property :ip_masquerading_skipped, as: 'ipMasqueradingSkipped', class: Google::Apis::NetworkmanagementV1beta1::IpMasqueradingSkippedInfo, decorator: Google::Apis::NetworkmanagementV1beta1::IpMasqueradingSkippedInfo::Representation
       
           property :load_balancer, as: 'loadBalancer', class: Google::Apis::NetworkmanagementV1beta1::LoadBalancerInfo, decorator: Google::Apis::NetworkmanagementV1beta1::LoadBalancerInfo::Representation
       
@@ -1079,6 +1298,8 @@ module Google
           property :nat, as: 'nat', class: Google::Apis::NetworkmanagementV1beta1::NatInfo, decorator: Google::Apis::NetworkmanagementV1beta1::NatInfo::Representation
       
           property :network, as: 'network', class: Google::Apis::NetworkmanagementV1beta1::NetworkInfo, decorator: Google::Apis::NetworkmanagementV1beta1::NetworkInfo::Representation
+      
+          property :ngfw_packet_inspection, as: 'ngfwPacketInspection', class: Google::Apis::NetworkmanagementV1beta1::NgfwPacketInspectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::NgfwPacketInspectionInfo::Representation
       
           property :project_id, as: 'projectId'
           property :proxy_connection, as: 'proxyConnection', class: Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ProxyConnectionInfo::Representation
@@ -1151,6 +1372,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_interval, as: 'aggregationInterval'
           property :create_time, as: 'createTime'
+          property :cross_project_metadata, as: 'crossProjectMetadata'
           property :description, as: 'description'
           property :filter_expr, as: 'filterExpr'
           property :flow_sampling, as: 'flowSampling'
@@ -1159,7 +1381,9 @@ module Google
           property :metadata, as: 'metadata'
           collection :metadata_fields, as: 'metadataFields'
           property :name, as: 'name'
+          property :network, as: 'network'
           property :state, as: 'state'
+          property :subnet, as: 'subnet'
           property :target_resource_state, as: 'targetResourceState'
           property :update_time, as: 'updateTime'
           property :vpn_tunnel, as: 'vpnTunnel'

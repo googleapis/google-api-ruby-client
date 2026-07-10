@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddEsimParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdvancedSecurityOverrides
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplicationPolicyChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApplicationReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +131,12 @@ module Google
       end
       
       class ApplicationReportingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplicationSigningKeyCert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,7 +244,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomAppConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultApplicationContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultApplicationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultApplicationSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DefaultApplicationSettingAttempt
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -322,6 +376,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EsimCommandStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EsimInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EuiccChipInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAuthenticationOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAuthenticationSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +461,12 @@ module Google
       end
       
       class InstallConstraint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InternalErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -586,6 +664,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModifyPolicyApplicationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModifyPolicyApplicationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -718,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivateDnsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ProvisioningInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -736,6 +832,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveEsimParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemovePolicyApplicationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemovePolicyApplicationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestDeviceInfoParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -743,6 +857,12 @@ module Google
       end
       
       class RequestDeviceInfoStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Role
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -773,6 +893,12 @@ module Google
       end
       
       class SigninDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SigninDetailGoogleAuthenticationOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -940,6 +1066,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WipeParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkAccountSetupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdbShellCommandEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -950,6 +1088,14 @@ module Google
       class AdbShellInteractiveEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AddEsimParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_code, as: 'activationCode'
+          property :activation_state, as: 'activationState'
         end
       end
       
@@ -1112,6 +1258,8 @@ module Google
           property :auto_update_mode, as: 'autoUpdateMode'
           property :connected_work_and_personal_app, as: 'connectedWorkAndPersonalApp'
           property :credential_provider_policy, as: 'credentialProviderPolicy'
+          property :custom_app_config, as: 'customAppConfig', class: Google::Apis::AndroidmanagementV1::CustomAppConfig, decorator: Google::Apis::AndroidmanagementV1::CustomAppConfig::Representation
+      
           property :default_permission_policy, as: 'defaultPermissionPolicy'
           collection :delegated_scopes, as: 'delegatedScopes'
           property :disabled, as: 'disabled'
@@ -1130,8 +1278,21 @@ module Google
           collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
       
           property :preferential_network_id, as: 'preferentialNetworkId'
+          collection :roles, as: 'roles', class: Google::Apis::AndroidmanagementV1::Role, decorator: Google::Apis::AndroidmanagementV1::Role::Representation
+      
+          collection :signing_key_certs, as: 'signingKeyCerts', class: Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert, decorator: Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert::Representation
+      
           property :user_control_settings, as: 'userControlSettings'
           property :work_profile_widgets, as: 'workProfileWidgets'
+        end
+      end
+      
+      class ApplicationPolicyChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application, as: 'application', class: Google::Apis::AndroidmanagementV1::ApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicy::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -1148,6 +1309,8 @@ module Google
           property :package_name, as: 'packageName'
           property :package_sha256_hash, as: 'packageSha256Hash'
           collection :signing_key_cert_fingerprints, as: 'signingKeyCertFingerprints'
+          collection :signing_key_certs, as: 'signingKeyCerts', class: Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert, decorator: Google::Apis::AndroidmanagementV1::ApplicationSigningKeyCert::Representation
+      
           property :state, as: 'state'
           property :user_facing_type, as: 'userFacingType'
           property :version_code, as: 'versionCode'
@@ -1159,6 +1322,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :include_removed_apps, as: 'includeRemovedApps'
+        end
+      end
+      
+      class ApplicationSigningKeyCert
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signing_key_cert_fingerprint_sha256, :base64 => true, as: 'signingKeyCertFingerprintSha256'
         end
       end
       
@@ -1242,6 +1412,8 @@ module Google
       class Command
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_esim_params, as: 'addEsimParams', class: Google::Apis::AndroidmanagementV1::AddEsimParams, decorator: Google::Apis::AndroidmanagementV1::AddEsimParams::Representation
+      
           property :clear_apps_data_params, as: 'clearAppsDataParams', class: Google::Apis::AndroidmanagementV1::ClearAppsDataParams, decorator: Google::Apis::AndroidmanagementV1::ClearAppsDataParams::Representation
       
           property :clear_apps_data_status, as: 'clearAppsDataStatus', class: Google::Apis::AndroidmanagementV1::ClearAppsDataStatus, decorator: Google::Apis::AndroidmanagementV1::ClearAppsDataStatus::Representation
@@ -1249,7 +1421,11 @@ module Google
           property :create_time, as: 'createTime'
           property :duration, as: 'duration'
           property :error_code, as: 'errorCode'
+          property :esim_status, as: 'esimStatus', class: Google::Apis::AndroidmanagementV1::EsimCommandStatus, decorator: Google::Apis::AndroidmanagementV1::EsimCommandStatus::Representation
+      
           property :new_password, as: 'newPassword'
+          property :remove_esim_params, as: 'removeEsimParams', class: Google::Apis::AndroidmanagementV1::RemoveEsimParams, decorator: Google::Apis::AndroidmanagementV1::RemoveEsimParams::Representation
+      
           property :request_device_info_params, as: 'requestDeviceInfoParams', class: Google::Apis::AndroidmanagementV1::RequestDeviceInfoParams, decorator: Google::Apis::AndroidmanagementV1::RequestDeviceInfoParams::Representation
       
           property :request_device_info_status, as: 'requestDeviceInfoStatus', class: Google::Apis::AndroidmanagementV1::RequestDeviceInfoStatus, decorator: Google::Apis::AndroidmanagementV1::RequestDeviceInfoStatus::Representation
@@ -1265,6 +1441,8 @@ module Google
       
           property :type, as: 'type'
           property :user_name, as: 'userName'
+          property :wipe_params, as: 'wipeParams', class: Google::Apis::AndroidmanagementV1::WipeParams, decorator: Google::Apis::AndroidmanagementV1::WipeParams::Representation
+      
         end
       end
       
@@ -1322,6 +1500,7 @@ module Google
       class CrossProfilePolicies
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cross_profile_app_functions, as: 'crossProfileAppFunctions'
           property :cross_profile_copy_paste, as: 'crossProfileCopyPaste'
           property :cross_profile_data_sharing, as: 'crossProfileDataSharing'
           property :exemptions_to_show_work_contacts_in_personal_profile, as: 'exemptionsToShowWorkContactsInPersonalProfile', class: Google::Apis::AndroidmanagementV1::PackageNameList, decorator: Google::Apis::AndroidmanagementV1::PackageNameList::Representation
@@ -1338,12 +1517,61 @@ module Google
         end
       end
       
+      class CustomAppConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_uninstall_settings, as: 'userUninstallSettings'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class DefaultApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :package_name, as: 'packageName'
+        end
+      end
+      
+      class DefaultApplicationContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_application_scope, as: 'defaultApplicationScope'
+        end
+      end
+      
+      class DefaultApplicationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :default_application_setting_attempts, as: 'defaultApplicationSettingAttempts', class: Google::Apis::AndroidmanagementV1::DefaultApplicationSettingAttempt, decorator: Google::Apis::AndroidmanagementV1::DefaultApplicationSettingAttempt::Representation
+      
+          property :default_application_type, as: 'defaultApplicationType'
+          property :package_name, as: 'packageName'
+        end
+      end
+      
+      class DefaultApplicationSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :default_application_scopes, as: 'defaultApplicationScopes'
+          property :default_application_type, as: 'defaultApplicationType'
+          collection :default_applications, as: 'defaultApplications', class: Google::Apis::AndroidmanagementV1::DefaultApplication, decorator: Google::Apis::AndroidmanagementV1::DefaultApplication::Representation
+      
+        end
+      end
+      
+      class DefaultApplicationSettingAttempt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attempt_outcome, as: 'attemptOutcome'
+          property :package_name, as: 'packageName'
         end
       end
       
@@ -1359,6 +1587,8 @@ module Google
           property :applied_policy_version, :numeric_string => true, as: 'appliedPolicyVersion'
           property :applied_state, as: 'appliedState'
           property :common_criteria_mode_info, as: 'commonCriteriaModeInfo', class: Google::Apis::AndroidmanagementV1::CommonCriteriaModeInfo, decorator: Google::Apis::AndroidmanagementV1::CommonCriteriaModeInfo::Representation
+      
+          collection :default_application_info, as: 'defaultApplicationInfo', class: Google::Apis::AndroidmanagementV1::DefaultApplicationInfo, decorator: Google::Apis::AndroidmanagementV1::DefaultApplicationInfo::Representation
       
           property :device_settings, as: 'deviceSettings', class: Google::Apis::AndroidmanagementV1::DeviceSettings, decorator: Google::Apis::AndroidmanagementV1::DeviceSettings::Representation
       
@@ -1415,6 +1645,8 @@ module Google
           property :configure_wifi, as: 'configureWifi'
           property :preferential_network_service_settings, as: 'preferentialNetworkServiceSettings', class: Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceSettings, decorator: Google::Apis::AndroidmanagementV1::PreferentialNetworkServiceSettings::Representation
       
+          property :private_dns_settings, as: 'privateDnsSettings', class: Google::Apis::AndroidmanagementV1::PrivateDnsSettings, decorator: Google::Apis::AndroidmanagementV1::PrivateDnsSettings::Representation
+      
           property :tethering_settings, as: 'tetheringSettings'
           property :usb_data_access, as: 'usbDataAccess'
           property :wifi_direct_settings, as: 'wifiDirectSettings'
@@ -1432,6 +1664,7 @@ module Google
           property :cellular_two_g_state, as: 'cellularTwoGState'
           property :minimum_wifi_security_level, as: 'minimumWifiSecurityLevel'
           property :ultra_wideband_state, as: 'ultraWidebandState'
+          property :user_initiated_add_esim_settings, as: 'userInitiatedAddEsimSettings'
           property :wifi_state, as: 'wifiState'
         end
       end
@@ -1524,6 +1757,8 @@ module Google
           property :allow_personal_usage, as: 'allowPersonalUsage'
           property :duration, as: 'duration'
           property :expiration_timestamp, as: 'expirationTimestamp'
+          property :google_authentication_options, as: 'googleAuthenticationOptions', class: Google::Apis::AndroidmanagementV1::GoogleAuthenticationOptions, decorator: Google::Apis::AndroidmanagementV1::GoogleAuthenticationOptions::Representation
+      
           property :name, as: 'name'
           property :one_time_only, as: 'oneTimeOnly'
           property :policy_name, as: 'policyName'
@@ -1564,6 +1799,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enterprise, as: 'enterprise'
           property :upgrade_state, as: 'upgradeState'
+        end
+      end
+      
+      class EsimCommandStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :esim_info, as: 'esimInfo', class: Google::Apis::AndroidmanagementV1::EsimInfo, decorator: Google::Apis::AndroidmanagementV1::EsimInfo::Representation
+      
+          property :internal_error_details, as: 'internalErrorDetails', class: Google::Apis::AndroidmanagementV1::InternalErrorDetails, decorator: Google::Apis::AndroidmanagementV1::InternalErrorDetails::Representation
+      
+          property :status, as: 'status'
+        end
+      end
+      
+      class EsimInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icc_id, as: 'iccId'
         end
       end
       
@@ -1629,6 +1882,14 @@ module Google
         end
       end
       
+      class GoogleAuthenticationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_requirement, as: 'authenticationRequirement'
+          property :required_account_email, as: 'requiredAccountEmail'
+        end
+      end
+      
       class GoogleAuthenticationSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1678,6 +1939,16 @@ module Google
           property :charging_constraint, as: 'chargingConstraint'
           property :device_idle_constraint, as: 'deviceIdleConstraint'
           property :network_type_constraint, as: 'networkTypeConstraint'
+        end
+      end
+      
+      class InternalErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_code, :numeric_string => true, as: 'errorCode'
+          property :error_code_detail, as: 'errorCodeDetail'
+          property :operation_code, :numeric_string => true, as: 'operationCode'
+          property :operation_code_detail, as: 'operationCodeDetail'
         end
       end
       
@@ -1814,6 +2085,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::AndroidmanagementV1::Operation, decorator: Google::Apis::AndroidmanagementV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1954,6 +2226,22 @@ module Google
           property :ttl, as: 'ttl'
           property :user_id, as: 'userId'
           property :value, as: 'value'
+        end
+      end
+      
+      class ModifyPolicyApplicationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :changes, as: 'changes', class: Google::Apis::AndroidmanagementV1::ApplicationPolicyChange, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicyChange::Representation
+      
+        end
+      end
+      
+      class ModifyPolicyApplicationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::AndroidmanagementV1::Policy, decorator: Google::Apis::AndroidmanagementV1::Policy::Representation
+      
         end
       end
       
@@ -2128,11 +2416,13 @@ module Google
       
           collection :android_device_policy_tracks, as: 'androidDevicePolicyTracks'
           property :app_auto_update_policy, as: 'appAutoUpdatePolicy'
+          property :app_functions, as: 'appFunctions'
           collection :applications, as: 'applications', class: Google::Apis::AndroidmanagementV1::ApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::ApplicationPolicy::Representation
       
           property :assist_content_policy, as: 'assistContentPolicy'
           property :auto_date_and_time_zone, as: 'autoDateAndTimeZone'
           property :auto_time_required, as: 'autoTimeRequired'
+          property :autofill_policy, as: 'autofillPolicy'
           property :block_applications_enabled, as: 'blockApplicationsEnabled'
           property :bluetooth_config_disabled, as: 'bluetoothConfigDisabled'
           property :bluetooth_contact_sharing_disabled, as: 'bluetoothContactSharingDisabled'
@@ -2151,6 +2441,8 @@ module Google
       
           property :data_roaming_disabled, as: 'dataRoamingDisabled'
           property :debugging_features_allowed, as: 'debuggingFeaturesAllowed'
+          collection :default_application_settings, as: 'defaultApplicationSettings', class: Google::Apis::AndroidmanagementV1::DefaultApplicationSetting, decorator: Google::Apis::AndroidmanagementV1::DefaultApplicationSetting::Representation
+      
           property :default_permission_policy, as: 'defaultPermissionPolicy'
           property :device_connectivity_management, as: 'deviceConnectivityManagement', class: Google::Apis::AndroidmanagementV1::DeviceConnectivityManagement, decorator: Google::Apis::AndroidmanagementV1::DeviceConnectivityManagement::Representation
       
@@ -2241,6 +2533,9 @@ module Google
           property :vpn_config_disabled, as: 'vpnConfigDisabled'
           property :wifi_config_disabled, as: 'wifiConfigDisabled'
           property :wifi_configs_lockdown_enabled, as: 'wifiConfigsLockdownEnabled'
+          collection :wipe_data_flags, as: 'wipeDataFlags'
+          property :work_account_setup_config, as: 'workAccountSetupConfig', class: Google::Apis::AndroidmanagementV1::WorkAccountSetupConfig, decorator: Google::Apis::AndroidmanagementV1::WorkAccountSetupConfig::Representation
+      
         end
       end
       
@@ -2291,6 +2586,14 @@ module Google
         end
       end
       
+      class PrivateDnsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_dns_host, as: 'privateDnsHost'
+          property :private_dns_mode, as: 'privateDnsMode'
+        end
+      end
+      
       class ProvisioningInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2327,6 +2630,28 @@ module Google
         end
       end
       
+      class RemoveEsimParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icc_id, as: 'iccId'
+        end
+      end
+      
+      class RemovePolicyApplicationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :package_names, as: 'packageNames'
+        end
+      end
+      
+      class RemovePolicyApplicationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::AndroidmanagementV1::Policy, decorator: Google::Apis::AndroidmanagementV1::Policy::Representation
+      
+        end
+      end
+      
       class RequestDeviceInfoParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2340,6 +2665,13 @@ module Google
           property :eid_info, as: 'eidInfo', class: Google::Apis::AndroidmanagementV1::EidInfo, decorator: Google::Apis::AndroidmanagementV1::EidInfo::Representation
       
           property :status, as: 'status'
+        end
+      end
+      
+      class Role
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :role_type, as: 'roleType'
         end
       end
       
@@ -2385,10 +2717,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_personal_usage, as: 'allowPersonalUsage'
           property :default_status, as: 'defaultStatus'
+          property :google_authentication_options, as: 'googleAuthenticationOptions', class: Google::Apis::AndroidmanagementV1::SigninDetailGoogleAuthenticationOptions, decorator: Google::Apis::AndroidmanagementV1::SigninDetailGoogleAuthenticationOptions::Representation
+      
           property :qr_code, as: 'qrCode'
           property :signin_enrollment_token, as: 'signinEnrollmentToken'
           property :signin_url, as: 'signinUrl'
           property :token_tag, as: 'tokenTag'
+        end
+      end
+      
+      class SigninDetailGoogleAuthenticationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_requirement, as: 'authenticationRequirement'
         end
       end
       
@@ -2421,6 +2762,8 @@ module Google
       class SpecificNonComplianceContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_application_context, as: 'defaultApplicationContext', class: Google::Apis::AndroidmanagementV1::DefaultApplicationContext, decorator: Google::Apis::AndroidmanagementV1::DefaultApplicationContext::Representation
+      
           property :onc_wifi_context, as: 'oncWifiContext', class: Google::Apis::AndroidmanagementV1::OncWifiContext, decorator: Google::Apis::AndroidmanagementV1::OncWifiContext::Representation
       
           property :password_policies_context, as: 'passwordPoliciesContext', class: Google::Apis::AndroidmanagementV1::PasswordPoliciesContext, decorator: Google::Apis::AndroidmanagementV1::PasswordPoliciesContext::Representation
@@ -2466,6 +2809,7 @@ module Google
       
           property :application_reports_enabled, as: 'applicationReportsEnabled'
           property :common_criteria_mode_enabled, as: 'commonCriteriaModeEnabled'
+          property :default_application_info_reporting_enabled, as: 'defaultApplicationInfoReportingEnabled'
           property :device_settings_enabled, as: 'deviceSettingsEnabled'
           property :display_info_enabled, as: 'displayInfoEnabled'
           property :hardware_status_enabled, as: 'hardwareStatusEnabled'
@@ -2519,7 +2863,9 @@ module Google
       class TelephonyInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :activation_state, as: 'activationState'
           property :carrier_name, as: 'carrierName'
+          property :config_mode, as: 'configMode'
           property :icc_id, as: 'iccId'
           property :phone_number, as: 'phoneNumber'
         end
@@ -2705,6 +3051,23 @@ module Google
       class WipeFailureEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class WipeParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :wipe_data_flags, as: 'wipeDataFlags'
+          property :wipe_reason, as: 'wipeReason', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+        end
+      end
+      
+      class WorkAccountSetupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_type, as: 'authenticationType'
+          property :required_account_email, as: 'requiredAccountEmail'
         end
       end
     end

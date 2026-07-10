@@ -81,12 +81,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -123,6 +132,193 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new AgentGateway in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource of the AgentGateway. Must be in the format `
+        #   projects/*/locations/*`.
+        # @param [Google::Apis::NetworkservicesV1beta1::AgentGateway] agent_gateway_object
+        # @param [String] agent_gateway_id
+        #   Required. Short name of the AgentGateway resource to be created.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_agent_gateway(parent, agent_gateway_object = nil, agent_gateway_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/agentGateways', options)
+          command.request_representation = Google::Apis::NetworkservicesV1beta1::AgentGateway::Representation
+          command.request_object = agent_gateway_object
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['agentGatewayId'] = agent_gateway_id unless agent_gateway_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single AgentGateway.
+        # @param [String] name
+        #   Required. A name of the AgentGateway to delete. Must be in the format `
+        #   projects/*/locations/*/agentGateways/*`.
+        # @param [String] etag
+        #   Optional. The etag of the AgentGateway to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_agent_gateway(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single AgentGateway.
+        # @param [String] name
+        #   Required. A name of the AgentGateway to get. Must be in the format `projects/*/
+        #   locations/*/agentGateways/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::AgentGateway] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::AgentGateway]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_agent_gateway(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::AgentGateway::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::AgentGateway
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists AgentGateways in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location from which the AgentGateways should be
+        #   listed, specified in the format `projects/*/locations/*`.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of AgentGateways to return per call.
+        # @param [String] page_token
+        #   Optional. The value returned by the last `ListAgentGatewaysResponse` Indicates
+        #   that this is a continuation of a prior `ListAgentGateways` call, and that the
+        #   system should return the next page of data.
+        # @param [Boolean] return_partial_success
+        #   Optional. If true, allow partial responses for multi-regional Aggregated List
+        #   requests. Otherwise if one of the locations is down or unreachable, the
+        #   Aggregated List request will fail.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::ListAgentGatewaysResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::ListAgentGatewaysResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_agent_gateways(parent, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/agentGateways', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::ListAgentGatewaysResponse::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::ListAgentGatewaysResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single AgentGateway.
+        # @param [String] name
+        #   Identifier. Name of the AgentGateway resource. It matches pattern `projects/*/
+        #   locations/*/agentGateways/`.
+        # @param [Google::Apis::NetworkservicesV1beta1::AgentGateway] agent_gateway_object
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   AgentGateway resource by the update. The fields specified in the update_mask
+        #   are relative to the resource, not the full request. A field will be
+        #   overwritten if it is in the mask. If the user does not provide a mask then all
+        #   fields will be overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_agent_gateway(name, agent_gateway_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkservicesV1beta1::AgentGateway::Representation
+          command.request_object = agent_gateway_object
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -351,7 +547,7 @@ module Google
         # Creates a new EndpointPolicy in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the EndpointPolicy. Must be in the format `
-        #   projects/*/locations/global`.
+        #   projects/*/locations/*`.
         # @param [Google::Apis::NetworkservicesV1beta1::EndpointPolicy] endpoint_policy_object
         # @param [String] endpoint_policy_id
         #   Required. Short name of the EndpointPolicy resource to be created. E.g. "
@@ -389,7 +585,7 @@ module Google
         # Deletes a single EndpointPolicy.
         # @param [String] name
         #   Required. A name of the EndpointPolicy to delete. Must be in the format `
-        #   projects/*/locations/global/endpointPolicies/*`.
+        #   projects/*/locations/*/endpointPolicies/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -420,7 +616,7 @@ module Google
         # Gets details of a single EndpointPolicy.
         # @param [String] name
         #   Required. A name of the EndpointPolicy to get. Must be in the format `projects/
-        #   */locations/global/endpointPolicies/*`.
+        #   */locations/*/endpointPolicies/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -451,7 +647,7 @@ module Google
         # Lists EndpointPolicies in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the EndpointPolicies should be
-        #   listed, specified in the format `projects/*/locations/global`.
+        #   listed, specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of EndpointPolicies to return per call.
         # @param [String] page_token
@@ -495,7 +691,7 @@ module Google
         # Updates the parameters of a single EndpointPolicy.
         # @param [String] name
         #   Identifier. Name of the EndpointPolicy resource. It matches pattern `projects/`
-        #   project`/locations/global/endpointPolicies/`endpoint_policy``.
+        #   project`/locations/*/endpointPolicies/`endpoint_policy``.
         # @param [Google::Apis::NetworkservicesV1beta1::EndpointPolicy] endpoint_policy_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -715,8 +911,7 @@ module Google
         # Get a single RouteView of a Gateway.
         # @param [String] name
         #   Required. Name of the GatewayRouteView resource. Formats: projects/`
-        #   project_number`/locations/`location`/gateways/`gateway_name`/routeViews/`
-        #   route_view_name`
+        #   project_number`/locations/`location`/gateways/`gateway`/routeViews/`route_view`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -747,7 +942,7 @@ module Google
         # Lists RouteViews
         # @param [String] parent
         #   Required. The Gateway to which a Route is associated. Formats: projects/`
-        #   project_number`/locations/`location`/gateways/`gateway_name`
+        #   project_number`/locations/`location`/gateways/`gateway`
         # @param [Fixnum] page_size
         #   Maximum number of GatewayRouteViews to return per call.
         # @param [String] page_token
@@ -786,7 +981,7 @@ module Google
         # Creates a new GrpcRoute in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the GrpcRoute. Must be in the format `
-        #   projects/*/locations/global`.
+        #   projects/*/locations/*`.
         # @param [Google::Apis::NetworkservicesV1beta1::GrpcRoute] grpc_route_object
         # @param [String] grpc_route_id
         #   Required. Short name of the GrpcRoute resource to be created.
@@ -823,7 +1018,7 @@ module Google
         # Deletes a single GrpcRoute.
         # @param [String] name
         #   Required. A name of the GrpcRoute to delete. Must be in the format `projects/*/
-        #   locations/global/grpcRoutes/*`.
+        #   locations/*/grpcRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -854,7 +1049,7 @@ module Google
         # Gets details of a single GrpcRoute.
         # @param [String] name
         #   Required. A name of the GrpcRoute to get. Must be in the format `projects/*/
-        #   locations/global/grpcRoutes/*`.
+        #   locations/*/grpcRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -885,7 +1080,7 @@ module Google
         # Lists GrpcRoutes in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the GrpcRoutes should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of GrpcRoutes to return per call.
         # @param [String] page_token
@@ -929,7 +1124,7 @@ module Google
         # Updates the parameters of a single GrpcRoute.
         # @param [String] name
         #   Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/
-        #   locations/global/grpcRoutes/`
+        #   locations/*/grpcRoutes/`
         # @param [Google::Apis::NetworkservicesV1beta1::GrpcRoute] grpc_route_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -970,10 +1165,12 @@ module Google
         # Creates a new HttpRoute in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the HttpRoute. Must be in the format `
-        #   projects/*/locations/global`.
+        #   projects/*/locations/*`.
         # @param [Google::Apis::NetworkservicesV1beta1::HttpRoute] http_route_object
         # @param [String] http_route_id
         #   Required. Short name of the HttpRoute resource to be created.
+        # @param [String] request_id
+        #   Optional. Idempotent request UUID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -991,7 +1188,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_http_route(parent, http_route_object = nil, http_route_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_http_route(parent, http_route_object = nil, http_route_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/httpRoutes', options)
           command.request_representation = Google::Apis::NetworkservicesV1beta1::HttpRoute::Representation
           command.request_object = http_route_object
@@ -999,6 +1196,7 @@ module Google
           command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['httpRouteId'] = http_route_id unless http_route_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1007,7 +1205,7 @@ module Google
         # Deletes a single HttpRoute.
         # @param [String] name
         #   Required. A name of the HttpRoute to delete. Must be in the format `projects/*/
-        #   locations/global/httpRoutes/*`.
+        #   locations/*/httpRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1038,7 +1236,7 @@ module Google
         # Gets details of a single HttpRoute.
         # @param [String] name
         #   Required. A name of the HttpRoute to get. Must be in the format `projects/*/
-        #   locations/global/httpRoutes/*`.
+        #   locations/*/httpRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1069,7 +1267,9 @@ module Google
         # Lists HttpRoute in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the HttpRoutes should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
+        # @param [String] filter
+        #   Optional. Filter expression to restrict the list.
         # @param [Fixnum] page_size
         #   Maximum number of HttpRoutes to return per call.
         # @param [String] page_token
@@ -1097,11 +1297,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_http_routes(parent, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_http_routes(parent, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/httpRoutes', options)
           command.response_representation = Google::Apis::NetworkservicesV1beta1::ListHttpRoutesResponse::Representation
           command.response_class = Google::Apis::NetworkservicesV1beta1::ListHttpRoutesResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
@@ -1113,7 +1314,7 @@ module Google
         # Updates the parameters of a single HttpRoute.
         # @param [String] name
         #   Identifier. Name of the HttpRoute resource. It matches pattern `projects/*/
-        #   locations/global/httpRoutes/http_route_name>`.
+        #   locations/*/httpRoutes/http_route_name>`.
         # @param [Google::Apis::NetworkservicesV1beta1::HttpRoute] http_route_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -1593,6 +1794,229 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new `LbTcpExtension` resource in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource of the `LbTcpExtension` resource. Must be in the
+        #   format `projects/`project`/locations/`location``.
+        # @param [Google::Apis::NetworkservicesV1beta1::LbTcpExtension] lb_tcp_extension_object
+        # @param [String] lb_tcp_extension_id
+        #   Required. User-provided ID of the `LbTcpExtension` resource to be created.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_lb_tcp_extension(parent, lb_tcp_extension_object = nil, lb_tcp_extension_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/lbTcpExtensions', options)
+          command.request_representation = Google::Apis::NetworkservicesV1beta1::LbTcpExtension::Representation
+          command.request_object = lb_tcp_extension_object
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['lbTcpExtensionId'] = lb_tcp_extension_id unless lb_tcp_extension_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified `LbTcpExtension` resource.
+        # @param [String] name
+        #   Required. The name of the `LbTcpExtension` resource to delete. Must be in the
+        #   format `projects/`project`/locations/`location`/LbTcpExtensions/`
+        #   lb_tcp_extension``.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes after the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_lb_tcp_extension(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of the specified `LbTcpExtension` resource.
+        # @param [String] name
+        #   Required. A name of the `LbTcpExtension` resource to get. Must be in the
+        #   format `projects/`project`/locations/`location`/LbTcpExtensions/`
+        #   lb_tcp_extension``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::LbTcpExtension] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::LbTcpExtension]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_lb_tcp_extension(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::LbTcpExtension::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::LbTcpExtension
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists `LbTcpExtension` resources in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location from which the `LbTcpExtension` resources
+        #   are listed, specified in the following format: `projects/`project`/locations/`
+        #   location``.
+        # @param [String] filter
+        #   Optional. Filtering results.
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. The server might return fewer items than
+        #   requested. If unspecified, the server picks an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results that the server returns.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::ListLbTcpExtensionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::ListLbTcpExtensionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_lb_tcp_extensions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/lbTcpExtensions', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::ListLbTcpExtensionsResponse::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::ListLbTcpExtensionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of the specified `LbTcpExtension` resource.
+        # @param [String] name
+        #   Required. Identifier. Name of the `LbTcpExtension` resource in the following
+        #   format: `projects/`project`/locations/`location`/LbTcpExtension/`
+        #   lb_tcp_extension``
+        # @param [Google::Apis::NetworkservicesV1beta1::LbTcpExtension] lb_tcp_extension_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees that for at
+        #   least 60 minutes since the first request. For example, consider a situation
+        #   where you make an initial request and the request times out. If you make the
+        #   request again with the same request ID, the server can check if original
+        #   operation with the same request ID was received, and if so, ignores the second
+        #   request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. Used to specify the fields to be overwritten in the `LbTcpExtension`
+        #   resource by the update. The fields specified in the update_mask are relative
+        #   to the resource, not the full request. A field is overwritten if it is in the
+        #   mask. If the user does not specify a mask, then all fields are overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_lb_tcp_extension(name, lb_tcp_extension_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkservicesV1beta1::LbTcpExtension::Representation
+          command.request_object = lb_tcp_extension_object
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new `LbTrafficExtension` resource in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the `LbTrafficExtension` resource. Must be in
@@ -1817,7 +2241,7 @@ module Google
         # Creates a new Mesh in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the Mesh. Must be in the format `projects/*/
-        #   locations/global`.
+        #   locations/*`.
         # @param [Google::Apis::NetworkservicesV1beta1::Mesh] mesh_object
         # @param [String] mesh_id
         #   Required. Short name of the Mesh resource to be created.
@@ -1854,7 +2278,7 @@ module Google
         # Deletes a single Mesh.
         # @param [String] name
         #   Required. A name of the Mesh to delete. Must be in the format `projects/*/
-        #   locations/global/meshes/*`.
+        #   locations/*/meshes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1885,7 +2309,7 @@ module Google
         # Gets details of a single Mesh.
         # @param [String] name
         #   Required. A name of the Mesh to get. Must be in the format `projects/*/
-        #   locations/global/meshes/*`.
+        #   locations/*/meshes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1916,7 +2340,7 @@ module Google
         # Lists Meshes in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the Meshes should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of Meshes to return per call.
         # @param [String] page_token
@@ -1960,7 +2384,7 @@ module Google
         # Updates the parameters of a single Mesh.
         # @param [String] name
         #   Identifier. Name of the Mesh resource. It matches pattern `projects/*/
-        #   locations/global/meshes/`.
+        #   locations/*/meshes/`.
         # @param [Google::Apis::NetworkservicesV1beta1::Mesh] mesh_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -2001,7 +2425,7 @@ module Google
         # Get a single RouteView of a Mesh.
         # @param [String] name
         #   Required. Name of the MeshRouteView resource. Format: projects/`project_number`
-        #   /locations/`location`/meshes/`mesh_name`/routeViews/`route_view_name`
+        #   /locations/`location`/meshes/`mesh`/routeViews/`route_view`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2032,7 +2456,7 @@ module Google
         # Lists RouteViews
         # @param [String] parent
         #   Required. The Mesh to which a Route is associated. Format: projects/`
-        #   project_number`/locations/`location`/meshes/`mesh_name`
+        #   project_number`/locations/`location`/meshes/`mesh`
         # @param [Fixnum] page_size
         #   Maximum number of MeshRouteViews to return per call.
         # @param [String] page_token
@@ -2182,6 +2606,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2199,7 +2631,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}/operations', options)
           command.response_representation = Google::Apis::NetworkservicesV1beta1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::NetworkservicesV1beta1::ListOperationsResponse
@@ -2207,6 +2639,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2575,7 +3008,7 @@ module Google
         # Creates a new TcpRoute in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the TcpRoute. Must be in the format `projects/
-        #   */locations/global`.
+        #   */locations/*`.
         # @param [Google::Apis::NetworkservicesV1beta1::TcpRoute] tcp_route_object
         # @param [String] tcp_route_id
         #   Required. Short name of the TcpRoute resource to be created.
@@ -2612,7 +3045,7 @@ module Google
         # Deletes a single TcpRoute.
         # @param [String] name
         #   Required. A name of the TcpRoute to delete. Must be in the format `projects/*/
-        #   locations/global/tcpRoutes/*`.
+        #   locations/*/tcpRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2643,7 +3076,7 @@ module Google
         # Gets details of a single TcpRoute.
         # @param [String] name
         #   Required. A name of the TcpRoute to get. Must be in the format `projects/*/
-        #   locations/global/tcpRoutes/*`.
+        #   locations/*/tcpRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2674,7 +3107,7 @@ module Google
         # Lists TcpRoute in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the TcpRoutes should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of TcpRoutes to return per call.
         # @param [String] page_token
@@ -2718,7 +3151,7 @@ module Google
         # Updates the parameters of a single TcpRoute.
         # @param [String] name
         #   Identifier. Name of the TcpRoute resource. It matches pattern `projects/*/
-        #   locations/global/tcpRoutes/tcp_route_name>`.
+        #   locations/*/tcpRoutes/tcp_route_name>`.
         # @param [Google::Apis::NetworkservicesV1beta1::TcpRoute] tcp_route_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
@@ -2759,7 +3192,7 @@ module Google
         # Creates a new TlsRoute in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the TlsRoute. Must be in the format `projects/
-        #   */locations/global`.
+        #   */locations/*`.
         # @param [Google::Apis::NetworkservicesV1beta1::TlsRoute] tls_route_object
         # @param [String] tls_route_id
         #   Required. Short name of the TlsRoute resource to be created.
@@ -2796,7 +3229,7 @@ module Google
         # Deletes a single TlsRoute.
         # @param [String] name
         #   Required. A name of the TlsRoute to delete. Must be in the format `projects/*/
-        #   locations/global/tlsRoutes/*`.
+        #   locations/*/tlsRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2827,7 +3260,7 @@ module Google
         # Gets details of a single TlsRoute.
         # @param [String] name
         #   Required. A name of the TlsRoute to get. Must be in the format `projects/*/
-        #   locations/global/tlsRoutes/*`.
+        #   locations/*/tlsRoutes/*`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2858,7 +3291,7 @@ module Google
         # Lists TlsRoute in a given project and location.
         # @param [String] parent
         #   Required. The project and location from which the TlsRoutes should be listed,
-        #   specified in the format `projects/*/locations/global`.
+        #   specified in the format `projects/*/locations/*`.
         # @param [Fixnum] page_size
         #   Maximum number of TlsRoutes to return per call.
         # @param [String] page_token
@@ -2902,7 +3335,7 @@ module Google
         # Updates the parameters of a single TlsRoute.
         # @param [String] name
         #   Identifier. Name of the TlsRoute resource. It matches pattern `projects/*/
-        #   locations/global/tlsRoutes/tls_route_name>`.
+        #   locations/*/tlsRoutes/tls_route_name>`.
         # @param [Google::Apis::NetworkservicesV1beta1::TlsRoute] tls_route_object
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the

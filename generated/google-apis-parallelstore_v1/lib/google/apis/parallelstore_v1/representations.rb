@@ -230,6 +230,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ParallelstoreV1::Operation, decorator: Google::Apis::ParallelstoreV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

@@ -247,6 +247,233 @@ module Google
         end
       end
       
+      # Information for the automatically created subnetwork and its associated IR.
+      class AutoCreatedSubnetworkInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates whether the subnetwork is delinked from the Service
+        # Connection Policy. Only set if the subnetwork mode is AUTO_CREATED during
+        # creation.
+        # Corresponds to the JSON property `delinked`
+        # @return [Boolean]
+        attr_accessor :delinked
+        alias_method :delinked?, :delinked
+      
+        # Output only. URI of the automatically created Internal Range. Only set if the
+        # subnetwork mode is AUTO_CREATED during creation.
+        # Corresponds to the JSON property `internalRange`
+        # @return [String]
+        attr_accessor :internal_range
+      
+        # Output only. URI of the automatically created Internal Range reference. Only
+        # set if the subnetwork mode is AUTO_CREATED during creation.
+        # Corresponds to the JSON property `internalRangeRef`
+        # @return [String]
+        attr_accessor :internal_range_ref
+      
+        # Output only. URI of the automatically created subnetwork. Only set if the
+        # subnetwork mode is AUTO_CREATED during creation.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # Output only. URI of the automatically created subnetwork reference. Only set
+        # if the subnetwork mode is AUTO_CREATED during creation.
+        # Corresponds to the JSON property `subnetworkRef`
+        # @return [String]
+        attr_accessor :subnetwork_ref
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delinked = args[:delinked] if args.key?(:delinked)
+          @internal_range = args[:internal_range] if args.key?(:internal_range)
+          @internal_range_ref = args[:internal_range_ref] if args.key?(:internal_range_ref)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @subnetwork_ref = args[:subnetwork_ref] if args.key?(:subnetwork_ref)
+        end
+      end
+      
+      # The specification for automatically creating a DNS record.
+      class AutomatedDnsCreationSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The DNS suffix to use for the DNS record. Must end with a dot. This
+        # should be a valid DNS domain name as per RFC 1035. Each label (between dots)
+        # can contain letters, digits, and hyphens, and must not start or end with a
+        # hyphen. Example: "my-service.example.com.", "internal."
+        # Corresponds to the JSON property `dnsSuffix`
+        # @return [String]
+        attr_accessor :dns_suffix
+      
+        # Required. The hostname (the first label of the FQDN) to use for the DNS record.
+        # This should be a valid DNS label as per RFC 1035. Generally, this means the
+        # hostname can contain letters, digits, and hyphens, and must not start or end
+        # with a hyphen. Example: "my-instance", "db-1"
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Optional. The Time To Live for the DNS record, in seconds. If not provided, a
+        # default of 30 seconds will be used.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_suffix = args[:dns_suffix] if args.key?(:dns_suffix)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # Represents a DNS record managed by the AutomatedDnsRecord API.
+      class AutomatedDnsRecord
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The full resource path of the consumer network this
+        # AutomatedDnsRecord is visible to. Example: "projects/`projectNumOrId`/global/
+        # networks/`networkName`".
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
+        # Output only. The timestamp of when the record was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Immutable. The creation mode of the AutomatedDnsRecord. This field
+        # is immutable.
+        # Corresponds to the JSON property `creationMode`
+        # @return [String]
+        attr_accessor :creation_mode
+      
+        # Defines the configuration of a DNS record.
+        # Corresponds to the JSON property `currentConfig`
+        # @return [Google::Apis::NetworkconnectivityV1::Config]
+        attr_accessor :current_config
+      
+        # A human-readable description of the record.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Immutable. The dns suffix for this record to use in longest-suffix
+        # matching. Requires a trailing dot. Example: "example.com."
+        # Corresponds to the JSON property `dnsSuffix`
+        # @return [String]
+        attr_accessor :dns_suffix
+      
+        # Output only. DnsZone is the DNS zone managed by automation. Format: projects/`
+        # project`/managedZones/`managedZone`
+        # Corresponds to the JSON property `dnsZone`
+        # @return [String]
+        attr_accessor :dns_zone
+      
+        # Optional. The etag is computed by the server, and may be sent on update and
+        # delete requests to ensure the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The FQDN created by combining the hostname and dns suffix. Should
+        # include a trailing dot.
+        # Corresponds to the JSON property `fqdn`
+        # @return [String]
+        attr_accessor :fqdn
+      
+        # Required. Immutable. The hostname for the DNS record. This value will be
+        # prepended to the `dns_suffix` to create the full domain name (FQDN) for the
+        # record. For example, if `hostname` is "corp.db" and `dns_suffix` is "example.
+        # com.", the resulting record will be "corp.db.example.com.". Should not include
+        # a trailing dot.
+        # Corresponds to the JSON property `hostname`
+        # @return [String]
+        attr_accessor :hostname
+      
+        # Optional. User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Immutable. Identifier. The name of an AutomatedDnsRecord. Format: projects/`
+        # project`/locations/`location`/automatedDnsRecords/`automated_dns_record` See:
+        # https://google.aip.dev/122#fields-representing-resource-names
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Defines the configuration of a DNS record.
+        # Corresponds to the JSON property `originalConfig`
+        # @return [Google::Apis::NetworkconnectivityV1::Config]
+        attr_accessor :original_config
+      
+        # Required. Immutable. The identifier of a supported record type.
+        # Corresponds to the JSON property `recordType`
+        # @return [String]
+        attr_accessor :record_type
+      
+        # Required. Immutable. The service class identifier which authorizes this
+        # AutomatedDnsRecord. Any API calls targeting this AutomatedDnsRecord must have `
+        # networkconnectivity.serviceclasses.use` IAM permission for the provided
+        # service class.
+        # Corresponds to the JSON property `serviceClass`
+        # @return [String]
+        attr_accessor :service_class
+      
+        # Output only. The current operational state of this AutomatedDnsRecord as
+        # managed by Service Connectivity Automation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. A human-readable message providing more context about the current
+        # state, such as an error description if the state is `FAILED_DEPROGRAMMING`.
+        # Corresponds to the JSON property `stateDetails`
+        # @return [String]
+        attr_accessor :state_details
+      
+        # Output only. The timestamp of when the record was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creation_mode = args[:creation_mode] if args.key?(:creation_mode)
+          @current_config = args[:current_config] if args.key?(:current_config)
+          @description = args[:description] if args.key?(:description)
+          @dns_suffix = args[:dns_suffix] if args.key?(:dns_suffix)
+          @dns_zone = args[:dns_zone] if args.key?(:dns_zone)
+          @etag = args[:etag] if args.key?(:etag)
+          @fqdn = args[:fqdn] if args.key?(:fqdn)
+          @hostname = args[:hostname] if args.key?(:hostname)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @original_config = args[:original_config] if args.key?(:original_config)
+          @record_type = args[:record_type] if args.key?(:record_type)
+          @service_class = args[:service_class] if args.key?(:service_class)
+          @state = args[:state] if args.key?(:state)
+          @state_details = args[:state_details] if args.key?(:state_details)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -348,6 +575,94 @@ module Google
         end
       end
       
+      # Request for CheckConsumerConfig.
+      class CheckConsumerConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Full resource name of the consumer network. Example: - projects/`
+        # project`/global/networks/`network`.
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
+        # The project number or ID where the PSC endpoint is to be created.
+        # Corresponds to the JSON property `endpointProject`
+        # @return [String]
+        attr_accessor :endpoint_project
+      
+        # The requested IP Version
+        # Corresponds to the JSON property `requestedIpVersion`
+        # @return [String]
+        attr_accessor :requested_ip_version
+      
+        # Required. The service class identifier of the producer.
+        # Corresponds to the JSON property `serviceClass`
+        # @return [String]
+        attr_accessor :service_class
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
+          @endpoint_project = args[:endpoint_project] if args.key?(:endpoint_project)
+          @requested_ip_version = args[:requested_ip_version] if args.key?(:requested_ip_version)
+          @service_class = args[:service_class] if args.key?(:service_class)
+        end
+      end
+      
+      # Response for CheckConsumerConfig.
+      class CheckConsumerConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of validation errors. If the list is empty, the consumer config is valid.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<String>]
+        attr_accessor :errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+        end
+      end
+      
+      # Defines the configuration of a DNS record.
+      class Config
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of resource record data strings. The content and format of
+        # these strings depend on the AutomatedDnsRecord.type. For many common record
+        # types, this list may contain multiple strings. As defined in RFC 1035 (section
+        # 5) and RFC 1034 (section 3.6.1) -- see examples. Examples: A record: ["192.0.2.
+        # 1"] or ["192.0.2.1", "192.0.2.2"] TXT record: ["This is a text record"] CNAME
+        # record: ["target.example.com."] AAAA record: ["::1"] or ["2001:0db8:85a3:0000:
+        # 0000:8a2e:0370:7334", "2001:0db8:85a3:0000:0000:8a2e:0370:7335"]
+        # Corresponds to the JSON property `rrdatas`
+        # @return [Array<String>]
+        attr_accessor :rrdatas
+      
+        # Required. Number of seconds that this DNS record can be cached by resolvers.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rrdatas = args[:rrdatas] if args.key?(:rrdatas)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
       # Allow the producer to specify which consumers can connect to it.
       class ConsumerPscConfig
         include Google::Apis::Core::Hashable
@@ -397,9 +712,9 @@ module Google
         # @return [String]
         attr_accessor :project
       
-        # Output only. A map to store mapping between customer vip and target service
-        # attachment. Only service attachment with producer specified ip addresses are
-        # stored here.
+        # Optional. A map to store mapping between customer vip and target service
+        # attachment. This field can be used to specify a static IP address for a PSC
+        # connection.
         # Corresponds to the JSON property `serviceAttachmentIpAddressMap`
         # @return [Hash<String,String>]
         attr_accessor :service_attachment_ip_address_map
@@ -431,6 +746,11 @@ module Google
       # PSC connection details on consumer side.
       class ConsumerPscConnection
         include Google::Apis::Core::Hashable
+      
+        # The status of DNS automation for a PSC connection.
+        # Corresponds to the JSON property `dnsAutomationStatus`
+        # @return [Google::Apis::NetworkconnectivityV1::DnsAutomationStatus]
+        attr_accessor :dns_automation_status
       
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by [
@@ -535,6 +855,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dns_automation_status = args[:dns_automation_status] if args.key?(:dns_automation_status)
           @error = args[:error] if args.key?(:error)
           @error_info = args[:error_info] if args.key?(:error_info)
           @error_type = args[:error_type] if args.key?(:error_type)
@@ -549,6 +870,162 @@ module Google
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
           @selected_subnetwork = args[:selected_subnetwork] if args.key?(:selected_subnetwork)
           @service_attachment_uri = args[:service_attachment_uri] if args.key?(:service_attachment_uri)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The `Destination` resource. It specifies the IP prefix and the associated
+      # autonomous system numbers (ASN) that you want to include in a `
+      # MulticloudDataTransferConfig` resource.
+      class Destination
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the `Destination` resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Unordered list. The list of `DestinationEndpoint` resources
+        # configured for the IP prefix.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::DestinationEndpoint>]
+        attr_accessor :endpoints
+      
+        # The etag is computed by the server, and might be sent with update and delete
+        # requests so that the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. Immutable. The IP prefix that represents your workload on another
+        # CSP.
+        # Corresponds to the JSON property `ipPrefix`
+        # @return [String]
+        attr_accessor :ip_prefix
+      
+        # Optional. User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the `Destination` resource. Format: `projects/`project`
+        # /locations/`location`/multicloudDataTransferConfigs/`
+        # multicloud_data_transfer_config`/destinations/`destination``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The timeline of the pending states for a resource.
+        # Corresponds to the JSON property `stateTimeline`
+        # @return [Google::Apis::NetworkconnectivityV1::StateTimeline]
+        attr_accessor :state_timeline
+      
+        # Output only. The Google-generated unique ID for the `Destination` resource.
+        # This value is unique across all `Destination` resources. If a resource is
+        # deleted and another with the same name is created, the new resource is
+        # assigned a different and unique ID.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Time when the `Destination` resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+          @etag = args[:etag] if args.key?(:etag)
+          @ip_prefix = args[:ip_prefix] if args.key?(:ip_prefix)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state_timeline = args[:state_timeline] if args.key?(:state_timeline)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The metadata for a `DestinationEndpoint` resource.
+      class DestinationEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ASN of the remote IP prefix.
+        # Corresponds to the JSON property `asn`
+        # @return [Fixnum]
+        attr_accessor :asn
+      
+        # Required. The CSP of the remote IP prefix.
+        # Corresponds to the JSON property `csp`
+        # @return [String]
+        attr_accessor :csp
+      
+        # Output only. The state of the `DestinationEndpoint` resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Time when the `DestinationEndpoint` resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asn = args[:asn] if args.key?(:asn)
+          @csp = args[:csp] if args.key?(:csp)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The status of DNS automation for a PSC connection.
+      class DnsAutomationStatus
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::NetworkconnectivityV1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        # Output only. The fully qualified domain name of the DNS record.
+        # Corresponds to the JSON property `fqdn`
+        # @return [String]
+        attr_accessor :fqdn
+      
+        # Output only. The current state of DNS automation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @fqdn = args[:fqdn] if args.key?(:fqdn)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -666,6 +1143,133 @@ module Google
         end
       end
       
+      # A gateway that can apply specialized traffic processing.
+      class Gateway
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The aggregate processing capacity of this gateway.
+        # Corresponds to the JSON property `capacity`
+        # @return [String]
+        attr_accessor :capacity
+      
+        # Output only. The list of Cloud Routers that are connected to this gateway.
+        # Should be in the form: https://www.googleapis.com/compute/v1/projects/`project`
+        # /regions/`region`/routers/`router`
+        # Corresponds to the JSON property `cloudRouters`
+        # @return [Array<String>]
+        attr_accessor :cloud_routers
+      
+        # Optional. A list of IP ranges that are reserved for this gateway's internal
+        # intfrastructure.
+        # Corresponds to the JSON property `ipRangeReservations`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::IpRangeReservation>]
+        attr_accessor :ip_range_reservations
+      
+        # Output only. The URI of the connected SACAttachment. Should be in the form:
+        # projects/`project`/locations/`location`/sacAttachments/`sac_attachment`
+        # Corresponds to the JSON property `sacAttachment`
+        # @return [String]
+        attr_accessor :sac_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity = args[:capacity] if args.key?(:capacity)
+          @cloud_routers = args[:cloud_routers] if args.key?(:cloud_routers)
+          @ip_range_reservations = args[:ip_range_reservations] if args.key?(:ip_range_reservations)
+          @sac_attachment = args[:sac_attachment] if args.key?(:sac_attachment)
+        end
+      end
+      
+      # A gateway advertised route is a route that a gateway spoke advertises
+      # somewhere.
+      class GatewayAdvertisedRoute
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the gateway advertised route was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # An optional description of the gateway advertised route.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Immutable. This route's advertised IP address range. Must be a valid CIDR-
+        # formatted prefix. If an IP address is provided without a subnet mask, it is
+        # interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/
+        # 128`.
+        # Corresponds to the JSON property `ipRange`
+        # @return [String]
+        attr_accessor :ip_range
+      
+        # Optional labels in key-value pair format. For more information about labels,
+        # see [Requirements for labels](https://cloud.google.com/resource-manager/docs/
+        # creating-managing-labels#requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the gateway advertised route. Route names must be
+        # unique and use the following form: `projects/`project_number`/locations/`
+        # region`/spokes/`spoke`/gatewayAdvertisedRoutes/`gateway_advertised_route_id``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The priority of this advertised route. You can choose a value from `
+        # 0` to `65335`. If you don't provide a value, Google Cloud assigns a priority
+        # of `100` to the ranges.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # Optional. The recipient of this advertised route.
+        # Corresponds to the JSON property `recipient`
+        # @return [String]
+        attr_accessor :recipient
+      
+        # Output only. The current lifecycle state of this gateway advertised route.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The Google-generated UUID for the gateway advertised route. This
+        # value is unique across all gateway advertised route resources. If a gateway
+        # advertised route is deleted and another with the same name is created, the new
+        # route is assigned a different `unique_id`.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        # Output only. The time the gateway advertised route was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @ip_range = args[:ip_range] if args.key?(:ip_range)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
+          @recipient = args[:recipient] if args.key?(:recipient)
+          @state = args[:state] if args.key?(:state)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class GoogleLongrunningCancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -693,6 +1297,14 @@ module Google
         # @return [Array<Google::Apis::NetworkconnectivityV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -701,6 +1313,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1001,9 +1614,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :route_tables
       
-        # The VPC networks associated with this hub's spokes. This field is read-only.
-        # Network Connectivity Center automatically populates it based on the set of
-        # spokes attached to the hub.
+        # Output only. The VPC networks associated with this hub's spokes. This field is
+        # read-only. Network Connectivity Center automatically populates it based on the
+        # set of spokes attached to the hub.
         # Corresponds to the JSON property `routingVpcs`
         # @return [Array<Google::Apis::NetworkconnectivityV1::RoutingVpc>]
         attr_accessor :routing_vpcs
@@ -1124,12 +1737,12 @@ module Google
         # @return [Google::Apis::NetworkconnectivityV1::AllocationOptions]
         attr_accessor :allocation_options
       
-        # Time when the internal range was created.
+        # Output only. Time when the internal range was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # A description of this resource.
+        # Optional. A description of this resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1148,9 +1761,9 @@ module Google
         attr_accessor :immutable
         alias_method :immutable?, :immutable
       
-        # The IP range that this internal range defines. NOTE: IPv6 ranges are limited
-        # to usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges this
-        # field is compulsory, i.e. the address range must be specified explicitly.
+        # Optional. The IP range that this internal range defines. NOTE: IPv6 ranges are
+        # limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF. NOTE: For IPv6 Ranges
+        # this field is compulsory, i.e. the address range must be specified explicitly.
         # Corresponds to the JSON property `ipCidrRange`
         # @return [String]
         attr_accessor :ip_cidr_range
@@ -1165,18 +1778,19 @@ module Google
         # @return [Google::Apis::NetworkconnectivityV1::Migration]
         attr_accessor :migration
       
-        # Immutable. The name of an internal range. Format: projects/`project`/locations/
-        # `location`/internalRanges/`internal_range` See: https://google.aip.dev/122#
-        # fields-representing-resource-names
+        # Identifier. The name of an internal range. Format: projects/`project`/
+        # locations/`location`/internalRanges/`internal_range` See: https://google.aip.
+        # dev/122#fields-representing-resource-names
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The URL or resource ID of the network in which to reserve the internal range.
-        # The network cannot be deleted if there are any reserved internal ranges
-        # referring to it. Legacy networks are not supported. For example: https://www.
-        # googleapis.com/compute/v1/projects/`project`/locations/global/networks/`
-        # network` projects/`project`/locations/global/networks/`network` `network`
+        # Immutable. The URL or resource ID of the network in which to reserve the
+        # internal range. The network cannot be deleted if there are any reserved
+        # internal ranges referring to it. Legacy networks are not supported. For
+        # example: https://www.googleapis.com/compute/v1/projects/`project`/locations/
+        # global/networks/`network` projects/`project`/locations/global/networks/`
+        # network` `network`
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1187,16 +1801,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :overlaps
       
-        # The type of peering set for this internal range.
+        # Optional. The type of peering set for this internal range.
         # Corresponds to the JSON property `peering`
         # @return [String]
         attr_accessor :peering
       
-        # An alternate to ip_cidr_range. Can be set when trying to create an IPv4
-        # reservation that automatically finds a free range of the given size. If both
-        # ip_cidr_range and prefix_length are set, there is an error if the range sizes
-        # do not match. Can also be used during updates to change the range size. NOTE:
-        # For IPv6 this field only works if ip_cidr_range is set as well, and both
+        # Optional. An alternate to ip_cidr_range. Can be set when trying to create an
+        # IPv4 reservation that automatically finds a free range of the given size. If
+        # both ip_cidr_range and prefix_length are set, there is an error if the range
+        # sizes do not match. Can also be used during updates to change the range size.
+        # NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both
         # fields must match. In other words, with IPv6 this field only works as a
         # redundant parameter.
         # Corresponds to the JSON property `prefixLength`
@@ -1204,19 +1818,21 @@ module Google
         attr_accessor :prefix_length
       
         # Optional. Can be set to narrow down or pick a different address space while
-        # searching for a free range. If not set, defaults to the "10.0.0.0/8" address
-        # space. This can be used to search in other rfc-1918 address spaces like "172.
-        # 16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
+        # searching for a free range. If not set, defaults to the ["10.0.0.0/8", "172.16.
+        # 0.0/12", "192.168.0.0/16"] address space (for auto-mode networks, the "10.0.0.
+        # 0/9" range is used instead of "10.0.0.0/8"). This can be used to target the
+        # search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/
+        # 16" or non-rfc-1918 address spaces used in the VPC.
         # Corresponds to the JSON property `targetCidrRange`
         # @return [Array<String>]
         attr_accessor :target_cidr_range
       
-        # Time when the internal range was updated.
+        # Output only. Time when the internal range was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # The type of usage set for this InternalRange.
+        # Optional. The type of usage set for this InternalRange.
         # Corresponds to the JSON property `usage`
         # @return [String]
         attr_accessor :usage
@@ -1257,6 +1873,28 @@ module Google
         end
       end
       
+      # A list of IP ranges that are reserved for this gateway's internal
+      # intfrastructure.
+      class IpRangeReservation
+        include Google::Apis::Core::Hashable
+      
+        # Required. A block of IP addresses used to allocate supporting infrastructure
+        # for this gateway. This block must not overlap with subnets in any spokes or
+        # peer VPC networks that the gateway can communicate with. Example: "10.1.2.0/24"
+        # Corresponds to the JSON property `ipRange`
+        # @return [String]
+        attr_accessor :ip_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_range = args[:ip_range] if args.key?(:ip_range)
+        end
+      end
+      
       # A collection of VLAN attachment resources. These resources should be redundant
       # attachments that all advertise the same prefixes to Google Cloud.
       # Alternatively, in active/passive configurations, all attachments should be
@@ -1264,9 +1902,26 @@ module Google
       class LinkedInterconnectAttachments
         include Google::Apis::Core::Hashable
       
-        # Optional. IP ranges allowed to be included during import from hub (does not
-        # control transit connectivity). The only allowed value for now is "
-        # ALL_IPV4_RANGES".
+        # Optional. Dynamic routes overlapped/encompassed by exclude export ranges are
+        # excluded during export to hub.
+        # Corresponds to the JSON property `excludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_export_ranges
+      
+        # Optional. Hub routes overlapped/encompassed by exclude import ranges are
+        # excluded during import from hub.
+        # Corresponds to the JSON property `excludeImportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_import_ranges
+      
+        # Optional. Dynamic routes fully encompassed by include export ranges are
+        # included during export to hub.
+        # Corresponds to the JSON property `includeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_export_ranges
+      
+        # Optional. Hub routes fully encompassed by include import ranges are included
+        # during import from hub.
         # Corresponds to the JSON property `includeImportRanges`
         # @return [Array<String>]
         attr_accessor :include_import_ranges
@@ -1296,6 +1951,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
+          @exclude_import_ranges = args[:exclude_import_ranges] if args.key?(:exclude_import_ranges)
+          @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
           @include_import_ranges = args[:include_import_ranges] if args.key?(:include_import_ranges)
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
           @uris = args[:uris] if args.key?(:uris)
@@ -1336,13 +1994,13 @@ module Google
         attr_accessor :producer_network
       
         # Output only. The proposed exclude export IP ranges waiting for hub
-        # administration's approval.
+        # administrator's approval.
         # Corresponds to the JSON property `proposedExcludeExportRanges`
         # @return [Array<String>]
         attr_accessor :proposed_exclude_export_ranges
       
-        # Optional. The proposed include export IP ranges waiting for hub administration'
-        # s approval.
+        # Output only. The proposed include export IP ranges waiting for hub
+        # administrator's approval.
         # Corresponds to the JSON property `proposedIncludeExportRanges`
         # @return [Array<String>]
         attr_accessor :proposed_include_export_ranges
@@ -1376,9 +2034,26 @@ module Google
       class LinkedRouterApplianceInstances
         include Google::Apis::Core::Hashable
       
-        # Optional. IP ranges allowed to be included during import from hub (does not
-        # control transit connectivity). The only allowed value for now is "
-        # ALL_IPV4_RANGES".
+        # Optional. Dynamic routes overlapped/encompassed by exclude export ranges are
+        # excluded during export to hub.
+        # Corresponds to the JSON property `excludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_export_ranges
+      
+        # Optional. Hub routes overlapped/encompassed by exclude import ranges are
+        # excluded during import from hub.
+        # Corresponds to the JSON property `excludeImportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_import_ranges
+      
+        # Optional. Dynamic routes fully encompassed by include export ranges are
+        # included during export to hub.
+        # Corresponds to the JSON property `includeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_export_ranges
+      
+        # Optional. Hub routes fully encompassed by include import ranges are included
+        # during import from hub.
         # Corresponds to the JSON property `includeImportRanges`
         # @return [Array<String>]
         attr_accessor :include_import_ranges
@@ -1409,6 +2084,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
+          @exclude_import_ranges = args[:exclude_import_ranges] if args.key?(:exclude_import_ranges)
+          @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
           @include_import_ranges = args[:include_import_ranges] if args.key?(:include_import_ranges)
           @instances = args[:instances] if args.key?(:instances)
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
@@ -1442,13 +2120,13 @@ module Google
         attr_accessor :producer_vpc_spokes
       
         # Output only. The proposed exclude export IP ranges waiting for hub
-        # administration's approval.
+        # administrator's approval.
         # Corresponds to the JSON property `proposedExcludeExportRanges`
         # @return [Array<String>]
         attr_accessor :proposed_exclude_export_ranges
       
-        # Optional. The proposed include export IP ranges waiting for hub administration'
-        # s approval.
+        # Output only. The proposed include export IP ranges waiting for hub
+        # administrator's approval.
         # Corresponds to the JSON property `proposedIncludeExportRanges`
         # @return [Array<String>]
         attr_accessor :proposed_include_export_ranges
@@ -1480,9 +2158,26 @@ module Google
       class LinkedVpnTunnels
         include Google::Apis::Core::Hashable
       
-        # Optional. IP ranges allowed to be included during import from hub (does not
-        # control transit connectivity). The only allowed value for now is "
-        # ALL_IPV4_RANGES".
+        # Optional. Dynamic routes overlapped/encompassed by exclude export ranges are
+        # excluded during export to hub.
+        # Corresponds to the JSON property `excludeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_export_ranges
+      
+        # Optional. Hub routes overlapped/encompassed by exclude import ranges are
+        # excluded during import from hub.
+        # Corresponds to the JSON property `excludeImportRanges`
+        # @return [Array<String>]
+        attr_accessor :exclude_import_ranges
+      
+        # Optional. Dynamic routes fully encompassed by include export ranges are
+        # included during export to hub.
+        # Corresponds to the JSON property `includeExportRanges`
+        # @return [Array<String>]
+        attr_accessor :include_export_ranges
+      
+        # Optional. Hub routes fully encompassed by include import ranges are included
+        # during import from hub.
         # Corresponds to the JSON property `includeImportRanges`
         # @return [Array<String>]
         attr_accessor :include_import_ranges
@@ -1512,10 +2207,109 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exclude_export_ranges = args[:exclude_export_ranges] if args.key?(:exclude_export_ranges)
+          @exclude_import_ranges = args[:exclude_import_ranges] if args.key?(:exclude_import_ranges)
+          @include_export_ranges = args[:include_export_ranges] if args.key?(:include_export_ranges)
           @include_import_ranges = args[:include_import_ranges] if args.key?(:include_import_ranges)
           @site_to_site_data_transfer = args[:site_to_site_data_transfer] if args.key?(:site_to_site_data_transfer)
           @uris = args[:uris] if args.key?(:uris)
           @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
+        end
+      end
+      
+      # Response for ListAutomatedDnsRecords.
+      class ListAutomatedDnsRecordsResponse
+        include Google::Apis::Core::Hashable
+      
+        # AutomatedDnsRecords to be returned.
+        # Corresponds to the JSON property `automatedDnsRecords`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::AutomatedDnsRecord>]
+        attr_accessor :automated_dns_records
+      
+        # The next pagination token in the List response. It should be used as
+        # page_token for the following request. An empty value means no more result.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automated_dns_records = args[:automated_dns_records] if args.key?(:automated_dns_records)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message to list `Destination` resources.
+      class ListDestinationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `Destination` resources to be listed.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::Destination>]
+        attr_accessor :destinations
+      
+        # The next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for HubService.ListGatewayAdvertisedRoutes method.
+      class ListGatewayAdvertisedRoutesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested gateway advertised routes.
+        # Corresponds to the JSON property `gatewayAdvertisedRoutes`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::GatewayAdvertisedRoute>]
+        attr_accessor :gateway_advertised_routes
+      
+        # The token for the next page of the response. To see more results, use this
+        # value as the page_token for your next request. If this value is empty, there
+        # are no more results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Hubs that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gateway_advertised_routes = args[:gateway_advertised_routes] if args.key?(:gateway_advertised_routes)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1676,6 +2470,63 @@ module Google
         end
       end
       
+      # Response message to list `MulticloudDataTransferConfig` resources.
+      class ListMulticloudDataTransferConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `MulticloudDataTransferConfig` resources to be listed.
+        # Corresponds to the JSON property `multicloudDataTransferConfigs`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::MulticloudDataTransferConfig>]
+        attr_accessor :multicloud_data_transfer_configs
+      
+        # The next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multicloud_data_transfer_configs = args[:multicloud_data_transfer_configs] if args.key?(:multicloud_data_transfer_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message to list the services in your project in regions that are
+      # eligible for Data Transfer Essentials configuration.
+      class ListMulticloudDataTransferSupportedServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of supported services.
+        # Corresponds to the JSON property `multicloudDataTransferSupportedServices`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::MulticloudDataTransferSupportedService>]
+        attr_accessor :multicloud_data_transfer_supported_services
+      
+        # The next page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @multicloud_data_transfer_supported_services = args[:multicloud_data_transfer_supported_services] if args.key?(:multicloud_data_transfer_supported_services)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response for PolicyBasedRoutingService.ListPolicyBasedRoutes method.
       class ListPolicyBasedRoutesResponse
         include Google::Apis::Core::Hashable
@@ -1736,6 +2587,37 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @regional_endpoints = args[:regional_endpoints] if args.key?(:regional_endpoints)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing RemoteTransportProfiles
+      class ListRemoteTransportProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of RemoteTransportProfiles.
+        # Corresponds to the JSON property `remoteTransportProfiles`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::RemoteTransportProfile>]
+        attr_accessor :remote_transport_profiles
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @remote_transport_profiles = args[:remote_transport_profiles] if args.key?(:remote_transport_profiles)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -1967,6 +2849,37 @@ module Google
         end
       end
       
+      # Message for response to listing Transports.
+      class ListTransportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Transport.
+        # Corresponds to the JSON property `transports`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::Transport>]
+        attr_accessor :transports
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @transports = args[:transports] if args.key?(:transports)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -2060,6 +2973,121 @@ module Google
         def update!(**args)
           @source = args[:source] if args.key?(:source)
           @target = args[:target] if args.key?(:target)
+        end
+      end
+      
+      # The `MulticloudDataTransferConfig` resource. It lists the services that you
+      # configure for Data Transfer Essentials billing and metering.
+      class MulticloudDataTransferConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the `MulticloudDataTransferConfig` resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The number of `Destination` resources in use with the `
+        # MulticloudDataTransferConfig` resource.
+        # Corresponds to the JSON property `destinationsActiveCount`
+        # @return [Fixnum]
+        attr_accessor :destinations_active_count
+      
+        # Output only. The number of `Destination` resources configured for the `
+        # MulticloudDataTransferConfig` resource.
+        # Corresponds to the JSON property `destinationsCount`
+        # @return [Fixnum]
+        attr_accessor :destinations_count
+      
+        # The etag is computed by the server, and might be sent with update and delete
+        # requests so that the client has an up-to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the `MulticloudDataTransferConfig` resource. Format: `
+        # projects/`project`/locations/`location`/multicloudDataTransferConfigs/`
+        # multicloud_data_transfer_config``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Maps services to their current or planned states. Service names are
+        # keys, and the associated values describe the state of the service. If a state
+        # change is expected, the value is either `ADDING` or `DELETING`, depending on
+        # the actions taken. Sample output: "services": ` "big-query": ` "states": [ ` "
+        # effectiveTime": "2024-12-12T08:00:00Z" "state": "ADDING", `, ] `, "cloud-
+        # storage": ` "states": [ ` "state": "ACTIVE", ` ] ` `
+        # Corresponds to the JSON property `services`
+        # @return [Hash<String,Google::Apis::NetworkconnectivityV1::StateTimeline>]
+        attr_accessor :services
+      
+        # Output only. The Google-generated unique ID for the `
+        # MulticloudDataTransferConfig` resource. This value is unique across all `
+        # MulticloudDataTransferConfig` resources. If a resource is deleted and another
+        # with the same name is created, the new resource is assigned a different and
+        # unique ID.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Time when the `MulticloudDataTransferConfig` resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @destinations_active_count = args[:destinations_active_count] if args.key?(:destinations_active_count)
+          @destinations_count = args[:destinations_count] if args.key?(:destinations_count)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @services = args[:services] if args.key?(:services)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A service in your project in a region that is eligible for Data Transfer
+      # Essentials configuration.
+      class MulticloudDataTransferSupportedService
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the service.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The network service tier or regional endpoint supported for the
+        # service.
+        # Corresponds to the JSON property `serviceConfigs`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::ServiceConfig>]
+        attr_accessor :service_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @service_configs = args[:service_configs] if args.key?(:service_configs)
         end
       end
       
@@ -2411,7 +3439,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. A unique name of the resource in the form of `projects/`
+        # Immutable. Identifier. A unique name of the resource in the form of `projects/`
         # project_number`/locations/global/PolicyBasedRoutes/`policy_based_route_id``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2493,6 +3521,11 @@ module Google
       class ProducerPscConfig
         include Google::Apis::Core::Hashable
       
+        # The specification for automatically creating a DNS record.
+        # Corresponds to the JSON property `automatedDnsCreationSpec`
+        # @return [Google::Apis::NetworkconnectivityV1::AutomatedDnsCreationSpec]
+        attr_accessor :automated_dns_creation_spec
+      
         # The resource path of a service attachment. Example: projects/`projectNumOrId`/
         # regions/`region`/serviceAttachments/`resourceId`.
         # Corresponds to the JSON property `serviceAttachmentUri`
@@ -2505,6 +3538,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @automated_dns_creation_spec = args[:automated_dns_creation_spec] if args.key?(:automated_dns_creation_spec)
           @service_attachment_uri = args[:service_attachment_uri] if args.key?(:service_attachment_uri)
         end
       end
@@ -2536,7 +3570,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :limit
       
-        # Required. ProducerInstanceLocation is used to specify which authorization
+        # Optional. ProducerInstanceLocation is used to specify which authorization
         # mechanism to use to determine which projects the Producer instance can be
         # within.
         # Corresponds to the JSON property `producerInstanceLocation`
@@ -2805,8 +3839,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The name of the VPC network for this private regional endpoint. Format: `
-        # projects/`project`/global/networks/`network``
+        # Optional. The name of the VPC network for this private regional endpoint.
+        # Format: `projects/`project`/global/networks/`network``
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -2818,8 +3852,9 @@ module Google
         # @return [String]
         attr_accessor :psc_forwarding_rule
       
-        # The name of the subnetwork from which the IP address will be allocated. Format:
-        # `projects/`project`/regions/`region`/subnetworks/`subnetwork``
+        # Optional. The name of the subnetwork from which the IP address will be
+        # allocated. Format: `projects/`project`/regions/`region`/subnetworks/`
+        # subnetwork``
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -2965,6 +4000,85 @@ module Google
           @request_id = args[:request_id] if args.key?(:request_id)
           @spoke_etag = args[:spoke_etag] if args.key?(:spoke_etag)
           @spoke_uri = args[:spoke_uri] if args.key?(:spoke_uri)
+        end
+      end
+      
+      # Message describing RemoteTransportProfile object.
+      class RemoteTransportProfile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Description of the profile.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Human readable name of this profile, used to identify this
+        # profile in the UI.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Type of provisioning flows supported by this profile.
+        # Corresponds to the JSON property `flow`
+        # @return [String]
+        attr_accessor :flow
+      
+        # Output only. Labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Name of the resource in the format of $provider-$site.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Order state for this profile.
+        # Corresponds to the JSON property `orderState`
+        # @return [String]
+        attr_accessor :order_state
+      
+        # Output only. Name of the provider on the other end of this profile. E.g. “
+        # Amazon Web Services” or “Microsoft Azure”.
+        # Corresponds to the JSON property `provider`
+        # @return [String]
+        attr_accessor :provider
+      
+        # Output only. If the profile is a Cloud Service Provider with compute resources,
+        # this is populated with the region where connectivity is being established. If
+        # the profile provides facility-level selection, this is an identity of the
+        # facility any connections on this profile are going through.
+        # Corresponds to the JSON property `providerSite`
+        # @return [String]
+        attr_accessor :provider_site
+      
+        # Output only. Availability class that will be configured for this particular
+        # RemoteTransportProfile.
+        # Corresponds to the JSON property `sla`
+        # @return [String]
+        attr_accessor :sla
+      
+        # Output only. List of bandwidth enum values that are supported by this profile.
+        # Corresponds to the JSON property `supportedBandwidths`
+        # @return [Array<String>]
+        attr_accessor :supported_bandwidths
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @flow = args[:flow] if args.key?(:flow)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @order_state = args[:order_state] if args.key?(:order_state)
+          @provider = args[:provider] if args.key?(:provider)
+          @provider_site = args[:provider_site] if args.key?(:provider_site)
+          @sla = args[:sla] if args.key?(:sla)
+          @supported_bandwidths = args[:supported_bandwidths] if args.key?(:supported_bandwidths)
         end
       end
       
@@ -3277,6 +4391,32 @@ module Google
         end
       end
       
+      # Specifies eligibility information for the service.
+      class ServiceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The eligibility criteria for the service.
+        # Corresponds to the JSON property `eligibilityCriteria`
+        # @return [String]
+        attr_accessor :eligibility_criteria
+      
+        # Output only. The end time for eligibility criteria support. If not specified,
+        # no planned end time is set.
+        # Corresponds to the JSON property `supportEndTime`
+        # @return [String]
+        attr_accessor :support_end_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligibility_criteria = args[:eligibility_criteria] if args.key?(:eligibility_criteria)
+          @support_end_time = args[:support_end_time] if args.key?(:support_end_time)
+        end
+      end
+      
       # The ServiceConnectionMap resource.
       class ServiceConnectionMap
         include Google::Apis::Core::Hashable
@@ -3331,8 +4471,8 @@ module Google
         attr_accessor :producer_psc_configs
       
         # The service class identifier this ServiceConnectionMap is for. The user of
-        # ServiceConnectionMap create API needs to have networkconnecitivty.
-        # serviceclasses.use iam permission for the service class.
+        # ServiceConnectionMap create API needs to have networkconnectivity.
+        # serviceClasses.use IAM permission for the service class.
         # Corresponds to the JSON property `serviceClass`
         # @return [String]
         attr_accessor :service_class
@@ -3378,6 +4518,11 @@ module Google
       # The ServiceConnectionPolicy resource.
       class ServiceConnectionPolicy
         include Google::Apis::Core::Hashable
+      
+        # Information for the automatically created subnetwork and its associated IR.
+        # Corresponds to the JSON property `autoCreatedSubnetInfo`
+        # @return [Google::Apis::NetworkconnectivityV1::AutoCreatedSubnetworkInfo]
+        attr_accessor :auto_created_subnet_info
       
         # Output only. Time when the ServiceConnectionPolicy was created.
         # Corresponds to the JSON property `createTime`
@@ -3450,6 +4595,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_created_subnet_info = args[:auto_created_subnet_info] if args.key?(:auto_created_subnet_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
@@ -3613,10 +4759,15 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Optional. The list of fields waiting for hub administration's approval.
+        # Optional. The list of fields waiting for hub administrator's approval.
         # Corresponds to the JSON property `fieldPathsPendingUpdate`
         # @return [Array<String>]
         attr_accessor :field_paths_pending_update
+      
+        # A gateway that can apply specialized traffic processing.
+        # Corresponds to the JSON property `gateway`
+        # @return [Google::Apis::NetworkconnectivityV1::Gateway]
+        attr_accessor :gateway
       
         # Optional. The name of the group that this spoke is associated with.
         # Corresponds to the JSON property `group`
@@ -3713,6 +4864,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @field_paths_pending_update = args[:field_paths_pending_update] if args.key?(:field_paths_pending_update)
+          @gateway = args[:gateway] if args.key?(:gateway)
           @group = args[:group] if args.key?(:group)
           @hub = args[:hub] if args.key?(:hub)
           @labels = args[:labels] if args.key?(:labels)
@@ -3847,7 +4999,35 @@ module Google
         end
       end
       
-      # The reason a spoke is inactive.
+      # The state and activation time details of the resource state.
+      class StateMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Accompanies only the transient states, which include `ADDING`, `
+        # DELETING`, and `SUSPENDING`, to denote the time until which the transient
+        # state of the resource will be effective. For instance, if the state is `ADDING`
+        # , this field shows the time when the resource state transitions to `ACTIVE`.
+        # Corresponds to the JSON property `effectiveTime`
+        # @return [String]
+        attr_accessor :effective_time
+      
+        # Output only. The state of the resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_time = args[:effective_time] if args.key?(:effective_time)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The reason for the current state of the spoke.
       class StateReason
         include Google::Apis::Core::Hashable
       
@@ -3875,6 +5055,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
           @user_details = args[:user_details] if args.key?(:user_details)
+        end
+      end
+      
+      # The timeline of the pending states for a resource.
+      class StateTimeline
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The state and activation time details of the resource state.
+        # Corresponds to the JSON property `states`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::StateMetadata>]
+        attr_accessor :states
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @states = args[:states] if args.key?(:states)
         end
       end
       
@@ -3915,6 +5114,130 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Message describing Transport object.
+      class Transport
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of IP Prefixes that will be advertised to the remote provider.
+        # Both IPv4 and IPv6 addresses are supported.
+        # Corresponds to the JSON property `advertisedRoutes`
+        # @return [Array<String>]
+        attr_accessor :advertised_routes
+      
+        # Optional. Bandwidth of the Transport. This must be one of the supported
+        # bandwidths for the remote profile, and must be set when no activation key is
+        # being provided.
+        # Corresponds to the JSON property `bandwidth`
+        # @return [String]
+        attr_accessor :bandwidth
+      
+        # Output only. Create time stamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Description of the Transport.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Google-generated activation key. This is only output if the
+        # selected profile supports an OUTPUT key flow. Inputting this to the provider
+        # is only valid while the resource is in a PENDING_KEY state. Once the provider
+        # has accepted the key, the resource will move to the CONFIGURING state.
+        # Corresponds to the JSON property `generatedActivationKey`
+        # @return [String]
+        attr_accessor :generated_activation_key
+      
+        # Optional. Labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The maximum transmission unit (MTU) of a packet that can be sent
+        # over this transport.
+        # Corresponds to the JSON property `mtuLimit`
+        # @return [Fixnum]
+        attr_accessor :mtu_limit
+      
+        # Identifier. Name of the resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Immutable. Resource URI of the Network that will be peered with this
+        # Transport. This field must be provided during resource creation and cannot be
+        # changed.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. VPC Network URI that was created for the VPC Peering connection
+        # to the provided `network`. If VPC Peering is disconnected, this can be used to
+        # re-establish.
+        # Corresponds to the JSON property `peeringNetwork`
+        # @return [String]
+        attr_accessor :peering_network
+      
+        # Optional. Immutable. Key used for establishing a connection with the remote
+        # transport. This key can only be provided if the profile supports an INPUT key
+        # flow and the resource is in the PENDING_KEY state.
+        # Corresponds to the JSON property `providedActivationKey`
+        # @return [String]
+        attr_accessor :provided_activation_key
+      
+        # Optional. Immutable. The user supplied account id for the CSP associated with
+        # the remote profile.
+        # Corresponds to the JSON property `remoteAccountId`
+        # @return [String]
+        attr_accessor :remote_account_id
+      
+        # Optional. Immutable. Name of the remoteTransportProfile that this Transport is
+        # connecting to.
+        # Corresponds to the JSON property `remoteProfile`
+        # @return [String]
+        attr_accessor :remote_profile
+      
+        # Optional. IP version stack for the established connectivity.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
+        # Output only. State of the underlying connectivity.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Update time stamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
+          @bandwidth = args[:bandwidth] if args.key?(:bandwidth)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @generated_activation_key = args[:generated_activation_key] if args.key?(:generated_activation_key)
+          @labels = args[:labels] if args.key?(:labels)
+          @mtu_limit = args[:mtu_limit] if args.key?(:mtu_limit)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @peering_network = args[:peering_network] if args.key?(:peering_network)
+          @provided_activation_key = args[:provided_activation_key] if args.key?(:provided_activation_key)
+          @remote_account_id = args[:remote_account_id] if args.key?(:remote_account_id)
+          @remote_profile = args[:remote_profile] if args.key?(:remote_profile)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       

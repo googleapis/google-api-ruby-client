@@ -40,7 +40,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdcApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdcApplicationTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdcSharedTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AffectedResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentDataAccessEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AiModel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -53,6 +83,18 @@ module Google
       end
       
       class Application
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArtifactGuardPolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArtifactGuardPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Chokepoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +185,12 @@ module Google
       end
       
       class CloudArmor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudControl
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -161,6 +215,12 @@ module Google
       end
       
       class Compliance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComplianceDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +257,12 @@ module Google
       end
       
       class ContainerThreatDetectionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Control
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -244,6 +310,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Dataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Denied
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +329,12 @@ module Google
       end
       
       class Detection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiscoveredWorkload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,7 +382,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportFindingsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportFindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalExposure
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,6 +425,12 @@ module Google
       end
       
       class Folder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Framework
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,6 +490,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1IamDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1IamRolePermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1MuteConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +521,36 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV1Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -502,7 +646,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2AdcApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AdcSharedTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2AffectedResources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AgentDataAccessEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AiModel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -515,6 +689,18 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Application
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ArtifactGuardPolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ArtifactGuardPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -622,6 +808,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2CloudControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2CloudDlpDataProfile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -646,6 +838,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2ComplianceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Connection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -665,6 +863,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Container
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2Control
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -712,6 +916,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2Dataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Denied
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -719,6 +929,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Detection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2DiscoveredWorkload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -760,6 +976,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2ExternalExposure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2ExternalSystem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -790,6 +1012,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2Framework
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Geolocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -802,13 +1030,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2HttpResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2IamBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2IamDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IamRolePermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Indicator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2InfoType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -863,6 +1115,54 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2IssueResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1024,6 +1324,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2Pipeline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Pod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1031,6 +1337,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2PolicyDriftDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2PolicyViolationSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1072,6 +1384,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2ResourceApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2ResourcePath
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1091,6 +1433,30 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2Role
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretEnvironmentVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretFilePath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1126,6 +1492,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2SensitivityScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1156,6 +1528,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2VertexAi
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2Vulnerability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1174,6 +1552,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IamBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1181,6 +1565,12 @@ module Google
       end
       
       class Indicator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InfoType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1294,6 +1684,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Pipeline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Pod
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1301,6 +1697,12 @@ module Google
       end
       
       class PolicyDriftDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyViolationSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1360,6 +1762,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretEnvironmentVariable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretFilePath
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecretStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityBulletin
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1396,6 +1822,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SensitivityScore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceAccountDelegationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1427,6 +1859,12 @@ module Google
       end
       
       class ToxicCombination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VertexAi
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1507,10 +1945,57 @@ module Google
         end
       end
       
+      class AdcApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class AdcApplicationTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class AdcSharedTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class AffectedResources
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
+        end
+      end
+      
+      class AgentDataAccessEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :event_time, as: 'eventTime'
+          property :operation, as: 'operation'
+          property :principal_subject, as: 'principalSubject'
+        end
+      end
+      
+      class AiModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_platform, as: 'deploymentPlatform'
+          property :display_name, as: 'displayName'
+          property :domain, as: 'domain'
+          property :library, as: 'library'
+          property :location, as: 'location'
+          property :name, as: 'name'
+          property :publisher, as: 'publisher'
+          property :usage_category, as: 'usageCategory'
         end
       end
       
@@ -1527,6 +2012,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_uri, as: 'baseUri'
           property :full_uri, as: 'fullUri'
+        end
+      end
+      
+      class ArtifactGuardPolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failing_policies, as: 'failingPolicies', class: Google::Apis::SecuritycenterV1beta2::ArtifactGuardPolicy, decorator: Google::Apis::SecuritycenterV1beta2::ArtifactGuardPolicy::Representation
+      
+          property :resource_id, as: 'resourceId'
+        end
+      end
+      
+      class ArtifactGuardPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_reason, as: 'failureReason'
+          property :policy_id, as: 'policyId'
+          property :type, as: 'type'
         end
       end
       
@@ -1651,6 +2154,13 @@ module Google
         end
       end
       
+      class BigQueryDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
+        end
+      end
+      
       class Chokepoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1674,10 +2184,22 @@ module Google
         end
       end
       
+      class CloudControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_control_name, as: 'cloudControlName'
+          property :policy_type, as: 'policyType'
+          property :type, as: 'type'
+          property :version, as: 'version'
+        end
+      end
+      
       class CloudDlpDataProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_profile, as: 'dataProfile'
+          collection :info_types, as: 'infoTypes', class: Google::Apis::SecuritycenterV1beta2::InfoType, decorator: Google::Apis::SecuritycenterV1beta2::InfoType::Representation
+      
           property :parent_type, as: 'parentType'
         end
       end
@@ -1708,6 +2230,17 @@ module Google
           collection :ids, as: 'ids'
           property :standard, as: 'standard'
           property :version, as: 'version'
+        end
+      end
+      
+      class ComplianceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_control, as: 'cloudControl', class: Google::Apis::SecuritycenterV1beta2::CloudControl, decorator: Google::Apis::SecuritycenterV1beta2::CloudControl::Representation
+      
+          collection :cloud_control_deployment_names, as: 'cloudControlDeploymentNames'
+          collection :frameworks, as: 'frameworks', class: Google::Apis::SecuritycenterV1beta2::Framework, decorator: Google::Apis::SecuritycenterV1beta2::Framework::Representation
+      
         end
       end
       
@@ -1766,6 +2299,14 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :service_enablement_state, as: 'serviceEnablementState'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Control
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_name, as: 'controlName'
+          property :display_name, as: 'displayName'
         end
       end
       
@@ -1839,6 +2380,7 @@ module Google
           property :event_detection_time, as: 'eventDetectionTime'
           property :event_type, as: 'eventType'
           property :max_retention_allowed, as: 'maxRetentionAllowed'
+          property :min_retention_allowed, as: 'minRetentionAllowed'
         end
       end
       
@@ -1851,6 +2393,15 @@ module Google
           property :query, as: 'query'
           property :user_name, as: 'userName'
           property :version, as: 'version'
+        end
+      end
+      
+      class Dataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :source, as: 'source'
         end
       end
       
@@ -1876,6 +2427,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :binary, as: 'binary'
           property :percent_pages_matched, as: 'percentPagesMatched'
+        end
+      end
+      
+      class DiscoveredWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :detected_relevant_hardware, as: 'detectedRelevantHardware'
+          property :detected_relevant_keywords, as: 'detectedRelevantKeywords'
+          property :detected_relevant_packages, as: 'detectedRelevantPackages'
+          property :workload_type, as: 'workloadType'
         end
       end
       
@@ -1940,6 +2502,21 @@ module Google
         end
       end
       
+      class ExportFindingsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :big_query_destination, as: 'bigQueryDestination', class: Google::Apis::SecuritycenterV1beta2::BigQueryDestination, decorator: Google::Apis::SecuritycenterV1beta2::BigQueryDestination::Representation
+      
+          property :export_start_time, as: 'exportStartTime'
+        end
+      end
+      
+      class ExportFindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1950,12 +2527,41 @@ module Google
         end
       end
       
+      class ExternalExposure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_bucket, as: 'backendBucket'
+          property :backend_service, as: 'backendService'
+          property :exposed_application, as: 'exposedApplication'
+          property :exposed_endpoint, as: 'exposedEndpoint'
+          property :exposed_service, as: 'exposedService'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :hostname_uri, as: 'hostnameUri'
+          collection :http_response, as: 'httpResponse', class: Google::Apis::SecuritycenterV1beta2::HttpResponse, decorator: Google::Apis::SecuritycenterV1beta2::HttpResponse::Representation
+      
+          property :instance_group, as: 'instanceGroup'
+          property :internal_backend_service, as: 'internalBackendService'
+          property :load_balancer_firewall_policy, as: 'loadBalancerFirewallPolicy'
+          property :network_endpoint_group, as: 'networkEndpointGroup'
+          property :network_ingress_firewall_policy, as: 'networkIngressFirewallPolicy'
+          property :network_path_insights_generation_time, as: 'networkPathInsightsGenerationTime'
+          property :private_ip_address, as: 'privateIpAddress'
+          property :private_port, as: 'privatePort'
+          property :psc_network_attachment, as: 'pscNetworkAttachment'
+          property :psc_service_attachment, as: 'pscServiceAttachment'
+          property :public_ip_address, as: 'publicIpAddress'
+          property :public_port, as: 'publicPort'
+          property :service_firewall_policy, as: 'serviceFirewallPolicy'
+        end
+      end
+      
       class File
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contents, as: 'contents'
           property :disk_path, as: 'diskPath', class: Google::Apis::SecuritycenterV1beta2::DiskPath, decorator: Google::Apis::SecuritycenterV1beta2::DiskPath::Representation
       
+          property :file_load_state, as: 'fileLoadState'
           property :hashed_size, :numeric_string => true, as: 'hashedSize'
           collection :operations, as: 'operations', class: Google::Apis::SecuritycenterV1beta2::FileOperation, decorator: Google::Apis::SecuritycenterV1beta2::FileOperation::Representation
       
@@ -1980,7 +2586,13 @@ module Google
       
           property :affected_resources, as: 'affectedResources', class: Google::Apis::SecuritycenterV1beta2::AffectedResources, decorator: Google::Apis::SecuritycenterV1beta2::AffectedResources::Representation
       
+          collection :agent_data_access_events, as: 'agentDataAccessEvents', class: Google::Apis::SecuritycenterV1beta2::AgentDataAccessEvent, decorator: Google::Apis::SecuritycenterV1beta2::AgentDataAccessEvent::Representation
+      
+          property :ai_model, as: 'aiModel', class: Google::Apis::SecuritycenterV1beta2::AiModel, decorator: Google::Apis::SecuritycenterV1beta2::AiModel::Representation
+      
           property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta2::Application, decorator: Google::Apis::SecuritycenterV1beta2::Application::Representation
+      
+          property :artifact_guard_policies, as: 'artifactGuardPolicies', class: Google::Apis::SecuritycenterV1beta2::ArtifactGuardPolicies, decorator: Google::Apis::SecuritycenterV1beta2::ArtifactGuardPolicies::Representation
       
           property :attack_exposure, as: 'attackExposure', class: Google::Apis::SecuritycenterV1beta2::AttackExposure, decorator: Google::Apis::SecuritycenterV1beta2::AttackExposure::Representation
       
@@ -1995,6 +2607,8 @@ module Google
           property :cloud_dlp_data_profile, as: 'cloudDlpDataProfile', class: Google::Apis::SecuritycenterV1beta2::CloudDlpDataProfile, decorator: Google::Apis::SecuritycenterV1beta2::CloudDlpDataProfile::Representation
       
           property :cloud_dlp_inspection, as: 'cloudDlpInspection', class: Google::Apis::SecuritycenterV1beta2::CloudDlpInspection, decorator: Google::Apis::SecuritycenterV1beta2::CloudDlpInspection::Representation
+      
+          property :compliance_details, as: 'complianceDetails', class: Google::Apis::SecuritycenterV1beta2::ComplianceDetails, decorator: Google::Apis::SecuritycenterV1beta2::ComplianceDetails::Representation
       
           collection :compliances, as: 'compliances', class: Google::Apis::SecuritycenterV1beta2::Compliance, decorator: Google::Apis::SecuritycenterV1beta2::Compliance::Representation
       
@@ -2014,10 +2628,14 @@ module Google
           property :database, as: 'database', class: Google::Apis::SecuritycenterV1beta2::Database, decorator: Google::Apis::SecuritycenterV1beta2::Database::Representation
       
           property :description, as: 'description'
+          property :discovered_workload, as: 'discoveredWorkload', class: Google::Apis::SecuritycenterV1beta2::DiscoveredWorkload, decorator: Google::Apis::SecuritycenterV1beta2::DiscoveredWorkload::Representation
+      
           property :disk, as: 'disk', class: Google::Apis::SecuritycenterV1beta2::Disk, decorator: Google::Apis::SecuritycenterV1beta2::Disk::Representation
       
           property :event_time, as: 'eventTime'
           property :exfiltration, as: 'exfiltration', class: Google::Apis::SecuritycenterV1beta2::Exfiltration, decorator: Google::Apis::SecuritycenterV1beta2::Exfiltration::Representation
+      
+          property :external_exposure, as: 'externalExposure', class: Google::Apis::SecuritycenterV1beta2::ExternalExposure, decorator: Google::Apis::SecuritycenterV1beta2::ExternalExposure::Representation
       
           hash :external_systems, as: 'externalSystems', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ExternalSystem, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ExternalSystem::Representation
       
@@ -2028,6 +2646,8 @@ module Google
           collection :group_memberships, as: 'groupMemberships', class: Google::Apis::SecuritycenterV1beta2::GroupMembership, decorator: Google::Apis::SecuritycenterV1beta2::GroupMembership::Representation
       
           collection :iam_bindings, as: 'iamBindings', class: Google::Apis::SecuritycenterV1beta2::IamBinding, decorator: Google::Apis::SecuritycenterV1beta2::IamBinding::Representation
+      
+          property :iam_details, as: 'iamDetails', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1IamDetails, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1IamDetails::Representation
       
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta2::Indicator, decorator: Google::Apis::SecuritycenterV1beta2::Indicator::Representation
       
@@ -2061,9 +2681,13 @@ module Google
       
           property :parent, as: 'parent'
           property :parent_display_name, as: 'parentDisplayName'
+          property :policy_violation_summary, as: 'policyViolationSummary', class: Google::Apis::SecuritycenterV1beta2::PolicyViolationSummary, decorator: Google::Apis::SecuritycenterV1beta2::PolicyViolationSummary::Representation
+      
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1beta2::Process, decorator: Google::Apis::SecuritycenterV1beta2::Process::Representation
       
           property :resource_name, as: 'resourceName'
+          property :secret, as: 'secret', class: Google::Apis::SecuritycenterV1beta2::Secret, decorator: Google::Apis::SecuritycenterV1beta2::Secret::Representation
+      
           property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta2::SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta2::SecurityMarks::Representation
       
           property :security_posture, as: 'securityPosture', class: Google::Apis::SecuritycenterV1beta2::SecurityPosture, decorator: Google::Apis::SecuritycenterV1beta2::SecurityPosture::Representation
@@ -2072,6 +2696,8 @@ module Google
           hash :source_properties, as: 'sourceProperties'
           property :state, as: 'state'
           property :toxic_combination, as: 'toxicCombination', class: Google::Apis::SecuritycenterV1beta2::ToxicCombination, decorator: Google::Apis::SecuritycenterV1beta2::ToxicCombination::Representation
+      
+          property :vertex_ai, as: 'vertexAi', class: Google::Apis::SecuritycenterV1beta2::VertexAi, decorator: Google::Apis::SecuritycenterV1beta2::VertexAi::Representation
       
           property :vulnerability, as: 'vulnerability', class: Google::Apis::SecuritycenterV1beta2::Vulnerability, decorator: Google::Apis::SecuritycenterV1beta2::Vulnerability::Representation
       
@@ -2083,6 +2709,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_folder, as: 'resourceFolder'
           property :resource_folder_display_name, as: 'resourceFolderDisplayName'
+        end
+      end
+      
+      class Framework
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :category, as: 'category'
+          collection :controls, as: 'controls', class: Google::Apis::SecuritycenterV1beta2::Control, decorator: Google::Apis::SecuritycenterV1beta2::Control::Representation
+      
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -2191,6 +2829,22 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV1IamDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :iam_role_permissions, as: 'iamRolePermissions', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1IamRolePermission, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1IamRolePermission::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1IamRolePermission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :role, as: 'role'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV1MuteConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2229,6 +2883,14 @@ module Google
       class GoogleCloudSecuritycenterV1Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adc_application, as: 'adcApplication', class: Google::Apis::SecuritycenterV1beta2::AdcApplication, decorator: Google::Apis::SecuritycenterV1beta2::AdcApplication::Representation
+      
+          property :adc_application_template, as: 'adcApplicationTemplate', class: Google::Apis::SecuritycenterV1beta2::AdcApplicationTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::AdcApplicationTemplateRevision::Representation
+      
+          property :adc_shared_template, as: 'adcSharedTemplate', class: Google::Apis::SecuritycenterV1beta2::AdcSharedTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::AdcSharedTemplateRevision::Representation
+      
+          property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplication::Representation
+      
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1beta2::AwsMetadata, decorator: Google::Apis::SecuritycenterV1beta2::AwsMetadata::Representation
       
           property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1beta2::AzureMetadata, decorator: Google::Apis::SecuritycenterV1beta2::AzureMetadata::Representation
@@ -2248,6 +2910,52 @@ module Google
       
           property :resource_path_string, as: 'resourcePathString'
           property :service, as: 'service'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :business_owners, as: 'businessOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo::Representation
+      
+          property :criticality, as: 'criticality', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality::Representation
+      
+          collection :developer_owners, as: 'developerOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo::Representation
+      
+          property :environment, as: 'environment', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment::Representation
+      
+          collection :operator_owners, as: 'operatorOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
         end
       end
@@ -2423,10 +3131,57 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2AdcApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AdcSharedTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2AffectedResources
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AgentDataAccessEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :event_time, as: 'eventTime'
+          property :operation, as: 'operation'
+          property :principal_subject, as: 'principalSubject'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AiModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_platform, as: 'deploymentPlatform'
+          property :display_name, as: 'displayName'
+          property :domain, as: 'domain'
+          property :library, as: 'library'
+          property :location, as: 'location'
+          property :name, as: 'name'
+          property :publisher, as: 'publisher'
+          property :usage_category, as: 'usageCategory'
         end
       end
       
@@ -2443,6 +3198,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :base_uri, as: 'baseUri'
           property :full_uri, as: 'fullUri'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ArtifactGuardPolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :failing_policies, as: 'failingPolicies', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ArtifactGuardPolicy, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ArtifactGuardPolicy::Representation
+      
+          property :resource_id, as: 'resourceId'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ArtifactGuardPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_reason, as: 'failureReason'
+          property :policy_id, as: 'policyId'
+          property :type, as: 'type'
         end
       end
       
@@ -2571,6 +3344,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
           property :dataset, as: 'dataset'
           property :description, as: 'description'
           property :filter, as: 'filter'
@@ -2622,10 +3396,22 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2CloudControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_control_name, as: 'cloudControlName'
+          property :policy_type, as: 'policyType'
+          property :type, as: 'type'
+          property :version, as: 'version'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2CloudDlpDataProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_profile, as: 'dataProfile'
+          collection :info_types, as: 'infoTypes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2InfoType, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2InfoType::Representation
+      
           property :parent_type, as: 'parentType'
         end
       end
@@ -2656,6 +3442,17 @@ module Google
           collection :ids, as: 'ids'
           property :standard, as: 'standard'
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ComplianceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_control, as: 'cloudControl', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2CloudControl, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2CloudControl::Representation
+      
+          collection :cloud_control_deployment_names, as: 'cloudControlDeploymentNames'
+          collection :frameworks, as: 'frameworks', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Framework, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Framework::Representation
+      
         end
       end
       
@@ -2694,6 +3491,14 @@ module Google
       
           property :name, as: 'name'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2Control
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_name, as: 'controlName'
+          property :display_name, as: 'displayName'
         end
       end
       
@@ -2767,6 +3572,7 @@ module Google
           property :event_detection_time, as: 'eventDetectionTime'
           property :event_type, as: 'eventType'
           property :max_retention_allowed, as: 'maxRetentionAllowed'
+          property :min_retention_allowed, as: 'minRetentionAllowed'
         end
       end
       
@@ -2779,6 +3585,15 @@ module Google
           property :query, as: 'query'
           property :user_name, as: 'userName'
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2Dataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :source, as: 'source'
         end
       end
       
@@ -2795,6 +3610,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :binary, as: 'binary'
           property :percent_pages_matched, as: 'percentPagesMatched'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2DiscoveredWorkload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :detected_relevant_hardware, as: 'detectedRelevantHardware'
+          property :detected_relevant_keywords, as: 'detectedRelevantKeywords'
+          property :detected_relevant_packages, as: 'detectedRelevantPackages'
+          property :workload_type, as: 'workloadType'
         end
       end
       
@@ -2848,6 +3674,34 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2ExternalExposure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_bucket, as: 'backendBucket'
+          property :backend_service, as: 'backendService'
+          property :exposed_application, as: 'exposedApplication'
+          property :exposed_endpoint, as: 'exposedEndpoint'
+          property :exposed_service, as: 'exposedService'
+          property :forwarding_rule, as: 'forwardingRule'
+          property :hostname_uri, as: 'hostnameUri'
+          collection :http_response, as: 'httpResponse', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2HttpResponse, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2HttpResponse::Representation
+      
+          property :instance_group, as: 'instanceGroup'
+          property :internal_backend_service, as: 'internalBackendService'
+          property :load_balancer_firewall_policy, as: 'loadBalancerFirewallPolicy'
+          property :network_endpoint_group, as: 'networkEndpointGroup'
+          property :network_ingress_firewall_policy, as: 'networkIngressFirewallPolicy'
+          property :network_path_insights_generation_time, as: 'networkPathInsightsGenerationTime'
+          property :private_ip_address, as: 'privateIpAddress'
+          property :private_port, as: 'privatePort'
+          property :psc_network_attachment, as: 'pscNetworkAttachment'
+          property :psc_service_attachment, as: 'pscServiceAttachment'
+          property :public_ip_address, as: 'publicIpAddress'
+          property :public_port, as: 'publicPort'
+          property :service_firewall_policy, as: 'serviceFirewallPolicy'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2ExternalSystem
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2872,6 +3726,7 @@ module Google
           property :contents, as: 'contents'
           property :disk_path, as: 'diskPath', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DiskPath, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DiskPath::Representation
       
+          property :file_load_state, as: 'fileLoadState'
           property :hashed_size, :numeric_string => true, as: 'hashedSize'
           collection :operations, as: 'operations', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2FileOperation, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2FileOperation::Representation
       
@@ -2896,7 +3751,13 @@ module Google
       
           property :affected_resources, as: 'affectedResources', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AffectedResources, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AffectedResources::Representation
       
+          collection :agent_data_access_events, as: 'agentDataAccessEvents', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AgentDataAccessEvent, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AgentDataAccessEvent::Representation
+      
+          property :ai_model, as: 'aiModel', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AiModel, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AiModel::Representation
+      
           property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Application, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Application::Representation
+      
+          property :artifact_guard_policies, as: 'artifactGuardPolicies', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ArtifactGuardPolicies, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ArtifactGuardPolicies::Representation
       
           property :attack_exposure, as: 'attackExposure', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AttackExposure, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AttackExposure::Representation
       
@@ -2912,6 +3773,8 @@ module Google
       
           property :cloud_dlp_inspection, as: 'cloudDlpInspection', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2CloudDlpInspection, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2CloudDlpInspection::Representation
       
+          property :compliance_details, as: 'complianceDetails', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ComplianceDetails, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ComplianceDetails::Representation
+      
           collection :compliances, as: 'compliances', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Compliance, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Compliance::Representation
       
           collection :connections, as: 'connections', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Connection, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Connection::Representation
@@ -2921,6 +3784,7 @@ module Google
           collection :containers, as: 'containers', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Container, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Container::Representation
       
           property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
           collection :data_access_events, as: 'dataAccessEvents', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DataAccessEvent, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DataAccessEvent::Representation
       
           collection :data_flow_events, as: 'dataFlowEvents', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DataFlowEvent, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DataFlowEvent::Representation
@@ -2930,10 +3794,14 @@ module Google
           property :database, as: 'database', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Database, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Database::Representation
       
           property :description, as: 'description'
+          property :discovered_workload, as: 'discoveredWorkload', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DiscoveredWorkload, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DiscoveredWorkload::Representation
+      
           property :disk, as: 'disk', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Disk, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Disk::Representation
       
           property :event_time, as: 'eventTime'
           property :exfiltration, as: 'exfiltration', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Exfiltration, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Exfiltration::Representation
+      
+          property :external_exposure, as: 'externalExposure', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ExternalExposure, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ExternalExposure::Representation
       
           hash :external_systems, as: 'externalSystems', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ExternalSystem, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ExternalSystem::Representation
       
@@ -2944,6 +3812,8 @@ module Google
           collection :group_memberships, as: 'groupMemberships', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2GroupMembership, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2GroupMembership::Representation
       
           collection :iam_bindings, as: 'iamBindings', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IamBinding, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IamBinding::Representation
+      
+          property :iam_details, as: 'iamDetails', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IamDetails, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IamDetails::Representation
       
           property :indicator, as: 'indicator', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Indicator, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Indicator::Representation
       
@@ -2977,9 +3847,13 @@ module Google
       
           property :parent, as: 'parent'
           property :parent_display_name, as: 'parentDisplayName'
+          property :policy_violation_summary, as: 'policyViolationSummary', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2PolicyViolationSummary, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2PolicyViolationSummary::Representation
+      
           collection :processes, as: 'processes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Process, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Process::Representation
       
           property :resource_name, as: 'resourceName'
+          property :secret, as: 'secret', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Secret, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Secret::Representation
+      
           property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecurityMarks::Representation
       
           property :security_posture, as: 'securityPosture', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecurityPosture, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecurityPosture::Representation
@@ -2988,6 +3862,8 @@ module Google
           hash :source_properties, as: 'sourceProperties'
           property :state, as: 'state'
           property :toxic_combination, as: 'toxicCombination', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ToxicCombination, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ToxicCombination::Representation
+      
+          property :vertex_ai, as: 'vertexAi', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2VertexAi, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2VertexAi::Representation
       
           property :vulnerability, as: 'vulnerability', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Vulnerability, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Vulnerability::Representation
       
@@ -2999,6 +3875,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_folder, as: 'resourceFolder'
           property :resource_folder_display_name, as: 'resourceFolderDisplayName'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2Framework
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :category, as: 'category'
+          collection :controls, as: 'controls', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Control, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Control::Representation
+      
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -3017,11 +3905,35 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2HttpResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :status_code, as: 'statusCode'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2IamBinding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :member, as: 'member'
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IamDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :iam_role_permissions, as: 'iamRolePermissions', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IamRolePermission, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IamRolePermission::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IamRolePermission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
           property :role, as: 'role'
         end
       end
@@ -3034,6 +3946,16 @@ module Google
           collection :signatures, as: 'signatures', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ProcessSignature, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ProcessSignature::Representation
       
           collection :uris, as: 'uris'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2InfoType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SensitivityScore, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SensitivityScore::Representation
+      
+          property :version, as: 'version'
         end
       end
       
@@ -3134,6 +4056,14 @@ module Google
       class GoogleCloudSecuritycenterV2IssueResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adc_application, as: 'adcApplication', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcApplication::Representation
+      
+          property :adc_application_template, as: 'adcApplicationTemplate', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision::Representation
+      
+          property :adc_shared_template, as: 'adcSharedTemplate', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision::Representation
+      
+          property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplication::Representation
+      
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAwsMetadata, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAwsMetadata::Representation
       
           property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAzureMetadata, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceAzureMetadata::Representation
@@ -3143,6 +4073,75 @@ module Google
           property :google_cloud_metadata, as: 'googleCloudMetadata', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceGoogleCloudMetadata::Representation
       
           property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :business_owners, as: 'businessOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo::Representation
+      
+          property :criticality, as: 'criticality', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality::Representation
+      
+          collection :developer_owners, as: 'developerOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo::Representation
+      
+          property :environment, as: 'environment', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment::Representation
+      
+          collection :operator_owners, as: 'operatorOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
         end
       end
@@ -3304,6 +4303,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :crypto_key_name, as: 'cryptoKeyName'
           property :description, as: 'description'
           property :expiry_time, as: 'expiryTime'
           property :filter, as: 'filter'
@@ -3397,6 +4397,14 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Pipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2Pod
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3415,6 +4423,16 @@ module Google
           property :detected_value, as: 'detectedValue'
           property :expected_value, as: 'expectedValue'
           property :field, as: 'field'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2PolicyViolationSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conformant_resources_count, :numeric_string => true, as: 'conformantResourcesCount'
+          property :evaluation_errors_count, :numeric_string => true, as: 'evaluationErrorsCount'
+          property :out_of_scope_resources_count, :numeric_string => true, as: 'outOfScopeResourcesCount'
+          property :policy_violations_count, :numeric_string => true, as: 'policyViolationsCount'
         end
       end
       
@@ -3443,6 +4461,7 @@ module Google
           property :pid, :numeric_string => true, as: 'pid'
           property :script, as: 'script', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2File, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2File::Representation
       
+          property :user_id, :numeric_string => true, as: 'userId'
         end
       end
       
@@ -3478,6 +4497,14 @@ module Google
       class GoogleCloudSecuritycenterV2Resource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :adc_application, as: 'adcApplication', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcApplication::Representation
+      
+          property :adc_application_template, as: 'adcApplicationTemplate', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision::Representation
+      
+          property :adc_shared_template, as: 'adcSharedTemplate', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcSharedTemplateRevision, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AdcSharedTemplateRevision::Representation
+      
+          property :application, as: 'application', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplication, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplication::Representation
+      
           property :aws_metadata, as: 'awsMetadata', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AwsMetadata, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AwsMetadata::Representation
       
           property :azure_metadata, as: 'azureMetadata', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AzureMetadata, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AzureMetadata::Representation
@@ -3492,6 +4519,52 @@ module Google
       
           property :resource_path_string, as: 'resourcePathString'
           property :service, as: 'service'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributes, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributes::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :business_owners, as: 'businessOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo::Representation
+      
+          property :criticality, as: 'criticality', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality::Representation
+      
+          collection :developer_owners, as: 'developerOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo::Representation
+      
+          property :environment, as: 'environment', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment::Representation
+      
+          collection :operator_owners, as: 'operatorOwners', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :type, as: 'type'
         end
       end
@@ -3537,6 +4610,41 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :ns, as: 'ns'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment_variable, as: 'environmentVariable', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecretEnvironmentVariable, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecretEnvironmentVariable::Representation
+      
+          property :file_path, as: 'filePath', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecretFilePath, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecretFilePath::Representation
+      
+          property :status, as: 'status', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecretStatus, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2SecretStatus::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretEnvironmentVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretFilePath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2SecretStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_updated_time, as: 'lastUpdatedTime'
+          property :validity, as: 'validity'
         end
       end
       
@@ -3590,6 +4698,13 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2SensitivityScore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3635,6 +4750,16 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2VertexAi
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :datasets, as: 'datasets', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Dataset, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Dataset::Representation
+      
+          collection :pipelines, as: 'pipelines', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Pipeline, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Pipeline::Representation
+      
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2Vulnerability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3668,6 +4793,14 @@ module Google
         end
       end
       
+      class HttpResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :status_code, as: 'statusCode'
+        end
+      end
+      
       class IamBinding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3685,6 +4818,16 @@ module Google
           collection :signatures, as: 'signatures', class: Google::Apis::SecuritycenterV1beta2::ProcessSignature, decorator: Google::Apis::SecuritycenterV1beta2::ProcessSignature::Representation
       
           collection :uris, as: 'uris'
+        end
+      end
+      
+      class InfoType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::SecuritycenterV1beta2::SensitivityScore, decorator: Google::Apis::SecuritycenterV1beta2::SensitivityScore::Representation
+      
+          property :version, as: 'version'
         end
       end
       
@@ -3871,6 +5014,14 @@ module Google
         end
       end
       
+      class Pipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
       class Pod
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3889,6 +5040,16 @@ module Google
           property :detected_value, as: 'detectedValue'
           property :expected_value, as: 'expectedValue'
           property :field, as: 'field'
+        end
+      end
+      
+      class PolicyViolationSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conformant_resources_count, :numeric_string => true, as: 'conformantResourcesCount'
+          property :evaluation_errors_count, :numeric_string => true, as: 'evaluationErrorsCount'
+          property :out_of_scope_resources_count, :numeric_string => true, as: 'outOfScopeResourcesCount'
+          property :policy_violations_count, :numeric_string => true, as: 'policyViolationsCount'
         end
       end
       
@@ -3917,6 +5078,7 @@ module Google
           property :pid, :numeric_string => true, as: 'pid'
           property :script, as: 'script', class: Google::Apis::SecuritycenterV1beta2::File, decorator: Google::Apis::SecuritycenterV1beta2::File::Representation
       
+          property :user_id, :numeric_string => true, as: 'userId'
         end
       end
       
@@ -3986,6 +5148,41 @@ module Google
         end
       end
       
+      class Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment_variable, as: 'environmentVariable', class: Google::Apis::SecuritycenterV1beta2::SecretEnvironmentVariable, decorator: Google::Apis::SecuritycenterV1beta2::SecretEnvironmentVariable::Representation
+      
+          property :file_path, as: 'filePath', class: Google::Apis::SecuritycenterV1beta2::SecretFilePath, decorator: Google::Apis::SecuritycenterV1beta2::SecretFilePath::Representation
+      
+          property :status, as: 'status', class: Google::Apis::SecuritycenterV1beta2::SecretStatus, decorator: Google::Apis::SecuritycenterV1beta2::SecretStatus::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class SecretEnvironmentVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+        end
+      end
+      
+      class SecretFilePath
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+        end
+      end
+      
+      class SecretStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_updated_time, as: 'lastUpdatedTime'
+          property :validity, as: 'validity'
+        end
+      end
+      
       class SecurityBulletin
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3998,6 +5195,7 @@ module Google
       class SecurityCenterSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :crypto_key_name, as: 'cryptoKeyName'
           property :log_sink_project, as: 'logSinkProject'
           property :name, as: 'name'
           property :onboarding_time, as: 'onboardingTime'
@@ -4047,6 +5245,13 @@ module Google
           property :posture_deployment, as: 'postureDeployment'
           property :posture_deployment_resource, as: 'postureDeploymentResource'
           property :revision_id, as: 'revisionId'
+        end
+      end
+      
+      class SensitivityScore
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :score, as: 'score'
         end
       end
       
@@ -4102,6 +5307,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attack_exposure_score, as: 'attackExposureScore'
           collection :related_findings, as: 'relatedFindings'
+        end
+      end
+      
+      class VertexAi
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :datasets, as: 'datasets', class: Google::Apis::SecuritycenterV1beta2::Dataset, decorator: Google::Apis::SecuritycenterV1beta2::Dataset::Representation
+      
+          collection :pipelines, as: 'pipelines', class: Google::Apis::SecuritycenterV1beta2::Pipeline, decorator: Google::Apis::SecuritycenterV1beta2::Pipeline::Representation
+      
         end
       end
       

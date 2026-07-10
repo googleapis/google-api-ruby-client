@@ -438,20 +438,21 @@ module Google
         end
       end
       
-      # PolicyOrchestrator helps managing project+zone level policy resources (e.g. OS
-      # Policy Assignments), by providing tools to create, update and delete them
-      # across projects and locations, at scale. Policy orchestrator functions as an
-      # endless loop. Each iteration orchestrator computes a set of resources that
-      # should be affected, then progressively applies changes to them. If for some
-      # reason this set of resources changes over time (e.g. new projects are added),
-      # the future loop iterations will address that. Orchestrator can either upsert
-      # or delete policy resources. For more details, see the description of the `
-      # action`, and `orchestrated_resource` fields. Note that policy orchestrator do
-      # not "manage" the resources it creates. Every iteration is independent and only
-      # minimal history of past actions is retained (apart from Cloud Logging). If
-      # orchestrator gets deleted, it does not affect the resources it created in the
-      # past. Those will remain where they were. Same applies if projects are removed
-      # from the orchestrator's scope.
+      # A policy orchestrator manages project-level and zone-level policy resources,
+      # such as OS policy assignments. It provides methods to create, update, and
+      # delete these resources across projects and locations at scale. The policy
+      # orchestrator operates as a continuous loop. In each iteration, the
+      # orchestrator identifies the set of resources to be modified and progressively
+      # applies changes. If the set of resources changes over time (for example, if
+      # you add new projects), subsequent iterations address those changes. The
+      # orchestrator can either upsert or delete policy resources. For more details,
+      # see the `action` and `orchestrated_resource` fields. The policy orchestrator
+      # does not manage the lifecycle of the resources it creates. Each iteration is
+      # independent and, besides Cloud Logging, the orchestrator retains only a
+      # minimal history of past actions. Deleting the orchestrator does not affect
+      # previously created resources; these resources remain in their current state.
+      # Similarly, removing projects from the orchestrator's scope does not affect
+      # existing resources.
       class GoogleCloudOsconfigV2PolicyOrchestrator
         include Google::Apis::Core::Hashable
       
@@ -485,10 +486,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. Identifier. In form of * `organizations/`organization_id`/locations/
-        # global/policyOrchestrators/`orchestrator_id`` * `folders/`folder_id`/locations/
-        # global/policyOrchestrators/`orchestrator_id`` * `projects/`
-        # project_id_or_number`/locations/global/policyOrchestrators/`orchestrator_id``
+        # Immutable. Identifier. In the following format: * `organizations/`
+        # organization_id`/locations/global/policyOrchestrators/`orchestrator_id`` * `
+        # folders/`folder_id`/locations/global/policyOrchestrators/`orchestrator_id`` * `
+        # projects/`project_id_or_number`/locations/global/policyOrchestrators/`
+        # orchestrator_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -509,8 +511,8 @@ module Google
         # @return [Google::Apis::OsconfigV2::GoogleCloudOsconfigV2PolicyOrchestratorOrchestrationState]
         attr_accessor :orchestration_state
       
-        # Output only. Set to true, if the there are ongoing changes being applied by
-        # the orchestrator.
+        # Output only. Set to true, if there are ongoing changes being applied by the
+        # orchestrator.
         # Corresponds to the JSON property `reconciling`
         # @return [Boolean]
         attr_accessor :reconciling
@@ -624,6 +626,14 @@ module Google
         # @return [Array<Google::Apis::OsconfigV2::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -632,6 +642,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1283,7 +1294,7 @@ module Google
       class OsPolicyResourceFileResource
         include Google::Apis::Core::Hashable
       
-        # A a file with this content. The size of the content is limited to 32KiB.
+        # A file with this content. The size of the content is limited to 32KiB.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content

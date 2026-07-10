@@ -30,6 +30,21 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and spaces
+      AUTH_CHAT_APP_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.app.memberships'
+
+      # On their own behalf, apps in Google Chat can see members of conversations and spaces
+      AUTH_CHAT_APP_MEMBERSHIPS_READONLY = 'https://www.googleapis.com/auth/chat.app.memberships.readonly'
+
+      # On their own behalf, apps in Google Chat can see all messages and their associated reactions and message content
+      AUTH_CHAT_APP_MESSAGES_READONLY = 'https://www.googleapis.com/auth/chat.app.messages.readonly'
+
+      # On their own behalf, apps in Google Chat can create conversations and spaces and see or update their metadata (including history settings and access settings)
+      AUTH_CHAT_APP_SPACES = 'https://www.googleapis.com/auth/chat.app.spaces'
+
+      # On their own behalf, apps in Google Chat can see conversations and spaces and their metadata (including history settings and access settings)
+      AUTH_CHAT_APP_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.app.spaces.readonly'
+
       # Private Service: https://www.googleapis.com/auth/chat.bot
       AUTH_CHAT_BOT = 'https://www.googleapis.com/auth/chat.bot'
 
@@ -56,6 +71,18 @@ module Google
 
       # View chat and spaces in Google Chat
       AUTH_CHAT_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.spaces.readonly'
+
+      # See and change your availability status in Google Chat.
+      AUTH_CHAT_USERS_AVAILABILITY = 'https://www.googleapis.com/auth/chat.users.availability'
+
+      # See your availability status in Google Chat.
+      AUTH_CHAT_USERS_AVAILABILITY_READONLY = 'https://www.googleapis.com/auth/chat.users.availability.readonly'
+
+      # View and modify last read time for Google Chat conversations
+      AUTH_CHAT_USERS_READSTATE = 'https://www.googleapis.com/auth/chat.users.readstate'
+
+      # View last read time for Google Chat conversations
+      AUTH_CHAT_USERS_READSTATE_READONLY = 'https://www.googleapis.com/auth/chat.users.readstate.readonly'
 
       # See, edit, create, and delete all of your Google Drive files
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'

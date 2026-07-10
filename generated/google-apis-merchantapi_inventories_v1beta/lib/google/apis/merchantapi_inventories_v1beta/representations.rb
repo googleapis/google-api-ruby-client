@@ -129,6 +129,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account, :numeric_string => true, as: 'account'
           property :availability, as: 'availability'
+          property :base64_encoded_name, as: 'base64EncodedName'
           collection :custom_attributes, as: 'customAttributes', class: Google::Apis::MerchantapiInventoriesV1beta::CustomAttribute, decorator: Google::Apis::MerchantapiInventoriesV1beta::CustomAttribute::Representation
       
           property :instore_product_location, as: 'instoreProductLocation'
@@ -185,6 +186,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account, :numeric_string => true, as: 'account'
           property :availability, as: 'availability'
+          property :base64_encoded_name, as: 'base64EncodedName'
           collection :custom_attributes, as: 'customAttributes', class: Google::Apis::MerchantapiInventoriesV1beta::CustomAttribute, decorator: Google::Apis::MerchantapiInventoriesV1beta::CustomAttribute::Representation
       
           property :name, as: 'name'

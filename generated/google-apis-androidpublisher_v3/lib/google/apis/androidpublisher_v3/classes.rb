@@ -125,6 +125,88 @@ module Google
         end
       end
       
+      # Request message for ActivateOneTimeProductOffer.
+      class ActivateOneTimeProductOfferRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The latency tolerance for the propagation of this update. Defaults
+        # to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The offer ID of the offer to activate.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Required. The parent app (package name) of the offer to activate.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent one-time product (ID) of the offer to activate.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The parent purchase option (ID) of the offer to activate.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+        end
+      end
+      
+      # Request message for UpdatePurchaseOptionState.
+      class ActivatePurchaseOptionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The parent app (package name) of the purchase option to activate.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent one-time product (ID) of the purchase option to activate.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The purchase option ID of the purchase option to activate.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+        end
+      end
+      
       # Request message for ActivateSubscriptionOffer.
       class ActivateSubscriptionOfferRequest
         include Google::Apis::Core::Hashable
@@ -675,6 +757,25 @@ module Google
         end
       end
       
+      # Summary of an artifact.
+      class ArtifactSummary
+        include Google::Apis::Core::Hashable
+      
+        # Artifact's version code
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version_code = args[:version_code] if args.key?(:version_code)
+        end
+      end
+      
       # Metadata of an asset module.
       class AssetModuleMetadata
         include Google::Apis::Core::Hashable
@@ -730,10 +831,11 @@ module Google
       class AutoRenewingBasePlanType
         include Google::Apis::Core::Hashable
       
-        # Optional. Account hold period of the subscription, specified in ISO 8601
-        # format. Acceptable values must be in days and between P0D and P60D. If not
-        # specified, the default value is P30D. The sum of gracePeriodDuration and
-        # accountHoldDuration must be between P30D and P60D days, inclusive.
+        # Optional. Custom account hold period of the subscription, specified in ISO
+        # 8601 format. Acceptable values must be in days and between P0D and P60D. An
+        # empty field represents a recommended account hold, calculated as 60 days minus
+        # grace period. The sum of gracePeriodDuration and accountHoldDuration must be
+        # between P30D and P60D days, inclusive.
         # Corresponds to the JSON property `accountHoldDuration`
         # @return [String]
         attr_accessor :account_hold_duration
@@ -822,6 +924,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionItemPriceChangeDetails]
         attr_accessor :price_change_details
       
+        # Information related to a price step-up that requires user consent.
+        # Corresponds to the JSON property `priceStepUpConsentDetails`
+        # @return [Google::Apis::AndroidpublisherV3::PriceStepUpConsentDetails]
+        attr_accessor :price_step_up_consent_details
+      
         # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `recurringPrice`
         # @return [Google::Apis::AndroidpublisherV3::Money]
@@ -836,7 +943,21 @@ module Google
           @auto_renew_enabled = args[:auto_renew_enabled] if args.key?(:auto_renew_enabled)
           @installment_details = args[:installment_details] if args.key?(:installment_details)
           @price_change_details = args[:price_change_details] if args.key?(:price_change_details)
+          @price_step_up_consent_details = args[:price_step_up_consent_details] if args.key?(:price_step_up_consent_details)
           @recurring_price = args[:recurring_price] if args.key?(:recurring_price)
+        end
+      end
+      
+      # Details of a base price pricing phase.
+      class BaseDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -909,6 +1030,137 @@ module Google
           @prepaid_base_plan_type = args[:prepaid_base_plan_type] if args.key?(:prepaid_base_plan_type)
           @regional_configs = args[:regional_configs] if args.key?(:regional_configs)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Details about base price offer phase.
+      class BasePriceOfferPhase
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for BatchDeleteOneTimeProductOffers.
+      class BatchDeleteOneTimeProductOffersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of update requests of up to 100 elements. All requests must
+        # correspond to different offers.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeleteOneTimeProductOfferRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request message for BatchDeleteOneTimeProduct.
+      class BatchDeleteOneTimeProductsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of delete requests of up to 100 elements. All requests must
+        # delete different one-time products.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeleteOneTimeProductRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request message for BatchDeletePurchaseOption.
+      class BatchDeletePurchaseOptionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of delete requests of up to 100 elements. All requests must
+        # delete purchase options from different one-time products.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeletePurchaseOptionRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request message for the BatchGetOneTimeProductOffers endpoint.
+      class BatchGetOneTimeProductOffersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of get requests of up to 100 elements. All requests must
+        # retrieve different offers.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GetOneTimeProductOfferRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for the BatchGetOneTimeProductOffers endpoint.
+      class BatchGetOneTimeProductOffersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of updated one-time product offers, in the same order as the request.
+        # Corresponds to the JSON property `oneTimeProductOffers`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProductOffer>]
+        attr_accessor :one_time_product_offers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @one_time_product_offers = args[:one_time_product_offers] if args.key?(:one_time_product_offers)
+        end
+      end
+      
+      # Response message for the BatchGetOneTimeProducts endpoint.
+      class BatchGetOneTimeProductsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of requested one-time products, in the same order as the request.
+        # Corresponds to the JSON property `oneTimeProducts`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProduct>]
+        attr_accessor :one_time_products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @one_time_products = args[:one_time_products] if args.key?(:one_time_products)
         end
       end
       
@@ -1066,6 +1318,163 @@ module Google
         # Update properties of this object
         def update!(**args)
           @subscriptions = args[:subscriptions] if args.key?(:subscriptions)
+        end
+      end
+      
+      # Request message for BatchUpdateOneTimeProductOfferStates.
+      class BatchUpdateOneTimeProductOfferStatesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The update request list of up to 100 elements. All requests must
+        # update different offers.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::UpdateOneTimeProductOfferStateRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchUpdateOneTimeProductOfferStates.
+      class BatchUpdateOneTimeProductOfferStatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The updated one-time product offers list, in the same order as the request.
+        # Corresponds to the JSON property `oneTimeProductOffers`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProductOffer>]
+        attr_accessor :one_time_product_offers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @one_time_product_offers = args[:one_time_product_offers] if args.key?(:one_time_product_offers)
+        end
+      end
+      
+      # Request message for BatchUpdateOneTimeProductOffers.
+      class BatchUpdateOneTimeProductOffersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of update requests of up to 100 elements. All requests must
+        # update different offers.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::UpdateOneTimeProductOfferRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchUpdateOneTimeProductOffers.
+      class BatchUpdateOneTimeProductOffersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of updated one-time product offers, in the same order as the request.
+        # Corresponds to the JSON property `oneTimeProductOffers`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProductOffer>]
+        attr_accessor :one_time_product_offers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @one_time_product_offers = args[:one_time_product_offers] if args.key?(:one_time_product_offers)
+        end
+      end
+      
+      # Request message for BatchUpdateOneTimeProduct.
+      class BatchUpdateOneTimeProductsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of update requests of up to 100 elements. All requests must
+        # update different one-time products.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::UpdateOneTimeProductRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchUpdateOneTimeProduct.
+      class BatchUpdateOneTimeProductsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of updated one-time products list, in the same order as the request.
+        # Corresponds to the JSON property `oneTimeProducts`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProduct>]
+        attr_accessor :one_time_products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @one_time_products = args[:one_time_products] if args.key?(:one_time_products)
+        end
+      end
+      
+      # Request message for BatchUpdatePurchaseOptionStates.
+      class BatchUpdatePurchaseOptionStatesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The update request list of up to 100 elements. All requests must
+        # update different purchase options.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AndroidpublisherV3::UpdatePurchaseOptionStateRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for BatchUpdatePurchaseOptionStates.
+      class BatchUpdatePurchaseOptionStatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of updated one-time products. This list will match the requests one
+        # to one, in the same order.
+        # Corresponds to the JSON property `oneTimeProducts`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProduct>]
+        attr_accessor :one_time_products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @one_time_products = args[:one_time_products] if args.key?(:one_time_products)
         end
       end
       
@@ -1304,6 +1713,82 @@ module Google
         end
       end
       
+      # Request message for CancelOneTimeProductOffer.
+      class CancelOneTimeProductOfferRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The latency tolerance for the propagation of this update. Defaults
+        # to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The offer ID of the offer to cancel.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Required. The parent app (package name) of the offer to cancel.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent one-time product (ID) of the offer to cancel.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The parent purchase option (ID) of the offer to cancel.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+        end
+      end
+      
+      # Request for the purchases.subscriptionsv2.cancel API.
+      class CancelSubscriptionPurchaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Cancellation context of the purchases.subscriptionsv2.cancel API.
+        # Corresponds to the JSON property `cancellationContext`
+        # @return [Google::Apis::AndroidpublisherV3::CancellationContext]
+        attr_accessor :cancellation_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancellation_context = args[:cancellation_context] if args.key?(:cancellation_context)
+        end
+      end
+      
+      # Response for the purchases.subscriptionsv2.cancel API.
+      class CancelSubscriptionPurchaseResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Result of the cancel survey when the subscription was canceled by the user.
       class CancelSurveyResult
         include Google::Apis::Core::Hashable
@@ -1368,6 +1853,25 @@ module Google
         end
       end
       
+      # Cancellation context of the purchases.subscriptionsv2.cancel API.
+      class CancellationContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of cancellation for the purchased subscription.
+        # Corresponds to the JSON property `cancellationType`
+        # @return [String]
+        attr_accessor :cancellation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancellation_type = args[:cancellation_type] if args.key?(:cancellation_type)
+        end
+      end
+      
       # Details of when the order was canceled.
       class CancellationEvent
         include Google::Apis::Core::Hashable
@@ -1421,6 +1925,16 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::Money]
         attr_accessor :price
       
+        # Optional. Product tax category code in context. Product tax category
+        # determines the transaction tax rates applied to the product that will be
+        # factored into the price calculation. If not set, tax rates for the default
+        # product tax category will be used. Refer to the [Help Center article](https://
+        # support.google.com/googleplay/android-developer/answer/16408159) for more
+        # information.
+        # Corresponds to the JSON property `productTaxCategoryCode`
+        # @return [String]
+        attr_accessor :product_tax_category_code
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1428,6 +1942,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @price = args[:price] if args.key?(:price)
+          @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
         end
       end
       
@@ -1609,6 +2124,89 @@ module Google
         end
       end
       
+      # Request message for DeactivateOneTimeProductOffer.
+      class DeactivateOneTimeProductOfferRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The latency tolerance for the propagation of this update. Defaults
+        # to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The offer ID of the offer to deactivate.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Required. The parent app (package name) of the offer to deactivate.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent one-time product (ID) of the offer to deactivate.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The parent purchase option (ID) of the offer to deactivate.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+        end
+      end
+      
+      # Request message for UpdatePurchaseOptionState.
+      class DeactivatePurchaseOptionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The parent app (package name) of the purchase option to deactivate.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent one-time product (ID) of the purchase option to
+        # deactivate.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The purchase option ID of the purchase option to deactivate.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+        end
+      end
+      
       # Request message for DeactivateSubscriptionOffer.
       class DeactivateSubscriptionOfferRequest
         include Google::Apis::Core::Hashable
@@ -1653,6 +2251,93 @@ module Google
         end
       end
       
+      # Request for the v2 purchases.subscriptions.defer API.
+      class DeferSubscriptionPurchaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Deferral context of the purchases.subscriptionsv2.defer API.
+        # Corresponds to the JSON property `deferralContext`
+        # @return [Google::Apis::AndroidpublisherV3::DeferralContext]
+        attr_accessor :deferral_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deferral_context = args[:deferral_context] if args.key?(:deferral_context)
+        end
+      end
+      
+      # Response for the v2 purchases.subscriptions.defer API.
+      class DeferSubscriptionPurchaseResponse
+        include Google::Apis::Core::Hashable
+      
+        # The new expiry time for each subscription items.
+        # Corresponds to the JSON property `itemExpiryTimeDetails`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ItemExpiryTimeDetails>]
+        attr_accessor :item_expiry_time_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @item_expiry_time_details = args[:item_expiry_time_details] if args.key?(:item_expiry_time_details)
+        end
+      end
+      
+      # Deferral context of the purchases.subscriptionsv2.defer API.
+      class DeferralContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The duration by which all subscription items should be deferred.
+        # Corresponds to the JSON property `deferDuration`
+        # @return [String]
+        attr_accessor :defer_duration
+      
+        # Required. The API will fail if the etag does not match the latest etag for
+        # this subscription. The etag is retrieved from purchases.subscriptionsv2.get:
+        # https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.
+        # subscriptionsv2/get
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # If set to "true", the request is a dry run to validate the effect of Defer,
+        # the subscription would not be impacted.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @defer_duration = args[:defer_duration] if args.key?(:defer_duration)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Information related to deferred item replacement.
+      class DeferredItemRemoval
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Information related to deferred item replacement.
       class DeferredItemReplacement
         include Google::Apis::Core::Hashable
@@ -1669,6 +2354,130 @@ module Google
         # Update properties of this object
         def update!(**args)
           @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # Request message for deleting an one-time product offer.
+      class DeleteOneTimeProductOfferRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The unique offer ID of the offer to delete.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Required. The parent app (package name) of the offer to delete.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent one-time product (ID) of the offer to delete.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The parent purchase option (ID) of the offer to delete.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+        end
+      end
+      
+      # Request message for deleting a one-time product.
+      class DeleteOneTimeProductRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The parent app (package name) of the one-time product to delete.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The one-time product ID of the one-time product to delete.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # Request message for deleting a purchase option.
+      class DeletePurchaseOptionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. This field has no effect for purchase options with no offers under
+        # them. For purchase options with associated offers: * If `force` is set to
+        # false (default), an error will be returned. * If `force` is set to true, any
+        # associated offers under the purchase option will be deleted.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Optional. The latency tolerance for the propagation of this product update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # Required. The parent app (package name) of the purchase option to delete.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent one-time product (ID) of the purchase option to delete.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The purchase option ID of the purchase option to delete.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
         end
       end
       
@@ -2253,6 +3062,95 @@ module Google
         end
       end
       
+      # User account identifier in your app.
+      class ExternalAccountIds
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies an optional obfuscated string that is uniquely associated
+        # with the purchaser's user account in your app. If you pass this value, Google
+        # Play can use it to detect irregular activity. Do not use this field to store
+        # any Personally Identifiable Information (PII) such as emails in cleartext.
+        # Attempting to store PII in this field will result in purchases being blocked.
+        # Google Play recommends that you use either encryption or a one-way hash to
+        # generate an obfuscated identifier to send to Google Play. This identifier is
+        # limited to 64 characters. This field can only be set for resubscription
+        # purchases. See https://developer.android.com/reference/com/android/
+        # billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid to set this
+        # field for purchases made using the standard in-app billing flow.
+        # Corresponds to the JSON property `obfuscatedAccountId`
+        # @return [String]
+        attr_accessor :obfuscated_account_id
+      
+        # Optional. Specifies an optional obfuscated string that is uniquely associated
+        # with the purchaser's user profile in your app. If you pass this value, Google
+        # Play can use it to detect irregular activity. Do not use this field to store
+        # any Personally Identifiable Information (PII) such as emails in cleartext.
+        # Attempting to store PII in this field will result in purchases being blocked.
+        # Google Play recommends that you use either encryption or a one-way hash to
+        # generate an obfuscated identifier to send to Google Play. This identifier is
+        # limited to 64 characters. This field can only be set for resubscription
+        # purchases. See https://developer.android.com/reference/com/android/
+        # billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid to set this
+        # field for purchases made using the standard in-app billing flow.
+        # Corresponds to the JSON property `obfuscatedProfileId`
+        # @return [String]
+        attr_accessor :obfuscated_profile_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @obfuscated_account_id = args[:obfuscated_account_id] if args.key?(:obfuscated_account_id)
+          @obfuscated_profile_id = args[:obfuscated_profile_id] if args.key?(:obfuscated_profile_id)
+        end
+      end
+      
+      # Reporting details unique to the external offers program.
+      class ExternalOfferDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The external transaction id associated with the app download event
+        # through an external link. Required when reporting transactions made in
+        # externally installed apps.
+        # Corresponds to the JSON property `appDownloadEventExternalTransactionId`
+        # @return [String]
+        attr_accessor :app_download_event_external_transaction_id
+      
+        # Optional. The category of the downloaded app though this transaction. This
+        # must match the category provided in Play Console during the external app
+        # verification process. Only required for app downloads.
+        # Corresponds to the JSON property `installedAppCategory`
+        # @return [String]
+        attr_accessor :installed_app_category
+      
+        # Optional. The package name of the app downloaded through this transaction.
+        # Required when link_type is LINK_TO_APP_DOWNLOAD.
+        # Corresponds to the JSON property `installedAppPackage`
+        # @return [String]
+        attr_accessor :installed_app_package
+      
+        # Optional. The type of content being reported by this transaction. Required
+        # when reporting app downloads or purchased digital content offers made in app
+        # installed through Google Play.
+        # Corresponds to the JSON property `linkType`
+        # @return [String]
+        attr_accessor :link_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_download_event_external_transaction_id = args[:app_download_event_external_transaction_id] if args.key?(:app_download_event_external_transaction_id)
+          @installed_app_category = args[:installed_app_category] if args.key?(:installed_app_category)
+          @installed_app_package = args[:installed_app_package] if args.key?(:installed_app_package)
+          @link_type = args[:link_type] if args.key?(:link_type)
+        end
+      end
+      
       # Details of an external subscription.
       class ExternalSubscription
         include Google::Apis::Core::Hashable
@@ -2291,6 +3189,11 @@ module Google
         # Corresponds to the JSON property `currentTaxAmount`
         # @return [Google::Apis::AndroidpublisherV3::Price]
         attr_accessor :current_tax_amount
+      
+        # Reporting details unique to the external offers program.
+        # Corresponds to the JSON property `externalOfferDetails`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalOfferDetails]
+        attr_accessor :external_offer_details
       
         # Output only. The id of this transaction. All transaction ids under the same
         # package name must be unique. Set when creating the external transaction.
@@ -2367,6 +3270,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_pre_tax_amount = args[:current_pre_tax_amount] if args.key?(:current_pre_tax_amount)
           @current_tax_amount = args[:current_tax_amount] if args.key?(:current_tax_amount)
+          @external_offer_details = args[:external_offer_details] if args.key?(:external_offer_details)
           @external_transaction_id = args[:external_transaction_id] if args.key?(:external_transaction_id)
           @one_time_transaction = args[:one_time_transaction] if args.key?(:one_time_transaction)
           @original_pre_tax_amount = args[:original_pre_tax_amount] if args.key?(:original_pre_tax_amount)
@@ -2536,6 +3440,32 @@ module Google
         end
       end
       
+      # Details of a free trial pricing phase.
+      class FreeTrialDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details about free trial offer phase.
+      class FreeTrialOfferPhase
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A full refund of the remaining amount of a transaction.
       class FullRefund
         include Google::Apis::Core::Hashable
@@ -2614,6 +3544,24 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::TargetingInfo]
         attr_accessor :targeting_info
       
+        # List of generated split APKs without automatic protection, signed with a key
+        # corresponding to certificate_sha256_hash. This field is only present if the
+        # app uses automatic protection. In this case, `generated_split_apks` contains
+        # APKs with automatic protection enabled, whereas this field contains APKs
+        # without automatic protection.
+        # Corresponds to the JSON property `unprotectedGeneratedSplitApks`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GeneratedSplitApk>]
+        attr_accessor :unprotected_generated_split_apks
+      
+        # List of generated standalone APKs without automatic protection, signed with a
+        # key corresponding to certificate_sha256_hash. This field is only present if
+        # the app uses automatic protection. In this case, `generated_standalone_apks`
+        # contains APKs with automatic protection enabled, whereas this field contains
+        # APKs without automatic protection.
+        # Corresponds to the JSON property `unprotectedGeneratedStandaloneApks`
+        # @return [Array<Google::Apis::AndroidpublisherV3::GeneratedStandaloneApk>]
+        attr_accessor :unprotected_generated_standalone_apks
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2627,6 +3575,8 @@ module Google
           @generated_standalone_apks = args[:generated_standalone_apks] if args.key?(:generated_standalone_apks)
           @generated_universal_apk = args[:generated_universal_apk] if args.key?(:generated_universal_apk)
           @targeting_info = args[:targeting_info] if args.key?(:targeting_info)
+          @unprotected_generated_split_apks = args[:unprotected_generated_split_apks] if args.key?(:unprotected_generated_split_apks)
+          @unprotected_generated_standalone_apks = args[:unprotected_generated_standalone_apks] if args.key?(:unprotected_generated_standalone_apks)
         end
       end
       
@@ -2790,6 +3740,43 @@ module Google
         end
       end
       
+      # Request message for GetOneTimeProductOffers.
+      class GetOneTimeProductOfferRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The unique offer ID of the offer to get.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Required. The parent app (package name) of the offer to get.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. The parent one-time product (ID) of the offer to get.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The parent purchase option (ID) of the offer to get.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+        end
+      end
+      
       # Request message for GetSubscriptionOffer.
       class GetSubscriptionOfferRequest
         include Google::Apis::Core::Hashable
@@ -2864,6 +3851,11 @@ module Google
       class Image
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether the image was generated by AI. Attested by the developer.
+        # Corresponds to the JSON property `aiGeneratedState`
+        # @return [String]
+        attr_accessor :ai_generated_state
+      
         # A unique id representing this image.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -2890,6 +3882,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ai_generated_state = args[:ai_generated_state] if args.key?(:ai_generated_state)
           @id = args[:id] if args.key?(:id)
           @sha1 = args[:sha1] if args.key?(:sha1)
           @sha256 = args[:sha256] if args.key?(:sha256)
@@ -3020,7 +4013,7 @@ module Google
         # @return [String]
         attr_accessor :subscription_period
       
-        # Details about taxation, Google Play policy and legal compliance for
+        # Details about taxation, Google Play policy, and legal compliance for
         # subscription products.
         # Corresponds to the JSON property `subscriptionTaxesAndComplianceSettings`
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings]
@@ -3082,6 +4075,25 @@ module Google
           @benefits = args[:benefits] if args.key?(:benefits)
           @description = args[:description] if args.key?(:description)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Additional context around subscriptions in IN_GRACE_PERIOD state.
+      class InGracePeriodStateContext
+        include Google::Apis::Core::Hashable
+      
+        # Context related to renewal declined scenario.
+        # Corresponds to the JSON property `renewalDeclined`
+        # @return [Google::Apis::AndroidpublisherV3::RenewalDeclinedContext]
+        attr_accessor :renewal_declined
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @renewal_declined = args[:renewal_declined] if args.key?(:renewal_declined)
         end
       end
       
@@ -3344,10 +4356,11 @@ module Google
       class InstallmentsBasePlanType
         include Google::Apis::Core::Hashable
       
-        # Optional. Account hold period of the subscription, specified in ISO 8601
-        # format. Acceptable values must be in days and between P0D and P60D. If not
-        # specified, the default value is P30D. The sum of gracePeriodDuration and
-        # accountHoldDuration must be between P30D and P60D days, inclusive.
+        # Optional. Custom account hold period of the subscription, specified in ISO
+        # 8601 format. Acceptable values must be in days and between P0D and P60D. An
+        # empty field represents a recommended account hold, calculated as 60 days minus
+        # grace period. The sum of gracePeriodDuration and accountHoldDuration must be
+        # between P30D and P60D days, inclusive.
         # Corresponds to the JSON property `accountHoldDuration`
         # @return [String]
         attr_accessor :account_hold_duration
@@ -3444,6 +4457,19 @@ module Google
         end
       end
       
+      # Details of an introductory price pricing phase.
+      class IntroductoryPriceDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Contains the introductory price information for a subscription.
       class IntroductoryPriceInfo
         include Google::Apis::Core::Hashable
@@ -3485,6 +4511,81 @@ module Google
           @introductory_price_currency_code = args[:introductory_price_currency_code] if args.key?(:introductory_price_currency_code)
           @introductory_price_cycles = args[:introductory_price_cycles] if args.key?(:introductory_price_cycles)
           @introductory_price_period = args[:introductory_price_period] if args.key?(:introductory_price_period)
+        end
+      end
+      
+      # Details about introductory price offer phase.
+      class IntroductoryPriceOfferPhase
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Expiry time details of a subscription item.
+      class ItemExpiryTimeDetails
+        include Google::Apis::Core::Hashable
+      
+        # The new expiry time for this subscription item.
+        # Corresponds to the JSON property `expiryTime`
+        # @return [String]
+        attr_accessor :expiry_time
+      
+        # The product ID of the subscription item (for example, 'premium_plan').
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @product_id = args[:product_id] if args.key?(:product_id)
+        end
+      end
+      
+      # Details about a subscription line item that is being replaced.
+      class ItemReplacement
+        include Google::Apis::Core::Hashable
+      
+        # The base plan ID of the subscription line item being replaced.
+        # Corresponds to the JSON property `basePlanId`
+        # @return [String]
+        attr_accessor :base_plan_id
+      
+        # The offer ID of the subscription line item being replaced, if applicable.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # The product ID of the subscription line item being replaced.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # The replacement mode applied during the purchase.
+        # Corresponds to the JSON property `replacementMode`
+        # @return [String]
+        attr_accessor :replacement_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @replacement_mode = args[:replacement_mode] if args.key?(:replacement_mode)
         end
       end
       
@@ -3619,6 +4720,78 @@ module Google
         def update!(**args)
           @device_tier_configs = args[:device_tier_configs] if args.key?(:device_tier_configs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ListOneTimeProductOffers.
+      class ListOneTimeProductOffersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The one_time_product offers from the specified request.
+        # Corresponds to the JSON property `oneTimeProductOffers`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProductOffer>]
+        attr_accessor :one_time_product_offers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @one_time_product_offers = args[:one_time_product_offers] if args.key?(:one_time_product_offers)
+        end
+      end
+      
+      # Response message for ListOneTimeProducts.
+      class ListOneTimeProductsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The one-time products from the specified app.
+        # Corresponds to the JSON property `oneTimeProducts`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProduct>]
+        attr_accessor :one_time_products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @one_time_products = args[:one_time_products] if args.key?(:one_time_products)
+        end
+      end
+      
+      # Response listing all releases for a given track that are either ready to be
+      # sent for review, in review, approved, not approved or available.
+      class ListReleaseSummariesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of releases for this track. A maximum of 20 releases can be returned.
+        # Corresponds to the JSON property `releases`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ReleaseSummary>]
+        attr_accessor :releases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @releases = args[:releases] if args.key?(:releases)
         end
       end
       
@@ -3815,6 +4988,20 @@ module Google
         attr_accessor :is_tokenized_digital_asset
         alias_method :is_tokenized_digital_asset?, :is_tokenized_digital_asset
       
+        # Product tax category code to assign to the in-app product. Product tax
+        # category determines the transaction tax rates applied to the product. Refer to
+        # the [Help Center article](https://support.google.com/googleplay/android-
+        # developer/answer/16408159) for more information.
+        # Corresponds to the JSON property `productTaxCategoryCode`
+        # @return [String]
+        attr_accessor :product_tax_category_code
+      
+        # Regional age rating information. Currently this field is only supported for
+        # region code `US`.
+        # Corresponds to the JSON property `regionalProductAgeRatingInfos`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo>]
+        attr_accessor :regional_product_age_rating_infos
+      
         # A mapping from region code to tax rate details. The keys are region codes as
         # defined by Unicode's "CLDR".
         # Corresponds to the JSON property `taxRateInfoByRegionCode`
@@ -3829,6 +5016,8 @@ module Google
         def update!(**args)
           @eea_withdrawal_right_type = args[:eea_withdrawal_right_type] if args.key?(:eea_withdrawal_right_type)
           @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
+          @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
+          @regional_product_age_rating_infos = args[:regional_product_age_rating_infos] if args.key?(:regional_product_age_rating_infos)
           @tax_rate_info_by_region_code = args[:tax_rate_info_by_region_code] if args.key?(:tax_rate_info_by_region_code)
         end
       end
@@ -4086,6 +5275,87 @@ module Google
         end
       end
       
+      # Offer phase details.
+      class OfferPhase
+        include Google::Apis::Core::Hashable
+      
+        # Details about base price offer phase.
+        # Corresponds to the JSON property `basePrice`
+        # @return [Google::Apis::AndroidpublisherV3::BasePriceOfferPhase]
+        attr_accessor :base_price
+      
+        # Details about free trial offer phase.
+        # Corresponds to the JSON property `freeTrial`
+        # @return [Google::Apis::AndroidpublisherV3::FreeTrialOfferPhase]
+        attr_accessor :free_trial
+      
+        # Details about introductory price offer phase.
+        # Corresponds to the JSON property `introductoryPrice`
+        # @return [Google::Apis::AndroidpublisherV3::IntroductoryPriceOfferPhase]
+        attr_accessor :introductory_price
+      
+        # Details about proration period offer phase.
+        # Corresponds to the JSON property `prorationPeriod`
+        # @return [Google::Apis::AndroidpublisherV3::ProrationPeriodOfferPhase]
+        attr_accessor :proration_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_price = args[:base_price] if args.key?(:base_price)
+          @free_trial = args[:free_trial] if args.key?(:free_trial)
+          @introductory_price = args[:introductory_price] if args.key?(:introductory_price)
+          @proration_period = args[:proration_period] if args.key?(:proration_period)
+        end
+      end
+      
+      # Details of a pricing phase for the entitlement period funded by this order.
+      class OfferPhaseDetails
+        include Google::Apis::Core::Hashable
+      
+        # Details of a base price pricing phase.
+        # Corresponds to the JSON property `baseDetails`
+        # @return [Google::Apis::AndroidpublisherV3::BaseDetails]
+        attr_accessor :base_details
+      
+        # Details of a free trial pricing phase.
+        # Corresponds to the JSON property `freeTrialDetails`
+        # @return [Google::Apis::AndroidpublisherV3::FreeTrialDetails]
+        attr_accessor :free_trial_details
+      
+        # Details of an introductory price pricing phase.
+        # Corresponds to the JSON property `introductoryPriceDetails`
+        # @return [Google::Apis::AndroidpublisherV3::IntroductoryPriceDetails]
+        attr_accessor :introductory_price_details
+      
+        # Details of a proration period. A proration period can be a period calculated
+        # during a plan change to cover existing entitlements (For more information, see
+        # [Allow users to upgrade, downgrade, or change their subscription](https://
+        # developer.android.com/google/play/billing/subscriptions#allow-users-change),
+        # or a prorated period to align add-on renewal dates with the base (For more
+        # information, see [Rules applicable for items in the purchase](https://
+        # developer.android.com/google/play/billing/subscription-with-addons#rules-base-
+        # addons)).
+        # Corresponds to the JSON property `prorationPeriodDetails`
+        # @return [Google::Apis::AndroidpublisherV3::ProrationPeriodDetails]
+        attr_accessor :proration_period_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_details = args[:base_details] if args.key?(:base_details)
+          @free_trial_details = args[:free_trial_details] if args.key?(:free_trial_details)
+          @introductory_price_details = args[:introductory_price_details] if args.key?(:introductory_price_details)
+          @proration_period_details = args[:proration_period_details] if args.key?(:proration_period_details)
+        end
+      end
+      
       # Represents a custom tag specified for a product offer.
       class OfferTag
         include Google::Apis::Core::Hashable
@@ -4103,6 +5373,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tag = args[:tag] if args.key?(:tag)
+        end
+      end
+      
+      # Additional context around subscriptions in ON_HOLD state.
+      class OnHoldStateContext
+        include Google::Apis::Core::Hashable
+      
+        # Context related to renewal declined scenario.
+        # Corresponds to the JSON property `renewalDeclined`
+        # @return [Google::Apis::AndroidpublisherV3::RenewalDeclinedContext]
+        attr_accessor :renewal_declined
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @renewal_declined = args[:renewal_declined] if args.key?(:renewal_declined)
         end
       end
       
@@ -4139,6 +5428,559 @@ module Google
         end
       end
       
+      # A single one-time product for an app.
+      class OneTimeProduct
+        include Google::Apis::Core::Hashable
+      
+        # Required. Set of localized title and description data. Must not have duplicate
+        # entries with the same language_code.
+        # Corresponds to the JSON property `listings`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProductListing>]
+        attr_accessor :listings
+      
+        # Optional. List of up to 20 custom tags specified for this one-time product,
+        # and returned to the app through the billing library. Purchase options and
+        # offers for this product will also receive these tags in the billing library.
+        # Corresponds to the JSON property `offerTags`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OfferTag>]
+        attr_accessor :offer_tags
+      
+        # Required. Immutable. Package name of the parent app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. Immutable. Unique product ID of the product. Unique within the
+        # parent app. Product IDs must start with a number or lowercase letter, and can
+        # contain numbers (0-9), lowercase letters (a-z), underscores (_), and periods (.
+        # ).
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. The set of purchase options for this one-time product.
+        # Corresponds to the JSON property `purchaseOptions`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProductPurchaseOption>]
+        attr_accessor :purchase_options
+      
+        # The version of the available regions being used for the specified resource.
+        # Corresponds to the JSON property `regionsVersion`
+        # @return [Google::Apis::AndroidpublisherV3::RegionsVersion]
+        attr_accessor :regions_version
+      
+        # Countries where the purchase of this product is restricted to payment methods
+        # registered in the same country. If empty, no payment location restrictions are
+        # imposed.
+        # Corresponds to the JSON property `restrictedPaymentCountries`
+        # @return [Google::Apis::AndroidpublisherV3::RestrictedPaymentCountries]
+        attr_accessor :restricted_payment_countries
+      
+        # Details about taxation, Google Play policy and legal compliance for one-time
+        # products.
+        # Corresponds to the JSON property `taxAndComplianceSettings`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductTaxAndComplianceSettings]
+        attr_accessor :tax_and_compliance_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @listings = args[:listings] if args.key?(:listings)
+          @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @purchase_options = args[:purchase_options] if args.key?(:purchase_options)
+          @regions_version = args[:regions_version] if args.key?(:regions_version)
+          @restricted_payment_countries = args[:restricted_payment_countries] if args.key?(:restricted_payment_countries)
+          @tax_and_compliance_settings = args[:tax_and_compliance_settings] if args.key?(:tax_and_compliance_settings)
+        end
+      end
+      
+      # A purchase option that can be bought.
+      class OneTimeProductBuyPurchaseOption
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether this purchase option will be available in legacy PBL flows
+        # that do not support one-time products model. Up to one "buy" purchase option
+        # can be marked as backwards compatible.
+        # Corresponds to the JSON property `legacyCompatible`
+        # @return [Boolean]
+        attr_accessor :legacy_compatible
+        alias_method :legacy_compatible?, :legacy_compatible
+      
+        # Optional. Whether this purchase option allows multi-quantity. Multi-quantity
+        # allows buyer to purchase more than one item in a single checkout.
+        # Corresponds to the JSON property `multiQuantityEnabled`
+        # @return [Boolean]
+        attr_accessor :multi_quantity_enabled
+        alias_method :multi_quantity_enabled?, :multi_quantity_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @legacy_compatible = args[:legacy_compatible] if args.key?(:legacy_compatible)
+          @multi_quantity_enabled = args[:multi_quantity_enabled] if args.key?(:multi_quantity_enabled)
+        end
+      end
+      
+      # Configuration specific to discounted offers.
+      class OneTimeProductDiscountedOffer
+        include Google::Apis::Core::Hashable
+      
+        # Time when the offer will stop being available.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. The number of times this offer can be redeemed. If unset or set to 0,
+        # allows for unlimited offer redemptions. Otherwise must be a number between 1
+        # and 50 inclusive.
+        # Corresponds to the JSON property `redemptionLimit`
+        # @return [Fixnum]
+        attr_accessor :redemption_limit
+      
+        # Time when the offer will start being available.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @redemption_limit = args[:redemption_limit] if args.key?(:redemption_limit)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Regional store listing for a one-time product.
+      class OneTimeProductListing
+        include Google::Apis::Core::Hashable
+      
+        # Required. The description of this product in the language of this listing. The
+        # maximum length is 200 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The language of this listing, as defined by BCP-47, e.g., "en-US".
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Required. The title of this product in the language of this listing. The
+        # maximum length is 55 characters.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A single offer for a one-time product.
+      class OneTimeProductOffer
+        include Google::Apis::Core::Hashable
+      
+        # Configuration specific to discounted offers.
+        # Corresponds to the JSON property `discountedOffer`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductDiscountedOffer]
+        attr_accessor :discounted_offer
+      
+        # Required. Immutable. The ID of this product offer. Must be unique within the
+        # purchase option. It must start with a number or lower-case letter, and can
+        # only contain lower-case letters (a-z), numbers (0-9), and hyphens (-). The
+        # maximum length is 63 characters.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # Optional. List of up to 20 custom tags specified for this offer, and returned
+        # to the app through the billing library.
+        # Corresponds to the JSON property `offerTags`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OfferTag>]
+        attr_accessor :offer_tags
+      
+        # Required. Immutable. The package name of the app the parent product belongs to.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Configuration specific to pre-order offers.
+        # Corresponds to the JSON property `preOrderOffer`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductPreOrderOffer]
+        attr_accessor :pre_order_offer
+      
+        # Required. Immutable. The ID of the parent product this offer belongs to.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Required. Immutable. The ID of the purchase option to which this offer is an
+        # extension.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        # Set of regional pricing and availability information for this offer. Must not
+        # have duplicate entries with the same region_code.
+        # Corresponds to the JSON property `regionalPricingAndAvailabilityConfigs`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProductOfferRegionalPricingAndAvailabilityConfig>]
+        attr_accessor :regional_pricing_and_availability_configs
+      
+        # The version of the available regions being used for the specified resource.
+        # Corresponds to the JSON property `regionsVersion`
+        # @return [Google::Apis::AndroidpublisherV3::RegionsVersion]
+        attr_accessor :regions_version
+      
+        # Output only. The current state of this offer. This field cannot be changed by
+        # updating the resource. Use the dedicated endpoints instead.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discounted_offer = args[:discounted_offer] if args.key?(:discounted_offer)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @pre_order_offer = args[:pre_order_offer] if args.key?(:pre_order_offer)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+          @regional_pricing_and_availability_configs = args[:regional_pricing_and_availability_configs] if args.key?(:regional_pricing_and_availability_configs)
+          @regions_version = args[:regions_version] if args.key?(:regions_version)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Options for one-time product offers without a regional price override.
+      class OneTimeProductOfferNoPriceOverrideOptions
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Regional pricing and availability configuration for a one-time product offer.
+      class OneTimeProductOfferRegionalPricingAndAvailabilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `absoluteDiscount`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :absolute_discount
+      
+        # Required. The availability for this region.
+        # Corresponds to the JSON property `availability`
+        # @return [String]
+        attr_accessor :availability
+      
+        # Options for one-time product offers without a regional price override.
+        # Corresponds to the JSON property `noOverride`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductOfferNoPriceOverrideOptions]
+        attr_accessor :no_override
+      
+        # Required. Region code this configuration applies to, as defined by ISO 3166-2,
+        # e.g., "US".
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # The fraction of the purchase option price that the user pays for this offer.
+        # For example, if the purchase option price for this region is $12, then a 50%
+        # discount would correspond to a price of $6. The discount must be specified as
+        # a fraction strictly larger than 0 and strictly smaller than 1. The resulting
+        # price will be rounded to the nearest billable unit (e.g. cents for USD). The
+        # relative discount is considered invalid if the discounted price ends up being
+        # smaller than the minimum price allowed in this region.
+        # Corresponds to the JSON property `relativeDiscount`
+        # @return [Float]
+        attr_accessor :relative_discount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @absolute_discount = args[:absolute_discount] if args.key?(:absolute_discount)
+          @availability = args[:availability] if args.key?(:availability)
+          @no_override = args[:no_override] if args.key?(:no_override)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @relative_discount = args[:relative_discount] if args.key?(:relative_discount)
+        end
+      end
+      
+      # Configuration specific to pre-order offers.
+      class OneTimeProductPreOrderOffer
+        include Google::Apis::Core::Hashable
+      
+        # Required. Time when the pre-order will stop being available.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Required. Immutable. Specifies how price changes affect pre-existing pre-
+        # orders.
+        # Corresponds to the JSON property `priceChangeBehavior`
+        # @return [String]
+        attr_accessor :price_change_behavior
+      
+        # Required. Time on which the product associated with the pre-order will be
+        # released and the pre-order orders fulfilled.
+        # Corresponds to the JSON property `releaseTime`
+        # @return [String]
+        attr_accessor :release_time
+      
+        # Required. Time when the pre-order will start being available.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @price_change_behavior = args[:price_change_behavior] if args.key?(:price_change_behavior)
+          @release_time = args[:release_time] if args.key?(:release_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # A single purchase option for a one-time product.
+      class OneTimeProductPurchaseOption
+        include Google::Apis::Core::Hashable
+      
+        # A purchase option that can be bought.
+        # Corresponds to the JSON property `buyOption`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductBuyPurchaseOption]
+        attr_accessor :buy_option
+      
+        # Pricing information for any new regions Play may launch in the future.
+        # Corresponds to the JSON property `newRegionsConfig`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductPurchaseOptionNewRegionsConfig]
+        attr_accessor :new_regions_config
+      
+        # Optional. List of up to 20 custom tags specified for this purchase option, and
+        # returned to the app through the billing library. Offers for this purchase
+        # option will also receive these tags in the billing library.
+        # Corresponds to the JSON property `offerTags`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OfferTag>]
+        attr_accessor :offer_tags
+      
+        # Required. Immutable. The unique identifier of this purchase option. Must be
+        # unique within the one-time product. It must start with a number or lower-case
+        # letter, and can only contain lower-case letters (a-z), numbers (0-9), and
+        # hyphens (-). The maximum length is 63 characters.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        # Regional pricing and availability information for this purchase option.
+        # Corresponds to the JSON property `regionalPricingAndAvailabilityConfigs`
+        # @return [Array<Google::Apis::AndroidpublisherV3::OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>]
+        attr_accessor :regional_pricing_and_availability_configs
+      
+        # A purchase option that can be rented.
+        # Corresponds to the JSON property `rentOption`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductRentPurchaseOption]
+        attr_accessor :rent_option
+      
+        # Output only. The state of the purchase option, i.e., whether it's active. This
+        # field cannot be changed by updating the resource. Use the dedicated endpoints
+        # instead.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Details about taxation, Google Play policy and legal compliance for one-time
+        # product purchase options.
+        # Corresponds to the JSON property `taxAndComplianceSettings`
+        # @return [Google::Apis::AndroidpublisherV3::PurchaseOptionTaxAndComplianceSettings]
+        attr_accessor :tax_and_compliance_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buy_option = args[:buy_option] if args.key?(:buy_option)
+          @new_regions_config = args[:new_regions_config] if args.key?(:new_regions_config)
+          @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+          @regional_pricing_and_availability_configs = args[:regional_pricing_and_availability_configs] if args.key?(:regional_pricing_and_availability_configs)
+          @rent_option = args[:rent_option] if args.key?(:rent_option)
+          @state = args[:state] if args.key?(:state)
+          @tax_and_compliance_settings = args[:tax_and_compliance_settings] if args.key?(:tax_and_compliance_settings)
+        end
+      end
+      
+      # Pricing information for any new regions Play may launch in the future.
+      class OneTimeProductPurchaseOptionNewRegionsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The regional availability for the new regions config. When set to
+        # AVAILABLE, the pricing information will be used for any new regions Play may
+        # launch in the future.
+        # Corresponds to the JSON property `availability`
+        # @return [String]
+        attr_accessor :availability
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `eurPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :eur_price
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `usdPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :usd_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability = args[:availability] if args.key?(:availability)
+          @eur_price = args[:eur_price] if args.key?(:eur_price)
+          @usd_price = args[:usd_price] if args.key?(:usd_price)
+        end
+      end
+      
+      # Regional pricing and availability configuration for a purchase option.
+      class OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # The availability of the purchase option.
+        # Corresponds to the JSON property `availability`
+        # @return [String]
+        attr_accessor :availability
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :price
+      
+        # Required. Region code this configuration applies to, as defined by ISO 3166-2,
+        # e.g., "US".
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability = args[:availability] if args.key?(:availability)
+          @price = args[:price] if args.key?(:price)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # A purchase option that can be rented.
+      class OneTimeProductRentPurchaseOption
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The amount of time the user has after starting consuming the
+        # entitlement before it is revoked. Specified in ISO 8601 format.
+        # Corresponds to the JSON property `expirationPeriod`
+        # @return [String]
+        attr_accessor :expiration_period
+      
+        # Required. The amount of time a user has the entitlement for. Starts at
+        # purchase flow completion. Specified in ISO 8601 format.
+        # Corresponds to the JSON property `rentalPeriod`
+        # @return [String]
+        attr_accessor :rental_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_period = args[:expiration_period] if args.key?(:expiration_period)
+          @rental_period = args[:rental_period] if args.key?(:rental_period)
+        end
+      end
+      
+      # Details about taxation, Google Play policy and legal compliance for one-time
+      # products.
+      class OneTimeProductTaxAndComplianceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Whether this one-time product is declared as a product representing a
+        # tokenized digital asset.
+        # Corresponds to the JSON property `isTokenizedDigitalAsset`
+        # @return [Boolean]
+        attr_accessor :is_tokenized_digital_asset
+        alias_method :is_tokenized_digital_asset?, :is_tokenized_digital_asset
+      
+        # Product tax category code to assign to the one-time product. Product tax
+        # category determines the transaction tax rates applied to the product. Refer to
+        # the [Help Center article](https://support.google.com/googleplay/android-
+        # developer/answer/16408159) for more information.
+        # Corresponds to the JSON property `productTaxCategoryCode`
+        # @return [String]
+        attr_accessor :product_tax_category_code
+      
+        # Regional age rating information. Currently this field is only supported for
+        # region code `US`.
+        # Corresponds to the JSON property `regionalProductAgeRatingInfos`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo>]
+        attr_accessor :regional_product_age_rating_infos
+      
+        # Regional tax configuration.
+        # Corresponds to the JSON property `regionalTaxConfigs`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalTaxConfig>]
+        attr_accessor :regional_tax_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
+          @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
+          @regional_product_age_rating_infos = args[:regional_product_age_rating_infos] if args.key?(:regional_product_age_rating_infos)
+          @regional_tax_configs = args[:regional_tax_configs] if args.key?(:regional_tax_configs)
+        end
+      end
+      
       # Details of a one-time purchase.
       class OneTimePurchaseDetails
         include Google::Apis::Core::Hashable
@@ -4148,10 +5990,28 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
+        # Details of a pre-order purchase.
+        # Corresponds to the JSON property `preorderDetails`
+        # @return [Google::Apis::AndroidpublisherV3::PreorderDetails]
+        attr_accessor :preorder_details
+      
+        # ID of the purchase option. This field is set for both purchase options and
+        # variant offers. For purchase options, this ID identifies the purchase option
+        # itself. For variant offers, this ID refers to the associated purchase option,
+        # and in conjunction with offer_id it identifies the variant offer.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
         # The number of items purchased (for multi-quantity item purchases).
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
+      
+        # Details of a rental purchase.
+        # Corresponds to the JSON property `rentalDetails`
+        # @return [Google::Apis::AndroidpublisherV3::RentalDetails]
+        attr_accessor :rental_details
       
         def initialize(**args)
            update!(**args)
@@ -4160,7 +6020,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @preorder_details = args[:preorder_details] if args.key?(:preorder_details)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
           @quantity = args[:quantity] if args.key?(:quantity)
+          @rental_details = args[:rental_details] if args.key?(:rental_details)
         end
       end
       
@@ -4236,6 +6099,11 @@ module Google
         # @return [String]
         attr_accessor :purchase_token
       
+        # The originating sales channel of the order.
+        # Corresponds to the JSON property `salesChannel`
+        # @return [String]
+        attr_accessor :sales_channel
+      
         # The state of the order.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -4267,6 +6135,7 @@ module Google
           @order_id = args[:order_id] if args.key?(:order_id)
           @points_details = args[:points_details] if args.key?(:points_details)
           @purchase_token = args[:purchase_token] if args.key?(:purchase_token)
+          @sales_channel = args[:sales_channel] if args.key?(:sales_channel)
           @state = args[:state] if args.key?(:state)
           @tax = args[:tax] if args.key?(:tax)
           @total = args[:total] if args.key?(:total)
@@ -4485,6 +6354,34 @@ module Google
         end
       end
       
+      # Information specific to an out of app purchase.
+      class OutOfAppPurchaseContext
+        include Google::Apis::Core::Hashable
+      
+        # User account identifier in the third-party service.
+        # Corresponds to the JSON property `expiredExternalAccountIdentifiers`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers]
+        attr_accessor :expired_external_account_identifiers
+      
+        # The purchase token of the last expired subscription. This purchase token must
+        # only be used to help identify the user if the link between the purchaseToken
+        # and user is stored in your database. This cannot be used to call the Google
+        # Developer API if it has been more than 60 days since expiry.
+        # Corresponds to the JSON property `expiredPurchaseToken`
+        # @return [String]
+        attr_accessor :expired_purchase_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expired_external_account_identifiers = args[:expired_external_account_identifiers] if args.key?(:expired_external_account_identifiers)
+          @expired_purchase_token = args[:expired_purchase_token] if args.key?(:expired_purchase_token)
+        end
+      end
+      
       # Information about the current page. List operations that supports paging
       # return only one "page" of results. This protocol buffer message describes the
       # page that has been returned.
@@ -4673,6 +6570,38 @@ module Google
         end
       end
       
+      # Details of a pre-order purchase.
+      class PreorderDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Offer details information related to a preorder line item.
+      class PreorderOfferDetails
+        include Google::Apis::Core::Hashable
+      
+        # The time when a preordered item is released for a preorder purchase.
+        # Corresponds to the JSON property `preorderReleaseTime`
+        # @return [String]
+        attr_accessor :preorder_release_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @preorder_release_time = args[:preorder_release_time] if args.key?(:preorder_release_time)
+        end
+      end
+      
       # Represents a base plan that does not automatically renew at the end of the
       # base plan, and must be manually renewed by the user.
       class PrepaidBasePlanType
@@ -4748,6 +6677,38 @@ module Google
         end
       end
       
+      # Information related to a price step-up that requires user consent.
+      class PriceStepUpConsentDetails
+        include Google::Apis::Core::Hashable
+      
+        # The deadline by which the user must provide consent. If consent is not
+        # provided by this time, the subscription will be canceled.
+        # Corresponds to the JSON property `consentDeadlineTime`
+        # @return [String]
+        attr_accessor :consent_deadline_time
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `newPrice`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :new_price
+      
+        # Output only. The state of the price step-up consent.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_deadline_time = args[:consent_deadline_time] if args.key?(:consent_deadline_time)
+          @new_price = args[:new_price] if args.key?(:new_price)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Details of when the order was processed.
       class ProcessedEvent
         include Google::Apis::Core::Hashable
@@ -4764,6 +6725,100 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event_time = args[:event_time] if args.key?(:event_time)
+        end
+      end
+      
+      # Contains item-level info for a ProductPurchaseV2.
+      class ProductLineItem
+        include Google::Apis::Core::Hashable
+      
+        # The purchased product ID (for example, 'monthly001').
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Offer details information related to a purchase line item.
+        # Corresponds to the JSON property `productOfferDetails`
+        # @return [Google::Apis::AndroidpublisherV3::ProductOfferDetails]
+        attr_accessor :product_offer_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @product_offer_details = args[:product_offer_details] if args.key?(:product_offer_details)
+        end
+      end
+      
+      # Offer details information related to a purchase line item.
+      class ProductOfferDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The consumption state of the purchase.
+        # Corresponds to the JSON property `consumptionState`
+        # @return [String]
+        attr_accessor :consumption_state
+      
+        # The offer ID. Only present for offers.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # The latest offer tags associated with the offer. It includes tags inherited
+        # from the purchase option.
+        # Corresponds to the JSON property `offerTags`
+        # @return [Array<String>]
+        attr_accessor :offer_tags
+      
+        # The per-transaction offer token used to make this purchase line item.
+        # Corresponds to the JSON property `offerToken`
+        # @return [String]
+        attr_accessor :offer_token
+      
+        # Offer details information related to a preorder line item.
+        # Corresponds to the JSON property `preorderOfferDetails`
+        # @return [Google::Apis::AndroidpublisherV3::PreorderOfferDetails]
+        attr_accessor :preorder_offer_details
+      
+        # The purchase option ID.
+        # Corresponds to the JSON property `purchaseOptionId`
+        # @return [String]
+        attr_accessor :purchase_option_id
+      
+        # The quantity associated with the purchase of the inapp product.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # The quantity eligible for refund, i.e. quantity that hasn't been refunded. The
+        # value reflects quantity-based partial refunds and full refunds.
+        # Corresponds to the JSON property `refundableQuantity`
+        # @return [Fixnum]
+        attr_accessor :refundable_quantity
+      
+        # Offer details information related to a rental line item.
+        # Corresponds to the JSON property `rentOfferDetails`
+        # @return [Google::Apis::AndroidpublisherV3::RentOfferDetails]
+        attr_accessor :rent_offer_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumption_state = args[:consumption_state] if args.key?(:consumption_state)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
+          @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
+          @offer_token = args[:offer_token] if args.key?(:offer_token)
+          @preorder_offer_details = args[:preorder_offer_details] if args.key?(:preorder_offer_details)
+          @purchase_option_id = args[:purchase_option_id] if args.key?(:purchase_option_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @refundable_quantity = args[:refundable_quantity] if args.key?(:refundable_quantity)
+          @rent_offer_details = args[:rent_offer_details] if args.key?(:rent_offer_details)
         end
       end
       
@@ -4889,6 +6944,94 @@ module Google
         end
       end
       
+      # A ProductPurchaseV2 resource indicates the status of a user's inapp product
+      # purchase.
+      class ProductPurchaseV2
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The acknowledgement state of the purchase.
+        # Corresponds to the JSON property `acknowledgementState`
+        # @return [String]
+        attr_accessor :acknowledgement_state
+      
+        # This kind represents a ProductPurchaseV2 object in the androidpublisher
+        # service.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # An obfuscated version of the id that is uniquely associated with the user's
+        # account in your app. Only present if specified using https://developer.android.
+        # com/reference/com/android/billingclient/api/BillingFlowParams.Builder#
+        # setobfuscatedaccountid when the purchase was made.
+        # Corresponds to the JSON property `obfuscatedExternalAccountId`
+        # @return [String]
+        attr_accessor :obfuscated_external_account_id
+      
+        # An obfuscated version of the id that is uniquely associated with the user's
+        # profile in your app. Only present if specified using https://developer.android.
+        # com/reference/com/android/billingclient/api/BillingFlowParams.Builder#
+        # setobfuscatedprofileid when the purchase was made.
+        # Corresponds to the JSON property `obfuscatedExternalProfileId`
+        # @return [String]
+        attr_accessor :obfuscated_external_profile_id
+      
+        # The order id associated with the purchase of the inapp product. May not be set
+        # if there is no order associated with the purchase.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        # Contains item-level info for a ProductPurchaseV2.
+        # Corresponds to the JSON property `productLineItem`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ProductLineItem>]
+        attr_accessor :product_line_item
+      
+        # The time when the purchase was successful, i.e., when the PurchaseState has
+        # changed to PURCHASED. This field will not be present until the payment is
+        # complete. For example, if the user initiated a pending transaction (https://
+        # developer.android.com/google/play/billing/integrate#pending), this field will
+        # not be populated until the user successfully completes the steps required to
+        # complete the transaction.
+        # Corresponds to the JSON property `purchaseCompletionTime`
+        # @return [String]
+        attr_accessor :purchase_completion_time
+      
+        # Context about the purchase state.
+        # Corresponds to the JSON property `purchaseStateContext`
+        # @return [Google::Apis::AndroidpublisherV3::PurchaseStateContext]
+        attr_accessor :purchase_state_context
+      
+        # ISO 3166-1 alpha-2 billing region code of the user at the time the product was
+        # granted.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Context about a test purchase.
+        # Corresponds to the JSON property `testPurchaseContext`
+        # @return [Google::Apis::AndroidpublisherV3::TestPurchaseContext]
+        attr_accessor :test_purchase_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acknowledgement_state = args[:acknowledgement_state] if args.key?(:acknowledgement_state)
+          @kind = args[:kind] if args.key?(:kind)
+          @obfuscated_external_account_id = args[:obfuscated_external_account_id] if args.key?(:obfuscated_external_account_id)
+          @obfuscated_external_profile_id = args[:obfuscated_external_profile_id] if args.key?(:obfuscated_external_profile_id)
+          @order_id = args[:order_id] if args.key?(:order_id)
+          @product_line_item = args[:product_line_item] if args.key?(:product_line_item)
+          @purchase_completion_time = args[:purchase_completion_time] if args.key?(:purchase_completion_time)
+          @purchase_state_context = args[:purchase_state_context] if args.key?(:purchase_state_context)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @test_purchase_context = args[:test_purchase_context] if args.key?(:test_purchase_context)
+        end
+      end
+      
       # Request for the product.purchases.acknowledge API.
       class ProductPurchasesAcknowledgeRequest
         include Google::Apis::Core::Hashable
@@ -4905,6 +7048,99 @@ module Google
         # Update properties of this object
         def update!(**args)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
+        end
+      end
+      
+      # Details of a proration period. A proration period can be a period calculated
+      # during a plan change to cover existing entitlements (For more information, see
+      # [Allow users to upgrade, downgrade, or change their subscription](https://
+      # developer.android.com/google/play/billing/subscriptions#allow-users-change),
+      # or a prorated period to align add-on renewal dates with the base (For more
+      # information, see [Rules applicable for items in the purchase](https://
+      # developer.android.com/google/play/billing/subscription-with-addons#rules-base-
+      # addons)).
+      class ProrationPeriodDetails
+        include Google::Apis::Core::Hashable
+      
+        # Represent the original offer phase from the purchased the line item if the
+        # proration period contains any of them. For example, a proration period from
+        # CHARGE_FULL_PRICE plan change may merge the 1st offer phase of the
+        # subscription offer of the new product user purchased. In this case, the
+        # original offer phase will be set here.
+        # Corresponds to the JSON property `originalOfferPhase`
+        # @return [String]
+        attr_accessor :original_offer_phase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @original_offer_phase = args[:original_offer_phase] if args.key?(:original_offer_phase)
+        end
+      end
+      
+      # Details about proration period offer phase.
+      class ProrationPeriodOfferPhase
+        include Google::Apis::Core::Hashable
+      
+        # The original offer phase type before the proration period. Only set when the
+        # proration period is updated from an existing offer phase.
+        # Corresponds to the JSON property `originalOfferPhaseType`
+        # @return [String]
+        attr_accessor :original_offer_phase_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @original_offer_phase_type = args[:original_offer_phase_type] if args.key?(:original_offer_phase_type)
+        end
+      end
+      
+      # Details about taxation, Google Play policy and legal compliance for one-time
+      # product purchase options.
+      class PurchaseOptionTaxAndComplianceSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Digital content or service classification for products distributed
+        # to users in eligible regions. If unset, it defaults to `
+        # WITHDRAWAL_RIGHT_DIGITAL_CONTENT`. Refer to the [Help Center article](https://
+        # support.google.com/googleplay/android-developer/answer/10463498) for more
+        # information.
+        # Corresponds to the JSON property `withdrawalRightType`
+        # @return [String]
+        attr_accessor :withdrawal_right_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @withdrawal_right_type = args[:withdrawal_right_type] if args.key?(:withdrawal_right_type)
+        end
+      end
+      
+      # Context about the purchase state.
+      class PurchaseStateContext
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The purchase state of the purchase.
+        # Corresponds to the JSON property `purchaseState`
+        # @return [String]
+        attr_accessor :purchase_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @purchase_state = args[:purchase_state] if args.key?(:purchase_state)
         end
       end
       
@@ -5119,6 +7355,31 @@ module Google
         end
       end
       
+      # Details about the age rating for a specific geographic region.
+      class RegionalProductAgeRatingInfo
+        include Google::Apis::Core::Hashable
+      
+        # The age rating tier of a product for the given region.
+        # Corresponds to the JSON property `productAgeRatingTier`
+        # @return [String]
+        attr_accessor :product_age_rating_tier
+      
+        # Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_age_rating_tier = args[:product_age_rating_tier] if args.key?(:product_age_rating_tier)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
       # Configuration for a subscription offer in a single region.
       class RegionalSubscriptionOfferConfig
         include Google::Apis::Core::Hashable
@@ -5213,6 +7474,51 @@ module Google
         end
       end
       
+      # Details about taxation in a given geographical region.
+      class RegionalTaxConfig
+        include Google::Apis::Core::Hashable
+      
+        # You must tell us if your app contains streaming products to correctly charge
+        # US state and local sales tax. Field only supported in the United States.
+        # Corresponds to the JSON property `eligibleForStreamingServiceTaxRate`
+        # @return [Boolean]
+        attr_accessor :eligible_for_streaming_service_tax_rate
+        alias_method :eligible_for_streaming_service_tax_rate?, :eligible_for_streaming_service_tax_rate
+      
+        # Required. Region code this configuration applies to, as defined by ISO 3166-2,
+        # e.g. "US".
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # To collect communications or amusement taxes in the United States, choose the
+        # appropriate tax category. [Learn more](https://support.google.com/googleplay/
+        # android-developer/answer/10463498#streaming_tax).
+        # Corresponds to the JSON property `streamingTaxType`
+        # @return [String]
+        attr_accessor :streaming_tax_type
+      
+        # Tax tier to specify reduced tax rate. Developers who sell digital news,
+        # magazines, newspapers, books, or audiobooks in various regions may be eligible
+        # for reduced tax rates. [Learn more](https://support.google.com/googleplay/
+        # android-developer/answer/10463498).
+        # Corresponds to the JSON property `taxTier`
+        # @return [String]
+        attr_accessor :tax_tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligible_for_streaming_service_tax_rate = args[:eligible_for_streaming_service_tax_rate] if args.key?(:eligible_for_streaming_service_tax_rate)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @streaming_tax_type = args[:streaming_tax_type] if args.key?(:streaming_tax_type)
+          @tax_tier = args[:tax_tier] if args.key?(:tax_tier)
+        end
+      end
+      
       # Specified details about taxation in a given geographical region.
       class RegionalTaxRateInfo
         include Google::Apis::Core::Hashable
@@ -5278,14 +7584,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. A string representing the version of available regions being used
-        # for the specified resource. Regional prices for the resource have to be
-        # specified according to the information published in [this article](https://
-        # support.google.com/googleplay/android-developer/answer/10532353). Each time
-        # the supported locations substantially change, the version will be incremented.
-        # The latest supported version is available in this article. Using this field
-        # will ensure that creating and updating the resource with an older region's
-        # version and set of regional prices and currencies will succeed even though a
-        # new version is available.
+        # for the specified resource. Regional prices and latest supported version for
+        # the resource have to be specified according to the information published in [
+        # this article](https://support.google.com/googleplay/android-developer/answer/
+        # 10532353). Each time the supported locations substantially change, the version
+        # will be incremented. Using this field will ensure that creating and updating
+        # the resource with an older region's version and set of regional prices and
+        # currencies will succeed even though a new version is available.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -5297,6 +7602,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Summary of a release.
+      class ReleaseSummary
+        include Google::Apis::Core::Hashable
+      
+        # List of active artifacts on this release
+        # Corresponds to the JSON property `activeArtifacts`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ArtifactSummary>]
+        attr_accessor :active_artifacts
+      
+        # The lifecycle state of a release.
+        # Corresponds to the JSON property `releaseLifecycleState`
+        # @return [String]
+        attr_accessor :release_lifecycle_state
+      
+        # Name of the release.
+        # Corresponds to the JSON property `releaseName`
+        # @return [String]
+        attr_accessor :release_name
+      
+        # Identifier for the track. [Learn more about track names.](https://developers.
+        # google.com/android-publisher/tracks).
+        # Corresponds to the JSON property `track`
+        # @return [String]
+        attr_accessor :track
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_artifacts = args[:active_artifacts] if args.key?(:active_artifacts)
+          @release_lifecycle_state = args[:release_lifecycle_state] if args.key?(:release_lifecycle_state)
+          @release_name = args[:release_name] if args.key?(:release_name)
+          @track = args[:track] if args.key?(:track)
         end
       end
       
@@ -5369,6 +7712,51 @@ module Google
           @recovered_device_count = args[:recovered_device_count] if args.key?(:recovered_device_count)
           @total_device_count = args[:total_device_count] if args.key?(:total_device_count)
           @version_code = args[:version_code] if args.key?(:version_code)
+        end
+      end
+      
+      # Context related to renewal declined scenario.
+      class RenewalDeclinedContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the pending or failed order causing the state.
+        # Corresponds to the JSON property `pendingOrderId`
+        # @return [String]
+        attr_accessor :pending_order_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pending_order_id = args[:pending_order_id] if args.key?(:pending_order_id)
+        end
+      end
+      
+      # Offer details information related to a rental line item.
+      class RentOfferDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details of a rental purchase.
+      class RentalDetails
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -5596,8 +7984,8 @@ module Google
       class RevocationContextItemBasedRefund
         include Google::Apis::Core::Hashable
       
-        # Required. If the subscription is a subscription bundle, the product id of the
-        # subscription to revoke.
+        # Required. If the subscription is a subscription with add-ons, the product id
+        # of the subscription item to revoke.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -5980,7 +8368,7 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::RestrictedPaymentCountries]
         attr_accessor :restricted_payment_countries
       
-        # Details about taxation, Google Play policy and legal compliance for
+        # Details about taxation, Google Play policy, and legal compliance for
         # subscription products.
         # Corresponds to the JSON property `taxAndComplianceSettings`
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings]
@@ -6074,10 +8462,16 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
-        # The pricing phase for the billing period funded by this order.
+        # Deprecated: Use offer_phase_details instead. The pricing phase for the billing
+        # period funded by this order.
         # Corresponds to the JSON property `offerPhase`
         # @return [String]
         attr_accessor :offer_phase
+      
+        # Details of a pricing phase for the entitlement period funded by this order.
+        # Corresponds to the JSON property `offerPhaseDetails`
+        # @return [Google::Apis::AndroidpublisherV3::OfferPhaseDetails]
+        attr_accessor :offer_phase_details
       
         # The end of the billing period funded by this order. This is a snapshot of the
         # billing/service period end time at the moment the order was processed, and
@@ -6103,6 +8497,7 @@ module Google
           @base_plan_id = args[:base_plan_id] if args.key?(:base_plan_id)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @offer_phase = args[:offer_phase] if args.key?(:offer_phase)
+          @offer_phase_details = args[:offer_phase_details] if args.key?(:offer_phase_details)
           @service_period_end_time = args[:service_period_end_time] if args.key?(:service_period_end_time)
           @service_period_start_time = args[:service_period_start_time] if args.key?(:service_period_start_time)
         end
@@ -6160,7 +8555,7 @@ module Google
         attr_accessor :benefits
       
         # The description of this subscription in the language of this listing. Maximum
-        # length - 80 characters. Plain text.
+        # length - 200 characters. Plain text.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -6374,8 +8769,8 @@ module Google
         end
       end
       
-      # A SubscriptionPurchase resource indicates the status of a user's subscription
-      # purchase.
+      # Deprecated: Use SubscriptionPurchaseV2 instead. A SubscriptionPurchase
+      # resource indicates the status of a user's subscription purchase.
       class SubscriptionPurchase
         include Google::Apis::Core::Hashable
       
@@ -6625,6 +9020,11 @@ module Google
         attr_accessor :auto_renewing_plan
       
         # Information related to deferred item replacement.
+        # Corresponds to the JSON property `deferredItemRemoval`
+        # @return [Google::Apis::AndroidpublisherV3::DeferredItemRemoval]
+        attr_accessor :deferred_item_removal
+      
+        # Information related to deferred item replacement.
         # Corresponds to the JSON property `deferredItemReplacement`
         # @return [Google::Apis::AndroidpublisherV3::DeferredItemReplacement]
         attr_accessor :deferred_item_replacement
@@ -6635,10 +9035,27 @@ module Google
         # @return [String]
         attr_accessor :expiry_time
       
+        # Details about a subscription line item that is being replaced.
+        # Corresponds to the JSON property `itemReplacement`
+        # @return [Google::Apis::AndroidpublisherV3::ItemReplacement]
+        attr_accessor :item_replacement
+      
+        # The order id of the latest successful order associated with this item. Not
+        # present if the item is not owned by the user yet (e.g. the item being deferred
+        # replaced to).
+        # Corresponds to the JSON property `latestSuccessfulOrderId`
+        # @return [String]
+        attr_accessor :latest_successful_order_id
+      
         # Offer details information related to a purchase line item.
         # Corresponds to the JSON property `offerDetails`
         # @return [Google::Apis::AndroidpublisherV3::OfferDetails]
         attr_accessor :offer_details
+      
+        # Offer phase details.
+        # Corresponds to the JSON property `offerPhase`
+        # @return [Google::Apis::AndroidpublisherV3::OfferPhase]
+        attr_accessor :offer_phase
       
         # Information related to a prepaid plan.
         # Corresponds to the JSON property `prepaidPlan`
@@ -6662,9 +9079,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_renewing_plan = args[:auto_renewing_plan] if args.key?(:auto_renewing_plan)
+          @deferred_item_removal = args[:deferred_item_removal] if args.key?(:deferred_item_removal)
           @deferred_item_replacement = args[:deferred_item_replacement] if args.key?(:deferred_item_replacement)
           @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @item_replacement = args[:item_replacement] if args.key?(:item_replacement)
+          @latest_successful_order_id = args[:latest_successful_order_id] if args.key?(:latest_successful_order_id)
           @offer_details = args[:offer_details] if args.key?(:offer_details)
+          @offer_phase = args[:offer_phase] if args.key?(:offer_phase)
           @prepaid_plan = args[:prepaid_plan] if args.key?(:prepaid_plan)
           @product_id = args[:product_id] if args.key?(:product_id)
           @signup_promotion = args[:signup_promotion] if args.key?(:signup_promotion)
@@ -6686,10 +9107,22 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::CanceledStateContext]
         attr_accessor :canceled_state_context
       
+        # Entity tag representing the current state of the subscription. The developer
+        # will provide this etag for subscription actions. This etag is always present
+        # for auto-renewing and prepaid subscriptions.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # User account identifier in the third-party service.
         # Corresponds to the JSON property `externalAccountIdentifiers`
         # @return [Google::Apis::AndroidpublisherV3::ExternalAccountIdentifiers]
         attr_accessor :external_account_identifiers
+      
+        # Additional context around subscriptions in IN_GRACE_PERIOD state.
+        # Corresponds to the JSON property `inGracePeriodStateContext`
+        # @return [Google::Apis::AndroidpublisherV3::InGracePeriodStateContext]
+        attr_accessor :in_grace_period_state_context
       
         # This kind represents a SubscriptionPurchaseV2 object in the androidpublisher
         # service.
@@ -6721,6 +9154,16 @@ module Google
         # Corresponds to the JSON property `linkedPurchaseToken`
         # @return [String]
         attr_accessor :linked_purchase_token
+      
+        # Additional context around subscriptions in ON_HOLD state.
+        # Corresponds to the JSON property `onHoldStateContext`
+        # @return [Google::Apis::AndroidpublisherV3::OnHoldStateContext]
+        attr_accessor :on_hold_state_context
+      
+        # Information specific to an out of app purchase.
+        # Corresponds to the JSON property `outOfAppPurchaseContext`
+        # @return [Google::Apis::AndroidpublisherV3::OutOfAppPurchaseContext]
+        attr_accessor :out_of_app_purchase_context
       
         # Information specific to a subscription in paused state.
         # Corresponds to the JSON property `pausedStateContext`
@@ -6762,11 +9205,15 @@ module Google
         def update!(**args)
           @acknowledgement_state = args[:acknowledgement_state] if args.key?(:acknowledgement_state)
           @canceled_state_context = args[:canceled_state_context] if args.key?(:canceled_state_context)
+          @etag = args[:etag] if args.key?(:etag)
           @external_account_identifiers = args[:external_account_identifiers] if args.key?(:external_account_identifiers)
+          @in_grace_period_state_context = args[:in_grace_period_state_context] if args.key?(:in_grace_period_state_context)
           @kind = args[:kind] if args.key?(:kind)
           @latest_order_id = args[:latest_order_id] if args.key?(:latest_order_id)
           @line_items = args[:line_items] if args.key?(:line_items)
           @linked_purchase_token = args[:linked_purchase_token] if args.key?(:linked_purchase_token)
+          @on_hold_state_context = args[:on_hold_state_context] if args.key?(:on_hold_state_context)
+          @out_of_app_purchase_context = args[:out_of_app_purchase_context] if args.key?(:out_of_app_purchase_context)
           @paused_state_context = args[:paused_state_context] if args.key?(:paused_state_context)
           @region_code = args[:region_code] if args.key?(:region_code)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -6785,6 +9232,11 @@ module Google
         # @return [String]
         attr_accessor :developer_payload
       
+        # User account identifier in your app.
+        # Corresponds to the JSON property `externalAccountIds`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalAccountIds]
+        attr_accessor :external_account_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6792,6 +9244,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
+          @external_account_ids = args[:external_account_ids] if args.key?(:external_account_ids)
         end
       end
       
@@ -6834,7 +9287,7 @@ module Google
         end
       end
       
-      # Details about taxation, Google Play policy and legal compliance for
+      # Details about taxation, Google Play policy, and legal compliance for
       # subscription products.
       class SubscriptionTaxAndComplianceSettings
         include Google::Apis::Core::Hashable
@@ -6855,6 +9308,20 @@ module Google
         attr_accessor :is_tokenized_digital_asset
         alias_method :is_tokenized_digital_asset?, :is_tokenized_digital_asset
       
+        # Product tax category code to assign to the subscription. Product tax category
+        # determines the transaction tax rates applied to the subscription. Refer to the
+        # [Help Center article](https://support.google.com/googleplay/android-developer/
+        # answer/16408159) for more information.
+        # Corresponds to the JSON property `productTaxCategoryCode`
+        # @return [String]
+        attr_accessor :product_tax_category_code
+      
+        # Regional age rating information. Currently this field is only supported for
+        # region code `US`.
+        # Corresponds to the JSON property `regionalProductAgeRatingInfos`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RegionalProductAgeRatingInfo>]
+        attr_accessor :regional_product_age_rating_infos
+      
         # A mapping from region code to tax rate details. The keys are region codes as
         # defined by Unicode's "CLDR".
         # Corresponds to the JSON property `taxRateInfoByRegionCode`
@@ -6869,6 +9336,8 @@ module Google
         def update!(**args)
           @eea_withdrawal_right_type = args[:eea_withdrawal_right_type] if args.key?(:eea_withdrawal_right_type)
           @is_tokenized_digital_asset = args[:is_tokenized_digital_asset] if args.key?(:is_tokenized_digital_asset)
+          @product_tax_category_code = args[:product_tax_category_code] if args.key?(:product_tax_category_code)
+          @regional_product_age_rating_infos = args[:regional_product_age_rating_infos] if args.key?(:regional_product_age_rating_infos)
           @tax_rate_info_by_region_code = args[:tax_rate_info_by_region_code] if args.key?(:tax_rate_info_by_region_code)
         end
       end
@@ -7170,6 +9639,25 @@ module Google
         end
       end
       
+      # Context about a test purchase.
+      class TestPurchaseContext
+        include Google::Apis::Core::Hashable
+      
+        # The fop type of the test purchase.
+        # Corresponds to the JSON property `fopType`
+        # @return [String]
+        attr_accessor :fop_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fop_type = args[:fop_type] if args.key?(:fop_type)
+        end
+      end
+      
       # The testers of an app. The resource for TestersService. Note: while it is
       # possible in the Play Console UI to add testers via email lists, email lists
       # are not supported by this resource.
@@ -7465,11 +9953,12 @@ module Google
         end
       end
       
-      # Representation of a single country where the contents of a track are available.
+      # Representation of a single country where the contents of a track can be made
+      # available.
       class TrackTargetedCountry
         include Google::Apis::Core::Hashable
       
-        # The country to target, as a two-letter CLDR code.
+        # The country that can be targeted, as a two-letter CLDR code.
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
@@ -7531,6 +10020,156 @@ module Google
         def update!(**args)
           @activate_base_plan_request = args[:activate_base_plan_request] if args.key?(:activate_base_plan_request)
           @deactivate_base_plan_request = args[:deactivate_base_plan_request] if args.key?(:deactivate_base_plan_request)
+        end
+      end
+      
+      # Request message for UpdateOneTimeProductOffer.
+      class UpdateOneTimeProductOfferRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, and the offer with the given package_name,
+        # product_id, purchase_option_id and offer_id doesn't exist, an offer will be
+        # created. If a new offer is created, the update_mask is ignored.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Optional. The latency tolerance for the propagation of this offer update.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # A single offer for a one-time product.
+        # Corresponds to the JSON property `oneTimeProductOffer`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductOffer]
+        attr_accessor :one_time_product_offer
+      
+        # The version of the available regions being used for the specified resource.
+        # Corresponds to the JSON property `regionsVersion`
+        # @return [Google::Apis::AndroidpublisherV3::RegionsVersion]
+        attr_accessor :regions_version
+      
+        # Required. The list of fields to be updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @one_time_product_offer = args[:one_time_product_offer] if args.key?(:one_time_product_offer)
+          @regions_version = args[:regions_version] if args.key?(:regions_version)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request message to update the state of a one-time product offer.
+      class UpdateOneTimeProductOfferStateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Request message for ActivateOneTimeProductOffer.
+        # Corresponds to the JSON property `activateOneTimeProductOfferRequest`
+        # @return [Google::Apis::AndroidpublisherV3::ActivateOneTimeProductOfferRequest]
+        attr_accessor :activate_one_time_product_offer_request
+      
+        # Request message for CancelOneTimeProductOffer.
+        # Corresponds to the JSON property `cancelOneTimeProductOfferRequest`
+        # @return [Google::Apis::AndroidpublisherV3::CancelOneTimeProductOfferRequest]
+        attr_accessor :cancel_one_time_product_offer_request
+      
+        # Request message for DeactivateOneTimeProductOffer.
+        # Corresponds to the JSON property `deactivateOneTimeProductOfferRequest`
+        # @return [Google::Apis::AndroidpublisherV3::DeactivateOneTimeProductOfferRequest]
+        attr_accessor :deactivate_one_time_product_offer_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activate_one_time_product_offer_request = args[:activate_one_time_product_offer_request] if args.key?(:activate_one_time_product_offer_request)
+          @cancel_one_time_product_offer_request = args[:cancel_one_time_product_offer_request] if args.key?(:cancel_one_time_product_offer_request)
+          @deactivate_one_time_product_offer_request = args[:deactivate_one_time_product_offer_request] if args.key?(:deactivate_one_time_product_offer_request)
+        end
+      end
+      
+      # Request message for UpdateOneTimeProduct.
+      class UpdateOneTimeProductRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, and the one-time product with the given package_name
+        # and product_id doesn't exist, the one-time product will be created. If a new
+        # one-time product is created, update_mask is ignored.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # Optional. The latency tolerance for the propagation of this product upsert.
+        # Defaults to latency-sensitive.
+        # Corresponds to the JSON property `latencyTolerance`
+        # @return [String]
+        attr_accessor :latency_tolerance
+      
+        # A single one-time product for an app.
+        # Corresponds to the JSON property `oneTimeProduct`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProduct]
+        attr_accessor :one_time_product
+      
+        # The version of the available regions being used for the specified resource.
+        # Corresponds to the JSON property `regionsVersion`
+        # @return [Google::Apis::AndroidpublisherV3::RegionsVersion]
+        attr_accessor :regions_version
+      
+        # Required. The list of fields to be updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @latency_tolerance = args[:latency_tolerance] if args.key?(:latency_tolerance)
+          @one_time_product = args[:one_time_product] if args.key?(:one_time_product)
+          @regions_version = args[:regions_version] if args.key?(:regions_version)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Request message to update the state of a one-time product purchase option.
+      class UpdatePurchaseOptionStateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Request message for UpdatePurchaseOptionState.
+        # Corresponds to the JSON property `activatePurchaseOptionRequest`
+        # @return [Google::Apis::AndroidpublisherV3::ActivatePurchaseOptionRequest]
+        attr_accessor :activate_purchase_option_request
+      
+        # Request message for UpdatePurchaseOptionState.
+        # Corresponds to the JSON property `deactivatePurchaseOptionRequest`
+        # @return [Google::Apis::AndroidpublisherV3::DeactivatePurchaseOptionRequest]
+        attr_accessor :deactivate_purchase_option_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activate_purchase_option_request = args[:activate_purchase_option_request] if args.key?(:activate_purchase_option_request)
+          @deactivate_purchase_option_request = args[:deactivate_purchase_option_request] if args.key?(:deactivate_purchase_option_request)
         end
       end
       

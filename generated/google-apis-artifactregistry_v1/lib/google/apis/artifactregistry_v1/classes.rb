@@ -326,6 +326,73 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The request for checking an artifact for streaming.
+      class CheckPrewarmedArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The location of the prewarmed artifact. multi-region is not
+        # supported for this field.
+        # Corresponds to the JSON property `streamLocation`
+        # @return [String]
+        attr_accessor :stream_location
+      
+        # Optional. The artifact tag Format:projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/tags/`tag`
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # Optional. The artifact version Format: projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/versions/`version`
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stream_location = args[:stream_location] if args.key?(:stream_location)
+          @tag = args[:tag] if args.key?(:tag)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The response for checking an artifact for streaming.
+      class CheckPrewarmedArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # PrewarmedArtifact represents a streamed artifact. This is not a request
+        # message, so field_behavior annotations are not required.
+        # Corresponds to the JSON property `prewarmedArtifact`
+        # @return [Google::Apis::ArtifactregistryV1::PrewarmedArtifact]
+        attr_accessor :prewarmed_artifact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prewarmed_artifact = args[:prewarmed_artifact] if args.key?(:prewarmed_artifact)
+        end
+      end
+      
       # Artifact policy configuration for repository cleanup policies.
       class CleanupPolicy
         include Google::Apis::Core::Hashable
@@ -468,6 +535,14 @@ module Google
       class DockerImage
         include Google::Apis::Core::Hashable
       
+        # ArtifactType of this image, e.g. "application/vnd.example+type". If the `
+        # subject_digest` is set and no `artifact_type` is given, the `media_type` will
+        # be considered as the `artifact_type`. This field is returned as the `metadata.
+        # artifactType` field in the Version resource.
+        # Corresponds to the JSON property `artifactType`
+        # @return [String]
+        attr_accessor :artifact_type
+      
         # The time this image was built. This field is returned as the 'metadata.
         # buildTime' field in the Version resource. The build time is returned to the
         # client as an RFC 3339 string, which can be easily used with the JavaScript
@@ -475,6 +550,12 @@ module Google
         # Corresponds to the JSON property `buildTime`
         # @return [String]
         attr_accessor :build_time
+      
+        # Optional. For multi-arch images (manifest lists), this field contains the list
+        # of image manifests.
+        # Corresponds to the JSON property `imageManifests`
+        # @return [Array<Google::Apis::ArtifactregistryV1::ImageManifest>]
+        attr_accessor :image_manifests
       
         # Calculated size of the image. This field is returned as the 'metadata.
         # imageSizeBytes' field in the Version resource.
@@ -490,7 +571,7 @@ module Google
         attr_accessor :media_type
       
         # Required. registry_location, project_id, repository_name and image id forms a
-        # unique image name:`projects//locations//repository//dockerImages/`. For
+        # unique image name:`projects//locations//repositories//dockerImages/`. For
         # example, "projects/test-project/locations/us-west4/repositories/test-repo/
         # dockerImages/ nginx@sha256:
         # e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf", where "us-
@@ -530,7 +611,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @artifact_type = args[:artifact_type] if args.key?(:artifact_type)
           @build_time = args[:build_time] if args.key?(:build_time)
+          @image_manifests = args[:image_manifests] if args.key?(:image_manifests)
           @image_size_bytes = args[:image_size_bytes] if args.key?(:image_size_bytes)
           @media_type = args[:media_type] if args.key?(:media_type)
           @name = args[:name] if args.key?(:name)
@@ -615,6 +698,114 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The LRO metadata for exporting an artifact.
+      class ExportArtifactMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The exported artifact files.
+        # Corresponds to the JSON property `exportedFiles`
+        # @return [Array<Google::Apis::ArtifactregistryV1::ExportedFile>]
+        attr_accessor :exported_files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exported_files = args[:exported_files] if args.key?(:exported_files)
+        end
+      end
+      
+      # The request for exporting an artifact to a destination.
+      class ExportArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Storage path to export the artifact to. Should start with the bucket
+        # name, and optionally have a directory path. Examples: `dst_bucket`, `
+        # dst_bucket/sub_dir`. Existing objects with the same path will be overwritten.
+        # Corresponds to the JSON property `gcsPath`
+        # @return [String]
+        attr_accessor :gcs_path
+      
+        # The artifact tag to export. Format:projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/tags/`tag`
+        # Corresponds to the JSON property `sourceTag`
+        # @return [String]
+        attr_accessor :source_tag
+      
+        # The artifact version to export. Format: projects/`project`/locations/`location`
+        # /repositories/`repository`/packages/`package`/versions/`version`
+        # Corresponds to the JSON property `sourceVersion`
+        # @return [String]
+        attr_accessor :source_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_path = args[:gcs_path] if args.key?(:gcs_path)
+          @source_tag = args[:source_tag] if args.key?(:source_tag)
+          @source_version = args[:source_version] if args.key?(:source_version)
+        end
+      end
+      
+      # The response for exporting an artifact to a destination.
+      class ExportArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # The body of a version resource. A version resource represents a collection of
+        # components, such as files and other data. This may correspond to a version in
+        # many package management schemes.
+        # Corresponds to the JSON property `exportedVersion`
+        # @return [Google::Apis::ArtifactregistryV1::Version]
+        attr_accessor :exported_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exported_version = args[:exported_version] if args.key?(:exported_version)
+        end
+      end
+      
+      # The exported artifact file.
+      class ExportedFile
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage Object path of the exported file. Examples: `dst_bucket/file1`, `
+        # dst_bucket/sub_dir/file1`
+        # Corresponds to the JSON property `gcsObjectPath`
+        # @return [String]
+        attr_accessor :gcs_object_path
+      
+        # The hashes of the file content.
+        # Corresponds to the JSON property `hashes`
+        # @return [Array<Google::Apis::ArtifactregistryV1::HashProp>]
+        attr_accessor :hashes
+      
+        # Name of the exported artifact file. Format: `projects/p1/locations/us/
+        # repositories/repo1/files/file1`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_object_path = args[:gcs_object_path] if args.key?(:gcs_object_path)
+          @hashes = args[:hashes] if args.key?(:hashes)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1101,6 +1292,69 @@ module Google
         def update!(**args)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Details of a single image manifest within a multi-arch image.
+      class ImageManifest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The CPU architecture of the image. Values are provided by the Docker
+        # client and are not validated by Artifact Registry. Example values include "
+        # amd64", "arm64", "ppc64le", "s390x", "riscv64", "mips64le", etc.
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # Optional. The manifest digest, in the format "sha256:".
+        # Corresponds to the JSON property `digest`
+        # @return [String]
+        attr_accessor :digest
+      
+        # Optional. The media type of the manifest, e.g., "application/vnd.docker.
+        # distribution.manifest.v2+json"
+        # Corresponds to the JSON property `mediaType`
+        # @return [String]
+        attr_accessor :media_type
+      
+        # Optional. The operating system of the image. Values are provided by the Docker
+        # client and are not validated by Artifact Registry. Example values include "
+        # linux", "windows", "darwin", "aix", etc.
+        # Corresponds to the JSON property `os`
+        # @return [String]
+        attr_accessor :os
+      
+        # Optional. The required OS features for the image, for example on Windows `
+        # win32k`.
+        # Corresponds to the JSON property `osFeatures`
+        # @return [Array<String>]
+        attr_accessor :os_features
+      
+        # Optional. The OS version of the image, for example on Windows `10.0.14393.1066`
+        # .
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        # Optional. The variant of the CPU in the image, for example `v7` to specify
+        # ARMv7 when architecture is `arm`.
+        # Corresponds to the JSON property `variant`
+        # @return [String]
+        attr_accessor :variant
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @digest = args[:digest] if args.key?(:digest)
+          @media_type = args[:media_type] if args.key?(:media_type)
+          @os = args[:os] if args.key?(:os)
+          @os_features = args[:os_features] if args.key?(:os_features)
+          @os_version = args[:os_version] if args.key?(:os_version)
+          @variant = args[:variant] if args.key?(:variant)
         end
       end
       
@@ -1653,6 +1907,32 @@ module Google
         end
       end
       
+      # The response for listing artifacts for streaming.
+      class ListPrewarmedArtifactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The token to retrieve the next page of prewarmed artifacts, or empty if there
+        # are no more streamings to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The prewarmed artifacts.
+        # Corresponds to the JSON property `prewarmedArtifacts`
+        # @return [Array<Google::Apis::ArtifactregistryV1::PrewarmedArtifact>]
+        attr_accessor :prewarmed_artifacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @prewarmed_artifacts = args[:prewarmed_artifacts] if args.key?(:prewarmed_artifacts)
+        end
+      end
+      
       # The response from listing python packages.
       class ListPythonPackagesResponse
         include Google::Apis::Core::Hashable
@@ -2143,6 +2423,32 @@ module Google
         end
       end
       
+      # The platform logs config for a project or a repository.
+      class PlatformLogsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The state of the platform logs: enabled or disabled.
+        # Corresponds to the JSON property `loggingState`
+        # @return [String]
+        attr_accessor :logging_state
+      
+        # Optional. The severity level for the logs. Logs will be generated if their
+        # severity level is >= than the value of the severity level mentioned here.
+        # Corresponds to the JSON property `severityLevel`
+        # @return [String]
+        attr_accessor :severity_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logging_state = args[:logging_state] if args.key?(:logging_state)
+          @severity_level = args[:severity_level] if args.key?(:severity_level)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -2229,6 +2535,168 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The request for prewarming an artifact for streaming.
+      class PrewarmArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, old artifact will be evicted to make room for the new
+        # artifact.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # The platform (architecture and OS) of the image. This is a sub-message.
+        # Corresponds to the JSON property `platform`
+        # @return [Google::Apis::ArtifactregistryV1::PrewarmPlatform]
+        attr_accessor :platform
+      
+        # Optional. The retention days of the prewarmed artifact. If not specified, the
+        # artifact will be cached for 3 days.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        # Optional. The location to cache the artifact in. If not specified, the
+        # artifact will be cached in the same location as the artifact. multi-region is
+        # not supported for this field.
+        # Corresponds to the JSON property `streamLocation`
+        # @return [String]
+        attr_accessor :stream_location
+      
+        # Optional. The artifact tag Format:projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/tags/`tag`
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # Optional. The artifact version Format: projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/versions/`version`
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @force = args[:force] if args.key?(:force)
+          @platform = args[:platform] if args.key?(:platform)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+          @stream_location = args[:stream_location] if args.key?(:stream_location)
+          @tag = args[:tag] if args.key?(:tag)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The response for prewarming an artifact for streaming.
+      class PrewarmArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # PrewarmedArtifact represents a streamed artifact. This is not a request
+        # message, so field_behavior annotations are not required.
+        # Corresponds to the JSON property `prewarmedArtifact`
+        # @return [Google::Apis::ArtifactregistryV1::PrewarmedArtifact]
+        attr_accessor :prewarmed_artifact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prewarmed_artifact = args[:prewarmed_artifact] if args.key?(:prewarmed_artifact)
+        end
+      end
+      
+      # The platform (architecture and OS) of the image. This is a sub-message.
+      class PrewarmPlatform
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The architecture of the image or tag. For example, "arm64" or "amd64"
+        # .
+        # Corresponds to the JSON property `architecture`
+        # @return [String]
+        attr_accessor :architecture
+      
+        # Optional. The OS of the image or tag. For example, "linux" or "windows".
+        # Corresponds to the JSON property `os`
+        # @return [String]
+        attr_accessor :os
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @architecture = args[:architecture] if args.key?(:architecture)
+          @os = args[:os] if args.key?(:os)
+        end
+      end
+      
+      # PrewarmedArtifact represents a streamed artifact. This is not a request
+      # message, so field_behavior annotations are not required.
+      class PrewarmedArtifact
+        include Google::Apis::Core::Hashable
+      
+        # The expiration time of the prewarmed artifact.
+        # Corresponds to the JSON property `expirationTime`
+        # @return [String]
+        attr_accessor :expiration_time
+      
+        # The location of the prewarmed artifact.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # URL to access the image. Example: us-west4-docker.pkg.dev/test-project/test-
+        # repo/nginx@sha256:
+        # e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+          @location = args[:location] if args.key?(:location)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The Artifact Registry logging configurations that apply to a Project.
+      class ProjectConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The name of the project's configuration. Always of the form:
+        # projects/`project`/locations/`location`/projectConfig
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The platform logs config for a project or a repository.
+        # Corresponds to the JSON property `platformLogsConfig`
+        # @return [Google::Apis::ArtifactregistryV1::PlatformLogsConfig]
+        attr_accessor :platform_logs_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @platform_logs_config = args[:platform_logs_config] if args.key?(:platform_logs_config)
         end
       end
       
@@ -2421,6 +2889,60 @@ module Google
         end
       end
       
+      # The request for removing an artifact from streaming.
+      class RemovePrewarmedArtifactRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The location of the prewarmed artifact. multi-region is not
+        # supported for this field.
+        # Corresponds to the JSON property `streamLocation`
+        # @return [String]
+        attr_accessor :stream_location
+      
+        # Optional. The artifact tag Format:projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/tags/`tag`
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # Optional. The artifact version Format: projects/`project`/locations/`location`/
+        # repositories/`repository`/packages/`package`/versions/`version`
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stream_location = args[:stream_location] if args.key?(:stream_location)
+          @tag = args[:tag] if args.key?(:tag)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The response for removing an artifact from streaming.
+      class RemovePrewarmedArtifactResponse
+        include Google::Apis::Core::Hashable
+      
+        # PrewarmedArtifact represents a streamed artifact. This is not a request
+        # message, so field_behavior annotations are not required.
+        # Corresponds to the JSON property `prewarmedArtifact`
+        # @return [Google::Apis::ArtifactregistryV1::PrewarmedArtifact]
+        attr_accessor :prewarmed_artifact
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prewarmed_artifact = args[:prewarmed_artifact] if args.key?(:prewarmed_artifact)
+        end
+      end
+      
       # A Repository for storing artifacts with a specific format.
       class Repository
         include Google::Apis::Core::Hashable
@@ -2502,6 +3024,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The platform logs config for a project or a repository.
+        # Corresponds to the JSON property `platformLogsConfig`
+        # @return [Google::Apis::ArtifactregistryV1::PlatformLogsConfig]
+        attr_accessor :platform_logs_config
+      
         # Output only. The repository endpoint, for example: `us-docker.pkg.dev/my-proj/
         # my-repo`.
         # Corresponds to the JSON property `registryUri`
@@ -2566,6 +3093,7 @@ module Google
           @maven_config = args[:maven_config] if args.key?(:maven_config)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
+          @platform_logs_config = args[:platform_logs_config] if args.key?(:platform_logs_config)
           @registry_uri = args[:registry_uri] if args.key?(:registry_uri)
           @remote_repository_config = args[:remote_repository_config] if args.key?(:remote_repository_config)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -3277,6 +3805,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Output only. Immutable reference for the version, calculated based on the
+        # version's content. Currently we only support dirsum_sha256 hash algorithm.
+        # Additional hash algorithms may be added in the future.
+        # Corresponds to the JSON property `fingerprints`
+        # @return [Array<Google::Apis::ArtifactregistryV1::HashProp>]
+        attr_accessor :fingerprints
+      
         # Output only. Repository-specific Metadata stored against this version. The
         # fields returned are defined by the underlying repository-specific resource.
         # Currently, the resources could be: DockerImage MavenArtifact
@@ -3311,6 +3846,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @fingerprints = args[:fingerprints] if args.key?(:fingerprints)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @related_tags = args[:related_tags] if args.key?(:related_tags)

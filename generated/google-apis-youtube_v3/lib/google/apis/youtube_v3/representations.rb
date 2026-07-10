@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchGetStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Caption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +287,12 @@ module Google
       end
       
       class ChannelStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChannelToAffiliateProgramLinkDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -521,6 +533,12 @@ module Google
       end
       
       class LiveChatFanFundingEventDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LiveChatGiftDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1174,7 +1192,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VideoStat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VideoStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VideoStatsContentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VideoStatsSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VideoStatsStatistics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1420,6 +1462,16 @@ module Google
       
           property :title, as: 'title'
           property :type, as: 'type'
+        end
+      end
+      
+      class BatchGetStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::VideoStat, decorator: Google::Apis::YoutubeV3::VideoStat::Representation
+      
+          property :kind, as: 'kind'
         end
       end
       
@@ -1743,6 +1795,16 @@ module Google
           property :made_for_kids, as: 'madeForKids'
           property :privacy_status, as: 'privacyStatus'
           property :self_declared_made_for_kids, as: 'selfDeclaredMadeForKids'
+        end
+      end
+      
+      class ChannelToAffiliateProgramLinkDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :program_status, as: 'programStatus'
+          property :status_update_reason, as: 'statusUpdateReason'
+          property :status_update_time, as: 'statusUpdateTime'
         end
       end
       
@@ -2304,6 +2366,20 @@ module Google
         end
       end
       
+      class LiveChatGiftDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alt_text, as: 'altText'
+          property :combo_count, as: 'comboCount'
+          property :gift_duration, as: 'giftDuration'
+          property :gift_name, as: 'giftName'
+          property :gift_url, as: 'giftUrl'
+          property :has_visual_effect, as: 'hasVisualEffect'
+          property :jewels_amount, as: 'jewelsAmount'
+          property :language, as: 'language'
+        end
+      end
+      
       class LiveChatGiftMembershipReceivedDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2399,6 +2475,8 @@ module Google
           property :author_channel_id, as: 'authorChannelId'
           property :display_message, as: 'displayMessage'
           property :fan_funding_event_details, as: 'fanFundingEventDetails', class: Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails, decorator: Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails::Representation
+      
+          property :gift_details, as: 'giftDetails', class: Google::Apis::YoutubeV3::LiveChatGiftDetails, decorator: Google::Apis::YoutubeV3::LiveChatGiftDetails::Representation
       
           property :gift_membership_received_details, as: 'giftMembershipReceivedDetails', class: Google::Apis::YoutubeV3::LiveChatGiftMembershipReceivedDetails, decorator: Google::Apis::YoutubeV3::LiveChatGiftMembershipReceivedDetails::Representation
       
@@ -3193,6 +3271,8 @@ module Google
       class ThirdPartyLinkSnippet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_to_affiliate_program_link, as: 'channelToAffiliateProgramLink', class: Google::Apis::YoutubeV3::ChannelToAffiliateProgramLinkDetails, decorator: Google::Apis::YoutubeV3::ChannelToAffiliateProgramLinkDetails::Representation
+      
           property :channel_to_store_link, as: 'channelToStoreLink', class: Google::Apis::YoutubeV3::ChannelToStoreLinkDetails, decorator: Google::Apis::YoutubeV3::ChannelToStoreLinkDetails::Representation
       
           property :type, as: 'type'
@@ -3604,12 +3684,50 @@ module Google
         end
       end
       
+      class VideoStat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::VideoStatsContentDetails, decorator: Google::Apis::YoutubeV3::VideoStatsContentDetails::Representation
+      
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::VideoStatsSnippet, decorator: Google::Apis::YoutubeV3::VideoStatsSnippet::Representation
+      
+          property :statistics, as: 'statistics', class: Google::Apis::YoutubeV3::VideoStatsStatistics, decorator: Google::Apis::YoutubeV3::VideoStatsStatistics::Representation
+      
+        end
+      end
+      
       class VideoStatistics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :comment_count, :numeric_string => true, as: 'commentCount'
           property :dislike_count, :numeric_string => true, as: 'dislikeCount'
           property :favorite_count, :numeric_string => true, as: 'favoriteCount'
+          property :like_count, :numeric_string => true, as: 'likeCount'
+          property :view_count, :numeric_string => true, as: 'viewCount'
+        end
+      end
+      
+      class VideoStatsContentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+        end
+      end
+      
+      class VideoStatsSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :publish_time, as: 'publishTime'
+        end
+      end
+      
+      class VideoStatsStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_count, :numeric_string => true, as: 'commentCount'
           property :like_count, :numeric_string => true, as: 'likeCount'
           property :view_count, :numeric_string => true, as: 'viewCount'
         end

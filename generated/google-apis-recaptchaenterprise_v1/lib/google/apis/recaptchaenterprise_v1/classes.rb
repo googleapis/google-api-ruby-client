@@ -26,6 +26,11 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
         include Google::Apis::Core::Hashable
       
+        # Account takeover risk assessment.
+        # Corresponds to the JSON property `accountTakeoverVerdict`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict]
+        attr_accessor :account_takeover_verdict
+      
         # Output only. Labels for this request.
         # Corresponds to the JSON property `labels`
         # @return [Array<String>]
@@ -37,7 +42,82 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_takeover_verdict = args[:account_takeover_verdict] if args.key?(:account_takeover_verdict)
           @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # Risk explainability reasons for account defender.
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A risk reason associated with this request.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Account takeover risk assessment.
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Account takeover attempt probability. Values are from 0.0 (lowest
+        # risk) to 1.0 (highest risk).
+        # Corresponds to the JSON property `risk`
+        # @return [Float]
+        attr_accessor :risk
+      
+        # Output only. Unordered list. Reasons why the request appears risky. Risk
+        # reasons can be returned even if the risk is low, as trustworthy requests can
+        # still have some risk signals.
+        # Corresponds to the JSON property `riskReasons`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>]
+        attr_accessor :risk_reasons
+      
+        # Output only. Unordered list. Reasons why the request appears trustworthy.
+        # Trust reasons can be returned even if the risk is high, as risky requests can
+        # still have some trust signals.
+        # Corresponds to the JSON property `trustReasons`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>]
+        attr_accessor :trust_reasons
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @risk = args[:risk] if args.key?(:risk)
+          @risk_reasons = args[:risk_reasons] if args.key?(:risk_reasons)
+          @trust_reasons = args[:trust_reasons] if args.key?(:trust_reasons)
+        end
+      end
+      
+      # Trust explainability reasons for account defender.
+      class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A trust reason associated with this request.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -123,7 +203,11 @@ module Google
         alias_method :allow_all_package_names?, :allow_all_package_names
       
         # Optional. Android package names of apps allowed to use the key. Example: 'com.
-        # companyname.appname'
+        # companyname.appname' Each key supports a maximum of 250 package names. To use
+        # a key on more apps, set `allow_all_package_names` to true. When this is set,
+        # you are responsible for validating the package name by checking the `
+        # token_properties.android_package_name` field in each assessment response
+        # against your list of allowed package names.
         # Corresponds to the JSON property `allowedPackageNames`
         # @return [Array<String>]
         attr_accessor :allowed_package_names
@@ -174,6 +258,11 @@ module Google
         # @return [String]
         attr_accessor :hashed_account_id
       
+        # Details on a phone authentication event
+        # Corresponds to the JSON property `phoneAuthenticationEvent`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent]
+        attr_accessor :phone_authentication_event
+      
         # Optional. Reasons for the annotation that are assigned to the event.
         # Corresponds to the JSON property `reasons`
         # @return [Array<String>]
@@ -193,6 +282,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @annotation = args[:annotation] if args.key?(:annotation)
           @hashed_account_id = args[:hashed_account_id] if args.key?(:hashed_account_id)
+          @phone_authentication_event = args[:phone_authentication_event] if args.key?(:phone_authentication_event)
           @reasons = args[:reasons] if args.key?(:reasons)
           @transaction_event = args[:transaction_event] if args.key?(:transaction_event)
         end
@@ -340,9 +430,7 @@ module Google
         # Optional. Identifies the client module initiating the CreateAssessment request.
         # This can be the link to the client module's project. Examples include: - "
         # github.com/GoogleCloudPlatform/recaptcha-enterprise-google-tag-manager" - "
-        # cloud.google.com/recaptcha/docs/implement-waf-akamai" - "cloud.google.com/
-        # recaptcha/docs/implement-waf-cloudflare" - "wordpress.org/plugins/recaptcha-
-        # something"
+        # wordpress.org/plugins/recaptcha-something"
         # Corresponds to the JSON property `client`
         # @return [String]
         attr_accessor :client
@@ -373,7 +461,12 @@ module Google
         attr_accessor :bot_type
       
         # Optional. Enumerated string value that indicates the identity of the bot,
-        # formatted in kebab-case.
+        # formatted in kebab-case. Current example values include the following: *
+        # google-agent * browser-base * chat-gpt * aws-bedrock * cybaa-bot * cloudflare *
+        # payhawk Ensure that your applications can handle identifier values not
+        # explicitly listed here. Deprecated values might take some time to stop showing
+        # up in responses. New values can be pushed so this list should be taken as non
+        # exhaustive.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -564,8 +657,9 @@ module Google
         # @return [String]
         attr_accessor :user_ip_address
       
-        # Optional. Flag for running WAF token assessment. If enabled, the token must be
-        # specified, and have been created by a WAF-enabled key.
+        # Optional. Flag for running Web Application Firewall (WAF) token assessment. If
+        # enabled, the token must be specified, and have been created by a WAF-enabled
+        # key.
         # Corresponds to the JSON property `wafTokenAssessment`
         # @return [Boolean]
         attr_accessor :waf_token_assessment
@@ -1072,8 +1166,12 @@ module Google
         attr_accessor :allow_all_bundle_ids
         alias_method :allow_all_bundle_ids?, :allow_all_bundle_ids
       
-        # Optional. iOS bundle ids of apps allowed to use the key. Example: 'com.
-        # companyname.productname.appname'
+        # Optional. iOS bundle IDs of apps allowed to use the key. Example: 'com.
+        # companyname.productname.appname' Each key supports a maximum of 250 bundle IDs.
+        # To use a key on more apps, set `allow_all_bundle_ids` to true. When this is
+        # set, you are responsible for validating the bundle id by checking the `
+        # token_properties.ios_bundle_id` field in each assessment response against your
+        # list of allowed bundle IDs.
         # Corresponds to the JSON property `allowedBundleIds`
         # @return [Array<String>]
         attr_accessor :allowed_bundle_ids
@@ -1377,11 +1475,11 @@ module Google
       
         # Optional. If true, skips the billing check. A reCAPTCHA Enterprise key or
         # migrated key behaves differently than a reCAPTCHA (non-Enterprise version) key
-        # when you reach a quota limit (see https://cloud.google.com/recaptcha/quotas#
-        # quota_limit). To avoid any disruption of your usage, we check that a billing
-        # account is present. If your usage of reCAPTCHA is under the free quota, you
-        # can safely skip the billing check and proceed with the migration. See https://
-        # cloud.google.com/recaptcha/docs/billing-information.
+        # when you reach a quota limit (see https://docs.cloud.google.com/recaptcha/
+        # quotas#quota_limit). To avoid any disruption of your usage, we check that a
+        # billing account is present. If your usage of reCAPTCHA is under the free quota,
+        # you can safely skip the billing check and proceed with the migration. See
+        # https://cloud.google.com/recaptcha/docs/billing-information.
         # Corresponds to the JSON property `skipBillingCheck`
         # @return [Boolean]
         attr_accessor :skip_billing_check
@@ -1394,6 +1492,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @skip_billing_check = args[:skip_billing_check] if args.key?(:skip_billing_check)
+        end
+      end
+      
+      # Details on a phone authentication event
+      class GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The time at which the multi-factor authentication event (challenge
+        # or verification) occurred.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Required. Phone number in E.164 format for which a multi-factor authentication
+        # challenge was initiated, succeeded, or failed.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
       
@@ -1613,13 +1738,15 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RiskAnalysis
         include Google::Apis::Core::Hashable
       
-        # Output only. Challenge information for SCORE_AND_CHALLENGE and INVISIBLE keys
+        # Output only. Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE
+        # keys.
         # Corresponds to the JSON property `challenge`
         # @return [String]
         attr_accessor :challenge
       
-        # Output only. Extended verdict reasons to be used for experimentation only. The
-        # set of possible reasons is subject to change.
+        # Output only. Additional reasons contributing to the risk analysis verdict.
+        # These reasons are available to Enterprise tier projects only. Contact sales
+        # for more information. The set of reasons is subject to change.
         # Corresponds to the JSON property `extendedVerdictReasons`
         # @return [Array<String>]
         attr_accessor :extended_verdict_reasons
@@ -1870,11 +1997,9 @@ module Google
         # @return [String]
         attr_accessor :ios_bundle_id
       
-        # Output only. Whether the provided user response token is valid. When valid =
-        # false, the reason could be specified in invalid_reason or it could also be due
-        # to a user failing to solve a challenge or a sitekey mismatch (i.e the sitekey
-        # used to generate the token was different than the one specified in the
-        # assessment).
+        # Output only. Indicates whether the provided user response token is valid. If `
+        # false`, the token is invalid, either because the user failed the challenge or
+        # for a reason provided in the `invalid_reason` field.
         # Corresponds to the JSON property `valid`
         # @return [Boolean]
         attr_accessor :valid
@@ -2296,12 +2421,13 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1WafSettings
         include Google::Apis::Core::Hashable
       
-        # Required. The WAF feature for which this key is enabled.
+        # Required. The Web Application Firewall (WAF) feature for which this key is
+        # enabled.
         # Corresponds to the JSON property `wafFeature`
         # @return [String]
         attr_accessor :waf_feature
       
-        # Required. The WAF service that uses this key.
+        # Required. The Web Application Firewall (WAF) service that uses this key.
         # Corresponds to the JSON property `wafService`
         # @return [String]
         attr_accessor :waf_service
@@ -2337,17 +2463,27 @@ module Google
         # Optional. Domains or subdomains of websites allowed to use the key. All
         # subdomains of an allowed domain are automatically allowed. A valid domain
         # requires a host and must not include any path, port, query or fragment.
-        # Examples: 'example.com' or 'subdomain.example.com'
+        # Examples: 'example.com' or 'subdomain.example.com' Each key supports a maximum
+        # of 250 domains. To use a key on more domains, set `allow_all_domains` to true.
+        # When this is set, you are responsible for validating the hostname by checking
+        # the `token_properties.hostname` field in each assessment response against your
+        # list of allowed domains.
         # Corresponds to the JSON property `allowedDomains`
         # @return [Array<String>]
         attr_accessor :allowed_domains
       
         # Optional. Settings for the frequency and difficulty at which this key triggers
-        # captcha challenges. This should only be specified for IntegrationTypes
-        # CHECKBOX and INVISIBLE and SCORE_AND_CHALLENGE.
+        # captcha challenges. This should only be specified for `IntegrationType`
+        # CHECKBOX, INVISIBLE or POLICY_BASED_CHALLENGE.
         # Corresponds to the JSON property `challengeSecurityPreference`
         # @return [String]
         attr_accessor :challenge_security_preference
+      
+        # Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is
+        # triggered.
+        # Corresponds to the JSON property `challengeSettings`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings]
+        attr_accessor :challenge_settings
       
         # Required. Describes how this key is integrated with the website.
         # Corresponds to the JSON property `integrationType`
@@ -2364,7 +2500,58 @@ module Google
           @allow_amp_traffic = args[:allow_amp_traffic] if args.key?(:allow_amp_traffic)
           @allowed_domains = args[:allowed_domains] if args.key?(:allowed_domains)
           @challenge_security_preference = args[:challenge_security_preference] if args.key?(:challenge_security_preference)
+          @challenge_settings = args[:challenge_settings] if args.key?(:challenge_settings)
           @integration_type = args[:integration_type] if args.key?(:integration_type)
+        end
+      end
+      
+      # Per-action challenge settings.
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. A challenge is triggered if the end-user score is below that
+        # threshold. Value must be between 0 and 1 (inclusive).
+        # Corresponds to the JSON property `scoreThreshold`
+        # @return [Float]
+        attr_accessor :score_threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @score_threshold = args[:score_threshold] if args.key?(:score_threshold)
+        end
+      end
+      
+      # Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is
+      # triggered.
+      class GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The action to score threshold map. The action name should be the
+        # same as the action name passed in the `data-action` attribute (see https://
+        # cloud.google.com/recaptcha/docs/actions-website). Action names are case-
+        # insensitive. There is a maximum of 100 action settings. An action name has a
+        # maximum length of 100.
+        # Corresponds to the JSON property `actionSettings`
+        # @return [Hash<String,Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings>]
+        attr_accessor :action_settings
+      
+        # Per-action challenge settings.
+        # Corresponds to the JSON property `defaultSettings`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WebKeySettingsActionSettings]
+        attr_accessor :default_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_settings = args[:action_settings] if args.key?(:action_settings)
+          @default_settings = args[:default_settings] if args.key?(:default_settings)
         end
       end
       

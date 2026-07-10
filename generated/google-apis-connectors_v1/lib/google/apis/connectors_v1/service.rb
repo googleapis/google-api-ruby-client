@@ -144,12 +144,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -269,6 +278,11 @@ module Google
         # Deletes a single Connection.
         # @param [String] name
         #   Required. Resource name of the form: `projects/*/locations/*/connections/*`
+        # @param [Boolean] force
+        #   Optional. If set to true, any child EndUserAuthentication/EventSubscription
+        #   resources will also be deleted. Otherwise, the request will fail if the
+        #   connection has any children. Followed the best practice from https://aip.dev/
+        #   135#cascading-delete
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -286,10 +300,82 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_connection(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_connection(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ConnectorsV1::Operation::Representation
           command.response_class = Google::Apis::ConnectorsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches Toolspec Override for a connection for the given list of tools.
+        # Returns results from the db if the tool is already present.
+        # @param [String] name
+        #   Required. Resource name format: projects/`project`/locations/`location`/
+        #   connections/`connection`
+        # @param [Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideRequest] fetch_connection_toolspec_override_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_connection_toolspec_override(name, fetch_connection_toolspec_override_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:fetchToolspecOverride', options)
+          command.request_representation = Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideRequest::Representation
+          command.request_object = fetch_connection_toolspec_override_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::FetchConnectionToolspecOverrideResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates Toolspec Override for a connection for the given list of entityTypes
+        # and operations. Returns results from the db if the entityType and operation
+        # are already present.
+        # @param [String] name
+        #   Required. Resource name format: projects/`project`/locations/`location`/
+        #   connections/`connection`
+        # @param [Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideRequest] generate_connection_toolspec_override_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_connection_toolspec_override(name, generate_connection_toolspec_override_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:generateToolspecOverride', options)
+          command.request_representation = Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideRequest::Representation
+          command.request_object = generate_connection_toolspec_override_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::GenerateConnectionToolspecOverrideResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -487,6 +573,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates Toolspec Override for a connection with the admin provided
+        # descriptions.
+        # @param [String] name
+        #   Required. Resource name format: projects/`project`/locations/`location`/
+        #   connections/`connection`
+        # @param [Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideRequest] modify_connection_toolspec_override_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def modify_project_location_connection_toolspec_override(name, modify_connection_toolspec_override_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:modifyToolspecOverride', options)
+          command.request_representation = Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideRequest::Representation
+          command.request_object = modify_connection_toolspec_override_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideResponse::Representation
+          command.response_class = Google::Apis::ConnectorsV1::ModifyConnectionToolspecOverrideResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the parameters of a single Connection.
         # @param [String] name
         #   Output only. Resource name of the Connection. Format: projects/`project`/
@@ -501,7 +622,7 @@ module Google
         #   update the connection details: * `description` * `labels` * `connector_version`
         #   * `config_variables` * `auth_config` * `destination_configs` * `node_config` *
         #   `log_config` * `ssl_config` * `eventing_enablement_type` * `eventing_config` *
-        #   `auth_override_enabled`
+        #   `auth_override_enabled` * `async_operations_enabled`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -527,6 +648,40 @@ module Google
           command.response_class = Google::Apis::ConnectorsV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes all Toolspec Override for a connection.
+        # @param [String] name
+        #   Required. Resource name format: projects/`project`/locations/`location`/
+        #   connections/`connection`
+        # @param [Google::Apis::ConnectorsV1::RemoveConnectionToolspecOverrideRequest] remove_connection_toolspec_override_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ConnectorsV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ConnectorsV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_location_connection_toolspec_override(name, remove_connection_toolspec_override_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:removeToolspecOverride', options)
+          command.request_representation = Google::Apis::ConnectorsV1::RemoveConnectionToolspecOverrideRequest::Representation
+          command.request_object = remove_connection_toolspec_override_request_object
+          command.response_representation = Google::Apis::ConnectorsV1::Empty::Representation
+          command.response_class = Google::Apis::ConnectorsV1::Empty
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1539,7 +1694,8 @@ module Google
         # @param [Google::Apis::ConnectorsV1::EndpointAttachment] endpoint_attachment_object
         # @param [String] endpoint_attachment_id
         #   Required. Identifier to assign to the EndpointAttachment. Must be unique
-        #   within scope of the parent resource.
+        #   within scope of the parent resource. The regex is: `^[a-z]([a-z0-9-]`0,61`[a-
+        #   z0-9])?$`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2383,6 +2539,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2400,7 +2564,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::ConnectorsV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::ConnectorsV1::ListOperationsResponse
@@ -2408,6 +2572,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2714,9 +2879,6 @@ module Google
         #   Required. Resource name of the form: `projects/*/locations/*/providers/*/
         #   connectors/*/versions/*` Only global location is supported for
         #   ConnectorVersion resource.
-        # @param [String] schema_view
-        #   Optional. Enum to control whether schema enrichment related fields should be
-        #   included in the response.
         # @param [String] view
         #   Specifies which fields of the ConnectorVersion are returned in the response.
         #   Defaults to `CUSTOMER` view.
@@ -2737,12 +2899,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_provider_connector_version(name, schema_view: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_provider_connector_version(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ConnectorsV1::ConnectorVersion::Representation
           command.response_class = Google::Apis::ConnectorsV1::ConnectorVersion
           command.params['name'] = name unless name.nil?
-          command.query['schemaView'] = schema_view unless schema_view.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2751,16 +2912,10 @@ module Google
         
         # Lists Connector Versions in a given project and location.
         # @param [String] parent
-        #   Required. Parent resource of the connectors, of the form: `projects/*/
-        #   locations/*/providers/*/connectors/*` Only global location is supported for
-        #   ConnectorVersion resource.
         # @param [Fixnum] page_size
         #   Page size.
         # @param [String] page_token
         #   Page token.
-        # @param [String] schema_view
-        #   Optional. Enum to control whether schema enrichment related fields should be
-        #   included in the response.
         # @param [String] view
         #   Specifies which fields of the ConnectorVersion are returned in the response.
         #   Defaults to `BASIC` view.
@@ -2781,14 +2936,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_provider_connector_versions(parent, page_size: nil, page_token: nil, schema_view: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_provider_connector_versions(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/versions', options)
           command.response_representation = Google::Apis::ConnectorsV1::ListConnectorVersionsResponse::Representation
           command.response_class = Google::Apis::ConnectorsV1::ListConnectorVersionsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['schemaView'] = schema_view unless schema_view.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -941,6 +941,17 @@ module Google
         # @return [String]
         attr_accessor :consumer_defined_name
       
+        # Optional. The consumer_project_number associated with this Apigee instance.
+        # This field is added specifically to support Apigee integration with SLM
+        # Rollout and UMM. It represents the numerical project ID of the GCP project
+        # that consumes this Apigee instance. It is used for SLM rollout notifications
+        # and UMM integration, enabling proper mapping to customer projects and log
+        # delivery for Apigee instances. This field complements consumer_project_id and
+        # may be used for specific Apigee scenarios where the numerical ID is required.
+        # Corresponds to the JSON property `consumerProjectNumber`
+        # @return [String]
+        attr_accessor :consumer_project_number
+      
         # Output only. Timestamp when the resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1057,6 +1068,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consumer_defined_name = args[:consumer_defined_name] if args.key?(:consumer_defined_name)
+          @consumer_project_number = args[:consumer_project_number] if args.key?(:consumer_project_number)
           @create_time = args[:create_time] if args.key?(:create_time)
           @instance_type = args[:instance_type] if args.key?(:instance_type)
           @labels = args[:labels] if args.key?(:labels)
@@ -1520,6 +1532,14 @@ module Google
         # @return [Array<Google::Apis::ManagedidentitiesV1alpha1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1528,6 +1548,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

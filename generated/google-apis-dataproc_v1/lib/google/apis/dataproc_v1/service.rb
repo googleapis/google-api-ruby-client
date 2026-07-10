@@ -401,14 +401,12 @@ module Google
         #   characters are /[a-z][0-9]-/.
         # @param [String] request_id
         #   Optional. A unique ID used to identify the request. If the service receives
-        #   two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
-        #   google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with
-        #   the same request_id, the second request is ignored and the Operation that
-        #   corresponds to the first Batch created and stored in the backend is returned.
-        #   Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/
-        #   Universally_unique_identifier).The value must contain only letters (a-z, A-Z),
-        #   numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
-        #   characters.
+        #   two CreateBatchRequests with the same request_id, the second request is
+        #   ignored and the operation that corresponds to the first Batch created and
+        #   stored in the backend is returned.Recommendation: Set this value to a UUID (
+        #   https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must
+        #   contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
+        #   ). The maximum length is 40 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -511,14 +509,14 @@ module Google
         #   Optional. A filter for the batches to return in the response.A filter is a
         #   logical expression constraining the values of various fields in each batch
         #   resource. Filters are case sensitive, and may contain multiple clauses
-        #   combined with logical operators (AND/OR). Supported fields are batch_id,
-        #   batch_uuid, state, create_time, and labels.e.g. state = RUNNING and
-        #   create_time < "2023-01-01T00:00:00Z" filters for batches in state RUNNING that
-        #   were created before 2023-01-01. state = RUNNING and labels.environment=
-        #   production filters for batches in state in a RUNNING state that have a
-        #   production environment label.See https://google.aip.dev/assets/misc/ebnf-
-        #   filtering.txt for a detailed description of the filter syntax and a list of
-        #   supported comparisons.
+        #   combined with logical operators (AND/OR). Supported fields: * batch_id *
+        #   batch_uuid * state * create_time * labels * runtime_info.cohort_info.cohort e.
+        #   g. state = RUNNING and create_time < "2023-01-01T00:00:00Z" filters for
+        #   batches in state RUNNING that were created before 2023-01-01. state = RUNNING
+        #   and labels.environment=production filters for batches in state in a RUNNING
+        #   state that have a production environment label.See https://google.aip.dev/
+        #   assets/misc/ebnf-filtering.txt for a detailed description of the filter syntax
+        #   and a list of supported comparisons.
         # @param [String] order_by
         #   Optional. Field(s) on which to sort the list of batches.Currently the only
         #   supported sort orders are unspecified (empty) and create_time desc to sort by
@@ -1553,6 +1551,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to true, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1570,7 +1576,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::ListOperationsResponse
@@ -1578,6 +1584,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1721,7 +1728,7 @@ module Google
         
         # Updates the session template synchronously.
         # @param [String] name
-        #   Required. The resource name of the session template.
+        #   Required. Identifier. The resource name of the session template.
         # @param [Google::Apis::DataprocV1::SessionTemplate] session_template_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2393,6 +2400,8 @@ module Google
         #   Required. The fully qualified name of the session to retrieve in the format "
         #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
         #   sparkApplications/APPLICATION_ID"
+        # @param [Array<Fixnum>, Fixnum] job_ids
+        #   Optional. List of Job IDs to filter by if provided.
         # @param [String] job_status
         #   Optional. List only jobs in the specific state.
         # @param [Fixnum] page_size
@@ -2422,11 +2431,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_session_spark_application_jobs(name, job_status: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_session_spark_application_jobs(name, job_ids: nil, job_status: nil, page_size: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:searchJobs', options)
           command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationJobsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationJobsResponse
           command.params['name'] = name unless name.nil?
+          command.query['jobIds'] = job_ids unless job_ids.nil?
           command.query['jobStatus'] = job_status unless job_status.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -2444,6 +2454,8 @@ module Google
         # @param [Boolean] details
         #   Optional. Lists/ hides details of Spark plan nodes. True is set to list and
         #   false to hide.
+        # @param [Array<String>, String] operation_ids
+        #   Optional. List of Spark Connect operation IDs to filter by if provided.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of queries to return in each response. The service
         #   may return fewer than this. The default page size is 10; the maximum page size
@@ -2473,12 +2485,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_session_spark_application_sql_queries(name, details: nil, page_size: nil, page_token: nil, parent: nil, plan_description: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_session_spark_application_sql_queries(name, details: nil, operation_ids: nil, page_size: nil, page_token: nil, parent: nil, plan_description: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:searchSqlQueries', options)
           command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationSqlQueriesResponse::Representation
           command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationSqlQueriesResponse
           command.params['name'] = name unless name.nil?
           command.query['details'] = details unless details.nil?
+          command.query['operationIds'] = operation_ids unless operation_ids.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parent'] = parent unless parent.nil?
@@ -2615,6 +2628,8 @@ module Google
         #   subsequent page.
         # @param [String] parent
         #   Required. Parent (Session) resource reference.
+        # @param [Array<Fixnum>, Fixnum] stage_ids
+        #   Optional. List of Stage IDs to filter by if provided.
         # @param [String] stage_status
         #   Optional. List only stages in the given state.
         # @param [String] summary_metrics_mask
@@ -2639,7 +2654,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_session_spark_application_stages(name, page_size: nil, page_token: nil, parent: nil, stage_status: nil, summary_metrics_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_session_spark_application_stages(name, page_size: nil, page_token: nil, parent: nil, stage_ids: nil, stage_status: nil, summary_metrics_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:searchStages', options)
           command.response_representation = Google::Apis::DataprocV1::SearchSessionSparkApplicationStagesResponse::Representation
           command.response_class = Google::Apis::DataprocV1::SearchSessionSparkApplicationStagesResponse
@@ -2647,6 +2662,7 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parent'] = parent unless parent.nil?
+          command.query['stageIds'] = stage_ids unless stage_ids.nil?
           command.query['stageStatus'] = stage_status unless stage_status.nil?
           command.query['summaryMetricsMask'] = summary_metrics_mask unless summary_metrics_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2694,6 +2710,8 @@ module Google
         #   Required. The fully qualified name of the session to retrieve in the format "
         #   projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/
         #   sparkApplications/APPLICATION_ID"
+        # @param [Array<Fixnum>, Fixnum] job_ids
+        #   Optional. List of Job IDs to filter by if provided.
         # @param [String] parent
         #   Required. Parent (Session) resource reference.
         # @param [String] fields
@@ -2713,11 +2731,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def summarize_project_location_session_spark_application_jobs(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def summarize_project_location_session_spark_application_jobs(name, job_ids: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:summarizeJobs', options)
           command.response_representation = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationJobsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationJobsResponse
           command.params['name'] = name unless name.nil?
+          command.query['jobIds'] = job_ids unless job_ids.nil?
           command.query['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2772,6 +2791,8 @@ module Google
         #   sparkApplications/APPLICATION_ID"
         # @param [String] parent
         #   Required. Parent (Session) resource reference.
+        # @param [Array<Fixnum>, Fixnum] stage_ids
+        #   Optional. List of Stage IDs to filter by if provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2789,12 +2810,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def summarize_project_location_session_spark_application_stages(name, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def summarize_project_location_session_spark_application_stages(name, parent: nil, stage_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:summarizeStages', options)
           command.response_representation = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStagesResponse::Representation
           command.response_class = Google::Apis::DataprocV1::SummarizeSessionSparkApplicationStagesResponse
           command.params['name'] = name unless name.nil?
           command.query['parent'] = parent unless parent.nil?
+          command.query['stageIds'] = stage_ids unless stage_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3566,7 +3588,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
         # @param [String] action_on_failed_primary_workers
         #   Optional. Failure action when primary worker creation fails.
@@ -3619,7 +3641,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [String] cluster_uuid
@@ -3685,7 +3707,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::DiagnoseClusterRequest] diagnose_cluster_request_object
@@ -3725,7 +3747,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [String] fields
@@ -3840,12 +3862,12 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] filter
         #   Optional. A filter constraining the clusters to list. Filters are case-
         #   sensitive and have the following syntax:field = value AND field = value ...
         #   where field is one of status.state, clusterName, or labels.[KEY], and [KEY] is
-        #   a label key. value can be * to match all values. status.state can be one of
+        #   a label key. value can be "*" to match all values. status.state can be one of
         #   the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR, DELETING, UPDATING,
         #   STOPPING, or STOPPED. ACTIVE contains the CREATING, UPDATING, and RUNNING
         #   states. INACTIVE contains the DELETING, ERROR, STOPPING, and STOPPED states.
@@ -3854,9 +3876,12 @@ module Google
         #   an implicit AND operator.Example filter:status.state = ACTIVE AND clusterName =
         #   mycluster AND labels.env = staging AND labels.starred = *
         # @param [Fixnum] page_size
-        #   Optional. The standard List page size.
+        #   Optional. The maximum number of clusters to return in each response. The
+        #   service may return fewer than this value. If unspecified, the default value is
+        #   200. The maximum value is 1000.
         # @param [String] page_token
-        #   Optional. The standard List page token.
+        #   Optional. A page token received from a previous ListClusters call. Provide
+        #   this token to retrieve the subsequent page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3895,7 +3920,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
@@ -3906,8 +3931,7 @@ module Google
         #   forcefully removing nodes (and potentially interrupting jobs). Default timeout
         #   is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (
         #   see JSON representation of Duration (https://developers.google.com/protocol-
-        #   buffers/docs/proto3#json)).Only supported on Dataproc image versions 1.2 and
-        #   higher.
+        #   buffers/docs/proto3#json)).Supported in image versions 1.2 and higher.
         # @param [String] request_id
         #   Optional. A unique ID used to identify the request. If the server receives two
         #   UpdateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/
@@ -3970,7 +3994,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::RepairClusterRequest] repair_cluster_request_object
@@ -4046,7 +4070,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::StartClusterRequest] start_cluster_request_object
@@ -4085,7 +4109,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
-        #   Required. The Dataproc region in which to handle the request.
+        #   Required. The region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::StopClusterRequest] stop_cluster_request_object
@@ -4479,11 +4503,13 @@ module Google
         # @param [String] filter
         #   Optional. A filter constraining the jobs to list. Filters are case-sensitive
         #   and have the following syntax:field = value AND field = value ...where field
-        #   is status.state or labels.[KEY], and [KEY] is a label key. value can be * to
-        #   match all values. status.state can be either ACTIVE or NON_ACTIVE. Only the
-        #   logical AND operator is supported; space-separated items are treated as having
-        #   an implicit AND operator.Example filter:status.state = ACTIVE AND labels.env =
-        #   staging AND labels.starred = *
+        #   is status.state or insertTime, or labels.[KEY], and [KEY] is a label key.
+        #   value can be * to match all values. status.state can be either ACTIVE or
+        #   NON_ACTIVE. Allows insertTime to be a timestamp in RFC 3339 format in double
+        #   quotes, such as 2025-01-01T00:00:00Z. Only the logical AND operator is
+        #   supported; space-separated items are treated as having an implicit AND
+        #   operator.Example filter:status.state = ACTIVE AND labels.env = staging AND
+        #   labels.starred = * AND insertTime <= "2025-01-01T00:00:00Z"
         # @param [String] job_state_matcher
         #   Optional. Specifies enumerated categories of jobs to list. (default = match
         #   ALL jobs).If filter is provided, jobStateMatcher will be ignored.
@@ -4865,6 +4891,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to true, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4882,7 +4916,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DataprocV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::DataprocV1::ListOperationsResponse
@@ -4890,6 +4924,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

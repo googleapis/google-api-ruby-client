@@ -22,6 +22,12 @@ module Google
   module Apis
     module PubsubV1
       
+      class AiInference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcknowledgeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigtableConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +101,12 @@ module Google
       end
       
       class CommitSchemaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Compression
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnstructuredInference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateSnapshotRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -416,6 +440,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AiInference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :endpoint, as: 'endpoint'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :unstructured_inference, as: 'unstructuredInference', class: Google::Apis::PubsubV1::UnstructuredInference, decorator: Google::Apis::PubsubV1::UnstructuredInference::Representation
+      
+        end
       end
       
       class AcknowledgeRequest
@@ -496,6 +530,17 @@ module Google
         end
       end
       
+      class BigtableConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_profile_id, as: 'appProfileId'
+          property :service_account_email, as: 'serviceAccountEmail'
+          property :state, as: 'state'
+          property :table, as: 'table'
+          property :write_metadata, as: 'writeMetadata'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -549,6 +594,14 @@ module Google
         end
       end
       
+      class Compression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compression_algorithm, as: 'compressionAlgorithm'
+          property :compression_mode, as: 'compressionMode'
+        end
+      end
+      
       class ConfluentCloud
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -566,6 +619,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :subscription, as: 'subscription'
+          hash :tags, as: 'tags'
         end
       end
       
@@ -704,6 +758,10 @@ module Google
       class MessageTransform
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ai_inference, as: 'aiInference', class: Google::Apis::PubsubV1::AiInference, decorator: Google::Apis::PubsubV1::AiInference::Representation
+      
+          property :compression, as: 'compression', class: Google::Apis::PubsubV1::Compression, decorator: Google::Apis::PubsubV1::Compression::Representation
+      
           property :disabled, as: 'disabled'
           property :enabled, as: 'enabled'
           property :javascript_udf, as: 'javascriptUdf', class: Google::Apis::PubsubV1::JavaScriptUdf, decorator: Google::Apis::PubsubV1::JavaScriptUdf::Representation
@@ -913,6 +971,8 @@ module Google
       
           property :bigquery_config, as: 'bigqueryConfig', class: Google::Apis::PubsubV1::BigQueryConfig, decorator: Google::Apis::PubsubV1::BigQueryConfig::Representation
       
+          property :bigtable_config, as: 'bigtableConfig', class: Google::Apis::PubsubV1::BigtableConfig, decorator: Google::Apis::PubsubV1::BigtableConfig::Representation
+      
           property :cloud_storage_config, as: 'cloudStorageConfig', class: Google::Apis::PubsubV1::CloudStorageConfig, decorator: Google::Apis::PubsubV1::CloudStorageConfig::Representation
       
           property :dead_letter_policy, as: 'deadLetterPolicy', class: Google::Apis::PubsubV1::DeadLetterPolicy, decorator: Google::Apis::PubsubV1::DeadLetterPolicy::Representation
@@ -934,6 +994,7 @@ module Google
           property :retry_policy, as: 'retryPolicy', class: Google::Apis::PubsubV1::RetryPolicy, decorator: Google::Apis::PubsubV1::RetryPolicy::Representation
       
           property :state, as: 'state'
+          hash :tags, as: 'tags'
           property :topic, as: 'topic'
           property :topic_message_retention_duration, as: 'topicMessageRetentionDuration'
         end
@@ -983,6 +1044,14 @@ module Google
           property :schema_settings, as: 'schemaSettings', class: Google::Apis::PubsubV1::SchemaSettings, decorator: Google::Apis::PubsubV1::SchemaSettings::Representation
       
           property :state, as: 'state'
+          hash :tags, as: 'tags'
+        end
+      end
+      
+      class UnstructuredInference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :parameters, as: 'parameters'
         end
       end
       

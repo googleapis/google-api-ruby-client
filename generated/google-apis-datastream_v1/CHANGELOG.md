@@ -1,5 +1,83 @@
 # Release history for google-apis-datastream_v1
 
+### v0.70.0 (2026-06-28)
+
+* Regenerated from discovery document revision 20260617
+
+### v0.69.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260531
+* Regenerated using generator version 0.19.0
+
+### v0.68.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260503
+
+### v0.67.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260426
+
+### v0.66.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260321
+
+### v0.65.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260204
+
+### v0.64.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260128
+
+### v0.63.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260114
+
+### v0.62.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260107
+
+### v0.61.0 (2026-01-11)
+
+* Regenerated from discovery document revision 20251231
+
+### v0.60.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251201
+
+### v0.59.0 (2025-12-07)
+
+* Regenerated from discovery document revision 20251112
+
+### v0.58.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251029
+
+### v0.57.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251021
+
+### v0.56.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250827
+
+### v0.55.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250817
+
+### v0.54.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250722
+
+### v0.53.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250714
+
+### v0.52.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250627
+* Regenerated using generator version 0.18.0
+
 ### v0.51.0 (2025-05-21)
 
 * Regenerated from discovery document revision 20250518

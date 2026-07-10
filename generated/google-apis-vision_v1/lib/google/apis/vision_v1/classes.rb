@@ -1211,7 +1211,7 @@ module Google
       
         # Model to use for the feature. Supported values: "builtin/stable" (the default
         # if unset) and "builtin/latest". `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION`
-        # also support "builtin/weekly" for the bleeding edge release updated weekly.
+        # also support "builtin/rc" for the latest release candidate.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -8980,6 +8980,14 @@ module Google
         # @return [Array<Google::Apis::VisionV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8988,6 +8996,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

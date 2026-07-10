@@ -32,6 +32,12 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # See, edit, configure, and delete your Google Kubernetes Engine data and see the email address for your Google Account
+      AUTH_CONTAINER = 'https://www.googleapis.com/auth/container'
+
+      # See your Google Kubernetes Engine data and the email address of your Google Account
+      AUTH_CONTAINER_READ_ONLY = 'https://www.googleapis.com/auth/container.read-only'
     end
   end
 end

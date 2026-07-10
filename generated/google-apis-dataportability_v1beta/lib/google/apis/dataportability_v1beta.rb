@@ -35,9 +35,6 @@ module Google
       # Move a copy of the Google Alerts subscriptions you created
       AUTH_DATAPORTABILITY_ALERTS_SUBSCRIPTIONS = 'https://www.googleapis.com/auth/dataportability.alerts.subscriptions'
 
-      # Move a copy of messages between you and the businesses you have conversations with across Google services
-      AUTH_DATAPORTABILITY_BUSINESSMESSAGING_CONVERSATIONS = 'https://www.googleapis.com/auth/dataportability.businessmessaging.conversations'
-
       # Move a copy of the information you entered into online forms in Chrome
       AUTH_DATAPORTABILITY_CHROME_AUTOFILL = 'https://www.googleapis.com/auth/dataportability.chrome.autofill'
 
@@ -98,6 +95,9 @@ module Google
       # Move a copy of your Starred places list on Maps
       AUTH_DATAPORTABILITY_MAPS_STARRED_PLACES = 'https://www.googleapis.com/auth/dataportability.maps.starred_places'
 
+      # Move a copy of your vehicle profile on Maps
+      AUTH_DATAPORTABILITY_MAPS_VEHICLE_PROFILE = 'https://www.googleapis.com/auth/dataportability.maps.vehicle_profile'
+
       # Move a copy of your Maps activity
       AUTH_DATAPORTABILITY_MYACTIVITY_MAPS = 'https://www.googleapis.com/auth/dataportability.myactivity.maps'
 
@@ -118,6 +118,21 @@ module Google
 
       # Move a copy of the maps you created in My Maps
       AUTH_DATAPORTABILITY_MYMAPS_MAPS = 'https://www.googleapis.com/auth/dataportability.mymaps.maps'
+
+      # Copy Nest camera event data
+      AUTH_DATAPORTABILITY_NEST_CAMERA_EVENT = 'https://www.googleapis.com/auth/dataportability.nest.camera_event'
+
+      # Copy Nest camera feature data
+      AUTH_DATAPORTABILITY_NEST_CAMERA_FEATURE = 'https://www.googleapis.com/auth/dataportability.nest.camera_feature'
+
+      # Copy Nest camera footage
+      AUTH_DATAPORTABILITY_NEST_CAMERA_VIDEO = 'https://www.googleapis.com/auth/dataportability.nest.camera_video'
+
+      # Copy your Nest Store and Nest Renew billing and payment information
+      AUTH_DATAPORTABILITY_NEST_STORE = 'https://www.googleapis.com/auth/dataportability.nest.store'
+
+      # Copy your Nest user information
+      AUTH_DATAPORTABILITY_NEST_USER = 'https://www.googleapis.com/auth/dataportability.nest.user'
 
       # Move a copy of your food purchase and reservation activity
       AUTH_DATAPORTABILITY_ORDER_RESERVE_PURCHASES_RESERVATIONS = 'https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations'
@@ -193,6 +208,9 @@ module Google
 
       # Move a copy of your YouTube comments
       AUTH_DATAPORTABILITY_YOUTUBE_COMMENTS = 'https://www.googleapis.com/auth/dataportability.youtube.comments'
+
+      # Move a copy of all your YouTube messages
+      AUTH_DATAPORTABILITY_YOUTUBE_CONVERSATIONS = 'https://www.googleapis.com/auth/dataportability.youtube.conversations'
 
       # Move a copy of your YouTube messages in live chat
       AUTH_DATAPORTABILITY_YOUTUBE_LIVE_CHAT = 'https://www.googleapis.com/auth/dataportability.youtube.live_chat'

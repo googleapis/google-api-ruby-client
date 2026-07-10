@@ -1,5 +1,75 @@
 # Release history for google-apis-merchantapi_products_v1beta
 
+### v0.29.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260527
+* Regenerated using generator version 0.19.0
+
+### v0.28.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260512
+
+### v0.27.0 (2026-04-26)
+
+* Regenerated from discovery document revision 20260419
+
+### v0.26.0 (2026-03-01)
+
+* Regenerated from discovery document revision 20260223
+
+### v0.25.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260113
+
+### v0.24.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251207
+
+### v0.23.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251118
+
+### v0.22.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251109
+
+### v0.21.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20251007
+
+### v0.20.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250811
+
+### v0.19.0 (2025-08-03)
+
+* Regenerated from discovery document revision 20250727
+
+### v0.18.0 (2025-07-27)
+
+* Regenerated from discovery document revision 20250724
+
+### v0.17.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250716
+
+### v0.16.0 (2025-07-13)
+
+* Regenerated from discovery document revision 20250710
+
+### v0.15.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250621
+
+### v0.14.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250618
+
+### v0.13.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250606
+* Regenerated using generator version 0.18.0
+
 ### v0.12.0 (2025-05-04)
 
 * Regenerated from discovery document revision 20250427

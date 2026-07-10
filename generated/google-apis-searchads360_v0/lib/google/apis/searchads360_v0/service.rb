@@ -143,8 +143,9 @@ module Google
         end
         
         # Returns all rows that match the search query. List of thrown errors: [
-        # AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]()
-        # [QueryError]() [QuotaError]() [RequestError]()
+        # AuthenticationError]() [AuthorizationError]() [ChangeEventError]() [
+        # ChangeStatusError]() [ClickViewError]() [HeaderError]() [InternalError]() [
+        # QueryError]() [QuotaError]() [RequestError]()
         # @param [String] customer_id
         #   Required. The ID of the customer being queried.
         # @param [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ServicesSearchSearchAds360Request] google_ads_searchads360_v0_services__search_search_ads360_request_object

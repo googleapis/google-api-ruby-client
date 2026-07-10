@@ -871,7 +871,10 @@ module Google
         attr_accessor :create_time
       
         # Optional. Indicate if a customer is attesting about the correctness of
-        # provided information. Only required if creating a GCP Entitlement.
+        # provided information. Only required if creating a GCP Entitlement. NOTE: This
+        # field will be mandatory for all new GCP customers starting Aug 31st, 2026 and
+        # this field will also be required for all existing customers purchasing new GCP
+        # Entitlements.
         # Corresponds to the JSON property `customerAttestationState`
         # @return [String]
         attr_accessor :customer_attestation_state
@@ -900,16 +903,17 @@ module Google
         # @return [String]
         attr_accessor :org_display_name
       
-        # Represents a postal address (for example, for postal delivery or payments
-        # addresses). Given a postal address, a postal service can deliver items to a
-        # premise, P.O. box or similar. It is not intended to model geographical
-        # locations (roads, towns, mountains). In typical usage, an address would be
-        # created by user input or from importing existing data, depending on the type
-        # of process. Advice on address input or editing: - Use an internationalization-
-        # ready address widget such as https://github.com/google/libaddressinput. -
-        # Users should not be presented with UI elements for input or editing of fields
-        # outside countries where that field is used. For more guidance on how to use
-        # this schema, see: https://support.google.com/business/answer/6397478.
+        # Represents a postal address, such as for postal delivery or payments addresses.
+        # With a postal address, a postal service can deliver items to a premise, P.O.
+        # box, or similar. A postal address is not intended to model geographical
+        # locations like roads, towns, or mountains. In typical usage, an address would
+        # be created by user input or from importing existing data, depending on the
+        # type of process. Advice on address input or editing: - Use an
+        # internationalization-ready address widget such as https://github.com/google/
+        # libaddressinput. - Users should not be presented with UI elements for input or
+        # editing of fields outside countries where that field is used. For more
+        # guidance on how to use this schema, see: https://support.google.com/business/
+        # answer/6397478.
         # Corresponds to the JSON property `orgPostalAddress`
         # @return [Google::Apis::CloudchannelV1::GoogleTypePostalAddress]
         attr_accessor :org_postal_address
@@ -1112,6 +1116,38 @@ module Google
           @invoice_start_date = args[:invoice_start_date] if args.key?(:invoice_start_date)
           @usage_end_date_time = args[:usage_end_date_time] if args.key?(:usage_end_date_time)
           @usage_start_date_time = args[:usage_start_date_time] if args.key?(:usage_start_date_time)
+        end
+      end
+      
+      # Represents a single component of the total discount applicable on a Price.
+      class GoogleCloudChannelV1DiscountComponent
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `discountAbsolute`
+        # @return [Google::Apis::CloudchannelV1::GoogleTypeMoney]
+        attr_accessor :discount_absolute
+      
+        # Discount percentage, represented as decimal. For example, a 20% discount will
+        # be represented as 0.2.
+        # Corresponds to the JSON property `discountPercentage`
+        # @return [Float]
+        attr_accessor :discount_percentage
+      
+        # Type of the discount.
+        # Corresponds to the JSON property `discountType`
+        # @return [String]
+        attr_accessor :discount_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discount_absolute = args[:discount_absolute] if args.key?(:discount_absolute)
+          @discount_percentage = args[:discount_percentage] if args.key?(:discount_percentage)
+          @discount_type = args[:discount_type] if args.key?(:discount_type)
         end
       end
       
@@ -2432,6 +2468,12 @@ module Google
         # @return [Float]
         attr_accessor :discount
       
+        # Breakdown of the discount into its components. This will be empty if there is
+        # no discount present.
+        # Corresponds to the JSON property `discountComponents`
+        # @return [Array<Google::Apis::CloudchannelV1::GoogleCloudChannelV1DiscountComponent>]
+        attr_accessor :discount_components
+      
         # Represents an amount of money with its currency type.
         # Corresponds to the JSON property `effectivePrice`
         # @return [Google::Apis::CloudchannelV1::GoogleTypeMoney]
@@ -2442,6 +2484,11 @@ module Google
         # @return [String]
         attr_accessor :external_price_uri
       
+        # Represents period in days/months/years.
+        # Corresponds to the JSON property `pricePeriod`
+        # @return [Google::Apis::CloudchannelV1::GoogleCloudChannelV1Period]
+        attr_accessor :price_period
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2450,8 +2497,10 @@ module Google
         def update!(**args)
           @base_price = args[:base_price] if args.key?(:base_price)
           @discount = args[:discount] if args.key?(:discount)
+          @discount_components = args[:discount_components] if args.key?(:discount_components)
           @effective_price = args[:effective_price] if args.key?(:effective_price)
           @external_price_uri = args[:external_price_uri] if args.key?(:external_price_uri)
+          @price_period = args[:price_period] if args.key?(:price_period)
         end
       end
       
@@ -4710,6 +4759,14 @@ module Google
         # @return [Array<Google::Apis::CloudchannelV1::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4718,6 +4775,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -5060,16 +5118,17 @@ module Google
         end
       end
       
-      # Represents a postal address (for example, for postal delivery or payments
-      # addresses). Given a postal address, a postal service can deliver items to a
-      # premise, P.O. box or similar. It is not intended to model geographical
-      # locations (roads, towns, mountains). In typical usage, an address would be
-      # created by user input or from importing existing data, depending on the type
-      # of process. Advice on address input or editing: - Use an internationalization-
-      # ready address widget such as https://github.com/google/libaddressinput. -
-      # Users should not be presented with UI elements for input or editing of fields
-      # outside countries where that field is used. For more guidance on how to use
-      # this schema, see: https://support.google.com/business/answer/6397478.
+      # Represents a postal address, such as for postal delivery or payments addresses.
+      # With a postal address, a postal service can deliver items to a premise, P.O.
+      # box, or similar. A postal address is not intended to model geographical
+      # locations like roads, towns, or mountains. In typical usage, an address would
+      # be created by user input or from importing existing data, depending on the
+      # type of process. Advice on address input or editing: - Use an
+      # internationalization-ready address widget such as https://github.com/google/
+      # libaddressinput. - Users should not be presented with UI elements for input or
+      # editing of fields outside countries where that field is used. For more
+      # guidance on how to use this schema, see: https://support.google.com/business/
+      # answer/6397478.
       class GoogleTypePostalAddress
         include Google::Apis::Core::Hashable
       

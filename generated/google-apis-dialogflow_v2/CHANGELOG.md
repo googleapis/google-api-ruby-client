@@ -1,5 +1,95 @@
 # Release history for google-apis-dialogflow_v2
 
+### v0.126.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260616
+
+### v0.125.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260604
+* Regenerated using generator version 0.19.0
+
+### v0.124.0 (2026-05-24)
+
+* Regenerated from discovery document revision 20260518
+
+### v0.123.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260509
+
+### v0.122.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260426
+
+### v0.121.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260323
+
+### v0.120.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260313
+
+### v0.119.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260119
+
+### v0.118.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251203
+
+### v0.117.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251110
+
+### v0.116.0 (2025-11-09)
+
+* Regenerated from discovery document revision 20251105
+
+### v0.115.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251027
+
+### v0.114.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251013
+
+### v0.113.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250930
+
+### v0.112.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250919
+
+### v0.111.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250902
+
+### v0.110.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250812
+
+### v0.109.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250715
+
+### v0.108.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250627
+
+### v0.107.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250617
+
+### v0.106.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250612
+
+### v0.105.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250602
+* Regenerated using generator version 0.18.0
+
 ### v0.104.0 (2025-05-11)
 
 * Regenerated from discovery document revision 20250508

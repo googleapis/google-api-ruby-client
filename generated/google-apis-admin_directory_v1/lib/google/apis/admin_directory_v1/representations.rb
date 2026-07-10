@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BluetoothAdapterInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Building
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CountChromeOsDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreatePrintServerRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +341,12 @@ module Google
       end
       
       class DirectoryChromeosdevicesIssueCommandResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DirectoryUsersCreateGuestRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -413,6 +431,12 @@ module Google
       end
       
       class Groups
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GuestAccountInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -900,6 +924,14 @@ module Google
         end
       end
       
+      class BluetoothAdapterInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :num_connected_devices, as: 'numConnectedDevices'
+        end
+      end
+      
       class Building
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1033,6 +1065,8 @@ module Google
           property :auto_update_through, as: 'autoUpdateThrough'
           collection :backlight_info, as: 'backlightInfo', class: Google::Apis::AdminDirectoryV1::BacklightInfo, decorator: Google::Apis::AdminDirectoryV1::BacklightInfo::Representation
       
+          collection :bluetooth_adapter_info, as: 'bluetoothAdapterInfo', class: Google::Apis::AdminDirectoryV1::BluetoothAdapterInfo, decorator: Google::Apis::AdminDirectoryV1::BluetoothAdapterInfo::Representation
+      
           property :boot_mode, as: 'bootMode'
           property :chrome_os_type, as: 'chromeOsType'
           collection :cpu_info, as: 'cpuInfo', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuInfo::Representation
@@ -1078,6 +1112,7 @@ module Google
           property :os_update_status, as: 'osUpdateStatus', class: Google::Apis::AdminDirectoryV1::OsUpdateStatus, decorator: Google::Apis::AdminDirectoryV1::OsUpdateStatus::Representation
       
           property :os_version, as: 'osVersion'
+          property :os_version_compliance, as: 'osVersionCompliance'
           property :platform_version, as: 'platformVersion'
           collection :recent_users, as: 'recentUsers', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::RecentUser::Representation
       
@@ -1256,6 +1291,13 @@ module Google
         end
       end
       
+      class CountChromeOsDevicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+        end
+      end
+      
       class CreatePrintServerRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1342,6 +1384,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :command_id, :numeric_string => true, as: 'commandId'
+        end
+      end
+      
+      class DirectoryUsersCreateGuestRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+          property :primary_guest_email, as: 'primaryGuestEmail'
         end
       end
       
@@ -1485,6 +1535,13 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GuestAccountInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_guest_email, as: 'primaryGuestEmail'
         end
       end
       
@@ -1883,6 +1940,7 @@ module Google
           property :addresses, as: 'addresses'
           property :agreed_to_terms, as: 'agreedToTerms'
           collection :aliases, as: 'aliases'
+          property :archival_time, as: 'archivalTime'
           property :archived, as: 'archived'
           property :change_password_at_next_login, as: 'changePasswordAtNextLogin'
           property :creation_time, as: 'creationTime', type: DateTime
@@ -1895,6 +1953,8 @@ module Google
           property :etag, as: 'etag'
           property :external_ids, as: 'externalIds'
           property :gender, as: 'gender'
+          property :guest_account_info, as: 'guestAccountInfo', class: Google::Apis::AdminDirectoryV1::GuestAccountInfo, decorator: Google::Apis::AdminDirectoryV1::GuestAccountInfo::Representation
+      
           property :hash_function, as: 'hashFunction'
           property :id, as: 'id'
           property :ims, as: 'ims'
@@ -1904,6 +1964,7 @@ module Google
           property :is_delegated_admin, as: 'isDelegatedAdmin'
           property :is_enforced_in2_sv, as: 'isEnforcedIn2Sv'
           property :is_enrolled_in2_sv, as: 'isEnrolledIn2Sv'
+          property :is_guest_user, as: 'isGuestUser'
           property :is_mailbox_setup, as: 'isMailboxSetup'
           property :keywords, as: 'keywords'
           property :kind, as: 'kind'
@@ -1927,6 +1988,7 @@ module Google
           property :ssh_public_keys, as: 'sshPublicKeys'
           property :suspended, as: 'suspended'
           property :suspension_reason, as: 'suspensionReason'
+          property :suspension_time, as: 'suspensionTime'
           property :thumbnail_photo_etag, as: 'thumbnailPhotoEtag'
           property :thumbnail_photo_url, as: 'thumbnailPhotoUrl'
           property :websites, as: 'websites'

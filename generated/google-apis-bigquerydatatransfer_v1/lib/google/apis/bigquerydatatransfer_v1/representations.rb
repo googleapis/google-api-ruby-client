@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataplexConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EmailPreferences
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HierarchyDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDataSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTransferResourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTransferRunsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +131,18 @@ module Google
       end
       
       class ManualSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetadataDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeBasedSchedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,7 +220,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TransferResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransferResourceStatusDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TransferRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransferRunBrief
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransferStatusMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TransferStatusSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -250,6 +316,7 @@ module Google
           collection :fields, as: 'fields', class: Google::Apis::BigquerydatatransferV1::DataSourceParameter, decorator: Google::Apis::BigquerydatatransferV1::DataSourceParameter::Representation
       
           property :immutable, as: 'immutable'
+          property :max_list_size, :numeric_string => true, as: 'maxListSize'
           property :max_value, as: 'maxValue'
           property :min_value, as: 'minValue'
           property :param_id, as: 'paramId'
@@ -260,6 +327,13 @@ module Google
           property :validation_description, as: 'validationDescription'
           property :validation_help_url, as: 'validationHelpUrl'
           property :validation_regex, as: 'validationRegex'
+        end
+      end
+      
+      class DataplexConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entry_group, as: 'entryGroup'
         end
       end
       
@@ -294,6 +368,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pubsub_subscription, as: 'pubsubSubscription'
+        end
+      end
+      
+      class HierarchyDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partition_detail, as: 'partitionDetail', class: Google::Apis::BigquerydatatransferV1::PartitionDetail, decorator: Google::Apis::BigquerydatatransferV1::PartitionDetail::Representation
+      
+          property :table_detail, as: 'tableDetail', class: Google::Apis::BigquerydatatransferV1::TableDetail, decorator: Google::Apis::BigquerydatatransferV1::TableDetail::Representation
+      
         end
       end
       
@@ -333,6 +417,15 @@ module Google
         end
       end
       
+      class ListTransferResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :transfer_resources, as: 'transferResources', class: Google::Apis::BigquerydatatransferV1::TransferResource, decorator: Google::Apis::BigquerydatatransferV1::TransferResource::Representation
+      
+        end
+      end
+      
       class ListTransferRunsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -356,6 +449,21 @@ module Google
       class ManualSchedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class MetadataDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataplex_configuration, as: 'dataplexConfiguration', class: Google::Apis::BigquerydatatransferV1::DataplexConfiguration, decorator: Google::Apis::BigquerydatatransferV1::DataplexConfiguration::Representation
+      
+        end
+      end
+      
+      class PartitionDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table, as: 'table'
         end
       end
       
@@ -422,6 +530,13 @@ module Google
         end
       end
       
+      class TableDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partition_count, :numeric_string => true, as: 'partitionCount'
+        end
+      end
+      
       class TimeBasedSchedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -454,6 +569,9 @@ module Google
       
           property :error, as: 'error', class: Google::Apis::BigquerydatatransferV1::Status, decorator: Google::Apis::BigquerydatatransferV1::Status::Representation
       
+          property :managed_table_type, as: 'managedTableType'
+          property :metadata_destination, as: 'metadataDestination', class: Google::Apis::BigquerydatatransferV1::MetadataDestination, decorator: Google::Apis::BigquerydatatransferV1::MetadataDestination::Representation
+      
           property :name, as: 'name'
           property :next_run_time, as: 'nextRunTime'
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
@@ -480,6 +598,36 @@ module Google
         end
       end
       
+      class TransferResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination'
+          property :hierarchy_detail, as: 'hierarchyDetail', class: Google::Apis::BigquerydatatransferV1::HierarchyDetail, decorator: Google::Apis::BigquerydatatransferV1::HierarchyDetail::Representation
+      
+          property :last_successful_run, as: 'lastSuccessfulRun', class: Google::Apis::BigquerydatatransferV1::TransferRunBrief, decorator: Google::Apis::BigquerydatatransferV1::TransferRunBrief::Representation
+      
+          property :latest_run, as: 'latestRun', class: Google::Apis::BigquerydatatransferV1::TransferRunBrief, decorator: Google::Apis::BigquerydatatransferV1::TransferRunBrief::Representation
+      
+          property :latest_status_detail, as: 'latestStatusDetail', class: Google::Apis::BigquerydatatransferV1::TransferResourceStatusDetail, decorator: Google::Apis::BigquerydatatransferV1::TransferResourceStatusDetail::Representation
+      
+          property :name, as: 'name'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class TransferResourceStatusDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_percentage, as: 'completedPercentage'
+          property :error, as: 'error', class: Google::Apis::BigquerydatatransferV1::Status, decorator: Google::Apis::BigquerydatatransferV1::Status::Representation
+      
+          property :state, as: 'state'
+          property :summary, as: 'summary', class: Google::Apis::BigquerydatatransferV1::TransferStatusSummary, decorator: Google::Apis::BigquerydatatransferV1::TransferStatusSummary::Representation
+      
+        end
+      end
+      
       class TransferRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -489,6 +637,8 @@ module Google
       
           property :end_time, as: 'endTime'
           property :error_status, as: 'errorStatus', class: Google::Apis::BigquerydatatransferV1::Status, decorator: Google::Apis::BigquerydatatransferV1::Status::Representation
+      
+          property :metadata_destination, as: 'metadataDestination', class: Google::Apis::BigquerydatatransferV1::MetadataDestination, decorator: Google::Apis::BigquerydatatransferV1::MetadataDestination::Representation
       
           property :name, as: 'name'
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
@@ -500,6 +650,34 @@ module Google
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
           property :user_id, :numeric_string => true, as: 'userId'
+        end
+      end
+      
+      class TransferRunBrief
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :run, as: 'run'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class TransferStatusMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed, :numeric_string => true, as: 'completed'
+          property :failed, :numeric_string => true, as: 'failed'
+          property :pending, :numeric_string => true, as: 'pending'
+          property :total, :numeric_string => true, as: 'total'
+          property :unit, as: 'unit'
+        end
+      end
+      
+      class TransferStatusSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics, as: 'metrics', class: Google::Apis::BigquerydatatransferV1::TransferStatusMetric, decorator: Google::Apis::BigquerydatatransferV1::TransferStatusMetric::Representation
+      
+          property :progress_unit, as: 'progressUnit'
         end
       end
       

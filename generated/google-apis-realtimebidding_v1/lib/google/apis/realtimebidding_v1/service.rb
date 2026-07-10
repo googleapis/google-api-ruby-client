@@ -549,7 +549,7 @@ module Google
         # Gets a pretargeting configuration.
         # @param [String] name
         #   Required. Name of the pretargeting configuration to get. Format: bidders/`
-        #   bidderAccountId`/pretargetingConfig/`configId`
+        #   bidderAccountId`/pretargetingConfigs/`configId`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -620,8 +620,8 @@ module Google
         
         # Updates a pretargeting configuration.
         # @param [String] name
-        #   Output only. Name of the pretargeting configuration that must follow the
-        #   pattern `bidders/`bidder_account_id`/pretargetingConfigs/`config_id``
+        #   Output only. Name of the pretargeting config that must follow the pattern `
+        #   bidders/`bidder_account_id`/pretargetingConfigs/`config_id``
         # @param [Google::Apis::RealtimebiddingV1::PretargetingConfig] pretargeting_config_object
         # @param [String] update_mask
         #   Field mask to use for partial in-place updates.

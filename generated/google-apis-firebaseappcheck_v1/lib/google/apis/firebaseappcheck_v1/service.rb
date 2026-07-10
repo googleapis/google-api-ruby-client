@@ -832,6 +832,13 @@ module Google
         #   Required. The relative resource name of the DebugToken to delete, in the
         #   format: ``` projects/`project_number`/apps/`app_id`/debugTokens/`
         #   debug_token_id` ```
+        # @param [String] etag
+        #   Optional. The checksum to be validated against the current DebugToken, to
+        #   ensure the client has an up-to-date value before proceeding. This checksum is
+        #   computed by the server based on the values of fields in the DebugToken object,
+        #   and can be obtained from the DebugToken object received from the last
+        #   CreateDebugToken, GetDebugToken, ListDebugTokens, or UpdateDebugToken call.
+        #   This etag is strongly validated as defined by RFC 7232.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -849,11 +856,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_app_debug_token(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_app_debug_token(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::FirebaseappcheckV1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

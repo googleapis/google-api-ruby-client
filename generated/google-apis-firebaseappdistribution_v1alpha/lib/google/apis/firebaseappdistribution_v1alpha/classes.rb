@@ -47,6 +47,43 @@ module Google
         end
       end
       
+      # Rectangle for describing bounding boxes
+      class AndroidxCrawlerOutputRectangle
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `bottom`
+        # @return [Fixnum]
+        attr_accessor :bottom
+      
+        # 
+        # Corresponds to the JSON property `left`
+        # @return [Fixnum]
+        attr_accessor :left
+      
+        # 
+        # Corresponds to the JSON property `right`
+        # @return [Fixnum]
+        attr_accessor :right
+      
+        # 
+        # Corresponds to the JSON property `top`
+        # @return [Fixnum]
+        attr_accessor :top
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bottom = args[:bottom] if args.key?(:bottom)
+          @left = args[:left] if args.key?(:left)
+          @right = args[:right] if args.key?(:right)
+          @top = args[:top] if args.key?(:top)
+        end
+      end
+      
       # A release of a Firebase app.
       class GoogleFirebaseAppdistroV1Release
         include Google::Apis::Core::Hashable
@@ -76,13 +113,18 @@ module Google
         # @return [String]
         attr_accessor :display_version
       
+        # Output only. The time the release will expire.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # Output only. A link to the Firebase console displaying a single release.
         # Corresponds to the JSON property `firebaseConsoleUri`
         # @return [String]
         attr_accessor :firebase_console_uri
       
-        # The name of the release resource. Format: `projects/`project_number`/apps/`
-        # app_id`/releases/`release_id``
+        # The name of the release resource. Format: `projects/`project_number`/apps/`app`
+        # /releases/`release``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -99,6 +141,11 @@ module Google
         # @return [String]
         attr_accessor :testing_uri
       
+        # Output only. The time the release was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -109,10 +156,12 @@ module Google
           @build_version = args[:build_version] if args.key?(:build_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_version = args[:display_version] if args.key?(:display_version)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @firebase_console_uri = args[:firebase_console_uri] if args.key?(:firebase_console_uri)
           @name = args[:name] if args.key?(:name)
           @release_notes = args[:release_notes] if args.key?(:release_notes)
           @testing_uri = args[:testing_uri] if args.key?(:testing_uri)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -243,11 +292,20 @@ module Google
         # @return [String]
         attr_accessor :hint
       
-        # Optional. A description of criteria the agent should use to determine if the
-        # goal has been successfully completed
+        # Optional. A visual description of the screen's expected state after the step
+        # has been successfully completed. This is referred to as the "final screen
+        # assertion" in the Firebase console and CLI tools. This field must be provided
+        # for the last step in a test case, and is optional for all other steps.
         # Corresponds to the JSON property `successCriteria`
         # @return [String]
         attr_accessor :success_criteria
+      
+        # Output only. The test case that contained this step. Note: The test case may
+        # have changed or been deleted since this step was created. Format: `projects/`
+        # project_number`/apps/`app`/testCases/`test_case``
+        # Corresponds to the JSON property `testCase`
+        # @return [String]
+        attr_accessor :test_case
       
         def initialize(**args)
            update!(**args)
@@ -259,6 +317,7 @@ module Google
           @goal = args[:goal] if args.key?(:goal)
           @hint = args[:hint] if args.key?(:hint)
           @success_criteria = args[:success_criteria] if args.key?(:success_criteria)
+          @test_case = args[:test_case] if args.key?(:test_case)
         end
       end
       
@@ -413,13 +472,13 @@ module Google
         end
       end
       
-      # The request message for `DeleteTestCase`.
+      # The request message for `BatchDeleteTestCase`.
       class GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest
         include Google::Apis::Core::Hashable
       
         # Required. The name of the test cases to delete. A maximum number of 1000 test
-        # cases can be deleted in one batch Format: `projects/`project_number`/apps/`
-        # app_id`/testCases/`test_case_id``
+        # cases can be deleted in one batch Format: `projects/`project_number`/apps/`app`
+        # /testCases/`test_case``
         # Corresponds to the JSON property `names`
         # @return [Array<String>]
         attr_accessor :names
@@ -434,8 +493,80 @@ module Google
         end
       end
       
+      # The request message for `BatchUpdateTestCase`.
+      class GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The update requests. A maximum number of 1000 test cases can be
+        # updated in one batch
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # The response message for `BatchUpdateTestCase`.
+      class GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The updated test cases.
+        # Corresponds to the JSON property `testCases`
+        # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase>]
+        attr_accessor :test_cases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_cases = args[:test_cases] if args.key?(:test_cases)
+        end
+      end
+      
       # The (empty) response message for `CancelReleaseTest`.
       class GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request message for `ClearTestCaseCache`.
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of devices for which to clear the cache. If not present,
+        # clear all of them.
+        # Corresponds to the JSON property `testDevices`
+        # @return [Array<Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice>]
+        attr_accessor :test_devices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_devices = args[:test_devices] if args.key?(:test_devices)
+        end
+      end
+      
+      # Response empty (google.protobuf.Empty) message for `ClearTestCaseCache`
+      class GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -531,15 +662,43 @@ module Google
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestDevice]
         attr_accessor :device
       
+        # Output only. The type of execution for the test.
+        # Corresponds to the JSON property `executionType`
+        # @return [String]
+        attr_accessor :execution_type
+      
         # Output only. The reason why the test failed.
         # Corresponds to the JSON property `failedReason`
         # @return [String]
         attr_accessor :failed_reason
       
+        # Output only. Indicates that the test replayed saved actions and concluded
+        # without a final AI assertion.
+        # Corresponds to the JSON property `finalAiAssertionMissing`
+        # @return [Boolean]
+        attr_accessor :final_ai_assertion_missing
+        alias_method :final_ai_assertion_missing?, :final_ai_assertion_missing
+      
         # Output only. The reason why the test was inconclusive.
         # Corresponds to the JSON property `inconclusiveReason`
         # @return [String]
         attr_accessor :inconclusive_reason
+      
+        # Identifier. The name of the device execution resource. Format: `projects/`
+        # project_number`/apps/`app`/releases/`release`/tests/`test`/deviceExecutions/`
+        # device_execution``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The device execution from which cached steps were used during
+        # this execution. Note: This field is only populated for ACTION_BASED_REPLAY
+        # executions. If the original device execution no longer exists, this field will
+        # be empty. Format: `projects/`project_number`/apps/`app`/releases/`release`/
+        # tests/`test`/deviceExecutions/`device_execution``
+        # Corresponds to the JSON property `originDeviceExecution`
+        # @return [String]
+        attr_accessor :origin_device_execution
       
         # Output only. The path to a directory in Cloud Storage that will eventually
         # contain the results for this execution. For example, gs://bucket/Nexus5-18-en-
@@ -564,6 +723,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The time at which the video started recording.
+        # Corresponds to the JSON property `videoStartTime`
+        # @return [String]
+        attr_accessor :video_start_time
+      
         # Output only. A URI to a video of the test run.
         # Corresponds to the JSON property `videoUri`
         # @return [String]
@@ -579,12 +743,17 @@ module Google
           @app_crash = args[:app_crash] if args.key?(:app_crash)
           @crawl_graph_uri = args[:crawl_graph_uri] if args.key?(:crawl_graph_uri)
           @device = args[:device] if args.key?(:device)
+          @execution_type = args[:execution_type] if args.key?(:execution_type)
           @failed_reason = args[:failed_reason] if args.key?(:failed_reason)
+          @final_ai_assertion_missing = args[:final_ai_assertion_missing] if args.key?(:final_ai_assertion_missing)
           @inconclusive_reason = args[:inconclusive_reason] if args.key?(:inconclusive_reason)
+          @name = args[:name] if args.key?(:name)
+          @origin_device_execution = args[:origin_device_execution] if args.key?(:origin_device_execution)
           @results_storage_path = args[:results_storage_path] if args.key?(:results_storage_path)
           @robo_stats = args[:robo_stats] if args.key?(:robo_stats)
           @screenshot_uris = args[:screenshot_uris] if args.key?(:screenshot_uris)
           @state = args[:state] if args.key?(:state)
+          @video_start_time = args[:video_start_time] if args.key?(:video_start_time)
           @video_uri = args[:video_uri] if args.key?(:video_uri)
         end
       end
@@ -593,10 +762,31 @@ module Google
       class GoogleFirebaseAppdistroV1alphaDeviceInteraction
         include Google::Apis::Core::Hashable
       
+        # A back action.
+        # Corresponds to the JSON property `backAction`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionBack]
+        attr_accessor :back_action
+      
+        # A drag and drop action.
+        # Corresponds to the JSON property `dragAndDrop`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop]
+        attr_accessor :drag_and_drop
+      
+        # A text entry action, that enters text into a particular text field, clearing
+        # any existing text in the field.
+        # Corresponds to the JSON property `enterText`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText]
+        attr_accessor :enter_text
+      
         # Output only. Key code for a key event action.
         # Corresponds to the JSON property `keyCode`
         # @return [String]
         attr_accessor :key_code
+      
+        # Point for describing bounding boxes tap locations Top left is 0,0
+        # Corresponds to the JSON property `longPress`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint]
+        attr_accessor :long_press
       
         # A device screenshot taken during a test.
         # Corresponds to the JSON property `screenshot`
@@ -613,7 +803,22 @@ module Google
         # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint]
         attr_accessor :tap_prop
       
-        # Output only. Text entered for a text entry action.
+        # Output only. The target folded state of the device in a set folded state
+        # action. The valid string values are device-dependent, and can be found using `
+        # adb shell cmd device_state print-states`.
+        # Corresponds to the JSON property `targetFoldedState`
+        # @return [String]
+        attr_accessor :target_folded_state
+      
+        # Output only. The target orientation of the device in a set orientation action.
+        # Corresponds to the JSON property `targetOrientation`
+        # @return [String]
+        attr_accessor :target_orientation
+      
+        # Output only. A text input action, that types some text into whatever field is
+        # currently focused, if any. Unlike `enter_text` this action requires that the
+        # field be brought into focus first, for example by emitting a tap action before
+        # this one.
         # Corresponds to the JSON property `textInput`
         # @return [String]
         attr_accessor :text_input
@@ -629,12 +834,82 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @back_action = args[:back_action] if args.key?(:back_action)
+          @drag_and_drop = args[:drag_and_drop] if args.key?(:drag_and_drop)
+          @enter_text = args[:enter_text] if args.key?(:enter_text)
           @key_code = args[:key_code] if args.key?(:key_code)
+          @long_press = args[:long_press] if args.key?(:long_press)
           @screenshot = args[:screenshot] if args.key?(:screenshot)
           @swipe = args[:swipe] if args.key?(:swipe)
           @tap_prop = args[:tap_prop] if args.key?(:tap_prop)
+          @target_folded_state = args[:target_folded_state] if args.key?(:target_folded_state)
+          @target_orientation = args[:target_orientation] if args.key?(:target_orientation)
           @text_input = args[:text_input] if args.key?(:text_input)
           @wait = args[:wait] if args.key?(:wait)
+        end
+      end
+      
+      # A back action.
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionBack
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A drag and drop action.
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop
+        include Google::Apis::Core::Hashable
+      
+        # Point for describing bounding boxes tap locations Top left is 0,0
+        # Corresponds to the JSON property `end`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint]
+        attr_accessor :end
+      
+        # Point for describing bounding boxes tap locations Top left is 0,0
+        # Corresponds to the JSON property `start`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputPoint]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
+        end
+      end
+      
+      # A text entry action, that enters text into a particular text field, clearing
+      # any existing text in the field.
+      class GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText
+        include Google::Apis::Core::Hashable
+      
+        # Rectangle for describing bounding boxes
+        # Corresponds to the JSON property `elementBounds`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::AndroidxCrawlerOutputRectangle]
+        attr_accessor :element_bounds
+      
+        # Output only. The text to enter.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @element_bounds = args[:element_bounds] if args.key?(:element_bounds)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -817,7 +1092,12 @@ module Google
       class GoogleFirebaseAppdistroV1alphaGoalAction
         include Google::Apis::Core::Hashable
       
-        # Information to help the customer understand why the agent took this action
+        # Output only. The type of caching used to determine the action.
+        # Corresponds to the JSON property `cachingType`
+        # @return [String]
+        attr_accessor :caching_type
+      
+        # Information to help the customer understand why the agent took this action.
         # Corresponds to the JSON property `debugInfo`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo]
         attr_accessor :debug_info
@@ -833,6 +1113,11 @@ module Google
         # @return [String]
         attr_accessor :explanation
       
+        # Output only. The time at which the action started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         # An action taken by the AI to end the goal.
         # Corresponds to the JSON property `terminalAction`
         # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTerminalAction]
@@ -844,24 +1129,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @caching_type = args[:caching_type] if args.key?(:caching_type)
           @debug_info = args[:debug_info] if args.key?(:debug_info)
           @device_action = args[:device_action] if args.key?(:device_action)
           @explanation = args[:explanation] if args.key?(:explanation)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @terminal_action = args[:terminal_action] if args.key?(:terminal_action)
         end
       end
       
-      # Information to help the customer understand why the agent took this action
+      # Information to help the customer understand why the agent took this action.
       class GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo
         include Google::Apis::Core::Hashable
       
         # Output only. URI of the screenshot with elements labeled which was used by the
-        # agent
+        # agent.
         # Corresponds to the JSON property `annotatedScreenshotUri`
         # @return [String]
         attr_accessor :annotated_screenshot_uri
       
-        # Output only. Structured data explaining the agent's choice
+        # Output only. Structured data explaining the agent's choice.
         # Corresponds to the JSON property `jsonUri`
         # @return [String]
         attr_accessor :json_uri
@@ -1135,7 +1422,7 @@ module Google
         end
       end
       
-      # The results of running an automated test on a release.
+      # Instance of an automated test for a release.
       class GoogleFirebaseAppdistroV1alphaReleaseTest
         include Google::Apis::Core::Hashable
       
@@ -1166,10 +1453,17 @@ module Google
         attr_accessor :login_credential
       
         # The name of the release test resource. Format: `projects/`project_number`/apps/
-        # `app_id`/releases/`release_id`/tests/`test_id``
+        # `app`/releases/`release`/tests/`test``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. Input only. The custom Cloud Storage bucket where test results are
+        # stored. Format: `projects/`project_number`/buckets/`bucket`` If not provided,
+        # the default test lab bucket is used.
+        # Corresponds to the JSON property `resultsBucket`
+        # @return [String]
+        attr_accessor :results_bucket
       
         # Optional. The test case that was used to generate this release test. Note: The
         # test case may have changed or been deleted since the release test was created.
@@ -1195,6 +1489,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @login_credential = args[:login_credential] if args.key?(:login_credential)
           @name = args[:name] if args.key?(:name)
+          @results_bucket = args[:results_bucket] if args.key?(:results_bucket)
           @test_case = args[:test_case] if args.key?(:test_case)
           @test_state = args[:test_state] if args.key?(:test_state)
         end
@@ -1333,16 +1628,26 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. Other test cases that depend on this test case as a prerequisite.
+        # Corresponds to the JSON property `dependentTestCases`
+        # @return [Array<String>]
+        attr_accessor :dependent_test_cases
+      
         # Required. Display name of the test case.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
         # Identifier. The name of the test case resource. Format: `projects/`
-        # project_number`/apps/`app_id`/testCases/`test_case_id``
+        # project_number`/apps/`app`/testCases/`test_case``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. Test case that must be run before this test case.
+        # Corresponds to the JSON property `prerequisiteTestCase`
+        # @return [String]
+        attr_accessor :prerequisite_test_case
       
         def initialize(**args)
            update!(**args)
@@ -1352,8 +1657,10 @@ module Google
         def update!(**args)
           @ai_instructions = args[:ai_instructions] if args.key?(:ai_instructions)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dependent_test_cases = args[:dependent_test_cases] if args.key?(:dependent_test_cases)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @prerequisite_test_case = args[:prerequisite_test_case] if args.key?(:prerequisite_test_case)
         end
       end
       
@@ -1368,10 +1675,17 @@ module Google
         attr_accessor :display_name
       
         # Identifier. The name of the test configuration resource. Format: `projects/`
-        # project_number`/apps/`app_id`/testConfig`
+        # project_number`/apps/`app`/testConfig`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. The custom Cloud Storage bucket where test results are stored.
+        # Format: `projects/`project_number`/buckets/`bucket`` If not provided, the
+        # default test lab bucket is used.
+        # Corresponds to the JSON property `resultsBucket`
+        # @return [String]
+        attr_accessor :results_bucket
       
         # Configuration for Robo crawler
         # Corresponds to the JSON property `roboCrawler`
@@ -1391,6 +1705,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @results_bucket = args[:results_bucket] if args.key?(:results_bucket)
           @robo_crawler = args[:robo_crawler] if args.key?(:robo_crawler)
           @test_devices = args[:test_devices] if args.key?(:test_devices)
         end
@@ -1496,6 +1811,33 @@ module Google
           @name = args[:name] if args.key?(:name)
           @platform = args[:platform] if args.key?(:platform)
           @udid = args[:udid] if args.key?(:udid)
+        end
+      end
+      
+      # The request message for `UpdateTestCase`.
+      class GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, and the test case is not found, a new test case will
+        # be created.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
+      
+        # AI test cases
+        # Corresponds to the JSON property `testCase`
+        # @return [Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1alphaTestCase]
+        attr_accessor :test_case
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @test_case = args[:test_case] if args.key?(:test_case)
         end
       end
       

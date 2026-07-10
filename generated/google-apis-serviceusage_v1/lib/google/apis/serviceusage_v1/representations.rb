@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AspectRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +197,24 @@ module Google
       end
       
       class ConsumerPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentSecurity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentSecurityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContentSecurityProvider
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -460,7 +484,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiServiceusageV2betaMcpEnableRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaMcpPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaMcpService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV2betaUpdateMcpPolicyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -790,6 +838,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateContentSecurityPolicyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Usage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -866,6 +920,7 @@ module Google
       class Api
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           collection :methods_prop, as: 'methods', class: Google::Apis::ServiceusageV1::MethodProp, decorator: Google::Apis::ServiceusageV1::MethodProp::Representation
       
           collection :mixins, as: 'mixins', class: Google::Apis::ServiceusageV1::Mixin, decorator: Google::Apis::ServiceusageV1::Mixin::Representation
@@ -884,7 +939,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          collection :rules, as: 'rules', class: Google::Apis::ServiceusageV1::AspectRule, decorator: Google::Apis::ServiceusageV1::AspectRule::Representation
+      
           hash :spec, as: 'spec'
+        end
+      end
+      
+      class AspectRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :config, as: 'config'
+          property :selector, as: 'selector'
         end
       end
       
@@ -1097,6 +1162,30 @@ module Google
           property :etag, as: 'etag'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ContentSecurity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :content_security_providers, as: 'contentSecurityProviders', class: Google::Apis::ServiceusageV1::ContentSecurityProvider, decorator: Google::Apis::ServiceusageV1::ContentSecurityProvider::Representation
+      
+        end
+      end
+      
+      class ContentSecurityPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mcp_content_security, as: 'mcpContentSecurity', class: Google::Apis::ServiceusageV1::ContentSecurity, decorator: Google::Apis::ServiceusageV1::ContentSecurity::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class ContentSecurityProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -1543,7 +1632,6 @@ module Google
       class GoogleApiServiceusageV2betaConsumerPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
           collection :enable_rules, as: 'enableRules', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaEnableRule, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaEnableRule::Representation
       
@@ -1565,10 +1653,44 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :detail, as: 'detail'
           property :impact_type, as: 'impactType'
+          property :missing_dependency, as: 'missingDependency'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaMcpEnableRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mcp_services, as: 'mcpServices', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaMcpService, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaMcpService::Representation
+      
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaMcpPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          collection :mcp_enable_rules, as: 'mcpEnableRules', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaMcpEnableRule, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV2betaMcpEnableRule::Representation
+      
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaMcpService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
         end
       end
       
       class GoogleApiServiceusageV2betaUpdateConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleApiServiceusageV2betaUpdateMcpPolicyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -1687,6 +1809,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ServiceusageV1::Operation, decorator: Google::Apis::ServiceusageV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1741,6 +1864,7 @@ module Google
       class MethodProp
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           property :name, as: 'name'
           collection :options, as: 'options', class: Google::Apis::ServiceusageV1::Option, decorator: Google::Apis::ServiceusageV1::Option::Representation
       
@@ -1906,6 +2030,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :common, as: 'common', class: Google::Apis::ServiceusageV1::CommonLanguageSettings, decorator: Google::Apis::ServiceusageV1::CommonLanguageSettings::Representation
       
+          property :library_package, as: 'libraryPackage'
         end
       end
       
@@ -2086,6 +2211,12 @@ module Google
       end
       
       class UpdateConsumerPolicyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateContentSecurityPolicyMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

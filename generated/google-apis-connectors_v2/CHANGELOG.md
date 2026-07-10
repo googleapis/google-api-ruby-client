@@ -1,5 +1,42 @@
 # Release history for google-apis-connectors_v2
 
+### v0.34.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260617
+* Regenerated using generator version 0.19.0
+
+### v0.33.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260427
+
+### v0.32.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260316
+
+### v0.31.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260128
+
+### v0.30.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20251216
+
+### v0.29.0 (2025-10-12)
+
+* Regenerated from discovery document revision 20250930
+
+### v0.28.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250917
+
+### v0.27.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250826
+
+### v0.26.0 (2025-08-17)
+
+* Regenerated from discovery document revision 20250813
+
 ### v0.25.0 (2025-05-25)
 
 * Regenerated from discovery document revision 20250521

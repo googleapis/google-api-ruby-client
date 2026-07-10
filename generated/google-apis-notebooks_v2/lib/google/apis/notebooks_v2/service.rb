@@ -81,12 +81,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -123,6 +132,41 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Initiated by Cloud Console for Oauth consent flow for Workbench Instances. Do
+        # not use this method directly. Design doc: go/wbi-euc:auth-dd
+        # @param [String] name
+        #   Required. The name of the Notebook Instance resource. Format: `projects/`
+        #   project`/locations/`location`/instances/`instance``
+        # @param [Google::Apis::NotebooksV2::CheckAuthorizationRequest] check_authorization_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV2::CheckAuthorizationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV2::CheckAuthorizationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_instance_authorization(name, check_authorization_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:checkAuthorization', options)
+          command.request_representation = Google::Apis::NotebooksV2::CheckAuthorizationRequest::Representation
+          command.request_object = check_authorization_request_object
+          command.response_representation = Google::Apis::NotebooksV2::CheckAuthorizationResponse::Representation
+          command.response_class = Google::Apis::NotebooksV2::CheckAuthorizationResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -266,6 +310,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Called by VM to return an EUC for the instance owner. Do not use this method
+        # directly. Design doc: go/wbi-euc:dd
+        # @param [String] name
+        #   Required. Format: `projects/`project`/locations/`location`/instances/`
+        #   instance_id``
+        # @param [Google::Apis::NotebooksV2::GenerateAccessTokenRequest] generate_access_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NotebooksV2::GenerateAccessTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NotebooksV2::GenerateAccessTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_instance_access_token(name, generate_access_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+name}:generateAccessToken', options)
+          command.request_representation = Google::Apis::NotebooksV2::GenerateAccessTokenRequest::Representation
+          command.request_object = generate_access_token_request_object
+          command.response_representation = Google::Apis::NotebooksV2::GenerateAccessTokenResponse::Representation
+          command.response_class = Google::Apis::NotebooksV2::GenerateAccessTokenResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details of a single Instance.
         # @param [String] name
         #   Required. Format: `projects/`project_id`/locations/`location`/instances/`
@@ -297,10 +376,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets general backend configurations that might also affect the frontend.
-        # Location is required by CCFE. Although we could bypass it to send location-
-        # less request directly to the backend job, we would need CPE (go/cloud-cpe).
-        # Having the location might also be useful depending on the query.
+        # Returns various configuration parameters.
         # @param [String] name
         #   Required. Format: `projects/`project_id`/locations/`location``
         # @param [String] fields
@@ -377,7 +453,9 @@ module Google
         
         # Lists instances in a given project and location.
         # @param [String] parent
-        #   Required. Format: `parent=projects/`project_id`/locations/`location``
+        #   Required. The parent of the instance. Formats: - `projects/`project_id`/
+        #   locations/`location`` to list instances in a specific zone. - `projects/`
+        #   project_id`/locations/-` to list instances in all locations.
         # @param [String] filter
         #   Optional. List filter.
         # @param [String] order_by
@@ -421,13 +499,26 @@ module Google
         
         # UpdateInstance updates an Instance.
         # @param [String] name
-        #   Output only. The name of this notebook instance. Format: `projects/`project_id`
-        #   /locations/`location`/instances/`instance_id``
+        #   Output only. Identifier. The name of this notebook instance. Format: `projects/
+        #   `project_id`/locations/`location`/instances/`instance_id``
         # @param [Google::Apis::NotebooksV2::Instance] instance_object
         # @param [String] request_id
         #   Optional. Idempotent request UUID.
         # @param [String] update_mask
-        #   Required. Mask used to update an instance
+        #   Required. Mask used to update an instance. Updatable fields: * `labels` * `
+        #   gce_setup.min_cpu_platform` * `gce_setup.metadata` * `gce_setup.machine_type` *
+        #   `gce_setup.accelerator_configs` * `gce_setup.accelerator_configs.type` * `
+        #   gce_setup.accelerator_configs.core_count` * `gce_setup.gpu_driver_config` * `
+        #   gce_setup.gpu_driver_config.enable_gpu_driver` * `gce_setup.gpu_driver_config.
+        #   custom_gpu_driver_path` * `gce_setup.shielded_instance_config` * `gce_setup.
+        #   shielded_instance_config.enable_secure_boot` * `gce_setup.
+        #   shielded_instance_config.enable_vtpm` * `gce_setup.shielded_instance_config.
+        #   enable_integrity_monitoring` * `gce_setup.reservation_affinity` * `gce_setup.
+        #   reservation_affinity.consume_reservation_type` * `gce_setup.
+        #   reservation_affinity.key` * `gce_setup.reservation_affinity.values` * `
+        #   gce_setup.tags` * `gce_setup.container_image` * `gce_setup.container_image.
+        #   repository` * `gce_setup.container_image.tag` * `gce_setup.disable_public_ip` *
+        #   `disable_proxy_access`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -958,6 +1049,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -975,7 +1074,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}/operations', options)
           command.response_representation = Google::Apis::NotebooksV2::ListOperationsResponse::Representation
           command.response_class = Google::Apis::NotebooksV2::ListOperationsResponse
@@ -983,6 +1082,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

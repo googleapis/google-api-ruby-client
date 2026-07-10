@@ -52,7 +52,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BadRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BasicEncryption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryClustering
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryDestinationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryPartitioning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,7 +124,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomizationRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatasetTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataverseProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataverseSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DebugInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,13 +184,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionAndServerValidation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncryptionNotEnforced
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Error
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ErrorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchStaticIpsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FieldViolation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,13 +250,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Help
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HostAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IngestionTimePartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IntegerRangePartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JsonFileFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Link
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocalizedMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +359,12 @@ module Google
       end
       
       class Merge
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MongodbChangeStreamPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -382,6 +496,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OauthClientCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObjectFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -508,6 +634,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreconditionFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreconditionFailureViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateConnection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -526,7 +664,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QuotaFailure
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaFailureViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RetryInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Route
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuleSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -539,6 +713,18 @@ module Google
       end
       
       class SalesforceField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SalesforceMarketingCloudProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SalesforceMarketingCloudSourceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -574,6 +760,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerAndClientVerification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -586,7 +778,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceNowProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceNowSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SingleTargetDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceCatalog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -604,7 +814,67 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SourceObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerChangeStreamPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerColumn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerDatabase
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerObjectIdentifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SpannerTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -659,6 +929,12 @@ module Google
       end
       
       class SqlServerSourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerSslConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -742,7 +1018,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeUnitPartition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UserCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserPasswordCredentials
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -795,7 +1083,11 @@ module Google
       
           property :postgresql_excluded_objects, as: 'postgresqlExcludedObjects', class: Google::Apis::DatastreamV1::PostgresqlRdbms, decorator: Google::Apis::DatastreamV1::PostgresqlRdbms::Representation
       
+          property :saas_excluded_objects, as: 'saasExcludedObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
           property :salesforce_excluded_objects, as: 'salesforceExcludedObjects', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
+      
+          property :spanner_excluded_objects, as: 'spannerExcludedObjects', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
       
           property :sql_server_excluded_objects, as: 'sqlServerExcludedObjects', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
@@ -807,6 +1099,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :errors, as: 'errors', class: Google::Apis::DatastreamV1::Error, decorator: Google::Apis::DatastreamV1::Error::Representation
       
+          property :event_filter, as: 'eventFilter', class: Google::Apis::DatastreamV1::EventFilter, decorator: Google::Apis::DatastreamV1::EventFilter::Representation
+      
           property :last_end_time, as: 'lastEndTime'
           property :last_start_time, as: 'lastStartTime'
           property :state, as: 'state'
@@ -817,6 +1111,27 @@ module Google
       class BackfillNoneStrategy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class BadRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_violations, as: 'fieldViolations', class: Google::Apis::DatastreamV1::FieldViolation, decorator: Google::Apis::DatastreamV1::FieldViolation::Representation
+      
+        end
+      end
+      
+      class BasicEncryption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class BigQueryClustering
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns'
         end
       end
       
@@ -833,6 +1148,19 @@ module Google
           property :single_target_dataset, as: 'singleTargetDataset', class: Google::Apis::DatastreamV1::SingleTargetDataset, decorator: Google::Apis::DatastreamV1::SingleTargetDataset::Representation
       
           property :source_hierarchy_datasets, as: 'sourceHierarchyDatasets', class: Google::Apis::DatastreamV1::SourceHierarchyDatasets, decorator: Google::Apis::DatastreamV1::SourceHierarchyDatasets::Representation
+      
+        end
+      end
+      
+      class BigQueryPartitioning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingestion_time_partition, as: 'ingestionTimePartition', class: Google::Apis::DatastreamV1::IngestionTimePartition, decorator: Google::Apis::DatastreamV1::IngestionTimePartition::Representation
+      
+          property :integer_range_partition, as: 'integerRangePartition', class: Google::Apis::DatastreamV1::IntegerRangePartition, decorator: Google::Apis::DatastreamV1::IntegerRangePartition::Representation
+      
+          property :require_partition_filter, as: 'requirePartitionFilter'
+          property :time_unit_partition, as: 'timeUnitPartition', class: Google::Apis::DatastreamV1::TimeUnitPartition, decorator: Google::Apis::DatastreamV1::TimeUnitPartition::Representation
       
         end
       end
@@ -894,6 +1222,8 @@ module Google
           property :bigquery_profile, as: 'bigqueryProfile', class: Google::Apis::DatastreamV1::BigQueryProfile, decorator: Google::Apis::DatastreamV1::BigQueryProfile::Representation
       
           property :create_time, as: 'createTime'
+          property :dataverse_profile, as: 'dataverseProfile', class: Google::Apis::DatastreamV1::DataverseProfile, decorator: Google::Apis::DatastreamV1::DataverseProfile::Representation
+      
           property :display_name, as: 'displayName'
           property :forward_ssh_connectivity, as: 'forwardSshConnectivity', class: Google::Apis::DatastreamV1::ForwardSshTunnelConnectivity, decorator: Google::Apis::DatastreamV1::ForwardSshTunnelConnectivity::Representation
       
@@ -911,15 +1241,31 @@ module Google
       
           property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatastreamV1::PrivateConnectivity, decorator: Google::Apis::DatastreamV1::PrivateConnectivity::Representation
       
+          property :salesforce_marketing_cloud_profile, as: 'salesforceMarketingCloudProfile', class: Google::Apis::DatastreamV1::SalesforceMarketingCloudProfile, decorator: Google::Apis::DatastreamV1::SalesforceMarketingCloudProfile::Representation
+      
           property :salesforce_profile, as: 'salesforceProfile', class: Google::Apis::DatastreamV1::SalesforceProfile, decorator: Google::Apis::DatastreamV1::SalesforceProfile::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
+          property :service_now_profile, as: 'serviceNowProfile', class: Google::Apis::DatastreamV1::ServiceNowProfile, decorator: Google::Apis::DatastreamV1::ServiceNowProfile::Representation
+      
+          property :spanner_profile, as: 'spannerProfile', class: Google::Apis::DatastreamV1::SpannerProfile, decorator: Google::Apis::DatastreamV1::SpannerProfile::Representation
+      
           property :sql_server_profile, as: 'sqlServerProfile', class: Google::Apis::DatastreamV1::SqlServerProfile, decorator: Google::Apis::DatastreamV1::SqlServerProfile::Representation
       
           property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatastreamV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatastreamV1::StaticServiceIpConnectivity::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class CustomizationRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_clustering, as: 'bigqueryClustering', class: Google::Apis::DatastreamV1::BigQueryClustering, decorator: Google::Apis::DatastreamV1::BigQueryClustering::Representation
+      
+          property :bigquery_partitioning, as: 'bigqueryPartitioning', class: Google::Apis::DatastreamV1::BigQueryPartitioning, decorator: Google::Apis::DatastreamV1::BigQueryPartitioning::Representation
+      
         end
       end
       
@@ -929,6 +1275,35 @@ module Google
           property :dataset_id_prefix, as: 'datasetIdPrefix'
           property :kms_key_name, as: 'kmsKeyName'
           property :location, as: 'location'
+        end
+      end
+      
+      class DataverseProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment_url, as: 'environmentUrl'
+          property :oauth_client_credentials, as: 'oauthClientCredentials', class: Google::Apis::DatastreamV1::OauthClientCredentials, decorator: Google::Apis::DatastreamV1::OauthClientCredentials::Representation
+      
+          property :tenant_id, as: 'tenantId'
+        end
+      end
+      
+      class DataverseSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :polling_interval, as: 'pollingInterval'
+        end
+      end
+      
+      class DebugInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          collection :stack_entries, as: 'stackEntries'
         end
       end
       
@@ -961,6 +1336,10 @@ module Google
       
           property :salesforce_org, as: 'salesforceOrg', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
       
+          property :source_catalog, as: 'sourceCatalog', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :spanner_database, as: 'spannerDatabase', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
+      
           property :sql_server_rdbms, as: 'sqlServerRdbms', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
         end
@@ -979,6 +1358,10 @@ module Google
       
           property :salesforce_org, as: 'salesforceOrg', class: Google::Apis::DatastreamV1::SalesforceOrg, decorator: Google::Apis::DatastreamV1::SalesforceOrg::Representation
       
+          property :source_catalog, as: 'sourceCatalog', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :spanner_database, as: 'spannerDatabase', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
+      
           property :sql_server_rdbms, as: 'sqlServerRdbms', class: Google::Apis::DatastreamV1::SqlServerRdbms, decorator: Google::Apis::DatastreamV1::SqlServerRdbms::Representation
       
         end
@@ -996,6 +1379,20 @@ module Google
         end
       end
       
+      class EncryptionAndServerValidation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_certificate, as: 'caCertificate'
+          property :server_certificate_hostname, as: 'serverCertificateHostname'
+        end
+      end
+      
+      class EncryptionNotEnforced
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Error
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1007,11 +1404,38 @@ module Google
         end
       end
       
+      class ErrorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          hash :metadata, as: 'metadata'
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class EventFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sql_where_clause, as: 'sqlWhereClause'
+        end
+      end
+      
       class FetchStaticIpsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :static_ips, as: 'staticIps'
+        end
+      end
+      
+      class FieldViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :field, as: 'field'
+          property :localized_message, as: 'localizedMessage', class: Google::Apis::DatastreamV1::LocalizedMessage, decorator: Google::Apis::DatastreamV1::LocalizedMessage::Representation
+      
+          property :reason, as: 'reason'
         end
       end
       
@@ -1053,6 +1477,14 @@ module Google
         end
       end
       
+      class Help
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :links, as: 'links', class: Google::Apis::DatastreamV1::Link, decorator: Google::Apis::DatastreamV1::Link::Representation
+      
+        end
+      end
+      
       class HostAddress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1061,11 +1493,36 @@ module Google
         end
       end
       
+      class IngestionTimePartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partitioning_time_granularity, as: 'partitioningTimeGranularity'
+        end
+      end
+      
+      class IntegerRangePartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :end, :numeric_string => true, as: 'end'
+          property :interval, :numeric_string => true, as: 'interval'
+          property :start, :numeric_string => true, as: 'start'
+        end
+      end
+      
       class JsonFileFormat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compression, as: 'compression'
           property :schema_file_format, as: 'schemaFileFormat'
+        end
+      end
+      
+      class Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :url, as: 'url'
         end
       end
       
@@ -1094,6 +1551,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DatastreamV1::Operation, decorator: Google::Apis::DatastreamV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1136,6 +1594,14 @@ module Google
         end
       end
       
+      class LocalizedMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :locale, as: 'locale'
+          property :message, as: 'message'
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1172,6 +1638,13 @@ module Google
       class Merge
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class MongodbChangeStreamPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
         end
       end
       
@@ -1219,6 +1692,7 @@ module Google
       class MongodbProfile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_options, as: 'additionalOptions'
           collection :host_addresses, as: 'hostAddresses', class: Google::Apis::DatastreamV1::HostAddress, decorator: Google::Apis::DatastreamV1::HostAddress::Representation
       
           property :password, as: 'password'
@@ -1241,6 +1715,7 @@ module Google
       
           property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::MongodbCluster, decorator: Google::Apis::DatastreamV1::MongodbCluster::Representation
       
+          property :json_mode, as: 'jsonMode'
           property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
         end
       end
@@ -1384,6 +1859,23 @@ module Google
         end
       end
       
+      class OauthClientCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret', class: Google::Apis::DatastreamV1::Secret, decorator: Google::Apis::DatastreamV1::Secret::Representation
+      
+        end
+      end
+      
+      class ObjectFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_object_identifier, as: 'sourceObjectIdentifier', class: Google::Apis::DatastreamV1::SourceObjectIdentifier, decorator: Google::Apis::DatastreamV1::SourceObjectIdentifier::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1521,6 +2013,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ca_certificate, as: 'caCertificate'
           property :ca_certificate_set, as: 'caCertificateSet'
+          property :server_certificate_distinguished_name, as: 'serverCertificateDistinguishedName'
         end
       end
       
@@ -1618,6 +2111,23 @@ module Google
         end
       end
       
+      class PreconditionFailure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :violations, as: 'violations', class: Google::Apis::DatastreamV1::PreconditionFailureViolation, decorator: Google::Apis::DatastreamV1::PreconditionFailureViolation::Representation
+      
+        end
+      end
+      
+      class PreconditionFailureViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :subject, as: 'subject'
+          property :type, as: 'type'
+        end
+      end
+      
       class PrivateConnection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1652,6 +2162,53 @@ module Google
         end
       end
       
+      class QuotaFailure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :violations, as: 'violations', class: Google::Apis::DatastreamV1::QuotaFailureViolation, decorator: Google::Apis::DatastreamV1::QuotaFailureViolation::Representation
+      
+        end
+      end
+      
+      class QuotaFailureViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_service, as: 'apiService'
+          property :description, as: 'description'
+          property :future_quota_value, :numeric_string => true, as: 'futureQuotaValue'
+          hash :quota_dimensions, as: 'quotaDimensions'
+          property :quota_id, as: 'quotaId'
+          property :quota_metric, as: 'quotaMetric'
+          property :quota_value, :numeric_string => true, as: 'quotaValue'
+          property :subject, as: 'subject'
+        end
+      end
+      
+      class RequestInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          property :serving_data, as: 'servingData'
+        end
+      end
+      
+      class ResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :owner, as: 'owner'
+          property :resource_name, as: 'resourceName'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class RetryInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retry_delay, as: 'retryDelay'
+        end
+      end
+      
       class Route
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1662,6 +2219,16 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class RuleSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :customization_rules, as: 'customizationRules', class: Google::Apis::DatastreamV1::CustomizationRule, decorator: Google::Apis::DatastreamV1::CustomizationRule::Representation
+      
+          property :object_filter, as: 'objectFilter', class: Google::Apis::DatastreamV1::ObjectFilter, decorator: Google::Apis::DatastreamV1::ObjectFilter::Representation
+      
         end
       end
       
@@ -1680,6 +2247,27 @@ module Google
           property :data_type, as: 'dataType'
           property :name, as: 'name'
           property :nillable, as: 'nillable'
+        end
+      end
+      
+      class SalesforceMarketingCloudProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth_client_credentials, as: 'oauthClientCredentials', class: Google::Apis::DatastreamV1::OauthClientCredentials, decorator: Google::Apis::DatastreamV1::OauthClientCredentials::Representation
+      
+          property :subdomain, as: 'subdomain'
+        end
+      end
+      
+      class SalesforceMarketingCloudSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :full_refresh_polling_interval, as: 'fullRefreshPollingInterval'
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :polling_interval, as: 'pollingInterval'
         end
       end
       
@@ -1729,12 +2317,21 @@ module Google
         end
       end
       
+      class Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :raw_value, as: 'rawValue'
+          property :secret_version, as: 'secretVersion'
+        end
+      end
+      
       class ServerAndClientVerification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ca_certificate, as: 'caCertificate'
           property :client_certificate, as: 'clientCertificate'
           property :client_key, as: 'clientKey'
+          property :server_certificate_hostname, as: 'serverCertificateHostname'
         end
       end
       
@@ -1742,6 +2339,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ca_certificate, as: 'caCertificate'
+          property :server_certificate_hostname, as: 'serverCertificateHostname'
+        end
+      end
+      
+      class ServiceNowProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :oauth_client_credentials, as: 'oauthClientCredentials', class: Google::Apis::DatastreamV1::OauthClientCredentials, decorator: Google::Apis::DatastreamV1::OauthClientCredentials::Representation
+      
+          property :user_password_credentials, as: 'userPasswordCredentials', class: Google::Apis::DatastreamV1::UserPasswordCredentials, decorator: Google::Apis::DatastreamV1::UserPasswordCredentials::Representation
+      
+        end
+      end
+      
+      class ServiceNowSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :polling_interval, as: 'pollingInterval'
         end
       end
       
@@ -1752,9 +2372,19 @@ module Google
         end
       end
       
+      class SourceCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :objects, as: 'objects', class: Google::Apis::DatastreamV1::SourceObject, decorator: Google::Apis::DatastreamV1::SourceObject::Representation
+      
+        end
+      end
+      
       class SourceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataverse_source_config, as: 'dataverseSourceConfig', class: Google::Apis::DatastreamV1::DataverseSourceConfig, decorator: Google::Apis::DatastreamV1::DataverseSourceConfig::Representation
+      
           property :mongodb_source_config, as: 'mongodbSourceConfig', class: Google::Apis::DatastreamV1::MongodbSourceConfig, decorator: Google::Apis::DatastreamV1::MongodbSourceConfig::Representation
       
           property :mysql_source_config, as: 'mysqlSourceConfig', class: Google::Apis::DatastreamV1::MysqlSourceConfig, decorator: Google::Apis::DatastreamV1::MysqlSourceConfig::Representation
@@ -1763,9 +2393,15 @@ module Google
       
           property :postgresql_source_config, as: 'postgresqlSourceConfig', class: Google::Apis::DatastreamV1::PostgresqlSourceConfig, decorator: Google::Apis::DatastreamV1::PostgresqlSourceConfig::Representation
       
+          property :salesforce_marketing_cloud_source_config, as: 'salesforceMarketingCloudSourceConfig', class: Google::Apis::DatastreamV1::SalesforceMarketingCloudSourceConfig, decorator: Google::Apis::DatastreamV1::SalesforceMarketingCloudSourceConfig::Representation
+      
           property :salesforce_source_config, as: 'salesforceSourceConfig', class: Google::Apis::DatastreamV1::SalesforceSourceConfig, decorator: Google::Apis::DatastreamV1::SalesforceSourceConfig::Representation
       
+          property :service_now_source_config, as: 'serviceNowSourceConfig', class: Google::Apis::DatastreamV1::ServiceNowSourceConfig, decorator: Google::Apis::DatastreamV1::ServiceNowSourceConfig::Representation
+      
           property :source_connection_profile, as: 'sourceConnectionProfile'
+          property :spanner_source_config, as: 'spannerSourceConfig', class: Google::Apis::DatastreamV1::SpannerSourceConfig, decorator: Google::Apis::DatastreamV1::SpannerSourceConfig::Representation
+      
           property :sql_server_source_config, as: 'sqlServerSourceConfig', class: Google::Apis::DatastreamV1::SqlServerSourceConfig, decorator: Google::Apis::DatastreamV1::SqlServerSourceConfig::Representation
       
         end
@@ -1775,6 +2411,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset_template, as: 'datasetTemplate', class: Google::Apis::DatastreamV1::DatasetTemplate, decorator: Google::Apis::DatastreamV1::DatasetTemplate::Representation
+      
+          property :project_id, as: 'projectId'
+        end
+      end
+      
+      class SourceObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_name, as: 'objectName'
+          collection :properties, as: 'properties', class: Google::Apis::DatastreamV1::SourceProperty, decorator: Google::Apis::DatastreamV1::SourceProperty::Representation
       
         end
       end
@@ -1792,19 +2438,110 @@ module Google
       
           property :salesforce_identifier, as: 'salesforceIdentifier', class: Google::Apis::DatastreamV1::SalesforceObjectIdentifier, decorator: Google::Apis::DatastreamV1::SalesforceObjectIdentifier::Representation
       
+          property :spanner_identifier, as: 'spannerIdentifier', class: Google::Apis::DatastreamV1::SpannerObjectIdentifier, decorator: Google::Apis::DatastreamV1::SpannerObjectIdentifier::Representation
+      
           property :sql_server_identifier, as: 'sqlServerIdentifier', class: Google::Apis::DatastreamV1::SqlServerObjectIdentifier, decorator: Google::Apis::DatastreamV1::SqlServerObjectIdentifier::Representation
       
+        end
+      end
+      
+      class SourceProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_key, as: 'primaryKey'
+          collection :properties, as: 'properties', class: Google::Apis::DatastreamV1::SourceProperty, decorator: Google::Apis::DatastreamV1::SourceProperty::Representation
+      
+          property :property_name, as: 'propertyName'
+        end
+      end
+      
+      class SpannerChangeStreamPosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class SpannerColumn
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :data_type, as: 'dataType'
+          property :is_primary_key, as: 'isPrimaryKey'
+          property :ordinal_position, :numeric_string => true, as: 'ordinalPosition'
+        end
+      end
+      
+      class SpannerDatabase
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :schemas, as: 'schemas', class: Google::Apis::DatastreamV1::SpannerSchema, decorator: Google::Apis::DatastreamV1::SpannerSchema::Representation
+      
+        end
+      end
+      
+      class SpannerObjectIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema'
+          property :table, as: 'table'
+        end
+      end
+      
+      class SpannerProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :host, as: 'host'
+        end
+      end
+      
+      class SpannerSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :schema, as: 'schema'
+          collection :tables, as: 'tables', class: Google::Apis::DatastreamV1::SpannerTable, decorator: Google::Apis::DatastreamV1::SpannerTable::Representation
+      
+        end
+      end
+      
+      class SpannerSourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backfill_data_boost_enabled, as: 'backfillDataBoostEnabled'
+          property :change_stream_name, as: 'changeStreamName'
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
+      
+          property :fgac_role, as: 'fgacRole'
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SpannerDatabase, decorator: Google::Apis::DatastreamV1::SpannerDatabase::Representation
+      
+          property :max_concurrent_backfill_tasks, as: 'maxConcurrentBackfillTasks'
+          property :max_concurrent_cdc_tasks, as: 'maxConcurrentCdcTasks'
+          property :spanner_rpc_priority, as: 'spannerRpcPriority'
+        end
+      end
+      
+      class SpannerTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :columns, as: 'columns', class: Google::Apis::DatastreamV1::SpannerColumn, decorator: Google::Apis::DatastreamV1::SpannerColumn::Representation
+      
+          property :table, as: 'table'
         end
       end
       
       class SpecificStartPosition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mongodb_change_stream_position, as: 'mongodbChangeStreamPosition', class: Google::Apis::DatastreamV1::MongodbChangeStreamPosition, decorator: Google::Apis::DatastreamV1::MongodbChangeStreamPosition::Representation
+      
           property :mysql_gtid_position, as: 'mysqlGtidPosition', class: Google::Apis::DatastreamV1::MysqlGtidPosition, decorator: Google::Apis::DatastreamV1::MysqlGtidPosition::Representation
       
           property :mysql_log_position, as: 'mysqlLogPosition', class: Google::Apis::DatastreamV1::MysqlLogPosition, decorator: Google::Apis::DatastreamV1::MysqlLogPosition::Representation
       
           property :oracle_scn_position, as: 'oracleScnPosition', class: Google::Apis::DatastreamV1::OracleScnPosition, decorator: Google::Apis::DatastreamV1::OracleScnPosition::Representation
+      
+          property :spanner_change_stream_position, as: 'spannerChangeStreamPosition', class: Google::Apis::DatastreamV1::SpannerChangeStreamPosition, decorator: Google::Apis::DatastreamV1::SpannerChangeStreamPosition::Representation
       
           property :sql_server_lsn_position, as: 'sqlServerLsnPosition', class: Google::Apis::DatastreamV1::SqlServerLsnPosition, decorator: Google::Apis::DatastreamV1::SqlServerLsnPosition::Representation
       
@@ -1854,6 +2591,8 @@ module Google
           property :password, as: 'password'
           property :port, as: 'port'
           property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
+          property :ssl_config, as: 'sslConfig', class: Google::Apis::DatastreamV1::SqlServerSslConfig, decorator: Google::Apis::DatastreamV1::SqlServerSslConfig::Representation
+      
           property :username, as: 'username'
         end
       end
@@ -1891,6 +2630,18 @@ module Google
         end
       end
       
+      class SqlServerSslConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic_encryption, as: 'basicEncryption', class: Google::Apis::DatastreamV1::BasicEncryption, decorator: Google::Apis::DatastreamV1::BasicEncryption::Representation
+      
+          property :encryption_and_server_validation, as: 'encryptionAndServerValidation', class: Google::Apis::DatastreamV1::EncryptionAndServerValidation, decorator: Google::Apis::DatastreamV1::EncryptionAndServerValidation::Representation
+      
+          property :encryption_not_enforced, as: 'encryptionNotEnforced', class: Google::Apis::DatastreamV1::EncryptionNotEnforced, decorator: Google::Apis::DatastreamV1::EncryptionNotEnforced::Representation
+      
+        end
+      end
+      
       class SqlServerTable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1922,6 +2673,8 @@ module Google
       class StartBackfillJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_filter, as: 'eventFilter', class: Google::Apis::DatastreamV1::EventFilter, decorator: Google::Apis::DatastreamV1::EventFilter::Representation
+      
         end
       end
       
@@ -1979,6 +2732,8 @@ module Google
           hash :labels, as: 'labels'
           property :last_recovery_time, as: 'lastRecoveryTime'
           property :name, as: 'name'
+          collection :rule_sets, as: 'ruleSets', class: Google::Apis::DatastreamV1::RuleSet, decorator: Google::Apis::DatastreamV1::RuleSet::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :source_config, as: 'sourceConfig', class: Google::Apis::DatastreamV1::SourceConfig, decorator: Google::Apis::DatastreamV1::SourceConfig::Representation
@@ -2000,6 +2755,8 @@ module Google
           property :backfill_job, as: 'backfillJob', class: Google::Apis::DatastreamV1::BackfillJob, decorator: Google::Apis::DatastreamV1::BackfillJob::Representation
       
           property :create_time, as: 'createTime'
+          collection :customization_rules, as: 'customizationRules', class: Google::Apis::DatastreamV1::CustomizationRule, decorator: Google::Apis::DatastreamV1::CustomizationRule::Representation
+      
           property :display_name, as: 'displayName'
           collection :errors, as: 'errors', class: Google::Apis::DatastreamV1::Error, decorator: Google::Apis::DatastreamV1::Error::Representation
       
@@ -2010,6 +2767,14 @@ module Google
         end
       end
       
+      class TimeUnitPartition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :partitioning_time_granularity, as: 'partitioningTimeGranularity'
+        end
+      end
+      
       class UserCredentials
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2017,6 +2782,15 @@ module Google
           property :secret_manager_stored_password, as: 'secretManagerStoredPassword'
           property :secret_manager_stored_security_token, as: 'secretManagerStoredSecurityToken'
           property :security_token, as: 'securityToken'
+          property :username, as: 'username'
+        end
+      end
+      
+      class UserPasswordCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password, as: 'password', class: Google::Apis::DatastreamV1::Secret, decorator: Google::Apis::DatastreamV1::Secret::Representation
+      
           property :username, as: 'username'
         end
       end

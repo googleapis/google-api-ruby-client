@@ -487,6 +487,31 @@ module Google
         end
       end
       
+      # Information about a device's Bluetooth adapter.
+      class BluetoothAdapterInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The MAC address of the adapter.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # Output only. The number of devices connected to this adapter.
+        # Corresponds to the JSON property `numConnectedDevices`
+        # @return [Fixnum]
+        attr_accessor :num_connected_devices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @num_connected_devices = args[:num_connected_devices] if args.key?(:num_connected_devices)
+        end
+      end
+      
       # Public API: Resources.buildings
       class Building
         include Google::Apis::Core::Hashable
@@ -977,7 +1002,8 @@ module Google
       
       # Google Chrome devices run on the [Chrome OS](https://support.google.com/
       # chromeos). For more information about common API tasks, see the [Developer's
-      # Guide](/admin-sdk/directory/v1/guides/manage-chrome-devices).
+      # Guide](https://developers.google.com/workspace/admin/directory/v1/guides/
+      # manage-chrome-devices).
       class ChromeOsDevice
         include Google::Apis::Core::Hashable
       
@@ -1020,6 +1046,11 @@ module Google
         # Corresponds to the JSON property `backlightInfo`
         # @return [Array<Google::Apis::AdminDirectoryV1::BacklightInfo>]
         attr_accessor :backlight_info
+      
+        # Output only. Information about Bluetooth adapters of the device.
+        # Corresponds to the JSON property `bluetoothAdapterInfo`
+        # @return [Array<Google::Apis::AdminDirectoryV1::BluetoothAdapterInfo>]
+        attr_accessor :bluetooth_adapter_info
       
         # The boot mode for the device. The possible values are: * `Verified`: The
         # device is running a valid version of the Chrome OS. * `Dev`: The devices's
@@ -1180,8 +1211,8 @@ module Google
         # typically used when adding a device to a wireless carrier's post-pay service
         # plan. If the device does not have this information, this property is not
         # included in the response. For more information on how to export a MEID/IMEI
-        # list, see the [Developer's Guide](/admin-sdk/directory/v1/guides/manage-chrome-
-        # devices.html#export_meid).
+        # list, see the [Developer's Guide](https://developers.google.com/workspace/
+        # admin/directory/v1/guides/manage-chrome-devices.html#export_meid).
         # Corresponds to the JSON property `meid`
         # @return [String]
         attr_accessor :meid
@@ -1193,9 +1224,10 @@ module Google
         attr_accessor :model
       
         # Notes about this device added by the administrator. This property can be [
-        # searched](https://support.google.com/chrome/a/answer/1698333) with the [list](/
-        # admin-sdk/directory/v1/reference/chromeosdevices/list) method's `query`
-        # parameter. Maximum length is 500 characters. Empty values are allowed.
+        # searched](https://support.google.com/chrome/a/answer/1698333) with the [list](
+        # https://developers.google.com/workspace/admin/directory/v1/reference/
+        # chromeosdevices/list) method's `query` parameter. Maximum length is 500
+        # characters. Empty values are allowed.
         # Corresponds to the JSON property `notes`
         # @return [String]
         attr_accessor :notes
@@ -1209,11 +1241,11 @@ module Google
         # The unique ID of the organizational unit. orgUnitPath is the human readable
         # version of orgUnitId. While orgUnitPath may change by renaming an
         # organizational unit within the path, orgUnitId is unchangeable for one
-        # organizational unit. This property can be [updated](/admin-sdk/directory/v1/
-        # guides/manage-chrome-devices#move_chrome_devices_to_ou) using the API. For
-        # more information about how to create an organizational structure for your
-        # device, see the [administration help center](https://support.google.com/a/
-        # answer/182433).
+        # organizational unit. This property can be [updated](https://developers.google.
+        # com/workspace/admin/directory/v1/guides/manage-chrome-devices#
+        # move_chrome_devices_to_ou) using the API. For more information about how to
+        # create an organizational structure for your device, see the [administration
+        # help center](https://support.google.com/a/answer/182433).
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id
@@ -1221,10 +1253,11 @@ module Google
         # The full parent path with the organizational unit's name associated with the
         # device. Path names are case insensitive. If the parent organizational unit is
         # the top-level organization, it is represented as a forward slash, `/`. This
-        # property can be [updated](/admin-sdk/directory/v1/guides/manage-chrome-devices#
-        # move_chrome_devices_to_ou) using the API. For more information about how to
-        # create an organizational structure for your device, see the [administration
-        # help center](https://support.google.com/a/answer/182433).
+        # property can be [updated](https://developers.google.com/workspace/admin/
+        # directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou) using the
+        # API. For more information about how to create an organizational structure for
+        # your device, see the [administration help center](https://support.google.com/a/
+        # answer/182433).
         # Corresponds to the JSON property `orgUnitPath`
         # @return [String]
         attr_accessor :org_unit_path
@@ -1238,6 +1271,11 @@ module Google
         # Corresponds to the JSON property `osVersion`
         # @return [String]
         attr_accessor :os_version
+      
+        # Output only. Device policy compliance status of the OS version.
+        # Corresponds to the JSON property `osVersionCompliance`
+        # @return [String]
+        attr_accessor :os_version_compliance
       
         # The Chrome device's platform version.
         # Corresponds to the JSON property `platformVersion`
@@ -1307,6 +1345,7 @@ module Google
           @auto_update_expiration = args[:auto_update_expiration] if args.key?(:auto_update_expiration)
           @auto_update_through = args[:auto_update_through] if args.key?(:auto_update_through)
           @backlight_info = args[:backlight_info] if args.key?(:backlight_info)
+          @bluetooth_adapter_info = args[:bluetooth_adapter_info] if args.key?(:bluetooth_adapter_info)
           @boot_mode = args[:boot_mode] if args.key?(:boot_mode)
           @chrome_os_type = args[:chrome_os_type] if args.key?(:chrome_os_type)
           @cpu_info = args[:cpu_info] if args.key?(:cpu_info)
@@ -1342,6 +1381,7 @@ module Google
           @org_unit_path = args[:org_unit_path] if args.key?(:org_unit_path)
           @os_update_status = args[:os_update_status] if args.key?(:os_update_status)
           @os_version = args[:os_version] if args.key?(:os_version)
+          @os_version_compliance = args[:os_version_compliance] if args.key?(:os_version_compliance)
           @platform_version = args[:platform_version] if args.key?(:platform_version)
           @recent_users = args[:recent_users] if args.key?(:recent_users)
           @screenshot_files = args[:screenshot_files] if args.key?(:screenshot_files)
@@ -1872,13 +1912,32 @@ module Google
         end
       end
       
+      # A response for counting ChromeOS devices.
+      class CountChromeOsDevicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The total number of devices matching the request.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+        end
+      end
+      
       # Request for adding a new print server.
       class CreatePrintServerRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The [unique ID](https://developers.google.com/admin-sdk/directory/
-        # reference/rest/v1/customers) of the customer's Google Workspace account.
-        # Format: `customers/`id``
+        # Required. The [unique ID](https://developers.google.com/workspace/admin/
+        # directory/reference/rest/v1/customers) of the customer's Google Workspace
+        # account. Format: `customers/`id``
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1960,10 +2019,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The customer's ISO 639-2 language code. See the [Language Codes](/admin-sdk/
-        # directory/v1/languages) page for the list of supported codes. Valid language
-        # codes outside the supported set will be accepted by the API but may lead to
-        # unexpected behavior. The default value is `en`.
+        # The customer's ISO 639-2 language code. See the [Language Codes](https://
+        # developers.google.com/workspace/admin/directory/v1/languages) page for the
+        # list of supported codes. Valid language codes outside the supported set will
+        # be accepted by the API but may lead to unexpected behavior. The default value
+        # is `en`.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -2132,13 +2192,15 @@ module Google
       
         # The payload for the command result. The following commands respond with a
         # payload: * `DEVICE_START_CRD_SESSION`: Payload is a stringified JSON object in
-        # the form: ` "url": url `. The URL provides a link to the Chrome Remote Desktop
-        # session. * `FETCH_CRD_AVAILABILITY_INFO`: Payload is a stringified JSON object
-        # in the form: ` "deviceIdleTimeInSeconds": number, "userSessionType": string, "
-        # remoteSupportAvailability": string, "remoteAccessAvailability": string `. The "
-        # remoteSupportAvailability" field is set to "AVAILABLE" if `shared` CRD session
-        # to the device is available. The "remoteAccessAvailability" field is set to "
-        # AVAILABLE" if `private` CRD session to the device is available.
+        # the form: ` "url": url `. The provided URL links to the Chrome Remote Desktop
+        # session and requires authentication using only the `email` associated with the
+        # command's issuance. * `FETCH_CRD_AVAILABILITY_INFO`: Payload is a stringified
+        # JSON object in the form: ` "deviceIdleTimeInSeconds": number, "userSessionType"
+        # : string, "remoteSupportAvailability": string, "remoteAccessAvailability":
+        # string `. The "remoteSupportAvailability" field is set to "AVAILABLE" if `
+        # shared` CRD session to the device is available. The "remoteAccessAvailability"
+        # field is set to "AVAILABLE" if `private` CRD session to the device is
+        # available.
         # Corresponds to the JSON property `commandResultPayload`
         # @return [String]
         attr_accessor :command_result_payload
@@ -2192,27 +2254,29 @@ module Google
         # only select from values `private` (which grants the remote admin exclusive
         # control of the ChromeOS device) or `shared` (which allows the admin and the
         # local user to share control of the ChromeOS device). If not set, `
-        # crdSessionType` defaults to `shared`. * `REBOOT`: Payload is a stringified
-        # JSON object in the form: ` "user_session_delay_seconds": 300 `. The `
-        # user_session_delay_seconds` is the amount of seconds to wait before rebooting
-        # the device if a user is logged in. It has to be an integer in the range [0,300]
-        # . When payload is not present for reboot, 0 delay is the default. Note: This
-        # only applies if an actual user is logged in, including a Guest. If the device
-        # is in the login screen or in Kiosk mode the value is not respected and the
-        # device immediately reboots. * `FETCH_SUPPORT_PACKET`: Payload is optionally a
-        # stringified JSON object in the form: `"supportPacketDetails":` "issueCaseId":
-        # optional_support_case_id_string, "issueDescription":
-        # optional_issue_description_string, "requestedDataCollectors": []`` The list of
-        # available `data_collector_enums` are as following: Chrome System Information (
-        # 1), Crash IDs (2), Memory Details (3), UI Hierarchy (4), Additional ChromeOS
-        # Platform Logs (5), Device Event (6), Intel WiFi NICs Debug Dump (7), Touch
-        # Events (8), Lacros (9), Lacros System Information (10), ChromeOS Flex Logs (11)
-        # , DBus Details (12), ChromeOS Network Routes (13), ChromeOS Shill (Connection
-        # Manager) Logs (14), Policies (15), ChromeOS System State and Logs (16),
-        # ChromeOS System Logs (17), ChromeOS Chrome User Logs (18), ChromeOS Bluetooth (
-        # 19), ChromeOS Connected Input Devices (20), ChromeOS Traffic Counters (21),
-        # ChromeOS Virtual Keyboard (22), ChromeOS Network Health (23). See more details
-        # in [help article](https://support.google.com/chrome/a?p=remote-log).
+        # crdSessionType` defaults to `shared`. The `FETCH_CRD_AVAILABILITY_INFO`
+        # command can be used to determine available session types on the device. * `
+        # REBOOT`: Payload is a stringified JSON object in the form: ` "
+        # user_session_delay_seconds": 300 `. The `user_session_delay_seconds` is the
+        # amount of seconds to wait before rebooting the device if a user is logged in.
+        # It has to be an integer in the range [0,300]. When payload is not present for
+        # reboot, 0 delay is the default. Note: This only applies if an actual user is
+        # logged in, including a Guest. If the device is in the login screen or in Kiosk
+        # mode the value is not respected and the device immediately reboots. * `
+        # FETCH_SUPPORT_PACKET`: Payload is optionally a stringified JSON object in the
+        # form: `"supportPacketDetails":` "issueCaseId": optional_support_case_id_string,
+        # "issueDescription": optional_issue_description_string, "
+        # requestedDataCollectors": []`` The list of available `data_collector_enums`
+        # are as following: Chrome System Information (1), Crash IDs (2), Memory Details
+        # (3), UI Hierarchy (4), Additional ChromeOS Platform Logs (5), Device Event (6),
+        # Intel WiFi NICs Debug Dump (7), Touch Events (8), Lacros (9), Lacros System
+        # Information (10), ChromeOS Flex Logs (11), DBus Details (12), ChromeOS Network
+        # Routes (13), ChromeOS Shill (Connection Manager) Logs (14), Policies (15),
+        # ChromeOS System State and Logs (16), ChromeOS System Logs (17), ChromeOS
+        # Chrome User Logs (18), ChromeOS Bluetooth (19), ChromeOS Connected Input
+        # Devices (20), ChromeOS Traffic Counters (21), ChromeOS Virtual Keyboard (22),
+        # ChromeOS Network Health (23). See more details in [help article](https://
+        # support.google.com/chrome/a?p=remote-log).
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
@@ -2244,6 +2308,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @command_id = args[:command_id] if args.key?(:command_id)
+        end
+      end
+      
+      # Directory users guest creation request message.
+      class DirectoryUsersCreateGuestRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Immutable ID of the Google Workspace account. Only required when
+        # request is created by a service account. Defaults to the authenticated user's
+        # customer ID otherwise.
+        # Corresponds to the JSON property `customer`
+        # @return [String]
+        attr_accessor :customer
+      
+        # Required. External email of the guest user being created.
+        # Corresponds to the JSON property `primaryGuestEmail`
+        # @return [String]
+        attr_accessor :primary_guest_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @customer = args[:customer] if args.key?(:customer)
+          @primary_guest_email = args[:primary_guest_email] if args.key?(:primary_guest_email)
         end
       end
       
@@ -2599,12 +2690,12 @@ module Google
       
       # Google Groups provide your users the ability to send messages to groups of
       # people using the group's email address. For more information about common
-      # tasks, see the [Developer's Guide](https://developers.google.com/admin-sdk/
-      # directory/v1/guides/manage-groups). For information about other types of
+      # tasks, see the [Developer's Guide](https://developers.google.com/workspace/
+      # admin/directory/v1/guides/manage-groups). For information about other types of
       # groups, see the [Cloud Identity Groups API documentation](https://cloud.google.
       # com/identity/docs/groups). Note: The user calling the API (or being
       # impersonated by a service account) must have an assigned [role](https://
-      # developers.google.com/admin-sdk/directory/v1/guides/manage-roles) that
+      # developers.google.com/workspace/admin/directory/v1/guides/manage-roles) that
       # includes Admin API Groups permissions, such as Super Admin or Groups Admin.
       class Group
         include Google::Apis::Core::Hashable
@@ -2778,6 +2869,25 @@ module Google
         end
       end
       
+      # Account info specific to Guest users.
+      class GuestAccountInfo
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The guest's external email.
+        # Corresponds to the JSON property `primaryGuestEmail`
+        # @return [String]
+        attr_accessor :primary_guest_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_guest_email = args[:primary_guest_email] if args.key?(:primary_guest_email)
+        end
+      end
+      
       # 
       class ListPrintServersResponse
         include Google::Apis::Core::Hashable
@@ -2861,8 +2971,8 @@ module Google
       
       # A Google Groups member can be a user or another group. This member can be
       # inside or outside of your account's domains. For more information about common
-      # group member tasks, see the [Developer's Guide](/admin-sdk/directory/v1/guides/
-      # manage-group-members).
+      # group member tasks, see the [Developer's Guide](https://developers.google.com/
+      # workspace/admin/directory/v1/guides/manage-group-members).
       class Member
         include Google::Apis::Core::Hashable
       
@@ -2992,8 +3102,9 @@ module Google
       
       # Google Workspace Mobile Management includes Android, [Google Sync](https://
       # support.google.com/a/answer/135937), and iOS devices. For more information
-      # about common group mobile device API tasks, see the [Developer's Guide](/admin-
-      # sdk/directory/v1/guides/manage-mobile-devices.html).
+      # about common group mobile device API tasks, see the [Developer's Guide](https:/
+      # /developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-
+      # devices.html).
       class MobileDevice
         include Google::Apis::Core::Hashable
       
@@ -3061,9 +3172,10 @@ module Google
         attr_accessor :device_password_status
       
         # The list of the owner's email addresses. If your application needs the current
-        # list of user emails, use the [get](/admin-sdk/directory/v1/reference/
-        # mobiledevices/get.html) method. For additional information, see the [retrieve
-        # a user](/admin-sdk/directory/v1/guides/manage-users#get_user) method.
+        # list of user emails, use the [get](https://developers.google.com/workspace/
+        # admin/directory/v1/reference/mobiledevices/get.html) method. For additional
+        # information, see the [retrieve a user](https://developers.google.com/workspace/
+        # admin/directory/v1/guides/manage-users#get_user) method.
         # Corresponds to the JSON property `email`
         # @return [Array<String>]
         attr_accessor :email
@@ -3135,17 +3247,19 @@ module Google
         attr_accessor :meid
       
         # The mobile device's model name, for example Nexus S. This property can be [
-        # updated](/admin-sdk/directory/v1/reference/mobiledevices/update.html). For
-        # more information, see the [Developer's Guide](/admin-sdk/directory/v1/guides/
-        # manage-mobile=devices#update_mobile_device).
+        # updated](https://developers.google.com/workspace/admin/directory/v1/reference/
+        # mobiledevices/update.html). For more information, see the [Developer's Guide](
+        # https://developers.google.com/workspace/admin/directory/v1/guides/manage-
+        # mobile=devices#update_mobile_device).
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
       
         # The list of the owner's user names. If your application needs the current list
-        # of device owner names, use the [get](/admin-sdk/directory/v1/reference/
-        # mobiledevices/get.html) method. For more information about retrieving mobile
-        # device user information, see the [Developer's Guide](/admin-sdk/directory/v1/
+        # of device owner names, use the [get](https://developers.google.com/workspace/
+        # admin/directory/v1/reference/mobiledevices/get.html) method. For more
+        # information about retrieving mobile device user information, see the [
+        # Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/
         # guides/manage-users#get_user).
         # Corresponds to the JSON property `name`
         # @return [Array<String>]
@@ -3157,8 +3271,9 @@ module Google
         attr_accessor :network_operator
       
         # The mobile device's operating system, for example IOS 4.3 or Android 2.3.5.
-        # This property can be [updated](/admin-sdk/directory/v1/reference/mobiledevices/
-        # update.html). For more information, see the [Developer's Guide](/admin-sdk/
+        # This property can be [updated](https://developers.google.com/workspace/admin/
+        # directory/v1/reference/mobiledevices/update.html). For more information, see
+        # the [Developer's Guide](https://developers.google.com/workspace/admin/
         # directory/v1/guides/manage-mobile-devices#update_mobile_device).
         # Corresponds to the JSON property `os`
         # @return [String]
@@ -3217,9 +3332,10 @@ module Google
         alias_method :unknown_sources_status?, :unknown_sources_status
       
         # Gives information about the device such as `os` version. This property can be [
-        # updated](/admin-sdk/directory/v1/reference/mobiledevices/update.html). For
-        # more information, see the [Developer's Guide](/admin-sdk/directory/v1/guides/
-        # manage-mobile-devices#update_mobile_device).
+        # updated](https://developers.google.com/workspace/admin/directory/v1/reference/
+        # mobiledevices/update.html). For more information, see the [Developer's Guide](
+        # https://developers.google.com/workspace/admin/directory/v1/guides/manage-
+        # mobile-devices#update_mobile_device).
         # Corresponds to the JSON property `userAgent`
         # @return [String]
         attr_accessor :user_agent
@@ -3383,9 +3499,10 @@ module Google
       
       # Managing your account's organizational units allows you to configure your
       # users' access to services and custom settings. For more information about
-      # common organizational unit tasks, see the [Developer's Guide](/admin-sdk/
-      # directory/v1/guides/manage-org-units.html). The customer's organizational unit
-      # hierarchy is limited to 35 levels of depth.
+      # common organizational unit tasks, see the [Developer's Guide](https://
+      # developers.google.com/workspace/admin/directory/v1/guides/manage-org-units.
+      # html). The customer's organizational unit hierarchy is limited to 35 levels of
+      # depth.
       class OrgUnit
         include Google::Apis::Core::Hashable
       
@@ -3433,8 +3550,9 @@ module Google
         # is moved to a new organization, the user's access changes. For more
         # information about organization structures, see the [administration help center]
         # (https://support.google.com/a/answer/4352075). For more information about
-        # moving a user to a different organization, see [Update a user](/admin-sdk/
-        # directory/v1/guides/manage-users.html#update_user).
+        # moving a user to a different organization, see [Update a user](https://
+        # developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#
+        # update_user).
         # Corresponds to the JSON property `orgUnitPath`
         # @return [String]
         attr_accessor :org_unit_path
@@ -3588,8 +3706,8 @@ module Google
         # ID of the organization unit (OU) that owns this print server. This value can
         # only be set when the print server is initially created. If it's not populated,
         # the print server is placed under the root OU. The `org_unit_id` can be
-        # retrieved using the [Directory API](/admin-sdk/directory/reference/rest/v1/
-        # orgunits).
+        # retrieved using the [Directory API](https://developers.google.com/workspace/
+        # admin/directory/reference/rest/v1/orgunits).
         # Corresponds to the JSON property `orgUnitId`
         # @return [String]
         attr_accessor :org_unit_id
@@ -3796,7 +3914,8 @@ module Google
         attr_accessor :privilege_name
       
         # The obfuscated ID of the service this privilege is for. This value is returned
-        # with [`Privileges.list()`](/admin-sdk/directory/v1/reference/privileges/list).
+        # with [`Privileges.list()`](https://developers.google.com/workspace/admin/
+        # directory/v1/reference/privileges/list).
         # Corresponds to the JSON property `serviceId`
         # @return [String]
         attr_accessor :service_id
@@ -3925,7 +4044,8 @@ module Google
           attr_accessor :privilege_name
         
           # The obfuscated ID of the service this privilege is for. This value is returned
-          # with [`Privileges.list()`](/admin-sdk/directory/v1/reference/privileges/list).
+          # with [`Privileges.list()`](https://developers.google.com/workspace/admin/
+          # directory/v1/reference/privileges/list).
           # Corresponds to the JSON property `serviceId`
           # @return [String]
           attr_accessor :service_id
@@ -3977,8 +4097,7 @@ module Google
         # and they only work with the following [pre-built administrator roles](https://
         # support.google.com/a/answer/2405986): - Groups Editor - Groups Reader The
         # condition follows [Cloud IAM condition syntax](https://cloud.google.com/iam/
-        # docs/conditions-overview). Additional conditions related to Locked Groups are
-        # available under Open Beta. - To make the `RoleAssignment` not applicable to [
+        # docs/conditions-overview). - To make the `RoleAssignment` not applicable to [
         # Locked Groups](https://cloud.google.com/identity/docs/groups#group_types): `!
         # api.getAttribute('cloudidentity.googleapis.com/groups.labels', []).hasAny(['
         # groups.locked']) && resource.type == 'cloudidentity.googleapis.com/Group'`
@@ -4165,8 +4284,8 @@ module Google
       # You can use schemas to add custom fields to user profiles. You can use these
       # fields to store information such as the projects your users work on, their
       # physical locations, their hire dates, or whatever else fits your business
-      # needs. For more information, see [Custom User Fields](/admin-sdk/directory/v1/
-      # guides/manage-schemas).
+      # needs. For more information, see [Custom User Fields](https://developers.
+      # google.com/workspace/admin/directory/v1/guides/manage-schemas).
       class SchemaFieldSpec
         include Google::Apis::Core::Hashable
       
@@ -4222,9 +4341,9 @@ module Google
         attr_accessor :numeric_indexing_spec
       
         # Specifies who can view values of this field. See [Retrieve users as a non-
-        # administrator](/admin-sdk/directory/v1/guides/manage-users#
-        # retrieve_users_non_admin) for more information. Note: It may take up to 24
-        # hours for changes to this field to be reflected.
+        # administrator](https://developers.google.com/workspace/admin/directory/v1/
+        # guides/manage-users#retrieve_users_non_admin) for more information. Note: It
+        # may take up to 24 hours for changes to this field to be reflected.
         # Corresponds to the JSON property `readAccessType`
         # @return [String]
         attr_accessor :read_access_type
@@ -4447,9 +4566,10 @@ module Google
       
       # The Directory API allows you to create and manage your account's users, user
       # aliases, and user Google profile photos. For more information about common
-      # tasks, see the [User Accounts Developer's Guide](/admin-sdk/directory/v1/
-      # guides/manage-users.html) and the [User Aliases Developer's Guide](/admin-sdk/
-      # directory/v1/guides/manage-user-aliases.html).
+      # tasks, see the [User Accounts Developer's Guide](https://developers.google.com/
+      # workspace/admin/directory/v1/guides/manage-users.html) and the [User Aliases
+      # Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/
+      # guides/manage-user-aliases.html).
       class User
         include Google::Apis::Core::Hashable
       
@@ -4470,6 +4590,11 @@ module Google
         # Corresponds to the JSON property `aliases`
         # @return [Array<String>]
         attr_accessor :aliases
+      
+        # Output only. User's account archival time. (Read-only)
+        # Corresponds to the JSON property `archivalTime`
+        # @return [String]
+        attr_accessor :archival_time
       
         # Indicates if user is archived.
         # Corresponds to the JSON property `archived`
@@ -4496,12 +4621,13 @@ module Google
         # @return [Hash<String,Hash<String,Object>>]
         attr_accessor :custom_schemas
       
-        # Output only. The customer ID to [retrieve all account users](/admin-sdk/
-        # directory/v1/guides/manage-users.html#get_all_users). You can use the alias `
-        # my_customer` to represent your account's `customerId`. As a reseller
-        # administrator, you can use the resold customer account's `customerId`. To get
-        # a `customerId`, use the account's primary domain in the `domain` parameter of
-        # a [users.list](/admin-sdk/directory/v1/reference/users/list) request.
+        # Output only. The customer ID to [retrieve all account users](https://
+        # developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#
+        # get_all_users). You can use the alias `my_customer` to represent your account'
+        # s `customerId`. As a reseller administrator, you can use the resold customer
+        # account's `customerId`. To get a `customerId`, use the account's primary
+        # domain in the `domain` parameter of a [users.list](https://developers.google.
+        # com/workspace/admin/directory/v1/reference/users/list) request.
         # Corresponds to the JSON property `customerId`
         # @return [String]
         attr_accessor :customer_id
@@ -4532,6 +4658,11 @@ module Google
         # Corresponds to the JSON property `gender`
         # @return [Object]
         attr_accessor :gender
+      
+        # Account info specific to Guest users.
+        # Corresponds to the JSON property `guestAccountInfo`
+        # @return [Google::Apis::AdminDirectoryV1::GuestAccountInfo]
+        attr_accessor :guest_account_info
       
         # Stores the hash format of the `password` property. The following `hashFunction`
         # values are allowed: * `MD5` - Accepts simple hex-encoded values. * `SHA-1` -
@@ -4573,12 +4704,14 @@ module Google
         attr_accessor :ip_whitelisted
         alias_method :ip_whitelisted?, :ip_whitelisted
       
-        # Output only. Indicates a user with super admininistrator privileges. The `
-        # isAdmin` property can only be edited in the [Make a user an administrator](/
-        # admin-sdk/directory/v1/guides/manage-users.html#make_admin) operation ( [
-        # makeAdmin](/admin-sdk/directory/v1/reference/users/makeAdmin.html) method). If
-        # edited in the user [insert](/admin-sdk/directory/v1/reference/users/insert.
-        # html) or [update](/admin-sdk/directory/v1/reference/users/update.html) methods,
+        # Output only. Indicates a user with super administrator privileges. The `
+        # isAdmin` property can only be edited in the [Make a user an administrator](
+        # https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.
+        # html#make_admin) operation ( [makeAdmin](https://developers.google.com/
+        # workspace/admin/directory/v1/reference/users/makeAdmin.html) method). If
+        # edited in the user [insert](https://developers.google.com/workspace/admin/
+        # directory/v1/reference/users/insert.html) or [update](https://developers.
+        # google.com/workspace/admin/directory/v1/reference/users/update.html) methods,
         # the edit is ignored by the API service.
         # Corresponds to the JSON property `isAdmin`
         # @return [Boolean]
@@ -4606,6 +4739,12 @@ module Google
         # @return [Boolean]
         attr_accessor :is_enrolled_in2_sv
         alias_method :is_enrolled_in2_sv?, :is_enrolled_in2_sv
+      
+        # Immutable. Indicates if the inserted user is a guest.
+        # Corresponds to the JSON property `isGuestUser`
+        # @return [Boolean]
+        attr_accessor :is_guest_user
+        alias_method :is_guest_user?, :is_guest_user
       
         # Output only. Indicates if the user's Google mailbox is created. This property
         # is only applicable if the user has been assigned a Gmail license.
@@ -4735,6 +4874,11 @@ module Google
         # @return [String]
         attr_accessor :suspension_reason
       
+        # Output only. User's account suspension time. (Read-only)
+        # Corresponds to the JSON property `suspensionTime`
+        # @return [String]
+        attr_accessor :suspension_time
+      
         # Output only. ETag of the user's photo (Read-only)
         # Corresponds to the JSON property `thumbnailPhotoEtag`
         # @return [String]
@@ -4760,6 +4904,7 @@ module Google
           @addresses = args[:addresses] if args.key?(:addresses)
           @agreed_to_terms = args[:agreed_to_terms] if args.key?(:agreed_to_terms)
           @aliases = args[:aliases] if args.key?(:aliases)
+          @archival_time = args[:archival_time] if args.key?(:archival_time)
           @archived = args[:archived] if args.key?(:archived)
           @change_password_at_next_login = args[:change_password_at_next_login] if args.key?(:change_password_at_next_login)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
@@ -4770,6 +4915,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @external_ids = args[:external_ids] if args.key?(:external_ids)
           @gender = args[:gender] if args.key?(:gender)
+          @guest_account_info = args[:guest_account_info] if args.key?(:guest_account_info)
           @hash_function = args[:hash_function] if args.key?(:hash_function)
           @id = args[:id] if args.key?(:id)
           @ims = args[:ims] if args.key?(:ims)
@@ -4779,6 +4925,7 @@ module Google
           @is_delegated_admin = args[:is_delegated_admin] if args.key?(:is_delegated_admin)
           @is_enforced_in2_sv = args[:is_enforced_in2_sv] if args.key?(:is_enforced_in2_sv)
           @is_enrolled_in2_sv = args[:is_enrolled_in2_sv] if args.key?(:is_enrolled_in2_sv)
+          @is_guest_user = args[:is_guest_user] if args.key?(:is_guest_user)
           @is_mailbox_setup = args[:is_mailbox_setup] if args.key?(:is_mailbox_setup)
           @keywords = args[:keywords] if args.key?(:keywords)
           @kind = args[:kind] if args.key?(:kind)
@@ -4800,6 +4947,7 @@ module Google
           @ssh_public_keys = args[:ssh_public_keys] if args.key?(:ssh_public_keys)
           @suspended = args[:suspended] if args.key?(:suspended)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
+          @suspension_time = args[:suspension_time] if args.key?(:suspension_time)
           @thumbnail_photo_etag = args[:thumbnail_photo_etag] if args.key?(:thumbnail_photo_etag)
           @thumbnail_photo_url = args[:thumbnail_photo_url] if args.key?(:thumbnail_photo_url)
           @websites = args[:websites] if args.key?(:websites)
@@ -5252,9 +5400,9 @@ module Google
       class UserLocation
         include Google::Apis::Core::Hashable
       
-        # Textual location. This is most useful for display purposes to concisely
-        # describe the location. For example 'Mountain View, CA', 'Near Seattle', 'US-
-        # NYC-9TH 9A209A.''
+        # Required. Textual location. This is most useful for display purposes to
+        # concisely describe the location. For example 'Mountain View, CA', 'Near
+        # Seattle', 'US-NYC-9TH 9A209A.''
         # Corresponds to the JSON property `area`
         # @return [String]
         attr_accessor :area

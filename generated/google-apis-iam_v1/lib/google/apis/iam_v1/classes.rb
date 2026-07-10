@@ -703,9 +703,9 @@ module Google
       
       # Represents the OAuth 2.0 client credential configuration for retrieving
       # additional user attributes that are not present in the initial authentication
-      # credentials from the identity provider, e.g. groups. See https://datatracker.
-      # ietf.org/doc/html/rfc6749#section-4.4 for more details on client credentials
-      # grant flow.
+      # credentials from the identity provider, for example, groups. See https://
+      # datatracker.ietf.org/doc/html/rfc6749#section-4.4 for more details on client
+      # credentials grant flow.
       class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client
         include Google::Apis::Core::Hashable
       
@@ -783,7 +783,7 @@ module Google
         end
       end
       
-      # Represents an OpenId Connect 1.0 identity provider.
+      # Represents an OpenID Connect 1.0 identity provider.
       class GoogleIamAdminV1WorkforcePoolProviderOidc
         include Google::Apis::Core::Hashable
       
@@ -805,11 +805,11 @@ module Google
       
         # Optional. OIDC JWKs in JSON String format. For details on the definition of a
         # JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from
-        # the discovery document(fetched from the .well-known path of the `issuer_uri`)
-        # will be used. Currently, RSA and EC asymmetric keys are supported. The JWK
-        # must use following format and include only the following fields: ` "keys": [ `
-        # "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "",
-        # "y": "", "crv": "" ` ] `
+        # the discovery document that is fetched from the well-known path of the `
+        # issuer_uri`, will be used. RSA and EC asymmetric keys are supported. The JWK
+        # must use the following format and include only the following fields: ` "keys":
+        # [ ` "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x":
+        # "", "y": "", "crv": "" ` ] `
         # Corresponds to the JSON property `jwksJson`
         # @return [String]
         attr_accessor :jwks_json
@@ -928,7 +928,7 @@ module Google
         # document should satisfy the following constraints: 1) Must contain an Identity
         # Provider Entity ID. 2) Must contain at least one non-expired signing key
         # certificate. 3) For each signing key: a) Valid from should be no more than 7
-        # days from now. b) Valid to should be no more than 20 years in the future. 4)
+        # days from now. b) Valid to should be no more than 25 years in the future. 4)
         # Up to 3 IdP signing keys are allowed in the metadata xml. When updating the
         # provider's metadata xml, at least one non-expired signing key must overlap
         # with the existing metadata. This requirement is skipped if there are no non-
@@ -985,6 +985,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :rotation_window_percentage
       
+        # Optional. If set to true, the trust domain will utilize the GCP-provisioned
+        # default CA. A default CA in the same region as the workload will be selected
+        # to issue the certificate. Enabling this will clear any existing `ca_pools`
+        # configuration to provision the certificates. NOTE: This field is mutually
+        # exclusive with `ca_pools`. If this flag is enabled, certificates will be
+        # automatically provisioned from the default shared CAs. This flag should not be
+        # set if you want to use your own CA pools to provision the certificates.
+        # Corresponds to the JSON property `useDefaultSharedCa`
+        # @return [Boolean]
+        attr_accessor :use_default_shared_ca
+        alias_method :use_default_shared_ca?, :use_default_shared_ca
+      
         def initialize(**args)
            update!(**args)
         end
@@ -995,6 +1007,7 @@ module Google
           @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
           @lifetime = args[:lifetime] if args.key?(:lifetime)
           @rotation_window_percentage = args[:rotation_window_percentage] if args.key?(:rotation_window_percentage)
+          @use_default_shared_ca = args[:use_default_shared_ca] if args.key?(:use_default_shared_ca)
         end
       end
       
@@ -1383,6 +1396,62 @@ module Google
         end
       end
       
+      # Gemini Enterprise only. Response message for
+      # ListWorkforcePoolProviderScimTenants.
+      class ListWorkforcePoolProviderScimTenantsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Gemini Enterprise only. A token, which can be sent as `page_token`
+        # to retrieve the next page. If this field is omitted, there are no subsequent
+        # pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Gemini Enterprise only. A list of SCIM tenants.
+        # Corresponds to the JSON property `workforcePoolProviderScimTenants`
+        # @return [Array<Google::Apis::IamV1::WorkforcePoolProviderScimTenant>]
+        attr_accessor :workforce_pool_provider_scim_tenants
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workforce_pool_provider_scim_tenants = args[:workforce_pool_provider_scim_tenants] if args.key?(:workforce_pool_provider_scim_tenants)
+        end
+      end
+      
+      # Gemini Enterprise only. Response message for
+      # ListWorkforcePoolProviderScimTokens.
+      class ListWorkforcePoolProviderScimTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Gemini Enterprise only. A token, which can be sent as `page_token`
+        # to retrieve the next page. If this field is omitted, there are no subsequent
+        # pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Gemini Enterprise only. A list of SCIM tokens.
+        # Corresponds to the JSON property `workforcePoolProviderScimTokens`
+        # @return [Array<Google::Apis::IamV1::WorkforcePoolProviderScimToken>]
+        attr_accessor :workforce_pool_provider_scim_tokens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @workforce_pool_provider_scim_tokens = args[:workforce_pool_provider_scim_tokens] if args.key?(:workforce_pool_provider_scim_tokens)
+        end
+      end
+      
       # Response message for ListWorkforcePoolProviders.
       class ListWorkforcePoolProvidersResponse
         include Google::Apis::Core::Hashable
@@ -1585,10 +1654,7 @@ module Google
         # Required. The list of scopes that the OauthClient is allowed to request during
         # OAuth flows. The following scopes are supported: * `https://www.googleapis.com/
         # auth/cloud-platform`: See, edit, configure, and delete your Google Cloud data
-        # and see the email address for your Google Account. * `openid`: The OAuth
-        # client can associate you with your personal information on Google Cloud. * `
-        # email`: The OAuth client can read a federated identity's email address. * `
-        # groups`: The OAuth client can read a federated identity's groups.
+        # and see the email address for your Google Account.
         # Corresponds to the JSON property `allowedScopes`
         # @return [Array<String>]
         attr_accessor :allowed_scopes
@@ -2431,7 +2497,7 @@ module Google
         # must satisfy the following constraints: * Must contain an IdP Entity ID. *
         # Must contain at least one non-expired signing certificate. * For each signing
         # certificate, the expiration must be: * From no more than 7 days in the future.
-        # * To no more than 20 years in the future. * Up to three IdP signing keys are
+        # * To no more than 25 years in the future. * Up to three IdP signing keys are
         # allowed. When updating the provider's metadata XML, at least one non-expired
         # signing key must overlap with the existing metadata. This requirement is
         # skipped if there are no non-expired signing keys present in the existing
@@ -2938,7 +3004,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # PEM certificate of the PKI used for validation. Must only contain one ca
-        # certificate(either root or intermediate cert).
+        # certificate (either root or intermediate cert).
         # Corresponds to the JSON property `pemCertificate`
         # @return [String]
         attr_accessor :pem_certificate
@@ -2972,6 +3038,15 @@ module Google
         # @return [Array<Google::Apis::IamV1::TrustAnchor>]
         attr_accessor :trust_anchors
       
+        # Optional. If set to True, the trust bundle will include the private ca managed
+        # identity regional root public certificates. Important: `
+        # trust_default_shared_ca` is only supported for managed identity trust domain
+        # resource.
+        # Corresponds to the JSON property `trustDefaultSharedCa`
+        # @return [Boolean]
+        attr_accessor :trust_default_shared_ca
+        alias_method :trust_default_shared_ca?, :trust_default_shared_ca
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2980,6 +3055,7 @@ module Google
         def update!(**args)
           @intermediate_cas = args[:intermediate_cas] if args.key?(:intermediate_cas)
           @trust_anchors = args[:trust_anchors] if args.key?(:trust_anchors)
+          @trust_default_shared_ca = args[:trust_default_shared_ca] if args.key?(:trust_default_shared_ca)
         end
       end
       
@@ -3069,6 +3145,20 @@ module Google
       
       # Request message for UndeleteWorkforcePoolProvider.
       class UndeleteWorkforcePoolProviderRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Gemini Enterprise only. Request message for
+      # UndeleteWorkforcePoolProviderScimTenant.
+      class UndeleteWorkforcePoolProviderScimTenantRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -3203,8 +3293,7 @@ module Google
         # @return [Google::Apis::IamV1::AccessRestrictions]
         attr_accessor :access_restrictions
       
-        # Optional. A user-specified description of the pool. Cannot exceed 256
-        # characters.
+        # Optional. A description of the pool. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3217,8 +3306,7 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Optional. A user-specified display name of the pool in Google Cloud Console.
-        # Cannot exceed 32 characters.
+        # Optional. A display name for the pool. Cannot exceed 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3313,13 +3401,13 @@ module Google
         # visible as the user's profile picture. If not set, a generic user icon will be
         # displayed instead. This attribute cannot be referenced in IAM bindings. * `
         # google.posix_username`: The Linux username used by OS Login. This is an
-        # optional field and the mapped POSIX username cannot exceed 32 characters, The
-        # key must match the regex "^a-zA-Z0-9._`0,31`$". This attribute cannot be
+        # optional field and the mapped POSIX username cannot exceed 32 characters. The
+        # key must match the regex `^a-zA-Z0-9._`0,31`$`. This attribute cannot be
         # referenced in IAM bindings. You can also provide custom attributes by
         # specifying `attribute.`custom_attribute``, where `custom_attribute` is the
         # name of the custom attribute to be mapped. You can define a maximum of 50
         # custom attributes. The maximum length of a mapped attribute key is 100
-        # characters, and the key may only contain the characters [a-z0-9_]. You can
+        # characters, and the key may only contain the characters `[a-z0-9_]`. You can
         # reference these attributes in IAM policies to define fine-grained access for a
         # workforce pool to Google Cloud resources. For example: * `google.subject`: `
         # principal://iam.googleapis.com/locations/global/workforcePools/`pool`/subject/`
@@ -3333,16 +3421,15 @@ module Google
         # to access a JSON representation of the authentication credential issued by the
         # provider. The maximum length of an attribute mapping expression is 2048
         # characters. When evaluated, the total size of all mapped attributes must not
-        # exceed 4KB. For OIDC providers, you must supply a custom mapping that includes
-        # the `google.subject` attribute. For example, the following maps the `sub`
-        # claim of the incoming credential to the `subject` attribute on a Google token:
-        # ``` `"google.subject": "assertion.sub"` ```
+        # exceed 16 KB. For OIDC providers, you must supply a custom mapping that
+        # includes the `google.subject` attribute. For example, the following maps the `
+        # sub` claim of the incoming credential to the `subject` attribute on a Google
+        # token: ``` `"google.subject": "assertion.sub"` ```
         # Corresponds to the JSON property `attributeMapping`
         # @return [Hash<String,String>]
         attr_accessor :attribute_mapping
       
-        # Optional. A user-specified description of the provider. Cannot exceed 256
-        # characters.
+        # Optional. A description of the provider. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3362,23 +3449,31 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Optional. A user-specified display name for the provider. Cannot exceed 32
-        # characters.
+        # Optional. A display name for the provider. Cannot exceed 32 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. Time after which the workload pool provider will be permanently
-        # purged and cannot be recovered.
+        # Output only. Time after which the workforce identity pool provider will be
+        # permanently purged and cannot be recovered.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
       
         # Represents the OAuth 2.0 client credential configuration for retrieving
         # additional user attributes that are not present in the initial authentication
-        # credentials from the identity provider, e.g. groups. See https://datatracker.
-        # ietf.org/doc/html/rfc6749#section-4.4 for more details on client credentials
-        # grant flow.
+        # credentials from the identity provider, for example, groups. See https://
+        # datatracker.ietf.org/doc/html/rfc6749#section-4.4 for more details on client
+        # credentials grant flow.
+        # Corresponds to the JSON property `extendedAttributesOauth2Client`
+        # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client]
+        attr_accessor :extended_attributes_oauth2_client
+      
+        # Represents the OAuth 2.0 client credential configuration for retrieving
+        # additional user attributes that are not present in the initial authentication
+        # credentials from the identity provider, for example, groups. See https://
+        # datatracker.ietf.org/doc/html/rfc6749#section-4.4 for more details on client
+        # credentials grant flow.
         # Corresponds to the JSON property `extraAttributesOauth2Client`
         # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client]
         attr_accessor :extra_attributes_oauth2_client
@@ -3389,7 +3484,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Represents an OpenId Connect 1.0 identity provider.
+        # Represents an OpenID Connect 1.0 identity provider.
         # Corresponds to the JSON property `oidc`
         # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderOidc]
         attr_accessor :oidc
@@ -3398,6 +3493,16 @@ module Google
         # Corresponds to the JSON property `saml`
         # @return [Google::Apis::IamV1::GoogleIamAdminV1WorkforcePoolProviderSaml]
         attr_accessor :saml
+      
+        # Optional. Gemini Enterprise only. Specifies whether the workforce identity
+        # pool provider uses SCIM-managed groups instead of the `google.groups`
+        # attribute mapping for authorization checks. The `scim_usage` and `
+        # extended_attributes_oauth2_client` fields are mutually exclusive. A request
+        # that enables both fields on the same workforce identity pool provider will
+        # produce an error.
+        # Corresponds to the JSON property `scimUsage`
+        # @return [String]
+        attr_accessor :scim_usage
       
         # Output only. The state of the provider.
         # Corresponds to the JSON property `state`
@@ -3417,10 +3522,12 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @extended_attributes_oauth2_client = args[:extended_attributes_oauth2_client] if args.key?(:extended_attributes_oauth2_client)
           @extra_attributes_oauth2_client = args[:extra_attributes_oauth2_client] if args.key?(:extra_attributes_oauth2_client)
           @name = args[:name] if args.key?(:name)
           @oidc = args[:oidc] if args.key?(:oidc)
           @saml = args[:saml] if args.key?(:saml)
+          @scim_usage = args[:scim_usage] if args.key?(:scim_usage)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -3473,6 +3580,136 @@ module Google
         end
       end
       
+      # Gemini Enterprise only. Represents a SCIM tenant. Used for provisioning and
+      # managing identity data (such as Users and Groups) in cross-domain environments.
+      class WorkforcePoolProviderScimTenant
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Gemini Enterprise only. Represents the base URI as defined in [
+        # RFC 7644, Section 1.3](https://datatracker.ietf.org/doc/html/rfc7644#section-1.
+        # 3). Clients must use this as the root address for managing resources under the
+        # tenant. Format: https://iamscim.googleapis.com/`version`/`tenant_id`/
+        # Corresponds to the JSON property `baseUri`
+        # @return [String]
+        attr_accessor :base_uri
+      
+        # Required. Immutable. Gemini Enterprise only. Maps SCIM attributes to Google
+        # attributes. This mapping is used to associate the attributes synced via SCIM
+        # with the Google Cloud attributes used in IAM policies for Workforce Identity
+        # Federation. SCIM-managed user and group attributes are mapped to `google.
+        # subject` and `google.group` respectively. Each key must be a string specifying
+        # the Google Cloud IAM attribute to map to. The supported keys are as follows: *
+        # `google.subject`: The principal IAM is authenticating. You can reference this
+        # value in IAM bindings. This is also the subject that appears in Cloud Logging
+        # logs. This is a required field and the mapped subject cannot exceed 127 bytes.
+        # * `google.group`: Group the authenticating user belongs to. You can grant
+        # group access to resources using an IAM `principalSet` binding; access applies
+        # to all members of the group. Each value must be a [Common Expression Language]
+        # (https://opensource.google/projects/cel) expression that maps SCIM user or
+        # group attribute to the normalized attribute specified by the corresponding map
+        # key. Example: To map the SCIM user's `externalId` to `google.subject` and the
+        # SCIM group's `externalId` to `google.group`: ``` ` "google.subject": "user.
+        # externalId", "google.group": "group.externalId" ` ```
+        # Corresponds to the JSON property `claimMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :claim_mapping
+      
+        # Optional. Gemini Enterprise only. The description of the SCIM tenant. Cannot
+        # exceed 256 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Gemini Enterprise only. The display name of the SCIM tenant. Cannot
+        # exceed 32 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Gemini Enterprise only. The resource name of the SCIM Tenant.
+        # Format: `locations/`location`/workforcePools/`workforce_pool`/providers/ `
+        # workforce_pool_provider`/scimTenants/`scim_tenant``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Gemini Enterprise only. The timestamp that represents the time
+        # when the SCIM tenant is purged.
+        # Corresponds to the JSON property `purgeTime`
+        # @return [String]
+        attr_accessor :purge_time
+      
+        # Output only. Service Agent created by SCIM Tenant API. SCIM tokens created
+        # under this tenant will be attached to this service agent.
+        # Corresponds to the JSON property `serviceAgent`
+        # @return [String]
+        attr_accessor :service_agent
+      
+        # Output only. Gemini Enterprise only. The state of the tenant.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_uri = args[:base_uri] if args.key?(:base_uri)
+          @claim_mapping = args[:claim_mapping] if args.key?(:claim_mapping)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @purge_time = args[:purge_time] if args.key?(:purge_time)
+          @service_agent = args[:service_agent] if args.key?(:service_agent)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Gemini Enterprise only. Represents a token for the
+      # WorkforcePoolProviderScimTenant. Used for authenticating SCIM provisioning
+      # requests.
+      class WorkforcePoolProviderScimToken
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Gemini Enterprise only. The display name of the SCIM token. Cannot
+        # exceed 32 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Gemini Enterprise only. The resource name of the SCIM Token.
+        # Format: `locations/`location`/workforcePools/`workforce_pool`/providers/ `
+        # workforce_pool_provider`/scimTenants/`scim_tenant`/tokens/`token``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Gemini Enterprise only. The token string. Provide this to the IdP
+        # for authentication. Will be set only during creation.
+        # Corresponds to the JSON property `securityToken`
+        # @return [String]
+        attr_accessor :security_token
+      
+        # Output only. Gemini Enterprise only. The state of the token.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @security_token = args[:security_token] if args.key?(:security_token)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Represents a collection of workload identities. You can define IAM policies to
       # grant these identities access to Google Cloud resources.
       class WorkloadIdentityPool
@@ -3522,7 +3759,7 @@ module Google
         # @return [String]
         attr_accessor :mode
       
-        # Output only. The resource name of the pool.
+        # Identifier. The resource name of the pool.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3554,14 +3791,14 @@ module Google
       class WorkloadIdentityPoolManagedIdentity
         include Google::Apis::Core::Hashable
       
-        # A description of the managed identity. Cannot exceed 256 characters.
+        # Optional. A description of the managed identity. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Whether the managed identity is disabled. If disabled, credentials may no
-        # longer be issued for the identity, however existing credentials will still be
-        # accepted until they expire.
+        # Optional. Whether the managed identity is disabled. If disabled, credentials
+        # may no longer be issued for the identity, however existing credentials will
+        # still be accepted until they expire.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -3573,7 +3810,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. The resource name of the managed identity.
+        # Identifier. The resource name of the managed identity.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3602,14 +3839,14 @@ module Google
       class WorkloadIdentityPoolNamespace
         include Google::Apis::Core::Hashable
       
-        # A description of the namespace. Cannot exceed 256 characters.
+        # Optional. A description of the namespace. Cannot exceed 256 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Whether the namespace is disabled. If disabled, credentials may no longer be
-        # issued for identities within this namespace, however existing credentials will
-        # still be accepted until they expire.
+        # Optional. Whether the namespace is disabled. If disabled, credentials may no
+        # longer be issued for identities within this namespace, however existing
+        # credentials will still be accepted until they expire.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
@@ -3621,7 +3858,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. The resource name of the namespace.
+        # Identifier. The resource name of the namespace.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3755,7 +3992,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Output only. The resource name of the provider.
+        # Identifier. The resource name of the provider.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3821,7 +4058,7 @@ module Google
         # @return [Google::Apis::IamV1::KeyData]
         attr_accessor :key_data
       
-        # Output only. The resource name of the key.
+        # Identifier. The resource name of the key.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

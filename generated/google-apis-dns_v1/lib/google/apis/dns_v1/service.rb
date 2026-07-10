@@ -705,7 +705,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Policy.
+        # Creates a new policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Google::Apis::DnsV1::Policy] policy_object
@@ -742,7 +742,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a previously created Policy. Fails if the policy is still being
+        # Deletes a previously created policy. Fails if the policy is still being
         # referenced by a network.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -778,7 +778,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Fetches the representation of an existing Policy.
+        # Fetches the representation of an existing policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] policy
@@ -815,7 +815,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enumerates all Policies associated with a project.
+        # Enumerates all policies associated with a project.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Fixnum] max_results
@@ -853,7 +853,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Applies a partial update to an existing Policy.
+        # Applies a partial update to an existing policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] policy
@@ -893,7 +893,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing Policy.
+        # Updates an existing policy.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] policy
@@ -1102,18 +1102,28 @@ module Google
         # @param [String] managed_zone
         #   Identifies the managed zone addressed by this request. Can be the managed zone
         #   name or ID.
+        # @param [String] filter
+        #   Specify a filter expression to view records that exactly match the specified
+        #   domain. Both the `name` and `type` parameters are not supported and must be
+        #   omitted when you use `filter`. Your `filter` expression must conform to AIP-
+        #   160 and you must specify a domain in the `name` field. Optionally, you can
+        #   include the `type` field to filter records by type. You can also include the `
+        #   has_suffix` function to view records that match by domain suffix. Examples: * `
+        #   name`="example.com." * `name`="example.com." AND type="A" * `name`=`has_suffix`
+        #   ("example.com.") * `name`=`has_suffix`("example.com.") AND type="A"
         # @param [Fixnum] max_results
         #   Optional. Maximum number of results to be returned. If unspecified, the server
         #   decides how many results to return.
         # @param [String] name
-        #   Restricts the list to return only records with this fully qualified domain
-        #   name.
+        #   Specify a fully qualified domain name to view only those records. The `name`
+        #   parameter is not supported and must be omitted when you use `filter`.
         # @param [String] page_token
         #   Optional. A tag returned by a previous list request that was truncated. Use
         #   this parameter to continue a previous list request.
         # @param [String] type
-        #   Restricts the list to return only records of this type. If present, the "name"
-        #   parameter must also be present.
+        #   Specify a record type to view only those records. You must also specify the `
+        #   name` parameter. The `type` parameter is not supported and must be omitted
+        #   when you use `filter`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1131,12 +1141,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_resource_record_sets(project, managed_zone, max_results: nil, name: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_resource_record_sets(project, managed_zone, filter: nil, max_results: nil, name: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'dns/v1/projects/{project}/managedZones/{managedZone}/rrsets', options)
           command.response_representation = Google::Apis::DnsV1::ListResourceRecordSetsResponse::Representation
           command.response_class = Google::Apis::DnsV1::ListResourceRecordSetsResponse
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['name'] = name unless name.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

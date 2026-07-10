@@ -753,6 +753,7 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
+          hash :tags, as: 'tags'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :version, as: 'version'
@@ -870,6 +871,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::MetastoreV1alpha::Operation, decorator: Google::Apis::MetastoreV1alpha::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1181,6 +1183,7 @@ module Google
       
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
+          hash :tags, as: 'tags'
           property :telemetry_config, as: 'telemetryConfig', class: Google::Apis::MetastoreV1alpha::TelemetryConfig, decorator: Google::Apis::MetastoreV1alpha::TelemetryConfig::Representation
       
           property :tier, as: 'tier'

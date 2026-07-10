@@ -1,5 +1,114 @@
 # Release history for google-apis-androidmanagement_v1
 
+### v0.117.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260615
+
+### v0.116.0 (2026-06-14)
+
+* Regenerated using generator version 0.19.0
+
+### v0.115.0 (2026-05-24)
+
+* Regenerated from discovery document revision 20260521
+
+### v0.114.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260408
+
+### v0.113.0 (2026-03-22)
+
+* Regenerated from discovery document revision 20260316
+
+### v0.112.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260312
+
+### v0.111.0 (2026-03-08)
+
+* Regenerated from discovery document revision 20260303
+
+### v0.110.0 (2026-02-22)
+
+* Regenerated from discovery document revision 20260219
+
+### v0.109.0 (2026-02-15)
+
+* Regenerated from discovery document revision 20260212
+
+### v0.108.0 (2026-02-08)
+
+* Regenerated from discovery document revision 20260204
+
+### v0.107.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260127
+
+### v0.106.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260121
+
+### v0.105.0 (2026-01-18)
+
+* Regenerated from discovery document revision 20260113
+
+### v0.104.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251120
+
+### v0.103.0 (2025-11-16)
+
+* Regenerated from discovery document revision 20251111
+
+### v0.102.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251015
+
+### v0.101.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250924
+
+### v0.100.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250916
+
+### v0.99.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250909
+
+### v0.98.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250829
+
+### v0.97.0 (2025-08-10)
+
+* Regenerated from discovery document revision 20250804
+
+### v0.96.0 (2025-07-06)
+
+* Regenerated from discovery document revision 20250702
+
+### v0.95.0 (2025-06-29)
+
+* Regenerated from discovery document revision 20250626
+
+### v0.94.0 (2025-06-22)
+
+* Regenerated from discovery document revision 20250617
+
+### v0.93.0 (2025-06-15)
+
+* Regenerated from discovery document revision 20250610
+
+### v0.92.0 (2025-06-08)
+
+* Regenerated from discovery document revision 20250603
+
+### v0.91.0 (2025-06-01)
+
+* Regenerated from discovery document revision 20250529
+* Regenerated using generator version 0.18.0
+
 ### v0.90.0 (2025-05-18)
 
 * Regenerated from discovery document revision 20250515

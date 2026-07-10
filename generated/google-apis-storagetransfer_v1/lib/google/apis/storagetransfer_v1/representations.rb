@@ -315,6 +315,7 @@ module Google
           property :credentials_secret, as: 'credentialsSecret'
           property :managed_private_network, as: 'managedPrivateNetwork'
           property :path, as: 'path'
+          property :private_network_service, as: 'privateNetworkService'
           property :role_arn, as: 'roleArn'
         end
       end
@@ -329,6 +330,7 @@ module Google
           property :federated_identity_config, as: 'federatedIdentityConfig', class: Google::Apis::StoragetransferV1::FederatedIdentityConfig, decorator: Google::Apis::StoragetransferV1::FederatedIdentityConfig::Representation
       
           property :path, as: 'path'
+          property :private_network_service, as: 'privateNetworkService'
           property :storage_account, as: 'storageAccount'
         end
       end
@@ -449,6 +451,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::StoragetransferV1::Operation, decorator: Google::Apis::StoragetransferV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -499,8 +502,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exclude_prefixes, as: 'excludePrefixes'
           collection :include_prefixes, as: 'includePrefixes'
+          collection :include_storage_classes, as: 'includeStorageClasses'
           property :last_modified_before, as: 'lastModifiedBefore'
           property :last_modified_since, as: 'lastModifiedSince'
+          property :match_glob, as: 'matchGlob'
           property :max_time_elapsed_since_last_modification, as: 'maxTimeElapsedSinceLastModification'
           property :min_time_elapsed_since_last_modification, as: 'minTimeElapsedSinceLastModification'
         end
@@ -626,6 +631,8 @@ module Google
           property :objects_found_only_from_sink, :numeric_string => true, as: 'objectsFoundOnlyFromSink'
           property :objects_from_source_failed, :numeric_string => true, as: 'objectsFromSourceFailed'
           property :objects_from_source_skipped_by_sync, :numeric_string => true, as: 'objectsFromSourceSkippedBySync'
+          property :unrestored_deep_archive_objects_skipped_count, :numeric_string => true, as: 'unrestoredDeepArchiveObjectsSkippedCount'
+          property :unsupported_s3_glacier_objects_skipped_count, :numeric_string => true, as: 'unsupportedS3GlacierObjectsSkippedCount'
         end
       end
       

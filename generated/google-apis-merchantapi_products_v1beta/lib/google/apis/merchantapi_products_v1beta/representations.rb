@@ -264,6 +264,7 @@ module Google
           property :gender, as: 'gender'
           property :google_product_category, as: 'googleProductCategory'
           collection :gtin, as: 'gtin'
+          collection :gtins, as: 'gtins'
           property :identifier_exists, as: 'identifierExists'
           property :image_link, as: 'imageLink'
           collection :included_destinations, as: 'includedDestinations'
@@ -281,6 +282,8 @@ module Google
           property :material, as: 'material'
           property :max_energy_efficiency_class, as: 'maxEnergyEfficiencyClass'
           property :max_handling_time, :numeric_string => true, as: 'maxHandlingTime'
+          property :maximum_retail_price, as: 'maximumRetailPrice', class: Google::Apis::MerchantapiProductsV1beta::Price, decorator: Google::Apis::MerchantapiProductsV1beta::Price::Representation
+      
           property :min_energy_efficiency_class, as: 'minEnergyEfficiencyClass'
           property :min_handling_time, :numeric_string => true, as: 'minHandlingTime'
           property :mobile_link, as: 'mobileLink'
@@ -498,10 +501,12 @@ module Google
       class Product
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :archived, as: 'archived'
           property :attributes, as: 'attributes', class: Google::Apis::MerchantapiProductsV1beta::Attributes, decorator: Google::Apis::MerchantapiProductsV1beta::Attributes::Representation
       
           property :automated_discounts, as: 'automatedDiscounts', class: Google::Apis::MerchantapiProductsV1beta::AutomatedDiscounts, decorator: Google::Apis::MerchantapiProductsV1beta::AutomatedDiscounts::Representation
       
+          property :base64_encoded_name, as: 'base64EncodedName'
           property :channel, as: 'channel'
           property :content_language, as: 'contentLanguage'
           collection :custom_attributes, as: 'customAttributes', class: Google::Apis::MerchantapiProductsV1beta::CustomAttribute, decorator: Google::Apis::MerchantapiProductsV1beta::CustomAttribute::Representation
@@ -548,6 +553,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attributes, as: 'attributes', class: Google::Apis::MerchantapiProductsV1beta::Attributes, decorator: Google::Apis::MerchantapiProductsV1beta::Attributes::Representation
       
+          property :base64_encoded_name, as: 'base64EncodedName'
+          property :base64_encoded_product, as: 'base64EncodedProduct'
           property :channel, as: 'channel'
           property :content_language, as: 'contentLanguage'
           collection :custom_attributes, as: 'customAttributes', class: Google::Apis::MerchantapiProductsV1beta::CustomAttribute, decorator: Google::Apis::MerchantapiProductsV1beta::CustomAttribute::Representation
@@ -627,8 +634,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :country, as: 'country'
+          property :handling_cutoff_time, as: 'handlingCutoffTime'
+          property :handling_cutoff_timezone, as: 'handlingCutoffTimezone'
           property :location_group_name, as: 'locationGroupName'
           property :location_id, :numeric_string => true, as: 'locationId'
+          property :loyalty_program_label, as: 'loyaltyProgramLabel'
+          property :loyalty_tier_label, as: 'loyaltyTierLabel'
           property :max_handling_time, :numeric_string => true, as: 'maxHandlingTime'
           property :max_transit_time, :numeric_string => true, as: 'maxTransitTime'
           property :min_handling_time, :numeric_string => true, as: 'minHandlingTime'

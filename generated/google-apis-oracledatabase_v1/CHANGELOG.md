@@ -1,5 +1,87 @@
 # Release history for google-apis-oracledatabase_v1
 
+### v0.32.0 (2026-07-05)
+
+* Regenerated from discovery document revision 20260629
+
+### v0.31.0 (2026-06-21)
+
+* Regenerated from discovery document revision 20260615
+
+### v0.30.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260604
+* Regenerated using generator version 0.19.0
+
+### v0.29.0 (2026-05-31)
+
+* Regenerated from discovery document revision 20260526
+
+### v0.28.0 (2026-05-17)
+
+* Regenerated from discovery document revision 20260512
+
+### v0.27.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260427
+
+### v0.26.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260415
+
+### v0.25.0 (2026-03-15)
+
+* Regenerated from discovery document revision 20260225
+
+### v0.24.0 (2026-02-01)
+
+* Regenerated from discovery document revision 20260127
+
+### v0.23.0 (2026-01-25)
+
+* Regenerated from discovery document revision 20260122
+
+### v0.22.0 (2025-11-23)
+
+* Regenerated from discovery document revision 20251117
+
+### v0.21.0 (2025-10-26)
+
+* Regenerated from discovery document revision 20251022
+
+### v0.20.0 (2025-10-19)
+
+* Regenerated from discovery document revision 20251009
+
+### v0.19.0 (2025-09-28)
+
+* Regenerated from discovery document revision 20250925
+
+### v0.18.0 (2025-09-21)
+
+* Regenerated from discovery document revision 20250918
+
+### v0.17.0 (2025-09-14)
+
+* Regenerated from discovery document revision 20250910
+
+### v0.16.0 (2025-09-07)
+
+* Regenerated from discovery document revision 20250901
+
+### v0.15.0 (2025-08-31)
+
+* Regenerated from discovery document revision 20250825
+
+### v0.14.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250813
+
+### v0.13.0 (2025-07-20)
+
+* Regenerated from discovery document revision 20250717
+* Regenerated using generator version 0.18.0
+
 ### v0.12.0 (2025-05-18)
 
 * Regenerated from discovery document revision 20250509

@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StatusPerReportingContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BestSellersBrandView
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -400,6 +406,7 @@ module Google
           property :product_type_l3, as: 'productTypeL3'
           property :product_type_l4, as: 'productTypeL4'
           property :product_type_l5, as: 'productTypeL5'
+          property :store_type, as: 'storeType'
           property :title, as: 'title'
           property :week, as: 'week', class: Google::Apis::MerchantapiReportsV1beta::Date, decorator: Google::Apis::MerchantapiReportsV1beta::Date::Representation
       
@@ -455,7 +462,10 @@ module Google
           property :product_type_l3, as: 'productTypeL3'
           property :product_type_l4, as: 'productTypeL4'
           property :product_type_l5, as: 'productTypeL5'
+          property :reporting_context, as: 'reportingContext'
           property :shipping_label, as: 'shippingLabel'
+          collection :status_per_reporting_context, as: 'statusPerReportingContext', class: Google::Apis::MerchantapiReportsV1beta::StatusPerReportingContext, decorator: Google::Apis::MerchantapiReportsV1beta::StatusPerReportingContext::Representation
+      
           property :thumbnail_link, as: 'thumbnailLink'
           property :title, as: 'title'
         end
@@ -502,6 +512,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :results, as: 'results', class: Google::Apis::MerchantapiReportsV1beta::ReportRow, decorator: Google::Apis::MerchantapiReportsV1beta::ReportRow::Representation
       
+        end
+      end
+      
+      class StatusPerReportingContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :approved_countries, as: 'approvedCountries'
+          collection :disapproved_countries, as: 'disapprovedCountries'
+          collection :pending_countries, as: 'pendingCountries'
+          property :reporting_context, as: 'reportingContext'
         end
       end
     end

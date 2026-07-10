@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module FirebasedataconnectV1beta
-      # Firebase Data Connect API
+      # Firebase SQL Connect API
       #
-      # Firebase Data Connect is a relational database service for mobile and web apps
+      # Firebase SQL Connect is a relational database service for mobile and web apps
       #  that lets you build and scale using a fully-managed PostgreSQL database
       #  powered by Cloud SQL. The REST API lets developers manage the connections to
       #  their database, change the schema of their database, and query the database.
@@ -84,12 +84,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
@@ -245,6 +254,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -262,7 +279,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/{+name}/operations', options)
           command.response_representation = Google::Apis::FirebasedataconnectV1beta::ListOperationsResponse::Representation
           command.response_class = Google::Apis::FirebasedataconnectV1beta::ListOperationsResponse
@@ -270,6 +287,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -388,12 +406,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Execute any GraphQL query and mutation against the Firebase Data Connect's
+        # Execute any GraphQL query or mutation against the Firebase SQL Connect's
         # generated GraphQL schema. Grants full read and write access to the connected
         # data sources. Note: Use introspection query to explore the generated GraphQL
         # schema.
         # @param [String] name
-        #   Required. The relative resource name of Firebase Data Connect service, in the
+        #   Required. The relative resource name of Firebase SQL Connect service, in the
         #   format: ``` projects/`project`/locations/`location`/services/`service` ```
         # @param [Google::Apis::FirebasedataconnectV1beta::GraphqlRequest] graphql_request_object
         # @param [String] fields
@@ -425,12 +443,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Execute any GraphQL query against the Firebase Data Connect's generated
-        # GraphQL schema. Grants full read to the connected data sources. `
-        # ExecuteGraphqlRead` is identical to `ExecuteGraphql` except it only accepts
-        # read-only query.
+        # Execute any GraphQL query against the Firebase SQL Connect's generated GraphQL
+        # schema. Grants full read to the connected data sources. `ExecuteGraphqlRead`
+        # is identical to `ExecuteGraphql` except it only accepts read-only query.
         # @param [String] name
-        #   Required. The relative resource name of Firebase Data Connect service, in the
+        #   Required. The relative resource name of Firebase SQL Connect service, in the
         #   format: ``` projects/`project`/locations/`location`/services/`service` ```
         # @param [Google::Apis::FirebasedataconnectV1beta::GraphqlRequest] graphql_request_object
         # @param [String] fields
@@ -462,6 +479,79 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates a GraphQL query based on a natural language prompt and the provided
+        # schema context. This is a stateless method; the schema is provided per request
+        # to support local development states. Streams results with real-time status and
+        # output chunks.
+        # @param [String] name
+        #   Required. The resource name of the service in which to generate the query.
+        #   Format: projects/`project`/locations/`location`/services/`service`
+        # @param [Google::Apis::FirebasedataconnectV1beta::GenerateQueryRequest] generate_query_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::GenerateQueryResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::GenerateQueryResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_service_query(name, generate_query_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:generateQuery', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::GenerateQueryRequest::Representation
+          command.request_object = generate_query_request_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::GenerateQueryResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::GenerateQueryResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generates GraphQL schema based on a natural language prompt or data
+        # description. This allows users to scaffold new types and tables quickly.
+        # Streams results with real-time status and output chunks.
+        # @param [String] name
+        #   Required. The resource name of the service in which to generate the schema.
+        #   Format: projects/`project`/locations/`location`/services/`service`
+        # @param [Google::Apis::FirebasedataconnectV1beta::GenerateSchemaRequest] generate_schema_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::GenerateSchemaResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::GenerateSchemaResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_service_schema(name, generate_schema_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:generateSchema', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::GenerateSchemaRequest::Representation
+          command.request_object = generate_schema_request_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::GenerateSchemaResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::GenerateSchemaResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details of a single Service.
         # @param [String] name
         #   Required. The name of the service to retrieve, in the format: ``` projects/`
@@ -487,6 +577,45 @@ module Google
           command = make_simple_command(:get, 'v1beta/{+name}', options)
           command.response_representation = Google::Apis::FirebasedataconnectV1beta::Service::Representation
           command.response_class = Google::Apis::FirebasedataconnectV1beta::Service
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Execute introspection query against the Firebase SQL Connect's generated
+        # GraphQL schema. GraphQL introspection query provides metadata such as what
+        # tables the schema have, what queries and mutations can be performed on the
+        # schema, and so on. Read more at https://graphql.org/learn/introspection.
+        # IntrospectGraphql can read schema metadata but cannot read rows from Cloud SQL
+        # instance, which can be done via ExecuteGraphqlRead.
+        # @param [String] name
+        #   Required. The relative resource name of Firebase SQL Connect service, in the
+        #   format: ``` projects/`project`/locations/`location`/services/`service` ```
+        # @param [Google::Apis::FirebasedataconnectV1beta::GraphqlRequest] graphql_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::GraphqlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def introspect_project_location_service_graphql(name, graphql_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:introspectGraphql', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::GraphqlRequest::Representation
+          command.request_object = graphql_request_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::GraphqlResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::GraphqlResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -540,9 +669,9 @@ module Google
         
         # Updates the parameters of a single Service.
         # @param [String] name
-        #   Identifier. The relative resource name of the Firebase Data Connect service,
-        #   in the format: ``` projects/`project`/locations/`location`/services/`service` `
-        #   `` Note that the service ID is specific to Firebase Data Connect and does not
+        #   Identifier. The relative resource name of the Firebase SQL Connect service, in
+        #   the format: ``` projects/`project`/locations/`location`/services/`service` ```
+        #   Note that the service ID is specific to Firebase SQL Connect and does not
         #   correspond to any of the instance IDs of the underlying data source
         #   connections.
         # @param [Google::Apis::FirebasedataconnectV1beta::Service] service_object
@@ -819,6 +948,82 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Impersonate a mutation defined on a Firebase SQL Connect connector. It grants
+        # the admin SDK access to mutations defined in the given connector. The caller
+        # can choose to impersonate a particular Firebase Auth user, or skip @auth
+        # completely.
+        # @param [String] name
+        #   Required. The resource name of the connector to find the predefined query/
+        #   mutation, in the format: ``` projects/`project`/locations/`location`/services/`
+        #   service`/connectors/`connector` ```
+        # @param [Google::Apis::FirebasedataconnectV1beta::ImpersonateRequest] impersonate_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::GraphqlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def impersonate_project_location_service_connector_mutation(name, impersonate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:impersonateMutation', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::ImpersonateRequest::Representation
+          command.request_object = impersonate_request_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::GraphqlResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::GraphqlResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Impersonate a query defined on a Firebase SQL Connect connector. It grants the
+        # admin SDK access to queries defined in the given connector. The caller can
+        # choose to impersonate a particular Firebase Auth user, or skip @auth
+        # completely.
+        # @param [String] name
+        #   Required. The resource name of the connector to find the predefined query/
+        #   mutation, in the format: ``` projects/`project`/locations/`location`/services/`
+        #   service`/connectors/`connector` ```
+        # @param [Google::Apis::FirebasedataconnectV1beta::ImpersonateRequest] impersonate_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1beta::GraphqlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1beta::GraphqlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def impersonate_project_location_service_connector_query(name, impersonate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:impersonateQuery', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1beta::ImpersonateRequest::Representation
+          command.request_object = impersonate_request_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1beta::GraphqlResponse::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1beta::GraphqlResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists Connectors in a given project and location.
         # @param [String] parent
         #   Required. Value of parent.
@@ -1079,8 +1284,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Schemas in a given project and location. Note that only `schemas/main`
-        # is supported, so this will always return at most one Schema.
+        # Lists Schemas in a given project and location.
         # @param [String] parent
         #   Required. Value of parent.
         # @param [String] filter

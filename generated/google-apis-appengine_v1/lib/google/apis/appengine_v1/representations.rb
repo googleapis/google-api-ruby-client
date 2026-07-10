@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportAppImageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FeatureSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -772,6 +778,13 @@ module Google
         end
       end
       
+      class ExportAppImageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_repository, as: 'destinationRepository'
+        end
+      end
+      
       class FeatureSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -938,6 +951,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::AppengineV1::Operation, decorator: Google::Apis::AppengineV1::Operation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1122,6 +1136,7 @@ module Google
           property :consumer_project_state, as: 'consumerProjectState'
           collection :gce_tag, as: 'gceTag', class: Google::Apis::AppengineV1::GceTag, decorator: Google::Apis::AppengineV1::GceTag::Representation
       
+          property :is_gce_project_deprovisioning, as: 'isGceProjectDeprovisioning'
           property :p4_service_account, as: 'p4ServiceAccount'
           property :producer_project_id, as: 'producerProjectId'
           property :producer_project_number, :numeric_string => true, as: 'producerProjectNumber'

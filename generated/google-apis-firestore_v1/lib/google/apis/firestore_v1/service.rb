@@ -91,6 +91,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new database by cloning an existing one. The new database must be in
+        # the same cloud region or multi-region location as the existing database. This
+        # behaves similar to FirestoreAdmin.CreateDatabase except instead of creating a
+        # new empty database, a new database is created with the database type, index
+        # configuration, and documents from an existing database. The long-running
+        # operation can be used to track the progress of the clone, with the Operation's
+        # metadata field type being the CloneDatabaseMetadata. The response type is the
+        # Database if the clone was successful. The new database is not readable or
+        # writeable until the LRO has completed.
+        # @param [String] parent
+        #   Required. The project to clone the database in. Format is `projects/`
+        #   project_id``.
+        # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CloneDatabaseRequest] google_firestore_admin_v1_clone_database_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def clone_project_database(parent, google_firestore_admin_v1_clone_database_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/databases:clone', options)
+          command.request_representation = Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CloneDatabaseRequest::Representation
+          command.request_object = google_firestore_admin_v1_clone_database_request_object
+          command.response_representation = Google::Apis::FirestoreV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::FirestoreV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a database.
         # @param [String] parent
         #   Required. A parent name of the form `projects/`project_id``
@@ -100,7 +142,8 @@ module Google
         #   component of the database's resource name. This value should be 4-63
         #   characters. Valid characters are /a-z-/ with first character a letter and the
         #   last a letter or a number. Must not be UUID-like /[0-9a-f]`8`(-[0-9a-f]`4`)`3`-
-        #   [0-9a-f]`12`/. "(default)" database ID is also valid.
+        #   [0-9a-f]`12`/. "(default)" database ID is also valid if the database is
+        #   Standard edition.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1057,6 +1100,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Executes a pipeline query.
+        # @param [String] database
+        #   Required. Database identifier, in the form `projects/`project`/databases/`
+        #   database``.
+        # @param [Google::Apis::FirestoreV1::ExecutePipelineRequest] execute_pipeline_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirestoreV1::ExecutePipelineResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirestoreV1::ExecutePipelineResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_document_pipeline(database, execute_pipeline_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+database}/documents:executePipeline', options)
+          command.request_representation = Google::Apis::FirestoreV1::ExecutePipelineRequest::Representation
+          command.request_object = execute_pipeline_request_object
+          command.response_representation = Google::Apis::FirestoreV1::ExecutePipelineResponse::Representation
+          command.response_class = Google::Apis::FirestoreV1::ExecutePipelineResponse
+          command.params['database'] = database unless database.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a single document.
         # @param [String] name
         #   Required. The resource name of the Document to get. In the format: `projects/`
@@ -1179,7 +1256,8 @@ module Google
         # @param [String] parent
         #   Required. The parent document. In the format: `projects/`project_id`/databases/
         #   `database_id`/documents/`document_path``. For example: `projects/my-project/
-        #   databases/my-database/documents/chatrooms/my-chatroom`
+        #   databases/my-database/documents/chatrooms/my-chatroom` Use `projects/`
+        #   project_id`/databases/`database_id`/documents` to list top-level collections.
         # @param [Google::Apis::FirestoreV1::ListCollectionIdsRequest] list_collection_ids_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1667,6 +1745,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1684,7 +1770,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_database_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_database_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}/operations', options)
           command.response_representation = Google::Apis::FirestoreV1::GoogleLongrunningListOperationsResponse::Representation
           command.response_class = Google::Apis::FirestoreV1::GoogleLongrunningListOperationsResponse
@@ -1692,6 +1778,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1965,12 +2052,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists information about the supported locations for this service.
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
         # @param [Array<String>, String] extra_location_types
-        #   Optional. A list of extra location types that should be used as conditions for
-        #   controlling the visibility of the locations.
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
         # @param [String] filter
         #   A filter to narrow down results to a preferred subset. The filtering language
         #   accepts strings like `"displayName=tokyo"`, and is documented in more detail

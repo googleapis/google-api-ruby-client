@@ -5,8 +5,8 @@
 # https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners#codeowners-syntax
 
 # Default: Ruby team
-* @googleapis/ruby-team
+* @googleapis/cloud-sdk-ruby-team
 
 # Autogeneration PRs should be handled by yoshi-approver
-/generated/ @yoshi-approver @googleapis/ruby-team
-/api_names_out.yaml @yoshi-approver @googleapis/ruby-team
+/generated/ @yoshi-approver @googleapis/cloud-sdk-ruby-team
+/api_names_out.yaml @yoshi-approver @googleapis/cloud-sdk-ruby-team

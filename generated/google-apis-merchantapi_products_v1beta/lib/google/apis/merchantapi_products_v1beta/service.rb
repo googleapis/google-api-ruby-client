@@ -30,7 +30,7 @@ module Google
       #    Merchantapi = Google::Apis::MerchantapiProductsV1beta # Alias the module
       #    service = Merchantapi::MerchantService.new
       #
-      # @see https://developers.devsite.corp.google.com/merchant/api
+      # @see https://developers.google.com/merchant/api
       class MerchantService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://merchantapi.$UNIVERSE_DOMAIN$/"
 
@@ -55,13 +55,33 @@ module Google
         # updating, or deleting a product input, it may take several minutes before the
         # processed product can be retrieved.
         # @param [String] name
-        #   Required. The name of the product input resource to delete. Format: `accounts/`
-        #   account`/productInputs/`product`` where the last section `product` consists of
-        #   4 parts: `channel~content_language~feed_label~offer_id` example for product
-        #   name is `accounts/123/productInputs/online~en~US~sku123`.
+        #   Required. The name of the product input to delete. Format: `accounts/`account`/
+        #   productInputs/`productInput`` The `productInput` segment is a unique
+        #   identifier for the product. This identifier must be unique within a merchant
+        #   account and generally follows the structure: `content_language~feed_label~
+        #   offer_id`. Example: `en~US~sku123` For legacy local products, the structure is:
+        #   `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123`
+        #   The format of the `productInput` segment in the URL is automatically detected
+        #   by the server, supporting two options: 1. **Encoded Format**: The ``
+        #   productInput`` segment is an unpadded base64url encoded string (RFC 4648
+        #   Section 5). The decoded string must result in the `content_language~feed_label~
+        #   offer_id` structure. This encoding MUST be used if any part of the product
+        #   identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. *
+        #   Example: To represent the product ID `en~US~sku/123`, the ``productInput``
+        #   segment must be the unpadded base64url encoding of this string, which is `ZW5-
+        #   VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/
+        #   productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The ``productInput``
+        #   segment is the tilde-separated string `content_language~feed_label~offer_id`.
+        #   This format is suitable only when `content_language`, `feed_label`, and `
+        #   offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We
+        #   recommend using the **Encoded Format** for all product IDs to ensure correct
+        #   parsing, especially those containing special characters. The presence of tilde
+        #   (`~`) characters in the ``productInput`` segment is used to differentiate
+        #   between the two formats.
         # @param [String] data_source
         #   Required. The primary or supplemental data source from which the product input
-        #   should be deleted. Format: `accounts/`account`/dataSources/`datasource``.
+        #   should be deleted. Format: `accounts/`account`/dataSources/`datasource``. For
+        #   example, `accounts/123456/dataSources/104628`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -90,10 +110,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads a product input to your Merchant Center account. If an input with the
-        # same contentLanguage, offerId, and dataSource already exists, this method
-        # replaces that entry. After inserting, updating, or deleting a product input,
-        # it may take several minutes before the processed product can be retrieved.
+        # [Uploads a product input to your Merchant Center account](/merchant/api/guides/
+        # products/add-manage#add_a_product). You must have a products [data source](/
+        # merchant/api/guides/data-sources/api-sources#create-primary-data-source) to be
+        # able to insert a product. The unique identifier of the data source is passed
+        # as a query parameter in the request URL. If a product input with the same
+        # contentLanguage, offerId, and dataSource already exists, then the product
+        # input inserted by this method replaces that entry. After inserting, updating,
+        # or deleting a product input, it may take several minutes before the processed
+        # product can be retrieved.
         # @param [String] parent
         #   Required. The account where this product will be inserted. Format: `accounts/`
         #   account``
@@ -101,8 +126,10 @@ module Google
         # @param [String] data_source
         #   Required. The primary or supplemental product data source name. If the product
         #   already exists and data source provided is different, then the product will be
-        #   moved to a new data source. Only API data sources are supported. Format: `
-        #   accounts/`account`/dataSources/`datasource``.
+        #   moved to a new data source. For more information, see [Create a primary data
+        #   source](/merchant/api/guides/data-sources/api-sources#create-primary-data-
+        #   source). Only API data sources are supported. Format: `accounts/`account`/
+        #   dataSources/`datasource``. For example, `accounts/123456/dataSources/104628`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -133,19 +160,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the existing product input in your Merchant Center account. After
-        # inserting, updating, or deleting a product input, it may take several minutes
-        # before the processed product can be retrieved.
+        # Updates the existing product input in your Merchant Center account. The name
+        # of the product input to update is taken from the `name` field within the `
+        # ProductInput` resource. After inserting, updating, or deleting a product input,
+        # it may take several minutes before the processed product can be retrieved.
         # @param [String] name
-        #   Identifier. The name of the product input. Format: `accounts/`account`/
-        #   productInputs/`productinput`` where the last section `productinput` consists
-        #   of 4 parts: `channel~content_language~feed_label~offer_id` example for product
-        #   input name is `accounts/123/productInputs/online~en~US~sku123`
+        #   Identifier. The name of the product. Format: `accounts/`account`/productInputs/
+        #   `productinput`` The `productinput` segment is a unique identifier for the
+        #   product. This identifier must be unique within a merchant account and
+        #   generally follows the structure: `content_language~feed_label~offer_id`.
+        #   Example: `en~US~sku123` For legacy local products, the structure is: `local~
+        #   content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The
+        #   format of the `productinput` segment in the URL is automatically detected by
+        #   the server, supporting two options: 1. **Encoded Format**: The ``productinput``
+        #   segment is an unpadded base64url encoded string (RFC 4648 Section 5). The
+        #   decoded string must result in the `content_language~feed_label~offer_id`
+        #   structure. This encoding MUST be used if any part of the product identifier (
+        #   like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To
+        #   represent the product ID `en~US~sku/123`, the ``productinput`` segment must be
+        #   the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`.
+        #   The full resource name for the product would be `accounts/123/productInputs/
+        #   ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The ``productinput`` segment is the
+        #   tilde-separated string `content_language~feed_label~offer_id`. This format is
+        #   suitable only when `content_language`, `feed_label`, and `offer_id` do not
+        #   contain URL-problematic characters like `/`, `%`, or `~`. We recommend using
+        #   the **Encoded Format** for all product IDs to ensure correct parsing,
+        #   especially those containing special characters. The presence of tilde (`~`)
+        #   characters in the ``productinput`` segment is used to differentiate between
+        #   the two formats.
         # @param [Google::Apis::MerchantapiProductsV1beta::ProductInput] product_input_object
         # @param [String] data_source
         #   Required. The primary or supplemental product data source where `data_source`
         #   name identifies the product input to be updated. Only API data sources are
-        #   supported. Format: `accounts/`account`/dataSources/`datasource``.
+        #   supported. Format: `accounts/`account`/dataSources/`datasource``. For example,
+        #   `accounts/123456/dataSources/104628`.
         # @param [String] update_mask
         #   Optional. The list of product attributes to be updated. If the update mask is
         #   omitted, then it is treated as implied field mask equivalent to all fields
@@ -190,10 +238,30 @@ module Google
         # inserting, updating, or deleting a product input, it may take several minutes
         # before the updated final product can be retrieved.
         # @param [String] name
-        #   Required. The name of the product to retrieve. Format: `accounts/`account`/
-        #   products/`product`` where the last section `product` consists of 4 parts: `
-        #   channel~content_language~feed_label~offer_id` example for product name is `
-        #   accounts/123/products/online~en~US~sku123`
+        #   Required. The name of the product. Format: `accounts/`account`/products/`
+        #   product`` The ``product`` segment is a unique identifier for the product. This
+        #   identifier must be unique within a merchant account and generally follows the
+        #   structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For
+        #   legacy local products, the structure is: `local~content_language~feed_label~
+        #   offer_id`. Example: `local~en~US~sku123` The format of the ``product`` segment
+        #   in the URL is automatically detected by the server, supporting two options: 1.
+        #   **Encoded Format**: The ``product`` segment is an unpadded base64url encoded
+        #   string (RFC 4648 Section 5). The decoded string must result in the `
+        #   content_language~feed_label~offer_id` structure. This encoding MUST be used if
+        #   any part of the product identifier (like `offer_id`) contains characters such
+        #   as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`,
+        #   the ``product`` segment must be the unpadded base64url encoding of this string,
+        #   which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would
+        #   be `accounts/123/products/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The ``
+        #   product`` segment is the tilde-separated string `content_language~feed_label~
+        #   offer_id`. This format is suitable only when `content_language`, `feed_label`,
+        #   and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`.
+        #   We recommend using the **Encoded Format** for all product IDs to ensure
+        #   correct parsing, especially those containing special characters. The presence
+        #   of tilde (`~`) characters in the ``product`` segment is used to differentiate
+        #   between the two formats. Note: For calls to the v1beta version, the plain
+        #   format is `channel~content_language~feed_label~offer_id`, for example: `
+        #   accounts/123/products/online~en~US~sku123`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -231,8 +299,8 @@ module Google
         #   account``
         # @param [Fixnum] page_size
         #   The maximum number of products to return. The service may return fewer than
-        #   this value. The maximum value is 250; values above 250 will be coerced to 250.
-        #   If unspecified, the maximum number of products will be returned.
+        #   this value. The maximum value is 1000; values above 1000 will be coerced to
+        #   1000. If unspecified, the default page size of 25 products will be returned.
         # @param [String] page_token
         #   A page token, received from a previous `ListProducts` call. Provide this to
         #   retrieve the subsequent page. When paginating, all other parameters provided

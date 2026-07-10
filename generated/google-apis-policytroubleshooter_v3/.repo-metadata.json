@@ -1,0 +1,7 @@
+{
+    "api_id": "policytroubleshooter:v3",
+    "name_pretty": "Policy Troubleshooter API",
+    "distribution_name": "google-apis-policytroubleshooter_v3",
+    "language": "ruby",
+    "library_type": "REST"
+}

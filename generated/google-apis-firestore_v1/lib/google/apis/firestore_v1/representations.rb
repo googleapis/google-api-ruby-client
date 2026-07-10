@@ -178,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecutePipelineRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutePipelineResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExecutionStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +209,12 @@ module Google
       end
       
       class ExplainOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExplainStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Function
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +281,18 @@ module Google
       end
       
       class GoogleFirestoreAdminV1BulkDeleteDocumentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1CloneDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1CloneDatabaseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -442,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1PitrSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1Progress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +509,36 @@ module Google
       end
       
       class GoogleFirestoreAdminV1RestoreDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1SearchConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1SearchGeoSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1SearchIndexOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1SearchTextIndexSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1SearchTextSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -616,6 +688,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Pipeline
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlanSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -682,6 +760,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Stage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +773,12 @@ module Google
       end
       
       class StructuredAggregationQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StructuredPipeline
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -991,6 +1081,31 @@ module Google
         end
       end
       
+      class ExecutePipelineRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_commit_transaction, as: 'autoCommitTransaction'
+          property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
+      
+          property :read_time, as: 'readTime'
+          property :structured_pipeline, as: 'structuredPipeline', class: Google::Apis::FirestoreV1::StructuredPipeline, decorator: Google::Apis::FirestoreV1::StructuredPipeline::Representation
+      
+          property :transaction, :base64 => true, as: 'transaction'
+        end
+      end
+      
+      class ExecutePipelineResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_time, as: 'executionTime'
+          property :explain_stats, as: 'explainStats', class: Google::Apis::FirestoreV1::ExplainStats, decorator: Google::Apis::FirestoreV1::ExplainStats::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::FirestoreV1::Document, decorator: Google::Apis::FirestoreV1::Document::Representation
+      
+          property :transaction, :base64 => true, as: 'transaction'
+        end
+      end
+      
       class ExecutionStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1025,6 +1140,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analyze, as: 'analyze'
+        end
+      end
+      
+      class ExplainStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
         end
       end
       
@@ -1090,6 +1212,17 @@ module Google
         end
       end
       
+      class Function
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+          property :name, as: 'name'
+          hash :options, as: 'options', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+        end
+      end
+      
       class GoogleFirestoreAdminV1Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1149,6 +1282,32 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1CloneDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :end_time, as: 'endTime'
+          property :operation_state, as: 'operationState'
+          property :pitr_snapshot, as: 'pitrSnapshot', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot::Representation
+      
+          property :progress_percentage, as: 'progressPercentage', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Progress::Representation
+      
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1CloneDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_id, as: 'databaseId'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1EncryptionConfig::Representation
+      
+          property :pitr_snapshot, as: 'pitrSnapshot', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1PitrSnapshot::Representation
+      
+          hash :tags, as: 'tags'
+        end
+      end
+      
       class GoogleFirestoreAdminV1CmekConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1189,12 +1348,15 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :earliest_version_time, as: 'earliestVersionTime'
           property :etag, as: 'etag'
+          property :firestore_data_access_mode, as: 'firestoreDataAccessMode'
           property :free_tier, as: 'freeTier'
           property :key_prefix, as: 'keyPrefix'
           property :location_id, as: 'locationId'
+          property :mongodb_compatible_data_access_mode, as: 'mongodbCompatibleDataAccessMode'
           property :name, as: 'name'
           property :point_in_time_recovery_enablement, as: 'pointInTimeRecoveryEnablement'
           property :previous_id, as: 'previousId'
+          property :realtime_updates_mode, as: 'realtimeUpdatesMode'
           property :source_info, as: 'sourceInfo', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SourceInfo::Representation
       
           hash :tags, as: 'tags'
@@ -1345,8 +1507,11 @@ module Google
           property :multikey, as: 'multikey'
           property :name, as: 'name'
           property :query_scope, as: 'queryScope'
+          property :search_index_options, as: 'searchIndexOptions', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchIndexOptions, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchIndexOptions::Representation
+      
           property :shard_count, as: 'shardCount'
           property :state, as: 'state'
+          property :unique, as: 'unique'
         end
       end
       
@@ -1376,6 +1541,8 @@ module Google
           property :array_config, as: 'arrayConfig'
           property :field_path, as: 'fieldPath'
           property :order, as: 'order'
+          property :search_config, as: 'searchConfig', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchConfig, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchConfig::Representation
+      
           property :vector_config, as: 'vectorConfig', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1VectorConfig, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1VectorConfig::Representation
       
         end
@@ -1453,6 +1620,15 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1PitrSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :database_uid, :base64 => true, as: 'databaseUid'
+          property :snapshot_time, as: 'snapshotTime'
+        end
+      end
+      
       class GoogleFirestoreAdminV1Progress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1498,6 +1674,47 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1SearchConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :geo_spec, as: 'geoSpec', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchGeoSpec, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchGeoSpec::Representation
+      
+          property :text_spec, as: 'textSpec', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchTextSpec, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchTextSpec::Representation
+      
+        end
+      end
+      
+      class GoogleFirestoreAdminV1SearchGeoSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :geo_json_indexing_disabled, as: 'geoJsonIndexingDisabled'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1SearchIndexOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text_language, as: 'textLanguage'
+          property :text_language_override_field_path, as: 'textLanguageOverrideFieldPath'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1SearchTextIndexSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :index_type, as: 'indexType'
+          property :match_type, as: 'matchType'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1SearchTextSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :index_specs, as: 'indexSpecs', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchTextIndexSpec, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1SearchTextIndexSpec::Representation
+      
+        end
+      end
+      
       class GoogleFirestoreAdminV1SourceEncryptionOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1525,6 +1742,7 @@ module Google
       class GoogleFirestoreAdminV1TtlConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :expiration_offset, as: 'expirationOffset'
           property :state, as: 'state'
         end
       end
@@ -1533,6 +1751,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :change_type, as: 'changeType'
+          property :expiration_offset, as: 'expirationOffset'
         end
       end
       
@@ -1583,6 +1802,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::FirestoreV1::GoogleLongrunningOperation, decorator: Google::Apis::FirestoreV1::GoogleLongrunningOperation::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1716,6 +1936,14 @@ module Google
         end
       end
       
+      class Pipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :stages, as: 'stages', class: Google::Apis::FirestoreV1::Stage, decorator: Google::Apis::FirestoreV1::Stage::Representation
+      
+        end
+      end
+      
       class PlanSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1758,6 +1986,7 @@ module Google
       class ReadWrite
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :concurrency_mode, as: 'concurrencyMode'
           property :retry_transaction, :base64 => true, as: 'retryTransaction'
         end
       end
@@ -1823,6 +2052,17 @@ module Google
         end
       end
       
+      class Stage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+          property :name, as: 'name'
+          hash :options, as: 'options', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1838,6 +2078,16 @@ module Google
           collection :aggregations, as: 'aggregations', class: Google::Apis::FirestoreV1::Aggregation, decorator: Google::Apis::FirestoreV1::Aggregation::Representation
       
           property :structured_query, as: 'structuredQuery', class: Google::Apis::FirestoreV1::StructuredQuery, decorator: Google::Apis::FirestoreV1::StructuredQuery::Representation
+      
+        end
+      end
+      
+      class StructuredPipeline
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :options, as: 'options', class: Google::Apis::FirestoreV1::Value, decorator: Google::Apis::FirestoreV1::Value::Representation
+      
+          property :pipeline, as: 'pipeline', class: Google::Apis::FirestoreV1::Pipeline, decorator: Google::Apis::FirestoreV1::Pipeline::Representation
       
         end
       end
@@ -1926,15 +2176,21 @@ module Google
           property :boolean_value, as: 'booleanValue'
           property :bytes_value, :base64 => true, as: 'bytesValue'
           property :double_value, as: 'doubleValue'
+          property :field_reference_value, as: 'fieldReferenceValue'
+          property :function_value, as: 'functionValue', class: Google::Apis::FirestoreV1::Function, decorator: Google::Apis::FirestoreV1::Function::Representation
+      
           property :geo_point_value, as: 'geoPointValue', class: Google::Apis::FirestoreV1::LatLng, decorator: Google::Apis::FirestoreV1::LatLng::Representation
       
           property :integer_value, :numeric_string => true, as: 'integerValue'
           property :map_value, as: 'mapValue', class: Google::Apis::FirestoreV1::MapValue, decorator: Google::Apis::FirestoreV1::MapValue::Representation
       
           property :null_value, as: 'nullValue'
+          property :pipeline_value, as: 'pipelineValue', class: Google::Apis::FirestoreV1::Pipeline, decorator: Google::Apis::FirestoreV1::Pipeline::Representation
+      
           property :reference_value, as: 'referenceValue'
           property :string_value, as: 'stringValue'
           property :timestamp_value, as: 'timestampValue'
+          property :variable_reference_value, as: 'variableReferenceValue'
         end
       end
       

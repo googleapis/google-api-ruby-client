@@ -22,6 +22,347 @@ module Google
   module Apis
     module DocumentaiV1beta3
       
+      # Definition of the validation rules. Those are the input to the validator logic
+      # and they are used to validate a document. Next ID: 3
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInput
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `validationRules`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule>]
+        attr_accessor :validation_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @validation_rules = args[:validation_rules] if args.key?(:validation_rules)
+        end
+      end
+      
+      # Next ID: 9
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRule
+        include Google::Apis::Core::Hashable
+      
+        # A rule that aligns specified child fields with a parent field.
+        # Corresponds to the JSON property `childAlignmentRule`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule]
+        attr_accessor :child_alignment_rule
+      
+        # Description of the validation rule. This has no use but for documentation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A rule that aligns specified fields with each other.
+        # Corresponds to the JSON property `entityAlignmentRule`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule]
+        attr_accessor :entity_alignment_rule
+      
+        # 
+        # Corresponds to the JSON property `fieldOccurrences`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences]
+        attr_accessor :field_occurrences
+      
+        # 
+        # Corresponds to the JSON property `fieldRegex`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex]
+        attr_accessor :field_regex
+      
+        # 
+        # Corresponds to the JSON property `formValidation`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation]
+        attr_accessor :form_validation
+      
+        # Name of the validation rule.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Unique identifier of the rule. Optional.
+        # Corresponds to the JSON property `ruleId`
+        # @return [String]
+        attr_accessor :rule_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_alignment_rule = args[:child_alignment_rule] if args.key?(:child_alignment_rule)
+          @description = args[:description] if args.key?(:description)
+          @entity_alignment_rule = args[:entity_alignment_rule] if args.key?(:entity_alignment_rule)
+          @field_occurrences = args[:field_occurrences] if args.key?(:field_occurrences)
+          @field_regex = args[:field_regex] if args.key?(:field_regex)
+          @form_validation = args[:form_validation] if args.key?(:form_validation)
+          @name = args[:name] if args.key?(:name)
+          @rule_id = args[:rule_id] if args.key?(:rule_id)
+        end
+      end
+      
+      # A rule for checking field alignment. Horizontal alignment checks if fields are
+      # on the same row by comparing y-coordinates of bounding box centers, while
+      # vertical alignment checks if fields are on the same column by comparing x-
+      # coordinates of bounding box centers.
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `alignmentType`
+        # @return [String]
+        attr_accessor :alignment_type
+      
+        # The tolerance to use when comparing coordinates.
+        # Corresponds to the JSON property `tolerance`
+        # @return [Float]
+        attr_accessor :tolerance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alignment_type = args[:alignment_type] if args.key?(:alignment_type)
+          @tolerance = args[:tolerance] if args.key?(:tolerance)
+        end
+      end
+      
+      # A rule that aligns specified child fields with a parent field.
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleChildAlignmentRule
+        include Google::Apis::Core::Hashable
+      
+        # A rule for checking field alignment. Horizontal alignment checks if fields are
+        # on the same row by comparing y-coordinates of bounding box centers, while
+        # vertical alignment checks if fields are on the same column by comparing x-
+        # coordinates of bounding box centers.
+        # Corresponds to the JSON property `alignmentRule`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule]
+        attr_accessor :alignment_rule
+      
+        # The child fields to be aligned within the parent field.
+        # Corresponds to the JSON property `childFields`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>]
+        attr_accessor :child_fields
+      
+        # The full path of the parent field.
+        # Corresponds to the JSON property `parentField`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField]
+        attr_accessor :parent_field
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alignment_rule = args[:alignment_rule] if args.key?(:alignment_rule)
+          @child_fields = args[:child_fields] if args.key?(:child_fields)
+          @parent_field = args[:parent_field] if args.key?(:parent_field)
+        end
+      end
+      
+      # The constant value used in the validation rules.
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `floatValue`
+        # @return [Float]
+        attr_accessor :float_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @float_value = args[:float_value] if args.key?(:float_value)
+        end
+      end
+      
+      # A rule that aligns specified fields with each other.
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleEntityAlignmentRule
+        include Google::Apis::Core::Hashable
+      
+        # A rule for checking field alignment. Horizontal alignment checks if fields are
+        # on the same row by comparing y-coordinates of bounding box centers, while
+        # vertical alignment checks if fields are on the same column by comparing x-
+        # coordinates of bounding box centers.
+        # Corresponds to the JSON property `alignmentRule`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleAlignmentRule]
+        attr_accessor :alignment_rule
+      
+        # The fields to be aligned.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alignment_rule = args[:alignment_rule] if args.key?(:alignment_rule)
+          @fields = args[:fields] if args.key?(:fields)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField
+        include Google::Apis::Core::Hashable
+      
+        # The constant value used in the validation rules.
+        # Corresponds to the JSON property `defaultValue`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant]
+        attr_accessor :default_value
+      
+        # The field name to validate. This can be a simple field name or a nested field
+        # one using the ':' (meant as an aggregator) or '*' (meant as foreach) operators.
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_value = args[:default_value] if args.key?(:default_value)
+          @field_name = args[:field_name] if args.key?(:field_name)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldOccurrences
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField]
+        attr_accessor :field
+      
+        # 
+        # Corresponds to the JSON property `maxOccurrences`
+        # @return [Fixnum]
+        attr_accessor :max_occurrences
+      
+        # Min and max occurrences of the field. If not set, there is limit set. The
+        # defined interval is a closed-closed interval, i.e. [min, max].
+        # Corresponds to the JSON property `minOccurrences`
+        # @return [Fixnum]
+        attr_accessor :min_occurrences
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @max_occurrences = args[:max_occurrences] if args.key?(:max_occurrences)
+          @min_occurrences = args[:min_occurrences] if args.key?(:min_occurrences)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFieldRegex
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `field`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField]
+        attr_accessor :field
+      
+        # Python regex to validate the field values.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @pattern = args[:pattern] if args.key?(:pattern)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidation
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `leftOperand`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation]
+        attr_accessor :left_operand
+      
+        # 
+        # Corresponds to the JSON property `rightOperand`
+        # @return [Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation]
+        attr_accessor :right_operand
+      
+        # The relational operator to be applied to the operands.
+        # Corresponds to the JSON property `validationOperator`
+        # @return [String]
+        attr_accessor :validation_operator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @left_operand = args[:left_operand] if args.key?(:left_operand)
+          @right_operand = args[:right_operand] if args.key?(:right_operand)
+          @validation_operator = args[:validation_operator] if args.key?(:validation_operator)
+        end
+      end
+      
+      # 
+      class CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation
+        include Google::Apis::Core::Hashable
+      
+        # A list of constants to be used as operands.
+        # Corresponds to the JSON property `constants`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleConstant>]
+        attr_accessor :constants
+      
+        # A list of fields to be used as operands.
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleField>]
+        attr_accessor :fields
+      
+        # The operation type to be applied to all the operands.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # A list of recursive operations to be used as operands.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::CloudAiDocumentaiLabHifiaToolsValidationValidatorInputValidationRuleFormValidationOperation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @constants = args[:constants] if args.key?(:constants)
+          @fields = args[:fields] if args.key?(:fields)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
       # Metadata of the auto-labeling documents operation.
       class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata
         include Google::Apis::Core::Hashable
@@ -587,6 +928,239 @@ module Google
         end
       end
       
+      # The schema defines the output of the processed document by a processor.
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchema
+        include Google::Apis::Core::Hashable
+      
+        # Description of the schema.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name to show users.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Document level prompt provided by the user. This custom text is
+        # injected into the AI model's prompt to provide extra, document-wide guidance
+        # for processing.
+        # Corresponds to the JSON property `documentPrompt`
+        # @return [String]
+        attr_accessor :document_prompt
+      
+        # Entity types of the schema.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType>]
+        attr_accessor :entity_types
+      
+        # Metadata for global schema behavior.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @document_prompt = args[:document_prompt] if args.key?(:document_prompt)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # EntityType is the wrapper of a label of the corresponding model with detailed
+      # attributes and limitations for entity-based processors. Multiple types can
+      # also compose a dependency tree to represent nested types.
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityType
+        include Google::Apis::Core::Hashable
+      
+        # The entity type that this type is derived from. For now, one and only one
+        # should be set.
+        # Corresponds to the JSON property `baseTypes`
+        # @return [Array<String>]
+        attr_accessor :base_types
+      
+        # The description of the entity type. Could be used to provide more information
+        # about the entity type for model calls.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User defined name for the type.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Metadata about an entity type.
+        # Corresponds to the JSON property `entityTypeMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata]
+        attr_accessor :entity_type_metadata
+      
+        # Defines the a list of enum values.
+        # Corresponds to the JSON property `enumValues`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues]
+        attr_accessor :enum_values
+      
+        # Name of the type. It must be unique within the schema file and cannot be a "
+        # Common Type". The following naming conventions are used: - Use `snake_casing`.
+        # - Name matching is case-sensitive. - Maximum 64 characters. - Must start with
+        # a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
+        # compatibility, internal infrastructure and tooling can handle any ASCII
+        # character.) - The `/` is sometimes used to denote a property of a type. For
+        # example `line_item/amount`. This convention is deprecated, but will still be
+        # honored for backward compatibility.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Description the nested structure, or composition of an entity.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty>]
+        attr_accessor :properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_types = args[:base_types] if args.key?(:base_types)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_type_metadata = args[:entity_type_metadata] if args.key?(:entity_type_metadata)
+          @enum_values = args[:enum_values] if args.key?(:enum_values)
+          @name = args[:name] if args.key?(:name)
+          @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Defines the a list of enum values.
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeEnumValues
+        include Google::Apis::Core::Hashable
+      
+        # The individual values that this enum values type can include.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Defines properties that can be part of the entity type.
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaEntityTypeProperty
+        include Google::Apis::Core::Hashable
+      
+        # The description of the property. Could be used to provide more information
+        # about the property for model calls.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # User defined name for the property.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Specifies how the entity's value is obtained.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # The name of the property. Follows the same guidelines as the EntityType name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Occurrence type limits the number of instances an entity type appears in the
+        # document.
+        # Corresponds to the JSON property `occurrenceType`
+        # @return [String]
+        attr_accessor :occurrence_type
+      
+        # Metadata about a property.
+        # Corresponds to the JSON property `propertyMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3PropertyMetadata]
+        attr_accessor :property_metadata
+      
+        # A reference to the value type of the property. This type is subject to the
+        # same conventions as the `Entity.base_types` field.
+        # Corresponds to the JSON property `valueType`
+        # @return [String]
+        attr_accessor :value_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @name = args[:name] if args.key?(:name)
+          @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
+          @property_metadata = args[:property_metadata] if args.key?(:property_metadata)
+          @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # Metadata for global schema behavior.
+      class GoogleCloudDocumentaiUiv1beta3DocumentSchemaMetadata
+        include Google::Apis::Core::Hashable
+      
+        # If true, on a given page, there can be multiple `document` annotations
+        # covering it.
+        # Corresponds to the JSON property `documentAllowMultipleLabels`
+        # @return [Boolean]
+        attr_accessor :document_allow_multiple_labels
+        alias_method :document_allow_multiple_labels?, :document_allow_multiple_labels
+      
+        # If true, a `document` entity type can be applied to subdocument (splitting).
+        # Otherwise, it can only be applied to the entire document (classification).
+        # Corresponds to the JSON property `documentSplitter`
+        # @return [Boolean]
+        attr_accessor :document_splitter
+        alias_method :document_splitter?, :document_splitter
+      
+        # If set, all the nested entities must be prefixed with the parents.
+        # Corresponds to the JSON property `prefixedNamingOnProperties`
+        # @return [Boolean]
+        attr_accessor :prefixed_naming_on_properties
+        alias_method :prefixed_naming_on_properties?, :prefixed_naming_on_properties
+      
+        # If set, this will skip the naming format validation in the schema. So the
+        # string values in `DocumentSchema.EntityType.name` and `DocumentSchema.
+        # EntityType.Property.name` will not be checked.
+        # Corresponds to the JSON property `skipNamingValidation`
+        # @return [Boolean]
+        attr_accessor :skip_naming_validation
+        alias_method :skip_naming_validation?, :skip_naming_validation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_allow_multiple_labels = args[:document_allow_multiple_labels] if args.key?(:document_allow_multiple_labels)
+          @document_splitter = args[:document_splitter] if args.key?(:document_splitter)
+          @prefixed_naming_on_properties = args[:prefixed_naming_on_properties] if args.key?(:prefixed_naming_on_properties)
+          @skip_naming_validation = args[:skip_naming_validation] if args.key?(:skip_naming_validation)
+        end
+      end
+      
       # The long-running operation metadata for the EnableProcessor method.
       class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata
         include Google::Apis::Core::Hashable
@@ -617,6 +1191,58 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata about an entity type.
+      class GoogleCloudDocumentaiUiv1beta3EntityTypeMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata for the field tier of a property.
+        # Corresponds to the JSON property `fieldTierMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3FieldTierMetadata]
+        attr_accessor :field_tier_metadata
+      
+        # Metadata for human review labeling config.
+        # Corresponds to the JSON property `humanReviewLabelingMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata]
+        attr_accessor :human_review_labeling_metadata
+      
+        # Metadata for Human Review config.
+        # Corresponds to the JSON property `humanReviewMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata]
+        attr_accessor :human_review_metadata
+      
+        # Whether the entity type should be considered inactive.
+        # Corresponds to the JSON property `inactive`
+        # @return [Boolean]
+        attr_accessor :inactive
+        alias_method :inactive?, :inactive
+      
+        # Metadata that specifies whether a label is editable and reasons why. These
+        # fields are read-only. Changing these fields has no impact on the backend.
+        # Corresponds to the JSON property `schemaEditabilityMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata]
+        attr_accessor :schema_editability_metadata
+      
+        # Metadata for schema inference. Only used on dataset.schema for schema
+        # inference, can be safely ignored elsewhere.
+        # Corresponds to the JSON property `schemaInferenceMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata]
+        attr_accessor :schema_inference_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_tier_metadata = args[:field_tier_metadata] if args.key?(:field_tier_metadata)
+          @human_review_labeling_metadata = args[:human_review_labeling_metadata] if args.key?(:human_review_labeling_metadata)
+          @human_review_metadata = args[:human_review_metadata] if args.key?(:human_review_metadata)
+          @inactive = args[:inactive] if args.key?(:inactive)
+          @schema_editability_metadata = args[:schema_editability_metadata] if args.key?(:schema_editability_metadata)
+          @schema_inference_metadata = args[:schema_inference_metadata] if args.key?(:schema_inference_metadata)
         end
       end
       
@@ -655,6 +1281,122 @@ module Google
         # Update properties of this object
         def update!(**args)
           @evaluation = args[:evaluation] if args.key?(:evaluation)
+        end
+      end
+      
+      # Evaluation metrics, either in aggregate or about a specific entity.
+      class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics
+        include Google::Apis::Core::Hashable
+      
+        # The calculated F1 score.
+        # Corresponds to the JSON property `f1Score`
+        # @return [Float]
+        attr_accessor :f1_score
+      
+        # The amount of false negatives.
+        # Corresponds to the JSON property `falseNegativesCount`
+        # @return [Fixnum]
+        attr_accessor :false_negatives_count
+      
+        # The amount of false positives.
+        # Corresponds to the JSON property `falsePositivesCount`
+        # @return [Fixnum]
+        attr_accessor :false_positives_count
+      
+        # The amount of documents with a ground truth occurrence.
+        # Corresponds to the JSON property `groundTruthDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :ground_truth_document_count
+      
+        # The amount of occurrences in ground truth documents.
+        # Corresponds to the JSON property `groundTruthOccurrencesCount`
+        # @return [Fixnum]
+        attr_accessor :ground_truth_occurrences_count
+      
+        # The calculated precision.
+        # Corresponds to the JSON property `precision`
+        # @return [Float]
+        attr_accessor :precision
+      
+        # The amount of documents with a predicted occurrence.
+        # Corresponds to the JSON property `predictedDocumentCount`
+        # @return [Fixnum]
+        attr_accessor :predicted_document_count
+      
+        # The amount of occurrences in predicted documents.
+        # Corresponds to the JSON property `predictedOccurrencesCount`
+        # @return [Fixnum]
+        attr_accessor :predicted_occurrences_count
+      
+        # The calculated recall.
+        # Corresponds to the JSON property `recall`
+        # @return [Float]
+        attr_accessor :recall
+      
+        # The amount of documents that had an occurrence of this label.
+        # Corresponds to the JSON property `totalDocumentsCount`
+        # @return [Fixnum]
+        attr_accessor :total_documents_count
+      
+        # The amount of true positives.
+        # Corresponds to the JSON property `truePositivesCount`
+        # @return [Fixnum]
+        attr_accessor :true_positives_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @f1_score = args[:f1_score] if args.key?(:f1_score)
+          @false_negatives_count = args[:false_negatives_count] if args.key?(:false_negatives_count)
+          @false_positives_count = args[:false_positives_count] if args.key?(:false_positives_count)
+          @ground_truth_document_count = args[:ground_truth_document_count] if args.key?(:ground_truth_document_count)
+          @ground_truth_occurrences_count = args[:ground_truth_occurrences_count] if args.key?(:ground_truth_occurrences_count)
+          @precision = args[:precision] if args.key?(:precision)
+          @predicted_document_count = args[:predicted_document_count] if args.key?(:predicted_document_count)
+          @predicted_occurrences_count = args[:predicted_occurrences_count] if args.key?(:predicted_occurrences_count)
+          @recall = args[:recall] if args.key?(:recall)
+          @total_documents_count = args[:total_documents_count] if args.key?(:total_documents_count)
+          @true_positives_count = args[:true_positives_count] if args.key?(:true_positives_count)
+        end
+      end
+      
+      # Gives a short summary of an evaluation, and links to the evaluation itself.
+      class GoogleCloudDocumentaiUiv1beta3EvaluationReference
+        include Google::Apis::Core::Hashable
+      
+        # Evaluation metrics, either in aggregate or about a specific entity.
+        # Corresponds to the JSON property `aggregateMetrics`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics]
+        attr_accessor :aggregate_metrics
+      
+        # Evaluation metrics, either in aggregate or about a specific entity.
+        # Corresponds to the JSON property `aggregateMetricsExact`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationMetrics]
+        attr_accessor :aggregate_metrics_exact
+      
+        # The resource name of the evaluation.
+        # Corresponds to the JSON property `evaluation`
+        # @return [String]
+        attr_accessor :evaluation
+      
+        # The resource name of the Long Running Operation for the evaluation.
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_metrics = args[:aggregate_metrics] if args.key?(:aggregate_metrics)
+          @aggregate_metrics_exact = args[:aggregate_metrics_exact] if args.key?(:aggregate_metrics_exact)
+          @evaluation = args[:evaluation] if args.key?(:evaluation)
+          @operation = args[:operation] if args.key?(:operation)
         end
       end
       
@@ -799,6 +1541,119 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+        end
+      end
+      
+      # Metadata for how this field value is extracted.
+      class GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Message for entity query.
+        # Corresponds to the JSON property `entityQuery`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery]
+        attr_accessor :entity_query
+      
+        # Metadata for document summarization.
+        # Corresponds to the JSON property `summaryOptions`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3SummaryOptions]
+        attr_accessor :summary_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_query = args[:entity_query] if args.key?(:entity_query)
+          @summary_options = args[:summary_options] if args.key?(:summary_options)
+        end
+      end
+      
+      # Message for entity query.
+      class GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery
+        include Google::Apis::Core::Hashable
+      
+        # The original entity query inputed by the user.
+        # Corresponds to the JSON property `userEntityQuery`
+        # @return [String]
+        attr_accessor :user_entity_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_entity_query = args[:user_entity_query] if args.key?(:user_entity_query)
+        end
+      end
+      
+      # Metadata for the field tier of a property.
+      class GoogleCloudDocumentaiUiv1beta3FieldTierMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Integer that indicates the tier of a property. e.g. Invoice has entities that
+        # are classified as tier 1 which is the most important, while tier 2 and tier 3
+        # less so. This attribute can be used to filter schema attributes before running
+        # eval. e.g. compute F1 score for only tier 1 entities. If not present this
+        # attribute should be inferred as 1.
+        # Corresponds to the JSON property `tierLevel`
+        # @return [Fixnum]
+        attr_accessor :tier_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tier_level = args[:tier_level] if args.key?(:tier_level)
+        end
+      end
+      
+      # Metadata for human review labeling config.
+      class GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable normalization editing.
+        # Corresponds to the JSON property `enableNormalizationEditing`
+        # @return [Boolean]
+        attr_accessor :enable_normalization_editing
+        alias_method :enable_normalization_editing?, :enable_normalization_editing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_normalization_editing = args[:enable_normalization_editing] if args.key?(:enable_normalization_editing)
+        end
+      end
+      
+      # Metadata for Human Review config.
+      class GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The confidence threshold if human review validation is enabled.
+        # Corresponds to the JSON property `confidenceThreshold`
+        # @return [Float]
+        attr_accessor :confidence_threshold
+      
+        # Whether to enable human review validation.
+        # Corresponds to the JSON property `enableValidation`
+        # @return [Boolean]
+        attr_accessor :enable_validation
+        alias_method :enable_validation?, :enable_validation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_threshold = args[:confidence_threshold] if args.key?(:confidence_threshold)
+          @enable_validation = args[:enable_validation] if args.key?(:enable_validation)
         end
       end
       
@@ -962,6 +1817,408 @@ module Google
         # Update properties of this object
         def update!(**args)
           @processor_version = args[:processor_version] if args.key?(:processor_version)
+        end
+      end
+      
+      # The first-class citizen for Document AI. Each processor defines how to extract
+      # structural information from a document.
+      class GoogleCloudDocumentaiUiv1beta3Processor
+        include Google::Apis::Core::Hashable
+      
+        # Optional. SchemaVersion used by the Processor. It is the same as Processor's
+        # DatasetSchema.schema_version Format is `projects/`project`/locations/`location`
+        # /schemas/`schema`/schemaVersions/`schema_version`
+        # Corresponds to the JSON property `activeSchemaVersion`
+        # @return [String]
+        attr_accessor :active_schema_version
+      
+        # Output only. The time the processor was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The default processor version.
+        # Corresponds to the JSON property `defaultProcessorVersion`
+        # @return [String]
+        attr_accessor :default_processor_version
+      
+        # The display name of the processor.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The [KMS key](https://cloud.google.com/security-key-management) used for
+        # encryption and decryption in CMEK scenarios.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Output only. Immutable. The resource name of the processor. Format: `projects/`
+        # project`/locations/`location`/processors/`processor``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Immutable. The http endpoint that can be called to invoke
+        # processing.
+        # Corresponds to the JSON property `processEndpoint`
+        # @return [String]
+        attr_accessor :process_endpoint
+      
+        # Output only. The processor version aliases.
+        # Corresponds to the JSON property `processorVersionAliases`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias>]
+        attr_accessor :processor_version_aliases
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # Output only. The state of the processor.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a
+        # list of processor types, see FetchProcessorTypes.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_schema_version = args[:active_schema_version] if args.key?(:active_schema_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @default_processor_version = args[:default_processor_version] if args.key?(:default_processor_version)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @name = args[:name] if args.key?(:name)
+          @process_endpoint = args[:process_endpoint] if args.key?(:process_endpoint)
+          @processor_version_aliases = args[:processor_version_aliases] if args.key?(:processor_version_aliases)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A processor version is an implementation of a processor. Each processor can
+      # have multiple versions, pretrained by Google internally or uptrained by the
+      # customer. A processor can only have one default version at a time. Its
+      # document-processing behavior is defined by that version.
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the processor version was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Denotes that this `ProcessorVersion` can be deployed and
+        # undeployed.
+        # Corresponds to the JSON property `deploymentAllowed`
+        # @return [Boolean]
+        attr_accessor :deployment_allowed
+        alias_method :deployment_allowed?, :deployment_allowed
+      
+        # Information about the upcoming deprecation of this processor version.
+        # Corresponds to the JSON property `deprecationInfo`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo]
+        attr_accessor :deprecation_info
+      
+        # The display name of the processor version.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `documentSchema`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3DocumentSchema]
+        attr_accessor :document_schema
+      
+        # Information about Generative AI model-based processor versions.
+        # Corresponds to the JSON property `genAiModelInfo`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo]
+        attr_accessor :gen_ai_model_info
+      
+        # Output only. Denotes that this `ProcessorVersion` is managed by Google.
+        # Corresponds to the JSON property `googleManaged`
+        # @return [Boolean]
+        attr_accessor :google_managed
+        alias_method :google_managed?, :google_managed
+      
+        # Output only. The KMS key name used for encryption.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Output only. The KMS key version with which data is encrypted.
+        # Corresponds to the JSON property `kmsKeyVersionName`
+        # @return [String]
+        attr_accessor :kms_key_version_name
+      
+        # Gives a short summary of an evaluation, and links to the evaluation itself.
+        # Corresponds to the JSON property `latestEvaluation`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationReference]
+        attr_accessor :latest_evaluation
+      
+        # Output only. The model type of this processor version.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
+        # Identifier. The resource name of the processor version. Format: `projects/`
+        # project`/locations/`location`/processors/`processor`/processorVersions/`
+        # processor_version``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Reserved for future use.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3Schema]
+        attr_accessor :schema
+      
+        # Output only. The state of the processor version.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deployment_allowed = args[:deployment_allowed] if args.key?(:deployment_allowed)
+          @deprecation_info = args[:deprecation_info] if args.key?(:deprecation_info)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @document_schema = args[:document_schema] if args.key?(:document_schema)
+          @gen_ai_model_info = args[:gen_ai_model_info] if args.key?(:gen_ai_model_info)
+          @google_managed = args[:google_managed] if args.key?(:google_managed)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
+          @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
+          @model_type = args[:model_type] if args.key?(:model_type)
+          @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
+          @schema = args[:schema] if args.key?(:schema)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Contains the alias and the aliased resource name of processor version.
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionAlias
+        include Google::Apis::Core::Hashable
+      
+        # The alias in the form of `processor_version` resource name.
+        # Corresponds to the JSON property `alias`
+        # @return [String]
+        attr_accessor :alias
+      
+        # The resource name of aliased processor version.
+        # Corresponds to the JSON property `processorVersion`
+        # @return [String]
+        attr_accessor :processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias = args[:alias] if args.key?(:alias)
+          @processor_version = args[:processor_version] if args.key?(:processor_version)
+        end
+      end
+      
+      # Information about the upcoming deprecation of this processor version.
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionDeprecationInfo
+        include Google::Apis::Core::Hashable
+      
+        # The time at which this processor version will be deprecated.
+        # Corresponds to the JSON property `deprecationTime`
+        # @return [String]
+        attr_accessor :deprecation_time
+      
+        # If set, the processor version that will be used as a replacement.
+        # Corresponds to the JSON property `replacementProcessorVersion`
+        # @return [String]
+        attr_accessor :replacement_processor_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deprecation_time = args[:deprecation_time] if args.key?(:deprecation_time)
+          @replacement_processor_version = args[:replacement_processor_version] if args.key?(:replacement_processor_version)
+        end
+      end
+      
+      # Information about Generative AI model-based processor versions.
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo
+        include Google::Apis::Core::Hashable
+      
+        # Information for a custom Generative AI model created by the user. These are
+        # created with `Create New Version` in either the `Call foundation model` or `
+        # Fine tuning` tabs.
+        # Corresponds to the JSON property `customGenAiModelInfo`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo]
+        attr_accessor :custom_gen_ai_model_info
+      
+        # Information for a pretrained Google-managed foundation model.
+        # Corresponds to the JSON property `foundationGenAiModelInfo`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo]
+        attr_accessor :foundation_gen_ai_model_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_gen_ai_model_info = args[:custom_gen_ai_model_info] if args.key?(:custom_gen_ai_model_info)
+          @foundation_gen_ai_model_info = args[:foundation_gen_ai_model_info] if args.key?(:foundation_gen_ai_model_info)
+        end
+      end
+      
+      # Information for a custom Generative AI model created by the user. These are
+      # created with `Create New Version` in either the `Call foundation model` or `
+      # Fine tuning` tabs.
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo
+        include Google::Apis::Core::Hashable
+      
+        # The base processor version ID for the custom model.
+        # Corresponds to the JSON property `baseProcessorVersionId`
+        # @return [String]
+        attr_accessor :base_processor_version_id
+      
+        # The type of custom model created by the user.
+        # Corresponds to the JSON property `customModelType`
+        # @return [String]
+        attr_accessor :custom_model_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_processor_version_id = args[:base_processor_version_id] if args.key?(:base_processor_version_id)
+          @custom_model_type = args[:custom_model_type] if args.key?(:custom_model_type)
+        end
+      end
+      
+      # Information for a pretrained Google-managed foundation model.
+      class GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+        include Google::Apis::Core::Hashable
+      
+        # Whether fine tuning is allowed for this base processor version.
+        # Corresponds to the JSON property `finetuningAllowed`
+        # @return [Boolean]
+        attr_accessor :finetuning_allowed
+        alias_method :finetuning_allowed?, :finetuning_allowed
+      
+        # The minimum number of labeled documents in the training dataset required for
+        # fine tuning.
+        # Corresponds to the JSON property `minTrainLabeledDocuments`
+        # @return [Fixnum]
+        attr_accessor :min_train_labeled_documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finetuning_allowed = args[:finetuning_allowed] if args.key?(:finetuning_allowed)
+          @min_train_labeled_documents = args[:min_train_labeled_documents] if args.key?(:min_train_labeled_documents)
+        end
+      end
+      
+      # Metadata about a property.
+      class GoogleCloudDocumentaiUiv1beta3PropertyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Metadata for how this field value is extracted.
+        # Corresponds to the JSON property `fieldExtractionMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadata]
+        attr_accessor :field_extraction_metadata
+      
+        # Metadata for the field tier of a property.
+        # Corresponds to the JSON property `fieldTierMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3FieldTierMetadata]
+        attr_accessor :field_tier_metadata
+      
+        # Metadata for human review labeling config.
+        # Corresponds to the JSON property `humanReviewLabelingMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata]
+        attr_accessor :human_review_labeling_metadata
+      
+        # Metadata for Human Review config.
+        # Corresponds to the JSON property `humanReviewMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata]
+        attr_accessor :human_review_metadata
+      
+        # Whether the property should be considered as "inactive".
+        # Corresponds to the JSON property `inactive`
+        # @return [Boolean]
+        attr_accessor :inactive
+        alias_method :inactive?, :inactive
+      
+        # Metadata that specifies whether a label is editable and reasons why. These
+        # fields are read-only. Changing these fields has no impact on the backend.
+        # Corresponds to the JSON property `schemaEditabilityMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata]
+        attr_accessor :schema_editability_metadata
+      
+        # Metadata for schema inference. Only used on dataset.schema for schema
+        # inference, can be safely ignored elsewhere.
+        # Corresponds to the JSON property `schemaInferenceMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata]
+        attr_accessor :schema_inference_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_extraction_metadata = args[:field_extraction_metadata] if args.key?(:field_extraction_metadata)
+          @field_tier_metadata = args[:field_tier_metadata] if args.key?(:field_tier_metadata)
+          @human_review_labeling_metadata = args[:human_review_labeling_metadata] if args.key?(:human_review_labeling_metadata)
+          @human_review_metadata = args[:human_review_metadata] if args.key?(:human_review_metadata)
+          @inactive = args[:inactive] if args.key?(:inactive)
+          @schema_editability_metadata = args[:schema_editability_metadata] if args.key?(:schema_editability_metadata)
+          @schema_inference_metadata = args[:schema_inference_metadata] if args.key?(:schema_inference_metadata)
         end
       end
       
@@ -1189,6 +2446,175 @@ module Google
         end
       end
       
+      # The schema defines the output of the processed document by a processor.
+      class GoogleCloudDocumentaiUiv1beta3Schema
+        include Google::Apis::Core::Hashable
+      
+        # Description of the schema.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Display name to show users.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Entity types of the schema.
+        # Corresponds to the JSON property `entityTypes`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3SchemaEntityType>]
+        attr_accessor :entity_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @entity_types = args[:entity_types] if args.key?(:entity_types)
+        end
+      end
+      
+      # Metadata that specifies whether a label is editable and reasons why. These
+      # fields are read-only. Changing these fields has no impact on the backend.
+      class GoogleCloudDocumentaiUiv1beta3SchemaEditabilityMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Explicit flag that controls whether the label is editable.
+        # Corresponds to the JSON property `editable`
+        # @return [Boolean]
+        attr_accessor :editable
+        alias_method :editable?, :editable
+      
+        # Full resource name of processor versions that contain this label. e.g. `
+        # projects/`project`/locations/`location`/processors/`processor`/
+        # processorVersions/`processorVersion``
+        # Corresponds to the JSON property `processorVersions`
+        # @return [Array<String>]
+        attr_accessor :processor_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @editable = args[:editable] if args.key?(:editable)
+          @processor_versions = args[:processor_versions] if args.key?(:processor_versions)
+        end
+      end
+      
+      # EntityType is the wrapper of a label of the corresponding model with detailed
+      # attributes and limitations for entity-based processors. Multiple types can
+      # also compose a dependency tree to represent nested types.
+      class GoogleCloudDocumentaiUiv1beta3SchemaEntityType
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `baseType`
+        # @return [String]
+        attr_accessor :base_type
+      
+        # Description of the entity type.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # If specified, lists all the possible values for this entity.
+        # Corresponds to the JSON property `enumValues`
+        # @return [Array<String>]
+        attr_accessor :enum_values
+      
+        # If the entity type is hidden in the schema. This provides the functionality to
+        # temporally "disable" an entity without deleting it.
+        # Corresponds to the JSON property `hide`
+        # @return [Boolean]
+        attr_accessor :hide
+        alias_method :hide?, :hide
+      
+        # Specifies how the entity's value is obtained.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # Occurrence type limits the number of times an entity type appears in the
+        # document.
+        # Corresponds to the JSON property `occurrenceType`
+        # @return [String]
+        attr_accessor :occurrence_type
+      
+        # Describing the nested structure of an entity. An EntityType may consist of
+        # several other EntityTypes. For example, in a document there can be an
+        # EntityType `ID`, which consists of EntityType `name` and `address`, with
+        # corresponding attributes, such as TEXT for both types and ONCE for occurrence
+        # types.
+        # Corresponds to the JSON property `properties`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3SchemaEntityType>]
+        attr_accessor :properties
+      
+        # Source of this entity type.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Name of the type. It must satisfy the following constraints: 1. Must be unique
+        # within the set of same level types (with case-insensitive match). 2. Maximum
+        # 64 characters. 3. Must start with a letter. 4. Allowed characters: ASCII
+        # letters [a-zA-Z], ASCII digits [0-9], or one of the following punctuation
+        # characters: * underscore '_' (recommended) * hyphen '-' (allowed, not
+        # recommended) * colon ':' (allowed, not recommended) NOTE: Whitespace
+        # characters are not allowed. 5. Cannot end with a punctuation character. 6.
+        # Cannot contain the following restricted strings: "google", "DocumentAI" (case-
+        # insensitive match). 7. A slash character '/' is reserved as a separator in
+        # flattened representations of nested entity types (e.g., "line_item/amount") in
+        # which case each part (e.g., "line_item", "amount") must comply with the rules
+        # defined above. We recommend using the snake case ("snake_case") in entity type
+        # names.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_type = args[:base_type] if args.key?(:base_type)
+          @description = args[:description] if args.key?(:description)
+          @enum_values = args[:enum_values] if args.key?(:enum_values)
+          @hide = args[:hide] if args.key?(:hide)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @occurrence_type = args[:occurrence_type] if args.key?(:occurrence_type)
+          @properties = args[:properties] if args.key?(:properties)
+          @source = args[:source] if args.key?(:source)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Metadata for schema inference. Only used on dataset.schema for schema
+      # inference, can be safely ignored elsewhere.
+      class GoogleCloudDocumentaiUiv1beta3SchemaInferenceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # True if is inferred by schema inference.
+        # Corresponds to the JSON property `inferred`
+        # @return [Boolean]
+        attr_accessor :inferred
+        alias_method :inferred?, :inferred
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inferred = args[:inferred] if args.key?(:inferred)
+        end
+      end
+      
       # The long-running operation metadata for the SetDefaultProcessorVersion method.
       class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata
         include Google::Apis::Core::Hashable
@@ -1218,6 +2644,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata for document summarization.
+      class GoogleCloudDocumentaiUiv1beta3SummaryOptions
+        include Google::Apis::Core::Hashable
+      
+        # The format the summary should be in.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # How long the summary should be.
+        # Corresponds to the JSON property `length`
+        # @return [String]
+        attr_accessor :length
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @format = args[:format] if args.key?(:format)
+          @length = args[:length] if args.key?(:length)
         end
       end
       
@@ -1387,6 +2838,25 @@ module Google
       
       # The long-running operation metadata for UpdateLabelerPool.
       class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The long-running operation metadata for the UpdateProcessorVersion method.
+      class GoogleCloudDocumentaiUiv1beta3UpdateProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
         # The common metadata for long running operations.
@@ -2504,11 +3974,6 @@ module Google
         attr_accessor :satisfies_pzs
         alias_method :satisfies_pzs?, :satisfies_pzs
       
-        # Configuration specific to spanner-based indexing.
-        # Corresponds to the JSON property `spannerIndexingConfig`
-        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig]
-        attr_accessor :spanner_indexing_config
-      
         # Required. State of the dataset. Ignored when updating dataset.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -2530,7 +3995,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
-          @spanner_indexing_config = args[:spanner_indexing_config] if args.key?(:spanner_indexing_config)
           @state = args[:state] if args.key?(:state)
           @unmanaged_dataset_config = args[:unmanaged_dataset_config] if args.key?(:unmanaged_dataset_config)
         end
@@ -2618,19 +4082,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
-        end
-      end
-      
-      # Configuration specific to spanner-based indexing.
-      class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -2784,8 +4235,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The blob assets in this document. This is used to store the content
-        # of the inline blobs in this document, e.g. image bytes, such that it can be
-        # referenced by other fields in the document via asset id.
+        # of the inline blobs in this document, for example, image bytes, such that it
+        # can be referenced by other fields in the document via asset id.
         # Corresponds to the JSON property `blobAssets`
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentBlobAsset>]
         attr_accessor :blob_assets
@@ -2820,10 +4271,31 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntity>]
         attr_accessor :entities
       
+        # The entity revision ID that `document.entities` field is based on. If this
+        # field is set and `entities_revisions` is not empty, the entities in `document.
+        # entities` field are the entities in the entity revision with this id and `
+        # document.entity_validation_output` field is the `entity_validation_output`
+        # field in this entity revision.
+        # Corresponds to the JSON property `entitiesRevisionId`
+        # @return [String]
+        attr_accessor :entities_revision_id
+      
+        # A list of entity revisions. The entity revisions are appended to the document
+        # in the processing order. This field can be used for comparing the entity
+        # extraction results at different stages of the processing.
+        # Corresponds to the JSON property `entitiesRevisions`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision>]
+        attr_accessor :entities_revisions
+      
         # Placeholder. Relationship among Document.entities.
         # Corresponds to the JSON property `entityRelations`
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityRelation>]
         attr_accessor :entity_relations
+      
+        # The output of the validation given the document and the validation rules.
+        # Corresponds to the JSON property `entityValidationOutput`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput]
+        attr_accessor :entity_validation_output
       
         # The `Status` type defines a logical error model that is suitable for different
         # programming environments, including REST APIs and RPC APIs. It is used by [
@@ -2894,7 +4366,10 @@ module Google
           @docid = args[:docid] if args.key?(:docid)
           @document_layout = args[:document_layout] if args.key?(:document_layout)
           @entities = args[:entities] if args.key?(:entities)
+          @entities_revision_id = args[:entities_revision_id] if args.key?(:entities_revision_id)
+          @entities_revisions = args[:entities_revisions] if args.key?(:entities_revisions)
           @entity_relations = args[:entity_relations] if args.key?(:entity_relations)
+          @entity_validation_output = args[:entity_validation_output] if args.key?(:entity_validation_output)
           @error = args[:error] if args.key?(:error)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @pages = args[:pages] if args.key?(:pages)
@@ -2927,8 +4402,8 @@ module Google
       end
       
       # Represents a blob asset. It's used to store the content of the inline blob in
-      # this document, e.g. image bytes, such that it can be referenced by other
-      # fields in the document via asset id.
+      # this document, for example, image bytes, such that it can be referenced by
+      # other fields in the document via asset ID.
       class GoogleCloudDocumentaiV1beta3DocumentBlobAsset
         include Google::Apis::Core::Hashable
       
@@ -2937,7 +4412,7 @@ module Google
         # @return [String]
         attr_accessor :asset_id
       
-        # Optional. The content of the blob asset, e.g. image bytes.
+        # Optional. The content of the blob asset, for example, image bytes.
         # Corresponds to the JSON property `content`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -3036,7 +4511,7 @@ module Google
       end
       
       # The chunk field in the chunk. A chunk field could be one of the various types (
-      # e.g. image, table) supported.
+      # for example, image, table) supported.
       class GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkField
         include Google::Apis::Core::Hashable
       
@@ -3487,6 +4962,11 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock
         include Google::Apis::Core::Hashable
       
+        # Represents the annotation of a block or a chunk.
+        # Corresponds to the JSON property `annotations`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentAnnotations]
+        attr_accessor :annotations
+      
         # A text block could further have child blocks. Repeated blocks support further
         # hierarchies and nested blocks.
         # Corresponds to the JSON property `blocks`
@@ -3511,9 +4991,48 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
           @blocks = args[:blocks] if args.key?(:blocks)
           @text = args[:text] if args.key?(:text)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Entity revision.
+      class GoogleCloudDocumentaiV1beta3DocumentEntitiesRevision
+        include Google::Apis::Core::Hashable
+      
+        # The entities in this revision.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntity>]
+        attr_accessor :entities
+      
+        # The output of the validation given the document and the validation rules.
+        # Corresponds to the JSON property `entityValidationOutput`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput]
+        attr_accessor :entity_validation_output
+      
+        # Structure to identify provenance relationships between annotations in
+        # different revisions.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentProvenance]
+        attr_accessor :provenance
+      
+        # The revision id.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entities = args[:entities] if args.key?(:entities)
+          @entity_validation_output = args[:entity_validation_output] if args.key?(:entity_validation_output)
+          @provenance = args[:provenance] if args.key?(:provenance)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
         end
       end
       
@@ -3539,10 +5058,15 @@ module Google
         # @return [String]
         attr_accessor :mention_id
       
-        # Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.
+        # Optional. Text value of the entity, for example, `1600 Amphitheatre Pkwy`.
         # Corresponds to the JSON property `mentionText`
         # @return [String]
         attr_accessor :mention_text
+      
+        # Optional. Specifies how the entity's value is obtained.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
       
         # Parsed and normalized entity value.
         # Corresponds to the JSON property `normalizedValue`
@@ -3579,7 +5103,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentTextAnchor]
         attr_accessor :text_anchor
       
-        # Required. Entity type from a schema e.g. `Address`.
+        # Required. Entity type from a schema, for example, `Address`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -3594,6 +5118,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @mention_id = args[:mention_id] if args.key?(:mention_id)
           @mention_text = args[:mention_text] if args.key?(:mention_text)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
           @normalized_value = args[:normalized_value] if args.key?(:normalized_value)
           @page_anchor = args[:page_anchor] if args.key?(:page_anchor)
           @properties = args[:properties] if args.key?(:properties)
@@ -3608,16 +5133,17 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue
         include Google::Apis::Core::Hashable
       
-        # Represents a postal address (for example, for postal delivery or payments
-        # addresses). Given a postal address, a postal service can deliver items to a
-        # premise, P.O. box or similar. It is not intended to model geographical
-        # locations (roads, towns, mountains). In typical usage, an address would be
-        # created by user input or from importing existing data, depending on the type
-        # of process. Advice on address input or editing: - Use an internationalization-
-        # ready address widget such as https://github.com/google/libaddressinput. -
-        # Users should not be presented with UI elements for input or editing of fields
-        # outside countries where that field is used. For more guidance on how to use
-        # this schema, see: https://support.google.com/business/answer/6397478.
+        # Represents a postal address, such as for postal delivery or payments addresses.
+        # With a postal address, a postal service can deliver items to a premise, P.O.
+        # box, or similar. A postal address is not intended to model geographical
+        # locations like roads, towns, or mountains. In typical usage, an address would
+        # be created by user input or from importing existing data, depending on the
+        # type of process. Advice on address input or editing: - Use an
+        # internationalization-ready address widget such as https://github.com/google/
+        # libaddressinput. - Users should not be presented with UI elements for input or
+        # editing of fields outside countries where that field is used. For more
+        # guidance on how to use this schema, see: https://support.google.com/business/
+        # answer/6397478.
         # Corresponds to the JSON property `addressValue`
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypePostalAddress]
         attr_accessor :address_value
@@ -3673,7 +5199,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleTypeMoney]
         attr_accessor :money_value
       
-        # 
+        # A signature - a graphical representation of a person's name, often used to
+        # sign a document.
         # Corresponds to the JSON property `signatureValue`
         # @return [Boolean]
         attr_accessor :signature_value
@@ -3737,6 +5264,77 @@ module Google
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @relation = args[:relation] if args.key?(:relation)
           @subject_id = args[:subject_id] if args.key?(:subject_id)
+        end
+      end
+      
+      # The output of the validation given the document and the validation rules.
+      class GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutput
+        include Google::Apis::Core::Hashable
+      
+        # The overall result of the validation, true if all applicable rules are valid.
+        # Corresponds to the JSON property `passAllRules`
+        # @return [Boolean]
+        attr_accessor :pass_all_rules
+        alias_method :pass_all_rules?, :pass_all_rules
+      
+        # The result of each validation rule.
+        # Corresponds to the JSON property `validationResults`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResult>]
+        attr_accessor :validation_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pass_all_rules = args[:pass_all_rules] if args.key?(:pass_all_rules)
+          @validation_results = args[:validation_results] if args.key?(:validation_results)
+        end
+      end
+      
+      # Validation result for a single validation rule.
+      class GoogleCloudDocumentaiV1beta3DocumentEntityValidationOutputValidationResult
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the rule resource that is used for validation. Format: `
+        # projects/`project`/locations/`location`/rules/`rule``
+        # Corresponds to the JSON property `rule`
+        # @return [String]
+        attr_accessor :rule
+      
+        # The description of the validation rule.
+        # Corresponds to the JSON property `ruleDescription`
+        # @return [String]
+        attr_accessor :rule_description
+      
+        # The display name of the validation rule.
+        # Corresponds to the JSON property `ruleName`
+        # @return [String]
+        attr_accessor :rule_name
+      
+        # The detailed information of the running the validation process using the
+        # entity from the document based on the validation rule.
+        # Corresponds to the JSON property `validationDetails`
+        # @return [String]
+        attr_accessor :validation_details
+      
+        # The result of the validation rule.
+        # Corresponds to the JSON property `validationResultType`
+        # @return [String]
+        attr_accessor :validation_result_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rule = args[:rule] if args.key?(:rule)
+          @rule_description = args[:rule_description] if args.key?(:rule_description)
+          @rule_name = args[:rule_name] if args.key?(:rule_name)
+          @validation_details = args[:validation_details] if args.key?(:validation_details)
+          @validation_result_type = args[:validation_result_type] if args.key?(:validation_result_type)
         end
       end
       
@@ -4031,8 +5629,8 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageMatrix>]
         attr_accessor :transforms
       
-        # A list of detected non-text visual elements e.g. checkbox, signature etc. on
-        # the page.
+        # A list of detected non-text visual elements, for example, checkbox, signature
+        # etc. on the page.
         # Corresponds to the JSON property `visualElements`
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentPageVisualElement>]
         attr_accessor :visual_elements
@@ -4416,8 +6014,8 @@ module Google
         attr_accessor :bounding_poly
       
         # Confidence of the current Layout within context of the object this layout is
-        # for. e.g. confidence can be for a single token, a table, a visual element, etc.
-        # depending on context. Range `[0, 1]`.
+        # for. For example, confidence can be for a single token, a table, a visual
+        # element, etc. depending on context. Range `[0, 1]`.
         # Corresponds to the JSON property `confidence`
         # @return [Float]
         attr_accessor :confidence
@@ -4940,7 +6538,8 @@ module Google
         end
       end
       
-      # Detected non-text visual elements e.g. checkbox, signature etc. on the page.
+      # Detected non-text visual elements, for example, checkbox, signature etc. on
+      # the page.
       class GoogleCloudDocumentaiV1beta3DocumentPageVisualElement
         include Google::Apis::Core::Hashable
       
@@ -5108,7 +6707,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview
         include Google::Apis::Core::Hashable
       
-        # Human review state. e.g. `requested`, `succeeded`, `rejected`.
+        # Human review state. For example, `requested`, `succeeded`, `rejected`.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -5139,10 +6738,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Display name to show to users.
+        # Display name to show users.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Optional. Document level prompt provided by the user. This custom text is
+        # injected into the AI model's prompt to provide extra, document-wide guidance
+        # for processing.
+        # Corresponds to the JSON property `documentPrompt`
+        # @return [String]
+        attr_accessor :document_prompt
       
         # Entity types of the schema.
         # Corresponds to the JSON property `entityTypes`
@@ -5162,6 +6768,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @document_prompt = args[:document_prompt] if args.key?(:document_prompt)
           @entity_types = args[:entity_types] if args.key?(:entity_types)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
@@ -5204,7 +6811,7 @@ module Google
         # Common Type". The following naming conventions are used: - Use `snake_casing`.
         # - Name matching is case-sensitive. - Maximum 64 characters. - Must start with
         # a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
-        # compatibility internal infrastructure and tooling can handle any ascii
+        # compatibility, internal infrastructure and tooling can handle any ASCII
         # character.) - The `/` is sometimes used to denote a property of a type. For
         # example `line_item/amount`. This convention is deprecated, but will still be
         # honored for backward compatibility.
@@ -5334,9 +6941,9 @@ module Google
         attr_accessor :prefixed_naming_on_properties
         alias_method :prefixed_naming_on_properties?, :prefixed_naming_on_properties
       
-        # If set, we will skip the naming format validation in the schema. So the string
-        # values in `DocumentSchema.EntityType.name` and `DocumentSchema.EntityType.
-        # Property.name` will not be checked.
+        # If set, this will skip the naming format validation in the schema. So the
+        # string values in `DocumentSchema.EntityType.name` and `DocumentSchema.
+        # EntityType.Property.name` will not be checked.
         # Corresponds to the JSON property `skipNamingValidation`
         # @return [Boolean]
         attr_accessor :skip_naming_validation
@@ -5360,6 +6967,12 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentShardInfo
         include Google::Apis::Core::Hashable
       
+        # The index of the first page in Document.pages in the overall document global
+        # pages. Available for document shards created by the document splitter.
+        # Corresponds to the JSON property `pageOffset`
+        # @return [Fixnum]
+        attr_accessor :page_offset
+      
         # Total number of shards.
         # Corresponds to the JSON property `shardCount`
         # @return [Fixnum]
@@ -5382,6 +6995,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @page_offset = args[:page_offset] if args.key?(:page_offset)
           @shard_count = args[:shard_count] if args.key?(:shard_count)
           @shard_index = args[:shard_index] if args.key?(:shard_index)
           @text_offset = args[:text_offset] if args.key?(:text_offset)
@@ -5651,6 +7265,25 @@ module Google
         end
       end
       
+      # A set of inline documents.
+      class GoogleCloudDocumentaiV1beta3Documents
+        include Google::Apis::Core::Hashable
+      
+        # The list of documents.
+        # Corresponds to the JSON property `documents`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Document>]
+        attr_accessor :documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documents = args[:documents] if args.key?(:documents)
+        end
+      end
+      
       # The long-running operation metadata for the EnableProcessor method.
       class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata
         include Google::Apis::Core::Hashable
@@ -5815,6 +7448,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Contains all revisions of the evaluation, excluding the latest one.
+        # Corresponds to the JSON property `revisions`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision>]
+        attr_accessor :revisions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5828,6 +7466,7 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @name = args[:name] if args.key?(:name)
+          @revisions = args[:revisions] if args.key?(:revisions)
         end
       end
       
@@ -5895,11 +7534,48 @@ module Google
         end
       end
       
+      # A revision of the evaluation.
+      class GoogleCloudDocumentaiV1beta3EvaluationEvaluationRevision
+        include Google::Apis::Core::Hashable
+      
+        # Metrics across multiple confidence levels.
+        # Corresponds to the JSON property `allEntitiesMetrics`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics]
+        attr_accessor :all_entities_metrics
+      
+        # Evaluation counters for the documents that were used.
+        # Corresponds to the JSON property `documentCounters`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationCounters]
+        attr_accessor :document_counters
+      
+        # Output only. Metrics across confidence levels, for different entities.
+        # Corresponds to the JSON property `entityMetrics`
+        # @return [Hash<String,Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics>]
+        attr_accessor :entity_metrics
+      
+        # Output only. The revision ID of the evaluation.
+        # Corresponds to the JSON property `revisionId`
+        # @return [String]
+        attr_accessor :revision_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_entities_metrics = args[:all_entities_metrics] if args.key?(:all_entities_metrics)
+          @document_counters = args[:document_counters] if args.key?(:document_counters)
+          @entity_metrics = args[:entity_metrics] if args.key?(:entity_metrics)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
       # Evaluation metrics, either in aggregate or about a specific entity.
       class GoogleCloudDocumentaiV1beta3EvaluationMetrics
         include Google::Apis::Core::Hashable
       
-        # The calculated f1 score.
+        # The calculated F1 score.
         # Corresponds to the JSON property `f1Score`
         # @return [Float]
         attr_accessor :f1_score
@@ -6170,6 +7846,101 @@ module Google
         end
       end
       
+      # Request message for GenerateSchemaVersion.
+      class GoogleCloudDocumentaiV1beta3GenerateSchemaVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # The base schema version name to use for the schema generation. Format: `
+        # projects/`project`/locations/`location`/schemas/`schema`/schemaVersions/`
+        # schema_version``
+        # Corresponds to the JSON property `baseSchemaVersion`
+        # @return [String]
+        attr_accessor :base_schema_version
+      
+        # Specifies a set of documents on Cloud Storage.
+        # Corresponds to the JSON property `gcsDocuments`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsDocuments]
+        attr_accessor :gcs_documents
+      
+        # Specifies all documents on Cloud Storage with a common prefix.
+        # Corresponds to the JSON property `gcsPrefix`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GcsPrefix]
+        attr_accessor :gcs_prefix
+      
+        # The parameters for the schema generation.
+        # Corresponds to the JSON property `generateSchemaVersionParams`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GenerateSchemaVersionRequestGenerateSchemaVersionParams]
+        attr_accessor :generate_schema_version_params
+      
+        # A set of inline documents.
+        # Corresponds to the JSON property `inlineDocuments`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3Documents]
+        attr_accessor :inline_documents
+      
+        # Specifies a set of raw documents.
+        # Corresponds to the JSON property `rawDocuments`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3RawDocuments]
+        attr_accessor :raw_documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_schema_version = args[:base_schema_version] if args.key?(:base_schema_version)
+          @gcs_documents = args[:gcs_documents] if args.key?(:gcs_documents)
+          @gcs_prefix = args[:gcs_prefix] if args.key?(:gcs_prefix)
+          @generate_schema_version_params = args[:generate_schema_version_params] if args.key?(:generate_schema_version_params)
+          @inline_documents = args[:inline_documents] if args.key?(:inline_documents)
+          @raw_documents = args[:raw_documents] if args.key?(:raw_documents)
+        end
+      end
+      
+      # The parameters for the schema generation.
+      class GoogleCloudDocumentaiV1beta3GenerateSchemaVersionRequestGenerateSchemaVersionParams
+        include Google::Apis::Core::Hashable
+      
+        # The history of schema generation iterations.
+        # Corresponds to the JSON property `history`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaGenerationHistory]
+        attr_accessor :history
+      
+        # Optional. The prompt used for the schema generation.
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @history = args[:history] if args.key?(:history)
+          @prompt = args[:prompt] if args.key?(:prompt)
+        end
+      end
+      
+      # Response message for GenerateSchemaVersion.
+      class GoogleCloudDocumentaiV1beta3GenerateSchemaVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # SchemaVersion is a version of the Schema which is created in SchemaGroup.
+        # Corresponds to the JSON property `schemaVersion`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion]
+        attr_accessor :schema_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schema_version = args[:schema_version] if args.key?(:schema_version)
+        end
+      end
+      
       # 
       class GoogleCloudDocumentaiV1beta3GetDocumentResponse
         include Google::Apis::Core::Hashable
@@ -6369,6 +8140,15 @@ module Google
         # @return [String]
         attr_accessor :dataset_split
       
+        # Optional. If set, determines the type of the documents to be imported in this
+        # batch. It can be used to auto-label the documents with a single entity of the
+        # provided type. This field can only be used with a classifier or splitter
+        # processor. Providing this field is mutually exclusive with `entities` and `
+        # auto_labeling_config`.
+        # Corresponds to the JSON property `documentType`
+        # @return [String]
+        attr_accessor :document_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6378,6 +8158,7 @@ module Google
           @auto_split_config = args[:auto_split_config] if args.key?(:auto_split_config)
           @batch_input_config = args[:batch_input_config] if args.key?(:batch_input_config)
           @dataset_split = args[:dataset_split] if args.key?(:dataset_split)
+          @document_type = args[:document_type] if args.key?(:document_type)
         end
       end
       
@@ -6448,8 +8229,7 @@ module Google
         attr_accessor :external_processor_version_source
       
         # The source processor version to import from. The source processor version and
-        # destination processor need to be in the same environment and region. Note that
-        # ProcessorVersions with `model_type` `MODEL_TYPE_LLM` are not supported.
+        # destination processor need to be in the same environment and region.
         # Corresponds to the JSON property `processorVersionSource`
         # @return [String]
         attr_accessor :processor_version_source
@@ -6705,6 +8485,100 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @processors = args[:processors] if args.key?(:processors)
+        end
+      end
+      
+      # Response message for ListSchemaVersions.
+      class GoogleCloudDocumentaiV1beta3ListSchemaVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Points to the next SchemaVersion, otherwise empty.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SchemaVersions.
+        # Corresponds to the JSON property `schemaVersions`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion>]
+        attr_accessor :schema_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @schema_versions = args[:schema_versions] if args.key?(:schema_versions)
+        end
+      end
+      
+      # Response message for ListSchemas.
+      class GoogleCloudDocumentaiV1beta3ListSchemasResponse
+        include Google::Apis::Core::Hashable
+      
+        # Points to the next Schema, otherwise empty.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Schemas.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3NextSchema>]
+        attr_accessor :schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @schemas = args[:schemas] if args.key?(:schemas)
+        end
+      end
+      
+      # NextSchema is a collection of SchemaVersions.
+      class GoogleCloudDocumentaiV1beta3NextSchema
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the Schema was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The user-defined name of the Schema.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. The ``gcp_name_short`` labels for the Schema.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the Schema. Format: `projects/`project`/
+        # locations/`location`/schemas/`schema``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The time when the Schema was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -6970,6 +8844,12 @@ module Google
         attr_accessor :enable_table_annotation
         alias_method :enable_table_annotation?, :enable_table_annotation
       
+        # Optional. Whether to split table.
+        # Corresponds to the JSON property `enableTableSplit`
+        # @return [Boolean]
+        attr_accessor :enable_table_split
+        alias_method :enable_table_split?, :enable_table_split
+      
         # Optional. Whether to include bounding boxes in layout parser processor
         # response.
         # Corresponds to the JSON property `returnBoundingBoxes`
@@ -6994,6 +8874,7 @@ module Google
           @enable_image_extraction = args[:enable_image_extraction] if args.key?(:enable_image_extraction)
           @enable_llm_layout_parsing = args[:enable_llm_layout_parsing] if args.key?(:enable_llm_layout_parsing)
           @enable_table_annotation = args[:enable_table_annotation] if args.key?(:enable_table_annotation)
+          @enable_table_split = args[:enable_table_split] if args.key?(:enable_table_split)
           @return_bounding_boxes = args[:return_bounding_boxes] if args.key?(:return_bounding_boxes)
           @return_images = args[:return_images] if args.key?(:return_images)
         end
@@ -7005,7 +8886,7 @@ module Google
       
         # Optional. The percentile of cosine dissimilarity that must be exceeded between
         # a group of tokens and the next. The smaller this number is, the more chunks
-        # will be generated. THIS FIELD IS NOT YET USED.
+        # will be generated. **Note:** This field is not yet used.
         # Corresponds to the JSON property `breakpointPercentileThreshold`
         # @return [Fixnum]
         attr_accessor :breakpoint_percentile_threshold
@@ -7022,7 +8903,7 @@ module Google
         alias_method :include_ancestor_headings?, :include_ancestor_headings
       
         # Optional. The number of tokens to group together when evaluating semantic
-        # similarity. THIS FIELD IS NOT YET USED.
+        # similarity. **Note:** This field is not yet used.
         # Corresponds to the JSON property `semanticChunkingGroupSize`
         # @return [Boolean]
         attr_accessor :semantic_chunking_group_size
@@ -7163,7 +9044,14 @@ module Google
       class GoogleCloudDocumentaiV1beta3Processor
         include Google::Apis::Core::Hashable
       
-        # The time the processor was created.
+        # Optional. SchemaVersion used by the Processor. It is the same as Processor's
+        # DatasetSchema.schema_version Format is `projects/`project`/locations/`location`
+        # /schemas/`schema`/schemaVersions/`schema_version`
+        # Corresponds to the JSON property `activeSchemaVersion`
+        # @return [String]
+        attr_accessor :active_schema_version
+      
+        # Output only. The time the processor was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -7230,6 +9118,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_schema_version = args[:active_schema_version] if args.key?(:active_schema_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_processor_version = args[:default_processor_version] if args.key?(:default_processor_version)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -7330,7 +9219,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3ProcessorVersion
         include Google::Apis::Core::Hashable
       
-        # The time the processor version was created.
+        # Output only. The time the processor version was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -7361,12 +9250,12 @@ module Google
         attr_accessor :google_managed
         alias_method :google_managed?, :google_managed
       
-        # The KMS key name used for encryption.
+        # Output only. The KMS key name used for encryption.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
       
-        # The KMS key version with which data is encrypted.
+        # Output only. The KMS key version with which data is encrypted.
         # Corresponds to the JSON property `kmsKeyVersionName`
         # @return [String]
         attr_accessor :kms_key_version_name
@@ -7536,14 +9425,14 @@ module Google
       class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
         include Google::Apis::Core::Hashable
       
-        # Whether finetuning is allowed for this base processor version.
+        # Whether fine tuning is allowed for this base processor version.
         # Corresponds to the JSON property `finetuningAllowed`
         # @return [Boolean]
         attr_accessor :finetuning_allowed
         alias_method :finetuning_allowed?, :finetuning_allowed
       
         # The minimum number of labeled documents in the training dataset required for
-        # finetuning.
+        # fine tuning.
         # Corresponds to the JSON property `minTrainLabeledDocuments`
         # @return [Fixnum]
         attr_accessor :min_train_labeled_documents
@@ -7616,6 +9505,25 @@ module Google
           @content = args[:content] if args.key?(:content)
           @display_name = args[:display_name] if args.key?(:display_name)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # Specifies a set of raw documents.
+      class GoogleCloudDocumentaiV1beta3RawDocuments
+        include Google::Apis::Core::Hashable
+      
+        # Specifies raw document content and mime type.
+        # Corresponds to the JSON property `documents`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3RawDocument>]
+        attr_accessor :documents
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @documents = args[:documents] if args.key?(:documents)
         end
       end
       
@@ -7781,6 +9689,100 @@ module Google
           @latest_processor_version = args[:latest_processor_version] if args.key?(:latest_processor_version)
           @revision_case = args[:revision_case] if args.key?(:revision_case)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
+        end
+      end
+      
+      # The history of schema generation iterations.
+      class GoogleCloudDocumentaiV1beta3SchemaGenerationHistory
+        include Google::Apis::Core::Hashable
+      
+        # Required. Previous prompt-answers in a chronological order.
+        # Corresponds to the JSON property `iterations`
+        # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaGenerationIteration>]
+        attr_accessor :iterations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iterations = args[:iterations] if args.key?(:iterations)
+        end
+      end
+      
+      # A single iteration of the schema generation.
+      class GoogleCloudDocumentaiV1beta3SchemaGenerationIteration
+        include Google::Apis::Core::Hashable
+      
+        # SchemaVersion is a version of the Schema which is created in SchemaGroup.
+        # Corresponds to the JSON property `adjustedSchema`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion]
+        attr_accessor :adjusted_schema
+      
+        # SchemaVersion is a version of the Schema which is created in SchemaGroup.
+        # Corresponds to the JSON property `generatedSchema`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3SchemaVersion]
+        attr_accessor :generated_schema
+      
+        # Optional. The prompt used for the iteration.
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjusted_schema = args[:adjusted_schema] if args.key?(:adjusted_schema)
+          @generated_schema = args[:generated_schema] if args.key?(:generated_schema)
+          @prompt = args[:prompt] if args.key?(:prompt)
+        end
+      end
+      
+      # SchemaVersion is a version of the Schema which is created in SchemaGroup.
+      class GoogleCloudDocumentaiV1beta3SchemaVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the SchemaVersion was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The user-defined name of the SchemaVersion.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. The ``gcp_name_short`` labels for the SchemaVersion.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the SchemaVersion. Format: `projects/`project`
+        # /locations/`location`/schemas/`schema`/schemaVersions/`schema_version``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The schema defines the output of the processed document by a processor.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3DocumentSchema]
+        attr_accessor :schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @schema = args[:schema] if args.key?(:schema)
         end
       end
       
@@ -7996,7 +9998,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestCustomDocumentExtractionOptions
         include Google::Apis::Core::Hashable
       
-        # Training method to use for CDE training.
+        # Optional. Training method to use for CDE training.
         # Corresponds to the JSON property `trainingMethod`
         # @return [String]
         attr_accessor :training_method
@@ -8022,6 +10024,15 @@ module Google
         # @return [Float]
         attr_accessor :learning_rate_multiplier
       
+        # Optional. Resource name of a previously fine tuned version id to copy the
+        # overwritten configs from. The base_processor_version should be newer than the
+        # base processor version used to fine tune this provided processor version.
+        # Format: `projects/`project`/locations/`location`/processors/`processor`/
+        # processorVersions/`processorVersion``.
+        # Corresponds to the JSON property `previousFineTunedProcessorVersionName`
+        # @return [String]
+        attr_accessor :previous_fine_tuned_processor_version_name
+      
         # Optional. The number of steps to run for model tuning. Valid values are
         # between 1 and 400. If not provided, recommended steps will be used.
         # Corresponds to the JSON property `trainSteps`
@@ -8035,6 +10046,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @learning_rate_multiplier = args[:learning_rate_multiplier] if args.key?(:learning_rate_multiplier)
+          @previous_fine_tuned_processor_version_name = args[:previous_fine_tuned_processor_version_name] if args.key?(:previous_fine_tuned_processor_version_name)
           @train_steps = args[:train_steps] if args.key?(:train_steps)
         end
       end
@@ -8130,6 +10142,25 @@ module Google
       
       # 
       class GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The common metadata for long running operations.
+        # Corresponds to the JSON property `commonMetadata`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3CommonOperationMetadata]
+        attr_accessor :common_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_metadata = args[:common_metadata] if args.key?(:common_metadata)
+        end
+      end
+      
+      # The long-running operation metadata for the UpdateProcessorVersion method.
+      class GoogleCloudDocumentaiV1beta3UpdateProcessorVersionMetadata
         include Google::Apis::Core::Hashable
       
         # The common metadata for long running operations.
@@ -8259,6 +10290,14 @@ module Google
         # @return [Array<Google::Apis::DocumentaiV1beta3::GoogleLongrunningOperation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8267,6 +10306,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -8641,16 +10681,17 @@ module Google
         end
       end
       
-      # Represents a postal address (for example, for postal delivery or payments
-      # addresses). Given a postal address, a postal service can deliver items to a
-      # premise, P.O. box or similar. It is not intended to model geographical
-      # locations (roads, towns, mountains). In typical usage, an address would be
-      # created by user input or from importing existing data, depending on the type
-      # of process. Advice on address input or editing: - Use an internationalization-
-      # ready address widget such as https://github.com/google/libaddressinput. -
-      # Users should not be presented with UI elements for input or editing of fields
-      # outside countries where that field is used. For more guidance on how to use
-      # this schema, see: https://support.google.com/business/answer/6397478.
+      # Represents a postal address, such as for postal delivery or payments addresses.
+      # With a postal address, a postal service can deliver items to a premise, P.O.
+      # box, or similar. A postal address is not intended to model geographical
+      # locations like roads, towns, or mountains. In typical usage, an address would
+      # be created by user input or from importing existing data, depending on the
+      # type of process. Advice on address input or editing: - Use an
+      # internationalization-ready address widget such as https://github.com/google/
+      # libaddressinput. - Users should not be presented with UI elements for input or
+      # editing of fields outside countries where that field is used. For more
+      # guidance on how to use this schema, see: https://support.google.com/business/
+      # answer/6397478.
       class GoogleTypePostalAddress
         include Google::Apis::Core::Hashable
       

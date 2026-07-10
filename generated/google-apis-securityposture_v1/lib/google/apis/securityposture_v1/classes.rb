@@ -458,18 +458,17 @@ module Google
       
         # Optional. Required for managed constraints if parameters are defined. Passes
         # parameter values when policy enforcement is enabled. Ensure that parameter
-        # value types match those defined in the constraint definition. For example: ` "
-        # allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true `
+        # value types match those defined in the constraint definition. For example: ```
+        # ` "allowedLocations": ["us-east1", "us-west1"], "allowAll": true ` ```
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
       
-        # Set multiple resource types for one policy, for example: resourceTypes:
-        # included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk
+        # Set multiple resource types for one policy, for example: ``` resourceTypes:
+        # included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk ```
         # Constraint definition contains an empty resource type in order to support
         # multiple resource types in the policy. Only supports managed constraints.
-        # Method type is `GOVERN_TAGS`. Refer go/multi-resource-support-force-tags-gmc
-        # to get more details.
+        # Method type is `GOVERN_TAGS`.
         # Corresponds to the JSON property `resourceTypes`
         # @return [Google::Apis::SecuritypostureV1::ResourceTypes]
         attr_accessor :resource_types
@@ -635,6 +634,14 @@ module Google
         # @return [Array<Google::Apis::SecuritypostureV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -643,6 +650,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1540,17 +1548,15 @@ module Google
         end
       end
       
-      # Set multiple resource types for one policy, for example: resourceTypes:
-      # included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk
+      # Set multiple resource types for one policy, for example: ``` resourceTypes:
+      # included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk ```
       # Constraint definition contains an empty resource type in order to support
       # multiple resource types in the policy. Only supports managed constraints.
-      # Method type is `GOVERN_TAGS`. Refer go/multi-resource-support-force-tags-gmc
-      # to get more details.
+      # Method type is `GOVERN_TAGS`.
       class ResourceTypes
         include Google::Apis::Core::Hashable
       
-        # Optional. The resource types we currently support. cloud/orgpolicy/
-        # customconstraintconfig/prod/resource_types.prototext
+        # Optional. The resource types we support.
         # Corresponds to the JSON property `included`
         # @return [Array<String>]
         attr_accessor :included

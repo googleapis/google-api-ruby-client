@@ -305,8 +305,8 @@ module Google
         # @return [String]
         attr_accessor :purpose
       
-        # Required. The name of a [region](/compute/docs/regions-zones) for the subnet,
-        # such `europe-west1`.
+        # Required. The name of a [region](https://cloud.google.com/compute/docs/regions-
+        # zones) for the subnet, such `europe-west1`.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
@@ -356,8 +356,8 @@ module Google
         alias_method :skip_requested_address_validation?, :skip_requested_address_validation
       
         # Required. A name for the new subnet. For information about the naming
-        # requirements, see [subnetwork](/compute/docs/reference/rest/v1/subnetworks) in
-        # the Compute API documentation.
+        # requirements, see [subnetwork](https://cloud.google.com/compute/docs/reference/
+        # rest/v1/subnetworks) in the Compute API documentation.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -412,9 +412,18 @@ module Google
       # which represent a concrete implementation of an interface as opposed to simply
       # a description of methods and bindings. They are also sometimes simply referred
       # to as "APIs" in other contexts, such as the name of this message itself. See
-      # https://cloud.google.com/apis/design/glossary for detailed terminology.
+      # https://cloud.google.com/apis/design/glossary for detailed terminology. New
+      # usages of this message as an alternative to ServiceDescriptorProto are
+      # strongly discouraged. This message does not reliability preserve all
+      # information necessary to model the schema and preserve semantics. Instead make
+      # use of FileDescriptorSet which preserves the necessary information.
       class Api
         include Google::Apis::Core::Hashable
+      
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # The methods of this interface, in unspecified order.
         # Corresponds to the JSON property `methods`
@@ -471,6 +480,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
           @mixins = args[:mixins] if args.key?(:mixins)
           @name = args[:name] if args.key?(:name)
@@ -491,6 +501,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Optional. Rules of the Configuration.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ServicenetworkingV1::AspectRule>]
+        attr_accessor :rules
+      
         # Content of the configuration. The underlying schema should be defined by
         # Aspect owners as protobuf message under `google/api/configaspects/proto`.
         # Corresponds to the JSON property `spec`
@@ -504,7 +519,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @rules = args[:rules] if args.key?(:rules)
           @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # Rule-based configuration for an aspect.
+      class AspectRule
+        include Google::Apis::Core::Hashable
+      
+        # Required. Rules of the configuration. The underlying schema should be defined
+        # by Aspect owners as protobuf message under `google/api/configaspects/proto`.
+        # Corresponds to the JSON property `config`
+        # @return [Hash<String,Object>]
+        attr_accessor :config
+      
+        # Required. Selects the RPC methods to which this rule applies. Refer to
+        # selector for syntax details.
+        # Corresponds to the JSON property `selector`
+        # @return [String]
+        attr_accessor :selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @selector = args[:selector] if args.key?(:selector)
         end
       end
       
@@ -789,7 +832,9 @@ module Google
         # @return [Hash<String,Google::Apis::ServicenetworkingV1::BackendRule>]
         attr_accessor :overrides_by_request_protocol
       
-        # 
+        # Path translation specifies how to combine the backend address with the request
+        # path in order to produce the appropriate forwarding URL for the request. See
+        # PathTranslation for more details.
         # Corresponds to the JSON property `pathTranslation`
         # @return [String]
         attr_accessor :path_translation
@@ -1044,6 +1089,20 @@ module Google
         end
       end
       
+      # Metadata provided through GetOperation request for the LRO generated by
+      # Cleanup Connection API
+      class CleanupConnectionMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Details about how and where to publish client libraries.
       class ClientLibrarySettings
         include Google::Apis::Core::Hashable
@@ -1131,17 +1190,17 @@ module Google
       class CloudSqlConfig
         include Google::Apis::Core::Hashable
       
-        # Peering service used for peering with the Cloud SQL project.
+        # Required. Peering service used for peering with the Cloud SQL project.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
-        # The name of the umbrella network in the Cloud SQL umbrella project.
+        # Required. The name of the umbrella network in the Cloud SQL umbrella project.
         # Corresponds to the JSON property `umbrellaNetwork`
         # @return [String]
         attr_accessor :umbrella_network
       
-        # The project number of the Cloud SQL umbrella project.
+        # Required. The project number of the Cloud SQL umbrella project.
         # Corresponds to the JSON property `umbrellaProject`
         # @return [Fixnum]
         attr_accessor :umbrella_project
@@ -1174,7 +1233,8 @@ module Google
         attr_accessor :reference_docs_uri
       
         # This message is used to configure the generation of a subset of the RPCs in a
-        # service for client libraries.
+        # service for client libraries. Note: This feature should not be used in most
+        # cases.
         # Corresponds to the JSON property `selectiveGapicGeneration`
         # @return [Google::Apis::ServicenetworkingV1::SelectiveGapicGeneration]
         attr_accessor :selective_gapic_generation
@@ -1197,11 +1257,11 @@ module Google
       class Connection
         include Google::Apis::Core::Hashable
       
-        # The name of service consumer's VPC network that's connected with service
-        # producer network, in the following format: `projects/`project`/global/networks/
-        # `network``. ``project`` is a project number, such as in `12345` that includes
-        # the VPC service consumer's VPC network. ``network`` is the name of the service
-        # consumer's VPC network.
+        # Required. The name of service consumer's VPC network that's connected with
+        # service producer network, in the following format: `projects/`project`/global/
+        # networks/`network``. ``project`` is a project number, such as in `12345` that
+        # includes the VPC service consumer's VPC network. ``network`` is the name of
+        # the service consumer's VPC network.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -1277,6 +1337,12 @@ module Google
         attr_accessor :consumer_import_subnet_routes_with_public_ip
         alias_method :consumer_import_subnet_routes_with_public_ip?, :consumer_import_subnet_routes_with_public_ip
       
+        # Output only. If this is true, consumer peering is active.
+        # Corresponds to the JSON property `consumerPeeringActive`
+        # @return [Boolean]
+        attr_accessor :consumer_peering_active
+        alias_method :consumer_peering_active?, :consumer_peering_active
+      
         # Export custom routes flag value for peering from producer to consumer.
         # Corresponds to the JSON property `producerExportCustomRoutes`
         # @return [Boolean]
@@ -1339,6 +1405,7 @@ module Google
           @consumer_export_subnet_routes_with_public_ip = args[:consumer_export_subnet_routes_with_public_ip] if args.key?(:consumer_export_subnet_routes_with_public_ip)
           @consumer_import_custom_routes = args[:consumer_import_custom_routes] if args.key?(:consumer_import_custom_routes)
           @consumer_import_subnet_routes_with_public_ip = args[:consumer_import_subnet_routes_with_public_ip] if args.key?(:consumer_import_subnet_routes_with_public_ip)
+          @consumer_peering_active = args[:consumer_peering_active] if args.key?(:consumer_peering_active)
           @producer_export_custom_routes = args[:producer_export_custom_routes] if args.key?(:producer_export_custom_routes)
           @producer_export_subnet_routes_with_public_ip = args[:producer_export_subnet_routes_with_public_ip] if args.key?(:producer_export_subnet_routes_with_public_ip)
           @producer_import_custom_routes = args[:producer_import_custom_routes] if args.key?(:producer_import_custom_routes)
@@ -1471,9 +1538,9 @@ module Google
       class Control
         include Google::Apis::Core::Hashable
       
-        # The service controller environment to use. If empty, no control plane feature (
-        # like quota and billing) will be enabled. The recommended value for most
-        # services is servicecontrol.googleapis.com
+        # The service controller environment to use. If empty, no control plane features
+        # (like quota and billing) will be enabled. The recommended value for most
+        # services is servicecontrol.googleapis.com.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
@@ -2058,7 +2125,11 @@ module Google
         end
       end
       
-      # Enum type definition.
+      # Enum type definition. New usages of this message as an alternative to
+      # EnumDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class Enum
         include Google::Apis::Core::Hashable
       
@@ -2108,7 +2179,11 @@ module Google
         end
       end
       
-      # Enum value definition.
+      # Enum value definition. New usages of this message as an alternative to
+      # EnumValueDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class EnumValue
         include Google::Apis::Core::Hashable
       
@@ -2182,7 +2257,11 @@ module Google
         end
       end
       
-      # A single field of a message type.
+      # A single field of a message type. New usages of this message as an alternative
+      # to FieldDescriptorProto are strongly discouraged. This message does not
+      # reliability preserve all information necessary to model the schema and
+      # preserve semantics. Instead make use of FileDescriptorSet which preserves the
+      # necessary information.
       class Field
         include Google::Apis::Core::Hashable
       
@@ -2339,7 +2418,8 @@ module Google
       
         # Map of service names to renamed services. Keys are the package relative
         # service names and values are the name to be used for the service client and
-        # call options. publishing: go_settings: renamed_services: Publisher: TopicAdmin
+        # call options. Example: publishing: go_settings: renamed_services: Publisher:
+        # TopicAdmin
         # Corresponds to the JSON property `renamedServices`
         # @return [Hash<String,String>]
         attr_accessor :renamed_services
@@ -2907,6 +2987,14 @@ module Google
         # @return [Array<Google::Apis::ServicenetworkingV1::Operation>]
         attr_accessor :operations
       
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2915,6 +3003,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3094,9 +3183,20 @@ module Google
         end
       end
       
-      # Method represents a method of an API interface.
+      # Method represents a method of an API interface. New usages of this message as
+      # an alternative to MethodDescriptorProto are strongly discouraged. This message
+      # does not reliability preserve all information necessary to model the schema
+      # and preserve semantics. Instead make use of FileDescriptorSet which preserves
+      # the necessary information.
       class MethodProp
         include Google::Apis::Core::Hashable
+      
+        # The source edition string, only valid when syntax is SYNTAX_EDITIONS. This
+        # field should be ignored, instead the edition should be inherited from Api.
+        # This is similar to Field and EnumValue.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
       
         # The simple name of this method.
         # Corresponds to the JSON property `name`
@@ -3130,7 +3230,8 @@ module Google
         # @return [String]
         attr_accessor :response_type_url
       
-        # The source syntax of this method.
+        # The source syntax of this method. This field should be ignored, instead the
+        # syntax should be inherited from Api. This is similar to Field and EnumValue.
         # Corresponds to the JSON property `syntax`
         # @return [String]
         attr_accessor :syntax
@@ -3141,6 +3242,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @name = args[:name] if args.key?(:name)
           @options = args[:options] if args.key?(:options)
           @request_streaming = args[:request_streaming] if args.key?(:request_streaming)
@@ -3764,7 +3866,9 @@ module Google
       end
       
       # A protocol buffer option, which can be attached to a message, field,
-      # enumeration, etc.
+      # enumeration, etc. New usages of this message as an alternative to FileOptions,
+      # MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions,
+      # or MethodOptions are strongly discouraged.
       class Option
         include Google::Apis::Core::Hashable
       
@@ -3861,9 +3965,10 @@ module Google
         # @return [String]
         attr_accessor :dns_suffix
       
-        # User assigned name for this resource. Must be unique within the consumer
-        # network. The name must be 1-63 characters long, must begin with a letter, end
-        # with a letter or digit, and only contain lowercase letters, digits or dashes.
+        # Required. User assigned name for this resource. Must be unique within the
+        # consumer network. The name must be 1-63 characters long, must begin with a
+        # letter, end with a letter or digit, and only contain lowercase letters, digits
+        # or dashes.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3902,6 +4007,16 @@ module Google
         # @return [Google::Apis::ServicenetworkingV1::CommonLanguageSettings]
         attr_accessor :common
       
+        # The package name to use in Php. Clobbers the php_namespace option set in the
+        # protobuf. This should be used **only** by APIs who have already set the
+        # language_settings.php.package_name" field in gapic.yaml. API teams should use
+        # the protobuf php_namespace option where possible. Example of a YAML
+        # configuration:: publishing: library_settings: php_settings: library_package:
+        # Google\Cloud\PubSub\V1
+        # Corresponds to the JSON property `libraryPackage`
+        # @return [String]
+        attr_accessor :library_package
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3909,6 +4024,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @common = args[:common] if args.key?(:common)
+          @library_package = args[:library_package] if args.key?(:library_package)
         end
       end
       
@@ -4486,10 +4602,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :ip_prefix_length
       
-        # Network name in the consumer project. This network must have been already
-        # peered with a shared VPC network using CreateConnection method. Must be in a
-        # form 'projects/`project`/global/networks/`network`'. `project` is a project
-        # number, as in '12345' `network` is network name.
+        # Required. Network name in the consumer project. This network must have been
+        # already peered with a shared VPC network using CreateConnection method. Must
+        # be in a form 'projects/`project`/global/networks/`network`'. `project` is a
+        # project number, as in '12345' `network` is network name.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -4578,7 +4694,8 @@ module Google
       end
       
       # This message is used to configure the generation of a subset of the RPCs in a
-      # service for client libraries.
+      # service for client libraries. Note: This feature should not be used in most
+      # cases.
       class SelectiveGapicGeneration
         include Google::Apis::Core::Hashable
       
@@ -4800,8 +4917,8 @@ module Google
         # @return [Array<Google::Apis::ServicenetworkingV1::MetricDescriptor>]
         attr_accessor :metrics
       
-        # Defines the monitored resources used by this service. This is required by the
-        # Service.monitoring and Service.logging configurations.
+        # Defines the monitored resources used by this service. This is required by the `
+        # Service.monitoring` and `Service.logging` configurations.
         # Corresponds to the JSON property `monitoredResources`
         # @return [Array<Google::Apis::ServicenetworkingV1::MonitoredResourceDescriptor>]
         attr_accessor :monitored_resources
@@ -5179,7 +5296,11 @@ module Google
         end
       end
       
-      # A protocol buffer message type.
+      # A protocol buffer message type. New usages of this message as an alternative
+      # to DescriptorProto are strongly discouraged. This message does not reliability
+      # preserve all information necessary to model the schema and preserve semantics.
+      # Instead make use of FileDescriptorSet which preserves the necessary
+      # information.
       class Type
         include Google::Apis::Core::Hashable
       

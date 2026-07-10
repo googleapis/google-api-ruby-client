@@ -212,7 +212,7 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1AppVersion
         include Google::Apis::Core::Hashable
       
-        # Numeric version code of the app version (set by the app's developer).
+        # Optional. Numeric version code of the app version (set by the app's developer).
         # Corresponds to the JSON property `versionCode`
         # @return [Fixnum]
         attr_accessor :version_code
@@ -498,7 +498,7 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1FreshnessInfo]
         attr_accessor :freshness_info
       
-        # The resource name. Format: apps/`app`/errorCountMetricSet
+        # Identifier. The resource name. Format: apps/`app`/errorCountMetricSet
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -671,7 +671,7 @@ module Google
         # @return [String]
         attr_accessor :issue
       
-        # The resource name of the report. Format: apps/`app`/`report`
+        # Identifier. The resource name of the report. Format: apps/`app`/`report`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1029,17 +1029,17 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1MetricsRow
         include Google::Apis::Core::Hashable
       
-        # Granularity of the aggregation period of the row.
+        # Optional. Granularity of the aggregation period of the row.
         # Corresponds to the JSON property `aggregationPeriod`
         # @return [String]
         attr_accessor :aggregation_period
       
-        # Dimension columns in the row.
+        # Optional. Dimension columns in the row.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1DimensionValue>]
         attr_accessor :dimensions
       
-        # Metric columns in the row.
+        # Optional. Metric columns in the row.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1MetricValue>]
         attr_accessor :metrics
@@ -1079,7 +1079,7 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1OsVersion
         include Google::Apis::Core::Hashable
       
-        # Numeric version code of the OS - API level
+        # Optional. Numeric version code of the OS - API level
         # Corresponds to the JSON property `apiLevel`
         # @return [Fixnum]
         attr_accessor :api_level
@@ -1098,15 +1098,15 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest
         include Google::Apis::Core::Hashable
       
-        # Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device, e.g.,
-        # 26. * `versionCode` (int64): version of the app that was running on the user's
-        # device. * `deviceModel` (string): unique identifier of the user's device model.
-        # The form of the identifier is 'deviceBrand/device', where deviceBrand
-        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
-        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
-        # brand, e.g., google. * `deviceType` (string): the type (also known as form
-        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `
+        # apiLevel` (string): the API level of Android that was running on the user's
+        # device, e.g., 26. * `versionCode` (int64): version of the app that was running
+        # on the user's device. * `deviceModel` (string): unique identifier of the user'
+        # s device model. The form of the identifier is 'deviceBrand/device', where
+        # deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE,
+        # e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        # device brand, e.g., google. * `deviceType` (string): the type (also known as
+        # form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
         # country or region of the user's device based on their IP address, represented
         # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
         # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
@@ -1128,18 +1128,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :dimensions
       
-        # Filters to apply to data. The filtering expression follows [AIP-160](https://
-        # google.aip.dev/160) standard and supports filtering by equality of all
+        # Optional. Filters to apply to data. The filtering expression follows [AIP-160](
+        # https://google.aip.dev/160) standard and supports filtering by equality of all
         # breakdown dimensions.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Metrics to aggregate. **Supported metrics:** * `anrRate` (`google.type.Decimal`
-        # ): Percentage of distinct users in the aggregation period that experienced at
-        # least one ANR. * `anrRate7dUserWeighted` (`google.type.Decimal`): Rolling
-        # average value of `anrRate` in the last 7 days. The daily values are weighted
-        # by the count of distinct users for the day. Not supported in HOURLY
+        # Optional. Metrics to aggregate. **Supported metrics:** * `anrRate` (`google.
+        # type.Decimal`): Percentage of distinct users in the aggregation period that
+        # experienced at least one ANR. * `anrRate7dUserWeighted` (`google.type.Decimal`)
+        # : Rolling average value of `anrRate` in the last 7 days. The daily values are
+        # weighted by the count of distinct users for the day. Not supported in HOURLY
         # granularity. * `anrRate28dUserWeighted` (`google.type.Decimal`): Rolling
         # average value of `anrRate` in the last 28 days. The daily values are weighted
         # by the count of distinct users for the day. Not supported in HOURLY
@@ -1164,16 +1164,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # Maximum size of the returned data. If unspecified, at most 1000 rows will be
-        # returned. The maximum value is 100,000; values above 100,000 will be coerced
-        # to 100,000.
+        # Optional. Maximum size of the returned data. If unspecified, at most 1000 rows
+        # will be returned. The maximum value is 100,000; values above 100,000 will be
+        # coerced to 100,000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A page token, received from a previous call. Provide this to retrieve the
-        # subsequent page. When paginating, all other parameters provided to the request
-        # must match the call that provided the page token.
+        # Optional. A page token, received from a previous call. Provide this to
+        # retrieve the subsequent page. When paginating, all other parameters provided
+        # to the request must match the call that provided the page token.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -1195,15 +1195,15 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
         attr_accessor :timeline_spec
       
-        # User view to select. The output data will correspond to the selected view. **
-        # Supported values:** * `OS_PUBLIC` To select data from all publicly released
-        # Android versions. This is the default. Supports all the above dimensions. * `
-        # APP_TESTERS` To select data from users who have opted in to be testers.
-        # Supports all the above dimensions. * `OS_BETA` To select data from beta
-        # android versions only, excluding data from released android versions. Only the
-        # following dimensions are supported: * `versionCode` (int64): version of the
-        # app that was running on the user's device. * `osBuild` (string): OS build of
-        # the user's device, e.g., "T1B2.220916.004".
+        # Optional. User view to select. The output data will correspond to the selected
+        # view. **Supported values:** * `OS_PUBLIC` To select data from all publicly
+        # released Android versions. This is the default. Supports all the above
+        # dimensions. * `APP_TESTERS` To select data from users who have opted in to be
+        # testers. Supports all the above dimensions. * `OS_BETA` To select data from
+        # beta android versions only, excluding data from released android versions.
+        # Only the following dimensions are supported: * `versionCode` (int64): version
+        # of the app that was running on the user's device. * `osBuild` (string): OS
+        # build of the user's device, e.g., "T1B2.220916.004".
         # Corresponds to the JSON property `userCohort`
         # @return [String]
         attr_accessor :user_cohort
@@ -1253,15 +1253,15 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequest
         include Google::Apis::Core::Hashable
       
-        # Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device, e.g.,
-        # 26. * `versionCode` (int64): version of the app that was running on the user's
-        # device. * `deviceModel` (string): unique identifier of the user's device model.
-        # The form of the identifier is 'deviceBrand/device', where deviceBrand
-        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
-        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
-        # brand, e.g., google. * `deviceType` (string): the type (also known as form
-        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # Optional. Dimensions to slice the metrics by. **Supported dimensions:** * `
+        # apiLevel` (string): the API level of Android that was running on the user's
+        # device, e.g., 26. * `versionCode` (int64): version of the app that was running
+        # on the user's device. * `deviceModel` (string): unique identifier of the user'
+        # s device model. The form of the identifier is 'deviceBrand/device', where
+        # deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE,
+        # e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        # device brand, e.g., google. * `deviceType` (string): the type (also known as
+        # form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
         # country or region of the user's device based on their IP address, represented
         # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
         # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
@@ -1283,15 +1283,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :dimensions
       
-        # Filters to apply to data. The filtering expression follows [AIP-160](https://
-        # google.aip.dev/160) standard and supports filtering by equality of all
+        # Optional. Filters to apply to data. The filtering expression follows [AIP-160](
+        # https://google.aip.dev/160) standard and supports filtering by equality of all
         # breakdown dimensions.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Metrics to aggregate. **Supported metrics:** * `crashRate` (`google.type.
-        # Decimal`): Percentage of distinct users in the aggregation period that
+        # Optional. Metrics to aggregate. **Supported metrics:** * `crashRate` (`google.
+        # type.Decimal`): Percentage of distinct users in the aggregation period that
         # experienced at least one crash. * `crashRate7dUserWeighted` (`google.type.
         # Decimal`): Rolling average value of `crashRate` in the last 7 days. The daily
         # values are weighted by the count of distinct users for the day. * `
@@ -1321,16 +1321,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # Maximum size of the returned data. If unspecified, at most 1000 rows will be
-        # returned. The maximum value is 100,000; values above 100,000 will be coerced
-        # to 100,000.
+        # Optional. Maximum size of the returned data. If unspecified, at most 1000 rows
+        # will be returned. The maximum value is 100,000; values above 100,000 will be
+        # coerced to 100,000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A page token, received from a previous call. Provide this to retrieve the
-        # subsequent page. When paginating, all other parameters provided to the request
-        # must match the call that provided the page token.
+        # Optional. A page token, received from a previous call. Provide this to
+        # retrieve the subsequent page. When paginating, all other parameters provided
+        # to the request must match the call that provided the page token.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -1352,15 +1352,15 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
         attr_accessor :timeline_spec
       
-        # User view to select. The output data will correspond to the selected view. **
-        # Supported values:** * `OS_PUBLIC` To select data from all publicly released
-        # Android versions. This is the default. Supports all the above dimensions. * `
-        # APP_TESTERS` To select data from users who have opted in to be testers.
-        # Supports all the above dimensions. * `OS_BETA` To select data from beta
-        # android versions only, excluding data from released android versions. Only the
-        # following dimensions are supported: * `versionCode` (int64): version of the
-        # app that was running on the user's device. * `osBuild` (string): OS build of
-        # the user's device, e.g., "T1B2.220916.004".
+        # Optional. User view to select. The output data will correspond to the selected
+        # view. **Supported values:** * `OS_PUBLIC` To select data from all publicly
+        # released Android versions. This is the default. Supports all the above
+        # dimensions. * `APP_TESTERS` To select data from users who have opted in to be
+        # testers. Supports all the above dimensions. * `OS_BETA` To select data from
+        # beta android versions only, excluding data from released android versions.
+        # Only the following dimensions are supported: * `versionCode` (int64): version
+        # of the app that was running on the user's device. * `osBuild` (string): OS
+        # build of the user's device, e.g., "T1B2.220916.004".
         # Corresponds to the JSON property `userCohort`
         # @return [String]
         attr_accessor :user_cohort
@@ -1410,23 +1410,23 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetRequest
         include Google::Apis::Core::Hashable
       
-        # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device, e.g.,
-        # 26. * `versionCode` (int64): unique identifier of the user's device model. The
-        # form of the identifier is 'deviceBrand/device', where deviceBrand corresponds
-        # to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `
-        # deviceModel` (string): unique identifier of the user's device model. * `
-        # deviceType` (string): identifier of the device's form factor, e.g., PHONE. * `
-        # reportType` (string): the type of error. The value should correspond to one of
-        # the possible values in ErrorType. * `issueId` (string): the id an error was
-        # assigned to. The value should correspond to the ``issue`` component of the
-        # issue name. * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (
-        # 3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
-        # system-on-chip, e.g., Samsung. [Reference](https://developer.android.com/
-        # reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (string):
-        # Model of the device's primary system-on-chip, e.g., "Exynos 2100". [Reference](
-        # https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `
-        # deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
+        # Optional. Dimensions to slice the data by. **Supported dimensions:** * `
+        # apiLevel` (string): the API level of Android that was running on the user's
+        # device, e.g., 26. * `versionCode` (int64): unique identifier of the user's
+        # device model. The form of the identifier is 'deviceBrand/device', where
+        # deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE,
+        # e.g., google/coral. * `deviceModel` (string): unique identifier of the user's
+        # device model. * `deviceType` (string): identifier of the device's form factor,
+        # e.g., PHONE. * `reportType` (string): the type of error. The value should
+        # correspond to one of the possible values in ErrorType. * `issueId` (string):
+        # the id an error was assigned to. The value should correspond to the ``issue``
+        # component of the issue name. * `deviceRamBucket` (int64): RAM of the device,
+        # in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+        # device's primary system-on-chip, e.g., Samsung. [Reference](https://developer.
+        # android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel` (
+        # string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". [
+        # Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL)
+        # * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. * `
         # deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `
         # deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `
         # deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. * `
@@ -1439,17 +1439,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :dimensions
       
-        # Filters to apply to data. The filtering expression follows [AIP-160](https://
-        # google.aip.dev/160) standard and supports filtering by equality of all
+        # Optional. Filters to apply to data. The filtering expression follows [AIP-160](
+        # https://google.aip.dev/160) standard and supports filtering by equality of all
         # breakdown dimensions and: * `isUserPerceived` (string): denotes whether error
         # is user perceived or not, USER_PERCEIVED or NOT_USER_PERCEIVED.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Metrics to aggregate. **Supported metrics:** * `errorReportCount` (`google.
-        # type.Decimal`): Absolute count of individual error reports that have been
-        # received for an app. * `distinctUsers` (`google.type.Decimal`): Count of
+        # Optional. Metrics to aggregate. **Supported metrics:** * `errorReportCount` (`
+        # google.type.Decimal`): Absolute count of individual error reports that have
+        # been received for an app. * `distinctUsers` (`google.type.Decimal`): Count of
         # distinct users for which reports have been received. Care must be taken not to
         # aggregate this count further, as it may result in users being counted multiple
         # times. This value is not rounded, however it may be an approximation.
@@ -1457,16 +1457,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # Maximum size of the returned data. If unspecified, at most 1000 rows will be
-        # returned. The maximum value is 100000; values above 100000 will be coerced to
-        # 100000.
+        # Optional. Maximum size of the returned data. If unspecified, at most 1000 rows
+        # will be returned. The maximum value is 100000; values above 100000 will be
+        # coerced to 100000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A page token, received from a previous call. Provide this to retrieve the
-        # subsequent page. When paginating, all other parameters provided to the request
-        # must match the call that provided the page token.
+        # Optional. A page token, received from a previous call. Provide this to
+        # retrieve the subsequent page. When paginating, all other parameters provided
+        # to the request must match the call that provided the page token.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -1532,15 +1532,15 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetRequest
         include Google::Apis::Core::Hashable
       
-        # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device, e.g.,
-        # 26. * `versionCode` (int64): version of the app that was running on the user's
-        # device. * `deviceModel` (string): unique identifier of the user's device model.
-        # The form of the identifier is 'deviceBrand/device', where deviceBrand
-        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
-        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
-        # brand, e.g., google. * `deviceType` (string): the type (also known as form
-        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # Optional. Dimensions to slice the data by. **Supported dimensions:** * `
+        # apiLevel` (string): the API level of Android that was running on the user's
+        # device, e.g., 26. * `versionCode` (int64): version of the app that was running
+        # on the user's device. * `deviceModel` (string): unique identifier of the user'
+        # s device model. The form of the identifier is 'deviceBrand/device', where
+        # deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE,
+        # e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        # device brand, e.g., google. * `deviceType` (string): the type (also known as
+        # form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
         # country or region of the user's device based on their IP address, represented
         # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
         # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
@@ -1562,43 +1562,43 @@ module Google
         # @return [Array<String>]
         attr_accessor :dimensions
       
-        # Filters to apply to data. The filtering expression follows [AIP-160](https://
-        # google.aip.dev/160) standard and supports filtering by equality of all
+        # Optional. Filters to apply to data. The filtering expression follows [AIP-160](
+        # https://google.aip.dev/160) standard and supports filtering by equality of all
         # breakdown dimensions.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Metrics to aggregate. **Supported metrics:** * `excessiveWakeupRate` (`google.
-        # type.Decimal`): Percentage of distinct users in the aggregation period that
-        # had more than 10 wakeups per hour. * `excessiveWakeupRate7dUserWeighted` (`
-        # google.type.Decimal`): Rolling average value of `excessiveWakeupRate` in the
-        # last 7 days. The daily values are weighted by the count of distinct users for
-        # the day. * `excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`):
-        # Rolling average value of `excessiveWakeupRate` in the last 28 days. The daily
-        # values are weighted by the count of distinct users for the day. * `
-        # distinctUsers` (`google.type.Decimal`): Count of distinct users in the
-        # aggregation period that were used as normalization value for the `
-        # excessiveWakeupRate` metric. A user is counted in this metric if they app was
-        # doing any work on the device, i.e., not just active foreground usage but also
-        # background work. Care must be taken not to aggregate this count further, as it
-        # may result in users being counted multiple times. The value is rounded to the
-        # nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of
-        # the value.
+        # Optional. Metrics to aggregate. **Supported metrics:** * `excessiveWakeupRate`
+        # (`google.type.Decimal`): Percentage of distinct users in the aggregation
+        # period that had more than 10 wakeups per hour. * `
+        # excessiveWakeupRate7dUserWeighted` (`google.type.Decimal`): Rolling average
+        # value of `excessiveWakeupRate` in the last 7 days. The daily values are
+        # weighted by the count of distinct users for the day. * `
+        # excessiveWakeupRate28dUserWeighted` (`google.type.Decimal`): Rolling average
+        # value of `excessiveWakeupRate` in the last 28 days. The daily values are
+        # weighted by the count of distinct users for the day. * `distinctUsers` (`
+        # google.type.Decimal`): Count of distinct users in the aggregation period that
+        # were used as normalization value for the `excessiveWakeupRate` metric. A user
+        # is counted in this metric if they app was doing any work on the device, i.e.,
+        # not just active foreground usage but also background work. Care must be taken
+        # not to aggregate this count further, as it may result in users being counted
+        # multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000
+        # or 1,000,000, depending on the magnitude of the value.
         # Corresponds to the JSON property `metrics`
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # Maximum size of the returned data. If unspecified, at most 1000 rows will be
-        # returned. The maximum value is 100000; values above 100000 will be coerced to
-        # 100000.
+        # Optional. Maximum size of the returned data. If unspecified, at most 1000 rows
+        # will be returned. The maximum value is 100000; values above 100000 will be
+        # coerced to 100000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A page token, received from a previous call. Provide this to retrieve the
-        # subsequent page. When paginating, all other parameters provided to the request
-        # must match the call that provided the page token.
+        # Optional. A page token, received from a previous call. Provide this to
+        # retrieve the subsequent page. When paginating, all other parameters provided
+        # to the request must match the call that provided the page token.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -1620,8 +1620,8 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
         attr_accessor :timeline_spec
       
-        # User view to select. The output data will correspond to the selected view. The
-        # only supported value is `OS_PUBLIC`.
+        # Optional. User view to select. The output data will correspond to the selected
+        # view. The only supported value is `OS_PUBLIC`.
         # Corresponds to the JSON property `userCohort`
         # @return [String]
         attr_accessor :user_cohort
@@ -1819,15 +1819,15 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetRequest
         include Google::Apis::Core::Hashable
       
-        # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device, e.g.,
-        # 26. * `versionCode` (int64): version of the app that was running on the user's
-        # device. * `deviceModel` (string): unique identifier of the user's device model.
-        # The form of the identifier is 'deviceBrand/device', where deviceBrand
-        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
-        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
-        # brand, e.g., google. * `deviceType` (string): the type (also known as form
-        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # Optional. Dimensions to slice the data by. **Supported dimensions:** * `
+        # apiLevel` (string): the API level of Android that was running on the user's
+        # device, e.g., 26. * `versionCode` (int64): version of the app that was running
+        # on the user's device. * `deviceModel` (string): unique identifier of the user'
+        # s device model. The form of the identifier is 'deviceBrand/device', where
+        # deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE,
+        # e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        # device brand, e.g., google. * `deviceType` (string): the type (also known as
+        # form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
         # country or region of the user's device based on their IP address, represented
         # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
         # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
@@ -1849,21 +1849,22 @@ module Google
         # @return [Array<String>]
         attr_accessor :dimensions
       
-        # Filters to apply to data. The filtering expression follows [AIP-160](https://
-        # google.aip.dev/160) standard and supports filtering by equality of all
+        # Optional. Filters to apply to data. The filtering expression follows [AIP-160](
+        # https://google.aip.dev/160) standard and supports filtering by equality of all
         # breakdown dimensions.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Metrics to aggregate. **Supported metrics:** * `slowRenderingRate20Fps` (`
-        # google.type.Decimal`): Percentage of distinct users in the aggregation period
-        # that had a slow rendering. * `slowRenderingRate20Fps7dUserWeighted` (`google.
-        # type.Decimal`): Rolling average value of `slowRenderingRate20Fps` in the last
-        # 7 days. The daily values are weighted by the count of distinct users for the
-        # day. * `slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`):
-        # Rolling average value of `slowRenderingRate20Fps` in the last 28 days. The
-        # daily values are weighted by the count of distinct users for the day. * `
+        # Optional. Metrics to aggregate. **Supported metrics:** * `
+        # slowRenderingRate20Fps` (`google.type.Decimal`): Percentage of distinct users
+        # in the aggregation period that had a slow rendering. * `
+        # slowRenderingRate20Fps7dUserWeighted` (`google.type.Decimal`): Rolling average
+        # value of `slowRenderingRate20Fps` in the last 7 days. The daily values are
+        # weighted by the count of distinct users for the day. * `
+        # slowRenderingRate20Fps28dUserWeighted` (`google.type.Decimal`): Rolling
+        # average value of `slowRenderingRate20Fps` in the last 28 days. The daily
+        # values are weighted by the count of distinct users for the day. * `
         # slowRenderingRate30Fps` (`google.type.Decimal`): Percentage of distinct users
         # in the aggregation period that had a slow rendering. * `
         # slowRenderingRate30Fps7dUserWeighted` (`google.type.Decimal`): Rolling average
@@ -1883,16 +1884,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # Maximum size of the returned data. If unspecified, at most 1000 rows will be
-        # returned. The maximum value is 100000; values above 100000 will be coerced to
-        # 100000.
+        # Optional. Maximum size of the returned data. If unspecified, at most 1000 rows
+        # will be returned. The maximum value is 100000; values above 100000 will be
+        # coerced to 100000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A page token, received from a previous call. Provide this to retrieve the
-        # subsequent page. When paginating, all other parameters provided to the request
-        # must match the call that provided the page token.
+        # Optional. A page token, received from a previous call. Provide this to
+        # retrieve the subsequent page. When paginating, all other parameters provided
+        # to the request must match the call that provided the page token.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -1914,8 +1915,8 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
         attr_accessor :timeline_spec
       
-        # User view to select. The output data will correspond to the selected view. The
-        # only supported value is `OS_PUBLIC`.
+        # Optional. User view to select. The output data will correspond to the selected
+        # view. The only supported value is `OS_PUBLIC`.
         # Corresponds to the JSON property `userCohort`
         # @return [String]
         attr_accessor :user_cohort
@@ -1965,15 +1966,15 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetRequest
         include Google::Apis::Core::Hashable
       
-        # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device, e.g.,
-        # 26. * `versionCode` (int64): version of the app that was running on the user's
-        # device. * `deviceModel` (string): unique identifier of the user's device model.
-        # The form of the identifier is 'deviceBrand/device', where deviceBrand
-        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
-        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
-        # brand, e.g., google. * `deviceType` (string): the type (also known as form
-        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # Optional. Dimensions to slice the data by. **Supported dimensions:** * `
+        # apiLevel` (string): the API level of Android that was running on the user's
+        # device, e.g., 26. * `versionCode` (int64): version of the app that was running
+        # on the user's device. * `deviceModel` (string): unique identifier of the user'
+        # s device model. The form of the identifier is 'deviceBrand/device', where
+        # deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE,
+        # e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        # device brand, e.g., google. * `deviceType` (string): the type (also known as
+        # form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
         # country or region of the user's device based on their IP address, represented
         # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
         # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
@@ -1995,18 +1996,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :dimensions
       
-        # Filters to apply to data. The filtering expression follows [AIP-160](https://
-        # google.aip.dev/160) standard and supports filtering by equality of all
+        # Optional. Filters to apply to data. The filtering expression follows [AIP-160](
+        # https://google.aip.dev/160) standard and supports filtering by equality of all
         # breakdown dimensions.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Metrics to aggregate. **Supported metrics:** * `slowStartRate` (`google.type.
-        # Decimal`): Percentage of distinct users in the aggregation period that had a
-        # slow start. * `slowStartRate7dUserWeighted` (`google.type.Decimal`): Rolling
-        # average value of `slowStartRate` in the last 7 days. The daily values are
-        # weighted by the count of distinct users for the day. * `
+        # Optional. Metrics to aggregate. **Supported metrics:** * `slowStartRate` (`
+        # google.type.Decimal`): Percentage of distinct users in the aggregation period
+        # that had a slow start. * `slowStartRate7dUserWeighted` (`google.type.Decimal`):
+        # Rolling average value of `slowStartRate` in the last 7 days. The daily values
+        # are weighted by the count of distinct users for the day. * `
         # slowStartRate28dUserWeighted` (`google.type.Decimal`): Rolling average value
         # of `slowStartRate` in the last 28 days. The daily values are weighted by the
         # count of distinct users for the day. * `distinctUsers` (`google.type.Decimal`):
@@ -2020,16 +2021,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # Maximum size of the returned data. If unspecified, at most 1000 rows will be
-        # returned. The maximum value is 100000; values above 100000 will be coerced to
-        # 100000.
+        # Optional. Maximum size of the returned data. If unspecified, at most 1000 rows
+        # will be returned. The maximum value is 100000; values above 100000 will be
+        # coerced to 100000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A page token, received from a previous call. Provide this to retrieve the
-        # subsequent page. When paginating, all other parameters provided to the request
-        # must match the call that provided the page token.
+        # Optional. A page token, received from a previous call. Provide this to
+        # retrieve the subsequent page. When paginating, all other parameters provided
+        # to the request must match the call that provided the page token.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -2051,8 +2052,8 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
         attr_accessor :timeline_spec
       
-        # User view to select. The output data will correspond to the selected view. The
-        # only supported value is `OS_PUBLIC`.
+        # Optional. User view to select. The output data will correspond to the selected
+        # view. The only supported value is `OS_PUBLIC`.
         # Corresponds to the JSON property `userCohort`
         # @return [String]
         attr_accessor :user_cohort
@@ -2102,15 +2103,15 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetRequest
         include Google::Apis::Core::Hashable
       
-        # Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (
-        # string): the API level of Android that was running on the user's device, e.g.,
-        # 26. * `versionCode` (int64): version of the app that was running on the user's
-        # device. * `deviceModel` (string): unique identifier of the user's device model.
-        # The form of the identifier is 'deviceBrand/device', where deviceBrand
-        # corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g.,
-        # google/coral. * `deviceBrand` (string): unique identifier of the user's device
-        # brand, e.g., google. * `deviceType` (string): the type (also known as form
-        # factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
+        # Optional. Dimensions to slice the data by. **Supported dimensions:** * `
+        # apiLevel` (string): the API level of Android that was running on the user's
+        # device, e.g., 26. * `versionCode` (int64): version of the app that was running
+        # on the user's device. * `deviceModel` (string): unique identifier of the user'
+        # s device model. The form of the identifier is 'deviceBrand/device', where
+        # deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE,
+        # e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        # device brand, e.g., google. * `deviceType` (string): the type (also known as
+        # form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the
         # country or region of the user's device based on their IP address, represented
         # as a 2-letter ISO-3166 code (e.g. US for the United States). * `
         # deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.)
@@ -2132,16 +2133,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :dimensions
       
-        # Filters to apply to data. The filtering expression follows [AIP-160](https://
-        # google.aip.dev/160) standard and supports filtering by equality of all
+        # Optional. Filters to apply to data. The filtering expression follows [AIP-160](
+        # https://google.aip.dev/160) standard and supports filtering by equality of all
         # breakdown dimensions.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
       
-        # Metrics to aggregate. **Supported metrics:** * `stuckBgWakelockRate` (`google.
-        # type.Decimal`): Percentage of distinct users in the aggregation period that
-        # had a wakelock held in the background for longer than 1 hour. * `
+        # Optional. Metrics to aggregate. **Supported metrics:** * `stuckBgWakelockRate`
+        # (`google.type.Decimal`): Percentage of distinct users in the aggregation
+        # period that had a wakelock held in the background for longer than 1 hour. * `
         # stuckBgWakelockRate7dUserWeighted` (`google.type.Decimal`): Rolling average
         # value of `stuckBgWakelockRate` in the last 7 days. The daily values are
         # weighted by the count of distinct users for the day. * `
@@ -2159,16 +2160,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :metrics
       
-        # Maximum size of the returned data. If unspecified, at most 1000 rows will be
-        # returned. The maximum value is 100000; values above 100000 will be coerced to
-        # 100000.
+        # Optional. Maximum size of the returned data. If unspecified, at most 1000 rows
+        # will be returned. The maximum value is 100000; values above 100000 will be
+        # coerced to 100000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A page token, received from a previous call. Provide this to retrieve the
-        # subsequent page. When paginating, all other parameters provided to the request
-        # must match the call that provided the page token.
+        # Optional. A page token, received from a previous call. Provide this to
+        # retrieve the subsequent page. When paginating, all other parameters provided
+        # to the request must match the call that provided the page token.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -2190,8 +2191,8 @@ module Google
         # @return [Google::Apis::PlaydeveloperreportingV1alpha1::GooglePlayDeveloperReportingV1alpha1TimelineSpec]
         attr_accessor :timeline_spec
       
-        # User view to select. The output data will correspond to the selected view. The
-        # only supported value is `OS_PUBLIC`.
+        # Optional. User view to select. The output data will correspond to the selected
+        # view. The only supported value is `OS_PUBLIC`.
         # Corresponds to the JSON property `userCohort`
         # @return [String]
         attr_accessor :user_cohort
@@ -2607,8 +2608,8 @@ module Google
       class GooglePlayDeveloperReportingV1alpha1TimelineSpec
         include Google::Apis::Core::Hashable
       
-        # Type of the aggregation period of the datapoints in the timeline. Intervals
-        # are identified by the date and time at the start of the interval.
+        # Optional. Type of the aggregation period of the datapoints in the timeline.
+        # Intervals are identified by the date and time at the start of the interval.
         # Corresponds to the JSON property `aggregationPeriod`
         # @return [String]
         attr_accessor :aggregation_period

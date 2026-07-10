@@ -1,5 +1,43 @@
 # Release history for google-apis-vmwareengine_v1
 
+### v0.20.0 (2026-06-14)
+
+* Regenerated from discovery document revision 20260608
+* Regenerated using generator version 0.19.0
+
+### v0.19.0 (2026-05-31)
+
+* Regenerated from discovery document revision 20260518
+
+### v0.18.0 (2026-05-03)
+
+* Regenerated from discovery document revision 20260420
+
+### v0.17.0 (2026-04-19)
+
+* Regenerated from discovery document revision 20260319
+
+### v0.16.0 (2026-03-01)
+
+* Regenerated from discovery document revision 20260217
+
+### v0.15.0 (2025-12-14)
+
+* Regenerated from discovery document revision 20251113
+
+### v0.14.0 (2025-11-02)
+
+* Regenerated from discovery document revision 20251020
+
+### v0.13.0 (2025-10-05)
+
+* Regenerated from discovery document revision 20250912
+
+### v0.12.0 (2025-08-24)
+
+* Regenerated from discovery document revision 20250811
+* Regenerated using generator version 0.18.0
+
 ### v0.11.0 (2025-05-04)
 
 * Regenerated using generator version 0.17.0

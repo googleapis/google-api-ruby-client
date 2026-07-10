@@ -142,8 +142,9 @@ module Google
         end
         
         # Generates an enterprise upgrade URL to upgrade an existing managed Google Play
-        # Accounts enterprise to a managed Google domain.Note: This feature is not
-        # generally available.
+        # Accounts enterprise to a managed Google domain. See the guide (https://
+        # developers.google.com/android/management/upgrade-an-enterprise) for more
+        # details.
         # @param [String] name
         #   Required. The name of the enterprise to be upgraded in the form enterprises/`
         #   enterpriseId`.
@@ -434,8 +435,9 @@ module Google
         # @param [String] parent
         #   The name of the enterprise in the form enterprises/`enterpriseId`.
         # @param [Fixnum] page_size
-        #   The requested page size. The actual page size may be fixed to a min or max
-        #   value.
+        #   The requested page size. If unspecified, at most 10 devices will be returned.
+        #   The maximum value is 100; values above 100 will be coerced to 100. The limits
+        #   can change over time.
         # @param [String] page_token
         #   A token identifying a page of results returned by the server.
         # @param [String] fields
@@ -583,6 +585,14 @@ module Google
         #   The standard list page size.
         # @param [String] page_token
         #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to true, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field.This can only be true when reading across collections. For
+        #   example, when parent is set to "projects/example/locations/-".This field is
+        #   not supported by default and will result in an UNIMPLEMENTED error if set
+        #   unless explicitly documented otherwise in service or product specific
+        #   documentation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -600,7 +610,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_enterprise_device_operations(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_enterprise_device_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AndroidmanagementV1::ListOperationsResponse::Representation
           command.response_class = Google::Apis::AndroidmanagementV1::ListOperationsResponse
@@ -608,6 +618,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -969,6 +980,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates or creates applications in a policy.
+        # @param [String] name
+        #   Required. The name of the Policy containing the ApplicationPolicy objects to
+        #   be updated, in the form enterprises/`enterpriseId`/policies/`policyId`.
+        # @param [Google::Apis::AndroidmanagementV1::ModifyPolicyApplicationsRequest] modify_policy_applications_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::ModifyPolicyApplicationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::ModifyPolicyApplicationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def modify_policy_applications(name, modify_policy_applications_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:modifyPolicyApplications', options)
+          command.request_representation = Google::Apis::AndroidmanagementV1::ModifyPolicyApplicationsRequest::Representation
+          command.request_object = modify_policy_applications_request_object
+          command.response_representation = Google::Apis::AndroidmanagementV1::ModifyPolicyApplicationsResponse::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::ModifyPolicyApplicationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates or creates a policy.
         # @param [String] name
         #   The name of the policy in the form enterprises/`enterpriseId`/policies/`
@@ -1002,6 +1047,40 @@ module Google
           command.response_class = Google::Apis::AndroidmanagementV1::Policy
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes applications in a policy.
+        # @param [String] name
+        #   Required. The name of the policy containing the ApplicationPolicy objects to
+        #   be removed, in the form enterprises/`enterpriseId`/policies/`policyId`.
+        # @param [Google::Apis::AndroidmanagementV1::RemovePolicyApplicationsRequest] remove_policy_applications_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidmanagementV1::RemovePolicyApplicationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidmanagementV1::RemovePolicyApplicationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_policy_applications(name, remove_policy_applications_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:removePolicyApplications', options)
+          command.request_representation = Google::Apis::AndroidmanagementV1::RemovePolicyApplicationsRequest::Representation
+          command.request_object = remove_policy_applications_request_object
+          command.response_representation = Google::Apis::AndroidmanagementV1::RemovePolicyApplicationsResponse::Representation
+          command.response_class = Google::Apis::AndroidmanagementV1::RemovePolicyApplicationsResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

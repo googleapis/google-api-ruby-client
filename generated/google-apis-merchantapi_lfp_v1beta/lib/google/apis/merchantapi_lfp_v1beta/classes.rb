@@ -273,7 +273,8 @@ module Google
         attr_accessor :linked_gbps
       
         # Identifier. The name of the `LfpMerchantState` resource. Format: `accounts/`
-        # account`/lfpMerchantStates/`target_merchant``
+        # account`/lfpMerchantStates/`target_merchant``. For example, `accounts/123456/
+        # lfpMerchantStates/567890`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -398,8 +399,8 @@ module Google
       class LfpStore
         include Google::Apis::Core::Hashable
       
-        # Optional. [Google My Business category id](https://gcid-explorer.corp.google.
-        # com/static/gcid.html).
+        # Optional. [Google My Business category id](https://support.google.com/business/
+        # answer/7249669).
         # Corresponds to the JSON property `gcidCategory`
         # @return [Array<String>]
         attr_accessor :gcid_category
@@ -651,7 +652,7 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
-        # Optional. The product expiration time. This field will not bet set if the
+        # Optional. The product expiration time. This field will not be set if the
         # notification is sent for a product deletion event.
         # Corresponds to the JSON property `expirationTime`
         # @return [String]

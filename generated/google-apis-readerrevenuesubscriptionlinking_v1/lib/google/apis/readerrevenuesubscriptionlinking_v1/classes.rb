@@ -96,6 +96,23 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The SwG publication id that the reader's subscription linking was
+        # originating from.
+        # Corresponds to the JSON property `originatingPublicationId`
+        # @return [String]
+        attr_accessor :originating_publication_id
+      
+        # Output only. The publisher provided id of the reader.
+        # Corresponds to the JSON property `ppid`
+        # @return [String]
+        attr_accessor :ppid
+      
+        # Output only. The SwG publication id that the reader has linked their
+        # subscription to.
+        # Corresponds to the JSON property `publicationId`
+        # @return [String]
+        attr_accessor :publication_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -104,6 +121,9 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
+          @originating_publication_id = args[:originating_publication_id] if args.key?(:originating_publication_id)
+          @ppid = args[:ppid] if args.key?(:ppid)
+          @publication_id = args[:publication_id] if args.key?(:publication_id)
         end
       end
       
