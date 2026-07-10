@@ -167,6 +167,7 @@ RSpec.describe Google::Apis::Core::StorageDownloadCommand do
     let(:dest) { StringIO.new }
 
     it 'does not write error body to destination IO' do
+      command.options.retries = 0
       response = Faraday::Response.new(status: 503, body: 'Service Unavailable')
       expect(client).to receive(:get) do |_url, _params, _headers, &block|
         request = Faraday::Request.new
