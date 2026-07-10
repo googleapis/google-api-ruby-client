@@ -151,7 +151,7 @@ module Google
             .map { |(a, b)| b }
             .join(' ')
             .split
-            .find_all { |s| s !~ %r{^gl-ruby/|^gdcl/} }
+            .find_all { |s| s !~ %r{^gl-ruby/|^gdcl/|^gccl-invocation-id/} }
             .join(' ')
           # Report 0.x.y versions that are in separate packages as 1.x.y.
           # Thus, reported gdcl/0.x.y versions are monopackage clients, while

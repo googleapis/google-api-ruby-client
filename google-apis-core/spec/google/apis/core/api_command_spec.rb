@@ -66,6 +66,14 @@ RSpec.describe Google::Apis::Core::ApiCommand do
       expect(command.header['x-goog-api-client']).to be nil
     end
 
+    it 'should not accumulate duplicate gccl-invocation-id clauses when prepare! is called multiple times' do
+      command.options.add_invocation_id_header = true
+      command.prepare!
+      first_header = command.header['X-Goog-Api-Client']
+      command.prepare!
+      expect(command.header['X-Goog-Api-Client']).to eql first_header
+    end
+
     it 'should not set the X-Goog-User-Project header if there is no quota_project' do
       command.prepare!
       expect(command.header['X-Goog-User-Project']).to be_nil
