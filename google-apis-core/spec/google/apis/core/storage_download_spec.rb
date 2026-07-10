@@ -162,4 +162,21 @@ RSpec.describe Google::Apis::Core::StorageDownloadCommand do
       expect(received).to eql 'Hello world'
     end
   end
+
+  context 'when server responds with non-2xx status and error body' do
+    let(:dest) { StringIO.new }
+
+    it 'does not write error body to destination IO' do
+      response = Faraday::Response.new(status: 503, body: 'Service Unavailable')
+      expect(client).to receive(:get) do |_url, _params, _headers, &block|
+        request = Faraday::Request.new
+        request.options = Faraday::RequestOptions.new
+        block.call(request)
+        request.options.on_data.call('Service Unavailable', 19, response)
+        response
+      end
+      expect { command.execute(client) }.to raise_error(Google::Apis::ServerError)
+      expect(dest.string).to be_empty
+    end
+  end
 end
