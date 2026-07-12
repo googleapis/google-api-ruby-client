@@ -96,10 +96,13 @@ module Google
         
         # Lists the locations for the specified account.
         # @param [String] parent
-        #   Required. The name of the account to fetch locations from. If the parent
-        #   Account is of AccountType PERSONAL, only Locations that are directly owned by
-        #   the Account are returned, otherwise it will return all accessible locations
-        #   from the Account, either directly or indirectly.
+        #   Required. The name of the account to fetch locations from. * **Specific
+        #   Account ID**: If the account is of type `AccountType.PERSONAL`, the response
+        #   returns only locations directly owned by that account. For all other types (e.
+        #   g., `AccountType.LOCATION_GROUP`), it returns all accessible locations. * **
+        #   Wildcard (`-`)**: Using `accounts/-` identifies the authenticated user. This
+        #   scope defaults to `AccountType.PERSONAL` but includes both directly and
+        #   indirectly owned locations (e.g., those accessible via member groups).
         # @param [String] filter
         #   Optional. A filter constraining the locations to return. The response includes
         #   only entries that match the filter. If `filter` is empty, then constraints are
