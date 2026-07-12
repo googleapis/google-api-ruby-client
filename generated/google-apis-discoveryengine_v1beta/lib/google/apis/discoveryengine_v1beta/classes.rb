@@ -2457,6 +2457,15 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleTypeDateTime]
         attr_accessor :next_sync_time
       
+        # Output only. The static IP addresses used by this connector for OAuth APIs (e.
+        # g. end user authentication). These are surfaced separately from `
+        # static_ip_addresses` so that customers can apply granular firewall settings
+        # for OAuth endpoints. Only populated for connectors that have static IP enabled
+        # and are used for actions and/or federated search.
+        # Corresponds to the JSON property `oauthStaticIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :oauth_static_ip_addresses
+      
         # Required data connector parameters in structured json format.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
@@ -2567,6 +2576,7 @@ module Google
           @latest_pause_time = args[:latest_pause_time] if args.key?(:latest_pause_time)
           @name = args[:name] if args.key?(:name)
           @next_sync_time = args[:next_sync_time] if args.key?(:next_sync_time)
+          @oauth_static_ip_addresses = args[:oauth_static_ip_addresses] if args.key?(:oauth_static_ip_addresses)
           @params = args[:params] if args.key?(:params)
           @private_connectivity_project_id = args[:private_connectivity_project_id] if args.key?(:private_connectivity_project_id)
           @realtime_state = args[:realtime_state] if args.key?(:realtime_state)
@@ -3874,9 +3884,9 @@ module Google
         # @return [String]
         attr_accessor :app_type
       
-        # Optional. The Agent registry containing the agents, MCP servers and tools
-        # associated with this engine. Field is required if the engine has an Agent
-        # Gateway setting.
+        # Output only. The Agent registry containing the agents, MCP servers and tools
+        # associated with this engine. Derived server-side from the linked Agent Gateway'
+        # s registry.
         # Corresponds to the JSON property `associatedAgentRegistry`
         # @return [String]
         attr_accessor :associated_agent_registry
@@ -3950,9 +3960,9 @@ module Google
         # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
         # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
-        # canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` *
-        # `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
-        # intelligence` * `deep-research`
+        # canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-
+        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
+        # orchestration` * `cross-product-intelligence` * `deep-research`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -4439,10 +4449,11 @@ module Google
       class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The required subscription tier of this engine. They cannot be
-        # modified after engine creation. If the required subscription tier is search,
-        # user with higher license tier like assist can still access the standalone app
-        # associated with this engine.
+        # Optional. The required subscription tier of this engine. If the required
+        # subscription tier is search, user with higher license tier like assist can
+        # still access the standalone app associated with this engine. Web grounding
+        # feature is only available on the app if it is set as SubscriptionTier.
+        # SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT.
         # Corresponds to the JSON property `requiredSubscriptionTier`
         # @return [String]
         attr_accessor :required_subscription_tier
@@ -7325,6 +7336,551 @@ module Google
         end
       end
       
+      # Evaluation insights for a program.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsights
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of evaluation insights.
+        # Corresponds to the JSON property `insights`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsightsAlphaEvolveEvaluationInsight>]
+        attr_accessor :insights
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights = args[:insights] if args.key?(:insights)
+        end
+      end
+      
+      # A single evaluation insight.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsightsAlphaEvolveEvaluationInsight
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Label of the insight.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Optional. Text of the insight.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Contains the evaluation scores for the target metrics to optimize.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScores
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of evaluation scores.
+        # Corresponds to the JSON property `scores`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScoresAlphaEvolveEvaluationScore>]
+        attr_accessor :scores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scores = args[:scores] if args.key?(:scores)
+        end
+      end
+      
+      # Score for a single metric.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScoresAlphaEvolveEvaluationScore
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the metric.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # Required. Score of a program for this metric.
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric = args[:metric] if args.key?(:metric)
+          @score = args[:score] if args.key?(:score)
+        end
+      end
+      
+      # An experiment is a single run of the AlphaEvolve agent, an evolutionary coding
+      # agent powered by LLM for algorithm discovery and optimization.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperiment
+        include Google::Apis::Core::Hashable
+      
+        # Configuration of an experiment.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfig]
+        attr_accessor :config
+      
+        # Output only. Time when the experiment was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Specifies the name of the seed program used to start the
+        # experiment.
+        # Corresponds to the JSON property `initialAlphaEvolveProgram`
+        # @return [String]
+        attr_accessor :initial_alpha_evolve_program
+      
+        # Identifier. The full resource name of the experiment. Format: `projects/`
+        # project`/locations/`location`/collections/`collection`/engines/`engine`/
+        # sessions/`session`/alphaEvolveExperiments/`alpha_evolve_experiment``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of the experiment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Stats about the experiment.
+        # Corresponds to the JSON property `stats`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentStats]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @initial_alpha_evolve_program = args[:initial_alpha_evolve_program] if args.key?(:initial_alpha_evolve_program)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # Configuration of an experiment.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Evolution settings for the experiment.
+        # Corresponds to the JSON property `evolutionSettings`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettings]
+        attr_accessor :evolution_settings
+      
+        # Generation settings for the experiment.
+        # Corresponds to the JSON property `generationSettings`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettings]
+        attr_accessor :generation_settings
+      
+        # Required. Description of the problem to be solved by the experiment.
+        # Corresponds to the JSON property `problemDescription`
+        # @return [String]
+        attr_accessor :problem_description
+      
+        # Required. Primary programming language of the code being optimized.
+        # Corresponds to the JSON property `programLanguage`
+        # @return [String]
+        attr_accessor :program_language
+      
+        # Run settings for the experiment.
+        # Corresponds to the JSON property `runSettings`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigRunSettings]
+        attr_accessor :run_settings
+      
+        # Required. Title of the experiment.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evolution_settings = args[:evolution_settings] if args.key?(:evolution_settings)
+          @generation_settings = args[:generation_settings] if args.key?(:generation_settings)
+          @problem_description = args[:problem_description] if args.key?(:problem_description)
+          @program_language = args[:program_language] if args.key?(:program_language)
+          @run_settings = args[:run_settings] if args.key?(:run_settings)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Evolution settings for the experiment.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for parent sampling.
+        # Corresponds to the JSON property `parentSamplingConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfig]
+        attr_accessor :parent_sampling_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent_sampling_config = args[:parent_sampling_config] if args.key?(:parent_sampling_config)
+        end
+      end
+      
+      # Configuration for parent sampling.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Pareto sampling.
+        # Corresponds to the JSON property `paretoSamplingConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfigParetoSamplingConfig]
+        attr_accessor :pareto_sampling_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pareto_sampling_config = args[:pareto_sampling_config] if args.key?(:pareto_sampling_config)
+        end
+      end
+      
+      # Configuration for Pareto sampling.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfigParetoSamplingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Probability [0.0, 1.0] of sampling parent programs from the Pareto
+        # frontier instead of normal fitness-based sampling during candidate generation.
+        # Useful when optimizing multiple metrics simultaneously. Default 0.0 (disabled).
+        # Only effective when evaluation returns multiple metrics in scores_to_optimize.
+        # Corresponds to the JSON property `paretoSamplingProbability`
+        # @return [Float]
+        attr_accessor :pareto_sampling_probability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pareto_sampling_probability = args[:pareto_sampling_probability] if args.key?(:pareto_sampling_probability)
+        end
+      end
+      
+      # Generation settings for the experiment.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional user-provided context to be used during generation.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Optional. When true, the LLM prompt includes the full program text (both
+        # mutable EVOLVE-BLOCK regions and immutable boilerplate). When false (default),
+        # only the mutable EVOLVE-BLOCK regions are shown, saving context window.
+        # Corresponds to the JSON property `includeFullProgramInPrompt`
+        # @return [Boolean]
+        attr_accessor :include_full_program_in_prompt
+        alias_method :include_full_program_in_prompt?, :include_full_program_in_prompt
+      
+        # Optional. Per-model configuration. See `ModelConfig` for details. If left
+        # unset, the server selects a default model.
+        # Corresponds to the JSON property `models`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettingsModelConfig>]
+        attr_accessor :models
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context = args[:context] if args.key?(:context)
+          @include_full_program_in_prompt = args[:include_full_program_in_prompt] if args.key?(:include_full_program_in_prompt)
+          @models = args[:models] if args.key?(:models)
+        end
+      end
+      
+      # Per-model configuration. Mutually exclusive with `model_mixture` and `model`:
+      # when `models` is set, both `model_mixture` and `model` must be left unset. The
+      # same allowed-model list and at-most-2-models rule as for `model_mixture` apply.
+      # In addition, each entry may specify a per-model `temperature` for LLM
+      # sampling. Unlike `model_mixture`, weights here are *relative*: only their
+      # ratios matter (the server normalizes them), so callers may use any positive
+      # numbers without having to ensure they sum to 1.0.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettingsModelConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Model name (e.g. `gemini-2.5-flash`, `gemini-3.1-pro-preview`). See `
+        # model_mixture` for the list of allowed models.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Relative weight for this model in the mixture. Must be a finite,
+        # strictly positive value. Weights across all entries are normalized server-side,
+        # so they need not sum to 1.0. Defaults to 1.0 when unset, which is convenient
+        # when configuring a single model or an even mixture. Some Pro-tier models are
+        # capped at most 50% of the total weight; requests violating that cap are
+        # rejected with INVALID_ARGUMENT.
+        # Corresponds to the JSON property `weight`
+        # @return [Float]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @weight = args[:weight] if args.key?(:weight)
+        end
+      end
+      
+      # Run settings for the experiment.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigRunSettings
+        include Google::Apis::Core::Hashable
+      
+        # Required. Maximum number of programs that can be generated in parallel. Must
+        # be positive.
+        # Corresponds to the JSON property `concurrency`
+        # @return [Fixnum]
+        attr_accessor :concurrency
+      
+        # Optional. Maximum duration of the experiment. If unset, defaults to 24 hours.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [String]
+        attr_accessor :max_duration
+      
+        # Required. Maximum number of programs to generate during the experiment run.
+        # The initial program counts towards this limit. Must be greater than 1.
+        # Corresponds to the JSON property `maxPrograms`
+        # @return [Fixnum]
+        attr_accessor :max_programs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @concurrency = args[:concurrency] if args.key?(:concurrency)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @max_programs = args[:max_programs] if args.key?(:max_programs)
+        end
+      end
+      
+      # Stats about the experiment.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentStats
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of candidates generated.
+        # Corresponds to the JSON property `candidatesCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_count
+      
+        # Output only. Number of candidates evaluated.
+        # Corresponds to the JSON property `evaluatedCandidatesCount`
+        # @return [Fixnum]
+        attr_accessor :evaluated_candidates_count
+      
+        # Output only. Number of billed input tokens consumed by the experiment.
+        # Corresponds to the JSON property `inputTokenCount`
+        # @return [Fixnum]
+        attr_accessor :input_token_count
+      
+        # Output only. Number of billed output tokens consumed by the experiment.
+        # Corresponds to the JSON property `outputTokenCount`
+        # @return [Fixnum]
+        attr_accessor :output_token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidates_count = args[:candidates_count] if args.key?(:candidates_count)
+          @evaluated_candidates_count = args[:evaluated_candidates_count] if args.key?(:evaluated_candidates_count)
+          @input_token_count = args[:input_token_count] if args.key?(:input_token_count)
+          @output_token_count = args[:output_token_count] if args.key?(:output_token_count)
+        end
+      end
+      
+      # Represents a single program to be used within the context of an AlphaEvolve
+      # experiment.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgram
+        include Google::Apis::Core::Hashable
+      
+        # A self-contained message containing the content of a program. Can represent a
+        # collection of files.
+        # Corresponds to the JSON property `content`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramContent]
+        attr_accessor :content
+      
+        # Output only. Time when the program was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Evaluation results for a program candidate.
+        # Corresponds to the JSON property `evaluation`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramEvaluation]
+        attr_accessor :evaluation
+      
+        # Optional. Lock token for the program.
+        # Corresponds to the JSON property `lockToken`
+        # @return [String]
+        attr_accessor :lock_token
+      
+        # Identifier. Unique identifier for the program. Format: `projects/`project`/
+        # locations/`location`/collections/`collection`/engines/`engine`/sessions/`
+        # session`/alphaEvolveExperiments/`alpha_evolve_experiment`/alphaEvolvePrograms/`
+        # alpha_evolve_program``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Optionally specifies which parent programs this program was
+        # evolved from. Format: `projects/`project`/locations/`location`/collections/`
+        # collection`/engines/`engine`/sessions/`session`/alphaEvolveExperiments/`
+        # alpha_evolve_experiment`/alphaEvolvePrograms/`alpha_evolve_program``
+        # Corresponds to the JSON property `parentPrograms`
+        # @return [Array<String>]
+        attr_accessor :parent_programs
+      
+        # Output only. State of the program.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @evaluation = args[:evaluation] if args.key?(:evaluation)
+          @lock_token = args[:lock_token] if args.key?(:lock_token)
+          @name = args[:name] if args.key?(:name)
+          @parent_programs = args[:parent_programs] if args.key?(:parent_programs)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A self-contained message containing the content of a program. Can represent a
+      # collection of files.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramContent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description of the program.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. A list of source files that make up the overall program.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveSourceFile>]
+        attr_accessor :files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @files = args[:files] if args.key?(:files)
+        end
+      end
+      
+      # Evaluation results for a program candidate.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramEvaluation
+        include Google::Apis::Core::Hashable
+      
+        # Evaluation insights for a program.
+        # Corresponds to the JSON property `insights`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsights]
+        attr_accessor :insights
+      
+        # Contains the evaluation scores for the target metrics to optimize.
+        # Corresponds to the JSON property `scores`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScores]
+        attr_accessor :scores
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights = args[:insights] if args.key?(:insights)
+          @scores = args[:scores] if args.key?(:scores)
+        end
+      end
+      
+      # A single source file with its path, content and metadata.
+      class GoogleCloudDiscoveryengineV1alphaAlphaEvolveSourceFile
+        include Google::Apis::Core::Hashable
+      
+        # Required. The raw content of the file. This is a string and not bytes, because
+        # it should be ultimately processed by the LLM as text.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Optional. Additional description of the file.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The relative path of the file, including the filename. e.g., "src/
+        # main.py", "utils/helpers.js", "README.md"
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Optional. The programming language of the file.
+        # Corresponds to the JSON property `programLanguage`
+        # @return [String]
+        attr_accessor :program_language
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @description = args[:description] if args.key?(:description)
+          @path = args[:path] if args.key?(:path)
+          @program_language = args[:program_language] if args.key?(:program_language)
+        end
+      end
+      
       # Defines an answer.
       class GoogleCloudDiscoveryengineV1alphaAnswer
         include Google::Apis::Core::Hashable
@@ -10109,6 +10665,15 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleTypeDateTime]
         attr_accessor :next_sync_time
       
+        # Output only. The static IP addresses used by this connector for OAuth APIs (e.
+        # g. end user authentication). These are surfaced separately from `
+        # static_ip_addresses` so that customers can apply granular firewall settings
+        # for OAuth endpoints. Only populated for connectors that have static IP enabled
+        # and are used for actions and/or federated search.
+        # Corresponds to the JSON property `oauthStaticIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :oauth_static_ip_addresses
+      
         # Required data connector parameters in structured json format.
         # Corresponds to the JSON property `params`
         # @return [Hash<String,Object>]
@@ -10220,6 +10785,7 @@ module Google
           @latest_pause_time = args[:latest_pause_time] if args.key?(:latest_pause_time)
           @name = args[:name] if args.key?(:name)
           @next_sync_time = args[:next_sync_time] if args.key?(:next_sync_time)
+          @oauth_static_ip_addresses = args[:oauth_static_ip_addresses] if args.key?(:oauth_static_ip_addresses)
           @params = args[:params] if args.key?(:params)
           @private_connectivity_project_id = args[:private_connectivity_project_id] if args.key?(:private_connectivity_project_id)
           @realtime_state = args[:realtime_state] if args.key?(:realtime_state)
@@ -11278,6 +11844,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :success_count
       
+        # Operation last update time. If the operation is done, this is also the finish
+        # time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11286,6 +11858,7 @@ module Google
         def update!(**args)
           @failure_count = args[:failure_count] if args.key?(:failure_count)
           @success_count = args[:success_count] if args.key?(:success_count)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -11727,9 +12300,9 @@ module Google
         # @return [String]
         attr_accessor :app_type
       
-        # Optional. The Agent registry containing the agents, MCP servers and tools
-        # associated with this engine. Field is required if the engine has an Agent
-        # Gateway setting.
+        # Output only. The Agent registry containing the agents, MCP servers and tools
+        # associated with this engine. Derived server-side from the linked Agent Gateway'
+        # s registry.
         # Corresponds to the JSON property `associatedAgentRegistry`
         # @return [String]
         attr_accessor :associated_agent_registry
@@ -11803,9 +12376,9 @@ module Google
         # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
         # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
-        # canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` *
-        # `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
-        # intelligence` * `deep-research`
+        # canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-
+        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
+        # orchestration` * `cross-product-intelligence` * `deep-research`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -12358,10 +12931,11 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The required subscription tier of this engine. They cannot be
-        # modified after engine creation. If the required subscription tier is search,
-        # user with higher license tier like assist can still access the standalone app
-        # associated with this engine.
+        # Optional. The required subscription tier of this engine. If the required
+        # subscription tier is search, user with higher license tier like assist can
+        # still access the standalone app associated with this engine. Web grounding
+        # feature is only available on the app if it is set as SubscriptionTier.
+        # SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT.
         # Corresponds to the JSON property `requiredSubscriptionTier`
         # @return [String]
         attr_accessor :required_subscription_tier
@@ -15108,6 +15682,31 @@ module Google
         end
       end
       
+      # Metadata for AlphaEvolveService.ResumeExperiment long running operation.
+      class GoogleCloudDiscoveryengineV1alphaResumeExperimentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Safety rating corresponding to the generated content.
       class GoogleCloudDiscoveryengineV1alphaSafetyRating
         include Google::Apis::Core::Hashable
@@ -17188,6 +17787,52 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Metadata for AlphaEvolveService.StartExperiment long running operation.
+      class GoogleCloudDiscoveryengineV1alphaStartExperimentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Request message for AlphaEvolveService.StartExperiment.
+      class GoogleCloudDiscoveryengineV1alphaStartExperimentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Experiment to start. Format: `projects/`project`/locations/`location`
+        # /collections/`collection`/engines/`engine`/sessions/`session`/
+        # alphaEvolveExperiments/`alpha_evolve_experiment``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -24619,9 +25264,9 @@ module Google
         # @return [String]
         attr_accessor :app_type
       
-        # Optional. The Agent registry containing the agents, MCP servers and tools
-        # associated with this engine. Field is required if the engine has an Agent
-        # Gateway setting.
+        # Output only. The Agent registry containing the agents, MCP servers and tools
+        # associated with this engine. Derived server-side from the linked Agent Gateway'
+        # s registry.
         # Corresponds to the JSON property `associatedAgentRegistry`
         # @return [String]
         attr_accessor :associated_agent_registry
@@ -24695,9 +25340,9 @@ module Google
         # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
         # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
-        # canvas-workspace` * `disable-skills` * `enable-end-user-sharing-with-groups` *
-        # `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
-        # intelligence` * `deep-research`
+        # canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-
+        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
+        # orchestration` * `cross-product-intelligence` * `deep-research`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -25184,10 +25829,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The required subscription tier of this engine. They cannot be
-        # modified after engine creation. If the required subscription tier is search,
-        # user with higher license tier like assist can still access the standalone app
-        # associated with this engine.
+        # Optional. The required subscription tier of this engine. If the required
+        # subscription tier is search, user with higher license tier like assist can
+        # still access the standalone app associated with this engine. Web grounding
+        # feature is only available on the app if it is set as SubscriptionTier.
+        # SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT.
         # Corresponds to the JSON property `requiredSubscriptionTier`
         # @return [String]
         attr_accessor :required_subscription_tier
