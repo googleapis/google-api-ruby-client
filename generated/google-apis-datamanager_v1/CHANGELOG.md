@@ -1,5 +1,9 @@
 # Release history for google-apis-datamanager_v1
 
+### v0.11.0 (2026-07-12)
+
+* Regenerated from discovery document revision 20260708
+
 ### v0.10.0 (2026-06-14)
 
 * Regenerated from discovery document revision 20260605
