@@ -359,6 +359,8 @@ module Google
           property :etag, as: 'etag'
           property :id, as: 'id'
           property :kind, as: 'kind'
+          property :label_properties, as: 'labelProperties', class: Google::Apis::CalendarV3::LabelProperties, decorator: Google::Apis::CalendarV3::LabelProperties::Representation
+      
           property :location, as: 'location'
           property :summary, as: 'summary'
           property :time_zone, as: 'timeZone'
@@ -581,6 +583,7 @@ module Google
       
           property :end_time_unspecified, as: 'endTimeUnspecified'
           property :etag, as: 'etag'
+          property :event_label_id, as: 'eventLabelId'
           property :event_type, as: 'eventType'
           property :extended_properties, as: 'extendedProperties', class: Google::Apis::CalendarV3::Event::ExtendedProperties, decorator: Google::Apis::CalendarV3::Event::ExtendedProperties::Representation
       
@@ -744,6 +747,9 @@ module Google
       class EventLabel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_color, as: 'backgroundColor'
+          property :id, as: 'id'
+          property :name, as: 'name'
         end
       end
       
@@ -872,6 +878,8 @@ module Google
       class LabelProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_labels, as: 'eventLabels', class: Google::Apis::CalendarV3::EventLabel, decorator: Google::Apis::CalendarV3::EventLabel::Representation
+      
         end
       end
       
