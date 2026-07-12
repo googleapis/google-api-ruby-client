@@ -589,8 +589,6 @@ module Google
         end
         
         # Creates an ad group ad. This method is only supported for Demand Gen ads.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad belongs to.
         # @param [Google::Apis::DisplayvideoV4::AdGroupAd] ad_group_ad_object
@@ -624,8 +622,6 @@ module Google
         end
         
         # Deletes an ad group ad. This method is only supported for Demand Gen ads.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad belongs to.
         # @param [Fixnum] ad_group_ad_id
@@ -753,8 +749,6 @@ module Google
         end
         
         # Updates an ad group ad. This method is only supported for Demand Gen ads.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad belongs to.
         # @param [Fixnum] ad_group_ad_id
@@ -799,9 +793,7 @@ module Google
         # BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad
         # group, and then create the assigned targeting options provided in
         # BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is
-        # only supported for Demand Gen ad groups. Retrieval and management of Demand
-        # Gen resources is currently rolling out. This method will be available to all
-        # partners by *June 24, 2026*.
+        # only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad groups belong to.
         # @param [Google::Apis::DisplayvideoV4::BulkEditAdGroupAssignedTargetingOptionsRequest] bulk_edit_ad_group_assigned_targeting_options_request_object
@@ -899,9 +891,7 @@ module Google
         end
         
         # Creates a new ad group. Returns the newly created ad group if successful. This
-        # method is only supported for Demand Gen ad groups. Retrieval and management of
-        # Demand Gen resources is currently rolling out. This method will be available
-        # to all partners by *June 24, 2026*.
+        # method is only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad group belongs to.
         # @param [Google::Apis::DisplayvideoV4::AdGroup] ad_group_object
@@ -935,9 +925,7 @@ module Google
         end
         
         # Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not
-        # exist. This method is only supported for Demand Gen ad groups. Retrieval and
-        # management of Demand Gen resources is currently rolling out. This method will
-        # be available to all partners by *June 24, 2026*.
+        # exist. This method is only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1066,9 +1054,7 @@ module Google
         end
         
         # Updates an existing ad group. Returns the updated ad group if successful. This
-        # method is only supported for Demand Gen ad groups. Retrieval and management of
-        # Demand Gen resources is currently rolling out. This method will be available
-        # to all partners by *June 24, 2026*.
+        # method is only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1109,8 +1095,6 @@ module Google
         
         # Assigns a targeting option to an ad group. Returns the assigned targeting
         # option if successful. This method is only supported for Demand Gen ad groups.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1158,9 +1142,7 @@ module Google
         
         # Deletes an assigned targeting option from an ad group. This method is only
         # supported for Demand Gen ad groups with the AdGroupFormat `
-        # AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of Demand Gen resources
-        # is currently rolling out. This method will be available to all partners by *
-        # June 24, 2026*.
+        # AD_GROUP_FORMAT_DEMAND_GEN`.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -4392,13 +4374,15 @@ module Google
         #   Optional. Allows filtering by plannable user list properties. Supported syntax:
         #   * Filter expressions are made up of one or more restrictions. * Restrictions
         #   can be combined by `AND` or `OR` logical operators. * A restriction has the
-        #   form of ``field` `operator` `value``. * The `updateTime` field must use the `
-        #   GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. *
-        #   All other fields must use the `EQUALS (=)` operator. Supported fields: * `
-        #   plannableStatus` Examples: * All plannable user lists: `plannableStatus="
-        #   PLANNABLE"` The length of this field should be no more than 500 characters.
-        #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
-        #   filters) guide for more information.
+        #   form of ``field` `operator` `value``. * The `displayName` field must use the `
+        #   HAS (:)` operator. * All other fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `plannableStatus` * `displayName` * `userListType` * `name`
+        #   Examples: * All plannable user lists: `plannableStatus="PLANNABLE"` *
+        #   Plannable user lists with display name containing "Shopping": `plannableStatus=
+        #   "PLANNABLE" AND displayName:"Shopping"` * First party user lists: `
+        #   userListType="FIRST_PARTY"` The length of this field should be no more than
+        #   500 characters. Reference our [filter `LIST` requests](/display-video/api/
+        #   guides/how-tos/filters) guide for more information.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Must be between `1` and `5000`. If unspecified
         #   will default to `5000`.

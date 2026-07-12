@@ -1228,6 +1228,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :genders
       
+        # Optional. The network to target.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Optional. Plannable location IDs to target.
         # Corresponds to the JSON property `plannableLocationIds`
         # @return [Array<Fixnum>]
@@ -1272,6 +1277,7 @@ module Google
           @devices = args[:devices] if args.key?(:devices)
           @frequency_cap = args[:frequency_cap] if args.key?(:frequency_cap)
           @genders = args[:genders] if args.key?(:genders)
+          @network = args[:network] if args.key?(:network)
           @plannable_location_ids = args[:plannable_location_ids] if args.key?(:plannable_location_ids)
           @surface_targeting_settings = args[:surface_targeting_settings] if args.key?(:surface_targeting_settings)
           @target_frequency = args[:target_frequency] if args.key?(:target_frequency)
@@ -4849,41 +4855,41 @@ module Google
       class ContactInfo
         include Google::Apis::Core::Hashable
       
-        # Country code of the member. Must also be set with the following fields: *
-        # hashed_first_name * hashed_last_name * zip_codes
+        # Optional. Country code of the member. Must also be set with the following
+        # fields: * country_code * hashed_first_name * hashed_last_name * zip_codes
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
       
-        # A list of SHA256 hashed email of the member. Before hashing, remove all
-        # whitespace and make sure the string is all lowercase.
+        # Optional. A list of SHA256 hashed email of the member. Before hashing, remove
+        # all whitespace and make sure the string is all lowercase.
         # Corresponds to the JSON property `hashedEmails`
         # @return [Array<String>]
         attr_accessor :hashed_emails
       
-        # SHA256 hashed first name of the member. Before hashing, remove all whitespace
-        # and make sure the string is all lowercase. Must also be set with the following
-        # fields: * country_code * hashed_last_name * zip_codes
+        # Optional. SHA256 hashed first name of the member. Before hashing, remove all
+        # whitespace and make sure the string is all lowercase. Must also be set with
+        # the following fields: * country_code * hashed_last_name * zip_codes
         # Corresponds to the JSON property `hashedFirstName`
         # @return [String]
         attr_accessor :hashed_first_name
       
-        # SHA256 hashed last name of the member. Before hashing, remove all whitespace
-        # and make sure the string is all lowercase. Must also be set with the following
-        # fields: * country_code * hashed_first_name * zip_codes
+        # Optional. SHA256 hashed last name of the member. Before hashing, remove all
+        # whitespace and make sure the string is all lowercase. Must also be set with
+        # the following fields: * country_code * hashed_first_name * zip_codes
         # Corresponds to the JSON property `hashedLastName`
         # @return [String]
         attr_accessor :hashed_last_name
       
-        # A list of SHA256 hashed phone numbers of the member. Before hashing, all phone
-        # numbers must be formatted using the [E.164 format](//en.wikipedia.org/wiki/E.
-        # 164) and include the country calling code.
+        # Optional. A list of SHA256 hashed phone numbers of the member. Before hashing,
+        # all phone numbers must be formatted using the [E.164 format](https://en.
+        # wikipedia.org/wiki/E.164) and include the country calling code.
         # Corresponds to the JSON property `hashedPhoneNumbers`
         # @return [Array<String>]
         attr_accessor :hashed_phone_numbers
       
-        # A list of zip codes of the member. Must also be set with the following fields:
-        # * country_code * hashed_first_name * hashed_last_name
+        # Optional. A list of zip codes of the member. Must also be set with the
+        # following fields: * country_code * hashed_first_name * hashed_last_name
         # Corresponds to the JSON property `zipCodes`
         # @return [Array<String>]
         attr_accessor :zip_codes
@@ -4913,9 +4919,9 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::Consent]
         attr_accessor :consent
       
-        # A list of ContactInfo objects defining Customer Match audience members. The
-        # size of members after splitting the contact_infos mustn't be greater than 500,
-        # 000.
+        # Optional. A list of ContactInfo objects defining Customer Match audience
+        # members. The size of members after splitting the contact_infos mustn't be
+        # greater than 500,000.
         # Corresponds to the JSON property `contactInfos`
         # @return [Array<Google::Apis::DisplayvideoV4::ContactInfo>]
         attr_accessor :contact_infos
@@ -5281,9 +5287,7 @@ module Google
         # attribution model will determine how conversions are counted. The Primary
         # model can be set by you for a floodlight config or group. More details [here](
         # https://support.google.com/displayvideo/answer/7409983). Only applicable to
-        # Demand Gen line items. Retrieval and management of Demand Gen resources is
-        # currently rolling out. This field will be available to all partners by *June
-        # 24, 2026*.
+        # Demand Gen line items.
         # Corresponds to the JSON property `primaryAttributionModelId`
         # @return [Fixnum]
         attr_accessor :primary_attribution_model_id
@@ -6586,7 +6590,9 @@ module Google
       class DemandGenCarouselAd
         include Google::Apis::Core::Hashable
       
-        # Required. The business name shown on the ad.
+        # Required. The business name shown on the ad. *Warning*: Starting **July 13,
+        # 2026**, this setting will no longer be required if a default value is set at
+        # the advertiser level. If left unset, the default value will be applied.
         # Corresponds to the JSON property `businessName`
         # @return [String]
         attr_accessor :business_name
@@ -6661,7 +6667,9 @@ module Google
       class DemandGenImageAd
         include Google::Apis::Core::Hashable
       
-        # Required. The business name shown on the ad.
+        # Required. The business name shown on the ad. *Warning*: Starting **July 13,
+        # 2026**, this setting will no longer be required if a default value is set at
+        # the advertiser level. If left unset, the default value will be applied.
         # Corresponds to the JSON property `businessName`
         # @return [String]
         attr_accessor :business_name
@@ -6704,7 +6712,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :headlines
       
-        # The list of logo images shown on the ad.
+        # The list of logo images shown on the ad. *Warning*: Starting **July 13, 2026**,
+        # this setting will no longer be required if a default value is set at the
+        # advertiser level. If left unset, the default value will be applied.
         # Corresponds to the JSON property `logoImages`
         # @return [Array<Google::Apis::DisplayvideoV4::ImageAsset>]
         attr_accessor :logo_images
@@ -6761,7 +6771,9 @@ module Google
       class DemandGenProductAd
         include Google::Apis::Core::Hashable
       
-        # Required. The business name shown on the ad.
+        # Required. The business name shown on the ad. *Warning*: Starting **July 13,
+        # 2026**, this setting will no longer be required if a default value is set at
+        # the advertiser level. If left unset, the default value will be applied.
         # Corresponds to the JSON property `businessName`
         # @return [String]
         attr_accessor :business_name
@@ -6886,7 +6898,9 @@ module Google
       class DemandGenVideoAd
         include Google::Apis::Core::Hashable
       
-        # Required. The business name shown on the ad.
+        # Required. The business name shown on the ad. *Warning*: Starting **July 13,
+        # 2026**, this setting will no longer be required if a default value is set at
+        # the advertiser level. If left unset, the default value will be applied.
         # Corresponds to the JSON property `businessName`
         # @return [String]
         attr_accessor :business_name
@@ -7444,7 +7458,8 @@ module Google
         end
       end
       
-      # Request message for FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
+      # Request message for FirstPartyAndPartnerAudienceService.
+      # EditCustomerMatchMembers.
       class EditCustomerMatchMembersRequest
         include Google::Apis::Core::Hashable
       
@@ -7492,7 +7507,7 @@ module Google
         end
       end
       
-      # The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
+      # The response of FirstPartyAndPartnerAudienceService.EditCustomerMatchMembers.
       class EditCustomerMatchMembersResponse
         include Google::Apis::Core::Hashable
       
@@ -7636,57 +7651,6 @@ module Google
         def update!(**args)
           @added_advertisers = args[:added_advertisers] if args.key?(:added_advertisers)
           @removed_advertisers = args[:removed_advertisers] if args.key?(:removed_advertisers)
-        end
-      end
-      
-      # A breakdown of the number of unique people reached at a given effective
-      # frequency.
-      class EffectiveFrequencyBreakdown
-        include Google::Apis::Core::Hashable
-      
-        # The number of unique individuals, including co-viewers, exactly matching the
-        # targeting that were served the ad at least the number of times dictated by the
-        # effective_frequency.
-        # Corresponds to the JSON property `effectiveCoviewReach`
-        # @return [Fixnum]
-        attr_accessor :effective_coview_reach
-      
-        # The set effective frequency.
-        # Corresponds to the JSON property `effectiveFrequency`
-        # @return [Fixnum]
-        attr_accessor :effective_frequency
-      
-        # The total number of unique individuals, including co-viewers that were served
-        # the ad at least the number of times dictated by the effective_frequency. This
-        # includes individuals that may fall outside of targeting.
-        # Corresponds to the JSON property `onTargetEffectiveCoviewReach`
-        # @return [Fixnum]
-        attr_accessor :on_target_effective_coview_reach
-      
-        # The number of unique individuals exactly matching the targeting that were
-        # served the ad at least the number of times dictated by the effective_frequency.
-        # Corresponds to the JSON property `onTargetReach`
-        # @return [Fixnum]
-        attr_accessor :on_target_reach
-      
-        # The total number of unique individuals that were served the ad at least the
-        # number of times dictated by the effective_frequency. This includes individuals
-        # that may fall outside of targeting.
-        # Corresponds to the JSON property `totalReach`
-        # @return [Fixnum]
-        attr_accessor :total_reach
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @effective_coview_reach = args[:effective_coview_reach] if args.key?(:effective_coview_reach)
-          @effective_frequency = args[:effective_frequency] if args.key?(:effective_frequency)
-          @on_target_effective_coview_reach = args[:on_target_effective_coview_reach] if args.key?(:on_target_effective_coview_reach)
-          @on_target_reach = args[:on_target_reach] if args.key?(:on_target_reach)
-          @total_reach = args[:total_reach] if args.key?(:total_reach)
         end
       end
       
@@ -8391,21 +8355,10 @@ module Google
         # @return [String]
         attr_accessor :currency_code
       
-        # Optional. The highest minimum effective frequency to include in
-        # PlannedProductForecast.effective_frequency_breakdowns. Must be between 1 and
-        # 10, inclusive. If not specified, PlannedProductForecast.
-        # effective_frequency_breakdowns will not be populated. If set, this value will
-        # also be used as the minimum effective frequency for reach metrics reporting.
-        # This field cannot be combined with the min_effective_frequency field.
-        # Corresponds to the JSON property `effectiveFrequencyBreakdownLimit`
-        # @return [Fixnum]
-        attr_accessor :effective_frequency_breakdown_limit
-      
         # Optional. The minimum effective frequency for the reported reach metrics. This
         # is the smallest number of times a customer must be exposed to the ad for it to
         # be considered effective. This setting only impacts reporting. Must be between
-        # 1 and 10, inclusive. If not specified, a default of 1 is applied. This field
-        # cannot be combined with effective_frequency_breakdown_limit.
+        # 1 and 10, inclusive. If not specified, a default of 1 is applied.
         # Corresponds to the JSON property `minEffectiveFrequency`
         # @return [Fixnum]
         attr_accessor :min_effective_frequency
@@ -8428,7 +8381,6 @@ module Google
         def update!(**args)
           @campaign_duration = args[:campaign_duration] if args.key?(:campaign_duration)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
-          @effective_frequency_breakdown_limit = args[:effective_frequency_breakdown_limit] if args.key?(:effective_frequency_breakdown_limit)
           @min_effective_frequency = args[:min_effective_frequency] if args.key?(:min_effective_frequency)
           @planned_products = args[:planned_products] if args.key?(:planned_products)
           @targeting = args[:targeting] if args.key?(:targeting)
@@ -11604,8 +11556,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV4::Consent]
         attr_accessor :consent
       
-        # A list of mobile device IDs defining Customer Match audience members. The size
-        # of mobile_device_ids mustn't be greater than 500,000.
+        # Optional. A list of mobile device IDs defining Customer Match audience members.
+        # The size of mobile_device_ids mustn't be greater than 500,000.
         # Corresponds to the JSON property `mobileDeviceIds`
         # @return [Array<String>]
         attr_accessor :mobile_device_ids
@@ -12648,6 +12600,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. The parent plannable location ID, for example the country ID for
+        # subgeos.
+        # Corresponds to the JSON property `parentPlannableLocationId`
+        # @return [Fixnum]
+        attr_accessor :parent_plannable_location_id
+      
         # Output only. The plannable location ID.
         # Corresponds to the JSON property `plannableLocationId`
         # @return [Fixnum]
@@ -12667,8 +12625,40 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @geo_region_type = args[:geo_region_type] if args.key?(:geo_region_type)
           @name = args[:name] if args.key?(:name)
+          @parent_plannable_location_id = args[:parent_plannable_location_id] if args.key?(:parent_plannable_location_id)
           @plannable_location_id = args[:plannable_location_id] if args.key?(:plannable_location_id)
           @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
+      # Core attributes for a plannable product.
+      class PlannableProductCoreAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The buying method.
+        # Corresponds to the JSON property `buyingMethod`
+        # @return [String]
+        attr_accessor :buying_method
+      
+        # Output only. The cost model.
+        # Corresponds to the JSON property `costModel`
+        # @return [String]
+        attr_accessor :cost_model
+      
+        # Output only. The product category.
+        # Corresponds to the JSON property `productCategory`
+        # @return [String]
+        attr_accessor :product_category
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buying_method = args[:buying_method] if args.key?(:buying_method)
+          @cost_model = args[:cost_model] if args.key?(:cost_model)
+          @product_category = args[:product_category] if args.key?(:product_category)
         end
       end
       
@@ -12682,6 +12672,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :age_ranges
       
+        # A Plannable YouTube Select Lineup for product targeting.
+        # Corresponds to the JSON property `defaultYoutubeSelectLineup`
+        # @return [Google::Apis::DisplayvideoV4::YouTubeSelectLineUp]
+        attr_accessor :default_youtube_select_lineup
+      
         # Output only. Targetable devices for the ad product.
         # Corresponds to the JSON property `devices`
         # @return [Array<String>]
@@ -12692,10 +12687,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :genders
       
-        # Output only. Targetable networks for the ad product.
-        # Corresponds to the JSON property `networks`
-        # @return [Array<String>]
-        attr_accessor :networks
+        # Output only. Targetable network for the ad product.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
       
         # Surface targeting rules.
         # Corresponds to the JSON property `surfaceTargetingCombinations`
@@ -12714,9 +12709,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @age_ranges = args[:age_ranges] if args.key?(:age_ranges)
+          @default_youtube_select_lineup = args[:default_youtube_select_lineup] if args.key?(:default_youtube_select_lineup)
           @devices = args[:devices] if args.key?(:devices)
           @genders = args[:genders] if args.key?(:genders)
-          @networks = args[:networks] if args.key?(:networks)
+          @network = args[:network] if args.key?(:network)
           @surface_targeting_combinations = args[:surface_targeting_combinations] if args.key?(:surface_targeting_combinations)
           @youtube_select_lineups = args[:youtube_select_lineups] if args.key?(:youtube_select_lineups)
         end
@@ -12833,11 +12829,6 @@ module Google
       class PlannedProductForecast
         include Google::Apis::Core::Hashable
       
-        # A list of effective frequency breakdowns.
-        # Corresponds to the JSON property `effectiveFrequencyBreakdowns`
-        # @return [Array<Google::Apis::DisplayvideoV4::EffectiveFrequencyBreakdown>]
-        attr_accessor :effective_frequency_breakdowns
-      
         # Number of on-target impressions.
         # Corresponds to the JSON property `onTargetImpressions`
         # @return [Fixnum]
@@ -12874,7 +12865,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @effective_frequency_breakdowns = args[:effective_frequency_breakdowns] if args.key?(:effective_frequency_breakdowns)
           @on_target_impressions = args[:on_target_impressions] if args.key?(:on_target_impressions)
           @on_target_reach = args[:on_target_reach] if args.key?(:on_target_reach)
           @total_impressions = args[:total_impressions] if args.key?(:total_impressions)
@@ -13170,6 +13160,11 @@ module Google
         # @return [String]
         attr_accessor :plannable_product_code
       
+        # Core attributes for a plannable product.
+        # Corresponds to the JSON property `plannableProductCoreAttributes`
+        # @return [Google::Apis::DisplayvideoV4::PlannableProductCoreAttributes]
+        attr_accessor :plannable_product_core_attributes
+      
         # Output only. The plain-text description of the ad product.
         # Corresponds to the JSON property `plannableProductDescription`
         # @return [String]
@@ -13188,6 +13183,7 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @plannable_product_code = args[:plannable_product_code] if args.key?(:plannable_product_code)
+          @plannable_product_core_attributes = args[:plannable_product_core_attributes] if args.key?(:plannable_product_core_attributes)
           @plannable_product_description = args[:plannable_product_description] if args.key?(:plannable_product_description)
           @plannable_targeting = args[:plannable_targeting] if args.key?(:plannable_targeting)
         end
@@ -14042,6 +14038,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :available_surface_types
       
+        # Output only. The default surface types for this product.
+        # Corresponds to the JSON property `defaultSurfaceTypes`
+        # @return [Array<String>]
+        attr_accessor :default_surface_types
+      
         # Output only. Valid combinations of surfaces that can be selected together.
         # Corresponds to the JSON property `validSurfaceCombinations`
         # @return [Array<Google::Apis::DisplayvideoV4::SurfaceTargetingCombination>]
@@ -14054,6 +14055,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_surface_types = args[:available_surface_types] if args.key?(:available_surface_types)
+          @default_surface_types = args[:default_surface_types] if args.key?(:default_surface_types)
           @valid_surface_combinations = args[:valid_surface_combinations] if args.key?(:valid_surface_combinations)
         end
       end
@@ -14190,9 +14192,7 @@ module Google
         alias_method :enable_optimized_targeting?, :enable_optimized_targeting
       
         # Optional. Whether to exclude demographic expansion for Optimized Targeting.
-        # This field can only be set for Demand Gen ad groups. Retrieval and management
-        # of Demand Gen resources is currently rolling out. This field will be available
-        # to all partners by *June 24, 2026*.
+        # This field can only be set for Demand Gen ad groups.
         # Corresponds to the JSON property `excludeDemographicExpansion`
         # @return [Boolean]
         attr_accessor :exclude_demographic_expansion
@@ -14521,7 +14521,9 @@ module Google
         # Optional. The third-party vendors measuring brand lift. The following third-
         # party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `
         # THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `
-        # THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
+        # THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL` *Warning*:
+        # Starting **July 13, 2026**, this field will no longer support `
+        # THIRD_PARTY_VENDOR_NIELSEN`.
         # Corresponds to the JSON property `brandLiftVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV4::ThirdPartyVendorConfig>]
         attr_accessor :brand_lift_vendor_configs
