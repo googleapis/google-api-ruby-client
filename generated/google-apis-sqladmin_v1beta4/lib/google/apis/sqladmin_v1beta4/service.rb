@@ -463,10 +463,10 @@ module Google
         
         # Retrieves connect settings about a Cloud SQL instance using the instance DNS
         # name.
-        # @param [String] dns_name
-        #   Required. Cloud SQL instance ID. This does not include the project ID.
         # @param [String] location
         #   Required. The region of the instance.
+        # @param [String] dns_name
+        #   Required. Cloud SQL instance ID. This does not include the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -484,12 +484,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def resolve_connect(dns_name, location, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'sql/v1beta4/dns/{dnsName}/locations/{location}:resolveConnectSettings', options)
+        def resolve_connect(location, dns_name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'sql/v1beta4/locations/{location}/dns/{dnsName}:resolveConnectSettings', options)
           command.response_representation = Google::Apis::SqladminV1beta4::ConnectSettings::Representation
           command.response_class = Google::Apis::SqladminV1beta4::ConnectSettings
-          command.params['dnsName'] = dns_name unless dns_name.nil?
           command.params['location'] = location unless location.nil?
+          command.params['dnsName'] = dns_name unless dns_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1519,6 +1519,12 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1beta4::DatabaseInstance] database_instance_object
+        # @param [Boolean] reconcile_psc_networking
+        #   Optional. Set PSC config to the same value as the existing config to reconcile
+        #   the PSC networking.
+        # @param [Boolean] reconcile_psc_networking_force
+        #   Optional. Set PSC config to the same value as the existing config and force
+        #   reconcile the PSC networking.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1536,7 +1542,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_instance(project, instance, database_instance_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_instance(project, instance, database_instance_object = nil, reconcile_psc_networking: nil, reconcile_psc_networking_force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'sql/v1beta4/projects/{project}/instances/{instance}', options)
           command.request_representation = Google::Apis::SqladminV1beta4::DatabaseInstance::Representation
           command.request_object = database_instance_object
@@ -1544,6 +1550,8 @@ module Google
           command.response_class = Google::Apis::SqladminV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['reconcilePscNetworking'] = reconcile_psc_networking unless reconcile_psc_networking.nil?
+          command.query['reconcilePscNetworkingForce'] = reconcile_psc_networking_force unless reconcile_psc_networking_force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

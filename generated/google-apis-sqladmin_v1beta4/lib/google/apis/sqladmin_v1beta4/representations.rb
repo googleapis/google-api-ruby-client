@@ -1132,6 +1132,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backend_type, as: 'backendType'
+          property :connection_name, as: 'connectionName'
           collection :custom_subject_alternative_names, as: 'customSubjectAlternativeNames'
           property :database_version, as: 'databaseVersion'
           property :dns_name, as: 'dnsName'
@@ -2046,12 +2047,20 @@ module Google
       class PerformanceCaptureConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_utilization_threshold_percent, as: 'cpuUtilizationThresholdPercent'
           property :enabled, as: 'enabled'
+          property :history_list_length_threshold_count, as: 'historyListLengthThresholdCount'
+          property :memory_usage_threshold_percent, as: 'memoryUsageThresholdPercent'
           property :probe_threshold, as: 'probeThreshold'
           property :probing_interval_seconds, as: 'probingIntervalSeconds'
           property :running_threads_threshold, as: 'runningThreadsThreshold'
           property :seconds_behind_source_threshold, as: 'secondsBehindSourceThreshold'
+          property :semaphore_wait_threshold_count, as: 'semaphoreWaitThresholdCount'
           property :transaction_duration_threshold, as: 'transactionDurationThreshold'
+          collection :transaction_kill_excluded_user_hosts, as: 'transactionKillExcludedUserHosts'
+          property :transaction_kill_threshold_seconds, as: 'transactionKillThresholdSeconds'
+          property :transaction_kill_type, as: 'transactionKillType'
+          property :transaction_lock_wait_threshold_count, as: 'transactionLockWaitThresholdCount'
         end
       end
       
@@ -2114,10 +2123,12 @@ module Google
           property :consumer_network, as: 'consumerNetwork'
           property :consumer_network_status, as: 'consumerNetworkStatus'
           property :consumer_project, as: 'consumerProject'
+          property :instance_auto_dns_status, as: 'instanceAutoDnsStatus'
           property :ip_address, as: 'ipAddress'
           property :service_connection_policy, as: 'serviceConnectionPolicy'
           property :service_connection_policy_creation_result, as: 'serviceConnectionPolicyCreationResult'
           property :status, as: 'status'
+          property :write_endpoint_auto_dns_status, as: 'writeEndpointAutoDnsStatus'
         end
       end
       
