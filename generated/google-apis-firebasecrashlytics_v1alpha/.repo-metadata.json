@@ -1,0 +1,7 @@
+{
+    "api_id": "firebasecrashlytics:v1alpha",
+    "name_pretty": "Firebase Crashlytics API",
+    "distribution_name": "google-apis-firebasecrashlytics_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
