@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskIoScheduler
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisruptionBudget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -737,6 +743,12 @@ module Google
       end
       
       class KalmConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KubeletCertInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1073,6 +1085,12 @@ module Google
       end
       
       class NodeTaints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeVfioConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2330,6 +2348,7 @@ module Google
           property :desired_disable_l4_lb_firewall_reconciliation, as: 'desiredDisableL4LbFirewallReconciliation'
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1beta1::DnsConfig, decorator: Google::Apis::ContainerV1beta1::DnsConfig::Representation
       
+          property :desired_emulated_version, as: 'desiredEmulatedVersion'
           property :desired_enable_cilium_clusterwide_network_policy, as: 'desiredEnableCiliumClusterwideNetworkPolicy'
           property :desired_enable_fqdn_network_policy, as: 'desiredEnableFqdnNetworkPolicy'
           property :desired_enable_multi_networking, as: 'desiredEnableMultiNetworking'
@@ -2723,6 +2742,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_tier, as: 'desiredTier'
+        end
+      end
+      
+      class DiskIoScheduler
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_attached_disk_io_scheduler, as: 'nodeAttachedDiskIoScheduler'
+          property :node_system_io_scheduler, as: 'nodeSystemIoScheduler'
         end
       end
       
@@ -3150,6 +3177,14 @@ module Google
         end
       end
       
+      class KubeletCertInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :non_tpm_bootstrap_cert_expire_time, as: 'nonTpmBootstrapCertExpireTime'
+          property :tpm_bootstrap_cert_expire_time, as: 'tpmBootstrapCertExpireTime'
+        end
+      end
+      
       class KubernetesDashboard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3172,9 +3207,13 @@ module Google
           property :cgroup_mode, as: 'cgroupMode'
           property :custom_node_init, as: 'customNodeInit', class: Google::Apis::ContainerV1beta1::CustomNodeInit, decorator: Google::Apis::ContainerV1beta1::CustomNodeInit::Representation
       
+          property :disk_io_scheduler, as: 'diskIoScheduler', class: Google::Apis::ContainerV1beta1::DiskIoScheduler, decorator: Google::Apis::ContainerV1beta1::DiskIoScheduler::Representation
+      
           property :hugepages, as: 'hugepages', class: Google::Apis::ContainerV1beta1::HugepagesConfig, decorator: Google::Apis::ContainerV1beta1::HugepagesConfig::Representation
       
           property :node_kernel_module_loading, as: 'nodeKernelModuleLoading', class: Google::Apis::ContainerV1beta1::NodeKernelModuleLoading, decorator: Google::Apis::ContainerV1beta1::NodeKernelModuleLoading::Representation
+      
+          property :node_vfio_config, as: 'nodeVfioConfig', class: Google::Apis::ContainerV1beta1::NodeVfioConfig, decorator: Google::Apis::ContainerV1beta1::NodeVfioConfig::Representation
       
           property :swap_config, as: 'swapConfig', class: Google::Apis::ContainerV1beta1::SwapConfig, decorator: Google::Apis::ContainerV1beta1::SwapConfig::Representation
       
@@ -3705,6 +3744,8 @@ module Google
           property :etag, as: 'etag'
           property :initial_node_count, as: 'initialNodeCount'
           collection :instance_group_urls, as: 'instanceGroupUrls'
+          property :kubelet_cert_info, as: 'kubeletCertInfo', class: Google::Apis::ContainerV1beta1::KubeletCertInfo, decorator: Google::Apis::ContainerV1beta1::KubeletCertInfo::Representation
+      
           collection :locations, as: 'locations'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1beta1::NodePoolMaintenancePolicy, decorator: Google::Apis::ContainerV1beta1::NodePoolMaintenancePolicy::Representation
       
@@ -3828,6 +3869,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1beta1::NodeTaint, decorator: Google::Apis::ContainerV1beta1::NodeTaint::Representation
       
+        end
+      end
+      
+      class NodeVfioConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dma_entry_limit, as: 'dmaEntryLimit'
         end
       end
       
