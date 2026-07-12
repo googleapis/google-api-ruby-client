@@ -556,13 +556,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Deprecated: Use `agent` instead. The resource name of the root agent
-        # that is the entry point of the tool. Format: `projects/`project`/locations/`
-        # location`/agents/`agent``
-        # Corresponds to the JSON property `rootAgent`
-        # @return [String]
-        attr_accessor :root_agent
-      
         def initialize(**args)
            update!(**args)
         end
@@ -572,7 +565,6 @@ module Google
           @agent = args[:agent] if args.key?(:agent)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
-          @root_agent = args[:root_agent] if args.key?(:root_agent)
         end
       end
       
@@ -1166,10 +1158,10 @@ module Google
         attr_accessor :barge_in_awareness
         alias_method :barge_in_awareness?, :barge_in_awareness
       
-        # Optional. Disables user barge-in while the agent is speaking. If true, user
-        # input during agent response playback will be ignored. Deprecated: `
-        # disable_barge_in` is deprecated in favor of `disable_barge_in_control` in
-        # ChannelProfile.
+        # Optional. Deprecated: `disable_barge_in` is deprecated in favor of `
+        # disable_barge_in_control` in ChannelProfile. Disables user barge-in while the
+        # agent is speaking. If true, user input during agent response playback will be
+        # ignored.
         # Corresponds to the JSON property `disableBargeIn`
         # @return [Boolean]
         attr_accessor :disable_barge_in
@@ -1456,6 +1448,11 @@ module Google
         attr_accessor :disable_dtmf
         alias_method :disable_dtmf?, :disable_dtmf
       
+        # Configuration specific to Instagram deployments.
+        # Corresponds to the JSON property `instagramConfig`
+        # @return [Google::Apis::CesV1::ChannelProfileInstagramConfig]
+        attr_accessor :instagram_config
+      
         # Optional. The noise suppression level of the channel profile. Available values
         # are "low", "moderate", "high", "very_high".
         # Corresponds to the JSON property `noiseSuppressionLevel`
@@ -1477,6 +1474,11 @@ module Google
         # @return [Google::Apis::CesV1::ChannelProfileWebWidgetConfig]
         attr_accessor :web_widget_config
       
+        # Configuration specific to WhatsApp deployments.
+        # Corresponds to the JSON property `whatsappConfig`
+        # @return [Google::Apis::CesV1::ChannelProfileWhatsAppConfig]
+        attr_accessor :whatsapp_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1486,10 +1488,49 @@ module Google
           @channel_type = args[:channel_type] if args.key?(:channel_type)
           @disable_barge_in_control = args[:disable_barge_in_control] if args.key?(:disable_barge_in_control)
           @disable_dtmf = args[:disable_dtmf] if args.key?(:disable_dtmf)
+          @instagram_config = args[:instagram_config] if args.key?(:instagram_config)
           @noise_suppression_level = args[:noise_suppression_level] if args.key?(:noise_suppression_level)
           @persona_property = args[:persona_property] if args.key?(:persona_property)
           @profile_id = args[:profile_id] if args.key?(:profile_id)
           @web_widget_config = args[:web_widget_config] if args.key?(:web_widget_config)
+          @whatsapp_config = args[:whatsapp_config] if args.key?(:whatsapp_config)
+        end
+      end
+      
+      # Configuration specific to Instagram deployments.
+      class ChannelProfileInstagramConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The description of the Meta business page or profile.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The fetched Meta business page name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. The Instagram Account ID.
+        # Corresponds to the JSON property `instagramAccountId`
+        # @return [String]
+        attr_accessor :instagram_account_id
+      
+        # Output only. The fetched Meta business profile thumbnail URL.
+        # Corresponds to the JSON property `thumbnailUrl`
+        # @return [String]
+        attr_accessor :thumbnail_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @instagram_account_id = args[:instagram_account_id] if args.key?(:instagram_account_id)
+          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
         end
       end
       
@@ -1598,6 +1639,55 @@ module Google
         end
       end
       
+      # Configuration specific to WhatsApp deployments.
+      class ChannelProfileWhatsAppConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The description of the Meta business page or profile.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The fetched Meta business page name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. The phone number in E.164 format.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # Required. The Meta phone number ID.
+        # Corresponds to the JSON property `phoneNumberId`
+        # @return [String]
+        attr_accessor :phone_number_id
+      
+        # Output only. The fetched Meta business profile thumbnail URL.
+        # Corresponds to the JSON property `thumbnailUrl`
+        # @return [String]
+        attr_accessor :thumbnail_url
+      
+        # Required. The WhatsApp Business Account ID.
+        # Corresponds to the JSON property `wabaId`
+        # @return [String]
+        attr_accessor :waba_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @phone_number_id = args[:phone_number_id] if args.key?(:phone_number_id)
+          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
+          @waba_id = args[:waba_id] if args.key?(:waba_id)
+        end
+      end
+      
       # A chunk of content within a message.
       class Chunk
         include Google::Apis::Core::Hashable
@@ -1697,6 +1787,12 @@ module Google
       class CitationsCitedChunk
         include Google::Apis::Core::Hashable
       
+        # Whether this citation requires attribution to be shown to the end users.
+        # Corresponds to the JSON property `requiresAttribution`
+        # @return [Boolean]
+        attr_accessor :requires_attribution
+        alias_method :requires_attribution?, :requires_attribution
+      
         # Text used for citation.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -1718,6 +1814,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @requires_attribution = args[:requires_attribution] if args.key?(:requires_attribution)
           @text = args[:text] if args.key?(:text)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
@@ -2673,6 +2770,11 @@ module Google
         # @return [Google::Apis::CesV1::ExperimentConfig]
         attr_accessor :experiment_config
       
+        # Ephemeral Meta credentials for Instagram native integration.
+        # Corresponds to the JSON property `instagramCredentials`
+        # @return [Google::Apis::CesV1::InstagramCredentials]
+        attr_accessor :instagram_credentials
+      
         # Identifier. The resource name of the deployment. Format: `projects/`project`/
         # locations/`location`/apps/`app`/deployments/`deployment``
         # Corresponds to the JSON property `name`
@@ -2683,6 +2785,11 @@ module Google
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
+      
+        # Ephemeral Meta credentials for WhatsApp native integration.
+        # Corresponds to the JSON property `whatsappCredentials`
+        # @return [Google::Apis::CesV1::WhatsAppCredentials]
+        attr_accessor :whatsapp_credentials
       
         def initialize(**args)
            update!(**args)
@@ -2696,8 +2803,10 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @experiment_config = args[:experiment_config] if args.key?(:experiment_config)
+          @instagram_credentials = args[:instagram_credentials] if args.key?(:instagram_credentials)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @whatsapp_credentials = args[:whatsapp_credentials] if args.key?(:whatsapp_credentials)
         end
       end
       
@@ -3225,6 +3334,16 @@ module Google
       class ExecuteToolResponse
         include Google::Apis::Core::Hashable
       
+        # Citations associated with the agent response.
+        # Corresponds to the JSON property `citations`
+        # @return [Google::Apis::CesV1::Citations]
+        attr_accessor :citations
+      
+        # Search suggestions from Google Search Tool.
+        # Corresponds to the JSON property `googleSearchSuggestions`
+        # @return [Google::Apis::CesV1::GoogleSearchSuggestions]
+        attr_accessor :google_search_suggestions
+      
         # The tool execution result in JSON object format. Use "output" key to specify
         # tool response and "error" key to specify error details (if any). If "output"
         # and "error" keys are not specified, then whole "response" is treated as tool
@@ -3255,6 +3374,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @citations = args[:citations] if args.key?(:citations)
+          @google_search_suggestions = args[:google_search_suggestions] if args.key?(:google_search_suggestions)
           @response = args[:response] if args.key?(:response)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
@@ -4149,6 +4270,31 @@ module Google
         end
       end
       
+      # Ephemeral Meta credentials for Instagram native integration.
+      class InstagramCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Meta auth code provided by the embedded signup flow.
+        # Corresponds to the JSON property `authCode`
+        # @return [String]
+        attr_accessor :auth_code
+      
+        # Optional. The Conversation Profile ID to use for the deployment.
+        # Corresponds to the JSON property `conversationProfileId`
+        # @return [String]
+        attr_accessor :conversation_profile_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_code = args[:auth_code] if args.key?(:auth_code)
+          @conversation_profile_id = args[:conversation_profile_id] if args.key?(:conversation_profile_id)
+        end
+      end
+      
       # Language settings of the app.
       class LanguageSettings
         include Google::Apis::Core::Hashable
@@ -4192,6 +4338,390 @@ module Google
           @enable_multilingual_support = args[:enable_multilingual_support] if args.key?(:enable_multilingual_support)
           @fallback_action = args[:fallback_action] if args.key?(:fallback_action)
           @supported_language_codes = args[:supported_language_codes] if args.key?(:supported_language_codes)
+        end
+      end
+      
+      # Defines a security scheme using an API key.
+      class LfA2aV1ApiKeySecurityScheme
+        include Google::Apis::Core::Hashable
+      
+        # An optional description for the security scheme.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The location of the API key. Valid values are "query", "header", or "
+        # cookie".
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # Required. The name of the header, query, or cookie parameter to be used.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Defines optional capabilities supported by an agent.
+      class LfA2aV1AgentCapabilities
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if the agent supports providing an extended agent card when
+        # authenticated.
+        # Corresponds to the JSON property `extendedAgentCard`
+        # @return [Boolean]
+        attr_accessor :extended_agent_card
+        alias_method :extended_agent_card?, :extended_agent_card
+      
+        # A list of protocol extensions supported by the agent.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Google::Apis::CesV1::LfA2aV1AgentExtension>]
+        attr_accessor :extensions
+      
+        # Indicates if the agent supports sending push notifications for asynchronous
+        # task updates.
+        # Corresponds to the JSON property `pushNotifications`
+        # @return [Boolean]
+        attr_accessor :push_notifications
+        alias_method :push_notifications?, :push_notifications
+      
+        # Indicates if the agent supports streaming responses.
+        # Corresponds to the JSON property `streaming`
+        # @return [Boolean]
+        attr_accessor :streaming
+        alias_method :streaming?, :streaming
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extended_agent_card = args[:extended_agent_card] if args.key?(:extended_agent_card)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @push_notifications = args[:push_notifications] if args.key?(:push_notifications)
+          @streaming = args[:streaming] if args.key?(:streaming)
+        end
+      end
+      
+      # A self-describing manifest for an agent. It provides essential metadata
+      # including the agent's identity, capabilities, skills, supported communication
+      # methods, and security requirements. Next ID: 20
+      class LfA2aV1AgentCard
+        include Google::Apis::Core::Hashable
+      
+        # Defines optional capabilities supported by an agent.
+        # Corresponds to the JSON property `capabilities`
+        # @return [Google::Apis::CesV1::LfA2aV1AgentCapabilities]
+        attr_accessor :capabilities
+      
+        # Required. protolint:enable REPEATED_FIELD_NAMES_PLURALIZED The set of
+        # interaction modes that the agent supports across all skills. This can be
+        # overridden per skill. Defined as media types.
+        # Corresponds to the JSON property `defaultInputModes`
+        # @return [Array<String>]
+        attr_accessor :default_input_modes
+      
+        # Required. The media types supported as outputs from this agent.
+        # Corresponds to the JSON property `defaultOutputModes`
+        # @return [Array<String>]
+        attr_accessor :default_output_modes
+      
+        # Required. A human-readable description of the agent, assisting users and other
+        # agents in understanding its purpose. Example: "Agent that helps users with
+        # recipes and cooking."
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # A URL providing additional documentation about the agent.
+        # Corresponds to the JSON property `documentationUrl`
+        # @return [String]
+        attr_accessor :documentation_url
+      
+        # Optional. A URL to an icon for the agent.
+        # Corresponds to the JSON property `iconUrl`
+        # @return [String]
+        attr_accessor :icon_url
+      
+        # Required. A human readable name for the agent. Example: "Recipe Agent"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents the service provider of an agent.
+        # Corresponds to the JSON property `provider`
+        # @return [Google::Apis::CesV1::LfA2aV1AgentProvider]
+        attr_accessor :provider
+      
+        # Security requirements for contacting the agent.
+        # Corresponds to the JSON property `securityRequirements`
+        # @return [Array<Google::Apis::CesV1::LfA2aV1SecurityRequirement>]
+        attr_accessor :security_requirements
+      
+        # The security scheme details used for authenticating with this agent.
+        # Corresponds to the JSON property `securitySchemes`
+        # @return [Hash<String,Google::Apis::CesV1::LfA2aV1SecurityScheme>]
+        attr_accessor :security_schemes
+      
+        # JSON Web Signatures computed for this `AgentCard`.
+        # Corresponds to the JSON property `signatures`
+        # @return [Array<Google::Apis::CesV1::LfA2aV1AgentCardSignature>]
+        attr_accessor :signatures
+      
+        # Required. Skills represent the abilities of an agent. It is largely a
+        # descriptive concept but represents a more focused set of behaviors that the
+        # agent is likely to succeed at.
+        # Corresponds to the JSON property `skills`
+        # @return [Array<Google::Apis::CesV1::LfA2aV1AgentSkill>]
+        attr_accessor :skills
+      
+        # Required. Ordered list of supported interfaces. The first entry is preferred.
+        # Corresponds to the JSON property `supportedInterfaces`
+        # @return [Array<Google::Apis::CesV1::LfA2aV1AgentInterface>]
+        attr_accessor :supported_interfaces
+      
+        # Required. The version of the agent. Example: "1.0.0"
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capabilities = args[:capabilities] if args.key?(:capabilities)
+          @default_input_modes = args[:default_input_modes] if args.key?(:default_input_modes)
+          @default_output_modes = args[:default_output_modes] if args.key?(:default_output_modes)
+          @description = args[:description] if args.key?(:description)
+          @documentation_url = args[:documentation_url] if args.key?(:documentation_url)
+          @icon_url = args[:icon_url] if args.key?(:icon_url)
+          @name = args[:name] if args.key?(:name)
+          @provider = args[:provider] if args.key?(:provider)
+          @security_requirements = args[:security_requirements] if args.key?(:security_requirements)
+          @security_schemes = args[:security_schemes] if args.key?(:security_schemes)
+          @signatures = args[:signatures] if args.key?(:signatures)
+          @skills = args[:skills] if args.key?(:skills)
+          @supported_interfaces = args[:supported_interfaces] if args.key?(:supported_interfaces)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # AgentCardSignature represents a JWS signature of an AgentCard. This follows
+      # the JSON format of an RFC 7515 JSON Web Signature (JWS).
+      class LfA2aV1AgentCardSignature
+        include Google::Apis::Core::Hashable
+      
+        # The unprotected JWS header values.
+        # Corresponds to the JSON property `header`
+        # @return [Hash<String,Object>]
+        attr_accessor :header
+      
+        # Required. Required. The protected JWS header for the signature. This is always
+        # a base64url-encoded JSON object.
+        # Corresponds to the JSON property `protected`
+        # @return [String]
+        attr_accessor :protected
+      
+        # Required. The computed signature, base64url-encoded.
+        # Corresponds to the JSON property `signature`
+        # @return [String]
+        attr_accessor :signature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @protected = args[:protected] if args.key?(:protected)
+          @signature = args[:signature] if args.key?(:signature)
+        end
+      end
+      
+      # A declaration of a protocol extension supported by an Agent.
+      class LfA2aV1AgentExtension
+        include Google::Apis::Core::Hashable
+      
+        # A human-readable description of how this agent uses the extension.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Extension-specific configuration parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Hash<String,Object>]
+        attr_accessor :params
+      
+        # If true, the client must understand and comply with the extension's
+        # requirements.
+        # Corresponds to the JSON property `required`
+        # @return [Boolean]
+        attr_accessor :required
+        alias_method :required?, :required
+      
+        # The unique URI identifying the extension.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @params = args[:params] if args.key?(:params)
+          @required = args[:required] if args.key?(:required)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Declares a combination of a target URL, transport and protocol version for
+      # interacting with the agent. This allows agents to expose the same
+      # functionality over multiple protocol binding mechanisms.
+      class LfA2aV1AgentInterface
+        include Google::Apis::Core::Hashable
+      
+        # Required. The protocol binding supported at this URL. This is an open form
+        # string, to be easily extended for other protocol bindings. The core ones
+        # officially supported are `JSONRPC`, `GRPC` and `HTTP+JSON`.
+        # Corresponds to the JSON property `protocolBinding`
+        # @return [String]
+        attr_accessor :protocol_binding
+      
+        # Required. The version of the A2A protocol this interface exposes. Use the
+        # latest supported minor version per major version. Examples: "0.3", "1.0"
+        # Corresponds to the JSON property `protocolVersion`
+        # @return [String]
+        attr_accessor :protocol_version
+      
+        # Tenant ID to be used in the request when calling the agent.
+        # Corresponds to the JSON property `tenant`
+        # @return [String]
+        attr_accessor :tenant
+      
+        # Required. The URL where this interface is available. Must be a valid absolute
+        # HTTPS URL in production. Example: "https://api.example.com/a2a/v1", "https://
+        # grpc.example.com/a2a"
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @protocol_binding = args[:protocol_binding] if args.key?(:protocol_binding)
+          @protocol_version = args[:protocol_version] if args.key?(:protocol_version)
+          @tenant = args[:tenant] if args.key?(:tenant)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Represents the service provider of an agent.
+      class LfA2aV1AgentProvider
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the agent provider's organization. Example: "Google"
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
+        # Required. A URL for the agent provider's website or relevant documentation.
+        # Example: "https://ai.google.dev"
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @organization = args[:organization] if args.key?(:organization)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Represents a distinct capability or function that an agent can perform.
+      class LfA2aV1AgentSkill
+        include Google::Apis::Core::Hashable
+      
+        # Required. A detailed description of the skill.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Example prompts or scenarios that this skill can handle.
+        # Corresponds to the JSON property `examples`
+        # @return [Array<String>]
+        attr_accessor :examples
+      
+        # Required. A unique identifier for the agent's skill.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The set of supported input media types for this skill, overriding the agent's
+        # defaults.
+        # Corresponds to the JSON property `inputModes`
+        # @return [Array<String>]
+        attr_accessor :input_modes
+      
+        # Required. A human-readable name for the skill.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The set of supported output media types for this skill, overriding the agent's
+        # defaults.
+        # Corresponds to the JSON property `outputModes`
+        # @return [Array<String>]
+        attr_accessor :output_modes
+      
+        # Security schemes necessary for this skill.
+        # Corresponds to the JSON property `securityRequirements`
+        # @return [Array<Google::Apis::CesV1::LfA2aV1SecurityRequirement>]
+        attr_accessor :security_requirements
+      
+        # Required. A set of keywords describing the skill's capabilities.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @examples = args[:examples] if args.key?(:examples)
+          @id = args[:id] if args.key?(:id)
+          @input_modes = args[:input_modes] if args.key?(:input_modes)
+          @name = args[:name] if args.key?(:name)
+          @output_modes = args[:output_modes] if args.key?(:output_modes)
+          @security_requirements = args[:security_requirements] if args.key?(:security_requirements)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -4274,6 +4804,189 @@ module Google
         end
       end
       
+      # Defines configuration details for the OAuth 2.0 Authorization Code flow.
+      class LfA2aV1AuthorizationCodeOAuthFlow
+        include Google::Apis::Core::Hashable
+      
+        # Required. The authorization URL to be used for this flow.
+        # Corresponds to the JSON property `authorizationUrl`
+        # @return [String]
+        attr_accessor :authorization_url
+      
+        # Indicates if PKCE (RFC 7636) is required for this flow. PKCE should always be
+        # used for public clients and is recommended for all clients.
+        # Corresponds to the JSON property `pkceRequired`
+        # @return [Boolean]
+        attr_accessor :pkce_required
+        alias_method :pkce_required?, :pkce_required
+      
+        # The URL to be used for obtaining refresh tokens.
+        # Corresponds to the JSON property `refreshUrl`
+        # @return [String]
+        attr_accessor :refresh_url
+      
+        # Required. The available scopes for the OAuth2 security scheme.
+        # Corresponds to the JSON property `scopes`
+        # @return [Hash<String,String>]
+        attr_accessor :scopes
+      
+        # Required. The token URL to be used for this flow.
+        # Corresponds to the JSON property `tokenUrl`
+        # @return [String]
+        attr_accessor :token_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_url = args[:authorization_url] if args.key?(:authorization_url)
+          @pkce_required = args[:pkce_required] if args.key?(:pkce_required)
+          @refresh_url = args[:refresh_url] if args.key?(:refresh_url)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @token_url = args[:token_url] if args.key?(:token_url)
+        end
+      end
+      
+      # Defines configuration details for the OAuth 2.0 Client Credentials flow.
+      class LfA2aV1ClientCredentialsOAuthFlow
+        include Google::Apis::Core::Hashable
+      
+        # The URL to be used for obtaining refresh tokens.
+        # Corresponds to the JSON property `refreshUrl`
+        # @return [String]
+        attr_accessor :refresh_url
+      
+        # Required. The available scopes for the OAuth2 security scheme.
+        # Corresponds to the JSON property `scopes`
+        # @return [Hash<String,String>]
+        attr_accessor :scopes
+      
+        # Required. The token URL to be used for this flow.
+        # Corresponds to the JSON property `tokenUrl`
+        # @return [String]
+        attr_accessor :token_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @refresh_url = args[:refresh_url] if args.key?(:refresh_url)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @token_url = args[:token_url] if args.key?(:token_url)
+        end
+      end
+      
+      # Defines configuration details for the OAuth 2.0 Device Code flow (RFC 8628).
+      # This flow is designed for input-constrained devices such as IoT devices, and
+      # CLI tools where the user authenticates on a separate device.
+      class LfA2aV1DeviceCodeOAuthFlow
+        include Google::Apis::Core::Hashable
+      
+        # Required. The device authorization endpoint URL.
+        # Corresponds to the JSON property `deviceAuthorizationUrl`
+        # @return [String]
+        attr_accessor :device_authorization_url
+      
+        # The URL to be used for obtaining refresh tokens.
+        # Corresponds to the JSON property `refreshUrl`
+        # @return [String]
+        attr_accessor :refresh_url
+      
+        # Required. The available scopes for the OAuth2 security scheme.
+        # Corresponds to the JSON property `scopes`
+        # @return [Hash<String,String>]
+        attr_accessor :scopes
+      
+        # Required. The token URL to be used for this flow.
+        # Corresponds to the JSON property `tokenUrl`
+        # @return [String]
+        attr_accessor :token_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_authorization_url = args[:device_authorization_url] if args.key?(:device_authorization_url)
+          @refresh_url = args[:refresh_url] if args.key?(:refresh_url)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @token_url = args[:token_url] if args.key?(:token_url)
+        end
+      end
+      
+      # Defines a security scheme using HTTP authentication.
+      class LfA2aV1HttpAuthSecurityScheme
+        include Google::Apis::Core::Hashable
+      
+        # A hint to the client to identify how the bearer token is formatted (e.g., "JWT"
+        # ). Primarily for documentation purposes.
+        # Corresponds to the JSON property `bearerFormat`
+        # @return [String]
+        attr_accessor :bearer_format
+      
+        # An optional description for the security scheme.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The name of the HTTP Authentication scheme to be used in the
+        # Authorization header, as defined in RFC7235 (e.g., "Bearer"). This value
+        # should be registered in the IANA Authentication Scheme registry.
+        # Corresponds to the JSON property `scheme`
+        # @return [String]
+        attr_accessor :scheme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bearer_format = args[:bearer_format] if args.key?(:bearer_format)
+          @description = args[:description] if args.key?(:description)
+          @scheme = args[:scheme] if args.key?(:scheme)
+        end
+      end
+      
+      # Deprecated: Use Authorization Code + PKCE instead.
+      class LfA2aV1ImplicitOAuthFlow
+        include Google::Apis::Core::Hashable
+      
+        # The authorization URL to be used for this flow. This MUST be in the form of a
+        # URL. The OAuth2 standard requires the use of TLS
+        # Corresponds to the JSON property `authorizationUrl`
+        # @return [String]
+        attr_accessor :authorization_url
+      
+        # The URL to be used for obtaining refresh tokens. This MUST be in the form of a
+        # URL. The OAuth2 standard requires the use of TLS.
+        # Corresponds to the JSON property `refreshUrl`
+        # @return [String]
+        attr_accessor :refresh_url
+      
+        # The available scopes for the OAuth2 security scheme. A map between the scope
+        # name and a short description for it. The map MAY be empty.
+        # Corresponds to the JSON property `scopes`
+        # @return [Hash<String,String>]
+        attr_accessor :scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_url = args[:authorization_url] if args.key?(:authorization_url)
+          @refresh_url = args[:refresh_url] if args.key?(:refresh_url)
+          @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
       # `Message` is one unit of communication between client and server. It can be
       # associated with a context and/or a task. For server messages, `context_id`
       # must be provided, and `task_id` only if a task was created. For client
@@ -4343,6 +5056,128 @@ module Google
         end
       end
       
+      # Defines a security scheme using mTLS authentication.
+      class LfA2aV1MutualTlsSecurityScheme
+        include Google::Apis::Core::Hashable
+      
+        # An optional description for the security scheme.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # Defines a security scheme using OAuth 2.0.
+      class LfA2aV1OAuth2SecurityScheme
+        include Google::Apis::Core::Hashable
+      
+        # An optional description for the security scheme.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Defines the configuration for the supported OAuth 2.0 flows.
+        # Corresponds to the JSON property `flows`
+        # @return [Google::Apis::CesV1::LfA2aV1OAuthFlows]
+        attr_accessor :flows
+      
+        # URL to the OAuth2 authorization server metadata [RFC 8414](https://datatracker.
+        # ietf.org/doc/html/rfc8414). TLS is required.
+        # Corresponds to the JSON property `oauth2MetadataUrl`
+        # @return [String]
+        attr_accessor :oauth2_metadata_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @flows = args[:flows] if args.key?(:flows)
+          @oauth2_metadata_url = args[:oauth2_metadata_url] if args.key?(:oauth2_metadata_url)
+        end
+      end
+      
+      # Defines the configuration for the supported OAuth 2.0 flows.
+      class LfA2aV1OAuthFlows
+        include Google::Apis::Core::Hashable
+      
+        # Defines configuration details for the OAuth 2.0 Authorization Code flow.
+        # Corresponds to the JSON property `authorizationCode`
+        # @return [Google::Apis::CesV1::LfA2aV1AuthorizationCodeOAuthFlow]
+        attr_accessor :authorization_code
+      
+        # Defines configuration details for the OAuth 2.0 Client Credentials flow.
+        # Corresponds to the JSON property `clientCredentials`
+        # @return [Google::Apis::CesV1::LfA2aV1ClientCredentialsOAuthFlow]
+        attr_accessor :client_credentials
+      
+        # Defines configuration details for the OAuth 2.0 Device Code flow (RFC 8628).
+        # This flow is designed for input-constrained devices such as IoT devices, and
+        # CLI tools where the user authenticates on a separate device.
+        # Corresponds to the JSON property `deviceCode`
+        # @return [Google::Apis::CesV1::LfA2aV1DeviceCodeOAuthFlow]
+        attr_accessor :device_code
+      
+        # Deprecated: Use Authorization Code + PKCE instead.
+        # Corresponds to the JSON property `implicit`
+        # @return [Google::Apis::CesV1::LfA2aV1ImplicitOAuthFlow]
+        attr_accessor :implicit
+      
+        # Deprecated: Use Authorization Code + PKCE or Device Code.
+        # Corresponds to the JSON property `password`
+        # @return [Google::Apis::CesV1::LfA2aV1PasswordOAuthFlow]
+        attr_accessor :password
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_code = args[:authorization_code] if args.key?(:authorization_code)
+          @client_credentials = args[:client_credentials] if args.key?(:client_credentials)
+          @device_code = args[:device_code] if args.key?(:device_code)
+          @implicit = args[:implicit] if args.key?(:implicit)
+          @password = args[:password] if args.key?(:password)
+        end
+      end
+      
+      # Defines a security scheme using OpenID Connect.
+      class LfA2aV1OpenIdConnectSecurityScheme
+        include Google::Apis::Core::Hashable
+      
+        # An optional description for the security scheme.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The [OpenID Connect Discovery URL](https://openid.net/specs/openid-
+        # connect-discovery-1_0.html) for the OIDC provider's metadata.
+        # Corresponds to the JSON property `openIdConnectUrl`
+        # @return [String]
+        attr_accessor :open_id_connect_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @open_id_connect_url = args[:open_id_connect_url] if args.key?(:open_id_connect_url)
+        end
+      end
+      
       # `Part` represents a container for a section of communication content. Parts
       # can be purely textual, some sort of file (image, video, etc) or a structured
       # data blob (i.e. JSON).
@@ -4401,6 +5236,104 @@ module Google
           @raw = args[:raw] if args.key?(:raw)
           @text = args[:text] if args.key?(:text)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Deprecated: Use Authorization Code + PKCE or Device Code.
+      class LfA2aV1PasswordOAuthFlow
+        include Google::Apis::Core::Hashable
+      
+        # The URL to be used for obtaining refresh tokens. This MUST be in the form of a
+        # URL. The OAuth2 standard requires the use of TLS.
+        # Corresponds to the JSON property `refreshUrl`
+        # @return [String]
+        attr_accessor :refresh_url
+      
+        # The available scopes for the OAuth2 security scheme. A map between the scope
+        # name and a short description for it. The map MAY be empty.
+        # Corresponds to the JSON property `scopes`
+        # @return [Hash<String,String>]
+        attr_accessor :scopes
+      
+        # The token URL to be used for this flow. This MUST be in the form of a URL. The
+        # OAuth2 standard requires the use of TLS.
+        # Corresponds to the JSON property `tokenUrl`
+        # @return [String]
+        attr_accessor :token_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @refresh_url = args[:refresh_url] if args.key?(:refresh_url)
+          @scopes = args[:scopes] if args.key?(:scopes)
+          @token_url = args[:token_url] if args.key?(:token_url)
+        end
+      end
+      
+      # Defines the security requirements for an agent.
+      class LfA2aV1SecurityRequirement
+        include Google::Apis::Core::Hashable
+      
+        # A map of security schemes to the required scopes.
+        # Corresponds to the JSON property `schemes`
+        # @return [Hash<String,Google::Apis::CesV1::LfA2aV1StringList>]
+        attr_accessor :schemes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @schemes = args[:schemes] if args.key?(:schemes)
+        end
+      end
+      
+      # Defines a security scheme that can be used to secure an agent's endpoints.
+      # This is a discriminated union type based on the OpenAPI 3.2 Security Scheme
+      # Object. See: https://spec.openapis.org/oas/v3.2.0.html#security-scheme-object
+      class LfA2aV1SecurityScheme
+        include Google::Apis::Core::Hashable
+      
+        # Defines a security scheme using an API key.
+        # Corresponds to the JSON property `apiKeySecurityScheme`
+        # @return [Google::Apis::CesV1::LfA2aV1ApiKeySecurityScheme]
+        attr_accessor :api_key_security_scheme
+      
+        # Defines a security scheme using HTTP authentication.
+        # Corresponds to the JSON property `httpAuthSecurityScheme`
+        # @return [Google::Apis::CesV1::LfA2aV1HttpAuthSecurityScheme]
+        attr_accessor :http_auth_security_scheme
+      
+        # Defines a security scheme using mTLS authentication.
+        # Corresponds to the JSON property `mtlsSecurityScheme`
+        # @return [Google::Apis::CesV1::LfA2aV1MutualTlsSecurityScheme]
+        attr_accessor :mtls_security_scheme
+      
+        # Defines a security scheme using OAuth 2.0.
+        # Corresponds to the JSON property `oauth2SecurityScheme`
+        # @return [Google::Apis::CesV1::LfA2aV1OAuth2SecurityScheme]
+        attr_accessor :oauth2_security_scheme
+      
+        # Defines a security scheme using OpenID Connect.
+        # Corresponds to the JSON property `openIdConnectSecurityScheme`
+        # @return [Google::Apis::CesV1::LfA2aV1OpenIdConnectSecurityScheme]
+        attr_accessor :open_id_connect_security_scheme
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key_security_scheme = args[:api_key_security_scheme] if args.key?(:api_key_security_scheme)
+          @http_auth_security_scheme = args[:http_auth_security_scheme] if args.key?(:http_auth_security_scheme)
+          @mtls_security_scheme = args[:mtls_security_scheme] if args.key?(:mtls_security_scheme)
+          @oauth2_security_scheme = args[:oauth2_security_scheme] if args.key?(:oauth2_security_scheme)
+          @open_id_connect_security_scheme = args[:open_id_connect_security_scheme] if args.key?(:open_id_connect_security_scheme)
         end
       end
       
@@ -4515,6 +5448,25 @@ module Google
         def update!(**args)
           @message = args[:message] if args.key?(:message)
           @task = args[:task] if args.key?(:task)
+        end
+      end
+      
+      # protolint:disable REPEATED_FIELD_NAMES_PLURALIZED A list of strings.
+      class LfA2aV1StringList
+        include Google::Apis::Core::Hashable
+      
+        # The individual string values.
+        # Corresponds to the JSON property `list`
+        # @return [Array<String>]
+        attr_accessor :list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @list = args[:list] if args.key?(:list)
         end
       end
       
@@ -5077,6 +6029,11 @@ module Google
         # @return [Google::Apis::CesV1::AudioRecordingConfig]
         attr_accessor :unredacted_audio_recording_config
       
+        # Settings to describe the BigQuery export behaviors for the app.
+        # Corresponds to the JSON property `unredactedBigqueryExportSettings`
+        # @return [Google::Apis::CesV1::BigQueryExportSettings]
+        attr_accessor :unredacted_bigquery_export_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5091,6 +6048,7 @@ module Google
           @metric_analysis_settings = args[:metric_analysis_settings] if args.key?(:metric_analysis_settings)
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
           @unredacted_audio_recording_config = args[:unredacted_audio_recording_config] if args.key?(:unredacted_audio_recording_config)
+          @unredacted_bigquery_export_settings = args[:unredacted_bigquery_export_settings] if args.key?(:unredacted_bigquery_export_settings)
         end
       end
       
@@ -6544,6 +7502,11 @@ module Google
         # @return [Google::Apis::CesV1::Citations]
         attr_accessor :citations
       
+        # Context messages for external supervision guardrails.
+        # Corresponds to the JSON property `context`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :context
+      
         # Contains execution details during the processing.
         # Corresponds to the JSON property `diagnosticInfo`
         # @return [Google::Apis::CesV1::SessionOutputDiagnosticInfo]
@@ -6599,6 +7562,7 @@ module Google
         def update!(**args)
           @audio = args[:audio] if args.key?(:audio)
           @citations = args[:citations] if args.key?(:citations)
+          @context = args[:context] if args.key?(:context)
           @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
           @end_session = args[:end_session] if args.key?(:end_session)
           @google_search_suggestions = args[:google_search_suggestions] if args.key?(:google_search_suggestions)
@@ -6727,6 +7691,18 @@ module Google
       class SynthesizeSpeechConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The instruction used to synthesize speech when using a generative
+        # model.
+        # Corresponds to the JSON property `instruction`
+        # @return [String]
+        attr_accessor :instruction
+      
+        # Optional. The model used to synthesize audio. Currently supported values: - "
+        # gemini-3.1-flash-tts-preview" If empty, Chirp3-HD is used.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         # Optional. The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal
         # native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
         # half as fast. Values outside of the range [0.25, 2.0] will return an error.
@@ -6742,14 +7718,25 @@ module Google
         # @return [String]
         attr_accessor :voice
       
+        # Optional. The Cloud Storage URI to the audio sample for voice cloning. The
+        # audio sample should be a mono-channel, 24kHz WAV file. Note: Please make sure
+        # the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has `
+        # storage.objects.get` permission to the Cloud Storage object.
+        # Corresponds to the JSON property `voiceSampleGcsUri`
+        # @return [String]
+        attr_accessor :voice_sample_gcs_uri
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @instruction = args[:instruction] if args.key?(:instruction)
+          @model = args[:model] if args.key?(:model)
           @speaking_rate = args[:speaking_rate] if args.key?(:speaking_rate)
           @voice = args[:voice] if args.key?(:voice)
+          @voice_sample_gcs_uri = args[:voice_sample_gcs_uri] if args.key?(:voice_sample_gcs_uri)
         end
       end
       
@@ -7227,6 +8214,13 @@ module Google
         # @return [Google::Apis::CesV1::OpenApiToolset]
         attr_accessor :open_api_toolset
       
+        # Optional. The timeout for the toolset execution. If not set, the default
+        # timeout is 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `
+        # ASYNCHRONOUS` toolsets.
+        # Corresponds to the JSON property `timeout`
+        # @return [String]
+        attr_accessor :timeout
+      
         # Configuration for tool behavior in fake mode.
         # Corresponds to the JSON property `toolFakeConfig`
         # @return [Google::Apis::CesV1::ToolFakeConfig]
@@ -7252,6 +8246,7 @@ module Google
           @mcp_toolset = args[:mcp_toolset] if args.key?(:mcp_toolset)
           @name = args[:name] if args.key?(:name)
           @open_api_toolset = args[:open_api_toolset] if args.key?(:open_api_toolset)
+          @timeout = args[:timeout] if args.key?(:timeout)
           @tool_fake_config = args[:tool_fake_config] if args.key?(:tool_fake_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -7530,6 +8525,55 @@ module Google
         def update!(**args)
           @query = args[:query] if args.key?(:query)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Ephemeral Meta credentials for WhatsApp native integration.
+      class WhatsAppCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Meta auth code provided by the embedded signup flow.
+        # Corresponds to the JSON property `authCode`
+        # @return [String]
+        attr_accessor :auth_code
+      
+        # Required. The Business Account ID to use for the phone number.
+        # Corresponds to the JSON property `businessAccountId`
+        # @return [String]
+        attr_accessor :business_account_id
+      
+        # Optional. The Conversation Profile ID to use for the deployment.
+        # Corresponds to the JSON property `conversationProfileId`
+        # @return [String]
+        attr_accessor :conversation_profile_id
+      
+        # Required. The phone number to register with WhatsApp.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # Required. The 6-digit PIN created by the user for two-step verification.
+        # Corresponds to the JSON property `pin`
+        # @return [String]
+        attr_accessor :pin
+      
+        # Required. The WhatsApp Business Account ID.
+        # Corresponds to the JSON property `wabaId`
+        # @return [String]
+        attr_accessor :waba_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auth_code = args[:auth_code] if args.key?(:auth_code)
+          @business_account_id = args[:business_account_id] if args.key?(:business_account_id)
+          @conversation_profile_id = args[:conversation_profile_id] if args.key?(:conversation_profile_id)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @pin = args[:pin] if args.key?(:pin)
+          @waba_id = args[:waba_id] if args.key?(:waba_id)
         end
       end
       
