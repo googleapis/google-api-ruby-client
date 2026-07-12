@@ -733,6 +733,32 @@ module Google
         end
       end
       
+      # Details about the brand partner linked to the video for Creator Initiated
+      # Linking (CIL). Next ID: 6
+      class BrandPartner
+        include Google::Apis::Core::Hashable
+      
+        # Required. Channel handle, must begin with "@"
+        # Corresponds to the JSON property `channelHandle`
+        # @return [String]
+        attr_accessor :channel_handle
+      
+        # Required. External Channel ID, must begin with "UC"
+        # Corresponds to the JSON property `channelId`
+        # @return [String]
+        attr_accessor :channel_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_handle = args[:channel_handle] if args.key?(:channel_handle)
+          @channel_id = args[:channel_id] if args.key?(:channel_id)
+        end
+      end
+      
       # A *caption* resource represents a YouTube caption track. A caption track is
       # associated with exactly one YouTube video.
       class Caption
@@ -4726,11 +4752,11 @@ module Google
         # sponsor memberMilestoneChatEvent - the member that sent the message
         # membershipGiftingEvent - the user that made the purchase
         # giftMembershipReceivedEvent - the user that received the gift membership
-        # messageDeletedEvent - the moderator that took the action messageRetractedEvent
-        # - the author that retracted their message userBannedEvent - the moderator that
-        # took the action superChatEvent - the user that made the purchase
-        # superStickerEvent - the user that made the purchase pollEvent - the user that
-        # created the poll
+        # messageDeletedEvent - the moderator that took the action. Unused.
+        # messageRetractedEvent - the author that retracted their message. Unused.
+        # userBannedEvent - the moderator that took the action superChatEvent - the user
+        # that made the purchase superStickerEvent - the user that made the purchase
+        # pollEvent - the user that created the poll
         # Corresponds to the JSON property `authorChannelId`
         # @return [String]
         attr_accessor :author_channel_id
@@ -7811,6 +7837,12 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoAgeGating]
         attr_accessor :age_gating
       
+        # Details about the brand partner linked to the video for Creator Initiated
+        # Linking (CIL). Next ID: 6
+        # Corresponds to the JSON property `brandPartner`
+        # @return [Google::Apis::YoutubeV3::BrandPartner]
+        attr_accessor :brand_partner
+      
         # Details about the content of a YouTube Video.
         # Corresponds to the JSON property `contentDetails`
         # @return [Google::Apis::YoutubeV3::VideoContentDetails]
@@ -7926,6 +7958,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @age_gating = args[:age_gating] if args.key?(:age_gating)
+          @brand_partner = args[:brand_partner] if args.key?(:brand_partner)
           @content_details = args[:content_details] if args.key?(:content_details)
           @etag = args[:etag] if args.key?(:etag)
           @file_details = args[:file_details] if args.key?(:file_details)
