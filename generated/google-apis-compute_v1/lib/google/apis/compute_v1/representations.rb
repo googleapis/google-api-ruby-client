@@ -4180,6 +4180,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceScheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedInstanceShutdownDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4211,6 +4223,12 @@ module Google
       end
       
       class NamedPort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamedSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6604,6 +6622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RoutersGetNamedSetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RoutersGetRoutePolicyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6611,6 +6635,24 @@ module Google
       end
       
       class RoutersListBgpRoutes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersListNamedSets
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -13453,6 +13495,7 @@ module Google
           property :last_start_timestamp, as: 'lastStartTimestamp'
           property :last_stop_timestamp, as: 'lastStopTimestamp'
           property :last_suspended_timestamp, as: 'lastSuspendedTimestamp'
+          property :local_ssd_encryption_mode, as: 'localSsdEncryptionMode'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
       
@@ -13843,6 +13886,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::PerInstanceConfig, decorator: Google::Apis::ComputeV1::PerInstanceConfig::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
@@ -14594,6 +14639,7 @@ module Google
       
           property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
+          property :local_ssd_encryption_mode, as: 'localSsdEncryptionMode'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
       
@@ -16575,6 +16621,10 @@ module Google
       
           property :properties_from_flexibility_policy, as: 'propertiesFromFlexibilityPolicy', class: Google::Apis::ComputeV1::ManagedInstancePropertiesFromFlexibilityPolicy, decorator: Google::Apis::ComputeV1::ManagedInstancePropertiesFromFlexibilityPolicy::Representation
       
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::ManagedInstanceScheduling, decorator: Google::Apis::ComputeV1::ManagedInstanceScheduling::Representation
+      
+          property :shutdown_details, as: 'shutdownDetails', class: Google::Apis::ComputeV1::ManagedInstanceShutdownDetails, decorator: Google::Apis::ComputeV1::ManagedInstanceShutdownDetails::Representation
+      
           property :version, as: 'version', class: Google::Apis::ComputeV1::ManagedInstanceVersion, decorator: Google::Apis::ComputeV1::ManagedInstanceVersion::Representation
       
         end
@@ -16636,6 +16686,23 @@ module Google
         end
       end
       
+      class ManagedInstanceScheduling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :graceful_shutdown_timestamp, as: 'gracefulShutdownTimestamp'
+          property :termination_timestamp, as: 'terminationTimestamp'
+        end
+      end
+      
+      class ManagedInstanceShutdownDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_duration, as: 'maxDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
+          property :request_timestamp, as: 'requestTimestamp'
+        end
+      end
+      
       class ManagedInstanceVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16684,6 +16751,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :port, as: 'port'
+        end
+      end
+      
+      class NamedSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :elements, as: 'elements', class: Google::Apis::ComputeV1::Expr, decorator: Google::Apis::ComputeV1::Expr::Representation
+      
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -21129,6 +21208,15 @@ module Google
         end
       end
       
+      class RoutersGetNamedSetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :resource, as: 'resource', class: Google::Apis::ComputeV1::NamedSet, decorator: Google::Apis::ComputeV1::NamedSet::Representation
+      
+        end
+      end
+      
       class RoutersGetRoutePolicyResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -21157,6 +21245,40 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning::Datum, decorator: Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class RoutersListNamedSets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :result, as: 'result', class: Google::Apis::ComputeV1::NamedSet, decorator: Google::Apis::ComputeV1::NamedSet::Representation
+      
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::RoutersListNamedSets::Warning, decorator: Google::Apis::ComputeV1::RoutersListNamedSets::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::RoutersListNamedSets::Warning::Datum, decorator: Google::Apis::ComputeV1::RoutersListNamedSets::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -23011,6 +23133,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ip_collection, as: 'ipCollection'
+          property :ip_version, as: 'ipVersion'
           property :range_name, as: 'rangeName'
           property :reserved_internal_range, as: 'reservedInternalRange'
         end

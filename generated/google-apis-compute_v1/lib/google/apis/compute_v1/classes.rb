@@ -750,21 +750,30 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Reference to the source of external IPv4 addresses,
-        # like a PublicDelegatedPrefix (PDP) for BYOIP.
-        # The PDP must support enhanced IPv4 allocations.
-        # Use one of the following formats to specify a PDP when reserving an
-        # external IPv4 address using BYOIP.
+        # Reference to the source of IP addresses.
+        # It supports the following cases:
         # 
         # -
-        # Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/
-        # projectId/regions/region/publicDelegatedPrefixes/pdp-name
+        # Case 1: PublicDelegatedPrefix (PDP) for BYOIP external IPv4
+        # addresses. The PDP must support enhanced IPv4 allocations.
         # -
-        # Partial URL, as in
+        # Case 2: Internal Range for global internal addresses.
+        # Use one of the following formats to specify the resource:
+        # For a Public Delegated Prefix:
         # 
-        # 
+        # -
+        # Full resource URL:https://www.googleapis.com/compute/v1/projects/projectId/
+        # regions/region/publicDelegatedPrefixes/pdp
+        # - Partial URL:
         # - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
         # - regions/region/publicDelegatedPrefixes/pdp-name
+        # 
+        # For an Internal Range:
+        # 
+        # - Full URL:https://networkconnectivity.googleapis.com/v1/projects/project/
+        # locations/global/internalRanges/internal-range
+        # - Partial URL:projects/project/locations/global/internalRanges/internal-
+        # range
         # Corresponds to the JSON property `ipCollection`
         # @return [String]
         attr_accessor :ip_collection
@@ -13115,7 +13124,9 @@ module Google
       
         # The Action to perform when the client connection triggers the rule.
         # Valid actions for firewall rules are: "allow", "deny",
-        # "apply_security_profile_group" and "goto_next".
+        # "apply_security_profile_group" and "goto_next" (
+        # "apply_security_profile_group" can be specified only for global
+        # network firewall policies or hierarchical firewall policies).
         # Valid actions for packet mirroring rules are: "mirror", "do_not_mirror"
         # and "goto_next".
         # Corresponds to the JSON property `action`
@@ -13184,12 +13195,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :rule_tuple_count
       
-        # A fully-qualified URL of a SecurityProfile resource instance.
+        # A fully-qualified URL of a SecurityProfileGroup resource instance.
         # Example:
         # https://networksecurity.googleapis.com/v1/projects/`project`/locations/`
         # location`/securityProfileGroups/my-security-profile-group
         # Must be specified if action is one of 'apply_security_profile_group' or
-        # 'mirror'. Cannot be specified for other actions.
+        # 'mirror'. Cannot be specified for other actions. Can be specified only
+        # for global network firewall policies or hierarchical firewall policies.
         # Corresponds to the JSON property `securityProfileGroup`
         # @return [String]
         attr_accessor :security_profile_group
@@ -21615,6 +21627,12 @@ module Google
         # @return [String]
         attr_accessor :last_suspended_timestamp
       
+        # Specifies which method should be used for encrypting the
+        # Local SSDs attached to the VM.
+        # Corresponds to the JSON property `localSsdEncryptionMode`
+        # @return [String]
+        attr_accessor :local_ssd_encryption_mode
+      
         # Full or partial URL of the machine type resource to use for this instance,
         # in the format:zones/zone/machineTypes/machine-type. This is provided by the
         # client
@@ -21825,6 +21843,7 @@ module Google
           @last_start_timestamp = args[:last_start_timestamp] if args.key?(:last_start_timestamp)
           @last_stop_timestamp = args[:last_stop_timestamp] if args.key?(:last_stop_timestamp)
           @last_suspended_timestamp = args[:last_suspended_timestamp] if args.key?(:last_suspended_timestamp)
+          @local_ssd_encryption_mode = args[:local_ssd_encryption_mode] if args.key?(:local_ssd_encryption_mode)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
@@ -23386,6 +23405,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # The names of instances to be created by this resize request. The number of
+        # names specified determines the number of instances to create. The group's
+        # target size will be increased by this number. This field cannot be used
+        # together with 'resize_by'.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
+        attr_accessor :instances
+      
         # Output only. The resource type, which is alwayscompute#
         # instanceGroupManagerResizeRequest for resize requests.
         # Corresponds to the JSON property `kind`
@@ -23456,6 +23483,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
+          @instances = args[:instances] if args.key?(:instances)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
@@ -26191,6 +26219,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Specifies which method should be used for encrypting the
+        # Local SSDs attached to the VM.
+        # Corresponds to the JSON property `localSsdEncryptionMode`
+        # @return [String]
+        attr_accessor :local_ssd_encryption_mode
+      
         # The machine type to use for instances that are created from these
         # properties.
         # This field only accepts a machine type name, for example `n2-standard-4`.
@@ -26299,6 +26333,7 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
+          @local_ssd_encryption_mode = args[:local_ssd_encryption_mode] if args.key?(:local_ssd_encryption_mode)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
@@ -34604,6 +34639,18 @@ module Google
         # @return [Google::Apis::ComputeV1::ManagedInstancePropertiesFromFlexibilityPolicy]
         attr_accessor :properties_from_flexibility_policy
       
+        # Output only. Information about the termination timestamp of the instance, if
+        # applicable.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::ComputeV1::ManagedInstanceScheduling]
+        attr_accessor :scheduling
+      
+        # Output only. Specifies the graceful shutdown details if the instance is in
+        # `PENDING_STOP` state or there is a programmed stop scheduled.
+        # Corresponds to the JSON property `shutdownDetails`
+        # @return [Google::Apis::ComputeV1::ManagedInstanceShutdownDetails]
+        attr_accessor :shutdown_details
+      
         # Output only. [Output Only] Intended version of this instance.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ComputeV1::ManagedInstanceVersion]
@@ -34625,6 +34672,8 @@ module Google
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
           @properties_from_flexibility_policy = args[:properties_from_flexibility_policy] if args.key?(:properties_from_flexibility_policy)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @shutdown_details = args[:shutdown_details] if args.key?(:shutdown_details)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -34816,6 +34865,67 @@ module Google
         # Update properties of this object
         def update!(**args)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+        end
+      end
+      
+      # 
+      class ManagedInstanceScheduling
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp at which the underlying instance will be
+        # triggered for graceful shutdown if it is configured. This is in RFC3339 text
+        # format.
+        # Corresponds to the JSON property `gracefulShutdownTimestamp`
+        # @return [String]
+        attr_accessor :graceful_shutdown_timestamp
+      
+        # Output only. The timestamp at which the managed instance will be terminated.
+        # This is
+        # in RFC3339 text
+        # format.
+        # Corresponds to the JSON property `terminationTimestamp`
+        # @return [String]
+        attr_accessor :termination_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @graceful_shutdown_timestamp = args[:graceful_shutdown_timestamp] if args.key?(:graceful_shutdown_timestamp)
+          @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
+        end
+      end
+      
+      # 
+      class ManagedInstanceShutdownDetails
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :max_duration
+      
+        # Output only. Past timestamp indicating the beginning of `PENDING_STOP` state
+        # of
+        # instance in RFC3339
+        # text format.
+        # Corresponds to the JSON property `requestTimestamp`
+        # @return [String]
+        attr_accessor :request_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @request_timestamp = args[:request_timestamp] if args.key?(:request_timestamp)
         end
       end
       
@@ -35021,6 +35131,59 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # 
+      class NamedSet
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of named set.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # CEL expressions that are comparable to constructs of this set's type
+        # (see Policy Language).
+        # Corresponds to the JSON property `elements`
+        # @return [Array<Google::Apis::ComputeV1::Expr>]
+        attr_accessor :elements
+      
+        # A fingerprint for the Named Set being applied to this Router, which is
+        # essentially a hash of the Named Set used for optimistic locking.
+        # The fingerprint is initially generated by Compute Engine and changes
+        # after every request to modify or update the Named Set. You must always
+        # provide an up-to-date fingerprint hash in order to update or change
+        # labels.
+        # To see the latest fingerprint, make a getNamedSet() request
+        # to retrieve a Named Set.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # This set's name, which must be a resource ID segment and unique within all
+        # named sets owned by the Router. Name should conform to RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # This named set's type
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @elements = args[:elements] if args.key?(:elements)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -35355,14 +35518,16 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Projects that are allowed to connect to this network attachment.
-        # The project can be specified using its id or number.
+        # Projects or service class ids that are allowed to connect to this network
+        # attachment. The project can be specified using its id or number. Service
+        # class id can be specified as "serviceclasses/`service_class_id`".
         # Corresponds to the JSON property `producerAcceptLists`
         # @return [Array<String>]
         attr_accessor :producer_accept_lists
       
-        # Projects that are not allowed to connect to this network attachment.
-        # The project can be specified using its id or number.
+        # Projects or service class ids that are not allowed to connect to this
+        # network attachment. The project can be specified using its id or number.
+        # Service class id can be specified as "serviceclasses/`service_class_id`".
         # Corresponds to the JSON property `producerRejectLists`
         # @return [Array<String>]
         attr_accessor :producer_reject_lists
@@ -53578,6 +53743,31 @@ module Google
       end
       
       # 
+      class RoutersGetNamedSetResponse
+        include Google::Apis::Core::Hashable
+      
+        # end_interface: MixerGetResponseWithEtagBuilder
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # 
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::ComputeV1::NamedSet]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # 
       class RoutersGetRoutePolicyResponse
         include Google::Apis::Core::Hashable
       
@@ -53683,6 +53873,144 @@ module Google
           # `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class RoutersListNamedSets
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. [Output Only] Type of resource. Alwayscompute#
+        # routersListNamedSets for lists of named sets.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] A list of named sets.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeV1::NamedSet>]
+        attr_accessor :result
+      
+        # Output only. [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::RoutersListNamedSets::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result = args[:result] if args.key?(:result)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::RoutersListNamedSets::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -59416,8 +59744,7 @@ module Google
       class SslPolicyReference
         include Google::Apis::Core::Hashable
       
-        # URL of the SSL policy resource. Set this to empty string to clear any
-        # existing SSL policy associated with the target proxy resource.
+        # 
         # Corresponds to the JSON property `sslPolicy`
         # @return [String]
         attr_accessor :ssl_policy
@@ -61683,6 +62010,22 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
+        # Reference to a Public Delegated Prefix (PDP) for BYOIP.
+        # This field should be specified for configuring BYOGUA internal IPv6
+        # secondary range.
+        # When specified along with the ip_cidr_range, the ip_cidr_range must lie
+        # within the PDP referenced by the `ipCollection` field.
+        # When specified without the ip_cidr_range, the range is auto-allocated
+        # from the PDP referenced by the `ipCollection` field.
+        # Corresponds to the JSON property `ipCollection`
+        # @return [String]
+        attr_accessor :ip_collection
+      
+        # 
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
+      
         # The name associated with this subnetwork secondary range, used when adding
         # an alias IP/IPv6 range to a VM instance.
         # The name must be 1-63 characters long, and comply withRFC1035.
@@ -61703,6 +62046,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @range_name = args[:range_name] if args.key?(:range_name)
           @reserved_internal_range = args[:reserved_internal_range] if args.key?(:reserved_internal_range)
         end
