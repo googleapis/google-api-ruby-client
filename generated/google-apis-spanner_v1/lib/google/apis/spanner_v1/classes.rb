@@ -1345,6 +1345,11 @@ module Google
         # @return [String]
         attr_accessor :commit_timestamp
       
+        # The isolation level used for the read-write transaction.
+        # Corresponds to the JSON property `isolationLevel`
+        # @return [String]
+        attr_accessor :isolation_level
+      
         # When a read-write transaction is executed on a multiplexed session, this
         # precommit token is sent back to the client as a part of the Transaction
         # message in the BeginTransaction response and also as a part of the ResultSet
@@ -1352,6 +1357,11 @@ module Google
         # Corresponds to the JSON property `precommitToken`
         # @return [Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken]
         attr_accessor :precommit_token
+      
+        # The read lock mode used for the read-write transaction.
+        # Corresponds to the JSON property `readLockMode`
+        # @return [String]
+        attr_accessor :read_lock_mode
       
         # If `TransactionOptions.isolation_level` is set to `IsolationLevel.
         # REPEATABLE_READ`, then the snapshot timestamp is the timestamp at which all
@@ -1368,7 +1378,9 @@ module Google
         def update!(**args)
           @commit_stats = args[:commit_stats] if args.key?(:commit_stats)
           @commit_timestamp = args[:commit_timestamp] if args.key?(:commit_timestamp)
+          @isolation_level = args[:isolation_level] if args.key?(:isolation_level)
           @precommit_token = args[:precommit_token] if args.key?(:precommit_token)
+          @read_lock_mode = args[:read_lock_mode] if args.key?(:read_lock_mode)
           @snapshot_timestamp = args[:snapshot_timestamp] if args.key?(:snapshot_timestamp)
         end
       end
@@ -3683,6 +3695,8 @@ module Google
       
         # The number of nodes allocated to this instance partition. Users can set the `
         # node_count` field to specify the target number of nodes allocated to the
+        # instance partition. If autoscaling is enabled, node_count is treated as an
+        # OUTPUT_ONLY field and reflects the current number of nodes allocated to the
         # instance partition. This may be zero in API responses for instance partitions
         # that are not yet in state `READY`.
         # Corresponds to the JSON property `nodeCount`
@@ -3691,8 +3705,11 @@ module Google
       
         # The number of processing units allocated to this instance partition. Users can
         # set the `processing_units` field to specify the target number of processing
-        # units allocated to the instance partition. This might be zero in API responses
-        # for instance partitions that are not yet in the `READY` state.
+        # units allocated to the instance partition. If autoscaling is enabled,
+        # processing_units is treated as an OUTPUT_ONLY field and reflects the current
+        # number of processing units allocated to the instance partition. This might be
+        # zero in API responses for instance partitions that are not yet in the `READY`
+        # state.
         # Corresponds to the JSON property `processingUnits`
         # @return [Fixnum]
         attr_accessor :processing_units
