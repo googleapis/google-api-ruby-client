@@ -1051,7 +1051,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. Management type of the Realm.
+        # Optional. Management type of the Realm.
         # Corresponds to the JSON property `managementType`
         # @return [String]
         attr_accessor :management_type
