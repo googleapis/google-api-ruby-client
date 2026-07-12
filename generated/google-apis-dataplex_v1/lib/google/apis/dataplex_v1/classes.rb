@@ -2731,6 +2731,12 @@ module Google
         # @return [String]
         attr_accessor :parent_data_domain
       
+        # Output-only policy member strings of a Google Cloud resource's built-in
+        # identity.
+        # Corresponds to the JSON property `policyMember`
+        # @return [Google::Apis::DataplexV1::GoogleIamV1ResourcePolicyMember]
+        attr_accessor :policy_member
+      
         # Output only. System-generated globally unique ID for the DataDomain.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -2754,6 +2760,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @parent_data_domain = args[:parent_data_domain] if args.key?(:parent_data_domain)
+          @policy_member = args[:policy_member] if args.key?(:policy_member)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -11807,6 +11814,40 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Output-only policy member strings of a Google Cloud resource's built-in
+      # identity.
+      class GoogleIamV1ResourcePolicyMember
+        include Google::Apis::Core::Hashable
+      
+        # Output only. IAM policy binding member referring to a Google Cloud resource by
+        # user-assigned name (https://google.aip.dev/122). If a resource is deleted and
+        # recreated with the same name, the binding will be applicable to the new
+        # resource.Example: principal://parametermanager.googleapis.com/projects/12345/
+        # name/locations/us-central1-a/parameters/my-parameter
+        # Corresponds to the JSON property `iamPolicyNamePrincipal`
+        # @return [String]
+        attr_accessor :iam_policy_name_principal
+      
+        # Output only. IAM policy binding member referring to a Google Cloud resource by
+        # system-assigned unique identifier (https://google.aip.dev/148#uid). If a
+        # resource is deleted and recreated with the same name, the binding will not be
+        # applicable to the new resourceExample: principal://parametermanager.googleapis.
+        # com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5
+        # Corresponds to the JSON property `iamPolicyUidPrincipal`
+        # @return [String]
+        attr_accessor :iam_policy_uid_principal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_policy_name_principal = args[:iam_policy_name_principal] if args.key?(:iam_policy_name_principal)
+          @iam_policy_uid_principal = args[:iam_policy_uid_principal] if args.key?(:iam_policy_uid_principal)
         end
       end
       

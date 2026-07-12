@@ -1768,6 +1768,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIamV1ResourcePolicyMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIamV1SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2550,6 +2556,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :parent_data_domain, as: 'parentDataDomain'
+          property :policy_member, as: 'policyMember', class: Google::Apis::DataplexV1::GoogleIamV1ResourcePolicyMember, decorator: Google::Apis::DataplexV1::GoogleIamV1ResourcePolicyMember::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -4955,6 +4963,14 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleIamV1ResourcePolicyMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_policy_name_principal, as: 'iamPolicyNamePrincipal'
+          property :iam_policy_uid_principal, as: 'iamPolicyUidPrincipal'
         end
       end
       
