@@ -546,6 +546,7 @@ module Google
           property :source_resource_location, as: 'sourceResourceLocation'
           property :source_resource_name, as: 'sourceResourceName'
           property :start_time, as: 'startTime'
+          property :storage_tier, as: 'storageTier'
           property :target_resource_type, as: 'targetResourceType'
         end
       end
