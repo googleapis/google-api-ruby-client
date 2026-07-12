@@ -22,10 +22,59 @@ module Google
   module Apis
     module ChatV1
       
+      # An access permission setting.
+      class AccessPermissionSetting
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Unordered list. Allowed principals for this permission.
+        # Corresponds to the JSON property `principals`
+        # @return [Array<Google::Apis::ChatV1::Principal>]
+        attr_accessor :principals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principals = args[:principals] if args.key?(:principals)
+        end
+      end
+      
+      # Access permission settings for a space.
+      class AccessPermissionSettings
+        include Google::Apis::Core::Hashable
+      
+        # An access permission setting.
+        # Corresponds to the JSON property `discoverSpaceSetting`
+        # @return [Google::Apis::ChatV1::AccessPermissionSetting]
+        attr_accessor :discover_space_setting
+      
+        # An access permission setting.
+        # Corresponds to the JSON property `joinSpaceSetting`
+        # @return [Google::Apis::ChatV1::AccessPermissionSetting]
+        attr_accessor :join_space_setting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discover_space_setting = args[:discover_space_setting] if args.key?(:discover_space_setting)
+          @join_space_setting = args[:join_space_setting] if args.key?(:join_space_setting)
+        end
+      end
+      
       # Represents the [access setting](https://support.google.com/chat/answer/
       # 11971020) of the space.
       class AccessSettings
         include Google::Apis::Core::Hashable
+      
+        # Access permission settings for a space.
+        # Corresponds to the JSON property `accessPermissionSettings`
+        # @return [Google::Apis::ChatV1::AccessPermissionSettings]
+        attr_accessor :access_permission_settings
       
         # Output only. Indicates the access state of the space.
         # Corresponds to the JSON property `accessState`
@@ -59,6 +108,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_permission_settings = args[:access_permission_settings] if args.key?(:access_permission_settings)
           @access_state = args[:access_state] if args.key?(:access_state)
           @audience = args[:audience] if args.key?(:audience)
         end
@@ -386,6 +436,36 @@ module Google
         def update!(**args)
           @attachment_upload_token = args[:attachment_upload_token] if args.key?(:attachment_upload_token)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # A target audience in Google Chat. A target audience represents a group of
+      # users within a Google Workspace organization, defined by an administrator.
+      # Target audiences are used to configure access and visibility settings for
+      # resources, such as making a space discoverable to a specific group of users.
+      # For more details, see [Target audiences](https://support.google.com/a/answer/
+      # 9934697) and [Make a space discoverable to a target audience](https://
+      # developers.google.com/workspace/chat/space-target-audience).
+      class Audience
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the [target audience](https://support.google.com/a/answer/
+        # 9934697) who can discover or join the space. For details, see [Make a space
+        # discoverable to a target audience](https://developers.google.com/workspace/
+        # chat/space-target-audience). Format: `audiences/`audience`` To use the default
+        # target audience for the Google Workspace organization, set to `audiences/
+        # default`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -5961,6 +6041,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @section = args[:section] if args.key?(:section)
+        end
+      end
+      
+      # A principal representing an entity granted access.
+      class Principal
+        include Google::Apis::Core::Hashable
+      
+        # A target audience in Google Chat. A target audience represents a group of
+        # users within a Google Workspace organization, defined by an administrator.
+        # Target audiences are used to configure access and visibility settings for
+        # resources, such as making a space discoverable to a specific group of users.
+        # For more details, see [Target audiences](https://support.google.com/a/answer/
+        # 9934697) and [Make a space discoverable to a target audience](https://
+        # developers.google.com/workspace/chat/space-target-audience).
+        # Corresponds to the JSON property `audience`
+        # @return [Google::Apis::ChatV1::Audience]
+        attr_accessor :audience
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
         end
       end
       
