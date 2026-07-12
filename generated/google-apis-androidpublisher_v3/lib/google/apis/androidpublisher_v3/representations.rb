@@ -460,7 +460,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CoarseLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Comment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsumptionUsageEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1211,6 +1223,12 @@ module Google
       end
       
       class OrderHistory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrdersReviewRefundRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2678,6 +2696,16 @@ module Google
         end
       end
       
+      class CoarseLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :administrative_area, as: 'administrativeArea'
+          property :locality, as: 'locality'
+          property :region_code, as: 'regionCode'
+          property :sublocality, as: 'sublocality'
+        end
+      end
+      
       class Comment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2685,6 +2713,19 @@ module Google
       
           property :user_comment, as: 'userComment', class: Google::Apis::AndroidpublisherV3::UserComment, decorator: Google::Apis::AndroidpublisherV3::UserComment::Representation
       
+        end
+      end
+      
+      class ConsumptionUsageEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumption_item_description, as: 'consumptionItemDescription'
+          property :consumption_time, as: 'consumptionTime'
+          property :ip_address, as: 'ipAddress'
+          property :location, as: 'location', class: Google::Apis::AndroidpublisherV3::CoarseLocation, decorator: Google::Apis::AndroidpublisherV3::CoarseLocation::Representation
+      
+          property :obfuscated_account_id, as: 'obfuscatedAccountId'
+          property :obfuscated_profile_id, as: 'obfuscatedProfileId'
         end
       end
       
@@ -3961,6 +4002,18 @@ module Google
       
           property :refund_event, as: 'refundEvent', class: Google::Apis::AndroidpublisherV3::RefundEvent, decorator: Google::Apis::AndroidpublisherV3::RefundEvent::Representation
       
+        end
+      end
+      
+      class OrdersReviewRefundRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumption_percentage_milliunits, as: 'consumptionPercentageMilliunits'
+          collection :consumption_usage_events, as: 'consumptionUsageEvents', class: Google::Apis::AndroidpublisherV3::ConsumptionUsageEvent, decorator: Google::Apis::AndroidpublisherV3::ConsumptionUsageEvent::Representation
+      
+          property :pending_refund_token, as: 'pendingRefundToken'
+          property :refund_preference, as: 'refundPreference'
+          property :sample_content_provided, as: 'sampleContentProvided'
         end
       end
       

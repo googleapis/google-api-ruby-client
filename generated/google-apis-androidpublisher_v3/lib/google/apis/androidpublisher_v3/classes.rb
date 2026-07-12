@@ -1891,6 +1891,54 @@ module Google
         end
       end
       
+      # Coarse Geographic location details for where the consumption happened.
+      class CoarseLocation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Highest administrative subdivision which is used for postal
+        # addresses of a country or region. For example, this can be a state, a province,
+        # an oblast, or a prefecture. For Spain, this is the province and not the
+        # autonomous community (for example, "Barcelona" and not "Catalonia"). Many
+        # countries don't use an administrative area in postal addresses. For example,
+        # in Switzerland, this should be left unpopulated.
+        # Corresponds to the JSON property `administrativeArea`
+        # @return [String]
+        attr_accessor :administrative_area
+      
+        # Optional. Generally refers to the city or town portion of the address.
+        # Examples: US city, IT comune, UK post town. In regions of the world where
+        # localities are not well defined or do not fit into this structure well, leave `
+        # locality` empty.
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # Required. [CLDR region code](https://cldr.unicode.org/) of the country/region
+        # of the address. This value is never inferred and you must ensure the value is
+        # correct. Example: "CH" for Switzerland.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Optional. Sublocality of the address. For example, this can be a neighborhood,
+        # borough, or district. For most addresses, you can omit this.
+        # Corresponds to the JSON property `sublocality`
+        # @return [String]
+        attr_accessor :sublocality
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
+          @locality = args[:locality] if args.key?(:locality)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @sublocality = args[:sublocality] if args.key?(:sublocality)
+        end
+      end
+      
       # An entry of conversation between user and developer.
       class Comment
         include Google::Apis::Core::Hashable
@@ -1913,6 +1961,64 @@ module Google
         def update!(**args)
           @developer_comment = args[:developer_comment] if args.key?(:developer_comment)
           @user_comment = args[:user_comment] if args.key?(:user_comment)
+        end
+      end
+      
+      # List of events, each representing an instance where the user consumed or used
+      # the purchased item or service.
+      class ConsumptionUsageEvent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Free form text that allows developers to provide more info on the
+        # item consumed. Maximum length is 5000 characters.
+        # Corresponds to the JSON property `consumptionItemDescription`
+        # @return [String]
+        attr_accessor :consumption_item_description
+      
+        # Optional. Time when the user consumed, used, downloaded, opened, or streamed
+        # the content.
+        # Corresponds to the JSON property `consumptionTime`
+        # @return [String]
+        attr_accessor :consumption_time
+      
+        # Optional. The IP address from which the consumption occurred.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Coarse Geographic location details for where the consumption happened.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::AndroidpublisherV3::CoarseLocation]
+        attr_accessor :location
+      
+        # Optional. Obfuscated string that is uniquely associated with the purchaser's
+        # user account in the app. https://developer.android.com/reference/com/android/
+        # billingclient/api/BillingFlowParams.Builder#setObfuscatedAccountId(java.lang.
+        # String)
+        # Corresponds to the JSON property `obfuscatedAccountId`
+        # @return [String]
+        attr_accessor :obfuscated_account_id
+      
+        # Optional. Obfuscated string that is uniquely associated with the purchaser's
+        # user profile in the app. https://developer.android.com/reference/com/android/
+        # billingclient/api/BillingFlowParams.Builder#setObfuscatedProfileId(java.lang.
+        # String)
+        # Corresponds to the JSON property `obfuscatedProfileId`
+        # @return [String]
+        attr_accessor :obfuscated_profile_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumption_item_description = args[:consumption_item_description] if args.key?(:consumption_item_description)
+          @consumption_time = args[:consumption_time] if args.key?(:consumption_time)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @location = args[:location] if args.key?(:location)
+          @obfuscated_account_id = args[:obfuscated_account_id] if args.key?(:obfuscated_account_id)
+          @obfuscated_profile_id = args[:obfuscated_profile_id] if args.key?(:obfuscated_profile_id)
         end
       end
       
@@ -6196,6 +6302,57 @@ module Google
           @partial_refund_events = args[:partial_refund_events] if args.key?(:partial_refund_events)
           @processed_event = args[:processed_event] if args.key?(:processed_event)
           @refund_event = args[:refund_event] if args.key?(:refund_event)
+        end
+      end
+      
+      # Request for the orders.reviewrefund API.
+      class OrdersReviewRefundRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Percentage of the In-App purchase the customer consumed, in
+        # milliunits. Minimum: 0 Maximum: 100,000. For paid apps, this can be omitted.
+        # Example : 45200 represents 45.2%.
+        # Corresponds to the JSON property `consumptionPercentageMilliunits`
+        # @return [Fixnum]
+        attr_accessor :consumption_percentage_milliunits
+      
+        # Optional. List of events, each representing an instance where the user
+        # consumed or used the purchased item or service. Lists with over 1000 items
+        # will be rejected.
+        # Corresponds to the JSON property `consumptionUsageEvents`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ConsumptionUsageEvent>]
+        attr_accessor :consumption_usage_events
+      
+        # Required. The pending refund token included in the pending refund review
+        # notification.
+        # Corresponds to the JSON property `pendingRefundToken`
+        # @return [String]
+        attr_accessor :pending_refund_token
+      
+        # Required. Indicates your preference, based on your operational logic, as to
+        # whether the Play Store should grant the refund.
+        # Corresponds to the JSON property `refundPreference`
+        # @return [String]
+        attr_accessor :refund_preference
+      
+        # Required. Indicates whether you provided a free sample, trial, or information
+        # about the functionality prior to the purchase.
+        # Corresponds to the JSON property `sampleContentProvided`
+        # @return [Boolean]
+        attr_accessor :sample_content_provided
+        alias_method :sample_content_provided?, :sample_content_provided
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumption_percentage_milliunits = args[:consumption_percentage_milliunits] if args.key?(:consumption_percentage_milliunits)
+          @consumption_usage_events = args[:consumption_usage_events] if args.key?(:consumption_usage_events)
+          @pending_refund_token = args[:pending_refund_token] if args.key?(:pending_refund_token)
+          @refund_preference = args[:refund_preference] if args.key?(:refund_preference)
+          @sample_content_provided = args[:sample_content_provided] if args.key?(:sample_content_provided)
         end
       end
       
