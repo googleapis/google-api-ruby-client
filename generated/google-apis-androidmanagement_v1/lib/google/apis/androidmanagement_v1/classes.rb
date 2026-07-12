@@ -5492,9 +5492,12 @@ module Google
         # Optional. The default application setting for supported types. If the default
         # application is successfully set for at least one app type on a profile, users
         # are prevented from changing any default applications on that profile.Only one
-        # DefaultApplicationSetting is allowed for each DefaultApplicationType.See
-        # Default application settings (https://developers.google.com/android/management/
-        # default-application-settings) guide for more details.
+        # DefaultApplicationSetting is allowed for each DefaultApplicationType.Warning:
+        # Do not configure this and persistent_preferred_activities for the same intent
+        # domain, such as web browsing. Setting both for the same intent domain can lead
+        # to unpredictable behavior.See Default application settings (https://developers.
+        # google.com/android/management/default-application-settings) guide for more
+        # details.
         # Corresponds to the JSON property `defaultApplicationSettings`
         # @return [Array<Google::Apis::AndroidmanagementV1::DefaultApplicationSetting>]
         attr_accessor :default_application_settings
@@ -5732,7 +5735,9 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::PackageNameList]
         attr_accessor :permitted_input_methods
       
-        # Default intent handler activities.
+        # Default intent handler activities.Warning: Do not configure this and
+        # default_application_settings for the same intent domain, such as web browsing.
+        # Setting both for the same intent domain can lead to unpredictable behavior.
         # Corresponds to the JSON property `persistentPreferredActivities`
         # @return [Array<Google::Apis::AndroidmanagementV1::PersistentPreferredActivity>]
         attr_accessor :persistent_preferred_activities
