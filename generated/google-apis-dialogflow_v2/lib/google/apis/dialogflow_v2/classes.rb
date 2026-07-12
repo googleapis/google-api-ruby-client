@@ -11778,6 +11778,12 @@ module Google
         alias_method :enable_automatic_punctuation?, :enable_automatic_punctuation
       
         # 
+        # Corresponds to the JSON property `enableVoiceActivityEvents`
+        # @return [Boolean]
+        attr_accessor :enable_voice_activity_events
+        alias_method :enable_voice_activity_events?, :enable_voice_activity_events
+      
+        # 
         # Corresponds to the JSON property `enableWordInfo`
         # @return [Boolean]
         attr_accessor :enable_word_info
@@ -11839,6 +11845,7 @@ module Google
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @disable_no_speech_recognized_event = args[:disable_no_speech_recognized_event] if args.key?(:disable_no_speech_recognized_event)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
+          @enable_voice_activity_events = args[:enable_voice_activity_events] if args.key?(:enable_voice_activity_events)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @language_code = args[:language_code] if args.key?(:language_code)
           @model = args[:model] if args.key?(:model)
@@ -14879,6 +14886,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `cesDebugInfo`
+        # @return [Hash<String,Object>]
+        attr_accessor :ces_debug_info
+      
+        # 
         # Corresponds to the JSON property `datastoreResponseReason`
         # @return [String]
         attr_accessor :datastore_response_reason
@@ -14904,6 +14916,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ces_debug_info = args[:ces_debug_info] if args.key?(:ces_debug_info)
           @datastore_response_reason = args[:datastore_response_reason] if args.key?(:datastore_response_reason)
           @ingested_context_reference_debug_info = args[:ingested_context_reference_debug_info] if args.key?(:ingested_context_reference_debug_info)
           @search_knowledge_behavior = args[:search_knowledge_behavior] if args.key?(:search_knowledge_behavior)
