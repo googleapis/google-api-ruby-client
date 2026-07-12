@@ -2344,6 +2344,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DnsConfig]
         attr_accessor :desired_dns_config
       
+        # Optional. The desired emulated version for the cluster.
+        # Corresponds to the JSON property `desiredEmulatedVersion`
+        # @return [String]
+        attr_accessor :desired_emulated_version
+      
         # Enable/Disable Cilium Clusterwide Network Policy for the cluster.
         # Corresponds to the JSON property `desiredEnableCiliumClusterwideNetworkPolicy`
         # @return [Boolean]
@@ -2816,6 +2821,7 @@ module Google
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_disable_l4_lb_firewall_reconciliation = args[:desired_disable_l4_lb_firewall_reconciliation] if args.key?(:desired_disable_l4_lb_firewall_reconciliation)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
+          @desired_emulated_version = args[:desired_emulated_version] if args.key?(:desired_emulated_version)
           @desired_enable_cilium_clusterwide_network_policy = args[:desired_enable_cilium_clusterwide_network_policy] if args.key?(:desired_enable_cilium_clusterwide_network_policy)
           @desired_enable_fqdn_network_policy = args[:desired_enable_fqdn_network_policy] if args.key?(:desired_enable_fqdn_network_policy)
           @desired_enable_multi_networking = args[:desired_enable_multi_networking] if args.key?(:desired_enable_multi_networking)
@@ -3769,6 +3775,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @desired_tier = args[:desired_tier] if args.key?(:desired_tier)
+        end
+      end
+      
+      # DiskIoScheduler contains the configuration for the disk IO scheduler.
+      class DiskIoScheduler
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configures the IO scheduler for the attached disks. Supported values
+        # are `mq-deadline`, `bfq`, `kyber`, `none`.
+        # Corresponds to the JSON property `nodeAttachedDiskIoScheduler`
+        # @return [String]
+        attr_accessor :node_attached_disk_io_scheduler
+      
+        # Optional. Configures the IO scheduler for the boot disk or ephemeral lssd that
+        # runs node system workloads. Supported values are `mq-deadline`, `bfq`, `kyber`,
+        # `none`.
+        # Corresponds to the JSON property `nodeSystemIoScheduler`
+        # @return [String]
+        attr_accessor :node_system_io_scheduler
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_attached_disk_io_scheduler = args[:node_attached_disk_io_scheduler] if args.key?(:node_attached_disk_io_scheduler)
+          @node_system_io_scheduler = args[:node_system_io_scheduler] if args.key?(:node_system_io_scheduler)
         end
       end
       
@@ -5416,6 +5450,31 @@ module Google
         end
       end
       
+      # Contains expiry information about the kubelet certificate.
+      class KubeletCertInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only.
+        # Corresponds to the JSON property `nonTpmBootstrapCertExpireTime`
+        # @return [String]
+        attr_accessor :non_tpm_bootstrap_cert_expire_time
+      
+        # Output only.
+        # Corresponds to the JSON property `tpmBootstrapCertExpireTime`
+        # @return [String]
+        attr_accessor :tpm_bootstrap_cert_expire_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @non_tpm_bootstrap_cert_expire_time = args[:non_tpm_bootstrap_cert_expire_time] if args.key?(:non_tpm_bootstrap_cert_expire_time)
+          @tpm_bootstrap_cert_expire_time = args[:tpm_bootstrap_cert_expire_time] if args.key?(:tpm_bootstrap_cert_expire_time)
+        end
+      end
+      
       # Configuration for the Kubernetes Dashboard.
       class KubernetesDashboard
         include Google::Apis::Core::Hashable
@@ -5479,6 +5538,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::CustomNodeInit]
         attr_accessor :custom_node_init
       
+        # DiskIoScheduler contains the configuration for the disk IO scheduler.
+        # Corresponds to the JSON property `diskIoScheduler`
+        # @return [Google::Apis::ContainerV1beta1::DiskIoScheduler]
+        attr_accessor :disk_io_scheduler
+      
         # Hugepages amount in both 2m and 1g size
         # Corresponds to the JSON property `hugepages`
         # @return [Google::Apis::ContainerV1beta1::HugepagesConfig]
@@ -5488,6 +5552,12 @@ module Google
         # Corresponds to the JSON property `nodeKernelModuleLoading`
         # @return [Google::Apis::ContainerV1beta1::NodeKernelModuleLoading]
         attr_accessor :node_kernel_module_loading
+      
+        # Configuration settings for VFIO (Virtual Function I/O) on a node. VFIO allows
+        # safe, unprivileged, userspace drivers to access I/O devices.
+        # Corresponds to the JSON property `nodeVfioConfig`
+        # @return [Google::Apis::ContainerV1beta1::NodeVfioConfig]
+        attr_accessor :node_vfio_config
       
         # Configuration for swap memory on a node pool.
         # Corresponds to the JSON property `swapConfig`
@@ -5507,14 +5577,14 @@ module Google
         # netfilter.nf_conntrack_tcp_timeout_time_wait net.netfilter.
         # nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.
         # keys.maxkeys kernel.keys.maxbytes kernel.shmmni kernel.shmmax kernel.shmall
-        # kernel.perf_event_paranoid kernel.sched_rt_runtime_us kernel.softlockup_panic
-        # kernel.yama.ptrace_scope kernel.kptr_restrict kernel.dmesg_restrict kernel.
-        # sysrq fs.aio-max-nr fs.file-max fs.inotify.max_user_instances fs.inotify.
-        # max_user_watches fs.nr_open vm.dirty_background_ratio vm.
-        # dirty_background_bytes vm.dirty_expire_centisecs vm.dirty_ratio vm.dirty_bytes
-        # vm.dirty_writeback_centisecs vm.max_map_count vm.overcommit_memory vm.
-        # overcommit_ratio vm.vfs_cache_pressure vm.swappiness vm.watermark_scale_factor
-        # vm.min_free_kbytes
+        # kernel.core_pattern kernel.perf_event_paranoid kernel.sched_rt_runtime_us
+        # kernel.softlockup_panic kernel.yama.ptrace_scope kernel.kptr_restrict kernel.
+        # dmesg_restrict kernel.sysrq fs.aio-max-nr fs.file-max fs.inotify.
+        # max_user_instances fs.inotify.max_user_watches fs.nr_open vm.
+        # dirty_background_ratio vm.dirty_background_bytes vm.dirty_expire_centisecs vm.
+        # dirty_ratio vm.dirty_bytes vm.dirty_writeback_centisecs vm.max_map_count vm.
+        # overcommit_memory vm.overcommit_ratio vm.vfs_cache_pressure vm.swappiness vm.
+        # watermark_scale_factor vm.min_free_kbytes
         # Corresponds to the JSON property `sysctls`
         # @return [Hash<String,String>]
         attr_accessor :sysctls
@@ -5545,8 +5615,10 @@ module Google
           @accurate_time_config = args[:accurate_time_config] if args.key?(:accurate_time_config)
           @cgroup_mode = args[:cgroup_mode] if args.key?(:cgroup_mode)
           @custom_node_init = args[:custom_node_init] if args.key?(:custom_node_init)
+          @disk_io_scheduler = args[:disk_io_scheduler] if args.key?(:disk_io_scheduler)
           @hugepages = args[:hugepages] if args.key?(:hugepages)
           @node_kernel_module_loading = args[:node_kernel_module_loading] if args.key?(:node_kernel_module_loading)
+          @node_vfio_config = args[:node_vfio_config] if args.key?(:node_vfio_config)
           @swap_config = args[:swap_config] if args.key?(:swap_config)
           @sysctls = args[:sysctls] if args.key?(:sysctls)
           @transparent_hugepage_defrag = args[:transparent_hugepage_defrag] if args.key?(:transparent_hugepage_defrag)
@@ -7308,8 +7380,12 @@ module Google
         attr_accessor :single_process_oom_kill
         alias_method :single_process_oom_kill?, :single_process_oom_kill
       
-        # TopologyManager defines the configuration options for Topology Manager feature.
-        # See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
+        # TopologyManager defines the configuration options for the [`kubelet` Topology
+        # Manager component](https://kubernetes.io/docs/tasks/administer-cluster/
+        # topology-manager/). For more information about the supported machine types and
+        # versions for the Topology Manager in GKE, see [Customizing node system
+        # configuration](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/
+        # node-system-config#kubelet-resource-managers).
         # Corresponds to the JSON property `topologyManager`
         # @return [Google::Apis::ContainerV1beta1::TopologyManager]
         attr_accessor :topology_manager
@@ -7586,6 +7662,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_group_urls
       
+        # Contains expiry information about the kubelet certificate.
+        # Corresponds to the JSON property `kubeletCertInfo`
+        # @return [Google::Apis::ContainerV1beta1::KubeletCertInfo]
+        attr_accessor :kubelet_cert_info
+      
         # The list of Google Compute Engine [zones](https://cloud.google.com/compute/
         # docs/zones#available) in which the NodePool's nodes should be located. If this
         # value is unspecified during node pool creation, the [Cluster.Locations](https:/
@@ -7721,6 +7802,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
+          @kubelet_cert_info = args[:kubelet_cert_info] if args.key?(:kubelet_cert_info)
           @locations = args[:locations] if args.key?(:locations)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @management = args[:management] if args.key?(:management)
@@ -8059,6 +8141,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @taints = args[:taints] if args.key?(:taints)
+        end
+      end
+      
+      # Configuration settings for VFIO (Virtual Function I/O) on a node. VFIO allows
+      # safe, unprivileged, userspace drivers to access I/O devices.
+      class NodeVfioConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the maximum number of DMA entries (pages) that can be
+        # mapped by the VFIO IOMMU type 1 driver for a container. This limit affects the
+        # total amount of host memory that can be pinned for direct device access, which
+        # is often critical for high-performance devices like TPUs and GPUs. This
+        # setting corresponds to the kernel parameter at: `/sys/module/vfio_iommu_type1/
+        # parameters/dma_entry_limit`. The default value in the kernel is `65535`.
+        # Higher values may be needed for workloads mapping large memory regions.
+        # Supported values are integers between `65535` and `4194304`.
+        # Corresponds to the JSON property `dmaEntryLimit`
+        # @return [Fixnum]
+        attr_accessor :dma_entry_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dma_entry_limit = args[:dma_entry_limit] if args.key?(:dma_entry_limit)
         end
       end
       
@@ -10828,8 +10937,12 @@ module Google
         end
       end
       
-      # TopologyManager defines the configuration options for Topology Manager feature.
-      # See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
+      # TopologyManager defines the configuration options for the [`kubelet` Topology
+      # Manager component](https://kubernetes.io/docs/tasks/administer-cluster/
+      # topology-manager/). For more information about the supported machine types and
+      # versions for the Topology Manager in GKE, see [Customizing node system
+      # configuration](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/
+      # node-system-config#kubelet-resource-managers).
       class TopologyManager
         include Google::Apis::Core::Hashable
       
