@@ -984,9 +984,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authproxy_pooler_count, as: 'authproxyPoolerCount'
+          property :authproxy_pooler_scaling_type, as: 'authproxyPoolerScalingType'
           property :enabled, as: 'enabled'
           hash :flags, as: 'flags'
           property :pooler_count, as: 'poolerCount'
+          property :pooler_scaling_type, as: 'poolerScalingType'
         end
       end
       
