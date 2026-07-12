@@ -1029,6 +1029,8 @@ module Google
         # @param [Array<String>, String] mask_field_paths
         #   The list of field paths in the mask. See Document.fields for a field path
         #   syntax reference.
+        # @param [Array<String>, String] request_options_request_tags
+        #   Optional. The request tags for the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1046,7 +1048,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_database_document_document(parent, collection_id, document_object = nil, document_id: nil, mask_field_paths: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_database_document_document(parent, collection_id, document_object = nil, document_id: nil, mask_field_paths: nil, request_options_request_tags: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/{collectionId}', options)
           command.request_representation = Google::Apis::FirestoreV1::Document::Representation
           command.request_object = document_object
@@ -1056,6 +1058,7 @@ module Google
           command.params['collectionId'] = collection_id unless collection_id.nil?
           command.query['documentId'] = document_id unless document_id.nil?
           command.query['mask.fieldPaths'] = mask_field_paths unless mask_field_paths.nil?
+          command.query['requestOptions.requestTags'] = request_options_request_tags unless request_options_request_tags.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1071,6 +1074,8 @@ module Google
         # @param [String] current_document_update_time
         #   When set, the target document must exist and have been last updated at that
         #   time. Timestamp must be microsecond aligned.
+        # @param [Array<String>, String] request_options_request_tags
+        #   Optional. The request tags for the request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1088,13 +1093,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_database_document(name, current_document_exists: nil, current_document_update_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_database_document(name, current_document_exists: nil, current_document_update_time: nil, request_options_request_tags: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirestoreV1::Empty::Representation
           command.response_class = Google::Apis::FirestoreV1::Empty
           command.params['name'] = name unless name.nil?
           command.query['currentDocument.exists'] = current_document_exists unless current_document_exists.nil?
           command.query['currentDocument.updateTime'] = current_document_update_time unless current_document_update_time.nil?
+          command.query['requestOptions.requestTags'] = request_options_request_tags unless request_options_request_tags.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1146,6 +1152,8 @@ module Google
         #   microsecond precision timestamp within the past one hour, or if Point-in-Time
         #   Recovery is enabled, can additionally be a whole minute timestamp within the
         #   past 7 days.
+        # @param [Array<String>, String] request_options_request_tags
+        #   Optional. The request tags for the request.
         # @param [String] transaction
         #   Reads the document in a transaction.
         # @param [String] fields
@@ -1165,13 +1173,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_database_document(name, mask_field_paths: nil, read_time: nil, transaction: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_database_document(name, mask_field_paths: nil, read_time: nil, request_options_request_tags: nil, transaction: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::FirestoreV1::Document::Representation
           command.response_class = Google::Apis::FirestoreV1::Document
           command.params['name'] = name unless name.nil?
           command.query['mask.fieldPaths'] = mask_field_paths unless mask_field_paths.nil?
           command.query['readTime'] = read_time unless read_time.nil?
+          command.query['requestOptions.requestTags'] = request_options_request_tags unless request_options_request_tags.nil?
           command.query['transaction'] = transaction unless transaction.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1209,6 +1218,15 @@ module Google
         #   Perform the read at the provided time. This must be a microsecond precision
         #   timestamp within the past one hour, or if Point-in-Time Recovery is enabled,
         #   can additionally be a whole minute timestamp within the past 7 days.
+        # @param [Boolean] recursive
+        #   Optional. If the list should recursively include all documents nested under
+        #   the parent at any level. If the request specifies a `collection_id`, then the
+        #   list will include all nested documents in the collection under the parent.
+        #   This is optional, and when not provided, Firestore will only list documents
+        #   nested immediately under the parent. Requests with `recursive` may not specify
+        #   `show_missing`.
+        # @param [Array<String>, String] request_options_request_tags
+        #   Optional. The request tags for the request.
         # @param [Boolean] show_missing
         #   If the list should show missing documents. A document is missing if it does
         #   not exist, but there are sub-documents nested underneath it. When true, such
@@ -1234,7 +1252,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_database_documents(parent, collection_id, mask_field_paths: nil, order_by: nil, page_size: nil, page_token: nil, read_time: nil, show_missing: nil, transaction: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_database_documents(parent, collection_id, mask_field_paths: nil, order_by: nil, page_size: nil, page_token: nil, read_time: nil, recursive: nil, request_options_request_tags: nil, show_missing: nil, transaction: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/{collectionId}', options)
           command.response_representation = Google::Apis::FirestoreV1::ListDocumentsResponse::Representation
           command.response_class = Google::Apis::FirestoreV1::ListDocumentsResponse
@@ -1245,6 +1263,8 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['readTime'] = read_time unless read_time.nil?
+          command.query['recursive'] = recursive unless recursive.nil?
+          command.query['requestOptions.requestTags'] = request_options_request_tags unless request_options_request_tags.nil?
           command.query['showMissing'] = show_missing unless show_missing.nil?
           command.query['transaction'] = transaction unless transaction.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1319,6 +1339,15 @@ module Google
         #   Perform the read at the provided time. This must be a microsecond precision
         #   timestamp within the past one hour, or if Point-in-Time Recovery is enabled,
         #   can additionally be a whole minute timestamp within the past 7 days.
+        # @param [Boolean] recursive
+        #   Optional. If the list should recursively include all documents nested under
+        #   the parent at any level. If the request specifies a `collection_id`, then the
+        #   list will include all nested documents in the collection under the parent.
+        #   This is optional, and when not provided, Firestore will only list documents
+        #   nested immediately under the parent. Requests with `recursive` may not specify
+        #   `show_missing`.
+        # @param [Array<String>, String] request_options_request_tags
+        #   Optional. The request tags for the request.
         # @param [Boolean] show_missing
         #   If the list should show missing documents. A document is missing if it does
         #   not exist, but there are sub-documents nested underneath it. When true, such
@@ -1344,7 +1373,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_database_document_documents(parent, collection_id, mask_field_paths: nil, order_by: nil, page_size: nil, page_token: nil, read_time: nil, show_missing: nil, transaction: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_database_document_documents(parent, collection_id, mask_field_paths: nil, order_by: nil, page_size: nil, page_token: nil, read_time: nil, recursive: nil, request_options_request_tags: nil, show_missing: nil, transaction: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/{collectionId}', options)
           command.response_representation = Google::Apis::FirestoreV1::ListDocumentsResponse::Representation
           command.response_class = Google::Apis::FirestoreV1::ListDocumentsResponse
@@ -1355,6 +1384,8 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['readTime'] = read_time unless read_time.nil?
+          command.query['recursive'] = recursive unless recursive.nil?
+          command.query['requestOptions.requestTags'] = request_options_request_tags unless request_options_request_tags.nil?
           command.query['showMissing'] = show_missing unless show_missing.nil?
           command.query['transaction'] = transaction unless transaction.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1448,6 +1479,8 @@ module Google
         # @param [Array<String>, String] mask_field_paths
         #   The list of field paths in the mask. See Document.fields for a field path
         #   syntax reference.
+        # @param [Array<String>, String] request_options_request_tags
+        #   Optional. The request tags for the request.
         # @param [Array<String>, String] update_mask_field_paths
         #   The list of field paths in the mask. See Document.fields for a field path
         #   syntax reference.
@@ -1468,7 +1501,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_database_document(name, document_object = nil, current_document_exists: nil, current_document_update_time: nil, mask_field_paths: nil, update_mask_field_paths: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_database_document(name, document_object = nil, current_document_exists: nil, current_document_update_time: nil, mask_field_paths: nil, request_options_request_tags: nil, update_mask_field_paths: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::FirestoreV1::Document::Representation
           command.request_object = document_object
@@ -1478,6 +1511,7 @@ module Google
           command.query['currentDocument.exists'] = current_document_exists unless current_document_exists.nil?
           command.query['currentDocument.updateTime'] = current_document_update_time unless current_document_update_time.nil?
           command.query['mask.fieldPaths'] = mask_field_paths unless mask_field_paths.nil?
+          command.query['requestOptions.requestTags'] = request_options_request_tags unless request_options_request_tags.nil?
           command.query['updateMask.fieldPaths'] = update_mask_field_paths unless update_mask_field_paths.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
