@@ -4598,8 +4598,8 @@ module Google
         # @return [String]
         attr_accessor :custom_mirroring_profile
       
-        # Output only. Identifier used by the data-path. Unique within `container,
-        # location`.
+        # Output only. Identifier used by the data-path. Unique within \`container,
+        # location\`.
         # Corresponds to the JSON property `dataPathId`
         # @return [Fixnum]
         attr_accessor :data_path_id
