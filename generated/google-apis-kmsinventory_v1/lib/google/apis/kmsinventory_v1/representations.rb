@@ -185,6 +185,7 @@ module Google
       
           property :generate_time, as: 'generateTime'
           property :generation_failure_reason, as: 'generationFailureReason'
+          property :hsm_trusted, as: 'hsmTrusted'
           property :import_failure_reason, as: 'importFailureReason'
           property :import_job, as: 'importJob'
           property :import_time, as: 'importTime'
@@ -192,6 +193,7 @@ module Google
           property :protection_level, as: 'protectionLevel'
           property :reimport_eligible, as: 'reimportEligible'
           property :state, as: 'state'
+          property :trusted_wrapping_enabled, as: 'trustedWrappingEnabled'
         end
       end
       
@@ -206,6 +208,7 @@ module Google
       class GoogleCloudKmsV1ExternalProtectionLevelOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ekm_connection_backend_override, as: 'ekmConnectionBackendOverride'
           property :ekm_connection_key_path, as: 'ekmConnectionKeyPath'
           property :external_key_uri, as: 'externalKeyUri'
         end

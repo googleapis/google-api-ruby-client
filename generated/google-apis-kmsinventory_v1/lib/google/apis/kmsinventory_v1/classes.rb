@@ -426,6 +426,14 @@ module Google
         # @return [String]
         attr_accessor :generation_failure_reason
       
+        # Output only. Field indicating that the key wrapping key is trusted. This field
+        # is only valid for key purpose AES_256_WRAPPING, and protection level
+        # HSM_SINGLE_TENANT.
+        # Corresponds to the JSON property `hsmTrusted`
+        # @return [Boolean]
+        attr_accessor :hsm_trusted
+        alias_method :hsm_trusted?, :hsm_trusted
+      
         # Output only. The root cause of the most recent import failure. Only present if
         # state is IMPORT_FAILED.
         # Corresponds to the JSON property `importFailureReason`
@@ -469,6 +477,16 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Immutable. Field indicating that the key may be wrapped by a trusted key. This
+        # field can be set for all key purposes except ENCRYPT_DECRYPT, and is only
+        # valid for keys with protection level HSM_SINGLE_TENANT. This field can only be
+        # set at creation or import time via CreateCryptoKeyVersion, or
+        # ImportCryptoKeyVersion.
+        # Corresponds to the JSON property `trustedWrappingEnabled`
+        # @return [Boolean]
+        attr_accessor :trusted_wrapping_enabled
+        alias_method :trusted_wrapping_enabled?, :trusted_wrapping_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -484,6 +502,7 @@ module Google
           @external_protection_level_options = args[:external_protection_level_options] if args.key?(:external_protection_level_options)
           @generate_time = args[:generate_time] if args.key?(:generate_time)
           @generation_failure_reason = args[:generation_failure_reason] if args.key?(:generation_failure_reason)
+          @hsm_trusted = args[:hsm_trusted] if args.key?(:hsm_trusted)
           @import_failure_reason = args[:import_failure_reason] if args.key?(:import_failure_reason)
           @import_job = args[:import_job] if args.key?(:import_job)
           @import_time = args[:import_time] if args.key?(:import_time)
@@ -491,6 +510,7 @@ module Google
           @protection_level = args[:protection_level] if args.key?(:protection_level)
           @reimport_eligible = args[:reimport_eligible] if args.key?(:reimport_eligible)
           @state = args[:state] if args.key?(:state)
+          @trusted_wrapping_enabled = args[:trusted_wrapping_enabled] if args.key?(:trusted_wrapping_enabled)
         end
       end
       
@@ -530,14 +550,23 @@ module Google
       class GoogleCloudKmsV1ExternalProtectionLevelOptions
         include Google::Apis::Core::Hashable
       
-        # The path to the external key material on the EKM when using EkmConnection e.g.,
-        # "v0/my/key". Set this field instead of external_key_uri when using an
-        # EkmConnection.
+        # Optional. The resource name of the backend environment where the key material
+        # of CryptoKeyVersions is associated with. Setting this field overrides the
+        # CryptoKeyBackend. This field may be set when CryptoKeyVersions is set to
+        # EXTERNAL_VPC. Format: `projects/*/locations/*/ekmConnections/*`.
+        # Corresponds to the JSON property `ekmConnectionBackendOverride`
+        # @return [String]
+        attr_accessor :ekm_connection_backend_override
+      
+        # Optional. The path to the external key material on the EKM when using
+        # EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri
+        # when using an EkmConnection.
         # Corresponds to the JSON property `ekmConnectionKeyPath`
         # @return [String]
         attr_accessor :ekm_connection_key_path
       
-        # The URI for an external resource that this CryptoKeyVersion represents.
+        # Optional. The URI for an external resource that this CryptoKeyVersion
+        # represents.
         # Corresponds to the JSON property `externalKeyUri`
         # @return [String]
         attr_accessor :external_key_uri
@@ -548,6 +577,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ekm_connection_backend_override = args[:ekm_connection_backend_override] if args.key?(:ekm_connection_backend_override)
           @ekm_connection_key_path = args[:ekm_connection_key_path] if args.key?(:ekm_connection_key_path)
           @external_key_uri = args[:external_key_uri] if args.key?(:external_key_uri)
         end
