@@ -58,12 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AgentGatewayNetworkConfigEgressTrustConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AgentGatewaySelfManaged
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -713,15 +707,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network_attachment, as: 'networkAttachment'
-          property :trust_config, as: 'trustConfig', class: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigEgressTrustConfig, decorator: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigEgressTrustConfig::Representation
-      
-        end
-      end
-      
-      class AgentGatewayNetworkConfigEgressTrustConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :pem_certificates, as: 'pemCertificates'
         end
       end
       
