@@ -1,5 +1,9 @@
 # Release history for google-apis-blogger_v3
 
+### v0.23.0 (2026-07-12)
+
+* Regenerated from discovery document revision 20260707
+
 ### v0.22.0 (2026-06-14)
 
 * Regenerated using generator version 0.19.0
