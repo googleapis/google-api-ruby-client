@@ -22,6 +22,67 @@ module Google
   module Apis
     module PlaydeveloperreportingV1beta1
       
+      # Profile describing the visibility restriction of an MCP tool. Key: "google.com/
+      # tool.profiles/visibility.restriction"
+      class ApiservingMcpMcpToolVisibility
+        include Google::Apis::Core::Hashable
+      
+        # A list of field-level visibility restrictions.
+        # Corresponds to the JSON property `fieldVisibility`
+        # @return [Array<Google::Apis::PlaydeveloperreportingV1beta1::ApiservingMcpMcpToolVisibilityFieldVisibility>]
+        attr_accessor :field_visibility
+      
+        # The strategy used to enforce visibility restrictions. DO NOT USE. This field
+        # is not yet implemented.
+        # Corresponds to the JSON property `visibilityEnforcementStrategy`
+        # @return [String]
+        attr_accessor :visibility_enforcement_strategy
+      
+        # The visibility restriction labels for the tool itself (e.g., "
+        # PRODUCER_DEFINED_PREVIEW"). Multiple labels can be provided as a comma-
+        # separated string.
+        # Corresponds to the JSON property `visibilityRestriction`
+        # @return [String]
+        attr_accessor :visibility_restriction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_visibility = args[:field_visibility] if args.key?(:field_visibility)
+          @visibility_enforcement_strategy = args[:visibility_enforcement_strategy] if args.key?(:visibility_enforcement_strategy)
+          @visibility_restriction = args[:visibility_restriction] if args.key?(:visibility_restriction)
+        end
+      end
+      
+      # Visibility rules for individual tool parameters (fields). This allows
+      # producers to hide specific fields in tools/list and tools/call.
+      class ApiservingMcpMcpToolVisibilityFieldVisibility
+        include Google::Apis::Core::Hashable
+      
+        # The visibility restriction labels for this field (comma-separated).
+        # Corresponds to the JSON property `restriction`
+        # @return [String]
+        attr_accessor :restriction
+      
+        # The name of the parameter in the input_schema or output_schema.
+        # Corresponds to the JSON property `selector`
+        # @return [String]
+        attr_accessor :selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restriction = args[:restriction] if args.key?(:restriction)
+          @selector = args[:selector] if args.key?(:selector)
+        end
+      end
+      
       # Represents an anomaly detected in a dataset. Our anomaly detection systems
       # flag datapoints in a time series that fall outside of and expected range
       # derived from historical data. Although those expected ranges have an upper and
