@@ -1548,12 +1548,13 @@ module Google
         # Required. The type of resource this ID is identifying. Ex go/keep-sorted start
         # alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.
         # googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.
-        # googleapis.com/Instance firestore.googleapis.com/Database, redis.googleapis.
-        # com/Instance, redis.googleapis.com/Cluster, oracledatabase.googleapis.com/
-        # CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
-        # oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/
-        # Instance, spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance,
-        # go/keep-sorted end REQUIRED Please refer go/condor-common-datamodel
+        # googleapis.com/Instance firestore.googleapis.com/Database, memorystore.
+        # googleapis.com/Instance, redis.googleapis.com/Instance, redis.googleapis.com/
+        # Cluster, oracledatabase.googleapis.com/CloudExadataInfrastructure
+        # oracledatabase.googleapis.com/CloudVmCluster oracledatabase.googleapis.com/
+        # AutonomousDatabase spanner.googleapis.com/Instance, spanner.googleapis.com/
+        # Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please
+        # refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
