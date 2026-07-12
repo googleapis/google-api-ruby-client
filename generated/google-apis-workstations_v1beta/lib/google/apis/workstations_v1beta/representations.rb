@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SuspendWorkstationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -636,6 +642,7 @@ module Google
           property :access_token, as: 'accessToken'
           property :email, as: 'email'
           property :expire_time, as: 'expireTime'
+          property :expires_in, as: 'expiresIn'
           property :scopes, as: 'scopes'
         end
       end
@@ -774,6 +781,14 @@ module Google
         end
       end
       
+      class SuspendWorkstationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
       class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -889,6 +904,7 @@ module Google
       
           property :http_options, as: 'httpOptions', class: Google::Apis::WorkstationsV1beta::HttpOptions, decorator: Google::Apis::WorkstationsV1beta::HttpOptions::Representation
       
+          property :idle_action, as: 'idleAction'
           property :idle_timeout, as: 'idleTimeout'
           hash :labels, as: 'labels'
           property :max_usable_workstations, as: 'maxUsableWorkstations'

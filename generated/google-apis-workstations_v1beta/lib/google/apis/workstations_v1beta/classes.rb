@@ -1320,29 +1320,36 @@ module Google
         end
       end
       
-      # OAuth token.
+      # Represents an OAuth 2.0 access token and its associated metadata.
       class OAuthToken
         include Google::Apis::Core::Hashable
       
-        # Required. The OAuth token.
+        # Required. The OAuth 2.0 access token value.
         # Corresponds to the JSON property `accessToken`
         # @return [String]
         attr_accessor :access_token
       
-        # Optional. The email address encapsulated in the OAuth token.
+        # Optional. The email address associated with the OAuth 2.0 access token.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
         # Optional. The time the OAuth access token will expire. This should be the time
         # the access token was generated plus the expires_in offset returned from the
-        # Access Token Response.
+        # Access Token Response. Only one of `expire_time` or `expires_in` should be
+        # specified.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
       
-        # Optional. The scopes encapsulated in the OAuth token. See https://developers.
-        # google.com/identity/protocols/oauth2/scopes for more information.
+        # Optional. The lifetime duration of the access token. Only one of `expire_time`
+        # or `expires_in` should be specified.
+        # Corresponds to the JSON property `expiresIn`
+        # @return [String]
+        attr_accessor :expires_in
+      
+        # Optional. The scopes associated with the OAuth 2.0 access token. See https://
+        # developers.google.com/identity/protocols/oauth2/scopes for more information.
         # Corresponds to the JSON property `scopes`
         # @return [String]
         attr_accessor :scopes
@@ -1356,6 +1363,7 @@ module Google
           @access_token = args[:access_token] if args.key?(:access_token)
           @email = args[:email] if args.key?(:email)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
           @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
@@ -1696,7 +1704,7 @@ module Google
       class PushCredentialsRequest
         include Google::Apis::Core::Hashable
       
-        # OAuth token.
+        # Represents an OAuth 2.0 access token and its associated metadata.
         # Corresponds to the JSON property `applicationDefaultCredentials`
         # @return [Google::Apis::WorkstationsV1beta::OAuthToken]
         attr_accessor :application_default_credentials
@@ -1919,6 +1927,34 @@ module Google
       
       # Request message for StopWorkstation.
       class StopWorkstationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set, the request will be rejected if the latest version of the
+        # workstation on the server does not have this ETag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. If set, validate the request and preview the result, but do not
+        # actually apply it.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Request message for SuspendWorkstation.
+      class SuspendWorkstationRequest
         include Google::Apis::Core::Hashable
       
         # Optional. If set, the request will be rejected if the latest version of the
@@ -2501,6 +2537,12 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::HttpOptions]
         attr_accessor :http_options
       
+        # Optional. The action to take when the workstation has been idle for the
+        # duration specified in idle_timeout. Defaults to STOP.
+        # Corresponds to the JSON property `idleAction`
+        # @return [String]
+        attr_accessor :idle_action
+      
         # Optional. Number of seconds to wait before automatically stopping a
         # workstation after it last received user traffic. A value of `"0s"` indicates
         # that Cloud Workstations VMs created with this configuration should never time
@@ -2627,6 +2669,7 @@ module Google
           @grant_workstation_admin_role_on_create = args[:grant_workstation_admin_role_on_create] if args.key?(:grant_workstation_admin_role_on_create)
           @host = args[:host] if args.key?(:host)
           @http_options = args[:http_options] if args.key?(:http_options)
+          @idle_action = args[:idle_action] if args.key?(:idle_action)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
           @labels = args[:labels] if args.key?(:labels)
           @max_usable_workstations = args[:max_usable_workstations] if args.key?(:max_usable_workstations)
