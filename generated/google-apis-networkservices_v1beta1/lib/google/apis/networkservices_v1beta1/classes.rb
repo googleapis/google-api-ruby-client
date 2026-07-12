@@ -78,7 +78,7 @@ module Google
         # Optional. A list of Agent registries containing the agents, MCP servers and
         # tools governed by the Agent Gateway. Note: Currently limited to project-scoped
         # registries Must be of format `//agentregistry.googleapis.com/projects/`project`
-        # /locations/`location`/
+        # /locations/`location`/`
         # Corresponds to the JSON property `registries`
         # @return [Array<String>]
         attr_accessor :registries
@@ -235,11 +235,6 @@ module Google
         # @return [String]
         attr_accessor :network_attachment
       
-        # TrustConfig defines the trust configuration for egress.
-        # Corresponds to the JSON property `trustConfig`
-        # @return [Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigEgressTrustConfig]
-        attr_accessor :trust_config
-      
         def initialize(**args)
            update!(**args)
         end
@@ -247,27 +242,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
-          @trust_config = args[:trust_config] if args.key?(:trust_config)
-        end
-      end
-      
-      # TrustConfig defines the trust configuration for egress.
-      class AgentGatewayNetworkConfigEgressTrustConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. PEM encoded root certificates used to validate the identity of the
-        # upstream servers/destinations during egress connections.
-        # Corresponds to the JSON property `pemCertificates`
-        # @return [Array<String>]
-        attr_accessor :pem_certificates
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @pem_certificates = args[:pem_certificates] if args.key?(:pem_certificates)
         end
       end
       
