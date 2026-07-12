@@ -4872,6 +4872,7 @@ module Google
           property :revision_id, as: 'revisionId'
           property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig::Representation
       
+          property :span_semantics, as: 'spanSemantics'
           property :trace_protocol, as: 'traceProtocol'
         end
       end
@@ -4886,6 +4887,7 @@ module Google
           property :revision_id, as: 'revisionId'
           property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig::Representation
       
+          property :span_semantics, as: 'spanSemantics'
           property :trace_protocol, as: 'traceProtocol'
           property :uid, as: 'uid'
         end
@@ -5575,6 +5577,7 @@ module Google
           property :exporter, as: 'exporter'
           property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig::Representation
       
+          property :span_semantics, as: 'spanSemantics'
           property :trace_protocol, as: 'traceProtocol'
         end
       end

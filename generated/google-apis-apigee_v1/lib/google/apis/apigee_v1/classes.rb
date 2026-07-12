@@ -5141,7 +5141,7 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig>]
         attr_accessor :targets
       
-        # NEXT ID: 10 RuntimeTraceConfig defines the configurations for distributed
+        # NEXT ID: 11 RuntimeTraceConfig defines the configurations for distributed
         # trace in an environment.
         # Corresponds to the JSON property `traceConfig`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfig]
@@ -10299,7 +10299,7 @@ module Google
         end
       end
       
-      # NEXT ID: 10 RuntimeTraceConfig defines the configurations for distributed
+      # NEXT ID: 11 RuntimeTraceConfig defines the configurations for distributed
       # trace in an environment.
       class GoogleCloudApigeeV1RuntimeTraceConfig
         include Google::Apis::Core::Hashable
@@ -10357,6 +10357,12 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig]
         attr_accessor :sampling_config
       
+        # Optional. The span semantics to use. Configuration Requirements (if `
+        # span_semantics` is `OTEL`): - `trace_protocol` must be `OTLP`.
+        # Corresponds to the JSON property `spanSemantics`
+        # @return [String]
+        attr_accessor :span_semantics
+      
         # Optional. The trace protocol to use.
         # Corresponds to the JSON property `traceProtocol`
         # @return [String]
@@ -10376,11 +10382,12 @@ module Google
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+          @span_semantics = args[:span_semantics] if args.key?(:span_semantics)
           @trace_protocol = args[:trace_protocol] if args.key?(:trace_protocol)
         end
       end
       
-      # NEXT ID: 9 Trace configuration override for a specific API proxy in an
+      # NEXT ID: 10 Trace configuration override for a specific API proxy in an
       # environment.
       class GoogleCloudApigeeV1RuntimeTraceConfigOverride
         include Google::Apis::Core::Hashable
@@ -10427,6 +10434,12 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceSamplingConfig]
         attr_accessor :sampling_config
       
+        # Optional. The span semantics to use. Configuration Requirements (if `
+        # span_semantics` is `OTEL`): - `trace_protocol` must be `OTLP`.
+        # Corresponds to the JSON property `spanSemantics`
+        # @return [String]
+        attr_accessor :span_semantics
+      
         # Optional. The trace protocol to use.
         # Corresponds to the JSON property `traceProtocol`
         # @return [String]
@@ -10450,6 +10463,7 @@ module Google
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+          @span_semantics = args[:span_semantics] if args.key?(:span_semantics)
           @trace_protocol = args[:trace_protocol] if args.key?(:trace_protocol)
           @uid = args[:uid] if args.key?(:uid)
         end
@@ -13087,6 +13101,12 @@ module Google
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig]
         attr_accessor :sampling_config
       
+        # Optional. The span semantics to use. Configuration Requirements (if
+        # span_semantics is OTEL): - trace_protocol must be OTLP.
+        # Corresponds to the JSON property `spanSemantics`
+        # @return [String]
+        attr_accessor :span_semantics
+      
         # Optional. The trace protocol to use. Configuration Requirements (if
         # trace_protocol is OTLP): - Allowed Exporters: CLOUD_TRACE or
         # OPEN_TELEMETRY_COLLECTOR. - If Exporter is OPEN_TELEMETRY_COLLECTOR: -
@@ -13105,6 +13125,7 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @exporter = args[:exporter] if args.key?(:exporter)
           @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
+          @span_semantics = args[:span_semantics] if args.key?(:span_semantics)
           @trace_protocol = args[:trace_protocol] if args.key?(:trace_protocol)
         end
       end
