@@ -22,6 +22,18 @@ module Google
   module Apis
     module PlaydeveloperreportingV1alpha1
       
+      class ApiservingMcpMcpToolVisibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApiservingMcpMcpToolVisibilityFieldVisibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePlayDeveloperReportingV1alpha1Anomaly
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -320,6 +332,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApiservingMcpMcpToolVisibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_visibility, as: 'fieldVisibility', class: Google::Apis::PlaydeveloperreportingV1alpha1::ApiservingMcpMcpToolVisibilityFieldVisibility, decorator: Google::Apis::PlaydeveloperreportingV1alpha1::ApiservingMcpMcpToolVisibilityFieldVisibility::Representation
+      
+          property :visibility_enforcement_strategy, as: 'visibilityEnforcementStrategy'
+          property :visibility_restriction, as: 'visibilityRestriction'
+        end
+      end
+      
+      class ApiservingMcpMcpToolVisibilityFieldVisibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restriction, as: 'restriction'
+          property :selector, as: 'selector'
+        end
       end
       
       class GooglePlayDeveloperReportingV1alpha1Anomaly
