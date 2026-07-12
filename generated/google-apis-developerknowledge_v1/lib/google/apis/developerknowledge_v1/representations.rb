@@ -58,6 +58,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
+          property :content_length_bytes, as: 'contentLengthBytes'
           property :data_source, as: 'dataSource'
           property :description, as: 'description'
           property :name, as: 'name'
