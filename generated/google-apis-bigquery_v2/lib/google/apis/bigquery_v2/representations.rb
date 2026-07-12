@@ -82,6 +82,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArrowRecordBatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArrowSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArrowSerializationOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1591,6 +1609,28 @@ module Google
           collection :seasonal_periods, as: 'seasonalPeriods'
           property :time_series_id, as: 'timeSeriesId'
           collection :time_series_ids, as: 'timeSeriesIds'
+        end
+      end
+      
+      class ArrowRecordBatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :serialized_record_batch, :base64 => true, as: 'serializedRecordBatch'
+        end
+      end
+      
+      class ArrowSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :serialized_schema, :base64 => true, as: 'serializedSchema'
+        end
+      end
+      
+      class ArrowSerializationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buffer_compression, as: 'bufferCompression'
+          property :picos_timestamp_precision, as: 'picosTimestampPrecision'
         end
       end
       
@@ -3513,6 +3553,8 @@ module Google
       class QueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :arrow_serialization_options, as: 'arrowSerializationOptions', class: Google::Apis::BigqueryV2::ArrowSerializationOptions, decorator: Google::Apis::BigqueryV2::ArrowSerializationOptions::Representation
+      
           collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
       
           property :continuous, as: 'continuous'
@@ -3537,6 +3579,7 @@ module Google
           property :query, as: 'query'
           collection :query_parameters, as: 'queryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
       
+          property :query_results_format, as: 'queryResultsFormat'
           property :request_id, as: 'requestId'
           property :reservation, as: 'reservation'
           property :timeout_ms, as: 'timeoutMs'
@@ -3549,6 +3592,10 @@ module Google
       class QueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :arrow_record_batch, as: 'arrowRecordBatch', class: Google::Apis::BigqueryV2::ArrowRecordBatch, decorator: Google::Apis::BigqueryV2::ArrowRecordBatch::Representation
+      
+          property :arrow_schema, as: 'arrowSchema', class: Google::Apis::BigqueryV2::ArrowSchema, decorator: Google::Apis::BigqueryV2::ArrowSchema::Representation
+      
           property :cache_hit, as: 'cacheHit'
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :dml_stats, as: 'dmlStats', class: Google::Apis::BigqueryV2::DmlStatistics, decorator: Google::Apis::BigqueryV2::DmlStatistics::Representation
@@ -3564,6 +3611,7 @@ module Google
           property :kind, as: 'kind'
           property :location, as: 'location'
           property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
+          property :page_row_count, :numeric_string => true, as: 'pageRowCount'
           property :page_token, as: 'pageToken'
           property :query_id, as: 'queryId'
           collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableRow, decorator: Google::Apis::BigqueryV2::TableRow::Representation

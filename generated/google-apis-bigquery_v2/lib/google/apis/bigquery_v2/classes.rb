@@ -508,6 +508,77 @@ module Google
         end
       end
       
+      # Arrow RecordBatch. This feature is not yet available.
+      class ArrowRecordBatch
+        include Google::Apis::Core::Hashable
+      
+        # IPC-serialized Arrow RecordBatch.
+        # Corresponds to the JSON property `serializedRecordBatch`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :serialized_record_batch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @serialized_record_batch = args[:serialized_record_batch] if args.key?(:serialized_record_batch)
+        end
+      end
+      
+      # Arrow schema as specified in https://arrow.apache.org/docs/python/api/
+      # datatypes.html and serialized to bytes using IPC: https://arrow.apache.org/
+      # docs/format/Columnar.html#serialization-and-interprocess-communication-ipc See
+      # code samples on how this message can be deserialized. This feature is not yet
+      # available.
+      class ArrowSchema
+        include Google::Apis::Core::Hashable
+      
+        # IPC serialized Arrow schema.
+        # Corresponds to the JSON property `serializedSchema`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :serialized_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @serialized_schema = args[:serialized_schema] if args.key?(:serialized_schema)
+        end
+      end
+      
+      # Contains options specific to Arrow Serialization. This feature is not yet
+      # available.
+      class ArrowSerializationOptions
+        include Google::Apis::Core::Hashable
+      
+        # The compression codec to use for Arrow buffers in serialized record batches.
+        # Corresponds to the JSON property `bufferCompression`
+        # @return [String]
+        attr_accessor :buffer_compression
+      
+        # Optional. Set timestamp precision option. If not set, the default precision is
+        # microseconds.
+        # Corresponds to the JSON property `picosTimestampPrecision`
+        # @return [String]
+        attr_accessor :picos_timestamp_precision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buffer_compression = args[:buffer_compression] if args.key?(:buffer_compression)
+          @picos_timestamp_precision = args[:picos_timestamp_precision] if args.key?(:picos_timestamp_precision)
+        end
+      end
+      
       # Specifies the audit configuration for a service. The configuration determines
       # which permission types are logged, and what identities, if any, are exempted
       # from logging. An AuditConfig must have one or more AuditLogConfigs. If there
@@ -3950,7 +4021,7 @@ module Google
         attr_accessor :asynchronous
         alias_method :asynchronous?, :asynchronous
       
-        # Optional. The generation expression (e.g. AI.EMBED(...)) used to generated the
+        # Optional. The generation expression (e.g. AI.EMBED(...)) used to generate the
         # field.
         # Corresponds to the JSON property `generationExpression`
         # @return [String]
@@ -8397,6 +8468,12 @@ module Google
       class QueryRequest
         include Google::Apis::Core::Hashable
       
+        # Contains options specific to Arrow Serialization. This feature is not yet
+        # available.
+        # Corresponds to the JSON property `arrowSerializationOptions`
+        # @return [Google::Apis::BigqueryV2::ArrowSerializationOptions]
+        attr_accessor :arrow_serialization_options
+      
         # Optional. Connection properties which can modify the query behavior.
         # Corresponds to the JSON property `connectionProperties`
         # @return [Array<Google::Apis::BigqueryV2::ConnectionProperty>]
@@ -8529,6 +8606,17 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
         attr_accessor :query_parameters
       
+        # Optional. The query results format. If the value is anything other than `
+        # STRUCT_ENCODING` or unspecified: * The schema of the results will be provided
+        # in `QueryResponse.results_schema` field. * The results of the first page will
+        # be provided in `QueryResponse.results` field. * The `QueryResponse.rows` will
+        # not be populated. * The `QueryResponse.schema` for `QueryResponse.rows` will
+        # also not be populated since it is the schema of the `QueryResponse.rows`. This
+        # feature is not yet available.
+        # Corresponds to the JSON property `queryResultsFormat`
+        # @return [String]
+        attr_accessor :query_results_format
+      
         # Optional. A unique user provided identifier to ensure idempotent behavior for
         # queries. Note that this is different from the job_id. It has the following
         # properties: 1. It is case-sensitive, limited to up to 36 ASCII characters. A
@@ -8606,6 +8694,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @arrow_serialization_options = args[:arrow_serialization_options] if args.key?(:arrow_serialization_options)
           @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
           @continuous = args[:continuous] if args.key?(:continuous)
           @create_session = args[:create_session] if args.key?(:create_session)
@@ -8625,6 +8714,7 @@ module Google
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
           @query = args[:query] if args.key?(:query)
           @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
+          @query_results_format = args[:query_results_format] if args.key?(:query_results_format)
           @request_id = args[:request_id] if args.key?(:request_id)
           @reservation = args[:reservation] if args.key?(:reservation)
           @timeout_ms = args[:timeout_ms] if args.key?(:timeout_ms)
@@ -8637,6 +8727,20 @@ module Google
       # 
       class QueryResponse
         include Google::Apis::Core::Hashable
+      
+        # Arrow RecordBatch. This feature is not yet available.
+        # Corresponds to the JSON property `arrowRecordBatch`
+        # @return [Google::Apis::BigqueryV2::ArrowRecordBatch]
+        attr_accessor :arrow_record_batch
+      
+        # Arrow schema as specified in https://arrow.apache.org/docs/python/api/
+        # datatypes.html and serialized to bytes using IPC: https://arrow.apache.org/
+        # docs/format/Columnar.html#serialization-and-interprocess-communication-ipc See
+        # code samples on how this message can be deserialized. This feature is not yet
+        # available.
+        # Corresponds to the JSON property `arrowSchema`
+        # @return [Google::Apis::BigqueryV2::ArrowSchema]
+        attr_accessor :arrow_schema
       
         # Whether the query result was fetched from the query cache.
         # Corresponds to the JSON property `cacheHit`
@@ -8708,6 +8812,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_dml_affected_rows
       
+        # Output only. The number of rows out of `total_rows` returned in this response.
+        # This feature is not yet available.
+        # Corresponds to the JSON property `pageRowCount`
+        # @return [Fixnum]
+        attr_accessor :page_row_count
+      
         # A token used for paging results. A non-empty token indicates that additional
         # results are available. To see additional results, query the [`jobs.
         # getQueryResults`](https://cloud.google.com/bigquery/docs/reference/rest/v2/
@@ -8777,6 +8887,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @arrow_record_batch = args[:arrow_record_batch] if args.key?(:arrow_record_batch)
+          @arrow_schema = args[:arrow_schema] if args.key?(:arrow_schema)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @dml_stats = args[:dml_stats] if args.key?(:dml_stats)
@@ -8788,6 +8900,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @location = args[:location] if args.key?(:location)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
+          @page_row_count = args[:page_row_count] if args.key?(:page_row_count)
           @page_token = args[:page_token] if args.key?(:page_token)
           @query_id = args[:query_id] if args.key?(:query_id)
           @rows = args[:rows] if args.key?(:rows)
