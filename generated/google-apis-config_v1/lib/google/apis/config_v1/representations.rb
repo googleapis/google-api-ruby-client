@@ -576,6 +576,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :apply_results, as: 'applyResults', class: Google::Apis::ConfigV1::ApplyResults, decorator: Google::Apis::ConfigV1::ApplyResults::Representation
       
+          property :apply_results_available, as: 'applyResultsAvailable'
           property :build, as: 'build'
           property :logs, as: 'logs'
           property :step, as: 'step'
