@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudnumberregistry_v1alpha
 
+### v0.3.0 (2026-07-12)
+
+* Regenerated from discovery document revision 20260708
+
 ### v0.2.0 (2026-06-14)
 
 * Regenerated from discovery document revision 20260527
