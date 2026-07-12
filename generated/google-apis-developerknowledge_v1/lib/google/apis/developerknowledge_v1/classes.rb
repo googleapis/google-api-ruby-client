@@ -50,6 +50,11 @@ module Google
         # @return [String]
         attr_accessor :content
       
+        # Output only. The length of the `content` field in bytes.
+        # Corresponds to the JSON property `contentLengthBytes`
+        # @return [Fixnum]
+        attr_accessor :content_length_bytes
+      
         # Output only. Specifies the data source of the document. Example data source: `
         # firebase.google.com`
         # Corresponds to the JSON property `dataSource`
@@ -97,6 +102,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @content_length_bytes = args[:content_length_bytes] if args.key?(:content_length_bytes)
           @data_source = args[:data_source] if args.key?(:data_source)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
