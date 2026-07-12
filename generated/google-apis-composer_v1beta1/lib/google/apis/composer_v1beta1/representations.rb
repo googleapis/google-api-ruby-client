@@ -921,6 +921,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :airflow_config_overrides, as: 'airflowConfigOverrides'
+          property :audit_logs_replication_mode, as: 'auditLogsReplicationMode'
           property :cloud_data_lineage_integration, as: 'cloudDataLineageIntegration', class: Google::Apis::ComposerV1beta1::CloudDataLineageIntegration, decorator: Google::Apis::ComposerV1beta1::CloudDataLineageIntegration::Representation
       
           hash :env_variables, as: 'envVariables'
