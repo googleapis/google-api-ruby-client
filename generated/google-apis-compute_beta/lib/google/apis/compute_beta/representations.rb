@@ -5800,6 +5800,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PersistentDiskResourceCommitment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6047,6 +6053,12 @@ module Google
       end
       
       class Reference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegexRewrite
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6432,6 +6444,30 @@ module Google
       
       class RegionUrlMapsValidateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReliabilityRisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReliabilityRisksListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -6899,6 +6935,24 @@ module Google
       end
       
       class ResourceStatusShutdownDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RiskDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RiskDetailsGlobalDnsInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RiskRecommendation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11493,6 +11547,8 @@ module Google
           property :name, as: 'name'
           property :params, as: 'params', class: Google::Apis::ComputeBeta::CommitmentParams, decorator: Google::Apis::ComputeBeta::CommitmentParams::Representation
       
+          collection :persistent_disk_resources, as: 'persistentDiskResources', class: Google::Apis::ComputeBeta::PersistentDiskResourceCommitment, decorator: Google::Apis::ComputeBeta::PersistentDiskResourceCommitment::Representation
+      
           property :plan, as: 'plan'
           property :region, as: 'region'
           collection :reservations, as: 'reservations', class: Google::Apis::ComputeBeta::Reservation, decorator: Google::Apis::ComputeBeta::Reservation::Representation
@@ -14663,6 +14719,7 @@ module Google
           property :last_start_timestamp, as: 'lastStartTimestamp'
           property :last_stop_timestamp, as: 'lastStopTimestamp'
           property :last_suspended_timestamp, as: 'lastSuspendedTimestamp'
+          property :local_ssd_encryption_mode, as: 'localSsdEncryptionMode'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
       
@@ -15945,6 +16002,7 @@ module Google
       
           property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
+          property :local_ssd_encryption_mode, as: 'localSsdEncryptionMode'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
       
@@ -20496,6 +20554,15 @@ module Google
         end
       end
       
+      class PersistentDiskResourceCommitment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, :numeric_string => true, as: 'amount'
+          property :dimension_type, as: 'dimensionType'
+          property :product_type, as: 'productType'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20958,6 +21025,14 @@ module Google
           property :reference_type, as: 'referenceType'
           property :referrer, as: 'referrer'
           property :target, as: 'target'
+        end
+      end
+      
+      class RegexRewrite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path_pattern, as: 'pathPattern'
+          property :path_substitution, as: 'pathSubstitution'
         end
       end
       
@@ -21555,6 +21630,56 @@ module Google
         end
       end
       
+      class ReliabilityRisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :details, as: 'details', class: Google::Apis::ComputeBeta::RiskDetails, decorator: Google::Apis::ComputeBeta::RiskDetails::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :recommendation, as: 'recommendation', class: Google::Apis::ComputeBeta::RiskRecommendation, decorator: Google::Apis::ComputeBeta::RiskRecommendation::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class ReliabilityRisksListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::ReliabilityRisk, decorator: Google::Apis::ComputeBeta::ReliabilityRisk::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ReliabilityRisksListResponse::Warning, decorator: Google::Apis::ComputeBeta::ReliabilityRisksListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ReliabilityRisksListResponse::Warning::Datum, decorator: Google::Apis::ComputeBeta::ReliabilityRisksListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class RequestMirrorPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -21658,10 +21783,10 @@ module Google
       class ReservationBlock
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :block_health_info, as: 'blockHealthInfo', class: Google::Apis::ComputeBeta::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeBeta::ReservationBlockHealthInfo::Representation
-      
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeBeta::ReservationBlockHealthInfo, decorator: Google::Apis::ComputeBeta::ReservationBlockHealthInfo::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
@@ -21890,6 +22015,8 @@ module Google
       
           property :count, as: 'count'
           property :creation_timestamp, as: 'creationTimestamp'
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeBeta::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeBeta::ReservationSubBlockHealthInfo::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
@@ -21902,8 +22029,6 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :status, as: 'status'
-          property :sub_block_health_info, as: 'subBlockHealthInfo', class: Google::Apis::ComputeBeta::ReservationSubBlockHealthInfo, decorator: Google::Apis::ComputeBeta::ReservationSubBlockHealthInfo::Representation
-      
           property :zone, as: 'zone'
         end
       end
@@ -22401,6 +22526,36 @@ module Google
           property :request_timestamp, as: 'requestTimestamp'
           property :stop_state, as: 'stopState'
           property :target_state, as: 'targetState'
+        end
+      end
+      
+      class RiskDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :global_dns_insight, as: 'globalDnsInsight', class: Google::Apis::ComputeBeta::RiskDetailsGlobalDnsInsight, decorator: Google::Apis::ComputeBeta::RiskDetailsGlobalDnsInsight::Representation
+      
+          property :last_update_timestamp, as: 'lastUpdateTimestamp'
+          property :severity, as: 'severity'
+          property :type, as: 'type'
+        end
+      end
+      
+      class RiskDetailsGlobalDnsInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_default_is_global_dns, as: 'projectDefaultIsGlobalDns'
+          property :query_observation_window, as: 'queryObservationWindow'
+          property :risky_query_count, :numeric_string => true, as: 'riskyQueryCount'
+          property :total_query_count, :numeric_string => true, as: 'totalQueryCount'
+        end
+      end
+      
+      class RiskRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :reference_url, as: 'referenceUrl'
         end
       end
       
@@ -25137,6 +25292,7 @@ module Google
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :ipv6_cidr_range, as: 'ipv6CidrRange'
           property :ipv6_gce_endpoint, as: 'ipv6GceEndpoint'
+          property :ipv6_network_tier, as: 'ipv6NetworkTier'
           property :kind, as: 'kind'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::SubnetworkLogConfig, decorator: Google::Apis::ComputeBeta::SubnetworkLogConfig::Representation
       
@@ -26545,6 +26701,8 @@ module Google
           property :host_rewrite, as: 'hostRewrite'
           property :path_prefix_rewrite, as: 'pathPrefixRewrite'
           property :path_template_rewrite, as: 'pathTemplateRewrite'
+          property :regex_rewrite, as: 'regexRewrite', class: Google::Apis::ComputeBeta::RegexRewrite, decorator: Google::Apis::ComputeBeta::RegexRewrite::Representation
+      
         end
       end
       
