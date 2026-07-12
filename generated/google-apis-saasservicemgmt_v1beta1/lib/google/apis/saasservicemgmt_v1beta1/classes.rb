@@ -179,16 +179,16 @@ module Google
         end
       end
       
-      # ComponentRef represents a reference to a component resource. Next ID: 4
+      # ComponentRef represents a reference to a component resource.
       class ComponentRef
         include Google::Apis::Core::Hashable
       
-        # Name of the component in composite.Components
+        # Optional. Name of the component in composite.Components
         # Corresponds to the JSON property `component`
         # @return [String]
         attr_accessor :component
       
-        # CompositeRef represents a reference to a composite resource. Next ID: 4
+        # CompositeRef represents a reference to a composite resource.
         # Corresponds to the JSON property `compositeRef`
         # @return [Google::Apis::SaasservicemgmtV1beta1::CompositeRef]
         attr_accessor :composite_ref
@@ -212,7 +212,7 @@ module Google
         end
       end
       
-      # CompositeRef represents a reference to a composite resource. Next ID: 4
+      # CompositeRef represents a reference to a composite resource.
       class CompositeRef
         include Google::Apis::Core::Hashable
       
@@ -1700,7 +1700,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # ComponentRef represents a reference to a component resource. Next ID: 4
+        # ComponentRef represents a reference to a component resource.
         # Corresponds to the JSON property `applicationTemplateComponent`
         # @return [Google::Apis::SaasservicemgmtV1beta1::ComponentRef]
         attr_accessor :application_template_component
@@ -2236,7 +2236,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # CompositeRef represents a reference to a composite resource. Next ID: 4
+        # CompositeRef represents a reference to a composite resource.
         # Corresponds to the JSON property `applicationTemplate`
         # @return [Google::Apis::SaasservicemgmtV1beta1::CompositeRef]
         attr_accessor :application_template
@@ -3106,7 +3106,7 @@ module Google
         # @return [Google::Apis::SaasservicemgmtV1beta1::AppParams]
         attr_accessor :app_params
       
-        # ComponentRef represents a reference to a component resource. Next ID: 4
+        # ComponentRef represents a reference to a component resource.
         # Corresponds to the JSON property `applicationTemplateComponent`
         # @return [Google::Apis::SaasservicemgmtV1beta1::ComponentRef]
         attr_accessor :application_template_component
