@@ -115,6 +115,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the effective Cloud KMS Autokey configuration for a given project or
+        # folder.
+        # @param [String] parent
+        #   Required. Name of the resource project or folder to show the effective Cloud
+        #   KMS Autokey configuration for. This may be helpful for interrogating the
+        #   effect of nested folder configurations on a given resource project. Format: *
+        #   projects/`project` * folders/`folder`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ShowEffectiveAutokeyConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ShowEffectiveAutokeyConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def show_folder_effective_autokey_config(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}:showEffectiveAutokeyConfig', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ShowEffectiveAutokeyConfigResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ShowEffectiveAutokeyConfigResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the AutokeyConfig for a folder or a project. The caller must have both
         # `cloudkms.autokeyConfigs.update` permission on the parent folder and `cloudkms.
         # cryptoKeys.setIamPolicy` permission on the provided key project. A KeyHandle
@@ -329,11 +363,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the effective Cloud KMS Autokey configuration for a given project.
+        # Returns the effective Cloud KMS Autokey configuration for a given project or
+        # folder.
         # @param [String] parent
-        #   Required. Name of the resource project to the show effective Cloud KMS Autokey
-        #   configuration for. This may be helpful for interrogating the effect of nested
-        #   folder configurations on a given resource project.
+        #   Required. Name of the resource project or folder to show the effective Cloud
+        #   KMS Autokey configuration for. This may be helpful for interrogating the
+        #   effect of nested folder configurations on a given resource project. Format: *
+        #   projects/`project` * folders/`folder`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1498,6 +1534,11 @@ module Google
         #   If set to true, the request will create a CryptoKey without any
         #   CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or
         #   ImportCryptoKeyVersion before you can use this CryptoKey.
+        # @param [Boolean] trusted_wrapping_enabled
+        #   Optional. Whether trusted wrapping will be enabled on the first
+        #   CryptoKeyVersions created for this CryptoKey. This field is only supported for
+        #   keys with CryptoKeyVersionTemplate.protection_level HSM_SINGLE_TENANT. This
+        #   field is supported for all CryptoKeyPurposes except ENCRYPT_DECRYPT.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1515,7 +1556,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_key_ring_crypto_key(parent, crypto_key_object = nil, crypto_key_id: nil, skip_initial_version_creation: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_key_ring_crypto_key(parent, crypto_key_object = nil, crypto_key_id: nil, skip_initial_version_creation: nil, trusted_wrapping_enabled: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/cryptoKeys', options)
           command.request_representation = Google::Apis::CloudkmsV1::CryptoKey::Representation
           command.request_object = crypto_key_object
@@ -1524,6 +1565,7 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['cryptoKeyId'] = crypto_key_id unless crypto_key_id.nil?
           command.query['skipInitialVersionCreation'] = skip_initial_version_creation unless skip_initial_version_creation.nil?
+          command.query['trustedWrappingEnabled'] = trusted_wrapping_enabled unless trusted_wrapping_enabled.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2121,6 +2163,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Exports a CryptoKeyVersion with a trusted key. The CryptoKeyVersion must have
+        # trusted_wrapping_enabled set to true. The CryptoKeyVersion of the [
+        # wrapping_key] must have the AES_WRAPPING purpose. The [wrapping_key] must have
+        # the AES_256_KWP algorithm.
+        # @param [String] name
+        #   Required. The name of the CryptoKeyVersion to export. The CryptoKeyVersion
+        #   must have trusted_wrapping_enabled set to true.
+        # @param [String] wrapping_key
+        #   Required. The name of the CryptoKeyVersion to use as a wrapping key. The
+        #   CryptoKeyVersion must have hsm_trusted set to true.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::ExportTrustedKeyWrappedCryptoKeyVersionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::ExportTrustedKeyWrappedCryptoKeyVersionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_key_ring_crypto_key_crypto_key_version_trusted_key_wrapped_crypto_key_version(name, wrapping_key: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:exportTrustedKeyWrappedCryptoKeyVersion', options)
+          command.response_representation = Google::Apis::CloudkmsV1::ExportTrustedKeyWrappedCryptoKeyVersionResponse::Representation
+          command.response_class = Google::Apis::CloudkmsV1::ExportTrustedKeyWrappedCryptoKeyVersionResponse
+          command.params['name'] = name unless name.nil?
+          command.query['wrappingKey'] = wrapping_key unless wrapping_key.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns metadata for a given CryptoKeyVersion.
         # @param [String] name
         #   Required. The name of the CryptoKeyVersion to get.
@@ -2219,6 +2299,44 @@ module Google
           command = make_simple_command(:post, 'v1/{+parent}/cryptoKeyVersions:import', options)
           command.request_representation = Google::Apis::CloudkmsV1::ImportCryptoKeyVersionRequest::Representation
           command.request_object = import_crypto_key_version_request_object
+          command.response_representation = Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
+          command.response_class = Google::Apis::CloudkmsV1::CryptoKeyVersion
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Import wrapped key material into a CryptoKeyVersion with a trusted key. All
+        # requests must specify a CryptoKey. If a CryptoKeyVersion is additionally
+        # specified in the request, key material will be reimported into that version.
+        # Otherwise, a new version will be created, and will be assigned the next
+        # sequential id within the CryptoKey. The CryptoKeyVersion will have
+        # trusted_wrapping_enabled set to true.
+        # @param [String] parent
+        #   Required. The name of the CryptoKey to be imported into.
+        # @param [Google::Apis::CloudkmsV1::ImportTrustedKeyWrappedCryptoKeyVersionRequest] import_trusted_key_wrapped_crypto_key_version_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::CryptoKeyVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::CryptoKeyVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_trusted_key_wrapped_crypto_key_version(parent, import_trusted_key_wrapped_crypto_key_version_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/cryptoKeyVersions:importTrustedKeyWrappedCryptoKeyVersion', options)
+          command.request_representation = Google::Apis::CloudkmsV1::ImportTrustedKeyWrappedCryptoKeyVersionRequest::Representation
+          command.request_object = import_trusted_key_wrapped_crypto_key_version_request_object
           command.response_representation = Google::Apis::CloudkmsV1::CryptoKeyVersion::Representation
           command.response_class = Google::Apis::CloudkmsV1::CryptoKeyVersion
           command.params['parent'] = parent unless parent.nil?
