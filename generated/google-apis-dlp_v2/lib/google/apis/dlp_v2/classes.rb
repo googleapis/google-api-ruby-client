@@ -4889,17 +4889,17 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ActionDetails>]
         attr_accessor :action_details
       
-        # Time when the job was created.
+        # Output only. Time when the job was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Time when the job finished.
+        # Output only. Time when the job finished.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # A stream of errors encountered running the job.
+        # Output only. A stream of errors encountered running the job.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
         attr_accessor :errors
@@ -4909,18 +4909,18 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectDataSourceDetails]
         attr_accessor :inspect_details
       
-        # If created by a job trigger, the resource name of the trigger that
-        # instantiated the job.
+        # Output only. If created by a job trigger, the resource name of the trigger
+        # that instantiated the job.
         # Corresponds to the JSON property `jobTriggerName`
         # @return [String]
         attr_accessor :job_trigger_name
       
-        # Time when the job was last modified by the system.
+        # Output only. Time when the job was last modified by the system.
         # Corresponds to the JSON property `lastModified`
         # @return [String]
         attr_accessor :last_modified
       
-        # The server-assigned name.
+        # Output only. The server-assigned name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4930,12 +4930,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails]
         attr_accessor :risk_details
       
-        # Time when the job started.
+        # Output only. Time when the job started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # State of a job.
+        # Output only. State of a job.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
