@@ -1356,6 +1356,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The current emulated version of the master endpoint. The version
+        # is in minor version format, e.g. 1.30. No value or empty string means the
+        # cluster has no emulated version.
+        # Corresponds to the JSON property `currentEmulatedVersion`
+        # @return [String]
+        attr_accessor :current_emulated_version
+      
         # Output only. The current software version of the master endpoint.
         # Corresponds to the JSON property `currentMasterVersion`
         # @return [String]
@@ -1706,6 +1713,11 @@ module Google
         # @return [Google::Apis::ContainerV1::ResourceUsageExportConfig]
         attr_accessor :resource_usage_export_config
       
+        # RollbackSafeUpgrade is the configuration for the rollback safe upgrade.
+        # Corresponds to the JSON property `rollbackSafeUpgrade`
+        # @return [Google::Apis::ContainerV1::RollbackSafeUpgrade]
+        attr_accessor :rollback_safe_upgrade
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -1828,6 +1840,7 @@ module Google
           @control_plane_endpoints_config = args[:control_plane_endpoints_config] if args.key?(:control_plane_endpoints_config)
           @cost_management_config = args[:cost_management_config] if args.key?(:cost_management_config)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @current_emulated_version = args[:current_emulated_version] if args.key?(:current_emulated_version)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
           @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
           @current_node_version = args[:current_node_version] if args.key?(:current_node_version)
@@ -1881,6 +1894,7 @@ module Google
           @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
+          @rollback_safe_upgrade = args[:rollback_safe_upgrade] if args.key?(:rollback_safe_upgrade)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @schedule_upgrade_config = args[:schedule_upgrade_config] if args.key?(:schedule_upgrade_config)
@@ -2147,6 +2161,11 @@ module Google
         # Corresponds to the JSON property `desiredDnsConfig`
         # @return [Google::Apis::ContainerV1::DnsConfig]
         attr_accessor :desired_dns_config
+      
+        # Optional. The desired emulated version for the cluster.
+        # Corresponds to the JSON property `desiredEmulatedVersion`
+        # @return [String]
+        attr_accessor :desired_emulated_version
       
         # Enable/Disable Cilium Clusterwide Network Policy for the cluster.
         # Corresponds to the JSON property `desiredEnableCiliumClusterwideNetworkPolicy`
@@ -2450,6 +2469,11 @@ module Google
         # @return [Google::Apis::ContainerV1::ResourceUsageExportConfig]
         attr_accessor :desired_resource_usage_export_config
       
+        # RollbackSafeUpgrade is the configuration for the rollback safe upgrade.
+        # Corresponds to the JSON property `desiredRollbackSafeUpgrade`
+        # @return [Google::Apis::ContainerV1::RollbackSafeUpgrade]
+        attr_accessor :desired_rollback_safe_upgrade
+      
         # SecretManagerConfig is config for secret manager enablement.
         # Corresponds to the JSON property `desiredSecretManagerConfig`
         # @return [Google::Apis::ContainerV1::SecretManagerConfig]
@@ -2557,6 +2581,7 @@ module Google
           @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_disable_l4_lb_firewall_reconciliation = args[:desired_disable_l4_lb_firewall_reconciliation] if args.key?(:desired_disable_l4_lb_firewall_reconciliation)
           @desired_dns_config = args[:desired_dns_config] if args.key?(:desired_dns_config)
+          @desired_emulated_version = args[:desired_emulated_version] if args.key?(:desired_emulated_version)
           @desired_enable_cilium_clusterwide_network_policy = args[:desired_enable_cilium_clusterwide_network_policy] if args.key?(:desired_enable_cilium_clusterwide_network_policy)
           @desired_enable_fqdn_network_policy = args[:desired_enable_fqdn_network_policy] if args.key?(:desired_enable_fqdn_network_policy)
           @desired_enable_multi_networking = args[:desired_enable_multi_networking] if args.key?(:desired_enable_multi_networking)
@@ -2604,6 +2629,7 @@ module Google
           @desired_rbac_binding_config = args[:desired_rbac_binding_config] if args.key?(:desired_rbac_binding_config)
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
+          @desired_rollback_safe_upgrade = args[:desired_rollback_safe_upgrade] if args.key?(:desired_rollback_safe_upgrade)
           @desired_secret_manager_config = args[:desired_secret_manager_config] if args.key?(:desired_secret_manager_config)
           @desired_secret_sync_config = args[:desired_secret_sync_config] if args.key?(:desired_secret_sync_config)
           @desired_security_posture_config = args[:desired_security_posture_config] if args.key?(:desired_security_posture_config)
@@ -2655,6 +2681,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :paused_reason
       
+        # RollbackSafeUpgradeStatus contains the rollback-safe upgrade status of a
+        # cluster.
+        # Corresponds to the JSON property `rollbackSafeUpgradeStatus`
+        # @return [Google::Apis::ContainerV1::RollbackSafeUpgradeStatus]
+        attr_accessor :rollback_safe_upgrade_status
+      
         # The list of past auto upgrades.
         # Corresponds to the JSON property `upgradeDetails`
         # @return [Array<Google::Apis::ContainerV1::UpgradeDetails>]
@@ -2672,7 +2704,28 @@ module Google
           @minor_target_version = args[:minor_target_version] if args.key?(:minor_target_version)
           @patch_target_version = args[:patch_target_version] if args.key?(:patch_target_version)
           @paused_reason = args[:paused_reason] if args.key?(:paused_reason)
+          @rollback_safe_upgrade_status = args[:rollback_safe_upgrade_status] if args.key?(:rollback_safe_upgrade_status)
           @upgrade_details = args[:upgrade_details] if args.key?(:upgrade_details)
+        end
+      end
+      
+      # CompleteControlPlaneUpgradeRequest sets the name of target cluster to complete
+      # upgrade.
+      class CompleteControlPlaneUpgradeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. API request version that initiates this operation.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3445,6 +3498,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @desired_tier = args[:desired_tier] if args.key?(:desired_tier)
+        end
+      end
+      
+      # DiskIoScheduler contains the configuration for the disk IO scheduler.
+      class DiskIoScheduler
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Configures the IO scheduler for the attached disks. Supported values
+        # are `mq-deadline`, `bfq`, `kyber`, `none`.
+        # Corresponds to the JSON property `nodeAttachedDiskIoScheduler`
+        # @return [String]
+        attr_accessor :node_attached_disk_io_scheduler
+      
+        # Optional. Configures the IO scheduler for the boot disk or ephemeral lssd that
+        # runs node system workloads. Supported values are `mq-deadline`, `bfq`, `kyber`,
+        # `none`.
+        # Corresponds to the JSON property `nodeSystemIoScheduler`
+        # @return [String]
+        attr_accessor :node_system_io_scheduler
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @node_attached_disk_io_scheduler = args[:node_attached_disk_io_scheduler] if args.key?(:node_attached_disk_io_scheduler)
+          @node_system_io_scheduler = args[:node_system_io_scheduler] if args.key?(:node_system_io_scheduler)
         end
       end
       
@@ -4979,6 +5060,31 @@ module Google
         end
       end
       
+      # Contains expiry information about the kubelet certificate.
+      class KubeletCertInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only.
+        # Corresponds to the JSON property `nonTpmBootstrapCertExpireTime`
+        # @return [String]
+        attr_accessor :non_tpm_bootstrap_cert_expire_time
+      
+        # Output only.
+        # Corresponds to the JSON property `tpmBootstrapCertExpireTime`
+        # @return [String]
+        attr_accessor :tpm_bootstrap_cert_expire_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @non_tpm_bootstrap_cert_expire_time = args[:non_tpm_bootstrap_cert_expire_time] if args.key?(:non_tpm_bootstrap_cert_expire_time)
+          @tpm_bootstrap_cert_expire_time = args[:tpm_bootstrap_cert_expire_time] if args.key?(:tpm_bootstrap_cert_expire_time)
+        end
+      end
+      
       # Configuration for the Kubernetes Dashboard.
       class KubernetesDashboard
         include Google::Apis::Core::Hashable
@@ -5042,6 +5148,11 @@ module Google
         # @return [Google::Apis::ContainerV1::CustomNodeInit]
         attr_accessor :custom_node_init
       
+        # DiskIoScheduler contains the configuration for the disk IO scheduler.
+        # Corresponds to the JSON property `diskIoScheduler`
+        # @return [Google::Apis::ContainerV1::DiskIoScheduler]
+        attr_accessor :disk_io_scheduler
+      
         # Hugepages amount in both 2m and 1g size
         # Corresponds to the JSON property `hugepages`
         # @return [Google::Apis::ContainerV1::HugepagesConfig]
@@ -5051,6 +5162,12 @@ module Google
         # Corresponds to the JSON property `nodeKernelModuleLoading`
         # @return [Google::Apis::ContainerV1::NodeKernelModuleLoading]
         attr_accessor :node_kernel_module_loading
+      
+        # Configuration settings for VFIO (Virtual Function I/O) on a node. VFIO allows
+        # safe, unprivileged, userspace drivers to access I/O devices.
+        # Corresponds to the JSON property `nodeVfioConfig`
+        # @return [Google::Apis::ContainerV1::NodeVfioConfig]
+        attr_accessor :node_vfio_config
       
         # Configuration for swap memory on a node pool.
         # Corresponds to the JSON property `swapConfig`
@@ -5070,14 +5187,14 @@ module Google
         # netfilter.nf_conntrack_tcp_timeout_time_wait net.netfilter.
         # nf_conntrack_tcp_timeout_established net.netfilter.nf_conntrack_acct kernel.
         # keys.maxkeys kernel.keys.maxbytes kernel.shmmni kernel.shmmax kernel.shmall
-        # kernel.perf_event_paranoid kernel.sched_rt_runtime_us kernel.softlockup_panic
-        # kernel.yama.ptrace_scope kernel.kptr_restrict kernel.dmesg_restrict kernel.
-        # sysrq fs.aio-max-nr fs.file-max fs.inotify.max_user_instances fs.inotify.
-        # max_user_watches fs.nr_open vm.dirty_background_ratio vm.
-        # dirty_background_bytes vm.dirty_expire_centisecs vm.dirty_ratio vm.dirty_bytes
-        # vm.dirty_writeback_centisecs vm.max_map_count vm.overcommit_memory vm.
-        # overcommit_ratio vm.vfs_cache_pressure vm.swappiness vm.watermark_scale_factor
-        # vm.min_free_kbytes
+        # kernel.core_pattern kernel.perf_event_paranoid kernel.sched_rt_runtime_us
+        # kernel.softlockup_panic kernel.yama.ptrace_scope kernel.kptr_restrict kernel.
+        # dmesg_restrict kernel.sysrq fs.aio-max-nr fs.file-max fs.inotify.
+        # max_user_instances fs.inotify.max_user_watches fs.nr_open vm.
+        # dirty_background_ratio vm.dirty_background_bytes vm.dirty_expire_centisecs vm.
+        # dirty_ratio vm.dirty_bytes vm.dirty_writeback_centisecs vm.max_map_count vm.
+        # overcommit_memory vm.overcommit_ratio vm.vfs_cache_pressure vm.swappiness vm.
+        # watermark_scale_factor vm.min_free_kbytes
         # Corresponds to the JSON property `sysctls`
         # @return [Hash<String,String>]
         attr_accessor :sysctls
@@ -5108,8 +5225,10 @@ module Google
           @accurate_time_config = args[:accurate_time_config] if args.key?(:accurate_time_config)
           @cgroup_mode = args[:cgroup_mode] if args.key?(:cgroup_mode)
           @custom_node_init = args[:custom_node_init] if args.key?(:custom_node_init)
+          @disk_io_scheduler = args[:disk_io_scheduler] if args.key?(:disk_io_scheduler)
           @hugepages = args[:hugepages] if args.key?(:hugepages)
           @node_kernel_module_loading = args[:node_kernel_module_loading] if args.key?(:node_kernel_module_loading)
+          @node_vfio_config = args[:node_vfio_config] if args.key?(:node_vfio_config)
           @swap_config = args[:swap_config] if args.key?(:swap_config)
           @sysctls = args[:sysctls] if args.key?(:sysctls)
           @transparent_hugepage_defrag = args[:transparent_hugepage_defrag] if args.key?(:transparent_hugepage_defrag)
@@ -6763,8 +6882,12 @@ module Google
         attr_accessor :single_process_oom_kill
         alias_method :single_process_oom_kill?, :single_process_oom_kill
       
-        # TopologyManager defines the configuration options for Topology Manager feature.
-        # See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
+        # TopologyManager defines the configuration options for the [`kubelet` Topology
+        # Manager component](https://kubernetes.io/docs/tasks/administer-cluster/
+        # topology-manager/). For more information about the supported machine types and
+        # versions for the Topology Manager in GKE, see [Customizing node system
+        # configuration](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/
+        # node-system-config#kubelet-resource-managers).
         # Corresponds to the JSON property `topologyManager`
         # @return [Google::Apis::ContainerV1::TopologyManager]
         attr_accessor :topology_manager
@@ -7046,6 +7169,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_group_urls
       
+        # Contains expiry information about the kubelet certificate.
+        # Corresponds to the JSON property `kubeletCertInfo`
+        # @return [Google::Apis::ContainerV1::KubeletCertInfo]
+        attr_accessor :kubelet_cert_info
+      
         # The list of Google Compute Engine [zones](https://cloud.google.com/compute/
         # docs/zones#available) in which the NodePool's nodes should be located. If this
         # value is unspecified during node pool creation, the [Cluster.Locations](https:/
@@ -7181,6 +7309,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
+          @kubelet_cert_info = args[:kubelet_cert_info] if args.key?(:kubelet_cert_info)
           @locations = args[:locations] if args.key?(:locations)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @management = args[:management] if args.key?(:management)
@@ -7498,6 +7627,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @taints = args[:taints] if args.key?(:taints)
+        end
+      end
+      
+      # Configuration settings for VFIO (Virtual Function I/O) on a node. VFIO allows
+      # safe, unprivileged, userspace drivers to access I/O devices.
+      class NodeVfioConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the maximum number of DMA entries (pages) that can be
+        # mapped by the VFIO IOMMU type 1 driver for a container. This limit affects the
+        # total amount of host memory that can be pinned for direct device access, which
+        # is often critical for high-performance devices like TPUs and GPUs. This
+        # setting corresponds to the kernel parameter at: `/sys/module/vfio_iommu_type1/
+        # parameters/dma_entry_limit`. The default value in the kernel is `65535`.
+        # Higher values may be needed for workloads mapping large memory regions.
+        # Supported values are integers between `65535` and `4194304`.
+        # Corresponds to the JSON property `dmaEntryLimit`
+        # @return [Fixnum]
+        attr_accessor :dma_entry_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dma_entry_limit = args[:dma_entry_limit] if args.key?(:dma_entry_limit)
         end
       end
       
@@ -8631,6 +8787,59 @@ module Google
           @project_id = args[:project_id] if args.key?(:project_id)
           @respect_pdb = args[:respect_pdb] if args.key?(:respect_pdb)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # RollbackSafeUpgrade is the configuration for the rollback safe upgrade.
+      class RollbackSafeUpgrade
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A user-defined period for the cluster remains in the rollbackable
+        # state. ex: `seconds: 21600`.
+        # Corresponds to the JSON property `controlPlaneSoakDuration`
+        # @return [String]
+        attr_accessor :control_plane_soak_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_plane_soak_duration = args[:control_plane_soak_duration] if args.key?(:control_plane_soak_duration)
+        end
+      end
+      
+      # RollbackSafeUpgradeStatus contains the rollback-safe upgrade status of a
+      # cluster.
+      class RollbackSafeUpgradeStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The rollback-safe mode expiration time.
+        # Corresponds to the JSON property `controlPlaneUpgradeRollbackEndTime`
+        # @return [String]
+        attr_accessor :control_plane_upgrade_rollback_end_time
+      
+        # Output only. The mode of the rollback-safe upgrade.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Output only. The GKE version that the cluster previously used before step-one
+        # upgrade.
+        # Corresponds to the JSON property `previousVersion`
+        # @return [String]
+        attr_accessor :previous_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_plane_upgrade_rollback_end_time = args[:control_plane_upgrade_rollback_end_time] if args.key?(:control_plane_upgrade_rollback_end_time)
+          @mode = args[:mode] if args.key?(:mode)
+          @previous_version = args[:previous_version] if args.key?(:previous_version)
         end
       end
       
@@ -10092,8 +10301,12 @@ module Google
         end
       end
       
-      # TopologyManager defines the configuration options for Topology Manager feature.
-      # See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
+      # TopologyManager defines the configuration options for the [`kubelet` Topology
+      # Manager component](https://kubernetes.io/docs/tasks/administer-cluster/
+      # topology-manager/). For more information about the supported machine types and
+      # versions for the Topology Manager in GKE, see [Customizing node system
+      # configuration](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/
+      # node-system-config#kubelet-resource-managers).
       class TopologyManager
         include Google::Apis::Core::Hashable
       
@@ -10656,6 +10869,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. The emulated version before the upgrade.
+        # Corresponds to the JSON property `initialEmulatedVersion`
+        # @return [String]
+        attr_accessor :initial_emulated_version
+      
         # The version before the upgrade.
         # Corresponds to the JSON property `initialVersion`
         # @return [String]
@@ -10676,6 +10894,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The emulated version after the upgrade.
+        # Corresponds to the JSON property `targetEmulatedVersion`
+        # @return [String]
+        attr_accessor :target_emulated_version
+      
         # The version after the upgrade.
         # Corresponds to the JSON property `targetVersion`
         # @return [String]
@@ -10688,10 +10911,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @initial_emulated_version = args[:initial_emulated_version] if args.key?(:initial_emulated_version)
           @initial_version = args[:initial_version] if args.key?(:initial_version)
           @start_time = args[:start_time] if args.key?(:start_time)
           @start_type = args[:start_type] if args.key?(:start_type)
           @state = args[:state] if args.key?(:state)
+          @target_emulated_version = args[:target_emulated_version] if args.key?(:target_emulated_version)
           @target_version = args[:target_version] if args.key?(:target_version)
         end
       end
@@ -10700,6 +10925,11 @@ module Google
       # resource is upgrading.
       class UpgradeEvent
         include Google::Apis::Core::Hashable
+      
+        # Output only. The current emulated version before the upgrade.
+        # Corresponds to the JSON property `currentEmulatedVersion`
+        # @return [String]
+        attr_accessor :current_emulated_version
       
         # The current version before the upgrade.
         # Corresponds to the JSON property `currentVersion`
@@ -10727,6 +10957,11 @@ module Google
         # @return [String]
         attr_accessor :resource_type
       
+        # Output only. The target emulated version for the upgrade.
+        # Corresponds to the JSON property `targetEmulatedVersion`
+        # @return [String]
+        attr_accessor :target_emulated_version
+      
         # The target version for the upgrade.
         # Corresponds to the JSON property `targetVersion`
         # @return [String]
@@ -10738,11 +10973,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @current_emulated_version = args[:current_emulated_version] if args.key?(:current_emulated_version)
           @current_version = args[:current_version] if args.key?(:current_version)
           @operation = args[:operation] if args.key?(:operation)
           @operation_start_time = args[:operation_start_time] if args.key?(:operation_start_time)
           @resource = args[:resource] if args.key?(:resource)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
+          @target_emulated_version = args[:target_emulated_version] if args.key?(:target_emulated_version)
           @target_version = args[:target_version] if args.key?(:target_version)
         end
       end
@@ -10751,6 +10988,11 @@ module Google
       # information of a resource.
       class UpgradeInfoEvent
         include Google::Apis::Core::Hashable
+      
+        # Output only. The current emulated version before the upgrade.
+        # Corresponds to the JSON property `currentEmulatedVersion`
+        # @return [String]
+        attr_accessor :current_emulated_version
       
         # The current version before the upgrade.
         # Corresponds to the JSON property `currentVersion`
@@ -10814,6 +11056,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The target emulated version for the upgrade.
+        # Corresponds to the JSON property `targetEmulatedVersion`
+        # @return [String]
+        attr_accessor :target_emulated_version
+      
         # The target version for the upgrade.
         # Corresponds to the JSON property `targetVersion`
         # @return [String]
@@ -10825,6 +11072,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @current_emulated_version = args[:current_emulated_version] if args.key?(:current_emulated_version)
           @current_version = args[:current_version] if args.key?(:current_version)
           @description = args[:description] if args.key?(:description)
           @disruption_event = args[:disruption_event] if args.key?(:disruption_event)
@@ -10837,6 +11085,7 @@ module Google
           @standard_support_end_time = args[:standard_support_end_time] if args.key?(:standard_support_end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
+          @target_emulated_version = args[:target_emulated_version] if args.key?(:target_emulated_version)
           @target_version = args[:target_version] if args.key?(:target_version)
         end
       end
