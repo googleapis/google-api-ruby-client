@@ -864,6 +864,7 @@ module Google
         # minute to [`Durations.MAX_VALUE`](https://developers.google.com/protocol-
         # buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE),
         # approximately 10,000 years. If not specified, the default duration is 1 hour.
+        # In the JSON REST API, this is represented as a string (e.g., `3600s`).
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
