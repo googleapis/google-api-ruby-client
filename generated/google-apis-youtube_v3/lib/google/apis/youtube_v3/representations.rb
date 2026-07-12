@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BrandPartner
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Caption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1472,6 +1478,14 @@ module Google
           collection :items, as: 'items', class: Google::Apis::YoutubeV3::VideoStat, decorator: Google::Apis::YoutubeV3::VideoStat::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class BrandPartner
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_handle, as: 'channelHandle'
+          property :channel_id, as: 'channelId'
         end
       end
       
@@ -3333,6 +3347,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :age_gating, as: 'ageGating', class: Google::Apis::YoutubeV3::VideoAgeGating, decorator: Google::Apis::YoutubeV3::VideoAgeGating::Representation
+      
+          property :brand_partner, as: 'brandPartner', class: Google::Apis::YoutubeV3::BrandPartner, decorator: Google::Apis::YoutubeV3::BrandPartner::Representation
       
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::VideoContentDetails, decorator: Google::Apis::YoutubeV3::VideoContentDetails::Representation
       
