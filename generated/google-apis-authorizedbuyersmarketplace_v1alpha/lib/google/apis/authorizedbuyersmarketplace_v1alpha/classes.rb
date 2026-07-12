@@ -579,6 +579,12 @@ module Google
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money]
         attr_accessor :floor_price_cpm
       
+        # Optional. The fee will be charged as a percentage of the impression cost,
+        # represented in millipercent. For example, 1% is represented as 1000.
+        # Corresponds to the JSON property `millipercentOfMediaFee`
+        # @return [Fixnum]
+        attr_accessor :millipercent_of_media_fee
+      
         # Identifier. The unique resource name for the curated package. Format: `
         # curators/`accountId`/curatedPackages/`curatedPackageId``
         # Corresponds to the JSON property `name`
@@ -614,6 +620,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @fee_cpm = args[:fee_cpm] if args.key?(:fee_cpm)
           @floor_price_cpm = args[:floor_price_cpm] if args.key?(:floor_price_cpm)
+          @millipercent_of_media_fee = args[:millipercent_of_media_fee] if args.key?(:millipercent_of_media_fee)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @targeting = args[:targeting] if args.key?(:targeting)
@@ -636,6 +643,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. The fee will be charged as a percentage of the impression cost,
+        # represented in millipercent. For example, 1% is represented as 1000.
+        # Corresponds to the JSON property `millipercentOfMediaFee`
+        # @return [Fixnum]
+        attr_accessor :millipercent_of_media_fee
       
         # Immutable. Identifier. The unique identifier for the data segment. Account ID
         # corresponds to the account ID that created the segment. v1alpha format: `
@@ -663,6 +676,7 @@ module Google
         def update!(**args)
           @cpm_fee = args[:cpm_fee] if args.key?(:cpm_fee)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @millipercent_of_media_fee = args[:millipercent_of_media_fee] if args.key?(:millipercent_of_media_fee)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)

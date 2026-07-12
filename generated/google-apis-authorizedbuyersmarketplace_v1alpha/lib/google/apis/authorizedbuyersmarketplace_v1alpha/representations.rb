@@ -685,6 +685,7 @@ module Google
       
           property :floor_price_cpm, as: 'floorPriceCpm', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money::Representation
       
+          property :millipercent_of_media_fee, :numeric_string => true, as: 'millipercentOfMediaFee'
           property :name, as: 'name'
           property :state, as: 'state'
           property :targeting, as: 'targeting', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackageTargeting, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::PackageTargeting::Representation
@@ -699,6 +700,7 @@ module Google
           property :cpm_fee, as: 'cpmFee', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money::Representation
       
           property :create_time, as: 'createTime'
+          property :millipercent_of_media_fee, :numeric_string => true, as: 'millipercentOfMediaFee'
           property :name, as: 'name'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
