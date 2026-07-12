@@ -1053,6 +1053,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The parent reservation group of the reservation group. Format: `
+        # projects/*/locations/*/reservationGroups/team1-prod` for non-root reservation
+        # groups, or `projects/*/locations/*` for root reservation groups.
+        # Corresponds to the JSON property `parentGroup`
+        # @return [String]
+        attr_accessor :parent_group
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1060,6 +1067,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @parent_group = args[:parent_group] if args.key?(:parent_group)
         end
       end
       
