@@ -302,6 +302,7 @@ module Google
           property :scope, as: 'scope'
           property :self_managed, as: 'selfManaged', class: Google::Apis::CertificatemanagerV1::SelfManagedCertificate, decorator: Google::Apis::CertificatemanagerV1::SelfManagedCertificate::Representation
       
+          hash :tags, as: 'tags'
           property :update_time, as: 'updateTime'
           collection :used_by, as: 'usedBy', class: Google::Apis::CertificatemanagerV1::UsedBy, decorator: Google::Apis::CertificatemanagerV1::UsedBy::Representation
       
@@ -335,6 +336,7 @@ module Google
           property :lifetime, as: 'lifetime'
           property :name, as: 'name'
           property :rotation_window_percentage, as: 'rotationWindowPercentage'
+          hash :tags, as: 'tags'
           property :update_time, as: 'updateTime'
         end
       end
@@ -348,6 +350,7 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          hash :tags, as: 'tags'
           property :update_time, as: 'updateTime'
         end
       end
@@ -377,6 +380,7 @@ module Google
           property :domain, as: 'domain'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          hash :tags, as: 'tags'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
         end
@@ -625,6 +629,7 @@ module Google
           property :name, as: 'name'
           hash :spiffe_trust_stores, as: 'spiffeTrustStores', class: Google::Apis::CertificatemanagerV1::TrustStore, decorator: Google::Apis::CertificatemanagerV1::TrustStore::Representation
       
+          hash :tags, as: 'tags'
           collection :trust_stores, as: 'trustStores', class: Google::Apis::CertificatemanagerV1::TrustStore, decorator: Google::Apis::CertificatemanagerV1::TrustStore::Representation
       
           property :update_time, as: 'updateTime'

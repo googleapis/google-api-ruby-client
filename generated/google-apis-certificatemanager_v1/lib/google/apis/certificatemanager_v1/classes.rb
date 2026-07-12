@@ -211,6 +211,13 @@ module Google
         # @return [Google::Apis::CertificatemanagerV1::SelfManagedCertificate]
         attr_accessor :self_managed
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. The last update timestamp of a Certificate.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -238,6 +245,7 @@ module Google
           @san_dnsnames = args[:san_dnsnames] if args.key?(:san_dnsnames)
           @scope = args[:scope] if args.key?(:scope)
           @self_managed = args[:self_managed] if args.key?(:self_managed)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
           @used_by = args[:used_by] if args.key?(:used_by)
         end
@@ -334,6 +342,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :rotation_window_percentage
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. The last update timestamp of a CertificateIssuanceConfig.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -353,6 +368,7 @@ module Google
           @lifetime = args[:lifetime] if args.key?(:lifetime)
           @name = args[:name] if args.key?(:name)
           @rotation_window_percentage = args[:rotation_window_percentage] if args.key?(:rotation_window_percentage)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -389,6 +405,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. The update timestamp of a Certificate Map.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -405,6 +428,7 @@ module Google
           @gclb_targets = args[:gclb_targets] if args.key?(:gclb_targets)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -524,6 +548,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Optional. Immutable. Type of DnsAuthorization. If unset during resource
         # creation the following default will be used: - in location `global`:
         # FIXED_RECORD, - in other locations: PER_PROJECT_RECORD.
@@ -548,6 +579,7 @@ module Google
           @domain = args[:domain] if args.key?(:domain)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @tags = args[:tags] if args.key?(:tags)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1423,6 +1455,13 @@ module Google
         # @return [Hash<String,Google::Apis::CertificatemanagerV1::TrustStore>]
         attr_accessor :spiffe_trust_stores
       
+        # Optional. Input only. Immutable. Tag keys/values directly bound to this
+        # resource. For example: "123/environment": "production", "123/costCenter": "
+        # marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Optional. Set of trust stores to perform validation against. This field is
         # supported when TrustConfig is configured with Load Balancers, currently not
         # supported for SPIFFE certificate validation. Only one TrustStore specified is
@@ -1449,6 +1488,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @spiffe_trust_stores = args[:spiffe_trust_stores] if args.key?(:spiffe_trust_stores)
+          @tags = args[:tags] if args.key?(:tags)
           @trust_stores = args[:trust_stores] if args.key?(:trust_stores)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
