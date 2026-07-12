@@ -813,6 +813,22 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request message for the EscalateCase endpoint.
       class EscalateCaseRequest
         include Google::Apis::Core::Hashable
@@ -855,6 +871,19 @@ module Google
         def update!(**args)
           @justification = args[:justification] if args.key?(:justification)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Request message for ExpungeSupportEventSubscription.
+      class ExpungeSupportEventSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
