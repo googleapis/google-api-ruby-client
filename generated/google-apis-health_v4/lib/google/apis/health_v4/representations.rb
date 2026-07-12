@@ -454,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpHeader
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -521,6 +527,12 @@ module Google
       end
       
       class ListSubscriptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManifestParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1695,6 +1707,15 @@ module Google
         end
       end
       
+      class HttpBody
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_type, as: 'contentType'
+          property :data, :base64 => true, as: 'data'
+          collection :extensions, as: 'extensions'
+        end
+      end
+      
       class HttpHeader
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1805,6 +1826,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :subscriptions, as: 'subscriptions', class: Google::Apis::HealthV4::Subscription, decorator: Google::Apis::HealthV4::Subscription::Representation
       
+        end
+      end
+      
+      class ManifestParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :embedded_length_max, as: 'embeddedLengthMax'
+          property :passcode, as: 'passcode'
+          property :recipient, as: 'recipient'
         end
       end
       
