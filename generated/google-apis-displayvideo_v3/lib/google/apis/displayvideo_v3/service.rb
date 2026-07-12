@@ -385,8 +385,6 @@ module Google
         end
         
         # Creates an ad group ad. This method is only supported for Demand Gen ads.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad belongs to.
         # @param [Google::Apis::DisplayvideoV3::AdGroupAd] ad_group_ad_object
@@ -420,8 +418,6 @@ module Google
         end
         
         # Deletes an ad group ad. This method is only supported for Demand Gen ads.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad belongs to.
         # @param [Fixnum] ad_group_ad_id
@@ -549,8 +545,6 @@ module Google
         end
         
         # Updates an ad group ad. This method is only supported for Demand Gen ads.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad belongs to.
         # @param [Fixnum] ad_group_ad_id
@@ -595,9 +589,7 @@ module Google
         # BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad
         # group, and then create the assigned targeting options provided in
         # BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is
-        # only supported for Demand Gen ad groups. Retrieval and management of Demand
-        # Gen resources is currently rolling out. This method will be available to all
-        # partners by *June 24, 2026*.
+        # only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad groups belong to.
         # @param [Google::Apis::DisplayvideoV3::BulkEditAdGroupAssignedTargetingOptionsRequest] bulk_edit_ad_group_assigned_targeting_options_request_object
@@ -695,9 +687,7 @@ module Google
         end
         
         # Creates a new ad group. Returns the newly created ad group if successful. This
-        # method is only supported for Demand Gen ad groups. Retrieval and management of
-        # Demand Gen resources is currently rolling out. This method will be available
-        # to all partners by *June 24, 2026*.
+        # method is only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad group belongs to.
         # @param [Google::Apis::DisplayvideoV3::AdGroup] ad_group_object
@@ -731,9 +721,7 @@ module Google
         end
         
         # Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not
-        # exist. This method is only supported for Demand Gen ad groups. Retrieval and
-        # management of Demand Gen resources is currently rolling out. This method will
-        # be available to all partners by *June 24, 2026*.
+        # exist. This method is only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -862,9 +850,7 @@ module Google
         end
         
         # Updates an existing ad group. Returns the updated ad group if successful. This
-        # method is only supported for Demand Gen ad groups. Retrieval and management of
-        # Demand Gen resources is currently rolling out. This method will be available
-        # to all partners by *June 24, 2026*.
+        # method is only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -905,8 +891,6 @@ module Google
         
         # Assigns a targeting option to an ad group. Returns the assigned targeting
         # option if successful. This method is only supported for Demand Gen ad groups.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -954,9 +938,7 @@ module Google
         
         # Deletes an assigned targeting option from an ad group. This method is only
         # supported for Demand Gen ad groups with the AdGroupFormat `
-        # AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of Demand Gen resources
-        # is currently rolling out. This method will be available to all partners by *
-        # June 24, 2026*.
+        # AD_GROUP_FORMAT_DEMAND_GEN`.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -4642,224 +4624,6 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a FirstAndThirdPartyAudience. Only supported for the following
-        # audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-        # @param [Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience] first_and_third_party_audience_object
-        # @param [Fixnum] advertiser_id
-        #   Required. The ID of the advertiser under whom the FirstAndThirdPartyAudience
-        #   will be created.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_first_and_third_party_audience(first_and_third_party_audience_object = nil, advertiser_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v3/firstAndThirdPartyAudiences', options)
-          command.request_representation = Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience::Representation
-          command.request_object = first_and_third_party_audience_object
-          command.response_representation = Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience::Representation
-          command.response_class = Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience
-          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the member list of a Customer Match audience. Only supported for the
-        # following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `
-        # CUSTOMER_MATCH_DEVICE_ID`
-        # @param [Fixnum] first_and_third_party_audience_id
-        #   Required. The ID of the Customer Match FirstAndThirdPartyAudience whose
-        #   members will be edited.
-        # @param [Google::Apis::DisplayvideoV3::EditCustomerMatchMembersRequest] edit_customer_match_members_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DisplayvideoV3::EditCustomerMatchMembersResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DisplayvideoV3::EditCustomerMatchMembersResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def edit_first_and_third_party_audience_customer_match_members(first_and_third_party_audience_id, edit_customer_match_members_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}:editCustomerMatchMembers', options)
-          command.request_representation = Google::Apis::DisplayvideoV3::EditCustomerMatchMembersRequest::Representation
-          command.request_object = edit_customer_match_members_request_object
-          command.response_representation = Google::Apis::DisplayvideoV3::EditCustomerMatchMembersResponse::Representation
-          command.response_class = Google::Apis::DisplayvideoV3::EditCustomerMatchMembersResponse
-          command.params['firstAndThirdPartyAudienceId'] = first_and_third_party_audience_id unless first_and_third_party_audience_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets a first and third party audience.
-        # @param [Fixnum] first_and_third_party_audience_id
-        #   Required. The ID of the first and third party audience to fetch.
-        # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that has access to the fetched first and third party
-        #   audience.
-        # @param [Fixnum] partner_id
-        #   The ID of the partner that has access to the fetched first and third party
-        #   audience.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_first_and_third_party_audience(first_and_third_party_audience_id, advertiser_id: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}', options)
-          command.response_representation = Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience::Representation
-          command.response_class = Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience
-          command.params['firstAndThirdPartyAudienceId'] = first_and_third_party_audience_id unless first_and_third_party_audience_id.nil?
-          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
-          command.query['partnerId'] = partner_id unless partner_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists first and third party audiences. The order is defined by the order_by
-        # parameter.
-        # @param [Fixnum] advertiser_id
-        #   The ID of the advertiser that has access to the fetched first and third party
-        #   audiences.
-        # @param [String] filter
-        #   Allows filtering by first and third party audience fields. Supported syntax: *
-        #   Filter expressions for first and third party audiences can only contain at
-        #   most one restriction. * A restriction has the form of ``field` `operator` `
-        #   value``. * All fields must use the `HAS (:)` operator. Supported fields: * `
-        #   displayName` Examples: * All first and third party audiences for which the
-        #   display name contains "Google": `displayName:"Google"`. The length of this
-        #   field should be no more than 500 characters. Reference our [filter `LIST`
-        #   requests](/display-video/api/guides/how-tos/filters) guide for more
-        #   information.
-        # @param [String] order_by
-        #   Field by which to sort the list. Acceptable values are: * `
-        #   firstAndThirdPartyAudienceId` (default) * `displayName` The default sorting
-        #   order is ascending. To specify descending order for a field, a suffix "desc"
-        #   should be added to the field name. Example: `displayName desc`.
-        # @param [Fixnum] page_size
-        #   Requested page size. Must be between `1` and `5000`. If unspecified, this
-        #   value defaults to `5000`. Returns error code `INVALID_ARGUMENT` if an invalid
-        #   value is specified.
-        # @param [String] page_token
-        #   A token identifying a page of results the server should return. Typically,
-        #   this is the value of next_page_token returned from the previous call to `
-        #   ListFirstAndThirdPartyAudiences` method. If not specified, the first page of
-        #   results will be returned.
-        # @param [Fixnum] partner_id
-        #   The ID of the partner that has access to the fetched first and third party
-        #   audiences.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DisplayvideoV3::ListFirstAndThirdPartyAudiencesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DisplayvideoV3::ListFirstAndThirdPartyAudiencesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_first_and_third_party_audiences(advertiser_id: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v3/firstAndThirdPartyAudiences', options)
-          command.response_representation = Google::Apis::DisplayvideoV3::ListFirstAndThirdPartyAudiencesResponse::Representation
-          command.response_class = Google::Apis::DisplayvideoV3::ListFirstAndThirdPartyAudiencesResponse
-          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['orderBy'] = order_by unless order_by.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['partnerId'] = partner_id unless partner_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates an existing FirstAndThirdPartyAudience. Only supported for the
-        # following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `
-        # CUSTOMER_MATCH_DEVICE_ID`
-        # @param [Fixnum] first_and_third_party_audience_id
-        #   Output only. The unique ID of the first and third party audience. Assigned by
-        #   the system.
-        # @param [Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience] first_and_third_party_audience_object
-        # @param [Fixnum] advertiser_id
-        #   Required. The ID of the owner advertiser of the updated
-        #   FirstAndThirdPartyAudience.
-        # @param [String] update_mask
-        #   Required. The mask to control which fields to update. Updates are only
-        #   supported for the following fields: * `displayName` * `description` * `
-        #   membershipDurationDays`
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_first_and_third_party_audience(first_and_third_party_audience_id, first_and_third_party_audience_object = nil, advertiser_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}', options)
-          command.request_representation = Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience::Representation
-          command.request_object = first_and_third_party_audience_object
-          command.response_representation = Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience::Representation
-          command.response_class = Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience
-          command.params['firstAndThirdPartyAudienceId'] = first_and_third_party_audience_id unless first_and_third_party_audience_id.nil?
-          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
