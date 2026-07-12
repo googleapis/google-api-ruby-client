@@ -393,7 +393,9 @@ module Google
         attr_accessor :point_in_time_recovery_enabled
         alias_method :point_in_time_recovery_enabled?, :point_in_time_recovery_enabled
       
-        # Reserved for future use.
+        # Optional. Deprecated: replication_log_archiving_enabled is deprecated and will
+        # be removed from a future version of the API. Use
+        # point_in_time_recovery_enabled instead.
         # Corresponds to the JSON property `replicationLogArchivingEnabled`
         # @return [Boolean]
         attr_accessor :replication_log_archiving_enabled
@@ -898,6 +900,12 @@ module Google
         # @return [String]
         attr_accessor :backend_type
       
+        # Optional. Output only. Connection name of the Cloud SQL instance used in
+        # connection strings, in the format project:region:instance.
+        # Corresponds to the JSON property `connectionName`
+        # @return [String]
+        attr_accessor :connection_name
+      
         # Custom subject alternative names for the server certificate.
         # Corresponds to the JSON property `customSubjectAlternativeNames`
         # @return [Array<String>]
@@ -984,6 +992,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backend_type = args[:backend_type] if args.key?(:backend_type)
+          @connection_name = args[:connection_name] if args.key?(:connection_name)
           @custom_subject_alternative_names = args[:custom_subject_alternative_names] if args.key?(:custom_subject_alternative_names)
           @database_version = args[:database_version] if args.key?(:database_version)
           @dns_name = args[:dns_name] if args.key?(:dns_name)
@@ -4420,11 +4429,32 @@ module Google
       class PerformanceCaptureConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies the minimum percentage of CPU utilization to trigger the
+        # performance capture. Valid integers range from `10` to `99`. Enter `0` to
+        # disable the check.
+        # Corresponds to the JSON property `cpuUtilizationThresholdPercent`
+        # @return [Fixnum]
+        attr_accessor :cpu_utilization_threshold_percent
+      
         # Optional. Enables or disables the performance capture feature.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
         alias_method :enabled?, :enabled
+      
+        # Optional. Specifies the minimum number of undo log entries in the history list
+        # length to trigger the performance capture. Valid integers range from `10000`
+        # to `10000000`. Enter `0` to disable the check.
+        # Corresponds to the JSON property `historyListLengthThresholdCount`
+        # @return [Fixnum]
+        attr_accessor :history_list_length_threshold_count
+      
+        # Optional. Specifies the minimum percentage of memory usage to trigger the
+        # performance capture. Valid integers range from `10` to `99`. Enter `0` to
+        # disable the check.
+        # Corresponds to the JSON property `memoryUsageThresholdPercent`
+        # @return [Fixnum]
+        attr_accessor :memory_usage_threshold_percent
       
         # Optional. Specifies the minimum number of consecutive probe threshold that
         # triggers performance capture.
@@ -4450,11 +4480,52 @@ module Google
         # @return [Fixnum]
         attr_accessor :seconds_behind_source_threshold
       
+        # Optional. Specifies the minimum allowed number of semaphore waits to trigger
+        # the performance capture. Valid integers range from `10` to `10000`. Enter `0`
+        # to disable the check.
+        # Corresponds to the JSON property `semaphoreWaitThresholdCount`
+        # @return [Fixnum]
+        attr_accessor :semaphore_wait_threshold_count
+      
         # Optional. Specifies the amount of time in seconds that a transaction needs to
         # have been open before the watcher starts recording it.
         # Corresponds to the JSON property `transactionDurationThreshold`
         # @return [Fixnum]
         attr_accessor :transaction_duration_threshold
+      
+        # Optional. Specifies a customer-defined list of users to exclude from
+        # transaction termination. Entries can be in the format 'user@host' or just '
+        # user'. A standalone 'user' implies 'user@%', excluding the user from any host.
+        # Wildcard '%' is allowed in the host part of the 'user@host' format. Example: `[
+        # "app_user", "db_admin@10.1.2.3", "report_user@%"]`
+        # Corresponds to the JSON property `transactionKillExcludedUserHosts`
+        # @return [Array<String>]
+        attr_accessor :transaction_kill_excluded_user_hosts
+      
+        # Optional. Specifies the amount of time in seconds that a transaction needs to
+        # have been open before the watcher starts terminating it. Valid integers range
+        # from `60` to `604800` (7 days). Enter `0` to disable. If enabled (i.e., > 0),
+        # this value must be greater than or equal to `transaction_duration_threshold`.
+        # Configurations where `0 < transaction_kill_threshold_seconds <
+        # transaction_duration_threshold` will be rejected.
+        # Corresponds to the JSON property `transactionKillThresholdSeconds`
+        # @return [Fixnum]
+        attr_accessor :transaction_kill_threshold_seconds
+      
+        # Optional. Determines which transactions are allowed to be terminated when they
+        # exceed `transaction_kill_threshold_seconds`. This allows protecting write-
+        # heavy transactions from auto-termination if desired. Defaults to `
+        # READ_ONLY_TRANSACTIONS` if unspecified.
+        # Corresponds to the JSON property `transactionKillType`
+        # @return [String]
+        attr_accessor :transaction_kill_type
+      
+        # Optional. Specifies the minimum allowed number of transactions in lock wait
+        # state to trigger the performance capture. Valid integers range from `10` to `
+        # 10000`. Enter `0` to disable the check.
+        # Corresponds to the JSON property `transactionLockWaitThresholdCount`
+        # @return [Fixnum]
+        attr_accessor :transaction_lock_wait_threshold_count
       
         def initialize(**args)
            update!(**args)
@@ -4462,12 +4533,20 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cpu_utilization_threshold_percent = args[:cpu_utilization_threshold_percent] if args.key?(:cpu_utilization_threshold_percent)
           @enabled = args[:enabled] if args.key?(:enabled)
+          @history_list_length_threshold_count = args[:history_list_length_threshold_count] if args.key?(:history_list_length_threshold_count)
+          @memory_usage_threshold_percent = args[:memory_usage_threshold_percent] if args.key?(:memory_usage_threshold_percent)
           @probe_threshold = args[:probe_threshold] if args.key?(:probe_threshold)
           @probing_interval_seconds = args[:probing_interval_seconds] if args.key?(:probing_interval_seconds)
           @running_threads_threshold = args[:running_threads_threshold] if args.key?(:running_threads_threshold)
           @seconds_behind_source_threshold = args[:seconds_behind_source_threshold] if args.key?(:seconds_behind_source_threshold)
+          @semaphore_wait_threshold_count = args[:semaphore_wait_threshold_count] if args.key?(:semaphore_wait_threshold_count)
           @transaction_duration_threshold = args[:transaction_duration_threshold] if args.key?(:transaction_duration_threshold)
+          @transaction_kill_excluded_user_hosts = args[:transaction_kill_excluded_user_hosts] if args.key?(:transaction_kill_excluded_user_hosts)
+          @transaction_kill_threshold_seconds = args[:transaction_kill_threshold_seconds] if args.key?(:transaction_kill_threshold_seconds)
+          @transaction_kill_type = args[:transaction_kill_type] if args.key?(:transaction_kill_type)
+          @transaction_lock_wait_threshold_count = args[:transaction_lock_wait_threshold_count] if args.key?(:transaction_lock_wait_threshold_count)
         end
       end
       
@@ -4713,6 +4792,11 @@ module Google
         # @return [String]
         attr_accessor :consumer_project
       
+        # Output only. The status of automated DNS provisioning.
+        # Corresponds to the JSON property `instanceAutoDnsStatus`
+        # @return [String]
+        attr_accessor :instance_auto_dns_status
+      
         # The IP address of the consumer endpoint.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
@@ -4736,6 +4820,11 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Output only. The status of automated DNS provisioning for the write endpoint.
+        # Corresponds to the JSON property `writeEndpointAutoDnsStatus`
+        # @return [String]
+        attr_accessor :write_endpoint_auto_dns_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4745,10 +4834,12 @@ module Google
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @consumer_network_status = args[:consumer_network_status] if args.key?(:consumer_network_status)
           @consumer_project = args[:consumer_project] if args.key?(:consumer_project)
+          @instance_auto_dns_status = args[:instance_auto_dns_status] if args.key?(:instance_auto_dns_status)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @service_connection_policy = args[:service_connection_policy] if args.key?(:service_connection_policy)
           @service_connection_policy_creation_result = args[:service_connection_policy_creation_result] if args.key?(:service_connection_policy_creation_result)
           @status = args[:status] if args.key?(:status)
+          @write_endpoint_auto_dns_status = args[:write_endpoint_auto_dns_status] if args.key?(:write_endpoint_auto_dns_status)
         end
       end
       
