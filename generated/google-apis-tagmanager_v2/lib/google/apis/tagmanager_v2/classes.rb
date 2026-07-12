@@ -293,31 +293,6 @@ module Google
         end
       end
       
-      # 
-      class CompilerErrorLite
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `errorMessage`
-        # @return [String]
-        attr_accessor :error_message
-      
-        # 
-        # Corresponds to the JSON property `errorType`
-        # @return [String]
-        attr_accessor :error_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_message = args[:error_message] if args.key?(:error_message)
-          @error_type = args[:error_type] if args.key?(:error_type)
-        end
-      end
-      
       # Represents a predicate.
       class Condition
         include Google::Apis::Core::Hashable
@@ -869,11 +844,6 @@ module Google
         attr_accessor :compiler_error
         alias_method :compiler_error?, :compiler_error
       
-        # Compiler error details.
-        # Corresponds to the JSON property `compilerErrors`
-        # @return [Array<Google::Apis::TagmanagerV2::CompilerErrorLite>]
-        attr_accessor :compiler_errors
-      
         # Represents a Google Tag Manager Container Version.
         # Corresponds to the JSON property `containerVersion`
         # @return [Google::Apis::TagmanagerV2::ContainerVersion]
@@ -897,7 +867,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @compiler_error = args[:compiler_error] if args.key?(:compiler_error)
-          @compiler_errors = args[:compiler_errors] if args.key?(:compiler_errors)
           @container_version = args[:container_version] if args.key?(:container_version)
           @new_workspace_path = args[:new_workspace_path] if args.key?(:new_workspace_path)
           @sync_status = args[:sync_status] if args.key?(:sync_status)
@@ -2064,11 +2033,6 @@ module Google
         attr_accessor :compiler_error
         alias_method :compiler_error?, :compiler_error
       
-        # Compiler error details.
-        # Corresponds to the JSON property `compilerErrors`
-        # @return [Array<Google::Apis::TagmanagerV2::CompilerErrorLite>]
-        attr_accessor :compiler_errors
-      
         # Represents a Google Tag Manager Container Version.
         # Corresponds to the JSON property `containerVersion`
         # @return [Google::Apis::TagmanagerV2::ContainerVersion]
@@ -2081,7 +2045,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @compiler_error = args[:compiler_error] if args.key?(:compiler_error)
-          @compiler_errors = args[:compiler_errors] if args.key?(:compiler_errors)
           @container_version = args[:container_version] if args.key?(:container_version)
         end
       end
@@ -2095,11 +2058,6 @@ module Google
         # @return [Boolean]
         attr_accessor :compiler_error
         alias_method :compiler_error?, :compiler_error
-      
-        # Compiler error details.
-        # Corresponds to the JSON property `compilerErrors`
-        # @return [Array<Google::Apis::TagmanagerV2::CompilerErrorLite>]
-        attr_accessor :compiler_errors
       
         # Represents a Google Tag Manager Container Version.
         # Corresponds to the JSON property `containerVersion`
@@ -2118,7 +2076,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @compiler_error = args[:compiler_error] if args.key?(:compiler_error)
-          @compiler_errors = args[:compiler_errors] if args.key?(:compiler_errors)
           @container_version = args[:container_version] if args.key?(:container_version)
           @sync_status = args[:sync_status] if args.key?(:sync_status)
         end
