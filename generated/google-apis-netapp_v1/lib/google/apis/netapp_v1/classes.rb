@@ -2014,6 +2014,11 @@ module Google
       class LocationMetadata
         include Google::Apis::Core::Hashable
       
+        # Output only. Indicates the flex performance tier of this location.
+        # Corresponds to the JSON property `flexPerformanceTier`
+        # @return [String]
+        attr_accessor :flex_performance_tier
+      
         # Output only. Indicates if the location has ONTAP Proxy support.
         # Corresponds to the JSON property `hasOntapProxy`
         # @return [Boolean]
@@ -2042,6 +2047,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @flex_performance_tier = args[:flex_performance_tier] if args.key?(:flex_performance_tier)
           @has_ontap_proxy = args[:has_ontap_proxy] if args.key?(:has_ontap_proxy)
           @has_vcp = args[:has_vcp] if args.key?(:has_vcp)
           @supported_flex_performance = args[:supported_flex_performance] if args.key?(:supported_flex_performance)
