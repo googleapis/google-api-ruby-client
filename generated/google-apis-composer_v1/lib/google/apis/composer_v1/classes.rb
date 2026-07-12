@@ -2004,6 +2004,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :airflow_config_overrides
       
+        # Optional. The selected mode of audit logs replication. This field is supported
+        # for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.*
+        # and newer.
+        # Corresponds to the JSON property `auditLogsReplicationMode`
+        # @return [String]
+        attr_accessor :audit_logs_replication_mode
+      
         # Configuration for Cloud Data Lineage integration.
         # Corresponds to the JSON property `cloudDataLineageIntegration`
         # @return [Google::Apis::ComposerV1::CloudDataLineageIntegration]
@@ -2082,6 +2089,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @airflow_config_overrides = args[:airflow_config_overrides] if args.key?(:airflow_config_overrides)
+          @audit_logs_replication_mode = args[:audit_logs_replication_mode] if args.key?(:audit_logs_replication_mode)
           @cloud_data_lineage_integration = args[:cloud_data_lineage_integration] if args.key?(:cloud_data_lineage_integration)
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @image_version = args[:image_version] if args.key?(:image_version)
