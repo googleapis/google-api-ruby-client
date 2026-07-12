@@ -1,0 +1,23 @@
+source 'https://rubygems.org'
+
+gemspec
+
+group :development do
+  gem "bundler", ">= 1.17"
+  gem "rake", ">= 12.0"
+  gem "rspec", "~> 3.9"
+  gem "opencensus", "~> 0.5"
+end
+
+platforms :jruby do
+  group :development do
+    gem "jruby-openssl"
+  end
+end
+
+platforms :ruby do
+  group :development do
+    gem "yard", "~> 0.9", ">= 0.9.25"
+    gem "redcarpet", "~> 3.5"
+  end
+end
