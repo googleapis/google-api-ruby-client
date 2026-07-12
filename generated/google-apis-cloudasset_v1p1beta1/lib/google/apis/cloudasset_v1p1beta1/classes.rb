@@ -1398,7 +1398,7 @@ module Google
         # @return [String]
         attr_accessor :access_level
       
-        # Specifies the PSC an API call refers to.
+        # Specifies the Private Service Connect endpoint that an API call refers to.
         # Corresponds to the JSON property `pscEndpoint`
         # @return [Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint]
         attr_accessor :psc_endpoint
@@ -1583,7 +1583,7 @@ module Google
         # @return [String]
         attr_accessor :access_level
       
-        # Specifies the PSC an API call refers to.
+        # Specifies the Private Service Connect endpoint that an API call refers to.
         # Corresponds to the JSON property `pscEndpoint`
         # @return [Google::Apis::CloudassetV1p1beta1::GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint]
         attr_accessor :psc_endpoint
@@ -1734,13 +1734,13 @@ module Google
         end
       end
       
-      # Specifies the PSC an API call refers to.
+      # Specifies the Private Service Connect endpoint that an API call refers to.
       class GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint
         include Google::Apis::Core::Hashable
       
-        # The global forwarding rule identifier. Forwarding rule format: `//compute.
-        # googleapis.com/projects/`PROJECT_ID`/global/forwardingRules/`
-        # FORWARDING_RULE_ID``.
+        # The full resource name of the global forwarding rule that identifies a Private
+        # Service Connect endpoint. Forwarding rule format: `//compute.googleapis.com/
+        # projects/`PROJECT_ID`/global/forwardingRules/`FORWARDING_RULE_ID``.
         # Corresponds to the JSON property `forwardingRule`
         # @return [String]
         attr_accessor :forwarding_rule
