@@ -3357,9 +3357,7 @@ module Google
         # attribution model will determine how conversions are counted. The Primary
         # model can be set by you for a floodlight config or group. More details [here](
         # https://support.google.com/displayvideo/answer/7409983). Only applicable to
-        # Demand Gen line items. Retrieval and management of Demand Gen resources is
-        # currently rolling out. This field will be available to all partners by *June
-        # 24, 2026*.
+        # Demand Gen line items.
         # Corresponds to the JSON property `primaryAttributionModelId`
         # @return [Fixnum]
         attr_accessor :primary_attribution_model_id
@@ -10012,9 +10010,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Whether to exclude demographic expansion for Optimized Targeting.
-        # This field can only be set for Demand Gen ad groups. Retrieval and management
-        # of Demand Gen resources is currently rolling out. This field will be available
-        # to all partners by *June 24, 2026*.
+        # This field can only be set for Demand Gen ad groups.
         # Corresponds to the JSON property `excludeDemographicExpansion`
         # @return [Boolean]
         attr_accessor :exclude_demographic_expansion
@@ -10356,7 +10352,9 @@ module Google
         # Optional. The third-party vendors measuring brand lift. The following third-
         # party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `
         # THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `
-        # THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
+        # THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL` *Warning*:
+        # Starting **July 13, 2026**, this field will no longer support `
+        # THIRD_PARTY_VENDOR_NIELSEN`.
         # Corresponds to the JSON property `brandLiftVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig>]
         attr_accessor :brand_lift_vendor_configs
