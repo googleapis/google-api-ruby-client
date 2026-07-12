@@ -916,6 +916,14 @@ module Google
         # @return [String]
         attr_accessor :generation_failure_reason
       
+        # Output only. Field indicating that the key wrapping key is trusted. This field
+        # is only valid for key purpose AES_256_WRAPPING, and protection level
+        # HSM_SINGLE_TENANT.
+        # Corresponds to the JSON property `hsmTrusted`
+        # @return [Boolean]
+        attr_accessor :hsm_trusted
+        alias_method :hsm_trusted?, :hsm_trusted
+      
         # Output only. The root cause of the most recent import failure. Only present if
         # state is IMPORT_FAILED.
         # Corresponds to the JSON property `importFailureReason`
@@ -959,6 +967,16 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Immutable. Field indicating that the key may be wrapped by a trusted key. This
+        # field can be set for all key purposes except ENCRYPT_DECRYPT, and is only
+        # valid for keys with protection level HSM_SINGLE_TENANT. This field can only be
+        # set at creation or import time via CreateCryptoKeyVersion, or
+        # ImportCryptoKeyVersion.
+        # Corresponds to the JSON property `trustedWrappingEnabled`
+        # @return [Boolean]
+        attr_accessor :trusted_wrapping_enabled
+        alias_method :trusted_wrapping_enabled?, :trusted_wrapping_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -974,6 +992,7 @@ module Google
           @external_protection_level_options = args[:external_protection_level_options] if args.key?(:external_protection_level_options)
           @generate_time = args[:generate_time] if args.key?(:generate_time)
           @generation_failure_reason = args[:generation_failure_reason] if args.key?(:generation_failure_reason)
+          @hsm_trusted = args[:hsm_trusted] if args.key?(:hsm_trusted)
           @import_failure_reason = args[:import_failure_reason] if args.key?(:import_failure_reason)
           @import_job = args[:import_job] if args.key?(:import_job)
           @import_time = args[:import_time] if args.key?(:import_time)
@@ -981,6 +1000,7 @@ module Google
           @protection_level = args[:protection_level] if args.key?(:protection_level)
           @reimport_eligible = args[:reimport_eligible] if args.key?(:reimport_eligible)
           @state = args[:state] if args.key?(:state)
+          @trusted_wrapping_enabled = args[:trusted_wrapping_enabled] if args.key?(:trusted_wrapping_enabled)
         end
       end
       
@@ -1584,6 +1604,43 @@ module Google
         end
       end
       
+      # Response message for KeyManagementService.
+      # ExportTrustedKeyWrappedCryptoKeyVersion.
+      class ExportTrustedKeyWrappedCryptoKeyVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The wrapped key material.
+        # Corresponds to the JSON property `wrappedKey`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :wrapped_key
+      
+        # Integrity verification field. A CRC32C checksum of the returned
+        # ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key. An integrity
+        # check of ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key can be
+        # performed by computing the CRC32C checksum of
+        # ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key and comparing your
+        # results to this field. Discard the response in case of non-matching checksum
+        # values, and perform a limited number of retries. A persistent mismatch may
+        # indicate an issue in your computation of the CRC32C checksum. Note: This field
+        # is defined as int64 for reasons of compatibility across different languages.
+        # However, it is a non-negative integer, which will never exceed 2^32-1, and can
+        # be safely downconverted to uint32 in languages that support this type.
+        # Corresponds to the JSON property `wrappedKeyCrc32c`
+        # @return [Fixnum]
+        attr_accessor :wrapped_key_crc32c
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @wrapped_key = args[:wrapped_key] if args.key?(:wrapped_key)
+          @wrapped_key_crc32c = args[:wrapped_key_crc32c] if args.key?(:wrapped_key_crc32c)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -1644,14 +1701,23 @@ module Google
       class ExternalProtectionLevelOptions
         include Google::Apis::Core::Hashable
       
-        # The path to the external key material on the EKM when using EkmConnection e.g.,
-        # "v0/my/key". Set this field instead of external_key_uri when using an
-        # EkmConnection.
+        # Optional. The resource name of the backend environment where the key material
+        # of CryptoKeyVersions is associated with. Setting this field overrides the
+        # CryptoKeyBackend. This field may be set when CryptoKeyVersions is set to
+        # EXTERNAL_VPC. Format: `projects/*/locations/*/ekmConnections/*`.
+        # Corresponds to the JSON property `ekmConnectionBackendOverride`
+        # @return [String]
+        attr_accessor :ekm_connection_backend_override
+      
+        # Optional. The path to the external key material on the EKM when using
+        # EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri
+        # when using an EkmConnection.
         # Corresponds to the JSON property `ekmConnectionKeyPath`
         # @return [String]
         attr_accessor :ekm_connection_key_path
       
-        # The URI for an external resource that this CryptoKeyVersion represents.
+        # Optional. The URI for an external resource that this CryptoKeyVersion
+        # represents.
         # Corresponds to the JSON property `externalKeyUri`
         # @return [String]
         attr_accessor :external_key_uri
@@ -1662,6 +1728,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ekm_connection_backend_override = args[:ekm_connection_backend_override] if args.key?(:ekm_connection_backend_override)
           @ekm_connection_key_path = args[:ekm_connection_key_path] if args.key?(:ekm_connection_key_path)
           @external_key_uri = args[:external_key_uri] if args.key?(:external_key_uri)
         end
@@ -1765,6 +1832,15 @@ module Google
         # @return [String]
         attr_accessor :rsa_aes_wrapped_key
       
+        # Optional. Whether trusted wrapping will be enabled on the imported [
+        # CryptoKeyVersion]. This field is only supported for keys with
+        # CryptoKeyVersionTemplate.protection_level HSM_SINGLE_TENANT. This field is
+        # supported for all CryptoKeyPurposes besides ENCRYPT_DECRYPT.
+        # Corresponds to the JSON property `trustedWrappingEnabled`
+        # @return [Boolean]
+        attr_accessor :trusted_wrapping_enabled
+        alias_method :trusted_wrapping_enabled?, :trusted_wrapping_enabled
+      
         # Optional. The wrapped key material to import. Before wrapping, key material
         # must be formatted. If importing symmetric key material, the expected key
         # material format is plain bytes. If importing asymmetric key material, the
@@ -1795,6 +1871,7 @@ module Google
           @crypto_key_version = args[:crypto_key_version] if args.key?(:crypto_key_version)
           @import_job = args[:import_job] if args.key?(:import_job)
           @rsa_aes_wrapped_key = args[:rsa_aes_wrapped_key] if args.key?(:rsa_aes_wrapped_key)
+          @trusted_wrapping_enabled = args[:trusted_wrapping_enabled] if args.key?(:trusted_wrapping_enabled)
           @wrapped_key = args[:wrapped_key] if args.key?(:wrapped_key)
         end
       end
@@ -1910,6 +1987,56 @@ module Google
           @public_key = args[:public_key] if args.key?(:public_key)
           @public_key_format = args[:public_key_format] if args.key?(:public_key_format)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Request message for KeyManagementService.
+      # ImportTrustedKeyWrappedCryptoKeyVersion.
+      class ImportTrustedKeyWrappedCryptoKeyVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Required - The algorithm of the key being imported. This does not
+        # need to match the version_template of the CryptoKey this version imports into.
+        # Corresponds to the JSON property `algorithm`
+        # @return [String]
+        attr_accessor :algorithm
+      
+        # Optional. The optional name of an existing CryptoKeyVersion to target for an
+        # import operation. If this field is not present, a new CryptoKeyVersion
+        # containing the supplied key material is created. If this field is present, the
+        # supplied key material is imported into the existing CryptoKeyVersion. To
+        # import into an existing CryptoKeyVersion, the CryptoKeyVersion must be a child
+        # of ImportTrustedKeyWrappedCryptoKeyVersionRequest.parent, have been previously
+        # created via ImportTrustedKeyWrappedCryptoKeyVersion, and be in DESTROYED or
+        # IMPORT_FAILED state. The key material and algorithm must match the previous
+        # CryptoKeyVersion exactly if the CryptoKeyVersion has ever contained key
+        # material
+        # Corresponds to the JSON property `cryptoKeyVersion`
+        # @return [String]
+        attr_accessor :crypto_key_version
+      
+        # Required. Required - the CKV of the trusted key used to import. This can be
+        # the name of a CryptoKeyVersion or a CryptoKey.
+        # Corresponds to the JSON property `importingKey`
+        # @return [String]
+        attr_accessor :importing_key
+      
+        # Required. The target key pre-wrapped on premises.
+        # Corresponds to the JSON property `wrappedKey`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :wrapped_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @algorithm = args[:algorithm] if args.key?(:algorithm)
+          @crypto_key_version = args[:crypto_key_version] if args.key?(:crypto_key_version)
+          @importing_key = args[:importing_key] if args.key?(:importing_key)
+          @wrapped_key = args[:wrapped_key] if args.key?(:wrapped_key)
         end
       end
       
@@ -3737,10 +3864,20 @@ module Google
       class ShowEffectiveAutokeyConfigResponse
         include Google::Apis::Core::Hashable
       
-        # Name of the key project configured in the resource project's folder ancestry.
+        # Name of the key project configured in the ancestry of the project or folder.
         # Corresponds to the JSON property `keyProject`
         # @return [String]
         attr_accessor :key_project
+      
+        # The KeyProjectResolutionMode for the AutokeyConfig.
+        # Corresponds to the JSON property `keyProjectResolutionMode`
+        # @return [String]
+        attr_accessor :key_project_resolution_mode
+      
+        # Source of the effective AutokeyConfig.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::CloudkmsV1::Source]
+        attr_accessor :source
       
         def initialize(**args)
            update!(**args)
@@ -3749,6 +3886,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @key_project = args[:key_project] if args.key?(:key_project)
+          @key_project_resolution_mode = args[:key_project_resolution_mode] if args.key?(:key_project_resolution_mode)
+          @source = args[:source] if args.key?(:source)
         end
       end
       
@@ -3992,6 +4131,12 @@ module Google
         # @return [String]
         attr_accessor :ttl
       
+        # Promotes a key with the AES_WRAPPING purpose to a trusted wrapping key. The
+        # key must be in the ACTIVE state to perform this operation.
+        # Corresponds to the JSON property `upgradeKeyTrust`
+        # @return [Google::Apis::CloudkmsV1::UpgradeKeyTrust]
+        attr_accessor :upgrade_key_trust
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4015,6 +4160,28 @@ module Google
           @required_action_quorum_parameters = args[:required_action_quorum_parameters] if args.key?(:required_action_quorum_parameters)
           @state = args[:state] if args.key?(:state)
           @ttl = args[:ttl] if args.key?(:ttl)
+          @upgrade_key_trust = args[:upgrade_key_trust] if args.key?(:upgrade_key_trust)
+        end
+      end
+      
+      # Source of the effective AutokeyConfig.
+      class Source
+        include Google::Apis::Core::Hashable
+      
+        # Contains the resource name of the AutokeyConfig that is effective, for example,
+        # `folders/`FOLDER_NUMBER`` or `projects/`PROJECT_NUMBER`` or `organizations/`
+        # ORGANIZATION_NUMBER``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -4113,6 +4280,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @crypto_key_version_id = args[:crypto_key_version_id] if args.key?(:crypto_key_version_id)
+        end
+      end
+      
+      # Promotes a key with the AES_WRAPPING purpose to a trusted wrapping key. The
+      # key must be in the ACTIVE state to perform this operation.
+      class UpgradeKeyTrust
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the CryptoKeyVersion to promote.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The public key associated with the 2FA key that will sign the login
+        # nonce for this operation.
+        # Corresponds to the JSON property `twoFactorPublicKeyPem`
+        # @return [String]
+        attr_accessor :two_factor_public_key_pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @two_factor_public_key_pem = args[:two_factor_public_key_pem] if args.key?(:two_factor_public_key_pem)
         end
       end
       
