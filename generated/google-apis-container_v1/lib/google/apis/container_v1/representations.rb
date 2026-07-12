@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CompleteControlPlaneUpgradeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CompleteIpRotationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +437,12 @@ module Google
       end
       
       class DesiredEnterpriseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiskIoScheduler
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -683,6 +695,12 @@ module Google
       end
       
       class K8sBetaApiConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KubeletCertInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1000,6 +1018,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeVfioConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NotificationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1199,6 +1223,18 @@ module Google
       end
       
       class RollbackNodePoolUpgradeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackSafeUpgrade
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackSafeUpgradeStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1939,6 +1975,7 @@ module Google
           property :cost_management_config, as: 'costManagementConfig', class: Google::Apis::ContainerV1::CostManagementConfig, decorator: Google::Apis::ContainerV1::CostManagementConfig::Representation
       
           property :create_time, as: 'createTime'
+          property :current_emulated_version, as: 'currentEmulatedVersion'
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
           property :current_node_version, as: 'currentNodeVersion'
@@ -2022,6 +2059,8 @@ module Google
       
           hash :resource_labels, as: 'resourceLabels'
           property :resource_usage_export_config, as: 'resourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
+      
+          property :rollback_safe_upgrade, as: 'rollbackSafeUpgrade', class: Google::Apis::ContainerV1::RollbackSafeUpgrade, decorator: Google::Apis::ContainerV1::RollbackSafeUpgrade::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -2126,6 +2165,7 @@ module Google
           property :desired_disable_l4_lb_firewall_reconciliation, as: 'desiredDisableL4LbFirewallReconciliation'
           property :desired_dns_config, as: 'desiredDnsConfig', class: Google::Apis::ContainerV1::DnsConfig, decorator: Google::Apis::ContainerV1::DnsConfig::Representation
       
+          property :desired_emulated_version, as: 'desiredEmulatedVersion'
           property :desired_enable_cilium_clusterwide_network_policy, as: 'desiredEnableCiliumClusterwideNetworkPolicy'
           property :desired_enable_fqdn_network_policy, as: 'desiredEnableFqdnNetworkPolicy'
           property :desired_enable_multi_networking, as: 'desiredEnableMultiNetworking'
@@ -2205,6 +2245,8 @@ module Google
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
       
+          property :desired_rollback_safe_upgrade, as: 'desiredRollbackSafeUpgrade', class: Google::Apis::ContainerV1::RollbackSafeUpgrade, decorator: Google::Apis::ContainerV1::RollbackSafeUpgrade::Representation
+      
           property :desired_secret_manager_config, as: 'desiredSecretManagerConfig', class: Google::Apis::ContainerV1::SecretManagerConfig, decorator: Google::Apis::ContainerV1::SecretManagerConfig::Representation
       
           property :desired_secret_sync_config, as: 'desiredSecretSyncConfig', class: Google::Apis::ContainerV1::SecretSyncConfig, decorator: Google::Apis::ContainerV1::SecretSyncConfig::Representation
@@ -2243,8 +2285,17 @@ module Google
           property :minor_target_version, as: 'minorTargetVersion'
           property :patch_target_version, as: 'patchTargetVersion'
           collection :paused_reason, as: 'pausedReason'
+          property :rollback_safe_upgrade_status, as: 'rollbackSafeUpgradeStatus', class: Google::Apis::ContainerV1::RollbackSafeUpgradeStatus, decorator: Google::Apis::ContainerV1::RollbackSafeUpgradeStatus::Representation
+      
           collection :upgrade_details, as: 'upgradeDetails', class: Google::Apis::ContainerV1::UpgradeDetails, decorator: Google::Apis::ContainerV1::UpgradeDetails::Representation
       
+        end
+      end
+      
+      class CompleteControlPlaneUpgradeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version, as: 'version'
         end
       end
       
@@ -2480,6 +2531,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_tier, as: 'desiredTier'
+        end
+      end
+      
+      class DiskIoScheduler
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :node_attached_disk_io_scheduler, as: 'nodeAttachedDiskIoScheduler'
+          property :node_system_io_scheduler, as: 'nodeSystemIoScheduler'
         end
       end
       
@@ -2875,6 +2934,14 @@ module Google
         end
       end
       
+      class KubeletCertInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :non_tpm_bootstrap_cert_expire_time, as: 'nonTpmBootstrapCertExpireTime'
+          property :tpm_bootstrap_cert_expire_time, as: 'tpmBootstrapCertExpireTime'
+        end
+      end
+      
       class KubernetesDashboard
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2897,9 +2964,13 @@ module Google
           property :cgroup_mode, as: 'cgroupMode'
           property :custom_node_init, as: 'customNodeInit', class: Google::Apis::ContainerV1::CustomNodeInit, decorator: Google::Apis::ContainerV1::CustomNodeInit::Representation
       
+          property :disk_io_scheduler, as: 'diskIoScheduler', class: Google::Apis::ContainerV1::DiskIoScheduler, decorator: Google::Apis::ContainerV1::DiskIoScheduler::Representation
+      
           property :hugepages, as: 'hugepages', class: Google::Apis::ContainerV1::HugepagesConfig, decorator: Google::Apis::ContainerV1::HugepagesConfig::Representation
       
           property :node_kernel_module_loading, as: 'nodeKernelModuleLoading', class: Google::Apis::ContainerV1::NodeKernelModuleLoading, decorator: Google::Apis::ContainerV1::NodeKernelModuleLoading::Representation
+      
+          property :node_vfio_config, as: 'nodeVfioConfig', class: Google::Apis::ContainerV1::NodeVfioConfig, decorator: Google::Apis::ContainerV1::NodeVfioConfig::Representation
       
           property :swap_config, as: 'swapConfig', class: Google::Apis::ContainerV1::SwapConfig, decorator: Google::Apis::ContainerV1::SwapConfig::Representation
       
@@ -3397,6 +3468,8 @@ module Google
           property :etag, as: 'etag'
           property :initial_node_count, as: 'initialNodeCount'
           collection :instance_group_urls, as: 'instanceGroupUrls'
+          property :kubelet_cert_info, as: 'kubeletCertInfo', class: Google::Apis::ContainerV1::KubeletCertInfo, decorator: Google::Apis::ContainerV1::KubeletCertInfo::Representation
+      
           collection :locations, as: 'locations'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1::NodePoolMaintenancePolicy, decorator: Google::Apis::ContainerV1::NodePoolMaintenancePolicy::Representation
       
@@ -3513,6 +3586,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaint, decorator: Google::Apis::ContainerV1::NodeTaint::Representation
       
+        end
+      end
+      
+      class NodeVfioConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dma_entry_limit, as: 'dmaEntryLimit'
         end
       end
       
@@ -3826,6 +3906,22 @@ module Google
           property :project_id, as: 'projectId'
           property :respect_pdb, as: 'respectPdb'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class RollbackSafeUpgrade
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_plane_soak_duration, as: 'controlPlaneSoakDuration'
+        end
+      end
+      
+      class RollbackSafeUpgradeStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_plane_upgrade_rollback_end_time, as: 'controlPlaneUpgradeRollbackEndTime'
+          property :mode, as: 'mode'
+          property :previous_version, as: 'previousVersion'
         end
       end
       
@@ -4328,10 +4424,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :initial_emulated_version, as: 'initialEmulatedVersion'
           property :initial_version, as: 'initialVersion'
           property :start_time, as: 'startTime'
           property :start_type, as: 'startType'
           property :state, as: 'state'
+          property :target_emulated_version, as: 'targetEmulatedVersion'
           property :target_version, as: 'targetVersion'
         end
       end
@@ -4339,11 +4437,13 @@ module Google
       class UpgradeEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_emulated_version, as: 'currentEmulatedVersion'
           property :current_version, as: 'currentVersion'
           property :operation, as: 'operation'
           property :operation_start_time, as: 'operationStartTime'
           property :resource, as: 'resource'
           property :resource_type, as: 'resourceType'
+          property :target_emulated_version, as: 'targetEmulatedVersion'
           property :target_version, as: 'targetVersion'
         end
       end
@@ -4351,6 +4451,7 @@ module Google
       class UpgradeInfoEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_emulated_version, as: 'currentEmulatedVersion'
           property :current_version, as: 'currentVersion'
           property :description, as: 'description'
           property :disruption_event, as: 'disruptionEvent', class: Google::Apis::ContainerV1::DisruptionEvent, decorator: Google::Apis::ContainerV1::DisruptionEvent::Representation
@@ -4364,6 +4465,7 @@ module Google
           property :standard_support_end_time, as: 'standardSupportEndTime'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
+          property :target_emulated_version, as: 'targetEmulatedVersion'
           property :target_version, as: 'targetVersion'
         end
       end
