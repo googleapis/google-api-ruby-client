@@ -442,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RequestOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReserveIdsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -561,6 +567,8 @@ module Google
           property :database_id, as: 'databaseId'
           collection :keys, as: 'keys', class: Google::Apis::DatastoreV1::Key, decorator: Google::Apis::DatastoreV1::Key::Representation
       
+          property :request_options, as: 'requestOptions', class: Google::Apis::DatastoreV1::RequestOptions, decorator: Google::Apis::DatastoreV1::RequestOptions::Representation
+      
         end
       end
       
@@ -592,6 +600,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :database_id, as: 'databaseId'
+          property :request_options, as: 'requestOptions', class: Google::Apis::DatastoreV1::RequestOptions, decorator: Google::Apis::DatastoreV1::RequestOptions::Representation
+      
           property :transaction_options, as: 'transactionOptions', class: Google::Apis::DatastoreV1::TransactionOptions, decorator: Google::Apis::DatastoreV1::TransactionOptions::Representation
       
         end
@@ -610,6 +620,8 @@ module Google
           property :database_id, as: 'databaseId'
           property :mode, as: 'mode'
           collection :mutations, as: 'mutations', class: Google::Apis::DatastoreV1::Mutation, decorator: Google::Apis::DatastoreV1::Mutation::Representation
+      
+          property :request_options, as: 'requestOptions', class: Google::Apis::DatastoreV1::RequestOptions, decorator: Google::Apis::DatastoreV1::RequestOptions::Representation
       
           property :single_use_transaction, as: 'singleUseTransaction', class: Google::Apis::DatastoreV1::TransactionOptions, decorator: Google::Apis::DatastoreV1::TransactionOptions::Representation
       
@@ -1029,6 +1041,8 @@ module Google
       
           property :read_options, as: 'readOptions', class: Google::Apis::DatastoreV1::ReadOptions, decorator: Google::Apis::DatastoreV1::ReadOptions::Representation
       
+          property :request_options, as: 'requestOptions', class: Google::Apis::DatastoreV1::RequestOptions, decorator: Google::Apis::DatastoreV1::RequestOptions::Representation
+      
         end
       end
       
@@ -1228,11 +1242,20 @@ module Google
         end
       end
       
+      class RequestOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_tags, as: 'requestTags'
+        end
+      end
+      
       class ReserveIdsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :database_id, as: 'databaseId'
           collection :keys, as: 'keys', class: Google::Apis::DatastoreV1::Key, decorator: Google::Apis::DatastoreV1::Key::Representation
+      
+          property :request_options, as: 'requestOptions', class: Google::Apis::DatastoreV1::RequestOptions, decorator: Google::Apis::DatastoreV1::RequestOptions::Representation
       
         end
       end
@@ -1247,6 +1270,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :database_id, as: 'databaseId'
+          property :request_options, as: 'requestOptions', class: Google::Apis::DatastoreV1::RequestOptions, decorator: Google::Apis::DatastoreV1::RequestOptions::Representation
+      
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
@@ -1270,6 +1295,8 @@ module Google
           property :partition_id, as: 'partitionId', class: Google::Apis::DatastoreV1::PartitionId, decorator: Google::Apis::DatastoreV1::PartitionId::Representation
       
           property :read_options, as: 'readOptions', class: Google::Apis::DatastoreV1::ReadOptions, decorator: Google::Apis::DatastoreV1::ReadOptions::Representation
+      
+          property :request_options, as: 'requestOptions', class: Google::Apis::DatastoreV1::RequestOptions, decorator: Google::Apis::DatastoreV1::RequestOptions::Representation
       
         end
       end
@@ -1302,6 +1329,8 @@ module Google
           property :query, as: 'query', class: Google::Apis::DatastoreV1::Query, decorator: Google::Apis::DatastoreV1::Query::Representation
       
           property :read_options, as: 'readOptions', class: Google::Apis::DatastoreV1::ReadOptions, decorator: Google::Apis::DatastoreV1::ReadOptions::Representation
+      
+          property :request_options, as: 'requestOptions', class: Google::Apis::DatastoreV1::RequestOptions, decorator: Google::Apis::DatastoreV1::RequestOptions::Representation
       
         end
       end
