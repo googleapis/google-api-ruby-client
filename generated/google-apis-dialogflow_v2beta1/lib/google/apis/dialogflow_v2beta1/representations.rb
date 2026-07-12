@@ -8955,6 +8955,7 @@ module Google
           property :default_no_speech_timeout, as: 'defaultNoSpeechTimeout'
           property :disable_no_speech_recognized_event, as: 'disableNoSpeechRecognizedEvent'
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
+          property :enable_voice_activity_events, as: 'enableVoiceActivityEvents'
           property :enable_word_info, as: 'enableWordInfo'
           property :language_code, as: 'languageCode'
           property :model, as: 'model'
@@ -10144,6 +10145,7 @@ module Google
       class GoogleCloudDialogflowV2beta1SearchKnowledgeDebugInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :ces_debug_info, as: 'cesDebugInfo'
           property :datastore_response_reason, as: 'datastoreResponseReason'
           property :ingested_context_reference_debug_info, as: 'ingestedContextReferenceDebugInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo::Representation
       
