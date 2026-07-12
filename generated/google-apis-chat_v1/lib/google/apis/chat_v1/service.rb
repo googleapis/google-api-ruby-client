@@ -784,11 +784,24 @@ module Google
         #   import mode](https://developers.google.com/workspace/chat/import-data-overview)
         #   . To learn more, see [Make a space discoverable to specific users](https://
         #   developers.google.com/workspace/chat/space-target-audience). `access_settings.
-        #   audience` is not supported with `useAdminAccess`. `permission_settings`:
-        #   Supports changing the [permission settings](https://support.google.com/chat/
-        #   answer/13340792) of a space. When updating permission settings, you can only
-        #   specify `permissionSettings` field masks; you cannot update other field masks
-        #   at the same time. The supported field masks include: - `permission_settings.
+        #   audience` is not supported with `useAdminAccess`. `access_settings.
+        #   access_permission_settings`: Updates the [access permission settings](https://
+        #   support.google.com/chat/answer/11971020) of who can discover and join the
+        #   space where `spaceType` field is `SPACE`. Principals allowed to join the space
+        #   must also be allowed to discover it. To update access permission settings for
+        #   a space, the authenticating user must be a space manager or assistant manager
+        #   and omit all other field masks in the request. You can't update this field if
+        #   the space is in [import mode](https://developers.google.com/workspace/chat/
+        #   import-data-overview). To learn more, see [Make a space discoverable to
+        #   specific users](https://developers.google.com/workspace/chat/space-target-
+        #   audience). `access_settings.access_permission_settings` is not supported with `
+        #   useAdminAccess`. The supported field masks include: - `access_settings.
+        #   access_permission_settings.discoverSpaceSetting` - `access_settings.
+        #   access_permission_settings.joinSpaceSetting` `permission_settings`: Supports
+        #   changing the [permission settings](https://support.google.com/chat/answer/
+        #   13340792) of a space. When updating permission settings, you can only specify `
+        #   permissionSettings` field masks; you cannot update other field masks at the
+        #   same time. The supported field masks include: - `permission_settings.
         #   manageMembersAndGroups` - `permission_settings.modifySpaceDetails` - `
         #   permission_settings.toggleHistory` - `permission_settings.useAtMentionAll` - `
         #   permission_settings.manageApps` - `permission_settings.manageWebhooks` - `
@@ -2193,7 +2206,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_availability_availability(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_user_availability(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ChatV1::Availability::Representation
           command.response_class = Google::Apis::ChatV1::Availability
@@ -2290,14 +2303,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Marks user as`DO_NOT_DISTURB` in Google Chat. Sets a user's availability state
-        # to `DO_NOT_DISTURB` until a specified expiration time. When in `DO_NOT_DISTURB`
-        # , users typically won't receive notifications. This method only updates the
-        # authenticated user's availability. Requires [user authentication](https://
-        # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with [
-        # authorization scope](https://developers.google.com/workspace/chat/authenticate-
-        # authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.
-        # availability`
+        # Marks user as `DO_NOT_DISTURB` in Google Chat. Sets a user's availability
+        # state to `DO_NOT_DISTURB` until a specified expiration time. When in `
+        # DO_NOT_DISTURB`, users typically won't receive notifications. This method only
+        # updates the authenticated user's availability. Requires [user authentication](
+        # https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+        # with [authorization scope](https://developers.google.com/workspace/chat/
+        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
+        # chat.users.availability`
         # @param [String] name
         #   Required. The resource name of the availability to mark as Do Not Disturb.
         #   Format: users/`user`/availability ``user`` is the id for the Person in the
@@ -2368,7 +2381,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_availability_availability(name, availability_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_user_availability(name, availability_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::ChatV1::Availability::Representation
           command.request_object = availability_object

@@ -22,6 +22,18 @@ module Google
   module Apis
     module ChatV1
       
+      class AccessPermissionSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessPermissionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +89,12 @@ module Google
       end
       
       class AttachmentDataRef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Audience
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -850,6 +868,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Principal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QuotedMessageMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1078,9 +1102,29 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessPermissionSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :principals, as: 'principals', class: Google::Apis::ChatV1::Principal, decorator: Google::Apis::ChatV1::Principal::Representation
+      
+        end
+      end
+      
+      class AccessPermissionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discover_space_setting, as: 'discoverSpaceSetting', class: Google::Apis::ChatV1::AccessPermissionSetting, decorator: Google::Apis::ChatV1::AccessPermissionSetting::Representation
+      
+          property :join_space_setting, as: 'joinSpaceSetting', class: Google::Apis::ChatV1::AccessPermissionSetting, decorator: Google::Apis::ChatV1::AccessPermissionSetting::Representation
+      
+        end
+      end
+      
       class AccessSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_permission_settings, as: 'accessPermissionSettings', class: Google::Apis::ChatV1::AccessPermissionSettings, decorator: Google::Apis::ChatV1::AccessPermissionSettings::Representation
+      
           property :access_state, as: 'accessState'
           property :audience, as: 'audience'
         end
@@ -1175,6 +1219,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attachment_upload_token, as: 'attachmentUploadToken'
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class Audience
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -2548,6 +2599,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :section, as: 'section', class: Google::Apis::ChatV1::GoogleChatV1Section, decorator: Google::Apis::ChatV1::GoogleChatV1Section::Representation
+      
+        end
+      end
+      
+      class Principal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience', class: Google::Apis::ChatV1::Audience, decorator: Google::Apis::ChatV1::Audience::Representation
       
         end
       end
