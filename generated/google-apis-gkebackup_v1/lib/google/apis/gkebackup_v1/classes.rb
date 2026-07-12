@@ -213,7 +213,7 @@ module Google
       end
       
       # Log entry for Backup and Restore Job for resources using BackupPlan based
-      # protection. Next Id: 25
+      # protection. Next Id: 26
       class BdrBackupRestoreJobLog
         include Google::Apis::Core::Hashable
       
@@ -335,6 +335,11 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The storage tier associated with the backup.
+        # Corresponds to the JSON property `storageTier`
+        # @return [String]
+        attr_accessor :storage_tier
+      
         # The target resource type for restore jobs.
         # Corresponds to the JSON property `targetResourceType`
         # @return [String]
@@ -369,6 +374,7 @@ module Google
           @source_resource_location = args[:source_resource_location] if args.key?(:source_resource_location)
           @source_resource_name = args[:source_resource_name] if args.key?(:source_resource_name)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @storage_tier = args[:storage_tier] if args.key?(:storage_tier)
           @target_resource_type = args[:target_resource_type] if args.key?(:target_resource_type)
         end
       end
