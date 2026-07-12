@@ -808,10 +808,10 @@ module Google
       
         # Authorization mechanism for a subscriber endpoint. For all requests sent by
         # the Webhooks service, the JSON payload is cryptographically signed. The
-        # signature is delivered in the `X-HEALTHAPI-SIGNATURE` HTTP header. This is an
-        # ECDSA (NIST P256) signature of the JSON payload. Clients must verify this
-        # signature using Google Health API's public key to confirm the payload was sent
-        # by the Health API.
+        # signature is delivered in the `GOOGLE-HEALTH-API-SIGNATURE` HTTP header. This
+        # is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify
+        # this signature using Google Health API's public key to confirm the payload was
+        # sent by the Health API.
         # Corresponds to the JSON property `endpointAuthorization`
         # @return [Google::Apis::HealthV4::EndpointAuthorization]
         attr_accessor :endpoint_authorization
@@ -1632,15 +1632,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Holds information about a user logged food. There are two ways of creating a
-        # nutrition log based on the food type: 1. Identified food: Using the food field,
-        # which is a reference to a Food resource. In this case fields `nutrients`, `
-        # energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
+        # Holds information about food logged by a user. There are two ways of creating
+        # a nutrition log based on the food type: 1. Identified food: Using the food
+        # field, which is a reference to a Food resource. In this case fields `nutrients`
+        # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
         # food_display_name` will be populated based on the referenced food. 2.
         # Anonymous food: Using the `food_display_name` field and setting the `nutrients`
         # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields
         # manually. The identified food is preferred over the anonymous food. Nutrition
-        # logs created from anonymous food are not be editable.
+        # logs created from anonymous food are not editable.
         # Corresponds to the JSON property `nutritionLog`
         # @return [Google::Apis::HealthV4::NutritionLog]
         attr_accessor :nutrition_log
@@ -2078,10 +2078,10 @@ module Google
       
       # Authorization mechanism for a subscriber endpoint. For all requests sent by
       # the Webhooks service, the JSON payload is cryptographically signed. The
-      # signature is delivered in the `X-HEALTHAPI-SIGNATURE` HTTP header. This is an
-      # ECDSA (NIST P256) signature of the JSON payload. Clients must verify this
-      # signature using Google Health API's public key to confirm the payload was sent
-      # by the Health API.
+      # signature is delivered in the `GOOGLE-HEALTH-API-SIGNATURE` HTTP header. This
+      # is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify
+      # this signature using Google Health API's public key to confirm the payload was
+      # sent by the Health API.
       class EndpointAuthorization
         include Google::Apis::Core::Hashable
       
@@ -2117,7 +2117,7 @@ module Google
       class EnergyQuantity
         include Google::Apis::Core::Hashable
       
-        # Required. Value representing the energy in kilocalories.
+        # Required. The energy value in kilocalories.
         # Corresponds to the JSON property `kcal`
         # @return [Float]
         attr_accessor :kcal
@@ -2868,6 +2868,54 @@ module Google
         end
       end
       
+      # Message that represents an arbitrary HTTP body. It should only be used for
+      # payload formats that can't be represented as JSON, such as raw binary or an
+      # HTML page. This message can be used both in streaming and non-streaming API
+      # methods in the request as well as the response. It can be used as a top-level
+      # request field, which is convenient if one wants to extract parameters from
+      # either the URL or HTTP template into the request fields and also want access
+      # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+      # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+      # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+      # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+      # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+      # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+      # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+      # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+      # only changes how the request and response bodies are handled, all other
+      # features will continue to work unchanged.
+      class HttpBody
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP Content-Type header value specifying the content type of the body.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # The HTTP request/response body as raw binary.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Application specific response metadata. Must be set in the first response for
+        # streaming APIs.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @data = args[:data] if args.key?(:data)
+          @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
       # Represents an HTTP header.
       class HttpHeader
         include Google::Apis::Core::Hashable
@@ -3244,6 +3292,40 @@ module Google
         end
       end
       
+      # Represents the POST body contained in a GetShlManifestRequest This message is
+      # nested to represent that See https://build.fhir.org/ig/HL7/smart-health-cards-
+      # and-links/links-specification.html#smart-health-link-manifest-request
+      class ManifestParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Integer upper bound on the length of embedded payloads
+        # Corresponds to the JSON property `embeddedLengthMax`
+        # @return [Fixnum]
+        attr_accessor :embedded_length_max
+      
+        # Optional.
+        # Corresponds to the JSON property `passcode`
+        # @return [String]
+        attr_accessor :passcode
+      
+        # Required. A string describing the recipient (e.g.,the name of an organization
+        # or person) suitable for display to the Receiving User
+        # Corresponds to the JSON property `recipient`
+        # @return [String]
+        attr_accessor :recipient
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @embedded_length_max = args[:embedded_length_max] if args.key?(:embedded_length_max)
+          @passcode = args[:passcode] if args.key?(:passcode)
+          @recipient = args[:recipient] if args.key?(:recipient)
+        end
+      end
+      
       # Software as Medical Device (SaMD) metadata. Used to construct the Unique
       # Device Identifier (UDI).
       class MedicalDeviceInfo
@@ -3429,7 +3511,7 @@ module Google
       class NutrientQuantity
         include Google::Apis::Core::Hashable
       
-        # Required. Value representing the nutrient.
+        # Required. The nutrient type.
         # Corresponds to the JSON property `nutrient`
         # @return [String]
         attr_accessor :nutrient
@@ -3475,15 +3557,15 @@ module Google
         end
       end
       
-      # Holds information about a user logged food. There are two ways of creating a
-      # nutrition log based on the food type: 1. Identified food: Using the food field,
-      # which is a reference to a Food resource. In this case fields `nutrients`, `
-      # energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
+      # Holds information about food logged by a user. There are two ways of creating
+      # a nutrition log based on the food type: 1. Identified food: Using the food
+      # field, which is a reference to a Food resource. In this case fields `nutrients`
+      # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
       # food_display_name` will be populated based on the referenced food. 2.
       # Anonymous food: Using the `food_display_name` field and setting the `nutrients`
       # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields
       # manually. The identified food is preferred over the anonymous food. Nutrition
-      # logs created from anonymous food are not be editable.
+      # logs created from anonymous food are not editable.
       class NutritionLog
         include Google::Apis::Core::Hashable
       
@@ -3497,14 +3579,15 @@ module Google
         # @return [Google::Apis::HealthV4::EnergyQuantity]
         attr_accessor :energy_from_fat
       
-        # Required. Represents the food ID.
+        # Optional. The resource name of the Food item. Required when creating a
+        # nutrition log from an identified food. For anonymous food logs, use the `
+        # food_display_name` field instead.
         # Corresponds to the JSON property `food`
         # @return [String]
         attr_accessor :food
       
-        # Value representing the display name of the food. For nutrition logs created
-        # from an identified food, this field will be populated based on the referenced
-        # food. For anonymous food, this field will be populated manually.
+        # The display name of the food. For identified food logs, this is populated
+        # automatically from the referenced food.
         # Corresponds to the JSON property `foodDisplayName`
         # @return [String]
         attr_accessor :food_display_name
@@ -3515,12 +3598,12 @@ module Google
         # @return [Google::Apis::HealthV4::SessionTimeInterval]
         attr_accessor :interval
       
-        # Optional. Value representing the meal type of the nutrition log.
+        # Optional. The meal category. One of `BREAKFAST`, `LUNCH`, `DINNER`, or `SNACK`.
         # Corresponds to the JSON property `mealType`
         # @return [String]
         attr_accessor :meal_type
       
-        # Optional. Value representing the nutrients of the nutrition log.
+        # Optional. An array of individual nutrient values for the nutrition log.
         # Corresponds to the JSON property `nutrients`
         # @return [Array<Google::Apis::HealthV4::NutrientQuantity>]
         attr_accessor :nutrients
@@ -4186,15 +4269,15 @@ module Google
         # @return [Google::Apis::HealthV4::HydrationLog]
         attr_accessor :hydration_log
       
-        # Holds information about a user logged food. There are two ways of creating a
-        # nutrition log based on the food type: 1. Identified food: Using the food field,
-        # which is a reference to a Food resource. In this case fields `nutrients`, `
-        # energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
+        # Holds information about food logged by a user. There are two ways of creating
+        # a nutrition log based on the food type: 1. Identified food: Using the food
+        # field, which is a reference to a Food resource. In this case fields `nutrients`
+        # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
         # food_display_name` will be populated based on the referenced food. 2.
         # Anonymous food: Using the `food_display_name` field and setting the `nutrients`
         # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields
         # manually. The identified food is preferred over the anonymous food. Nutrition
-        # logs created from anonymous food are not be editable.
+        # logs created from anonymous food are not editable.
         # Corresponds to the JSON property `nutritionLog`
         # @return [Google::Apis::HealthV4::NutritionLog]
         attr_accessor :nutrition_log
@@ -4738,7 +4821,7 @@ module Google
       class Serving
         include Google::Apis::Core::Hashable
       
-        # Optional. Amount of food consumed, fractional values are supported.
+        # Optional. The number of servings.
         # Corresponds to the JSON property `amount`
         # @return [Float]
         attr_accessor :amount
@@ -5347,10 +5430,10 @@ module Google
       
         # Authorization mechanism for a subscriber endpoint. For all requests sent by
         # the Webhooks service, the JSON payload is cryptographically signed. The
-        # signature is delivered in the `X-HEALTHAPI-SIGNATURE` HTTP header. This is an
-        # ECDSA (NIST P256) signature of the JSON payload. Clients must verify this
-        # signature using Google Health API's public key to confirm the payload was sent
-        # by the Health API.
+        # signature is delivered in the `GOOGLE-HEALTH-API-SIGNATURE` HTTP header. This
+        # is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify
+        # this signature using Google Health API's public key to confirm the payload was
+        # sent by the Health API.
         # Corresponds to the JSON property `endpointAuthorization`
         # @return [Google::Apis::HealthV4::EndpointAuthorization]
         attr_accessor :endpoint_authorization
@@ -5846,7 +5929,7 @@ module Google
       class WeightQuantity
         include Google::Apis::Core::Hashable
       
-        # Required. Value representing the weight in grams.
+        # Required. The weight value in grams.
         # Corresponds to the JSON property `grams`
         # @return [Float]
         attr_accessor :grams
