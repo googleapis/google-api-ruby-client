@@ -424,7 +424,7 @@ module Google
       
         # Required. Immutable. The service class identifier which authorizes this
         # AutomatedDnsRecord. Any API calls targeting this AutomatedDnsRecord must have `
-        # networkconnectivity.serviceclasses.use` IAM permission for the provided
+        # networkconnectivity.serviceClasses.use` IAM permission for the provided
         # service class.
         # Corresponds to the JSON property `serviceClass`
         # @return [String]

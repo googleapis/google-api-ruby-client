@@ -1,5 +1,9 @@
 # Release history for google-apis-networkconnectivity_v1
 
+### v0.78.0 (2026-07-12)
+
+* Regenerated from discovery document revision 20260618
+
 ### v0.77.0 (2026-06-14)
 
 * Regenerated using generator version 0.19.0
