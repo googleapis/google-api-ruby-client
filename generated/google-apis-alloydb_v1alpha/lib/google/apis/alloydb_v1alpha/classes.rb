@@ -1048,6 +1048,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :authproxy_pooler_count
       
+        # Optional. The scaling type of the AuthProxy pooler.
+        # Corresponds to the JSON property `authproxyPoolerScalingType`
+        # @return [String]
+        attr_accessor :authproxy_pooler_scaling_type
+      
         # Optional. Whether to enable Managed Connection Pool (MCP).
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
@@ -1064,6 +1069,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :pooler_count
       
+        # Optional. The scaling type of the regular pooler.
+        # Corresponds to the JSON property `poolerScalingType`
+        # @return [String]
+        attr_accessor :pooler_scaling_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1071,9 +1081,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authproxy_pooler_count = args[:authproxy_pooler_count] if args.key?(:authproxy_pooler_count)
+          @authproxy_pooler_scaling_type = args[:authproxy_pooler_scaling_type] if args.key?(:authproxy_pooler_scaling_type)
           @enabled = args[:enabled] if args.key?(:enabled)
           @flags = args[:flags] if args.key?(:flags)
           @pooler_count = args[:pooler_count] if args.key?(:pooler_count)
+          @pooler_scaling_type = args[:pooler_scaling_type] if args.key?(:pooler_scaling_type)
         end
       end
       
@@ -4245,7 +4257,7 @@ module Google
         # @return [String]
         attr_accessor :feed_type
       
-        # 
+        # Observability metric data.
         # Corresponds to the JSON property `observabilityMetricData`
         # @return [Google::Apis::AlloydbV1alpha::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData]
         attr_accessor :observability_metric_data
@@ -4388,7 +4400,7 @@ module Google
         # @return [String]
         attr_accessor :signal_type
       
-        # 
+        # Required. The state of the signal, such as if it's ACTIVE or RESOLVED.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -4434,12 +4446,13 @@ module Google
         # Required. The type of resource this ID is identifying. Ex go/keep-sorted start
         # alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.
         # googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.
-        # googleapis.com/Instance firestore.googleapis.com/Database, redis.googleapis.
-        # com/Instance, redis.googleapis.com/Cluster, oracledatabase.googleapis.com/
-        # CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
-        # oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/
-        # Instance, spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance,
-        # go/keep-sorted end REQUIRED Please refer go/condor-common-datamodel
+        # googleapis.com/Instance firestore.googleapis.com/Database, memorystore.
+        # googleapis.com/Instance, redis.googleapis.com/Instance, redis.googleapis.com/
+        # Cluster, oracledatabase.googleapis.com/CloudExadataInfrastructure
+        # oracledatabase.googleapis.com/CloudVmCluster oracledatabase.googleapis.com/
+        # AutonomousDatabase spanner.googleapis.com/Instance, spanner.googleapis.com/
+        # Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please
+        # refer go/condor-common-datamodel
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -5288,7 +5301,7 @@ module Google
         # @return [String]
         attr_accessor :duration_based_retention
       
-        # 
+        # Quantity based retention period i.e. 7 backups
         # Corresponds to the JSON property `quantityBasedRetention`
         # @return [Fixnum]
         attr_accessor :quantity_based_retention
@@ -5298,7 +5311,7 @@ module Google
         # @return [String]
         attr_accessor :retention_unit
       
-        # 
+        # Duration based retention period i.e. 172800 seconds (2 days)
         # Corresponds to the JSON property `timeBasedRetention`
         # @return [String]
         attr_accessor :time_based_retention
