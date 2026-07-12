@@ -1370,11 +1370,6 @@ module Google
         # @return [Google::Apis::BigquerydatatransferV1::Status]
         attr_accessor :error_status
       
-        # The metadata destination of the transfer config.
-        # Corresponds to the JSON property `metadataDestination`
-        # @return [Google::Apis::BigquerydatatransferV1::MetadataDestination]
-        attr_accessor :metadata_destination
-      
         # Identifier. The resource name of the transfer run. Transfer run names have the
         # form `projects/`project_id`/locations/`location`/transferConfigs/`config_id`/
         # runs/`run_id``. The name is ignored when creating a transfer run.
@@ -1448,7 +1443,6 @@ module Google
           @email_preferences = args[:email_preferences] if args.key?(:email_preferences)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error_status = args[:error_status] if args.key?(:error_status)
-          @metadata_destination = args[:metadata_destination] if args.key?(:metadata_destination)
           @name = args[:name] if args.key?(:name)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
           @params = args[:params] if args.key?(:params)
