@@ -557,6 +557,7 @@ module Google
           Faraday.new options do |faraday|
             faraday.response :logger, Google::Apis.logger if client_options.log_http_requests
             faraday.response :follow_redirects_google_apis_core, limit: 5
+            faraday.adapter client_options.adapter if client_options.adapter
           end
         end
 
