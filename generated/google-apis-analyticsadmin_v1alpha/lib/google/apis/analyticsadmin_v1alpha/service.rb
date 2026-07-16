@@ -197,6 +197,8 @@ module Google
         # Returns all accounts accessible by the caller. Note that these accounts might
         # not currently have GA properties. Soft-deleted (ie: "trashed") accounts are
         # excluded by default. Returns an empty list if no relevant accounts are found.
+        # Note: The easiest way to retrieve a list of all properties you have access to
+        # is by using `ListAccountSummaries`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of resources to return. The service may return
         #   fewer than this value, even if there are additional pages. If unspecified, at
