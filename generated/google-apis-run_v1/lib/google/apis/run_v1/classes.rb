@@ -3931,8 +3931,8 @@ module Google
         end
       end
       
-      # Instance represents the configuration of a single Instance, which references a
-      # container image which is run to completion.
+      # An Instance represents the configuration of a single instance that references
+      # a container image and runs to completion.
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -3961,7 +3961,7 @@ module Google
         # @return [Google::Apis::RunV1::InstanceSpec]
         attr_accessor :spec
       
-        # InstanceStatus represents the current state of a Instance.
+        # InstanceStatus represents the current state of an Instance.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::RunV1::InstanceStatus]
         attr_accessor :status
@@ -4066,7 +4066,7 @@ module Google
         end
       end
       
-      # InstanceStatus represents the current state of a Instance.
+      # InstanceStatus represents the current state of an Instance.
       class InstanceStatus
         include Google::Apis::Core::Hashable
       
@@ -4926,26 +4926,26 @@ module Google
         # googleapis.com/build-service-account`: Service. * `run.googleapis.com/build-
         # source-location`: Service, Revision. * `run.googleapis.com/build-worker-pool`:
         # Service. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.
-        # com/cloudsql-instances`: Revision, Execution . * `run.googleapis.com/container-
-        # dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. * `
-        # run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-
-        # url-disabled`: Service. * `run.googleapis.com/description`: Service. * `run.
-        # googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/
-        # encryption-key`: Revision, Execution . * `run.googleapis.com/execution-
-        # environment`: Revision, Execution . * `run.googleapis.com/gc-traffic-tags`:
-        # Service. * `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. * `
-        # run.googleapis.com/health-check-disabled`: Revision. * `run.googleapis.com/
-        # ingress`: Service, Instance. * `run.googleapis.com/invoker-iam-disabled`:
-        # Service, Instance. * `run.googleapis.com/launch-stage`: Service, Job. * `run.
-        # googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`: Service. *
-        # `run.googleapis.com/manualInstanceCount`: Service. * `run.googleapis.com/
-        # network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-
-        # revocation-action-type`: Revision. `run.googleapis.com/scalingMode`: Service. *
-        # `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/
-        # secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`:
-        # Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.
-        # googleapis.com/vpc-access-connector`: Revision, Execution . * `run.googleapis.
-        # com/vpc-access-egress`: Revision, Execution.
+        # com/cloudsql-instances`: Revision, Execution, Instance. * `run.googleapis.com/
+        # container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`:
+        # Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.
+        # com/default-url-disabled`: Service. * `run.googleapis.com/description`:
+        # Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.
+        # googleapis.com/encryption-key`: Revision, Execution, Instance. * `run.
+        # googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.
+        # com/gc-traffic-tags`: Service. * `run.googleapis.com/gpu-zonal-redundancy-
+        # disabled`: Revision. * `run.googleapis.com/health-check-disabled`: Revision. *
+        # `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.com/invoker-
+        # iam-disabled`: Service, Instance. * `run.googleapis.com/launch-stage`: Service,
+        # Job. * `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`
+        # : Service. * `run.googleapis.com/manualInstanceCount`: Service. * `run.
+        # googleapis.com/network-interfaces`: Revision, Execution, Instance. * `run.
+        # googleapis.com/post-key-revocation-action-type`: Revision. `run.googleapis.com/
+        # scalingMode`: Service. * `run.googleapis.com/secrets`: Revision, Execution. * `
+        # run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/
+        # sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision.
+        # * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.
+        # googleapis.com/vpc-access-egress`: Revision, Execution, Instance.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -5469,11 +5469,6 @@ module Google
         # @return [String]
         attr_accessor :runtime_class_name
       
-        # Optional. Container templates that can be launched through the `sandbox` CLI.
-        # Corresponds to the JSON property `sandboxes`
-        # @return [Array<Google::Apis::RunV1::Container>]
-        attr_accessor :sandboxes
-      
         # Email address of the IAM service account associated with the revision of the
         # service. The service account represents the identity of the running revision,
         # and determines what permissions the revision has. If not provided, the
@@ -5506,7 +5501,6 @@ module Google
           @image_pull_secrets = args[:image_pull_secrets] if args.key?(:image_pull_secrets)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @runtime_class_name = args[:runtime_class_name] if args.key?(:runtime_class_name)
-          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
           @volumes = args[:volumes] if args.key?(:volumes)
@@ -6121,12 +6115,19 @@ module Google
       class StartInstanceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates that the server should validate the request and populate
+        # default values without persisting the request. Supported values: `all`
+        # Corresponds to the JSON property `dryRun`
+        # @return [String]
+        attr_accessor :dry_run
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
         end
       end
       
@@ -6288,12 +6289,19 @@ module Google
       class StopInstanceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates that the server should validate the request and populate
+        # default values without persisting the request. Supported values: `all`
+        # Corresponds to the JSON property `dryRun`
+        # @return [String]
+        attr_accessor :dry_run
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
         end
       end
       

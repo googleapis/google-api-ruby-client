@@ -2337,8 +2337,6 @@ module Google
       
           hash :node_selector, as: 'nodeSelector'
           property :runtime_class_name, as: 'runtimeClassName'
-          collection :sandboxes, as: 'sandboxes', class: Google::Apis::RunV1::Container, decorator: Google::Apis::RunV1::Container::Representation
-      
           property :service_account_name, as: 'serviceAccountName'
           property :timeout_seconds, as: 'timeoutSeconds'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
@@ -2504,6 +2502,7 @@ module Google
       class StartInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dry_run, as: 'dryRun'
         end
       end
       
@@ -2546,6 +2545,7 @@ module Google
       class StopInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dry_run, as: 'dryRun'
         end
       end
       
