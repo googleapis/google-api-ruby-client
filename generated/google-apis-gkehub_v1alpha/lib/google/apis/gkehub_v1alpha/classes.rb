@@ -930,6 +930,11 @@ module Google
         # @return [Google::Apis::GkehubV1alpha::FleetObservabilityFeatureSpec]
         attr_accessor :fleetobservability
       
+        # **Service Mesh**: Spec for the fleet for the servicemesh feature
+        # Corresponds to the JSON property `mesh`
+        # @return [Google::Apis::GkehubV1alpha::ServiceMeshFeatureSpec]
+        attr_accessor :mesh
+      
         # **Multi-cluster Ingress**: The configuration for the MultiClusterIngress
         # feature.
         # Corresponds to the JSON property `multiclusteringress`
@@ -970,6 +975,7 @@ module Google
           @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @dataplanev2 = args[:dataplanev2] if args.key?(:dataplanev2)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
+          @mesh = args[:mesh] if args.key?(:mesh)
           @multiclusteringress = args[:multiclusteringress] if args.key?(:multiclusteringress)
           @namespaceactuation = args[:namespaceactuation] if args.key?(:namespaceactuation)
           @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
@@ -7012,6 +7018,25 @@ module Google
           @details = args[:details] if args.key?(:details)
           @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
           @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # **Service Mesh**: Spec for the fleet for the servicemesh feature
+      class ServiceMeshFeatureSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies modernization compatibility for the fleet.
+        # Corresponds to the JSON property `modernizationCompatibility`
+        # @return [String]
+        attr_accessor :modernization_compatibility
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @modernization_compatibility = args[:modernization_compatibility] if args.key?(:modernization_compatibility)
         end
       end
       
