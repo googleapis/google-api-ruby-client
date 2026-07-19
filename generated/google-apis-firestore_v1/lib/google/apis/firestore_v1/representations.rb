@@ -730,12 +730,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RequestOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RollbackRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -902,8 +896,6 @@ module Google
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
@@ -923,8 +915,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
           collection :writes, as: 'writes', class: Google::Apis::FirestoreV1::Write, decorator: Google::Apis::FirestoreV1::Write::Representation
       
         end
@@ -944,8 +934,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :options, as: 'options', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
-      
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
       
         end
       end
@@ -985,8 +973,6 @@ module Google
       class CommitRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
           property :transaction, :base64 => true, as: 'transaction'
           collection :writes, as: 'writes', class: Google::Apis::FirestoreV1::Write, decorator: Google::Apis::FirestoreV1::Write::Representation
       
@@ -1102,8 +1088,6 @@ module Google
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
           property :structured_pipeline, as: 'structuredPipeline', class: Google::Apis::FirestoreV1::StructuredPipeline, decorator: Google::Apis::FirestoreV1::StructuredPipeline::Representation
       
           property :transaction, :base64 => true, as: 'transaction'
@@ -1848,8 +1832,6 @@ module Google
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
           property :read_time, as: 'readTime'
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
         end
       end
       
@@ -1886,8 +1868,6 @@ module Google
       
           hash :labels, as: 'labels'
           property :remove_target, as: 'removeTarget'
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
         end
       end
       
@@ -1942,8 +1922,6 @@ module Google
           property :page_token, as: 'pageToken'
           property :partition_count, :numeric_string => true, as: 'partitionCount'
           property :read_time, as: 'readTime'
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
           property :structured_query, as: 'structuredQuery', class: Google::Apis::FirestoreV1::StructuredQuery, decorator: Google::Apis::FirestoreV1::StructuredQuery::Representation
       
         end
@@ -2013,18 +1991,9 @@ module Google
         end
       end
       
-      class RequestOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :request_tags, as: 'requestTags'
-        end
-      end
-      
       class RollbackRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
@@ -2037,8 +2006,6 @@ module Google
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
           property :structured_aggregation_query, as: 'structuredAggregationQuery', class: Google::Apis::FirestoreV1::StructuredAggregationQuery, decorator: Google::Apis::FirestoreV1::StructuredAggregationQuery::Representation
       
           property :transaction, :base64 => true, as: 'transaction'
@@ -2065,8 +2032,6 @@ module Google
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
           property :structured_query, as: 'structuredQuery', class: Google::Apis::FirestoreV1::StructuredQuery, decorator: Google::Apis::FirestoreV1::StructuredQuery::Representation
       
           property :transaction, :base64 => true, as: 'transaction'
@@ -2250,8 +2215,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
-          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
-      
           property :stream_id, as: 'streamId'
           property :stream_token, :base64 => true, as: 'streamToken'
           collection :writes, as: 'writes', class: Google::Apis::FirestoreV1::Write, decorator: Google::Apis::FirestoreV1::Write::Representation
