@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NoCacheFetching
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NpmPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1425,6 +1431,12 @@ module Google
         end
       end
       
+      class NoCacheFetching
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class NpmPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1582,6 +1594,8 @@ module Google
           property :docker_repository, as: 'dockerRepository', class: Google::Apis::ArtifactregistryV1::DockerRepository, decorator: Google::Apis::ArtifactregistryV1::DockerRepository::Representation
       
           property :maven_repository, as: 'mavenRepository', class: Google::Apis::ArtifactregistryV1::MavenRepository, decorator: Google::Apis::ArtifactregistryV1::MavenRepository::Representation
+      
+          property :no_cache, as: 'noCache', class: Google::Apis::ArtifactregistryV1::NoCacheFetching, decorator: Google::Apis::ArtifactregistryV1::NoCacheFetching::Representation
       
           property :npm_repository, as: 'npmRepository', class: Google::Apis::ArtifactregistryV1::NpmRepository, decorator: Google::Apis::ArtifactregistryV1::NpmRepository::Representation
       

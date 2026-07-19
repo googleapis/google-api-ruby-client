@@ -2224,6 +2224,20 @@ module Google
         end
       end
       
+      # The configuration for the no-cache fetching mode, which acts as a non-caching
+      # proxy.
+      class NoCacheFetching
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # NpmPackage represents an npm artifact.
       class NpmPackage
         include Google::Apis::Core::Hashable
@@ -2850,6 +2864,12 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::MavenRepository]
         attr_accessor :maven_repository
       
+        # The configuration for the no-cache fetching mode, which acts as a non-caching
+        # proxy.
+        # Corresponds to the JSON property `noCache`
+        # @return [Google::Apis::ArtifactregistryV1::NoCacheFetching]
+        attr_accessor :no_cache
+      
         # Configuration for a Npm remote repository.
         # Corresponds to the JSON property `npmRepository`
         # @return [Google::Apis::ArtifactregistryV1::NpmRepository]
@@ -2882,6 +2902,7 @@ module Google
           @disable_upstream_validation = args[:disable_upstream_validation] if args.key?(:disable_upstream_validation)
           @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
           @maven_repository = args[:maven_repository] if args.key?(:maven_repository)
+          @no_cache = args[:no_cache] if args.key?(:no_cache)
           @npm_repository = args[:npm_repository] if args.key?(:npm_repository)
           @python_repository = args[:python_repository] if args.key?(:python_repository)
           @upstream_credentials = args[:upstream_credentials] if args.key?(:upstream_credentials)
