@@ -33,6 +33,11 @@ module Google
         attr_accessor :anchor_last_frame
         alias_method :anchor_last_frame?, :anchor_last_frame
       
+        # CFG scale for video-transform, perf-generation, a2v, video-textures models.
+        # Corresponds to the JSON property `cfgScale`
+        # @return [Float]
+        attr_accessor :cfg_scale
+      
         # Optional. Video codec to use for output.
         # Corresponds to the JSON property `codec`
         # @return [String]
@@ -124,6 +129,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @anchor_last_frame = args[:anchor_last_frame] if args.key?(:anchor_last_frame)
+          @cfg_scale = args[:cfg_scale] if args.key?(:cfg_scale)
           @codec = args[:codec] if args.key?(:codec)
           @conditioning_frames = args[:conditioning_frames] if args.key?(:conditioning_frames)
           @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
@@ -1707,6 +1713,12 @@ module Google
       class GenaiVertexV1beta1EnvironmentConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The environment ID for the interaction. If specified, the request
+        # will update the existing environment instead of creating a new one.
+        # Corresponds to the JSON property `environmentId`
+        # @return [String]
+        attr_accessor :environment_id
+      
         # Network egress configuration for the environment.
         # Corresponds to the JSON property `networkAllowlist`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1EnvironmentConfigEnvironmentNetworkEgressAllowlist]
@@ -1728,6 +1740,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @environment_id = args[:environment_id] if args.key?(:environment_id)
           @network_allowlist = args[:network_allowlist] if args.key?(:network_allowlist)
           @network_mode = args[:network_mode] if args.key?(:network_mode)
           @sources = args[:sources] if args.key?(:sources)
@@ -3236,6 +3249,21 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Configuration for an environment that lives on the client connection rather
+        # than in a server-managed sandbox. When set (via Interaction.local_environment),
+        # the agent's filesystem and shell are treated as living on the client: the
+        # agent's built-in environment operations (e.g. reading/listing/editing files
+        # and running commands) are suspended on the server and yielded back to the
+        # client to execute, with their results returned on a subsequent turn. This is
+        # mutually exclusive with a server-managed `EnvironmentConfig` (
+        # remote_environment), since the environment is either on the client or in a
+        # server sandbox, never both. This governs only the agent's built-in environment.
+        # Client-declared function tools are always executed on the client regardless
+        # of this field.
+        # Corresponds to the JSON property `localEnvironment`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1LocalEnvironmentConfig]
+        attr_accessor :local_environment
+      
         # Interaction for generating the completion using models.
         # Corresponds to the JSON property `modelInteraction`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ModelInteraction]
@@ -3349,6 +3377,7 @@ module Google
           @env_id = args[:env_id] if args.key?(:env_id)
           @environment_id = args[:environment_id] if args.key?(:environment_id)
           @id = args[:id] if args.key?(:id)
+          @local_environment = args[:local_environment] if args.key?(:local_environment)
           @model_interaction = args[:model_interaction] if args.key?(:model_interaction)
           @outputs = args[:outputs] if args.key?(:outputs)
           @previous_interaction_id = args[:previous_interaction_id] if args.key?(:previous_interaction_id)
@@ -3476,17 +3505,20 @@ module Google
       class GenaiVertexV1beta1InteractionStreamingEvent
         include Google::Apis::Core::Hashable
       
-        # The content block delta data, used for content.delta events.
+        # The content block delta data, used for content.delta events. Legacy content-
+        # based streaming event, used when steps are disabled.
         # Corresponds to the JSON property `contentDelta`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ContentDelta]
         attr_accessor :content_delta
       
-        # The content block start data, used for content.start events.
+        # The content block start data, used for content.start events. Legacy content-
+        # based streaming event, used when steps are disabled.
         # Corresponds to the JSON property `contentStart`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ContentStart]
         attr_accessor :content_start
       
-        # The content block stop data, used for content.stop events.
+        # The content block stop data, used for content.stop events. Legacy content-
+        # based streaming event, used when steps are disabled.
         # Corresponds to the JSON property `contentStop`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ContentStop]
         attr_accessor :content_stop
@@ -3502,22 +3534,26 @@ module Google
         # @return [String]
         attr_accessor :event_id
       
-        # The interaction data, used for interaction.complete events.
+        # The interaction data, used for interaction.complete events. Legacy event, used
+        # when steps are disabled.
         # Corresponds to the JSON property `interactionCompleteEvent`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1InteractionCompleteEvent]
         attr_accessor :interaction_complete_event
       
-        # The interaction data, used for interaction.completed events.
+        # The interaction data, used for interaction.completed events. Used when steps
+        # are enabled.
         # Corresponds to the JSON property `interactionCompletedEvent`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1InteractionCompletedSseEvent]
         attr_accessor :interaction_completed_event
       
-        # The interaction data, used for interaction.created events.
+        # The interaction data, used for interaction.created events. Used when steps are
+        # enabled.
         # Corresponds to the JSON property `interactionCreatedEvent`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1InteractionCreatedSseEvent]
         attr_accessor :interaction_created_event
       
-        # The interaction data, used for interaction.start events.
+        # The interaction data, used for interaction.start events. Legacy event, used
+        # when steps are disabled.
         # Corresponds to the JSON property `interactionStartEvent`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1InteractionStartEvent]
         attr_accessor :interaction_start_event
@@ -3532,17 +3568,20 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1StreamMetadata]
         attr_accessor :metadata
       
-        # The step delta data, used for step.delta events.
+        # The step delta data, used for step.delta events. Step-based streaming event,
+        # used when steps are enabled.
         # Corresponds to the JSON property `stepDelta`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1StepDelta]
         attr_accessor :step_delta
       
-        # The step start data, used for step.start events.
+        # The step start data, used for step.start events. Step-based streaming event,
+        # used when steps are enabled.
         # Corresponds to the JSON property `stepStart`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1StepStart]
         attr_accessor :step_start
       
-        # The step stop data, used for step.stop events.
+        # The step stop data, used for step.stop events. Step-based streaming event,
+        # used when steps are enabled.
         # Corresponds to the JSON property `stepStop`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1StepStop]
         attr_accessor :step_stop
@@ -3716,6 +3755,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Configuration for an environment that lives on the client connection rather
+      # than in a server-managed sandbox. When set (via Interaction.local_environment),
+      # the agent's filesystem and shell are treated as living on the client: the
+      # agent's built-in environment operations (e.g. reading/listing/editing files
+      # and running commands) are suspended on the server and yielded back to the
+      # client to execute, with their results returned on a subsequent turn. This is
+      # mutually exclusive with a server-managed `EnvironmentConfig` (
+      # remote_environment), since the environment is either on the client or in a
+      # server sandbox, never both. This governs only the agent's built-in environment.
+      # Client-declared function tools are always executed on the client regardless
+      # of this field.
+      class GenaiVertexV1beta1LocalEnvironmentConfig
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -6592,16 +6654,16 @@ module Google
         end
       end
       
-      # Resource representing an Agent Anomaly Detection Scope.
+      # Represents an Agent Anomaly Detection Scope.
       class GoogleCloudAiplatformV1beta1AgentAnomalyDetectionScope
         include Google::Apis::Core::Hashable
       
-        # Optional. User provided display name of the AgentAnomalyDetectionScope.
+        # Optional. User-provided display name of the AgentAnomalyDetectionScope.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Required. Customer owned Cloud Logging bucket resource names attached to this
+        # Required. Customer-owned Cloud Logging bucket resource names attached to this
         # scope. Format: `projects/`project`/locations/`location`/buckets/`bucket``.
         # Corresponds to the JSON property `logBuckets`
         # @return [Array<String>]
@@ -6614,15 +6676,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Customer owned Cloud Observability bucket resource names attached to
+        # Required. Customer-owned Cloud Observability bucket resource names attached to
         # this scope. Format: `projects/`project`/locations/`location`/
         # observationBuckets/`observation_bucket``.
         # Corresponds to the JSON property `observabilityBuckets`
         # @return [Array<String>]
         attr_accessor :observability_buckets
       
-        # Output only. The lifecycle state of the scope. See `State` for the semantics
-        # of each value.
+        # Output only. The lifecycle state of the scope.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -6790,8 +6851,8 @@ module Google
         # @return [String]
         attr_accessor :agent_type
       
-        # Output only. The GCP location (region) of the agent resource (e.g. `us-
-        # central1`).
+        # Output only. The Google Cloud location (region) of the agent resource (for
+        # example, `us-central1`).
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -6850,8 +6911,7 @@ module Google
         end
       end
       
-      # Response containing aggregated AnalyzedSession statistics, grouped by
-      # MonitoredAgent.
+      # Contains aggregated AnalyzedSession statistics, grouped by MonitoredAgent.
       class GoogleCloudAiplatformV1beta1AggregateAnalyzedSessionsResponse
         include Google::Apis::Core::Hashable
       
@@ -6884,12 +6944,11 @@ module Google
         end
       end
       
-      # Aggregated statistics for one MonitoredAgent.
+      # Contains aggregated statistics for one MonitoredAgent.
       class GoogleCloudAiplatformV1beta1AggregateAnalyzedSessionsResponseAgentAggregate
         include Google::Apis::Core::Hashable
       
-        # Output only. The human-readable display name of the MonitoredAgent,
-        # denormalized from `monitored_agents.display_name`.
+        # Output only. The human-readable display name of the MonitoredAgent.
         # Corresponds to the JSON property `agentDisplayName`
         # @return [String]
         attr_accessor :agent_display_name
@@ -6900,9 +6959,8 @@ module Google
         # @return [String]
         attr_accessor :agent_resource_name
       
-        # Output only. The enablement state of the MonitoredAgent (e.g. ACTIVE, DISABLED,
-        # ENABLING, INELIGIBLE, NEEDS_ACTION), denormalized from `monitored_agents.
-        # state`.
+        # Output only. The enablement state of the MonitoredAgent (for example, ACTIVE,
+        # DISABLED, or ENABLING).
         # Corresponds to the JSON property `agentStatus`
         # @return [String]
         attr_accessor :agent_status
@@ -6917,9 +6975,8 @@ module Google
         # @return [String]
         attr_accessor :latest_session_time
       
-        # Output only. The GCP location (region) of the agent (e.g. `us-central1`).
-        # Denormalized from `monitored_agents.location`; empty when the agent is not
-        # enrolled or its location column is empty.
+        # Output only. The Google Cloud location (region) of the agent (for example, `us-
+        # central1`). Empty when the agent is not enrolled or its location is unknown.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -7041,11 +7098,11 @@ module Google
         end
       end
       
-      # An analyzed invocation for monitored agent's session.
+      # Represents an analyzed invocation for a monitored agent's session.
       class GoogleCloudAiplatformV1beta1AnalyzedInvocation
         include Google::Apis::Core::Hashable
       
-        # Detailed assessment for an analyzed session.
+        # Contains the detailed assessment for an analyzed session.
         # Corresponds to the JSON property `assessment`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Assessment]
         attr_accessor :assessment
@@ -7078,16 +7135,14 @@ module Google
         end
       end
       
-      # An analyzed session for a monitored agent.
+      # Represents an analyzed session for a monitored agent.
       class GoogleCloudAiplatformV1beta1AnalyzedSession
         include Google::Apis::Core::Hashable
       
         # Output only. The human-readable display name of the MonitoredAgent that owns
-        # this session, denormalized from `monitored_agents.display_name` so the UI can
-        # render an agent name in the per-session feed without an extra `
-        # getMonitoredAgent` round-trip. May be empty when the session's agent_id is not
-        # enrolled as a MonitoredAgent (i.e. the JOIN missed); the `agent_resource_name`
-        # URN is always present and can be used as a fallback identifier.
+        # this session. May be empty when the session's agent is not enrolled as a
+        # MonitoredAgent; the `agent_resource_name` is always present and can be used as
+        # a fallback identifier.
         # Corresponds to the JSON property `agentDisplayName`
         # @return [String]
         attr_accessor :agent_display_name
@@ -7099,15 +7154,14 @@ module Google
         attr_accessor :agent_resource_name
       
         # Output only. The current enablement state of the MonitoredAgent that owns this
-        # session (e.g. ACTIVE, DISABLED, ENABLING, INELIGIBLE, NEEDS_ACTION),
-        # denormalized from `monitored_agents.state`. Defaults to
-        # ENABLEMENT_STATE_UNSPECIFIED when the agent is not enrolled (the JOIN missed)
-        # or its state column is empty / unknown.
+        # session (for example, ACTIVE, DISABLED, or ENABLING). Defaults to
+        # ENABLEMENT_STATE_UNSPECIFIED when the agent is not enrolled or its state is
+        # unknown.
         # Corresponds to the JSON property `agentState`
         # @return [String]
         attr_accessor :agent_state
       
-        # Detailed assessment for an analyzed session.
+        # Contains the detailed assessment for an analyzed session.
         # Corresponds to the JSON property `assessment`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Assessment]
         attr_accessor :assessment
@@ -7122,9 +7176,9 @@ module Google
         # @return [String]
         attr_accessor :latest_analyzed_time
       
-        # Output only. The GCP location (region) of the agent that ran this session (e.g.
-        # `us-central1`). Denormalized from `monitored_agents.location`; empty when the
-        # agent is not enrolled or its location column is empty.
+        # Output only. The Google Cloud location (region) of the agent that ran this
+        # session (for example, `us-central1`). Empty when the agent is not enrolled or
+        # its location is unknown.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -7176,7 +7230,7 @@ module Google
         end
       end
       
-      # Breakdown of anomalies by severity.
+      # Breaks down anomalies by severity.
       class GoogleCloudAiplatformV1beta1AnalyzedSessionSeveritySummary
         include Google::Apis::Core::Hashable
       
@@ -7185,21 +7239,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :detector_ids
       
-        # Output only. The number of distinct sessions whose MAX severity equals `
-        # severity_level`. Each session is counted in exactly one bucket -- the highest
-        # severity that any of its detectors reached -- so summing `sessions_count`
-        # across all populated entries in a `severities` map equals the total anomalous
-        # session count for that scope (per-agent or view summary). Distinct from `
-        # detector_ids.size`: a session whose detectors fire at LOW and CRITICAL
-        # contributes one entry to `sessions_count` (in CRITICAL only) but contributes
-        # detector IDs to BOTH the LOW and CRITICAL buckets' `detector_ids` lists. For
-        # AAD audit landing-page scorecards, prefer `sessions_count` -- "Critical
-        # anomalies" means sessions ranked critical, not distinct critical-firing
-        # detectors. On AggregateAnalyzedSessionsResponse.summary, this is a TRUE GLOBAL
-        # count across all anomalous active agents in scope (not page-scoped). On per-
-        # agent entries within `agent_aggregates`, it's per-agent. On
-        # ListAnalyzedSessionsResponse, it is currently page-scoped to match the
-        # existing summary semantics on that API.
+        # Output only. The number of distinct sessions whose maximum severity equals `
+        # severity_level`. Each session is counted in exactly one bucket (its highest
+        # severity). Scope depends on where this appears: a global count on `
+        # AggregateAnalyzedSessionsResponse.summary`, per-agent on `agent_aggregates`
+        # entries, and page-scoped on `ListAnalyzedSessionsResponse`.
         # Corresponds to the JSON property `sessionsCount`
         # @return [Fixnum]
         attr_accessor :sessions_count
@@ -7780,7 +7824,7 @@ module Google
         end
       end
       
-      # Detailed assessment for an analyzed session.
+      # Contains the detailed assessment for an analyzed session.
       class GoogleCloudAiplatformV1beta1Assessment
         include Google::Apis::Core::Hashable
       
@@ -17672,6 +17716,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key specification that can be applied
+        # to a Vertex AI resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Optional. The Google Cloud Storage URI that stores the metric specification..
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
@@ -17707,6 +17757,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
           @labels = args[:labels] if args.key?(:labels)
           @metric = args[:metric] if args.key?(:metric)
@@ -23676,6 +23727,123 @@ module Google
           @cpu_utilization_target = args[:cpu_utilization_target] if args.key?(:cpu_utilization_target)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
+        end
+      end
+      
+      # Feedback context is a resource that represents additional information about
+      # the conversation where the feedback was given, such as the conversation
+      # history, system instructions, etc. If provided, feedback context allows to
+      # correlate the feedback with the conversation, even if the original session is
+      # deleted or not available.
+      class GoogleCloudAiplatformV1beta1FeedbackContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The session events from the originating session.
+        # Corresponds to the JSON property `contextEvents`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SessionEvent>]
+        attr_accessor :context_events
+      
+        # Identifier. The resource name. Assigned by the server on create. Format: `
+        # projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        # feedbackEntries/`feedback_entry`/feedbackContext`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_events = args[:context_events] if args.key?(:context_events)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # FeedbackEntry is a resource that represents a user's feedback on a
+      # conversation with an agent.
+      class GoogleCloudAiplatformV1beta1FeedbackEntry
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the entry was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Additional key-value metadata associated with the feedback.
+        # Corresponds to the JSON property `customMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_metadata
+      
+        # Required. The ID of the event within the session that the feedback relates to.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # 
+        # Corresponds to the JSON property `feedbackLabels`
+        # @return [Array<String>]
+        attr_accessor :feedback_labels
+      
+        # Optional. Qualitative free-form comments provided by the user.
+        # Corresponds to the JSON property `feedbackText`
+        # @return [String]
+        attr_accessor :feedback_text
+      
+        # Required. The coarse-grained type of feedback provided by the user. Must be
+        # set to a value other than `FEEDBACK_TYPE_UNSPECIFIED`.
+        # Corresponds to the JSON property `feedbackType`
+        # @return [String]
+        attr_accessor :feedback_type
+      
+        # Identifier. The resource name. Assigned by the server on create. Format: `
+        # projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        # feedbackEntries/`feedback_entry``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The ID of the session that the feedback relates to.
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Optional. The surface that the feedback originated from.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. The time at which the entry was most recently updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. A caller-supplied identifier for the user who provided the feedback.
+        # The semantics of this field (for example whether it is an opaque token, a
+        # hashed value, or a user-visible identifier) are determined by the calling
+        # application.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_metadata = args[:custom_metadata] if args.key?(:custom_metadata)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @feedback_labels = args[:feedback_labels] if args.key?(:feedback_labels)
+          @feedback_text = args[:feedback_text] if args.key?(:feedback_text)
+          @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
+          @name = args[:name] if args.key?(:name)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @source = args[:source] if args.key?(:source)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -29755,14 +29923,10 @@ module Google
       class GoogleCloudAiplatformV1beta1ListAnalyzedSessionsResponseViewSummary
         include Google::Apis::Core::Hashable
       
-        # Output only. The number of distinct agents matching the request scope that
-        # have at least one anomalous session in the time window. On `
-        # AggregateAnalyzedSessionsResponse.summary` (wildcard parent), this is a true
-        # GLOBAL count across all anomalous active agents, NOT the page-row count. The
-        # denominator for an "anomalous active agents" scorecard pairs this with `
-        # ListMonitoredAgentsResponse.total_size` (filtered to `state = ACTIVE`). On `
-        # ListAnalyzedSessionsResponse.summary`, this field is not populated (the API is
-        # per-session, not per-agent).
+        # Output only. The number of distinct agents in the request scope with at least
+        # one anomalous session in the time window. On `
+        # AggregateAnalyzedSessionsResponse.summary` this is a global count; it is not
+        # populated on `ListAnalyzedSessionsResponse.summary`.
         # Corresponds to the JSON property `anomalousAgentsCount`
         # @return [Fixnum]
         attr_accessor :anomalous_agents_count
@@ -29773,7 +29937,7 @@ module Google
         attr_accessor :anomalous_sessions_count
       
         # Output only. The number of distinct sessions in the time window that were
-        # scanned by Stage 2 LLM judges.
+        # scanned by the LLM judge.
         # Corresponds to the JSON property `llmScannedSessionsCount`
         # @return [Fixnum]
         attr_accessor :llm_scanned_sessions_count
@@ -30554,6 +30718,32 @@ module Google
         end
       end
       
+      # Response message for ListFeedbackEntries.
+      class GoogleCloudAiplatformV1beta1ListFeedbackEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The page of FeedbackEntries matching the request.
+        # Corresponds to the JSON property `feedbackEntries`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry>]
+        attr_accessor :feedback_entries
+      
+        # A token to retrieve the next page. Absence of this field indicates there are
+        # no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feedback_entries = args[:feedback_entries] if args.key?(:feedback_entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for JobService.ListHyperparameterTuningJobs
       class GoogleCloudAiplatformV1beta1ListHyperparameterTuningJobsResponse
         include Google::Apis::Core::Hashable
@@ -30961,10 +31151,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The total number of MonitoredAgents in the request scope after the request `
-        # filter` (if any) is applied. With no filter this is the unconditional count of
-        # MonitoredAgents in the parent; with `filter = "state = ACTIVE"` it is the
-        # active-agent count, and so on.
+        # The total number of MonitoredAgents matching the request, after any `filter`
+        # is applied.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
@@ -37141,7 +37329,7 @@ module Google
         end
       end
       
-      # A monitored agent in a specific Location.
+      # Represents a monitored agent in a specific Location.
       class GoogleCloudAiplatformV1beta1MonitoredAgent
         include Google::Apis::Core::Hashable
       
@@ -47400,6 +47588,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :samples_per_prompt
       
+        # Optional. Number of steps for the tuning job (mutually exclusive with
+        # epoch_count).
+        # Corresponds to the JSON property `stepCount`
+        # @return [Fixnum]
+        attr_accessor :step_count
+      
         # Optional. The thinking budget for the tuning job to optimize for (Gemini 2.5
         # only). * -1 means dynamic thinking * 0 means no thinking * > 0 means thinking
         # budget in tokens If not set, default to -1 (dynamic thinking).
@@ -47429,6 +47623,7 @@ module Google
           @learning_rate_multiplier = args[:learning_rate_multiplier] if args.key?(:learning_rate_multiplier)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
           @samples_per_prompt = args[:samples_per_prompt] if args.key?(:samples_per_prompt)
+          @step_count = args[:step_count] if args.key?(:step_count)
           @thinking_budget = args[:thinking_budget] if args.key?(:thinking_budget)
           @thinking_level = args[:thinking_level] if args.key?(:thinking_level)
         end
