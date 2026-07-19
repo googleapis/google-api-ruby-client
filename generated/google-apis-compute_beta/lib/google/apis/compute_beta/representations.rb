@@ -20807,6 +20807,7 @@ module Google
           property :ipv6_access_type, as: 'ipv6AccessType'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :network_tier, as: 'networkTier'
           property :pdp_scope, as: 'pdpScope'
           collection :public_delegated_prefixs, as: 'publicDelegatedPrefixs', class: Google::Apis::ComputeBeta::PublicAdvertisedPrefixPublicDelegatedPrefix, decorator: Google::Apis::ComputeBeta::PublicAdvertisedPrefixPublicDelegatedPrefix::Representation
       
@@ -20875,6 +20876,7 @@ module Google
           property :kind, as: 'kind'
           property :mode, as: 'mode'
           property :name, as: 'name'
+          property :network_tier, as: 'networkTier'
           property :parent_prefix, as: 'parentPrefix'
           collection :public_delegated_sub_prefixs, as: 'publicDelegatedSubPrefixs', class: Google::Apis::ComputeBeta::PublicDelegatedPrefixPublicDelegatedSubPrefix, decorator: Google::Apis::ComputeBeta::PublicDelegatedPrefixPublicDelegatedSubPrefix::Representation
       
