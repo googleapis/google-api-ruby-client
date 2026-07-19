@@ -258,6 +258,62 @@ module Google
       end
       
       # 
+      class Agent
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # 
+      class AgentAnomaly
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `confidenceScore`
+        # @return [Float]
+        attr_accessor :confidence_score
+      
+        # 
+        # Corresponds to the JSON property `detectorReferences`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::DetectorReference>]
+        attr_accessor :detector_references
+      
+        # 
+        # Corresponds to the JSON property `invocationReferences`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::InvocationReference>]
+        attr_accessor :invocation_references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
+          @detector_references = args[:detector_references] if args.key?(:detector_references)
+          @invocation_references = args[:invocation_references] if args.key?(:invocation_references)
+        end
+      end
+      
+      # 
       class AgentDataAccessEvent
         include Google::Apis::Core::Hashable
       
@@ -291,6 +347,25 @@ module Google
           @event_time = args[:event_time] if args.key?(:event_time)
           @operation = args[:operation] if args.key?(:operation)
           @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
+        end
+      end
+      
+      # 
+      class AgentSession
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_id = args[:session_id] if args.key?(:session_id)
         end
       end
       
@@ -1819,6 +1894,49 @@ module Google
       end
       
       # 
+      class DetectorReference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `detectorId`
+        # @return [String]
+        attr_accessor :detector_id
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # 
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # 
+        # Corresponds to the JSON property `recommendation`
+        # @return [String]
+        attr_accessor :recommendation
+      
+        # 
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detector_id = args[:detector_id] if args.key?(:detector_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @recommendation = args[:recommendation] if args.key?(:recommendation)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # 
       class DiscoveredWorkload
         include Google::Apis::Core::Hashable
       
@@ -2367,9 +2485,24 @@ module Google
         attr_accessor :affected_resources
       
         # 
+        # Corresponds to the JSON property `agent`
+        # @return [Google::Apis::SecuritycenterV1beta2::Agent]
+        attr_accessor :agent
+      
+        # 
+        # Corresponds to the JSON property `agentAnomaly`
+        # @return [Google::Apis::SecuritycenterV1beta2::AgentAnomaly]
+        attr_accessor :agent_anomaly
+      
+        # 
         # Corresponds to the JSON property `agentDataAccessEvents`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::AgentDataAccessEvent>]
         attr_accessor :agent_data_access_events
+      
+        # 
+        # Corresponds to the JSON property `agentSessions`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::AgentSession>]
+        attr_accessor :agent_sessions
       
         # 
         # Corresponds to the JSON property `aiModel`
@@ -2709,7 +2842,10 @@ module Google
         def update!(**args)
           @access = args[:access] if args.key?(:access)
           @affected_resources = args[:affected_resources] if args.key?(:affected_resources)
+          @agent = args[:agent] if args.key?(:agent)
+          @agent_anomaly = args[:agent_anomaly] if args.key?(:agent_anomaly)
           @agent_data_access_events = args[:agent_data_access_events] if args.key?(:agent_data_access_events)
+          @agent_sessions = args[:agent_sessions] if args.key?(:agent_sessions)
           @ai_model = args[:ai_model] if args.key?(:ai_model)
           @application = args[:application] if args.key?(:application)
           @artifact_guard_policies = args[:artifact_guard_policies] if args.key?(:artifact_guard_policies)
@@ -4357,6 +4493,62 @@ module Google
       end
       
       # 
+      class GoogleCloudSecuritycenterV2Agent
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # 
+      class GoogleCloudSecuritycenterV2AgentAnomaly
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `confidenceScore`
+        # @return [Float]
+        attr_accessor :confidence_score
+      
+        # 
+        # Corresponds to the JSON property `detectorReferences`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2DetectorReference>]
+        attr_accessor :detector_references
+      
+        # 
+        # Corresponds to the JSON property `invocationReferences`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2InvocationReference>]
+        attr_accessor :invocation_references
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence_score = args[:confidence_score] if args.key?(:confidence_score)
+          @detector_references = args[:detector_references] if args.key?(:detector_references)
+          @invocation_references = args[:invocation_references] if args.key?(:invocation_references)
+        end
+      end
+      
+      # 
       class GoogleCloudSecuritycenterV2AgentDataAccessEvent
         include Google::Apis::Core::Hashable
       
@@ -4390,6 +4582,25 @@ module Google
           @event_time = args[:event_time] if args.key?(:event_time)
           @operation = args[:operation] if args.key?(:operation)
           @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
+        end
+      end
+      
+      # 
+      class GoogleCloudSecuritycenterV2AgentSession
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_id = args[:session_id] if args.key?(:session_id)
         end
       end
       
@@ -5917,6 +6128,49 @@ module Google
       end
       
       # 
+      class GoogleCloudSecuritycenterV2DetectorReference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `detectorId`
+        # @return [String]
+        attr_accessor :detector_id
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # 
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # 
+        # Corresponds to the JSON property `recommendation`
+        # @return [String]
+        attr_accessor :recommendation
+      
+        # 
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detector_id = args[:detector_id] if args.key?(:detector_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @recommendation = args[:recommendation] if args.key?(:recommendation)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # 
       class GoogleCloudSecuritycenterV2DiscoveredWorkload
         include Google::Apis::Core::Hashable
       
@@ -6432,9 +6686,24 @@ module Google
         attr_accessor :affected_resources
       
         # 
+        # Corresponds to the JSON property `agent`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Agent]
+        attr_accessor :agent
+      
+        # 
+        # Corresponds to the JSON property `agentAnomaly`
+        # @return [Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AgentAnomaly]
+        attr_accessor :agent_anomaly
+      
+        # 
         # Corresponds to the JSON property `agentDataAccessEvents`
         # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AgentDataAccessEvent>]
         attr_accessor :agent_data_access_events
+      
+        # 
+        # Corresponds to the JSON property `agentSessions`
+        # @return [Array<Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2AgentSession>]
+        attr_accessor :agent_sessions
       
         # 
         # Corresponds to the JSON property `aiModel`
@@ -6779,7 +7048,10 @@ module Google
         def update!(**args)
           @access = args[:access] if args.key?(:access)
           @affected_resources = args[:affected_resources] if args.key?(:affected_resources)
+          @agent = args[:agent] if args.key?(:agent)
+          @agent_anomaly = args[:agent_anomaly] if args.key?(:agent_anomaly)
           @agent_data_access_events = args[:agent_data_access_events] if args.key?(:agent_data_access_events)
+          @agent_sessions = args[:agent_sessions] if args.key?(:agent_sessions)
           @ai_model = args[:ai_model] if args.key?(:ai_model)
           @application = args[:application] if args.key?(:application)
           @artifact_guard_policies = args[:artifact_guard_policies] if args.key?(:artifact_guard_policies)
@@ -7127,6 +7399,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class GoogleCloudSecuritycenterV2InvocationReference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `invocationId`
+        # @return [String]
+        attr_accessor :invocation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invocation_id = args[:invocation_id] if args.key?(:invocation_id)
         end
       end
       
@@ -9930,6 +10221,25 @@ module Google
           @name = args[:name] if args.key?(:name)
           @sensitivity_score = args[:sensitivity_score] if args.key?(:sensitivity_score)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class InvocationReference
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `invocationId`
+        # @return [String]
+        attr_accessor :invocation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @invocation_id = args[:invocation_id] if args.key?(:invocation_id)
         end
       end
       
