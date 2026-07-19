@@ -4276,6 +4276,7 @@ module Google
       
           property :info_types, as: 'infoTypes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypes, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypes::Representation
       
+          property :min_count, :numeric_string => true, as: 'minCount'
         end
       end
       
