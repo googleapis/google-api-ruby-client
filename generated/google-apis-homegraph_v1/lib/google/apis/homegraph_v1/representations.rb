@@ -460,6 +460,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :commit_time, as: 'commitTime'
+          property :provider_version_time, as: 'providerVersionTime'
           hash :trait, as: 'trait'
         end
       end
