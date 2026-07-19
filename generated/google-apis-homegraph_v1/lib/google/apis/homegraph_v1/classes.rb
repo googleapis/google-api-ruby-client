@@ -898,6 +898,15 @@ module Google
         # @return [String]
         attr_accessor :commit_time
       
+        # Optional in write requests (e.g. ReportStateAndNotification). If set,
+        # represents the provider version timestamp of the existing trait in the
+        # database. The server will perform optimistic locking validation if this field
+        # is present and the experiment is enabled. It will not be persisted to the
+        # database.
+        # Corresponds to the JSON property `providerVersionTime`
+        # @return [String]
+        attr_accessor :provider_version_time
+      
         # The Provider Home API trait payload.
         # Corresponds to the JSON property `trait`
         # @return [Hash<String,Object>]
@@ -910,6 +919,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @commit_time = args[:commit_time] if args.key?(:commit_time)
+          @provider_version_time = args[:provider_version_time] if args.key?(:provider_version_time)
           @trait = args[:trait] if args.key?(:trait)
         end
       end
