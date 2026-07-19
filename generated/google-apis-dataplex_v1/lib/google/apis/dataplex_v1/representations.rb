@@ -4231,7 +4231,6 @@ module Google
       class GoogleCloudDataplexV1LookupContextRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :context, as: 'context'
           hash :options, as: 'options'
           collection :resources, as: 'resources'
         end
