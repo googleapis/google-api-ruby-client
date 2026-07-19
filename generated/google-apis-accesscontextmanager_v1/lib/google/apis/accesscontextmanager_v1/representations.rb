@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddRequestHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApiOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -274,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Modifier
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +299,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateServiceConnectEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -317,6 +335,12 @@ module Google
       end
       
       class ScopedAccessSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServicePattern
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -432,6 +456,14 @@ module Google
           collection :access_levels, as: 'accessLevels'
           property :session_settings, as: 'sessionSettings', class: Google::Apis::AccesscontextmanagerV1::SessionSettings, decorator: Google::Apis::AccesscontextmanagerV1::SessionSettings::Representation
       
+        end
+      end
+      
+      class AddRequestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -590,6 +622,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_level, as: 'accessLevel'
+          property :psc_endpoint, as: 'pscEndpoint', class: Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint, decorator: Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint::Representation
+      
           property :resource, as: 'resource'
         end
       end
@@ -683,6 +717,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_level, as: 'accessLevel'
+          property :psc_endpoint, as: 'pscEndpoint', class: Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint, decorator: Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint::Representation
+      
           property :resource, as: 'resource'
         end
       end
@@ -777,6 +813,14 @@ module Google
         end
       end
       
+      class Modifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_request_header, as: 'addRequestHeader', class: Google::Apis::AccesscontextmanagerV1::AddRequestHeader, decorator: Google::Apis::AccesscontextmanagerV1::AddRequestHeader::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -807,6 +851,13 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PrivateServiceConnectEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rule, as: 'forwardingRule'
         end
       end
       
@@ -853,6 +904,16 @@ module Google
       
           property :scope, as: 'scope', class: Google::Apis::AccesscontextmanagerV1::AccessScope, decorator: Google::Apis::AccesscontextmanagerV1::AccessScope::Representation
       
+        end
+      end
+      
+      class ServicePattern
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :modifiers, as: 'modifiers', class: Google::Apis::AccesscontextmanagerV1::Modifier, decorator: Google::Apis::AccesscontextmanagerV1::Modifier::Representation
+      
+          property :pattern, as: 'pattern'
+          property :service, as: 'service'
         end
       end
       
@@ -947,8 +1008,11 @@ module Google
       class VpcAccessibleServices
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_service_patterns, as: 'allowedServicePatterns', class: Google::Apis::AccesscontextmanagerV1::ServicePattern, decorator: Google::Apis::AccesscontextmanagerV1::ServicePattern::Representation
+      
           collection :allowed_services, as: 'allowedServices'
           property :enable_restriction, as: 'enableRestriction'
+          collection :service_patterns_enforcement_scopes, as: 'servicePatternsEnforcementScopes'
         end
       end
       

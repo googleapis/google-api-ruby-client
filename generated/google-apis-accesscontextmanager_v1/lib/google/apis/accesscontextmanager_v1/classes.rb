@@ -198,6 +198,31 @@ module Google
         end
       end
       
+      # Adds a request header to the API.
+      class AddRequestHeader
+        include Google::Apis::Core::Hashable
+      
+        # HTTP header key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # HTTP header value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Identification for an API Operation.
       class ApiOperation
         include Google::Apis::Core::Hashable
@@ -892,6 +917,11 @@ module Google
         # @return [String]
         attr_accessor :access_level
       
+        # Specifies the Private Service Connect endpoint that an API call refers to.
+        # Corresponds to the JSON property `pscEndpoint`
+        # @return [Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint]
+        attr_accessor :psc_endpoint
+      
         # A Google Cloud resource from the service perimeter that you want to allow to
         # access data outside the perimeter. This field supports only projects. The
         # project format is `projects/`project_number``. You can't use `*` in this field
@@ -907,6 +937,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_level = args[:access_level] if args.key?(:access_level)
+          @psc_endpoint = args[:psc_endpoint] if args.key?(:psc_endpoint)
           @resource = args[:resource] if args.key?(:resource)
         end
       end
@@ -1277,6 +1308,11 @@ module Google
         # @return [String]
         attr_accessor :access_level
       
+        # Specifies the Private Service Connect endpoint that an API call refers to.
+        # Corresponds to the JSON property `pscEndpoint`
+        # @return [Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint]
+        attr_accessor :psc_endpoint
+      
         # A Google Cloud resource that is allowed to ingress the perimeter. Requests
         # from these resources will be allowed to access perimeter data. Currently only
         # projects and VPCs are allowed. Project format: `projects/`project_number`` VPC
@@ -1295,6 +1331,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_level = args[:access_level] if args.key?(:access_level)
+          @psc_endpoint = args[:psc_endpoint] if args.key?(:psc_endpoint)
           @resource = args[:resource] if args.key?(:resource)
         end
       end
@@ -1581,6 +1618,25 @@ module Google
         end
       end
       
+      # Modifier to apply to the API requests.
+      class Modifier
+        include Google::Apis::Core::Hashable
+      
+        # Adds a request header to the API.
+        # Corresponds to the JSON property `addRequestHeader`
+        # @return [Google::Apis::AccesscontextmanagerV1::AddRequestHeader]
+        attr_accessor :add_request_header
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_request_header = args[:add_request_header] if args.key?(:add_request_header)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1775,6 +1831,27 @@ module Google
         end
       end
       
+      # Specifies the Private Service Connect endpoint that an API call refers to.
+      class PrivateServiceConnectEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name of the global forwarding rule that identifies a Private
+        # Service Connect endpoint. Forwarding rule format: `//compute.googleapis.com/
+        # projects/`PROJECT_ID`/global/forwardingRules/`FORWARDING_RULE_ID``.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+        end
+      end
+      
       # A request to replace all existing Access Levels in an Access Policy with the
       # Access Levels provided. This is done atomically.
       class ReplaceAccessLevelsRequest
@@ -1910,6 +1987,39 @@ module Google
           @active_settings = args[:active_settings] if args.key?(:active_settings)
           @dry_run_settings = args[:dry_run_settings] if args.key?(:dry_run_settings)
           @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Service patterns used to allow access.
+      class ServicePattern
+        include Google::Apis::Core::Hashable
+      
+        # Modifiers to apply to the requests that match the URL pattern.
+        # Corresponds to the JSON property `modifiers`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::Modifier>]
+        attr_accessor :modifiers
+      
+        # URL pattern to allow. Only patterns of ".googleapis.com/*", "www.googleapis.
+        # com//*" and "*.appspot.com/* forms are supported, where should be
+        # alphanumerical name.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        # Supported service to allow.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @modifiers = args[:modifiers] if args.key?(:modifiers)
+          @pattern = args[:pattern] if args.key?(:pattern)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -2324,6 +2434,12 @@ module Google
       class VpcAccessibleServices
         include Google::Apis::Core::Hashable
       
+        # Specifies which Google services are allowed to be accessed from VPC networks
+        # in the service perimeter.
+        # Corresponds to the JSON property `allowedServicePatterns`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::ServicePattern>]
+        attr_accessor :allowed_service_patterns
+      
         # The list of APIs usable within the Service Perimeter. Must be empty unless '
         # enable_restriction' is True. You can specify a list of individual services, as
         # well as include the 'RESTRICTED-SERVICES' value, which automatically includes
@@ -2339,14 +2455,21 @@ module Google
         attr_accessor :enable_restriction
         alias_method :enable_restriction?, :enable_restriction
       
+        # Defines the enforcement scopes of service patterns.
+        # Corresponds to the JSON property `servicePatternsEnforcementScopes`
+        # @return [Array<String>]
+        attr_accessor :service_patterns_enforcement_scopes
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @allowed_service_patterns = args[:allowed_service_patterns] if args.key?(:allowed_service_patterns)
           @allowed_services = args[:allowed_services] if args.key?(:allowed_services)
           @enable_restriction = args[:enable_restriction] if args.key?(:enable_restriction)
+          @service_patterns_enforcement_scopes = args[:service_patterns_enforcement_scopes] if args.key?(:service_patterns_enforcement_scopes)
         end
       end
       
