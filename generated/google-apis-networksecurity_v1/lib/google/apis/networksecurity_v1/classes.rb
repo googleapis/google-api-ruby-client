@@ -408,8 +408,9 @@ module Google
         # client's certificate. A match happens when any principal matches with the rule.
         # Limited to 50 principals per Authorization Policy for regional internal
         # Application Load Balancers, regional external Application Load Balancers,
-        # cross-region internal Application Load Balancers, and Cloud Service Mesh. This
-        # field is not supported for global external Application Load Balancers.
+        # cross-region internal Application Load Balancers, and Cloud Service Mesh while
+        # 25 principals per Authorization Policy for global external Application Load
+        # Balancers.
         # Corresponds to the JSON property `principals`
         # @return [Array<Google::Apis::NetworksecurityV1::AuthzPolicyAuthzRulePrincipal>]
         attr_accessor :principals
@@ -4598,8 +4599,8 @@ module Google
         # @return [String]
         attr_accessor :custom_mirroring_profile
       
-        # Output only. Identifier used by the data-path. Unique within \`container,
-        # location\`.
+        # Output only. Identifier used by the data-path. Unique within ``container,
+        # location``.
         # Corresponds to the JSON property `dataPathId`
         # @return [Fixnum]
         attr_accessor :data_path_id
