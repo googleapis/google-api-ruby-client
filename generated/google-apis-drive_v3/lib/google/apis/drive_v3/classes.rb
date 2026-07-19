@@ -605,6 +605,11 @@ module Google
         # @return [String]
         attr_accessor :due_time
       
+        # Output only. The behavior of the approval when the file content changes.
+        # Corresponds to the JSON property `fileContentChangeBehavior`
+        # @return [String]
+        attr_accessor :file_content_change_behavior
+      
         # Information about a Drive user.
         # Corresponds to the JSON property `initiator`
         # @return [Google::Apis::DriveV3::User]
@@ -646,6 +651,7 @@ module Google
           @complete_time = args[:complete_time] if args.key?(:complete_time)
           @create_time = args[:create_time] if args.key?(:create_time)
           @due_time = args[:due_time] if args.key?(:due_time)
+          @file_content_change_behavior = args[:file_content_change_behavior] if args.key?(:file_content_change_behavior)
           @initiator = args[:initiator] if args.key?(:initiator)
           @kind = args[:kind] if args.key?(:kind)
           @modify_time = args[:modify_time] if args.key?(:modify_time)
@@ -4205,6 +4211,11 @@ module Google
         # @return [String]
         attr_accessor :due_time
       
+        # Optional. The behavior of the approval when the file content changes.
+        # Corresponds to the JSON property `fileContentChangeBehavior`
+        # @return [String]
+        attr_accessor :file_content_change_behavior
+      
         # Optional. Whether to lock the file when starting the approval.
         # Corresponds to the JSON property `lockFile`
         # @return [Boolean]
@@ -4229,6 +4240,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @due_time = args[:due_time] if args.key?(:due_time)
+          @file_content_change_behavior = args[:file_content_change_behavior] if args.key?(:file_content_change_behavior)
           @lock_file = args[:lock_file] if args.key?(:lock_file)
           @message = args[:message] if args.key?(:message)
           @reviewer_emails = args[:reviewer_emails] if args.key?(:reviewer_emails)
