@@ -5012,6 +5012,15 @@ module Google
         attr_accessor :gemini_bundle
         alias_method :gemini_bundle?, :gemini_bundle
       
+        # Optional. Timestamp of the most recent user-initiated update (seat count
+        # change or subscription term change). Unlike `update_time`, this field is only
+        # stamped when a customer explicitly updates the license (e.g. via the UI), and
+        # is not touched by system-driven writes (subscription pipeline, BALC
+        # propagation, etc.).
+        # Corresponds to the JSON property `lastUserUpdateTime`
+        # @return [String]
+        attr_accessor :last_user_update_time
+      
         # Required. Number of licenses purchased.
         # Corresponds to the JSON property `licenseCount`
         # @return [Fixnum]
@@ -5063,6 +5072,7 @@ module Google
           @end_date = args[:end_date] if args.key?(:end_date)
           @free_trial = args[:free_trial] if args.key?(:free_trial)
           @gemini_bundle = args[:gemini_bundle] if args.key?(:gemini_bundle)
+          @last_user_update_time = args[:last_user_update_time] if args.key?(:last_user_update_time)
           @license_count = args[:license_count] if args.key?(:license_count)
           @name = args[:name] if args.key?(:name)
           @start_date = args[:start_date] if args.key?(:start_date)
@@ -11131,6 +11141,16 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig]
         attr_accessor :healthcare_fhir_config
       
+        # Output only. Provides the icon URI of the data store's connector source, if
+        # this is a connector-backed data store. Empty for data stores without an
+        # associated connector source. In DataStoreService.ListDataStores and
+        # DataStoreService.GetDataStore, this is only populated when DataStoreView.
+        # DATA_STORE_VIEW_FULL is requested via ListDataStoresRequest.view or
+        # GetDataStoreRequest.view respectively.
+        # Corresponds to the JSON property `iconUri`
+        # @return [String]
+        attr_accessor :icon_uri
+      
         # Immutable. The fully qualified resource name of the associated
         # IdentityMappingStore. This field can only be set for acl_enabled DataStores
         # with `THIRD_PARTY` or `GSUITE` IdP. Format: `projects/`project`/locations/`
@@ -11224,6 +11244,7 @@ module Google
           @document_processing_config = args[:document_processing_config] if args.key?(:document_processing_config)
           @federated_search_config = args[:federated_search_config] if args.key?(:federated_search_config)
           @healthcare_fhir_config = args[:healthcare_fhir_config] if args.key?(:healthcare_fhir_config)
+          @icon_uri = args[:icon_uri] if args.key?(:icon_uri)
           @identity_mapping_store = args[:identity_mapping_store] if args.key?(:identity_mapping_store)
           @idp_config = args[:idp_config] if args.key?(:idp_config)
           @industry_vertical = args[:industry_vertical] if args.key?(:industry_vertical)
@@ -14076,6 +14097,15 @@ module Google
         attr_accessor :gemini_bundle
         alias_method :gemini_bundle?, :gemini_bundle
       
+        # Optional. Timestamp of the most recent user-initiated update (seat count
+        # change or subscription term change). Unlike `update_time`, this field is only
+        # stamped when a customer explicitly updates the license (e.g. via the UI), and
+        # is not touched by system-driven writes (subscription pipeline, BALC
+        # propagation, etc.).
+        # Corresponds to the JSON property `lastUserUpdateTime`
+        # @return [String]
+        attr_accessor :last_user_update_time
+      
         # Required. Number of licenses purchased.
         # Corresponds to the JSON property `licenseCount`
         # @return [Fixnum]
@@ -14128,6 +14158,7 @@ module Google
           @end_date = args[:end_date] if args.key?(:end_date)
           @free_trial = args[:free_trial] if args.key?(:free_trial)
           @gemini_bundle = args[:gemini_bundle] if args.key?(:gemini_bundle)
+          @last_user_update_time = args[:last_user_update_time] if args.key?(:last_user_update_time)
           @license_count = args[:license_count] if args.key?(:license_count)
           @name = args[:name] if args.key?(:name)
           @start_date = args[:start_date] if args.key?(:start_date)
@@ -27497,6 +27528,15 @@ module Google
         attr_accessor :gemini_bundle
         alias_method :gemini_bundle?, :gemini_bundle
       
+        # Optional. Timestamp of the most recent user-initiated update (seat count
+        # change or subscription term change). Unlike `update_time`, this field is only
+        # stamped when a customer explicitly updates the license (e.g. via the UI), and
+        # is not touched by system-driven writes (subscription pipeline, BALC
+        # propagation, etc.).
+        # Corresponds to the JSON property `lastUserUpdateTime`
+        # @return [String]
+        attr_accessor :last_user_update_time
+      
         # Required. Number of licenses purchased.
         # Corresponds to the JSON property `licenseCount`
         # @return [Fixnum]
@@ -27548,6 +27588,7 @@ module Google
           @end_date = args[:end_date] if args.key?(:end_date)
           @free_trial = args[:free_trial] if args.key?(:free_trial)
           @gemini_bundle = args[:gemini_bundle] if args.key?(:gemini_bundle)
+          @last_user_update_time = args[:last_user_update_time] if args.key?(:last_user_update_time)
           @license_count = args[:license_count] if args.key?(:license_count)
           @name = args[:name] if args.key?(:name)
           @start_date = args[:start_date] if args.key?(:start_date)
