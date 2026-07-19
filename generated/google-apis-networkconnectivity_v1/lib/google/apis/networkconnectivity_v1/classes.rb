@@ -1411,7 +1411,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # The reason of the error. This is a constant value that identifies the
+        # The reason for the error. This is a constant value that identifies the
         # proximate cause of the error. Error reasons are unique within a particular
         # domain of errors. This should be at most 63 characters and match a regular
         # expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
@@ -2559,6 +2559,37 @@ module Google
         end
       end
       
+      # Response for ListPscAuthorizationPolicies.
+      class ListPscAuthorizationPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of PscAuthorizationPolicies.
+        # Corresponds to the JSON property `pscAuthorizationPolicies`
+        # @return [Array<Google::Apis::NetworkconnectivityV1::PscAuthorizationPolicy>]
+        attr_accessor :psc_authorization_policies
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @psc_authorization_policies = args[:psc_authorization_policies] if args.key?(:psc_authorization_policies)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response for ListRegionalEndpoints.
       class ListRegionalEndpointsResponse
         include Google::Apis::Core::Hashable
@@ -3540,6 +3571,84 @@ module Google
         def update!(**args)
           @automated_dns_creation_spec = args[:automated_dns_creation_spec] if args.key?(:automated_dns_creation_spec)
           @service_attachment_uri = args[:service_attachment_uri] if args.key?(:service_attachment_uri)
+        end
+      end
+      
+      # Represents a PSC Authorization Policy.
+      class PscAuthorizationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Required. The authorization mode.
+        # Corresponds to the JSON property `authorizationMode`
+        # @return [String]
+        attr_accessor :authorization_mode
+      
+        # Required. List of authorized consumer resources allowed to connect. Supported
+        # values are: 1. Project resource name (e.g., `projects/`project_id``) 2.
+        # Wildcard `"*"` (grants global ingress authorization to the target).
+        # Corresponds to the JSON property `authorizedClientResources`
+        # @return [Array<String>]
+        attr_accessor :authorized_client_resources
+      
+        # Output only. The time when the PscAuthorizationPolicy was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The etag of the PscAuthorizationPolicy.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the PscAuthorizationPolicy. Format: projects/`project`/
+        # locations/`location`/pscAuthorizationPolicies/`psc_authorization_policy`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The full absolute URI of the targeted resource governed by this
+        # policy. For example, for an AgentRegistry resource, the format is: `//
+        # agentregistry.googleapis.com/projects/`project`/locations/`location``
+        # Corresponds to the JSON property `targetResourceUri`
+        # @return [String]
+        attr_accessor :target_resource_uri
+      
+        # Output only. The unique identifier of the PscAuthorizationPolicy.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. The time when the PscAuthorizationPolicy was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
+          @authorized_client_resources = args[:authorized_client_resources] if args.key?(:authorized_client_resources)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @target_resource_uri = args[:target_resource_uri] if args.key?(:target_resource_uri)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
