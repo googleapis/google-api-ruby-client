@@ -1871,6 +1871,8 @@ module Google
       
           property :data_access_config, as: 'dataAccessConfig', class: Google::Apis::DisplayvideoV2::AdvertiserDataAccessConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserDataAccessConfig::Representation
       
+          property :default_business_name, as: 'defaultBusinessName'
+          property :default_logo_asset_id, :numeric_string => true, as: 'defaultLogoAssetId'
           property :display_name, as: 'displayName'
           property :entity_status, as: 'entityStatus'
           property :general_config, as: 'generalConfig', class: Google::Apis::DisplayvideoV2::AdvertiserGeneralConfig, decorator: Google::Apis::DisplayvideoV2::AdvertiserGeneralConfig::Representation

@@ -165,6 +165,21 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::AdvertiserDataAccessConfig]
         attr_accessor :data_access_config
       
+        # Optional. The default business name for the advertiser. This is the value used
+        # by YouTube and Demand Gen ads under this advertiser if a business name is not
+        # provided.
+        # Corresponds to the JSON property `defaultBusinessName`
+        # @return [String]
+        attr_accessor :default_business_name
+      
+        # Optional. The asset ID of the default logo image for the advertiser. This is
+        # the asset ID that will be used by YouTube and Demand ads under this advertiser
+        # if a logo asset is not provided. You must use advertisers.adAssets.upload to
+        # upload this asset using the API.
+        # Corresponds to the JSON property `defaultLogoAssetId`
+        # @return [Fixnum]
+        attr_accessor :default_logo_asset_id
+      
         # Required. The display name of the advertiser. Must be UTF-8 encoded with a
         # maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
@@ -234,6 +249,8 @@ module Google
           @contains_eu_political_ads = args[:contains_eu_political_ads] if args.key?(:contains_eu_political_ads)
           @creative_config = args[:creative_config] if args.key?(:creative_config)
           @data_access_config = args[:data_access_config] if args.key?(:data_access_config)
+          @default_business_name = args[:default_business_name] if args.key?(:default_business_name)
+          @default_logo_asset_id = args[:default_logo_asset_id] if args.key?(:default_logo_asset_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_status = args[:entity_status] if args.key?(:entity_status)
           @general_config = args[:general_config] if args.key?(:general_config)
@@ -10352,9 +10369,7 @@ module Google
         # Optional. The third-party vendors measuring brand lift. The following third-
         # party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `
         # THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `
-        # THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL` *Warning*:
-        # Starting **July 13, 2026**, this field will no longer support `
-        # THIRD_PARTY_VENDOR_NIELSEN`.
+        # THIRD_PARTY_VENDOR_MACROMILL`
         # Corresponds to the JSON property `brandLiftVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig>]
         attr_accessor :brand_lift_vendor_configs
