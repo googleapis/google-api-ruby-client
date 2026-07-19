@@ -895,7 +895,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a high-level summary of URL visits for a given customer.
+        # Returns a high-level summary of URL visits for a given customer. Requires a
+        # Chrome Enterprise Premium subscription. If the customer does not have this
+        # subscription, query results will be empty.
         # @param [String] customer
         #   Required. The customer ID in the format "customers/`customer_id`".
         # @param [String] filter
@@ -935,6 +937,8 @@ module Google
         end
         
         # Returns summaries of URL visits for a given metric and breakdown dimension.
+        # Requires a Chrome Enterprise Premium subscription. If the customer does not
+        # have this subscription, query results will be empty.
         # @param [String] customer
         #   Required. The customer ID in the format "customers/`customer_id`".
         # @param [String] breakdown
