@@ -714,6 +714,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_uri, as: 'resourceUri'
+          collection :resource_uris, as: 'resourceUris'
         end
       end
       

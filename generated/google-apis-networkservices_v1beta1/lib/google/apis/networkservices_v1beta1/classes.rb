@@ -256,6 +256,12 @@ module Google
         # @return [String]
         attr_accessor :resource_uri
       
+        # Optional. List of supported Google Cloud networking proxies in the Project and
+        # Location. resource_uris is mutually exclusive with resource_uri.
+        # Corresponds to the JSON property `resourceUris`
+        # @return [Array<String>]
+        attr_accessor :resource_uris
+      
         def initialize(**args)
            update!(**args)
         end
@@ -263,6 +269,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @resource_uris = args[:resource_uris] if args.key?(:resource_uris)
         end
       end
       
@@ -273,7 +280,7 @@ module Google
       
         # Optional. The `:authority` header in the gRPC request sent from Envoy to the
         # extension service. It is required when the `service` field points to a backend
-        # service or a wasm plugin.
+        # service.
         # Corresponds to the JSON property `authority`
         # @return [String]
         attr_accessor :authority
@@ -328,11 +335,11 @@ module Google
         attr_accessor :labels
       
         # Optional. All backend services and forwarding rules referenced by this
-        # extension must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. Can be omitted for AuthzExtensions that
-        # do not reference a backend service. For more information, refer to [Backend
-        # services overview](https://cloud.google.com/load-balancing/docs/backend-
-        # service).
+        # extension must share the same load balancing scheme. The supported values are `
+        # INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. You can omit this field for `
+        # AuthzExtensions` resources that don't reference a backend service. For more
+        # information, see [Backend services overview](https://cloud.google.com/load-
+        # balancing/docs/backend-service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -355,12 +362,19 @@ module Google
         attr_accessor :name
       
         # Required. The reference to the service that runs the extension. To configure a
-        # callout extension, `service` must be a fully-qualified reference to a [backend
-        # service](https://cloud.google.com/compute/docs/reference/rest/v1/
-        # backendServices) in the format: `https://www.googleapis.com/compute/v1/
-        # projects/`project`/regions/`region`/backendServices/`backendService`` or `
-        # https://www.googleapis.com/compute/v1/projects/`project`/global/
-        # backendServices/`backendService``.
+        # callout extension: For global AuthzExtension, `service` must be a fully-
+        # qualified reference to a [backend service](https://cloud.google.com/compute/
+        # docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.
+        # com/compute/v1/projects/`project`/global/backendServices/`backendService``.
+        # For regional AuthzExtension, `service` must be a fully-qualified reference to
+        # one of the following: * a [backend service](https://cloud.google.com/compute/
+        # docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.
+        # com/compute/v1/projects/`project`/regions/`region`/backendServices/`
+        # backendService``. * a fully qualified domain name that can be resolved by the
+        # Google Cloud DNS. * `iap.googleapis.com` and it can only be referenced by an
+        # AuthzPolicy with the policyProfile set to REQUEST_AUTHZ. * `modelarmor..rep.
+        # googleapis.com` and it can only be referenced by an AuthzPolicy with the
+        # policyProfile set to CONTENT_AUTHZ.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -470,14 +484,15 @@ module Google
         # @return [String]
         attr_accessor :authorization_policy
       
-        # Optional. A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can
-        # be set to specify the authentication for traffic from the proxy to the actual
-        # endpoints. More specifically, it is applied to the outgoing traffic from the
-        # proxy to the endpoint. This is typically used for sidecar model where the
-        # proxy identifies itself as endpoint to the control plane, with the connection
-        # between sidecar and endpoint requiring authentication. If this field is not
-        # set, authentication is disabled(open). Applicable only when EndpointPolicyType
-        # is SIDECAR_PROXY.
+        # Optional. Deprecated: This field is not used and is a no-op. A URL referring
+        # to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the
+        # authentication for traffic from the proxy to the actual endpoints. More
+        # specifically, it is applied to the outgoing traffic from the proxy to the
+        # endpoint. This is typically used for sidecar model where the proxy identifies
+        # itself as endpoint to the control plane, with the connection between sidecar
+        # and endpoint requiring authentication. If this field is not set,
+        # authentication is disabled(open). Applicable only when EndpointPolicyType is
+        # SIDECAR_PROXY.
         # Corresponds to the JSON property `clientTlsPolicy`
         # @return [String]
         attr_accessor :client_tls_policy
