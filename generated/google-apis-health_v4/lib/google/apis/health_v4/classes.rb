@@ -1307,7 +1307,12 @@ module Google
         # @return [Google::Apis::HealthV4::TimeInHeartRateZoneRollupValue]
         attr_accessor :time_in_heart_rate_zone
       
-        # Represents the result of the rollup of the user's total calories.
+        # Represents the result of the rollup of the user's total calories. Note:
+        # Queries for the `total-calories` data type must include a time interval filter
+        # (such as `total_calories.interval.start_time` or `total_calories.interval.
+        # civil_start_time`). The maximum range is 14 days. Example filter query: `
+        # total_calories.interval.start_time >= "2026-04-20T00:00:00Z" AND
+        # total_calories.interval.start_time < "2026-04-21T00:00:00Z"`
         # Corresponds to the JSON property `totalCalories`
         # @return [Google::Apis::HealthV4::TotalCaloriesRollupValue]
         attr_accessor :total_calories
@@ -4677,7 +4682,12 @@ module Google
         # @return [Google::Apis::HealthV4::TimeInHeartRateZoneRollupValue]
         attr_accessor :time_in_heart_rate_zone
       
-        # Represents the result of the rollup of the user's total calories.
+        # Represents the result of the rollup of the user's total calories. Note:
+        # Queries for the `total-calories` data type must include a time interval filter
+        # (such as `total_calories.interval.start_time` or `total_calories.interval.
+        # civil_start_time`). The maximum range is 14 days. Example filter query: `
+        # total_calories.interval.start_time >= "2026-04-20T00:00:00Z" AND
+        # total_calories.interval.start_time < "2026-04-21T00:00:00Z"`
         # Corresponds to the JSON property `totalCalories`
         # @return [Google::Apis::HealthV4::TotalCaloriesRollupValue]
         attr_accessor :total_calories
@@ -5791,7 +5801,12 @@ module Google
         end
       end
       
-      # Represents the result of the rollup of the user's total calories.
+      # Represents the result of the rollup of the user's total calories. Note:
+      # Queries for the `total-calories` data type must include a time interval filter
+      # (such as `total_calories.interval.start_time` or `total_calories.interval.
+      # civil_start_time`). The maximum range is 14 days. Example filter query: `
+      # total_calories.interval.start_time >= "2026-04-20T00:00:00Z" AND
+      # total_calories.interval.start_time < "2026-04-21T00:00:00Z"`
       class TotalCaloriesRollupValue
         include Google::Apis::Core::Hashable
       
