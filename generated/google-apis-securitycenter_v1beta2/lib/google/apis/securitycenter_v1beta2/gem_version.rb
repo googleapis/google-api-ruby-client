@@ -16,13 +16,13 @@ module Google
   module Apis
     module SecuritycenterV1beta2
       # Version of the google-apis-securitycenter_v1beta2 gem
-      GEM_VERSION = "0.101.0"
+      GEM_VERSION = "0.102.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260619"
+      REVISION = "20260710"
     end
   end
 end
