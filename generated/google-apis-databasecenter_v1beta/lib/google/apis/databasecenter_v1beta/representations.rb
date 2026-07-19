@@ -772,6 +772,8 @@ module Google
           property :parent, as: 'parent'
           collection :signal_filters, as: 'signalFilters', class: Google::Apis::DatabasecenterV1beta::SignalFilter, decorator: Google::Apis::DatabasecenterV1beta::SignalFilter::Representation
       
+          collection :signal_products_filters, as: 'signalProductsFilters', class: Google::Apis::DatabasecenterV1beta::SignalProductsFilters, decorator: Google::Apis::DatabasecenterV1beta::SignalProductsFilters::Representation
+      
           collection :signal_type_groups, as: 'signalTypeGroups', class: Google::Apis::DatabasecenterV1beta::SignalTypeGroup, decorator: Google::Apis::DatabasecenterV1beta::SignalTypeGroup::Representation
       
         end
