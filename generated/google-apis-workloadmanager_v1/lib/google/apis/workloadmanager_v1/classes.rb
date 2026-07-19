@@ -31,7 +31,7 @@ module Google
         # @return [String]
         attr_accessor :dns_address
       
-        # Optional. Human readable form of a domain such as “google.com”.
+        # Optional. Human readable form of a domain such as `example.com`.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
