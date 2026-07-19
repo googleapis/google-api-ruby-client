@@ -391,6 +391,11 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::NfsExportOptions>]
         attr_accessor :nfs_export_options
       
+        # Optional configuration for restore backup operations.
+        # Corresponds to the JSON property `restoreConfig`
+        # @return [Google::Apis::FileV1beta1::RestoreConfig]
+        attr_accessor :restore_config
+      
         # The resource name of the backup, in the format `projects/`project_id`/
         # locations/`location_id`/backups/`backup_id``, that this file share has been
         # restored from.
@@ -414,6 +419,7 @@ module Google
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
           @name = args[:name] if args.key?(:name)
           @nfs_export_options = args[:nfs_export_options] if args.key?(:nfs_export_options)
+          @restore_config = args[:restore_config] if args.key?(:restore_config)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
           @source_backupdr_backup = args[:source_backupdr_backup] if args.key?(:source_backupdr_backup)
         end
@@ -2025,6 +2031,28 @@ module Google
         def update!(**args)
           @replicas = args[:replicas] if args.key?(:replicas)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Optional configuration for restore backup operations.
+      class RestoreConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Example: If you want to restore `/mnt/share/dir1/file.txt`, the path
+        # pattern must be `/dir1/file.txt`. If you want to restore `/mnt/share/dir1/`,
+        # the path pattern must be `/dir1`. Currently only single path is supported,
+        # Glob patterns are not supported.
+        # Corresponds to the JSON property `pathPatterns`
+        # @return [Array<String>]
+        attr_accessor :path_patterns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path_patterns = args[:path_patterns] if args.key?(:path_patterns)
         end
       end
       
