@@ -2893,6 +2893,8 @@ module Google
       
           property :data_access_config, as: 'dataAccessConfig', class: Google::Apis::DisplayvideoV4::AdvertiserDataAccessConfig, decorator: Google::Apis::DisplayvideoV4::AdvertiserDataAccessConfig::Representation
       
+          property :default_business_name, as: 'defaultBusinessName'
+          property :default_logo_asset_id, :numeric_string => true, as: 'defaultLogoAssetId'
           property :display_name, as: 'displayName'
           property :entity_status, as: 'entityStatus'
           property :general_config, as: 'generalConfig', class: Google::Apis::DisplayvideoV4::AdvertiserGeneralConfig, decorator: Google::Apis::DisplayvideoV4::AdvertiserGeneralConfig::Representation
@@ -5933,7 +5935,7 @@ module Google
       
           collection :devices, as: 'devices'
           collection :genders, as: 'genders'
-          property :network, as: 'network'
+          collection :networks, as: 'networks'
           property :surface_targeting_combinations, as: 'surfaceTargetingCombinations', class: Google::Apis::DisplayvideoV4::SurfaceTargetingCombinations, decorator: Google::Apis::DisplayvideoV4::SurfaceTargetingCombinations::Representation
       
           collection :youtube_select_lineups, as: 'youtubeSelectLineups', class: Google::Apis::DisplayvideoV4::YouTubeSelectLineUp, decorator: Google::Apis::DisplayvideoV4::YouTubeSelectLineUp::Representation
