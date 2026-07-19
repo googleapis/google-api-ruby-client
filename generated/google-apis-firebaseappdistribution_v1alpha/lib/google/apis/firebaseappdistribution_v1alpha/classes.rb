@@ -88,6 +88,11 @@ module Google
       class GoogleFirebaseAppdistroV1Release
         include Google::Apis::Core::Hashable
       
+        # Output only. Registration state of the Android package (BinaryType.APK).
+        # Corresponds to the JSON property `androidPackageRegistrationState`
+        # @return [String]
+        attr_accessor :android_package_registration_state
+      
         # Output only. A signed link (which expires in one hour) to directly download
         # the app binary (IPA/APK/AAB) file.
         # Corresponds to the JSON property `binaryDownloadUri`
@@ -152,6 +157,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @android_package_registration_state = args[:android_package_registration_state] if args.key?(:android_package_registration_state)
           @binary_download_uri = args[:binary_download_uri] if args.key?(:binary_download_uri)
           @build_version = args[:build_version] if args.key?(:build_version)
           @create_time = args[:create_time] if args.key?(:create_time)

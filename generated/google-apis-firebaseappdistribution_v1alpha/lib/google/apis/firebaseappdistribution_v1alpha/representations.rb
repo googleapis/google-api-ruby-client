@@ -379,6 +379,7 @@ module Google
       class GoogleFirebaseAppdistroV1Release
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_package_registration_state, as: 'androidPackageRegistrationState'
           property :binary_download_uri, as: 'binaryDownloadUri'
           property :build_version, as: 'buildVersion'
           property :create_time, as: 'createTime'
