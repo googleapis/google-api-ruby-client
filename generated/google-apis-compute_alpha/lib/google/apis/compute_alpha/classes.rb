@@ -16050,6 +16050,27 @@ module Google
         end
       end
       
+      # Metadata for FirewallPolicyRule operations.
+      class FirewallPolicyRuleOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The priority allocated for the firewall policy rule
+        # if query
+        # parameters specified minPriority/maxPriority.
+        # Corresponds to the JSON property `allocatedPriority`
+        # @return [Fixnum]
+        attr_accessor :allocated_priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_priority = args[:allocated_priority] if args.key?(:allocated_priority)
+        end
+      end
+      
       # 
       class FirewallPolicyRuleSecureTag
         include Google::Apis::Core::Hashable
@@ -20712,7 +20733,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -20753,7 +20775,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -20893,7 +20916,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -20934,7 +20958,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -28835,7 +28860,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -28876,7 +28902,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -28975,7 +29002,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -29016,7 +29044,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -29415,7 +29444,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -29456,7 +29486,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -29618,7 +29649,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -29659,7 +29691,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -30120,7 +30153,7 @@ module Google
       class InstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
-        # Flag to update all instances instead of specified list of “instances”.
+        # Flag to update all instances instead of specified list of "instances".
         # If the flag is set to true then the instances may not be specified
         # in the request.
         # Corresponds to the JSON property `allInstances`
@@ -30474,7 +30507,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -30515,7 +30549,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -30581,15 +30616,15 @@ module Google
       class InstanceGroupManagersListErrorsResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output Only] The list of errors of the managed instance group.
+        # Output only. The list of errors of the managed instance group.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeAlpha::InstanceManagedByIgmError>]
         attr_accessor :items
       
-        # Output only. [Output Only] This token allows you to get the next page of
-        # results for
-        # list requests. If the number of results is larger thanmaxResults, use the
-        # nextPageToken as a value for
+        # Output only. This token allows you to get the next page of results for list
+        # requests.
+        # If the number of results is larger than maxResults
+        # , then use the nextPageToken as a value for
         # the query parameter pageToken in the next list request.
         # Subsequent list requests will have their own nextPageToken to
         # continue paging through the results.
@@ -39109,6 +39144,33 @@ module Google
         end
       end
       
+      # Request to rename an interconnect.
+      class InterconnectsSetNameRequest
+        include Google::Apis::Core::Hashable
+      
+        # The current name of the interconnect.
+        # The name must be 1-63 characters long, and comply with RFC1035.
+        # Corresponds to the JSON property `currentName`
+        # @return [String]
+        attr_accessor :current_name
+      
+        # The new name of the interconnect.
+        # The name must be 1-63 characters long, and comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_name = args[:current_name] if args.key?(:current_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # 
       class InternalIpAddress
         include Google::Apis::Core::Hashable
@@ -42111,7 +42173,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -42152,7 +42215,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -42340,6 +42404,189 @@ module Google
         end
       end
       
+      # Represents a ManagedRuleset resource.
+      # Managed internally by Cloud Armor CLH for Managed Rules features.
+      # Customers can only view these resources to modify their Security Policies.
+      # For more information, see
+      # https://cloud.google.com/armor/docs/.
+      class ManagedRuleset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The change log for this managed ruleset.
+        # Corresponds to the JSON property `changeLog`
+        # @return [String]
+        attr_accessor :change_log
+      
+        # Output only. [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. [Output Only] The unique identifier for the resource. This
+        # identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Name of the resource. Generated internally when the resource is created.
+        # The name must be 1-63 characters long, and comply withRFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which
+        # cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. [Output Only] The list of managed rule IDs that are included in
+        # this managed ruleset.
+        # Corresponds to the JSON property `ruleIds`
+        # @return [Array<String>]
+        attr_accessor :rule_ids
+      
+        # Output only. [Output Only] The managed ruleset identifier that can be
+        # configured in
+        # Security Policy rules.
+        # Corresponds to the JSON property `rulesetId`
+        # @return [String]
+        attr_accessor :ruleset_id
+      
+        # Output only. [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_log = args[:change_log] if args.key?(:change_log)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @rule_ids = args[:rule_ids] if args.key?(:rule_ids)
+          @ruleset_id = args[:ruleset_id] if args.key?(:ruleset_id)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class ManagedRulesetList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # 
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::ManagedRuleset>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # 
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::ManagedRulesetList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # 
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::ManagedRulesetList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Represents a managed interface for an accelerator domain.
       # It defines the network endpoint and authentication configuration needed to
       # access specific management services like NMX-C or gNMI.
@@ -42386,8 +42633,8 @@ module Google
         attr_accessor :subnetwork
       
         # Required. The type of management service this interface provides.
-        # Supported types include NMX-C for partition management and gNMI for switch
-        # monitoring.
+        # Supported types include NMX-C for partition management, gNMI for switch
+        # monitoring, and TPU slice management.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -43050,7 +43297,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -43091,7 +43339,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -47206,6 +47455,14 @@ module Google
       class NetworkPolicyTrafficClassificationRuleMatcher
         include Google::Apis::Core::Hashable
       
+        # Address groups which should be matched against the traffic destination.
+        # Maximum number of destination address groups is 10.
+        # Example:
+        # projects//locations//addressGroups/.
+        # Corresponds to the JSON property `destAddressGroups`
+        # @return [Array<String>]
+        attr_accessor :dest_address_groups
+      
         # CIDR IP address range.
         # Maximum number of destination CIDR IP ranges allowed is 5000.
         # Corresponds to the JSON property `destIpRanges`
@@ -47229,6 +47486,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dest_address_groups = args[:dest_address_groups] if args.key?(:dest_address_groups)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
@@ -50612,6 +50870,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Operation::Error]
         attr_accessor :error
       
+        # Metadata for FirewallPolicyRule operations.
+        # Corresponds to the JSON property `firewallPolicyRuleOperationMetadata`
+        # @return [Google::Apis::ComputeAlpha::FirewallPolicyRuleOperationMetadata]
+        attr_accessor :firewall_policy_rule_operation_metadata
+      
         # 
         # Corresponds to the JSON property `getVersionOperationMetadata`
         # @return [Google::Apis::ComputeAlpha::GetVersionOperationMetadata]
@@ -50770,6 +51033,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
+          @firewall_policy_rule_operation_metadata = args[:firewall_policy_rule_operation_metadata] if args.key?(:firewall_policy_rule_operation_metadata)
           @get_version_operation_metadata = args[:get_version_operation_metadata] if args.key?(:get_version_operation_metadata)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
@@ -50815,7 +51079,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -50856,7 +51121,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -55311,7 +55577,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -55352,7 +55619,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -57780,7 +58048,7 @@ module Google
       class RegionInstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
-        # Flag to update all instances instead of specified list of “instances”.
+        # Flag to update all instances instead of specified list of "instances".
         # If the flag is set to true then the instances may not be specified
         # in the request.
         # Corresponds to the JSON property `allInstances`
@@ -60066,6 +60334,301 @@ module Google
           # `
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ReservationBlocksListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # ReservationConsumedInstance represents a consumed instance.
+      class ReservationConsumedInstance
+        include Google::Apis::Core::Hashable
+      
+        # The full URI of the instance resource.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # The service to which the instance belongs. Typically "COMPUTE".
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Status information for the instance's consumption of the reservation.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @service = args[:service] if args.key?(:service)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Status information for the instance's consumption of the reservation.
+      class ReservationConsumedInstanceStatus
+        include Google::Apis::Core::Hashable
+      
+        # A list of issues related to this instance's linkage to the reservation.
+        # Corresponds to the JSON property `linkageErrors`
+        # @return [Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus::LinkageErrors]
+        attr_accessor :linkage_errors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @linkage_errors = args[:linkage_errors] if args.key?(:linkage_errors)
+        end
+        
+        # A list of issues related to this instance's linkage to the reservation.
+        class LinkageErrors
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this
+          # operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus::LinkageErrors::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # Represents a single error encountered during the processing of an
+          # operation.
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error
+            # details. There is a set of defined message types to use for providing
+            # details.The syntax depends on the error code. For example,
+            # QuotaExceededInfo will have details when the error code is
+            # QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus::LinkageErrors::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error.
+            # This property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details.
+              # Example of an error when contacting the "pubsub.googleapis.com" API when it
+              # is not enabled:
+              # ` "reason": "API_DISABLED"
+              # "domain": "googleapis.com"
+              # "metadata": `
+              # "resource": "projects/123",
+              # "service": "pubsub.googleapis.com"
+              # `
+              # `
+              # This response indicates that the pubsub.googleapis.com API is not enabled.
+              # Example of an error that is returned when attempting to create a Spanner
+              # instance in a region that is out of stock:
+              # ` "reason": "STOCKOUT"
+              # "domain": "spanner.googleapis.com",
+              # "metadata": `
+              # "availableRegions": "us-central1,us-east2"
+              # `
+              # `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputeAlpha::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action.
+              # For example, if a quota check failed with an error indicating the calling
+              # project hasn't enabled the accessed service, this can contain a URL pointing
+              # directly to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputeAlpha::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user
+              # which can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputeAlpha::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputeAlpha::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
+        end
+      end
+      
+      # Response message for listing reservation consumed instances.
+      class ReservationConsumedInstancesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Uniquely identifies the type of this resource.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of ReservationConsumedInstance resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::ReservationConsumedInstance>]
+        attr_accessor :items
+      
+        # Identifies the resource as a list of reservation consumed instances.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for
+        # list requests.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning which replaces the result in some
+        # cases.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::ReservationConsumedInstancesListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning which replaces the result in some
+        # cases.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::ReservationConsumedInstancesListResponse::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
