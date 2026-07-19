@@ -1747,8 +1747,10 @@ module Google
         # @return [Google::Apis::GkehubV1beta::ConfigManagementHierarchyControllerConfig]
         attr_accessor :hierarchy_controller
       
-        # Optional. Deprecated: From version 1.21.0, automatic Feature management is
-        # unavailable, and Config Sync only supports manual upgrades.
+        # Optional. Deprecated: In Preview, automatic Feature management is unavailable
+        # from version 1.21.0 onwards, and Config Sync only supports manual upgrades. If
+        # set to manual upgrades, clear this field instead, which is behaviorally
+        # equivalent.
         # Corresponds to the JSON property `management`
         # @return [String]
         attr_accessor :management
