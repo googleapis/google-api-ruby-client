@@ -92,6 +92,9 @@ module Google
         # - "freeBusyReader" - Provides read access to free/busy information.
         # - "reader" - Provides read access to the calendar. Private events will appear
         # to users with reader access, but event details will be hidden.
+        # - "writerWithoutPrivateAccess" - Provides read and write access to the
+        # calendar. Private events will appear to users with writerWithoutPrivateAccess
+        # access, but event details will be hidden.
         # - "writer" - Provides read and write access to the calendar. Private events
         # will appear to users with writer access, and event details will be visible.
         # Provides read access to the calendar's ACLs.
@@ -296,6 +299,9 @@ module Google
         # - "freeBusyReader" - Provides read access to free/busy information.
         # - "reader" - Provides read access to the calendar. Private events will appear
         # to users with reader access, but event details will be hidden.
+        # - "writerWithoutPrivateAccess" - Provides read and write access to the
+        # calendar. Private events will appear to users with writerWithoutPrivateAccess
+        # access, but event details will be hidden.
         # - "writer" - Provides read and write access to the calendar. Private events
         # will appear to users with writer access, and event details will be visible.
         # - "owner" - Provides manager access to the calendar. This role has all of the
@@ -1410,6 +1416,12 @@ module Google
         # details.
         # - "confidential" - The event is private. This value is provided for
         # compatibility reasons.
+        # Note on recurring events: Changing the visibility of a single instance of a
+        # recurring event can affect all instances of the series. If the new setting is
+        # more restrictive (e.g. from public to private), it is applied to all instances.
+        # If the new setting is less restrictive (e.g. from private to public), the
+        # change is ignored. To make a recurring event less restrictive, you must update
+        # the parent recurring event.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
@@ -2191,6 +2203,9 @@ module Google
         # - "freeBusyReader" - The user has read access to free/busy information.
         # - "reader" - The user has read access to the calendar. Private events will
         # appear to users with reader access, but event details will be hidden.
+        # - "writerWithoutPrivateAccess" - The user has read and write access to the
+        # calendar. Private events will appear to users with writerWithoutPrivateAccess
+        # access, but event details will be hidden.
         # - "writer" - The user has read and write access to the calendar. Private
         # events will appear to users with writer access, and event details will be
         # visible.

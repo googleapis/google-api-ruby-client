@@ -503,6 +503,10 @@ module Google
         #   default is False.
         # @param [Boolean] show_hidden
         #   Whether to show hidden entries. Optional. The default is False.
+        # @param [Boolean] show_own_organization_only
+        #   Whether to show only entries for calendars from the organization. This
+        #   parameter is only applicable to Google Workspace users. Optional. The default
+        #   is False.
         # @param [String] sync_token
         #   Token obtained from the nextSyncToken field returned on the last page of
         #   results from the previous list request. It makes the result of this list
@@ -511,8 +515,8 @@ module Google
         #   returned. All entries deleted and hidden since the previous list request will
         #   always be in the result set and it is not allowed to set showDeleted neither
         #   showHidden to False.
-        #   To ensure client state consistency minAccessRole query parameter cannot be
-        #   specified together with nextSyncToken.
+        #   To ensure client state consistency minAccessRole and showOwnOrganizationOnly
+        #   query parameters cannot be specified together with nextSyncToken.
         #   If the syncToken expires, the server will respond with a 410 GONE response
         #   code and the client should clear its storage and perform a full
         #   synchronization without any syncToken.
@@ -537,7 +541,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_calendar_lists(max_results: nil, min_access_role: nil, page_token: nil, show_deleted: nil, show_hidden: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_calendar_lists(max_results: nil, min_access_role: nil, page_token: nil, show_deleted: nil, show_hidden: nil, show_own_organization_only: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'users/me/calendarList', options)
           command.response_representation = Google::Apis::CalendarV3::CalendarList::Representation
           command.response_class = Google::Apis::CalendarV3::CalendarList
@@ -546,6 +550,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['showDeleted'] = show_deleted unless show_deleted.nil?
           command.query['showHidden'] = show_hidden unless show_hidden.nil?
+          command.query['showOwnOrganizationOnly'] = show_own_organization_only unless show_own_organization_only.nil?
           command.query['syncToken'] = sync_token unless sync_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -657,6 +662,10 @@ module Google
         #   default is False.
         # @param [Boolean] show_hidden
         #   Whether to show hidden entries. Optional. The default is False.
+        # @param [Boolean] show_own_organization_only
+        #   Whether to show only entries for calendars from the organization. This
+        #   parameter is only applicable to Google Workspace users. Optional. The default
+        #   is False.
         # @param [String] sync_token
         #   Token obtained from the nextSyncToken field returned on the last page of
         #   results from the previous list request. It makes the result of this list
@@ -665,8 +674,8 @@ module Google
         #   returned. All entries deleted and hidden since the previous list request will
         #   always be in the result set and it is not allowed to set showDeleted neither
         #   showHidden to False.
-        #   To ensure client state consistency minAccessRole query parameter cannot be
-        #   specified together with nextSyncToken.
+        #   To ensure client state consistency minAccessRole and showOwnOrganizationOnly
+        #   query parameters cannot be specified together with nextSyncToken.
         #   If the syncToken expires, the server will respond with a 410 GONE response
         #   code and the client should clear its storage and perform a full
         #   synchronization without any syncToken.
@@ -691,7 +700,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_calendar_list(channel_object = nil, max_results: nil, min_access_role: nil, page_token: nil, show_deleted: nil, show_hidden: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_calendar_list(channel_object = nil, max_results: nil, min_access_role: nil, page_token: nil, show_deleted: nil, show_hidden: nil, show_own_organization_only: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'users/me/calendarList/watch', options)
           command.request_representation = Google::Apis::CalendarV3::Channel::Representation
           command.request_object = channel_object
@@ -702,6 +711,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['showDeleted'] = show_deleted unless show_deleted.nil?
           command.query['showHidden'] = show_hidden unless show_hidden.nil?
+          command.query['showOwnOrganizationOnly'] = show_own_organization_only unless show_own_organization_only.nil?
           command.query['syncToken'] = sync_token unless sync_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
