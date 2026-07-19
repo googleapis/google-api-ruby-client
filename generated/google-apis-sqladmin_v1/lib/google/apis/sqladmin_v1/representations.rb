@@ -1380,6 +1380,7 @@ module Google
           property :auto_iam_authn, as: 'autoIamAuthn'
           property :database, as: 'database'
           property :partial_result_mode, as: 'partialResultMode'
+          property :password_secret_version, as: 'passwordSecretVersion'
           property :row_limit, :numeric_string => true, as: 'rowLimit'
           property :sql_statement, as: 'sqlStatement'
           property :user, as: 'user'
