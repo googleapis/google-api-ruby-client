@@ -4309,7 +4309,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :configuration_variables
       
-        # The ID of the managed configurations template.
+        # The ID of the managed configurations template. This value must be a numeric
+        # string containing exactly one or more digits (for example, "123456").
         # Corresponds to the JSON property `templateId`
         # @return [String]
         attr_accessor :template_id
