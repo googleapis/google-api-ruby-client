@@ -231,7 +231,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a build in progress.
+        # Cancels a build in progress. Note: This method only applies to global (non-
+        # regional) builds when using the legacy resource path `projects/`project_id`/
+        # builds/`id`:cancel`. To cancel regional builds, use the regional resource path:
+        # `projects/`project_id`/locations/`location`/builds/`id`:cancel`.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] id
@@ -269,7 +272,11 @@ module Google
         
         # Starts a build with the specified configuration. This method returns a long-
         # running `Operation`, which includes the build ID. Pass the build ID to `
-        # GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
+        # GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). Note:
+        # This method only creates global (non-regional) builds when using the legacy
+        # resource path `projects/`project_id`/builds`. To create regional builds, use
+        # the regional resource path: `projects/`project_id`/locations/`location`/builds`
+        # .
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [Google::Apis::CloudbuildV1::Build] build_object
@@ -308,7 +315,10 @@ module Google
         
         # Returns information about a previously requested build. The `Build` that is
         # returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and
-        # timing information.
+        # timing information. Note: This method only applies to global (non-regional)
+        # builds when using the legacy resource path `projects/`project_id`/builds/`id``.
+        # To fetch regional builds, use the regional resource path: `projects/`
+        # project_id`/locations/`location`/builds/`id``.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] id
@@ -346,7 +356,10 @@ module Google
         end
         
         # Lists previously requested builds. Previously requested builds may still be in-
-        # progress, or may have finished successfully or unsuccessfully.
+        # progress, or may have finished successfully or unsuccessfully. Note: This
+        # method only lists global (non-regional) builds when using the legacy resource
+        # path `projects/`project_id`/builds`. To list regional builds, use the regional
+        # resource path: `projects/`project_id`/locations/`location`/builds`.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] filter
@@ -393,22 +406,25 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new build based on the specified build. This method creates a new
-        # build using the original build request, which may or may not result in an
-        # identical build. For triggered builds: * Triggered builds resolve to a precise
-        # revision; therefore a retry of a triggered build will result in a build that
-        # uses the same revision. For non-triggered builds that specify `RepoSource`: *
-        # If the original build built from the tip of a branch, the retried build will
-        # build from the tip of that branch, which may not be the same revision as the
-        # original build. * If the original build specified a commit sha or revision ID,
-        # the retried build will use the identical source. For builds that specify `
-        # StorageSource`: * If the original build pulled source from Cloud Storage
-        # without specifying the generation of the object, the new build will use the
-        # current object, which may be different from the original build source. * If
-        # the original build pulled source from Cloud Storage and specified the
-        # generation of the object, the new build will attempt to use the same object,
-        # which may or may not be available depending on the bucket's lifecycle
-        # management settings.
+        # Creates a new build based on the specified build. Note: This method only
+        # applies to global (non-regional) builds when using the legacy resource path `
+        # projects/`project_id`/builds/`id`:retry`. To retry regional builds, use the
+        # regional resource path: `projects/`project_id`/locations/`location`/builds/`id`
+        # :retry`. This method creates a new build using the original build request,
+        # which may or may not result in an identical build. For triggered builds: *
+        # Triggered builds resolve to a precise revision; therefore a retry of a
+        # triggered build will result in a build that uses the same revision. For non-
+        # triggered builds that specify `RepoSource`: * If the original build built from
+        # the tip of a branch, the retried build will build from the tip of that branch,
+        # which may not be the same revision as the original build. * If the original
+        # build specified a commit sha or revision ID, the retried build will use the
+        # identical source. For builds that specify `StorageSource`: * If the original
+        # build pulled source from Cloud Storage without specifying the generation of
+        # the object, the new build will use the current object, which may be different
+        # from the original build source. * If the original build pulled source from
+        # Cloud Storage and specified the generation of the object, the new build will
+        # attempt to use the same object, which may or may not be available depending on
+        # the bucket's lifecycle management settings.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] id
@@ -600,8 +616,9 @@ module Google
         
         # Update an association between a GCP project and a GitHub Enterprise server.
         # @param [String] name
-        #   The full resource name for the GitHubEnterpriseConfig For example: "projects/`$
-        #   project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$config_id`"
+        #   Identifier. The full resource name for the GitHubEnterpriseConfig For example:
+        #   "projects/`$project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$
+        #   config_id`"
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
         # @param [String] update_mask
         #   Update mask for the resource. If this is set, the server will only update the
@@ -812,7 +829,7 @@ module Google
         
         # Updates an existing `BitbucketServerConfig`. This API is experimental.
         # @param [String] name
-        #   The resource name for the config.
+        #   Identifier. The resource name for the config.
         # @param [Google::Apis::CloudbuildV1::BitbucketServerConfig] bitbucket_server_config_object
         # @param [String] update_mask
         #   Update mask for the resource. If this is set, the server will only update the
@@ -997,7 +1014,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a build in progress.
+        # Cancels a build in progress. Note: This method only applies to global (non-
+        # regional) builds when using the legacy resource path `projects/`project_id`/
+        # builds/`id`:cancel`. To cancel regional builds, use the regional resource path:
+        # `projects/`project_id`/locations/`location`/builds/`id`:cancel`.
         # @param [String] name
         #   The name of the `Build` to cancel. Format: `projects/`project`/locations/`
         #   location`/builds/`build``
@@ -1033,7 +1053,11 @@ module Google
         
         # Starts a build with the specified configuration. This method returns a long-
         # running `Operation`, which includes the build ID. Pass the build ID to `
-        # GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
+        # GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). Note:
+        # This method only creates global (non-regional) builds when using the legacy
+        # resource path `projects/`project_id`/builds`. To create regional builds, use
+        # the regional resource path: `projects/`project_id`/locations/`location`/builds`
+        # .
         # @param [String] parent
         #   The parent resource where this build will be created. Format: `projects/`
         #   project`/locations/`location``
@@ -1072,7 +1096,10 @@ module Google
         
         # Returns information about a previously requested build. The `Build` that is
         # returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and
-        # timing information.
+        # timing information. Note: This method only applies to global (non-regional)
+        # builds when using the legacy resource path `projects/`project_id`/builds/`id``.
+        # To fetch regional builds, use the regional resource path: `projects/`
+        # project_id`/locations/`location`/builds/`id``.
         # @param [String] name
         #   The name of the `Build` to retrieve. Format: `projects/`project`/locations/`
         #   location`/builds/`build``
@@ -1110,7 +1137,10 @@ module Google
         end
         
         # Lists previously requested builds. Previously requested builds may still be in-
-        # progress, or may have finished successfully or unsuccessfully.
+        # progress, or may have finished successfully or unsuccessfully. Note: This
+        # method only lists global (non-regional) builds when using the legacy resource
+        # path `projects/`project_id`/builds`. To list regional builds, use the regional
+        # resource path: `projects/`project_id`/locations/`location`/builds`.
         # @param [String] parent
         #   The parent of the collection of `Builds`. Format: `projects/`project`/
         #   locations/`location``
@@ -1157,22 +1187,25 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new build based on the specified build. This method creates a new
-        # build using the original build request, which may or may not result in an
-        # identical build. For triggered builds: * Triggered builds resolve to a precise
-        # revision; therefore a retry of a triggered build will result in a build that
-        # uses the same revision. For non-triggered builds that specify `RepoSource`: *
-        # If the original build built from the tip of a branch, the retried build will
-        # build from the tip of that branch, which may not be the same revision as the
-        # original build. * If the original build specified a commit sha or revision ID,
-        # the retried build will use the identical source. For builds that specify `
-        # StorageSource`: * If the original build pulled source from Cloud Storage
-        # without specifying the generation of the object, the new build will use the
-        # current object, which may be different from the original build source. * If
-        # the original build pulled source from Cloud Storage and specified the
-        # generation of the object, the new build will attempt to use the same object,
-        # which may or may not be available depending on the bucket's lifecycle
-        # management settings.
+        # Creates a new build based on the specified build. Note: This method only
+        # applies to global (non-regional) builds when using the legacy resource path `
+        # projects/`project_id`/builds/`id`:retry`. To retry regional builds, use the
+        # regional resource path: `projects/`project_id`/locations/`location`/builds/`id`
+        # :retry`. This method creates a new build using the original build request,
+        # which may or may not result in an identical build. For triggered builds: *
+        # Triggered builds resolve to a precise revision; therefore a retry of a
+        # triggered build will result in a build that uses the same revision. For non-
+        # triggered builds that specify `RepoSource`: * If the original build built from
+        # the tip of a branch, the retried build will build from the tip of that branch,
+        # which may not be the same revision as the original build. * If the original
+        # build specified a commit sha or revision ID, the retried build will use the
+        # identical source. For builds that specify `StorageSource`: * If the original
+        # build pulled source from Cloud Storage without specifying the generation of
+        # the object, the new build will use the current object, which may be different
+        # from the original build source. * If the original build pulled source from
+        # Cloud Storage and specified the generation of the object, the new build will
+        # attempt to use the same object, which may or may not be available depending on
+        # the bucket's lifecycle management settings.
         # @param [String] name
         #   The name of the `Build` to retry. Format: `projects/`project`/locations/`
         #   location`/builds/`build``
@@ -1206,7 +1239,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new `GitLabConfig`. This API is experimental
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Creates a new `
+        # GitLabConfig`. This API is experimental
         # @param [String] parent
         #   Required. Name of the parent resource.
         # @param [Google::Apis::CloudbuildV1::GitLabConfig] git_lab_config_object
@@ -1246,7 +1280,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a `GitLabConfig`. This API is experimental
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Delete a `
+        # GitLabConfig`. This API is experimental
         # @param [String] name
         #   Required. The config resource name.
         # @param [String] fields
@@ -1276,7 +1311,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a `GitLabConfig`. This API is experimental
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Retrieves a `
+        # GitLabConfig`. This API is experimental
         # @param [String] name
         #   Required. The config resource name.
         # @param [String] fields
@@ -1306,7 +1342,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all `GitLabConfigs` for a given project. This API is experimental
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. List all `
+        # GitLabConfigs` for a given project. This API is experimental
         # @param [String] parent
         #   Required. Name of the parent resource
         # @param [Fixnum] page_size
@@ -1347,9 +1384,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing `GitLabConfig`. This API is experimental
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Updates an
+        # existing `GitLabConfig`. This API is experimental
         # @param [String] name
-        #   The resource name for the config.
+        #   Identifier. The resource name for the config.
         # @param [Google::Apis::CloudbuildV1::GitLabConfig] git_lab_config_object
         # @param [String] update_mask
         #   Update mask for the resource. If this is set, the server will only update the
@@ -1385,8 +1423,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Remove a GitLab repository from a given GitLabConfig's connected repositories.
-        # This API is experimental.
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Remove a GitLab
+        # repository from a given GitLabConfig's connected repositories. This API is
+        # experimental.
         # @param [String] config
         #   Required. The name of the `GitLabConfig` to remove a connected repository.
         #   Format: `projects/`project`/locations/`location`/gitLabConfigs/`config``
@@ -1420,7 +1459,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Batch connecting GitLab repositories to Cloud Build. This API is experimental.
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Batch connecting
+        # GitLab repositories to Cloud Build. This API is experimental.
         # @param [String] parent
         #   The name of the `GitLabConfig` that adds connected repositories. Format: `
         #   projects/`project`/locations/`location`/gitLabConfigs/`config``
@@ -1454,7 +1494,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all repositories for a given `GitLabConfig`. This API is experimental
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. List all
+        # repositories for a given `GitLabConfig`. This API is experimental
         # @param [String] parent
         #   Required. Name of the parent resource.
         # @param [Fixnum] page_size
@@ -1650,8 +1691,9 @@ module Google
         
         # Update an association between a GCP project and a GitHub Enterprise server.
         # @param [String] name
-        #   The full resource name for the GitHubEnterpriseConfig For example: "projects/`$
-        #   project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$config_id`"
+        #   Identifier. The full resource name for the GitHubEnterpriseConfig For example:
+        #   "projects/`$project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$
+        #   config_id`"
         # @param [Google::Apis::CloudbuildV1::GitHubEnterpriseConfig] git_hub_enterprise_config_object
         # @param [String] update_mask
         #   Update mask for the resource. If this is set, the server will only update the

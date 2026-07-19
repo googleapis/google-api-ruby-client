@@ -332,8 +332,8 @@ module Google
         end
       end
       
-      # RPC request object accepted by BatchCreateGitLabConnectedRepositories RPC
-      # method.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC request object
+      # accepted by BatchCreateGitLabConnectedRepositories RPC method.
       class BatchCreateGitLabConnectedRepositoriesRequest
         include Google::Apis::Core::Hashable
       
@@ -352,7 +352,8 @@ module Google
         end
       end
       
-      # Response of BatchCreateGitLabConnectedRepositories RPC method.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. Response of
+      # BatchCreateGitLabConnectedRepositories RPC method.
       class BatchCreateGitLabConnectedRepositoriesResponse
         include Google::Apis::Core::Hashable
       
@@ -371,7 +372,8 @@ module Google
         end
       end
       
-      # Metadata for `BatchCreateGitLabConnectedRepositories` operation.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for `
+      # BatchCreateGitLabConnectedRepositories` operation.
       class BatchCreateGitLabConnectedRepositoriesResponseMetadata
         include Google::Apis::Core::Hashable
       
@@ -431,7 +433,7 @@ module Google
         # @return [String]
         attr_accessor :host_uri
       
-        # The resource name for the config.
+        # Identifier. The resource name for the config.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1433,8 +1435,9 @@ module Google
         # @return [Google::Apis::CloudbuildV1::GitHubEventsConfig]
         attr_accessor :github
       
-        # GitLabEventsConfig describes the configuration of a trigger that creates a
-        # build whenever a GitLab event is received.
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabEventsConfig
+        # describes the configuration of a trigger that creates a build whenever a
+        # GitLab event is received.
         # Corresponds to the JSON property `gitlabEnterpriseEventsConfig`
         # @return [Google::Apis::CloudbuildV1::GitLabEventsConfig]
         attr_accessor :gitlab_enterprise_events_config
@@ -1788,7 +1791,8 @@ module Google
         end
       end
       
-      # Metadata for `CreateGitLabConfig` operation.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for `
+      # CreateGitLabConfig` operation.
       class CreateGitLabConfigOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -1820,10 +1824,12 @@ module Google
         end
       end
       
-      # Request to connect a repository from a connected GitLab host.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. Request to connect
+      # a repository from a connected GitLab host.
       class CreateGitLabConnectedRepositoryRequest
         include Google::Apis::Core::Hashable
       
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated.
         # GitLabConnectedRepository represents a GitLab connected repository request
         # response.
         # Corresponds to the JSON property `gitlabConnectedRepository`
@@ -1975,7 +1981,8 @@ module Google
         end
       end
       
-      # Metadata for `DeleteGitLabConfig` operation.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for `
+      # DeleteGitLabConfig` operation.
       class DeleteGitLabConfigOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -2373,8 +2380,9 @@ module Google
         # @return [String]
         attr_accessor :host_url
       
-        # The full resource name for the GitHubEnterpriseConfig For example: "projects/`$
-        # project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$config_id`"
+        # Identifier. The full resource name for the GitHubEnterpriseConfig For example:
+        # "projects/`$project_id`/locations/`$location_id`/githubEnterpriseConfigs/`$
+        # config_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2542,7 +2550,8 @@ module Google
         end
       end
       
-      # GitLabConfig represents the configuration for a GitLab integration.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabConfig
+      # represents the configuration for a GitLab integration.
       class GitLabConfig
         include Google::Apis::Core::Hashable
       
@@ -2556,19 +2565,20 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated.
         # GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise
         # integration.
         # Corresponds to the JSON property `enterpriseConfig`
         # @return [Google::Apis::CloudbuildV1::GitLabEnterpriseConfig]
         attr_accessor :enterprise_config
       
-        # The resource name for the config.
+        # Identifier. The resource name for the config.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # GitLabSecrets represents the secrets in Secret Manager for a GitLab
-        # integration.
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabSecrets
+        # represents the secrets in Secret Manager for a GitLab integration.
         # Corresponds to the JSON property `secrets`
         # @return [Google::Apis::CloudbuildV1::GitLabSecrets]
         attr_accessor :secrets
@@ -2600,6 +2610,7 @@ module Google
         end
       end
       
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated.
       # GitLabConnectedRepository represents a GitLab connected repository request
       # response.
       class GitLabConnectedRepository
@@ -2639,6 +2650,7 @@ module Google
         end
       end
       
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated.
       # GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise
       # integration.
       class GitLabEnterpriseConfig
@@ -2649,6 +2661,7 @@ module Google
         # @return [String]
         attr_accessor :host_uri
       
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated.
         # ServiceDirectoryConfig represents Service Directory configuration for a SCM
         # host connection.
         # Corresponds to the JSON property `serviceDirectoryConfig`
@@ -2672,12 +2685,14 @@ module Google
         end
       end
       
-      # GitLabEventsConfig describes the configuration of a trigger that creates a
-      # build whenever a GitLab event is received.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabEventsConfig
+      # describes the configuration of a trigger that creates a build whenever a
+      # GitLab event is received.
       class GitLabEventsConfig
         include Google::Apis::Core::Hashable
       
-        # GitLabConfig represents the configuration for a GitLab integration.
+        # Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabConfig
+        # represents the configuration for a GitLab integration.
         # Corresponds to the JSON property `gitlabConfig`
         # @return [Google::Apis::CloudbuildV1::GitLabConfig]
         attr_accessor :gitlab_config
@@ -2716,7 +2731,8 @@ module Google
         end
       end
       
-      # Proto Representing a GitLabRepository
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. Proto Representing
+      # a GitLabRepository
       class GitLabRepository
         include Google::Apis::Core::Hashable
       
@@ -2788,8 +2804,8 @@ module Google
         end
       end
       
-      # GitLabSecrets represents the secrets in Secret Manager for a GitLab
-      # integration.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabSecrets
+      # represents the secrets in Secret Manager for a GitLab integration.
       class GitLabSecrets
         include Google::Apis::Core::Hashable
       
@@ -3282,7 +3298,8 @@ module Google
         end
       end
       
-      # RPC response object returned by ListGitLabConfigs RPC method.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC response
+      # object returned by ListGitLabConfigs RPC method.
       class ListGitLabConfigsResponse
         include Google::Apis::Core::Hashable
       
@@ -3308,7 +3325,8 @@ module Google
         end
       end
       
-      # RPC response object returned by the ListGitLabRepositories RPC method.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC response
+      # object returned by the ListGitLabRepositories RPC method.
       class ListGitLabRepositoriesResponse
         include Google::Apis::Core::Hashable
       
@@ -3979,7 +3997,8 @@ module Google
         end
       end
       
-      # RPC request object accepted by RemoveGitLabConnectedRepository RPC method.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC request object
+      # accepted by RemoveGitLabConnectedRepository RPC method.
       class RemoveGitLabConnectedRepositoryRequest
         include Google::Apis::Core::Hashable
       
@@ -4348,6 +4367,7 @@ module Google
         end
       end
       
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated.
       # ServiceDirectoryConfig represents Service Directory configuration for a SCM
       # host connection.
       class ServiceDirectoryConfig
@@ -4714,7 +4734,8 @@ module Google
         end
       end
       
-      # Metadata for `UpdateGitLabConfig` operation.
+      # Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for `
+      # UpdateGitLabConfig` operation.
       class UpdateGitLabConfigOperationMetadata
         include Google::Apis::Core::Hashable
       
