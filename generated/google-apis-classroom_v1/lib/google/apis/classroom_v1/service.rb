@@ -265,10 +265,10 @@ module Google
         #   required to do an update. The update will fail if invalid fields are specified.
         #   The following fields are valid: * `courseState` * `description` * `
         #   descriptionHeading` * `name` * `ownerId` * `room` * `section` * `subject` * `
-        #   levels` Note: patches to ownerId are treated as being effective immediately,
-        #   but in practice it may take some time for the ownership transfer of all
-        #   affected resources to complete. When set in a query parameter, this field
-        #   should be specified as `updateMask=,,...`
+        #   learningStandardSettings` * `levels` Note: patches to ownerId are treated as
+        #   being effective immediately, but in practice it may take some time for the
+        #   ownership transfer of all affected resources to complete. When set in a query
+        #   parameter, this field should be specified as `updateMask=,,...`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
