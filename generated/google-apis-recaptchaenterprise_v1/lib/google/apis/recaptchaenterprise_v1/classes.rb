@@ -22,7 +22,7 @@ module Google
   module Apis
     module RecaptchaenterpriseV1
       
-      # Account defender risk assessment.
+      # Account defense risk assessment.
       class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment
         include Google::Apis::Core::Hashable
       
@@ -47,7 +47,7 @@ module Google
         end
       end
       
-      # Risk explainability reasons for account defender.
+      # Risk explainability reasons for Account defense.
       class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason
         include Google::Apis::Core::Hashable
       
@@ -102,7 +102,7 @@ module Google
         end
       end
       
-      # Trust explainability reasons for account defender.
+      # Trust explainability reasons for Account defense.
       class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason
         include Google::Apis::Core::Hashable
       
@@ -339,7 +339,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1Assessment
         include Google::Apis::Core::Hashable
       
-        # Account defender risk assessment.
+        # Account defense risk assessment.
         # Corresponds to the JSON property `accountDefenderAssessment`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment]
         attr_accessor :account_defender_assessment
@@ -386,6 +386,11 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment]
         attr_accessor :phone_fraud_assessment
       
+        # Information about the policy evaluation.
+        # Corresponds to the JSON property `policyEvaluation`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PolicyEvaluation]
+        attr_accessor :policy_evaluation
+      
         # Private password leak verification info.
         # Corresponds to the JSON property `privatePasswordLeakVerification`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification]
@@ -416,6 +421,7 @@ module Google
           @fraud_signals = args[:fraud_signals] if args.key?(:fraud_signals)
           @name = args[:name] if args.key?(:name)
           @phone_fraud_assessment = args[:phone_fraud_assessment] if args.key?(:phone_fraud_assessment)
+          @policy_evaluation = args[:policy_evaluation] if args.key?(:policy_evaluation)
           @private_password_leak_verification = args[:private_password_leak_verification] if args.key?(:private_password_leak_verification)
           @risk_analysis = args[:risk_analysis] if args.key?(:risk_analysis)
           @token_properties = args[:token_properties] if args.key?(:token_properties)
@@ -522,6 +528,161 @@ module Google
         end
       end
       
+      # A rule to configure the behavior of reCAPTCHA for conditionally presenting a
+      # challenge.
+      class GoogleCloudRecaptchaenterpriseV1ChallengeRule
+        include Google::Apis::Core::Hashable
+      
+        # An outcome that indicates that a challenge of a specified difficulty should be
+        # presented to the user.
+        # Corresponds to the JSON property `challenge`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome]
+        attr_accessor :challenge
+      
+        # Optional. A CEL condition that must be met for this rule to apply. The
+        # following fields can be referenced in the condition: * `score` * `
+        # user_ip_address` * `user_asn` * `user_agent` * `verified_bots.name` * `
+        # verified_bots.bot_type` Examples: * `score < 0.5` * `user_ip_address == "123.
+        # 45.67.89"` * `user_agent.contains("Chrome")` * `score < 0.5 && user_ip_address
+        # == "123.45.67.89"`
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # An outcome that indicates that no challenge should be presented to the user.
+        # Corresponds to the JSON property `noChallenge`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome]
+        attr_accessor :no_challenge
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @challenge = args[:challenge] if args.key?(:challenge)
+          @condition = args[:condition] if args.key?(:condition)
+          @no_challenge = args[:no_challenge] if args.key?(:no_challenge)
+        end
+      end
+      
+      # An outcome that indicates that a challenge of a specified difficulty should be
+      # presented to the user.
+      class GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The difficulty of the challenge to present to the user. If
+        # unspecified, `BALANCE` is used.
+        # Corresponds to the JSON property `difficulty`
+        # @return [String]
+        attr_accessor :difficulty
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @difficulty = args[:difficulty] if args.key?(:difficulty)
+        end
+      end
+      
+      # Information about the evaluation of a `ChallengeRule`.
+      class GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A collection of challenge rules that applies to one or more actions.
+      class GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. Action name provided at token generation. The action name is not
+        # case-sensitive and can only contain alphanumeric characters, slashes, and
+        # underscores. If "*" is provided, the rule group applies to all actions. If
+        # multiple actions are provided, the rule group is applied to all of them. This
+        # field is required.
+        # Corresponds to the JSON property `actions`
+        # @return [Array<String>]
+        attr_accessor :actions
+      
+        # Required. A list of rules that configure when and how reCAPTCHA presents a
+        # challenge. reCAPTCHA evaluates these rules in order and applies the first one
+        # that matches.
+        # Corresponds to the JSON property `challengeRules`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeRule>]
+        attr_accessor :challenge_rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @challenge_rules = args[:challenge_rules] if args.key?(:challenge_rules)
+        end
+      end
+      
+      # An outcome that indicates that no challenge should be presented to the user.
+      class GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Configuration for clients to protect with reCAPTCHA.
+      class GoogleCloudRecaptchaenterpriseV1ClientSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, it means allowed_domains are not enforced.
+        # Corresponds to the JSON property `allowAllDomains`
+        # @return [Boolean]
+        attr_accessor :allow_all_domains
+        alias_method :allow_all_domains?, :allow_all_domains
+      
+        # Optional. Domains or subdomains of websites allowed to use the policy. All
+        # subdomains of an allowed domain are automatically allowed. A valid domain
+        # requires a host and must not include any path, port, query or fragment.
+        # Examples: 'example.com' or 'subdomain.example.com' Each policy supports a
+        # maximum of 250 domains. To use a policy on more domains, set `
+        # allow_all_domains` to true. When this is set, you are responsible for
+        # validating the hostname by checking the `token_properties.hostname` field in
+        # each assessment response against your list of allowed domains.
+        # Corresponds to the JSON property `allowedDomains`
+        # @return [Array<String>]
+        attr_accessor :allowed_domains
+      
+        # Configuration for API endpoints to protect with reCAPTCHA.
+        # Corresponds to the JSON property `protectedEndpointGroup`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup]
+        attr_accessor :protected_endpoint_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_all_domains = args[:allow_all_domains] if args.key?(:allow_all_domains)
+          @allowed_domains = args[:allowed_domains] if args.key?(:allowed_domains)
+          @protected_endpoint_group = args[:protected_endpoint_group] if args.key?(:protected_endpoint_group)
+        end
+      end
+      
       # Information about a verification endpoint that can be used for 2FA.
       class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo
         include Google::Apis::Core::Hashable
@@ -568,7 +729,7 @@ module Google
       
         # Optional. The expected action for this type of event. This should be the same
         # action provided at token generation time on client-side platforms already
-        # integrated with recaptcha enterprise.
+        # integrated with recaptcha enterprise. Required for Universal keys.
         # Corresponds to the JSON property `expectedAction`
         # @return [String]
         attr_accessor :expected_action
@@ -1269,6 +1430,11 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TestingOptions]
         attr_accessor :testing_options
       
+        # Settings for keys that are configured through their Policy.
+        # Corresponds to the JSON property `universalSettings`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1UniversalKeySettings]
+        attr_accessor :universal_settings
+      
         # Settings specific to keys that can be used for WAF (Web Application Firewall).
         # Corresponds to the JSON property `wafSettings`
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1WafSettings]
@@ -1293,6 +1459,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @testing_options = args[:testing_options] if args.key?(:testing_options)
+          @universal_settings = args[:universal_settings] if args.key?(:universal_settings)
           @waf_settings = args[:waf_settings] if args.key?(:waf_settings)
           @web_settings = args[:web_settings] if args.key?(:web_settings)
         end
@@ -1541,6 +1708,60 @@ module Google
         end
       end
       
+      # A complete configuration set containing multiple grouped rules defining the
+      # behavior of reCAPTCHA for fraud detection and prevention.
+      class GoogleCloudRecaptchaenterpriseV1Policy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Rules to configure the behavior of reCAPTCHA for showing a challenge.
+        # Rule groups are evaluated in order. Evaluation stops when the first matching
+        # rule group is found.
+        # Corresponds to the JSON property `challengeRuleGroups`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup>]
+        attr_accessor :challenge_rule_groups
+      
+        # Configuration for clients to protect with reCAPTCHA.
+        # Corresponds to the JSON property `clientSettings`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ClientSettings]
+        attr_accessor :client_settings
+      
+        # Identifier. Resource name for this policy. Format: "projects/`project`/keys/`
+        # key`/policy" for a policy under a key.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @challenge_rule_groups = args[:challenge_rule_groups] if args.key?(:challenge_rule_groups)
+          @client_settings = args[:client_settings] if args.key?(:client_settings)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Information about the policy evaluation.
+      class GoogleCloudRecaptchaenterpriseV1PolicyEvaluation
+        include Google::Apis::Core::Hashable
+      
+        # Information about the evaluation of a `ChallengeRule`.
+        # Corresponds to the JSON property `challengeRuleEvaluation`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation]
+        attr_accessor :challenge_rule_evaluation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @challenge_rule_evaluation = args[:challenge_rule_evaluation] if args.key?(:challenge_rule_evaluation)
+        end
+      end
+      
       # Private password leak verification info.
       class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
         include Google::Apis::Core::Hashable
@@ -1586,6 +1807,64 @@ module Google
           @encrypted_user_credentials_hash = args[:encrypted_user_credentials_hash] if args.key?(:encrypted_user_credentials_hash)
           @lookup_hash_prefix = args[:lookup_hash_prefix] if args.key?(:lookup_hash_prefix)
           @reencrypted_user_credentials_hash = args[:reencrypted_user_credentials_hash] if args.key?(:reencrypted_user_credentials_hash)
+        end
+      end
+      
+      # Configuration for an API endpoint to protect with reCAPTCHA.
+      class GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Required. Action name to be used for token generation for this endpoint. The
+        # action name is not case-sensitive and can only contain alphanumeric characters,
+        # slashes, and underscores.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # Required. URI path of the API endpoint to protect. Must start with '/'.
+        # Supports glob characters '*' to match a single path segment and '**' to match
+        # multiple path segments. Standalone root catch-alls ('/*' and '/**') are
+        # invalid because it would hurt performance to trigger reCAPTCHA on every single
+        # request to your backend. Matching is evaluated against the URL path only (
+        # domain, scheme, and query parameters are ignored). Examples: - `/login`
+        # matches `/login`, `https://example.com/login`, and `/login?query=1`, but not `/
+        # login/step1`. - `/products/*` matches `/products/123`, but not `/products/123/
+        # 456`. - `/content/**` matches `/content/articles/2024/01/01`.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # Configuration for API endpoints to protect with reCAPTCHA.
+      class GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of API endpoints to automatically protect with reCAPTCHA. If
+        # any of these endpoints is invoked from a page where a key bound to this policy
+        # is installed, a reCAPTCHA token is automatically generated and attached to the
+        # request. If multiple protected endpoints match a given API endpoint, the first
+        # one in the list is used.
+        # Corresponds to the JSON property `protectedEndpoints`
+        # @return [Array<Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint>]
+        attr_accessor :protected_endpoints
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @protected_endpoints = args[:protected_endpoints] if args.key?(:protected_endpoints)
         end
       end
       
@@ -1738,8 +2017,8 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1RiskAnalysis
         include Google::Apis::Core::Hashable
       
-        # Output only. Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE
-        # keys.
+        # Output only. Challenge information for Universal, `POLICY_BASED_CHALLENGE` and
+        # `INVISIBLE` keys.
         # Corresponds to the JSON property `challenge`
         # @return [String]
         attr_accessor :challenge
@@ -1750,6 +2029,13 @@ module Google
         # Corresponds to the JSON property `extendedVerdictReasons`
         # @return [Array<String>]
         attr_accessor :extended_verdict_reasons
+      
+        # Output only. Type of the last challenge presented to the user for Universal, `
+        # POLICY_BASED_CHALLENGE` and `INVISIBLE` keys. The field is only set when a
+        # challenge was presented to the user.
+        # Corresponds to the JSON property `lastChallengeType`
+        # @return [String]
+        attr_accessor :last_challenge_type
       
         # Output only. Reasons contributing to the risk analysis verdict.
         # Corresponds to the JSON property `reasons`
@@ -1776,6 +2062,7 @@ module Google
         def update!(**args)
           @challenge = args[:challenge] if args.key?(:challenge)
           @extended_verdict_reasons = args[:extended_verdict_reasons] if args.key?(:extended_verdict_reasons)
+          @last_challenge_type = args[:last_challenge_type] if args.key?(:last_challenge_type)
           @reasons = args[:reasons] if args.key?(:reasons)
           @score = args[:score] if args.key?(:score)
           @verified_bots = args[:verified_bots] if args.key?(:verified_bots)
@@ -2254,7 +2541,7 @@ module Google
       class GoogleCloudRecaptchaenterpriseV1TransactionDataUser
         include Google::Apis::Core::Hashable
       
-        # Optional. Unique account identifier for this user. If using account defender,
+        # Optional. Unique account identifier for this user. If using Account defense,
         # this should match the hashed_account_id field. Otherwise, a unique and
         # persistent identifier for this account.
         # Corresponds to the JSON property `accountId`
@@ -2344,6 +2631,19 @@ module Google
           @event_type = args[:event_type] if args.key?(:event_type)
           @reason = args[:reason] if args.key?(:reason)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Settings for keys that are configured through their Policy.
+      class GoogleCloudRecaptchaenterpriseV1UniversalKeySettings
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
