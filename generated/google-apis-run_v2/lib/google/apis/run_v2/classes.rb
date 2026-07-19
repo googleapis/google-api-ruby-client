@@ -325,6 +325,11 @@ module Google
         # @return [String]
         attr_accessor :execution_reason
       
+        # Output only. A reason for the instance condition.
+        # Corresponds to the JSON property `instanceReason`
+        # @return [String]
+        attr_accessor :instance_reason
+      
         # Last time the condition transitioned from one status to another.
         # Corresponds to the JSON property `lastTransitionTime`
         # @return [String]
@@ -370,6 +375,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @execution_reason = args[:execution_reason] if args.key?(:execution_reason)
+          @instance_reason = args[:instance_reason] if args.key?(:instance_reason)
           @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
           @message = args[:message] if args.key?(:message)
           @reason = args[:reason] if args.key?(:reason)
@@ -3188,6 +3194,12 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceScaling]
         attr_accessor :scaling
       
+        # Optional. Enables SSH access to the Service.
+        # Corresponds to the JSON property `sshEnabled`
+        # @return [Boolean]
+        attr_accessor :ssh_enabled
+        alias_method :ssh_enabled?, :ssh_enabled
+      
         # RevisionTemplate describes the data a revision should have when created from a
         # template.
         # Corresponds to the JSON property `template`
@@ -3276,6 +3288,7 @@ module Google
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scaling = args[:scaling] if args.key?(:scaling)
+          @ssh_enabled = args[:ssh_enabled] if args.key?(:ssh_enabled)
           @template = args[:template] if args.key?(:template)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
           @threat_detection_enabled = args[:threat_detection_enabled] if args.key?(:threat_detection_enabled)
