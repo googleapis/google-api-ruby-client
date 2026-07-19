@@ -132,9 +132,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An analysis result including blockers and warnings.
-        # Corresponds to the JSON property `analysis`
+        # Corresponds to the JSON property `analysisResult`
         # @return [Google::Apis::ServiceusageV1beta1::AnalysisResult]
-        attr_accessor :analysis
+        attr_accessor :analysis_result
       
         # Output only. The type of analysis.
         # Corresponds to the JSON property `analysisType`
@@ -159,7 +159,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @analysis = args[:analysis] if args.key?(:analysis)
+          @analysis_result = args[:analysis_result] if args.key?(:analysis_result)
           @analysis_type = args[:analysis_type] if args.key?(:analysis_type)
           @display_name = args[:display_name] if args.key?(:display_name)
           @service = args[:service] if args.key?(:service)
@@ -1110,15 +1110,14 @@ module Google
       class ConsumerPolicy
         include Google::Apis::Core::Hashable
       
-        # Optional. Annotations is an unstructured key-value map stored with a policy
-        # that may be set by external tools to store and retrieve arbitrary metadata.
-        # They are not queryable and should be preserved when modifying objects. [AIP-
-        # 128](https://google.aip.dev/128#annotations)
-        # Corresponds to the JSON property `annotations`
-        # @return [Hash<String,String>]
-        attr_accessor :annotations
+        # Output only. The time the policy was created. For singleton policies, this is
+        # the first touch of the policy.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
       
-        # Enable rules define usable services and service groups.
+        # Enable rules define usable services and groups. There can currently be at most
+        # one `EnableRule`. This restriction will be lifted in later releases.
         # Corresponds to the JSON property `enableRules`
         # @return [Array<Google::Apis::ServiceusageV1beta1::EnableRule>]
         attr_accessor :enable_rules
@@ -1129,15 +1128,14 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Output only. The resource name of the policy. We only allow consumer policy
-        # name as `default` for now: `projects/12345/consumerPolicies/default`, `folders/
-        # 12345/consumerPolicies/default`, `organizations/12345/consumerPolicies/default`
-        # .
+        # Output only. The resource name of the policy. Only the `default` policy is
+        # supported: `projects/12345/consumerPolicies/default`, `folders/12345/
+        # consumerPolicies/default`, `organizations/12345/consumerPolicies/default`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The last-modified time.
+        # Output only. The time the policy was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1148,7 +1146,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @enable_rules = args[:enable_rules] if args.key?(:enable_rules)
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
@@ -1871,7 +1869,7 @@ module Google
         end
       end
       
-      # The consumer policy rule that defines usable services and service groups.
+      # The consumer policy rule that defines enabled services and groups.
       class EnableRule
         include Google::Apis::Core::Hashable
       
@@ -1880,15 +1878,8 @@ module Google
         # @return [String]
         attr_accessor :enable_type
       
-        # DEPRECATED: Please use field `values`. Service group should have prefix `
-        # groups/`. The names of the service groups that are enabled (Not Implemented).
-        # Example: `groups/googleServices`.
-        # Corresponds to the JSON property `groups`
-        # @return [Array<String>]
-        attr_accessor :groups
-      
-        # DEPRECATED: Please use field `values`. Service should have prefix `services/`.
-        # The names of the services that are enabled. Example: `storage.googleapis.com`.
+        # The names of the services that are enabled. Example: `services/storage.
+        # googleapis.com`.
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
         attr_accessor :services
@@ -1907,7 +1898,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_type = args[:enable_type] if args.key?(:enable_type)
-          @groups = args[:groups] if args.key?(:groups)
           @services = args[:services] if args.key?(:services)
           @values = args[:values] if args.key?(:values)
         end
@@ -2929,6 +2919,106 @@ module Google
         end
       end
       
+      # A message to group the analysis information.
+      class GoogleApiServiceusageV2alphaAnalysis
+        include Google::Apis::Core::Hashable
+      
+        # An analysis result including blockers and warnings.
+        # Corresponds to the JSON property `analysisResult`
+        # @return [Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2alphaAnalysisResult]
+        attr_accessor :analysis_result
+      
+        # Output only. The type of analysis.
+        # Corresponds to the JSON property `analysisType`
+        # @return [String]
+        attr_accessor :analysis_type
+      
+        # Output only. The user friendly display name of the analysis type. E.g. service
+        # dependency analysis, service resource usage analysis, etc.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The names of the service that has analysis result of warnings or blockers.
+        # Example: `services/storage.googleapis.com`.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis_result = args[:analysis_result] if args.key?(:analysis_result)
+          @analysis_type = args[:analysis_type] if args.key?(:analysis_type)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # An analysis result including blockers and warnings.
+      class GoogleApiServiceusageV2alphaAnalysisResult
+        include Google::Apis::Core::Hashable
+      
+        # Blocking information that would prevent the policy changes at runtime.
+        # Corresponds to the JSON property `blockers`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2alphaImpact>]
+        attr_accessor :blockers
+      
+        # Warning information indicating that the policy changes might be unsafe, but
+        # will not block the changes at runtime.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2alphaImpact>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blockers = args[:blockers] if args.key?(:blockers)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # Metadata for the `AnalyzeConsumerPolicy` method.
+      class GoogleApiServiceusageV2alphaAnalyzeConsumerPolicyMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The response of analyzing a consumer policy update.
+      class GoogleApiServiceusageV2alphaAnalyzeConsumerPolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of analyses returned from performing the intended policy update
+        # analysis. The analysis is grouped by service name and different analysis types.
+        # The empty analysis list means that the consumer policy can be updated without
+        # any warnings or blockers.
+        # Corresponds to the JSON property `analysis`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV2alphaAnalysis>]
+        attr_accessor :analysis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analysis = args[:analysis] if args.key?(:analysis)
+        end
+      end
+      
       # Consumer Policy is a set of rules that define what services or service groups
       # can be used for a cloud resource hierarchy.
       class GoogleApiServiceusageV2alphaConsumerPolicy
@@ -3005,6 +3095,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @services = args[:services] if args.key?(:services)
+        end
+      end
+      
+      # A message to group impacts of updating a policy.
+      class GoogleApiServiceusageV2alphaImpact
+        include Google::Apis::Core::Hashable
+      
+        # Output only. User friendly impact detail in a free form message.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # Output only. The type of impact.
+        # Corresponds to the JSON property `impactType`
+        # @return [String]
+        attr_accessor :impact_type
+      
+        # The parent resource that the analysis is based on and the service name that
+        # the analysis is for. Example: `projects/100/services/compute.googleapis.com`,
+        # folders/101/services/compute.googleapis.com` and `organizations/102/services/
+        # compute.googleapis.com`. Usually, the parent resource here is same as the
+        # parent resource of the analyzed policy. However, for some analysis types, the
+        # parent can be different. For example, for resource existence analysis, if the
+        # parent resource of the analyzed policy is a folder or an organization, the
+        # parent resource here can still be the project that contains the resources.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
+          @impact_type = args[:impact_type] if args.key?(:impact_type)
+          @parent = args[:parent] if args.key?(:parent)
         end
       end
       
@@ -3594,17 +3722,13 @@ module Google
         # @return [String]
         attr_accessor :impact_type
       
-        # The parent resource that the analysis is based on and the service name that
-        # the analysis is for. Example: `projects/100/services/compute.googleapis.com`,
-        # folders/101/services/compute.googleapis.com` and `organizations/102/services/
-        # compute.googleapis.com`. Usually, the parent resource here is same as the
-        # parent resource of the analyzed policy. However, for some analysis types, the
-        # parent can be different. For example, for resource existence analysis, if the
-        # parent resource of the analyzed policy is a folder or an organization, the
-        # parent resource here can still be the project that contains the resources.
-        # Corresponds to the JSON property `parent`
+        # Output only. This field will be populated only for the `
+        # DEPENDENCY_MISSING_DEPENDENCIES` impact type. Example: `services/compute.
+        # googleapis.com`. Impact.detail will be in format : `missing service dependency:
+        # `missing_dependency`.`
+        # Corresponds to the JSON property `missingDependency`
         # @return [String]
-        attr_accessor :parent
+        attr_accessor :missing_dependency
       
         def initialize(**args)
            update!(**args)
@@ -3614,7 +3738,7 @@ module Google
         def update!(**args)
           @detail = args[:detail] if args.key?(:detail)
           @impact_type = args[:impact_type] if args.key?(:impact_type)
-          @parent = args[:parent] if args.key?(:parent)
+          @missing_dependency = args[:missing_dependency] if args.key?(:missing_dependency)
         end
       end
       
