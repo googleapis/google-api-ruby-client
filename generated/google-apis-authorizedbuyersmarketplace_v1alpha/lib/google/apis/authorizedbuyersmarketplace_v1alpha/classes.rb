@@ -630,7 +630,7 @@ module Google
       
       # Defines an identifier for a segment of inventory that can be targeted by
       # curators or media planners in the deals or auction packages UI. Curation of
-      # inventory is done by curators on external platforms.
+      # inventory is done by curators on external platforms. -- Next ID: 9 --
       class DataSegment
         include Google::Apis::Core::Hashable
       
