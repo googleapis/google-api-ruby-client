@@ -4407,9 +4407,9 @@ module Google
         # @return [String]
         attr_accessor :last_run_time
       
-        # Unique resource name for the DiscoveryConfig, assigned by the service when the
-        # DiscoveryConfig is created, for example `projects/dlp-test-project/locations/
-        # global/discoveryConfigs/53234423`.
+        # Output only. Unique resource name for the DiscoveryConfig, assigned by the
+        # service when the DiscoveryConfig is created, for example `projects/dlp-test-
+        # project/locations/global/discoveryConfigs/53234423`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4884,7 +4884,7 @@ module Google
       class GooglePrivacyDlpV2DlpJob
         include Google::Apis::Core::Hashable
       
-        # Events that should occur after the job has completed.
+        # Output only. Events that should occur after the job has completed.
         # Corresponds to the JSON property `actionDetails`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2ActionDetails>]
         attr_accessor :action_details
@@ -6675,6 +6675,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypes]
         attr_accessor :info_types
       
+        # Optional. The minimum total number of findings of all matching info types
+        # required for this condition to evaluate to true. Defaults to 1 if unset.
+        # Corresponds to the JSON property `minCount`
+        # @return [Fixnum]
+        attr_accessor :min_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6683,6 +6689,7 @@ module Google
         def update!(**args)
           @any_info_type = args[:any_info_type] if args.key?(:any_info_type)
           @info_types = args[:info_types] if args.key?(:info_types)
+          @min_count = args[:min_count] if args.key?(:min_count)
         end
       end
       
@@ -7375,9 +7382,9 @@ module Google
         # @return [String]
         attr_accessor :last_run_time
       
-        # Unique resource name for the triggeredJob, assigned by the service when the
-        # triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/
-        # 53234423`.
+        # Output only. Unique resource name for the triggeredJob, assigned by the
+        # service when the triggeredJob is created, for example `projects/dlp-test-
+        # project/jobTriggers/53234423`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
