@@ -941,6 +941,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execution_reason, as: 'executionReason'
+          property :instance_reason, as: 'instanceReason'
           property :last_transition_time, as: 'lastTransitionTime'
           property :message, as: 'message'
           property :reason, as: 'reason'
@@ -1595,6 +1596,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2ServiceScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2ServiceScaling::Representation
       
+          property :ssh_enabled, as: 'sshEnabled'
           property :template, as: 'template', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionTemplate::Representation
       
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
