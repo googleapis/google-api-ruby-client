@@ -904,6 +904,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObjectStorageStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ParquetOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1522,6 +1528,8 @@ module Google
           property :is_aggregate, as: 'isAggregate'
           property :mode, as: 'mode'
           property :name, as: 'name'
+          property :table_type, as: 'tableType', class: Google::Apis::BigqueryV2::StandardSqlTableType, decorator: Google::Apis::BigqueryV2::StandardSqlTableType::Representation
+      
         end
       end
       
@@ -2964,9 +2972,12 @@ module Google
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobStatistics4, decorator: Google::Apis::BigqueryV2::JobStatistics4::Representation
       
           property :final_execution_duration_ms, :numeric_string => true, as: 'finalExecutionDurationMs'
+          collection :global_query_remote_regions, as: 'globalQueryRemoteRegions'
           property :load, as: 'load', class: Google::Apis::BigqueryV2::JobStatistics3, decorator: Google::Apis::BigqueryV2::JobStatistics3::Representation
       
           property :num_child_jobs, :numeric_string => true, as: 'numChildJobs'
+          property :parent_global_query_job, as: 'parentGlobalQueryJob', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
+      
           property :parent_job_id, as: 'parentJobId'
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobStatistics2, decorator: Google::Apis::BigqueryV2::JobStatistics2::Representation
       
@@ -3046,6 +3057,8 @@ module Google
           property :model_training_current_iteration, as: 'modelTrainingCurrentIteration'
           property :model_training_expected_total_iteration, :numeric_string => true, as: 'modelTrainingExpectedTotalIteration'
           property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
+          collection :object_storage_stats, as: 'objectStorageStats', class: Google::Apis::BigqueryV2::ObjectStorageStats, decorator: Google::Apis::BigqueryV2::ObjectStorageStats::Representation
+      
           property :performance_insights, as: 'performanceInsights', class: Google::Apis::BigqueryV2::PerformanceInsights, decorator: Google::Apis::BigqueryV2::PerformanceInsights::Representation
       
           property :query_info, as: 'queryInfo', class: Google::Apis::BigqueryV2::QueryInfo, decorator: Google::Apis::BigqueryV2::QueryInfo::Representation
@@ -3119,6 +3132,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :copied_logical_bytes, :numeric_string => true, as: 'copiedLogicalBytes'
           property :copied_rows, :numeric_string => true, as: 'copiedRows'
+          property :remote_destination_region, as: 'remoteDestinationRegion'
         end
       end
       
@@ -3356,6 +3370,15 @@ module Google
       
           collection :confusion_matrix_list, as: 'confusionMatrixList', class: Google::Apis::BigqueryV2::ConfusionMatrix, decorator: Google::Apis::BigqueryV2::ConfusionMatrix::Representation
       
+        end
+      end
+      
+      class ObjectStorageStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_bytes_read, :numeric_string => true, as: 'cacheBytesRead'
+          property :cloud_provider, as: 'cloudProvider'
+          property :object_storage_bytes_read, :numeric_string => true, as: 'objectStorageBytesRead'
         end
       end
       

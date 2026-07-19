@@ -158,6 +158,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A table type
+        # Corresponds to the JSON property `tableType`
+        # @return [Google::Apis::BigqueryV2::StandardSqlTableType]
+        attr_accessor :table_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -169,6 +174,7 @@ module Google
           @is_aggregate = args[:is_aggregate] if args.key?(:is_aggregate)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
+          @table_type = args[:table_type] if args.key?(:table_type)
         end
       end
       
@@ -5117,7 +5123,10 @@ module Google
         # Optional. The reservation that job would use. User can specify a reservation
         # to execute the job. If reservation is not set, reservation is determined based
         # on the rules defined by the reservation assignments. The expected format is `
-        # projects/`project`/locations/`location`/reservations/`reservation``.
+        # projects/`project`/locations/`location`/reservations/`reservation``. Forces
+        # the query to use on-demand billing when set to `none`, which requires the
+        # project or organization to have `reservation_override_mode` set to `
+        # ALLOW_ANY_OVERRIDE`.
         # Corresponds to the JSON property `reservation`
         # @return [String]
         attr_accessor :reservation
@@ -6251,6 +6260,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :final_execution_duration_ms
       
+        # Output only. Regions where the global query accesses data.
+        # Corresponds to the JSON property `globalQueryRemoteRegions`
+        # @return [Array<String>]
+        attr_accessor :global_query_remote_regions
+      
         # Statistics for a load job.
         # Corresponds to the JSON property `load`
         # @return [Google::Apis::BigqueryV2::JobStatistics3]
@@ -6260,6 +6274,11 @@ module Google
         # Corresponds to the JSON property `numChildJobs`
         # @return [Fixnum]
         attr_accessor :num_child_jobs
+      
+        # A job reference is a fully qualified identifier for referring to a job.
+        # Corresponds to the JSON property `parentGlobalQueryJob`
+        # @return [Google::Apis::BigqueryV2::JobReference]
+        attr_accessor :parent_global_query_job
       
         # Output only. If this is a child job, specifies the job ID of the parent.
         # Corresponds to the JSON property `parentJobId`
@@ -6349,8 +6368,10 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @extract = args[:extract] if args.key?(:extract)
           @final_execution_duration_ms = args[:final_execution_duration_ms] if args.key?(:final_execution_duration_ms)
+          @global_query_remote_regions = args[:global_query_remote_regions] if args.key?(:global_query_remote_regions)
           @load = args[:load] if args.key?(:load)
           @num_child_jobs = args[:num_child_jobs] if args.key?(:num_child_jobs)
+          @parent_global_query_job = args[:parent_global_query_job] if args.key?(:parent_global_query_job)
           @parent_job_id = args[:parent_job_id] if args.key?(:parent_job_id)
           @query = args[:query] if args.key?(:query)
           @quota_deferments = args[:quota_deferments] if args.key?(:quota_deferments)
@@ -6545,6 +6566,12 @@ module Google
         # Corresponds to the JSON property `numDmlAffectedRows`
         # @return [Fixnum]
         attr_accessor :num_dml_affected_rows
+      
+        # Output only. Storage and caching statistics per cloud provider for queries
+        # over object storage.
+        # Corresponds to the JSON property `objectStorageStats`
+        # @return [Array<Google::Apis::BigqueryV2::ObjectStorageStats>]
+        attr_accessor :object_storage_stats
       
         # Performance insights for the job.
         # Corresponds to the JSON property `performanceInsights`
@@ -6790,6 +6817,7 @@ module Google
           @model_training_current_iteration = args[:model_training_current_iteration] if args.key?(:model_training_current_iteration)
           @model_training_expected_total_iteration = args[:model_training_expected_total_iteration] if args.key?(:model_training_expected_total_iteration)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
+          @object_storage_stats = args[:object_storage_stats] if args.key?(:object_storage_stats)
           @performance_insights = args[:performance_insights] if args.key?(:performance_insights)
           @query_info = args[:query_info] if args.key?(:query_info)
           @query_plan = args[:query_plan] if args.key?(:query_plan)
@@ -6944,6 +6972,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :copied_rows
       
+        # Output only. Destination region for a cross-region copy job. Not set for in-
+        # region copy jobs.
+        # Corresponds to the JSON property `remoteDestinationRegion`
+        # @return [String]
+        attr_accessor :remote_destination_region
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6952,6 +6986,7 @@ module Google
         def update!(**args)
           @copied_logical_bytes = args[:copied_logical_bytes] if args.key?(:copied_logical_bytes)
           @copied_rows = args[:copied_rows] if args.key?(:copied_rows)
+          @remote_destination_region = args[:remote_destination_region] if args.key?(:remote_destination_region)
         end
       end
       
@@ -7785,6 +7820,38 @@ module Google
         def update!(**args)
           @aggregate_classification_metrics = args[:aggregate_classification_metrics] if args.key?(:aggregate_classification_metrics)
           @confusion_matrix_list = args[:confusion_matrix_list] if args.key?(:confusion_matrix_list)
+        end
+      end
+      
+      # Storage and caching statistics for object storage.
+      class ObjectStorageStats
+        include Google::Apis::Core::Hashable
+      
+        # Total bytes read from the GCP Lakehouse-internal cache, avoiding an object
+        # storage read.
+        # Corresponds to the JSON property `cacheBytesRead`
+        # @return [Fixnum]
+        attr_accessor :cache_bytes_read
+      
+        # The cloud provider for this block of statistics.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
+        # Total bytes read directly from the cloud provider's storage.
+        # Corresponds to the JSON property `objectStorageBytesRead`
+        # @return [Fixnum]
+        attr_accessor :object_storage_bytes_read
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_bytes_read = args[:cache_bytes_read] if args.key?(:cache_bytes_read)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
+          @object_storage_bytes_read = args[:object_storage_bytes_read] if args.key?(:object_storage_bytes_read)
         end
       end
       
@@ -8642,7 +8709,9 @@ module Google
       
         # Optional. The reservation that jobs.query request would use. User can specify
         # a reservation to execute the job.query. The expected format is `projects/`
-        # project`/locations/`location`/reservations/`reservation``.
+        # project`/locations/`location`/reservations/`reservation``. Forces the query to
+        # use on-demand billing when set to `none`. This requires the project or
+        # organization to have `reservation_override_mode` set to `ALLOW_ANY_OVERRIDE`.
         # Corresponds to the JSON property `reservation`
         # @return [String]
         attr_accessor :reservation
