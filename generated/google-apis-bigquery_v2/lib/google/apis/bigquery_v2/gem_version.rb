@@ -16,13 +16,13 @@ module Google
   module Apis
     module BigqueryV2
       # Version of the google-apis-bigquery_v2 gem
-      GEM_VERSION = "0.105.0"
+      GEM_VERSION = "0.106.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260620"
+      REVISION = "20260707"
     end
   end
 end
