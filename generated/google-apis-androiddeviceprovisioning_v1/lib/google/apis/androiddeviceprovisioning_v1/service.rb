@@ -330,8 +330,9 @@ module Google
         #   Required. The customer managing the devices. An API resource name in the
         #   format `customers/[CUSTOMER_ID]`.
         # @param [Fixnum] page_size
-        #   Required. The maximum number of devices to show in a page of results. Must be
-        #   between 1 and 100 inclusive.
+        #   Optional. The maximum number of devices to show in a page of results. If unset
+        #   or 0, defaults to 1000. If a value greater than 1000 is specified, it will be
+        #   coerced to 1000.
         # @param [String] page_token
         #   A token specifying which result page to return.
         # @param [String] fields
