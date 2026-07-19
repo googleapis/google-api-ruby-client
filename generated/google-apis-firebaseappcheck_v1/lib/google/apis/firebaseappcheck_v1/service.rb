@@ -560,44 +560,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Validates a [SafetyNet token](https://developer.android.com/training/safetynet/
-        # attestation#request-attestation-step). If valid, returns an AppCheckToken.
-        # @param [String] app
-        #   Required. The relative resource name of the Android app, in the format: ```
-        #   projects/`project_number`/apps/`app_id` ``` If necessary, the `project_number`
-        #   element can be replaced with the project ID of the Firebase project. Learn
-        #   more about using project identifiers in Google's [AIP 2510](https://google.aip.
-        #   dev/cloud/2510) standard.
-        # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest] google_firebase_appcheck_v1_exchange_safety_net_token_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1AppCheckToken] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1AppCheckToken]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def exchange_project_app_safety_net_token(app, google_firebase_appcheck_v1_exchange_safety_net_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+app}:exchangeSafetyNetToken', options)
-          command.request_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest::Representation
-          command.request_object = google_firebase_appcheck_v1_exchange_safety_net_token_request_object
-          command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1AppCheckToken::Representation
-          command.response_class = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1AppCheckToken
-          command.params['app'] = app unless app.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Generates a challenge that protects the integrity of an immediately following
         # call to ExchangeAppAttestAttestation or ExchangeAppAttestAssertion. A
         # challenge should not be reused for multiple calls.
@@ -1392,7 +1354,7 @@ module Google
         end
         
         # Updates the RecaptchaV3Config for the specified app. While this configuration
-        # is incomplete or invalid, the app will be unable to exchange reCAPTCHA V3
+        # is incomplete or invalid, the app will be unable to exchange reCAPTCHA v3
         # tokens for App Check tokens. For security reasons, the `site_secret` field is
         # never populated in the response.
         # @param [String] name
@@ -1426,115 +1388,6 @@ module Google
           command.request_object = google_firebase_appcheck_v1_recaptcha_v3_config_object
           command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1RecaptchaV3Config::Representation
           command.response_class = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1RecaptchaV3Config
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Atomically gets the SafetyNetConfigs for the specified list of apps.
-        # @param [String] parent
-        #   Required. The parent project name shared by all SafetyNetConfigs being
-        #   retrieved, in the format ``` projects/`project_number` ``` The parent
-        #   collection in the `name` field of any resource being retrieved must match this
-        #   field, or the entire batch fails.
-        # @param [Array<String>, String] names
-        #   Required. The relative resource names of the SafetyNetConfigs to retrieve, in
-        #   the format ``` projects/`project_number`/apps/`app_id`/safetyNetConfig ``` A
-        #   maximum of 100 objects can be retrieved in a batch.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_project_app_safety_net_config_get(parent, names: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+parent}/apps/-/safetyNetConfig:batchGet', options)
-          command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse::Representation
-          command.response_class = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['names'] = names unless names.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the SafetyNetConfig for the specified app.
-        # @param [String] name
-        #   Required. The relative resource name of the SafetyNetConfig, in the format: ```
-        #   projects/`project_number`/apps/`app_id`/safetyNetConfig ```
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_app_safety_net_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig::Representation
-          command.response_class = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the SafetyNetConfig for the specified app. While this configuration is
-        # incomplete or invalid, the app will be unable to exchange SafetyNet tokens for
-        # App Check tokens.
-        # @param [String] name
-        #   Required. The relative resource name of the SafetyNet configuration object, in
-        #   the format: ``` projects/`project_number`/apps/`app_id`/safetyNetConfig ```
-        # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig] google_firebase_appcheck_v1_safety_net_config_object
-        # @param [String] update_mask
-        #   Required. A comma-separated list of names of fields in the SafetyNetConfig to
-        #   update. Example: `token_ttl`.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_app_safety_net_config(name, google_firebase_appcheck_v1_safety_net_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1/{+name}', options)
-          command.request_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig::Representation
-          command.request_object = google_firebase_appcheck_v1_safety_net_config_object
-          command.response_representation = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig::Representation
-          command.response_class = Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1582,11 +1435,8 @@ module Google
         # @param [String] name
         #   Required. The relative resource name of the Service to retrieve, in the format:
         #   ``` projects/`project_number`/services/`service_id` ``` Note that the `
-        #   service_id` element must be a supported service ID. Currently, the following
-        #   service IDs are supported: * `firebasestorage.googleapis.com` (Cloud Storage
-        #   for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database)
-        #   * `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com` (
-        #   Google Identity for iOS)
+        #   service_id` element must be a supported service ID. Consult the Service.name
+        #   field for a list of supported service IDs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1665,10 +1515,15 @@ module Google
         #   Required. The relative resource name of the service configuration object, in
         #   the format: ``` projects/`project_number`/services/`service_id` ``` Note that
         #   the `service_id` element must be a supported service ID. Currently, the
-        #   following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
-        #   Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime
-        #   Database) * `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.
-        #   com` (Google Identity for iOS)
+        #   following service IDs are supported. Firebase and Google Cloud services: * `
+        #   identitytoolkit.googleapis.com` (Firebase Authentication) * `
+        #   firebasedataconnect.googleapis.com` (Firebase SQL Connect) * `firestore.
+        #   googleapis.com` (Cloud Firestore) * `firebasedatabase.googleapis.com` (
+        #   Firebase Realtime Database) * `firebasestorage.googleapis.com` (Cloud Storage
+        #   for Firebase) * `firebaseml.googleapis.com` (Firebase AI Logic) Google Maps
+        #   Platform services: * `maps-backend.googleapis.com` (Maps JavaScript API) * `
+        #   places.googleapis.com` (Places API (New)) Other supported Google services: * `
+        #   oauth2.googleapis.com` (Google Identity for iOS)
         # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1Service] google_firebase_appcheck_v1_service_object
         # @param [String] update_mask
         #   Required. A comma-separated list of names of fields in the Service to update.
@@ -1743,8 +1598,8 @@ module Google
         #   Required. The relative resource name of the parent Service in which the
         #   specified ResourcePolicy will be created, in the format: ``` projects/`
         #   project_number`/services/`service_id` ``` Note that the `service_id` element
-        #   must be a supported service ID. Currently, the following service IDs are
-        #   supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+        #   must be a supported service ID. Consult the ResourcePolicy.name field for a
+        #   list of supported service IDs.
         # @param [Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1ResourcePolicy] google_firebase_appcheck_v1_resource_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1821,8 +1676,8 @@ module Google
         #   Required. The relative resource name of the ResourcePolicy to retrieve, in the
         #   format: ``` projects/`project_number`/services/`service_id`/resourcePolicies/`
         #   resource_policy_id` ``` Note that the `service_id` element must be a supported
-        #   service ID. Currently, the following service IDs are supported: * `oauth2.
-        #   googleapis.com` (Google Identity for iOS)
+        #   service ID. Consult the ResourcePolicy.name field for a list of supported
+        #   service IDs.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1855,8 +1710,8 @@ module Google
         #   Required. The relative resource name of the parent Service for which to list
         #   each associated ResourcePolicy, in the format: ``` projects/`project_number`/
         #   services/`service_id` ``` Note that the `service_id` element must be a
-        #   supported service ID. Currently, the following service IDs are supported: * `
-        #   oauth2.googleapis.com` (Google Identity for iOS)
+        #   supported service ID. Consult the ResourcePolicy.name field for a list of
+        #   supported service IDs.
         # @param [String] filter
         #   Optional. Filters the results by the specified rule. For the exact syntax of
         #   this field, please consult the [AIP-160](https://google.aip.dev/160) standard.

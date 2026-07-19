@@ -184,25 +184,6 @@ module Google
         end
       end
       
-      # Response message for the BatchGetSafetyNetConfigs method.
-      class GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse
-        include Google::Apis::Core::Hashable
-      
-        # SafetyNetConfigs retrieved.
-        # Corresponds to the JSON property `configs`
-        # @return [Array<Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig>]
-        attr_accessor :configs
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @configs = args[:configs] if args.key?(:configs)
-        end
-      end
-      
       # Request message for the BatchUpdateResourcePolicies method.
       class GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest
         include Google::Apis::Core::Hashable
@@ -327,7 +308,7 @@ module Google
       
         # Required. Input only. Immutable. The secret token itself. Must be provided
         # during creation, and must be a UUID4, case insensitive. This field is
-        # immutable once set, and cannot be provided during an UpdateDebugToken request.
+        # immutable once set, and cannot be provided during a UpdateDebugToken request.
         # You can, however, delete this debug token using DeleteDebugToken to revoke it.
         # For security reasons, this field will never be populated in any response.
         # Corresponds to the JSON property `token`
@@ -543,6 +524,24 @@ module Google
         # @return [String]
         attr_accessor :custom_token
       
+        # Optional. When `limited_use` is set to `true`, this field specifies the
+        # desired `jti` claim (Section 4.1.7 of RFC 7519) in the returned App Check
+        # token. *Limited use* App Check tokens with the same `jti` will be counted as
+        # the same token for the purposes of replay protection. An error is returned if
+        # this field is specified without setting `limited_use` to `true`. The size of
+        # this field is limited to 500 bytes. If specified, its length must be at least
+        # 16 bytes. If this field is omitted or is empty and `limited_use` is set to `
+        # true`, a randomly generated `jti` claim with length between 16 and 500 bytes (
+        # inclusive) will be used in the returned App Check token. Leaving this field
+        # empty is only recommended if your custom attestation provider itself is not
+        # vulnerable to replay attacks. When `limited_use` is set to `false`, the
+        # presence and the contents of the `jti` claim in the returned App Check token
+        # are unspecified. To ensure that the returned App Check token is eligible for
+        # limited-use functionality, set `limited_use` to `true`.
+        # Corresponds to the JSON property `jti`
+        # @return [String]
+        attr_accessor :jti
+      
         # Specifies whether this attestation is for use in a *limited use* (`true`) or *
         # session based* (`false`) context. To enable this attestation to be used with
         # the *replay protection* feature, set this to `true`. The default value is `
@@ -559,6 +558,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @custom_token = args[:custom_token] if args.key?(:custom_token)
+          @jti = args[:jti] if args.key?(:jti)
           @limited_use = args[:limited_use] if args.key?(:limited_use)
         end
       end
@@ -713,26 +713,6 @@ module Google
         def update!(**args)
           @limited_use = args[:limited_use] if args.key?(:limited_use)
           @recaptcha_v3_token = args[:recaptcha_v3_token] if args.key?(:recaptcha_v3_token)
-        end
-      end
-      
-      # Request message for the ExchangeSafetyNetToken method.
-      class GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The [SafetyNet attestation response](https://developer.android.com/
-        # training/safetynet/attestation#request-attestation-step) issued to your app.
-        # Corresponds to the JSON property `safetyNetToken`
-        # @return [String]
-        attr_accessor :safety_net_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @safety_net_token = args[:safety_net_token] if args.key?(:safety_net_token)
         end
       end
       
@@ -1304,8 +1284,8 @@ module Google
       class GoogleFirebaseAppcheckV1ResourcePolicy
         include Google::Apis::Core::Hashable
       
-        # Required. The App Check enforcement mode for this resource. This will override
-        # the App Check overall EnforcementMode setting on the service.
+        # Required. The baseline protection EnforcementMode for this resource. This will
+        # override the service-level baseline protection EnforcementMode.
         # Corresponds to the JSON property `enforcementMode`
         # @return [String]
         attr_accessor :enforcement_mode
@@ -1360,45 +1340,11 @@ module Google
         end
       end
       
-      # An app's SafetyNet configuration object. This configuration controls certain
-      # properties of the `AppCheckToken` returned by ExchangeSafetyNetToken, such as
-      # its ttl. Note that your registered SHA-256 certificate fingerprints are used
-      # to validate tokens issued by SafetyNet; please register them via the Firebase
-      # Console or programmatically via the [Firebase Management Service](https://
-      # firebase.google.com/docs/projects/api/reference/rest/v11/projects.androidApps.
-      # sha/create).
-      class GoogleFirebaseAppcheckV1SafetyNetConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. The relative resource name of the SafetyNet configuration object, in
-        # the format: ``` projects/`project_number`/apps/`app_id`/safetyNetConfig ```
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Specifies the duration for which App Check tokens exchanged from SafetyNet
-        # tokens will be valid. If unset, a default value of 1 hour is assumed. Must be
-        # between 30 minutes and 7 days, inclusive.
-        # Corresponds to the JSON property `tokenTtl`
-        # @return [String]
-        attr_accessor :token_ttl
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
-        end
-      end
-      
       # The enforcement configuration for a Firebase service supported by App Check.
       class GoogleFirebaseAppcheckV1Service
         include Google::Apis::Core::Hashable
       
-        # Required. The App Check enforcement mode for this service.
+        # Required. The baseline protection EnforcementMode for this service.
         # Corresponds to the JSON property `enforcementMode`
         # @return [String]
         attr_accessor :enforcement_mode
@@ -1414,24 +1360,29 @@ module Google
         # Required. The relative resource name of the service configuration object, in
         # the format: ``` projects/`project_number`/services/`service_id` ``` Note that
         # the `service_id` element must be a supported service ID. Currently, the
-        # following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
-        # Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime
-        # Database) * `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.
-        # com` (Google Identity for iOS)
+        # following service IDs are supported. Firebase and Google Cloud services: * `
+        # identitytoolkit.googleapis.com` (Firebase Authentication) * `
+        # firebasedataconnect.googleapis.com` (Firebase SQL Connect) * `firestore.
+        # googleapis.com` (Cloud Firestore) * `firebasedatabase.googleapis.com` (
+        # Firebase Realtime Database) * `firebasestorage.googleapis.com` (Cloud Storage
+        # for Firebase) * `firebaseml.googleapis.com` (Firebase AI Logic) Google Maps
+        # Platform services: * `maps-backend.googleapis.com` (Maps JavaScript API) * `
+        # places.googleapis.com` (Places API (New)) Other supported Google services: * `
+        # oauth2.googleapis.com` (Google Identity for iOS)
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Optional. The replay protection enforcement mode for this service. Note that
-        # this field cannot be set to a level higher than the overall App Check
-        # enforcement mode. For example, if the overall App Check enforcement mode is
-        # set to `UNENFORCED`, this field cannot be set to `ENFORCED`. In order to
-        # enforce replay protection, you must first enforce App Check. An HTTP 400 error
-        # will be returned in this case. By default, this field is set to `OFF`. Setting
-        # this field to `UNENFORCED` or `ENFORCED` is considered opting into replay
-        # protection. Once opted in, requests to your protected services may experience
-        # higher latency. To opt out of replay protection after opting in, set this
-        # field to `OFF`.
+        # Optional. The replay protection EnforcementMode for this service. Note that
+        # this field cannot be set to a level higher than that of baseline protection.
+        # For example, if the enforcement mode for baseline protection is set to `
+        # UNENFORCED`, this field cannot be set to `ENFORCED`. In order to enforce
+        # replay protection, you must first enforce App Check's baseline protection. An
+        # HTTP 400 error will be returned in this case. By default, this field is set to
+        # `OFF`. Setting this field to `UNENFORCED` or `ENFORCED` is considered opting
+        # into replay protection. Opting in can impact your requests by adding some
+        # latency and sometimes cost (depending on your attestation provider). To opt
+        # out of replay protection after opting in, set this field to `OFF`.
         # Corresponds to the JSON property `replayProtection`
         # @return [String]
         attr_accessor :replay_protection
