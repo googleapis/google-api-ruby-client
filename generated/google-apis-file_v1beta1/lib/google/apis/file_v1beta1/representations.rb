@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -454,6 +460,8 @@ module Google
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
           property :name, as: 'name'
           collection :nfs_export_options, as: 'nfsExportOptions', class: Google::Apis::FileV1beta1::NfsExportOptions, decorator: Google::Apis::FileV1beta1::NfsExportOptions::Representation
+      
+          property :restore_config, as: 'restoreConfig', class: Google::Apis::FileV1beta1::RestoreConfig, decorator: Google::Apis::FileV1beta1::RestoreConfig::Representation
       
           property :source_backup, as: 'sourceBackup'
           property :source_backupdr_backup, as: 'sourceBackupdrBackup'
@@ -853,6 +861,13 @@ module Google
           collection :replicas, as: 'replicas', class: Google::Apis::FileV1beta1::ReplicaConfig, decorator: Google::Apis::FileV1beta1::ReplicaConfig::Representation
       
           property :role, as: 'role'
+        end
+      end
+      
+      class RestoreConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :path_patterns, as: 'pathPatterns'
         end
       end
       
