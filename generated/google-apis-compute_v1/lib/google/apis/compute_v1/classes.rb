@@ -23556,7 +23556,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -23597,7 +23598,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -23696,7 +23698,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -23737,7 +23740,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -24136,7 +24140,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -24177,7 +24182,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -24339,7 +24345,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -24380,7 +24387,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -24801,7 +24809,7 @@ module Google
       class InstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
-        # Flag to update all instances instead of specified list of “instances”.
+        # Flag to update all instances instead of specified list of "instances".
         # If the flag is set to true then the instances may not be specified
         # in the request.
         # Corresponds to the JSON property `allInstances`
@@ -24943,15 +24951,15 @@ module Google
       class InstanceGroupManagersListErrorsResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output Only] The list of errors of the managed instance group.
+        # Output only. The list of errors of the managed instance group.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::InstanceManagedByIgmError>]
         attr_accessor :items
       
-        # Output only. [Output Only] This token allows you to get the next page of
-        # results for
-        # list requests. If the number of results is larger thanmaxResults, use the
-        # nextPageToken as a value for
+        # Output only. This token allows you to get the next page of results for list
+        # requests.
+        # If the number of results is larger than maxResults
+        # , then use the nextPageToken as a value for
         # the query parameter pageToken in the next list request.
         # Subsequent list requests will have their own nextPageToken to
         # continue paging through the results.
@@ -34746,7 +34754,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -34787,7 +34796,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -41555,7 +41565,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -41596,7 +41607,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -46228,7 +46240,7 @@ module Google
       class RegionInstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
-        # Flag to update all instances instead of specified list of “instances”.
+        # Flag to update all instances instead of specified list of "instances".
         # If the flag is set to true then the instances may not be specified
         # in the request.
         # Corresponds to the JSON property `allInstances`
