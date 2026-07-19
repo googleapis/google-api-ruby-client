@@ -1928,6 +1928,17 @@ module Google
         # @return [String]
         attr_accessor :partial_result_mode
       
+        # Optional. The resource name of the Secret Manager secret holding the password
+        # for the user to log into the database. The secret should be created using the
+        # regional endpoint (for API) or from the Regional Secrets page (for UI), and
+        # stored in the same region as the Cloud SQL instance. The expected resource
+        # name format is `projects/`project`/locations/`location`/secrets/`secret`/
+        # versions/`secret_version``. Used together with the `user` field. The secret
+        # resource name will not be stored.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
         # Optional. The maximum number of rows returned per SQL statement.
         # Corresponds to the JSON property `rowLimit`
         # @return [Fixnum]
@@ -1956,6 +1967,7 @@ module Google
           @auto_iam_authn = args[:auto_iam_authn] if args.key?(:auto_iam_authn)
           @database = args[:database] if args.key?(:database)
           @partial_result_mode = args[:partial_result_mode] if args.key?(:partial_result_mode)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
           @row_limit = args[:row_limit] if args.key?(:row_limit)
           @sql_statement = args[:sql_statement] if args.key?(:sql_statement)
           @user = args[:user] if args.key?(:user)
