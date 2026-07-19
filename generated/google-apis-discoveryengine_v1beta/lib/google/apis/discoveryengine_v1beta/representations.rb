@@ -6888,6 +6888,7 @@ module Google
       
           property :free_trial, as: 'freeTrial'
           property :gemini_bundle, as: 'geminiBundle'
+          property :last_user_update_time, as: 'lastUserUpdateTime'
           property :license_count, :numeric_string => true, as: 'licenseCount'
           property :name, as: 'name'
           property :start_date, as: 'startDate', class: Google::Apis::DiscoveryengineV1beta::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1beta::GoogleTypeDate::Representation
@@ -8519,6 +8520,7 @@ module Google
       
           property :healthcare_fhir_config, as: 'healthcareFhirConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig::Representation
       
+          property :icon_uri, as: 'iconUri'
           property :identity_mapping_store, as: 'identityMappingStore'
           property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaIdpConfig::Representation
       
@@ -9313,6 +9315,7 @@ module Google
       
           property :free_trial, as: 'freeTrial'
           property :gemini_bundle, as: 'geminiBundle'
+          property :last_user_update_time, as: 'lastUserUpdateTime'
           property :license_count, :numeric_string => true, as: 'licenseCount'
           property :name, as: 'name'
           property :start_date, as: 'startDate', class: Google::Apis::DiscoveryengineV1beta::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1beta::GoogleTypeDate::Representation
@@ -12956,6 +12959,7 @@ module Google
       
           property :free_trial, as: 'freeTrial'
           property :gemini_bundle, as: 'geminiBundle'
+          property :last_user_update_time, as: 'lastUserUpdateTime'
           property :license_count, :numeric_string => true, as: 'licenseCount'
           property :name, as: 'name'
           property :start_date, as: 'startDate', class: Google::Apis::DiscoveryengineV1beta::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1beta::GoogleTypeDate::Representation
