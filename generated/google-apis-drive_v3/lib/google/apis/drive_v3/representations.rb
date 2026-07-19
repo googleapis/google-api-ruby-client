@@ -618,6 +618,7 @@ module Google
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :due_time, as: 'dueTime'
+          property :file_content_change_behavior, as: 'fileContentChangeBehavior'
           property :initiator, as: 'initiator', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
           property :kind, as: 'kind'
@@ -1420,6 +1421,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :due_time, as: 'dueTime'
+          property :file_content_change_behavior, as: 'fileContentChangeBehavior'
           property :lock_file, as: 'lockFile'
           property :message, as: 'message'
           collection :reviewer_emails, as: 'reviewerEmails'
