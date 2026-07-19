@@ -1870,6 +1870,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FirewallPolicyRuleOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FirewallPolicyRuleSecureTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4696,6 +4702,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectsSetNameRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InternalIpAddress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5094,6 +5106,30 @@ module Google
       
       class ManagedInstanceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedRuleset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedRulesetList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -7379,6 +7415,54 @@ module Google
       end
       
       class ReservationBlocksListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationConsumedInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationConsumedInstanceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class LinkageErrors
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReservationConsumedInstancesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -14193,6 +14277,13 @@ module Google
         end
       end
       
+      class FirewallPolicyRuleOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_priority, as: 'allocatedPriority'
+        end
+      end
+      
       class FirewallPolicyRuleSecureTag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19567,6 +19658,14 @@ module Google
         end
       end
       
+      class InterconnectsSetNameRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_name, as: 'currentName'
+          property :name, as: 'name'
+        end
+      end
+      
       class InternalIpAddress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20337,6 +20436,50 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_template, as: 'instanceTemplate'
           property :name, as: 'name'
+        end
+      end
+      
+      class ManagedRuleset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_log, as: 'changeLog'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          collection :rule_ids, as: 'ruleIds'
+          property :ruleset_id, as: 'rulesetId'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ManagedRulesetList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::ManagedRuleset, decorator: Google::Apis::ComputeAlpha::ManagedRuleset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ManagedRulesetList::Warning, decorator: Google::Apis::ComputeAlpha::ManagedRulesetList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ManagedRulesetList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ManagedRulesetList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -21467,6 +21610,7 @@ module Google
       class NetworkPolicyTrafficClassificationRuleMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_address_groups, as: 'destAddressGroups'
           collection :dest_ip_ranges, as: 'destIpRanges'
           collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeAlpha::NetworkPolicyTrafficClassificationRuleMatcherLayer4Config, decorator: Google::Apis::ComputeAlpha::NetworkPolicyTrafficClassificationRuleMatcherLayer4Config::Representation
       
@@ -22309,6 +22453,8 @@ module Google
           property :description, as: 'description'
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::ComputeAlpha::Operation::Error, decorator: Google::Apis::ComputeAlpha::Operation::Error::Representation
+      
+          property :firewall_policy_rule_operation_metadata, as: 'firewallPolicyRuleOperationMetadata', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleOperationMetadata, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleOperationMetadata::Representation
       
           property :get_version_operation_metadata, as: 'getVersionOperationMetadata', class: Google::Apis::ComputeAlpha::GetVersionOperationMetadata, decorator: Google::Apis::ComputeAlpha::GetVersionOperationMetadata::Representation
       
@@ -24590,6 +24736,89 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ReservationBlocksListResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ReservationBlocksListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ReservationConsumedInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :service, as: 'service'
+          property :status, as: 'status', class: Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus, decorator: Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus::Representation
+      
+        end
+      end
+      
+      class ReservationConsumedInstanceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :linkage_errors, as: 'linkageErrors', class: Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus::LinkageErrors, decorator: Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus::LinkageErrors::Representation
+      
+        end
+        
+        class LinkageErrors
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus::LinkageErrors::Error, decorator: Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus::LinkageErrors::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus::LinkageErrors::Error::ErrorDetail, decorator: Google::Apis::ComputeAlpha::ReservationConsumedInstanceStatus::LinkageErrors::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputeAlpha::ErrorInfo, decorator: Google::Apis::ComputeAlpha::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputeAlpha::Help, decorator: Google::Apis::ComputeAlpha::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputeAlpha::LocalizedMessage, decorator: Google::Apis::ComputeAlpha::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputeAlpha::QuotaExceededInfo, decorator: Google::Apis::ComputeAlpha::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
+        end
+      end
+      
+      class ReservationConsumedInstancesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::ReservationConsumedInstance, decorator: Google::Apis::ComputeAlpha::ReservationConsumedInstance::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ReservationConsumedInstancesListResponse::Warning, decorator: Google::Apis::ComputeAlpha::ReservationConsumedInstancesListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ReservationConsumedInstancesListResponse::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ReservationConsumedInstancesListResponse::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
