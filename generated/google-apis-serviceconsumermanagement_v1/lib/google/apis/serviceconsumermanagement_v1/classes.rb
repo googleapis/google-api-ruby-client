@@ -4192,6 +4192,14 @@ module Google
         # @return [String]
         attr_accessor :resource
       
+        # Output only. The resource name of the tenant project from which this active
+        # regional tenant project was migrated. This field is only set for active
+        # regional migrated mapping tenant projects. Format: `services//`collection_id`/`
+        # RESOURCE_ID`/locations/`LOCATION`/tenantProjects/`TENANT_ID``.
+        # Corresponds to the JSON property `sourceTenantProject`
+        # @return [String]
+        attr_accessor :source_tenant_project
+      
         # Status of tenant resource.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -4210,6 +4218,7 @@ module Google
         def update!(**args)
           @migrated_tenant_project = args[:migrated_tenant_project] if args.key?(:migrated_tenant_project)
           @resource = args[:resource] if args.key?(:resource)
+          @source_tenant_project = args[:source_tenant_project] if args.key?(:source_tenant_project)
           @status = args[:status] if args.key?(:status)
           @tag = args[:tag] if args.key?(:tag)
         end

@@ -1654,6 +1654,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :migrated_tenant_project, as: 'migratedTenantProject'
           property :resource, as: 'resource'
+          property :source_tenant_project, as: 'sourceTenantProject'
           property :status, as: 'status'
           property :tag, as: 'tag'
         end
