@@ -8863,12 +8863,6 @@ module Google
       class GoogleCloudDataplexV1LookupContextRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The text representing contextual information for which metadata
-        # context is being requested.
-        # Corresponds to the JSON property `context`
-        # @return [String]
-        attr_accessor :context
-      
         # Optional. Allows to configure the context.Supported options: format - The
         # format of the context (one of yaml, xml, json, default is yaml).
         # context_budget - If provided, the output will be intelligently truncated on a
@@ -8894,7 +8888,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @context = args[:context] if args.key?(:context)
           @options = args[:options] if args.key?(:options)
           @resources = args[:resources] if args.key?(:resources)
         end
