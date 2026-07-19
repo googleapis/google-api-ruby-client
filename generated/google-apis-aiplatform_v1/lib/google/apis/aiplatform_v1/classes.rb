@@ -33,6 +33,11 @@ module Google
         attr_accessor :anchor_last_frame
         alias_method :anchor_last_frame?, :anchor_last_frame
       
+        # CFG scale for video-transform, perf-generation, a2v, video-textures models.
+        # Corresponds to the JSON property `cfgScale`
+        # @return [Float]
+        attr_accessor :cfg_scale
+      
         # Optional. Video codec to use for output.
         # Corresponds to the JSON property `codec`
         # @return [String]
@@ -124,6 +129,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @anchor_last_frame = args[:anchor_last_frame] if args.key?(:anchor_last_frame)
+          @cfg_scale = args[:cfg_scale] if args.key?(:cfg_scale)
           @codec = args[:codec] if args.key?(:codec)
           @conditioning_frames = args[:conditioning_frames] if args.key?(:conditioning_frames)
           @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
@@ -10686,6 +10692,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents a customer-managed encryption key specification that can be applied
+        # to a Vertex AI resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
         # Optional. The Google Cloud Storage URI that stores the metric specification..
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
@@ -10721,6 +10733,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
           @labels = args[:labels] if args.key?(:labels)
           @metric = args[:metric] if args.key?(:metric)

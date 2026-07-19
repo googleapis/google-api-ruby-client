@@ -8708,6 +8708,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :anchor_last_frame, as: 'anchorLastFrame'
+          property :cfg_scale, as: 'cfgScale'
           property :codec, as: 'codec'
           collection :conditioning_frames, as: 'conditioningFrames', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame::Representation
       
@@ -11743,6 +11744,8 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec::Representation
+      
           property :gcs_uri, as: 'gcsUri'
           hash :labels, as: 'labels'
           property :metric, as: 'metric', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Metric, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Metric::Representation
