@@ -3974,7 +3974,7 @@ module Google
       
         # Optional. Immutable. Indicates whether key portability is enabled for the
         # SingleTenantHsmInstance. This can only be set at creation time. Key
-        # portability features are disabled by default and not yet available in GA.
+        # portability features are disabled by default.
         # Corresponds to the JSON property `keyPortabilityEnabled`
         # @return [Boolean]
         attr_accessor :key_portability_enabled
