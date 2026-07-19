@@ -155,6 +155,7 @@ module Google
       class GoogleIdentityStsV1Jwk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alg, as: 'alg'
           property :e, as: 'e'
           property :kid, as: 'kid'
           property :kty, as: 'kty'

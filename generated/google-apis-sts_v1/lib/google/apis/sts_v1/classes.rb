@@ -418,6 +418,11 @@ module Google
       class GoogleIdentityStsV1Jwk
         include Google::Apis::Core::Hashable
       
+        # Algorithm intended for use with the key. Currently "RS256".
+        # Corresponds to the JSON property `alg`
+        # @return [String]
+        attr_accessor :alg
+      
         # Exponent value for kty="RSA".
         # Corresponds to the JSON property `e`
         # @return [String]
@@ -449,6 +454,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alg = args[:alg] if args.key?(:alg)
           @e = args[:e] if args.key?(:e)
           @kid = args[:kid] if args.key?(:kid)
           @kty = args[:kty] if args.key?(:kty)
