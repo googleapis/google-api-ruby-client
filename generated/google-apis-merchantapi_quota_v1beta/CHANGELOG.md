@@ -1,5 +1,9 @@
 # Release history for google-apis-merchantapi_quota_v1beta
 
+### v0.9.0 (2026-07-19)
+
+* Regenerated from discovery document revision 20260713
+
 ### v0.8.0 (2026-06-14)
 
 * Regenerated from discovery document revision 20260527
