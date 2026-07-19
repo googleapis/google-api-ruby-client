@@ -6557,6 +6557,115 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a Memory.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine to create the Memory under.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory] google_cloud_aiplatform_v1beta1_memory_object
+        # @param [String] memory_id
+        #   Optional. The user defined ID to use for memory, which will become the final
+        #   component of the memory resource name. If not provided, Vertex AI will
+        #   generate a value for this ID. This value may be up to 63 characters, and valid
+        #   characters are `[a-z0-9-]`. The first character must be a letter, and the last
+        #   character must be a letter or number.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_memory_bank_memory(parent, google_cloud_aiplatform_v1beta1_memory_object = nil, memory_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/memories', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_memory_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['memoryId'] = memory_id unless memory_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a Memory.
+        # @param [String] name
+        #   Required. The resource name of the Memory to delete. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine`/memories/`
+        #   memory``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_memory_bank_memory(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate memories.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine to generate memories for.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateMemoriesRequest] google_cloud_aiplatform_v1beta1_generate_memories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_memory_bank_memory(parent, google_cloud_aiplatform_v1beta1_generate_memories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/memories:generate', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateMemoriesRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_memories_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get a Memory.
         # @param [String] name
         #   Required. The resource name of the Memory. Format: `projects/`project`/
@@ -6582,6 +6691,200 @@ module Google
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List Memories.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine to list the Memories under.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [String] filter
+        #   Optional. The standard list filter. More detail in [AIP-160](https://google.
+        #   aip.dev/160). Supported fields: * `scope` (as a JSON string with equality
+        #   match only) * `topics` (i.e. `topics.custom_memory_topic_label: "example topic"
+        #   OR topics.managed_memory_topic: USER_PREFERENCES`)
+        # @param [String] order_by
+        #   Optional. The standard list order by string. If not specified, the default
+        #   order is `create_time desc`. If specified, the default sorting order of
+        #   provided fields is ascending. More detail in [AIP-132](https://google.aip.dev/
+        #   132). Supported fields: * `create_time` * `update_time`
+        # @param [Fixnum] page_size
+        #   Optional. The standard list page size.
+        # @param [String] page_token
+        #   Optional. The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_memory_bank_memories(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/memories', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a Memory.
+        # @param [String] name
+        #   Identifier. Represents the resource name of the Memory. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine`/memories/`
+        #   memory``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory] google_cloud_aiplatform_v1beta1_memory_object
+        # @param [String] update_mask
+        #   Optional. Mask specifying which fields to update. The following fields are
+        #   immutable: * `scope` * `memory_type`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_memory_bank_memory(name, google_cloud_aiplatform_v1beta1_memory_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_memory_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Purge memories.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine to purge memories from.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PurgeMemoriesRequest] google_cloud_aiplatform_v1beta1_purge_memories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_memory_bank_memory(parent, google_cloud_aiplatform_v1beta1_purge_memories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/memories:purge', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PurgeMemoriesRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_purge_memories_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve memories.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine to retrieve memories from.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequest] google_cloud_aiplatform_v1beta1_retrieve_memories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_memory_bank_memory(parent, google_cloud_aiplatform_v1beta1_retrieve_memories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/memories:retrieve', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_retrieve_memories_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rollback Memory to a specific revision.
+        # @param [String] name
+        #   Required. The resource name of the Memory to rollback. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine`/memories/`
+        #   memory``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RollbackMemoryRequest] google_cloud_aiplatform_v1beta1_rollback_memory_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rollback_memory_bank_memory(name, google_cloud_aiplatform_v1beta1_rollback_memory_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:rollback', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RollbackMemoryRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_rollback_memory_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -6775,6 +7078,80 @@ module Google
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a Memory Revision.
+        # @param [String] name
+        #   Required. The resource name of the Memory Revision to retrieve. Format: `
+        #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        #   memories/`memory`/revisions/`revision``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryRevision] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryRevision]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_memory_bank_memory_revision(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryRevision::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryRevision
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List Memory Revisions for a Memory.
+        # @param [String] parent
+        #   Required. The resource name of the Memory to list revisions for. Format: `
+        #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        #   memories/`memory``
+        # @param [String] filter
+        #   Optional. The standard list filter. More detail in [AIP-160](https://google.
+        #   aip.dev/160). Supported fields (equality match only): * `labels`
+        # @param [Fixnum] page_size
+        #   Optional. The standard list page size.
+        # @param [String] page_token
+        #   Optional. The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoryRevisionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoryRevisionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_memory_bank_memory_revisions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/revisions', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoryRevisionsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoryRevisionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -25346,6 +25723,115 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a Memory.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine to create the Memory under.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory] google_cloud_aiplatform_v1beta1_memory_object
+        # @param [String] memory_id
+        #   Optional. The user defined ID to use for memory, which will become the final
+        #   component of the memory resource name. If not provided, Vertex AI will
+        #   generate a value for this ID. This value may be up to 63 characters, and valid
+        #   characters are `[a-z0-9-]`. The first character must be a letter, and the last
+        #   character must be a letter or number.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_memory_bank_memory(parent, google_cloud_aiplatform_v1beta1_memory_object = nil, memory_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/memories', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_memory_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['memoryId'] = memory_id unless memory_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a Memory.
+        # @param [String] name
+        #   Required. The resource name of the Memory to delete. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine`/memories/`
+        #   memory``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_memory_bank_memory(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Generate memories.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine to generate memories for.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateMemoriesRequest] google_cloud_aiplatform_v1beta1_generate_memories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_project_location_memory_bank_memory(parent, google_cloud_aiplatform_v1beta1_generate_memories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/memories:generate', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GenerateMemoriesRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_generate_memories_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get a Memory.
         # @param [String] name
         #   Required. The resource name of the Memory. Format: `projects/`project`/
@@ -25371,6 +25857,200 @@ module Google
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List Memories.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine to list the Memories under.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [String] filter
+        #   Optional. The standard list filter. More detail in [AIP-160](https://google.
+        #   aip.dev/160). Supported fields: * `scope` (as a JSON string with equality
+        #   match only) * `topics` (i.e. `topics.custom_memory_topic_label: "example topic"
+        #   OR topics.managed_memory_topic: USER_PREFERENCES`)
+        # @param [String] order_by
+        #   Optional. The standard list order by string. If not specified, the default
+        #   order is `create_time desc`. If specified, the default sorting order of
+        #   provided fields is ascending. More detail in [AIP-132](https://google.aip.dev/
+        #   132). Supported fields: * `create_time` * `update_time`
+        # @param [Fixnum] page_size
+        #   Optional. The standard list page size.
+        # @param [String] page_token
+        #   Optional. The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_memory_bank_memories(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/memories', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a Memory.
+        # @param [String] name
+        #   Identifier. Represents the resource name of the Memory. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine`/memories/`
+        #   memory``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory] google_cloud_aiplatform_v1beta1_memory_object
+        # @param [String] update_mask
+        #   Optional. Mask specifying which fields to update. The following fields are
+        #   immutable: * `scope` * `memory_type`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_memory_bank_memory(name, google_cloud_aiplatform_v1beta1_memory_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Memory::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_memory_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Purge memories.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine to purge memories from.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PurgeMemoriesRequest] google_cloud_aiplatform_v1beta1_purge_memories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_project_location_memory_bank_memory(parent, google_cloud_aiplatform_v1beta1_purge_memories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/memories:purge', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PurgeMemoriesRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_purge_memories_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieve memories.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine to retrieve memories from.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequest] google_cloud_aiplatform_v1beta1_retrieve_memories_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def retrieve_project_location_memory_bank_memory(parent, google_cloud_aiplatform_v1beta1_retrieve_memories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/memories:retrieve', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_retrieve_memories_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RetrieveMemoriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rollback Memory to a specific revision.
+        # @param [String] name
+        #   Required. The resource name of the Memory to rollback. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine`/memories/`
+        #   memory``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RollbackMemoryRequest] google_cloud_aiplatform_v1beta1_rollback_memory_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rollback_project_location_memory_bank_memory(name, google_cloud_aiplatform_v1beta1_rollback_memory_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:rollback', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1RollbackMemoryRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_rollback_memory_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -25564,6 +26244,80 @@ module Google
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a Memory Revision.
+        # @param [String] name
+        #   Required. The resource name of the Memory Revision to retrieve. Format: `
+        #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        #   memories/`memory`/revisions/`revision``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryRevision] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryRevision]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_memory_bank_memory_revision(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryRevision::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1MemoryRevision
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List Memory Revisions for a Memory.
+        # @param [String] parent
+        #   Required. The resource name of the Memory to list revisions for. Format: `
+        #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        #   memories/`memory``
+        # @param [String] filter
+        #   Optional. The standard list filter. More detail in [AIP-160](https://google.
+        #   aip.dev/160). Supported fields (equality match only): * `labels`
+        # @param [Fixnum] page_size
+        #   Optional. The standard list page size.
+        # @param [String] page_token
+        #   Optional. The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoryRevisionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoryRevisionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_memory_bank_memory_revisions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/revisions', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoryRevisionsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListMemoryRevisionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -30498,14 +31252,12 @@ module Google
         #   Required. The resource name of the Location to list the MonitoredAgents from.
         #   Format: `projects/`project`/locations/`location``
         # @param [String] filter
-        #   Optional. Optional AIP-160 filter, currently restricted to a single equality
-        #   predicate on `state`: state = ACTIVE state = DISABLED state = ENABLING The
-        #   value must be the exact name of a `MonitoredAgent.EnablementState` constant (
-        #   case-sensitive): `ACTIVE`, `DISABLED`, `ENABLING`, or `
-        #   ENABLEMENT_STATE_UNSPECIFIED`. (The proto reserves ordinals for additional
-        #   future states like NEEDS_ACTION; this allow-list grows when the proto adds
-        #   them.) A blank or absent filter returns every MonitoredAgent in the parent
-        #   regardless of state. Anything else returns INVALID_ARGUMENT.
+        #   Optional. An AIP-160 filter, currently restricted to a single equality
+        #   predicate on `state`. The value must be the exact, case-sensitive name of a `
+        #   MonitoredAgent.EnablementState` value: `ACTIVE`, `DISABLED`, `ENABLING`, or `
+        #   ENABLEMENT_STATE_UNSPECIFIED`. A blank or absent filter returns every
+        #   MonitoredAgent in the parent regardless of state; any other value returns `
+        #   INVALID_ARGUMENT`. Example: ``` state = ACTIVE ```
         # @param [Fixnum] page_size
         #   Optional. The standard list page size. The maximum value is 100; values above
         #   100 will be coerced to 100. If unspecified, at most 10 MonitoredAgents will be
@@ -30552,14 +31304,11 @@ module Google
         #   monitored_agent``
         # @param [String] filter
         #   Optional. Filter expression restricting which AnalyzedSessions are included in
-        #   the aggregation. Uses a subset of the `ListAnalyzedSessionsRequest.filter`
-        #   grammar: a closed `detection_time` window with both bounds required, e.g.
-        #   detection_time >= "2024-01-01T00:00:00Z" AND detection_time <= "2024-01-08T00:
-        #   00:00Z" The `severity` clause supported on ListAnalyzedSessions is
-        #   intentionally rejected here: this response groups by severity (one entry per
-        #   bucket per agent), so a severity filter would collapse the rollup to a single
-        #   bucket and produce a misleading per-agent view. If empty, the aggregation
-        #   covers the last 3 days.
+        #   the aggregation. Supports a subset of the `ListAnalyzedSessionsRequest.filter`
+        #   grammar: a closed `detection_time` window with both bounds required. The `
+        #   severity` clause is not supported here. If empty, the aggregation covers the
+        #   last 3 days. Example: ``` detection_time >= "2024-01-01T00:00:00Z" AND
+        #   detection_time <= "2024-01-08T00:00:00Z" ```
         # @param [Fixnum] page_size
         #   Optional. The standard list page size. The maximum value is 100; values above
         #   100 will be coerced to 100. If unspecified, at most 10 MonitoredAgents will be
@@ -30636,44 +31385,34 @@ module Google
         #   Required. The parent MonitoredAgent resource. Format: `projects/`project`/
         #   locations/`location`/monitoredAgents/`monitored_agent``
         # @param [String] filter
-        #   Optional. Filter expression restricting which AnalyzedSessions are returned. A
-        #   subset of AIP-160 supporting two clauses joined by AND: 1. A closed time
-        #   window on `detection_time`. If included, both bounds are required:
-        #   detection_time >= "" AND detection_time <= "" 2. An equality on `severity`,
-        #   where the value is the string representation of a Severity enum value (e.g., "
-        #   CRITICAL", "HIGH", "MEDIUM", "LOW"). "SEVERITY_UNSPECIFIED" is not supported.
-        #   The filter matches sessions whose maximum severity equals the requested bucket
-        #   (a session whose detectors fire at LOW and CRITICAL is matched by `severity = "
-        #   CRITICAL"`, not `severity = "LOW"`): severity = "CRITICAL" Both clauses are
-        #   independently optional and may appear in either order. Each clause may appear
-        #   at most once. Example (time window + severity): detection_time >= "2024-01-
-        #   01T00:00:00Z" AND detection_time <= "2024-01-08T00:00:00Z" AND severity = "
-        #   CRITICAL" If empty, results are restricted to the last 3 days with no severity
-        #   restriction. Other fields, additional operators, set membership (IN), and
-        #   boolean combinations (OR, NOT, parentheses) are not yet supported.
+        #   Optional. Filter expression restricting which AnalyzedSessions are returned.
+        #   Supports a subset of AIP-160: a closed `detection_time` window (both bounds
+        #   required) and/or an equality on `severity`, joined by `AND`. Each clause is
+        #   optional, may appear at most once, and may appear in either order. The `
+        #   severity` value is the string form of a `Severity` value (`CRITICAL`, `HIGH`, `
+        #   MEDIUM`, or `LOW`; `SEVERITY_UNSPECIFIED` is not supported) and matches
+        #   sessions whose maximum severity equals that bucket. For example, a session
+        #   that fires at both LOW and CRITICAL matches `severity = "CRITICAL"`, not `
+        #   severity = "LOW"`. Example (time window and severity): ``` detection_time >= "
+        #   2024-01-01T00:00:00Z" AND detection_time <= "2024-01-08T00:00:00Z" AND
+        #   severity = "CRITICAL" ``` If empty, results are restricted to the last 3 days
+        #   with no severity restriction. Other fields, additional operators, set
+        #   membership (`IN`), and boolean combinations (`OR`, `NOT`, parentheses) are not
+        #   yet supported.
         # @param [String] order_by
         #   Optional. Comma-separated list of fields to sort by, following AIP-132 syntax.
         #   The default sort direction is ascending; append " desc" to a field to sort
-        #   descending. Subfields are not supported (no field listed below has any).
-        #   Supported fields (any other field yields INVALID_ARGUMENT): * `
-        #   latest_detection_time` - the session's most-recent flagged detection time.
-        #   This is the column the landing page's "Detection time" header sorts on. Sorted
-        #   by the underlying TIMESTAMP value (newer is "greater" so `
-        #   latest_detection_time desc` puts the newest sessions first). * `
+        #   descending. Supported fields (any other field yields INVALID_ARGUMENT): * `
+        #   latest_detection_time` - the session's most-recent flagged detection time. `
+        #   latest_detection_time desc` puts the newest sessions first. * `
         #   max_severity_rank` - the session's bucketed maximum severity, ranked LOW=1 <
-        #   MEDIUM=2 < HIGH=3 < CRITICAL=4 (matches `Severity` enum ordering). `
-        #   max_severity_rank desc` puts the most-severe sessions first. The ranking is
-        #   documented here per AIP-132 because the field is not a natural-comparator type.
-        #   * `agent_display_name` - the MonitoredAgent's display name as shown in the UI'
-        #   s "Agent name" column. Sorted as a STRING using BigQuery default collation (
-        #   case-sensitive, code-point order). The server always appends `session_id ASC`
-        #   as a stable tiebreak so pagination remains consistent across pages when the
-        #   primary sort field has duplicates (e.g. multiple sessions with the same
-        #   latest_detection_time within a second). If empty, defaults to `
-        #   latest_detection_time desc` (the prior implicit behavior). Multi-field sort (e.
-        #   g. `max_severity_rank desc, latest_detection_time desc`) is supported. The `
-        #   order_by` value MUST match the value used on the call that minted any supplied
-        #   `page_token` (AIP-158). Mismatches yield INVALID_ARGUMENT.
+        #   MEDIUM=2 < HIGH=3 < CRITICAL=4. `max_severity_rank desc` puts the most-severe
+        #   sessions first. * `agent_display_name` - the MonitoredAgent's display name.
+        #   Sorted as a STRING (case-sensitive, code-point order). If empty, defaults to `
+        #   latest_detection_time desc`. Multi-field sort (for example, `max_severity_rank
+        #   desc, latest_detection_time desc`) is supported. The `order_by` value MUST
+        #   match the value used on the call that minted any supplied `page_token` (AIP-
+        #   158). Mismatches yield INVALID_ARGUMENT.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of analyzed sessions to return.
         # @param [String] page_token
@@ -37571,6 +38310,271 @@ module Google
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new FeedbackEntry.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine in which to create the
+        #   FeedbackEntry. Format: `projects/`project`/locations/`location`/
+        #   reasoningEngines/`reasoning_engine``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry] google_cloud_aiplatform_v1beta1_feedback_entry_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_reasoning_engine_feedback_entry(parent, google_cloud_aiplatform_v1beta1_feedback_entry_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/feedbackEntries', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_feedback_entry_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a FeedbackEntry and its associated FeedbackContext.
+        # @param [String] name
+        #   Required. The resource name of the FeedbackEntry to delete. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        #   feedbackEntries/`feedback_entry``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_reasoning_engine_feedback_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a single FeedbackEntry by its resource name.
+        # @param [String] name
+        #   Required. The resource name of the FeedbackEntry to retrieve. Format: `
+        #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        #   feedbackEntries/`feedback_entry``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_reasoning_engine_feedback_entry(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the FeedbackContext associated with a FeedbackEntry.
+        # @param [String] name
+        #   Required. The resource name of the FeedbackContext to retrieve. Format: `
+        #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        #   feedbackEntries/`feedback_entry`/feedbackContext`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackContext] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackContext]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_reasoning_engine_feedback_entry_feedback_context(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackContext::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackContext
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists FeedbackEntries in a ReasoningEngine.
+        # @param [String] parent
+        #   Required. The resource name of the ReasoningEngine from which to list
+        #   FeedbackEntries. Format: `projects/`project`/locations/`location`/
+        #   reasoningEngines/`reasoning_engine``
+        # @param [String] filter
+        #   Optional. Standard list filter. Supported fields: * `session_id` * `user_id` *
+        #   `feedback_type` * `feedback_labels`: Supports the HAS operator (`:`). For
+        #   example: `feedback_labels:"inaccurate"`. * `create_time` * `update_time`
+        #   Example: `feedback_type="THUMBS_DOWN" AND feedback_labels:"hallucination"`.
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order results by, sorted in
+        #   ascending order by default. Append ` desc` after a field name to sort that
+        #   field in descending order. Supported fields: * `create_time` * `update_time`
+        #   Example: `create_time desc`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of FeedbackEntries to return per page.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous ListFeedbackEntries call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeedbackEntriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeedbackEntriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_reasoning_engine_feedback_entries(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/feedbackEntries', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeedbackEntriesResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListFeedbackEntriesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing FeedbackEntry. Only the fields specified in update_mask
+        # are modified. If the mask is empty, all mutable fields are replaced with the
+        # values supplied in the request.
+        # @param [String] name
+        #   Identifier. The resource name. Assigned by the server on create. Format: `
+        #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        #   feedbackEntries/`feedback_entry``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry] google_cloud_aiplatform_v1beta1_feedback_entry_object
+        # @param [String] update_mask
+        #   Optional. The field mask that controls which fields are updated. If unset or
+        #   empty, all mutable fields of the FeedbackEntry are replaced with the values
+        #   from feedback_entry.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_reasoning_engine_feedback_entry(name, google_cloud_aiplatform_v1beta1_feedback_entry_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_feedback_entry_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the FeedbackContext associated with a FeedbackEntry. Only the fields
+        # specified in update_mask are modified. If the mask is empty, all mutable
+        # fields are replaced with the values supplied in the request.
+        # @param [String] name
+        #   Identifier. The resource name. Assigned by the server on create. Format: `
+        #   projects/`project`/locations/`location`/reasoningEngines/`reasoning_engine`/
+        #   feedbackEntries/`feedback_entry`/feedbackContext`
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackContext] google_cloud_aiplatform_v1beta1_feedback_context_object
+        # @param [String] update_mask
+        #   Optional. The field mask that controls which fields are updated. If unset or
+        #   empty, all mutable fields of the FeedbackContext are replaced with the values
+        #   from feedback_context.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_reasoning_engine_feedback_entry_feedback_context(name, google_cloud_aiplatform_v1beta1_feedback_context_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackContext::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_feedback_context_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

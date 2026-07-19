@@ -712,6 +712,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenaiVertexV1beta1LocalEnvironmentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenaiVertexV1beta1McpServer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3952,6 +3958,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1FeedbackContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1FeedbackEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1FetchExamplesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5087,6 +5105,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ListFeaturestoresResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ListFeedbackEntriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11480,6 +11504,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :anchor_last_frame, as: 'anchorLastFrame'
+          property :cfg_scale, as: 'cfgScale'
           property :codec, as: 'codec'
           collection :conditioning_frames, as: 'conditioningFrames', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame::Representation
       
@@ -11985,6 +12010,7 @@ module Google
       class GenaiVertexV1beta1EnvironmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment_id, as: 'environmentId'
           property :network_allowlist, as: 'networkAllowlist', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1EnvironmentConfigEnvironmentNetworkEgressAllowlist, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1EnvironmentConfigEnvironmentNetworkEgressAllowlist::Representation
       
           property :network_mode, as: 'networkMode'
@@ -12489,6 +12515,8 @@ module Google
           property :env_id, as: 'envId'
           property :environment_id, as: 'environmentId'
           property :id, as: 'id'
+          property :local_environment, as: 'localEnvironment', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1LocalEnvironmentConfig, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1LocalEnvironmentConfig::Representation
+      
           property :model_interaction, as: 'modelInteraction', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ModelInteraction, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ModelInteraction::Representation
       
           collection :outputs, as: 'outputs', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Content, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Content::Representation
@@ -12638,6 +12666,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Value, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Value::Representation
       
+        end
+      end
+      
+      class GenaiVertexV1beta1LocalEnvironmentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -16759,6 +16793,8 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec::Representation
+      
           property :gcs_uri, as: 'gcsUri'
           hash :labels, as: 'labels'
           property :metric, as: 'metric', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metric, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Metric::Representation
@@ -18427,6 +18463,32 @@ module Google
           property :cpu_utilization_target, as: 'cpuUtilizationTarget'
           property :max_node_count, as: 'maxNodeCount'
           property :min_node_count, as: 'minNodeCount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1FeedbackContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :context_events, as: 'contextEvents', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SessionEvent, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SessionEvent::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1FeedbackEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          hash :custom_metadata, as: 'customMetadata'
+          property :event_id, as: 'eventId'
+          collection :feedback_labels, as: 'feedbackLabels'
+          property :feedback_text, as: 'feedbackText'
+          property :feedback_type, as: 'feedbackType'
+          property :name, as: 'name'
+          property :session_id, as: 'sessionId'
+          property :source, as: 'source'
+          property :update_time, as: 'updateTime'
+          property :user_id, as: 'userId'
         end
       end
       
@@ -20398,6 +20460,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :featurestores, as: 'featurestores', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Featurestore, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Featurestore::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ListFeedbackEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :feedback_entries, as: 'feedbackEntries', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FeedbackEntry::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -25281,6 +25352,7 @@ module Google
           property :learning_rate_multiplier, as: 'learningRateMultiplier'
           property :max_output_tokens, as: 'maxOutputTokens'
           property :samples_per_prompt, as: 'samplesPerPrompt'
+          property :step_count, :numeric_string => true, as: 'stepCount'
           property :thinking_budget, as: 'thinkingBudget'
           property :thinking_level, as: 'thinkingLevel'
         end
