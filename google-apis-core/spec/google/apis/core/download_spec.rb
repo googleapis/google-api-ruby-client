@@ -157,6 +157,24 @@ RSpec.describe Google::Apis::Core::DownloadCommand do
     end
   end
 
+  context 'when server responds with non-2xx status and error body' do
+    let(:dest) { StringIO.new }
+
+    it 'does not write error body to destination IO' do
+      command.options.retries = 0
+      response = Faraday::Response.new(status: 503, body: 'Service Unavailable')
+      expect(client).to receive(:get) do |_url, _params, _headers, &block|
+        request = Faraday::Request.new
+        request.options = Faraday::RequestOptions.new
+        block.call(request)
+        request.options.on_data.call('Service Unavailable', 19, response)
+        response
+      end
+      expect { command.execute(client) }.to raise_error(Google::Apis::ServerError)
+      expect(dest.string).to be_empty
+    end
+  end
+
   context 'with pathname destination' do
     let(:dest) { Pathname.new(File.join(Dir.mktmpdir, 'test-path.txt')) }
     let(:received) do
