@@ -18,7 +18,7 @@ require 'google/apis/core/http_command'
 require 'google/apis/errors'
 require 'json'
 require 'retriable'
-require "securerandom"
+require 'securerandom'
 
 module Google
   module Apis
@@ -71,6 +71,7 @@ module Google
         def prepare!
           set_api_client_header
           set_user_project_header
+          set_idempotency_token_header if options&.add_idempotency_token_header
           if options&.api_format_version
             header['X-Goog-Api-Format-Version'] = options.api_format_version.to_s
           end
@@ -151,7 +152,7 @@ module Google
             .map { |(a, b)| b }
             .join(' ')
             .split
-            .find_all { |s| s !~ %r{^gl-ruby/|^gdcl/} }
+            .find_all { |s| s !~ %r{^gl-ruby/|^gdcl/|^gccl-invocation-id/} }
             .join(' ')
           # Report 0.x.y versions that are in separate packages as 1.x.y.
           # Thus, reported gdcl/0.x.y versions are monopackage clients, while
@@ -175,8 +176,17 @@ module Google
           header['X-Goog-User-Project'] = quota_project_id if quota_project_id
         end
 
+        def set_idempotency_token_header
+          return if options&.header&.any? { |k, _| k.to_s.downcase == 'x-goog-gcs-idempotency-token' }
+          return if header.any? { |k, _| k.to_s.downcase == 'x-goog-gcs-idempotency-token' }
+
+          @idempotency_token ||= SecureRandom.uuid
+          header['X-Goog-Gcs-Idempotency-Token'] = @idempotency_token
+        end
+
         def invocation_id_header
-          "gccl-invocation-id/#{SecureRandom.uuid}"
+          @invocation_id ||= SecureRandom.uuid
+          "gccl-invocation-id/#{@invocation_id}"
         end
 
         # Attempt to parse a JSON error message
