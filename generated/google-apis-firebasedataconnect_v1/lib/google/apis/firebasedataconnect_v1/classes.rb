@@ -77,6 +77,11 @@ module Google
       class CloudSqlInstance
         include Google::Apis::Core::Hashable
       
+        # Output only. [Output only] The Cloud SQL instance edition.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # Required. Name of the CloudSQL instance, in the format: ``` projects/`project`/
         # locations/`location`/instances/`instance` ```
         # Corresponds to the JSON property `instance`
@@ -89,6 +94,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @instance = args[:instance] if args.key?(:instance)
         end
       end

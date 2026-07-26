@@ -303,6 +303,7 @@ module Google
       class CloudSqlInstance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :edition, as: 'edition'
           property :instance, as: 'instance'
         end
       end
