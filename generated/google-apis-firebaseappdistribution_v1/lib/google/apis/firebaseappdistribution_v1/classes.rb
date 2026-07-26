@@ -1165,6 +1165,11 @@ module Google
       class GoogleFirebaseAppdistroV1Release
         include Google::Apis::Core::Hashable
       
+        # Output only. Number of testers with accepted invitations.
+        # Corresponds to the JSON property `acceptedInvitationCount`
+        # @return [Fixnum]
+        attr_accessor :accepted_invitation_count
+      
         # Output only. Registration state of the Android package (BinaryType.APK).
         # Corresponds to the JSON property `androidPackageRegistrationState`
         # @return [String]
@@ -1175,6 +1180,11 @@ module Google
         # Corresponds to the JSON property `binaryDownloadUri`
         # @return [String]
         attr_accessor :binary_download_uri
+      
+        # Output only. Type of binary.
+        # Corresponds to the JSON property `binaryType`
+        # @return [String]
+        attr_accessor :binary_type
       
         # Output only. Build version of the release. For an Android release, the build
         # version is the `versionCode`. For an iOS release, the build version is the `
@@ -1200,10 +1210,20 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Output only. Number of feedback reports left by testers.
+        # Corresponds to the JSON property `feedbackCount`
+        # @return [Fixnum]
+        attr_accessor :feedback_count
+      
         # Output only. A link to the Firebase console displaying a single release.
         # Corresponds to the JSON property `firebaseConsoleUri`
         # @return [String]
         attr_accessor :firebase_console_uri
+      
+        # Output only. Number of testers who have downloaded this release.
+        # Corresponds to the JSON property `installationCount`
+        # @return [Fixnum]
+        attr_accessor :installation_count
       
         # The name of the release resource. Format: `projects/`project_number`/apps/`app`
         # /releases/`release``
@@ -1211,10 +1231,21 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Number of testers who were invited (incl. expired invitations),
+        # but did not (yet) accept the invitation.
+        # Corresponds to the JSON property `openInvitationCount`
+        # @return [Fixnum]
+        attr_accessor :open_invitation_count
+      
         # Notes that belong to a release.
         # Corresponds to the JSON property `releaseNotes`
         # @return [Google::Apis::FirebaseappdistributionV1::GoogleFirebaseAppdistroV1ReleaseNotes]
         attr_accessor :release_notes
+      
+        # Output only. The overall state of tests run on this release
+        # Corresponds to the JSON property `testState`
+        # @return [String]
+        attr_accessor :test_state
       
         # Output only. A link to the release in the tester web clip or Android app that
         # lets testers (which were granted access to the app) view release notes and
@@ -1234,15 +1265,21 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accepted_invitation_count = args[:accepted_invitation_count] if args.key?(:accepted_invitation_count)
           @android_package_registration_state = args[:android_package_registration_state] if args.key?(:android_package_registration_state)
           @binary_download_uri = args[:binary_download_uri] if args.key?(:binary_download_uri)
+          @binary_type = args[:binary_type] if args.key?(:binary_type)
           @build_version = args[:build_version] if args.key?(:build_version)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_version = args[:display_version] if args.key?(:display_version)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @feedback_count = args[:feedback_count] if args.key?(:feedback_count)
           @firebase_console_uri = args[:firebase_console_uri] if args.key?(:firebase_console_uri)
+          @installation_count = args[:installation_count] if args.key?(:installation_count)
           @name = args[:name] if args.key?(:name)
+          @open_invitation_count = args[:open_invitation_count] if args.key?(:open_invitation_count)
           @release_notes = args[:release_notes] if args.key?(:release_notes)
+          @test_state = args[:test_state] if args.key?(:test_state)
           @testing_uri = args[:testing_uri] if args.key?(:testing_uri)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
