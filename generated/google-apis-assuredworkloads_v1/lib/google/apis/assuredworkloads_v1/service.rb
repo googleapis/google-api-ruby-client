@@ -156,6 +156,179 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the aggregated compliance report over time for a given scope.
+        # @param [String] name
+        #   Required. The name of the aggregated compliance report over time to retrieve.
+        #   Format: `organizations/`organization_id`/locations/`location`/
+        #   dbFrameworkComplianceReports/`db_framework_compliance_report``
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [String] interval_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] interval_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregate_folder_location_db_framework_compliance_report(name, filter: nil, interval_end_time: nil, interval_start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:aggregate', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
+          command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches the framework compliance report for a given scope.
+        # @param [String] name
+        #   Required. The name of the framework compliance report to retrieve.
+        # @param [String] end_time
+        #   Optional. The end time of the report.
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_folder_location_db_framework_compliance_report(name, end_time: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetch', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse
+          command.params['name'] = name unless name.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the control compliance summary for a given scope.
+        # @param [String] parent
+        #   Required. The parent scope for the framework overview page. Format:
+        #   organizations/`organization`/locations/`location`/dbFrameworkComplianceReports/
+        #   `db_framework_compliance_report` folders/`folder`/locations/`location`/
+        #   dbFrameworkComplianceReports/`db_framework_compliance_report` projects/`
+        #   project`/locations/`location`/dbFrameworkComplianceReports/`
+        #   db_framework_compliance_report`
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [Fixnum] page_size
+        #   Optional. The requested page size. The server might return fewer items than
+        #   requested. If unspecified, the default page size is 50. The maximum value is
+        #   1000.
+        # @param [String] page_token
+        #   Optional. A token that identifies the page of results that the server should
+        #   return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_db_framework_compliance_report_db_control_compliance_summaries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbControlComplianceSummaries', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the framework compliance summary for a given scope.
+        # @param [String] parent
+        #   Required. The parent scope for the framework compliance summary. Format:
+        #   organizations/`organization`/locations/`location` folders/`folder`/locations/`
+        #   location` projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [Fixnum] page_size
+        #   Optional. The requested page size. The server might return fewer items than
+        #   requested. If unspecified, the default page size is 50. The maximum value is
+        #   1000.
+        # @param [String] page_token
+        #   Optional. A token that identifies the page of results that the server should
+        #   return. Pass the next_page_token value from a previous result.
+        # @param [String] view
+        #   Optional. Specifies the level of detail to return in the response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_db_framework_compliance_summaries(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbFrameworkComplianceSummaries', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the finding summary by category for a given scope.
         # @param [String] parent
         #   Required. The parent scope for the framework overview page. Formats: -
@@ -194,6 +367,179 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the aggregated compliance report over time for a given scope.
+        # @param [String] name
+        #   Required. The name of the aggregated compliance report over time to retrieve.
+        #   Format: `organizations/`organization_id`/locations/`location`/
+        #   dbFrameworkComplianceReports/`db_framework_compliance_report``
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [String] interval_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] interval_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregate_organization_location_db_framework_compliance_report(name, filter: nil, interval_end_time: nil, interval_start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:aggregate', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
+          command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches the framework compliance report for a given scope.
+        # @param [String] name
+        #   Required. The name of the framework compliance report to retrieve.
+        # @param [String] end_time
+        #   Optional. The end time of the report.
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_organization_location_db_framework_compliance_report(name, end_time: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetch', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse
+          command.params['name'] = name unless name.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the control compliance summary for a given scope.
+        # @param [String] parent
+        #   Required. The parent scope for the framework overview page. Format:
+        #   organizations/`organization`/locations/`location`/dbFrameworkComplianceReports/
+        #   `db_framework_compliance_report` folders/`folder`/locations/`location`/
+        #   dbFrameworkComplianceReports/`db_framework_compliance_report` projects/`
+        #   project`/locations/`location`/dbFrameworkComplianceReports/`
+        #   db_framework_compliance_report`
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [Fixnum] page_size
+        #   Optional. The requested page size. The server might return fewer items than
+        #   requested. If unspecified, the default page size is 50. The maximum value is
+        #   1000.
+        # @param [String] page_token
+        #   Optional. A token that identifies the page of results that the server should
+        #   return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_db_framework_compliance_report_db_control_compliance_summaries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbControlComplianceSummaries', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the framework compliance summary for a given scope.
+        # @param [String] parent
+        #   Required. The parent scope for the framework compliance summary. Format:
+        #   organizations/`organization`/locations/`location` folders/`folder`/locations/`
+        #   location` projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [Fixnum] page_size
+        #   Optional. The requested page size. The server might return fewer items than
+        #   requested. If unspecified, the default page size is 50. The maximum value is
+        #   1000.
+        # @param [String] page_token
+        #   Optional. A token that identifies the page of results that the server should
+        #   return. Pass the next_page_token value from a previous result.
+        # @param [String] view
+        #   Optional. Specifies the level of detail to return in the response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_db_framework_compliance_summaries(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbFrameworkComplianceSummaries', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -943,6 +1289,179 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the aggregated compliance report over time for a given scope.
+        # @param [String] name
+        #   Required. The name of the aggregated compliance report over time to retrieve.
+        #   Format: `organizations/`organization_id`/locations/`location`/
+        #   dbFrameworkComplianceReports/`db_framework_compliance_report``
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [String] interval_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] interval_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregate_project_location_db_framework_compliance_report(name, filter: nil, interval_end_time: nil, interval_start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:aggregate', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['interval.endTime'] = interval_end_time unless interval_end_time.nil?
+          command.query['interval.startTime'] = interval_start_time unless interval_start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches the framework compliance report for a given scope.
+        # @param [String] name
+        #   Required. The name of the framework compliance report to retrieve.
+        # @param [String] end_time
+        #   Optional. The end time of the report.
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_db_framework_compliance_report(name, end_time: nil, filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetch', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse
+          command.params['name'] = name unless name.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the control compliance summary for a given scope.
+        # @param [String] parent
+        #   Required. The parent scope for the framework overview page. Format:
+        #   organizations/`organization`/locations/`location`/dbFrameworkComplianceReports/
+        #   `db_framework_compliance_report` folders/`folder`/locations/`location`/
+        #   dbFrameworkComplianceReports/`db_framework_compliance_report` projects/`
+        #   project`/locations/`location`/dbFrameworkComplianceReports/`
+        #   db_framework_compliance_report`
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [Fixnum] page_size
+        #   Optional. The requested page size. The server might return fewer items than
+        #   requested. If unspecified, the default page size is 50. The maximum value is
+        #   1000.
+        # @param [String] page_token
+        #   Optional. A token that identifies the page of results that the server should
+        #   return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_db_framework_compliance_report_db_control_compliance_summaries(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbControlComplianceSummaries', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the framework compliance summary for a given scope.
+        # @param [String] parent
+        #   Required. The parent scope for the framework compliance summary. Format:
+        #   organizations/`organization`/locations/`location` folders/`folder`/locations/`
+        #   location` projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. The filtering results.
+        # @param [Fixnum] page_size
+        #   Optional. The requested page size. The server might return fewer items than
+        #   requested. If unspecified, the default page size is 50. The maximum value is
+        #   1000.
+        # @param [String] page_token
+        #   Optional. A token that identifies the page of results that the server should
+        #   return. Pass the next_page_token value from a previous result.
+        # @param [String] view
+        #   Optional. Specifies the level of detail to return in the response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_db_framework_compliance_summaries(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dbFrameworkComplianceSummaries', options)
+          command.response_representation = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse::Representation
+          command.response_class = Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

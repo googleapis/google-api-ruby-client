@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1AggregatedComplianceReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,13 +100,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1CelExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1CloudControlReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ControlAssessmentDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1DbFindingSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,7 +160,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -131,6 +197,12 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -203,6 +275,36 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1SimilarControls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1StringList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1TargetResourceDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAssuredworkloadsV1Trend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -349,6 +451,23 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aggregated_compliance_reports, as: 'aggregatedComplianceReports', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregatedComplianceReport, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1AggregatedComplianceReport::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1AggregatedComplianceReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_assessment_details, as: 'controlAssessmentDetails', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ControlAssessmentDetails, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ControlAssessmentDetails::Representation
+      
+          property :report_time, as: 'reportTime'
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -427,6 +546,63 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1CelExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expression, as: 'expression'
+          property :resource_types_values, as: 'resourceTypesValues', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1StringList, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1StringList::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_state, as: 'evaluationState'
+          property :findings_count, as: 'findingsCount'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1CloudControlReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :categories, as: 'categories'
+          property :cloud_control, as: 'cloudControl'
+          property :cloud_control_assessment_details, as: 'cloudControlAssessmentDetails', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails::Representation
+      
+          property :cloud_control_deployment, as: 'cloudControlDeployment'
+          property :cloud_control_type, as: 'cloudControlType'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :enforcement_mode, as: 'enforcementMode'
+          property :finding_category, as: 'findingCategory'
+          property :finding_severity, as: 'findingSeverity'
+          collection :framework_major_revision_ids, as: 'frameworkMajorRevisionIds'
+          property :major_revision_id, :numeric_string => true, as: 'majorRevisionId'
+          property :manual_cloud_control_assessment_details, as: 'manualCloudControlAssessmentDetails', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails::Representation
+      
+          property :minor_revision_id, :numeric_string => true, as: 'minorRevisionId'
+          collection :rules, as: 'rules', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Rule, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Rule::Representation
+      
+          collection :similar_controls, as: 'similarControls', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1SimilarControls, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1SimilarControls::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ControlAssessmentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assessed_passing_control_ids, as: 'assessedPassingControlIds'
+          property :assessed_passing_controls, as: 'assessedPassingControls'
+          collection :failing_control_ids, as: 'failingControlIds'
+          property :failing_controls, as: 'failingControls'
+          collection :not_assessed_control_ids, as: 'notAssessedControlIds'
+          property :not_assessed_controls, as: 'notAssessedControls'
+          collection :passing_control_ids, as: 'passingControlIds'
+          property :passing_controls, as: 'passingControls'
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -434,6 +610,25 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :parent, as: 'parent'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cloud_control_reports, as: 'cloudControlReports', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1CloudControlReport, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1CloudControlReport::Representation
+      
+          collection :compliance_frameworks, as: 'complianceFrameworks'
+          property :control, as: 'control'
+          property :control_responsibility_type, as: 'controlResponsibilityType'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :is_fake_control, as: 'isFakeControl'
+          property :name, as: 'name'
+          property :overall_evaluation_state, as: 'overallEvaluationState'
+          collection :similar_controls, as: 'similarControls', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1SimilarControls, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1SimilarControls::Representation
+      
+          property :total_findings_count, as: 'totalFindingsCount'
         end
       end
       
@@ -450,6 +645,27 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_assessment_details, as: 'controlAssessmentDetails', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ControlAssessmentDetails, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ControlAssessmentDetails::Representation
+      
+          property :controls_passing_trend, as: 'controlsPassingTrend', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Trend, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Trend::Representation
+      
+          property :finding_count, :numeric_string => true, as: 'findingCount'
+          property :framework, as: 'framework'
+          collection :framework_categories, as: 'frameworkCategories'
+          property :framework_display_name, as: 'frameworkDisplayName'
+          property :framework_type, as: 'frameworkType'
+          property :major_revision_id, :numeric_string => true, as: 'majorRevisionId'
+          property :minor_revision_id, :numeric_string => true, as: 'minorRevisionId'
+          property :name, as: 'name'
+          collection :supported_cloud_providers, as: 'supportedCloudProviders'
+          collection :target_resource_details, as: 'targetResourceDetails', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1TargetResourceDetails, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1TargetResourceDetails::Representation
+      
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -462,10 +678,48 @@ module Google
         end
       end
       
+      class GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_assessment_details, as: 'controlAssessmentDetails', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ControlAssessmentDetails, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ControlAssessmentDetails::Representation
+      
+          property :framework, as: 'framework'
+          collection :framework_categories, as: 'frameworkCategories'
+          property :framework_description, as: 'frameworkDescription'
+          property :framework_display_name, as: 'frameworkDisplayName'
+          property :framework_type, as: 'frameworkType'
+          property :major_revision_id, :numeric_string => true, as: 'majorRevisionId'
+          property :minor_revision_id, :numeric_string => true, as: 'minorRevisionId'
+          property :name, as: 'name'
+          collection :supported_cloud_providers, as: 'supportedCloudProviders'
+          collection :target_resource_details, as: 'targetResourceDetails', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1TargetResourceDetails, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1TargetResourceDetails::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :db_control_compliance_summaries, as: 'dbControlComplianceSummaries', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbControlComplianceSummary, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbControlComplianceSummary::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :db_finding_summaries, as: 'dbFindingSummaries', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbFindingSummary, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbFindingSummary::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :db_framework_compliance_summaries, as: 'dbFrameworkComplianceSummaries', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -496,6 +750,13 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :workloads, as: 'workloads', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1Workload::Representation
       
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :manual_cloud_control_guide, as: 'manualCloudControlGuide'
         end
       end
       
@@ -607,6 +868,52 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :moved_events_count, as: 'movedEventsCount'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1Rule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cel_expression, as: 'celExpression', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1CelExpression, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1CelExpression::Representation
+      
+          property :description, as: 'description'
+          collection :rule_action_types, as: 'ruleActionTypes'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1SimilarControls
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :control_id, as: 'controlId'
+          property :framework, as: 'framework'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1StringList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1TargetResourceDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :framework_deployment, as: 'frameworkDeployment'
+          property :major_revision_id, :numeric_string => true, as: 'majorRevisionId'
+          property :minor_revision_id, :numeric_string => true, as: 'minorRevisionId'
+          property :target_resource, as: 'targetResource'
+          property :target_resource_display_name, as: 'targetResourceDisplayName'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAssuredworkloadsV1Trend
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :value_percent, as: 'valuePercent'
         end
       end
       
