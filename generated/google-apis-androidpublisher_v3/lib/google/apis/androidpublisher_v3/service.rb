@@ -658,6 +658,89 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns metadata about a recently updated app.
+        # @param [String] app_store_package_name
+        #   Required. The package name of the app store on behalf of which the request is
+        #   made.
+        # @param [String] play_app_package_name
+        #   Required. The package name of the requested Play app.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::RecentAppView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::RecentAppView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_appstorecatalog_recentappview(app_store_package_name, play_app_package_name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/appstorecatalog/{appStorePackageName}/recentAppViews/{playAppPackageName}', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::RecentAppView::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::RecentAppView
+          command.params['appStorePackageName'] = app_store_package_name unless app_store_package_name.nil?
+          command.params['playAppPackageName'] = play_app_package_name unless play_app_package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists update events for eligible apps in the given time range.
+        # @param [String] app_store_package_name
+        #   Required. The package name of the app store on behalf of which the request is
+        #   made.
+        # @param [String] end_time
+        #   Required. The end time of the range (exclusive).
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of update events to return. The service may
+        #   return fewer than this value. If unspecified, at most 100 update events will
+        #   be returned. The maximum value is 1000; values above 1000 will be coerced to
+        #   1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListRecentUpdateEvents` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListRecentUpdateEvents` must match the call that
+        #   provided the page token.
+        # @param [String] start_time
+        #   Required. The start time of the range (inclusive).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::ListRecentUpdateEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::ListRecentUpdateEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_appstorecatalog_recentupdateevents(app_store_package_name, end_time: nil, page_size: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/appstorecatalog/{appStorePackageName}/recentUpdateEvents', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::ListRecentUpdateEventsResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::ListRecentUpdateEventsResponse
+          command.params['appStorePackageName'] = app_store_package_name unless app_store_package_name.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Commits an app edit.
         # @param [String] package_name
         #   Package name of the app.
