@@ -679,6 +679,7 @@ module Google
           property :access_settings, as: 'accessSettings', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::AccessControlSettings, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::AccessControlSettings::Representation
       
           property :create_time, as: 'createTime'
+          property :curation_fee_visibility, as: 'curationFeeVisibility'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :fee_cpm, as: 'feeCpm', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money::Representation
