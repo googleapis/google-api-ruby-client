@@ -4152,6 +4152,43 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Configures and deploys a given server config for given target. Currently this
+        # API supports only deploying MCP server in Apigee X. For mcp server deployment
+        # in apigee X, if there is already a mcp proxy deployed, then this method will
+        # try to overwrite it by creating new revision i.e. all existing tools will be
+        # removed and new set of tools will be deployed.
+        # @param [String] parent
+        #   Required. Format: `projects/`project`/locations/`location``
+        # @param [Google::Apis::ApihubV1::GoogleCloudApihubV1ConfigureAndDeployServerRequest] google_cloud_apihub_v1_configure_and_deploy_server_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApihubV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApihubV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def configure_project_location_server_and_deploy_server(parent, google_cloud_apihub_v1_configure_and_deploy_server_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/servers:configureAndDeployServer', options)
+          command.request_representation = Google::Apis::ApihubV1::GoogleCloudApihubV1ConfigureAndDeployServerRequest::Representation
+          command.request_object = google_cloud_apihub_v1_configure_and_deploy_server_request_object
+          command.response_representation = Google::Apis::ApihubV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::ApihubV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 
