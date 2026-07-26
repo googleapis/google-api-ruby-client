@@ -856,6 +856,74 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetches details of a specific Publisher.
+        # @param [String] name
+        #   Required. Target publisher resource name. Format: `projects/`project`/
+        #   locations/`location`/publishers/`publisher``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::Publisher] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::Publisher]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_publisher(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AgentregistryV1alpha::Publisher::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::Publisher
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all Publishers in a location.
+        # @param [String] parent
+        #   Required. Parent location to query. Format: `projects/`project`/locations/`
+        #   location``
+        # @param [Fixnum] page_size
+        #   Optional. Page limit size.
+        # @param [String] page_token
+        #   Optional. Page offset token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::ListPublishersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::ListPublishersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_publishers(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/publishers', options)
+          command.response_representation = Google::Apis::AgentregistryV1alpha::ListPublishersResponse::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::ListPublishersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new Service in a given project and location.
         # @param [String] parent
         #   Required. The project and location to create the Service in. Expected format: `
@@ -1074,6 +1142,436 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # ========================================================================= #
+        # Skills Collection APIs Creates a Skill resource container, optionally
+        # publishing the initial SkillRevision inline in a single, atomic CRUD roundtrip.
+        # @param [String] parent
+        #   Required. The project and location location to bootstrap.
+        # @param [Google::Apis::AgentregistryV1alpha::Skill] skill_object
+        # @param [String] request_id
+        #   Optional. Signed UUID request idempotency token.
+        # @param [String] skill_id
+        #   Required. Custom, user-defined unique container identifier. Must be unique
+        #   within the parent project and location. This value should be 4-63 characters,
+        #   and valid characters are `/a-z-/`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_skill(parent, skill_object = nil, request_id: nil, skill_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/skills', options)
+          command.request_representation = Google::Apis::AgentregistryV1alpha::Skill::Representation
+          command.request_object = skill_object
+          command.response_representation = Google::Apis::AgentregistryV1alpha::Operation::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['skillId'] = skill_id unless skill_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Skill container along with all its revisions.
+        # @param [String] name
+        #   Required. Target Skill container name to remove.
+        # @param [Boolean] force
+        #   Optional. If set to true, any child SkillRevisions under this Skill will also
+        #   be deleted. Otherwise, the request will only succeed if the Skill has no child
+        #   SkillRevisions.
+        # @param [String] request_id
+        #   Optional. Signed UUID request idempotency token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_skill(name, force: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AgentregistryV1alpha::Operation::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches the active configuration and metadata of a Skill.
+        # @param [String] name
+        #   Required. Target resource container name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::Skill] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::Skill]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_skill(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AgentregistryV1alpha::Skill::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::Skill
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists logical Skills available in a project.
+        # @param [String] parent
+        #   Required. Parent value for ListSkillsRequest
+        # @param [String] filter
+        #   Optional. Use this field to specify filter criteria on list results. Filter
+        #   expressions can be used to restrict results based upon filterable fields,
+        #   where equality operators can be used. See [instructions](https://docs.cloud.
+        #   google.com/agent-registry/search-agents-and-tools) for more details. Allowed
+        #   operators: `=`, `<`, `>`, `NOT`, `AND`, `OR`, and `()`. | Field | `=` | `<`, `>
+        #   ` | |--------------|-----|----------| | state | Yes | No | | targetState | Yes
+        #   | No | | createTime | Yes | Yes | | updateTime | Yes | Yes | Examples: * `
+        #   state=ACTIVE` to restrict results to skills in the `ACTIVE` state.
+        # @param [String] order_by
+        #   Optional. Hint for how to order the results
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. Server may return fewer items than requested.
+        #   If unspecified, server will pick an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::ListSkillsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::ListSkillsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_skills(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/skills', options)
+          command.response_representation = Google::Apis::AgentregistryV1alpha::ListSkillsResponse::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::ListSkillsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates Skill metadata or overrides active pointers/state using REST standard
+        # PATCH.
+        # @param [String] name
+        #   Identifier. Resource name of the Skill. Format: `projects/`project`/locations/`
+        #   location`/skills/`skill`` The ``skill`` segment acts as the resource ID. If
+        #   the skill is associated with a Publisher, this segment typically uses a
+        #   hyphenated namespace prefix corresponding to the publisher (e.g., `google-
+        #   workspace-create-docs`).
+        # @param [Google::Apis::AgentregistryV1alpha::Skill] skill_object
+        # @param [String] request_id
+        #   Optional. Signed UUID request idempotency token.
+        # @param [String] update_mask
+        #   Optional. Standard update target mask mapping relative fields.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_skill(name, skill_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1alpha/{+name}', options)
+          command.request_representation = Google::Apis::AgentregistryV1alpha::Skill::Representation
+          command.request_object = skill_object
+          command.response_representation = Google::Apis::AgentregistryV1alpha::Operation::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Custom deep-search method to filter by frontmatter or query SKILL.md text
+        # blobs.
+        # @param [String] parent
+        #   Required. Parent value for SearchSkillsRequest. Format: `projects/`project`/
+        #   locations/`location``.
+        # @param [String] filter
+        #   Optional. Use this field to specify additional filter criteria on search
+        #   results. Filter expressions can be used to restrict results based upon
+        #   filterable fields, where equality operators can be used. See [instructions](
+        #   https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more
+        #   details. Allowed operators: `=`, `<`, `>`, `NOT`, `AND`, `OR`, and `()`. |
+        #   Field | `=` | `<`, `>` | |--------------|-----|----------| | state | Yes | No |
+        #   | targetState | Yes | No | | createTime | Yes | Yes | | updateTime | Yes |
+        #   Yes | Examples: * `state=ACTIVE` to restrict results to skills in the `ACTIVE`
+        #   state.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of search results to return per page. The page
+        #   size is capped at `100`, even if a larger value is specified. A negative value
+        #   will result in an `INVALID_ARGUMENT` error. If unspecified or set to `0`, a
+        #   default value of `20` will be used. The server may return fewer results than
+        #   requested.
+        # @param [String] page_token
+        #   Optional. If present, retrieve the next batch of results from the preceding
+        #   call to this method. `page_token` must be the value of `next_page_token` from
+        #   the previous response. The values of all other method parameters, must be
+        #   identical to those in the previous call.
+        # @param [String] search_string
+        #   Optional. Search criteria used to select the Skills to return. If no search
+        #   criteria is specified then all accessible Skills will be returned. Search
+        #   expressions can be used to restrict results based upon searchable fields,
+        #   where the operators can be used along with the suffix wildcard symbol `*`. See
+        #   [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-
+        #   tools) for more details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `
+        #   ()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search | |---------
+        #   ------------------|-----|-----|-----|----------------| | skillId | Yes | Yes |
+        #   Yes | Included | | name | No | Yes | Yes | Included | | displayName | No | Yes
+        #   | Yes | Included | | description | No | Yes | No | Included | | frontmatter.
+        #   name | No | Yes | No | Included | | frontmatter.description | No | Yes | No |
+        #   Included | | frontmatter.compatibility | No | Yes | No | Included | |
+        #   frontmatter.license | No | Yes | No | Included | Examples: * `skillId="urn:
+        #   skill:projects-1234:locations:global:private-important-skill"` to find the
+        #   skill with the specified skill ID. * `name:important` to find skills whose
+        #   name contains `important` as a word. * `displayName:works*` to find skills
+        #   whose display name contains words that start with `works`.
+        # @param [String] search_type
+        #   Optional. The type of search.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::SearchSkillsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::SearchSkillsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_project_location_skills(parent, filter: nil, page_size: nil, page_token: nil, search_string: nil, search_type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/skills:search', options)
+          command.response_representation = Google::Apis::AgentregistryV1alpha::SearchSkillsResponse::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::SearchSkillsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['searchString'] = search_string unless search_string.nil?
+          command.query['searchType'] = search_type unless search_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new immutable revision and triggers validation pipelines.
+        # @param [String] parent
+        #   Required. Parent logical container name.
+        # @param [Google::Apis::AgentregistryV1alpha::SkillRevision] skill_revision_object
+        # @param [String] request_id
+        #   Optional. Signed UUID request idempotency token.
+        # @param [String] skill_revision_id
+        #   Optional. Custom, user-defined unique revision identifier. Format: 4-63
+        #   characters, matching regex `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_skill_revision(parent, skill_revision_object = nil, request_id: nil, skill_revision_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha/{+parent}/revisions', options)
+          command.request_representation = Google::Apis::AgentregistryV1alpha::SkillRevision::Representation
+          command.request_object = skill_revision_object
+          command.response_representation = Google::Apis::AgentregistryV1alpha::Operation::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['skillRevisionId'] = skill_revision_id unless skill_revision_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a specific revision (restricted to admins to purge accidentally
+        # committed secrets).
+        # @param [String] name
+        #   Required. Target revision name to remove.
+        # @param [String] request_id
+        #   Optional. Signed UUID request idempotency token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_skill_revision(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha/{+name}', options)
+          command.response_representation = Google::Apis::AgentregistryV1alpha::Operation::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single immutable Revision.
+        # @param [String] name
+        #   Required. Target revision name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] download_dest
+        #   IO stream or filename to receive content download
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::SkillRevision] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::SkillRevision]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_skill_revision(name, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
+          if download_dest.nil?
+            command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          else
+            command = make_download_command(:get, 'v1alpha/{+name}', options)
+            command.download_dest = download_dest
+          end
+          command.response_representation = Google::Apis::AgentregistryV1alpha::SkillRevision::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::SkillRevision
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all revisions belonging to a parent Skill.
+        # @param [String] parent
+        #   Required. Parent logical container name to query.
+        # @param [Fixnum] page_size
+        #   Optional. Page limit size.
+        # @param [String] page_token
+        #   Optional. Page offset token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentregistryV1alpha::ListSkillRevisionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentregistryV1alpha::ListSkillRevisionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_skill_revisions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/revisions', options)
+          command.response_representation = Google::Apis::AgentregistryV1alpha::ListSkillRevisionsResponse::Representation
+          command.response_class = Google::Apis::AgentregistryV1alpha::ListSkillRevisionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
