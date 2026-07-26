@@ -1106,9 +1106,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. A list of applications that are subject to this binding's
-        # restrictions. If the list is empty, the binding restrictions will universally
-        # apply to all applications.
+        # The comprehensive identity container supporting identities including groups,
+        # service accounts and federated identities. Only one of them can be set to
+        # create an access binding.
+        # Corresponds to the JSON property `principal`
+        # @return [Google::Apis::AccesscontextmanagerV1::Principal]
+        attr_accessor :principal
+      
+        # Optional. Deprecated: use scoped_access_settings instead. A list of
+        # applications that are subject to this binding's restrictions. If the list is
+        # empty, the binding restrictions will universally apply to all applications.
         # Corresponds to the JSON property `restrictedClientApplications`
         # @return [Array<Google::Apis::AccesscontextmanagerV1::Application>]
         attr_accessor :restricted_client_applications
@@ -1137,6 +1144,7 @@ module Google
           @dry_run_access_levels = args[:dry_run_access_levels] if args.key?(:dry_run_access_levels)
           @group_key = args[:group_key] if args.key?(:group_key)
           @name = args[:name] if args.key?(:name)
+          @principal = args[:principal] if args.key?(:principal)
           @restricted_client_applications = args[:restricted_client_applications] if args.key?(:restricted_client_applications)
           @scoped_access_settings = args[:scoped_access_settings] if args.key?(:scoped_access_settings)
           @session_settings = args[:session_settings] if args.key?(:session_settings)
@@ -1828,6 +1836,39 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # The comprehensive identity container supporting identities including groups,
+      # service accounts and federated identities. Only one of them can be set to
+      # create an access binding.
+      class Principal
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. Service account email used to assign policies to a specific service
+        # account. If a service account is subject to multiple policies (e.g., if there
+        # is a policy for all service accounts in a project and a policy for the service
+        # account), the closest (i.e. the most specific) dry-run policy will be used for
+        # the dry-run functionality and the closest policy will be used for the
+        # enforcement.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Immutable. Cloud project number used to assign policies to all service
+        # accounts owned by the project.
+        # Corresponds to the JSON property `serviceAccountProjectNumber`
+        # @return [String]
+        attr_accessor :service_account_project_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @service_account_project_number = args[:service_account_project_number] if args.key?(:service_account_project_number)
         end
       end
       

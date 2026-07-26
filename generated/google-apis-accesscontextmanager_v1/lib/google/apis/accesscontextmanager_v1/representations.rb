@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Principal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateServiceConnectEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -662,6 +668,8 @@ module Google
           collection :dry_run_access_levels, as: 'dryRunAccessLevels'
           property :group_key, as: 'groupKey'
           property :name, as: 'name'
+          property :principal, as: 'principal', class: Google::Apis::AccesscontextmanagerV1::Principal, decorator: Google::Apis::AccesscontextmanagerV1::Principal::Representation
+      
           collection :restricted_client_applications, as: 'restrictedClientApplications', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
       
           collection :scoped_access_settings, as: 'scopedAccessSettings', class: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings, decorator: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings::Representation
@@ -851,6 +859,14 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class Principal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service_account, as: 'serviceAccount'
+          property :service_account_project_number, as: 'serviceAccountProjectNumber'
         end
       end
       
