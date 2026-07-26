@@ -326,11 +326,13 @@ module Google
       class BigQueryConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. When true and use_topic_schema is true, any fields that are a part
-        # of the topic schema that are not part of the BigQuery table schema are dropped
-        # when writing to BigQuery. Otherwise, the schemas must be kept in sync and any
+        # Optional. If true and `use_topic_schema` is true, drops any fields that are
+        # part of the topic schema that are not part of the BigQuery table schema when
+        # writing to BigQuery. Otherwise, the schemas must be kept in sync and any
         # messages with extra fields are not written and remain in the subscription's
-        # backlog.
+        # backlog. If true and `use_table_schema` is true, drops any fields in the
+        # message that are not part of the BigQuery table schema when writing to
+        # BigQuery. Otherwise, the write to BigQuery will fail.
         # Corresponds to the JSON property `dropUnknownFields`
         # @return [Boolean]
         attr_accessor :drop_unknown_fields
