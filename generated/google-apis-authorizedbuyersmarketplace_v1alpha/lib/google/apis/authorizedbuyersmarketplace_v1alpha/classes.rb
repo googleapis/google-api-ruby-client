@@ -558,6 +558,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Immutable. The visibility of the combined curation package fee and
+        # data segment fees (the total curation fee).
+        # Corresponds to the JSON property `curationFeeVisibility`
+        # @return [String]
+        attr_accessor :curation_fee_visibility
+      
         # Optional. A description of the curated package, provided by the curator.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -616,6 +622,7 @@ module Google
         def update!(**args)
           @access_settings = args[:access_settings] if args.key?(:access_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @curation_fee_visibility = args[:curation_fee_visibility] if args.key?(:curation_fee_visibility)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @fee_cpm = args[:fee_cpm] if args.key?(:fee_cpm)
