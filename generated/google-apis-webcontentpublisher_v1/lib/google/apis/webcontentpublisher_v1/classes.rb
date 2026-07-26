@@ -301,6 +301,12 @@ module Google
         # @return [String]
         attr_accessor :publication_tos_url
       
+        # Optional. The publication entity type (for-profit vs non-profit). Defaults to
+        # FOR_PROFIT if omitted.
+        # Corresponds to the JSON property `publicationType`
+        # @return [String]
+        attr_accessor :publication_type
+      
         # Required. The ISO 3166-1 alpha-2 region code where the publication is
         # registered (e.g., "US").
         # Corresponds to the JSON property `regionCode`
@@ -337,6 +343,7 @@ module Google
           @publication_id = args[:publication_id] if args.key?(:publication_id)
           @publication_privacy_policy_url = args[:publication_privacy_policy_url] if args.key?(:publication_privacy_policy_url)
           @publication_tos_url = args[:publication_tos_url] if args.key?(:publication_tos_url)
+          @publication_type = args[:publication_type] if args.key?(:publication_type)
           @region_code = args[:region_code] if args.key?(:region_code)
           @rrm_product = args[:rrm_product] if args.key?(:rrm_product)
           @sl_product = args[:sl_product] if args.key?(:sl_product)
@@ -406,6 +413,13 @@ module Google
       class TosAcceptance
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether the user opted in to receive product updates and email
+        # communications.
+        # Corresponds to the JSON property `emailOptIn`
+        # @return [Boolean]
+        attr_accessor :email_opt_in
+        alias_method :email_opt_in?, :email_opt_in
+      
         # Optional. The name of the person who accepted the TOS.
         # Corresponds to the JSON property `signer`
         # @return [String]
@@ -428,6 +442,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @email_opt_in = args[:email_opt_in] if args.key?(:email_opt_in)
           @signer = args[:signer] if args.key?(:signer)
           @signer_title = args[:signer_title] if args.key?(:signer_title)
           @user_accepted = args[:user_accepted] if args.key?(:user_accepted)
