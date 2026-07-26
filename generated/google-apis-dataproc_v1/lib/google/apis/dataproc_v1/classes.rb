@@ -95,6 +95,44 @@ module Google
         end
       end
       
+      # Details of a native build info for a Spark Application
+      class AccessSessionSparkApplicationNativeBuildInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # Native SQL Execution Data
+        # Corresponds to the JSON property `executionData`
+        # @return [Google::Apis::DataprocV1::NativeBuildInfoUiData]
+        attr_accessor :execution_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_data = args[:execution_data] if args.key?(:execution_data)
+        end
+      end
+      
+      # Details of a native query for a Spark Application
+      class AccessSessionSparkApplicationNativeSqlQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Native SQL Execution Data
+        # Corresponds to the JSON property `executionData`
+        # @return [Google::Apis::DataprocV1::NativeSqlExecutionUiData]
+        attr_accessor :execution_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_data = args[:execution_data] if args.key?(:execution_data)
+        end
+      end
+      
       # A summary of Spark Application
       class AccessSessionSparkApplicationResponse
         include Google::Apis::Core::Hashable
@@ -227,6 +265,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job_data = args[:job_data] if args.key?(:job_data)
+        end
+      end
+      
+      # Details of Native Build Info for a Spark Application
+      class AccessSparkApplicationNativeBuildInfoResponse
+        include Google::Apis::Core::Hashable
+      
+        # Native Build Info Data
+        # Corresponds to the JSON property `buildInfo`
+        # @return [Google::Apis::DataprocV1::NativeBuildInfoUiData]
+        attr_accessor :build_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @build_info = args[:build_info] if args.key?(:build_info)
+        end
+      end
+      
+      # Details of a query for a Spark Application
+      class AccessSparkApplicationNativeSqlQueryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Native SQL Execution Data
+        # Corresponds to the JSON property `executionData`
+        # @return [Google::Apis::DataprocV1::NativeSqlExecutionUiData]
+        attr_accessor :execution_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_data = args[:execution_data] if args.key?(:execution_data)
         end
       end
       
@@ -707,6 +783,67 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+        end
+      end
+      
+      # Metadata describing the Attachment operation.
+      class AttachmentOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Name of the attachment for the operation.
+        # Corresponds to the JSON property `attachment`
+        # @return [String]
+        attr_accessor :attachment
+      
+        # Output only. Attachment UUID for the operation.
+        # Corresponds to the JSON property `attachmentUuid`
+        # @return [String]
+        attr_accessor :attachment_uuid
+      
+        # Output only. The time when the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Short description of the operation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
+        # Output only. Labels associated with the operation.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # Output only. Warnings encountered during operation execution.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attachment = args[:attachment] if args.key?(:attachment)
+          @attachment_uuid = args[:attachment_uuid] if args.key?(:attachment_uuid)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @done_time = args[:done_time] if args.key?(:done_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
@@ -1849,6 +1986,26 @@ module Google
         def update!(**args)
           @cohort = args[:cohort] if args.key?(:cohort)
           @cohort_source = args[:cohort_source] if args.key?(:cohort_source)
+        end
+      end
+      
+      # Response for ComputeTuningConfig RPC.
+      class ComputeTuningConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # Recommended Spark properties for the query (e.g., `"spark.sql.shuffle.
+        # partitions": "500"`).
+        # Corresponds to the JSON property `recommendedProperties`
+        # @return [Hash<String,String>]
+        attr_accessor :recommended_properties
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recommended_properties = args[:recommended_properties] if args.key?(:recommended_properties)
         end
       end
       
@@ -3705,6 +3862,15 @@ module Google
       class IdentityConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether to enable SSH access for the cluster. The default is true
+        # for image versions prior to 3.1 and false for image versions 3.1 and later.
+        # The default behavior can be changed when creating clusters using image
+        # versions 2.3.30 and later.
+        # Corresponds to the JSON property `enableSsh`
+        # @return [Boolean]
+        attr_accessor :enable_ssh
+        alias_method :enable_ssh?, :enable_ssh
+      
         # Required. Map of user to service account.
         # Corresponds to the JSON property `userServiceAccountMapping`
         # @return [Hash<String,String>]
@@ -3716,6 +3882,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_ssh = args[:enable_ssh] if args.key?(:enable_ssh)
           @user_service_account_mapping = args[:user_service_account_mapping] if args.key?(:user_service_account_mapping)
         end
       end
@@ -7479,6 +7646,33 @@ module Google
         end
       end
       
+      # List of all Native queries for a Spark Application.
+      class SearchSessionSparkApplicationNativeSqlQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSessionSparkApplicationSqlQueriesRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Native SQL Execution Data
+        # Corresponds to the JSON property `sparkApplicationNativeSqlQueries`
+        # @return [Array<Google::Apis::DataprocV1::NativeSqlExecutionUiData>]
+        attr_accessor :spark_application_native_sql_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_native_sql_queries = args[:spark_application_native_sql_queries] if args.key?(:spark_application_native_sql_queries)
+        end
+      end
+      
       # List of all queries for a Spark Application.
       class SearchSessionSparkApplicationSqlQueriesResponse
         include Google::Apis::Core::Hashable
@@ -7692,6 +7886,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @spark_application_jobs = args[:spark_application_jobs] if args.key?(:spark_application_jobs)
+        end
+      end
+      
+      # List of all Native SQL queries details for a Spark Application.
+      class SearchSparkApplicationNativeSqlQueriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # This token is included in the response if there are more results to fetch. To
+        # fetch additional results, provide this value as the page_token in a subsequent
+        # SearchSparkApplicationNativeSqlQueriesRequest.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. Native SQL Execution Data
+        # Corresponds to the JSON property `sparkApplicationNativeSqlQueries`
+        # @return [Array<Google::Apis::DataprocV1::NativeSqlExecutionUiData>]
+        attr_accessor :spark_application_native_sql_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @spark_application_native_sql_queries = args[:spark_application_native_sql_queries] if args.key?(:spark_application_native_sql_queries)
         end
       end
       

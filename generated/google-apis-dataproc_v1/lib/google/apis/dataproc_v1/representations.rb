@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessSessionSparkApplicationNativeBuildInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSessionSparkApplicationNativeSqlQueryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessSessionSparkApplicationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +89,18 @@ module Google
       end
       
       class AccessSparkApplicationJobResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationNativeBuildInfoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessSparkApplicationNativeSqlQueryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -155,6 +179,12 @@ module Google
       end
       
       class AttachedDiskConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AttachmentOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -293,6 +323,12 @@ module Google
       end
       
       class CohortInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComputeTuningConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1012,6 +1048,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchSessionSparkApplicationNativeSqlQueriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchSessionSparkApplicationSqlQueriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1055,6 +1097,12 @@ module Google
       end
       
       class SearchSparkApplicationJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSparkApplicationNativeSqlQueriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1648,6 +1696,22 @@ module Google
         end
       end
       
+      class AccessSessionSparkApplicationNativeBuildInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_data, as: 'executionData', class: Google::Apis::DataprocV1::NativeBuildInfoUiData, decorator: Google::Apis::DataprocV1::NativeBuildInfoUiData::Representation
+      
+        end
+      end
+      
+      class AccessSessionSparkApplicationNativeSqlQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_data, as: 'executionData', class: Google::Apis::DataprocV1::NativeSqlExecutionUiData, decorator: Google::Apis::DataprocV1::NativeSqlExecutionUiData::Representation
+      
+        end
+      end
+      
       class AccessSessionSparkApplicationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1700,6 +1764,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job_data, as: 'jobData', class: Google::Apis::DataprocV1::JobData, decorator: Google::Apis::DataprocV1::JobData::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationNativeBuildInfoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :build_info, as: 'buildInfo', class: Google::Apis::DataprocV1::NativeBuildInfoUiData, decorator: Google::Apis::DataprocV1::NativeBuildInfoUiData::Representation
+      
+        end
+      end
+      
+      class AccessSparkApplicationNativeSqlQueryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_data, as: 'executionData', class: Google::Apis::DataprocV1::NativeSqlExecutionUiData, decorator: Google::Apis::DataprocV1::NativeSqlExecutionUiData::Representation
       
         end
       end
@@ -1836,6 +1916,20 @@ module Google
           property :disk_type, as: 'diskType'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
+        end
+      end
+      
+      class AttachmentOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment, as: 'attachment'
+          property :attachment_uuid, as: 'attachmentUuid'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :done_time, as: 'doneTime'
+          hash :labels, as: 'labels'
+          property :operation_type, as: 'operationType'
+          collection :warnings, as: 'warnings'
         end
       end
       
@@ -2124,6 +2218,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cohort, as: 'cohort'
           property :cohort_source, as: 'cohortSource'
+        end
+      end
+      
+      class ComputeTuningConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :recommended_properties, as: 'recommendedProperties'
         end
       end
       
@@ -2546,6 +2647,7 @@ module Google
       class IdentityConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_ssh, as: 'enableSsh'
           hash :user_service_account_mapping, as: 'userServiceAccountMapping'
         end
       end
@@ -3517,6 +3619,15 @@ module Google
         end
       end
       
+      class SearchSessionSparkApplicationNativeSqlQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_native_sql_queries, as: 'sparkApplicationNativeSqlQueries', class: Google::Apis::DataprocV1::NativeSqlExecutionUiData, decorator: Google::Apis::DataprocV1::NativeSqlExecutionUiData::Representation
+      
+        end
+      end
+      
       class SearchSessionSparkApplicationSqlQueriesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3585,6 +3696,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :spark_application_jobs, as: 'sparkApplicationJobs', class: Google::Apis::DataprocV1::JobData, decorator: Google::Apis::DataprocV1::JobData::Representation
+      
+        end
+      end
+      
+      class SearchSparkApplicationNativeSqlQueriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :spark_application_native_sql_queries, as: 'sparkApplicationNativeSqlQueries', class: Google::Apis::DataprocV1::NativeSqlExecutionUiData, decorator: Google::Apis::DataprocV1::NativeSqlExecutionUiData::Representation
       
         end
       end
