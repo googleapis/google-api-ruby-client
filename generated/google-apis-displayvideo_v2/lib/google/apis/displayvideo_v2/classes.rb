@@ -3814,6 +3814,12 @@ module Google
         attr_accessor :skippable
         alias_method :skippable?, :skippable
       
+        # Optional. Whether the creative contains synthetic content or was created using
+        # AI.
+        # Corresponds to the JSON property `syntheticContentAttestationStatus`
+        # @return [String]
+        attr_accessor :synthetic_content_attestation_status
+      
         # Optional. The original third-party tag used for the creative. Required and
         # only valid for third-party tag creatives. Third-party tag creatives are
         # creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY`
@@ -3937,6 +3943,7 @@ module Google
           @review_status = args[:review_status] if args.key?(:review_status)
           @skip_offset = args[:skip_offset] if args.key?(:skip_offset)
           @skippable = args[:skippable] if args.key?(:skippable)
+          @synthetic_content_attestation_status = args[:synthetic_content_attestation_status] if args.key?(:synthetic_content_attestation_status)
           @third_party_tag = args[:third_party_tag] if args.key?(:third_party_tag)
           @third_party_urls = args[:third_party_urls] if args.key?(:third_party_urls)
           @timer_events = args[:timer_events] if args.key?(:timer_events)
