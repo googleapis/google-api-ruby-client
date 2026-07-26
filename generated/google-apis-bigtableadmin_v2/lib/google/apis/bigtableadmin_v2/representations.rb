@@ -1272,6 +1272,7 @@ module Google
       class CreateMaterializedViewRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignore_warnings, as: 'ignoreWarnings'
           property :materialized_view, as: 'materializedView', class: Google::Apis::BigtableadminV2::MaterializedView, decorator: Google::Apis::BigtableadminV2::MaterializedView::Representation
       
           property :materialized_view_id, as: 'materializedViewId'
