@@ -1498,6 +1498,36 @@ module Google
         end
       end
       
+      # An external identifier for an entity in the Cloud Identity Groups API. Used to
+      # link a `Group` in Cloud Identity Groups API with a corresponding entity in an
+      # external identity system or directory.
+      class ExternalId
+        include Google::Apis::Core::Hashable
+      
+        # Required. The unique identifier assigned by the external identity provider.
+        # The API does not enforce uniqueness of IDs across entities, but clients should
+        # ensure IDs are unique within their namespace.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required. The namespace in which the entity exists. Cannot be empty. Currently,
+        # the only allowable namespace is `"system/external"`.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @namespace = args[:namespace] if args.key?(:namespace)
+        end
+      end
+      
       # The response message for MembershipsService.GetMembershipGraph.
       class GetMembershipGraphResponse
         include Google::Apis::Core::Hashable
@@ -2655,6 +2685,14 @@ module Google
         # @return [Google::Apis::CloudidentityV1beta1::DynamicGroupMetadata]
         attr_accessor :dynamic_group_metadata
       
+        # Optional. External identifiers associated with the `Group`. Enables external
+        # identity providers and directory sync tools to link their native unique
+        # identifiers with this group. Currently, the only allowable namespace is `"
+        # system/external"`.
+        # Corresponds to the JSON property `externalIds`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::ExternalId>]
+        attr_accessor :external_ids
+      
         # A unique identifier for an entity in the Cloud Identity Groups API. An entity
         # can represent either a group with an optional `namespace` or a user without a `
         # namespace`. The combination of `id` and `namespace` must be unique; however,
@@ -2717,6 +2755,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @dynamic_group_metadata = args[:dynamic_group_metadata] if args.key?(:dynamic_group_metadata)
+          @external_ids = args[:external_ids] if args.key?(:external_ids)
           @group_key = args[:group_key] if args.key?(:group_key)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
