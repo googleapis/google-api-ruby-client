@@ -47,8 +47,10 @@ module Google
         # @return [String]
         attr_accessor :detail
       
-        # Required. Expiration time of the entitlement. Entitlements that have expired
-        # over 30 days will be purged. The max expire_time is 398 days from now().
+        # Optional. Expiration time of the entitlement. If unset, the entitlement does
+        # not expire (indefinite entitlement). We need to support indefinite
+        # entitlements for platform publishers. dd: go/rrm-sl-notedotcom Entitlements
+        # that have expired over 30 days will be purged.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
