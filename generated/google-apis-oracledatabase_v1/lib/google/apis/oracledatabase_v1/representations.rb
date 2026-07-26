@@ -1775,9 +1775,11 @@ module Google
       class DbSystemShape
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :available_core_count, as: 'availableCoreCount'
           property :available_core_count_per_node, as: 'availableCoreCountPerNode'
           property :available_data_storage_tb, as: 'availableDataStorageTb'
           property :available_memory_per_node_gb, as: 'availableMemoryPerNodeGb'
+          property :core_count_increment, as: 'coreCountIncrement'
           property :max_node_count, as: 'maxNodeCount'
           property :max_storage_count, as: 'maxStorageCount'
           property :min_core_count_per_node, as: 'minCoreCountPerNode'
@@ -1785,6 +1787,7 @@ module Google
           property :min_memory_per_node_gb, as: 'minMemoryPerNodeGb'
           property :min_node_count, as: 'minNodeCount'
           property :min_storage_count, as: 'minStorageCount'
+          property :minimum_core_count, as: 'minimumCoreCount'
           property :name, as: 'name'
           property :shape, as: 'shape'
         end
@@ -1871,6 +1874,8 @@ module Google
           property :display_name, as: 'displayName'
           property :entitlement_id, as: 'entitlementId'
           property :gcp_oracle_zone, as: 'gcpOracleZone'
+          property :identity_connector, as: 'identityConnector', class: Google::Apis::OracledatabaseV1::IdentityConnector, decorator: Google::Apis::OracledatabaseV1::IdentityConnector::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :odb_network, as: 'odbNetwork'
