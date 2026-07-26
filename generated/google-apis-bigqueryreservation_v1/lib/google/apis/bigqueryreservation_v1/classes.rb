@@ -973,6 +973,15 @@ module Google
         # @return [String]
         attr_accessor :reservation_group
       
+        # Output only. The reservation group path of the reservation from root to leaf.
+        # The order of elements matters: the first element is the top level group and
+        # the last element is the direct parent reservation group. For example, if a
+        # reservation is under group-1 -> group-2 -> group-3, then the reservation group
+        # path is ["group-1", "group-2", "group-3"].
+        # Corresponds to the JSON property `reservationGroupPath`
+        # @return [Array<String>]
+        attr_accessor :reservation_group_path
+      
         # Optional. The scaling mode for the reservation. If the field is present but
         # max_slots is not present, requests will be rejected with error code `google.
         # rpc.Code.INVALID_ARGUMENT`.
@@ -1033,6 +1042,7 @@ module Google
           @primary_location = args[:primary_location] if args.key?(:primary_location)
           @replication_status = args[:replication_status] if args.key?(:replication_status)
           @reservation_group = args[:reservation_group] if args.key?(:reservation_group)
+          @reservation_group_path = args[:reservation_group_path] if args.key?(:reservation_group_path)
           @scaling_mode = args[:scaling_mode] if args.key?(:scaling_mode)
           @scheduling_policy = args[:scheduling_policy] if args.key?(:scheduling_policy)
           @secondary_location = args[:secondary_location] if args.key?(:secondary_location)
