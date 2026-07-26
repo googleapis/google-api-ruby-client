@@ -30,6 +30,18 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # On their own behalf, apps in Google Chat can see all members in Google Chat spaces and conversations throughout your Workspace organization, even when the Chat app isn't a member
+      AUTH_CHAT_APP_ALL_MEMBERSHIPS_READONLY = 'https://www.googleapis.com/auth/chat.app.all.memberships.readonly'
+
+      # On their own behalf, apps in Google Chat can see all messages and reactions throughout your Workspace organization, even when the Chat app isn't a member of a space or conversation
+      AUTH_CHAT_APP_ALL_MESSAGES_READONLY = 'https://www.googleapis.com/auth/chat.app.all.messages.readonly'
+
+      # On their own behalf, apps in Google Chat can see metadata about all spaces and conversations in Google Chat throughout your Workspace organization, even when the Chat app isn't a member
+      AUTH_CHAT_APP_ALL_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.app.all.spaces.readonly'
+
+      # On their own behalf, apps in Google Chat can see the last read time for all users in all spaces and conversations throughout your Workspace organization, even when the Chat app isn't a member.
+      AUTH_CHAT_APP_ALL_USERS_READSTATE_READONLY = 'https://www.googleapis.com/auth/chat.app.all.users.readstate.readonly'
+
       # On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and spaces
       AUTH_CHAT_APP_MEMBERSHIPS = 'https://www.googleapis.com/auth/chat.app.memberships'
 
