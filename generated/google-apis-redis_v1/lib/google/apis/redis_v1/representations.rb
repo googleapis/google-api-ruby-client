@@ -34,6 +34,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AclPolicyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AclPolicyRevision
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AclPolicyRevisionStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AclRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +149,12 @@ module Google
       end
       
       class Cluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterAclPolicyAttachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -365,6 +389,12 @@ module Google
       end
       
       class ListAclPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAclPolicyRevisionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -704,12 +734,49 @@ module Google
       class AclPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cluster_acl_policy_attachments, as: 'clusterAclPolicyAttachments', class: Google::Apis::RedisV1::ClusterAclPolicyAttachment, decorator: Google::Apis::RedisV1::ClusterAclPolicyAttachment::Representation
+      
+          property :create_time, as: 'createTime'
           property :etag, as: 'etag'
           property :name, as: 'name'
           collection :rules, as: 'rules', class: Google::Apis::RedisV1::AclRule, decorator: Google::Apis::RedisV1::AclRule::Representation
       
           property :state, as: 'state'
+          property :update_time, as: 'updateTime'
           property :version, :numeric_string => true, as: 'version'
+        end
+      end
+      
+      class AclPolicyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :acl_policy_revision_statuses, as: 'aclPolicyRevisionStatuses', class: Google::Apis::RedisV1::AclPolicyRevisionStatus, decorator: Google::Apis::RedisV1::AclPolicyRevisionStatus::Representation
+      
+          property :applied_acl_policy, as: 'appliedAclPolicy'
+          property :applied_acl_policy_revision, as: 'appliedAclPolicyRevision'
+          property :applied_acl_policy_revision_number, :numeric_string => true, as: 'appliedAclPolicyRevisionNumber'
+        end
+      end
+      
+      class AclPolicyRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attached_clusters, as: 'attachedClusters'
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :revision_number, :numeric_string => true, as: 'revisionNumber'
+          property :snapshot, as: 'snapshot', class: Google::Apis::RedisV1::AclPolicy, decorator: Google::Apis::RedisV1::AclPolicy::Representation
+      
+        end
+      end
+      
+      class AclPolicyRevisionStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :acl_policy_revision, as: 'aclPolicyRevision'
+          property :acl_policy_revision_number, :numeric_string => true, as: 'aclPolicyRevisionNumber'
+          property :error_message, as: 'errorMessage'
+          property :state, as: 'state'
         end
       end
       
@@ -887,6 +954,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acl_policy, as: 'aclPolicy'
           property :acl_policy_in_sync, as: 'aclPolicyInSync'
+          property :acl_policy_info, as: 'aclPolicyInfo', class: Google::Apis::RedisV1::AclPolicyInfo, decorator: Google::Apis::RedisV1::AclPolicyInfo::Representation
+      
           property :allow_fewer_zones_deployment, as: 'allowFewerZonesDeployment'
           property :async_cluster_endpoints_deletion_enabled, as: 'asyncClusterEndpointsDeletionEnabled'
           property :authorization_mode, as: 'authorizationMode'
@@ -945,6 +1014,15 @@ module Google
           property :uid, as: 'uid'
           property :zone_distribution_config, as: 'zoneDistributionConfig', class: Google::Apis::RedisV1::ZoneDistributionConfig, decorator: Google::Apis::RedisV1::ZoneDistributionConfig::Representation
       
+        end
+      end
+      
+      class ClusterAclPolicyAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :acl_policy_revision_statuses, as: 'aclPolicyRevisionStatuses', class: Google::Apis::RedisV1::AclPolicyRevisionStatus, decorator: Google::Apis::RedisV1::AclPolicyRevisionStatus::Representation
+      
+          property :cluster, as: 'cluster'
         end
       end
       
@@ -1417,6 +1495,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :acl_policies, as: 'aclPolicies', class: Google::Apis::RedisV1::AclPolicy, decorator: Google::Apis::RedisV1::AclPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListAclPolicyRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :acl_policy_revisions, as: 'aclPolicyRevisions', class: Google::Apis::RedisV1::AclPolicyRevision, decorator: Google::Apis::RedisV1::AclPolicyRevision::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'

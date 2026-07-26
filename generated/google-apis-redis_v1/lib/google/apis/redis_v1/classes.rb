@@ -45,6 +45,16 @@ module Google
       class AclPolicy
         include Google::Apis::Core::Hashable
       
+        # Output only. The ACL policy attachment status for each attached cluster.
+        # Corresponds to the JSON property `clusterAclPolicyAttachments`
+        # @return [Array<Google::Apis::RedisV1::ClusterAclPolicyAttachment>]
+        attr_accessor :cluster_acl_policy_attachments
+      
+        # Output only. The timestamp that the ACL policy was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Output only. Etag for the ACL policy.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -65,6 +75,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The timestamp that the ACL policy was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         # Output only. Deprecated: Used in drift resolution.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
@@ -76,11 +91,140 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cluster_acl_policy_attachments = args[:cluster_acl_policy_attachments] if args.key?(:cluster_acl_policy_attachments)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
           @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Details of the applied ACL policy.
+      class AclPolicyInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A list of status for various revisions of this ACL policy on the
+        # cluster.
+        # Corresponds to the JSON property `aclPolicyRevisionStatuses`
+        # @return [Array<Google::Apis::RedisV1::AclPolicyRevisionStatus>]
+        attr_accessor :acl_policy_revision_statuses
+      
+        # Output only. The resource name of the applied ACL policy. Format: "projects/`
+        # project`/locations/`location`/aclPolicies/`acl_policy`"
+        # Corresponds to the JSON property `appliedAclPolicy`
+        # @return [String]
+        attr_accessor :applied_acl_policy
+      
+        # Output only. The resource name of the applied ACL policy revision. Format: "
+        # projects/`project`/locations/`location`/aclPolicies/`acl_policy`/revisions/`
+        # revision`"
+        # Corresponds to the JSON property `appliedAclPolicyRevision`
+        # @return [String]
+        attr_accessor :applied_acl_policy_revision
+      
+        # Output only. The revision number of the applied ACL policy revision.
+        # Corresponds to the JSON property `appliedAclPolicyRevisionNumber`
+        # @return [Fixnum]
+        attr_accessor :applied_acl_policy_revision_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acl_policy_revision_statuses = args[:acl_policy_revision_statuses] if args.key?(:acl_policy_revision_statuses)
+          @applied_acl_policy = args[:applied_acl_policy] if args.key?(:applied_acl_policy)
+          @applied_acl_policy_revision = args[:applied_acl_policy_revision] if args.key?(:applied_acl_policy_revision)
+          @applied_acl_policy_revision_number = args[:applied_acl_policy_revision_number] if args.key?(:applied_acl_policy_revision_number)
+        end
+      end
+      
+      # The ACL policy revision resource.
+      class AclPolicyRevision
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A list of clusters that are attached to this ACL policy revision.
+        # Corresponds to the JSON property `attachedClusters`
+        # @return [Array<String>]
+        attr_accessor :attached_clusters
+      
+        # Output only. The timestamp that the revision was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The name of the ACL policy revision. Format: "projects/`project`/
+        # locations/`location`/aclPolicies/`acl_policy`/revisions/`revision`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The revision number of the ACL policy revision.
+        # Corresponds to the JSON property `revisionNumber`
+        # @return [Fixnum]
+        attr_accessor :revision_number
+      
+        # The ACL policy resource.
+        # Corresponds to the JSON property `snapshot`
+        # @return [Google::Apis::RedisV1::AclPolicy]
+        attr_accessor :snapshot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attached_clusters = args[:attached_clusters] if args.key?(:attached_clusters)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @revision_number = args[:revision_number] if args.key?(:revision_number)
+          @snapshot = args[:snapshot] if args.key?(:snapshot)
+        end
+      end
+      
+      # AclPolicyRevisionStatus stores the per-revision status for an attached cluster.
+      class AclPolicyRevisionStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the ACL policy revision this status refers
+        # to. Format: "projects/`project`/locations/`location`/aclPolicies/`acl_policy`/
+        # revisions/`revision`"
+        # Corresponds to the JSON property `aclPolicyRevision`
+        # @return [String]
+        attr_accessor :acl_policy_revision
+      
+        # Output only. The revision number of the ACL policy revision this status refers
+        # to.
+        # Corresponds to the JSON property `aclPolicyRevisionNumber`
+        # @return [Fixnum]
+        attr_accessor :acl_policy_revision_number
+      
+        # Output only. Human-readable error message providing more details for FAILED
+        # states.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Output only. AclPolicyRevision state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acl_policy_revision = args[:acl_policy_revision] if args.key?(:acl_policy_revision)
+          @acl_policy_revision_number = args[:acl_policy_revision_number] if args.key?(:acl_policy_revision_number)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -716,6 +860,11 @@ module Google
         attr_accessor :acl_policy_in_sync
         alias_method :acl_policy_in_sync?, :acl_policy_in_sync
       
+        # Details of the applied ACL policy.
+        # Corresponds to the JSON property `aclPolicyInfo`
+        # @return [Google::Apis::RedisV1::AclPolicyInfo]
+        attr_accessor :acl_policy_info
+      
         # Optional. Immutable. Deprecated, do not use.
         # Corresponds to the JSON property `allowFewerZonesDeployment`
         # @return [Boolean]
@@ -970,6 +1119,7 @@ module Google
         def update!(**args)
           @acl_policy = args[:acl_policy] if args.key?(:acl_policy)
           @acl_policy_in_sync = args[:acl_policy_in_sync] if args.key?(:acl_policy_in_sync)
+          @acl_policy_info = args[:acl_policy_info] if args.key?(:acl_policy_info)
           @allow_fewer_zones_deployment = args[:allow_fewer_zones_deployment] if args.key?(:allow_fewer_zones_deployment)
           @async_cluster_endpoints_deletion_enabled = args[:async_cluster_endpoints_deletion_enabled] if args.key?(:async_cluster_endpoints_deletion_enabled)
           @authorization_mode = args[:authorization_mode] if args.key?(:authorization_mode)
@@ -1013,6 +1163,34 @@ module Google
           @transit_encryption_mode = args[:transit_encryption_mode] if args.key?(:transit_encryption_mode)
           @uid = args[:uid] if args.key?(:uid)
           @zone_distribution_config = args[:zone_distribution_config] if args.key?(:zone_distribution_config)
+        end
+      end
+      
+      # ClusterAclPolicyAttachment stores the ACL policy status for an attached
+      # cluster for the revisions successfully applied, under application or failed.
+      class ClusterAclPolicyAttachment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A list of status for various revisions of this ACL policy on the
+        # cluster.
+        # Corresponds to the JSON property `aclPolicyRevisionStatuses`
+        # @return [Array<Google::Apis::RedisV1::AclPolicyRevisionStatus>]
+        attr_accessor :acl_policy_revision_statuses
+      
+        # Output only. The resource name of the attached Cluster. Format: "projects/`
+        # project`/locations/`location`/clusters/`cluster`"
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acl_policy_revision_statuses = args[:acl_policy_revision_statuses] if args.key?(:acl_policy_revision_statuses)
+          @cluster = args[:cluster] if args.key?(:cluster)
         end
       end
       
@@ -2828,6 +3006,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @acl_policies = args[:acl_policies] if args.key?(:acl_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response for `ListAclPolicyRevisions`.
+      class ListAclPolicyRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of ACL policy revisions.
+        # Corresponds to the JSON property `aclPolicyRevisions`
+        # @return [Array<Google::Apis::RedisV1::AclPolicyRevision>]
+        attr_accessor :acl_policy_revisions
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @acl_policy_revisions = args[:acl_policy_revisions] if args.key?(:acl_policy_revisions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
