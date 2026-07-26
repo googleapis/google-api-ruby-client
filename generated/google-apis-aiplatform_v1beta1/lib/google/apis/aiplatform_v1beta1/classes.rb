@@ -43,6 +43,11 @@ module Google
         # @return [String]
         attr_accessor :codec
       
+        # Configuration for color alignment.
+        # Corresponds to the JSON property `colorAlignment`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig]
+        attr_accessor :color_alignment
+      
         # Conditioning frames for veo experimental models ONLY, not to be confused with
         # keyframes (ID:31) in GenerateVideoRequest.
         # Corresponds to the JSON property `conditioningFrames`
@@ -103,6 +108,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionSeamless]
         attr_accessor :seamless
       
+        # Configuration for spatial alignment.
+        # Corresponds to the JSON property `spatialAlignment`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig]
+        attr_accessor :spatial_alignment
+      
         # If true (default), truncate input videos that exceed the model's maximum frame
         # count by applying a frame_selection_config to __video_file__ inputs. Set to
         # false to preserve the existing fail-fast behavior.
@@ -131,6 +141,7 @@ module Google
           @anchor_last_frame = args[:anchor_last_frame] if args.key?(:anchor_last_frame)
           @cfg_scale = args[:cfg_scale] if args.key?(:cfg_scale)
           @codec = args[:codec] if args.key?(:codec)
+          @color_alignment = args[:color_alignment] if args.key?(:color_alignment)
           @conditioning_frames = args[:conditioning_frames] if args.key?(:conditioning_frames)
           @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
           @human_pose = args[:human_pose] if args.key?(:human_pose)
@@ -141,9 +152,30 @@ module Google
           @request_origin_tag = args[:request_origin_tag] if args.key?(:request_origin_tag)
           @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
           @seamless = args[:seamless] if args.key?(:seamless)
+          @spatial_alignment = args[:spatial_alignment] if args.key?(:spatial_alignment)
           @truncate_input_video = args[:truncate_input_video] if args.key?(:truncate_input_video)
           @video_transform_mask_gcs_uri = args[:video_transform_mask_gcs_uri] if args.key?(:video_transform_mask_gcs_uri)
           @video_transform_strength = args[:video_transform_strength] if args.key?(:video_transform_strength)
+        end
+      end
+      
+      # Configuration for color alignment.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, enable alignment.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
         end
       end
       
@@ -169,6 +201,26 @@ module Google
         def update!(**args)
           @frame_num = args[:frame_num] if args.key?(:frame_num)
           @image = args[:image] if args.key?(:image)
+        end
+      end
+      
+      # Configuration for spatial alignment.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, enable alignment.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
         end
       end
       
@@ -885,6 +937,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1DynamicAgentConfig]
         attr_accessor :dynamic_config
       
+        # Max total tokens for the agent run.
+        # Corresponds to the JSON property `maxTotalTokens`
+        # @return [Fixnum]
+        attr_accessor :max_total_tokens
+      
         def initialize(**args)
            update!(**args)
         end
@@ -894,6 +951,7 @@ module Google
           @agent = args[:agent] if args.key?(:agent)
           @deep_research_config = args[:deep_research_config] if args.key?(:deep_research_config)
           @dynamic_config = args[:dynamic_config] if args.key?(:dynamic_config)
+          @max_total_tokens = args[:max_total_tokens] if args.key?(:max_total_tokens)
         end
       end
       
@@ -2417,13 +2475,6 @@ module Google
       class GenaiVertexV1beta1GenerationConfig
         include Google::Apis::Core::Hashable
       
-        # Penalizes tokens based on their frequency in the generated text. A positive
-        # value helps to reduce the repetition of words and phrases. Valid values can
-        # range from [-2.0, 2.0].
-        # Corresponds to the JSON property `frequency_penalty`
-        # @return [Float]
-        attr_accessor :frequency_penalty
-      
         # The configuration for image interaction.
         # Corresponds to the JSON property `imageConfig`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ImageConfig]
@@ -2433,13 +2484,6 @@ module Google
         # Corresponds to the JSON property `maxOutputTokens`
         # @return [Fixnum]
         attr_accessor :max_output_tokens
-      
-        # Penalizes tokens that have already appeared in the generated text. A positive
-        # value encourages the model to generate more diverse and less repetitive text.
-        # Valid values can range from [-2.0, 2.0].
-        # Corresponds to the JSON property `presence_penalty`
-        # @return [Float]
-        attr_accessor :presence_penalty
       
         # Seed used in decoding for reproducibility.
         # Corresponds to the JSON property `seed`
@@ -2497,10 +2541,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
           @image_config = args[:image_config] if args.key?(:image_config)
           @max_output_tokens = args[:max_output_tokens] if args.key?(:max_output_tokens)
-          @presence_penalty = args[:presence_penalty] if args.key?(:presence_penalty)
           @seed = args[:seed] if args.key?(:seed)
           @speech_config = args[:speech_config] if args.key?(:speech_config)
           @stop_sequences = args[:stop_sequences] if args.key?(:stop_sequences)
@@ -3249,6 +3291,15 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Optional. The labels with user-defined metadata for the request. It is used
+        # for billing and reporting only. Label keys and values can be no longer than 63
+        # characters (Unicode codepoints) and can only contain lowercase letters,
+        # numeric characters, underscores, and dashes. International characters are
+        # allowed. Label values are optional. Label keys must start with a letter.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Configuration for an environment that lives on the client connection rather
         # than in a server-managed sandbox. When set (via Interaction.local_environment),
         # the agent's filesystem and shell are treated as living on the client: the
@@ -3317,6 +3368,11 @@ module Google
         # @return [String]
         attr_accessor :role
       
+        # Safety settings for the interaction.
+        # Corresponds to the JSON property `safety_settings`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1SafetySetting>]
+        attr_accessor :safety_settings
+      
         # Required. Output only. The status of the interaction.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -3377,6 +3433,7 @@ module Google
           @env_id = args[:env_id] if args.key?(:env_id)
           @environment_id = args[:environment_id] if args.key?(:environment_id)
           @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
           @local_environment = args[:local_environment] if args.key?(:local_environment)
           @model_interaction = args[:model_interaction] if args.key?(:model_interaction)
           @outputs = args[:outputs] if args.key?(:outputs)
@@ -3388,6 +3445,7 @@ module Google
           @response_mime_type = args[:response_mime_type] if args.key?(:response_mime_type)
           @response_modalities = args[:response_modalities] if args.key?(:response_modalities)
           @role = args[:role] if args.key?(:role)
+          @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
           @status = args[:status] if args.key?(:status)
           @step_list = args[:step_list] if args.key?(:step_list)
           @steps = args[:steps] if args.key?(:steps)
@@ -4050,14 +4108,6 @@ module Google
       class GenaiVertexV1beta1ModelInteraction
         include Google::Apis::Core::Hashable
       
-        # The name of the cached content used as context to serve the prediction. Note:
-        # only used in explicit caching, where users can have control over caching (e.g.
-        # what content to cache) and enjoy guaranteed cost savings. Format: `projects/`
-        # project`/locations/`location`/cachedContents/`cachedContent``
-        # Corresponds to the JSON property `cached_content`
-        # @return [String]
-        attr_accessor :cached_content
-      
         # Configuration parameters for model interactions.
         # Corresponds to the JSON property `generationConfig`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1GenerationConfig]
@@ -4074,7 +4124,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @cached_content = args[:cached_content] if args.key?(:cached_content)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @model = args[:model] if args.key?(:model)
         end
@@ -4470,6 +4519,119 @@ module Google
         end
       end
       
+      # Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
+      # etc. RetrievalType decides which tool is used.
+      class GenaiVertexV1beta1RetrievalCallDelta
+        include Google::Apis::Core::Hashable
+      
+        # The arguments to pass to Retrieval tools.
+        # Corresponds to the JSON property `arguments`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalCallStepRetrievalStepArguments]
+        attr_accessor :arguments
+      
+        # The type of retrieval tools.
+        # Corresponds to the JSON property `retrievalType`
+        # @return [String]
+        attr_accessor :retrieval_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arguments = args[:arguments] if args.key?(:arguments)
+          @retrieval_type = args[:retrieval_type] if args.key?(:retrieval_type)
+        end
+      end
+      
+      # Retrieval call step. Used by Vertex Retrieval tools such as Parallel AI, Exa
+      # AI, Vertex AI Search, etc. RetrievalType decides which tool is used.
+      class GenaiVertexV1beta1RetrievalCallStep
+        include Google::Apis::Core::Hashable
+      
+        # The arguments to pass to Retrieval tools.
+        # Corresponds to the JSON property `arguments`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalCallStepRetrievalStepArguments]
+        attr_accessor :arguments
+      
+        # The type of retrieval tools.
+        # Corresponds to the JSON property `retrievalType`
+        # @return [String]
+        attr_accessor :retrieval_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arguments = args[:arguments] if args.key?(:arguments)
+          @retrieval_type = args[:retrieval_type] if args.key?(:retrieval_type)
+        end
+      end
+      
+      # The arguments to pass to Retrieval tools.
+      class GenaiVertexV1beta1RetrievalCallStepRetrievalStepArguments
+        include Google::Apis::Core::Hashable
+      
+        # Queries for Retrieval information.
+        # Corresponds to the JSON property `queries`
+        # @return [Array<String>]
+        attr_accessor :queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @queries = args[:queries] if args.key?(:queries)
+        end
+      end
+      
+      # Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
+      # etc. ToolResultDelta.type
+      class GenaiVertexV1beta1RetrievalResultDelta
+        include Google::Apis::Core::Hashable
+      
+        # Whether the retrieval resulted in an error.
+        # Corresponds to the JSON property `isError`
+        # @return [Boolean]
+        attr_accessor :is_error
+        alias_method :is_error?, :is_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_error = args[:is_error] if args.key?(:is_error)
+        end
+      end
+      
+      # Vertex Retrieval result step. Used by Vertex Retrieval tools such as Parallel
+      # AI, Exa AI, Vertex AI Search, etc.
+      class GenaiVertexV1beta1RetrievalResultStep
+        include Google::Apis::Core::Hashable
+      
+        # Whether the retrieval resulted in an error.
+        # Corresponds to the JSON property `isError`
+        # @return [Boolean]
+        attr_accessor :is_error
+        alias_method :is_error?, :is_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_error = args[:is_error] if args.key?(:is_error)
+        end
+      end
+      
       # Encapsulates a snippet of a user review that answers a question about the
       # features of a specific place in Google Maps.
       class GenaiVertexV1beta1ReviewSnippet
@@ -4502,6 +4664,40 @@ module Google
         end
       end
       
+      # A safety setting that affects the safety-blocking behavior. A SafetySetting
+      # consists of a harm category and a threshold for that category.
+      class GenaiVertexV1beta1SafetySetting
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The method for blocking content. If not specified, the default
+        # behavior is to use the probability score.
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # Required. The threshold for blocking content. If the harm probability exceeds
+        # this threshold, the content will be blocked.
+        # Corresponds to the JSON property `threshold`
+        # @return [String]
+        attr_accessor :threshold
+      
+        # Required. The type of harm category to be blocked.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @threshold = args[:threshold] if args.key?(:threshold)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # 
       class GenaiVertexV1beta1ServerToolCallDelta
         include Google::Apis::Core::Hashable
@@ -4531,6 +4727,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolCallDelta]
         attr_accessor :mcp_server_tool_call
       
+        # Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
+        # etc. RetrievalType decides which tool is used.
+        # Corresponds to the JSON property `retrievalCall`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalCallDelta]
+        attr_accessor :retrieval_call
+      
         # A signature hash for backend validation.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -4553,6 +4755,7 @@ module Google
           @google_maps_call = args[:google_maps_call] if args.key?(:google_maps_call)
           @google_search_call = args[:google_search_call] if args.key?(:google_search_call)
           @mcp_server_tool_call = args[:mcp_server_tool_call] if args.key?(:mcp_server_tool_call)
+          @retrieval_call = args[:retrieval_call] if args.key?(:retrieval_call)
           @signature = args[:signature] if args.key?(:signature)
           @url_context_call = args[:url_context_call] if args.key?(:url_context_call)
         end
@@ -4587,6 +4790,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolResultDelta]
         attr_accessor :mcp_server_tool_result
       
+        # Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
+        # etc. ToolResultDelta.type
+        # Corresponds to the JSON property `retrievalResult`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalResultDelta]
+        attr_accessor :retrieval_result
+      
         # A signature hash for backend validation.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -4609,6 +4818,7 @@ module Google
           @google_maps_result = args[:google_maps_result] if args.key?(:google_maps_result)
           @google_search_result = args[:google_search_result] if args.key?(:google_search_result)
           @mcp_server_tool_result = args[:mcp_server_tool_result] if args.key?(:mcp_server_tool_result)
+          @retrieval_result = args[:retrieval_result] if args.key?(:retrieval_result)
           @signature = args[:signature] if args.key?(:signature)
           @url_context_result = args[:url_context_result] if args.key?(:url_context_result)
         end
@@ -5404,6 +5614,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolCallStep]
         attr_accessor :mcp_server_tool_call
       
+        # Retrieval call step. Used by Vertex Retrieval tools such as Parallel AI, Exa
+        # AI, Vertex AI Search, etc. RetrievalType decides which tool is used.
+        # Corresponds to the JSON property `retrievalCall`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalCallStep]
+        attr_accessor :retrieval_call
+      
         # A signature hash for backend validation.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -5428,6 +5644,7 @@ module Google
           @google_search_call = args[:google_search_call] if args.key?(:google_search_call)
           @id = args[:id] if args.key?(:id)
           @mcp_server_tool_call = args[:mcp_server_tool_call] if args.key?(:mcp_server_tool_call)
+          @retrieval_call = args[:retrieval_call] if args.key?(:retrieval_call)
           @signature = args[:signature] if args.key?(:signature)
           @url_context_call = args[:url_context_call] if args.key?(:url_context_call)
         end
@@ -5627,6 +5844,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolResultStep]
         attr_accessor :mcp_server_tool_result
       
+        # Vertex Retrieval result step. Used by Vertex Retrieval tools such as Parallel
+        # AI, Exa AI, Vertex AI Search, etc.
+        # Corresponds to the JSON property `retrievalResult`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalResultStep]
+        attr_accessor :retrieval_result
+      
         # A signature hash for backend validation.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -5651,6 +5874,7 @@ module Google
           @google_maps_result = args[:google_maps_result] if args.key?(:google_maps_result)
           @google_search_result = args[:google_search_result] if args.key?(:google_search_result)
           @mcp_server_tool_result = args[:mcp_server_tool_result] if args.key?(:mcp_server_tool_result)
+          @retrieval_result = args[:retrieval_result] if args.key?(:retrieval_result)
           @signature = args[:signature] if args.key?(:signature)
           @url_context_result = args[:url_context_result] if args.key?(:url_context_result)
         end
@@ -15380,12 +15604,20 @@ module Google
       class GoogleCloudAiplatformV1beta1DeprovisionSemanticGovernancePolicyEngineRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the operation bypass checks on current state and force the
+        # deprovisioning operation.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @force = args[:force] if args.key?(:force)
         end
       end
       
@@ -58814,6 +59046,14 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PublisherModelConfig]
         attr_accessor :publisher_model_config
       
+        # Optional. The fields of `publisher_model_config` to overwrite. If empty, the
+        # entire config is replaced. If set, only the listed fields are overwritten and
+        # the others are left unchanged; this lets you update one setting (for example `
+        # inference_event_logging_config`) without clearing its siblings.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
         def initialize(**args)
            update!(**args)
         end
@@ -58821,6 +59061,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @publisher_model_config = args[:publisher_model_config] if args.key?(:publisher_model_config)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -60104,6 +60345,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # Optional. Represents the JSON Schema of the structured memories.
+        # Corresponds to the JSON property `jsonSchema`
+        # @return [Object]
+        attr_accessor :json_schema
+      
         # Optional. Represents the type of the structured memories associated with the
         # schema. If not set, then `STRUCTURED_PROFILE` will be used.
         # Corresponds to the JSON property `memoryType`
@@ -60123,6 +60369,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+          @json_schema = args[:json_schema] if args.key?(:json_schema)
           @memory_type = args[:memory_type] if args.key?(:memory_type)
           @schema = args[:schema] if args.key?(:schema)
         end
