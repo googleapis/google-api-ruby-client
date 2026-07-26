@@ -2307,7 +2307,9 @@ module Google
           attr_accessor :can_accept_ownership
           alias_method :can_accept_ownership?, :can_accept_ownership
         
-          # Whether the current user can access this file via Gen AI features.
+          # Whether the current user can access this file via Gen AI features. For more
+          # information, see [Drive MCP file eligibility](https://developers.google.com/
+          # workspace/drive/api/guides/drive-mcp-server-file-eligibility).
           # Corresponds to the JSON property `canAccessViaGenAi`
           # @return [Boolean]
           attr_accessor :can_access_via_gen_ai
