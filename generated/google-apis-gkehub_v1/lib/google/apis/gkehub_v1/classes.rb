@@ -1678,10 +1678,11 @@ module Google
         # @return [Google::Apis::GkehubV1::ConfigManagementHierarchyControllerConfig]
         attr_accessor :hierarchy_controller
       
-        # Optional. Deprecated: In Preview, automatic Feature management is unavailable
-        # from version 1.21.0 onwards, and Config Sync only supports manual upgrades. If
-        # set to manual upgrades, clear this field instead, which is behaviorally
-        # equivalent.
+        # Optional. Deprecated: Automatic Feature management is in Preview and is
+        # unavailable in version 1.21.0 and later, after which Config Sync only supports
+        # manual upgrades. If set to manual upgrades, clear this field instead, which is
+        # behaviorally equivalent but helps prevent compatibility issues with newer
+        # fields.
         # Corresponds to the JSON property `management`
         # @return [String]
         attr_accessor :management
@@ -6419,6 +6420,11 @@ module Google
         # @return [String]
         attr_accessor :modernization_compatibility
       
+        # Optional. Declares your intended modernization strategy for the fleet.
+        # Corresponds to the JSON property `modernizationStrategy`
+        # @return [String]
+        attr_accessor :modernization_strategy
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6426,6 +6432,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @modernization_compatibility = args[:modernization_compatibility] if args.key?(:modernization_compatibility)
+          @modernization_strategy = args[:modernization_strategy] if args.key?(:modernization_strategy)
         end
       end
       
