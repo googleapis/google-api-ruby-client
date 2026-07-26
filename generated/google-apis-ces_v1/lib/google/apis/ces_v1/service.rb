@@ -310,7 +310,8 @@ module Google
         
         # Gets the extended agent card for the authenticated agent.
         # @param [String] tenant
-        #   Optional. Tenant ID, provided as a path parameter.
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1027,7 +1028,8 @@ module Google
         
         # Gets the extended agent card for the authenticated agent.
         # @param [String] tenant
-        #   Optional. Tenant ID, provided as a path parameter.
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1140,7 +1142,8 @@ module Google
         
         # Sends a message to an agent.
         # @param [String] tenant
-        #   Optional. Tenant ID, provided as a path parameter.
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
         # @param [Google::Apis::CesV1::LfA2aV1SendMessageRequest] lf_a2a_v1_send_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1556,7 +1559,8 @@ module Google
         
         # Sends a message to an agent.
         # @param [String] tenant
-        #   Optional. Tenant ID, provided as a path parameter.
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
         # @param [Google::Apis::CesV1::LfA2aV1SendMessageRequest] lf_a2a_v1_send_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2227,7 +2231,8 @@ module Google
         
         # Gets the extended agent card for the authenticated agent.
         # @param [String] tenant
-        #   Optional. Tenant ID, provided as a path parameter.
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2338,7 +2343,8 @@ module Google
         
         # Sends a message to an agent.
         # @param [String] tenant
-        #   Optional. Tenant ID, provided as a path parameter.
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
         # @param [Google::Apis::CesV1::LfA2aV1SendMessageRequest] lf_a2a_v1_send_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

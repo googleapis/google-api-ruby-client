@@ -2067,6 +2067,9 @@ module Google
       
           property :instagram_credentials, as: 'instagramCredentials', class: Google::Apis::CesV1::InstagramCredentials, decorator: Google::Apis::CesV1::InstagramCredentials::Representation
       
+          property :modality, as: 'modality'
+          property :model_settings, as: 'modelSettings', class: Google::Apis::CesV1::ModelSettings, decorator: Google::Apis::CesV1::ModelSettings::Representation
+      
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
           property :whatsapp_credentials, as: 'whatsappCredentials', class: Google::Apis::CesV1::WhatsAppCredentials, decorator: Google::Apis::CesV1::WhatsAppCredentials::Representation
@@ -3450,6 +3453,7 @@ module Google
       class SynthesizeSpeechConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent_audio_gcs_uri, as: 'consentAudioGcsUri'
           property :instruction, as: 'instruction'
           property :model, as: 'model'
           property :speaking_rate, as: 'speakingRate'

@@ -2775,6 +2775,18 @@ module Google
         # @return [Google::Apis::CesV1::InstagramCredentials]
         attr_accessor :instagram_credentials
       
+        # Optional. The modality of the deployment. Note: Deployment-level modality
+        # override is gated behind an allowlist. Contact the CXAS team to enable this
+        # field.
+        # Corresponds to the JSON property `modality`
+        # @return [String]
+        attr_accessor :modality
+      
+        # Model settings contains various configurations for the LLM model.
+        # Corresponds to the JSON property `modelSettings`
+        # @return [Google::Apis::CesV1::ModelSettings]
+        attr_accessor :model_settings
+      
         # Identifier. The resource name of the deployment. Format: `projects/`project`/
         # locations/`location`/apps/`app`/deployments/`deployment``
         # Corresponds to the JSON property `name`
@@ -2804,6 +2816,8 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @experiment_config = args[:experiment_config] if args.key?(:experiment_config)
           @instagram_credentials = args[:instagram_credentials] if args.key?(:instagram_credentials)
+          @modality = args[:modality] if args.key?(:modality)
+          @model_settings = args[:model_settings] if args.key?(:model_settings)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
           @whatsapp_credentials = args[:whatsapp_credentials] if args.key?(:whatsapp_credentials)
@@ -4611,7 +4625,12 @@ module Google
         # @return [String]
         attr_accessor :protocol_version
       
-        # Tenant ID to be used in the request when calling the agent.
+        # Optional. An opaque string used for routing requests to a specific agent or
+        # tenant when multiple agents are served behind a single A2A endpoint. When set,
+        # clients MUST include this value in the `tenant` field of all request messages
+        # sent to this interface. The server is responsible for interpreting the value
+        # and routing requests accordingly; the protocol does not define its format or
+        # semantics.
         # Corresponds to the JSON property `tenant`
         # @return [String]
         attr_accessor :tenant
@@ -5545,7 +5564,8 @@ module Google
         # @return [String]
         attr_accessor :task_id
       
-        # Optional. Tenant ID.
+        # Optional. Opaque routing identifier. Must match the `tenant` value from the
+        # selected `AgentInterface` in the Agent Card when that field is set.
         # Corresponds to the JSON property `tenant`
         # @return [String]
         attr_accessor :tenant
@@ -7691,6 +7711,11 @@ module Google
       class SynthesizeSpeechConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. The Cloud Storage URI to the consent audio for voice cloning.
+        # Corresponds to the JSON property `consentAudioGcsUri`
+        # @return [String]
+        attr_accessor :consent_audio_gcs_uri
+      
         # Optional. The instruction used to synthesize speech when using a generative
         # model.
         # Corresponds to the JSON property `instruction`
@@ -7732,6 +7757,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consent_audio_gcs_uri = args[:consent_audio_gcs_uri] if args.key?(:consent_audio_gcs_uri)
           @instruction = args[:instruction] if args.key?(:instruction)
           @model = args[:model] if args.key?(:model)
           @speaking_rate = args[:speaking_rate] if args.key?(:speaking_rate)
