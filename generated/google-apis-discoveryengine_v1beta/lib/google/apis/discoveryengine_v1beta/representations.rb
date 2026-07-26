@@ -6224,6 +6224,7 @@ module Google
           collection :static_ip_addresses, as: 'staticIpAddresses'
           property :static_ip_enabled, as: 'staticIpEnabled'
           property :sync_mode, as: 'syncMode'
+          property :tag, as: 'tag'
           property :update_time, as: 'updateTime'
           property :vpcsc_enabled, as: 'vpcscEnabled'
         end
@@ -8422,6 +8423,7 @@ module Google
           collection :static_ip_addresses, as: 'staticIpAddresses'
           property :static_ip_enabled, as: 'staticIpEnabled'
           property :sync_mode, as: 'syncMode'
+          property :tag, as: 'tag'
           property :update_time, as: 'updateTime'
           property :vpcsc_enabled, as: 'vpcscEnabled'
         end

@@ -2527,6 +2527,17 @@ module Google
         # @return [String]
         attr_accessor :sync_mode
       
+        # Optional. Immutable. User-facing, version-independent label for this connector.
+        # May be shared by multiple connectors under the same (project, location,
+        # collection, data_source); tag-based lookup returns the one with the greatest
+        # create_time. Optional at Create time. Agent Designer resolves connectors via (
+        # data_source, tag) when set, falling back to the legacy resource-name lookup
+        # when unset, so connectors created before the tag-write launch continue to work
+        # without a backfill.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
         # Output only. Timestamp the DataConnector was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2587,6 +2598,7 @@ module Google
           @static_ip_addresses = args[:static_ip_addresses] if args.key?(:static_ip_addresses)
           @static_ip_enabled = args[:static_ip_enabled] if args.key?(:static_ip_enabled)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
+          @tag = args[:tag] if args.key?(:tag)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vpcsc_enabled = args[:vpcsc_enabled] if args.key?(:vpcsc_enabled)
         end
@@ -3962,7 +3974,7 @@ module Google
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
         # canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-
         # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence` * `deep-research`
+        # orchestration` * `cross-product-intelligence`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -10745,6 +10757,17 @@ module Google
         # @return [String]
         attr_accessor :sync_mode
       
+        # Optional. Immutable. User-facing, version-independent label for this connector.
+        # May be shared by multiple connectors under the same (project, location,
+        # collection, data_source); tag-based lookup returns the one with the greatest
+        # create_time. Optional at Create time. Agent Designer resolves connectors via (
+        # data_source, tag) when set, falling back to the legacy resource-name lookup
+        # when unset, so connectors created before the tag-write launch continue to work
+        # without a backfill.
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
         # Output only. Timestamp the DataConnector was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -10806,6 +10829,7 @@ module Google
           @static_ip_addresses = args[:static_ip_addresses] if args.key?(:static_ip_addresses)
           @static_ip_enabled = args[:static_ip_enabled] if args.key?(:static_ip_enabled)
           @sync_mode = args[:sync_mode] if args.key?(:sync_mode)
+          @tag = args[:tag] if args.key?(:tag)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vpcsc_enabled = args[:vpcsc_enabled] if args.key?(:vpcsc_enabled)
         end
@@ -12399,7 +12423,7 @@ module Google
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
         # canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-
         # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence` * `deep-research`
+        # orchestration` * `cross-product-intelligence`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -25373,7 +25397,7 @@ module Google
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
         # canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-
         # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence` * `deep-research`
+        # orchestration` * `cross-product-intelligence`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
