@@ -396,6 +396,7 @@ module Google
           property :replication_status, as: 'replicationStatus', class: Google::Apis::BigqueryreservationV1::ReplicationStatus, decorator: Google::Apis::BigqueryreservationV1::ReplicationStatus::Representation
       
           property :reservation_group, as: 'reservationGroup'
+          collection :reservation_group_path, as: 'reservationGroupPath'
           property :scaling_mode, as: 'scalingMode'
           property :scheduling_policy, as: 'schedulingPolicy', class: Google::Apis::BigqueryreservationV1::SchedulingPolicy, decorator: Google::Apis::BigqueryreservationV1::SchedulingPolicy::Representation
       
