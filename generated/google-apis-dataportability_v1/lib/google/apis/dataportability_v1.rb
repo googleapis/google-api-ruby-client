@@ -137,6 +137,9 @@ module Google
       # Move a copy of your food purchase and reservation activity
       AUTH_DATAPORTABILITY_ORDER_RESERVE_PURCHASES_RESERVATIONS = 'https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations'
 
+      # Usage and diagnostic data from your Pixel devices.
+      AUTH_DATAPORTABILITY_PIXEL_DEVICE_DATA = 'https://www.googleapis.com/auth/dataportability.pixel.device_data'
+
       # Move a copy of information about your devices with Google Play Store installed
       AUTH_DATAPORTABILITY_PLAY_DEVICES = 'https://www.googleapis.com/auth/dataportability.play.devices'
 
