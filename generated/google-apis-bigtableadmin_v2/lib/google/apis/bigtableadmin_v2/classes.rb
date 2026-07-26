@@ -1337,6 +1337,13 @@ module Google
       class CreateMaterializedViewRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, ignore optional safety checks when creating the
+        # materialized view.
+        # Corresponds to the JSON property `ignoreWarnings`
+        # @return [Boolean]
+        attr_accessor :ignore_warnings
+        alias_method :ignore_warnings?, :ignore_warnings
+      
         # A materialized view object that can be referenced in SQL queries.
         # Corresponds to the JSON property `materializedView`
         # @return [Google::Apis::BigtableadminV2::MaterializedView]
@@ -1360,6 +1367,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ignore_warnings = args[:ignore_warnings] if args.key?(:ignore_warnings)
           @materialized_view = args[:materialized_view] if args.key?(:materialized_view)
           @materialized_view_id = args[:materialized_view_id] if args.key?(:materialized_view_id)
           @parent = args[:parent] if args.key?(:parent)

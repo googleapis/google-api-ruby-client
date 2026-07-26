@@ -1655,6 +1655,9 @@ module Google
         #   Required. The parent instance where this materialized view will be created.
         #   Format: `projects/`project`/instances/`instance``.
         # @param [Google::Apis::BigtableadminV2::MaterializedView] materialized_view_object
+        # @param [Boolean] ignore_warnings
+        #   Optional. If true, ignore optional safety checks when creating the
+        #   materialized view.
         # @param [String] materialized_view_id
         #   Required. The ID to use for the materialized view, which will become the final
         #   component of the materialized view's resource name.
@@ -1675,13 +1678,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_instance_materialized_view(parent, materialized_view_object = nil, materialized_view_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_instance_materialized_view(parent, materialized_view_object = nil, ignore_warnings: nil, materialized_view_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2/{+parent}/materializedViews', options)
           command.request_representation = Google::Apis::BigtableadminV2::MaterializedView::Representation
           command.request_object = materialized_view_object
           command.response_representation = Google::Apis::BigtableadminV2::Operation::Representation
           command.response_class = Google::Apis::BigtableadminV2::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['ignoreWarnings'] = ignore_warnings unless ignore_warnings.nil?
           command.query['materializedViewId'] = materialized_view_id unless materialized_view_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
