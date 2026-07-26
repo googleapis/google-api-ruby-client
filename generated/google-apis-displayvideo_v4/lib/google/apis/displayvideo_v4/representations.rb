@@ -2524,6 +2524,7 @@ module Google
           property :ad_asset_type, as: 'adAssetType'
           property :entity_status, as: 'entityStatus'
           property :name, as: 'name'
+          property :synthetic_content_attestation_status, as: 'syntheticContentAttestationStatus'
           property :youtube_video_asset, as: 'youtubeVideoAsset', class: Google::Apis::DisplayvideoV4::YoutubeVideoAsset, decorator: Google::Apis::DisplayvideoV4::YoutubeVideoAsset::Representation
       
         end
@@ -4091,6 +4092,7 @@ module Google
           property :skip_offset, as: 'skipOffset', class: Google::Apis::DisplayvideoV4::AudioVideoOffset, decorator: Google::Apis::DisplayvideoV4::AudioVideoOffset::Representation
       
           property :skippable, as: 'skippable'
+          property :synthetic_content_attestation_status, as: 'syntheticContentAttestationStatus'
           property :third_party_tag, as: 'thirdPartyTag'
           collection :third_party_urls, as: 'thirdPartyUrls', class: Google::Apis::DisplayvideoV4::ThirdPartyUrl, decorator: Google::Apis::DisplayvideoV4::ThirdPartyUrl::Representation
       
@@ -5977,8 +5979,12 @@ module Google
       class PlannedProductForecast
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :on_target_coview_impressions, :numeric_string => true, as: 'onTargetCoviewImpressions'
+          property :on_target_coview_reach, :numeric_string => true, as: 'onTargetCoviewReach'
           property :on_target_impressions, :numeric_string => true, as: 'onTargetImpressions'
           property :on_target_reach, :numeric_string => true, as: 'onTargetReach'
+          property :total_coview_impressions, :numeric_string => true, as: 'totalCoviewImpressions'
+          property :total_coview_reach, :numeric_string => true, as: 'totalCoviewReach'
           property :total_impressions, :numeric_string => true, as: 'totalImpressions'
           property :total_reach, :numeric_string => true, as: 'totalReach'
           property :trueview_views, :numeric_string => true, as: 'trueviewViews'
@@ -6564,6 +6570,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_asset_type, as: 'adAssetType'
           property :filename, as: 'filename'
+          property :synthetic_content_attestation_status, as: 'syntheticContentAttestationStatus'
         end
       end
       
