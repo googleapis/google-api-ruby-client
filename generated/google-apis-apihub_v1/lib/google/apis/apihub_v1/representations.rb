@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1ApigeeXTargetDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1ApplicationIntegrationEndpointDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,12 @@ module Google
       end
       
       class GoogleCloudApihubV1ConfigVariableTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1ConfigureAndDeployServerRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -400,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1HttpOperationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1HttpOperationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -574,7 +592,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApihubV1McpServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApihubV1McpTool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1McpToolConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1MetaData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -605,6 +641,12 @@ module Google
       end
       
       class GoogleCloudApihubV1OpenApiSpecDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApihubV1OperationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1108,6 +1150,18 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1ApigeeXTargetDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployed_revision, as: 'deployedRevision'
+          property :environment, as: 'environment'
+          property :metadata, as: 'metadata', class: Google::Apis::ApihubV1::GoogleCloudApihubV1MetaData, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1MetaData::Representation
+      
+          property :proxy, as: 'proxy'
+          property :target_project, as: 'targetProject'
+        end
+      end
+      
       class GoogleCloudApihubV1ApplicationIntegrationEndpointDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1247,6 +1301,14 @@ module Google
           property :required, as: 'required'
           property :validation_regex, as: 'validationRegex'
           property :value_type, as: 'valueType'
+        end
+      end
+      
+      class GoogleCloudApihubV1ConfigureAndDeployServerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mcp_server_config, as: 'mcpServerConfig', class: Google::Apis::ApihubV1::GoogleCloudApihubV1McpServerConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1McpServerConfig::Representation
+      
         end
       end
       
@@ -1606,6 +1668,15 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1HttpOperationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :method_prop, as: 'method'
+          property :path, as: 'path'
+          property :spec, as: 'spec'
+        end
+      end
+      
       class GoogleCloudApihubV1HttpOperationDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1873,6 +1944,16 @@ module Google
         end
       end
       
+      class GoogleCloudApihubV1McpServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apigee_x_target_details, as: 'apigeeXTargetDetails', class: Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeXTargetDetails, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeXTargetDetails::Representation
+      
+          collection :tools, as: 'tools', class: Google::Apis::ApihubV1::GoogleCloudApihubV1McpToolConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1McpToolConfig::Representation
+      
+        end
+      end
+      
       class GoogleCloudApihubV1McpTool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1885,6 +1966,24 @@ module Google
           property :output_schema, as: 'outputSchema', class: Google::Apis::ApihubV1::GoogleCloudApihubV1OperationSchema, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1OperationSchema::Representation
       
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudApihubV1McpToolConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :operation, as: 'operation', class: Google::Apis::ApihubV1::GoogleCloudApihubV1OperationConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1OperationConfig::Representation
+      
+          property :tool_id, as: 'toolId'
+        end
+      end
+      
+      class GoogleCloudApihubV1MetaData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
         end
       end
       
@@ -1926,6 +2025,15 @@ module Google
           property :owner, as: 'owner', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Owner, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Owner::Representation
       
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudApihubV1OperationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_operation, as: 'httpOperation', class: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperationConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperationConfig::Representation
+      
+          property :operation, as: 'operation'
         end
       end
       

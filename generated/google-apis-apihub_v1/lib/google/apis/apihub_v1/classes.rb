@@ -834,6 +834,53 @@ module Google
         end
       end
       
+      # The target configuration for Apigee X. Note: If this API is called while an
+      # earlier deployment is still in progress, the earlier deployment will be
+      # aborted and a new deployment will be triggered.
+      class GoogleCloudApihubV1ApigeeXTargetDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The revision number of the Apigee proxy that was deployed.
+        # Corresponds to the JSON property `deployedRevision`
+        # @return [String]
+        attr_accessor :deployed_revision
+      
+        # Required. The specific Apigee environment where the server will be deployed.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # Metadata for the server configuration in Apigee X.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1MetaData]
+        attr_accessor :metadata
+      
+        # Required. This name identifies the proxy resource in Apigee. It typically
+        # follows a standard alphanumeric format (e.g., "mcp-discovery-server").
+        # Corresponds to the JSON property `proxy`
+        # @return [String]
+        attr_accessor :proxy
+      
+        # Required. The runtime project that hosts the Apigee X organization. This must
+        # be one of the runtime projects attached to the API Hub host project.
+        # Corresponds to the JSON property `targetProject`
+        # @return [String]
+        attr_accessor :target_project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployed_revision = args[:deployed_revision] if args.key?(:deployed_revision)
+          @environment = args[:environment] if args.key?(:environment)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @proxy = args[:proxy] if args.key?(:proxy)
+          @target_project = args[:target_project] if args.key?(:target_project)
+        end
+      end
+      
       # The details of the Application Integration endpoint to be triggered for
       # curation.
       class GoogleCloudApihubV1ApplicationIntegrationEndpointDetails
@@ -1345,6 +1392,25 @@ module Google
           @required = args[:required] if args.key?(:required)
           @validation_regex = args[:validation_regex] if args.key?(:validation_regex)
           @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # Request message for ApiHub.ConfigureAndDeployServer.
+      class GoogleCloudApihubV1ConfigureAndDeployServerRequest
+        include Google::Apis::Core::Hashable
+      
+        # MCP-specific server configuration.
+        # Corresponds to the JSON property `mcpServerConfig`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1McpServerConfig]
+        attr_accessor :mcp_server_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mcp_server_config = args[:mcp_server_config] if args.key?(:mcp_server_config)
         end
       end
       
@@ -2627,6 +2693,42 @@ module Google
         end
       end
       
+      # Identifies a single API Hub operation by spec resource name + HTTP path + HTTP
+      # method.
+      class GoogleCloudApihubV1HttpOperationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. HTTP method of the operation within the referenced spec. (GET / PUT /
+        # POST / DELETE / OPTIONS / HEAD / PATCH / TRACE).
+        # Corresponds to the JSON property `method`
+        # @return [String]
+        attr_accessor :method_prop
+      
+        # Required. HTTP path of the operation within the referenced spec. Match is
+        # exact (no template substitution): the path here must appear verbatim on an
+        # APIOperationRevision belonging to the spec.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Required. Spec resource name: `projects/`project`/locations/`location`/apis/`
+        # api`/versions/`version`/specs/`spec``
+        # Corresponds to the JSON property `spec`
+        # @return [String]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @path = args[:path] if args.key?(:path)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
       # An HTTP-based API Operation, sometimes called a "REST" Operation.
       class GoogleCloudApihubV1HttpOperationDetails
         include Google::Apis::Core::Hashable
@@ -3416,6 +3518,33 @@ module Google
         end
       end
       
+      # MCP-specific server configuration.
+      class GoogleCloudApihubV1McpServerConfig
+        include Google::Apis::Core::Hashable
+      
+        # The target configuration for Apigee X. Note: If this API is called while an
+        # earlier deployment is still in progress, the earlier deployment will be
+        # aborted and a new deployment will be triggered.
+        # Corresponds to the JSON property `apigeeXTargetDetails`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1ApigeeXTargetDetails]
+        attr_accessor :apigee_x_target_details
+      
+        # Required. The tools to expose on the MCP server.
+        # Corresponds to the JSON property `tools`
+        # @return [Array<Google::Apis::ApihubV1::GoogleCloudApihubV1McpToolConfig>]
+        attr_accessor :tools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apigee_x_target_details = args[:apigee_x_target_details] if args.key?(:apigee_x_target_details)
+          @tools = args[:tools] if args.key?(:tools)
+        end
+      end
+      
       # Details describing an MCP Tool.
       class GoogleCloudApihubV1McpTool
         include Google::Apis::Core::Hashable
@@ -3462,6 +3591,68 @@ module Google
           @name = args[:name] if args.key?(:name)
           @output_schema = args[:output_schema] if args.key?(:output_schema)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A tool exposed by the MCP server. Each tool wraps exactly one API Hub
+      # operation under a caller-supplied identifier.
+      class GoogleCloudApihubV1McpToolConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Description of what the tool does and how it is used. Description
+        # serves as key reference for the agent to know about the tool capabilities.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # API hub Operation config.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1OperationConfig]
+        attr_accessor :operation
+      
+        # Required. Caller-supplied identifier for the tool; each tool must have a
+        # unique identifier. This will be by used by agents to invoke the tool. Tool ID
+        # must be unique across all tools in the given MCP server configuration.
+        # Corresponds to the JSON property `toolId`
+        # @return [String]
+        attr_accessor :tool_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @operation = args[:operation] if args.key?(:operation)
+          @tool_id = args[:tool_id] if args.key?(:tool_id)
+        end
+      end
+      
+      # Metadata for the server configuration in Apigee X.
+      class GoogleCloudApihubV1MetaData
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description for the server. For apigee target, this will be used as
+        # revision description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Display name for the server. For apigee target, this will be used as
+        # revision display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
         end
       end
       
@@ -3578,6 +3769,33 @@ module Google
           @format = args[:format] if args.key?(:format)
           @owner = args[:owner] if args.key?(:owner)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # API hub Operation config.
+      class GoogleCloudApihubV1OperationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifies a single API Hub operation by spec resource name + HTTP path + HTTP
+        # method.
+        # Corresponds to the JSON property `httpOperation`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1HttpOperationConfig]
+        attr_accessor :http_operation
+      
+        # Full API Hub operation resource name: `projects/`project`/locations/`location`/
+        # apis/`api`/versions/`version`/operations/`operation``
+        # Corresponds to the JSON property `operation`
+        # @return [String]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_operation = args[:http_operation] if args.key?(:http_operation)
+          @operation = args[:operation] if args.key?(:operation)
         end
       end
       
