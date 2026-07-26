@@ -2836,6 +2836,7 @@ module Google
           property :skip_offset, as: 'skipOffset', class: Google::Apis::DisplayvideoV2::AudioVideoOffset, decorator: Google::Apis::DisplayvideoV2::AudioVideoOffset::Representation
       
           property :skippable, as: 'skippable'
+          property :synthetic_content_attestation_status, as: 'syntheticContentAttestationStatus'
           property :third_party_tag, as: 'thirdPartyTag'
           collection :third_party_urls, as: 'thirdPartyUrls', class: Google::Apis::DisplayvideoV2::ThirdPartyUrl, decorator: Google::Apis::DisplayvideoV2::ThirdPartyUrl::Representation
       
