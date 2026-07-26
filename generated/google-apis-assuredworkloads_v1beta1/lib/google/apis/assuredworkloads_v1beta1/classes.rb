@@ -71,6 +71,50 @@ module Google
         end
       end
       
+      # The response message for AggregateDbFrameworkComplianceReport.
+      class GoogleCloudAssuredworkloadsV1beta1AggregateDbFrameworkComplianceReportResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of aggregated compliance reports.
+        # Corresponds to the JSON property `aggregatedComplianceReports`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport>]
+        attr_accessor :aggregated_compliance_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregated_compliance_reports = args[:aggregated_compliance_reports] if args.key?(:aggregated_compliance_reports)
+        end
+      end
+      
+      # The aggregated compliance report.
+      class GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport
+        include Google::Apis::Core::Hashable
+      
+        # The details for a control assessment.
+        # Corresponds to the JSON property `controlAssessmentDetails`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ControlAssessmentDetails]
+        attr_accessor :control_assessment_details
+      
+        # The report time of the aggregated compliance report.
+        # Corresponds to the JSON property `reportTime`
+        # @return [String]
+        attr_accessor :report_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_assessment_details = args[:control_assessment_details] if args.key?(:control_assessment_details)
+          @report_time = args[:report_time] if args.key?(:report_time)
+        end
+      end
+      
       # Response containing the analysis results for the hypothetical resource move.
       class GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse
         include Google::Apis::Core::Hashable
@@ -322,6 +366,229 @@ module Google
         end
       end
       
+      # A Common Expression Language (CEL) expression that's used to create a rule.
+      class GoogleCloudAssuredworkloadsV1beta1CelExpression
+        include Google::Apis::Core::Hashable
+      
+        # Required. The logical expression in CEL. The maximum length of the condition
+        # is 1000 characters. For more information, see [CEL expression](https://cloud.
+        # google.com/security-command-center/docs/compliance-manager-write-cel-
+        # expressions).
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # A list of strings for the parameter value.
+        # Corresponds to the JSON property `resourceTypesValues`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1StringList]
+        attr_accessor :resource_types_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expression = args[:expression] if args.key?(:expression)
+          @resource_types_values = args[:resource_types_values] if args.key?(:resource_types_values)
+        end
+      end
+      
+      # The cloud control assessment details for non-manual cloud controls.
+      class GoogleCloudAssuredworkloadsV1beta1CloudControlAssessmentDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The evaluation status of the cloud control.
+        # Corresponds to the JSON property `evaluationState`
+        # @return [String]
+        attr_accessor :evaluation_state
+      
+        # The number of findings for the cloud control.
+        # Corresponds to the JSON property `findingsCount`
+        # @return [Fixnum]
+        attr_accessor :findings_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_state = args[:evaluation_state] if args.key?(:evaluation_state)
+          @findings_count = args[:findings_count] if args.key?(:findings_count)
+        end
+      end
+      
+      # The cloud control report.
+      class GoogleCloudAssuredworkloadsV1beta1CloudControlReport
+        include Google::Apis::Core::Hashable
+      
+        # The list of categories for the cloud control.
+        # Corresponds to the JSON property `categories`
+        # @return [Array<String>]
+        attr_accessor :categories
+      
+        # The name of the cloud control.
+        # Corresponds to the JSON property `cloudControl`
+        # @return [String]
+        attr_accessor :cloud_control
+      
+        # The cloud control assessment details for non-manual cloud controls.
+        # Corresponds to the JSON property `cloudControlAssessmentDetails`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1CloudControlAssessmentDetails]
+        attr_accessor :cloud_control_assessment_details
+      
+        # The name of the cloud control deployment.
+        # Corresponds to the JSON property `cloudControlDeployment`
+        # @return [String]
+        attr_accessor :cloud_control_deployment
+      
+        # The type of the cloud control.
+        # Corresponds to the JSON property `cloudControlType`
+        # @return [String]
+        attr_accessor :cloud_control_type
+      
+        # The description of the cloud control.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The display name of the cloud control.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The enforcement mode of the cloud control.
+        # Corresponds to the JSON property `enforcementMode`
+        # @return [String]
+        attr_accessor :enforcement_mode
+      
+        # The category of the finding.
+        # Corresponds to the JSON property `findingCategory`
+        # @return [String]
+        attr_accessor :finding_category
+      
+        # The severity of the finding.
+        # Corresponds to the JSON property `findingSeverity`
+        # @return [String]
+        attr_accessor :finding_severity
+      
+        # The major revision IDs of the frameworks that the cloud control belongs to.
+        # Corresponds to the JSON property `frameworkMajorRevisionIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :framework_major_revision_ids
+      
+        # The major revision ID of the cloud control.
+        # Corresponds to the JSON property `majorRevisionId`
+        # @return [Fixnum]
+        attr_accessor :major_revision_id
+      
+        # The details for a manual cloud control assessment.
+        # Corresponds to the JSON property `manualCloudControlAssessmentDetails`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ManualCloudControlAssessmentDetails]
+        attr_accessor :manual_cloud_control_assessment_details
+      
+        # The minor revision ID of the cloud control.
+        # Corresponds to the JSON property `minorRevisionId`
+        # @return [Fixnum]
+        attr_accessor :minor_revision_id
+      
+        # The list of rules that correspond to the cloud control.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1Rule>]
+        attr_accessor :rules
+      
+        # The list of similar controls.
+        # Corresponds to the JSON property `similarControls`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1SimilarControls>]
+        attr_accessor :similar_controls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categories = args[:categories] if args.key?(:categories)
+          @cloud_control = args[:cloud_control] if args.key?(:cloud_control)
+          @cloud_control_assessment_details = args[:cloud_control_assessment_details] if args.key?(:cloud_control_assessment_details)
+          @cloud_control_deployment = args[:cloud_control_deployment] if args.key?(:cloud_control_deployment)
+          @cloud_control_type = args[:cloud_control_type] if args.key?(:cloud_control_type)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @enforcement_mode = args[:enforcement_mode] if args.key?(:enforcement_mode)
+          @finding_category = args[:finding_category] if args.key?(:finding_category)
+          @finding_severity = args[:finding_severity] if args.key?(:finding_severity)
+          @framework_major_revision_ids = args[:framework_major_revision_ids] if args.key?(:framework_major_revision_ids)
+          @major_revision_id = args[:major_revision_id] if args.key?(:major_revision_id)
+          @manual_cloud_control_assessment_details = args[:manual_cloud_control_assessment_details] if args.key?(:manual_cloud_control_assessment_details)
+          @minor_revision_id = args[:minor_revision_id] if args.key?(:minor_revision_id)
+          @rules = args[:rules] if args.key?(:rules)
+          @similar_controls = args[:similar_controls] if args.key?(:similar_controls)
+        end
+      end
+      
+      # The details for a control assessment.
+      class GoogleCloudAssuredworkloadsV1beta1ControlAssessmentDetails
+        include Google::Apis::Core::Hashable
+      
+        # The list of controls that were assessed and are passing.
+        # Corresponds to the JSON property `assessedPassingControlIds`
+        # @return [Array<String>]
+        attr_accessor :assessed_passing_control_ids
+      
+        # The number of controls that were assessed and are passing.
+        # Corresponds to the JSON property `assessedPassingControls`
+        # @return [Fixnum]
+        attr_accessor :assessed_passing_controls
+      
+        # The list of controls that are failing.
+        # Corresponds to the JSON property `failingControlIds`
+        # @return [Array<String>]
+        attr_accessor :failing_control_ids
+      
+        # The number of controls that are failing.
+        # Corresponds to the JSON property `failingControls`
+        # @return [Fixnum]
+        attr_accessor :failing_controls
+      
+        # The list of controls that aren't assessed because they require manual review.
+        # Corresponds to the JSON property `notAssessedControlIds`
+        # @return [Array<String>]
+        attr_accessor :not_assessed_control_ids
+      
+        # The number of controls that aren't assessed because they require manual review.
+        # Corresponds to the JSON property `notAssessedControls`
+        # @return [Fixnum]
+        attr_accessor :not_assessed_controls
+      
+        # The list of controls that are passing or not assessed.
+        # Corresponds to the JSON property `passingControlIds`
+        # @return [Array<String>]
+        attr_accessor :passing_control_ids
+      
+        # The number of controls that are passing or not assessed.
+        # Corresponds to the JSON property `passingControls`
+        # @return [Fixnum]
+        attr_accessor :passing_controls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assessed_passing_control_ids = args[:assessed_passing_control_ids] if args.key?(:assessed_passing_control_ids)
+          @assessed_passing_controls = args[:assessed_passing_controls] if args.key?(:assessed_passing_controls)
+          @failing_control_ids = args[:failing_control_ids] if args.key?(:failing_control_ids)
+          @failing_controls = args[:failing_controls] if args.key?(:failing_controls)
+          @not_assessed_control_ids = args[:not_assessed_control_ids] if args.key?(:not_assessed_control_ids)
+          @not_assessed_controls = args[:not_assessed_controls] if args.key?(:not_assessed_controls)
+          @passing_control_ids = args[:passing_control_ids] if args.key?(:passing_control_ids)
+          @passing_controls = args[:passing_controls] if args.key?(:passing_controls)
+        end
+      end
+      
       # Operation metadata to give request details of CreateWorkload.
       class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
         include Google::Apis::Core::Hashable
@@ -367,6 +634,227 @@ module Google
         end
       end
       
+      # The details for control compliance.
+      class GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary
+        include Google::Apis::Core::Hashable
+      
+        # The list of cloud control reports.
+        # Corresponds to the JSON property `cloudControlReports`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1CloudControlReport>]
+        attr_accessor :cloud_control_reports
+      
+        # The list of compliance frameworks that the control belongs to.
+        # Corresponds to the JSON property `complianceFrameworks`
+        # @return [Array<String>]
+        attr_accessor :compliance_frameworks
+      
+        # The name of the control.
+        # Corresponds to the JSON property `control`
+        # @return [String]
+        attr_accessor :control
+      
+        # The responsibility type for the control.
+        # Corresponds to the JSON property `controlResponsibilityType`
+        # @return [String]
+        attr_accessor :control_responsibility_type
+      
+        # The description of the control.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The display name of the control.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether the control is a fake control. Fake controls are created and mapped to
+        # cloud controls that don't belong to a control group.
+        # Corresponds to the JSON property `isFakeControl`
+        # @return [Boolean]
+        attr_accessor :is_fake_control
+        alias_method :is_fake_control?, :is_fake_control
+      
+        # Identifier. The name of the control compliance summary.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The overall evaluation status of the control.
+        # Corresponds to the JSON property `overallEvaluationState`
+        # @return [String]
+        attr_accessor :overall_evaluation_state
+      
+        # The list of similar controls.
+        # Corresponds to the JSON property `similarControls`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1SimilarControls>]
+        attr_accessor :similar_controls
+      
+        # The total number of findings for the control.
+        # Corresponds to the JSON property `totalFindingsCount`
+        # @return [Fixnum]
+        attr_accessor :total_findings_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_control_reports = args[:cloud_control_reports] if args.key?(:cloud_control_reports)
+          @compliance_frameworks = args[:compliance_frameworks] if args.key?(:compliance_frameworks)
+          @control = args[:control] if args.key?(:control)
+          @control_responsibility_type = args[:control_responsibility_type] if args.key?(:control_responsibility_type)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @is_fake_control = args[:is_fake_control] if args.key?(:is_fake_control)
+          @name = args[:name] if args.key?(:name)
+          @overall_evaluation_state = args[:overall_evaluation_state] if args.key?(:overall_evaluation_state)
+          @similar_controls = args[:similar_controls] if args.key?(:similar_controls)
+          @total_findings_count = args[:total_findings_count] if args.key?(:total_findings_count)
+        end
+      end
+      
+      # The details for a finding.
+      class GoogleCloudAssuredworkloadsV1beta1DbFindingSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The category of the finding.
+        # Corresponds to the JSON property `findingCategory`
+        # @return [String]
+        attr_accessor :finding_category
+      
+        # Output only. The class of the finding.
+        # Corresponds to the JSON property `findingClass`
+        # @return [String]
+        attr_accessor :finding_class
+      
+        # Output only. The count of the finding.
+        # Corresponds to the JSON property `findingCount`
+        # @return [Fixnum]
+        attr_accessor :finding_count
+      
+        # Identifier. The name of the finding summary.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The list of compliance frameworks that the finding belongs to.
+        # Corresponds to the JSON property `relatedFrameworks`
+        # @return [Array<String>]
+        attr_accessor :related_frameworks
+      
+        # Output only. The severity of the finding.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Output only. The last updated time of the finding.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finding_category = args[:finding_category] if args.key?(:finding_category)
+          @finding_class = args[:finding_class] if args.key?(:finding_class)
+          @finding_count = args[:finding_count] if args.key?(:finding_count)
+          @name = args[:name] if args.key?(:name)
+          @related_frameworks = args[:related_frameworks] if args.key?(:related_frameworks)
+          @severity = args[:severity] if args.key?(:severity)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The details for a framework compliance summary.
+      class GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary
+        include Google::Apis::Core::Hashable
+      
+        # The details for a control assessment.
+        # Corresponds to the JSON property `controlAssessmentDetails`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ControlAssessmentDetails]
+        attr_accessor :control_assessment_details
+      
+        # The trend of a compliance metric.
+        # Corresponds to the JSON property `controlsPassingTrend`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1Trend]
+        attr_accessor :controls_passing_trend
+      
+        # Output only. The count of the findings generated against the framework.
+        # Corresponds to the JSON property `findingCount`
+        # @return [Fixnum]
+        attr_accessor :finding_count
+      
+        # The name of the framework.
+        # Corresponds to the JSON property `framework`
+        # @return [String]
+        attr_accessor :framework
+      
+        # The list of framework categories supported by the framework.
+        # Corresponds to the JSON property `frameworkCategories`
+        # @return [Array<String>]
+        attr_accessor :framework_categories
+      
+        # Optional. The display name for the framework.
+        # Corresponds to the JSON property `frameworkDisplayName`
+        # @return [String]
+        attr_accessor :framework_display_name
+      
+        # The type of framework.
+        # Corresponds to the JSON property `frameworkType`
+        # @return [String]
+        attr_accessor :framework_type
+      
+        # The major revision ID of the framework.
+        # Corresponds to the JSON property `majorRevisionId`
+        # @return [Fixnum]
+        attr_accessor :major_revision_id
+      
+        # The minor revision ID of the framework.
+        # Corresponds to the JSON property `minorRevisionId`
+        # @return [Fixnum]
+        attr_accessor :minor_revision_id
+      
+        # Identifier. The name of the framework compliance summary.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The list of cloud providers supported by the framework.
+        # Corresponds to the JSON property `supportedCloudProviders`
+        # @return [Array<String>]
+        attr_accessor :supported_cloud_providers
+      
+        # The target resource details for the framework.
+        # Corresponds to the JSON property `targetResourceDetails`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails>]
+        attr_accessor :target_resource_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_assessment_details = args[:control_assessment_details] if args.key?(:control_assessment_details)
+          @controls_passing_trend = args[:controls_passing_trend] if args.key?(:controls_passing_trend)
+          @finding_count = args[:finding_count] if args.key?(:finding_count)
+          @framework = args[:framework] if args.key?(:framework)
+          @framework_categories = args[:framework_categories] if args.key?(:framework_categories)
+          @framework_display_name = args[:framework_display_name] if args.key?(:framework_display_name)
+          @framework_type = args[:framework_type] if args.key?(:framework_type)
+          @major_revision_id = args[:major_revision_id] if args.key?(:major_revision_id)
+          @minor_revision_id = args[:minor_revision_id] if args.key?(:minor_revision_id)
+          @name = args[:name] if args.key?(:name)
+          @supported_cloud_providers = args[:supported_cloud_providers] if args.key?(:supported_cloud_providers)
+          @target_resource_details = args[:target_resource_details] if args.key?(:target_resource_details)
+        end
+      end
+      
       # Response for EnableComplianceUpdates endpoint.
       class GoogleCloudAssuredworkloadsV1beta1EnableComplianceUpdatesResponse
         include Google::Apis::Core::Hashable
@@ -390,6 +878,166 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The response message for FetchDbFrameworkComplianceReport.
+      class GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponse
+        include Google::Apis::Core::Hashable
+      
+        # The details for a control assessment.
+        # Corresponds to the JSON property `controlAssessmentDetails`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ControlAssessmentDetails]
+        attr_accessor :control_assessment_details
+      
+        # The name of the framework.
+        # Corresponds to the JSON property `framework`
+        # @return [String]
+        attr_accessor :framework
+      
+        # The list of framework categories supported.
+        # Corresponds to the JSON property `frameworkCategories`
+        # @return [Array<String>]
+        attr_accessor :framework_categories
+      
+        # The description of the framework.
+        # Corresponds to the JSON property `frameworkDescription`
+        # @return [String]
+        attr_accessor :framework_description
+      
+        # Optional. The display name for the framework.
+        # Corresponds to the JSON property `frameworkDisplayName`
+        # @return [String]
+        attr_accessor :framework_display_name
+      
+        # The type of the framework.
+        # Corresponds to the JSON property `frameworkType`
+        # @return [String]
+        attr_accessor :framework_type
+      
+        # The latest major revision ID of the framework.
+        # Corresponds to the JSON property `majorRevisionId`
+        # @return [Fixnum]
+        attr_accessor :major_revision_id
+      
+        # The latest minor revision ID of the latest major revision of the framework.
+        # Corresponds to the JSON property `minorRevisionId`
+        # @return [Fixnum]
+        attr_accessor :minor_revision_id
+      
+        # The name of the framework compliance report.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The list of cloud providers that are supported by the framework.
+        # Corresponds to the JSON property `supportedCloudProviders`
+        # @return [Array<String>]
+        attr_accessor :supported_cloud_providers
+      
+        # The target resource details of the framework.
+        # Corresponds to the JSON property `targetResourceDetails`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails>]
+        attr_accessor :target_resource_details
+      
+        # Output only. The last updated time of the report.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_assessment_details = args[:control_assessment_details] if args.key?(:control_assessment_details)
+          @framework = args[:framework] if args.key?(:framework)
+          @framework_categories = args[:framework_categories] if args.key?(:framework_categories)
+          @framework_description = args[:framework_description] if args.key?(:framework_description)
+          @framework_display_name = args[:framework_display_name] if args.key?(:framework_display_name)
+          @framework_type = args[:framework_type] if args.key?(:framework_type)
+          @major_revision_id = args[:major_revision_id] if args.key?(:major_revision_id)
+          @minor_revision_id = args[:minor_revision_id] if args.key?(:minor_revision_id)
+          @name = args[:name] if args.key?(:name)
+          @supported_cloud_providers = args[:supported_cloud_providers] if args.key?(:supported_cloud_providers)
+          @target_resource_details = args[:target_resource_details] if args.key?(:target_resource_details)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The response message for ListDBControlComplianceSummaries.
+      class GoogleCloudAssuredworkloadsV1beta1ListDbControlComplianceSummariesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of control compliance details.
+        # Corresponds to the JSON property `dbControlComplianceSummaries`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary>]
+        attr_accessor :db_control_compliance_summaries
+      
+        # Output only. The token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @db_control_compliance_summaries = args[:db_control_compliance_summaries] if args.key?(:db_control_compliance_summaries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for ListDbFindingSummaries.
+      class GoogleCloudAssuredworkloadsV1beta1ListDbFindingSummariesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of finding summary by category.
+        # Corresponds to the JSON property `dbFindingSummaries`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1DbFindingSummary>]
+        attr_accessor :db_finding_summaries
+      
+        # Output only. The token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @db_finding_summaries = args[:db_finding_summaries] if args.key?(:db_finding_summaries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for ListDbFrameworkComplianceSummariesResponse.
+      class GoogleCloudAssuredworkloadsV1beta1ListDbFrameworkComplianceSummariesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of framework compliance summaries.
+        # Corresponds to the JSON property `dbFrameworkComplianceSummaries`
+        # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary>]
+        attr_accessor :db_framework_compliance_summaries
+      
+        # Output only. The token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @db_framework_compliance_summaries = args[:db_framework_compliance_summaries] if args.key?(:db_framework_compliance_summaries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -471,6 +1119,25 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @workloads = args[:workloads] if args.key?(:workloads)
+        end
+      end
+      
+      # The details for a manual cloud control assessment.
+      class GoogleCloudAssuredworkloadsV1beta1ManualCloudControlAssessmentDetails
+        include Google::Apis::Core::Hashable
+      
+        # The guide for assessing a cloud control manually.
+        # Corresponds to the JSON property `manualCloudControlGuide`
+        # @return [Array<String>]
+        attr_accessor :manual_cloud_control_guide
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @manual_cloud_control_guide = args[:manual_cloud_control_guide] if args.key?(:manual_cloud_control_guide)
         end
       end
       
@@ -807,6 +1474,166 @@ module Google
         # Update properties of this object
         def update!(**args)
           @moved_events_count = args[:moved_events_count] if args.key?(:moved_events_count)
+        end
+      end
+      
+      # A rule in the cloud control.
+      class GoogleCloudAssuredworkloadsV1beta1Rule
+        include Google::Apis::Core::Hashable
+      
+        # A Common Expression Language (CEL) expression that's used to create a rule.
+        # Corresponds to the JSON property `celExpression`
+        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1CelExpression]
+        attr_accessor :cel_expression
+      
+        # Optional. The rule description. The maximum length is 2000 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The functionality that's enabled by the rule.
+        # Corresponds to the JSON property `ruleActionTypes`
+        # @return [Array<String>]
+        attr_accessor :rule_action_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cel_expression = args[:cel_expression] if args.key?(:cel_expression)
+          @description = args[:description] if args.key?(:description)
+          @rule_action_types = args[:rule_action_types] if args.key?(:rule_action_types)
+        end
+      end
+      
+      # The similar controls.
+      class GoogleCloudAssuredworkloadsV1beta1SimilarControls
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the control.
+        # Corresponds to the JSON property `controlId`
+        # @return [String]
+        attr_accessor :control_id
+      
+        # The name of the framework.
+        # Corresponds to the JSON property `framework`
+        # @return [String]
+        attr_accessor :framework
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @control_id = args[:control_id] if args.key?(:control_id)
+          @framework = args[:framework] if args.key?(:framework)
+        end
+      end
+      
+      # A list of strings for the parameter value.
+      class GoogleCloudAssuredworkloadsV1beta1StringList
+        include Google::Apis::Core::Hashable
+      
+        # Required. The strings in the list.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # The details for a target resource.
+      class GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails
+        include Google::Apis::Core::Hashable
+      
+        # The create time of the target resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The framework deployment name for the target resource. For example, `
+        # organizations/`organization_id`/locations/`location`/frameworkDeployments/`
+        # framework_deployment_id``
+        # Corresponds to the JSON property `frameworkDeployment`
+        # @return [String]
+        attr_accessor :framework_deployment
+      
+        # The major revision ID of the framework for the target resource.
+        # Corresponds to the JSON property `majorRevisionId`
+        # @return [Fixnum]
+        attr_accessor :major_revision_id
+      
+        # The minor revision ID of the framework for the target resource.
+        # Corresponds to the JSON property `minorRevisionId`
+        # @return [Fixnum]
+        attr_accessor :minor_revision_id
+      
+        # The target resource. For example, `organizations/1234567890`, `projects/
+        # 1234567890`, or `folders/1234567890`.
+        # Corresponds to the JSON property `targetResource`
+        # @return [String]
+        attr_accessor :target_resource
+      
+        # The display name of the target resource. For example, `google.com`, `staging-
+        # project`, or `development-folder`.
+        # Corresponds to the JSON property `targetResourceDisplayName`
+        # @return [String]
+        attr_accessor :target_resource_display_name
+      
+        # The update time of the target resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @framework_deployment = args[:framework_deployment] if args.key?(:framework_deployment)
+          @major_revision_id = args[:major_revision_id] if args.key?(:major_revision_id)
+          @minor_revision_id = args[:minor_revision_id] if args.key?(:minor_revision_id)
+          @target_resource = args[:target_resource] if args.key?(:target_resource)
+          @target_resource_display_name = args[:target_resource_display_name] if args.key?(:target_resource_display_name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The trend of a compliance metric.
+      class GoogleCloudAssuredworkloadsV1beta1Trend
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The duration for the trend.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Output only. The trend value as a percentage. The value can be positive or
+        # negative.
+        # Corresponds to the JSON property `valuePercent`
+        # @return [Float]
+        attr_accessor :value_percent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @value_percent = args[:value_percent] if args.key?(:value_percent)
         end
       end
       
