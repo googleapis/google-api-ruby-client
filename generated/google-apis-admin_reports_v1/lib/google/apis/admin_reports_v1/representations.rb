@@ -106,6 +106,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ActivityUserDeviceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentAttributionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentAttributionInfoAgentOwner
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppliedLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -266,17 +284,22 @@ module Google
           property :id, as: 'id', class: Google::Apis::AdminReportsV1::Activity::Id, decorator: Google::Apis::AdminReportsV1::Activity::Id::Representation
       
           property :ip_address, as: 'ipAddress'
+          property :is_agentic_action, as: 'isAgenticAction'
           property :kind, as: 'kind'
           property :network_info, as: 'networkInfo', class: Google::Apis::AdminReportsV1::ActivityNetworkInfo, decorator: Google::Apis::AdminReportsV1::ActivityNetworkInfo::Representation
       
           property :owner_domain, as: 'ownerDomain'
           collection :resource_details, as: 'resourceDetails', class: Google::Apis::AdminReportsV1::ResourceDetails, decorator: Google::Apis::AdminReportsV1::ResourceDetails::Representation
       
+          property :user_device_info, as: 'userDeviceInfo', class: Google::Apis::AdminReportsV1::ActivityUserDeviceInfo, decorator: Google::Apis::AdminReportsV1::ActivityUserDeviceInfo::Representation
+      
         end
         
         class Actor
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
+            property :agent_attribution_info, as: 'agentAttributionInfo', class: Google::Apis::AdminReportsV1::AgentAttributionInfo, decorator: Google::Apis::AdminReportsV1::AgentAttributionInfo::Representation
+        
             property :application_info, as: 'applicationInfo', class: Google::Apis::AdminReportsV1::Activity::Actor::ApplicationInfo, decorator: Google::Apis::AdminReportsV1::Activity::Actor::ApplicationInfo::Representation
         
             property :caller_type, as: 'callerType'
@@ -402,6 +425,33 @@ module Google
           collection :ip_asn, as: 'ipAsn'
           property :region_code, as: 'regionCode'
           property :subdivision_code, as: 'subdivisionCode'
+        end
+      end
+      
+      class ActivityUserDeviceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id, as: 'deviceId'
+          property :device_os_version, as: 'deviceOsVersion'
+          property :device_type, as: 'deviceType'
+        end
+      end
+      
+      class AgentAttributionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
+          property :agent_name, as: 'agentName'
+          property :agent_owner, as: 'agentOwner', class: Google::Apis::AdminReportsV1::AgentAttributionInfoAgentOwner, decorator: Google::Apis::AdminReportsV1::AgentAttributionInfoAgentOwner::Representation
+      
+          property :agent_type, as: 'agentType'
+        end
+      end
+      
+      class AgentAttributionInfoAgentOwner
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
         end
       end
       

@@ -94,6 +94,12 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # Whether the activity was performed by an agent.
+        # Corresponds to the JSON property `isAgenticAction`
+        # @return [Boolean]
+        attr_accessor :is_agentic_action
+        alias_method :is_agentic_action?, :is_agentic_action
+      
         # The type of API resource. For an activity report, the value is `audit#activity`
         # .
         # Corresponds to the JSON property `kind`
@@ -116,6 +122,11 @@ module Google
         # @return [Array<Google::Apis::AdminReportsV1::ResourceDetails>]
         attr_accessor :resource_details
       
+        # Device details of the user doing the action.
+        # Corresponds to the JSON property `userDeviceInfo`
+        # @return [Google::Apis::AdminReportsV1::ActivityUserDeviceInfo]
+        attr_accessor :user_device_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -127,15 +138,22 @@ module Google
           @events = args[:events] if args.key?(:events)
           @id = args[:id] if args.key?(:id)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @is_agentic_action = args[:is_agentic_action] if args.key?(:is_agentic_action)
           @kind = args[:kind] if args.key?(:kind)
           @network_info = args[:network_info] if args.key?(:network_info)
           @owner_domain = args[:owner_domain] if args.key?(:owner_domain)
           @resource_details = args[:resource_details] if args.key?(:resource_details)
+          @user_device_info = args[:user_device_info] if args.key?(:user_device_info)
         end
         
         # User doing the action.
         class Actor
           include Google::Apis::Core::Hashable
+        
+          # Details of the AI agent that was the actor for the activity.
+          # Corresponds to the JSON property `agentAttributionInfo`
+          # @return [Google::Apis::AdminReportsV1::AgentAttributionInfo]
+          attr_accessor :agent_attribution_info
         
           # Details of the application that was the actor for the activity.
           # Corresponds to the JSON property `applicationInfo`
@@ -172,6 +190,7 @@ module Google
         
           # Update properties of this object
           def update!(**args)
+            @agent_attribution_info = args[:agent_attribution_info] if args.key?(:agent_attribution_info)
             @application_info = args[:application_info] if args.key?(:application_info)
             @caller_type = args[:caller_type] if args.key?(:caller_type)
             @email = args[:email] if args.key?(:email)
@@ -591,6 +610,93 @@ module Google
           @ip_asn = args[:ip_asn] if args.key?(:ip_asn)
           @region_code = args[:region_code] if args.key?(:region_code)
           @subdivision_code = args[:subdivision_code] if args.key?(:subdivision_code)
+        end
+      end
+      
+      # Device details of the user doing the action.
+      class ActivityUserDeviceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Device ID of the user's device.
+        # Corresponds to the JSON property `deviceId`
+        # @return [String]
+        attr_accessor :device_id
+      
+        # Output only. Device OS version of the user's device.
+        # Corresponds to the JSON property `deviceOsVersion`
+        # @return [String]
+        attr_accessor :device_os_version
+      
+        # Output only. The type of the user's device.
+        # Corresponds to the JSON property `deviceType`
+        # @return [String]
+        attr_accessor :device_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id = args[:device_id] if args.key?(:device_id)
+          @device_os_version = args[:device_os_version] if args.key?(:device_os_version)
+          @device_type = args[:device_type] if args.key?(:device_type)
+        end
+      end
+      
+      # Details of the AI agent that was the actor for the activity.
+      class AgentAttributionInfo
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the agent.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        # The user visible name of the agent.
+        # Corresponds to the JSON property `agentName`
+        # @return [String]
+        attr_accessor :agent_name
+      
+        # Details of the owner of the AI agent.
+        # Corresponds to the JSON property `agentOwner`
+        # @return [Google::Apis::AdminReportsV1::AgentAttributionInfoAgentOwner]
+        attr_accessor :agent_owner
+      
+        # Type of the agent.
+        # Corresponds to the JSON property `agentType`
+        # @return [String]
+        attr_accessor :agent_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
+          @agent_name = args[:agent_name] if args.key?(:agent_name)
+          @agent_owner = args[:agent_owner] if args.key?(:agent_owner)
+          @agent_type = args[:agent_type] if args.key?(:agent_type)
+        end
+      end
+      
+      # Details of the owner of the AI agent.
+      class AgentAttributionInfoAgentOwner
+        include Google::Apis::Core::Hashable
+      
+        # The email of the agent owner.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
         end
       end
       
