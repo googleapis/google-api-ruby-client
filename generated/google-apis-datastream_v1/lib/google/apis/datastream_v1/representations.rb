@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OauthRefreshTokenCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ObjectFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1060,6 +1066,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkdayProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkdaySourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppendOnly
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1256,6 +1274,8 @@ module Google
           property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatastreamV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatastreamV1::StaticServiceIpConnectivity::Representation
       
           property :update_time, as: 'updateTime'
+          property :workday_profile, as: 'workdayProfile', class: Google::Apis::DatastreamV1::WorkdayProfile, decorator: Google::Apis::DatastreamV1::WorkdayProfile::Representation
+      
         end
       end
       
@@ -1868,6 +1888,16 @@ module Google
         end
       end
       
+      class OauthRefreshTokenCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth_client_credentials, as: 'oauthClientCredentials', class: Google::Apis::DatastreamV1::OauthClientCredentials, decorator: Google::Apis::DatastreamV1::OauthClientCredentials::Representation
+      
+          property :refresh_token, as: 'refreshToken', class: Google::Apis::DatastreamV1::Secret, decorator: Google::Apis::DatastreamV1::Secret::Representation
+      
+        end
+      end
+      
       class ObjectFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2404,6 +2434,8 @@ module Google
       
           property :sql_server_source_config, as: 'sqlServerSourceConfig', class: Google::Apis::DatastreamV1::SqlServerSourceConfig, decorator: Google::Apis::DatastreamV1::SqlServerSourceConfig::Representation
       
+          property :workday_source_config, as: 'workdaySourceConfig', class: Google::Apis::DatastreamV1::WorkdaySourceConfig, decorator: Google::Apis::DatastreamV1::WorkdaySourceConfig::Representation
+      
         end
       end
       
@@ -2829,6 +2861,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :subnet, as: 'subnet'
           property :vpc, as: 'vpc'
+        end
+      end
+      
+      class WorkdayProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :oauth_refresh_token_credentials, as: 'oauthRefreshTokenCredentials', class: Google::Apis::DatastreamV1::OauthRefreshTokenCredentials, decorator: Google::Apis::DatastreamV1::OauthRefreshTokenCredentials::Representation
+      
+          property :tenant, as: 'tenant'
+        end
+      end
+      
+      class WorkdaySourceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude_objects, as: 'excludeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :include_objects, as: 'includeObjects', class: Google::Apis::DatastreamV1::SourceCatalog, decorator: Google::Apis::DatastreamV1::SourceCatalog::Representation
+      
+          property :polling_interval, as: 'pollingInterval'
         end
       end
     end
