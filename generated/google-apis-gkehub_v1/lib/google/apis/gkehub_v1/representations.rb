@@ -2929,6 +2929,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :modernization_compatibility, as: 'modernizationCompatibility'
+          property :modernization_strategy, as: 'modernizationStrategy'
         end
       end
       
