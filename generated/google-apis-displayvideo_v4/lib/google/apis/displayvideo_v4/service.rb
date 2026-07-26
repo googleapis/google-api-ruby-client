@@ -543,6 +543,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates an ad asset. Returns the updated ad asset if successful. Supports
+        # updating assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO` and `
+        # AD_ASSET_TYPE_IMAGE`. Only the `synthetic_content_attestation_status` field is
+        # mutable.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this ad asset belongs to.
+        # @param [Fixnum] ad_asset_id
+        #   Output only. The ID of the ad asset. Referred to as the asset ID when assigned
+        #   to an ad.
+        # @param [Google::Apis::DisplayvideoV4::AdAsset] ad_asset_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update. Only AdAsset.
+        #   synthetic_content_attestation_status is mutable.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::AdAsset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::AdAsset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_advertiser_ad_asset(advertiser_id, ad_asset_id, ad_asset_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v4/advertisers/{+advertiserId}/adAssets/{+adAssetId}', options)
+          command.request_representation = Google::Apis::DisplayvideoV4::AdAsset::Representation
+          command.request_object = ad_asset_object
+          command.response_representation = Google::Apis::DisplayvideoV4::AdAsset::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::AdAsset
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['adAssetId'] = ad_asset_id unless ad_asset_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Uploads and creates an ad asset. Returns the ID of the newly-created ad asset
         # if successful. Only supports the uploading of assets with the AdAssetType `
         # AD_ASSET_TYPE_IMAGE`.

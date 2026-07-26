@@ -98,6 +98,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Whether the asset contains synthetic content or was created using AI.
+        # Corresponds to the JSON property `syntheticContentAttestationStatus`
+        # @return [String]
+        attr_accessor :synthetic_content_attestation_status
+      
         # Data for a YouTube video ad asset.
         # Corresponds to the JSON property `youtubeVideoAsset`
         # @return [Google::Apis::DisplayvideoV4::YoutubeVideoAsset]
@@ -113,6 +118,7 @@ module Google
           @ad_asset_type = args[:ad_asset_type] if args.key?(:ad_asset_type)
           @entity_status = args[:entity_status] if args.key?(:entity_status)
           @name = args[:name] if args.key?(:name)
+          @synthetic_content_attestation_status = args[:synthetic_content_attestation_status] if args.key?(:synthetic_content_attestation_status)
           @youtube_video_asset = args[:youtube_video_asset] if args.key?(:youtube_video_asset)
         end
       end
@@ -5763,6 +5769,12 @@ module Google
         attr_accessor :skippable
         alias_method :skippable?, :skippable
       
+        # Optional. Whether the creative contains synthetic content or was created using
+        # AI.
+        # Corresponds to the JSON property `syntheticContentAttestationStatus`
+        # @return [String]
+        attr_accessor :synthetic_content_attestation_status
+      
         # Optional. The original third-party tag used for the creative. Required and
         # only valid for third-party tag creatives. Third-party tag creatives are
         # creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY`
@@ -5886,6 +5898,7 @@ module Google
           @review_status = args[:review_status] if args.key?(:review_status)
           @skip_offset = args[:skip_offset] if args.key?(:skip_offset)
           @skippable = args[:skippable] if args.key?(:skippable)
+          @synthetic_content_attestation_status = args[:synthetic_content_attestation_status] if args.key?(:synthetic_content_attestation_status)
           @third_party_tag = args[:third_party_tag] if args.key?(:third_party_tag)
           @third_party_urls = args[:third_party_urls] if args.key?(:third_party_urls)
           @timer_events = args[:timer_events] if args.key?(:timer_events)
@@ -12846,6 +12859,17 @@ module Google
       class PlannedProductForecast
         include Google::Apis::Core::Hashable
       
+        # Number of on-target impressions including co-viewers.
+        # Corresponds to the JSON property `onTargetCoviewImpressions`
+        # @return [Fixnum]
+        attr_accessor :on_target_coview_impressions
+      
+        # Number of unique people reached that match the on-target definition including
+        # co-viewers.
+        # Corresponds to the JSON property `onTargetCoviewReach`
+        # @return [Fixnum]
+        attr_accessor :on_target_coview_reach
+      
         # Number of on-target impressions.
         # Corresponds to the JSON property `onTargetImpressions`
         # @return [Fixnum]
@@ -12855,6 +12879,16 @@ module Google
         # Corresponds to the JSON property `onTargetReach`
         # @return [Fixnum]
         attr_accessor :on_target_reach
+      
+        # Total number of impressions including co-viewers.
+        # Corresponds to the JSON property `totalCoviewImpressions`
+        # @return [Fixnum]
+        attr_accessor :total_coview_impressions
+      
+        # Total number of unique people reached including co-viewers.
+        # Corresponds to the JSON property `totalCoviewReach`
+        # @return [Fixnum]
+        attr_accessor :total_coview_reach
       
         # Total number of impressions.
         # Corresponds to the JSON property `totalImpressions`
@@ -12882,8 +12916,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @on_target_coview_impressions = args[:on_target_coview_impressions] if args.key?(:on_target_coview_impressions)
+          @on_target_coview_reach = args[:on_target_coview_reach] if args.key?(:on_target_coview_reach)
           @on_target_impressions = args[:on_target_impressions] if args.key?(:on_target_impressions)
           @on_target_reach = args[:on_target_reach] if args.key?(:on_target_reach)
+          @total_coview_impressions = args[:total_coview_impressions] if args.key?(:total_coview_impressions)
+          @total_coview_reach = args[:total_coview_reach] if args.key?(:total_coview_reach)
           @total_impressions = args[:total_impressions] if args.key?(:total_impressions)
           @total_reach = args[:total_reach] if args.key?(:total_reach)
           @trueview_views = args[:trueview_views] if args.key?(:trueview_views)
@@ -14885,6 +14923,11 @@ module Google
         # @return [String]
         attr_accessor :filename
       
+        # Optional. Whether the asset contains synthetic content or was created using AI.
+        # Corresponds to the JSON property `syntheticContentAttestationStatus`
+        # @return [String]
+        attr_accessor :synthetic_content_attestation_status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14893,6 +14936,7 @@ module Google
         def update!(**args)
           @ad_asset_type = args[:ad_asset_type] if args.key?(:ad_asset_type)
           @filename = args[:filename] if args.key?(:filename)
+          @synthetic_content_attestation_status = args[:synthetic_content_attestation_status] if args.key?(:synthetic_content_attestation_status)
         end
       end
       
