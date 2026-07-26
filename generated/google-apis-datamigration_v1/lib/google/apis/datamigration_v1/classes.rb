@@ -2034,7 +2034,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # The reason of the error. This is a constant value that identifies the
+        # The reason for the error. This is a constant value that identifies the
         # proximate cause of the error. Error reasons are unique within a particular
         # domain of errors. This should be at most 63 characters and match a regular
         # expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
@@ -2167,7 +2167,7 @@ module Google
         # @return [Google::Apis::DatamigrationV1::LocalizedMessage]
         attr_accessor :localized_message
       
-        # The reason of the field-level error. This is a constant value that identifies
+        # The reason for the field-level error. This is a constant value that identifies
         # the proximate cause of the field-level error. It should uniquely identify the
         # type of the FieldViolation within the scope of the google.rpc.ErrorInfo.domain.
         # This should be at most 63 characters and match a regular expression of `A-Z+[
@@ -3168,9 +3168,10 @@ module Google
         # @return [String]
         attr_accessor :rule_scope
       
-        # Options to configure rule type SetTablePrimaryKey. The rule is used to specify
-        # the columns and name to configure/alter the primary key of a table. The rule
-        # filter field can refer to one entity. The rule scope can be one of: Table.
+        # Deprecated: Options to configure rule type SetTablePrimaryKey. The rule is
+        # used to specify the columns and name to configure/alter the primary key of a
+        # table. The rule filter field can refer to one entity. The rule scope can be
+        # one of: Table.
         # Corresponds to the JSON property `setTablePrimaryKey`
         # @return [Google::Apis::DatamigrationV1::SetTablePrimaryKey]
         attr_accessor :set_table_primary_key
@@ -5479,9 +5480,10 @@ module Google
         end
       end
       
-      # Options to configure rule type SetTablePrimaryKey. The rule is used to specify
-      # the columns and name to configure/alter the primary key of a table. The rule
-      # filter field can refer to one entity. The rule scope can be one of: Table.
+      # Deprecated: Options to configure rule type SetTablePrimaryKey. The rule is
+      # used to specify the columns and name to configure/alter the primary key of a
+      # table. The rule filter field can refer to one entity. The rule scope can be
+      # one of: Table.
       class SetTablePrimaryKey
         include Google::Apis::Core::Hashable
       
