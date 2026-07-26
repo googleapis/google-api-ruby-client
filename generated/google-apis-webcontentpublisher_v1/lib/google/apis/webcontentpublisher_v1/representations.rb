@@ -170,6 +170,7 @@ module Google
           property :publication_id, as: 'publicationId'
           property :publication_privacy_policy_url, as: 'publicationPrivacyPolicyUrl'
           property :publication_tos_url, as: 'publicationTosUrl'
+          property :publication_type, as: 'publicationType'
           property :region_code, as: 'regionCode'
           property :rrm_product, as: 'rrmProduct', class: Google::Apis::WebcontentpublisherV1::RrmProduct, decorator: Google::Apis::WebcontentpublisherV1::RrmProduct::Representation
       
@@ -199,6 +200,7 @@ module Google
       class TosAcceptance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :email_opt_in, as: 'emailOptIn'
           property :signer, as: 'signer'
           property :signer_title, as: 'signerTitle'
           property :user_accepted, as: 'userAccepted'
