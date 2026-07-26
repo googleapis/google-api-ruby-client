@@ -713,6 +713,7 @@ module Google
           property :recurrence_schedule, as: 'recurrenceSchedule'
           property :retention_days, as: 'retentionDays'
           property :rule_name, as: 'ruleName'
+          property :storage_tier, as: 'storageTier'
         end
       end
       

@@ -1179,6 +1179,11 @@ module Google
         # @return [String]
         attr_accessor :rule_name
       
+        # The storage tier of the BackupRule.
+        # Corresponds to the JSON property `storageTier`
+        # @return [String]
+        attr_accessor :storage_tier
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1191,6 +1196,7 @@ module Google
           @recurrence_schedule = args[:recurrence_schedule] if args.key?(:recurrence_schedule)
           @retention_days = args[:retention_days] if args.key?(:retention_days)
           @rule_name = args[:rule_name] if args.key?(:rule_name)
+          @storage_tier = args[:storage_tier] if args.key?(:storage_tier)
         end
       end
       
