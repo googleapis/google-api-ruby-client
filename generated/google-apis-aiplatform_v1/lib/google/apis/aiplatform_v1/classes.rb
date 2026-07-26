@@ -43,6 +43,11 @@ module Google
         # @return [String]
         attr_accessor :codec
       
+        # Configuration for color alignment.
+        # Corresponds to the JSON property `colorAlignment`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig]
+        attr_accessor :color_alignment
+      
         # Conditioning frames for veo experimental models ONLY, not to be confused with
         # keyframes (ID:31) in GenerateVideoRequest.
         # Corresponds to the JSON property `conditioningFrames`
@@ -103,6 +108,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionSeamless]
         attr_accessor :seamless
       
+        # Configuration for spatial alignment.
+        # Corresponds to the JSON property `spatialAlignment`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig]
+        attr_accessor :spatial_alignment
+      
         # If true (default), truncate input videos that exceed the model's maximum frame
         # count by applying a frame_selection_config to __video_file__ inputs. Set to
         # false to preserve the existing fail-fast behavior.
@@ -131,6 +141,7 @@ module Google
           @anchor_last_frame = args[:anchor_last_frame] if args.key?(:anchor_last_frame)
           @cfg_scale = args[:cfg_scale] if args.key?(:cfg_scale)
           @codec = args[:codec] if args.key?(:codec)
+          @color_alignment = args[:color_alignment] if args.key?(:color_alignment)
           @conditioning_frames = args[:conditioning_frames] if args.key?(:conditioning_frames)
           @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
           @human_pose = args[:human_pose] if args.key?(:human_pose)
@@ -141,9 +152,30 @@ module Google
           @request_origin_tag = args[:request_origin_tag] if args.key?(:request_origin_tag)
           @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
           @seamless = args[:seamless] if args.key?(:seamless)
+          @spatial_alignment = args[:spatial_alignment] if args.key?(:spatial_alignment)
           @truncate_input_video = args[:truncate_input_video] if args.key?(:truncate_input_video)
           @video_transform_mask_gcs_uri = args[:video_transform_mask_gcs_uri] if args.key?(:video_transform_mask_gcs_uri)
           @video_transform_strength = args[:video_transform_strength] if args.key?(:video_transform_strength)
+        end
+      end
+      
+      # Configuration for color alignment.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, enable alignment.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
         end
       end
       
@@ -169,6 +201,26 @@ module Google
         def update!(**args)
           @frame_num = args[:frame_num] if args.key?(:frame_num)
           @image = args[:image] if args.key?(:image)
+        end
+      end
+      
+      # Configuration for spatial alignment.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, enable alignment.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
         end
       end
       
@@ -8585,12 +8637,20 @@ module Google
       class GoogleCloudAiplatformV1DeprovisionSemanticGovernancePolicyEngineRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the operation bypass checks on current state and force the
+        # deprovisioning operation.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @force = args[:force] if args.key?(:force)
         end
       end
       
@@ -18633,6 +18693,13 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalMetadata]
         attr_accessor :retrieval_metadata
       
+        # Optional. The queries that were executed by the retrieval tools. This field is
+        # populated only when the grounding source is a retrieval tool, such as Vertex
+        # AI Search.
+        # Corresponds to the JSON property `retrievalQueries`
+        # @return [Array<String>]
+        attr_accessor :retrieval_queries
+      
         # An entry point for displaying Google Search results. A `SearchEntryPoint` is
         # populated when the grounding source for a model's response is Google Search.
         # It provides information that you can use to display the search results in your
@@ -18665,6 +18732,7 @@ module Google
           @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
           @image_search_queries = args[:image_search_queries] if args.key?(:image_search_queries)
           @retrieval_metadata = args[:retrieval_metadata] if args.key?(:retrieval_metadata)
+          @retrieval_queries = args[:retrieval_queries] if args.key?(:retrieval_queries)
           @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
           @source_flagging_uris = args[:source_flagging_uris] if args.key?(:source_flagging_uris)
           @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
