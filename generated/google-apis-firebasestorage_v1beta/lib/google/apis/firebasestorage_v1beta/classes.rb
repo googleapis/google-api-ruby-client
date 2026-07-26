@@ -65,7 +65,7 @@ module Google
         # @return [Google::Apis::FirebasestorageV1beta::Bucket]
         attr_accessor :bucket
       
-        # Immutable. Location of the default bucket.
+        # Required. Immutable. Location of the default bucket.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
