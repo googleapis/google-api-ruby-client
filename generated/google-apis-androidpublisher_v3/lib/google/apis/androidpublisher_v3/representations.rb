@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppContactInformation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -490,6 +496,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CatalogAppView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CatalogDeviceSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CatalogPermission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CatalogSdkVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CoarseLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +527,12 @@ module Google
       end
       
       class Comment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompatibleScreen
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -664,7 +700,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeveloperDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeveloperInitiatedCancellation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceCompatibilityRequirements
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -689,6 +737,12 @@ module Google
       end
       
       class DeviceId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceIdentifier
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -886,6 +940,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImagesDeleteAllResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1048,6 +1108,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRecentUpdateEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListReleaseSummariesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1079,6 +1145,18 @@ module Google
       end
       
       class ListingsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalizedStoreListing
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalizedStoreListings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1522,6 +1600,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RamSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RecentAppView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RecentUpdateEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RecurringExternalTransaction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1750,6 +1846,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScreenshotSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SdkVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1763,6 +1865,12 @@ module Google
       end
       
       class SignupPromotion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SocSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2164,6 +2272,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UsesConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UsesPermission
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2183,6 +2297,12 @@ module Google
       end
       
       class VariantTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VideoAsset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2379,6 +2499,15 @@ module Google
           collection :apks, as: 'apks', class: Google::Apis::AndroidpublisherV3::Apk, decorator: Google::Apis::AndroidpublisherV3::Apk::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class AppContactInformation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contact_email, as: 'contactEmail'
+          property :phone_number, as: 'phoneNumber'
+          property :website_url, as: 'websiteUrl'
         end
       end
       
@@ -2893,6 +3022,73 @@ module Google
         end
       end
       
+      class CatalogAppView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :active_version_names, as: 'activeVersionNames'
+          property :app_category, as: 'appCategory'
+          property :app_contact_information, as: 'appContactInformation', class: Google::Apis::AndroidpublisherV3::AppContactInformation, decorator: Google::Apis::AndroidpublisherV3::AppContactInformation::Representation
+      
+          property :app_subcategory, as: 'appSubcategory'
+          property :delivery_token, as: 'deliveryToken'
+          property :developer_details, as: 'developerDetails', class: Google::Apis::AndroidpublisherV3::DeveloperDetails, decorator: Google::Apis::AndroidpublisherV3::DeveloperDetails::Representation
+      
+          collection :device_compatibility_requirements, as: 'deviceCompatibilityRequirements', class: Google::Apis::AndroidpublisherV3::DeviceCompatibilityRequirements, decorator: Google::Apis::AndroidpublisherV3::DeviceCompatibilityRequirements::Representation
+      
+          collection :excluded_devices_by_identifier, as: 'excludedDevicesByIdentifier', class: Google::Apis::AndroidpublisherV3::DeviceIdentifier, decorator: Google::Apis::AndroidpublisherV3::DeviceIdentifier::Representation
+      
+          collection :excluded_devices_by_selector, as: 'excludedDevicesBySelector', class: Google::Apis::AndroidpublisherV3::CatalogDeviceSelector, decorator: Google::Apis::AndroidpublisherV3::CatalogDeviceSelector::Representation
+      
+          property :first_release_date, as: 'firstReleaseDate', class: Google::Apis::AndroidpublisherV3::Date, decorator: Google::Apis::AndroidpublisherV3::Date::Representation
+      
+          property :has_in_app_ads, as: 'hasInAppAds'
+          property :has_in_app_purchases, as: 'hasInAppPurchases'
+          property :iarc_certificate_id, as: 'iarcCertificateId'
+          property :is_adult_only_audience, as: 'isAdultOnlyAudience'
+          property :last_publish_time, as: 'lastPublishTime'
+          property :localized_store_listings, as: 'localizedStoreListings', class: Google::Apis::AndroidpublisherV3::LocalizedStoreListings, decorator: Google::Apis::AndroidpublisherV3::LocalizedStoreListings::Representation
+      
+          property :package_name, as: 'packageName'
+          collection :permissions, as: 'permissions', class: Google::Apis::AndroidpublisherV3::CatalogPermission, decorator: Google::Apis::AndroidpublisherV3::CatalogPermission::Representation
+      
+          collection :permissions_sdk23, as: 'permissionsSdk23', class: Google::Apis::AndroidpublisherV3::CatalogPermission, decorator: Google::Apis::AndroidpublisherV3::CatalogPermission::Representation
+      
+          property :price_in_the_united_states, as: 'priceInTheUnitedStates', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+          property :privacy_policy_url, as: 'privacyPolicyUrl'
+          property :sale_price_in_the_united_states, as: 'salePriceInTheUnitedStates', class: Google::Apis::AndroidpublisherV3::Money, decorator: Google::Apis::AndroidpublisherV3::Money::Representation
+      
+        end
+      end
+      
+      class CatalogDeviceSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_type_selector, as: 'deviceTypeSelector'
+          property :ram_selector, as: 'ramSelector', class: Google::Apis::AndroidpublisherV3::RamSelector, decorator: Google::Apis::AndroidpublisherV3::RamSelector::Representation
+      
+          collection :soc_selectors, as: 'socSelectors', class: Google::Apis::AndroidpublisherV3::SocSelector, decorator: Google::Apis::AndroidpublisherV3::SocSelector::Representation
+      
+        end
+      end
+      
+      class CatalogPermission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_sdk_version, as: 'maxSdkVersion'
+          property :name, as: 'name'
+        end
+      end
+      
+      class CatalogSdkVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_sdk_version, :numeric_string => true, as: 'maxSdkVersion'
+          property :min_sdk_version, :numeric_string => true, as: 'minSdkVersion'
+          property :target_sdk_version, :numeric_string => true, as: 'targetSdkVersion'
+        end
+      end
+      
       class CoarseLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2910,6 +3106,14 @@ module Google
       
           property :user_comment, as: 'userComment', class: Google::Apis::AndroidpublisherV3::UserComment, decorator: Google::Apis::AndroidpublisherV3::UserComment::Representation
       
+        end
+      end
+      
+      class CompatibleScreen
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :density, as: 'density'
+          property :screen_size, as: 'screenSize'
         end
       end
       
@@ -3155,9 +3359,41 @@ module Google
         end
       end
       
+      class DeveloperDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address'
+          property :contact_email, as: 'contactEmail'
+          property :developer_name, as: 'developerName'
+          property :phone_number, as: 'phoneNumber'
+          property :website, as: 'website'
+        end
+      end
+      
       class DeveloperInitiatedCancellation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeviceCompatibilityRequirements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :compatible_screens, as: 'compatibleScreens', class: Google::Apis::AndroidpublisherV3::CompatibleScreen, decorator: Google::Apis::AndroidpublisherV3::CompatibleScreen::Representation
+      
+          property :gl_es_version, as: 'glEsVersion'
+          property :is_screen_required, as: 'isScreenRequired'
+          collection :native_platforms, as: 'nativePlatforms'
+          collection :required_software_libraries, as: 'requiredSoftwareLibraries'
+          collection :required_system_features, as: 'requiredSystemFeatures'
+          property :requires_smallest_width_dp, :numeric_string => true, as: 'requiresSmallestWidthDp'
+          property :sdk_version, as: 'sdkVersion', class: Google::Apis::AndroidpublisherV3::CatalogSdkVersion, decorator: Google::Apis::AndroidpublisherV3::CatalogSdkVersion::Representation
+      
+          collection :supported_gl_textures, as: 'supportedGlTextures'
+          collection :supported_screens, as: 'supportedScreens'
+          property :use32_bit_abi, as: 'use32BitAbi'
+          collection :uses_configurations, as: 'usesConfigurations', class: Google::Apis::AndroidpublisherV3::UsesConfiguration, decorator: Google::Apis::AndroidpublisherV3::UsesConfiguration::Representation
+      
         end
       end
       
@@ -3191,6 +3427,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :build_brand, as: 'buildBrand'
           property :build_device, as: 'buildDevice'
+        end
+      end
+      
+      class DeviceIdentifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_brand, as: 'deviceBrand'
+          property :device_model, as: 'deviceModel'
         end
       end
       
@@ -3533,6 +3777,13 @@ module Google
         end
       end
       
+      class ImageAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_url, as: 'imageUrl'
+        end
+      end
+      
       class ImagesDeleteAllResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3800,6 +4051,15 @@ module Google
         end
       end
       
+      class ListRecentUpdateEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :recent_update_events, as: 'recentUpdateEvents', class: Google::Apis::AndroidpublisherV3::RecentUpdateEvent, decorator: Google::Apis::AndroidpublisherV3::RecentUpdateEvent::Representation
+      
+        end
+      end
+      
       class ListReleaseSummariesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3851,6 +4111,37 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           collection :listings, as: 'listings', class: Google::Apis::AndroidpublisherV3::Listing, decorator: Google::Apis::AndroidpublisherV3::Listing::Representation
+      
+        end
+      end
+      
+      class LocalizedStoreListing
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_name, as: 'appName'
+          property :feature_graphic, as: 'featureGraphic', class: Google::Apis::AndroidpublisherV3::ImageAsset, decorator: Google::Apis::AndroidpublisherV3::ImageAsset::Representation
+      
+          property :full_description, as: 'fullDescription'
+          property :icon, as: 'icon', class: Google::Apis::AndroidpublisherV3::ImageAsset, decorator: Google::Apis::AndroidpublisherV3::ImageAsset::Representation
+      
+          property :language_code, as: 'languageCode'
+          property :phone_screenshots, as: 'phoneScreenshots', class: Google::Apis::AndroidpublisherV3::ScreenshotSet, decorator: Google::Apis::AndroidpublisherV3::ScreenshotSet::Representation
+      
+          property :short_description, as: 'shortDescription'
+          property :tablet_regular_screenshots, as: 'tabletRegularScreenshots', class: Google::Apis::AndroidpublisherV3::ScreenshotSet, decorator: Google::Apis::AndroidpublisherV3::ScreenshotSet::Representation
+      
+          property :tablet_small_screenshots, as: 'tabletSmallScreenshots', class: Google::Apis::AndroidpublisherV3::ScreenshotSet, decorator: Google::Apis::AndroidpublisherV3::ScreenshotSet::Representation
+      
+          property :video, as: 'video', class: Google::Apis::AndroidpublisherV3::VideoAsset, decorator: Google::Apis::AndroidpublisherV3::VideoAsset::Representation
+      
+        end
+      end
+      
+      class LocalizedStoreListings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_language_code, as: 'defaultLanguageCode'
+          collection :localized_store_listings, as: 'localizedStoreListings', class: Google::Apis::AndroidpublisherV3::LocalizedStoreListing, decorator: Google::Apis::AndroidpublisherV3::LocalizedStoreListing::Representation
       
         end
       end
@@ -4610,6 +4901,30 @@ module Google
         end
       end
       
+      class RamSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ram_mb_less_than_or_equal, :numeric_string => true, as: 'ramMbLessThanOrEqual'
+        end
+      end
+      
+      class RecentAppView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_view, as: 'appView', class: Google::Apis::AndroidpublisherV3::CatalogAppView, decorator: Google::Apis::AndroidpublisherV3::CatalogAppView::Representation
+      
+        end
+      end
+      
+      class RecentUpdateEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_time, as: 'eventTime'
+          property :play_app_package_name, as: 'playAppPackageName'
+          property :update_type, as: 'updateType'
+        end
+      end
+      
       class RecurringExternalTransaction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4931,6 +5246,14 @@ module Google
         end
       end
       
+      class ScreenshotSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :screenshots, as: 'screenshots', class: Google::Apis::AndroidpublisherV3::ImageAsset, decorator: Google::Apis::AndroidpublisherV3::ImageAsset::Representation
+      
+        end
+      end
+      
       class SdkVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4955,6 +5278,14 @@ module Google
       
           property :vanity_code, as: 'vanityCode', class: Google::Apis::AndroidpublisherV3::VanityCode, decorator: Google::Apis::AndroidpublisherV3::VanityCode::Representation
       
+        end
+      end
+      
+      class SocSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :soc_make, as: 'socMake'
+          property :soc_model, as: 'socModel'
         end
       end
       
@@ -5639,6 +5970,17 @@ module Google
         end
       end
       
+      class UsesConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :required_keyboard_type, as: 'requiredKeyboardType'
+          property :required_navigation_type, as: 'requiredNavigationType'
+          property :required_touchscreen_type, as: 'requiredTouchscreenType'
+          property :requires_five_way_navigation, as: 'requiresFiveWayNavigation'
+          property :requires_hardware_keyboard, as: 'requiresHardwareKeyboard'
+        end
+      end
+      
       class UsesPermission
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5678,6 +6020,13 @@ module Google
       
           property :texture_compression_format_targeting, as: 'textureCompressionFormatTargeting', class: Google::Apis::AndroidpublisherV3::TextureCompressionFormatTargeting, decorator: Google::Apis::AndroidpublisherV3::TextureCompressionFormatTargeting::Representation
       
+        end
+      end
+      
+      class VideoAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :video_url, as: 'videoUrl'
         end
       end
       
