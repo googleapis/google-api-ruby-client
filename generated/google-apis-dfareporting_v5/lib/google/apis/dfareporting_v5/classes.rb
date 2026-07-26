@@ -3729,6 +3729,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :subaccount_id
       
+        # Optional. Whether to add a label to the creative as created or edited using AI
+        # when served in regions with local AI labeling regulations. [Learn more about
+        # labeling requirements in AI regulations.](https://support.google.com/
+        # campaignmanager/answer/17232030)
+        # Corresponds to the JSON property `syntheticContentAttestationStatus`
+        # @return [String]
+        attr_accessor :synthetic_content_attestation_status
+      
         # Third-party URL used to record backup image impressions. Applicable to the
         # following creative types: all RICH_MEDIA.
         # Corresponds to the JSON property `thirdPartyBackupImageImpressionsUrl`
@@ -3847,6 +3855,7 @@ module Google
           @studio_creative_id = args[:studio_creative_id] if args.key?(:studio_creative_id)
           @studio_trafficked_creative_id = args[:studio_trafficked_creative_id] if args.key?(:studio_trafficked_creative_id)
           @subaccount_id = args[:subaccount_id] if args.key?(:subaccount_id)
+          @synthetic_content_attestation_status = args[:synthetic_content_attestation_status] if args.key?(:synthetic_content_attestation_status)
           @third_party_backup_image_impressions_url = args[:third_party_backup_image_impressions_url] if args.key?(:third_party_backup_image_impressions_url)
           @third_party_rich_media_impressions_url = args[:third_party_rich_media_impressions_url] if args.key?(:third_party_rich_media_impressions_url)
           @third_party_urls = args[:third_party_urls] if args.key?(:third_party_urls)

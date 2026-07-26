@@ -2594,6 +2594,7 @@ module Google
           property :studio_creative_id, :numeric_string => true, as: 'studioCreativeId'
           property :studio_trafficked_creative_id, :numeric_string => true, as: 'studioTraffickedCreativeId'
           property :subaccount_id, :numeric_string => true, as: 'subaccountId'
+          property :synthetic_content_attestation_status, as: 'syntheticContentAttestationStatus'
           property :third_party_backup_image_impressions_url, as: 'thirdPartyBackupImageImpressionsUrl'
           property :third_party_rich_media_impressions_url, as: 'thirdPartyRichMediaImpressionsUrl'
           collection :third_party_urls, as: 'thirdPartyUrls', class: Google::Apis::DfareportingV5::ThirdPartyTrackingUrl, decorator: Google::Apis::DfareportingV5::ThirdPartyTrackingUrl::Representation
