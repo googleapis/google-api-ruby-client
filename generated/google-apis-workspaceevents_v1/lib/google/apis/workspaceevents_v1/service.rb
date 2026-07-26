@@ -118,14 +118,20 @@ module Google
         # Create a Google Workspace subscription](https://developers.google.com/
         # workspace/events/guides/create-subscription). For a subscription on a [Chat
         # target resource](https://developers.google.com/workspace/events/guides/events-
-        # chat), you can create a subscription as: - A Chat app by specifying an
-        # authorization scope that begins with `chat.app` and getting one-time
-        # administrator approval. To learn more, see [Authorize as a Chat app with
-        # administrator approval](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-app). - A user by specifying an authorization
-        # scope that doesn't include `app` in its name. To learn more, see [Authorize as
-        # a Chat user](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user).
+        # chat), you can create a subscription as: - A Chat app subscribing to space
+        # events where the app is a member by specifying an authorization scope that
+        # begins with `chat.app` and getting one-time administrator approval. To learn
+        # more, see [Authorize as a Chat app with administrator approval](https://
+        # developers.google.com/workspace/chat/authenticate-authorize-chat-app). - [
+        # Developer Preview](https://developers.google.com/workspace/preview): A Chat
+        # app subscribing to all events in a Google Workspace organization by specifying
+        # an authorization scope that begins with `chat.app.all` and obtaining one-time
+        # administrator approval. To learn more, see [Subscribe to all Google Chat
+        # events in a Workspace organization ](https://developers.google.com/workspace/
+        # events/guides/create-subscription#customer-subscription). - A user by
+        # specifying an authorization scope that doesn't include `app` in its name. To
+        # learn more, see [Authorize as a Chat user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user).
         # @param [Google::Apis::WorkspaceeventsV1::Subscription] subscription_object
         # @param [Boolean] validate_only
         #   Optional. If set to `true`, validates and previews the request, but doesn't
@@ -252,8 +258,11 @@ module Google
         #   message.v1.created" AND target_resource="//chat.googleapis.com/spaces/`space`"
         #   ( event_types:"google.workspace.chat.membership.v1.updated" OR event_types:"
         #   google.workspace.chat.message.v1.created" ) AND target_resource="//chat.
-        #   googleapis.com/spaces/`space`" ``` The server rejects invalid queries with an `
-        #   INVALID_ARGUMENT` error.
+        #   googleapis.com/spaces/`space`" ``` The following query is available in [
+        #   Developer Preview](https://developers.google.com/workspace/preview): ```
+        #   event_types:"google.workspace.chat.message.v1.created" AND target_resource="//
+        #   admin.googleapis.com/customers/my_customer" ``` The server rejects invalid
+        #   queries with an `INVALID_ARGUMENT` error.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of subscriptions to return. The service might
         #   return fewer than this value. If unspecified or set to `0`, up to 50
@@ -298,13 +307,19 @@ module Google
         # developers.google.com/workspace/events/guides/update-subscription). For a
         # subscription on a [Chat target resource](https://developers.google.com/
         # workspace/events/guides/events-chat), you can update a subscription as: - A
-        # Chat app by specifying an authorization scope that begins with `chat.app` and
-        # getting one-time administrator approval. To learn more, see [Authorize as a
-        # Chat app with administrator approval](https://developers.google.com/workspace/
-        # chat/authenticate-authorize-chat-app). - A user by specifying an authorization
-        # scope that doesn't include `app` in its name. To learn more, see [Authorize as
-        # a Chat user](https://developers.google.com/workspace/chat/authenticate-
-        # authorize-chat-user).
+        # Chat app subscribing to space events where the app is a member by specifying
+        # an authorization scope that begins with `chat.app` and getting one-time
+        # administrator approval. To learn more, see [Authorize as a Chat app with
+        # administrator approval](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-app). - [Developer Preview](https://developers.
+        # google.com/workspace/preview): A Chat app subscribing to all events in a
+        # Google Workspace organization by specifying an authorization scope that begins
+        # with `chat.app.all` and getting one-time administrator approval. To learn more,
+        # see [Subscribe to all Google Chat events in a Workspace organization ](https:/
+        # /developers.google.com/workspace/events/guides/create-subscription#customer-
+        # subscription). - A user by specifying an authorization scope that doesn't
+        # include `app` in its name. To learn more, see [Authorize as a Chat user](https:
+        # //developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         # @param [String] name
         #   Identifier. Resource name of the subscription. Format: `subscriptions/`
         #   subscription``
@@ -359,13 +374,19 @@ module Google
         # //developers.google.com/workspace/events/guides/reactivate-subscription). For
         # a subscription on a [Chat target resource](https://developers.google.com/
         # workspace/events/guides/events-chat), you can reactivate a subscription as: -
-        # A Chat app by specifying an authorization scope that begins with `chat.app`
-        # and getting one-time administrator approval. To learn more, see [Authorize as
-        # a Chat app with administrator approval](https://developers.google.com/
-        # workspace/chat/authenticate-authorize-chat-app). - A user by specifying an
-        # authorization scope that doesn't include `app` in its name. To learn more, see
-        # [Authorize as a Chat user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user).
+        # A Chat app subscribing to space events where the app is a member by specifying
+        # an authorization scope that begins with `chat.app` and getting one-time
+        # administrator approval. To learn more, see [Authorize as a Chat app with
+        # administrator approval](https://developers.google.com/workspace/chat/
+        # authenticate-authorize-chat-app). - [Developer Preview](https://developers.
+        # google.com/workspace/preview): A Chat app subscribing to all events in a
+        # Google Workspace organization by specifying an authorization scope that begins
+        # with `chat.app.all` and getting one-time administrator approval. To learn more,
+        # see [Subscribe to all Google Chat events in a Workspace organization ](https:/
+        # /developers.google.com/workspace/events/guides/create-subscription#customer-
+        # subscription). - A user by specifying an authorization scope that doesn't
+        # include `app` in its name. To learn more, see [Authorize as a Chat user](https:
+        # //developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         # @param [String] name
         #   Required. Resource name of the subscription. Format: `subscriptions/`
         #   subscription``
