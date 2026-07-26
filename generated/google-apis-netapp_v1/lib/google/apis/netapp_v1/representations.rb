@@ -412,6 +412,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SplitStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartSplitRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -680,6 +692,7 @@ module Google
           property :shared_space_gib, :numeric_string => true, as: 'sharedSpaceGib'
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_volume, as: 'sourceVolume'
+          property :split_state, as: 'splitState'
         end
       end
       
@@ -1217,6 +1230,21 @@ module Google
       
           property :weekly_schedule, as: 'weeklySchedule', class: Google::Apis::NetappV1::WeeklySchedule, decorator: Google::Apis::NetappV1::WeeklySchedule::Representation
       
+        end
+      end
+      
+      class SplitStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :progress_percent, as: 'progressPercent'
+          property :split_state, as: 'splitState'
+          property :state_details, as: 'stateDetails'
+        end
+      end
+      
+      class StartSplitRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -578,7 +578,7 @@ module Google
         # @return [String]
         attr_accessor :source_backup_vault
       
-        # Output only. Region in which the backup vault is created. Format: `projects/`
+        # Optional. Region in which the backup vault is created. Format: `projects/`
         # project_id`/locations/`location``
         # Corresponds to the JSON property `sourceRegion`
         # @return [String]
@@ -860,6 +860,11 @@ module Google
         # @return [String]
         attr_accessor :source_volume
       
+        # Output only. The current state of the clone split operation.
+        # Corresponds to the JSON property `splitState`
+        # @return [String]
+        attr_accessor :split_state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -869,6 +874,7 @@ module Google
           @shared_space_gib = args[:shared_space_gib] if args.key?(:shared_space_gib)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_volume = args[:source_volume] if args.key?(:source_volume)
+          @split_state = args[:split_state] if args.key?(:split_state)
         end
       end
       
@@ -2870,6 +2876,53 @@ module Google
           @hourly_schedule = args[:hourly_schedule] if args.key?(:hourly_schedule)
           @monthly_schedule = args[:monthly_schedule] if args.key?(:monthly_schedule)
           @weekly_schedule = args[:weekly_schedule] if args.key?(:weekly_schedule)
+        end
+      end
+      
+      # Message for SplitStatus.
+      class SplitStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The estimated progress percentage of the split operation (0-100).
+        # This is meaningful primarily when split_state is IN_PROGRESS.
+        # Corresponds to the JSON property `progressPercent`
+        # @return [Fixnum]
+        attr_accessor :progress_percent
+      
+        # Output only. The current state of the clone split operation.
+        # Corresponds to the JSON property `splitState`
+        # @return [String]
+        attr_accessor :split_state
+      
+        # Output only. Human-readable details about the current state. Mostly used for
+        # displaying error messages during split failure Examples: "Split in progress", "
+        # Error: insufficient capacity".
+        # Corresponds to the JSON property `stateDetails`
+        # @return [String]
+        attr_accessor :state_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @split_state = args[:split_state] if args.key?(:split_state)
+          @state_details = args[:state_details] if args.key?(:state_details)
+        end
+      end
+      
+      # Request message for splitting a volume.
+      class StartSplitRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
