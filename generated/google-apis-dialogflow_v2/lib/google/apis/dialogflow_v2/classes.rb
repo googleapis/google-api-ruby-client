@@ -14470,6 +14470,37 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2ProbeDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `initTime`
+        # @return [String]
+        attr_accessor :init_time
+      
+        # 
+        # Corresponds to the JSON property `optionsLatency`
+        # @return [String]
+        attr_accessor :options_latency
+      
+        # 
+        # Corresponds to the JSON property `probeStatus`
+        # @return [String]
+        attr_accessor :probe_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @init_time = args[:init_time] if args.key?(:init_time)
+          @options_latency = args[:options_latency] if args.key?(:options_latency)
+          @probe_status = args[:probe_status] if args.key?(:probe_status)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2QueryInput
         include Google::Apis::Core::Hashable
       
@@ -15524,6 +15555,87 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2SipHostname
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `connectionState`
+        # @return [String]
+        attr_accessor :connection_state
+      
+        # 
+        # Corresponds to the JSON property `enabledSipPing`
+        # @return [Boolean]
+        attr_accessor :enabled_sip_ping
+        alias_method :enabled_sip_ping?, :enabled_sip_ping
+      
+        # 
+        # Corresponds to the JSON property `errorDetails`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails]
+        attr_accessor :error_details
+      
+        # 
+        # Corresponds to the JSON property `peerHostname`
+        # @return [String]
+        attr_accessor :peer_hostname
+      
+        # 
+        # Corresponds to the JSON property `peerSocketAddress`
+        # @return [String]
+        attr_accessor :peer_socket_address
+      
+        # 
+        # Corresponds to the JSON property `pingInterval`
+        # @return [String]
+        attr_accessor :ping_interval
+      
+        # 
+        # Corresponds to the JSON property `probeDetails`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ProbeDetails]
+        attr_accessor :probe_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_state = args[:connection_state] if args.key?(:connection_state)
+          @enabled_sip_ping = args[:enabled_sip_ping] if args.key?(:enabled_sip_ping)
+          @error_details = args[:error_details] if args.key?(:error_details)
+          @peer_hostname = args[:peer_hostname] if args.key?(:peer_hostname)
+          @peer_socket_address = args[:peer_socket_address] if args.key?(:peer_socket_address)
+          @ping_interval = args[:ping_interval] if args.key?(:ping_interval)
+          @probe_details = args[:probe_details] if args.key?(:probe_details)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `certificateState`
+        # @return [String]
+        attr_accessor :certificate_state
+      
+        # 
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_state = args[:certificate_state] if args.key?(:certificate_state)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2SipTrunk
         include Google::Apis::Core::Hashable
       
@@ -15543,9 +15655,19 @@ module Google
         attr_accessor :expected_hostname
       
         # 
+        # Corresponds to the JSON property `googleRootCertFile`
+        # @return [String]
+        attr_accessor :google_root_cert_file
+      
+        # 
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `peerHostnames`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipHostname>]
+        attr_accessor :peer_hostnames
       
         def initialize(**args)
            update!(**args)
@@ -15556,7 +15678,9 @@ module Google
           @connections = args[:connections] if args.key?(:connections)
           @display_name = args[:display_name] if args.key?(:display_name)
           @expected_hostname = args[:expected_hostname] if args.key?(:expected_hostname)
+          @google_root_cert_file = args[:google_root_cert_file] if args.key?(:google_root_cert_file)
           @name = args[:name] if args.key?(:name)
+          @peer_hostnames = args[:peer_hostnames] if args.key?(:peer_hostnames)
         end
       end
       

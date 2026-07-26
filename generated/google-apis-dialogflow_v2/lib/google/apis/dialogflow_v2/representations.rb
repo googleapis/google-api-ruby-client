@@ -2674,6 +2674,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ProbeDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2QueryInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2849,6 +2855,18 @@ module Google
       end
       
       class GoogleCloudDialogflowV2SipConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SipHostname
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8679,6 +8697,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2ProbeDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :init_time, as: 'initTime'
+          property :options_latency, as: 'optionsLatency'
+          property :probe_status, as: 'probeStatus'
+        end
+      end
+      
       class GoogleCloudDialogflowV2QueryInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8998,6 +9025,29 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2SipHostname
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_state, as: 'connectionState'
+          property :enabled_sip_ping, as: 'enabledSipPing'
+          property :error_details, as: 'errorDetails', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails::Representation
+      
+          property :peer_hostname, as: 'peerHostname'
+          property :peer_socket_address, as: 'peerSocketAddress'
+          property :ping_interval, as: 'pingInterval'
+          property :probe_details, as: 'probeDetails', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ProbeDetails, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ProbeDetails::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_state, as: 'certificateState'
+          property :error_message, as: 'errorMessage'
+        end
+      end
+      
       class GoogleCloudDialogflowV2SipTrunk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9005,7 +9055,10 @@ module Google
       
           property :display_name, as: 'displayName'
           collection :expected_hostname, as: 'expectedHostname'
+          property :google_root_cert_file, as: 'googleRootCertFile'
           property :name, as: 'name'
+          collection :peer_hostnames, as: 'peerHostnames', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipHostname, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipHostname::Representation
+      
         end
       end
       
