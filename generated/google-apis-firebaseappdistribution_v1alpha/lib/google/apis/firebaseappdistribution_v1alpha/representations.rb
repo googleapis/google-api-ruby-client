@@ -379,16 +379,22 @@ module Google
       class GoogleFirebaseAppdistroV1Release
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accepted_invitation_count, as: 'acceptedInvitationCount'
           property :android_package_registration_state, as: 'androidPackageRegistrationState'
           property :binary_download_uri, as: 'binaryDownloadUri'
+          property :binary_type, as: 'binaryType'
           property :build_version, as: 'buildVersion'
           property :create_time, as: 'createTime'
           property :display_version, as: 'displayVersion'
           property :expire_time, as: 'expireTime'
+          property :feedback_count, as: 'feedbackCount'
           property :firebase_console_uri, as: 'firebaseConsoleUri'
+          property :installation_count, as: 'installationCount'
           property :name, as: 'name'
+          property :open_invitation_count, as: 'openInvitationCount'
           property :release_notes, as: 'releaseNotes', class: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1ReleaseNotes, decorator: Google::Apis::FirebaseappdistributionV1alpha::GoogleFirebaseAppdistroV1ReleaseNotes::Representation
       
+          property :test_state, as: 'testState'
           property :testing_uri, as: 'testingUri'
           property :update_time, as: 'updateTime'
         end
