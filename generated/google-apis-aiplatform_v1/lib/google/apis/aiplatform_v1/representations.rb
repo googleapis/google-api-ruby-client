@@ -28,7 +28,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8710,6 +8722,8 @@ module Google
           property :anchor_last_frame, as: 'anchorLastFrame'
           property :cfg_scale, as: 'cfgScale'
           property :codec, as: 'codec'
+          property :color_alignment, as: 'colorAlignment', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig::Representation
+      
           collection :conditioning_frames, as: 'conditioningFrames', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame::Representation
       
           hash :custom_parameters, as: 'customParameters'
@@ -8725,9 +8739,18 @@ module Google
       
           property :seamless, as: 'seamless', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionSeamless, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionSeamless::Representation
       
+          property :spatial_alignment, as: 'spatialAlignment', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig::Representation
+      
           property :truncate_input_video, as: 'truncateInputVideo'
           property :video_transform_mask_gcs_uri, as: 'videoTransformMaskGcsUri'
           property :video_transform_strength, as: 'videoTransformStrength'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
         end
       end
       
@@ -8737,6 +8760,13 @@ module Google
           property :frame_num, as: 'frameNum'
           property :image, as: 'image', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestImage, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestImage::Representation
       
+        end
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
         end
       end
       
@@ -11125,6 +11155,7 @@ module Google
       class GoogleCloudAiplatformV1DeprovisionSemanticGovernancePolicyEngineRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :force, as: 'force'
         end
       end
       
@@ -13957,6 +13988,7 @@ module Google
           collection :image_search_queries, as: 'imageSearchQueries'
           property :retrieval_metadata, as: 'retrievalMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RetrievalMetadata::Representation
       
+          collection :retrieval_queries, as: 'retrievalQueries'
           property :search_entry_point, as: 'searchEntryPoint', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SearchEntryPoint, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SearchEntryPoint::Representation
       
           collection :source_flagging_uris, as: 'sourceFlaggingUris', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri::Representation
