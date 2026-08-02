@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailureInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1447,6 +1453,14 @@ module Google
         end
       end
       
+      class ExternalId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :namespace, as: 'namespace'
+        end
+      end
+      
       class FailureInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1509,6 +1523,8 @@ module Google
           property :direct_members_count, :numeric_string => true, as: 'directMembersCount'
           property :email, as: 'email'
           property :etag, as: 'etag'
+          collection :external_ids, as: 'externalIds', class: Google::Apis::AdminDirectoryV1::ExternalId, decorator: Google::Apis::AdminDirectoryV1::ExternalId::Representation
+      
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
