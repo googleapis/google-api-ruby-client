@@ -863,6 +863,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network, as: 'network'
+          property :nic_type, as: 'nicType'
           property :no_external_ip_address, as: 'noExternalIpAddress'
           property :subnetwork, as: 'subnetwork'
         end
