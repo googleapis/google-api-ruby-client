@@ -147,6 +147,156 @@ module Google
         end
       end
       
+      # The transcription of an audio part. For multi-speaker audio, each speaker
+      # segment is a separate Part with its own AudioTranscription carrying the
+      # speaker_label.
+      class GoogleCloudAiplatformV1beta1AudioTranscription
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A label identifying the speaker of this audio segment (e.g. "spk_1",
+        # "spk_2"). Present when diarization is set.
+        # Corresponds to the JSON property `speakerLabel`
+        # @return [String]
+        attr_accessor :speaker_label
+      
+        # Required. The transcription text of this audio segment.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Optional. Detailed word-level transcriptions and timing details. Present when
+        # word_timestamp is set.
+        # Corresponds to the JSON property `words`
+        # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo>]
+        attr_accessor :words
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker_label = args[:speaker_label] if args.key?(:speaker_label)
+          @text = args[:text] if args.key?(:text)
+          @words = args[:words] if args.key?(:words)
+        end
+      end
+      
+      # Configuration for speech recognition (transcription).
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of phrases to bias the ASR model towards.
+        # Corresponds to the JSON property `adaptationPhrases`
+        # @return [Array<String>]
+        attr_accessor :adaptation_phrases
+      
+        # Optional. A list of custom vocabulary phrases to bias the speech recognition
+        # model toward recognizing specific terms.
+        # Corresponds to the JSON property `customVocabulary`
+        # @return [Array<String>]
+        attr_accessor :custom_vocabulary
+      
+        # Optional. Configures speaker diarization.
+        # Corresponds to the JSON property `diarization`
+        # @return [Boolean]
+        attr_accessor :diarization
+        alias_method :diarization?, :diarization
+      
+        # Indicates the language of the audio should be automatically detected.
+        # Corresponds to the JSON property `languageAuto`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto]
+        attr_accessor :language_auto
+      
+        # Provides hints to the model about possible languages present in the audio.
+        # Corresponds to the JSON property `languageHints`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints]
+        attr_accessor :language_hints
+      
+        # Optional. Configures word-level timestamp generation.
+        # Corresponds to the JSON property `wordTimestamp`
+        # @return [Boolean]
+        attr_accessor :word_timestamp
+        alias_method :word_timestamp?, :word_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adaptation_phrases = args[:adaptation_phrases] if args.key?(:adaptation_phrases)
+          @custom_vocabulary = args[:custom_vocabulary] if args.key?(:custom_vocabulary)
+          @diarization = args[:diarization] if args.key?(:diarization)
+          @language_auto = args[:language_auto] if args.key?(:language_auto)
+          @language_hints = args[:language_hints] if args.key?(:language_hints)
+          @word_timestamp = args[:word_timestamp] if args.key?(:word_timestamp)
+        end
+      end
+      
+      # Indicates the language of the audio should be automatically detected.
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Provides hints to the model about possible languages present in the audio.
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints
+        include Google::Apis::Core::Hashable
+      
+        # Required. BCP-47 language codes. At least one must be specified.
+        # Corresponds to the JSON property `languageCodes`
+        # @return [Array<String>]
+        attr_accessor :language_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_codes = args[:language_codes] if args.key?(:language_codes)
+        end
+      end
+      
+      # Information about a single recognized word.
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. End offset in time of the word relative to the start of the audio.
+        # Corresponds to the JSON property `endOffset`
+        # @return [String]
+        attr_accessor :end_offset
+      
+        # Optional. Start offset in time of the word relative to the start of the audio.
+        # Corresponds to the JSON property `startOffset`
+        # @return [String]
+        attr_accessor :start_offset
+      
+        # Required. Transcript of the word.
+        # Corresponds to the JSON property `word`
+        # @return [String]
+        attr_accessor :word
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
+          @word = args[:word] if args.key?(:word)
+        end
+      end
+      
       # Auth configuration to run the extension.
       class GoogleCloudAiplatformV1beta1AuthConfig
         include Google::Apis::Core::Hashable
@@ -559,6 +709,12 @@ module Google
       class GoogleCloudAiplatformV1beta1CodeExecutionResult
         include Google::Apis::Core::Hashable
       
+        # Optional. The identifier of the `ExecutableCode` part this result is for. Only
+        # populated if the corresponding `ExecutableCode` has an id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Required. Outcome of the code execution.
         # Corresponds to the JSON property `outcome`
         # @return [String]
@@ -576,6 +732,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @id = args[:id] if args.key?(:id)
           @outcome = args[:outcome] if args.key?(:outcome)
           @output = args[:output] if args.key?(:output)
         end
@@ -767,6 +924,12 @@ module Google
         # @return [String]
         attr_accessor :code
       
+        # Optional. Unique identifier of the `ExecutableCode` part. The server returns
+        # the `CodeExecutionResult` with the matching `id`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         # Required. Programming language of the `code`.
         # Corresponds to the JSON property `language`
         # @return [String]
@@ -779,6 +942,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
+          @id = args[:id] if args.key?(:id)
           @language = args[:language] if args.key?(:language)
         end
       end
@@ -1513,6 +1677,11 @@ module Google
         attr_accessor :audio_timestamp
         alias_method :audio_timestamp?, :audio_timestamp
       
+        # Configuration for speech recognition (transcription).
+        # Corresponds to the JSON property `audioTranscriptionConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfig]
+        attr_accessor :audio_transcription_config
+      
         # Optional. The number of candidate responses to generate. A higher `
         # candidate_count` can provide more options to choose from, but it also consumes
         # more resources. This can be useful for generating a variety of responses and
@@ -1699,6 +1868,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_timestamp = args[:audio_timestamp] if args.key?(:audio_timestamp)
+          @audio_transcription_config = args[:audio_transcription_config] if args.key?(:audio_transcription_config)
           @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
           @enable_affective_dialog = args[:enable_affective_dialog] if args.key?(:enable_affective_dialog)
           @frequency_penalty = args[:frequency_penalty] if args.key?(:frequency_penalty)
@@ -1869,6 +2039,12 @@ module Google
         attr_accessor :enable_widget
         alias_method :enable_widget?, :enable_widget
       
+        # Defines the types of Google Maps grounding that can be enabled and their
+        # configurations.
+        # Corresponds to the JSON property `groundingTypes`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMapsGroundingTypes]
+        attr_accessor :grounding_types
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1876,6 +2052,61 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_widget = args[:enable_widget] if args.key?(:enable_widget)
+          @grounding_types = args[:grounding_types] if args.key?(:grounding_types)
+        end
+      end
+      
+      # Defines the types of Google Maps grounding that can be enabled and their
+      # configurations.
+      class GoogleCloudAiplatformV1beta1GoogleMapsGroundingTypes
+        include Google::Apis::Core::Hashable
+      
+        # Grounding with Google Maps Places data (e.g. QueryPlaces). This is the default
+        # Google Maps grounding type when no other type is specified.
+        # Corresponds to the JSON property `places`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMapsPlaces]
+        attr_accessor :places
+      
+        # Grounding with Google Maps Routing APIs (ComputeRoutes and SearchAlongRoute).
+        # Corresponds to the JSON property `routing`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMapsRouting]
+        attr_accessor :routing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @places = args[:places] if args.key?(:places)
+          @routing = args[:routing] if args.key?(:routing)
+        end
+      end
+      
+      # Grounding with Google Maps Places data (e.g. QueryPlaces). This is the default
+      # Google Maps grounding type when no other type is specified.
+      class GoogleCloudAiplatformV1beta1GoogleMapsPlaces
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Grounding with Google Maps Routing APIs (ComputeRoutes and SearchAlongRoute).
+      class GoogleCloudAiplatformV1beta1GoogleMapsRouting
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2669,6 +2900,13 @@ module Google
       class GoogleCloudAiplatformV1beta1Part
         include Google::Apis::Core::Hashable
       
+        # The transcription of an audio part. For multi-speaker audio, each speaker
+        # segment is a separate Part with its own AudioTranscription carrying the
+        # speaker_label.
+        # Corresponds to the JSON property `audioTranscription`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscription]
+        attr_accessor :audio_transcription
+      
         # Result of executing the ExecutableCode. Generated only when the `CodeExecution`
         # tool is used.
         # Corresponds to the JSON property `codeExecutionResult`
@@ -2750,6 +2988,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @audio_transcription = args[:audio_transcription] if args.key?(:audio_transcription)
           @code_execution_result = args[:code_execution_result] if args.key?(:code_execution_result)
           @executable_code = args[:executable_code] if args.key?(:executable_code)
           @file_data = args[:file_data] if args.key?(:file_data)
