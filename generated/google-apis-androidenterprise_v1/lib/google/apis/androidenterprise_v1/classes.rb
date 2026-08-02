@@ -1173,11 +1173,6 @@ module Google
       class GoogleAuthenticationSettings
         include Google::Apis::Core::Hashable
       
-        # Whether dedicated devices are allowed.
-        # Corresponds to the JSON property `dedicatedDevicesAllowed`
-        # @return [String]
-        attr_accessor :dedicated_devices_allowed
-      
         # Whether Google authentication is required.
         # Corresponds to the JSON property `googleAuthenticationRequired`
         # @return [String]
@@ -1189,7 +1184,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @dedicated_devices_allowed = args[:dedicated_devices_allowed] if args.key?(:dedicated_devices_allowed)
           @google_authentication_required = args[:google_authentication_required] if args.key?(:google_authentication_required)
         end
       end
