@@ -672,12 +672,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          collection :connectors, as: 'connectors', class: Google::Apis::FirebasedataconnectV1::Connector, decorator: Google::Apis::FirebasedataconnectV1::Connector::Representation
+      
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
+          collection :schemas, as: 'schemas', class: Google::Apis::FirebasedataconnectV1::Schema, decorator: Google::Apis::FirebasedataconnectV1::Schema::Representation
+      
+          property :source, as: 'source', class: Google::Apis::FirebasedataconnectV1::Source, decorator: Google::Apis::FirebasedataconnectV1::Source::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
