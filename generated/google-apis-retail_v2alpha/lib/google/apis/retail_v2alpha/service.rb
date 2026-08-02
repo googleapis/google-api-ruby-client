@@ -56,8 +56,8 @@ module Google
         
         # The method enrolls a solution of type Retail Search into a project. The
         # Recommendations AI solution type is enrolled by default when your project
-        # enables Retail API, so you don't need to call the enrollSolution method for
-        # recommendations.
+        # enables AI Commerce Search API, so you don't need to call the enrollSolution
+        # method for recommendations.
         # @param [String] project
         #   Required. Full resource name of parent. Format: `projects/`
         #   project_number_or_id``
@@ -154,7 +154,7 @@ module Google
         end
         
         # Gets the project. Throws `NOT_FOUND` if the project wasn't initialized for the
-        # Retail API service.
+        # AI Commerce Search API service.
         # @param [String] name
         #   Required. Full resource name of the project. Format: `projects/`
         #   project_number_or_id`/retailProject`
@@ -185,7 +185,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the retail API solutions the project has enrolled.
+        # Lists all the AI Commerce Search API solutions the project has enrolled.
         # @param [String] parent
         #   Required. Full resource name of parent. Format: `projects/`
         #   project_number_or_id``
@@ -3050,8 +3050,8 @@ module Google
         
         # Writes a single user event from the browser. For larger user event payload
         # over 16 KB, the POST method should be used instead, otherwise a 400 Bad
-        # Request error is returned. This method is used only by the Retail API
-        # JavaScript pixel and Google Tag Manager. Users should not call this method
+        # Request error is returned. This method is used only by the AI Commerce Search
+        # API JavaScript pixel and Google Tag Manager. Users should not call this method
         # directly.
         # @param [String] parent
         #   Required. The parent catalog name, such as `projects/1234/locations/global/
