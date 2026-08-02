@@ -51,13 +51,13 @@ module Google
       class AttributeValue
         include Google::Apis::Core::Hashable
       
-        # A Boolean value represented by `true` or `false`.
+        # Optional. A Boolean value represented by `true` or `false`.
         # Corresponds to the JSON property `boolValue`
         # @return [Boolean]
         attr_accessor :bool_value
         alias_method :bool_value?, :bool_value
       
-        # A 64-bit signed integer.
+        # Optional. A 64-bit signed integer.
         # Corresponds to the JSON property `intValue`
         # @return [Fixnum]
         attr_accessor :int_value
@@ -83,18 +83,18 @@ module Google
       class Attributes
         include Google::Apis::Core::Hashable
       
-        # A set of attributes. Each attribute's key can be up to 128 bytes long. The
-        # value can be a string up to 256 bytes, a signed 64-bit integer, or the boolean
-        # values `true` or `false`. For example: "/instance_id": ` "string_value": ` "
-        # value": "my-instance" ` ` "/http/request_bytes": ` "int_value": 300 ` "example.
-        # com/myattribute": ` "bool_value": false `
+        # Optional. A set of attributes. Each attribute's key can be up to 128 bytes
+        # long. The value can be a string up to 256 bytes, a signed 64-bit integer, or
+        # the boolean values `true` or `false`. For example: "/instance_id": ` "
+        # string_value": ` "value": "my-instance" ` ` "/http/request_bytes": ` "
+        # int_value": 300 ` "example.com/myattribute": ` "bool_value": false `
         # Corresponds to the JSON property `attributeMap`
         # @return [Hash<String,Google::Apis::CloudtraceV2::AttributeValue>]
         attr_accessor :attribute_map
       
-        # The number of attributes that were discarded. Attributes can be discarded
-        # because their keys are too long or because there are too many attributes. If
-        # this value is 0 then all attributes are valid.
+        # Optional. The number of attributes that were discarded. Attributes can be
+        # discarded because their keys are too long or because there are too many
+        # attributes. If this value is 0 then all attributes are valid.
         # Corresponds to the JSON property `droppedAttributesCount`
         # @return [Fixnum]
         attr_accessor :dropped_attributes_count
@@ -158,17 +158,17 @@ module Google
         # @return [Google::Apis::CloudtraceV2::Attributes]
         attr_accessor :attributes
       
-        # The `[SPAN_ID]` for a span within a trace.
+        # Optional. The `[SPAN_ID]` for a span within a trace.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id
       
-        # The `[TRACE_ID]` for a trace within a project.
+        # Optional. The `[TRACE_ID]` for a trace within a project.
         # Corresponds to the JSON property `traceId`
         # @return [String]
         attr_accessor :trace_id
       
-        # The relationship of the current span relative to the linked span.
+        # Optional. The relationship of the current span relative to the linked span.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -191,13 +191,13 @@ module Google
       class Links
         include Google::Apis::Core::Hashable
       
-        # The number of dropped links after the maximum size was enforced. If this value
-        # is 0, then no links were dropped.
+        # Optional. The number of dropped links after the maximum size was enforced. If
+        # this value is 0, then no links were dropped.
         # Corresponds to the JSON property `droppedLinksCount`
         # @return [Fixnum]
         attr_accessor :dropped_links_count
       
-        # A collection of links.
+        # Optional. A collection of links.
         # Corresponds to the JSON property `link`
         # @return [Array<Google::Apis::CloudtraceV2::Link>]
         attr_accessor :link
@@ -217,24 +217,25 @@ module Google
       class MessageEvent
         include Google::Apis::Core::Hashable
       
-        # The number of compressed bytes sent or received. If missing, the compressed
-        # size is assumed to be the same size as the uncompressed size.
+        # Optional. The number of compressed bytes sent or received. If missing, the
+        # compressed size is assumed to be the same size as the uncompressed size.
         # Corresponds to the JSON property `compressedSizeBytes`
         # @return [Fixnum]
         attr_accessor :compressed_size_bytes
       
-        # An identifier for the MessageEvent's message that can be used to match `SENT`
-        # and `RECEIVED` MessageEvents.
+        # Optional. An identifier for the MessageEvent's message that can be used to
+        # match `SENT` and `RECEIVED` MessageEvents.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
       
-        # Type of MessageEvent. Indicates whether the message was sent or received.
+        # Optional. Type of MessageEvent. Indicates whether the message was sent or
+        # received.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # The number of uncompressed bytes sent or received.
+        # Optional. The number of uncompressed bytes sent or received.
         # Corresponds to the JSON property `uncompressedSizeBytes`
         # @return [Fixnum]
         attr_accessor :uncompressed_size_bytes
@@ -314,8 +315,8 @@ module Google
         # @return [Google::Apis::CloudtraceV2::Links]
         attr_accessor :links
       
-        # Required. The resource name of the span in the following format: * `projects/[
-        # PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique
+        # Identifier. The resource name of the span in the following format: * `projects/
+        # [PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique
         # identifier for a trace within a project; it is a 32-character hexadecimal
         # encoding of a 16-byte array. It should not be zero. `[SPAN_ID]` is a unique
         # identifier for a span within a trace; it is a 16-character hexadecimal
@@ -324,8 +325,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The `[SPAN_ID]` of this span's parent span. If this is a root span, then this
-        # field must be empty.
+        # Optional. The `[SPAN_ID]` of this span's parent span. If this is a root span,
+        # then this field must be empty.
         # Corresponds to the JSON property `parentSpanId`
         # @return [String]
         attr_accessor :parent_span_id
@@ -406,8 +407,8 @@ module Google
       class StackFrame
         include Google::Apis::Core::Hashable
       
-        # The column number where the function call appears, if available. This is
-        # important in JavaScript because of its anonymous functions.
+        # Optional. The column number where the function call appears, if available.
+        # This is important in JavaScript because of its anonymous functions.
         # Corresponds to the JSON property `columnNumber`
         # @return [Fixnum]
         attr_accessor :column_number
@@ -422,7 +423,7 @@ module Google
         # @return [Google::Apis::CloudtraceV2::TruncatableString]
         attr_accessor :function_name
       
-        # The line number in `file_name` where the function call appears.
+        # Optional. The line number in `file_name` where the function call appears.
         # Corresponds to the JSON property `lineNumber`
         # @return [Fixnum]
         attr_accessor :line_number
@@ -462,13 +463,13 @@ module Google
       class StackFrames
         include Google::Apis::Core::Hashable
       
-        # The number of stack frames that were dropped because there were too many stack
-        # frames. If this value is 0, then no stack frames were dropped.
+        # Optional. The number of stack frames that were dropped because there were too
+        # many stack frames. If this value is 0, then no stack frames were dropped.
         # Corresponds to the JSON property `droppedFramesCount`
         # @return [Fixnum]
         attr_accessor :dropped_frames_count
       
-        # Stack frames in this call stack.
+        # Optional. Stack frames in this call stack.
         # Corresponds to the JSON property `frame`
         # @return [Array<Google::Apis::CloudtraceV2::StackFrame>]
         attr_accessor :frame
@@ -493,11 +494,12 @@ module Google
         # @return [Google::Apis::CloudtraceV2::StackFrames]
         attr_accessor :stack_frames
       
-        # The hash ID is used to conserve network bandwidth for duplicate stack traces
-        # within a single trace. Often multiple spans will have identical stack traces.
-        # The first occurrence of a stack trace should contain both the `stackFrame`
-        # content and a value in `stackTraceHashId`. Subsequent spans within the same
-        # request can refer to that stack trace by only setting `stackTraceHashId`.
+        # Optional. The hash ID is used to conserve network bandwidth for duplicate
+        # stack traces within a single trace. Often multiple spans will have identical
+        # stack traces. The first occurrence of a stack trace should contain both the `
+        # stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within
+        # the same request can refer to that stack trace by only setting `
+        # stackTraceHashId`.
         # Corresponds to the JSON property `stackTraceHashId`
         # @return [Fixnum]
         attr_accessor :stack_trace_hash_id
@@ -566,7 +568,7 @@ module Google
         # @return [Google::Apis::CloudtraceV2::MessageEvent]
         attr_accessor :message_event
       
-        # The timestamp indicating the time the event occurred.
+        # Optional. The timestamp indicating the time the event occurred.
         # Corresponds to the JSON property `time`
         # @return [String]
         attr_accessor :time
@@ -589,19 +591,19 @@ module Google
       class TimeEvents
         include Google::Apis::Core::Hashable
       
-        # The number of dropped annotations in all the included time events. If the
-        # value is 0, then no annotations were dropped.
+        # Optional. The number of dropped annotations in all the included time events.
+        # If the value is 0, then no annotations were dropped.
         # Corresponds to the JSON property `droppedAnnotationsCount`
         # @return [Fixnum]
         attr_accessor :dropped_annotations_count
       
-        # The number of dropped message events in all the included time events. If the
-        # value is 0, then no message events were dropped.
+        # Optional. The number of dropped message events in all the included time events.
+        # If the value is 0, then no message events were dropped.
         # Corresponds to the JSON property `droppedMessageEventsCount`
         # @return [Fixnum]
         attr_accessor :dropped_message_events_count
       
-        # A collection of `TimeEvent`s.
+        # Optional. A collection of `TimeEvent`s.
         # Corresponds to the JSON property `timeEvent`
         # @return [Array<Google::Apis::CloudtraceV2::TimeEvent>]
         attr_accessor :time_event
@@ -622,17 +624,17 @@ module Google
       class TruncatableString
         include Google::Apis::Core::Hashable
       
-        # The number of bytes removed from the original string. If this value is 0, then
-        # the string was not shortened.
+        # Optional. The number of bytes removed from the original string. If this value
+        # is 0, then the string was not shortened.
         # Corresponds to the JSON property `truncatedByteCount`
         # @return [Fixnum]
         attr_accessor :truncated_byte_count
       
-        # The shortened string. For example, if the original string is 500 bytes long
-        # and the limit of the string is 128 bytes, then `value` contains the first 128
-        # bytes of the 500-byte string. Truncation always happens on a UTF8 character
-        # boundary. If there are multi-byte characters in the string, then the length of
-        # the shortened string might be less than the size limit.
+        # Optional. The shortened string. For example, if the original string is 500
+        # bytes long and the limit of the string is 128 bytes, then `value` contains the
+        # first 128 bytes of the 500-byte string. Truncation always happens on a UTF8
+        # character boundary. If there are multi-byte characters in the string, then the
+        # length of the shortened string might be less than the size limit.
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
