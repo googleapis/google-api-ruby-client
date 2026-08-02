@@ -468,11 +468,15 @@ module Google
       
         # Optional. Enumerated string value that indicates the identity of the bot,
         # formatted in kebab-case. Current example values include the following: *
-        # google-agent * browser-base * chat-gpt * aws-bedrock * cybaa-bot * cloudflare *
-        # payhawk Ensure that your applications can handle identifier values not
-        # explicitly listed here. Deprecated values might take some time to stop showing
-        # up in responses. New values can be pushed so this list should be taken as non
-        # exhaustive.
+        # google-agent - AI_AGENT * browser-base - AI_AGENT * chat-gpt - AI_AGENT * aws-
+        # bedrock - AI_AGENT * cybaa-bot - AI_AGENT * cloudflare - AI_AGENT * payhawk -
+        # AI_AGENT * duck-duck-go - SEARCH_INDEXER * mediaboard - CONTENT_SCRAPER *
+        # marker-io - AI_AGENT * broadcom - AI_AGENT * anchor-browser - AI_AGENT *
+        # shopify - AI_AGENT * stackscope - CONTENT_SCRAPER * manus - AI_AGENT * kernel-
+        # sh - AI_AGENT * zvelo - SEARCH_INDEXER Ensure that your applications can
+        # handle identifier values not explicitly listed here. Deprecated values might
+        # take some time to stop showing up in responses. New values can be pushed so
+        # this list should be taken as non exhaustive.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -539,12 +543,12 @@ module Google
         # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome]
         attr_accessor :challenge
       
-        # Optional. A CEL condition that must be met for this rule to apply. The
-        # following fields can be referenced in the condition: * `score` * `
-        # user_ip_address` * `user_asn` * `user_agent` * `verified_bots.name` * `
-        # verified_bots.bot_type` Examples: * `score < 0.5` * `user_ip_address == "123.
-        # 45.67.89"` * `user_agent.contains("Chrome")` * `score < 0.5 && user_ip_address
-        # == "123.45.67.89"`
+        # Optional. A CEL condition that must be met for this rule to apply. If
+        # unspecified, the rule applies unconditionally. The following fields can be
+        # referenced in the condition: * `score` * `user_ip_address` * `user_asn` * `
+        # user_agent` * `verified_bots.name` * `verified_bots.bot_type` Examples: * `
+        # score < 0.5` * `user_ip_address == "123.45.67.89"` * `user_agent.contains("
+        # Chrome")` * `score < 0.5 && user_ip_address == "123.45.67.89"`
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
@@ -1815,8 +1819,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Action name to be used for token generation for this endpoint. The
-        # action name is not case-sensitive and can only contain alphanumeric characters,
-        # slashes, and underscores.
+        # action name can only contain alphanumeric characters, slashes, and underscores.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -1824,12 +1827,12 @@ module Google
         # Required. URI path of the API endpoint to protect. Must start with '/'.
         # Supports glob characters '*' to match a single path segment and '**' to match
         # multiple path segments. Standalone root catch-alls ('/*' and '/**') are
-        # invalid because it would hurt performance to trigger reCAPTCHA on every single
-        # request to your backend. Matching is evaluated against the URL path only (
-        # domain, scheme, and query parameters are ignored). Examples: - `/login`
-        # matches `/login`, `https://example.com/login`, and `/login?query=1`, but not `/
-        # login/step1`. - `/products/*` matches `/products/123`, but not `/products/123/
-        # 456`. - `/content/**` matches `/content/articles/2024/01/01`.
+        # invalid because it can negatively impact performance to trigger reCAPTCHA on
+        # every single request to your backend. Matching is evaluated against the URL
+        # path only (domain, scheme, and query parameters are ignored). Examples: - `/
+        # login` matches `/login`, `https://example.com/login`, and `/login?query=1`,
+        # but not `/login/step1`. - `/products/*` matches `/products/123`, but not `/
+        # products/123/456`. - `/content/**` matches `/content/articles/2024/01/01`.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
