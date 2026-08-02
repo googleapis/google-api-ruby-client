@@ -46,6 +46,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1AudioTranscription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1AuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +305,24 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1GoogleMaps
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GoogleMapsGroundingTypes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GoogleMapsPlaces
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1GoogleMapsRouting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -723,6 +771,52 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1AudioTranscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speaker_label, as: 'speakerLabel'
+          property :text, as: 'text'
+          collection :words, as: 'words', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adaptation_phrases, as: 'adaptationPhrases'
+          collection :custom_vocabulary, as: 'customVocabulary'
+          property :diarization, as: 'diarization'
+          property :language_auto, as: 'languageAuto', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto::Representation
+      
+          property :language_hints, as: 'languageHints', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints::Representation
+      
+          property :word_timestamp, as: 'wordTimestamp'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :language_codes, as: 'languageCodes'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_offset, as: 'endOffset'
+          property :start_offset, as: 'startOffset'
+          property :word, as: 'word'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1AuthConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -835,6 +929,7 @@ module Google
       class GoogleCloudAiplatformV1beta1CodeExecutionResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
           property :outcome, as: 'outcome'
           property :output, as: 'output'
         end
@@ -895,6 +990,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
+          property :id, as: 'id'
           property :language, as: 'language'
         end
       end
@@ -1087,6 +1183,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_timestamp, as: 'audioTimestamp'
+          property :audio_transcription_config, as: 'audioTranscriptionConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfig::Representation
+      
           property :candidate_count, as: 'candidateCount'
           property :enable_affective_dialog, as: 'enableAffectiveDialog'
           property :frequency_penalty, as: 'frequencyPenalty'
@@ -1164,6 +1262,30 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_widget, as: 'enableWidget'
+          property :grounding_types, as: 'groundingTypes', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMapsGroundingTypes, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMapsGroundingTypes::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GoogleMapsGroundingTypes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :places, as: 'places', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMapsPlaces, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMapsPlaces::Representation
+      
+          property :routing, as: 'routing', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMapsRouting, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GoogleMapsRouting::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GoogleMapsPlaces
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GoogleMapsRouting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1383,6 +1505,8 @@ module Google
       class GoogleCloudAiplatformV1beta1Part
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :audio_transcription, as: 'audioTranscription', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscription, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscription::Representation
+      
           property :code_execution_result, as: 'codeExecutionResult', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CodeExecutionResult, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1CodeExecutionResult::Representation
       
           property :executable_code, as: 'executableCode', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExecutableCode, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ExecutableCode::Representation
