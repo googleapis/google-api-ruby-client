@@ -1711,15 +1711,23 @@ module Google
       class LocationPolicy
         include Google::Apis::Core::Hashable
       
-        # A list of allowed location names represented by internal URLs. Each location
-        # can be a region or a zone. Only one region or multiple zones in one region is
-        # supported now. For example, ["regions/us-central1"] allow VMs in any zones in
-        # region us-central1. ["zones/us-central1-a", "zones/us-central1-c"] only allow
-        # VMs in zones us-central1-a and us-central1-c. Mixing locations from different
-        # regions would cause errors. For example, ["regions/us-central1", "zones/us-
-        # central1-a", "zones/us-central1-b", "zones/us-west1-a"] contains locations
-        # from two distinct regions: us-central1 and us-west1. This combination will
-        # trigger an error.
+        # A list of location names that are allowed for the job's VMs formatted as URLs.
+        # Each location can be a region or a zone, but you can only specify one region
+        # or multiple zones in one region per job. For example, `["regions/us-central1"]`
+        # allow VMs in any zones in region `us-central1`, and `["zones/us-central1-a", "
+        # zones/us-central1-c"]` only allow VMs in zones `us-central1-a` and `us-
+        # central1-c`. However, `["regions/us-central1", "zones/us-central1-a", "zones/
+        # us-central1-b", "zones/us-west1-a"]` causes an error because it contains
+        # multiple regions (`us-central1` and `us-west1`). The specified region or zones
+        # must be in the same region in which the job is created starting on the
+        # following dates: + For projects that have successfully submitted before July
+        # 31, 2026 at least one job that uses the `allowedLocations[]` field with any
+        # region or zones outside of the job's location, the changes are starting on
+        # _June 30, 2027_. + For all other projects, the changes are starting on _July
+        # 31, 2026_. For example, for job `projects/123/locations/us-central1/jobs/jobid`
+        # , the specified region or zones must be in `us-central1`. Using a different
+        # region (e.g. `regions/us-west1`) or a zone not in `us-central1` (e.g. `zones/
+        # us-west1-a`) causes an error.
         # Corresponds to the JSON property `allowedLocations`
         # @return [Array<String>]
         attr_accessor :allowed_locations
@@ -1847,6 +1855,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The NIC type of the network interface.
+        # Corresponds to the JSON property `nicType`
+        # @return [String]
+        attr_accessor :nic_type
+      
         # Default is false (with an external IP address). Required if no external public
         # IP address is attached to the VM. If no external public IP address, additional
         # configuration is required to allow the VM to access Google Services. See https:
@@ -1873,6 +1886,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network = args[:network] if args.key?(:network)
+          @nic_type = args[:nic_type] if args.key?(:nic_type)
           @no_external_ip_address = args[:no_external_ip_address] if args.key?(:no_external_ip_address)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
