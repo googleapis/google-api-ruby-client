@@ -2310,19 +2310,10 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The identifier for the data source. This is a partial list of
-        # supported connectors. Please refer to the [documentation](https://docs.cloud.
-        # google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-
-        # data-stores) for the full list of connectors. Supported first-party connectors
-        # include: * `gcs` * `bigquery` * `gcp_fhir` * `google_mail` * `google_drive` * `
-        # google_calendar` * `google_chat` Supported third-party connectors include:
-        # Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` *
-        # `jira` * `servicenow` * `sharepoint` Preview connectors: * `asana` * `
-        # azure_active_directory` * `box` * `canva` * `confluence_server` * `
-        # custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `
-        # gitlab` * `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `
-        # notion` * `okta` * `pagerduty` * `peoplesoft` * `salesforce` * `shopify` * `
-        # slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk`
+        # Required. The identifier for the data source. For the full, up-to-date list of
+        # supported connectors and their values, see [Connect a third-party data source](
+        # https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-third-
+        # party-data-source#sources-by-launch-stage).
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
@@ -2432,6 +2423,12 @@ module Google
         # Corresponds to the JSON property `latestPauseTime`
         # @return [String]
         attr_accessor :latest_pause_time
+      
+        # User-facing metadata for the connector, shown on the connector detail page (
+        # title, description, short_description, author, authenticated_account, note).
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata]
+        attr_accessor :metadata
       
         # Identifier. The full resource name of the Data Connector. Format: `projects/*/
         # locations/*/collections/*/dataConnector`.
@@ -2585,6 +2582,7 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
           @latest_pause_time = args[:latest_pause_time] if args.key?(:latest_pause_time)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @next_sync_time = args[:next_sync_time] if args.key?(:next_sync_time)
           @oauth_static_ip_addresses = args[:oauth_static_ip_addresses] if args.key?(:oauth_static_ip_addresses)
@@ -2601,6 +2599,63 @@ module Google
           @tag = args[:tag] if args.key?(:tag)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vpcsc_enabled = args[:vpcsc_enabled] if args.key?(:vpcsc_enabled)
+        end
+      end
+      
+      # User-facing metadata for the connector, shown on the connector detail page (
+      # title, description, short_description, author, authenticated_account, note).
+      class GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The end user's account as authenticated to the connector, so the end
+        # user can see which account is connected. May be an email, a username, or any
+        # identifier the connector/third party provides.
+        # Corresponds to the JSON property `authenticatedAccount`
+        # @return [String]
+        attr_accessor :authenticated_account
+      
+        # Optional. The party that authored the connector, e.g. "Google" or a third-
+        # party provider name. Lets end users see who authored a connector (future:
+        # third-party-authored connectors).
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # Optional. Human-readable description of the connector, shown on the connector
+        # detail page. One connector has a single description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Free-form, multi-line note about the connector's capabilities or a
+        # custom note that can be set for the connector.
+        # Corresponds to the JSON property `note`
+        # @return [String]
+        attr_accessor :note
+      
+        # Optional. Short, subtitle-length description of the connector (e.g. shown
+        # beneath the connector name in list and detail views).
+        # Corresponds to the JSON property `shortDescription`
+        # @return [String]
+        attr_accessor :short_description
+      
+        # Optional. Display title of the connector.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authenticated_account = args[:authenticated_account] if args.key?(:authenticated_account)
+          @author = args[:author] if args.key?(:author)
+          @description = args[:description] if args.key?(:description)
+          @note = args[:note] if args.key?(:note)
+          @short_description = args[:short_description] if args.key?(:short_description)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -5590,7 +5645,9 @@ module Google
         end
       end
       
-      # Response message for CompletionService.PurgeCompletionSuggestions method.
+      # Response message for CompletionService.PurgeCompletionSuggestions method. If
+      # the long running operation is successfully done, then this message is returned
+      # by the google.longrunning.Operations.response field.
       class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse
         include Google::Apis::Core::Hashable
       
@@ -10540,19 +10597,10 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy]
         attr_accessor :data_protection_policy
       
-        # Required. The identifier for the data source. This is a partial list of
-        # supported connectors. Please refer to the [documentation](https://docs.cloud.
-        # google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-
-        # data-stores) for the full list of connectors. Supported first-party connectors
-        # include: * `gcs` * `bigquery` * `gcp_fhir` * `google_mail` * `google_drive` * `
-        # google_calendar` * `google_chat` Supported third-party connectors include:
-        # Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` *
-        # `jira` * `servicenow` * `sharepoint` Preview connectors: * `asana` * `
-        # azure_active_directory` * `box` * `canva` * `confluence_server` * `
-        # custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `
-        # gitlab` * `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `
-        # notion` * `okta` * `pagerduty` * `peoplesoft` * `salesforce` * `shopify` * `
-        # slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk`
+        # Required. The identifier for the data source. For the full, up-to-date list of
+        # supported connectors and their values, see [Connect a third-party data source](
+        # https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-third-
+        # party-data-source#sources-by-launch-stage).
         # Corresponds to the JSON property `dataSource`
         # @return [String]
         attr_accessor :data_source
@@ -10662,6 +10710,12 @@ module Google
         # Corresponds to the JSON property `latestPauseTime`
         # @return [String]
         attr_accessor :latest_pause_time
+      
+        # User-facing metadata for the connector, shown on the connector detail page (
+        # title, description, short_description, author, authenticated_account, note).
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata]
+        attr_accessor :metadata
       
         # Identifier. The full resource name of the Data Connector. Format: `projects/*/
         # locations/*/collections/*/dataConnector`.
@@ -10816,6 +10870,7 @@ module Google
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
           @latest_pause_time = args[:latest_pause_time] if args.key?(:latest_pause_time)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @next_sync_time = args[:next_sync_time] if args.key?(:next_sync_time)
           @oauth_static_ip_addresses = args[:oauth_static_ip_addresses] if args.key?(:oauth_static_ip_addresses)
@@ -10832,6 +10887,63 @@ module Google
           @tag = args[:tag] if args.key?(:tag)
           @update_time = args[:update_time] if args.key?(:update_time)
           @vpcsc_enabled = args[:vpcsc_enabled] if args.key?(:vpcsc_enabled)
+        end
+      end
+      
+      # User-facing metadata for the connector, shown on the connector detail page (
+      # title, description, short_description, author, authenticated_account, note).
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The end user's account as authenticated to the connector, so the end
+        # user can see which account is connected. May be an email, a username, or any
+        # identifier the connector/third party provides.
+        # Corresponds to the JSON property `authenticatedAccount`
+        # @return [String]
+        attr_accessor :authenticated_account
+      
+        # Optional. The party that authored the connector, e.g. "Google" or a third-
+        # party provider name. Lets end users see who authored a connector (future:
+        # third-party-authored connectors).
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # Optional. Human-readable description of the connector, shown on the connector
+        # detail page. One connector has a single description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Free-form, multi-line note about the connector's capabilities or a
+        # custom note that can be set for the connector.
+        # Corresponds to the JSON property `note`
+        # @return [String]
+        attr_accessor :note
+      
+        # Optional. Short, subtitle-length description of the connector (e.g. shown
+        # beneath the connector name in list and detail views).
+        # Corresponds to the JSON property `shortDescription`
+        # @return [String]
+        attr_accessor :short_description
+      
+        # Optional. Display title of the connector.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authenticated_account = args[:authenticated_account] if args.key?(:authenticated_account)
+          @author = args[:author] if args.key?(:author)
+          @description = args[:description] if args.key?(:description)
+          @note = args[:note] if args.key?(:note)
+          @short_description = args[:short_description] if args.key?(:short_description)
+          @title = args[:title] if args.key?(:title)
         end
       end
       
@@ -14886,7 +14998,9 @@ module Google
         end
       end
       
-      # Response message for CompletionService.PurgeCompletionSuggestions method.
+      # Response message for CompletionService.PurgeCompletionSuggestions method. If
+      # the long running operation is successfully done, then this message is returned
+      # by the google.longrunning.Operations.response field.
       class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse
         include Google::Apis::Core::Hashable
       
@@ -18301,8 +18415,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaUserInfo
         include Google::Apis::Core::Hashable
       
-        # Precise location info with multiple representation options. Currently only
-        # latitude and longitude point is supported.
+        # Precise location info with multiple representation options.
         # Corresponds to the JSON property `preciseLocation`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation]
         attr_accessor :precise_location
@@ -18347,13 +18460,12 @@ module Google
         end
       end
       
-      # Precise location info with multiple representation options. Currently only
-      # latitude and longitude point is supported.
+      # Precise location info with multiple representation options.
       class GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation
         include Google::Apis::Core::Hashable
       
-        # Optional. Location represented by a natural language address. Will later be
-        # geocoded and converted to either a point or a polygon.
+        # Location represented by a natural language address. Will later be geocoded and
+        # converted to either a point or a polygon.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
@@ -34768,8 +34880,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaUserInfo
         include Google::Apis::Core::Hashable
       
-        # Precise location info with multiple representation options. Currently only
-        # latitude and longitude point is supported.
+        # Precise location info with multiple representation options.
         # Corresponds to the JSON property `preciseLocation`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation]
         attr_accessor :precise_location
@@ -34814,13 +34925,12 @@ module Google
         end
       end
       
-      # Precise location info with multiple representation options. Currently only
-      # latitude and longitude point is supported.
+      # Precise location info with multiple representation options.
       class GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation
         include Google::Apis::Core::Hashable
       
-        # Optional. Location represented by a natural language address. Will later be
-        # geocoded and converted to either a point or a polygon.
+        # Location represented by a natural language address. Will later be geocoded and
+        # converted to either a point or a polygon.
         # Corresponds to the JSON property `address`
         # @return [String]
         attr_accessor :address
