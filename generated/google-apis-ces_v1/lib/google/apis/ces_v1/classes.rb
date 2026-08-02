@@ -2169,6 +2169,12 @@ module Google
         # @return [Google::Apis::CesV1::Span]
         attr_accessor :root_span
       
+        # Optional. The intended ground-truth text from the Simulated Caller (Polysynth).
+        # Only populated when word error rate metrics are enabled.
+        # Corresponds to the JSON property `userIntendedText`
+        # @return [String]
+        attr_accessor :user_intended_text
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2177,6 +2183,7 @@ module Google
         def update!(**args)
           @messages = args[:messages] if args.key?(:messages)
           @root_span = args[:root_span] if args.key?(:root_span)
+          @user_intended_text = args[:user_intended_text] if args.key?(:user_intended_text)
         end
       end
       
@@ -2648,6 +2655,11 @@ module Google
         # @return [Google::Apis::CesV1::DataStoreToolRewriterConfig]
         attr_accessor :rewriter_config
       
+        # Snippets configuration.
+        # Corresponds to the JSON property `snippetsConfig`
+        # @return [Google::Apis::CesV1::DataStoreToolSnippetsConfig]
+        attr_accessor :snippets_config
+      
         # Summarization configuration.
         # Corresponds to the JSON property `summarizationConfig`
         # @return [Google::Apis::CesV1::DataStoreToolSummarizationConfig]
@@ -2662,6 +2674,7 @@ module Google
           @grounding_config = args[:grounding_config] if args.key?(:grounding_config)
           @modality_type = args[:modality_type] if args.key?(:modality_type)
           @rewriter_config = args[:rewriter_config] if args.key?(:rewriter_config)
+          @snippets_config = args[:snippets_config] if args.key?(:snippets_config)
           @summarization_config = args[:summarization_config] if args.key?(:summarization_config)
         end
       end
@@ -2695,6 +2708,26 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @model_settings = args[:model_settings] if args.key?(:model_settings)
           @prompt = args[:prompt] if args.key?(:prompt)
+        end
+      end
+      
+      # Snippets configuration.
+      class DataStoreToolSnippetsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether snippets are enabled.
+        # Corresponds to the JSON property `enableSnippets`
+        # @return [Boolean]
+        attr_accessor :enable_snippets
+        alias_method :enable_snippets?, :enable_snippets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_snippets = args[:enable_snippets] if args.key?(:enable_snippets)
         end
       end
       
@@ -4214,6 +4247,14 @@ module Google
         # @return [String]
         attr_accessor :conflict_resolution_strategy
       
+        # Optional. Flag for dry-running the import process. If set to true, the import
+        # process will only perform validations and will not make any changes to the
+        # existing app or create a new one.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4221,6 +4262,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @conflict_resolution_strategy = args[:conflict_resolution_strategy] if args.key?(:conflict_resolution_strategy)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
         end
       end
       
@@ -7327,6 +7369,12 @@ module Google
         # @return [String]
         attr_accessor :entry_agent
       
+        # Optional. Whether to exclude diagnostic info from the session output.
+        # Corresponds to the JSON property `excludeDiagnosticInfo`
+        # @return [Boolean]
+        attr_accessor :exclude_diagnostic_info
+        alias_method :exclude_diagnostic_info?, :exclude_diagnostic_info
+      
         # Optional. The historical context of the session, including user inputs, agent
         # responses, and other messages. Typically, CES agent would manage session
         # automatically so client doesn't need to explicitly populate this field.
@@ -7381,6 +7429,7 @@ module Google
           @deployment = args[:deployment] if args.key?(:deployment)
           @enable_text_streaming = args[:enable_text_streaming] if args.key?(:enable_text_streaming)
           @entry_agent = args[:entry_agent] if args.key?(:entry_agent)
+          @exclude_diagnostic_info = args[:exclude_diagnostic_info] if args.key?(:exclude_diagnostic_info)
           @historical_contexts = args[:historical_contexts] if args.key?(:historical_contexts)
           @input_audio_config = args[:input_audio_config] if args.key?(:input_audio_config)
           @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
@@ -7711,7 +7760,8 @@ module Google
       class SynthesizeSpeechConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The Cloud Storage URI to the consent audio for voice cloning.
+        # Optional. Deprecated: Use `custom_voice_samples` in AudioProcessingConfig
+        # instead. The Cloud Storage URI to the consent audio for voice cloning.
         # Corresponds to the JSON property `consentAudioGcsUri`
         # @return [String]
         attr_accessor :consent_audio_gcs_uri
@@ -7743,7 +7793,8 @@ module Google
         # @return [String]
         attr_accessor :voice
       
-        # Optional. The Cloud Storage URI to the audio sample for voice cloning. The
+        # Optional. Deprecated: Use `custom_voice_samples` in AudioProcessingConfig
+        # instead. The Cloud Storage URI to the audio sample for voice cloning. The
         # audio sample should be a mono-channel, 24kHz WAV file. Note: Please make sure
         # the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has `
         # storage.objects.get` permission to the Cloud Storage object.
