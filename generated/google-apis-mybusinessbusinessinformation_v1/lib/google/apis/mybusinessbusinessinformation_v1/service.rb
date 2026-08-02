@@ -160,25 +160,28 @@ module Google
         # Returns the list of attributes that would be available for a location with the
         # given primary category and country.
         # @param [String] category_name
-        #   The primary category stable ID to find available attributes. Must be of the
-        #   format categories/`category_id`.
+        #   Optional. The primary category stable ID to find available attributes. Must be
+        #   of the format `categories/`category_id`` (e.g., `categories/gcid:restaurant`).
+        #   Required if `parent` is not set and `show_all` is false.
         # @param [String] language_code
-        #   The BCP 47 code of language to get attribute display names in. If this
-        #   language is not available, they will be provided in English.
+        #   Optional. The BCP 47 code of language to get attribute display names in. If
+        #   this language is not available, they will be provided in English.
         # @param [Fixnum] page_size
         #   How many attributes to include per page. Default is 200, minimum is 1.
         # @param [String] page_token
         #   If specified, the next page of attribute metadata is retrieved.
         # @param [String] parent
-        #   Resource name of the location to look up available attributes. If this field
-        #   is set, category_name, region_code, language_code and show_all are not
-        #   required and must not be set.
+        #   Optional. Resource name of the location to look up available attributes. If
+        #   this field is set, `category_name`, `region_code`, `language_code` and `
+        #   show_all` are not required and must not be set. Format: `locations/`
+        #   location_id`` (e.g., `locations/1234567890`).
         # @param [String] region_code
-        #   The ISO 3166-1 alpha-2 country code to find available attributes.
+        #   Optional. The ISO 3166-1 alpha-2 country code to find available attributes.
+        #   Required if `parent` is not set.
         # @param [Boolean] show_all
-        #   Metadata for all available attributes are returned when this field is set to
-        #   true, disregarding parent and category_name fields. language_code and
-        #   region_code are required when show_all is set to true.
+        #   Optional. If set to true, metadata for all available attributes are returned,
+        #   disregarding `parent` and `category_name` fields. `language_code` and `
+        #   region_code` are required when `show_all` is set to true.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
