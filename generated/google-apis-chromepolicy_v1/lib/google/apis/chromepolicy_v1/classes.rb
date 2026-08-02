@@ -1682,7 +1682,7 @@ module Google
       class Proto2FileDescriptorProto
         include Google::Apis::Core::Hashable
       
-        # copybara:strip_begin TODO(b/297898292) Deprecate and remove this field in
+        # copybara:strip_begin TODO(b/538805613) Deprecate and remove this field in
         # favor of enums. copybara:strip_end
         # Corresponds to the JSON property `editionDeprecated`
         # @return [String]
