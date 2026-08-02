@@ -3678,8 +3678,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :params
       
-        # UserEvent captures all metadata information Retail API needs to know about how
-        # end users interact with customers' website.
+        # UserEvent captures all metadata information AI Commerce Search API needs to
+        # know about how end users interact with customers' website.
         # Corresponds to the JSON property `userEvent`
         # @return [Google::Apis::RetailV2::GoogleCloudRetailV2UserEvent]
         attr_accessor :user_event
@@ -7157,8 +7157,8 @@ module Google
         end
       end
       
-      # UserEvent captures all metadata information Retail API needs to know about how
-      # end users interact with customers' website.
+      # UserEvent captures all metadata information AI Commerce Search API needs to
+      # know about how end users interact with customers' website.
       class GoogleCloudRetailV2UserEvent
         include Google::Apis::Core::Hashable
       
@@ -7166,17 +7166,17 @@ module Google
         # provide custom attributes for ingested user events, also include them in the
         # user events that you associate with prediction requests. Custom attribute
         # formatting must be consistent between imported events and events provided with
-        # prediction requests. This lets the Retail API use those custom attributes when
-        # training models and serving predictions, which helps improve recommendation
-        # quality. This field needs to pass all below criteria, otherwise an
-        # INVALID_ARGUMENT error is returned: * The key must be a UTF-8 encoded string
-        # with a length limit of 5,000 characters. * For text attributes, at most 400
-        # values are allowed. Empty values are not allowed. Each value must be a UTF-8
-        # encoded string with a length limit of 256 characters. * For number attributes,
-        # at most 400 values are allowed. For product recommendations, an example of
-        # extra user information is traffic_channel, which is how a user arrives at the
-        # site. Users can arrive at the site by coming to the site directly, coming
-        # through Google search, or in other ways.
+        # prediction requests. This lets the AI Commerce Search API use those custom
+        # attributes when training models and serving predictions, which helps improve
+        # recommendation quality. This field needs to pass all below criteria, otherwise
+        # an INVALID_ARGUMENT error is returned: * The key must be a UTF-8 encoded
+        # string with a length limit of 5,000 characters. * For text attributes, at most
+        # 400 values are allowed. Empty values are not allowed. Each value must be a UTF-
+        # 8 encoded string with a length limit of 256 characters. * For number
+        # attributes, at most 400 values are allowed. For product recommendations, an
+        # example of extra user information is traffic_channel, which is how a user
+        # arrives at the site. Users can arrive at the site by coming to the site
+        # directly, coming through Google search, or in other ways.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2::GoogleCloudRetailV2CustomAttribute>]
         attr_accessor :attributes
@@ -7236,8 +7236,8 @@ module Google
       
         # A list of identifiers for the independent experiment groups this user event
         # belongs to. This is used to distinguish between user events associated with
-        # different experiment setups (e.g. using Retail API, using different
-        # recommendation models).
+        # different experiment setups (such as by using AI Commerce Search API, or using
+        # different recommendation models).
         # Corresponds to the JSON property `experimentIds`
         # @return [Array<String>]
         attr_accessor :experiment_ids
@@ -7683,7 +7683,7 @@ module Google
       class GoogleCloudRetailV2alphaEnrollSolutionResponse
         include Google::Apis::Core::Hashable
       
-        # Retail API solution that the project has enrolled.
+        # AI Commerce Search API solution that the project has enrolled.
         # Corresponds to the JSON property `enrolledSolution`
         # @return [String]
         attr_accessor :enrolled_solution
