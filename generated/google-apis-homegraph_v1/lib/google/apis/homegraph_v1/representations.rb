@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Result
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StateAndNotificationPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -404,6 +410,8 @@ module Google
       class ReportStateAndNotificationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :device_results, as: 'deviceResults', class: Google::Apis::HomegraphV1::Result, decorator: Google::Apis::HomegraphV1::Result::Representation
+      
           property :request_id, as: 'requestId'
         end
       end
@@ -419,6 +427,13 @@ module Google
       class RequestSyncDevicesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Result
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :home_trait_commit_time, as: 'homeTraitCommitTime'
         end
       end
       

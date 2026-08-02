@@ -724,6 +724,12 @@ module Google
       class ReportStateAndNotificationResponse
         include Google::Apis::Core::Hashable
       
+        # Map from agent device ID to the result of reporting state and notifications.
+        # This is only populated for UDDM updates for now.
+        # Corresponds to the JSON property `deviceResults`
+        # @return [Hash<String,Google::Apis::HomegraphV1::Result>]
+        attr_accessor :device_results
+      
         # Request ID copied from ReportStateAndNotificationRequest.
         # Corresponds to the JSON property `requestId`
         # @return [String]
@@ -735,6 +741,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @device_results = args[:device_results] if args.key?(:device_results)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
@@ -780,6 +787,25 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Result of reporting state and notifications for a single device.
+      class Result
+        include Google::Apis::Core::Hashable
+      
+        # The trait commit timestamp of the state update in Home Graph.
+        # Corresponds to the JSON property `homeTraitCommitTime`
+        # @return [String]
+        attr_accessor :home_trait_commit_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @home_trait_commit_time = args[:home_trait_commit_time] if args.key?(:home_trait_commit_time)
         end
       end
       
