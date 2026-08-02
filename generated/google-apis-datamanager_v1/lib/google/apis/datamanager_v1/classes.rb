@@ -163,7 +163,7 @@ module Google
         # @return [String]
         attr_accessor :platform_type_string
       
-        # Required. The ISO 3166-2 country plus subdivision.
+        # Optional. The ISO 3166-2 country plus subdivision.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
         attr_accessor :region_code
@@ -321,6 +321,29 @@ module Google
       class AddressInfo
         include Google::Apis::Core::Hashable
       
+        # Optional. The street and number of the user's address. Used only for Google
+        # Analytics. This field is hashed and possibly encrypted. Normalize the value
+        # before hashing: - Remove symbol characters - Convert to lowercase - Remove
+        # leading and trailing whitespace
+        # Corresponds to the JSON property `addressLine`
+        # @return [String]
+        attr_accessor :address_line
+      
+        # Optional. The administrative area (state/province) of the user's address. Used
+        # only for Google Analytics. The value should be normalized as such: - Remove
+        # symbol characters - Convert to lowercase - Remove leading and trailing
+        # whitespace
+        # Corresponds to the JSON property `administrativeArea`
+        # @return [String]
+        attr_accessor :administrative_area
+      
+        # Optional. The city of the user's address. Used only for Google Analytics. The
+        # value should be normalized as such: - Remove symbol characters - Convert to
+        # lowercase - Remove leading and trailing whitespace
+        # Corresponds to the JSON property `city`
+        # @return [String]
+        attr_accessor :city
+      
         # Required. Family (last) name of the user, all lowercase, with no punctuation,
         # no leading or trailing whitespace, and hashed as SHA-256.
         # Corresponds to the JSON property `familyName`
@@ -349,6 +372,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @address_line = args[:address_line] if args.key?(:address_line)
+          @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
+          @city = args[:city] if args.key?(:city)
           @family_name = args[:family_name] if args.key?(:family_name)
           @given_name = args[:given_name] if args.key?(:given_name)
           @postal_code = args[:postal_code] if args.key?(:postal_code)
@@ -377,6 +403,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :destination_references
       
+        # Google user id data holding encrypted google user IDs. At least one google
+        # user ID is required.
+        # Corresponds to the JSON property `googleUserIdData`
+        # @return [Google::Apis::DatamanagerV1::GoogleUserIdData]
+        attr_accessor :google_user_id_data
+      
         # Mobile IDs for the audience. At least one mobile ID is required.
         # Corresponds to the JSON property `mobileData`
         # @return [Google::Apis::DatamanagerV1::MobileData]
@@ -388,6 +420,12 @@ module Google
         # Corresponds to the JSON property `pairData`
         # @return [Google::Apis::DatamanagerV1::PairData]
         attr_accessor :pair_data
+      
+        # Partner-provided data holding the partner-provided identifiers. At least one
+        # partner-provided identifier is required.
+        # Corresponds to the JSON property `partnerProvidedIdData`
+        # @return [Google::Apis::DatamanagerV1::PartnerProvidedIdData]
+        attr_accessor :partner_provided_id_data
       
         # Publisher provided identifiers data holding the ppids. At least one ppid is
         # required. This feature is only available to data partners.
@@ -414,8 +452,10 @@ module Google
           @composite_data = args[:composite_data] if args.key?(:composite_data)
           @consent = args[:consent] if args.key?(:consent)
           @destination_references = args[:destination_references] if args.key?(:destination_references)
+          @google_user_id_data = args[:google_user_id_data] if args.key?(:google_user_id_data)
           @mobile_data = args[:mobile_data] if args.key?(:mobile_data)
           @pair_data = args[:pair_data] if args.key?(:pair_data)
+          @partner_provided_id_data = args[:partner_provided_id_data] if args.key?(:partner_provided_id_data)
           @ppid_data = args[:ppid_data] if args.key?(:ppid_data)
           @user_data = args[:user_data] if args.key?(:user_data)
           @user_id_data = args[:user_id_data] if args.key?(:user_id_data)
@@ -772,15 +812,15 @@ module Google
         # @return [String]
         attr_accessor :category
       
-        # Optional. The IP address of the device for the given context. **Note:** Google
-        # Ads does not support IP address matching for end users in the European
-        # Economic Area (EEA), United Kingdom (UK), or Switzerland (CH). Add logic to
-        # conditionally exclude sharing IP addresses from users from these regions and
-        # ensure that you provide users with clear and comprehensive information about
-        # the data you collect on your sites, apps, and other properties and get consent
-        # where required by law or any applicable Google policies. See the [About
-        # offline conversion imports](https://support.google.com/google-ads/answer/
-        # 2998031) page for more details.
+        # Optional. The IP address of the device for the given context. Required when
+        # used in an AdEvent. **Note:** Google Ads does not support IP address matching
+        # for end users in the European Economic Area (EEA), United Kingdom (UK), or
+        # Switzerland (CH). Add logic to conditionally exclude sharing IP addresses from
+        # users from these regions and ensure that you provide users with clear and
+        # comprehensive information about the data you collect on your sites, apps, and
+        # other properties and get consent where required by law or any applicable
+        # Google policies. See the [About offline conversion imports](https://support.
+        # google.com/google-ads/answer/2998031) page for more details.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -1240,6 +1280,38 @@ module Google
         end
       end
       
+      # Detailed row-level warning with field paths.
+      class FieldWarning
+        include Google::Apis::Core::Hashable
+      
+        # The detailed warning message describing the issue.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The field path that triggered the warning. Uses the same format as google.rpc.
+        # BadRequest.FieldViolation.field.
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # The warning reason.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @field = args[:field] if args.key?(:field)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
       # Information about the Google Cloud Platform wrapped key.
       class GcpWrappedKeyInfo
         include Google::Apis::Core::Hashable
@@ -1279,6 +1351,26 @@ module Google
           @kek_uri = args[:kek_uri] if args.key?(:kek_uri)
           @key_type = args[:key_type] if args.key?(:key_type)
           @wip_provider = args[:wip_provider] if args.key?(:wip_provider)
+        end
+      end
+      
+      # Google user id data holding encrypted google user IDs. At least one google
+      # user ID is required.
+      class GoogleUserIdData
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of encrypted google user IDs.
+        # Corresponds to the JSON property `googleUserIds`
+        # @return [Array<String>]
+        attr_accessor :google_user_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_user_ids = args[:google_user_ids] if args.key?(:google_user_ids)
         end
       end
       
@@ -1397,6 +1489,11 @@ module Google
       class IngestAudienceMembersResponse
         include Google::Apis::Core::Hashable
       
+        # Detailed row-level warnings with field paths.
+        # Corresponds to the JSON property `fieldWarnings`
+        # @return [Array<Google::Apis::DatamanagerV1::FieldWarning>]
+        attr_accessor :field_warnings
+      
         # The auto-generated ID of the request.
         # Corresponds to the JSON property `requestId`
         # @return [String]
@@ -1408,6 +1505,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @field_warnings = args[:field_warnings] if args.key?(:field_warnings)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
@@ -1422,6 +1520,12 @@ module Google
         # @return [Google::Apis::DatamanagerV1::IngestCompositeDataStatus]
         attr_accessor :composite_data_ingestion_status
       
+        # The status of the google user id data ingestion to the destination containing
+        # stats related to the ingestion.
+        # Corresponds to the JSON property `googleUserIdDataIngestionStatus`
+        # @return [Google::Apis::DatamanagerV1::IngestGoogleUserIdDataStatus]
+        attr_accessor :google_user_id_data_ingestion_status
+      
         # The status of the mobile data ingestion to the destination containing stats
         # related to the ingestion.
         # Corresponds to the JSON property `mobileDataIngestionStatus`
@@ -1433,6 +1537,12 @@ module Google
         # Corresponds to the JSON property `pairDataIngestionStatus`
         # @return [Google::Apis::DatamanagerV1::IngestPairDataStatus]
         attr_accessor :pair_data_ingestion_status
+      
+        # The status of the partner provided id data ingestion to the destination
+        # containing stats related to the ingestion.
+        # Corresponds to the JSON property `partnerProvidedIdDataIngestionStatus`
+        # @return [Google::Apis::DatamanagerV1::IngestPartnerProvidedIdDataStatus]
+        attr_accessor :partner_provided_id_data_ingestion_status
       
         # The status of the ppid data ingestion to the destination containing stats
         # related to the ingestion.
@@ -1459,8 +1569,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @composite_data_ingestion_status = args[:composite_data_ingestion_status] if args.key?(:composite_data_ingestion_status)
+          @google_user_id_data_ingestion_status = args[:google_user_id_data_ingestion_status] if args.key?(:google_user_id_data_ingestion_status)
           @mobile_data_ingestion_status = args[:mobile_data_ingestion_status] if args.key?(:mobile_data_ingestion_status)
           @pair_data_ingestion_status = args[:pair_data_ingestion_status] if args.key?(:pair_data_ingestion_status)
+          @partner_provided_id_data_ingestion_status = args[:partner_provided_id_data_ingestion_status] if args.key?(:partner_provided_id_data_ingestion_status)
           @ppid_data_ingestion_status = args[:ppid_data_ingestion_status] if args.key?(:ppid_data_ingestion_status)
           @user_data_ingestion_status = args[:user_data_ingestion_status] if args.key?(:user_data_ingestion_status)
           @user_id_data_ingestion_status = args[:user_id_data_ingestion_status] if args.key?(:user_id_data_ingestion_status)
@@ -1567,6 +1679,11 @@ module Google
       class IngestEventsResponse
         include Google::Apis::Core::Hashable
       
+        # Detailed row-level warnings with field paths.
+        # Corresponds to the JSON property `fieldWarnings`
+        # @return [Array<Google::Apis::DatamanagerV1::FieldWarning>]
+        attr_accessor :field_warnings
+      
         # The auto-generated ID of the request.
         # Corresponds to the JSON property `requestId`
         # @return [String]
@@ -1578,6 +1695,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @field_warnings = args[:field_warnings] if args.key?(:field_warnings)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
@@ -1598,6 +1716,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @record_count = args[:record_count] if args.key?(:record_count)
+        end
+      end
+      
+      # The status of the google user id data ingestion to the destination containing
+      # stats related to the ingestion.
+      class IngestGoogleUserIdDataStatus
+        include Google::Apis::Core::Hashable
+      
+        # The total count of google user ids sent in the upload request for the
+        # destination. Includes all google user ids in the request, regardless of
+        # whether they were successfully ingested or not.
+        # Corresponds to the JSON property `googleUserIdCount`
+        # @return [Fixnum]
+        attr_accessor :google_user_id_count
+      
+        # The total count of audience members sent in the upload request for the
+        # destination. Includes all audience members in the request, regardless of
+        # whether they were successfully ingested or not.
+        # Corresponds to the JSON property `recordCount`
+        # @return [Fixnum]
+        attr_accessor :record_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_user_id_count = args[:google_user_id_count] if args.key?(:google_user_id_count)
           @record_count = args[:record_count] if args.key?(:record_count)
         end
       end
@@ -1658,6 +1806,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @pair_id_count = args[:pair_id_count] if args.key?(:pair_id_count)
+          @record_count = args[:record_count] if args.key?(:record_count)
+        end
+      end
+      
+      # The status of the partner provided id data ingestion to the destination
+      # containing stats related to the ingestion.
+      class IngestPartnerProvidedIdDataStatus
+        include Google::Apis::Core::Hashable
+      
+        # The total count of partner provided ids sent in the upload request for the
+        # destination. Includes all partner provided ids in the request, regardless of
+        # whether they were successfully ingested or not.
+        # Corresponds to the JSON property `partnerProvidedIdCount`
+        # @return [Fixnum]
+        attr_accessor :partner_provided_id_count
+      
+        # The total count of audience members sent in the upload request for the
+        # destination. Includes all audience members in the request, regardless of
+        # whether they were successfully ingested or not.
+        # Corresponds to the JSON property `recordCount`
+        # @return [Fixnum]
+        attr_accessor :record_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partner_provided_id_count = args[:partner_provided_id_count] if args.key?(:partner_provided_id_count)
           @record_count = args[:record_count] if args.key?(:record_count)
         end
       end
@@ -2187,8 +2365,10 @@ module Google
       class MobileData
         include Google::Apis::Core::Hashable
       
-        # Required. The list of mobile device IDs (advertising ID/IDFA). At most 10 `
-        # mobileIds` can be provided in a single AudienceMember.
+        # Required. The list of mobile device IDs (Android advertising ID, iOS IDFA for
+        # Customer Match user lists and Android advertising ID, iOS IDFA, Xbox or
+        # Microsoft ID, Amazon Fire TV ID, Roku ID, Generic Device ID for basic user
+        # lists). At most 10 `mobileIds` can be provided in a single AudienceMember.
         # Corresponds to the JSON property `mobileIds`
         # @return [Array<String>]
         attr_accessor :mobile_ids
@@ -2448,6 +2628,26 @@ module Google
         end
       end
       
+      # Partner-provided data holding the partner-provided identifiers. At least one
+      # partner-provided identifier is required.
+      class PartnerProvidedIdData
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of partner-provided identifiers.
+        # Corresponds to the JSON property `partnerProvidedIds`
+        # @return [Array<String>]
+        attr_accessor :partner_provided_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partner_provided_ids = args[:partner_provided_ids] if args.key?(:partner_provided_ids)
+        end
+      end
+      
       # Publisher provided identifiers data holding the ppids. At least one ppid is
       # required. This feature is only available to data partners.
       class PpidData
@@ -2523,6 +2723,74 @@ module Google
         def update!(**args)
           @billable_record_count = args[:billable_record_count] if args.key?(:billable_record_count)
           @sync_status = args[:sync_status] if args.key?(:sync_status)
+        end
+      end
+      
+      # Request to remove all users from an audience in the provided destinations.
+      # Returns a RemoveAllAudienceMembersResponse.
+      class RemoveAllAudienceMembersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of destinations to remove the users from.
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::DatamanagerV1::Destination>]
+        attr_accessor :destinations
+      
+        # Optional. The remove as of time. If set, only audience members last added
+        # before this time will be removed. If not set, it defaults to current time. The
+        # remove as of time must not be in the future.
+        # Corresponds to the JSON property `removeAsOfTime`
+        # @return [String]
+        attr_accessor :remove_as_of_time
+      
+        # Optional. For testing purposes. If `true`, the request is validated but not
+        # executed. Only errors are returned, not results.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @remove_as_of_time = args[:remove_as_of_time] if args.key?(:remove_as_of_time)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response from the RemoveAllAudienceMembersRequest.
+      class RemoveAllAudienceMembersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The auto-generated ID of the request.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # The status of the remove all audience members request.
+      class RemoveAllAudienceMembersStatus
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2602,6 +2870,11 @@ module Google
         # @return [Google::Apis::DatamanagerV1::RemoveCompositeDataStatus]
         attr_accessor :composite_data_removal_status
       
+        # The status of the google user id data removal from the destination.
+        # Corresponds to the JSON property `googleUserIdDataRemovalStatus`
+        # @return [Google::Apis::DatamanagerV1::RemoveGoogleUserIdDataStatus]
+        attr_accessor :google_user_id_data_removal_status
+      
         # The status of the mobile data removal from the destination.
         # Corresponds to the JSON property `mobileDataRemovalStatus`
         # @return [Google::Apis::DatamanagerV1::RemoveMobileDataStatus]
@@ -2611,6 +2884,11 @@ module Google
         # Corresponds to the JSON property `pairDataRemovalStatus`
         # @return [Google::Apis::DatamanagerV1::RemovePairDataStatus]
         attr_accessor :pair_data_removal_status
+      
+        # The status of the partner provided id data removal from the destination.
+        # Corresponds to the JSON property `partnerProvidedIdDataRemovalStatus`
+        # @return [Google::Apis::DatamanagerV1::RemovePartnerProvidedIdDataStatus]
+        attr_accessor :partner_provided_id_data_removal_status
       
         # The status of the ppid data removal from the destination.
         # Corresponds to the JSON property `ppidDataRemovalStatus`
@@ -2634,8 +2912,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @composite_data_removal_status = args[:composite_data_removal_status] if args.key?(:composite_data_removal_status)
+          @google_user_id_data_removal_status = args[:google_user_id_data_removal_status] if args.key?(:google_user_id_data_removal_status)
           @mobile_data_removal_status = args[:mobile_data_removal_status] if args.key?(:mobile_data_removal_status)
           @pair_data_removal_status = args[:pair_data_removal_status] if args.key?(:pair_data_removal_status)
+          @partner_provided_id_data_removal_status = args[:partner_provided_id_data_removal_status] if args.key?(:partner_provided_id_data_removal_status)
           @ppid_data_removal_status = args[:ppid_data_removal_status] if args.key?(:ppid_data_removal_status)
           @user_data_removal_status = args[:user_data_removal_status] if args.key?(:user_data_removal_status)
           @user_id_data_removal_status = args[:user_id_data_removal_status] if args.key?(:user_id_data_removal_status)
@@ -2667,6 +2947,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_type_counts = args[:data_type_counts] if args.key?(:data_type_counts)
+          @record_count = args[:record_count] if args.key?(:record_count)
+        end
+      end
+      
+      # The status of the google user id data removal from the destination.
+      class RemoveGoogleUserIdDataStatus
+        include Google::Apis::Core::Hashable
+      
+        # The total count of google user ids sent in the removal request. Includes all
+        # google user ids in the request, regardless of whether they were successfully
+        # removed or not.
+        # Corresponds to the JSON property `googleUserIdCount`
+        # @return [Fixnum]
+        attr_accessor :google_user_id_count
+      
+        # The total count of audience members sent in the removal request. Includes all
+        # audience members in the request, regardless of whether they were successfully
+        # removed or not.
+        # Corresponds to the JSON property `recordCount`
+        # @return [Fixnum]
+        attr_accessor :record_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_user_id_count = args[:google_user_id_count] if args.key?(:google_user_id_count)
           @record_count = args[:record_count] if args.key?(:record_count)
         end
       end
@@ -2724,6 +3033,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @pair_id_count = args[:pair_id_count] if args.key?(:pair_id_count)
+          @record_count = args[:record_count] if args.key?(:record_count)
+        end
+      end
+      
+      # The status of the partner provided id data removal from the destination.
+      class RemovePartnerProvidedIdDataStatus
+        include Google::Apis::Core::Hashable
+      
+        # The total count of partner provided ids sent in the removal request. Includes
+        # all partner provided ids in the request, regardless of whether they were
+        # successfully removed or not.
+        # Corresponds to the JSON property `partnerProvidedIdCount`
+        # @return [Fixnum]
+        attr_accessor :partner_provided_id_count
+      
+        # The total count of audience members sent in the removal request. Includes all
+        # audience members in the request, regardless of whether they were successfully
+        # removed or not.
+        # Corresponds to the JSON property `recordCount`
+        # @return [Fixnum]
+        attr_accessor :record_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partner_provided_id_count = args[:partner_provided_id_count] if args.key?(:partner_provided_id_count)
           @record_count = args[:record_count] if args.key?(:record_count)
         end
       end
@@ -2842,6 +3180,11 @@ module Google
         # @return [Google::Apis::DatamanagerV1::IngestEventsStatus]
         attr_accessor :events_ingestion_status
       
+        # The status of the remove all audience members request.
+        # Corresponds to the JSON property `removeAllAudienceMembersStatus`
+        # @return [Google::Apis::DatamanagerV1::RemoveAllAudienceMembersStatus]
+        attr_accessor :remove_all_audience_members_status
+      
         # The request status of the destination.
         # Corresponds to the JSON property `requestStatus`
         # @return [String]
@@ -2863,6 +3206,7 @@ module Google
           @destination = args[:destination] if args.key?(:destination)
           @error_info = args[:error_info] if args.key?(:error_info)
           @events_ingestion_status = args[:events_ingestion_status] if args.key?(:events_ingestion_status)
+          @remove_all_audience_members_status = args[:remove_all_audience_members_status] if args.key?(:remove_all_audience_members_status)
           @request_status = args[:request_status] if args.key?(:request_status)
           @warning_info = args[:warning_info] if args.key?(:warning_info)
         end
