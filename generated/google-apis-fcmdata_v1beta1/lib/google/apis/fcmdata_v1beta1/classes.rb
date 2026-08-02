@@ -152,9 +152,7 @@ module Google
       
         # The percentage of accepted messages that were delayed due to message
         # throttling, such as [collapsible message throttling](https://firebase.google.
-        # com/docs/cloud-messaging/concept-options#collapsible_throttling) or [maximum
-        # message rate throttling](https://firebase.google.com/docs/cloud-messaging/
-        # concept-options#device_throttling).
+        # com/docs/cloud-messaging/concept-options#collapsible_throttling).
         # Corresponds to the JSON property `delayedMessageThrottled`
         # @return [Float]
         attr_accessor :delayed_message_throttled
