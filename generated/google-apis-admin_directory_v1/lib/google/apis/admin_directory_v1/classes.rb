@@ -2525,6 +2525,32 @@ module Google
         end
       end
       
+      # External identifier used to link and identify this group across external
+      # directory systems.
+      class ExternalId
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier string assigned by the external provider.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The system or identity provider managing this ID.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @namespace = args[:namespace] if args.key?(:namespace)
+        end
+      end
+      
       # Info about failures
       class FailureInfo
         include Google::Apis::Core::Hashable
@@ -2743,6 +2769,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Optional. The list of external IDs for the group, such as an immutable
+        # identifier from an external identity provider or directory sync client. Each
+        # entry contains a namespace and an ID value.
+        # Corresponds to the JSON property `externalIds`
+        # @return [Array<Google::Apis::AdminDirectoryV1::ExternalId>]
+        attr_accessor :external_ids
+      
         # Read-only. The unique ID of a group. A group `id` can be used as a group
         # request URI's `groupKey`.
         # Corresponds to the JSON property `id`
@@ -2781,6 +2814,7 @@ module Google
           @direct_members_count = args[:direct_members_count] if args.key?(:direct_members_count)
           @email = args[:email] if args.key?(:email)
           @etag = args[:etag] if args.key?(:etag)
+          @external_ids = args[:external_ids] if args.key?(:external_ids)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
