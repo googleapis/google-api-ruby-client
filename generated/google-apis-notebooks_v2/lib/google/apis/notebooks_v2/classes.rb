@@ -54,11 +54,11 @@ module Google
       class AccessConfig
         include Google::Apis::Core::Hashable
       
-        # An external IP address associated with this instance. Specify an unused static
-        # external IP address available to the project or leave this field undefined to
-        # use an IP from a shared ephemeral IP address pool. If you specify a static
-        # external IP address, it must live in the same region as the zone of the
-        # instance.
+        # Optional. An external IP address associated with this instance. Specify an
+        # unused static external IP address available to the project or leave this field
+        # undefined to use an IP from a shared ephemeral IP address pool. If you specify
+        # a static external IP address, it must live in the same region as the zone of
+        # the instance.
         # Corresponds to the JSON property `externalIp`
         # @return [String]
         attr_accessor :external_ip
@@ -178,8 +178,8 @@ module Google
       class BootDisk
         include Google::Apis::Core::Hashable
       
-        # Optional. Input only. Disk encryption method used on the boot and data disks,
-        # defaults to GMEK.
+        # Optional. Disk encryption method used on the boot and data disks, defaults to
+        # GMEK.
         # Corresponds to the JSON property `diskEncryption`
         # @return [String]
         attr_accessor :disk_encryption
@@ -196,9 +196,9 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # Optional. Input only. The KMS key used to encrypt the disks, only applicable
-        # if disk_encryption is CMEK. Format: `projects/`project_id`/locations/`location`
-        # /keyRings/`key_ring_id`/cryptoKeys/`key_id`` Learn more about using your own
+        # Optional. The KMS key used to encrypt the disks, only applicable if
+        # disk_encryption is CMEK. Format: `projects/`project_id`/locations/`location`/
+        # keyRings/`key_ring_id`/cryptoKeys/`key_id`` Learn more about using your own
         # encryption keys.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
@@ -415,8 +415,8 @@ module Google
       class DataDisk
         include Google::Apis::Core::Hashable
       
-        # Optional. Input only. Disk encryption method used on the boot and data disks,
-        # defaults to GMEK.
+        # Optional. Disk encryption method used on the boot and data disks, defaults to
+        # GMEK.
         # Corresponds to the JSON property `diskEncryption`
         # @return [String]
         attr_accessor :disk_encryption
@@ -432,9 +432,9 @@ module Google
         # @return [String]
         attr_accessor :disk_type
       
-        # Optional. Input only. The KMS key used to encrypt the disks, only applicable
-        # if disk_encryption is CMEK. Format: `projects/`project_id`/locations/`location`
-        # /keyRings/`key_ring_id`/cryptoKeys/`key_id`` Learn more about using your own
+        # Optional. The KMS key used to encrypt the disks, only applicable if
+        # disk_encryption is CMEK. Format: `projects/`project_id`/locations/`location`/
+        # keyRings/`key_ring_id`/cryptoKeys/`key_id`` Learn more about using your own
         # encryption keys.
         # Corresponds to the JSON property `kmsKey`
         # @return [String]
