@@ -978,8 +978,10 @@ module Google
         # It supports the following cases:
         # 
         # -
-        # Case 1: PublicDelegatedPrefix (PDP) for BYOIP external IPv4
-        # addresses. The PDP must support enhanced IPv4 allocations.
+        # Case 1: PublicDelegatedPrefix (PDP) for BYOIP external
+        # addresses. If an IPv4 PDP is used, the PDP must support enhanced IPv4
+        # allocations. If an IPv6 PDP is used, the PDP must be in
+        # EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
         # -
         # Case 2: Internal Range for global internal addresses.
         # Use one of the following formats to specify the resource:
@@ -1098,6 +1100,12 @@ module Google
         # - `PRIVATE_SERVICE_CONNECT` for a private network address that is
         # used to configure Private Service Connect. Only global internal addresses
         # can use this purpose.
+        # - `PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0` for addresses
+        # that can only be assigned to global external Passthrough Network Load
+        # Balancer forwarding rules, as an Availability Group 0 address.
+        # - `PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1` for addresses that
+        # can only be assigned to global external Passthrough Network Load Balancer
+        # forwarding rules, as an Availability Group 1 address.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -2312,7 +2320,42 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # Specifies the disk type used for the boot disk or an additional data
+        # disk. For valid disk type values, see
+        # Supported types for Hyperdisk volumes and
+        # Persistent Disk type variables.
+        # When creating a single instance, you must provide either the full or
+        # partial URL of the disk type. For example, the following values are
+        # valid:
         # 
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/
+        # diskTypes/diskType
+        # - projects/project/zones/zone/diskTypes/diskType
+        # - zones/zone/diskTypes/diskType
+        # When creating an instance template, instance flexibility policy, or when
+        # creating or updating an all-instances configuration, you specify the
+        # disk type without a URL, for example, hyperdisk-balanced.
+        # If you omit this field for a disk, the default disk type depends on
+        # the instance's machine series, as follows.
+        # 
+        # 
+        # - For first- and second-generation machine series like N1, N2, T2, and
+        # M1, the
+        # default disk type is Standard Persistent Disk
+        # (pd-standard).
+        # - For C3, C3D, and M3 the default is Balanced Persistent Disk
+        # (pd-balanced).
+        # - For other third-generation machine
+        # series like A3, H3, Z3, all
+        # fourth-generation types like C4, N4, M4, and newer machine series,
+        # the default is Hyperdisk Balanced
+        # (hyperdisk-balanced).
+        # The disk type you specify must be compatible with the instance's machine
+        # series. For a list of machine series that support Persistent Disk, see Machine
+        # series support for Persistent Disk.
+        # For a list of machine series that support Hyperdisk, seeMachine
+        # series support for Hyperdisk.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -5407,7 +5450,11 @@ module Google
       
         # URL to networkservices.ServiceLbPolicy resource.
         # Can only be set if load balancing scheme is EXTERNAL_MANAGED,
-        # INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        # INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and
+        # EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a
+        # global backend service, the service lb policy must be global. For a
+        # regional backend service, the service lb policy must be regional and in the
+        # same region.
         # Corresponds to the JSON property `serviceLbPolicy`
         # @return [String]
         attr_accessor :service_lb_policy
@@ -8490,6 +8537,100 @@ module Google
         end
       end
       
+      # A request to recommend the best duration for extending an existing
+      # Future Reservation in CALENDAR mode, that is equal or less than the specified
+      # extension duration.
+      class CalendarModeExtensionAdviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The desired end time after the Future Reservation is extended.
+        # Corresponds to the JSON property `endTimeNotLaterThan`
+        # @return [String]
+        attr_accessor :end_time_not_later_than
+      
+        # Required. Reference to the Future Reservation, in the format:
+        # projects/`project`/zones/`zone`/futureReservations/`name`
+        # Full URIs that include hostnames (like compute.googleapis.com or
+        # www.googleapis.com) are also supported.
+        # Corresponds to the JSON property `futureReservation`
+        # @return [String]
+        attr_accessor :future_reservation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time_not_later_than = args[:end_time_not_later_than] if args.key?(:end_time_not_later_than)
+          @future_reservation = args[:future_reservation] if args.key?(:future_reservation)
+        end
+      end
+      
+      # A response containing the recommended duration to extend a
+      # Future Reservation in CALENDAR mode based on the available capacity during
+      # the extension period.
+      class CalendarModeExtensionAdviceResponse
+        include Google::Apis::Core::Hashable
+      
+        # The recommended end time for the extension, which will either be
+        # the end time requested by the caller or the longest alternative for
+        # which there is sufficient capacity. If extension is not possible, this
+        # field will be empty, and not_recommended_reason will be populated instead.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Information about why no recommendation was provided.
+        # Corresponds to the JSON property `notRecommendedReason`
+        # @return [Google::Apis::ComputeAlpha::CalendarModeExtensionAdviceResponseNotRecommendedReason]
+        attr_accessor :not_recommended_reason
+      
+        # Unique id of the recommendation, a UUID string generated by the API.
+        # Corresponds to the JSON property `recommendationId`
+        # @return [String]
+        attr_accessor :recommendation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @not_recommended_reason = args[:not_recommended_reason] if args.key?(:not_recommended_reason)
+          @recommendation_id = args[:recommendation_id] if args.key?(:recommendation_id)
+        end
+      end
+      
+      # Information about why no recommendation was provided.
+      class CalendarModeExtensionAdviceResponseNotRecommendedReason
+        include Google::Apis::Core::Hashable
+      
+        # Details (human readable) describing why the recommendation
+        # was not provided. For example, if the status is CONDITION_NOT_MET,
+        # then this field will contain information about why the requested
+        # extension duration is not eligible.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Status of recommendation.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # A single recommendation to create requested resources. Contains detailed
       # recommendations for every future resources specification specified in
       # CalendarModeAdviceRequest.
@@ -11040,6 +11181,7 @@ module Google
         # @return [String]
         attr_accessor :kms_key_service_account
       
+        # [DEPRECATED] CSEK is no longer supported. Use CMEK instead.
         # Specifies a 256-bit customer-supplied
         # encryption key, encoded in RFC
         # 4648 base64 to either encrypt or decrypt this resource. You can
@@ -11051,6 +11193,7 @@ module Google
         # @return [String]
         attr_accessor :raw_key
       
+        # [DEPRECATED] CSEK is no longer supported. Use CMEK instead.
         # Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
         # customer-supplied encryption key to either encrypt or decrypt this
         # resource. You can provide either the rawKey or thersaEncryptedKey.
@@ -11072,6 +11215,7 @@ module Google
         # @return [String]
         attr_accessor :rsa_encrypted_key
       
+        # [DEPRECATED] CSEK is no longer supported. Use CMEK instead.
         # [Output only] TheRFC
         # 4648 base64 encoded SHA-256 hash of the customer-supplied
         # encryption key that protects this resource.
@@ -19471,6 +19615,11 @@ module Google
       class GlobalVmExtensionPolicyExtensionPolicy
         include Google::Apis::Core::Hashable
       
+        # Defines the software requirements for a VM extension policy.
+        # Corresponds to the JSON property `installedSoftwareSelector`
+        # @return [Google::Apis::ComputeAlpha::GlobalVmExtensionPolicyInstalledSoftwareSelector]
+        attr_accessor :installed_software_selector
+      
         # Optional. The version pinning for the extension.
         # If empty, the extension will be installed with the latest version
         # released by the extension producer.
@@ -19490,8 +19639,50 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @installed_software_selector = args[:installed_software_selector] if args.key?(:installed_software_selector)
           @pinned_version = args[:pinned_version] if args.key?(:pinned_version)
           @string_config = args[:string_config] if args.key?(:string_config)
+        end
+      end
+      
+      # Defines the software requirements for a VM extension policy.
+      class GlobalVmExtensionPolicyInstalledSoftwareSelector
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If any of these SelectorSets are satisfied, the condition
+        # is met (OR logic).
+        # The key is a user-provided name for this set.
+        # Corresponds to the JSON property `anyOfSelectors`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::GlobalVmExtensionPolicyInstalledSoftwareSelectorSelectorSet>]
+        attr_accessor :any_of_selectors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @any_of_selectors = args[:any_of_selectors] if args.key?(:any_of_selectors)
+        end
+      end
+      
+      # 
+      class GlobalVmExtensionPolicyInstalledSoftwareSelectorSelectorSet
+        include Google::Apis::Core::Hashable
+      
+        # Optional. All software in this list must be detected (AND logic).
+        # Valid software names (e.g. "Apache Web Server").
+        # Corresponds to the JSON property `allOfSelectors`
+        # @return [Array<String>]
+        attr_accessor :all_of_selectors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_of_selectors = args[:all_of_selectors] if args.key?(:all_of_selectors)
         end
       end
       
@@ -22124,7 +22315,7 @@ module Google
         # on what other health check fields are supported and what other resources
         # can use this health check:
         # 
-        # - SSL, HTTP2, and GRPC protocols are not supported.
+        # - SSL, HTTP2, GRPC, and GRPC_WITH_TLS protocols are not supported.
         # - The TCP request field is not supported.
         # - The proxyHeader field for HTTP, HTTPS, and TCP is not
         # supported.
@@ -22152,10 +22343,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
-        # Specifies the type of the healthCheck, either TCP,SSL, HTTP, HTTPS,HTTP2 or
-        # GRPC. Exactly one of the
-        # protocol-specific health check fields must be specified, which must matchtype
-        # field.
+        # Specifies the type of the healthCheck, either TCP,SSL, HTTP, HTTPS,HTTP2, GRPC
+        # or GRPC_WITH_TLS.
+        # Exactly one of the protocol-specific health check fields must be specified,
+        # which must match type field.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -32150,6 +32341,12 @@ module Google
       class InstancePropertiesPatch
         include Google::Apis::Core::Hashable
       
+        # This optional flag exposes the hashed physical host ID.
+        # Corresponds to the JSON property `exposeHostTopology`
+        # @return [Boolean]
+        attr_accessor :expose_host_topology
+        alias_method :expose_host_topology?, :expose_host_topology
+      
         # The label key-value pairs that you want to patch onto the instance.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -32168,6 +32365,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @expose_host_topology = args[:expose_host_topology] if args.key?(:expose_host_topology)
           @labels = args[:labels] if args.key?(:labels)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
@@ -59336,7 +59534,7 @@ module Google
       class ReliabilityRisksListResponse
         include Google::Apis::Core::Hashable
       
-        # 
+        # [Output Only] An ETag of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -63244,6 +63442,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :accelerator_topology_ids
       
+        # Output only. Key-value store for arbitrary network topology identifiers
+        # defined by the underlying infrastructure.
+        # The key will be the topology label and the value will be the location
+        # ID for the topology.
+        # Corresponds to the JSON property `networkTopologyIds`
+        # @return [Hash<String,String>]
+        attr_accessor :network_topology_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -63251,6 +63457,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerator_topology_ids = args[:accelerator_topology_ids] if args.key?(:accelerator_topology_ids)
+          @network_topology_ids = args[:network_topology_ids] if args.key?(:network_topology_ids)
         end
       end
       
@@ -67828,6 +68035,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_memory_mb
       
+        # This optional flag exposes the hashed physical host ID in the
+        # ResourceStatus resource of the VM.
+        # Corresponds to the JSON property `exposeHostTopology`
+        # @return [Boolean]
+        attr_accessor :expose_host_topology
+        alias_method :expose_host_topology?, :expose_host_topology
+      
         # The configuration for gracefully shutting down the instance.
         # Corresponds to the JSON property `gracefulShutdown`
         # @return [Google::Apis::ComputeAlpha::SchedulingGracefulShutdown]
@@ -67984,6 +68198,7 @@ module Google
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @current_cpus = args[:current_cpus] if args.key?(:current_cpus)
           @current_memory_mb = args[:current_memory_mb] if args.key?(:current_memory_mb)
+          @expose_host_topology = args[:expose_host_topology] if args.key?(:expose_host_topology)
           @graceful_shutdown = args[:graceful_shutdown] if args.key?(:graceful_shutdown)
           @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
@@ -83396,6 +83611,11 @@ module Google
       class VmExtensionPolicyExtensionPolicy
         include Google::Apis::Core::Hashable
       
+        # Defines the software requirements for a VM extension policy.
+        # Corresponds to the JSON property `installedSoftwareSelector`
+        # @return [Google::Apis::ComputeAlpha::VmExtensionPolicyInstalledSoftwareSelector]
+        attr_accessor :installed_software_selector
+      
         # Optional. The specific version of the extension to install. If not set, the
         # latest
         # version is used.
@@ -83414,8 +83634,50 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @installed_software_selector = args[:installed_software_selector] if args.key?(:installed_software_selector)
           @pinned_version = args[:pinned_version] if args.key?(:pinned_version)
           @string_config = args[:string_config] if args.key?(:string_config)
+        end
+      end
+      
+      # Defines the software requirements for a VM extension policy.
+      class VmExtensionPolicyInstalledSoftwareSelector
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If any of these SelectorSets are satisfied, the condition
+        # is met (OR logic).
+        # The key is a user-provided name for this set.
+        # Corresponds to the JSON property `anyOfSelectors`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::VmExtensionPolicyInstalledSoftwareSelectorSelectorSet>]
+        attr_accessor :any_of_selectors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @any_of_selectors = args[:any_of_selectors] if args.key?(:any_of_selectors)
+        end
+      end
+      
+      # 
+      class VmExtensionPolicyInstalledSoftwareSelectorSelectorSet
+        include Google::Apis::Core::Hashable
+      
+        # Optional. All software in this list must be detected (AND logic).
+        # Valid software names (e.g. "Apache Web Server").
+        # Corresponds to the JSON property `allOfSelectors`
+        # @return [Array<String>]
+        attr_accessor :all_of_selectors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @all_of_selectors = args[:all_of_selectors] if args.key?(:all_of_selectors)
         end
       end
       
