@@ -4949,7 +4949,7 @@ module Google
         end
       end
       
-      # An expanded text ad.
+      # An expanded text ad. Expanded text ads are deprecated.
       class GoogleAdsSearchads360V23CommonExpandedTextAdInfo
         include Google::Apis::Core::Hashable
       
@@ -7521,9 +7521,9 @@ module Google
       
         # The total number of conversions. This includes all conversions regardless of
         # the value of include_in_conversions_metric. When this column is selected with
-        # date, the values in date column means the conversion date. Details for the
-        # by_conversion_date columns are available at https://support.google.com/sa360/
-        # answer/9250611.
+        # date, the values in date column means the conversion date. Details for the `
+        # by_conversion_date` columns are available at [About the "All conversions"
+        # column](https://support.google.com/sa360/answer/9250611).
         # Corresponds to the JSON property `allConversionsByConversionDate`
         # @return [Float]
         attr_accessor :all_conversions_by_conversion_date
@@ -7591,9 +7591,9 @@ module Google
         attr_accessor :all_conversions_value
       
         # The value of all conversions. When this column is selected with date, the
-        # values in date column means the conversion date. Details for the
-        # by_conversion_date columns are available at https://support.google.com/sa360/
-        # answer/9250611.
+        # values in date column means the conversion date. Details for the `
+        # by_conversion_date` columns are available at [About the "All conversions"
+        # column](https://support.google.com/sa360/answer/9250611).
         # Corresponds to the JSON property `allConversionsValueByConversionDate`
         # @return [Float]
         attr_accessor :all_conversions_value_by_conversion_date
@@ -7623,16 +7623,17 @@ module Google
       
         # The total cost of all clicks divided by the total number of clicks received.
         # This metric is a monetary value and returned in the customer's currency by
-        # default. See the metrics_currency parameter at https://developers.google.com/
-        # search-ads/reporting/query/query-structure#parameters_clause
+        # default. See the `metrics_currency` parameter at [PARAMETERS clause](https://
+        # developers.google.com/search-ads/reporting/query/query-structure#
+        # parameters_clause).
         # Corresponds to the JSON property `averageCpc`
         # @return [Float]
         attr_accessor :average_cpc
       
         # Average cost-per-thousand impressions (CPM). This metric is a monetary value
-        # and returned in the customer's currency by default. See the metrics_currency
-        # parameter at https://developers.google.com/search-ads/reporting/query/query-
-        # structure#parameters_clause
+        # and returned in the customer's currency by default. See the `metrics_currency`
+        # parameter at [PARAMETERS clause](https://developers.google.com/search-ads/
+        # reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `averageCpm`
         # @return [Float]
         attr_accessor :average_cpm
@@ -7667,16 +7668,16 @@ module Google
         attr_accessor :clicks
       
         # The number of client account conversions. This only includes conversion
-        # actions which include_in_client_account_conversions_metric attribute is set to
-        # true. If you use conversion-based bidding, your bid strategies will optimize
-        # for these conversions.
+        # actions which `include_in_client_account_conversions_metric` attribute is set
+        # to `true`. If you use conversion-based bidding, your bid strategies will
+        # optimize for these conversions.
         # Corresponds to the JSON property `clientAccountConversions`
         # @return [Float]
         attr_accessor :client_account_conversions
       
         # The value of client account conversions. This only includes conversion actions
-        # which include_in_client_account_conversions_metric attribute is set to true.
-        # If you use conversion-based bidding, your bid strategies will optimize for
+        # which `include_in_client_account_conversions_metric` attribute is set to `true`
+        # . If you use conversion-based bidding, your bid strategies will optimize for
         # these conversions.
         # Corresponds to the JSON property `clientAccountConversionsValue`
         # @return [Float]
@@ -7695,9 +7696,9 @@ module Google
         # the shirt has a cost of goods sold value of $5. The cross-sell cost of goods
         # sold for this order is $5. This metric is only available if you report
         # conversions with cart data. This metric is a monetary value and returned in
-        # the customer's currency by default. See the metrics_currency parameter at
-        # https://developers.google.com/search-ads/reporting/query/query-structure#
-        # parameters_clause
+        # the customer's currency by default. See the `metrics_currency` parameter at [
+        # PARAMETERS clause](https://developers.google.com/search-ads/reporting/query/
+        # query-structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountCrossSellCostOfGoodsSoldMicros`
         # @return [Fixnum]
         attr_accessor :client_account_cross_sell_cost_of_goods_sold_micros
@@ -7715,9 +7716,9 @@ module Google
         # priced $20 and has a cost of goods sold value of $5. The cross-sell gross
         # profit of this order is $15 = $20 - $5. This metric is only available if you
         # report conversions with cart data. This metric is a monetary value and
-        # returned in the customer's currency by default. See the metrics_currency
-        # parameter at https://developers.google.com/search-ads/reporting/query/query-
-        # structure#parameters_clause
+        # returned in the customer's currency by default. See the `metrics_currency`
+        # parameter at [PARAMETERS clause](https://developers.google.com/search-ads/
+        # reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountCrossSellGrossProfitMicros`
         # @return [Fixnum]
         attr_accessor :client_account_cross_sell_gross_profit_micros
@@ -7734,9 +7735,9 @@ module Google
         # shirt. The hat is priced $10 and the shirt is priced $20. The cross-sell
         # revenue of this order is $20. This metric is only available if you report
         # conversions with cart data. This metric is a monetary value and returned in
-        # the customer's currency by default. See the metrics_currency parameter at
-        # https://developers.google.com/search-ads/reporting/query/query-structure#
-        # parameters_clause
+        # the customer's currency by default. See the `metrics_currency` parameter at [
+        # PARAMETERS clause](https://developers.google.com/search-ads/reporting/query/
+        # query-structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountCrossSellRevenueMicros`
         # @return [Fixnum]
         attr_accessor :client_account_cross_sell_revenue_micros
@@ -7768,8 +7769,9 @@ module Google
         # shirt has a cost of goods sold value of $5. The lead cost of goods sold for
         # this order is $3. This metric is only available if you report conversions with
         # cart data. This metric is a monetary value and returned in the customer's
-        # currency by default. See the metrics_currency parameter at https://developers.
-        # google.com/search-ads/reporting/query/query-structure#parameters_clause
+        # currency by default. See the `metrics_currency` parameter at [PARAMETERS
+        # clause](https://developers.google.com/search-ads/reporting/query/query-
+        # structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountLeadCostOfGoodsSoldMicros`
         # @return [Fixnum]
         attr_accessor :client_account_lead_cost_of_goods_sold_micros
@@ -7786,9 +7788,9 @@ module Google
         # and a shirt. The hat is priced $10 and has a cost of goods sold value of $3.
         # The lead gross profit of this order is $7 = $10 - $3. This metric is only
         # available if you report conversions with cart data. This metric is a monetary
-        # value and returned in the customer's currency by default. See the
-        # metrics_currency parameter at https://developers.google.com/search-ads/
-        # reporting/query/query-structure#parameters_clause
+        # value and returned in the customer's currency by default. See the `
+        # metrics_currency` parameter at [PARAMETERS clause](https://developers.google.
+        # com/search-ads/reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountLeadGrossProfitMicros`
         # @return [Fixnum]
         attr_accessor :client_account_lead_gross_profit_micros
@@ -7804,9 +7806,9 @@ module Google
         # ad for a hat then bought the same hat and a shirt. The hat is priced $10 and
         # the shirt is priced $20. The lead revenue of this order is $10. This metric is
         # only available if you report conversions with cart data. This metric is a
-        # monetary value and returned in the customer's currency by default. See the
-        # metrics_currency parameter at https://developers.google.com/search-ads/
-        # reporting/query/query-structure#parameters_clause
+        # monetary value and returned in the customer's currency by default. See the `
+        # metrics_currency` parameter at [PARAMETERS clause](https://developers.google.
+        # com/search-ads/reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountLeadRevenueMicros`
         # @return [Fixnum]
         attr_accessor :client_account_lead_revenue_micros
@@ -7871,7 +7873,7 @@ module Google
       
         # The sum of conversions by conversion date for biddable conversion types. Can
         # be fractional due to attribution modeling. When this column is selected with
-        # date, the values in date column means the conversion date.
+        # date, the values in the date column mean the conversion date.
         # Corresponds to the JSON property `conversionsByConversionDate`
         # @return [Float]
         attr_accessor :conversions_by_conversion_date
@@ -7884,9 +7886,10 @@ module Google
         attr_accessor :conversions_from_interactions_rate
       
         # The value of conversions from interactions divided by the number of ad
-        # interactions. This only includes conversion actions which
-        # include_in_conversions_metric attribute is set to true. If you use conversion-
-        # based bidding, your bid strategies will optimize for these conversions.
+        # interactions. This only includes conversion actions which `
+        # include_in_conversions_metric` attribute is set to `true`. If you use
+        # conversion-based bidding, your bid strategies will optimize for these
+        # conversions.
         # Corresponds to the JSON property `conversionsFromInteractionsValuePerInteraction`
         # @return [Float]
         attr_accessor :conversions_from_interactions_value_per_interaction
@@ -7912,9 +7915,9 @@ module Google
       
         # The sum of your cost-per-click (CPC) and cost-per-thousand impressions (CPM)
         # costs during this period. This metric is a monetary value and returned in the
-        # customer's currency by default. See the metrics_currency parameter at https://
-        # developers.google.com/search-ads/reporting/query/query-structure#
-        # parameters_clause
+        # customer's currency by default. See the `metrics_currency` parameter at [
+        # PARAMETERS clause](https://developers.google.com/search-ads/reporting/query/
+        # query-structure#parameters_clause) for more details.
         # Corresponds to the JSON property `costMicros`
         # @return [Fixnum]
         attr_accessor :cost_micros
@@ -7943,8 +7946,8 @@ module Google
         attr_accessor :cost_per_conversion
       
         # The cost of ad interactions divided by current model attributed conversions.
-        # This only includes conversion actions which include_in_conversions_metric
-        # attribute is set to true. If you use conversion-based bidding, your bid
+        # This only includes conversion actions which `include_in_conversions_metric`
+        # attribute is set to `true`. If you use conversion-based bidding, your bid
         # strategies will optimize for these conversions.
         # Corresponds to the JSON property `costPerCurrentModelAttributedConversion`
         # @return [Float]
@@ -7952,14 +7955,14 @@ module Google
       
         # Conversions from when a customer clicks on an ad on one device, then converts
         # on a different device or browser. Cross-device conversions are already
-        # included in all_conversions.
+        # included in `all_conversions`.
         # Corresponds to the JSON property `crossDeviceConversions`
         # @return [Float]
         attr_accessor :cross_device_conversions
       
-        # The number of cross-device conversions by conversion date. Details for the
-        # by_conversion_date columns are available at https://support.google.com/sa360/
-        # answer/9250611.
+        # The number of cross-device conversions by conversion date. Details for the `
+        # by_conversion_date` columns are available at [About the "All conversions"
+        # column](https://support.google.com/sa360/answer/9250611)
         # Corresponds to the JSON property `crossDeviceConversionsByConversionDate`
         # @return [Float]
         attr_accessor :cross_device_conversions_by_conversion_date
@@ -7969,9 +7972,9 @@ module Google
         # @return [Float]
         attr_accessor :cross_device_conversions_value
       
-        # The sum of cross-device conversions value by conversion date. Details for the
-        # by_conversion_date columns are available at https://support.google.com/sa360/
-        # answer/9250611.
+        # The sum of cross-device conversions value by conversion date. Details for the `
+        # by_conversion_date` columns are available at [About the "All conversions"
+        # column](https://support.google.com/sa360/answer/9250611)
         # Corresponds to the JSON property `crossDeviceConversionsValueByConversionDate`
         # @return [Float]
         attr_accessor :cross_device_conversions_value_by_conversion_date
@@ -7989,8 +7992,9 @@ module Google
         # cost of goods sold value of $5. The cross-sell cost of goods sold for this
         # order is $5. This metric is only available if you report conversions with cart
         # data. This metric is a monetary value and returned in the customer's currency
-        # by default. See the metrics_currency parameter at https://developers.google.
-        # com/search-ads/reporting/query/query-structure#parameters_clause
+        # by default. See the `metrics_currency` parameter at [PARAMETERS clause](https:/
+        # /developers.google.com/search-ads/reporting/query/query-structure#
+        # parameters_clause).
         # Corresponds to the JSON property `crossSellCostOfGoodsSoldMicros`
         # @return [Fixnum]
         attr_accessor :cross_sell_cost_of_goods_sold_micros
@@ -8008,9 +8012,9 @@ module Google
         # has a cost of goods sold value of $5. The cross-sell gross profit of this
         # order is $15 = $20 - $5. This metric is only available if you report
         # conversions with cart data. This metric is a monetary value and returned in
-        # the customer's currency by default. See the metrics_currency parameter at
-        # https://developers.google.com/search-ads/reporting/query/query-structure#
-        # parameters_clause
+        # the customer's currency by default. See the `metrics_currency` parameter at [
+        # PARAMETERS clause](https://developers.google.com/search-ads/reporting/query/
+        # query-structure#parameters_clause).
         # Corresponds to the JSON property `crossSellGrossProfitMicros`
         # @return [Fixnum]
         attr_accessor :cross_sell_gross_profit_micros
@@ -8027,8 +8031,9 @@ module Google
         # hat is priced $10 and the shirt is priced $20. The cross-sell revenue of this
         # order is $20. This metric is only available if you report conversions with
         # cart data. This metric is a monetary value and returned in the customer's
-        # currency by default. See the metrics_currency parameter at https://developers.
-        # google.com/search-ads/reporting/query/query-structure#parameters_clause
+        # currency by default. See the `metrics_currency` parameter at [PARAMETERS
+        # clause](https://developers.google.com/search-ads/reporting/query/query-
+        # structure#parameters_clause).
         # Corresponds to the JSON property `crossSellRevenueMicros`
         # @return [Fixnum]
         attr_accessor :cross_sell_revenue_micros
@@ -8059,8 +8064,9 @@ module Google
         # These are clicks Google considers illegitimate that are detected through
         # routine means of filtration (that is, known invalid data-center traffic, bots
         # and spiders or other crawlers, irregular patterns, etc). You're not charged
-        # for them, and they don't affect your account statistics. See the help page at
-        # https://support.google.com/campaignmanager/answer/6076504 for details.
+        # for them, and they don't affect your account statistics. See [Filtering
+        # invalid traffic to ensure quality](https://support.google.com/campaignmanager/
+        # answer/6076504).
         # Corresponds to the JSON property `generalInvalidClickRate`
         # @return [Float]
         attr_accessor :general_invalid_click_rate
@@ -8069,8 +8075,8 @@ module Google
         # that are detected through routine means of filtration (such as known invalid
         # data-center traffic, bots and spiders or other crawlers, irregular patterns,
         # etc.). You're not charged for them, and they don't affect your account
-        # statistics. See the help page at https://support.google.com/campaignmanager/
-        # answer/6076504 for details.
+        # statistics. See [Filtering invalid traffic to ensure quality](https://support.
+        # google.com/campaignmanager/answer/6076504).
         # Corresponds to the JSON property `generalInvalidClicks`
         # @return [Fixnum]
         attr_accessor :general_invalid_clicks
@@ -8172,8 +8178,8 @@ module Google
         # goods sold value of $5. The lead cost of goods sold for this order is $3. This
         # metric is only available if you report conversions with cart data. This metric
         # is a monetary value and returned in the customer's currency by default. See
-        # the metrics_currency parameter at https://developers.google.com/search-ads/
-        # reporting/query/query-structure#parameters_clause
+        # the `metrics_currency` parameter at [PARAMETERS clause](https://developers.
+        # google.com/search-ads/reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `leadCostOfGoodsSoldMicros`
         # @return [Fixnum]
         attr_accessor :lead_cost_of_goods_sold_micros
@@ -8190,9 +8196,9 @@ module Google
         # and a shirt. The hat is priced $10 and has a cost of goods sold value of $3.
         # The lead gross profit of this order is $7 = $10 - $3. This metric is only
         # available if you report conversions with cart data. This metric is a monetary
-        # value and returned in the customer's currency by default. See the
-        # metrics_currency parameter at https://developers.google.com/search-ads/
-        # reporting/query/query-structure#parameters_clause
+        # value and returned in the customer's currency by default. See the `
+        # metrics_currency` parameter at [PARAMETERS clause](https://developers.google.
+        # com/search-ads/reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `leadGrossProfitMicros`
         # @return [Fixnum]
         attr_accessor :lead_gross_profit_micros
@@ -8208,9 +8214,9 @@ module Google
         # hat then bought the same hat and a shirt. The hat is priced $10 and the shirt
         # is priced $20. The lead revenue of this order is $10. This metric is only
         # available if you report conversions with cart data. This metric is a monetary
-        # value and returned in the customer's currency by default. See the
-        # metrics_currency parameter at https://developers.google.com/search-ads/
-        # reporting/query/query-structure#parameters_clause
+        # value and returned in the customer's currency by default. See the `
+        # metrics_currency` parameter at [PARAMETERS clause](https://developers.google.
+        # com/search-ads/reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `leadRevenueMicros`
         # @return [Fixnum]
         attr_accessor :lead_revenue_micros
@@ -8264,8 +8270,9 @@ module Google
         attr_accessor :revenue_micros
       
         # The percentage of the customer's Shopping or Search ad impressions that are
-        # shown in the most prominent Shopping position. See https://support.google.com/
-        # sa360/answer/9566729 for details. Any value below 0.1 is reported as 0.0999.
+        # shown in the most prominent Shopping position. See [About top and absolute top
+        # metrics](https://support.google.com/sa360/answer/9566729) for details. Any
+        # value below 0.1 is reported as 0.0999.
         # Corresponds to the JSON property `searchAbsoluteTopImpressionShare`
         # @return [Float]
         attr_accessor :search_absolute_top_impression_share
@@ -8286,7 +8293,7 @@ module Google
         # @return [Float]
         attr_accessor :search_budget_lost_impression_share
       
-        # The number estimating how often your ad didn't show adjacent to the top
+        # The estimated percent of times that your ad didn't show adjacent to the top
         # organic search results due to a low budget. Note: Search budget lost top
         # impression share is reported in the range of 0 to 0.9. Any value above 0.9 is
         # reported as 0.9001.
@@ -8385,8 +8392,9 @@ module Google
       
         # The value of all conversions divided by the number of all conversions. When
         # this column is selected with date, the values in date column means the
-        # conversion date. Details for the by_conversion_date columns are available at
-        # https://support.google.com/sa360/answer/9250611.
+        # conversion date. Details for the `by_conversion_date` columns are available at
+        # [About the "All conversions" column](https://support.google.com/sa360/answer/
+        # 9250611).
         # Corresponds to the JSON property `valuePerAllConversionsByConversionDate`
         # @return [Float]
         attr_accessor :value_per_all_conversions_by_conversion_date
@@ -10103,7 +10111,8 @@ module Google
         end
       end
       
-      # A Search Ads 360 expanded text ad.
+      # A Search Ads 360 expanded text ad. Expanded text ads are deprecated. Use
+      # SearchAds360ResponsiveSearchAd instead.
       class GoogleAdsSearchads360V23CommonSearchAds360ExpandedTextAdInfo
         include Google::Apis::Core::Hashable
       
@@ -10380,6 +10389,11 @@ module Google
         # Corresponds to the JSON property `keyword`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonKeyword]
         attr_accessor :keyword
+      
+        # Mobile device platform to which metrics apply.
+        # Corresponds to the JSON property `mobileDevicePlatform`
+        # @return [String]
+        attr_accessor :mobile_device_platform
       
         # Month as represented by the date of the first day of a month. Formatted as
         # yyyy-MM-dd.
@@ -10699,6 +10713,7 @@ module Google
           @geo_target_region = args[:geo_target_region] if args.key?(:geo_target_region)
           @hour = args[:hour] if args.key?(:hour)
           @keyword = args[:keyword] if args.key?(:keyword)
+          @mobile_device_platform = args[:mobile_device_platform] if args.key?(:mobile_device_platform)
           @month = args[:month] if args.key?(:month)
           @product_bidding_category_level1 = args[:product_bidding_category_level1] if args.key?(:product_bidding_category_level1)
           @product_bidding_category_level2 = args[:product_bidding_category_level2] if args.key?(:product_bidding_category_level2)
@@ -11145,6 +11160,57 @@ module Google
         def update!(**args)
           @header = args[:header] if args.key?(:header)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Represents an attestation about synthetic content from a single source.
+      class GoogleAdsSearchads360V23CommonSyntheticContentAttestation
+        include Google::Apis::Core::Hashable
+      
+        # The source of the synthetic content attestation.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Indicates whether the content is considered synthetic by this source.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source = args[:source] if args.key?(:source)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Container for synthetic content attestations from different sources, such as
+      # the advertiser and Google systems.
+      class GoogleAdsSearchads360V23CommonSyntheticContentInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents an attestation about synthetic content from a single source.
+        # Corresponds to the JSON property `advertiserAttestation`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentAttestation]
+        attr_accessor :advertiser_attestation
+      
+        # Represents an attestation about synthetic content from a single source.
+        # Corresponds to the JSON property `systemAttestation`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentAttestation]
+        attr_accessor :system_attestation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_attestation = args[:advertiser_attestation] if args.key?(:advertiser_attestation)
+          @system_attestation = args[:system_attestation] if args.key?(:system_attestation)
         end
       end
       
@@ -19659,7 +19725,7 @@ module Google
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonExpandedDynamicSearchAdInfo]
         attr_accessor :expanded_dynamic_search_ad
       
-        # An expanded text ad.
+        # An expanded text ad. Expanded text ads are deprecated.
         # Corresponds to the JSON property `expandedTextAd`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonExpandedTextAdInfo]
         attr_accessor :expanded_text_ad
@@ -19756,7 +19822,8 @@ module Google
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSearchAds360ExpandedDynamicSearchAdInfo]
         attr_accessor :search_ads360_expanded_dynamic_search_ad
       
-        # A Search Ads 360 expanded text ad.
+        # A Search Ads 360 expanded text ad. Expanded text ads are deprecated. Use
+        # SearchAds360ResponsiveSearchAd instead.
         # Corresponds to the JSON property `searchAds360ExpandedTextAd`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSearchAds360ExpandedTextAdInfo]
         attr_accessor :search_ads360_expanded_text_ad
@@ -19790,6 +19857,12 @@ module Google
         # Corresponds to the JSON property `smartCampaignAd`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSmartCampaignAdInfo]
         attr_accessor :smart_campaign_ad
+      
+        # Container for synthetic content attestations from different sources, such as
+        # the advertiser and Google systems.
+        # Corresponds to the JSON property `syntheticContentInfo`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentInfo]
+        attr_accessor :synthetic_content_info
       
         # Output only. If this ad is system managed, then this field will indicate the
         # source. This field is read-only.
@@ -19872,6 +19945,7 @@ module Google
           @shopping_product_ad = args[:shopping_product_ad] if args.key?(:shopping_product_ad)
           @shopping_smart_ad = args[:shopping_smart_ad] if args.key?(:shopping_smart_ad)
           @smart_campaign_ad = args[:smart_campaign_ad] if args.key?(:smart_campaign_ad)
+          @synthetic_content_info = args[:synthetic_content_info] if args.key?(:synthetic_content_info)
           @system_managed_resource_source = args[:system_managed_resource_source] if args.key?(:system_managed_resource_source)
           @text_ad = args[:text_ad] if args.key?(:text_ad)
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
@@ -21901,7 +21975,13 @@ module Google
         end
       end
       
-      # An age range view.
+      # An age range view. Represents the view of a customer's performance metrics (
+      # like impressions and clicks) aggregated by age range. All statistics are
+      # aggregated at the ad group level. Note: While you can segment metrics by age
+      # range using `age_range_view` or by gender using `gender_view`, the Search Ads
+      # 360 API does not support segmenting metrics by both age range and gender
+      # simultaneously in a single query. Analyzing performance across both dimensions
+      # combined is not supported in the Search Ads 360 API.
       class GoogleAdsSearchads360V23ResourcesAgeRangeView
         include Google::Apis::Core::Hashable
       
@@ -22385,6 +22465,12 @@ module Google
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonStructuredSnippetAsset]
         attr_accessor :structured_snippet_asset
       
+        # Container for synthetic content attestations from different sources, such as
+        # the advertiser and Google systems.
+        # Corresponds to the JSON property `syntheticContentInfo`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentInfo]
+        attr_accessor :synthetic_content_info
+      
         # A Text asset.
         # Corresponds to the JSON property `textAsset`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonTextAsset]
@@ -22463,6 +22549,7 @@ module Google
           @source = args[:source] if args.key?(:source)
           @status = args[:status] if args.key?(:status)
           @structured_snippet_asset = args[:structured_snippet_asset] if args.key?(:structured_snippet_asset)
+          @synthetic_content_info = args[:synthetic_content_info] if args.key?(:synthetic_content_info)
           @text_asset = args[:text_asset] if args.key?(:text_asset)
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @type = args[:type] if args.key?(:type)
@@ -28099,14 +28186,15 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The resource name of the customer to which the label is attached.
-        # Read only.
+        # This field should not be set when creating a new `CustomerLabel`.
         # Corresponds to the JSON property `customer`
         # @return [String]
         attr_accessor :customer
       
-        # Output only. The resource name of the label assigned to the customer. Note:
-        # the Customer ID portion of the label resource name is not validated when
-        # creating a new CustomerLabel.
+        # Output only. The resource name of the label assigned to the customer. This
+        # field should not be set when creating a new `CustomerLabel`. Note: the
+        # Customer ID portion of the label resource name is not validated when creating
+        # a new `CustomerLabel`.
         # Corresponds to the JSON property `label`
         # @return [String]
         attr_accessor :label
@@ -28647,12 +28735,15 @@ module Google
         end
       end
       
-      # A view with metrics aggregated by ad group and URL or YouTube video. This view
-      # primarily surfaces placement data from the Google Display Network. While you
-      # can select segments like `segments.ad_network_type`, this view generally does
-      # not include placement data from other networks, such as the Search Partners
-      # network. To understand performance on Search Partners, consider other reports
-      # and segmentations.
+      # A view with metrics aggregated by ad group and URL or YouTube video. Provides
+      # granular performance data about specific URLs, YouTube videos, and apps where
+      # your ads showed. This offers a more detailed breakdown compared to the
+      # group_placement_view. This view primarily surfaces placement data from the
+      # Google Display Network. While you can select segments like `segments.
+      # ad_network_type`, this view generally does not include placement data from
+      # other networks, such as the Search Partners network. To understand performance
+      # on Search Partners, consider other reports and segmentations. Data for low-
+      # traffic placements may be aggregated.
       class GoogleAdsSearchads360V23ResourcesDetailPlacementView
         include Google::Apis::Core::Hashable
       
@@ -29077,7 +29168,9 @@ module Google
       class GoogleAdsSearchads360V23ResourcesExperimentArm
         include Google::Apis::Core::Hashable
       
-        # List of asset groups in the experiment arm.
+        # List of asset groups in the experiment arm. The max length is one. In the
+        # Optimize Assets experiment construction, the control arm and treatment arm
+        # should both contain the same asset group ID.
         # Corresponds to the JSON property `assetGroups`
         # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesExperimentArmAssetGroupInfo>]
         attr_accessor :asset_groups
@@ -29228,9 +29321,13 @@ module Google
         end
       end
       
-      # A gender view. The gender_view resource reflects the effective serving state,
-      # rather than what criteria were added. An ad group without gender criteria by
-      # default shows to all genders, so all genders appear in gender_view with stats.
+      # A gender view resource. Represents the view of a customer's performance
+      # metrics aggregated by gender. All statistics are aggregated at the ad group
+      # level. Note: While you can segment metrics by age range using `age_range_view`
+      # or by gender using `gender_view`, the Search Ads 360 API does not support
+      # segmenting metrics by both age range and gender simultaneously in a single
+      # query. Analyzing performance across both dimensions combined is not supported
+      # in the Search Ads 360 API.
       class GoogleAdsSearchads360V23ResourcesGenderView
         include Google::Apis::Core::Hashable
       
@@ -29546,7 +29643,11 @@ module Google
         end
       end
       
-      # A group placement view.
+      # A view showing performance data for where your ads actually served on the
+      # Display Network and YouTube, including both targeted (managed) and automatic
+      # placements. Data for low-traffic placements may be aggregated. The scope of
+      # placements shown is influenced by the ad group's `TargetingSetting` for the `
+      # PLACEMENT` dimension.
       class GoogleAdsSearchads360V23ResourcesGroupPlacementView
         include Google::Apis::Core::Hashable
       
@@ -31269,7 +31370,8 @@ module Google
         end
       end
       
-      # A managed placement view.
+      # A view providing performance data for placements explicitly targeted in your
+      # ad groups.
       class GoogleAdsSearchads360V23ResourcesManagedPlacementView
         include Google::Apis::Core::Hashable
       
@@ -34084,7 +34186,7 @@ module Google
         # array describes a more specific sub-category. For example, `"Pets & Animals", "
         # Pets", "Dogs"` represents the "Pets & Animals/Pets/Dogs" category. List of
         # available topic categories at https://developers.google.com/google-ads/api/
-        # reference/data/verticals
+        # data/topics
         # Corresponds to the JSON property `path`
         # @return [Array<String>]
         attr_accessor :path
@@ -35294,6 +35396,39 @@ module Google
           @manual_cpc_bidding_strategy = args[:manual_cpc_bidding_strategy] if args.key?(:manual_cpc_bidding_strategy)
           @maximize_clicks_bidding_strategy = args[:maximize_clicks_bidding_strategy] if args.key?(:maximize_clicks_bidding_strategy)
           @maximize_conversions_bidding_strategy = args[:maximize_conversions_bidding_strategy] if args.key?(:maximize_conversions_bidding_strategy)
+        end
+      end
+      
+      # Contains data of the items purchased.
+      class GoogleAdsSearchads360V23ServicesCartDataItem
+        include Google::Apis::Core::Hashable
+      
+        # The shopping id of the item. Must be equal to the Merchant Center product
+        # identifier.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
+        # Number of items sold.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
+        # Unit price excluding tax, shipping, and any transaction level discounts. The
+        # currency code is the same as that in the `ClickConversion` message.
+        # Corresponds to the JSON property `unitPrice`
+        # @return [Float]
+        attr_accessor :unit_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @product_id = args[:product_id] if args.key?(:product_id)
+          @quantity = args[:quantity] if args.key?(:quantity)
+          @unit_price = args[:unit_price] if args.key?(:unit_price)
         end
       end
       
@@ -37797,6 +37932,116 @@ module Google
         end
       end
       
+      # A call conversion.
+      class GoogleAdsSearchads360V23ServicesCallConversion
+        include Google::Apis::Core::Hashable
+      
+        # The date time at which the call occurred. The timezone must be specified. The
+        # format is "yyyy-mm-dd hh:mm:ss+|-hh:mm", for example, "2019-01-01 12:32:45-08:
+        # 00".
+        # Corresponds to the JSON property `callStartDateTime`
+        # @return [String]
+        attr_accessor :call_start_date_time
+      
+        # The caller id from which this call was placed. Caller id is expected to be in
+        # E.164 format with preceding '+' sign, for example, "+16502531234".
+        # Corresponds to the JSON property `callerId`
+        # @return [String]
+        attr_accessor :caller_id
+      
+        # Consent
+        # Corresponds to the JSON property `consent`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonConsent]
+        attr_accessor :consent
+      
+        # Resource name of the conversion action associated with this conversion. Note:
+        # Although this resource name consists of a customer id and a conversion action
+        # id, validation will ignore the customer id and use the conversion action id as
+        # the sole identifier of the conversion action.
+        # Corresponds to the JSON property `conversionAction`
+        # @return [String]
+        attr_accessor :conversion_action
+      
+        # The date time at which the conversion occurred. Must be after the call time.
+        # The timezone must be specified. The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm",
+        # for example, "2019-01-01 12:32:45-08:00".
+        # Corresponds to the JSON property `conversionDateTime`
+        # @return [String]
+        attr_accessor :conversion_date_time
+      
+        # The value of the conversion for the advertiser.
+        # Corresponds to the JSON property `conversionValue`
+        # @return [Float]
+        attr_accessor :conversion_value
+      
+        # Currency associated with the conversion value. This is the ISO 4217 3-
+        # character currency code. For example: USD, EUR.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # The custom variables associated with this conversion.
+        # Corresponds to the JSON property `customVariables`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCustomVariable>]
+        attr_accessor :custom_variables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @call_start_date_time = args[:call_start_date_time] if args.key?(:call_start_date_time)
+          @caller_id = args[:caller_id] if args.key?(:caller_id)
+          @consent = args[:consent] if args.key?(:consent)
+          @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
+          @conversion_date_time = args[:conversion_date_time] if args.key?(:conversion_date_time)
+          @conversion_value = args[:conversion_value] if args.key?(:conversion_value)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
+        end
+      end
+      
+      # Identifying information for a successfully processed CallConversionUpload.
+      class GoogleAdsSearchads360V23ServicesCallConversionResult
+        include Google::Apis::Core::Hashable
+      
+        # The date time at which the call occurred. The format is "yyyy-mm-dd hh:mm:ss+|-
+        # hh:mm", for example, "2019-01-01 12:32:45-08:00".
+        # Corresponds to the JSON property `callStartDateTime`
+        # @return [String]
+        attr_accessor :call_start_date_time
+      
+        # The caller id from which this call was placed. Caller id is expected to be in
+        # E.164 format with preceding '+' sign.
+        # Corresponds to the JSON property `callerId`
+        # @return [String]
+        attr_accessor :caller_id
+      
+        # Resource name of the conversion action associated with this conversion.
+        # Corresponds to the JSON property `conversionAction`
+        # @return [String]
+        attr_accessor :conversion_action
+      
+        # The date time at which the conversion occurred. The format is "yyyy-mm-dd hh:
+        # mm:ss+|-hh:mm", for example, "2019-01-01 12:32:45-08:00".
+        # Corresponds to the JSON property `conversionDateTime`
+        # @return [String]
+        attr_accessor :conversion_date_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @call_start_date_time = args[:call_start_date_time] if args.key?(:call_start_date_time)
+          @caller_id = args[:caller_id] if args.key?(:caller_id)
+          @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
+          @conversion_date_time = args[:conversion_date_time] if args.key?(:conversion_date_time)
+        end
+      end
+      
       # A single operation (create, remove) on a campaign asset.
       class GoogleAdsSearchads360V23ServicesCampaignAssetOperation
         include Google::Apis::Core::Hashable
@@ -38387,6 +38632,249 @@ module Google
         end
       end
       
+      # Contains additional information about cart data.
+      class GoogleAdsSearchads360V23ServicesCartData
+        include Google::Apis::Core::Hashable
+      
+        # The country code associated with the feed where the items are uploaded.
+        # Corresponds to the JSON property `feedCountryCode`
+        # @return [String]
+        attr_accessor :feed_country_code
+      
+        # The language code associated with the feed where the items are uploaded.
+        # Corresponds to the JSON property `feedLanguageCode`
+        # @return [String]
+        attr_accessor :feed_language_code
+      
+        # Data of the items purchased.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCartDataItem>]
+        attr_accessor :items
+      
+        # Sum of all transaction level discounts, such as free shipping and coupon
+        # discounts for the whole cart. The currency code is the same as that in the `
+        # ClickConversion` message.
+        # Corresponds to the JSON property `localTransactionCost`
+        # @return [Float]
+        attr_accessor :local_transaction_cost
+      
+        # The Merchant Center ID where the items are uploaded.
+        # Corresponds to the JSON property `merchantId`
+        # @return [Fixnum]
+        attr_accessor :merchant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feed_country_code = args[:feed_country_code] if args.key?(:feed_country_code)
+          @feed_language_code = args[:feed_language_code] if args.key?(:feed_language_code)
+          @items = args[:items] if args.key?(:items)
+          @local_transaction_cost = args[:local_transaction_cost] if args.key?(:local_transaction_cost)
+          @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
+        end
+      end
+      
+      # A click conversion.
+      class GoogleAdsSearchads360V23ServicesClickConversion
+        include Google::Apis::Core::Hashable
+      
+        # Contains additional information about cart data.
+        # Corresponds to the JSON property `cartData`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCartData]
+        attr_accessor :cart_data
+      
+        # Consent
+        # Corresponds to the JSON property `consent`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonConsent]
+        attr_accessor :consent
+      
+        # Resource name of the conversion action associated with this conversion. Note:
+        # Although this resource name consists of a customer id and a conversion action
+        # id, validation will ignore the customer id and use the conversion action id as
+        # the sole identifier of the conversion action.
+        # Corresponds to the JSON property `conversionAction`
+        # @return [String]
+        attr_accessor :conversion_action
+      
+        # The date time at which the conversion occurred. Must be after the click time.
+        # The timezone must be specified. The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm",
+        # for example, "2019-01-01 12:32:45-08:00".
+        # Corresponds to the JSON property `conversionDateTime`
+        # @return [String]
+        attr_accessor :conversion_date_time
+      
+        # The environment this conversion was recorded on, for example, App or Web.
+        # Corresponds to the JSON property `conversionEnvironment`
+        # @return [String]
+        attr_accessor :conversion_environment
+      
+        # The value of the conversion for the advertiser.
+        # Corresponds to the JSON property `conversionValue`
+        # @return [Float]
+        attr_accessor :conversion_value
+      
+        # Currency associated with the conversion value. This is the ISO 4217 3-
+        # character currency code. For example: USD, EUR.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # The custom variables associated with this conversion.
+        # Corresponds to the JSON property `customVariables`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCustomVariable>]
+        attr_accessor :custom_variables
+      
+        # Type of the customer associated with the conversion (new or returning).
+        # Corresponds to the JSON property `customerType`
+        # @return [String]
+        attr_accessor :customer_type
+      
+        # Contains additional information about externally attributed conversions.
+        # Corresponds to the JSON property `externalAttributionData`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesExternalAttributionData]
+        attr_accessor :external_attribution_data
+      
+        # The URL parameter for clicks associated with app conversions.
+        # Corresponds to the JSON property `gbraid`
+        # @return [String]
+        attr_accessor :gbraid
+      
+        # The Google click ID (gclid) associated with this conversion.
+        # Corresponds to the JSON property `gclid`
+        # @return [String]
+        attr_accessor :gclid
+      
+        # The order ID associated with the conversion. An order id can only be used for
+        # one conversion per conversion action.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        # The session attributes for the event, represented as a base64-encoded JSON
+        # string. The content should be generated by Google-provided library. To set
+        # session attributes individually, use session_attributes_key_value_pairs
+        # instead. This field is only available to allowlisted users. To include this
+        # field in conversion imports, upgrade to the Data Manager API.
+        # Corresponds to the JSON property `sessionAttributesEncoded`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :session_attributes_encoded
+      
+        # Contains session attributes of the conversion, represented as key-value pairs.
+        # Corresponds to the JSON property `sessionAttributesKeyValuePairs`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSessionAttributesKeyValuePairs]
+        attr_accessor :session_attributes_key_value_pairs
+      
+        # The user identifiers associated with this conversion. Only hashed_email and
+        # hashed_phone_number are supported for conversion uploads. The maximum number
+        # of user identifiers for each conversion is 5.
+        # Corresponds to the JSON property `userIdentifiers`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonUserIdentifier>]
+        attr_accessor :user_identifiers
+      
+        # The IP address of the customer when they arrived on the landing page after an
+        # ad click but before a conversion event. This is the IP address of the customer'
+        # s device, not the advertiser's server. Google Ads does not support IP address
+        # matching for end users in the European Economic Area (EEA), United Kingdom (UK)
+        # , or Switzerland (CH). Add logic to conditionally exclude sharing IP addresses
+        # from users from these regions and ensure that you provide users with clear and
+        # comprehensive information about the data you collect on your sites, apps, and
+        # other properties and get consent where required by law or any applicable
+        # Google policies. See [About offline conversion imports](//support.google.com/
+        # google-ads/answer/2998031) page for more details. This field is only available
+        # to allowlisted users. To include this field in conversion imports, upgrade to
+        # the Data Manager API.
+        # Corresponds to the JSON property `userIpAddress`
+        # @return [String]
+        attr_accessor :user_ip_address
+      
+        # The URL parameter for clicks associated with web conversions.
+        # Corresponds to the JSON property `wbraid`
+        # @return [String]
+        attr_accessor :wbraid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cart_data = args[:cart_data] if args.key?(:cart_data)
+          @consent = args[:consent] if args.key?(:consent)
+          @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
+          @conversion_date_time = args[:conversion_date_time] if args.key?(:conversion_date_time)
+          @conversion_environment = args[:conversion_environment] if args.key?(:conversion_environment)
+          @conversion_value = args[:conversion_value] if args.key?(:conversion_value)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
+          @customer_type = args[:customer_type] if args.key?(:customer_type)
+          @external_attribution_data = args[:external_attribution_data] if args.key?(:external_attribution_data)
+          @gbraid = args[:gbraid] if args.key?(:gbraid)
+          @gclid = args[:gclid] if args.key?(:gclid)
+          @order_id = args[:order_id] if args.key?(:order_id)
+          @session_attributes_encoded = args[:session_attributes_encoded] if args.key?(:session_attributes_encoded)
+          @session_attributes_key_value_pairs = args[:session_attributes_key_value_pairs] if args.key?(:session_attributes_key_value_pairs)
+          @user_identifiers = args[:user_identifiers] if args.key?(:user_identifiers)
+          @user_ip_address = args[:user_ip_address] if args.key?(:user_ip_address)
+          @wbraid = args[:wbraid] if args.key?(:wbraid)
+        end
+      end
+      
+      # Identifying information for a successfully processed `ClickConversion`.
+      class GoogleAdsSearchads360V23ServicesClickConversionResult
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the conversion action associated with this conversion.
+        # Corresponds to the JSON property `conversionAction`
+        # @return [String]
+        attr_accessor :conversion_action
+      
+        # The date time at which the conversion occurred. The format is "yyyy-mm-dd hh:
+        # mm:ss+|-hh:mm", for example, "2019-01-01 12:32:45-08:00".
+        # Corresponds to the JSON property `conversionDateTime`
+        # @return [String]
+        attr_accessor :conversion_date_time
+      
+        # The URL parameter for clicks associated with app conversions.
+        # Corresponds to the JSON property `gbraid`
+        # @return [String]
+        attr_accessor :gbraid
+      
+        # The Google Click ID (gclid) associated with this conversion.
+        # Corresponds to the JSON property `gclid`
+        # @return [String]
+        attr_accessor :gclid
+      
+        # The user identifiers associated with this conversion. Only hashed_email and
+        # hashed_phone_number are supported for conversion uploads. The maximum number
+        # of user identifiers for each conversion is 5.
+        # Corresponds to the JSON property `userIdentifiers`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonUserIdentifier>]
+        attr_accessor :user_identifiers
+      
+        # The URL parameter for clicks associated with web conversions.
+        # Corresponds to the JSON property `wbraid`
+        # @return [String]
+        attr_accessor :wbraid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
+          @conversion_date_time = args[:conversion_date_time] if args.key?(:conversion_date_time)
+          @gbraid = args[:gbraid] if args.key?(:gbraid)
+          @gclid = args[:gclid] if args.key?(:gclid)
+          @user_identifiers = args[:user_identifiers] if args.key?(:user_identifiers)
+          @wbraid = args[:wbraid] if args.key?(:wbraid)
+        end
+      end
+      
       # Request message for CampaignLifecycleGoalService.
       # ConfigureCampaignLifecycleGoals.
       class GoogleAdsSearchads360V23ServicesConfigureCampaignLifecycleGoalsRequest
@@ -38613,6 +39101,126 @@ module Google
           @remove = args[:remove] if args.key?(:remove)
           @update = args[:update] if args.key?(:update)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # A conversion adjustment.
+      class GoogleAdsSearchads360V23ServicesConversionAdjustment
+        include Google::Apis::Core::Hashable
+      
+        # The date time at which the adjustment occurred. Must be after the
+        # conversion_date_time. The timezone must be specified. The format is "yyyy-mm-
+        # dd hh:mm:ss+|-hh:mm", for example, "2019-01-01 12:32:45-08:00".
+        # Corresponds to the JSON property `adjustmentDateTime`
+        # @return [String]
+        attr_accessor :adjustment_date_time
+      
+        # The adjustment type.
+        # Corresponds to the JSON property `adjustmentType`
+        # @return [String]
+        attr_accessor :adjustment_type
+      
+        # Resource name of the conversion action associated with this conversion
+        # adjustment. Note: Although this resource name consists of a customer id and a
+        # conversion action id, validation will ignore the customer id and use the
+        # conversion action id as the sole identifier of the conversion action.
+        # Corresponds to the JSON property `conversionAction`
+        # @return [String]
+        attr_accessor :conversion_action
+      
+        # Uniquely identifies a conversion that was reported without an order ID
+        # specified.
+        # Corresponds to the JSON property `gclidDateTimePair`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesGclidDateTimePair]
+        attr_accessor :gclid_date_time_pair
+      
+        # The order ID of the conversion to be adjusted. If the conversion was reported
+        # with an order ID specified, that order ID must be used as the identifier here.
+        # The order ID is required for enhancements.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        # Contains information needed to restate a conversion's value.
+        # Corresponds to the JSON property `restatementValue`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesRestatementValue]
+        attr_accessor :restatement_value
+      
+        # The user agent to enhance the original conversion. This can be found in your
+        # user's HTTP request header when they convert on your web page. Example, "
+        # Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X)". User agent can only
+        # be specified in enhancements with user identifiers.
+        # Corresponds to the JSON property `userAgent`
+        # @return [String]
+        attr_accessor :user_agent
+      
+        # The user identifiers to enhance the original conversion.
+        # ConversionAdjustmentUploadService only accepts user identifiers in
+        # enhancements. The maximum number of user identifiers for each enhancement is 5.
+        # Corresponds to the JSON property `userIdentifiers`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonUserIdentifier>]
+        attr_accessor :user_identifiers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjustment_date_time = args[:adjustment_date_time] if args.key?(:adjustment_date_time)
+          @adjustment_type = args[:adjustment_type] if args.key?(:adjustment_type)
+          @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
+          @gclid_date_time_pair = args[:gclid_date_time_pair] if args.key?(:gclid_date_time_pair)
+          @order_id = args[:order_id] if args.key?(:order_id)
+          @restatement_value = args[:restatement_value] if args.key?(:restatement_value)
+          @user_agent = args[:user_agent] if args.key?(:user_agent)
+          @user_identifiers = args[:user_identifiers] if args.key?(:user_identifiers)
+        end
+      end
+      
+      # Information identifying a successfully processed ConversionAdjustment.
+      class GoogleAdsSearchads360V23ServicesConversionAdjustmentResult
+        include Google::Apis::Core::Hashable
+      
+        # The date time at which the adjustment occurred. The format is "yyyy-mm-dd hh:
+        # mm:ss+|-hh:mm", for example, "2019-01-01 12:32:45-08:00".
+        # Corresponds to the JSON property `adjustmentDateTime`
+        # @return [String]
+        attr_accessor :adjustment_date_time
+      
+        # The adjustment type.
+        # Corresponds to the JSON property `adjustmentType`
+        # @return [String]
+        attr_accessor :adjustment_type
+      
+        # Resource name of the conversion action associated with this conversion
+        # adjustment.
+        # Corresponds to the JSON property `conversionAction`
+        # @return [String]
+        attr_accessor :conversion_action
+      
+        # Uniquely identifies a conversion that was reported without an order ID
+        # specified.
+        # Corresponds to the JSON property `gclidDateTimePair`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesGclidDateTimePair]
+        attr_accessor :gclid_date_time_pair
+      
+        # The order ID of the conversion to be adjusted.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjustment_date_time = args[:adjustment_date_time] if args.key?(:adjustment_date_time)
+          @adjustment_type = args[:adjustment_type] if args.key?(:adjustment_type)
+          @conversion_action = args[:conversion_action] if args.key?(:conversion_action)
+          @gclid_date_time_pair = args[:gclid_date_time_pair] if args.key?(:gclid_date_time_pair)
+          @order_id = args[:order_id] if args.key?(:order_id)
         end
       end
       
@@ -39292,6 +39900,36 @@ module Google
           @create = args[:create] if args.key?(:create)
           @update = args[:update] if args.key?(:update)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # A custom variable.
+      class GoogleAdsSearchads360V23ServicesCustomVariable
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the custom variable associated with this conversion. Note:
+        # Although this resource name consists of a customer id and a conversion custom
+        # variable id, validation will ignore the customer id and use the conversion
+        # custom variable id as the sole identifier of the conversion custom variable.
+        # Corresponds to the JSON property `conversionCustomVariable`
+        # @return [String]
+        attr_accessor :conversion_custom_variable
+      
+        # The value string of this custom variable. The value of the custom variable
+        # should not contain private customer data, such as email addresses or phone
+        # numbers.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_custom_variable = args[:conversion_custom_variable] if args.key?(:conversion_custom_variable)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -40127,6 +40765,32 @@ module Google
         end
       end
       
+      # Contains additional information about externally attributed conversions.
+      class GoogleAdsSearchads360V23ServicesExternalAttributionData
+        include Google::Apis::Core::Hashable
+      
+        # Represents the fraction of the conversion that is attributed to the Google Ads
+        # click.
+        # Corresponds to the JSON property `externalAttributionCredit`
+        # @return [Float]
+        attr_accessor :external_attribution_credit
+      
+        # Specifies the attribution model name.
+        # Corresponds to the JSON property `externalAttributionModel`
+        # @return [String]
+        attr_accessor :external_attribution_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_attribution_credit = args[:external_attribution_credit] if args.key?(:external_attribution_credit)
+          @external_attribution_model = args[:external_attribution_model] if args.key?(:external_attribution_model)
+        end
+      end
+      
       # Response from getting the acquisition incentive for a user when they visit a
       # specific marketing page.
       class GoogleAdsSearchads360V23ServicesFetchIncentiveResponse
@@ -40338,6 +41002,35 @@ module Google
         def update!(**args)
           @impressions = args[:impressions] if args.key?(:impressions)
           @time_unit = args[:time_unit] if args.key?(:time_unit)
+        end
+      end
+      
+      # Uniquely identifies a conversion that was reported without an order ID
+      # specified.
+      class GoogleAdsSearchads360V23ServicesGclidDateTimePair
+        include Google::Apis::Core::Hashable
+      
+        # The date time at which the original conversion for this adjustment occurred.
+        # The timezone must be specified. The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm",
+        # for example, "2019-01-01 12:32:45-08:00".
+        # Corresponds to the JSON property `conversionDateTime`
+        # @return [String]
+        attr_accessor :conversion_date_time
+      
+        # Google click ID (gclid) associated with the original conversion for this
+        # adjustment.
+        # Corresponds to the JSON property `gclid`
+        # @return [String]
+        attr_accessor :gclid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_date_time = args[:conversion_date_time] if args.key?(:conversion_date_time)
+          @gclid = args[:gclid] if args.key?(:gclid)
         end
       end
       
@@ -48357,7 +49050,10 @@ module Google
         end
       end
       
-      # Request message for CustomerLabelService.MutateCustomerLabels.
+      # Request message for CustomerLabelService.MutateCustomerLabels. A single `
+      # MutateCustomerLabelsRequest` can only modify labels for the single customer
+      # account specified in the request. To apply a label to multiple different
+      # accounts, separate `MutateCustomerLabelsRequest` calls must be made.
       class GoogleAdsSearchads360V23ServicesMutateCustomerLabelsRequest
         include Google::Apis::Core::Hashable
       
@@ -50773,6 +51469,69 @@ module Google
         end
       end
       
+      # Request message for SearchAds360CampaignService.MutateSearchAds360Campaigns.
+      class GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of operations to perform on individual Search Ads 360
+        # campaigns.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSearchAds360CampaignOperation>]
+        attr_accessor :operations
+      
+        # If true, successful operations will be carried out and invalid operations will
+        # return errors. If false, all operations will be carried out in one transaction
+        # if and only if they are all valid. Default is false.
+        # Corresponds to the JSON property `partialFailure`
+        # @return [Boolean]
+        attr_accessor :partial_failure
+        alias_method :partial_failure?, :partial_failure
+      
+        # The response content type setting. Determines whether the mutable resource or
+        # just the resource name should be returned post mutation.
+        # Corresponds to the JSON property `responseContentType`
+        # @return [String]
+        attr_accessor :response_content_type
+      
+        # If true, the request is validated but not executed. Only errors are returned,
+        # not results.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operations = args[:operations] if args.key?(:operations)
+          @partial_failure = args[:partial_failure] if args.key?(:partial_failure)
+          @response_content_type = args[:response_content_type] if args.key?(:response_content_type)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response message for Search Ads 360 campaign mutate.
+      class GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsResponse
+        include Google::Apis::Core::Hashable
+      
+        # All results for the mutate.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
       # Request message for Service.Mutate.
       class GoogleAdsSearchads360V23ServicesMutateSearchAds360Request
         include Google::Apis::Core::Hashable
@@ -52466,6 +53225,39 @@ module Google
         end
       end
       
+      # Contains information needed to restate a conversion's value.
+      class GoogleAdsSearchads360V23ServicesRestatementValue
+        include Google::Apis::Core::Hashable
+      
+        # The restated conversion value. This is the value of the conversion after
+        # restatement. For example, to change the value of a conversion from 100 to 70,
+        # an adjusted value of 70 should be reported. NOTE: If you want to upload a
+        # second restatement with a different adjusted value, it must have a new, more
+        # recent, adjustment occurrence time. Otherwise, it will be treated as a
+        # duplicate of the previous restatement and ignored.
+        # Corresponds to the JSON property `adjustedValue`
+        # @return [Float]
+        attr_accessor :adjusted_value
+      
+        # The currency of the restated value. If not provided, then the default currency
+        # from the conversion action is used, and if that is not set then the account
+        # currency is used. This is the ISO 4217 3-character currency code for example,
+        # USD or EUR.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjusted_value = args[:adjusted_value] if args.key?(:adjusted_value)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+        end
+      end
+      
       # Request message for BatchJobService.RunBatchJob.
       class GoogleAdsSearchads360V23ServicesRunBatchJobRequest
         include Google::Apis::Core::Hashable
@@ -52752,7 +53544,13 @@ module Google
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesAdScheduleView]
         attr_accessor :ad_schedule_view
       
-        # An age range view.
+        # An age range view. Represents the view of a customer's performance metrics (
+        # like impressions and clicks) aggregated by age range. All statistics are
+        # aggregated at the ad group level. Note: While you can segment metrics by age
+        # range using `age_range_view` or by gender using `gender_view`, the Search Ads
+        # 360 API does not support segmenting metrics by both age range and gender
+        # simultaneously in a single query. Analyzing performance across both dimensions
+        # combined is not supported in the Search Ads 360 API.
         # Corresponds to the JSON property `ageRangeView`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesAgeRangeView]
         attr_accessor :age_range_view
@@ -53223,12 +54021,15 @@ module Google
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesDetailContentSuitabilityPlacementView]
         attr_accessor :detail_content_suitability_placement_view
       
-        # A view with metrics aggregated by ad group and URL or YouTube video. This view
-        # primarily surfaces placement data from the Google Display Network. While you
-        # can select segments like `segments.ad_network_type`, this view generally does
-        # not include placement data from other networks, such as the Search Partners
-        # network. To understand performance on Search Partners, consider other reports
-        # and segmentations.
+        # A view with metrics aggregated by ad group and URL or YouTube video. Provides
+        # granular performance data about specific URLs, YouTube videos, and apps where
+        # your ads showed. This offers a more detailed breakdown compared to the
+        # group_placement_view. This view primarily surfaces placement data from the
+        # Google Display Network. While you can select segments like `segments.
+        # ad_network_type`, this view generally does not include placement data from
+        # other networks, such as the Search Partners network. To understand performance
+        # on Search Partners, consider other reports and segmentations. Data for low-
+        # traffic placements may be aggregated.
         # Corresponds to the JSON property `detailPlacementView`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesDetailPlacementView]
         attr_accessor :detail_placement_view
@@ -53288,9 +54089,13 @@ module Google
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesFinalUrlExpansionAssetView]
         attr_accessor :final_url_expansion_asset_view
       
-        # A gender view. The gender_view resource reflects the effective serving state,
-        # rather than what criteria were added. An ad group without gender criteria by
-        # default shows to all genders, so all genders appear in gender_view with stats.
+        # A gender view resource. Represents the view of a customer's performance
+        # metrics aggregated by gender. All statistics are aggregated at the ad group
+        # level. Note: While you can segment metrics by age range using `age_range_view`
+        # or by gender using `gender_view`, the Search Ads 360 API does not support
+        # segmenting metrics by both age range and gender simultaneously in a single
+        # query. Analyzing performance across both dimensions combined is not supported
+        # in the Search Ads 360 API.
         # Corresponds to the JSON property `genderView`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesGenderView]
         attr_accessor :gender_view
@@ -53318,7 +54123,11 @@ module Google
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesGroupContentSuitabilityPlacementView]
         attr_accessor :group_content_suitability_placement_view
       
-        # A group placement view.
+        # A view showing performance data for where your ads actually served on the
+        # Display Network and YouTube, including both targeted (managed) and automatic
+        # placements. Data for low-traffic placements may be aggregated. The scope of
+        # placements shown is influenced by the ad group's `TargetingSetting` for the `
+        # PLACEMENT` dimension.
         # Corresponds to the JSON property `groupPlacementView`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesGroupPlacementView]
         attr_accessor :group_placement_view
@@ -53447,7 +54256,8 @@ module Google
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesLocationView]
         attr_accessor :location_view
       
-        # A managed placement view.
+        # A view providing performance data for placements explicitly targeted in your
+        # ad groups.
         # Corresponds to the JSON property `managedPlacementView`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesManagedPlacementView]
         attr_accessor :managed_placement_view
@@ -54161,6 +54971,50 @@ module Google
           @omit_results = args[:omit_results] if args.key?(:omit_results)
           @return_summary_row = args[:return_summary_row] if args.key?(:return_summary_row)
           @return_total_results_count = args[:return_total_results_count] if args.key?(:return_total_results_count)
+        end
+      end
+      
+      # Contains one session attribute of the conversion.
+      class GoogleAdsSearchads360V23ServicesSessionAttributeKeyValuePair
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the session attribute.
+        # Corresponds to the JSON property `sessionAttributeKey`
+        # @return [String]
+        attr_accessor :session_attribute_key
+      
+        # Required. The value of the session attribute.
+        # Corresponds to the JSON property `sessionAttributeValue`
+        # @return [String]
+        attr_accessor :session_attribute_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_attribute_key = args[:session_attribute_key] if args.key?(:session_attribute_key)
+          @session_attribute_value = args[:session_attribute_value] if args.key?(:session_attribute_value)
+        end
+      end
+      
+      # Contains session attributes of the conversion, represented as key-value pairs.
+      class GoogleAdsSearchads360V23ServicesSessionAttributesKeyValuePairs
+        include Google::Apis::Core::Hashable
+      
+        # Required. The session attributes for the conversion.
+        # Corresponds to the JSON property `keyValuePairs`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSessionAttributeKeyValuePair>]
+        attr_accessor :key_value_pairs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_value_pairs = args[:key_value_pairs] if args.key?(:key_value_pairs)
         end
       end
       
@@ -55142,6 +55996,247 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Request message for ConversionUploadService.UploadCallConversions.
+      class GoogleAdsSearchads360V23ServicesUploadCallConversionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The conversions that are being uploaded.
+        # Corresponds to the JSON property `conversions`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCallConversion>]
+        attr_accessor :conversions
+      
+        # Required. If `true`, successful operations will be carried out and invalid
+        # operations will return errors. If `false`, all operations will be carried out
+        # in one transaction if and only if they are all valid. This should always be
+        # set to `true`.
+        # Corresponds to the JSON property `partialFailure`
+        # @return [Boolean]
+        attr_accessor :partial_failure
+        alias_method :partial_failure?, :partial_failure
+      
+        # If true, the request is validated but not executed. Only errors are returned,
+        # not results.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversions = args[:conversions] if args.key?(:conversions)
+          @partial_failure = args[:partial_failure] if args.key?(:partial_failure)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response message for ConversionUploadService.UploadCallConversions.
+      class GoogleAdsSearchads360V23ServicesUploadCallConversionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `partialFailureError`
+        # @return [Google::Apis::Searchads360V23::GoogleRpcStatus]
+        attr_accessor :partial_failure_error
+      
+        # Returned for successfully processed conversions. Proto will be empty for rows
+        # that received an error. Results are not returned when `validate_only` is `true`
+        # .
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCallConversionResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partial_failure_error = args[:partial_failure_error] if args.key?(:partial_failure_error)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Request message for ConversionUploadService.UploadClickConversions.
+      class GoogleAdsSearchads360V23ServicesUploadClickConversionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The conversions that are being uploaded.
+        # Corresponds to the JSON property `conversions`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesClickConversion>]
+        attr_accessor :conversions
+      
+        # Optional. Optional input to set job ID. Must be a non-negative number that is
+        # less than 2^31 if provided. If this field is not provided, the API will
+        # generate a job ID in the range [2^31, (2^63)-1]. The API will return the value
+        # for this request in the `job_id` field of the `UploadClickConversionsResponse`.
+        # Corresponds to the JSON property `jobId`
+        # @return [Fixnum]
+        attr_accessor :job_id
+      
+        # Required. If `true`, successful operations will be carried out and invalid
+        # operations will return errors. If `false`, all operations will be carried out
+        # in one transaction if and only if they are all valid. This should always be
+        # set to `true`.
+        # Corresponds to the JSON property `partialFailure`
+        # @return [Boolean]
+        attr_accessor :partial_failure
+        alias_method :partial_failure?, :partial_failure
+      
+        # If `true`, the request is validated but not executed. Only errors are returned,
+        # not results.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversions = args[:conversions] if args.key?(:conversions)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @partial_failure = args[:partial_failure] if args.key?(:partial_failure)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response message for ConversionUploadService.UploadClickConversions.
+      class GoogleAdsSearchads360V23ServicesUploadClickConversionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Job ID for the upload batch.
+        # Corresponds to the JSON property `jobId`
+        # @return [Fixnum]
+        attr_accessor :job_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `partialFailureError`
+        # @return [Google::Apis::Searchads360V23::GoogleRpcStatus]
+        attr_accessor :partial_failure_error
+      
+        # Returned for successfully processed conversions. Proto will be empty for rows
+        # that received an error. Results are not returned when `validate_only` is `true`
+        # .
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesClickConversionResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @partial_failure_error = args[:partial_failure_error] if args.key?(:partial_failure_error)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Request message for ConversionAdjustmentUploadService.
+      # UploadConversionAdjustments.
+      class GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The conversion adjustments that are being uploaded.
+        # Corresponds to the JSON property `conversionAdjustments`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesConversionAdjustment>]
+        attr_accessor :conversion_adjustments
+      
+        # Optional. Optional input to set job ID. Must be a non-negative number that is
+        # less than 2^31 if provided. If this field is not provided, the API will
+        # generate a job ID in the range [2^31, (2^63)-1]. The API will return the value
+        # for this request in the `job_id` field of the `
+        # UploadConversionAdjustmentsResponse`.
+        # Corresponds to the JSON property `jobId`
+        # @return [Fixnum]
+        attr_accessor :job_id
+      
+        # Required. If true, successful operations will be carried out and invalid
+        # operations will return errors. If false, all operations will be carried out in
+        # one transaction if and only if they are all valid. This should always be set
+        # to true. See https://developers.google.com/google-ads/api/docs/best-practices/
+        # partial-failures for more information about partial failure.
+        # Corresponds to the JSON property `partialFailure`
+        # @return [Boolean]
+        attr_accessor :partial_failure
+        alias_method :partial_failure?, :partial_failure
+      
+        # If true, the request is validated but not executed. Only errors are returned,
+        # not results.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversion_adjustments = args[:conversion_adjustments] if args.key?(:conversion_adjustments)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @partial_failure = args[:partial_failure] if args.key?(:partial_failure)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response message for ConversionAdjustmentUploadService.
+      # UploadConversionAdjustments.
+      class GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Job ID for the upload batch.
+        # Corresponds to the JSON property `jobId`
+        # @return [Fixnum]
+        attr_accessor :job_id
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `partialFailureError`
+        # @return [Google::Apis::Searchads360V23::GoogleRpcStatus]
+        attr_accessor :partial_failure_error
+      
+        # Returned for successfully processed conversion adjustments. Proto will be
+        # empty for rows that received an error. Results are not returned when
+        # validate_only is true.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesConversionAdjustmentResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @partial_failure_error = args[:partial_failure_error] if args.key?(:partial_failure_error)
+          @results = args[:results] if args.key?(:results)
         end
       end
       
