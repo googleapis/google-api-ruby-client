@@ -306,7 +306,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_alert_password(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta/{+name}:GetPassword', options)
+          command = make_simple_command(:get, 'v1beta/{+name}:getPassword', options)
           command.response_representation = Google::Apis::ThreatintelligenceV1beta::Alert::Representation
           command.response_class = Google::Apis::ThreatintelligenceV1beta::Alert
           command.params['name'] = name unless name.nil?
