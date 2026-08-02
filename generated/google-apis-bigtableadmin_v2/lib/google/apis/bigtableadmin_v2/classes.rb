@@ -860,6 +860,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :logical_data_bytes
       
+        # Output only. The logical data bytes of the column family stored on HDD.
+        # Corresponds to the JSON property `logicalDataHddBytes`
+        # @return [Fixnum]
+        attr_accessor :logical_data_hdd_bytes
+      
+        # Output only. The logical data bytes of the column family stored on SSD.
+        # Corresponds to the JSON property `logicalDataSsdBytes`
+        # @return [Fixnum]
+        attr_accessor :logical_data_ssd_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -869,6 +879,8 @@ module Google
           @average_cells_per_column = args[:average_cells_per_column] if args.key?(:average_cells_per_column)
           @average_columns_per_row = args[:average_columns_per_row] if args.key?(:average_columns_per_row)
           @logical_data_bytes = args[:logical_data_bytes] if args.key?(:logical_data_bytes)
+          @logical_data_hdd_bytes = args[:logical_data_hdd_bytes] if args.key?(:logical_data_hdd_bytes)
+          @logical_data_ssd_bytes = args[:logical_data_ssd_bytes] if args.key?(:logical_data_ssd_bytes)
         end
       end
       

@@ -1136,6 +1136,8 @@ module Google
           property :average_cells_per_column, as: 'averageCellsPerColumn'
           property :average_columns_per_row, as: 'averageColumnsPerRow'
           property :logical_data_bytes, :numeric_string => true, as: 'logicalDataBytes'
+          property :logical_data_hdd_bytes, :numeric_string => true, as: 'logicalDataHddBytes'
+          property :logical_data_ssd_bytes, :numeric_string => true, as: 'logicalDataSsdBytes'
         end
       end
       
