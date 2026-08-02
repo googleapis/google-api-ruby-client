@@ -2178,8 +2178,8 @@ module Google
         # @return [String]
         attr_accessor :primary_contact
       
-        # Optional. Will be deprecated. Email or URL of the primary point of contact of
-        # the QueryTemplate. Max Length: 1000 bytes.
+        # Optional. Deprecated: Use `primary_contact` instead. Email or URL of the
+        # primary point of contact of the QueryTemplate. Max Length: 1000 bytes.
         # Corresponds to the JSON property `proposer`
         # @return [String]
         attr_accessor :proposer
