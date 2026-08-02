@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMapsPlacesV1PlaceEntrance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleMapsPlacesV1PlaceEvChargeAmenitySummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +263,12 @@ module Google
       end
       
       class GoogleMapsPlacesV1PlaceGoogleMapsLinks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleMapsPlacesV1PlaceNavigationPoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -814,6 +826,8 @@ module Google
       
           property :editorial_summary, as: 'editorialSummary', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
       
+          collection :entrances, as: 'entrances', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceEntrance, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceEntrance::Representation
+      
           property :ev_charge_amenity_summary, as: 'evChargeAmenitySummary', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceEvChargeAmenitySummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceEvChargeAmenitySummary::Representation
       
           property :ev_charge_options, as: 'evChargeOptions', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1EvChargeOptions, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1EvChargeOptions::Representation
@@ -843,6 +857,8 @@ module Google
           property :moved_place_id, as: 'movedPlaceId'
           property :name, as: 'name'
           property :national_phone_number, as: 'nationalPhoneNumber'
+          collection :navigation_points, as: 'navigationPoints', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNavigationPoint, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNavigationPoint::Representation
+      
           property :neighborhood_summary, as: 'neighborhoodSummary', class: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNeighborhoodSummary, decorator: Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNeighborhoodSummary::Representation
       
           property :opening_date, as: 'openingDate', class: Google::Apis::PlacesV1::GoogleTypeDate, decorator: Google::Apis::PlacesV1::GoogleTypeDate::Representation
@@ -967,6 +983,15 @@ module Google
         end
       end
       
+      class GoogleMapsPlacesV1PlaceEntrance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location', class: Google::Apis::PlacesV1::GoogleTypeLatLng, decorator: Google::Apis::PlacesV1::GoogleTypeLatLng::Representation
+      
+          collection :tags, as: 'tags'
+        end
+      end
+      
       class GoogleMapsPlacesV1PlaceEvChargeAmenitySummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1003,6 +1028,19 @@ module Google
           property :place_uri, as: 'placeUri'
           property :reviews_uri, as: 'reviewsUri'
           property :write_a_review_uri, as: 'writeAReviewUri'
+        end
+      end
+      
+      class GoogleMapsPlacesV1PlaceNavigationPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName', class: Google::Apis::PlacesV1::GoogleTypeLocalizedText, decorator: Google::Apis::PlacesV1::GoogleTypeLocalizedText::Representation
+      
+          property :location, as: 'location', class: Google::Apis::PlacesV1::GoogleTypeLatLng, decorator: Google::Apis::PlacesV1::GoogleTypeLatLng::Representation
+      
+          property :navigation_point_token, as: 'navigationPointToken'
+          collection :travel_modes, as: 'travelModes'
+          collection :usages, as: 'usages'
         end
       end
       

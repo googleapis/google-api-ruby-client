@@ -1224,6 +1224,11 @@ module Google
         # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
         attr_accessor :editorial_summary
       
+        # Entrances for this destination.
+        # Corresponds to the JSON property `entrances`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceEntrance>]
+        attr_accessor :entrances
+      
         # The summary of amenities near the EV charging station. This only applies to
         # places with type `electric_vehicle_charging_station`. The `overview` field is
         # guaranteed to be provided while the other fields are optional.
@@ -1355,6 +1360,11 @@ module Google
         # Corresponds to the JSON property `nationalPhoneNumber`
         # @return [String]
         attr_accessor :national_phone_number
+      
+        # Navigation points for this destination.
+        # Corresponds to the JSON property `navigationPoints`
+        # @return [Array<Google::Apis::PlacesV1::GoogleMapsPlacesV1PlaceNavigationPoint>]
+        attr_accessor :navigation_points
       
         # A summary of points of interest near the place.
         # Corresponds to the JSON property `neighborhoodSummary`
@@ -1653,6 +1663,7 @@ module Google
           @dine_in = args[:dine_in] if args.key?(:dine_in)
           @display_name = args[:display_name] if args.key?(:display_name)
           @editorial_summary = args[:editorial_summary] if args.key?(:editorial_summary)
+          @entrances = args[:entrances] if args.key?(:entrances)
           @ev_charge_amenity_summary = args[:ev_charge_amenity_summary] if args.key?(:ev_charge_amenity_summary)
           @ev_charge_options = args[:ev_charge_options] if args.key?(:ev_charge_options)
           @formatted_address = args[:formatted_address] if args.key?(:formatted_address)
@@ -1675,6 +1686,7 @@ module Google
           @moved_place_id = args[:moved_place_id] if args.key?(:moved_place_id)
           @name = args[:name] if args.key?(:name)
           @national_phone_number = args[:national_phone_number] if args.key?(:national_phone_number)
+          @navigation_points = args[:navigation_points] if args.key?(:navigation_points)
           @neighborhood_summary = args[:neighborhood_summary] if args.key?(:neighborhood_summary)
           @opening_date = args[:opening_date] if args.key?(:opening_date)
           @outdoor_seating = args[:outdoor_seating] if args.key?(:outdoor_seating)
@@ -1940,6 +1952,35 @@ module Google
         end
       end
       
+      # An entrance is a single latitude/longitude coordinate pair that defines the
+      # location of an entry and exit point for a place.
+      class GoogleMapsPlacesV1PlaceEntrance
+        include Google::Apis::Core::Hashable
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLatLng]
+        attr_accessor :location
+      
+        # A list of tags that describe the entrance.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
       # The summary of amenities near the EV charging station. This only applies to
       # places with type `electric_vehicle_charging_station`. The `overview` field is
       # guaranteed to be provided while the other fields are optional.
@@ -2063,6 +2104,54 @@ module Google
           @place_uri = args[:place_uri] if args.key?(:place_uri)
           @reviews_uri = args[:reviews_uri] if args.key?(:reviews_uri)
           @write_a_review_uri = args[:write_a_review_uri] if args.key?(:write_a_review_uri)
+        end
+      end
+      
+      # A navigation point is a location next to a road where navigation can end.
+      class GoogleMapsPlacesV1PlaceNavigationPoint
+        include Google::Apis::Core::Hashable
+      
+        # Localized variant of a text in a particular language.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLocalizedText]
+        attr_accessor :display_name
+      
+        # An object that represents a latitude/longitude pair. This is expressed as a
+        # pair of doubles to represent degrees latitude and degrees longitude. Unless
+        # specified otherwise, this object must conform to the WGS84 standard. Values
+        # must be within normalized ranges.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::PlacesV1::GoogleTypeLatLng]
+        attr_accessor :location
+      
+        # A token that can be used to identify this navigation point.
+        # Corresponds to the JSON property `navigationPointToken`
+        # @return [String]
+        attr_accessor :navigation_point_token
+      
+        # Travel modes that are appropriate for this navigation point.
+        # Corresponds to the JSON property `travelModes`
+        # @return [Array<String>]
+        attr_accessor :travel_modes
+      
+        # Lists `usages` supported by this navigation point. If empty, it does not
+        # necessarily mean its usage is restricted in any way. All navigation points can
+        # be used for general navigation.
+        # Corresponds to the JSON property `usages`
+        # @return [Array<String>]
+        attr_accessor :usages
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @location = args[:location] if args.key?(:location)
+          @navigation_point_token = args[:navigation_point_token] if args.key?(:navigation_point_token)
+          @travel_modes = args[:travel_modes] if args.key?(:travel_modes)
+          @usages = args[:usages] if args.key?(:usages)
         end
       end
       
