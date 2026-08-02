@@ -754,8 +754,10 @@ module Google
         # It supports the following cases:
         # 
         # -
-        # Case 1: PublicDelegatedPrefix (PDP) for BYOIP external IPv4
-        # addresses. The PDP must support enhanced IPv4 allocations.
+        # Case 1: PublicDelegatedPrefix (PDP) for BYOIP external
+        # addresses. If an IPv4 PDP is used, the PDP must support enhanced IPv4
+        # allocations. If an IPv6 PDP is used, the PDP must be in
+        # EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
         # -
         # Case 2: Internal Range for global internal addresses.
         # Use one of the following formats to specify the resource:
@@ -874,6 +876,12 @@ module Google
         # - `PRIVATE_SERVICE_CONNECT` for a private network address that is
         # used to configure Private Service Connect. Only global internal addresses
         # can use this purpose.
+        # - `PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0` for addresses
+        # that can only be assigned to global external Passthrough Network Load
+        # Balancer forwarding rules, as an Availability Group 0 address.
+        # - `PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1` for addresses that
+        # can only be assigned to global external Passthrough Network Load Balancer
+        # forwarding rules, as an Availability Group 1 address.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -2000,7 +2008,42 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # Specifies the disk type used for the boot disk or an additional data
+        # disk. For valid disk type values, see
+        # Supported types for Hyperdisk volumes and
+        # Persistent Disk type variables.
+        # When creating a single instance, you must provide either the full or
+        # partial URL of the disk type. For example, the following values are
+        # valid:
         # 
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/
+        # diskTypes/diskType
+        # - projects/project/zones/zone/diskTypes/diskType
+        # - zones/zone/diskTypes/diskType
+        # When creating an instance template, instance flexibility policy, or when
+        # creating or updating an all-instances configuration, you specify the
+        # disk type without a URL, for example, hyperdisk-balanced.
+        # If you omit this field for a disk, the default disk type depends on
+        # the instance's machine series, as follows.
+        # 
+        # 
+        # - For first- and second-generation machine series like N1, N2, T2, and
+        # M1, the
+        # default disk type is Standard Persistent Disk
+        # (pd-standard).
+        # - For C3, C3D, and M3 the default is Balanced Persistent Disk
+        # (pd-balanced).
+        # - For other third-generation machine
+        # series like A3, H3, Z3, all
+        # fourth-generation types like C4, N4, M4, and newer machine series,
+        # the default is Hyperdisk Balanced
+        # (hyperdisk-balanced).
+        # The disk type you specify must be compatible with the instance's machine
+        # series. For a list of machine series that support Persistent Disk, see Machine
+        # series support for Persistent Disk.
+        # For a list of machine series that support Hyperdisk, seeMachine
+        # series support for Hyperdisk.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -4955,7 +4998,11 @@ module Google
       
         # URL to networkservices.ServiceLbPolicy resource.
         # Can only be set if load balancing scheme is EXTERNAL_MANAGED,
-        # INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        # INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and
+        # EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a
+        # global backend service, the service lb policy must be global. For a
+        # regional backend service, the service lb policy must be regional and in the
+        # same region.
         # Corresponds to the JSON property `serviceLbPolicy`
         # @return [String]
         attr_accessor :service_lb_policy
@@ -10242,6 +10289,7 @@ module Google
         # @return [String]
         attr_accessor :kms_key_service_account
       
+        # [DEPRECATED] CSEK is no longer supported. Use CMEK instead.
         # Specifies a 256-bit customer-supplied
         # encryption key, encoded in RFC
         # 4648 base64 to either encrypt or decrypt this resource. You can
@@ -10253,6 +10301,7 @@ module Google
         # @return [String]
         attr_accessor :raw_key
       
+        # [DEPRECATED] CSEK is no longer supported. Use CMEK instead.
         # Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
         # customer-supplied encryption key to either encrypt or decrypt this
         # resource. You can provide either the rawKey or thersaEncryptedKey.
@@ -10274,6 +10323,7 @@ module Google
         # @return [String]
         attr_accessor :rsa_encrypted_key
       
+        # [DEPRECATED] CSEK is no longer supported. Use CMEK instead.
         # [Output only] TheRFC
         # 4648 base64 encoded SHA-256 hash of the customer-supplied
         # encryption key that protects this resource.
@@ -18910,7 +18960,7 @@ module Google
         # on what other health check fields are supported and what other resources
         # can use this health check:
         # 
-        # - SSL, HTTP2, and GRPC protocols are not supported.
+        # - SSL, HTTP2, GRPC, and GRPC_WITH_TLS protocols are not supported.
         # - The TCP request field is not supported.
         # - The proxyHeader field for HTTP, HTTPS, and TCP is not
         # supported.
@@ -18938,10 +18988,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
-        # Specifies the type of the healthCheck, either TCP,SSL, HTTP, HTTPS,HTTP2 or
-        # GRPC. Exactly one of the
-        # protocol-specific health check fields must be specified, which must matchtype
-        # field.
+        # Specifies the type of the healthCheck, either TCP,SSL, HTTP, HTTPS,HTTP2, GRPC
+        # or GRPC_WITH_TLS.
+        # Exactly one of the protocol-specific health check fields must be specified,
+        # which must match type field.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -51912,7 +51962,7 @@ module Google
       class ReliabilityRisksListResponse
         include Google::Apis::Core::Hashable
       
-        # 
+        # [Output Only] An ETag of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -55179,6 +55229,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :accelerator_topology_ids
       
+        # Output only. Key-value store for arbitrary network topology identifiers
+        # defined by the underlying infrastructure.
+        # The key will be the topology label and the value will be the location
+        # ID for the topology.
+        # Corresponds to the JSON property `networkTopologyIds`
+        # @return [Hash<String,String>]
+        attr_accessor :network_topology_ids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -55186,6 +55244,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerator_topology_ids = args[:accelerator_topology_ids] if args.key?(:accelerator_topology_ids)
+          @network_topology_ids = args[:network_topology_ids] if args.key?(:network_topology_ids)
         end
       end
       
@@ -55236,6 +55295,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :availability_domain
       
+        # Output only. Specifies the timestamp, when the instance will start graceful
+        # shutdown
+        # process, in RFC3339 text format.
+        # Corresponds to the JSON property `gracefulShutdownTimestamp`
+        # @return [String]
+        attr_accessor :graceful_shutdown_timestamp
+      
         # Time in future when the instance will be terminated inRFC3339 text format.
         # Corresponds to the JSON property `terminationTimestamp`
         # @return [String]
@@ -55248,6 +55314,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+          @graceful_shutdown_timestamp = args[:graceful_shutdown_timestamp] if args.key?(:graceful_shutdown_timestamp)
           @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
         end
       end
@@ -58405,6 +58472,13 @@ module Google
         # @return [Google::Apis::ComputeBeta::BfdStatus]
         attr_accessor :bfd_status
       
+        # Output only. [Output Only] Indicates whether the BGP peer is in a
+        # depreferenced state.
+        # Corresponds to the JSON property `depreferenced`
+        # @return [Boolean]
+        attr_accessor :depreferenced
+        alias_method :depreferenced?, :depreferenced
+      
         # Output only. Enable IPv4 traffic over BGP Peer.
         # It is enabled by default if the peerIpAddress is version 4.
         # Corresponds to the JSON property `enableIpv4`
@@ -58518,6 +58592,7 @@ module Google
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
           @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
+          @depreferenced = args[:depreferenced] if args.key?(:depreferenced)
           @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -65777,6 +65852,11 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # Share settings for the storage pool.
+        # Corresponds to the JSON property `shareSettings`
+        # @return [Google::Apis::ComputeBeta::StoragePoolShareSettings]
+        attr_accessor :share_settings
+      
         # Output only. [Output Only] The status of storage pool creation.
         # 
         # 
@@ -65829,6 +65909,7 @@ module Google
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @share_settings = args[:share_settings] if args.key?(:share_settings)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @storage_pool_type = args[:storage_pool_type] if args.key?(:storage_pool_type)
@@ -66499,6 +66580,45 @@ module Google
           @total_provisioned_disk_capacity_gb = args[:total_provisioned_disk_capacity_gb] if args.key?(:total_provisioned_disk_capacity_gb)
           @total_provisioned_disk_iops = args[:total_provisioned_disk_iops] if args.key?(:total_provisioned_disk_iops)
           @total_provisioned_disk_throughput = args[:total_provisioned_disk_throughput] if args.key?(:total_provisioned_disk_throughput)
+        end
+      end
+      
+      # Share settings for the storage pool.
+      class StoragePoolShareSettings
+        include Google::Apis::Core::Hashable
+      
+        # A map of project id and project config.
+        # Corresponds to the JSON property `projectMap`
+        # @return [Hash<String,Google::Apis::ComputeBeta::StoragePoolShareSettingsProjectConfig>]
+        attr_accessor :project_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_map = args[:project_map] if args.key?(:project_map)
+        end
+      end
+      
+      # Config for each project in the share settings.
+      class StoragePoolShareSettingsProjectConfig
+        include Google::Apis::Core::Hashable
+      
+        # The project ID, should be same as the key of this project config in the
+        # parent map.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
