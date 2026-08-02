@@ -833,8 +833,6 @@ module Google
       class DisableServiceAccountKeyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :extended_status_message, as: 'extendedStatusMessage'
-          property :service_account_key_disable_reason, as: 'serviceAccountKeyDisableReason'
         end
       end
       
