@@ -2040,6 +2040,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_values, as: 'allowedValues'
+          property :case_agnostic, as: 'caseAgnostic'
         end
       end
       
