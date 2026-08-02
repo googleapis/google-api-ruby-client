@@ -8296,6 +8296,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StoragePoolShareSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolShareSettingsProjectConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StoragePoolType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -22500,6 +22512,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :accelerator_topology_ids, as: 'acceleratorTopologyIds'
+          hash :network_topology_ids, as: 'networkTopologyIds'
         end
       end
       
@@ -22516,6 +22529,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain, as: 'availabilityDomain'
+          property :graceful_shutdown_timestamp, as: 'gracefulShutdownTimestamp'
           property :termination_timestamp, as: 'terminationTimestamp'
         end
       end
@@ -23217,6 +23231,7 @@ module Google
       
           property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputeBeta::BfdStatus, decorator: Google::Apis::ComputeBeta::BfdStatus::Representation
       
+          property :depreferenced, as: 'depreferenced'
           property :enable_ipv4, as: 'enableIpv4'
           property :enable_ipv6, as: 'enableIpv6'
           property :ip_address, as: 'ipAddress'
@@ -24963,6 +24978,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeBeta::StoragePoolShareSettings, decorator: Google::Apis::ComputeBeta::StoragePoolShareSettings::Representation
+      
           property :state, as: 'state'
           property :status, as: 'status', class: Google::Apis::ComputeBeta::StoragePoolResourceStatus, decorator: Google::Apis::ComputeBeta::StoragePoolResourceStatus::Representation
       
@@ -25123,6 +25140,21 @@ module Google
           property :total_provisioned_disk_capacity_gb, :numeric_string => true, as: 'totalProvisionedDiskCapacityGb'
           property :total_provisioned_disk_iops, :numeric_string => true, as: 'totalProvisionedDiskIops'
           property :total_provisioned_disk_throughput, :numeric_string => true, as: 'totalProvisionedDiskThroughput'
+        end
+      end
+      
+      class StoragePoolShareSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :project_map, as: 'projectMap', class: Google::Apis::ComputeBeta::StoragePoolShareSettingsProjectConfig, decorator: Google::Apis::ComputeBeta::StoragePoolShareSettingsProjectConfig::Representation
+      
+        end
+      end
+      
+      class StoragePoolShareSettingsProjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
         end
       end
       
