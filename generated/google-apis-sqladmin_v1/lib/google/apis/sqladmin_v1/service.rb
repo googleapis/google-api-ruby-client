@@ -2069,6 +2069,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] operation
         #   Instance operation ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2086,12 +2088,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_operation(project, operation, fields: nil, quota_user: nil, options: nil, &block)
+        def cancel_operation(project, operation, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/operations/{operation}/cancel', options)
           command.response_representation = Google::Apis::SqladminV1::Empty::Representation
           command.response_class = Google::Apis::SqladminV1::Empty
           command.params['project'] = project unless project.nil?
           command.params['operation'] = operation unless operation.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2102,6 +2105,8 @@ module Google
         #   Required. Project ID of the project that contains the instance.
         # @param [String] operation
         #   Required. Instance operation ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2119,12 +2124,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_operation(project, operation, fields: nil, quota_user: nil, options: nil, &block)
+        def get_operation(project, operation, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/operations/{operation}', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['operation'] = operation unless operation.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2136,6 +2142,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [Fixnum] max_results
         #   Maximum number of operations per response.
         # @param [String] page_token
@@ -2158,12 +2166,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(project, instance: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_operations(project, instance: nil, location: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/operations', options)
           command.response_representation = Google::Apis::SqladminV1::OperationsListResponse::Representation
           command.response_class = Google::Apis::SqladminV1::OperationsListResponse
           command.params['project'] = project unless project.nil?
           command.query['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2800,6 +2809,14 @@ module Google
         #   Optional. Specifies whether to revoke existing roles that are not present in
         #   the `database_roles` field. If `false` or unset, the database roles specified
         #   in `database_roles` are added to the user's existing roles.
+        # @param [Boolean] revoke_existing_server_roles
+        #   Optional. Specifies whether to revoke existing roles that are not present in
+        #   the `server_roles` field. If `false` or unset, the server roles specified in `
+        #   server_roles` are added to the user's existing server roles.
+        # @param [Array<String>, String] server_roles
+        #   Optional. The server roles to grant to the SQL Server login. Existing server
+        #   roles will not be revoked if revoke_existing_roles is false. body.server_roles
+        #   will be ignored for update request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2817,7 +2834,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user(project, instance, user_object = nil, database_roles: nil, host: nil, name: nil, revoke_existing_roles: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_user(project, instance, user_object = nil, database_roles: nil, host: nil, name: nil, revoke_existing_roles: nil, revoke_existing_server_roles: nil, server_roles: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v1/projects/{project}/instances/{instance}/users', options)
           command.request_representation = Google::Apis::SqladminV1::User::Representation
           command.request_object = user_object
@@ -2829,6 +2846,8 @@ module Google
           command.query['host'] = host unless host.nil?
           command.query['name'] = name unless name.nil?
           command.query['revokeExistingRoles'] = revoke_existing_roles unless revoke_existing_roles.nil?
+          command.query['revokeExistingServerRoles'] = revoke_existing_server_roles unless revoke_existing_server_roles.nil?
+          command.query['serverRoles'] = server_roles unless server_roles.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -1210,6 +1210,7 @@ module Google
           property :connection_name, as: 'connectionName'
           property :create_time, as: 'createTime'
           property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
+          property :database_center_integration_enabled, as: 'databaseCenterIntegrationEnabled'
           property :database_installed_version, as: 'databaseInstalledVersion'
           property :database_version, as: 'databaseVersion'
           property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqladminV1::DiskEncryptionConfiguration, decorator: Google::Apis::SqladminV1::DiskEncryptionConfiguration::Representation
@@ -1929,6 +1930,7 @@ module Google
           property :ca_certificate, as: 'caCertificate'
           property :client_certificate, as: 'clientCertificate'
           property :client_key, as: 'clientKey'
+          property :dms_managed, as: 'dmsManaged'
           property :dump_file_path, as: 'dumpFilePath'
           property :host_port, as: 'hostPort'
           property :kind, as: 'kind'
@@ -2631,6 +2633,7 @@ module Google
           property :password_policy, as: 'passwordPolicy', class: Google::Apis::SqladminV1::UserPasswordValidationPolicy, decorator: Google::Apis::SqladminV1::UserPasswordValidationPolicy::Representation
       
           property :project, as: 'project'
+          collection :server_roles, as: 'serverRoles'
           property :sqlserver_user_details, as: 'sqlserverUserDetails', class: Google::Apis::SqladminV1::SqlServerUserDetails, decorator: Google::Apis::SqladminV1::SqlServerUserDetails::Representation
       
           property :type, as: 'type'
