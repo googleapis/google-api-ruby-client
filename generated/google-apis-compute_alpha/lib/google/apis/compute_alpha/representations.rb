@@ -952,6 +952,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CalendarModeExtensionAdviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CalendarModeExtensionAdviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CalendarModeExtensionAdviceResponseNotRecommendedReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CalendarModeRecommendation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2273,6 +2291,18 @@ module Google
       end
       
       class GlobalVmExtensionPolicyExtensionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalVmExtensionPolicyInstalledSoftwareSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalVmExtensionPolicyInstalledSoftwareSelectorSelectorSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10396,6 +10426,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VmExtensionPolicyInstalledSoftwareSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmExtensionPolicyInstalledSoftwareSelectorSelectorSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmExtensionPolicyInstanceSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12580,6 +12622,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :recommendations, as: 'recommendations', class: Google::Apis::ComputeAlpha::CalendarModeRecommendation, decorator: Google::Apis::ComputeAlpha::CalendarModeRecommendation::Representation
       
+        end
+      end
+      
+      class CalendarModeExtensionAdviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time_not_later_than, as: 'endTimeNotLaterThan'
+          property :future_reservation, as: 'futureReservation'
+        end
+      end
+      
+      class CalendarModeExtensionAdviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :not_recommended_reason, as: 'notRecommendedReason', class: Google::Apis::ComputeAlpha::CalendarModeExtensionAdviceResponseNotRecommendedReason, decorator: Google::Apis::ComputeAlpha::CalendarModeExtensionAdviceResponseNotRecommendedReason::Representation
+      
+          property :recommendation_id, as: 'recommendationId'
+        end
+      end
+      
+      class CalendarModeExtensionAdviceResponseNotRecommendedReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :status, as: 'status'
         end
       end
       
@@ -15040,8 +15108,25 @@ module Google
       class GlobalVmExtensionPolicyExtensionPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :installed_software_selector, as: 'installedSoftwareSelector', class: Google::Apis::ComputeAlpha::GlobalVmExtensionPolicyInstalledSoftwareSelector, decorator: Google::Apis::ComputeAlpha::GlobalVmExtensionPolicyInstalledSoftwareSelector::Representation
+      
           property :pinned_version, as: 'pinnedVersion'
           property :string_config, as: 'stringConfig'
+        end
+      end
+      
+      class GlobalVmExtensionPolicyInstalledSoftwareSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :any_of_selectors, as: 'anyOfSelectors', class: Google::Apis::ComputeAlpha::GlobalVmExtensionPolicyInstalledSoftwareSelectorSelectorSet, decorator: Google::Apis::ComputeAlpha::GlobalVmExtensionPolicyInstalledSoftwareSelectorSelectorSet::Representation
+      
+        end
+      end
+      
+      class GlobalVmExtensionPolicyInstalledSoftwareSelectorSelectorSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :all_of_selectors, as: 'allOfSelectors'
         end
       end
       
@@ -18040,6 +18125,7 @@ module Google
       class InstancePropertiesPatch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :expose_host_topology, as: 'exposeHostTopology'
           hash :labels, as: 'labels'
           hash :metadata, as: 'metadata'
         end
@@ -25527,6 +25613,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :accelerator_topology_ids, as: 'acceleratorTopologyIds'
+          hash :network_topology_ids, as: 'networkTopologyIds'
         end
       end
       
@@ -26548,6 +26635,7 @@ module Google
           property :availability_domain, as: 'availabilityDomain'
           property :current_cpus, as: 'currentCpus'
           property :current_memory_mb, :numeric_string => true, as: 'currentMemoryMb'
+          property :expose_host_topology, as: 'exposeHostTopology'
           property :graceful_shutdown, as: 'gracefulShutdown', class: Google::Apis::ComputeAlpha::SchedulingGracefulShutdown, decorator: Google::Apis::ComputeAlpha::SchedulingGracefulShutdown::Representation
       
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
@@ -30229,8 +30317,25 @@ module Google
       class VmExtensionPolicyExtensionPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :installed_software_selector, as: 'installedSoftwareSelector', class: Google::Apis::ComputeAlpha::VmExtensionPolicyInstalledSoftwareSelector, decorator: Google::Apis::ComputeAlpha::VmExtensionPolicyInstalledSoftwareSelector::Representation
+      
           property :pinned_version, as: 'pinnedVersion'
           property :string_config, as: 'stringConfig'
+        end
+      end
+      
+      class VmExtensionPolicyInstalledSoftwareSelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :any_of_selectors, as: 'anyOfSelectors', class: Google::Apis::ComputeAlpha::VmExtensionPolicyInstalledSoftwareSelectorSelectorSet, decorator: Google::Apis::ComputeAlpha::VmExtensionPolicyInstalledSoftwareSelectorSelectorSet::Representation
+      
+        end
+      end
+      
+      class VmExtensionPolicyInstalledSoftwareSelectorSelectorSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :all_of_selectors, as: 'allOfSelectors'
         end
       end
       
