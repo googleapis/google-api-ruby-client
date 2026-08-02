@@ -166,6 +166,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1AssistantChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1AssistantMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1AssistantSession
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1AuthorizedView
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1096,6 +1114,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1571,6 +1595,18 @@ module Google
       end
       
       class GoogleCloudContactcenterinsightsV1SpeechConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1StreamChatRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudContactcenterinsightsV1StreamChatResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4070,6 +4106,37 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1AssistantChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1AssistantMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :chunks, as: 'chunks', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantChunk, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantChunk::Representation
+      
+          property :event_time, as: 'eventTime'
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1AssistantSession
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          collection :messages, as: 'messages', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantMessage, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantMessage::Representation
+      
+          property :name, as: 'name'
+          property :requester, as: 'requester'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1AuthorizedView
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5651,6 +5718,15 @@ module Google
         end
       end
       
+      class GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assistant_sessions, as: 'assistantSessions', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantSession, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantSession::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6518,6 +6594,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_word_time_offsets, as: 'disableWordTimeOffsets'
           property :speech_recognizer, as: 'speechRecognizer'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1StreamChatRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+        end
+      end
+      
+      class GoogleCloudContactcenterinsightsV1StreamChatResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk, as: 'chunk', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantChunk, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantChunk::Representation
+      
+          property :event_id, as: 'eventId'
+          property :event_time, as: 'eventTime'
+          property :status_message, as: 'statusMessage'
         end
       end
       
