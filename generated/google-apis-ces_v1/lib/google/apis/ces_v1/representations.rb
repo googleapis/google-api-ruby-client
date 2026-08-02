@@ -388,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataStoreToolSnippetsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataStoreToolSummarizationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1890,6 +1896,7 @@ module Google
       
           property :root_span, as: 'rootSpan', class: Google::Apis::CesV1::Span, decorator: Google::Apis::CesV1::Span::Representation
       
+          property :user_intended_text, as: 'userIntendedText'
         end
       end
       
@@ -2029,6 +2036,8 @@ module Google
           property :modality_type, as: 'modalityType'
           property :rewriter_config, as: 'rewriterConfig', class: Google::Apis::CesV1::DataStoreToolRewriterConfig, decorator: Google::Apis::CesV1::DataStoreToolRewriterConfig::Representation
       
+          property :snippets_config, as: 'snippetsConfig', class: Google::Apis::CesV1::DataStoreToolSnippetsConfig, decorator: Google::Apis::CesV1::DataStoreToolSnippetsConfig::Representation
+      
           property :summarization_config, as: 'summarizationConfig', class: Google::Apis::CesV1::DataStoreToolSummarizationConfig, decorator: Google::Apis::CesV1::DataStoreToolSummarizationConfig::Representation
       
         end
@@ -2041,6 +2050,13 @@ module Google
           property :model_settings, as: 'modelSettings', class: Google::Apis::CesV1::ModelSettings, decorator: Google::Apis::CesV1::ModelSettings::Representation
       
           property :prompt, as: 'prompt'
+        end
+      end
+      
+      class DataStoreToolSnippetsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_snippets, as: 'enableSnippets'
         end
       end
       
@@ -2477,6 +2493,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :conflict_resolution_strategy, as: 'conflictResolutionStrategy'
+          property :validate_only, as: 'validateOnly'
         end
       end
       
@@ -3355,6 +3372,7 @@ module Google
           property :deployment, as: 'deployment'
           property :enable_text_streaming, as: 'enableTextStreaming'
           property :entry_agent, as: 'entryAgent'
+          property :exclude_diagnostic_info, as: 'excludeDiagnosticInfo'
           collection :historical_contexts, as: 'historicalContexts', class: Google::Apis::CesV1::Message, decorator: Google::Apis::CesV1::Message::Representation
       
           property :input_audio_config, as: 'inputAudioConfig', class: Google::Apis::CesV1::InputAudioConfig, decorator: Google::Apis::CesV1::InputAudioConfig::Representation
