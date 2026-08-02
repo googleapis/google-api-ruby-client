@@ -1714,6 +1714,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V23CommonSyntheticContentAttestation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23CommonSyntheticContentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V23CommonTagSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4618,6 +4630,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V23ServicesCartDataItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V23ServicesDismissRecommendationRequestDismissRecommendationOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5080,6 +5098,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V23ServicesCallConversion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesCallConversionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V23ServicesCampaignAssetOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5182,6 +5212,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V23ServicesCartData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesClickConversion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesClickConversionResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V23ServicesConfigureCampaignLifecycleGoalsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5231,6 +5279,18 @@ module Google
       end
       
       class GoogleAdsSearchads360V23ServicesConversionActionOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesConversionAdjustment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesConversionAdjustmentResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5375,6 +5435,12 @@ module Google
       end
       
       class GoogleAdsSearchads360V23ServicesCustomInterestOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesCustomVariable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5542,6 +5608,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V23ServicesExternalAttributionData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V23ServicesFetchIncentiveResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5567,6 +5639,12 @@ module Google
       end
       
       class GoogleAdsSearchads360V23ServicesFrequencyCap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesGclidDateTimePair
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7450,6 +7528,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V23ServicesMutateSearchAds360Request
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7768,6 +7858,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V23ServicesRestatementValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V23ServicesRunBatchJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7829,6 +7925,18 @@ module Google
       end
       
       class GoogleAdsSearchads360V23ServicesSearchSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesSessionAttributeKeyValuePair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesSessionAttributesKeyValuePairs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8039,6 +8147,42 @@ module Google
       end
       
       class GoogleAdsSearchads360V23ServicesUpdateProductLinkInvitationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadCallConversionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadCallConversionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadClickConversionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadClickConversionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10933,6 +11077,7 @@ module Google
           property :hour, as: 'hour'
           property :keyword, as: 'keyword', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonKeyword, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonKeyword::Representation
       
+          property :mobile_device_platform, as: 'mobileDevicePlatform'
           property :month, as: 'month'
           property :product_bidding_category_level1, as: 'productBiddingCategoryLevel1'
           property :product_bidding_category_level2, as: 'productBiddingCategoryLevel2'
@@ -11100,6 +11245,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :header, as: 'header'
           collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23CommonSyntheticContentAttestation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23CommonSyntheticContentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_attestation, as: 'advertiserAttestation', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentAttestation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentAttestation::Representation
+      
+          property :system_attestation, as: 'systemAttestation', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentAttestation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentAttestation::Representation
+      
         end
       end
       
@@ -13446,6 +13609,8 @@ module Google
       
           property :smart_campaign_ad, as: 'smartCampaignAd', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSmartCampaignAdInfo, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSmartCampaignAdInfo::Representation
       
+          property :synthetic_content_info, as: 'syntheticContentInfo', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentInfo, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentInfo::Representation
+      
           property :system_managed_resource_source, as: 'systemManagedResourceSource'
           property :text_ad, as: 'textAd', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonTextAdInfo, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonTextAdInfo::Representation
       
@@ -14057,6 +14222,8 @@ module Google
           property :source, as: 'source'
           property :status, as: 'status'
           property :structured_snippet_asset, as: 'structuredSnippetAsset', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonStructuredSnippetAsset, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonStructuredSnippetAsset::Representation
+      
+          property :synthetic_content_info, as: 'syntheticContentInfo', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentInfo, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonSyntheticContentInfo::Representation
       
           property :text_asset, as: 'textAsset', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonTextAsset, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonTextAsset::Representation
       
@@ -17169,6 +17336,15 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V23ServicesCartDataItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :product_id, as: 'productId'
+          property :quantity, as: 'quantity'
+          property :unit_price, as: 'unitPrice'
+        end
+      end
+      
       class GoogleAdsSearchads360V23ServicesDismissRecommendationRequestDismissRecommendationOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -17949,6 +18125,32 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V23ServicesCallConversion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :call_start_date_time, as: 'callStartDateTime'
+          property :caller_id, as: 'callerId'
+          property :consent, as: 'consent', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonConsent, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonConsent::Representation
+      
+          property :conversion_action, as: 'conversionAction'
+          property :conversion_date_time, as: 'conversionDateTime'
+          property :conversion_value, as: 'conversionValue'
+          property :currency_code, as: 'currencyCode'
+          collection :custom_variables, as: 'customVariables', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCustomVariable, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCustomVariable::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesCallConversionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :call_start_date_time, as: 'callStartDateTime'
+          property :caller_id, as: 'callerId'
+          property :conversion_action, as: 'conversionAction'
+          property :conversion_date_time, as: 'conversionDateTime'
+        end
+      end
+      
       class GoogleAdsSearchads360V23ServicesCampaignAssetOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18135,6 +18337,61 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V23ServicesCartData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feed_country_code, as: 'feedCountryCode'
+          property :feed_language_code, as: 'feedLanguageCode'
+          collection :items, as: 'items', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCartDataItem, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCartDataItem::Representation
+      
+          property :local_transaction_cost, as: 'localTransactionCost'
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesClickConversion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cart_data, as: 'cartData', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCartData, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCartData::Representation
+      
+          property :consent, as: 'consent', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonConsent, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonConsent::Representation
+      
+          property :conversion_action, as: 'conversionAction'
+          property :conversion_date_time, as: 'conversionDateTime'
+          property :conversion_environment, as: 'conversionEnvironment'
+          property :conversion_value, as: 'conversionValue'
+          property :currency_code, as: 'currencyCode'
+          collection :custom_variables, as: 'customVariables', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCustomVariable, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCustomVariable::Representation
+      
+          property :customer_type, as: 'customerType'
+          property :external_attribution_data, as: 'externalAttributionData', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesExternalAttributionData, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesExternalAttributionData::Representation
+      
+          property :gbraid, as: 'gbraid'
+          property :gclid, as: 'gclid'
+          property :order_id, as: 'orderId'
+          property :session_attributes_encoded, :base64 => true, as: 'sessionAttributesEncoded'
+          property :session_attributes_key_value_pairs, as: 'sessionAttributesKeyValuePairs', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSessionAttributesKeyValuePairs, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSessionAttributesKeyValuePairs::Representation
+      
+          collection :user_identifiers, as: 'userIdentifiers', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonUserIdentifier, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonUserIdentifier::Representation
+      
+          property :user_ip_address, as: 'userIpAddress'
+          property :wbraid, as: 'wbraid'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesClickConversionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversion_action, as: 'conversionAction'
+          property :conversion_date_time, as: 'conversionDateTime'
+          property :gbraid, as: 'gbraid'
+          property :gclid, as: 'gclid'
+          collection :user_identifiers, as: 'userIdentifiers', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonUserIdentifier, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonUserIdentifier::Representation
+      
+          property :wbraid, as: 'wbraid'
+        end
+      end
+      
       class GoogleAdsSearchads360V23ServicesConfigureCampaignLifecycleGoalsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18209,6 +18466,35 @@ module Google
           property :update, as: 'update', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesConversionAction, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesConversionAction::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesConversionAdjustment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment_date_time, as: 'adjustmentDateTime'
+          property :adjustment_type, as: 'adjustmentType'
+          property :conversion_action, as: 'conversionAction'
+          property :gclid_date_time_pair, as: 'gclidDateTimePair', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesGclidDateTimePair, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesGclidDateTimePair::Representation
+      
+          property :order_id, as: 'orderId'
+          property :restatement_value, as: 'restatementValue', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesRestatementValue, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesRestatementValue::Representation
+      
+          property :user_agent, as: 'userAgent'
+          collection :user_identifiers, as: 'userIdentifiers', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonUserIdentifier, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonUserIdentifier::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesConversionAdjustmentResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment_date_time, as: 'adjustmentDateTime'
+          property :adjustment_type, as: 'adjustmentType'
+          property :conversion_action, as: 'conversionAction'
+          property :gclid_date_time_pair, as: 'gclidDateTimePair', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesGclidDateTimePair, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesGclidDateTimePair::Representation
+      
+          property :order_id, as: 'orderId'
         end
       end
       
@@ -18428,6 +18714,14 @@ module Google
           property :update, as: 'update', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesCustomInterest, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ResourcesCustomInterest::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesCustomVariable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversion_custom_variable, as: 'conversionCustomVariable'
+          property :value, as: 'value'
         end
       end
       
@@ -18693,6 +18987,14 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V23ServicesExternalAttributionData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_attribution_credit, as: 'externalAttributionCredit'
+          property :external_attribution_model, as: 'externalAttributionModel'
+        end
+      end
+      
       class GoogleAdsSearchads360V23ServicesFetchIncentiveResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18743,6 +19045,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :impressions, as: 'impressions'
           property :time_unit, as: 'timeUnit'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesGclidDateTimePair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversion_date_time, as: 'conversionDateTime'
+          property :gclid, as: 'gclid'
         end
       end
       
@@ -22033,6 +22343,25 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :operations, as: 'operations', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSearchAds360CampaignOperation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSearchAds360CampaignOperation::Representation
+      
+          property :partial_failure, as: 'partialFailure'
+          property :response_content_type, as: 'responseContentType'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :results, as: 'results', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignResult::Representation
+      
+        end
+      end
+      
       class GoogleAdsSearchads360V23ServicesMutateSearchAds360Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -22540,6 +22869,14 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V23ServicesRestatementValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjusted_value, as: 'adjustedValue'
+          property :currency_code, as: 'currencyCode'
+        end
+      end
+      
       class GoogleAdsSearchads360V23ServicesRunBatchJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -23018,6 +23355,22 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V23ServicesSessionAttributeKeyValuePair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_attribute_key, as: 'sessionAttributeKey'
+          property :session_attribute_value, as: 'sessionAttributeValue'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesSessionAttributesKeyValuePairs
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :key_value_pairs, as: 'keyValuePairs', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSessionAttributeKeyValuePair, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSessionAttributeKeyValuePair::Representation
+      
+        end
+      end
+      
       class GoogleAdsSearchads360V23ServicesSharedCriterionOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -23334,6 +23687,70 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadCallConversionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversions, as: 'conversions', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCallConversion, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCallConversion::Representation
+      
+          property :partial_failure, as: 'partialFailure'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadCallConversionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partial_failure_error, as: 'partialFailureError', class: Google::Apis::Searchads360V23::GoogleRpcStatus, decorator: Google::Apis::Searchads360V23::GoogleRpcStatus::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCallConversionResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCallConversionResult::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadClickConversionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversions, as: 'conversions', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesClickConversion, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesClickConversion::Representation
+      
+          property :job_id, as: 'jobId'
+          property :partial_failure, as: 'partialFailure'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadClickConversionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_id, :numeric_string => true, as: 'jobId'
+          property :partial_failure_error, as: 'partialFailureError', class: Google::Apis::Searchads360V23::GoogleRpcStatus, decorator: Google::Apis::Searchads360V23::GoogleRpcStatus::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesClickConversionResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesClickConversionResult::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conversion_adjustments, as: 'conversionAdjustments', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesConversionAdjustment, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesConversionAdjustment::Representation
+      
+          property :job_id, as: 'jobId'
+          property :partial_failure, as: 'partialFailure'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_id, :numeric_string => true, as: 'jobId'
+          property :partial_failure_error, as: 'partialFailureError', class: Google::Apis::Searchads360V23::GoogleRpcStatus, decorator: Google::Apis::Searchads360V23::GoogleRpcStatus::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesConversionAdjustmentResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesConversionAdjustmentResult::Representation
+      
         end
       end
       
