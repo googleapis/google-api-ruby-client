@@ -4165,6 +4165,7 @@ module Google
           collection :available_versions, as: 'availableVersions', class: Google::Apis::ContainerV1beta1::AvailableVersion, decorator: Google::Apis::ContainerV1beta1::AvailableVersion::Representation
       
           property :channel, as: 'channel'
+          collection :custom_versions, as: 'customVersions'
           property :default_version, as: 'defaultVersion'
           property :upgrade_target_version, as: 'upgradeTargetVersion'
           collection :valid_versions, as: 'validVersions'

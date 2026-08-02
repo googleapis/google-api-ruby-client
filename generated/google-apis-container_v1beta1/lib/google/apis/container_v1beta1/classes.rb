@@ -9182,6 +9182,11 @@ module Google
         # @return [String]
         attr_accessor :channel
       
+        # Output only. List of custom versions for the channel.
+        # Corresponds to the JSON property `customVersions`
+        # @return [Array<String>]
+        attr_accessor :custom_versions
+      
         # The default version for newly created clusters on the channel.
         # Corresponds to the JSON property `defaultVersion`
         # @return [String]
@@ -9205,6 +9210,7 @@ module Google
         def update!(**args)
           @available_versions = args[:available_versions] if args.key?(:available_versions)
           @channel = args[:channel] if args.key?(:channel)
+          @custom_versions = args[:custom_versions] if args.key?(:custom_versions)
           @default_version = args[:default_version] if args.key?(:default_version)
           @upgrade_target_version = args[:upgrade_target_version] if args.key?(:upgrade_target_version)
           @valid_versions = args[:valid_versions] if args.key?(:valid_versions)
