@@ -922,6 +922,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchMessageResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchMessagesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchMessagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSpaceResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchSpacesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2455,6 +2479,7 @@ module Google
           property :fallback_text, as: 'fallbackText'
           property :formatted_text, as: 'formattedText'
           property :last_update_time, as: 'lastUpdateTime'
+          property :markup_syntax, as: 'markupSyntax'
           property :matched_url, as: 'matchedUrl', class: Google::Apis::ChatV1::MatchedUrl, decorator: Google::Apis::ChatV1::MatchedUrl::Representation
       
           property :name, as: 'name'
@@ -2696,10 +2721,51 @@ module Google
         end
       end
       
+      class SearchMessageResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
+      
+          property :read, as: 'read'
+          property :space_mute_setting, as: 'spaceMuteSetting'
+        end
+      end
+      
+      class SearchMessagesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :markup_syntax, as: 'markupSyntax'
+          property :order_by, as: 'orderBy'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :view, as: 'view'
+        end
+      end
+      
+      class SearchMessagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :results, as: 'results', class: Google::Apis::ChatV1::SearchMessageResult, decorator: Google::Apis::ChatV1::SearchMessageResult::Representation
+      
+        end
+      end
+      
+      class SearchSpaceResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
+      
+        end
+      end
+      
       class SearchSpacesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
+          collection :results, as: 'results', class: Google::Apis::ChatV1::SearchSpaceResult, decorator: Google::Apis::ChatV1::SearchSpaceResult::Representation
+      
           collection :spaces, as: 'spaces', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
       
           property :total_size, as: 'totalSize'

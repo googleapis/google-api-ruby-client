@@ -5555,6 +5555,11 @@ module Google
         # @return [String]
         attr_accessor :last_update_time
       
+        # Optional. Specifies how the server interprets the message `text` field content.
+        # Corresponds to the JSON property `markupSyntax`
+        # @return [String]
+        attr_accessor :markup_syntax
+      
         # A matched URL in a Chat message. Chat apps can preview matched URLs. For more
         # information, see [Preview links](https://developers.google.com/chat/how-tos/
         # preview-links).
@@ -5669,6 +5674,7 @@ module Google
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
           @formatted_text = args[:formatted_text] if args.key?(:formatted_text)
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @markup_syntax = args[:markup_syntax] if args.key?(:markup_syntax)
           @matched_url = args[:matched_url] if args.key?(:matched_url)
           @name = args[:name] if args.key?(:name)
           @private_message_viewer = args[:private_message_viewer] if args.key?(:private_message_viewer)
@@ -6338,6 +6344,229 @@ module Google
         end
       end
       
+      # A single result item from a message search.
+      class SearchMessageResult
+        include Google::Apis::Core::Hashable
+      
+        # A message in a Google Chat space.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::ChatV1::Message]
+        attr_accessor :message
+      
+        # Indicates if the matched message is read by the calling user. Only returned if
+        # the request view is `SEARCH_MESSAGES_VIEW_FULL` and the calling credentials
+        # include one of the following [authorization scopes](https://developers.google.
+        # com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.
+        # googleapis.com/auth/chat.users.readstate.readonly` - `https://www.googleapis.
+        # com/auth/chat.users.readstate`
+        # Corresponds to the JSON property `read`
+        # @return [Boolean]
+        attr_accessor :read
+        alias_method :read?, :read
+      
+        # The mute setting of the calling user for the space where the message is posted.
+        # The caller app can use this information to decide how to process the message
+        # depending on whether the space is muted for the user or not. Only returned if
+        # the request view is `SEARCH_MESSAGES_VIEW_FULL` and the calling credentials
+        # include the following [authorization scope](https://developers.google.com/
+        # workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.
+        # googleapis.com/auth/chat.users.spacesettings`
+        # Corresponds to the JSON property `spaceMuteSetting`
+        # @return [String]
+        attr_accessor :space_mute_setting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @read = args[:read] if args.key?(:read)
+          @space_mute_setting = args[:space_mute_setting] if args.key?(:space_mute_setting)
+        end
+      end
+      
+      # Request message for searching messages.
+      class SearchMessagesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A search query. The query can specify one or more search keywords,
+        # which are used to filter the results, You can also filter the results using
+        # the following message fields: - `create_time`: Accepts a timestamp in [RFC-
+        # 3339](https://www.rfc-editor.org/rfc/rfc3339) format and the supported
+        # comparison operators are: `<` and `>=`. - `sender.name`: The resource name of
+        # the sender (`users/`user``). Only supports `=`. You can use the e-mail as an
+        # alias for ``user``. For example, `users/example@gmail.com`, where `example@
+        # gmail.com` is the e-mail of the Google Chat user. - `space.name`: The resource
+        # name of the space where the message is posted. (`spaces/`space``). Only
+        # supports `=`. If this filter is not set, the search is performed across all
+        # direct messages and spaces the user has access to as a space member. - `space.
+        # display_name`: Supports the operator `:` (has) and filters spaces based on a
+        # partial match of their display name. Results are limited to the top five space
+        # matches. For example, `space.display_name:Project` searches for messages in
+        # the top five spaces that contain the word "Project" in their display names. - `
+        # attachment`: Supports the operator `:*` (has any) to check for the presence of
+        # attachments. If `attachment:*` is specified, only messages that have at least
+        # one attachment are returned. - `annotations.user_mentions.user.name`: The
+        # resource name of the mentioned user (`users/`user``). Only supports `:` (has).
+        # For example: `annotations.user_mentions.user.name:"users/1234567890"` returns
+        # only messages that contain a mention to the specified user. Alternatively, the
+        # alias `me` can be used to filter for messages that mention the caller user,
+        # for example: `annotations.user_mentions.user.name:users/me`. You can also use
+        # the e-mail as an alias for ``user``, for example, `users/example@gmail.com`.
+        # For advanced filtering, the following functions are also available: - `
+        # has_link()`: Returns only messages that have at least one hyperlink in the
+        # message text. - `is_unread()`: Filters out messages that have been read by the
+        # calling user. Using the `space.display_name` filter requires that the calling
+        # credentials include one of the following [authorization scopes](https://
+        # developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+        # `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.
+        # googleapis.com/auth/chat.spaces` Using the `is_unread()` filter requires that
+        # the calling credentials include one of the following [authorization scopes](
+        # https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
+        # scopes): - `https://www.googleapis.com/auth/chat.users.readstate.readonly` - `
+        # https://www.googleapis.com/auth/chat.users.readstate` Across different fields,
+        # only `AND` operators are supported. A valid example is `sender.name = "users/
+        # 1234567890" AND is_unread()`. The word `AND` is optional and is implied if
+        # omitted. For example, `sender.name = "users/1234567890" is_unread()` is valid
+        # and is equivalent to the previous example. An invalid example is `sender.name =
+        # "users/1234567890" OR is_unread()` because `OR` is not supported between
+        # different fields. Among the same field: - `create_time` supports only `AND`,
+        # and can only be used to represent an interval, such as `create_time >= "2022-
+        # 01-01T00:00:00+00:00" AND create_time < "2023-01-01T00:00:00+00:00"`. - `
+        # sender.name` supports only the `OR` operator, for example: `sender.name = "
+        # users/1234567890" OR sender.name = "users/0987654321"`. - `space.name`
+        # supports only the `OR` operator, for example: `space.name = "spaces/ABCDEFGH"
+        # OR space.name = "spaces/QWERTYUI"`. - `space.display_name` supports the
+        # operators `AND` and `OR`, but not a mix of both. For example: `space.
+        # display_name:Project AND space.display_name:Tasks` returns messages that are
+        # in spaces with display names containing both `Project` and `Tasks`, whereas `
+        # space.display_name:Project OR space.display_name:Tasks` returns messages that
+        # are in spaces with display names containing either `Project` or `Tasks` or
+        # both. - `annotations.user_mentions.user.name` supports the operators `AND` and
+        # `OR`, but not a mix of both. For example: `annotations.user_mentions.user.name:
+        # "users/1234567890" AND annotations.user_mentions.user.name:"users/0987654321"`
+        # returns only messages that mentions both users, whereas `annotations.
+        # user_mentions.user.name:"users/1234567890" OR annotations.user_mentions.user.
+        # name:"users/0987654321"` returns messages that mention either user or both.
+        # Parentheses are required to disambiguate operator precedence when combining `
+        # AND` and `OR` operators in the same query. For example: `(sender.name="users/
+        # me" OR sender.name="users/123456") AND is_unread()`. Otherwise, parentheses
+        # are optional. The following example queries are valid: ``` "Pending reports"
+        # AND create_time >= "2023-01-01T00:00:00Z" sender.name = "users/example@gmail.
+        # com" annotations.user_mentions.user.name:"users/0987654321" attachment:* AND
+        # space.name = "spaces/ABCDEFGH" tasks AND is_unread() AND sender.name = "users/
+        # 1234567890" "things to do" "urgent" (sender.name = "users/1234567890") AND (
+        # create_time < "2023-05-01T00:00:00Z") tasks AND space.name = "spaces/ABCDEFGH"
+        # AND has_link() "project one" is_unread() space.display_name:Project tasks ```
+        # The maximum query length is 1,000 characters. Invalid queries are rejected by
+        # the server with an `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. Specifies the desired output syntax for the Chat message `
+        # formatted_text` field.
+        # Corresponds to the JSON property `markupSyntax`
+        # @return [String]
+        attr_accessor :markup_syntax
+      
+        # Optional. How the results list is ordered. Supported attributes to order by
+        # are: - `create_time`: Sorts the results by the time of the message creation.
+        # Default value. - `relevance`: Sorts the results by relevance. [Developer
+        # Preview](https://developers.google.com/workspace/preview). The default
+        # ordering is `create_time desc`. Only a single order per query (`create_time`
+        # or `relevance`) is supported. Only descending order (`desc`) is supported, and
+        # it must be specified after the order attribute.
+        # Corresponds to the JSON property `orderBy`
+        # @return [String]
+        attr_accessor :order_by
+      
+        # Optional. The maximum number of results to return. The service may return
+        # fewer than this value. If unspecified, at most 25 are returned. The maximum
+        # value is 100. If you use a value more than 100, it's automatically changed to
+        # 100.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Optional. A token, received from the previous search messages call. Provide
+        # this parameter to retrieve the subsequent page. When paginating, all other
+        # parameters provided should match the call that provided the page token.
+        # Passing different values to the other parameters might lead to unexpected
+        # results.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Optional. Specifies what kind of search results view to return. The default is
+        # `SEARCH_MESSAGES_VIEW_BASIC`.
+        # Corresponds to the JSON property `view`
+        # @return [String]
+        attr_accessor :view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @markup_syntax = args[:markup_syntax] if args.key?(:markup_syntax)
+          @order_by = args[:order_by] if args.key?(:order_by)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @view = args[:view] if args.key?(:view)
+        end
+      end
+      
+      # Response message for searching messages.
+      class SearchMessagesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be used to retrieve the next page. If this field is empty,
+        # there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of search results that matched the query.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::ChatV1::SearchMessageResult>]
+        attr_accessor :results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # A single result item from a space search.
+      class SearchSpaceResult
+        include Google::Apis::Core::Hashable
+      
+        # A space in Google Chat. Spaces are conversations between two or more users or
+        # 1:1 messages between a user and a Chat app.
+        # Corresponds to the JSON property `space`
+        # @return [Google::Apis::ChatV1::Space]
+        attr_accessor :space
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @space = args[:space] if args.key?(:space)
+        end
+      end
+      
       # Response with a list of spaces corresponding to the search spaces request.
       class SearchSpacesResponse
         include Google::Apis::Core::Hashable
@@ -6347,6 +6576,11 @@ module Google
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
+      
+        # Output only. The list of search results that matched the query.
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::ChatV1::SearchSpaceResult>]
+        attr_accessor :results
       
         # Deprecated: Please use the new `results` field instead. A page of the
         # requested spaces. This field will be populated only when `useAdminAccess` is
@@ -6368,6 +6602,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @results = args[:results] if args.key?(:results)
           @spaces = args[:spaces] if args.key?(:spaces)
           @total_size = args[:total_size] if args.key?(:total_size)
         end

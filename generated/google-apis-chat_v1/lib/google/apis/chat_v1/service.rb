@@ -850,7 +850,6 @@ module Google
         # chat/search-manage-admin). When `use_admin_access` is set to `false`, the
         # results are limited to spaces where the calling user is a joined member. To
         # search with administrator privileges, set `use_admin_access` to `true`.
-        # Setting `use_admin_access` to `false` is available under Developer Preview.
         # Supports the following types of [authentication](https://developers.google.com/
         # workspace/chat/authenticate-authorize): - [User authentication](https://
         # developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
@@ -938,9 +937,7 @@ module Google
         #   [manage chat and spaces conversations privilege](https://support.google.com/a/
         #   answer/13369245). Requires either the `chat.admin.spaces.readonly` or `chat.
         #   admin.spaces` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/
-        #   authenticate-authorize#chat-api-scopes). Setting `use_admin_access` to `false`
-        #   is available under Developer Preview. [Developer Preview](https://developers.
-        #   google.com/workspace/preview).
+        #   authenticate-authorize#chat-api-scopes).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1574,6 +1571,9 @@ module Google
         #   from the `clientAssignedMessageId` field for ``message``. For details, see [
         #   Name a message] (https://developers.google.com/workspace/chat/create-messages#
         #   name_a_created_message).
+        # @param [String] markup_syntax
+        #   Optional. Specifies the desired output syntax for the Chat message `
+        #   formatted_text` field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1591,11 +1591,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_space_message(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_space_message(name, markup_syntax: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ChatV1::Message::Representation
           command.response_class = Google::Apis::ChatV1::Message
           command.params['name'] = name unless name.nil?
+          command.query['markupSyntax'] = markup_syntax unless markup_syntax.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1640,6 +1641,9 @@ module Google
         #   01-01T00:00:00+00:00" AND thread.name = spaces/AAAAAAAAAAA/threads/123 thread.
         #   name = spaces/AAAAAAAAAAA/threads/123 ``` Invalid queries are rejected by the
         #   server with an `INVALID_ARGUMENT` error.
+        # @param [String] markup_syntax
+        #   Optional. Specifies the desired output syntax for the Chat message `
+        #   formatted_text` field.
         # @param [String] order_by
         #   Optional. How the list of messages is ordered. Specify a value to order by an
         #   ordering operation. Valid ordering operation values are as follows: - `ASC`
@@ -1677,12 +1681,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_space_messages(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_space_messages(parent, filter: nil, markup_syntax: nil, order_by: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/messages', options)
           command.response_representation = Google::Apis::ChatV1::ListMessagesResponse::Representation
           command.response_class = Google::Apis::ChatV1::ListMessagesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['markupSyntax'] = markup_syntax unless markup_syntax.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1755,6 +1760,58 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['allowMissing'] = allow_missing unless allow_missing.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Searches for messages in Google Chat that the calling user has access to.
+        # Returns a list of messages matching the search criteria. To search across all
+        # spaces the user has access to, set `parent` to `spaces/-`. Using any other
+        # value for `parent` results in an `INVALID_ARGUMENT` error. The returned
+        # messages have their `name` field populated with the full resource name, which
+        # includes the specific `space` in which the message resides. This API doesn't
+        # return all message types. The types of messages listed below aren't included
+        # in the response. Use ListMessages to list all messages. - Private Messages
+        # that are visible to the authenticated user. - Messages posted by Chat apps in
+        # spaces or group chats. - Messages in a Chat app DM. - Messages from blocked
+        # users. - Messages in spaces that the caller has muted. Requires [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user) with one of the following [authorization scopes](https://
+        # developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+        # `https://www.googleapis.com/auth/chat.messages.readonly` - `https://www.
+        # googleapis.com/auth/chat.messages`
+        # @param [String] parent
+        #   Required. The resource name of the space to search within. To search across
+        #   all spaces the user has access to, set this field to `spaces/-`. Using any
+        #   other value for `parent` results in an `INVALID_ARGUMENT` error. To limit the
+        #   search to one or more spaces, use `space.name` or `space.display_name` in the `
+        #   filter`.
+        # @param [Google::Apis::ChatV1::SearchMessagesRequest] search_messages_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::SearchMessagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::SearchMessagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_messages(parent, search_messages_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/messages:search', options)
+          command.request_representation = Google::Apis::ChatV1::SearchMessagesRequest::Representation
+          command.request_object = search_messages_request_object
+          command.response_representation = Google::Apis::ChatV1::SearchMessagesResponse::Representation
+          command.response_class = Google::Apis::ChatV1::SearchMessagesResponse
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
