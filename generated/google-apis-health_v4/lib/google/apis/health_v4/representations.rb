@@ -2308,6 +2308,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_id, as: 'externalId'
+          property :main_sleep, as: 'mainSleep'
           property :manually_edited, as: 'manuallyEdited'
           property :nap, as: 'nap'
           property :processed, as: 'processed'

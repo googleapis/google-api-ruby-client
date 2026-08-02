@@ -5107,6 +5107,15 @@ module Google
         # @return [String]
         attr_accessor :external_id
       
+        # Output only. `main_sleep`: the longest sleep session with stages within one
+        # day. If no sleep session has stages, then the longest sleep is the `main_sleep`
+        # . If there are multiple days of sleep in the response, there is one `
+        # main_sleep` per day.
+        # Corresponds to the JSON property `mainSleep`
+        # @return [Boolean]
+        attr_accessor :main_sleep
+        alias_method :main_sleep?, :main_sleep
+      
         # Output only. Some sleeps autodetected by algorithms can be manually edited by
         # users.
         # Corresponds to the JSON property `manuallyEdited`
@@ -5141,6 +5150,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @external_id = args[:external_id] if args.key?(:external_id)
+          @main_sleep = args[:main_sleep] if args.key?(:main_sleep)
           @manually_edited = args[:manually_edited] if args.key?(:manually_edited)
           @nap = args[:nap] if args.key?(:nap)
           @processed = args[:processed] if args.key?(:processed)
