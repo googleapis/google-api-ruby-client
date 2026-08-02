@@ -1819,10 +1819,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Optional deployment reference. If specified, the preview will be
-        # performed using the provided deployment's current state and use any relevant
-        # fields from the deployment unless explicitly specified in the preview create
-        # request.
+        # Optional. Deployment reference. If specified, the preview will be performed
+        # using the provided deployment's current state and use any relevant fields from
+        # the deployment unless explicitly specified in the preview create request.
         # Corresponds to the JSON property `deployment`
         # @return [String]
         attr_accessor :deployment
