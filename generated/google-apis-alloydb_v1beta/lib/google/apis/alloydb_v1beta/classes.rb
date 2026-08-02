@@ -2150,6 +2150,11 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::PscInstanceConfig]
         attr_accessor :psc_instance_config
       
+        # Information about the Private Service Connect (PSC) for the instance.
+        # Corresponds to the JSON property `pscInstanceInfo`
+        # @return [Google::Apis::AlloydbV1beta::PscInstanceInfo]
+        attr_accessor :psc_instance_info
+      
         # Output only. The public IP addresses for the Instance. This is available ONLY
         # when enable_public_ip is set. This is the connection endpoint for an end-user
         # application.
@@ -2242,6 +2247,7 @@ module Google
           @observability_config = args[:observability_config] if args.key?(:observability_config)
           @outbound_public_ip_addresses = args[:outbound_public_ip_addresses] if args.key?(:outbound_public_ip_addresses)
           @psc_instance_config = args[:psc_instance_config] if args.key?(:psc_instance_config)
+          @psc_instance_info = args[:psc_instance_info] if args.key?(:psc_instance_info)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
           @read_pool_config = args[:read_pool_config] if args.key?(:read_pool_config)
@@ -3241,10 +3247,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_consumer_projects
       
+        # Optional. Configuration for setting up PSC auto connection for the instance.
+        # Corresponds to the JSON property `pscAutoConnectionPolicyState`
+        # @return [String]
+        attr_accessor :psc_auto_connection_policy_state
+      
         # Optional. Configurations for setting up PSC service automation.
         # Corresponds to the JSON property `pscAutoConnections`
         # @return [Array<Google::Apis::AlloydbV1beta::PscAutoConnectionConfig>]
         attr_accessor :psc_auto_connections
+      
+        # Optional. Configuration for setting up PSC auto DNS for the instance.
+        # Corresponds to the JSON property `pscAutoDnsState`
+        # @return [String]
+        attr_accessor :psc_auto_dns_state
       
         # Output only. The DNS name of the instance for PSC connectivity. Name
         # convention: ...alloydb-psc.goog
@@ -3273,10 +3289,54 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @psc_auto_connection_policy_state = args[:psc_auto_connection_policy_state] if args.key?(:psc_auto_connection_policy_state)
           @psc_auto_connections = args[:psc_auto_connections] if args.key?(:psc_auto_connections)
+          @psc_auto_dns_state = args[:psc_auto_dns_state] if args.key?(:psc_auto_dns_state)
           @psc_dns_name = args[:psc_dns_name] if args.key?(:psc_dns_name)
           @psc_interface_configs = args[:psc_interface_configs] if args.key?(:psc_interface_configs)
           @service_attachment_link = args[:service_attachment_link] if args.key?(:service_attachment_link)
+        end
+      end
+      
+      # Information about the Private Service Connect (PSC) for the instance.
+      class PscInstanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates if the PSC auto connection policy is enabled for the
+        # instance. For older instances, this will be off by default, but for newer
+        # instances, this will be auto-enabled.
+        # Corresponds to the JSON property `effectivePscAutoConnectionPolicy`
+        # @return [Boolean]
+        attr_accessor :effective_psc_auto_connection_policy
+        alias_method :effective_psc_auto_connection_policy?, :effective_psc_auto_connection_policy
+      
+        # Output only. The effective state of the PSC auto DNS for the instance.
+        # Corresponds to the JSON property `effectivePscAutoDnsEnabled`
+        # @return [Boolean]
+        attr_accessor :effective_psc_auto_dns_enabled
+        alias_method :effective_psc_auto_dns_enabled?, :effective_psc_auto_dns_enabled
+      
+        # Output only. Specifies the auto DNS names for the instance.
+        # Corresponds to the JSON property `pscAutoDnsNames`
+        # @return [Array<String>]
+        attr_accessor :psc_auto_dns_names
+      
+        # Output only. The PSC service connection policy name. The format is "projects//
+        # regions//serviceConnectionPolicies/"
+        # Corresponds to the JSON property `serviceConnectionPolicy`
+        # @return [String]
+        attr_accessor :service_connection_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_psc_auto_connection_policy = args[:effective_psc_auto_connection_policy] if args.key?(:effective_psc_auto_connection_policy)
+          @effective_psc_auto_dns_enabled = args[:effective_psc_auto_dns_enabled] if args.key?(:effective_psc_auto_dns_enabled)
+          @psc_auto_dns_names = args[:psc_auto_dns_names] if args.key?(:psc_auto_dns_names)
+          @service_connection_policy = args[:service_connection_policy] if args.key?(:service_connection_policy)
         end
       end
       
@@ -3897,40 +3957,34 @@ module Google
         end
       end
       
-      # Configuration for availability of database instance
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration
         include Google::Apis::Core::Hashable
       
-        # Checks for existence of (multi-cluster) routing configuration that allows
-        # automatic failover to a different zone/region in case of an outage. Applicable
-        # to Bigtable resources.
+        # Disable validation warnings
         # Corresponds to the JSON property `automaticFailoverRoutingConfigured`
         # @return [Boolean]
         attr_accessor :automatic_failover_routing_configured
         alias_method :automatic_failover_routing_configured?, :automatic_failover_routing_configured
       
-        # Availability type. Potential values: * `ZONAL`: The instance serves data from
-        # only one zone. Outages in that zone affect data accessibility. * `REGIONAL`:
-        # The instance can serve data from more than one zone in a region (it is highly
-        # available).
+        # Disable validation warnings
         # Corresponds to the JSON property `availabilityType`
         # @return [String]
         attr_accessor :availability_type
       
-        # Checks for resources that are configured to have redundancy, and ongoing
-        # replication across regions
+        # Disable validation warnings
         # Corresponds to the JSON property `crossRegionReplicaConfigured`
         # @return [Boolean]
         attr_accessor :cross_region_replica_configured
         alias_method :cross_region_replica_configured?, :cross_region_replica_configured
       
-        # 
+        # Disable validation warnings
         # Corresponds to the JSON property `externalReplicaConfigured`
         # @return [Boolean]
         attr_accessor :external_replica_configured
         alias_method :external_replica_configured?, :external_replica_configured
       
-        # 
+        # Disable validation warnings
         # Corresponds to the JSON property `promotableReplicaConfigured`
         # @return [Boolean]
         attr_accessor :promotable_replica_configured
@@ -3950,24 +4004,22 @@ module Google
         end
       end
       
-      # Configuration for automatic backups
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainBackupConfiguration
         include Google::Apis::Core::Hashable
       
-        # Whether customer visible automated backups are enabled on the instance.
+        # Disable validation warnings
         # Corresponds to the JSON property `automatedBackupEnabled`
         # @return [Boolean]
         attr_accessor :automated_backup_enabled
         alias_method :automated_backup_enabled?, :automated_backup_enabled
       
-        # Backup retention settings.
+        # Disable validation warnings
         # Corresponds to the JSON property `backupRetentionSettings`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainRetentionSettings]
         attr_accessor :backup_retention_settings
       
-        # Whether point-in-time recovery is enabled. This is optional field, if the
-        # database service does not have this feature or metadata is not available in
-        # control plane, this can be omitted.
+        # Disable validation warnings
         # Corresponds to the JSON property `pointInTimeRecoveryEnabled`
         # @return [Boolean]
         attr_accessor :point_in_time_recovery_enabled
@@ -3985,12 +4037,11 @@ module Google
         end
       end
       
-      # BackupDRConfiguration to capture the backup and disaster recovery details of
-      # database resource.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration
         include Google::Apis::Core::Hashable
       
-        # Indicates if the resource is managed by BackupDR.
+        # Disable validation warnings
         # Corresponds to the JSON property `backupdrManaged`
         # @return [Boolean]
         attr_accessor :backupdr_managed
@@ -4006,38 +4057,36 @@ module Google
         end
       end
       
-      # BackupDRMetadata contains information about the backup and disaster recovery
-      # metadata of a database resource.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainBackupDrMetadata
         include Google::Apis::Core::Hashable
       
-        # Configuration for automatic backups
+        # Disable validation warnings
         # Corresponds to the JSON property `backupConfiguration`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration]
         attr_accessor :backup_configuration
       
-        # A backup run.
+        # Disable validation warnings
         # Corresponds to the JSON property `backupRun`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
         attr_accessor :backup_run
       
-        # BackupDRConfiguration to capture the backup and disaster recovery details of
-        # database resource.
+        # Disable validation warnings
         # Corresponds to the JSON property `backupdrConfiguration`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration]
         attr_accessor :backupdr_configuration
       
-        # Required. Full resource name of this instance.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
       
-        # Required. Last time backup configuration was refreshed.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `lastRefreshTime`
         # @return [String]
         attr_accessor :last_refresh_time
       
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Disable validation warnings
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
@@ -4057,26 +4106,26 @@ module Google
         end
       end
       
-      # A backup run.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainBackupRun
         include Google::Apis::Core::Hashable
       
-        # The time the backup operation completed. REQUIRED
+        # Disable validation warnings
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # An error that occurred during a backup creation operation.
+        # Disable validation warnings
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainOperationError]
         attr_accessor :error
       
-        # The time the backup operation started. REQUIRED
+        # Disable validation warnings
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
       
-        # The status of this run. REQUIRED
+        # Disable validation warnings
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -4094,17 +4143,16 @@ module Google
         end
       end
       
-      # Contains compliance information about a security standard indicating unmet
-      # recommendations.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainCompliance
         include Google::Apis::Core::Hashable
       
-        # Industry-wide compliance standards or benchmarks, such as CIS, PCI, and OWASP.
+        # Disable validation warnings
         # Corresponds to the JSON property `standard`
         # @return [String]
         attr_accessor :standard
       
-        # Version of the standard or benchmark, for example, 1.1
+        # Disable validation warnings
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -4120,34 +4168,32 @@ module Google
         end
       end
       
-      # Config based signal data. This is used to send signals to Condor which are
-      # based on the DB level configurations. These will be used to send signals for
-      # self managed databases.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData
         include Google::Apis::Core::Hashable
       
-        # Required. Full Resource name of the source resource.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
       
-        # Required. Last time signal was refreshed
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `lastRefreshTime`
         # @return [String]
         attr_accessor :last_refresh_time
       
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Disable validation warnings
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Signal data for boolean signals.
+        # Disable validation warnings
         # Corresponds to the JSON property `signalBoolValue`
         # @return [Boolean]
         attr_accessor :signal_bool_value
         alias_method :signal_bool_value?, :signal_bool_value
       
-        # Required. Signal type of the signal
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `signalType`
         # @return [String]
         attr_accessor :signal_type
@@ -4166,14 +4212,11 @@ module Google
         end
       end
       
-      # Any custom metadata associated with the resource. e.g. A spanner instance can
-      # have multiple databases with its own unique metadata. Information for these
-      # individual databases can be captured in custom metadata data
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainCustomMetadataData
         include Google::Apis::Core::Hashable
       
-        # Metadata for individual internal resources in an instance. e.g. spanner
-        # instance can have multiple databases with unique configuration.
+        # Disable validation warnings
         # Corresponds to the JSON property `internalResourceMetadata`
         # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata>]
         attr_accessor :internal_resource_metadata
@@ -4188,71 +4231,61 @@ module Google
         end
       end
       
-      # DatabaseResourceFeed is the top level proto to be used to ingest different
-      # database resource level events into Condor platform. Next ID: 13
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed
         include Google::Apis::Core::Hashable
       
-        # BackupDRMetadata contains information about the backup and disaster recovery
-        # metadata of a database resource.
+        # Disable validation warnings
         # Corresponds to the JSON property `backupdrMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrMetadata]
         attr_accessor :backupdr_metadata
       
-        # Config based signal data. This is used to send signals to Condor which are
-        # based on the DB level configurations. These will be used to send signals for
-        # self managed databases.
+        # Disable validation warnings
         # Corresponds to the JSON property `configBasedSignalData`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData]
         attr_accessor :config_based_signal_data
       
-        # Database resource signal data. This is used to send signals to Condor which
-        # are based on the DB/Instance/Fleet level configurations. These will be used to
-        # send signals for all inventory types. Next ID: 10
+        # Disable validation warnings
         # Corresponds to the JSON property `databaseResourceSignalData`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData]
         attr_accessor :database_resource_signal_data
       
-        # Required. Timestamp when feed is generated.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `feedTimestamp`
         # @return [String]
         attr_accessor :feed_timestamp
       
-        # Required. Type feed to be ingested into condor
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `feedType`
         # @return [String]
         attr_accessor :feed_type
       
-        # Observability metric data.
+        # Disable validation warnings
         # Corresponds to the JSON property `observabilityMetricData`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainObservabilityMetricData]
         attr_accessor :observability_metric_data
       
-        # Common model for database resource recommendation signal data.
+        # Disable validation warnings
         # Corresponds to the JSON property `recommendationSignalData`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData]
         attr_accessor :recommendation_signal_data
       
-        # Common model for database resource health signal data.
+        # Disable validation warnings
         # Corresponds to the JSON property `resourceHealthSignalData`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData]
         attr_accessor :resource_health_signal_data
       
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Disable validation warnings
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Common model for database resource instance metadata. Next ID: 35
+        # Disable validation warnings
         # Corresponds to the JSON property `resourceMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata]
         attr_accessor :resource_metadata
       
-        # Optional. If true, the feed won't be ingested by DB Center. This indicates
-        # that the feed is intentionally skipped. For example, BackupDR feeds are only
-        # needed for resources integrated with DB Center (e.g., CloudSQL, AlloyDB).
-        # Feeds for non-integrated resources (e.g., Compute Engine, Persistent Disk) can
-        # be skipped.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `skipIngestion`
         # @return [Boolean]
         attr_accessor :skip_ingestion
@@ -4278,95 +4311,81 @@ module Google
         end
       end
       
-      # Common model for database resource health signal data.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData
         include Google::Apis::Core::Hashable
       
-        # Any other additional metadata
+        # Disable validation warnings
         # Corresponds to the JSON property `additionalMetadata`
         # @return [Hash<String,Object>]
         attr_accessor :additional_metadata
       
-        # Industry standards associated with this signal; if this signal is an issue,
-        # that could be a violation of the associated industry standard(s). For example,
-        # AUTO_BACKUP_DISABLED signal is associated with CIS GCP 1.1, CIS GCP 1.2, CIS
-        # GCP 1.3, NIST 800-53 and ISO-27001 compliance standards. If a database
-        # resource does not have automated backup enable, it will violate these
-        # following industry standards.
+        # Disable validation warnings
         # Corresponds to the JSON property `compliance`
         # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainCompliance>]
         attr_accessor :compliance
       
-        # Description associated with signal
+        # Disable validation warnings
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Required. The last time at which the event described by this signal took place
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
       
-        # The external-uri of the signal, using which more information about this signal
-        # can be obtained. In GCP, this will take user to SCC page to get more details
-        # about signals.
+        # Disable validation warnings
         # Corresponds to the JSON property `externalUri`
         # @return [String]
         attr_accessor :external_uri
       
-        # This is used to identify the location of the resource. Example: "us-central1"
+        # Disable validation warnings
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE,
-        # SQL_LOG_ERROR_VERBOSITY etc.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Cloud provider name. Ex: GCP/AWS/Azure/OnPrem/SelfManaged
+        # Disable validation warnings
         # Corresponds to the JSON property `provider`
         # @return [String]
         attr_accessor :provider
       
-        # Closest parent container of this resource. In GCP, 'container' refers to a
-        # Cloud Resource Manager project. It must be resource name of a Cloud Resource
-        # Manager project with the format of "provider//", such as "projects/123". For
-        # GCP provided resources, number should be project number.
+        # Disable validation warnings
         # Corresponds to the JSON property `resourceContainer`
         # @return [String]
         attr_accessor :resource_container
       
-        # Required. Database resource name associated with the signal. Resource name to
-        # follow CAIS resource_name format as noted here go/condor-common-datamodel
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # Required. The class of the signal, such as if it's a THREAT or VULNERABILITY.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `signalClass`
         # @return [String]
         attr_accessor :signal_class
       
-        # Required. Unique identifier for the signal. This is an unique id which would
-        # be mainatined by partner to identify a signal.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `signalId`
         # @return [String]
         attr_accessor :signal_id
       
-        # The severity of the signal, such as if it's a HIGH or LOW severity.
+        # Disable validation warnings
         # Corresponds to the JSON property `signalSeverity`
         # @return [String]
         attr_accessor :signal_severity
       
-        # Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `
-        # LOGGING_MOST_ERRORS`, etc.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `signalType`
         # @return [String]
         attr_accessor :signal_type
       
-        # Required. The state of the signal, such as if it's ACTIVE or RESOLVED.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -4395,36 +4414,26 @@ module Google
         end
       end
       
-      # DatabaseResourceId will serve as primary key for any resource ingestion event.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceId
         include Google::Apis::Core::Hashable
       
-        # Required. Cloud provider name. Ex: GCP/AWS/Azure/OnPrem/SelfManaged
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `provider`
         # @return [String]
         attr_accessor :provider
       
-        # Optional. Needs to be used only when the provider is PROVIDER_OTHER.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `providerDescription`
         # @return [String]
         attr_accessor :provider_description
       
-        # Required. The type of resource this ID is identifying. Ex go/keep-sorted start
-        # alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.
-        # googleapis.com/Cluster, bigtableadmin.googleapis.com/Instance compute.
-        # googleapis.com/Instance firestore.googleapis.com/Database, memorystore.
-        # googleapis.com/Instance, redis.googleapis.com/Instance, redis.googleapis.com/
-        # Cluster, oracledatabase.googleapis.com/CloudExadataInfrastructure
-        # oracledatabase.googleapis.com/CloudVmCluster oracledatabase.googleapis.com/
-        # AutonomousDatabase spanner.googleapis.com/Instance, spanner.googleapis.com/
-        # Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please
-        # refer go/condor-common-datamodel
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
       
-        # Required. A service-local token that distinguishes this resource from other
-        # resources within the same service.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `uniqueId`
         # @return [String]
         attr_accessor :unique_id
@@ -4442,132 +4451,122 @@ module Google
         end
       end
       
-      # Common model for database resource instance metadata. Next ID: 35
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata
         include Google::Apis::Core::Hashable
       
-        # Field to ingest additional metadata whichd does not support proto format.
+        # Disable validation warnings
         # Corresponds to the JSON property `additionalMetadata`
         # @return [Hash<String,Object>]
         attr_accessor :additional_metadata
       
-        # Configuration for availability of database instance
+        # Disable validation warnings
         # Corresponds to the JSON property `availabilityConfiguration`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration]
         attr_accessor :availability_configuration
       
-        # Configuration for automatic backups
+        # Disable validation warnings
         # Corresponds to the JSON property `backupConfiguration`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration]
         attr_accessor :backup_configuration
       
-        # A backup run.
+        # Disable validation warnings
         # Corresponds to the JSON property `backupRun`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
         attr_accessor :backup_run
       
-        # BackupDRConfiguration to capture the backup and disaster recovery details of
-        # database resource.
+        # Disable validation warnings
         # Corresponds to the JSON property `backupdrConfiguration`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupDrConfiguration]
         attr_accessor :backupdr_configuration
       
-        # The creation time of the resource, i.e. the time when resource is created and
-        # recorded in partner service.
+        # Disable validation warnings
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
       
-        # Current state of the instance.
+        # Disable validation warnings
         # Corresponds to the JSON property `currentState`
         # @return [String]
         attr_accessor :current_state
       
-        # Any custom metadata associated with the resource. e.g. A spanner instance can
-        # have multiple databases with its own unique metadata. Information for these
-        # individual databases can be captured in custom metadata data
+        # Disable validation warnings
         # Corresponds to the JSON property `customMetadata`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainCustomMetadataData]
         attr_accessor :custom_metadata
       
-        # Optional. Edition represents whether the instance is ENTERPRISE or
-        # ENTERPRISE_PLUS. This information is core to Cloud SQL only and is used to
-        # identify the edition of the instance.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `edition`
         # @return [String]
         attr_accessor :edition
       
-        # Entitlements associated with the resource
+        # Disable validation warnings
         # Corresponds to the JSON property `entitlements`
         # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainEntitlement>]
         attr_accessor :entitlements
       
-        # The state that the instance is expected to be in. For example, an instance
-        # state can transition to UNHEALTHY due to wrong patch update, while the
-        # expected state will remain at the HEALTHY.
+        # Disable validation warnings
         # Corresponds to the JSON property `expectedState`
         # @return [String]
         attr_accessor :expected_state
       
-        # GCBDR Configuration for the resource.
+        # Disable validation warnings
         # Corresponds to the JSON property `gcbdrConfiguration`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainGcbdrConfiguration]
         attr_accessor :gcbdr_configuration
       
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Disable validation warnings
         # Corresponds to the JSON property `id`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :id
       
-        # The type of the instance. Specified at creation time.
+        # Disable validation warnings
         # Corresponds to the JSON property `instanceType`
         # @return [String]
         attr_accessor :instance_type
       
-        # Field to ingest additional metadata which support proto format.
+        # Disable validation warnings
         # Corresponds to the JSON property `internalAdditionalMetadata`
         # @return [Hash<String,Object>]
         attr_accessor :internal_additional_metadata
       
-        # Used to send IP address information for a database resource.
+        # Disable validation warnings
         # Corresponds to the JSON property `ipAddress`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainIpAddress]
         attr_accessor :ip_address
       
-        # Optional. Whether deletion protection is enabled for this resource.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `isDeletionProtectionEnabled`
         # @return [Boolean]
         attr_accessor :is_deletion_protection_enabled
         alias_method :is_deletion_protection_enabled?, :is_deletion_protection_enabled
       
-        # The resource location. REQUIRED
+        # Disable validation warnings
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # MachineConfiguration describes the configuration of a machine specific to
-        # Database Resource.
+        # Disable validation warnings
         # Corresponds to the JSON property `machineConfiguration`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainMachineConfiguration]
         attr_accessor :machine_configuration
       
-        # MaintenanceInfo to capture the maintenance details of database resource.
+        # Disable validation warnings
         # Corresponds to the JSON property `maintenanceInfo`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo]
         attr_accessor :maintenance_info
       
-        # Optional. The modes of the database resource.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `modes`
         # @return [Array<String>]
         attr_accessor :modes
       
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Disable validation warnings
         # Corresponds to the JSON property `primaryResourceId`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :primary_resource_id
       
-        # Primary resource location. REQUIRED if the immediate parent exists when first
-        # time resource is getting ingested, otherwise optional.
+        # Disable validation warnings
         # Corresponds to the JSON property `primaryResourceLocation`
         # @return [String]
         attr_accessor :primary_resource_location
@@ -4577,53 +4576,42 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct]
         attr_accessor :product
       
-        # Closest parent Cloud Resource Manager container of this resource. It must be
-        # resource name of a Cloud Resource Manager project with the format of "/", such
-        # as "projects/123". For GCP provided resources, number should be project number.
+        # Disable validation warnings
         # Corresponds to the JSON property `resourceContainer`
         # @return [String]
         attr_accessor :resource_container
       
-        # Optional. List of resource flags for the database resource.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `resourceFlags`
         # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceFlags>]
         attr_accessor :resource_flags
       
-        # Required. Different from DatabaseResourceId.unique_id, a resource name can be
-        # reused over time. That is, after a resource named "ABC" is deleted, the name "
-        # ABC" can be used to to create a new resource within the same source. Resource
-        # name to follow CAIS resource_name format as noted here go/condor-common-
-        # datamodel
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # Optional. Suspension reason for the resource.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `suspensionReason`
         # @return [String]
         attr_accessor :suspension_reason
       
-        # Message type for storing tags. Tags provide a way to create annotations for
-        # resources, and in some cases conditionally allow or deny policies based on
-        # whether a resource has a specific tag.
+        # Disable validation warnings
         # Corresponds to the JSON property `tagsSet`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainTags]
         attr_accessor :tags_set
       
-        # The time at which the resource was updated and recorded at partner service.
+        # Disable validation warnings
         # Corresponds to the JSON property `updationTime`
         # @return [String]
         attr_accessor :updation_time
       
-        # Message type for storing user labels. User labels are used to tag App Engine
-        # resources, allowing users to search for resources matching a set of labels and
-        # to aggregate usage data by labels.
+        # Disable validation warnings
         # Corresponds to the JSON property `userLabelSet`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUserLabels]
         attr_accessor :user_label_set
       
-        # The resource zone. This is only applicable for zonal resources and will be
-        # empty for regional and multi-regional resources.
+        # Disable validation warnings
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -4669,58 +4657,46 @@ module Google
         end
       end
       
-      # Common model for database resource recommendation signal data.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData
         include Google::Apis::Core::Hashable
       
-        # Optional. Any other additional metadata specific to recommendation
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `additionalMetadata`
         # @return [Hash<String,Object>]
         attr_accessor :additional_metadata
       
-        # Required. last time recommendationw as refreshed
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `lastRefreshTime`
         # @return [String]
         attr_accessor :last_refresh_time
       
-        # Required. Recommendation state
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `recommendationState`
         # @return [String]
         attr_accessor :recommendation_state
       
-        # Required. Name of recommendation. Examples: organizations/1234/locations/us-
-        # central1/recommenders/google.cloudsql.instance.PerformanceRecommender/
-        # recommendations/9876
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `recommender`
         # @return [String]
         attr_accessor :recommender
       
-        # Required. ID of recommender. Examples: "google.cloudsql.instance.
-        # PerformanceRecommender"
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `recommenderId`
         # @return [String]
         attr_accessor :recommender_id
       
-        # Required. Contains an identifier for a subtype of recommendations produced for
-        # the same recommender. Subtype is a function of content and impact, meaning a
-        # new subtype might be added when significant changes to `content` or `
-        # primary_impact.category` are introduced. See the Recommenders section to see a
-        # list of subtypes for a given Recommender. Examples: For recommender = "google.
-        # cloudsql.instance.PerformanceRecommender", recommender_subtype can be "
-        # MYSQL_HIGH_NUMBER_OF_OPEN_TABLES_BEST_PRACTICE"/"
-        # POSTGRES_HIGH_TRANSACTION_ID_UTILIZATION_BEST_PRACTICE"
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `recommenderSubtype`
         # @return [String]
         attr_accessor :recommender_subtype
       
-        # Required. Database resource name associated with the signal. Resource name to
-        # follow CAIS resource_name format as noted here go/condor-common-datamodel
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # Required. Type of signal, for example, `SIGNAL_TYPE_IDLE`, `
-        # SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES`, etc.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `signalType`
         # @return [String]
         attr_accessor :signal_type
@@ -4742,55 +4718,52 @@ module Google
         end
       end
       
-      # Database resource signal data. This is used to send signals to Condor which
-      # are based on the DB/Instance/Fleet level configurations. These will be used to
-      # send signals for all inventory types. Next ID: 10
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData
         include Google::Apis::Core::Hashable
       
-        # A backup run.
+        # Disable validation warnings
         # Corresponds to the JSON property `backupRun`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
         attr_accessor :backup_run
       
-        # Required. Full Resource name of the source resource.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
       
-        # Required. Last time signal was refreshed
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `lastRefreshTime`
         # @return [String]
         attr_accessor :last_refresh_time
       
-        # Required. Resource location.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Disable validation warnings
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Deprecated: Use signal_metadata_list instead.
+        # Disable validation warnings
         # Corresponds to the JSON property `signalBoolValue`
         # @return [Boolean]
         attr_accessor :signal_bool_value
         alias_method :signal_bool_value?, :signal_bool_value
       
-        # This will support array of OneOf signal metadata information for a given
-        # signal type.
+        # Disable validation warnings
         # Corresponds to the JSON property `signalMetadataList`
         # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainSignalMetadata>]
         attr_accessor :signal_metadata_list
       
-        # Required. Output only. Signal state of the signal
+        # Required. Output only. Disable validation warnings
         # Corresponds to the JSON property `signalState`
         # @return [String]
         attr_accessor :signal_state
       
-        # Required. Signal type of the signal
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `signalType`
         # @return [String]
         attr_accessor :signal_type
@@ -4813,17 +4786,16 @@ module Google
         end
       end
       
-      # Proto representing the access that a user has to a specific feature/service.
-      # NextId: 3.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainEntitlement
         include Google::Apis::Core::Hashable
       
-        # The current state of user's accessibility to a feature/benefit.
+        # Disable validation warnings
         # Corresponds to the JSON property `entitlementState`
         # @return [String]
         attr_accessor :entitlement_state
       
-        # An enum that represents the type of this entitlement.
+        # Disable validation warnings
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4839,11 +4811,11 @@ module Google
         end
       end
       
-      # GCBDR Configuration for the resource.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainGcbdrConfiguration
         include Google::Apis::Core::Hashable
       
-        # Whether the resource is managed by GCBDR.
+        # Disable validation warnings
         # Corresponds to the JSON property `gcbdrManaged`
         # @return [Boolean]
         attr_accessor :gcbdr_managed
@@ -4859,23 +4831,21 @@ module Google
         end
       end
       
-      # Metadata for individual internal resources in an instance. e.g. spanner
-      # instance can have multiple databases with unique configuration settings.
-      # Similarly bigtable can have multiple clusters within same bigtable instance.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata
         include Google::Apis::Core::Hashable
       
-        # Configuration for automatic backups
+        # Disable validation warnings
         # Corresponds to the JSON property `backupConfiguration`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupConfiguration]
         attr_accessor :backup_configuration
       
-        # A backup run.
+        # Disable validation warnings
         # Corresponds to the JSON property `backupRun`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
         attr_accessor :backup_run
       
-        # Whether deletion protection is enabled for this internal resource.
+        # Disable validation warnings
         # Corresponds to the JSON property `isDeletionProtectionEnabled`
         # @return [Boolean]
         attr_accessor :is_deletion_protection_enabled
@@ -4886,13 +4856,12 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterProtoCommonProduct]
         attr_accessor :product
       
-        # DatabaseResourceId will serve as primary key for any resource ingestion event.
+        # Disable validation warnings
         # Corresponds to the JSON property `resourceId`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainDatabaseResourceId]
         attr_accessor :resource_id
       
-        # Required. internal resource name for spanner this will be database name e.g."
-        # spanner.googleapis.com/projects/123/abc/instances/inst1/databases/db1"
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -4912,19 +4881,16 @@ module Google
         end
       end
       
-      # Used to send IP address information for a database resource.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainIpAddress
         include Google::Apis::Core::Hashable
       
-        # The private IP address assigned to the resource within a Virtual Private Cloud
-        # (VPC). This IP is only reachable from within the same VPC network. Stored in
-        # standard string format (e.g., "10.0.0.2").
+        # Disable validation warnings
         # Corresponds to the JSON property `privateIp`
         # @return [String]
         attr_accessor :private_ip
       
-        # The public IP address assigned to the resource. This IP is reachable from the
-        # internet. Stored in standard string format (e.g., "34.72.1.1").
+        # Disable validation warnings
         # Corresponds to the JSON property `publicIp`
         # @return [String]
         attr_accessor :public_ip
@@ -4940,42 +4906,36 @@ module Google
         end
       end
       
-      # MachineConfiguration describes the configuration of a machine specific to
-      # Database Resource.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainMachineConfiguration
         include Google::Apis::Core::Hashable
       
-        # Optional. Baseline slots for BigQuery Reservations. Baseline slots are in
-        # increments of 50.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `baselineSlots`
         # @return [Fixnum]
         attr_accessor :baseline_slots
       
-        # The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add
-        # proto validations again after bug fix.
+        # Disable validation warnings
         # Corresponds to the JSON property `cpuCount`
         # @return [Fixnum]
         attr_accessor :cpu_count
       
-        # Optional. Max slots for BigQuery Reservations. Max slots are in increments of
-        # 50.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `maxReservationSlots`
         # @return [Fixnum]
         attr_accessor :max_reservation_slots
       
-        # Memory size in bytes. TODO(b/342344482) add proto validations again after bug
-        # fix.
+        # Disable validation warnings
         # Corresponds to the JSON property `memorySizeInBytes`
         # @return [Fixnum]
         attr_accessor :memory_size_in_bytes
       
-        # Optional. Number of shards (if applicable).
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `shardCount`
         # @return [Fixnum]
         attr_accessor :shard_count
       
-        # Optional. The number of vCPUs. TODO(b/342344482) add proto validations again
-        # after bug fix.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `vcpuCount`
         # @return [Float]
         attr_accessor :vcpu_count
@@ -4995,27 +4955,26 @@ module Google
         end
       end
       
-      # 
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainObservabilityMetricData
         include Google::Apis::Core::Hashable
       
-        # Required. Type of aggregation performed on the metric.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `aggregationType`
         # @return [String]
         attr_accessor :aggregation_type
       
-        # Required. Type of metric like CPU, Memory, etc.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `metricType`
         # @return [String]
         attr_accessor :metric_type
       
-        # Required. The time the metric value was observed.
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `observationTime`
         # @return [String]
         attr_accessor :observation_time
       
-        # Required. Database resource name associated with the signal. Resource name to
-        # follow CAIS resource_name format as noted here go/condor-common-datamodel
+        # Required. Disable validation warnings
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -5040,21 +4999,21 @@ module Google
         end
       end
       
-      # An error that occurred during a backup creation operation.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainOperationError
         include Google::Apis::Core::Hashable
       
-        # Identifies the specific error that occurred. REQUIRED
+        # Disable validation warnings
         # Corresponds to the JSON property `code`
         # @return [String]
         attr_accessor :code
       
-        # 
+        # Disable validation warnings
         # Corresponds to the JSON property `errorType`
         # @return [String]
         attr_accessor :error_type
       
-        # Additional information about the error encountered. REQUIRED
+        # Disable validation warnings
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -5071,16 +5030,16 @@ module Google
         end
       end
       
-      # Message type for storing resource flags.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainResourceFlags
         include Google::Apis::Core::Hashable
       
-        # Optional. Key of the resource flag.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
       
-        # Optional. Value of the resource flag.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -5096,8 +5055,7 @@ module Google
         end
       end
       
-      # Deny maintenance period for the database resource. It specifies the time range
-      # during which the maintenance cannot start. This is configured by the customer.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule
         include Google::Apis::Core::Hashable
       
@@ -5144,7 +5102,7 @@ module Google
         end
       end
       
-      # MaintenanceInfo to capture the maintenance details of database resource.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo
         include Google::Apis::Core::Hashable
       
@@ -5160,44 +5118,38 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::GoogleTypeDate]
         attr_accessor :current_version_release_date
       
-        # Optional. List of Deny maintenance period for the database resource.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `denyMaintenanceSchedules`
         # @return [Array<Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule>]
         attr_accessor :deny_maintenance_schedules
       
-        # Optional. Whether the instance is in stopped state. This information is
-        # temporarily being captured in maintenanceInfo, till STOPPED state is supported
-        # by DB Center.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `isInstanceStopped`
         # @return [Boolean]
         attr_accessor :is_instance_stopped
         alias_method :is_instance_stopped?, :is_instance_stopped
       
-        # Maintenance window for the database resource. It specifies preferred time and
-        # day of the week and phase in some cases, when the maintenance can start. This
-        # is configured by the customer.
+        # Disable validation warnings
         # Corresponds to the JSON property `maintenanceSchedule`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule]
         attr_accessor :maintenance_schedule
       
-        # Output only. Current state of maintenance on the database resource.
+        # Output only. Disable validation warnings
         # Corresponds to the JSON property `maintenanceState`
         # @return [String]
         attr_accessor :maintenance_state
       
-        # Optional. Current Maintenance version of the database resource. Example: "
-        # MYSQL_8_0_41.R20250531.01_15"
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `maintenanceVersion`
         # @return [String]
         attr_accessor :maintenance_version
       
-        # Optional. List of next available maintenance versions.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `nextAvailableMaintenanceVersions`
         # @return [Array<String>]
         attr_accessor :next_available_maintenance_versions
       
-        # Upcoming maintenance for the database resource. This is generated by SLM once
-        # the upcoming maintenance schedule is published.
+        # Disable validation warnings
         # Corresponds to the JSON property `upcomingMaintenance`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance]
         attr_accessor :upcoming_maintenance
@@ -5219,22 +5171,16 @@ module Google
         end
       end
       
-      # Maintenance window for the database resource. It specifies preferred time and
-      # day of the week and phase in some cases, when the maintenance can start. This
-      # is configured by the customer.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule
         include Google::Apis::Core::Hashable
       
-        # Optional. Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `day`
         # @return [String]
         attr_accessor :day
       
-        # Optional. Phase of the maintenance window. This is to capture order of
-        # maintenance. For example, for Cloud SQL resources, this can be used to capture
-        # if the maintenance window is in Week1, Week2, Week5, etc. Non production
-        # resources are usually part of early phase. For more details, refer to Cloud
-        # SQL resources - https://cloud.google.com/sql/docs/mysql/maintenance
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `phase`
         # @return [String]
         attr_accessor :phase
@@ -5258,31 +5204,31 @@ module Google
         end
       end
       
-      # 
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainRetentionSettings
         include Google::Apis::Core::Hashable
       
-        # Duration based retention period i.e. 172800 seconds (2 days)
+        # Disable validation warnings
         # Corresponds to the JSON property `durationBasedRetention`
         # @return [String]
         attr_accessor :duration_based_retention
       
-        # Quantity based retention period i.e. 7 backups
+        # Disable validation warnings
         # Corresponds to the JSON property `quantityBasedRetention`
         # @return [Fixnum]
         attr_accessor :quantity_based_retention
       
-        # The unit that 'retained_backups' represents.
+        # Disable validation warnings
         # Corresponds to the JSON property `retentionUnit`
         # @return [String]
         attr_accessor :retention_unit
       
-        # Duration based retention period i.e. 172800 seconds (2 days)
+        # Disable validation warnings
         # Corresponds to the JSON property `timeBasedRetention`
         # @return [String]
         attr_accessor :time_based_retention
       
-        # Timestamp based retention period i.e. 2024-05-01T00:00:00Z
+        # Disable validation warnings
         # Corresponds to the JSON property `timestampBasedRetentionTime`
         # @return [String]
         attr_accessor :timestamp_based_retention_time
@@ -5301,18 +5247,16 @@ module Google
         end
       end
       
-      # SignalMetadata contains one of the signal metadata proto messages associated
-      # with a SignalType. This proto will be mapped to SignalMetadata message in
-      # storage.proto. Next ID: 3
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainSignalMetadata
         include Google::Apis::Core::Hashable
       
-        # A backup run.
+        # Disable validation warnings
         # Corresponds to the JSON property `backupRun`
         # @return [Google::Apis::AlloydbV1beta::StorageDatabasecenterPartnerapiV1mainBackupRun]
         attr_accessor :backup_run
       
-        # Signal data for boolean signals.
+        # Disable validation warnings
         # Corresponds to the JSON property `signalBoolValue`
         # @return [Boolean]
         attr_accessor :signal_bool_value
@@ -5329,13 +5273,11 @@ module Google
         end
       end
       
-      # Message type for storing tags. Tags provide a way to create annotations for
-      # resources, and in some cases conditionally allow or deny policies based on
-      # whether a resource has a specific tag.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainTags
         include Google::Apis::Core::Hashable
       
-        # The Tag key/value mappings.
+        # Disable validation warnings
         # Corresponds to the JSON property `tags`
         # @return [Hash<String,String>]
         attr_accessor :tags
@@ -5350,17 +5292,16 @@ module Google
         end
       end
       
-      # Upcoming maintenance for the database resource. This is generated by SLM once
-      # the upcoming maintenance schedule is published.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance
         include Google::Apis::Core::Hashable
       
-        # Optional. The end time of the upcoming maintenance.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Optional. The start time of the upcoming maintenance.
+        # Optional. Disable validation warnings
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -5376,13 +5317,11 @@ module Google
         end
       end
       
-      # Message type for storing user labels. User labels are used to tag App Engine
-      # resources, allowing users to search for resources matching a set of labels and
-      # to aggregate usage data by labels.
+      # Disable validation warnings
       class StorageDatabasecenterPartnerapiV1mainUserLabels
         include Google::Apis::Core::Hashable
       
-        # 
+        # Disable validation warnings
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -5486,6 +5425,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_values
       
+        # Output only. Whether the allowed values are case agnostic.
+        # Corresponds to the JSON property `caseAgnostic`
+        # @return [Boolean]
+        attr_accessor :case_agnostic
+        alias_method :case_agnostic?, :case_agnostic
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5493,6 +5438,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_values = args[:allowed_values] if args.key?(:allowed_values)
+          @case_agnostic = args[:case_agnostic] if args.key?(:case_agnostic)
         end
       end
       
