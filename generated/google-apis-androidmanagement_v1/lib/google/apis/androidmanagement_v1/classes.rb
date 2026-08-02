@@ -1825,6 +1825,35 @@ module Google
         end
       end
       
+      # Policies controlling cross-device communication.
+      class CrossDevicePolicies
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Manages video streaming of apps on the device for fully managed
+        # devices or in the work profile for devices with work profiles to nearby
+        # devices. This is supported on Android 13 and above.
+        # Corresponds to the JSON property `nearbyAppStreaming`
+        # @return [String]
+        attr_accessor :nearby_app_streaming
+      
+        # Optional. Manages streaming of notifications from apps on the device for fully
+        # managed devices or in the work profile for devices with work profiles to
+        # nearby devices. This is supported on Android 13 and above.
+        # Corresponds to the JSON property `nearbyNotificationStreaming`
+        # @return [String]
+        attr_accessor :nearby_notification_streaming
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nearby_app_streaming = args[:nearby_app_streaming] if args.key?(:nearby_app_streaming)
+          @nearby_notification_streaming = args[:nearby_notification_streaming] if args.key?(:nearby_notification_streaming)
+        end
+      end
+      
       # Controls the data from the work profile that can be accessed from the personal
       # profile and vice versa. A NonComplianceDetail with MANAGEMENT_MODE is reported
       # if the device does not have a work profile.
@@ -5471,6 +5500,11 @@ module Google
         attr_accessor :credentials_config_disabled
         alias_method :credentials_config_disabled?, :credentials_config_disabled
       
+        # Policies controlling cross-device communication.
+        # Corresponds to the JSON property `crossDevicePolicies`
+        # @return [Google::Apis::AndroidmanagementV1::CrossDevicePolicies]
+        attr_accessor :cross_device_policies
+      
         # Controls the data from the work profile that can be accessed from the personal
         # profile and vice versa. A NonComplianceDetail with MANAGEMENT_MODE is reported
         # if the device does not have a work profile.
@@ -6010,6 +6044,7 @@ module Google
           @create_windows_disabled = args[:create_windows_disabled] if args.key?(:create_windows_disabled)
           @credential_provider_policy_default = args[:credential_provider_policy_default] if args.key?(:credential_provider_policy_default)
           @credentials_config_disabled = args[:credentials_config_disabled] if args.key?(:credentials_config_disabled)
+          @cross_device_policies = args[:cross_device_policies] if args.key?(:cross_device_policies)
           @cross_profile_policies = args[:cross_profile_policies] if args.key?(:cross_profile_policies)
           @data_roaming_disabled = args[:data_roaming_disabled] if args.key?(:data_roaming_disabled)
           @debugging_features_allowed = args[:debugging_features_allowed] if args.key?(:debugging_features_allowed)

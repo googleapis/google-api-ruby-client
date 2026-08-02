@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CrossDevicePolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CrossProfilePolicies
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1497,6 +1503,14 @@ module Google
         end
       end
       
+      class CrossDevicePolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nearby_app_streaming, as: 'nearbyAppStreaming'
+          property :nearby_notification_streaming, as: 'nearbyNotificationStreaming'
+        end
+      end
+      
       class CrossProfilePolicies
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2437,6 +2451,8 @@ module Google
           property :create_windows_disabled, as: 'createWindowsDisabled'
           property :credential_provider_policy_default, as: 'credentialProviderPolicyDefault'
           property :credentials_config_disabled, as: 'credentialsConfigDisabled'
+          property :cross_device_policies, as: 'crossDevicePolicies', class: Google::Apis::AndroidmanagementV1::CrossDevicePolicies, decorator: Google::Apis::AndroidmanagementV1::CrossDevicePolicies::Representation
+      
           property :cross_profile_policies, as: 'crossProfilePolicies', class: Google::Apis::AndroidmanagementV1::CrossProfilePolicies, decorator: Google::Apis::AndroidmanagementV1::CrossProfilePolicies::Representation
       
           property :data_roaming_disabled, as: 'dataRoamingDisabled'
