@@ -769,6 +769,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :envoy_health_check_firewalls_config_state, as: 'envoyHealthCheckFirewallsConfigState'
           property :load_balancer_name, as: 'loadBalancerName'
           property :matched_port_range, as: 'matchedPortRange'
           property :matched_protocol, as: 'matchedProtocol'
@@ -995,6 +996,7 @@ module Google
           property :old_source_port, as: 'oldSourcePort'
           property :protocol, as: 'protocol'
           property :router_uri, as: 'routerUri'
+          property :rule_number, as: 'ruleNumber'
           property :type, as: 'type'
         end
       end

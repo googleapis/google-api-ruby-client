@@ -1356,6 +1356,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. State of the firewalls allowing health check traffic to the load
+        # balancer frontend (Envoy proxies). This is the result of the firewall
+        # configuration analysis verifying that health check traffic from required IP
+        # ranges to the the Envoy-based load balancer frontend is allowed by firewall
+        # rules with the load balancer target.
+        # Corresponds to the JSON property `envoyHealthCheckFirewallsConfigState`
+        # @return [String]
+        attr_accessor :envoy_health_check_firewalls_config_state
+      
         # Name of the load balancer the forwarding rule belongs to. Empty for forwarding
         # rules not related to load balancers (like PSC forwarding rules).
         # Corresponds to the JSON property `loadBalancerName`
@@ -1419,6 +1428,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @envoy_health_check_firewalls_config_state = args[:envoy_health_check_firewalls_config_state] if args.key?(:envoy_health_check_firewalls_config_state)
           @load_balancer_name = args[:load_balancer_name] if args.key?(:load_balancer_name)
           @matched_port_range = args[:matched_port_range] if args.key?(:matched_port_range)
           @matched_protocol = args[:matched_protocol] if args.key?(:matched_protocol)
@@ -2286,6 +2296,11 @@ module Google
         # @return [String]
         attr_accessor :router_uri
       
+        # The number of the NAT rule that was matched.
+        # Corresponds to the JSON property `ruleNumber`
+        # @return [Fixnum]
+        attr_accessor :rule_number
+      
         # Type of NAT.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2310,6 +2325,7 @@ module Google
           @old_source_port = args[:old_source_port] if args.key?(:old_source_port)
           @protocol = args[:protocol] if args.key?(:protocol)
           @router_uri = args[:router_uri] if args.key?(:router_uri)
+          @rule_number = args[:rule_number] if args.key?(:rule_number)
           @type = args[:type] if args.key?(:type)
         end
       end
