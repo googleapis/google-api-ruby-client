@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1661,6 +1667,12 @@ module Google
       end
       
       class GoogleCloudDiscoveryengineV1alphaDataConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6209,6 +6221,8 @@ module Google
           property :kms_key_name, as: 'kmsKeyName'
           property :last_sync_time, as: 'lastSyncTime'
           property :latest_pause_time, as: 'latestPauseTime'
+          property :metadata, as: 'metadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata::Representation
+      
           property :name, as: 'name'
           property :next_sync_time, as: 'nextSyncTime', class: Google::Apis::DiscoveryengineV1beta::GoogleTypeDateTime, decorator: Google::Apis::DiscoveryengineV1beta::GoogleTypeDateTime::Representation
       
@@ -6227,6 +6241,18 @@ module Google
           property :tag, as: 'tag'
           property :update_time, as: 'updateTime'
           property :vpcsc_enabled, as: 'vpcscEnabled'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authenticated_account, as: 'authenticatedAccount'
+          property :author, as: 'author'
+          property :description, as: 'description'
+          property :note, as: 'note'
+          property :short_description, as: 'shortDescription'
+          property :title, as: 'title'
         end
       end
       
@@ -8408,6 +8434,8 @@ module Google
           property :kms_key_name, as: 'kmsKeyName'
           property :last_sync_time, as: 'lastSyncTime'
           property :latest_pause_time, as: 'latestPauseTime'
+          property :metadata, as: 'metadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata::Representation
+      
           property :name, as: 'name'
           property :next_sync_time, as: 'nextSyncTime', class: Google::Apis::DiscoveryengineV1beta::GoogleTypeDateTime, decorator: Google::Apis::DiscoveryengineV1beta::GoogleTypeDateTime::Representation
       
@@ -8426,6 +8454,18 @@ module Google
           property :tag, as: 'tag'
           property :update_time, as: 'updateTime'
           property :vpcsc_enabled, as: 'vpcscEnabled'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authenticated_account, as: 'authenticatedAccount'
+          property :author, as: 'author'
+          property :description, as: 'description'
+          property :note, as: 'note'
+          property :short_description, as: 'shortDescription'
+          property :title, as: 'title'
         end
       end
       
