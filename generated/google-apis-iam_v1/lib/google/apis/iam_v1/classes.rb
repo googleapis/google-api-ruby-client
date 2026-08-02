@@ -493,28 +493,12 @@ module Google
       class DisableServiceAccountKeyRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Usable by internal google services only. An extended_status_message
-        # can be used to include additional information about the key, such as its
-        # private key data being exposed on a public repository like GitHub.
-        # Corresponds to the JSON property `extendedStatusMessage`
-        # @return [String]
-        attr_accessor :extended_status_message
-      
-        # Optional. Describes the reason this key is being disabled. If unspecified, the
-        # default value of SERVICE_ACCOUNT_KEY_DISABLE_REASON_USER_INITIATED will be
-        # used.
-        # Corresponds to the JSON property `serviceAccountKeyDisableReason`
-        # @return [String]
-        attr_accessor :service_account_key_disable_reason
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @extended_status_message = args[:extended_status_message] if args.key?(:extended_status_message)
-          @service_account_key_disable_reason = args[:service_account_key_disable_reason] if args.key?(:service_account_key_disable_reason)
         end
       end
       
