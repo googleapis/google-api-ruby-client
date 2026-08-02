@@ -1222,6 +1222,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_disk_size
       
+        # Optional. If true, instance metadata is sent to the Database Center. If false,
+        # instance metadata is not sent to the Database Center.
+        # Corresponds to the JSON property `databaseCenterIntegrationEnabled`
+        # @return [Boolean]
+        attr_accessor :database_center_integration_enabled
+        alias_method :database_center_integration_enabled?, :database_center_integration_enabled
+      
         # Output only. Stores the current database version running on the instance
         # including minor version such as `MYSQL_8_0_18`.
         # Corresponds to the JSON property `databaseInstalledVersion`
@@ -1497,6 +1504,7 @@ module Google
           @connection_name = args[:connection_name] if args.key?(:connection_name)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
+          @database_center_integration_enabled = args[:database_center_integration_enabled] if args.key?(:database_center_integration_enabled)
           @database_installed_version = args[:database_installed_version] if args.key?(:database_installed_version)
           @database_version = args[:database_version] if args.key?(:database_version)
           @disk_encryption_configuration = args[:disk_encryption_configuration] if args.key?(:disk_encryption_configuration)
@@ -3978,6 +3986,13 @@ module Google
         # @return [String]
         attr_accessor :client_key
       
+        # Output only. Indicates whether the resource is managed by Database Migration
+        # Service.
+        # Corresponds to the JSON property `dmsManaged`
+        # @return [Boolean]
+        attr_accessor :dms_managed
+        alias_method :dms_managed?, :dms_managed
+      
         # The dump file to create the Cloud SQL replica.
         # Corresponds to the JSON property `dumpFilePath`
         # @return [String]
@@ -4028,6 +4043,7 @@ module Google
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
           @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
           @client_key = args[:client_key] if args.key?(:client_key)
+          @dms_managed = args[:dms_managed] if args.key?(:dms_managed)
           @dump_file_path = args[:dump_file_path] if args.key?(:dump_file_path)
           @host_port = args[:host_port] if args.key?(:host_port)
           @kind = args[:kind] if args.key?(:kind)
@@ -6741,6 +6757,11 @@ module Google
         # @return [String]
         attr_accessor :project
       
+        # Optional. The server roles for the SQL Server login.
+        # Corresponds to the JSON property `serverRoles`
+        # @return [Array<String>]
+        attr_accessor :server_roles
+      
         # Represents a Sql Server user on the Cloud SQL instance.
         # Corresponds to the JSON property `sqlserverUserDetails`
         # @return [Google::Apis::SqladminV1::SqlServerUserDetails]
@@ -6770,6 +6791,7 @@ module Google
           @password = args[:password] if args.key?(:password)
           @password_policy = args[:password_policy] if args.key?(:password_policy)
           @project = args[:project] if args.key?(:project)
+          @server_roles = args[:server_roles] if args.key?(:server_roles)
           @sqlserver_user_details = args[:sqlserver_user_details] if args.key?(:sqlserver_user_details)
           @type = args[:type] if args.key?(:type)
         end
