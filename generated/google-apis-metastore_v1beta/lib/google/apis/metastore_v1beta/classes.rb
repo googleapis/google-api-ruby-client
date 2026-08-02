@@ -269,6 +269,38 @@ module Google
         end
       end
       
+      # Backfill status for the migration execution.
+      class BackfillStatus
+        include Google::Apis::Core::Hashable
+      
+        # Summary of the migration results.
+        # Corresponds to the JSON property `migrationSummary`
+        # @return [Google::Apis::MetastoreV1beta::MigrationSummary]
+        attr_accessor :migration_summary
+      
+        # Output only. The Cloud Storage path where the backfill or dry run report is
+        # written. Format: "gs://path-to-report".
+        # Corresponds to the JSON property `reportPath`
+        # @return [String]
+        attr_accessor :report_path
+      
+        # Output only. The current state of the backfill (or dry run).
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @migration_summary = args[:migration_summary] if args.key?(:migration_summary)
+          @report_path = args[:report_path] if args.key?(:report_path)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # The details of a backup resource.
       class Backup
         include Google::Apis::Core::Hashable
@@ -323,6 +355,68 @@ module Google
           @restoring_services = args[:restoring_services] if args.key?(:restoring_services)
           @service_revision = args[:service_revision] if args.key?(:service_revision)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Defines the configuration required to migrate metadata from a Dataproc
+      # Metastore service to BigLake Metastore.
+      class BigLakeMetastoreMigrationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Backfill status for the migration execution.
+        # Corresponds to the JSON property `backfillStatus`
+        # @return [Google::Apis::MetastoreV1beta::BackfillStatus]
+        attr_accessor :backfill_status
+      
+        # Optional. The policy to handle conflicts when migrating resources, defaults to
+        # SKIP if not specified.
+        # Corresponds to the JSON property `conflictPolicy`
+        # @return [String]
+        attr_accessor :conflict_policy
+      
+        # Optional. If true, performs discovery of requested resources and analysis
+        # against the target catalog to come up with a plan for each resource (e.g.
+        # Create, Update, Skip, etc.). No metadata is actually migrated.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
+        # Configuration for migrating Hive metadata.
+        # Corresponds to the JSON property `hiveConfig`
+        # @return [Google::Apis::MetastoreV1beta::HiveConfig]
+        attr_accessor :hive_config
+      
+        # Configuration for migrating Iceberg metadata.
+        # Corresponds to the JSON property `icebergConfig`
+        # @return [Google::Apis::MetastoreV1beta::IcebergConfig]
+        attr_accessor :iceberg_config
+      
+        # Required. Defines the behavior of the migration execution.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Optional. The Cloud Storage path where the backfill / dry run report should be
+        # written. If not provided, the report will be generated in the service's
+        # artifacts bucket. Format: "gs://path/to/folder"
+        # Corresponds to the JSON property `reportPath`
+        # @return [String]
+        attr_accessor :report_path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backfill_status = args[:backfill_status] if args.key?(:backfill_status)
+          @conflict_policy = args[:conflict_policy] if args.key?(:conflict_policy)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @hive_config = args[:hive_config] if args.key?(:hive_config)
+          @iceberg_config = args[:iceberg_config] if args.key?(:iceberg_config)
+          @mode = args[:mode] if args.key?(:mode)
+          @report_path = args[:report_path] if args.key?(:report_path)
         end
       end
       
@@ -470,6 +564,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Summary of results for a specific destination catalog.
+      class CatalogSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The catalog resource name (format: projects/*/catalogs/*).
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # Output only. The type of the catalog.
+        # Corresponds to the JSON property `catalogType`
+        # @return [String]
+        attr_accessor :catalog_type
+      
+        # Output only. Summary of results for each database in the catalog.
+        # Corresponds to the JSON property `databaseSummaries`
+        # @return [Array<Google::Apis::MetastoreV1beta::DatabaseSummary>]
+        attr_accessor :database_summaries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @catalog_type = args[:catalog_type] if args.key?(:catalog_type)
+          @database_summaries = args[:database_summaries] if args.key?(:database_summaries)
         end
       end
       
@@ -843,6 +968,44 @@ module Google
         end
       end
       
+      # Summary of results for a specific database in a catalog.
+      class DatabaseSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the database.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Output only. The migration plan action for the database.
+        # Corresponds to the JSON property `planAction`
+        # @return [String]
+        attr_accessor :plan_action
+      
+        # Output only. The migration result status for the database. This is only set if
+        # the migration is not a dry run.
+        # Corresponds to the JSON property `resultStatus`
+        # @return [String]
+        attr_accessor :result_status
+      
+        # Aggregated summary of results for all tables in a database.
+        # Corresponds to the JSON property `tableSummary`
+        # @return [Google::Apis::MetastoreV1beta::TableSummary]
+        attr_accessor :table_summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @plan_action = args[:plan_action] if args.key?(:plan_action)
+          @result_status = args[:result_status] if args.key?(:result_status)
+          @table_summary = args[:table_summary] if args.key?(:table_summary)
+        end
+      end
+      
       # Specifies how metastore metadata should be integrated with the Dataplex
       # service.
       class DataplexConfig
@@ -1114,6 +1277,34 @@ module Google
         end
       end
       
+      # Configuration for migrating Hive metadata.
+      class HiveConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The target catalog for migrated databases and tables. Format: "
+        # projects/`project_id_or_number`/catalogs/`catalog_id`"
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # Required. The list of databases to migrate to the Hive catalog. Use "*" to
+        # migrate all databases. Note: If Iceberg tables exist in these databases, they
+        # will only be migrated if iceberg_config is also specified.
+        # Corresponds to the JSON property `databases`
+        # @return [Array<String>]
+        attr_accessor :databases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @databases = args[:databases] if args.key?(:databases)
+        end
+      end
+      
       # Specifies configuration information specific to running Hive metastore
       # software as the metastore service.
       class HiveMetastoreConfig
@@ -1194,6 +1385,34 @@ module Google
         def update!(**args)
           @is_default = args[:is_default] if args.key?(:is_default)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Configuration for migrating Iceberg metadata.
+      class IcebergConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The target catalog for migrated Iceberg metadata. Format: "projects/`
+        # project_id_or_number`/catalogs/`catalog_id`"
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # Required. The list of namespaces to migrate to the Iceberg REST catalog. Use "*
+        # " to migrate all namespaces. Note: If Hive tables exist in these namespaces,
+        # they will only be migrated if hive_config is also specified.
+        # Corresponds to the JSON property `namespaces`
+        # @return [Array<String>]
+        attr_accessor :namespaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @namespaces = args[:namespaces] if args.key?(:namespaces)
         end
       end
       
@@ -1822,6 +2041,12 @@ module Google
       class MigrationExecution
         include Google::Apis::Core::Hashable
       
+        # Defines the configuration required to migrate metadata from a Dataproc
+        # Metastore service to BigLake Metastore.
+        # Corresponds to the JSON property `biglakeMetastoreMigrationConfig`
+        # @return [Google::Apis::MetastoreV1beta::BigLakeMetastoreMigrationConfig]
+        attr_accessor :biglake_metastore_migration_config
+      
         # Deprecated: Migrations to Dataproc Metastore are no longer supported. Use
         # BigLake Metastore migration instead. Configuration information for migrating
         # from self-managed hive metastore on Google Cloud using Cloud SQL as the
@@ -1871,6 +2096,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @biglake_metastore_migration_config = args[:biglake_metastore_migration_config] if args.key?(:biglake_metastore_migration_config)
           @cloud_sql_migration_config = args[:cloud_sql_migration_config] if args.key?(:cloud_sql_migration_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
@@ -1878,6 +2104,45 @@ module Google
           @phase = args[:phase] if args.key?(:phase)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+        end
+      end
+      
+      # Summary of the migration results.
+      class MigrationSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Summary of results for each catalog involved in the migration.
+        # Corresponds to the JSON property `catalogSummaries`
+        # @return [Array<Google::Apis::MetastoreV1beta::CatalogSummary>]
+        attr_accessor :catalog_summaries
+      
+        # Output only. The UTC time when this report was finalized.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Whether the migration was a dry run.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
+        # Output only. The Dataproc Metastore service name (format: projects/*/locations/
+        # */services/*) on which the migration was executed.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog_summaries = args[:catalog_summaries] if args.key?(:catalog_summaries)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -2926,6 +3191,55 @@ module Google
           @message = args[:message] if args.key?(:message)
           @message_set = args[:message_set] if args.key?(:message_set)
           @space = args[:space] if args.key?(:space)
+        end
+      end
+      
+      # Aggregated summary of results for all tables in a database.
+      class TableSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Partition migration summary across all Hive tables in the
+        # database.The total number of partitions discovered at the source.
+        # Corresponds to the JSON property `partitionDiscoveredCount`
+        # @return [Fixnum]
+        attr_accessor :partition_discovered_count
+      
+        # Output only. The total number of partitions that failed to migrate at the
+        # target.
+        # Corresponds to the JSON property `partitionFailedCount`
+        # @return [Fixnum]
+        attr_accessor :partition_failed_count
+      
+        # Output only. The total number of partitions successfully migrated at the
+        # target.
+        # Corresponds to the JSON property `partitionSuccessCount`
+        # @return [Fixnum]
+        attr_accessor :partition_success_count
+      
+        # Output only. Number of tables with a specific migration plan action. The key
+        # is the action name (e.g. CREATE, UPDATE, SKIP, etc.).
+        # Corresponds to the JSON property `planCounts`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :plan_counts
+      
+        # Output only. Number of tables with a specific migration result status. The key
+        # is the status name (e.g. SUCCEEDED, FAILED, SKIPPED, etc.). This is only set
+        # if the migration is not a dry run.
+        # Corresponds to the JSON property `resultCounts`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :result_counts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partition_discovered_count = args[:partition_discovered_count] if args.key?(:partition_discovered_count)
+          @partition_failed_count = args[:partition_failed_count] if args.key?(:partition_failed_count)
+          @partition_success_count = args[:partition_success_count] if args.key?(:partition_success_count)
+          @plan_counts = args[:plan_counts] if args.key?(:plan_counts)
+          @result_counts = args[:result_counts] if args.key?(:result_counts)
         end
       end
       
