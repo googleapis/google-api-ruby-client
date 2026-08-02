@@ -244,6 +244,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V0CommonSyntheticContentAttestation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V0CommonSyntheticContentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V0CommonTargetCpa
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1665,6 +1677,24 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V0CommonSyntheticContentAttestation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source, as: 'source'
+          property :status, as: 'status'
+        end
+      end
+      
+      class GoogleAdsSearchads360V0CommonSyntheticContentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_attestation, as: 'advertiserAttestation', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentAttestation, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentAttestation::Representation
+      
+          property :system_attestation, as: 'systemAttestation', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentAttestation, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentAttestation::Representation
+      
+        end
+      end
+      
       class GoogleAdsSearchads360V0CommonTargetCpa
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2180,6 +2210,8 @@ module Google
           property :resource_name, as: 'resourceName'
           property :responsive_search_ad, as: 'responsiveSearchAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo::Representation
       
+          property :synthetic_content_info, as: 'syntheticContentInfo', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentInfo::Representation
+      
           property :text_ad, as: 'textAd', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo::Representation
       
           property :tracking_url_template, as: 'trackingUrlTemplate'
@@ -2407,6 +2439,8 @@ module Google
           property :sitelink_asset, as: 'sitelinkAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedSitelinkAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonUnifiedSitelinkAsset::Representation
       
           property :status, as: 'status'
+          property :synthetic_content_info, as: 'syntheticContentInfo', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentInfo, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentInfo::Representation
+      
           property :text_asset, as: 'textAsset', class: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTextAsset, decorator: Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTextAsset::Representation
       
           property :tracking_url_template, as: 'trackingUrlTemplate'
