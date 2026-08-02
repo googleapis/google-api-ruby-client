@@ -823,7 +823,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_support_event_subscription(parent, support_event_subscription_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_organization_support_event_subscription(parent, support_event_subscription_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2/{+parent}/supportEventSubscriptions', options)
           command.request_representation = Google::Apis::CloudsupportV2::SupportEventSubscription::Representation
           command.request_object = support_event_subscription_object
@@ -866,7 +866,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_organization_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::CloudsupportV2::SupportEventSubscription::Representation
           command.response_class = Google::Apis::CloudsupportV2::SupportEventSubscription
@@ -876,7 +876,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Expunges a support event subscription.
+        # Expunges a support event subscription. EXAMPLES: cURL: ```shell
+        # support_event_subscription="organizations/123456789/supportEventSubscriptions/
+        # abcdef123456" curl \ --request POST \ --header "Authorization: Bearer $(gcloud
+        # auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$
+        # support_event_subscription:expunge" ``` Python: ```python import
+        # googleapiclient.discovery api_version = "v2" supportApiService =
+        # googleapiclient.discovery.build( serviceName="cloudsupport", version=
+        # api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$
+        # discovery/rest?version=`api_version`", ) request = supportApiService.
+        # supportEventSubscriptions().expunge( name="organizations/123456789/
+        # supportEventSubscriptions/abcdef123456" ) print(request.execute()) ```
         # @param [String] name
         #   Required. The name of the support event subscription to expunge. Format:
         #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
@@ -941,7 +951,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+name}', options)
           command.response_representation = Google::Apis::CloudsupportV2::SupportEventSubscription::Representation
           command.response_class = Google::Apis::CloudsupportV2::SupportEventSubscription
@@ -995,7 +1005,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_support_event_subscriptions(parent, filter: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_support_event_subscriptions(parent, filter: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/supportEventSubscriptions', options)
           command.response_representation = Google::Apis::CloudsupportV2::ListSupportEventSubscriptionsResponse::Representation
           command.response_class = Google::Apis::CloudsupportV2::ListSupportEventSubscriptionsResponse
@@ -1045,7 +1055,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_support_event_subscription(name, support_event_subscription_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_organization_support_event_subscription(name, support_event_subscription_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::CloudsupportV2::SupportEventSubscription::Representation
           command.request_object = support_event_subscription_object
@@ -1069,7 +1079,6 @@ module Google
         # discovery/rest?version=`api_version`", ) request = supportApiService.
         # supportEventSubscriptions().undelete( name="organizations/123456789/
         # supportEventSubscriptions/abcdef123456" ) print(request.execute()) ```
-        # Undeletes a support event subscription.
         # @param [String] name
         #   Required. The name of the support event subscription to undelete. Format:
         #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
