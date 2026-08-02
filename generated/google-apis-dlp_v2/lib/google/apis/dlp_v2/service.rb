@@ -53,7 +53,7 @@ module Google
         end
         
         # Returns a list of the sensitive information types that the DLP API supports.
-        # See https://cloud.google.com/sensitive-data-protection/docs/infotypes-
+        # See https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-
         # reference to learn more.
         # @param [String] filter
         #   filter to only return infoTypes supported by certain parts of the API.
@@ -97,7 +97,7 @@ module Google
         end
         
         # Returns a list of the sensitive information types that the DLP API supports.
-        # See https://cloud.google.com/sensitive-data-protection/docs/infotypes-
+        # See https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-
         # reference to learn more.
         # @param [String] parent
         #   The parent resource name. The format of this value is as follows: `locations/`
@@ -141,12 +141,12 @@ module Google
         end
         
         # Creates a DeidentifyTemplate for reusing frequently used configuration for de-
-        # identifying content, images, and storage. See https://cloud.google.com/
+        # identifying content, images, and storage. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-templates-deid to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -186,7 +186,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
+        # Deletes a DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be
@@ -219,7 +219,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
+        # Gets a DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be read,
@@ -252,12 +252,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DeidentifyTemplates. See https://cloud.google.com/sensitive-data-
+        # Lists DeidentifyTemplates. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -314,8 +314,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
-        # protection/docs/creating-templates-deid to learn more.
+        # Updates the DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-
+        # data-protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of organization and deidentify template to be updated,
         #   for example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -351,12 +351,12 @@ module Google
         end
         
         # Creates an InspectTemplate for reusing frequently used configuration for
-        # inspecting content, images, and storage. See https://cloud.google.com/
+        # inspecting content, images, and storage. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-templates to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -396,7 +396,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Deletes an InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be deleted,
@@ -429,7 +429,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Gets an InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be read,
@@ -462,12 +462,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-templates to learn more.
+        # Lists InspectTemplates. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-templates to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -524,7 +524,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Updates the InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of organization and inspectTemplate to be updated, for
@@ -882,12 +882,12 @@ module Google
         end
         
         # Creates a DeidentifyTemplate for reusing frequently used configuration for de-
-        # identifying content, images, and storage. See https://cloud.google.com/
+        # identifying content, images, and storage. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-templates-deid to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -927,7 +927,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
+        # Deletes a DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be
@@ -960,7 +960,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
+        # Gets a DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be read,
@@ -993,12 +993,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DeidentifyTemplates. See https://cloud.google.com/sensitive-data-
+        # Lists DeidentifyTemplates. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -1055,8 +1055,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
-        # protection/docs/creating-templates-deid to learn more.
+        # Updates the DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-
+        # data-protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of organization and deidentify template to be updated,
         #   for example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -1275,14 +1275,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DlpJobs that match the specified filter in the request. See https://
+        # Lists DlpJobs that match the specified filter in the request. See https://docs.
         # cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://
-        # cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn
-        # more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to
+        # learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -1492,7 +1492,7 @@ module Google
         end
         
         # Returns a list of the sensitive information types that the DLP API supports.
-        # See https://cloud.google.com/sensitive-data-protection/docs/infotypes-
+        # See https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-
         # reference to learn more.
         # @param [String] parent
         #   The parent resource name. The format of this value is as follows: `locations/`
@@ -1536,12 +1536,12 @@ module Google
         end
         
         # Creates an InspectTemplate for reusing frequently used configuration for
-        # inspecting content, images, and storage. See https://cloud.google.com/
+        # inspecting content, images, and storage. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-templates to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -1581,7 +1581,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Deletes an InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be deleted,
@@ -1614,7 +1614,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Gets an InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be read,
@@ -1647,12 +1647,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-templates to learn more.
+        # Lists InspectTemplates. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-templates to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -1709,7 +1709,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Updates the InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of organization and inspectTemplate to be updated, for
@@ -1746,12 +1746,12 @@ module Google
         end
         
         # Creates a job trigger to run DLP actions such as scanning storage for
-        # sensitive information on a set schedule. See https://cloud.google.com/
+        # sensitive information on a set schedule. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-job-triggers to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -1787,8 +1787,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a job trigger. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Deletes a job trigger. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Required. Resource name of the project and the triggeredJob, for example `
         #   projects/dlp-test-project/jobTriggers/53234423`.
@@ -1819,8 +1819,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Gets a job trigger. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Required. Resource name of the project and the triggeredJob, for example `
         #   projects/dlp-test-project/jobTriggers/53234423`.
@@ -1851,12 +1851,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists job triggers. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Lists job triggers. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -1929,8 +1929,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a job trigger. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Updates a job trigger. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Required. Resource name of the project and the triggeredJob, for example `
         #   projects/dlp-test-project/jobTriggers/53234423`.
@@ -2058,12 +2058,12 @@ module Google
         end
         
         # Creates a pre-built stored infoType to be used for inspection. See https://
-        # cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to
-        # learn more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+        # to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -2103,7 +2103,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a stored infoType. See https://cloud.google.com/sensitive-data-
+        # Deletes a stored infoType. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be deleted,
@@ -2136,8 +2136,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-stored-infotypes to learn more.
+        # Gets a stored infoType. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be read, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
@@ -2169,12 +2169,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists stored infoTypes. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-stored-infotypes to learn more.
+        # Lists stored infoTypes. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` The following example `
@@ -2229,9 +2229,9 @@ module Google
         end
         
         # Updates the stored infoType by creating a new version. The existing version
-        # will continue to be used until the new version is ready. See https://cloud.
-        # google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn
-        # more.
+        # will continue to be used until the new version is ready. See https://docs.
+        # cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to
+        # learn more.
         # @param [String] name
         #   Required. Resource name of organization and storedInfoType to be updated, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
@@ -2400,12 +2400,12 @@ module Google
         end
         
         # Creates a pre-built stored infoType to be used for inspection. See https://
-        # cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to
-        # learn more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+        # to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -2445,7 +2445,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a stored infoType. See https://cloud.google.com/sensitive-data-
+        # Deletes a stored infoType. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be deleted,
@@ -2478,8 +2478,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-stored-infotypes to learn more.
+        # Gets a stored infoType. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be read, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
@@ -2511,12 +2511,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists stored infoTypes. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-stored-infotypes to learn more.
+        # Lists stored infoTypes. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` The following example `
@@ -2571,9 +2571,9 @@ module Google
         end
         
         # Updates the stored infoType by creating a new version. The existing version
-        # will continue to be used until the new version is ready. See https://cloud.
-        # google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn
-        # more.
+        # will continue to be used until the new version is ready. See https://docs.
+        # cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to
+        # learn more.
         # @param [String] name
         #   Required. Resource name of organization and storedInfoType to be updated, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
@@ -2609,20 +2609,20 @@ module Google
         end
         
         # De-identifies potentially sensitive info from a ContentItem. This method has
-        # limits on input size and output size. See https://cloud.google.com/sensitive-
-        # data-protection/docs/deidentify-sensitive-data to learn more. When no
-        # InfoTypes or CustomInfoTypes are specified in this request, the system will
+        # limits on input size and output size. See https://docs.cloud.google.com/
+        # sensitive-data-protection/docs/deidentify-sensitive-data to learn more. When
+        # no InfoTypes or CustomInfoTypes are specified in this request, the system will
         # automatically choose what detectors to run. By default this may be all types,
         # but may change over time as detectors are updated.
         # @param [String] parent
         #   Parent resource name. The format of this value varies depending on whether you
-        #   have [specified a processing location](https://cloud.google.com/sensitive-data-
-        #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
-        #   specified (defaults to global): `projects/`project_id`` The following example `
-        #   parent` string specifies a parent project with the identifier `example-project`
-        #   , and specifies the `europe-west3` location for processing data: parent=
-        #   projects/example-project/locations/europe-west3
+        #   have [specified a processing location](https://docs.cloud.google.com/sensitive-
+        #   data-protection/docs/specifying-location): + Projects scope, location
+        #   specified: `projects/`project_id`/locations/`location_id`` + Projects scope,
+        #   no location specified (defaults to global): `projects/`project_id`` The
+        #   following example `parent` string specifies a parent project with the
+        #   identifier `example-project`, and specifies the `europe-west3` location for
+        #   processing data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest] google_privacy_dlp_v2_deidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2657,18 +2657,18 @@ module Google
         # size, processing time, and output size. When no InfoTypes or CustomInfoTypes
         # are specified in this request, the system will automatically choose what
         # detectors to run. By default this may be all types, but may change over time
-        # as detectors are updated. For how to guides, see https://cloud.google.com/
-        # sensitive-data-protection/docs/inspecting-images and https://cloud.google.com/
-        # sensitive-data-protection/docs/inspecting-text,
+        # as detectors are updated. For how to guides, see https://docs.cloud.google.com/
+        # sensitive-data-protection/docs/inspecting-images and https://docs.cloud.google.
+        # com/sensitive-data-protection/docs/inspecting-text,
         # @param [String] parent
         #   Parent resource name. The format of this value varies depending on whether you
-        #   have [specified a processing location](https://cloud.google.com/sensitive-data-
-        #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
-        #   specified (defaults to global): `projects/`project_id`` The following example `
-        #   parent` string specifies a parent project with the identifier `example-project`
-        #   , and specifies the `europe-west3` location for processing data: parent=
-        #   projects/example-project/locations/europe-west3
+        #   have [specified a processing location](https://docs.cloud.google.com/sensitive-
+        #   data-protection/docs/specifying-location): + Projects scope, location
+        #   specified: `projects/`project_id`/locations/`location_id`` + Projects scope,
+        #   no location specified (defaults to global): `projects/`project_id`` The
+        #   following example `parent` string specifies a parent project with the
+        #   identifier `example-project`, and specifies the `europe-west3` location for
+        #   processing data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest] google_privacy_dlp_v2_inspect_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2699,13 +2699,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Re-identifies content that has been de-identified. See https://cloud.google.
-        # com/sensitive-data-protection/docs/pseudonymization#re-
+        # Re-identifies content that has been de-identified. See https://docs.cloud.
+        # google.com/sensitive-data-protection/docs/pseudonymization#re-
         # identification_in_free_text_code_example to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -2742,12 +2742,12 @@ module Google
         end
         
         # Creates a DeidentifyTemplate for reusing frequently used configuration for de-
-        # identifying content, images, and storage. See https://cloud.google.com/
+        # identifying content, images, and storage. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-templates-deid to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -2787,7 +2787,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
+        # Deletes a DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be
@@ -2820,7 +2820,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
+        # Gets a DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be read,
@@ -2853,12 +2853,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DeidentifyTemplates. See https://cloud.google.com/sensitive-data-
+        # Lists DeidentifyTemplates. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -2915,8 +2915,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
-        # protection/docs/creating-templates-deid to learn more.
+        # Updates the DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-
+        # data-protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of organization and deidentify template to be updated,
         #   for example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -2953,9 +2953,9 @@ module Google
         
         # Starts asynchronous cancellation on a long-running DlpJob. The server makes a
         # best effort to cancel the DlpJob, but success is not guaranteed. See https://
-        # cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://
-        # cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn
-        # more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-
+        # analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource to be cancelled.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CancelDlpJobRequest] google_privacy_dlp_v2_cancel_dlp_job_request_object
@@ -2989,15 +2989,16 @@ module Google
         end
         
         # Creates a new job to inspect storage or calculate risk metrics. See https://
-        # cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://
-        # cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn
-        # more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the
-        # system will automatically choose what detectors to run. By default this may be
-        # all types, but may change over time as detectors are updated.
+        # docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-
+        # analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in
+        # inspect jobs, the system will automatically choose what detectors to run. By
+        # default this may be all types, but may change over time as detectors are
+        # updated.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -3035,9 +3036,9 @@ module Google
         
         # Deletes a long-running DlpJob. This method indicates that the client is no
         # longer interested in the DlpJob result. The job will be canceled if possible.
-        # See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
-        # and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-
-        # analysis to learn more.
+        # See https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-
+        # storage and https://docs.cloud.google.com/sensitive-data-protection/docs/
+        # compute-risk-analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource to be deleted.
         # @param [String] fields
@@ -3067,9 +3068,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running DlpJob. See https://cloud.google.com/
-        # sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/
-        # sensitive-data-protection/docs/compute-risk-analysis to learn more.
+        # Gets the latest state of a long-running DlpJob. See https://docs.cloud.google.
+        # com/sensitive-data-protection/docs/inspecting-storage and https://docs.cloud.
+        # google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource.
         # @param [String] fields
@@ -3099,14 +3100,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DlpJobs that match the specified filter in the request. See https://
+        # Lists DlpJobs that match the specified filter in the request. See https://docs.
         # cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://
-        # cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn
-        # more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to
+        # learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -3180,22 +3181,22 @@ module Google
         end
         
         # Redacts potentially sensitive info from an image. This method has limits on
-        # input size, processing time, and output size. See https://cloud.google.com/
-        # sensitive-data-protection/docs/redacting-sensitive-data-images to learn more.
-        # When no InfoTypes or CustomInfoTypes are specified in this request, the system
-        # will automatically choose what detectors to run. By default this may be all
-        # types, but may change over time as detectors are updated. Only the first frame
-        # of each multiframe image is redacted. Metadata and other frames are omitted in
-        # the response.
+        # input size, processing time, and output size. See https://docs.cloud.google.
+        # com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn
+        # more. When no InfoTypes or CustomInfoTypes are specified in this request, the
+        # system will automatically choose what detectors to run. By default this may be
+        # all types, but may change over time as detectors are updated. Only the first
+        # frame of each multiframe image is redacted. Metadata and other frames are
+        # omitted in the response.
         # @param [String] parent
         #   Parent resource name. The format of this value varies depending on whether you
-        #   have [specified a processing location](https://cloud.google.com/sensitive-data-
-        #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
-        #   specified (defaults to global): `projects/`project_id`` The following example `
-        #   parent` string specifies a parent project with the identifier `example-project`
-        #   , and specifies the `europe-west3` location for processing data: parent=
-        #   projects/example-project/locations/europe-west3
+        #   have [specified a processing location](https://docs.cloud.google.com/sensitive-
+        #   data-protection/docs/specifying-location): + Projects scope, location
+        #   specified: `projects/`project_id`/locations/`location_id`` + Projects scope,
+        #   no location specified (defaults to global): `projects/`project_id`` The
+        #   following example `parent` string specifies a parent project with the
+        #   identifier `example-project`, and specifies the `europe-west3` location for
+        #   processing data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest] google_privacy_dlp_v2_redact_image_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3227,12 +3228,12 @@ module Google
         end
         
         # Creates an InspectTemplate for reusing frequently used configuration for
-        # inspecting content, images, and storage. See https://cloud.google.com/
+        # inspecting content, images, and storage. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-templates to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -3272,7 +3273,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Deletes an InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be deleted,
@@ -3305,7 +3306,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Gets an InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be read,
@@ -3338,12 +3339,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-templates to learn more.
+        # Lists InspectTemplates. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-templates to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -3400,7 +3401,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Updates the InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of organization and inspectTemplate to be updated, for
@@ -3472,12 +3473,12 @@ module Google
         end
         
         # Creates a job trigger to run DLP actions such as scanning storage for
-        # sensitive information on a set schedule. See https://cloud.google.com/
+        # sensitive information on a set schedule. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-job-triggers to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -3513,8 +3514,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a job trigger. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Deletes a job trigger. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Required. Resource name of the project and the triggeredJob, for example `
         #   projects/dlp-test-project/jobTriggers/53234423`.
@@ -3545,8 +3546,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Gets a job trigger. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Required. Resource name of the project and the triggeredJob, for example `
         #   projects/dlp-test-project/jobTriggers/53234423`.
@@ -3577,12 +3578,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists job triggers. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Lists job triggers. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -3655,8 +3656,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a job trigger. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Updates a job trigger. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Required. Resource name of the project and the triggeredJob, for example `
         #   projects/dlp-test-project/jobTriggers/53234423`.
@@ -4012,20 +4013,20 @@ module Google
         end
         
         # De-identifies potentially sensitive info from a ContentItem. This method has
-        # limits on input size and output size. See https://cloud.google.com/sensitive-
-        # data-protection/docs/deidentify-sensitive-data to learn more. When no
-        # InfoTypes or CustomInfoTypes are specified in this request, the system will
+        # limits on input size and output size. See https://docs.cloud.google.com/
+        # sensitive-data-protection/docs/deidentify-sensitive-data to learn more. When
+        # no InfoTypes or CustomInfoTypes are specified in this request, the system will
         # automatically choose what detectors to run. By default this may be all types,
         # but may change over time as detectors are updated.
         # @param [String] parent
         #   Parent resource name. The format of this value varies depending on whether you
-        #   have [specified a processing location](https://cloud.google.com/sensitive-data-
-        #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
-        #   specified (defaults to global): `projects/`project_id`` The following example `
-        #   parent` string specifies a parent project with the identifier `example-project`
-        #   , and specifies the `europe-west3` location for processing data: parent=
-        #   projects/example-project/locations/europe-west3
+        #   have [specified a processing location](https://docs.cloud.google.com/sensitive-
+        #   data-protection/docs/specifying-location): + Projects scope, location
+        #   specified: `projects/`project_id`/locations/`location_id`` + Projects scope,
+        #   no location specified (defaults to global): `projects/`project_id`` The
+        #   following example `parent` string specifies a parent project with the
+        #   identifier `example-project`, and specifies the `europe-west3` location for
+        #   processing data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest] google_privacy_dlp_v2_deidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4060,18 +4061,18 @@ module Google
         # size, processing time, and output size. When no InfoTypes or CustomInfoTypes
         # are specified in this request, the system will automatically choose what
         # detectors to run. By default this may be all types, but may change over time
-        # as detectors are updated. For how to guides, see https://cloud.google.com/
-        # sensitive-data-protection/docs/inspecting-images and https://cloud.google.com/
-        # sensitive-data-protection/docs/inspecting-text,
+        # as detectors are updated. For how to guides, see https://docs.cloud.google.com/
+        # sensitive-data-protection/docs/inspecting-images and https://docs.cloud.google.
+        # com/sensitive-data-protection/docs/inspecting-text,
         # @param [String] parent
         #   Parent resource name. The format of this value varies depending on whether you
-        #   have [specified a processing location](https://cloud.google.com/sensitive-data-
-        #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
-        #   specified (defaults to global): `projects/`project_id`` The following example `
-        #   parent` string specifies a parent project with the identifier `example-project`
-        #   , and specifies the `europe-west3` location for processing data: parent=
-        #   projects/example-project/locations/europe-west3
+        #   have [specified a processing location](https://docs.cloud.google.com/sensitive-
+        #   data-protection/docs/specifying-location): + Projects scope, location
+        #   specified: `projects/`project_id`/locations/`location_id`` + Projects scope,
+        #   no location specified (defaults to global): `projects/`project_id`` The
+        #   following example `parent` string specifies a parent project with the
+        #   identifier `example-project`, and specifies the `europe-west3` location for
+        #   processing data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest] google_privacy_dlp_v2_inspect_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4102,13 +4103,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Re-identifies content that has been de-identified. See https://cloud.google.
-        # com/sensitive-data-protection/docs/pseudonymization#re-
+        # Re-identifies content that has been de-identified. See https://docs.cloud.
+        # google.com/sensitive-data-protection/docs/pseudonymization#re-
         # identification_in_free_text_code_example to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -4316,12 +4317,12 @@ module Google
         end
         
         # Creates a DeidentifyTemplate for reusing frequently used configuration for de-
-        # identifying content, images, and storage. See https://cloud.google.com/
+        # identifying content, images, and storage. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-templates-deid to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -4361,7 +4362,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
+        # Deletes a DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be
@@ -4394,7 +4395,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
+        # Gets a DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and deidentify template to be read,
@@ -4427,12 +4428,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DeidentifyTemplates. See https://cloud.google.com/sensitive-data-
+        # Lists DeidentifyTemplates. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates-deid to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -4489,8 +4490,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the DeidentifyTemplate. See https://cloud.google.com/sensitive-data-
-        # protection/docs/creating-templates-deid to learn more.
+        # Updates the DeidentifyTemplate. See https://docs.cloud.google.com/sensitive-
+        # data-protection/docs/creating-templates-deid to learn more.
         # @param [String] name
         #   Required. Resource name of organization and deidentify template to be updated,
         #   for example `organizations/433245324/deidentifyTemplates/432452342` or
@@ -4711,9 +4712,9 @@ module Google
         
         # Starts asynchronous cancellation on a long-running DlpJob. The server makes a
         # best effort to cancel the DlpJob, but success is not guaranteed. See https://
-        # cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://
-        # cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn
-        # more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-
+        # analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource to be cancelled.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CancelDlpJobRequest] google_privacy_dlp_v2_cancel_dlp_job_request_object
@@ -4747,15 +4748,16 @@ module Google
         end
         
         # Creates a new job to inspect storage or calculate risk metrics. See https://
-        # cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://
-        # cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn
-        # more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the
-        # system will automatically choose what detectors to run. By default this may be
-        # all types, but may change over time as detectors are updated.
+        # docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-
+        # analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in
+        # inspect jobs, the system will automatically choose what detectors to run. By
+        # default this may be all types, but may change over time as detectors are
+        # updated.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -4793,9 +4795,9 @@ module Google
         
         # Deletes a long-running DlpJob. This method indicates that the client is no
         # longer interested in the DlpJob result. The job will be canceled if possible.
-        # See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage
-        # and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-
-        # analysis to learn more.
+        # See https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-
+        # storage and https://docs.cloud.google.com/sensitive-data-protection/docs/
+        # compute-risk-analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource to be deleted.
         # @param [String] fields
@@ -4859,9 +4861,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the latest state of a long-running DlpJob. See https://cloud.google.com/
-        # sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/
-        # sensitive-data-protection/docs/compute-risk-analysis to learn more.
+        # Gets the latest state of a long-running DlpJob. See https://docs.cloud.google.
+        # com/sensitive-data-protection/docs/inspecting-storage and https://docs.cloud.
+        # google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
         # @param [String] name
         #   Required. The name of the DlpJob resource.
         # @param [String] fields
@@ -4926,14 +4928,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists DlpJobs that match the specified filter in the request. See https://
+        # Lists DlpJobs that match the specified filter in the request. See https://docs.
         # cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://
-        # cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn
-        # more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to
+        # learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -5143,22 +5145,22 @@ module Google
         end
         
         # Redacts potentially sensitive info from an image. This method has limits on
-        # input size, processing time, and output size. See https://cloud.google.com/
-        # sensitive-data-protection/docs/redacting-sensitive-data-images to learn more.
-        # When no InfoTypes or CustomInfoTypes are specified in this request, the system
-        # will automatically choose what detectors to run. By default this may be all
-        # types, but may change over time as detectors are updated. Only the first frame
-        # of each multiframe image is redacted. Metadata and other frames are omitted in
-        # the response.
+        # input size, processing time, and output size. See https://docs.cloud.google.
+        # com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn
+        # more. When no InfoTypes or CustomInfoTypes are specified in this request, the
+        # system will automatically choose what detectors to run. By default this may be
+        # all types, but may change over time as detectors are updated. Only the first
+        # frame of each multiframe image is redacted. Metadata and other frames are
+        # omitted in the response.
         # @param [String] parent
         #   Parent resource name. The format of this value varies depending on whether you
-        #   have [specified a processing location](https://cloud.google.com/sensitive-data-
-        #   protection/docs/specifying-location): + Projects scope, location specified: `
-        #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
-        #   specified (defaults to global): `projects/`project_id`` The following example `
-        #   parent` string specifies a parent project with the identifier `example-project`
-        #   , and specifies the `europe-west3` location for processing data: parent=
-        #   projects/example-project/locations/europe-west3
+        #   have [specified a processing location](https://docs.cloud.google.com/sensitive-
+        #   data-protection/docs/specifying-location): + Projects scope, location
+        #   specified: `projects/`project_id`/locations/`location_id`` + Projects scope,
+        #   no location specified (defaults to global): `projects/`project_id`` The
+        #   following example `parent` string specifies a parent project with the
+        #   identifier `example-project`, and specifies the `europe-west3` location for
+        #   processing data: parent=projects/example-project/locations/europe-west3
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest] google_privacy_dlp_v2_redact_image_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -5190,7 +5192,7 @@ module Google
         end
         
         # Returns a list of the sensitive information types that the DLP API supports.
-        # See https://cloud.google.com/sensitive-data-protection/docs/infotypes-
+        # See https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-
         # reference to learn more.
         # @param [String] parent
         #   The parent resource name. The format of this value is as follows: `locations/`
@@ -5234,12 +5236,12 @@ module Google
         end
         
         # Creates an InspectTemplate for reusing frequently used configuration for
-        # inspecting content, images, and storage. See https://cloud.google.com/
+        # inspecting content, images, and storage. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-templates to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -5279,7 +5281,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Deletes an InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be deleted,
@@ -5312,7 +5314,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Gets an InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and inspectTemplate to be read,
@@ -5345,12 +5347,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-templates to learn more.
+        # Lists InspectTemplates. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-templates to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -5407,7 +5409,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the InspectTemplate. See https://cloud.google.com/sensitive-data-
+        # Updates the InspectTemplate. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-templates to learn more.
         # @param [String] name
         #   Required. Resource name of organization and inspectTemplate to be updated, for
@@ -5479,12 +5481,12 @@ module Google
         end
         
         # Creates a job trigger to run DLP actions such as scanning storage for
-        # sensitive information on a set schedule. See https://cloud.google.com/
+        # sensitive information on a set schedule. See https://docs.cloud.google.com/
         # sensitive-data-protection/docs/creating-job-triggers to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -5520,8 +5522,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a job trigger. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Deletes a job trigger. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Required. Resource name of the project and the triggeredJob, for example `
         #   projects/dlp-test-project/jobTriggers/53234423`.
@@ -5552,8 +5554,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Gets a job trigger. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Required. Resource name of the project and the triggeredJob, for example `
         #   projects/dlp-test-project/jobTriggers/53234423`.
@@ -5620,12 +5622,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists job triggers. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Lists job triggers. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   whether you have [specified a processing location](https://cloud.google.com/
-        #   sensitive-data-protection/docs/specifying-location): + Projects scope,
+        #   whether you have [specified a processing location](https://docs.cloud.google.
+        #   com/sensitive-data-protection/docs/specifying-location): + Projects scope,
         #   location specified: `projects/`project_id`/locations/`location_id`` + Projects
         #   scope, no location specified (defaults to global): `projects/`project_id`` The
         #   following example `parent` string specifies a parent project with the
@@ -5698,8 +5700,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a job trigger. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-job-triggers to learn more.
+        # Updates a job trigger. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-job-triggers to learn more.
         # @param [String] name
         #   Required. Resource name of the project and the triggeredJob, for example `
         #   projects/dlp-test-project/jobTriggers/53234423`.
@@ -5827,12 +5829,12 @@ module Google
         end
         
         # Creates a pre-built stored infoType to be used for inspection. See https://
-        # cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to
-        # learn more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+        # to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -5872,7 +5874,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a stored infoType. See https://cloud.google.com/sensitive-data-
+        # Deletes a stored infoType. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be deleted,
@@ -5905,8 +5907,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-stored-infotypes to learn more.
+        # Gets a stored infoType. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be read, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
@@ -5938,12 +5940,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists stored infoTypes. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-stored-infotypes to learn more.
+        # Lists stored infoTypes. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` The following example `
@@ -5998,9 +6000,9 @@ module Google
         end
         
         # Updates the stored infoType by creating a new version. The existing version
-        # will continue to be used until the new version is ready. See https://cloud.
-        # google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn
-        # more.
+        # will continue to be used until the new version is ready. See https://docs.
+        # cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to
+        # learn more.
         # @param [String] name
         #   Required. Resource name of organization and storedInfoType to be updated, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
@@ -6169,12 +6171,12 @@ module Google
         end
         
         # Creates a pre-built stored infoType to be used for inspection. See https://
-        # cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to
-        # learn more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes
+        # to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` + Organizations scope,
@@ -6214,7 +6216,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a stored infoType. See https://cloud.google.com/sensitive-data-
+        # Deletes a stored infoType. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be deleted,
@@ -6247,8 +6249,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-stored-infotypes to learn more.
+        # Gets a stored infoType. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] name
         #   Required. Resource name of the organization and storedInfoType to be read, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or projects/
@@ -6280,12 +6282,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists stored infoTypes. See https://cloud.google.com/sensitive-data-protection/
-        # docs/creating-stored-infotypes to learn more.
+        # Lists stored infoTypes. See https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/creating-stored-infotypes to learn more.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
         #   the scope of the request (project or organization) and whether you have [
-        #   specified a processing location](https://cloud.google.com/sensitive-data-
+        #   specified a processing location](https://docs.cloud.google.com/sensitive-data-
         #   protection/docs/specifying-location): + Projects scope, location specified: `
         #   projects/`project_id`/locations/`location_id`` + Projects scope, no location
         #   specified (defaults to global): `projects/`project_id`` The following example `
@@ -6340,9 +6342,9 @@ module Google
         end
         
         # Updates the stored infoType by creating a new version. The existing version
-        # will continue to be used until the new version is ready. See https://cloud.
-        # google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn
-        # more.
+        # will continue to be used until the new version is ready. See https://docs.
+        # cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to
+        # learn more.
         # @param [String] name
         #   Required. Resource name of organization and storedInfoType to be updated, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or projects/

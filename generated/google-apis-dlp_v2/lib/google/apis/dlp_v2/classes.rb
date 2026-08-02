@@ -22,8 +22,8 @@ module Google
   module Apis
     module DlpV2
       
-      # A task to execute on the completion of a job. See https://cloud.google.com/
-      # sensitive-data-protection/docs/concepts-actions to learn more.
+      # A task to execute on the completion of a job. See https://docs.cloud.google.
+      # com/sensitive-data-protection/docs/concepts-actions to learn more.
       class GooglePrivacyDlpV2Action
         include Google::Apis::Core::Hashable
       
@@ -35,16 +35,17 @@ module Google
         attr_accessor :deidentify
       
         # Sends an email when the job completes. The email goes to IAM project owners
-        # and technical [Essential Contacts](https://cloud.google.com/resource-manager/
-        # docs/managing-notification-contacts).
+        # and technical [Essential Contacts](https://docs.cloud.google.com/resource-
+        # manager/docs/managing-notification-contacts).
         # Corresponds to the JSON property `jobNotificationEmails`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobNotificationEmails]
         attr_accessor :job_notification_emails
       
         # Publish a message into a given Pub/Sub topic when DlpJob has completed. The
         # message contains a single field, `DlpJobName`, which is equal to the finished
-        # job's [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/
-        # reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+        # job's [`DlpJob.name`](https://docs.cloud.google.com/sensitive-data-protection/
+        # docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect,
+        # Risk
         # Corresponds to the JSON property `pubSub`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToPubSub]
         attr_accessor :pub_sub
@@ -68,13 +69,13 @@ module Google
       
         # Publish findings of a DlpJob to Dataplex Universal Catalog as a `sensitive-
         # data-protection-job-result` aspect. For more information, see [Send inspection
-        # results to Dataplex Universal Catalog as aspects](https://cloud.google.com/
-        # sensitive-data-protection/docs/add-aspects-inspection-job). Aspects are stored
-        # in Dataplex Universal Catalog storage and are governed by service-specific
-        # policies for Dataplex Universal Catalog. For more information, see [Service
-        # Specific Terms](https://cloud.google.com/terms/service-terms). Only a single
-        # instance of this action can be specified. This action is allowed only if all
-        # resources being scanned are BigQuery tables. Compatible with: Inspect
+        # results to Dataplex Universal Catalog as aspects](https://docs.cloud.google.
+        # com/sensitive-data-protection/docs/add-aspects-inspection-job). Aspects are
+        # stored in Dataplex Universal Catalog storage and are governed by service-
+        # specific policies for Dataplex Universal Catalog. For more information, see [
+        # Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a
+        # single instance of this action can be specified. This action is allowed only
+        # if all resources being scanned are BigQuery tables. Compatible with: Inspect
         # Corresponds to the JSON property `publishFindingsToDataplexCatalog`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToDataplexCatalog]
         attr_accessor :publish_findings_to_dataplex_catalog
@@ -165,11 +166,11 @@ module Google
         attr_accessor :image_containment_type
       
         # A list of image-supported infoTypes—excluding [document infoTypes](https://
-        # cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—
-        # to be used as context for the adjustment rule. Sensitive Data Protection
-        # adjusts the likelihood of an image finding if its bounding box has the
-        # specified spatial relationship (defined by `image_containment_type`) with a
-        # finding of an infoType in this list. For example, you can create a rule to
+        # docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
+        # documents)—to be used as context for the adjustment rule. Sensitive Data
+        # Protection adjusts the likelihood of an image finding if its bounding box has
+        # the specified spatial relationship (defined by `image_containment_type`) with
+        # a finding of an infoType in this list. For example, you can create a rule to
         # adjust the likelihood of a `US_PASSPORT` finding if it is enclosed by a
         # finding of `OBJECT_TYPE/PERSON/PASSPORT`. To configure this, set `US_PASSPORT`
         # in `InspectionRuleSet.info_types`. Add an `adjustment_rule` with an `
@@ -793,8 +794,8 @@ module Google
         # scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and
         # 100 means no limit. Defaults to 0. Only one of rows_limit and
         # rows_limit_percent can be specified. Cannot be used in conjunction with
-        # TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-
-        # data-protection/docs/known-issues#bq-sampling) is causing the `
+        # TimespanConfig. Caution: A [known issue](https://docs.cloud.google.com/
+        # sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `
         # rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit`
         # instead.
         # Corresponds to the JSON property `rowsLimitPercent`
@@ -1042,7 +1043,7 @@ module Google
       # of type: number, long, string, timestamp. If the bound `Value` type differs
       # from the type of data being transformed, we will first attempt converting the
       # type of the data to be transformed to match the type of the bound before
-      # comparing. See https://cloud.google.com/sensitive-data-protection/docs/
+      # comparing. See https://docs.cloud.google.com/sensitive-data-protection/docs/
       # concepts-bucketing to learn more.
       class GooglePrivacyDlpV2BucketingConfig
         include Google::Apis::Core::Hashable
@@ -1313,8 +1314,8 @@ module Google
       
       # Use IAM authentication to connect. This requires the Cloud SQL IAM feature to
       # be enabled on the instance, which is not the default for Cloud SQL. See https:/
-      # /cloud.google.com/sql/docs/postgres/authentication and https://cloud.google.
-      # com/sql/docs/mysql/authentication.
+      # /docs.cloud.google.com/sql/docs/postgres/authentication and https://docs.cloud.
+      # google.com/sql/docs/mysql/authentication.
       class GooglePrivacyDlpV2CloudSqlIamCredential
         include Google::Apis::Core::Hashable
       
@@ -1333,8 +1334,8 @@ module Google
       
         # Use IAM authentication to connect. This requires the Cloud SQL IAM feature to
         # be enabled on the instance, which is not the default for Cloud SQL. See https:/
-        # /cloud.google.com/sql/docs/postgres/authentication and https://cloud.google.
-        # com/sql/docs/mysql/authentication.
+        # /docs.cloud.google.com/sql/docs/postgres/authentication and https://docs.cloud.
+        # google.com/sql/docs/mysql/authentication.
         # Corresponds to the JSON property `cloudSqlIam`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CloudSqlIamCredential]
         attr_accessor :cloud_sql_iam
@@ -1452,8 +1453,8 @@ module Google
         # bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified.
         # This field can't be set if de-identification is requested. For certain file
         # types, setting this field has no effect. For more information, see [Limits on
-        # bytes scanned per file](https://cloud.google.com/sensitive-data-protection/
-        # docs/supported-file-types#max-byte-size-per-file).
+        # bytes scanned per file](https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/supported-file-types#max-byte-size-per-file).
         # Corresponds to the JSON property `bytesLimitPerFile`
         # @return [Fixnum]
         attr_accessor :bytes_limit_per_file
@@ -1464,8 +1465,8 @@ module Google
         # bytes_limit_per_file_percent can be specified. This field can't be set if de-
         # identification is requested. For certain file types, setting this field has no
         # effect. For more information, see [Limits on bytes scanned per file](https://
-        # cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-
-        # size-per-file).
+        # docs.cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-
+        # byte-size-per-file).
         # Corresponds to the JSON property `bytesLimitPerFilePercent`
         # @return [Fixnum]
         attr_accessor :bytes_limit_per_file_percent
@@ -1709,7 +1710,7 @@ module Google
         attr_accessor :dataset_id
       
         # If supported, the location where the dataset's data is stored. See https://
-        # cloud.google.com/bigquery/docs/locations for supported BigQuery locations.
+        # docs.cloud.google.com/bigquery/docs/locations for supported BigQuery locations.
         # Corresponds to the JSON property `datasetLocation`
         # @return [String]
         attr_accessor :dataset_location
@@ -2013,8 +2014,8 @@ module Google
         attr_accessor :conversation
       
         # Structured content to inspect. Up to 50,000 `Value`s per request allowed. See
-        # https://cloud.google.com/sensitive-data-protection/docs/inspecting-structured-
-        # text#inspecting_a_table to learn more.
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-
+        # structured-text#inspecting_a_table to learn more.
         # Corresponds to the JSON property `table`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Table]
         attr_accessor :table
@@ -2184,8 +2185,8 @@ module Google
       
         # The inspectTemplate contains a configuration (set of types of sensitive data
         # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig. See https://cloud.google.com/sensitive-data-protection/docs/
-        # concepts-templates to learn more.
+        # InspectConfig. See https://docs.cloud.google.com/sensitive-data-protection/
+        # docs/concepts-templates to learn more.
         # Corresponds to the JSON property `inspectTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :inspect_template
@@ -2372,8 +2373,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # DeidentifyTemplates contains instructions on how to de-identify content. See
-        # https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to
-        # learn more.
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-
+        # templates to learn more.
         # Corresponds to the JSON property `deidentifyTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :deidentify_template
@@ -2418,7 +2419,7 @@ module Google
         # Configuration for discovery to scan resources for profile generation. Only one
         # discovery configuration may exist per organization, folder, or project. The
         # generated data profiles are retained according to the [data retention policy] (
-        # https://cloud.google.com/sensitive-data-protection/docs/data-profiles#
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/data-profiles#
         # retention).
         # Corresponds to the JSON property `discoveryConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
@@ -2457,8 +2458,8 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # Configuration for a risk analysis job. See https://cloud.google.com/sensitive-
-        # data-protection/docs/concepts-risk-analysis to learn more.
+        # Configuration for a risk analysis job. See https://docs.cloud.google.com/
+        # sensitive-data-protection/docs/concepts-risk-analysis to learn more.
         # Corresponds to the JSON property `riskJob`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RiskAnalysisJobConfig]
         attr_accessor :risk_job
@@ -2482,8 +2483,8 @@ module Google
       
         # The inspectTemplate contains a configuration (set of types of sensitive data
         # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig. See https://cloud.google.com/sensitive-data-protection/docs/
-        # concepts-templates to learn more.
+        # InspectConfig. See https://docs.cloud.google.com/sensitive-data-protection/
+        # docs/concepts-templates to learn more.
         # Corresponds to the JSON property `inspectTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :inspect_template
@@ -2518,8 +2519,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains a configuration to make API calls on a repeating basis. See https://
-        # cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to learn
-        # more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to
+        # learn more.
         # Corresponds to the JSON property `jobTrigger`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger]
         attr_accessor :job_trigger
@@ -2554,8 +2555,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Configuration for stored infoTypes. All fields and subfield are provided by
-        # the user. For more information, see https://cloud.google.com/sensitive-data-
-        # protection/docs/creating-custom-infotypes.
+        # the user. For more information, see https://docs.cloud.google.com/sensitive-
+        # data-protection/docs/creating-custom-infotypes.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
@@ -2625,7 +2626,7 @@ module Google
       # Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64
       # encoded representation of the hashed output (for example,
       # L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and
-      # integer values can be hashed. See https://cloud.google.com/sensitive-data-
+      # integer values can be hashed. See https://docs.cloud.google.com/sensitive-data-
       # protection/docs/pseudonymization to learn more.
       class GooglePrivacyDlpV2CryptoHashConfig
         include Google::Apis::Core::Hashable
@@ -2659,9 +2660,9 @@ module Google
         # must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM
         # permissions when sending a request to perform a crypto transformation using a
         # KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a
-        # wrapped key] (https://cloud.google.com/sensitive-data-protection/docs/create-
-        # wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [
-        # charges apply](https://cloud.google.com/kms/pricing).
+        # wrapped key] (https://docs.cloud.google.com/sensitive-data-protection/docs/
+        # create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations,
+        # [charges apply](https://cloud.google.com/kms/pricing).
         # Corresponds to the JSON property `kmsWrapped`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2KmsWrappedCryptoKey]
         attr_accessor :kms_wrapped
@@ -2697,7 +2698,7 @@ module Google
       # encoded as ASCII. For a given crypto key and context, the same identifier will
       # be replaced with the same surrogate. Identifiers must be at least two
       # characters long. In the case that the identifier is the empty string, it will
-      # be skipped. See https://cloud.google.com/sensitive-data-protection/docs/
+      # be skipped. See https://docs.cloud.google.com/sensitive-data-protection/docs/
       # pseudonymization to learn more. Note: We recommend using
       # CryptoDeterministicConfig for all use cases which do not require preserving
       # the input alphabet space and size, plus warrant referential integrity. FPE
@@ -2785,10 +2786,11 @@ module Google
         # first three letters of the text "jen123" but will return no matches for "
         # jennifer". Dictionary words containing a large number of characters that are
         # not letters or digits may result in unexpected findings because such
-        # characters are treated as whitespace. The [limits](https://cloud.google.com/
-        # sensitive-data-protection/limits) page contains details about the size limits
-        # of dictionaries. For dictionaries that do not fit within these constraints,
-        # consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
+        # characters are treated as whitespace. The [limits](https://docs.cloud.google.
+        # com/sensitive-data-protection/limits) page contains details about the size
+        # limits of dictionaries. For dictionaries that do not fit within these
+        # constraints, consider using `LargeCustomDictionaryConfig` in the `
+        # StoredInfoType` API.
         # Corresponds to the JSON property `dictionary`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
@@ -2840,8 +2842,8 @@ module Google
         attr_accessor :stored_type
       
         # Message for detecting output from deidentification transformations such as [`
-        # CryptoReplaceFfxFpeConfig`](https://cloud.google.com/sensitive-data-protection/
-        # docs/reference/rest/v2/organizations.deidentifyTemplates#
+        # CryptoReplaceFfxFpeConfig`](https://docs.cloud.google.com/sensitive-data-
+        # protection/docs/reference/rest/v2/organizations.deidentifyTemplates#
         # cryptoreplaceffxfpeconfig). These types of transformations are those that
         # perform pseudonymization, thereby producing a "surrogate" as output. This
         # should be used in conjunction with a field on the transformation such as `
@@ -2895,7 +2897,7 @@ module Google
       
         # Create Dataplex Universal Catalog aspects for profiled resources with the
         # aspect type Sensitive Data Protection Profile. To learn more about aspects,
-        # see https://cloud.google.com/sensitive-data-protection/docs/add-aspects.
+        # see https://docs.cloud.google.com/sensitive-data-protection/docs/add-aspects.
         # Corresponds to the JSON property `publishToDataplexCatalog`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToDataplexCatalog]
         attr_accessor :publish_to_dataplex_catalog
@@ -2906,9 +2908,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToSecurityCommandCenter]
         attr_accessor :publish_to_scc
       
-        # If set, attaches the [tags] (https://cloud.google.com/resource-manager/docs/
-        # tags/tags-overview) provided to profiled resources. Tags support [access
-        # control](https://cloud.google.com/iam/docs/tags-access-control). You can
+        # If set, attaches the [tags] (https://docs.cloud.google.com/resource-manager/
+        # docs/tags/tags-overview) provided to profiled resources. Tags support [access
+        # control](https://docs.cloud.google.com/iam/docs/tags-access-control). You can
         # conditionally grant or deny access to a resource based on whether the resource
         # has a specific tag.
         # Corresponds to the JSON property `tagResources`
@@ -2970,8 +2972,8 @@ module Google
         # Configuration for setting up a job to scan resources for profile generation.
         # Only one data profile configuration may exist per organization, folder, or
         # project. The generated data profiles are retained according to the [data
-        # retention policy] (https://cloud.google.com/sensitive-data-protection/docs/
-        # data-profiles#retention).
+        # retention policy] (https://docs.cloud.google.com/sensitive-data-protection/
+        # docs/data-profiles#retention).
         # Corresponds to the JSON property `dataProfileJob`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DataProfileJobConfig]
         attr_accessor :data_profile_job
@@ -2979,7 +2981,7 @@ module Google
         # Configuration for discovery to scan resources for profile generation. Only one
         # discovery configuration may exist per organization, folder, or project. The
         # generated data profiles are retained according to the [data retention policy] (
-        # https://cloud.google.com/sensitive-data-protection/docs/data-profiles#
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/data-profiles#
         # retention).
         # Corresponds to the JSON property `discoveryConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
@@ -3142,8 +3144,8 @@ module Google
       # Configuration for setting up a job to scan resources for profile generation.
       # Only one data profile configuration may exist per organization, folder, or
       # project. The generated data profiles are retained according to the [data
-      # retention policy] (https://cloud.google.com/sensitive-data-protection/docs/
-      # data-profiles#retention).
+      # retention policy] (https://docs.cloud.google.com/sensitive-data-protection/
+      # docs/data-profiles#retention).
       class GooglePrivacyDlpV2DataProfileJobConfig
         include Google::Apis::Core::Hashable
       
@@ -3160,8 +3162,8 @@ module Google
         # specific template is specified, but a "global" template is specified, it will
         # be copied to that region and used instead. If no global or region-specific
         # template is provided for a region with data, that region's data will not be
-        # scanned. For more information, see https://cloud.google.com/sensitive-data-
-        # protection/docs/data-profiles#data-residency.
+        # scanned. For more information, see https://docs.cloud.google.com/sensitive-
+        # data-protection/docs/data-profiles#data-residency.
         # Corresponds to the JSON property `inspectTemplates`
         # @return [Array<String>]
         attr_accessor :inspect_templates
@@ -3490,7 +3492,7 @@ module Google
       end
       
       # Shifts dates by random number of days, with option to be consistent for the
-      # same context. See https://cloud.google.com/sensitive-data-protection/docs/
+      # same context. See https://docs.cloud.google.com/sensitive-data-protection/docs/
       # concepts-date-shifting to learn more.
       class GooglePrivacyDlpV2DateShiftConfig
         include Google::Apis::Core::Hashable
@@ -3814,8 +3816,8 @@ module Google
       end
       
       # DeidentifyTemplates contains instructions on how to de-identify content. See
-      # https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to
-      # learn more.
+      # https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-
+      # templates to learn more.
       class GooglePrivacyDlpV2DeidentifyTemplate
         include Google::Apis::Core::Hashable
       
@@ -4047,10 +4049,11 @@ module Google
       # first three letters of the text "jen123" but will return no matches for "
       # jennifer". Dictionary words containing a large number of characters that are
       # not letters or digits may result in unexpected findings because such
-      # characters are treated as whitespace. The [limits](https://cloud.google.com/
-      # sensitive-data-protection/limits) page contains details about the size limits
-      # of dictionaries. For dictionaries that do not fit within these constraints,
-      # consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
+      # characters are treated as whitespace. The [limits](https://docs.cloud.google.
+      # com/sensitive-data-protection/limits) page contains details about the size
+      # limits of dictionaries. For dictionaries that do not fit within these
+      # constraints, consider using `LargeCustomDictionaryConfig` in the `
+      # StoredInfoType` API.
       class GooglePrivacyDlpV2Dictionary
         include Google::Apis::Core::Hashable
       
@@ -4360,7 +4363,7 @@ module Google
       # Configuration for discovery to scan resources for profile generation. Only one
       # discovery configuration may exist per organization, folder, or project. The
       # generated data profiles are retained according to the [data retention policy] (
-      # https://cloud.google.com/sensitive-data-protection/docs/data-profiles#
+      # https://docs.cloud.google.com/sensitive-data-protection/docs/data-profiles#
       # retention).
       class GooglePrivacyDlpV2DiscoveryConfig
         include Google::Apis::Core::Hashable
@@ -4396,8 +4399,8 @@ module Google
         # template is specified, but a "global" template is specified, it will be copied
         # to that region and used instead. If no global or region-specific template is
         # provided for a region with data, that region's data will not be scanned. For
-        # more information, see https://cloud.google.com/sensitive-data-protection/docs/
-        # data-profiles#data-residency.
+        # more information, see https://docs.cloud.google.com/sensitive-data-protection/
+        # docs/data-profiles#data-residency.
         # Corresponds to the JSON property `inspectTemplates`
         # @return [Array<String>]
         attr_accessor :inspect_templates
@@ -4753,9 +4756,9 @@ module Google
         attr_accessor :cloud_storage_target
       
         # Target used to match against for discovery of resources from other clouds. An [
-        # AWS connector in Security Command Center (Enterprise](https://cloud.google.com/
-        # security-command-center/docs/connect-scc-to-aws) is required to use this
-        # feature.
+        # AWS connector in Security Command Center (Enterprise](https://docs.cloud.
+        # google.com/security-command-center/docs/connect-scc-to-aws) is required to use
+        # this feature.
         # Corresponds to the JSON property `otherCloudTarget`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2OtherCloudDiscoveryTarget]
         attr_accessor :other_cloud_target
@@ -4765,7 +4768,7 @@ module Google
         # scan cloud resource metadata for secrets daily. No inspect template should be
         # included in the discovery config for a security benchmarks scan. Instead, the
         # built-in list of secrets and credentials infoTypes will be used (see https://
-        # cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
+        # docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
         # credentials_and_secrets). Credentials and secrets discovered will be reported
         # as vulnerabilities to Security Command Center.
         # Corresponds to the JSON property `secretsTarget`
@@ -5152,9 +5155,9 @@ module Google
         attr_accessor :image_containment_type
       
         # A list of image-supported infoTypes—excluding [document infoTypes](https://
-        # cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—
-        # to be used as context for the exclusion rule. A finding is excluded if its
-        # bounding box has the specified spatial relationship (defined by `
+        # docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
+        # documents)—to be used as context for the exclusion rule. A finding is excluded
+        # if its bounding box has the specified spatial relationship (defined by `
         # image_containment_type`) with a finding of an infoType in this list. For
         # example, if `InspectionRuleSet.info_types` includes `OBJECT_TYPE/PERSON` and
         # this `exclusion_rule` specifies `info_types` as `OBJECT_TYPE/PERSON/PASSPORT`
@@ -5220,10 +5223,11 @@ module Google
         # first three letters of the text "jen123" but will return no matches for "
         # jennifer". Dictionary words containing a large number of characters that are
         # not letters or digits may result in unexpected findings because such
-        # characters are treated as whitespace. The [limits](https://cloud.google.com/
-        # sensitive-data-protection/limits) page contains details about the size limits
-        # of dictionaries. For dictionaries that do not fit within these constraints,
-        # consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
+        # characters are treated as whitespace. The [limits](https://docs.cloud.google.
+        # com/sensitive-data-protection/limits) page contains details about the size
+        # limits of dictionaries. For dictionaries that do not fit within these
+        # constraints, consider using `LargeCustomDictionaryConfig` in the `
+        # StoredInfoType` API.
         # Corresponds to the JSON property `dictionary`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
@@ -5680,7 +5684,7 @@ module Google
         attr_accessor :file_store_is_empty
         alias_method :file_store_is_empty?, :file_store_is_empty
       
-        # The location of the file store. * Cloud Storage: https://cloud.google.com/
+        # The location of the file store. * Cloud Storage: https://docs.cloud.google.com/
         # storage/docs/locations#available-locations * Amazon S3: https://docs.aws.
         # amazon.com/general/latest/gr/rande.html#regional-endpoints
         # Corresponds to the JSON property `fileStoreLocation`
@@ -6052,8 +6056,8 @@ module Google
       # used on data of type: double, long. If the bound Value type differs from the
       # type of data being transformed, we will first attempt converting the type of
       # the data to be transformed to match the type of the bound before comparing.
-      # See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing
-      # to learn more.
+      # See https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-
+      # bucketing to learn more.
       class GooglePrivacyDlpV2FixedSizeBucketingConfig
         include Google::Apis::Core::Hashable
       
@@ -6594,7 +6598,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Name of the information type. Either a name of your choosing when creating a
-        # CustomInfoType, or one of the names listed at https://cloud.google.com/
+        # CustomInfoType, or one of the names listed at https://docs.cloud.google.com/
         # sensitive-data-protection/docs/infotypes-reference when specifying a built-in
         # type. When sending Cloud DLP results to Data Catalog, infoType names should
         # conform to the pattern `[A-Za-z0-9$_-]`1,64``.
@@ -6961,8 +6965,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :content_options
       
-        # CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-
-        # data-protection/docs/creating-custom-infotypes to learn more.
+        # CustomInfoTypes provided by the user. See https://docs.cloud.google.com/
+        # sensitive-data-protection/docs/creating-custom-infotypes to learn more.
         # Corresponds to the JSON property `customInfoTypes`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2CustomInfoType>]
         attr_accessor :custom_info_types
@@ -6983,7 +6987,7 @@ module Google
         alias_method :include_quote?, :include_quote
       
         # Restricts what info_types to look for. The values must correspond to InfoType
-        # values returned by ListInfoTypes or listed at https://cloud.google.com/
+        # values returned by ListInfoTypes or listed at https://docs.cloud.google.com/
         # sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or
         # CustomInfoTypes are specified in a request, the system may automatically
         # choose a default list of detectors to run, which may change over time. If you
@@ -7006,8 +7010,8 @@ module Google
         # Only returns findings equal to or above this threshold. The default is
         # POSSIBLE. In general, the highest likelihood setting yields the fewest
         # findings in results and the lowest chance of a false positive. For more
-        # information, see [Match likelihood](https://cloud.google.com/sensitive-data-
-        # protection/docs/likelihood).
+        # information, see [Match likelihood](https://docs.cloud.google.com/sensitive-
+        # data-protection/docs/likelihood).
         # Corresponds to the JSON property `minLikelihood`
         # @return [String]
         attr_accessor :min_likelihood
@@ -7203,8 +7207,8 @@ module Google
       
       # The inspectTemplate contains a configuration (set of types of sensitive data
       # to be detected) to be used anywhere you otherwise would normally specify
-      # InspectConfig. See https://cloud.google.com/sensitive-data-protection/docs/
-      # concepts-templates to learn more.
+      # InspectConfig. See https://docs.cloud.google.com/sensitive-data-protection/
+      # docs/concepts-templates to learn more.
       class GooglePrivacyDlpV2InspectTemplate
         include Google::Apis::Core::Hashable
       
@@ -7329,8 +7333,8 @@ module Google
       end
       
       # Sends an email when the job completes. The email goes to IAM project owners
-      # and technical [Essential Contacts](https://cloud.google.com/resource-manager/
-      # docs/managing-notification-contacts).
+      # and technical [Essential Contacts](https://docs.cloud.google.com/resource-
+      # manager/docs/managing-notification-contacts).
       class GooglePrivacyDlpV2JobNotificationEmails
         include Google::Apis::Core::Hashable
       
@@ -7344,8 +7348,8 @@ module Google
       end
       
       # Contains a configuration to make API calls on a repeating basis. See https://
-      # cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to learn
-      # more.
+      # docs.cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to
+      # learn more.
       class GooglePrivacyDlpV2JobTrigger
         include Google::Apis::Core::Hashable
       
@@ -7792,9 +7796,9 @@ module Google
       # must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM
       # permissions when sending a request to perform a crypto transformation using a
       # KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a
-      # wrapped key] (https://cloud.google.com/sensitive-data-protection/docs/create-
-      # wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [
-      # charges apply](https://cloud.google.com/kms/pricing).
+      # wrapped key] (https://docs.cloud.google.com/sensitive-data-protection/docs/
+      # create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations,
+      # [charges apply](https://cloud.google.com/kms/pricing).
       class GooglePrivacyDlpV2KmsWrappedCryptoKey
         include Google::Apis::Core::Hashable
       
@@ -8005,7 +8009,7 @@ module Google
       end
       
       # Configuration for a custom dictionary created from a data source of any size
-      # up to the maximum size defined in the [limits](https://cloud.google.com/
+      # up to the maximum size defined in the [limits](https://docs.cloud.google.com/
       # sensitive-data-protection/limits) page. The artifacts of dictionary creation
       # are stored in the specified Cloud Storage location. Consider using `
       # CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size
@@ -8768,9 +8772,9 @@ module Google
       end
       
       # Target used to match against for discovery of resources from other clouds. An [
-      # AWS connector in Security Command Center (Enterprise](https://cloud.google.com/
-      # security-command-center/docs/connect-scc-to-aws) is required to use this
-      # feature.
+      # AWS connector in Security Command Center (Enterprise](https://docs.cloud.
+      # google.com/security-command-center/docs/connect-scc-to-aws) is required to use
+      # this feature.
       class GooglePrivacyDlpV2OtherCloudDiscoveryTarget
         include Google::Apis::Core::Hashable
       
@@ -9130,7 +9134,7 @@ module Google
         # of type: number, long, string, timestamp. If the bound `Value` type differs
         # from the type of data being transformed, we will first attempt converting the
         # type of the data to be transformed to match the type of the bound before
-        # comparing. See https://cloud.google.com/sensitive-data-protection/docs/
+        # comparing. See https://docs.cloud.google.com/sensitive-data-protection/docs/
         # concepts-bucketing to learn more.
         # Corresponds to the JSON property `bucketingConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2BucketingConfig]
@@ -9156,7 +9160,7 @@ module Google
         # Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64
         # encoded representation of the hashed output (for example,
         # L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and
-        # integer values can be hashed. See https://cloud.google.com/sensitive-data-
+        # integer values can be hashed. See https://docs.cloud.google.com/sensitive-data-
         # protection/docs/pseudonymization to learn more.
         # Corresponds to the JSON property `cryptoHashConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoHashConfig]
@@ -9169,7 +9173,7 @@ module Google
         # encoded as ASCII. For a given crypto key and context, the same identifier will
         # be replaced with the same surrogate. Identifiers must be at least two
         # characters long. In the case that the identifier is the empty string, it will
-        # be skipped. See https://cloud.google.com/sensitive-data-protection/docs/
+        # be skipped. See https://docs.cloud.google.com/sensitive-data-protection/docs/
         # pseudonymization to learn more. Note: We recommend using
         # CryptoDeterministicConfig for all use cases which do not require preserving
         # the input alphabet space and size, plus warrant referential integrity. FPE
@@ -9179,7 +9183,7 @@ module Google
         attr_accessor :crypto_replace_ffx_fpe_config
       
         # Shifts dates by random number of days, with option to be consistent for the
-        # same context. See https://cloud.google.com/sensitive-data-protection/docs/
+        # same context. See https://docs.cloud.google.com/sensitive-data-protection/docs/
         # concepts-date-shifting to learn more.
         # Corresponds to the JSON property `dateShiftConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DateShiftConfig]
@@ -9194,8 +9198,8 @@ module Google
         # used on data of type: double, long. If the bound Value type differs from the
         # type of data being transformed, we will first attempt converting the type of
         # the data to be transformed to match the type of the bound before comparing.
-        # See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing
-        # to learn more.
+        # See https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-
+        # bucketing to learn more.
         # Corresponds to the JSON property `fixedSizeBucketingConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FixedSizeBucketingConfig]
         attr_accessor :fixed_size_bucketing_config
@@ -9443,7 +9447,7 @@ module Google
         # Number of characters before the finding to consider. For tabular data, if you
         # want to modify the likelihood of an entire column of findngs, set this to 1.
         # For more information, see [Hotword example: Set the match likelihood of a
-        # table column] (https://cloud.google.com/sensitive-data-protection/docs/
+        # table column] (https://docs.cloud.google.com/sensitive-data-protection/docs/
         # creating-custom-infotypes-likelihood#match-column-values).
         # Corresponds to the JSON property `windowBefore`
         # @return [Fixnum]
@@ -9580,13 +9584,13 @@ module Google
       
       # Publish findings of a DlpJob to Dataplex Universal Catalog as a `sensitive-
       # data-protection-job-result` aspect. For more information, see [Send inspection
-      # results to Dataplex Universal Catalog as aspects](https://cloud.google.com/
-      # sensitive-data-protection/docs/add-aspects-inspection-job). Aspects are stored
-      # in Dataplex Universal Catalog storage and are governed by service-specific
-      # policies for Dataplex Universal Catalog. For more information, see [Service
-      # Specific Terms](https://cloud.google.com/terms/service-terms). Only a single
-      # instance of this action can be specified. This action is allowed only if all
-      # resources being scanned are BigQuery tables. Compatible with: Inspect
+      # results to Dataplex Universal Catalog as aspects](https://docs.cloud.google.
+      # com/sensitive-data-protection/docs/add-aspects-inspection-job). Aspects are
+      # stored in Dataplex Universal Catalog storage and are governed by service-
+      # specific policies for Dataplex Universal Catalog. For more information, see [
+      # Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a
+      # single instance of this action can be specified. This action is allowed only
+      # if all resources being scanned are BigQuery tables. Compatible with: Inspect
       class GooglePrivacyDlpV2PublishFindingsToDataplexCatalog
         include Google::Apis::Core::Hashable
       
@@ -9633,7 +9637,7 @@ module Google
       
       # Create Dataplex Universal Catalog aspects for profiled resources with the
       # aspect type Sensitive Data Protection Profile. To learn more about aspects,
-      # see https://cloud.google.com/sensitive-data-protection/docs/add-aspects.
+      # see https://docs.cloud.google.com/sensitive-data-protection/docs/add-aspects.
       class GooglePrivacyDlpV2PublishToDataplexCatalog
         include Google::Apis::Core::Hashable
       
@@ -9659,8 +9663,9 @@ module Google
       
       # Publish a message into a given Pub/Sub topic when DlpJob has completed. The
       # message contains a single field, `DlpJobName`, which is equal to the finished
-      # job's [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/
-      # reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+      # job's [`DlpJob.name`](https://docs.cloud.google.com/sensitive-data-protection/
+      # docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect,
+      # Risk
       class GooglePrivacyDlpV2PublishToPubSub
         include Google::Apis::Core::Hashable
       
@@ -10318,22 +10323,22 @@ module Google
         include Google::Apis::Core::Hashable
       
         # DeidentifyTemplates contains instructions on how to de-identify content. See
-        # https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to
-        # learn more.
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-
+        # templates to learn more.
         # Corresponds to the JSON property `snapshotDeidentifyTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :snapshot_deidentify_template
       
         # DeidentifyTemplates contains instructions on how to de-identify content. See
-        # https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to
-        # learn more.
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-
+        # templates to learn more.
         # Corresponds to the JSON property `snapshotImageRedactTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :snapshot_image_redact_template
       
         # DeidentifyTemplates contains instructions on how to de-identify content. See
-        # https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to
-        # learn more.
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-
+        # templates to learn more.
         # Corresponds to the JSON property `snapshotStructuredDeidentifyTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :snapshot_structured_deidentify_template
@@ -10361,8 +10366,8 @@ module Google
       
         # The inspectTemplate contains a configuration (set of types of sensitive data
         # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig. See https://cloud.google.com/sensitive-data-protection/docs/
-        # concepts-templates to learn more.
+        # InspectConfig. See https://docs.cloud.google.com/sensitive-data-protection/
+        # docs/concepts-templates to learn more.
         # Corresponds to the JSON property `snapshotInspectTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :snapshot_inspect_template
@@ -10382,8 +10387,8 @@ module Google
       class GooglePrivacyDlpV2RequestedRiskAnalysisOptions
         include Google::Apis::Core::Hashable
       
-        # Configuration for a risk analysis job. See https://cloud.google.com/sensitive-
-        # data-protection/docs/concepts-risk-analysis to learn more.
+        # Configuration for a risk analysis job. See https://docs.cloud.google.com/
+        # sensitive-data-protection/docs/concepts-risk-analysis to learn more.
         # Corresponds to the JSON property `jobConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RiskAnalysisJobConfig]
         attr_accessor :job_config
@@ -10443,8 +10448,8 @@ module Google
         end
       end
       
-      # Configuration for a risk analysis job. See https://cloud.google.com/sensitive-
-      # data-protection/docs/concepts-risk-analysis to learn more.
+      # Configuration for a risk analysis job. See https://docs.cloud.google.com/
+      # sensitive-data-protection/docs/concepts-risk-analysis to learn more.
       class GooglePrivacyDlpV2RiskAnalysisJobConfig
         include Google::Apis::Core::Hashable
       
@@ -10649,7 +10654,7 @@ module Google
       # scan cloud resource metadata for secrets daily. No inspect template should be
       # included in the discovery config for a security benchmarks scan. Instead, the
       # built-in list of secrets and credentials infoTypes will be used (see https://
-      # cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
+      # docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#
       # credentials_and_secrets). Credentials and secrets discovered will be reported
       # as vulnerabilities to Security Command Center.
       class GooglePrivacyDlpV2SecretsDiscoveryTarget
@@ -10878,8 +10883,8 @@ module Google
       end
       
       # Configuration for stored infoTypes. All fields and subfield are provided by
-      # the user. For more information, see https://cloud.google.com/sensitive-data-
-      # protection/docs/creating-custom-infotypes.
+      # the user. For more information, see https://docs.cloud.google.com/sensitive-
+      # data-protection/docs/creating-custom-infotypes.
       class GooglePrivacyDlpV2StoredInfoTypeConfig
         include Google::Apis::Core::Hashable
       
@@ -10902,10 +10907,11 @@ module Google
         # first three letters of the text "jen123" but will return no matches for "
         # jennifer". Dictionary words containing a large number of characters that are
         # not letters or digits may result in unexpected findings because such
-        # characters are treated as whitespace. The [limits](https://cloud.google.com/
-        # sensitive-data-protection/limits) page contains details about the size limits
-        # of dictionaries. For dictionaries that do not fit within these constraints,
-        # consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
+        # characters are treated as whitespace. The [limits](https://docs.cloud.google.
+        # com/sensitive-data-protection/limits) page contains details about the size
+        # limits of dictionaries. For dictionaries that do not fit within these
+        # constraints, consider using `LargeCustomDictionaryConfig` in the `
+        # StoredInfoType` API.
         # Corresponds to the JSON property `dictionary`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
         attr_accessor :dictionary
@@ -10916,7 +10922,7 @@ module Google
         attr_accessor :display_name
       
         # Configuration for a custom dictionary created from a data source of any size
-        # up to the maximum size defined in the [limits](https://cloud.google.com/
+        # up to the maximum size defined in the [limits](https://docs.cloud.google.com/
         # sensitive-data-protection/limits) page. The artifacts of dictionary creation
         # are stored in the specified Cloud Storage location. Consider using `
         # CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size
@@ -10969,8 +10975,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Configuration for stored infoTypes. All fields and subfield are provided by
-        # the user. For more information, see https://cloud.google.com/sensitive-data-
-        # protection/docs/creating-custom-infotypes.
+        # the user. For more information, see https://docs.cloud.google.com/sensitive-
+        # data-protection/docs/creating-custom-infotypes.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
@@ -11101,8 +11107,8 @@ module Google
       end
       
       # Message for detecting output from deidentification transformations such as [`
-      # CryptoReplaceFfxFpeConfig`](https://cloud.google.com/sensitive-data-protection/
-      # docs/reference/rest/v2/organizations.deidentifyTemplates#
+      # CryptoReplaceFfxFpeConfig`](https://docs.cloud.google.com/sensitive-data-
+      # protection/docs/reference/rest/v2/organizations.deidentifyTemplates#
       # cryptoreplaceffxfpeconfig). These types of transformations are those that
       # perform pseudonymization, thereby producing a "surrogate" as output. This
       # should be used in conjunction with a field on the transformation such as `
@@ -11121,8 +11127,8 @@ module Google
       end
       
       # Structured content to inspect. Up to 50,000 `Value`s per request allowed. See
-      # https://cloud.google.com/sensitive-data-protection/docs/inspecting-structured-
-      # text#inspecting_a_table to learn more.
+      # https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-
+      # structured-text#inspecting_a_table to learn more.
       class GooglePrivacyDlpV2Table
         include Google::Apis::Core::Hashable
       
@@ -11178,7 +11184,7 @@ module Google
         attr_accessor :dataset_id
       
         # If supported, the location where the dataset's data is stored. See https://
-        # cloud.google.com/bigquery/docs/locations for supported locations.
+        # docs.cloud.google.com/bigquery/docs/locations for supported locations.
         # Corresponds to the JSON property `datasetLocation`
         # @return [String]
         attr_accessor :dataset_location
@@ -11543,9 +11549,9 @@ module Google
         end
       end
       
-      # If set, attaches the [tags] (https://cloud.google.com/resource-manager/docs/
-      # tags/tags-overview) provided to profiled resources. Tags support [access
-      # control](https://cloud.google.com/iam/docs/tags-access-control). You can
+      # If set, attaches the [tags] (https://docs.cloud.google.com/resource-manager/
+      # docs/tags/tags-overview) provided to profiled resources. Tags support [access
+      # control](https://docs.cloud.google.com/iam/docs/tags-access-control). You can
       # conditionally grant or deny access to a resource based on whether the resource
       # has a specific tag.
       class GooglePrivacyDlpV2TagResources
@@ -11553,7 +11559,7 @@ module Google
       
         # Whether applying a tag to a resource should lower the risk of the profile for
         # that resource. For example, in conjunction with an [IAM deny policy](https://
-        # cloud.google.com/iam/docs/deny-overview), you can deny all principals a
+        # docs.cloud.google.com/iam/docs/deny-overview), you can deny all principals a
         # permission if a tag value is present, mitigating the risk of the resource.
         # This also lowers the data risk of resources at the lower levels of the
         # resource hierarchy. For example, reducing the data risk of a table data
@@ -11720,8 +11726,8 @@ module Google
         # automatic population will scan data that is at least three hours old when the
         # job starts. This is because streaming buffer rows are not read during
         # inspection and reading up to the current timestamp will result in skipped rows.
-        # See the [known issue](https://cloud.google.com/sensitive-data-protection/docs/
-        # known-issues#recently-streamed-data) related to this operation.
+        # See the [known issue](https://docs.cloud.google.com/sensitive-data-protection/
+        # docs/known-issues#recently-streamed-data) related to this operation.
         # Corresponds to the JSON property `enableAutoPopulationOfTimespanConfig`
         # @return [Boolean]
         attr_accessor :enable_auto_population_of_timespan_config
@@ -12235,8 +12241,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # DeidentifyTemplates contains instructions on how to de-identify content. See
-        # https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to
-        # learn more.
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-
+        # templates to learn more.
         # Corresponds to the JSON property `deidentifyTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :deidentify_template
@@ -12264,7 +12270,7 @@ module Google
         # Configuration for discovery to scan resources for profile generation. Only one
         # discovery configuration may exist per organization, folder, or project. The
         # generated data profiles are retained according to the [data retention policy] (
-        # https://cloud.google.com/sensitive-data-protection/docs/data-profiles#
+        # https://docs.cloud.google.com/sensitive-data-protection/docs/data-profiles#
         # retention).
         # Corresponds to the JSON property `discoveryConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DiscoveryConfig]
@@ -12292,8 +12298,8 @@ module Google
       
         # The inspectTemplate contains a configuration (set of types of sensitive data
         # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig. See https://cloud.google.com/sensitive-data-protection/docs/
-        # concepts-templates to learn more.
+        # InspectConfig. See https://docs.cloud.google.com/sensitive-data-protection/
+        # docs/concepts-templates to learn more.
         # Corresponds to the JSON property `inspectTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :inspect_template
@@ -12319,8 +12325,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Contains a configuration to make API calls on a repeating basis. See https://
-        # cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to learn
-        # more.
+        # docs.cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to
+        # learn more.
         # Corresponds to the JSON property `jobTrigger`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger]
         attr_accessor :job_trigger
@@ -12346,8 +12352,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Configuration for stored infoTypes. All fields and subfield are provided by
-        # the user. For more information, see https://cloud.google.com/sensitive-data-
-        # protection/docs/creating-custom-infotypes.
+        # the user. For more information, see https://docs.cloud.google.com/sensitive-
+        # data-protection/docs/creating-custom-infotypes.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
