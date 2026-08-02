@@ -430,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscInstanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PscInterfaceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1324,6 +1330,8 @@ module Google
           collection :outbound_public_ip_addresses, as: 'outboundPublicIpAddresses'
           property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1beta::PscInstanceConfig, decorator: Google::Apis::AlloydbV1beta::PscInstanceConfig::Representation
       
+          property :psc_instance_info, as: 'pscInstanceInfo', class: Google::Apis::AlloydbV1beta::PscInstanceInfo, decorator: Google::Apis::AlloydbV1beta::PscInstanceInfo::Representation
+      
           property :public_ip_address, as: 'publicIpAddress'
           property :query_insights_config, as: 'queryInsightsConfig', class: Google::Apis::AlloydbV1beta::QueryInsightsInstanceConfig, decorator: Google::Apis::AlloydbV1beta::QueryInsightsInstanceConfig::Representation
       
@@ -1596,12 +1604,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          property :psc_auto_connection_policy_state, as: 'pscAutoConnectionPolicyState'
           collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::AlloydbV1beta::PscAutoConnectionConfig, decorator: Google::Apis::AlloydbV1beta::PscAutoConnectionConfig::Representation
       
+          property :psc_auto_dns_state, as: 'pscAutoDnsState'
           property :psc_dns_name, as: 'pscDnsName'
           collection :psc_interface_configs, as: 'pscInterfaceConfigs', class: Google::Apis::AlloydbV1beta::PscInterfaceConfig, decorator: Google::Apis::AlloydbV1beta::PscInterfaceConfig::Representation
       
           property :service_attachment_link, as: 'serviceAttachmentLink'
+        end
+      end
+      
+      class PscInstanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_psc_auto_connection_policy, as: 'effectivePscAutoConnectionPolicy'
+          property :effective_psc_auto_dns_enabled, as: 'effectivePscAutoDnsEnabled'
+          collection :psc_auto_dns_names, as: 'pscAutoDnsNames'
+          property :service_connection_policy, as: 'serviceConnectionPolicy'
         end
       end
       
@@ -2187,6 +2207,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_values, as: 'allowedValues'
+          property :case_agnostic, as: 'caseAgnostic'
         end
       end
       
