@@ -73,6 +73,11 @@ module Google
         #   the user's physical location. For example, the IP address can be the user's
         #   proxy server's address or a virtual private network (VPN) address. This
         #   parameter supports both IPv4 and IPv6 address versions.
+        # @param [String] agent_info_filter
+        #   Optional. Filters on agent info fields in the activity. This filter gets
+        #   applied in conjunction(AND) with other filters. Example: "agentInfoFilter=
+        #   agentId=\"agent-id\" AND agentName=\"agent-name\" AND agentOwnerEmail=\"agent-
+        #   owner-email\""
         # @param [String] application_info_filter
         #   Optional. Used to filter on the `oAuthClientId` field present in [`
         #   ApplicationInfo`](#applicationinfo) message. **Usage** ``` GET...&
@@ -80,6 +85,11 @@ module Google
         #   oAuthClientId=%22clientId%22 ```
         # @param [String] customer_id
         #   The unique ID of the customer to retrieve data for.
+        # @param [String] device_filter
+        #   Optional. Used to filter on the fields present in [`UserDeviceInfo`](#
+        #   userdeviceinfo) message like `deviceId`, `deviceType`, and `deviceOsVersion`. *
+        #   *Usage** ``` GET...&deviceFilter=deviceId="123" GET...&deviceFilter=deviceType=
+        #   "ANDROID" GET...&deviceFilter=deviceOsVersion="14.0" ```
         # @param [String] end_time
         #   Sets the end of the range of time shown in the report. The date is in the RFC
         #   3339 format, for example 2010-10-28T10:26:35.000Z. The default value is the
@@ -232,15 +242,17 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_activities(user_key, application_name, actor_ip_address: nil, application_info_filter: nil, customer_id: nil, end_time: nil, event_name: nil, filters: nil, group_id_filter: nil, include_sensitive_data: nil, max_results: nil, network_info_filter: nil, org_unit_id: nil, page_token: nil, resource_details_filter: nil, start_time: nil, status_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_activities(user_key, application_name, actor_ip_address: nil, agent_info_filter: nil, application_info_filter: nil, customer_id: nil, device_filter: nil, end_time: nil, event_name: nil, filters: nil, group_id_filter: nil, include_sensitive_data: nil, max_results: nil, network_info_filter: nil, org_unit_id: nil, page_token: nil, resource_details_filter: nil, start_time: nil, status_filter: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'admin/reports/v1/activity/users/{userKey}/applications/{applicationName}', options)
           command.response_representation = Google::Apis::AdminReportsV1::Activities::Representation
           command.response_class = Google::Apis::AdminReportsV1::Activities
           command.params['userKey'] = user_key unless user_key.nil?
           command.params['applicationName'] = application_name unless application_name.nil?
           command.query['actorIpAddress'] = actor_ip_address unless actor_ip_address.nil?
+          command.query['agentInfoFilter'] = agent_info_filter unless agent_info_filter.nil?
           command.query['applicationInfoFilter'] = application_info_filter unless application_info_filter.nil?
           command.query['customerId'] = customer_id unless customer_id.nil?
+          command.query['deviceFilter'] = device_filter unless device_filter.nil?
           command.query['endTime'] = end_time unless end_time.nil?
           command.query['eventName'] = event_name unless event_name.nil?
           command.query['filters'] = filters unless filters.nil?
