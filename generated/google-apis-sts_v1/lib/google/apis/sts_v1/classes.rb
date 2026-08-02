@@ -443,7 +443,7 @@ module Google
         # @return [String]
         attr_accessor :n
       
-        # Public key use. Currently "jwt-svid".
+        # Public key use. Currently "sig".
         # Corresponds to the JSON property `use`
         # @return [String]
         attr_accessor :use
