@@ -507,20 +507,12 @@ module Google
 
             if v[:reserved]
               value_segments = value.split('/', -1)
-              net_depth = 0
-
               value_segments.each do |seg|
-                if seg == '..'
-                  if net_depth > 0
-                    net_depth -= 1
-                  else
-                    raise Google::Apis::Error, "Path traversal escape detected in parameter #{var_name}: #{value}"
-                  end
-                elsif seg == '.' || seg == ''
-                  raise Google::Apis::Error, "Invalid path segment '#{seg}' in parameter #{var_name}"
-                else
-                  net_depth += 1
+                if %w[. ..].include?(seg)
+                  raise Google::Apis::Error,
+                        "Path traversal segment #{seg.inspect} is not allowed in parameter #{var_name}: #{value}"
                 end
+                raise Google::Apis::Error, "Invalid path segment '' in parameter #{var_name}" if seg == ''
               end
             else
               if value.include?('/')

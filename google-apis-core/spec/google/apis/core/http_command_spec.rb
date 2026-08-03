@@ -709,13 +709,11 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         expect { command.execute(client) }.not_to raise_error
       end
 
-      it 'should allow safe relative traversals inside the wildcard' do
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/databases/default/documents/doc-1/../../default/indexes')
-          .to_return(status: [200, ''])
+      it 'should reject relative traversals inside the wildcard' do
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:parent] = 'projects/sys-prod-123/databases/default/documents/doc-1/../../default'
         command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /is not allowed/)
       end
 
       it 'should reject traversals escaping the left parameter boundary' do
@@ -723,21 +721,21 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         command.params[:parent] =
           'projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /Path traversal escape detected/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /is not allowed/)
       end
 
       it 'should reject parameter values starting with parent directory traversals' do
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:parent] = '../escape-db'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /Path traversal escape detected/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /is not allowed/)
       end
 
       it 'should reject invalid segments like single dot' do
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:parent] = 'projects/sys-prod-123/./databases/default'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /Invalid path segment/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /is not allowed/)
       end
 
       it 'should reject invalid empty segments' do
