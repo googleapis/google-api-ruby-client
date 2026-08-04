@@ -667,7 +667,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         command.params[:location] = 'us-central1'
         command.params[:webhook] = '..'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /cannot be '\.' or '\.\.'/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /is not allowed/)
       end
 
       it 'should reject query parameter injections' do

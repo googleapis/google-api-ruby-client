@@ -539,7 +539,8 @@ module Google
                 raise Google::Apis::Error, "Simple parameter #{var_name} cannot contain slashes: #{value}"
               end
               if value == '.' || value == '..'
-                raise Google::Apis::Error, "Simple parameter #{var_name} cannot be '.' or '..': #{value}"
+                raise Google::Apis::Error,
+                      "Path traversal segment #{value.inspect} is not allowed in parameter #{var_name}: #{value}"
               end
             end
           end
