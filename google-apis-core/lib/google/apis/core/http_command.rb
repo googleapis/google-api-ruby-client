@@ -360,6 +360,12 @@ module Google
           'Google::Apis::SecretmanagerV1beta1::SecretPayload'
         ].freeze
 
+        # Pattern to scan for RFC 6570 URI template expressions enclosed in curly braces {...}.
+        # Captures:
+        # 1. An optional expansion operator prefix (one of: +, #, ., /, ;, ?, &).
+        # 2. A comma-separated list of variable definitions containing their names and optional modifiers.
+        TEMPLATE_VAR_PATTERN = /\{([\+#\.\/;\?&])?([^}]+)\}/.freeze
+
         module RedactingPPMethods
           def pp_object(obj)
             return super unless UNSAFE_CLASS_NAMES.include? obj.class.name
@@ -502,7 +508,7 @@ module Google
 
           # Parse variables and operators
           variables = []
-          template_pattern.scan(/\{([\+#\.\/;\?&])?([^}]+)\}/) do |operator, var_list|
+          template_pattern.scan(TEMPLATE_VAR_PATTERN) do |operator, var_list|
             var_list.split(',').each do |var|
               var_name = var.split(':').first.split('*').first
               variables << { name: var_name, operator: operator, reserved: (operator == '+' || operator == '#') }
