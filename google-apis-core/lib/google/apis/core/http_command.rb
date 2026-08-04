@@ -361,9 +361,17 @@ module Google
         ].freeze
 
         # Pattern to scan for RFC 6570 URI template expressions enclosed in curly braces {...}.
-        # Captures:
-        # 1. An optional expansion operator prefix (one of: +, #, ., /, ;, ?, &).
-        # 2. A comma-separated list of variable definitions containing their names and optional modifiers.
+        #
+        # Regex Mechanics:
+        # - Matches literal '{' and '}' characters.
+        # - Capture Group 1: Captures a single prefix operator character if present (one of: +, #, ., /, ;, ?, &).
+        # - Capture Group 2: Captures all characters up to the closing brace ('[^}]+').
+        #
+        # Expected Capture Format:
+        # Capture Group 2 is expected to contain a raw string block representing one or more variable
+        # definitions (e.g. "var1" or "var1,var2"). This string block may contain commas, variable names,
+        # prefix length constraints (e.g. "var1:5"), or explode modifiers (e.g. "var1*"). The commas are
+        # split at the code level during traversal.
         TEMPLATE_VAR_PATTERN = /\{([\+#\.\/;\?&])?([^}]+)\}/.freeze
 
         module RedactingPPMethods
