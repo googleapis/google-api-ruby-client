@@ -104,6 +104,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
+        # @raise [Google::Apis::Error] If path parameter validation fails.
         def execute(client, &block)
           prepare!
           opencensus_begin_span
@@ -162,6 +163,7 @@ module Google
         #
         # @private
         # @return [void]
+        # @raise [Google::Apis::Error] If path parameter validation fails.
         def prepare!
           normalize_unicode = true
           if options
