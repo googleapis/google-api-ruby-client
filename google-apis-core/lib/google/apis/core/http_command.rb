@@ -481,8 +481,20 @@ module Google
           end
         end
 
-        # Validate path parameters against template to prevent path traversal and injection exploits
-        # @raise [Google::Apis::Error] if validation fails
+        # Validates user-supplied path parameter values against the URL template specification
+        # to prevent directory traversal and parameter injection exploits.
+        #
+        # Validation Mechanism:
+        # 1. Identifies query/fragment injections: Rejects values containing '?' or '#' characters.
+        # 2. For simple variables (standard single-wildcard behavior):
+        #    - Rejects if the value contains '/' (cannot span multiple path segments).
+        #    - Rejects if the value is exactly '.' or '..'.
+        # 3. For reserved variables (reserved expansion like '+' or '#', double-wildcard behavior):
+        #    - Splits the value by slash ('/') using a `-1` limit to preserve empty trailing segments.
+        #    - Rejects if any segment is a directory traversal segment ('.' or '..').
+        #    - Rejects empty segments ('', meaning duplicate slashes '//' or trailing slashes).
+        #
+        # @raise [Google::Apis::Error] If any validation check fails.
         def validate_path_parameters!
           template_pattern = url.pattern
 
