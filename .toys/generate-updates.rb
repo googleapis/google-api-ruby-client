@@ -62,7 +62,14 @@ def run
   pr_clean_old_gems if clean
   unless @errors.empty?
     puts "Errors:", :red, :bold
-    @errors.each { |name| puts "Error generating #{name}", :red }
+    @errors.each do |err|
+      if err.is_a?(Hash)
+        puts "Error generating #{err[:name]} (exit code #{err[:exit_code]}):", :red, :bold
+        puts err[:error], :red if err[:error] && !err[:error].empty?
+      else
+        puts "Error generating #{err}", :red
+      end
+    end
     exit 1
   end
 end
@@ -162,8 +169,16 @@ def regen_single_gem api, version
       "--names=#{context_directory}/api_names.yaml",
       "--names-out=#{context_directory}/api_names_out.yaml"
     ]
-    result = exec cmd, in: [:string, "a\n"], e: false
-    yoshi_pr_generator.abort_capture! unless result.success?
+    cmd << "--verbose" if verbosity > 0
+    result = exec cmd, in: [:string, "a\n"], out: [:capture, :inherit], err: [:capture, :inherit], e: false
+    unless result.success?
+      err_detail = result.captured_err.to_s.strip
+      err_detail = result.captured_out.to_s.strip if err_detail.empty?
+      puts "Failed generating google-apis-#{api}_#{version} (exit code #{result.exit_code}):", :red, :bold
+      puts err_detail, :red unless err_detail.empty?
+      @errors << { name: "google-apis-#{api}_#{version}", exit_code: result.exit_code, error: err_detail }
+      yoshi_pr_generator.abort_capture!
+    end
   end
 end
 
@@ -175,8 +190,16 @@ def clean_old_gems
       "#{context_directory}/generated",
       "--clean"
     ]
-    result = exec cmd, e: false
-    yoshi_pr_generator.abort_capture! unless result.success?
+    cmd << "--verbose" if verbosity > 0
+    result = exec cmd, out: [:capture, :inherit], err: [:capture, :inherit], e: false
+    unless result.success?
+      err_detail = result.captured_err.to_s.strip
+      err_detail = result.captured_out.to_s.strip if err_detail.empty?
+      puts "Failed cleaning obsolete gems (exit code #{result.exit_code}):", :red, :bold
+      puts err_detail, :red unless err_detail.empty?
+      @errors << { name: "cleanup of obsolete gems", exit_code: result.exit_code, error: err_detail }
+      yoshi_pr_generator.abort_capture!
+    end
   end
 end
 
