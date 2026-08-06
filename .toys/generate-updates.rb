@@ -167,9 +167,9 @@ def regen_single_gem api, version
       "--api=#{api}.#{version}",
       "--spot-check",
       "--names=#{context_directory}/api_names.yaml",
-      "--names-out=#{context_directory}/api_names_out.yaml"
+      "--names-out=#{context_directory}/api_names_out.yaml",
+      "--verbose"
     ]
-    cmd << "--verbose" if verbosity > 0
     result = exec cmd, in: [:string, "a\n"], out: [:capture, :inherit], err: [:capture, :inherit], e: false
     unless result.success?
       err_detail = result.captured_err.to_s.strip
@@ -188,9 +188,9 @@ def clean_old_gems
       "bundle", "exec",
       "bin/generate-api", "gen",
       "#{context_directory}/generated",
-      "--clean"
+      "--clean",
+      "--verbose"
     ]
-    cmd << "--verbose" if verbosity > 0
     result = exec cmd, out: [:capture, :inherit], err: [:capture, :inherit], e: false
     unless result.success?
       err_detail = result.captured_err.to_s.strip
