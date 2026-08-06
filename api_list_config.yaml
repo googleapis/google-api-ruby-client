@@ -5,5 +5,8 @@ include:
   - name: youtubePartner
     version: v1
     discovery_rest_url: https://content.googleapis.com/discovery/v1/apis/youtubePartner/v1/rest
-exclude: []
+exclude:
+  - discoveryengine.v1
+  - discoveryengine.v1alpha
+  - discoveryengine.v1beta
 pause: []
