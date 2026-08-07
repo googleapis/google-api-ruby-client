@@ -175,6 +175,7 @@ def regen_single_gem api, version
       err_detail = result.captured_err.to_s.strip
       err_detail = result.captured_out.to_s.strip if err_detail.empty?
       puts "Failed generating google-apis-#{api}_#{version} (exit code #{result.exit_code}):", :red, :bold
+      puts "Discovery doc: https://raw.githubusercontent.com/googleapis/discovery-artifact-manager/master/discoveries/#{api}.#{version}.json", :red
       puts err_detail, :red unless err_detail.empty?
       @errors << { name: "google-apis-#{api}_#{version}", exit_code: result.exit_code, error: err_detail }
       yoshi_pr_generator.abort_capture!
