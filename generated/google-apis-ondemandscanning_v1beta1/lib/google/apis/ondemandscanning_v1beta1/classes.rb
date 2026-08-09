@@ -31,10 +31,15 @@ module Google
         # @return [Array<Google::Apis::OndemandscanningV1beta1::Finding>]
         attr_accessor :findings
       
-        # Maximum severity found among findings.
+        # Maximum severity found among findings. Per scanner verdict details.
         # Corresponds to the JSON property `maxSeverity`
         # @return [String]
         attr_accessor :max_severity
+      
+        # Per scanner verdict.
+        # Corresponds to the JSON property `perScannerVerdict`
+        # @return [Google::Apis::OndemandscanningV1beta1::PerScannerVerdict]
+        attr_accessor :per_scanner_verdict
       
         # Name of the skill that produced this analysis.
         # Corresponds to the JSON property `skillName`
@@ -49,6 +54,7 @@ module Google
         def update!(**args)
           @findings = args[:findings] if args.key?(:findings)
           @max_severity = args[:max_severity] if args.key?(:max_severity)
+          @per_scanner_verdict = args[:per_scanner_verdict] if args.key?(:per_scanner_verdict)
           @skill_name = args[:skill_name] if args.key?(:skill_name)
         end
       end
@@ -2358,6 +2364,81 @@ module Google
         end
       end
       
+      # Result of Malicious Content LLM scan.
+      class MaliciousContentLlmResult
+        include Google::Apis::Core::Hashable
+      
+        # Tracks max severity found.
+        # Corresponds to the JSON property `maxSeverity`
+        # @return [String]
+        attr_accessor :max_severity
+      
+        # Status of the scan.
+        # Corresponds to the JSON property `scanStatus`
+        # @return [String]
+        attr_accessor :scan_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_severity = args[:max_severity] if args.key?(:max_severity)
+          @scan_status = args[:scan_status] if args.key?(:scan_status)
+        end
+      end
+      
+      # Result of Malicious Content Static scan.
+      class MaliciousContentStaticResult
+        include Google::Apis::Core::Hashable
+      
+        # Tracks max severity found.
+        # Corresponds to the JSON property `maxSeverity`
+        # @return [String]
+        attr_accessor :max_severity
+      
+        # Status of the scan.
+        # Corresponds to the JSON property `scanStatus`
+        # @return [String]
+        attr_accessor :scan_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_severity = args[:max_severity] if args.key?(:max_severity)
+          @scan_status = args[:scan_status] if args.key?(:scan_status)
+        end
+      end
+      
+      # Result of Malware scan.
+      class MalwareScanResult
+        include Google::Apis::Core::Hashable
+      
+        # Status of the scan.
+        # Corresponds to the JSON property `scanStatus`
+        # @return [String]
+        attr_accessor :scan_status
+      
+        # Verdict of the scan.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scan_status = args[:scan_status] if args.key?(:scan_status)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
       # 
       class Material
         include Google::Apis::Core::Hashable
@@ -3003,6 +3084,43 @@ module Google
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class PerScannerVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Result of Malicious Content LLM scan.
+        # Corresponds to the JSON property `maliciousContentLlmResult`
+        # @return [Google::Apis::OndemandscanningV1beta1::MaliciousContentLlmResult]
+        attr_accessor :malicious_content_llm_result
+      
+        # Result of Malicious Content Static scan.
+        # Corresponds to the JSON property `maliciousContentStaticResult`
+        # @return [Google::Apis::OndemandscanningV1beta1::MaliciousContentStaticResult]
+        attr_accessor :malicious_content_static_result
+      
+        # Result of Malware scan.
+        # Corresponds to the JSON property `malwareScan`
+        # @return [Google::Apis::OndemandscanningV1beta1::MalwareScanResult]
+        attr_accessor :malware_scan
+      
+        # Result of Workspace Policy scan.
+        # Corresponds to the JSON property `workspacePolicy`
+        # @return [Google::Apis::OndemandscanningV1beta1::WorkspacePolicyResult]
+        attr_accessor :workspace_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @malicious_content_llm_result = args[:malicious_content_llm_result] if args.key?(:malicious_content_llm_result)
+          @malicious_content_static_result = args[:malicious_content_static_result] if args.key?(:malicious_content_static_result)
+          @malware_scan = args[:malware_scan] if args.key?(:malware_scan)
+          @workspace_policy = args[:workspace_policy] if args.key?(:workspace_policy)
         end
       end
       
@@ -4425,6 +4543,31 @@ module Google
           @last_published_timestamp = args[:last_published_timestamp] if args.key?(:last_published_timestamp)
           @support_url = args[:support_url] if args.key?(:support_url)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Result of Workspace Policy scan.
+      class WorkspacePolicyResult
+        include Google::Apis::Core::Hashable
+      
+        # Status of the scan.
+        # Corresponds to the JSON property `scanStatus`
+        # @return [String]
+        attr_accessor :scan_status
+      
+        # Verdict of the scan.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scan_status = args[:scan_status] if args.key?(:scan_status)
+          @verdict = args[:verdict] if args.key?(:verdict)
         end
       end
     end
