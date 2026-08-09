@@ -6160,6 +6160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourcePoliciesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -9016,6 +9022,8 @@ module Google
           property :kind, as: 'kind'
           property :maximum_cards_per_instance, as: 'maximumCardsPerInstance'
           property :name, as: 'name'
+          property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::ComputeV1::ResourceMetadata, decorator: Google::Apis::ComputeV1::ResourceMetadata::Representation
+      
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
         end
@@ -12028,6 +12036,8 @@ module Google
           property :planning_status, as: 'planningStatus'
           property :reservation_mode, as: 'reservationMode'
           property :reservation_name, as: 'reservationName'
+          property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::ComputeV1::ResourceMetadata, decorator: Google::Apis::ComputeV1::ResourceMetadata::Representation
+      
           property :scheduling_type, as: 'schedulingType'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -19945,6 +19955,8 @@ module Google
           property :protection_tier, as: 'protectionTier'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeV1::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeV1::AllocationReservationSharingPolicy::Representation
       
+          property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::ComputeV1::ResourceMetadata, decorator: Google::Apis::ComputeV1::ResourceMetadata::Representation
+      
           hash :resource_policies, as: 'resourcePolicies'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::AllocationResourceStatus, decorator: Google::Apis::ComputeV1::AllocationResourceStatus::Representation
       
@@ -20410,6 +20422,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :group, as: 'group'
+        end
+      end
+      
+      class ResourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :resource_type, as: 'resourceType'
         end
       end
       
