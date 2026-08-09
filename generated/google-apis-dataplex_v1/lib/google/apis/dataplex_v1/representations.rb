@@ -988,6 +988,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1EntryLinkTypeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1EntrySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1919,6 +1925,7 @@ module Google
       class GoogleCloudDataplexV1ApproveChangeRequestRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment'
           property :etag, as: 'etag'
         end
       end
@@ -2207,6 +2214,7 @@ module Google
           property :name, as: 'name'
           property :rejection_comment, as: 'rejectionComment'
           property :resource, as: 'resource'
+          property :reviewer_comment, as: 'reviewerComment'
           property :state, as: 'state'
           property :uid, as: 'uid'
           property :update_entry, as: 'updateEntry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateEntryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateEntryRequest::Representation
@@ -3609,6 +3617,15 @@ module Google
           property :event_type, as: 'eventType'
           property :message, as: 'message'
           property :resource, as: 'resource'
+        end
+      end
+      
+      class GoogleCloudDataplexV1EntryLinkTypeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entry_link_type_id, as: 'entryLinkTypeId'
+          property :event_type, as: 'eventType'
+          property :message, as: 'message'
         end
       end
       

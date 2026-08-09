@@ -337,6 +337,12 @@ module Google
       class GoogleCloudDataplexV1ApproveChangeRequestRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The comment or reason for approving the ChangeRequest. Maximum
+        # length is 1024 characters.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
         # Optional. The etag of the ChangeRequest.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -348,6 +354,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
           @etag = args[:etag] if args.key?(:etag)
         end
       end
@@ -1396,6 +1403,12 @@ module Google
         # @return [String]
         attr_accessor :resource
       
+        # Output only. The comment provided by the reviewer when approving or rejecting
+        # the ChangeRequest. Maximum length is 1024 characters.
+        # Corresponds to the JSON property `reviewerComment`
+        # @return [String]
+        attr_accessor :reviewer_comment
+      
         # Output only. The current state of the ChangeRequest.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1458,6 +1471,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @rejection_comment = args[:rejection_comment] if args.key?(:rejection_comment)
           @resource = args[:resource] if args.key?(:resource)
+          @reviewer_comment = args[:reviewer_comment] if args.key?(:reviewer_comment)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_entry = args[:update_entry] if args.key?(:update_entry)
@@ -6697,6 +6711,37 @@ module Google
           @event_type = args[:event_type] if args.key?(:event_type)
           @message = args[:message] if args.key?(:message)
           @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # Payload associated with EntryLinkType related log events.
+      class GoogleCloudDataplexV1EntryLinkTypeEvent
+        include Google::Apis::Core::Hashable
+      
+        # Name of the resource.
+        # Corresponds to the JSON property `entryLinkTypeId`
+        # @return [String]
+        attr_accessor :entry_link_type_id
+      
+        # The type of the event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # The log message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entry_link_type_id = args[:entry_link_type_id] if args.key?(:entry_link_type_id)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
