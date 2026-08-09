@@ -3186,6 +3186,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :client_display_language_code, as: 'clientDisplayLanguageCode'
+          property :country_code, as: 'countryCode'
           property :debug_options, as: 'debugOptions', class: Google::Apis::CloudsearchV1::DebugOptions, decorator: Google::Apis::CloudsearchV1::DebugOptions::Representation
       
           property :language_code, as: 'languageCode'
