@@ -789,6 +789,7 @@ module Google
           property :diarization, as: 'diarization'
           property :language_auto, as: 'languageAuto', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto::Representation
       
+          collection :language_codes, as: 'languageCodes'
           property :language_hints, as: 'languageHints', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints::Representation
       
           property :word_timestamp, as: 'wordTimestamp'
@@ -1964,6 +1965,7 @@ module Google
           property :delivery, as: 'delivery'
           property :duration, as: 'duration'
           property :gcs_uri, as: 'gcsUri'
+          property :resolution, as: 'resolution'
         end
       end
       
