@@ -697,6 +697,109 @@ module Google
         end
       end
       
+      # Common proto for Live and VOD geo-restrictions
+      class AvailabilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Video is available in all regions except the ones specified in the
+        # excluded_region_codes list.
+        # Corresponds to the JSON property `globalConfig`
+        # @return [Google::Apis::YoutubeV3::AvailabilityConfigGlobalConfig]
+        attr_accessor :global_config
+      
+        # Video is available in the specified regions only.
+        # Corresponds to the JSON property `regionsConfig`
+        # @return [Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfig]
+        attr_accessor :regions_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @global_config = args[:global_config] if args.key?(:global_config)
+          @regions_config = args[:regions_config] if args.key?(:regions_config)
+        end
+      end
+      
+      # Video is available in all regions except the ones specified in the
+      # excluded_region_codes list.
+      class AvailabilityConfigGlobalConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Regions where video is blocked
+        # Corresponds to the JSON property `excludedRegionCodes`
+        # @return [Array<String>]
+        attr_accessor :excluded_region_codes
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::YoutubeV3::Interval]
+        attr_accessor :interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excluded_region_codes = args[:excluded_region_codes] if args.key?(:excluded_region_codes)
+          @interval = args[:interval] if args.key?(:interval)
+        end
+      end
+      
+      # Video is available in the specified regions only.
+      class AvailabilityConfigRegionsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of regions and time windows where video is available. If a
+        # region is specified multiple times, the union of all intervals is used.
+        # Corresponds to the JSON property `regionIntervals`
+        # @return [Array<Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfigRegionInterval>]
+        attr_accessor :region_intervals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_intervals = args[:region_intervals] if args.key?(:region_intervals)
+        end
+      end
+      
+      # Region and time window where video is available for the region.
+      class AvailabilityConfigRegionsConfigRegionInterval
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::YoutubeV3::Interval]
+        attr_accessor :interval
+      
+        # Required. Region where video is available
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @region_code = args[:region_code] if args.key?(:region_code)
+        end
+      end
+      
       # Response for the Videos.stats API. Returns VideoStat information about a batch
       # of videos. VideoStat contains a subset of the information in Video that is
       # relevant to statistics and content details. BatchGetStats is intentionally not
@@ -3609,6 +3712,36 @@ module Google
         end
       end
       
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive). The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time). When
+      # both start and end are unspecified, the interval matches any time.
+      class Interval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        # this interval will have to be before the end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        # this interval will have to be the same or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Describes an invideo branding.
       class InvideoBranding
         include Google::Apis::Core::Hashable
@@ -3824,6 +3957,11 @@ module Google
       class LiveBroadcastContentDetails
         include Google::Apis::Core::Hashable
       
+        # Common proto for Live and VOD geo-restrictions
+        # Corresponds to the JSON property `availabilityConfig`
+        # @return [Google::Apis::YoutubeV3::AvailabilityConfig]
+        attr_accessor :availability_config
+      
         # This value uniquely identifies the live stream bound to the broadcast.
         # Corresponds to the JSON property `boundStreamId`
         # @return [String]
@@ -3958,6 +4096,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @availability_config = args[:availability_config] if args.key?(:availability_config)
           @bound_stream_id = args[:bound_stream_id] if args.key?(:bound_stream_id)
           @bound_stream_last_update_time_ms = args[:bound_stream_last_update_time_ms] if args.key?(:bound_stream_last_update_time_ms)
           @closed_captions_type = args[:closed_captions_type] if args.key?(:closed_captions_type)
