@@ -22,6 +22,29 @@ module Google
   module Apis
     module AlloydbV1alpha
       
+      # AlloyDbInternalDebugInfo contains internal debugging information for AlloyDB
+      # errors. It is explicitly kept out of the allowlist (errors.yaml) to ensure it
+      # is sanitized (stripped) by OnePlatform for all external requests. Used only to
+      # carry internal error details to across UPC/FlowLib boundary for
+      # ObservabilityInfo.
+      class AlloydbClhErrorsAlloyDbInternalDebugInfo
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `originalError`
+        # @return [String]
+        attr_accessor :original_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @original_error = args[:original_error] if args.key?(:original_error)
+        end
+      end
+      
       # AuthorizedNetwork contains metadata for an authorized network.
       class AuthorizedNetwork
         include Google::Apis::Core::Hashable
