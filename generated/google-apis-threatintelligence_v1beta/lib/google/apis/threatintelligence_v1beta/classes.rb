@@ -442,6 +442,12 @@ module Google
       class ConfigurationDetail
         include Google::Apis::Core::Hashable
       
+        # CustomThreatScenarioConfig represents a user-defined threat scenario
+        # configuration.
+        # Corresponds to the JSON property `customThreatScenario`
+        # @return [Google::Apis::ThreatintelligenceV1beta::CustomThreatScenarioConfig]
+        attr_accessor :custom_threat_scenario
+      
         # CustomerProfileConfig is the configuration for the customer profile.
         # Corresponds to the JSON property `customerProfile`
         # @return [Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig]
@@ -464,6 +470,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_threat_scenario = args[:custom_threat_scenario] if args.key?(:custom_threat_scenario)
           @customer_profile = args[:customer_profile] if args.key?(:customer_profile)
           @detail_type = args[:detail_type] if args.key?(:detail_type)
           @technology_watchlist = args[:technology_watchlist] if args.key?(:technology_watchlist)
@@ -501,6 +508,27 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @snapshot = args[:snapshot] if args.key?(:snapshot)
+        end
+      end
+      
+      # CustomThreatScenarioConfig represents a user-defined threat scenario
+      # configuration.
+      class CustomThreatScenarioConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The condition driving the scenario, stored as a stringified JSON.
+        # This is used to query/filter documents.
+        # Corresponds to the JSON property `documentCondition`
+        # @return [String]
+        attr_accessor :document_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_condition = args[:document_condition] if args.key?(:document_condition)
         end
       end
       

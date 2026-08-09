@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomThreatScenarioConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerProfileCitation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -496,6 +502,8 @@ module Google
       class ConfigurationDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_threat_scenario, as: 'customThreatScenario', class: Google::Apis::ThreatintelligenceV1beta::CustomThreatScenarioConfig, decorator: Google::Apis::ThreatintelligenceV1beta::CustomThreatScenarioConfig::Representation
+      
           property :customer_profile, as: 'customerProfile', class: Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig, decorator: Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig::Representation
       
           property :detail_type, as: 'detailType'
@@ -511,6 +519,13 @@ module Google
           property :name, as: 'name'
           property :snapshot, as: 'snapshot', class: Google::Apis::ThreatintelligenceV1beta::Configuration, decorator: Google::Apis::ThreatintelligenceV1beta::Configuration::Representation
       
+        end
+      end
+      
+      class CustomThreatScenarioConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_condition, as: 'documentCondition'
         end
       end
       
