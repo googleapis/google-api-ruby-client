@@ -6247,7 +6247,6 @@ module Google
       class GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :authenticated_account, as: 'authenticatedAccount'
           property :author, as: 'author'
           property :description, as: 'description'
           property :note, as: 'note'
@@ -8460,7 +8459,6 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :authenticated_account, as: 'authenticatedAccount'
           property :author, as: 'author'
           property :description, as: 'description'
           property :note, as: 'note'
