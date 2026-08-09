@@ -71,7 +71,7 @@ module Google
       class Trace
         include Google::Apis::Core::Hashable
       
-        # Project ID of the Cloud project where the trace data is stored.
+        # Required. Project ID of the Cloud project where the trace data is stored.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
@@ -81,8 +81,8 @@ module Google
         # @return [Array<Google::Apis::CloudtraceV1::TraceSpan>]
         attr_accessor :spans
       
-        # Globally unique identifier for the trace. This identifier is a 128-bit numeric
-        # value formatted as a 32-byte hex string. For example, `
+        # Required. Globally unique identifier for the trace. This identifier is a 128-
+        # bit numeric value formatted as a 32-byte hex string. For example, `
         # 382d4f4c6b7bb2f4a972559d9085001d`. The numeric value should not be zero.
         # Corresponds to the JSON property `traceId`
         # @return [String]
@@ -108,31 +108,32 @@ module Google
       class TraceSpan
         include Google::Apis::Core::Hashable
       
-        # End time of the span in seconds and nanoseconds from the UNIX epoch.
+        # Required. End time of the span in seconds and nanoseconds from the UNIX epoch.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Distinguishes between spans generated in a particular context. For example,
-        # two spans with the same name may be distinguished using `RPC_CLIENT` and `
-        # RPC_SERVER` to identify queueing latency associated with the span.
+        # Optional. Distinguishes between spans generated in a particular context. For
+        # example, two spans with the same name may be distinguished using `RPC_CLIENT`
+        # and `RPC_SERVER` to identify queueing latency associated with the span.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Collection of labels associated with the span. Label keys must be less than
-        # 128 bytes. Label values must be less than 16 KiB. Some keys might have
-        # predefined meaning, and you can also create your own. For more information,
-        # see [Cloud Trace labels](https://cloud.google.com/trace/docs/trace-labels).
+        # Optional. Collection of labels associated with the span. Label keys must be
+        # less than 128 bytes. Label values must be less than 16 KiB. Some keys might
+        # have predefined meaning, and you can also create your own. For more
+        # information, see [Cloud Trace labels](https://cloud.google.com/trace/docs/
+        # trace-labels).
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Name of the span. Must be less than 128 bytes. The span name is sanitized and
-        # displayed in the Trace tool in the Google Cloud Platform Console. The name may
-        # be a method name or some other per-call site name. For the same executable and
-        # the same call point, a best practice is to use a consistent name, which makes
-        # it easier to correlate cross-trace spans.
+        # Required. Name of the span. Must be less than 128 bytes. The span name is
+        # sanitized and displayed in the Trace tool in the Google Cloud Platform Console.
+        # The name may be a method name or some other per-call site name. For the same
+        # executable and the same call point, a best practice is to use a consistent
+        # name, which makes it easier to correlate cross-trace spans.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -142,13 +143,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :parent_span_id
       
-        # Identifier for the span. Must be a 64-bit integer other than 0 and unique
-        # within a trace. For example, `2205310701640571284`.
+        # Required. Identifier for the span. Must be a 64-bit integer other than 0 and
+        # unique within a trace. For example, `2205310701640571284`.
         # Corresponds to the JSON property `spanId`
         # @return [Fixnum]
         attr_accessor :span_id
       
-        # Start time of the span in seconds and nanoseconds from the UNIX epoch.
+        # Required. Start time of the span in seconds and nanoseconds from the UNIX
+        # epoch.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
