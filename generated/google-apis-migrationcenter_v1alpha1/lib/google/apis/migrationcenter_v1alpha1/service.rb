@@ -2156,8 +2156,8 @@ module Google
         #   Required. User specified ID for the report config. It will become the last
         #   component of the report config name. The ID must be unique within the project,
         #   must conform with RFC-1034, is restricted to lower-cased letters, and has a
-        #   maximum length of 63 characters. The ID must match the regular expression: [a-
-        #   z]([a-z0-9-]`0,61`[a-z0-9])?.
+        #   maximum length of 63 characters. The ID must match the regular expression: `[a-
+        #   z]([a-z0-9-]`0,61`[a-z0-9])?`.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -2328,8 +2328,8 @@ module Google
         #   Required. User specified id for the report. It will become the last component
         #   of the report name. The id must be unique within the project, must conform
         #   with RFC-1034, is restricted to lower-cased letters, and has a maximum length
-        #   of 63 characters. The id must match the regular expression: [a-z]([a-z0-9-]`0,
-        #   61`[a-z0-9])?.
+        #   of 63 characters. The id must match the regular expression: `[a-z]([a-z0-9-]`0,
+        #   61`[a-z0-9])?`.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
