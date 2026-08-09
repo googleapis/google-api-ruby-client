@@ -4468,7 +4468,7 @@ module Google
       class Setting
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. The type of the Setting. .
+        # Required. Immutable. The type of the Setting.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
