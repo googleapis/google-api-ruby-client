@@ -66,6 +66,51 @@ module Google
         end
       end
       
+      # This cluster defines the camera event stream used by GHP for their Cloud-to-
+      # Cloud eventing flow
+      class CameraEventStreamTrait
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Common camera event data.
+      class CommonEventDataStruct
+        include Google::Apis::Core::Hashable
+      
+        # Contains media urls for the event
+        # Corresponds to the JSON property `mediaUrls`
+        # @return [Google::Apis::HomegraphV1::MediaUrlsStruct]
+        attr_accessor :media_urls
+      
+        # Camera event session id. Used for identifying a unique event session
+        # Corresponds to the JSON property `sessionId`
+        # @return [String]
+        attr_accessor :session_id
+      
+        # Id of the track this object belongs to
+        # Corresponds to the JSON property `trackId`
+        # @return [String]
+        attr_accessor :track_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @media_urls = args[:media_urls] if args.key?(:media_urls)
+          @session_id = args[:session_id] if args.key?(:session_id)
+          @track_id = args[:track_id] if args.key?(:track_id)
+        end
+      end
+      
       # Component of a provider device.
       class Component
         include Google::Apis::Core::Hashable
@@ -233,6 +278,26 @@ module Google
         end
       end
       
+      # Contains metadata about the cause of presence state change attributed to a
+      # device.
+      class DeviceBlameStruct
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the device blame type.
+        # Corresponds to the JSON property `blameType`
+        # @return [String]
+        attr_accessor :blame_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blame_type = args[:blame_type] if args.key?(:blame_type)
+        end
+      end
+      
       # Device information.
       class DeviceInfo
         include Google::Apis::Core::Hashable
@@ -337,6 +402,166 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class EveUtilityTrait
+        include Google::Apis::Core::Hashable
+      
+        # Required. Output only. Accepted command list for this trait
+        # Corresponds to the JSON property `acceptedCommandList`
+        # @return [Array<String>]
+        attr_accessor :accepted_command_list
+      
+        # 
+        # Corresponds to the JSON property `accumulatedControlPoint`
+        # @return [Fixnum]
+        attr_accessor :accumulated_control_point
+      
+        # 
+        # Corresponds to the JSON property `airPressure`
+        # @return [Float]
+        attr_accessor :air_pressure
+      
+        # 
+        # Corresponds to the JSON property `altitude`
+        # @return [Float]
+        attr_accessor :altitude
+      
+        # 
+        # Corresponds to the JSON property `childLock`
+        # @return [Boolean]
+        attr_accessor :child_lock
+        alias_method :child_lock?, :child_lock
+      
+        # 
+        # Corresponds to the JSON property `current`
+        # @return [Float]
+        attr_accessor :current
+      
+        # 
+        # Corresponds to the JSON property `getConfig`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :get_config
+      
+        # 
+        # Corresponds to the JSON property `holdPosition`
+        # @return [Boolean]
+        attr_accessor :hold_position
+        alias_method :hold_position?, :hold_position
+      
+        # 
+        # Corresponds to the JSON property `lastEventTime`
+        # @return [Fixnum]
+        attr_accessor :last_event_time
+      
+        # 
+        # Corresponds to the JSON property `loggingControlPoint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :logging_control_point
+      
+        # 
+        # Corresponds to the JSON property `loggingData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :logging_data
+      
+        # 
+        # Corresponds to the JSON property `loggingMetadata`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :logging_metadata
+      
+        # 
+        # Corresponds to the JSON property `loggingTime`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :logging_time
+      
+        # 
+        # Corresponds to the JSON property `motionSensitivity`
+        # @return [Fixnum]
+        attr_accessor :motion_sensitivity
+      
+        # 
+        # Corresponds to the JSON property `obstructionDetected`
+        # @return [Boolean]
+        attr_accessor :obstruction_detected
+        alias_method :obstruction_detected?, :obstruction_detected
+      
+        # 
+        # Corresponds to the JSON property `openCount`
+        # @return [Fixnum]
+        attr_accessor :open_count
+      
+        # 
+        # Corresponds to the JSON property `rloc16`
+        # @return [Fixnum]
+        attr_accessor :rloc16
+      
+        # 
+        # Corresponds to the JSON property `setConfig`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :set_config
+      
+        # 
+        # Corresponds to the JSON property `statusFault`
+        # @return [Fixnum]
+        attr_accessor :status_fault
+      
+        # 
+        # Corresponds to the JSON property `voltage`
+        # @return [Float]
+        attr_accessor :voltage
+      
+        # 
+        # Corresponds to the JSON property `watt`
+        # @return [Float]
+        attr_accessor :watt
+      
+        # 
+        # Corresponds to the JSON property `wattAccumulated`
+        # @return [Float]
+        attr_accessor :watt_accumulated
+      
+        # 
+        # Corresponds to the JSON property `weatherTrend`
+        # @return [Fixnum]
+        attr_accessor :weather_trend
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accepted_command_list = args[:accepted_command_list] if args.key?(:accepted_command_list)
+          @accumulated_control_point = args[:accumulated_control_point] if args.key?(:accumulated_control_point)
+          @air_pressure = args[:air_pressure] if args.key?(:air_pressure)
+          @altitude = args[:altitude] if args.key?(:altitude)
+          @child_lock = args[:child_lock] if args.key?(:child_lock)
+          @current = args[:current] if args.key?(:current)
+          @get_config = args[:get_config] if args.key?(:get_config)
+          @hold_position = args[:hold_position] if args.key?(:hold_position)
+          @last_event_time = args[:last_event_time] if args.key?(:last_event_time)
+          @logging_control_point = args[:logging_control_point] if args.key?(:logging_control_point)
+          @logging_data = args[:logging_data] if args.key?(:logging_data)
+          @logging_metadata = args[:logging_metadata] if args.key?(:logging_metadata)
+          @logging_time = args[:logging_time] if args.key?(:logging_time)
+          @motion_sensitivity = args[:motion_sensitivity] if args.key?(:motion_sensitivity)
+          @obstruction_detected = args[:obstruction_detected] if args.key?(:obstruction_detected)
+          @open_count = args[:open_count] if args.key?(:open_count)
+          @rloc16 = args[:rloc16] if args.key?(:rloc16)
+          @set_config = args[:set_config] if args.key?(:set_config)
+          @status_fault = args[:status_fault] if args.key?(:status_fault)
+          @voltage = args[:voltage] if args.key?(:voltage)
+          @watt = args[:watt] if args.key?(:watt)
+          @watt_accumulated = args[:watt_accumulated] if args.key?(:watt_accumulated)
+          @weather_trend = args[:weather_trend] if args.key?(:weather_trend)
         end
       end
       
@@ -463,6 +688,121 @@ module Google
         def update!(**args)
           @components = args[:components] if args.key?(:components)
           @device_id = args[:device_id] if args.key?(:device_id)
+        end
+      end
+      
+      # 
+      class MediaUrlsStruct
+        include Google::Apis::Core::Hashable
+      
+        # URL for a dash manifest for playback
+        # Corresponds to the JSON property `dashManifestUrl`
+        # @return [String]
+        attr_accessor :dash_manifest_url
+      
+        # URL for a hls master playlist for playback
+        # Corresponds to the JSON property `hlsMasterPlaylistUrl`
+        # @return [String]
+        attr_accessor :hls_master_playlist_url
+      
+        # URL for animated preview clip representing the event session
+        # Corresponds to the JSON property `previewUrl`
+        # @return [String]
+        attr_accessor :preview_url
+      
+        # URL for thumbnail image representing the event session
+        # Corresponds to the JSON property `thumbnailUrl`
+        # @return [String]
+        attr_accessor :thumbnail_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dash_manifest_url = args[:dash_manifest_url] if args.key?(:dash_manifest_url)
+          @hls_master_playlist_url = args[:hls_master_playlist_url] if args.key?(:hls_master_playlist_url)
+          @preview_url = args[:preview_url] if args.key?(:preview_url)
+          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
+        end
+      end
+      
+      # Represents a newly detected motion event.
+      class MotionEvent
+        include Google::Apis::Core::Hashable
+      
+        # Common camera event data.
+        # Corresponds to the JSON property `commonEventData`
+        # @return [Google::Apis::HomegraphV1::CommonEventDataStruct]
+        attr_accessor :common_event_data
+      
+        # Zones where events are detected in.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<Google::Apis::HomegraphV1::ZoneStruct>]
+        attr_accessor :zones
+      
+        # If set, zones is an empty list.
+        # Corresponds to the JSON property `zonesIsEmpty`
+        # @return [Boolean]
+        attr_accessor :zones_is_empty
+        alias_method :zones_is_empty?, :zones_is_empty
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_event_data = args[:common_event_data] if args.key?(:common_event_data)
+          @zones = args[:zones] if args.key?(:zones)
+          @zones_is_empty = args[:zones_is_empty] if args.key?(:zones_is_empty)
+        end
+      end
+      
+      # Provides attributes and events related to partner presence signals. See
+      # PartnerPresenceSignal trait:
+      class PartnerPresenceSignalTrait
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Represents a newly detected person event.
+      class PersonEvent
+        include Google::Apis::Core::Hashable
+      
+        # Common camera event data.
+        # Corresponds to the JSON property `commonEventData`
+        # @return [Google::Apis::HomegraphV1::CommonEventDataStruct]
+        attr_accessor :common_event_data
+      
+        # Zones where events are detected in.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<Google::Apis::HomegraphV1::ZoneStruct>]
+        attr_accessor :zones
+      
+        # If set, zones is an empty list.
+        # Corresponds to the JSON property `zonesIsEmpty`
+        # @return [Boolean]
+        attr_accessor :zones_is_empty
+        alias_method :zones_is_empty?, :zones_is_empty
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @common_event_data = args[:common_event_data] if args.key?(:common_event_data)
+          @zones = args[:zones] if args.key?(:zones)
+          @zones_is_empty = args[:zones_is_empty] if args.key?(:zones_is_empty)
         end
       end
       
@@ -828,6 +1168,58 @@ module Google
         end
       end
       
+      # Sent when the structure presence state changes.
+      class StructurePresenceStateChangeEvent
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the presence state.
+        # Corresponds to the JSON property `presenceState`
+        # @return [String]
+        attr_accessor :presence_state
+      
+        # Contains the metadata about the cause of the structure presence state change.
+        # Corresponds to the JSON property `reason`
+        # @return [Google::Apis::HomegraphV1::StructurePresenceStateChangeReasonStruct]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @presence_state = args[:presence_state] if args.key?(:presence_state)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Contains the metadata about the cause of the structure presence state change.
+      class StructurePresenceStateChangeReasonStruct
+        include Google::Apis::Core::Hashable
+      
+        # Contains metadata about the cause of presence state change attributed to a
+        # device.
+        # Corresponds to the JSON property `deviceBlame`
+        # @return [Google::Apis::HomegraphV1::DeviceBlameStruct]
+        attr_accessor :device_blame
+      
+        # Contains metadata about the cause of presence state change attributed to a
+        # user.
+        # Corresponds to the JSON property `userBlame`
+        # @return [Google::Apis::HomegraphV1::UserBlameStruct]
+        attr_accessor :user_blame
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_blame = args[:device_blame] if args.key?(:device_blame)
+          @user_blame = args[:user_blame] if args.key?(:user_blame)
+        end
+      end
+      
       # Request type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync)
       # call.
       class SyncRequest
@@ -914,6 +1306,37 @@ module Google
         end
       end
       
+      # This cluster provides fan control capabilities for thermostats.
+      class ThermostatFanControlTrait
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `timerDuration`
+        # @return [Fixnum]
+        attr_accessor :timer_duration
+      
+        # 
+        # Corresponds to the JSON property `timerEnd`
+        # @return [Fixnum]
+        attr_accessor :timer_end
+      
+        # 
+        # Corresponds to the JSON property `timerSpeed`
+        # @return [String]
+        attr_accessor :timer_speed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @timer_duration = args[:timer_duration] if args.key?(:timer_duration)
+          @timer_end = args[:timer_end] if args.key?(:timer_end)
+          @timer_speed = args[:timer_speed] if args.key?(:timer_speed)
+        end
+      end
+      
       # Contains the trait payload for a single trait.
       class TraitData
         include Google::Apis::Core::Hashable
@@ -947,6 +1370,57 @@ module Google
           @commit_time = args[:commit_time] if args.key?(:commit_time)
           @provider_version_time = args[:provider_version_time] if args.key?(:provider_version_time)
           @trait = args[:trait] if args.key?(:trait)
+        end
+      end
+      
+      # Contains metadata about the cause of presence state change attributed to a
+      # user.
+      class UserBlameStruct
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the user blame type.
+        # Corresponds to the JSON property `blameType`
+        # @return [String]
+        attr_accessor :blame_type
+      
+        # Required. Specifies the email of the user.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blame_type = args[:blame_type] if args.key?(:blame_type)
+          @user_email = args[:user_email] if args.key?(:user_email)
+        end
+      end
+      
+      # 
+      class ZoneStruct
+        include Google::Apis::Core::Hashable
+      
+        # Name of the zone.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Id of the zone
+        # Corresponds to the JSON property `zoneId`
+        # @return [Fixnum]
+        attr_accessor :zone_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @zone_id = args[:zone_id] if args.key?(:zone_id)
         end
       end
     end
