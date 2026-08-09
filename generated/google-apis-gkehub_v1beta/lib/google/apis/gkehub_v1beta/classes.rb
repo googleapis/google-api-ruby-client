@@ -5906,7 +5906,7 @@ module Google
         end
       end
       
-      # Rollout contains the Rollout metadata and configuration. Next ID: 28
+      # Rollout contains the Rollout metadata and configuration. Next ID: 31
       class Rollout
         include Google::Apis::Core::Hashable
       
