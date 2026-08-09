@@ -3814,8 +3814,8 @@ module Google
         attr_accessor :skippable
         alias_method :skippable?, :skippable
       
-        # Optional. Whether the creative contains synthetic content or was created using
-        # AI.
+        # Optional. Whether to add a label to the creative as created or edited using AI
+        # when served in regions with local AI labeling regulations.
         # Corresponds to the JSON property `syntheticContentAttestationStatus`
         # @return [String]
         attr_accessor :synthetic_content_attestation_status
