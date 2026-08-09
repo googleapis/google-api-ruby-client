@@ -2425,7 +2425,7 @@ module Google
         attr_accessor :latest_pause_time
       
         # User-facing metadata for the connector, shown on the connector detail page (
-        # title, description, short_description, author, authenticated_account, note).
+        # title, description, short_description, author, note).
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata]
         attr_accessor :metadata
@@ -2603,16 +2603,9 @@ module Google
       end
       
       # User-facing metadata for the connector, shown on the connector detail page (
-      # title, description, short_description, author, authenticated_account, note).
+      # title, description, short_description, author, note).
       class GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata
         include Google::Apis::Core::Hashable
-      
-        # Optional. The end user's account as authenticated to the connector, so the end
-        # user can see which account is connected. May be an email, a username, or any
-        # identifier the connector/third party provides.
-        # Corresponds to the JSON property `authenticatedAccount`
-        # @return [String]
-        attr_accessor :authenticated_account
       
         # Optional. The party that authored the connector, e.g. "Google" or a third-
         # party provider name. Lets end users see who authored a connector (future:
@@ -2650,7 +2643,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @authenticated_account = args[:authenticated_account] if args.key?(:authenticated_account)
           @author = args[:author] if args.key?(:author)
           @description = args[:description] if args.key?(:description)
           @note = args[:note] if args.key?(:note)
@@ -4027,9 +4019,10 @@ module Google
         # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
         # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
-        # canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-
-        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence`
+        # canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-without-admin-
+        # approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
+        # * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
+        # intelligence` * `workflow-agents` * `in-app-notifications`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -10712,7 +10705,7 @@ module Google
         attr_accessor :latest_pause_time
       
         # User-facing metadata for the connector, shown on the connector detail page (
-        # title, description, short_description, author, authenticated_account, note).
+        # title, description, short_description, author, note).
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata]
         attr_accessor :metadata
@@ -10891,16 +10884,9 @@ module Google
       end
       
       # User-facing metadata for the connector, shown on the connector detail page (
-      # title, description, short_description, author, authenticated_account, note).
+      # title, description, short_description, author, note).
       class GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata
         include Google::Apis::Core::Hashable
-      
-        # Optional. The end user's account as authenticated to the connector, so the end
-        # user can see which account is connected. May be an email, a username, or any
-        # identifier the connector/third party provides.
-        # Corresponds to the JSON property `authenticatedAccount`
-        # @return [String]
-        attr_accessor :authenticated_account
       
         # Optional. The party that authored the connector, e.g. "Google" or a third-
         # party provider name. Lets end users see who authored a connector (future:
@@ -10938,7 +10924,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @authenticated_account = args[:authenticated_account] if args.key?(:authenticated_account)
           @author = args[:author] if args.key?(:author)
           @description = args[:description] if args.key?(:description)
           @note = args[:note] if args.key?(:note)
@@ -12533,9 +12518,10 @@ module Google
         # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
         # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
-        # canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-
-        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence`
+        # canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-without-admin-
+        # approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
+        # * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
+        # intelligence` * `workflow-agents` * `in-app-notifications`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -25507,9 +25493,10 @@ module Google
         # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
         # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
         # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
-        # canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-
-        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence`
+        # canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-without-admin-
+        # approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
+        # * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
+        # intelligence` * `workflow-agents` * `in-app-notifications`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features

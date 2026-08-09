@@ -262,6 +262,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Provisions the project resource. During the process, related systems will get
+        # prepared and initialized. Caller must read the [Terms for data use](https://
+        # cloud.google.com/retail/data-use-terms), and optionally specify in request to
+        # provide consent to that service terms.
+        # @param [String] name
+        #   Required. Full resource name of a Project, such as `projects/`
+        #   project_id_or_number``.
+        # @param [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProvisionProjectRequest] google_cloud_discoveryengine_v1beta_provision_project_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def provision_project_location(name, google_cloud_discoveryengine_v1beta_provision_project_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+name}:provision', options)
+          command.request_representation = Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProvisionProjectRequest::Representation
+          command.request_object = google_cloud_discoveryengine_v1beta_provision_project_request_object
+          command.response_representation = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DiscoveryengineV1beta::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Removes the dedicated crawl rate for a craw_rate_scope. If the dedicated crawl
         # rate was set, this will disable vertex AI's crawl bot from using the dedicated
         # crawl rate for crawling. If the dedicated crawl rate was not set, this is a no-
