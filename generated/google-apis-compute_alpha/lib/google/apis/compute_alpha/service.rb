@@ -58013,7 +58013,9 @@ module Google
         # @param [String] zone
         #   Required. Zone name for this request.
         # @param [String] reservation
-        #   Required. The name of the reservation to list consumed instances for.
+        #   Required. The name of the reservation to list consumed instances for. In the
+        #   format
+        #   of reservations/`reservation_name`
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. Most
         #   Compute resources support two types of filter expressions:
@@ -58166,6 +58168,55 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['parentName'] = parent_name unless parent_name.nil?
           command.params['reservationSlot'] = reservation_slot unless reservation_slot.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get health info on a reservation slot.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   Name of the zone for this request. Zone name should conform to RFC1035.
+        # @param [String] parent_name
+        #   The name of the parent reservation, parent block and parent sub-block. In
+        #   the format of
+        #   reservations/`reservation_name`/reservationBlocks/`reservation_block_name`/
+        #   reservationSubBlocks/`reservation_sub_block_name`
+        # @param [String] reservation_slot
+        #   The name of the reservation slot.
+        #   Name should conform to RFC1035 or be a resource ID.
+        # @param [String] request_id
+        #   An optional request ID to identify requests.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_reservation_slot_health(project, zone, parent_name, reservation_slot, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}/getHealth', options)
+          command.response_representation = Google::Apis::ComputeAlpha::Operation::Representation
+          command.response_class = Google::Apis::ComputeAlpha::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['parentName'] = parent_name unless parent_name.nil?
+          command.params['reservationSlot'] = reservation_slot unless reservation_slot.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

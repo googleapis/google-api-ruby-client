@@ -2206,6 +2206,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetHealthOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetOwnerInstanceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11075,12 +11087,14 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_tier, as: 'networkTier'
           property :prefix_length, as: 'prefixLength'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :service_class_id, as: 'serviceClassId'
           property :status, as: 'status'
           property :subnetwork, as: 'subnetwork'
           collection :users, as: 'users'
@@ -14956,6 +14970,25 @@ module Google
           property :async_replication_status, as: 'asyncReplicationStatus', class: Google::Apis::ComputeAlpha::AsyncReplicationStatus, decorator: Google::Apis::ComputeAlpha::AsyncReplicationStatus::Representation
       
           property :etag, as: 'etag'
+        end
+      end
+      
+      class GetHealthOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeAlpha::GetHealthOperationMetadataHealthInfo, decorator: Google::Apis::ComputeAlpha::GetHealthOperationMetadataHealthInfo::Representation
+      
+        end
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_slo_status, as: 'availabilitySloStatus'
+          property :health_status, as: 'healthStatus'
+          property :repair_category, as: 'repairCategory'
+          property :unhealthy_reason, as: 'unhealthyReason'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -22541,6 +22574,8 @@ module Google
           property :error, as: 'error', class: Google::Apis::ComputeAlpha::Operation::Error, decorator: Google::Apis::ComputeAlpha::Operation::Error::Representation
       
           property :firewall_policy_rule_operation_metadata, as: 'firewallPolicyRuleOperationMetadata', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleOperationMetadata, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleOperationMetadata::Representation
+      
+          property :get_health_operation_metadata, as: 'getHealthOperationMetadata', class: Google::Apis::ComputeAlpha::GetHealthOperationMetadata, decorator: Google::Apis::ComputeAlpha::GetHealthOperationMetadata::Representation
       
           property :get_version_operation_metadata, as: 'getVersionOperationMetadata', class: Google::Apis::ComputeAlpha::GetVersionOperationMetadata, decorator: Google::Apis::ComputeAlpha::GetVersionOperationMetadata::Representation
       

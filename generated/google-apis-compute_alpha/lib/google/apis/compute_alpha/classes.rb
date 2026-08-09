@@ -250,7 +250,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AcceleratorPodControllersListResponse::Warning::Datum>]
           attr_accessor :data
@@ -533,7 +533,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AcceleratorTypeAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -658,7 +658,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AcceleratorTypeList::Warning::Datum>]
           attr_accessor :data
@@ -755,7 +755,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AcceleratorTypesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -1060,6 +1060,15 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The URL of the network attachment that this address comes from in
+        # the
+        # following format:
+        # projects/`project`/regions/`region_name`/networkAttachments/`
+        # network_attachment_name`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
         # This signifies the networking tier used for configuring this address and
         # can only take the following values: PREMIUM orSTANDARD. Internal IP addresses
         # are always Premium Tier;
@@ -1130,6 +1139,14 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # Optional. Producer Service's Service class ID for the region of this address.
+        # Can
+        # only be used with network_attachment. It is not possible to use on its own;
+        # however, network_attachment can be used without service_class_id.
+        # Corresponds to the JSON property `serviceClassId`
+        # @return [String]
+        attr_accessor :service_class_id
+      
         # Output only. [Output Only] The status of the address, which can be one
         # ofRESERVING, RESERVED, or IN_USE.
         # An address that is RESERVING is currently in the process of
@@ -1171,12 +1188,14 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
           @prefix_length = args[:prefix_length] if args.key?(:prefix_length)
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @service_class_id = args[:service_class_id] if args.key?(:service_class_id)
           @status = args[:status] if args.key?(:status)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @users = args[:users] if args.key?(:users)
@@ -1261,7 +1280,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AddressAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -1386,7 +1405,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AddressList::Warning::Datum>]
           attr_accessor :data
@@ -1483,7 +1502,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AddressesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -3012,7 +3031,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AutoscalerAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -3137,7 +3156,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AutoscalerList::Warning::Datum>]
           attr_accessor :data
@@ -3310,7 +3329,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::AutoscalersScopedList::Warning::Datum>]
           attr_accessor :data
@@ -4210,7 +4229,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::BackendBucketAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -4590,7 +4609,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::BackendBucketList::Warning::Datum>]
           attr_accessor :data
@@ -4716,7 +4735,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::BackendBucketListUsable::Warning::Datum>]
           attr_accessor :data
@@ -4863,7 +4882,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::BackendBucketsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -5650,7 +5669,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::BackendServiceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -6580,7 +6599,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::BackendServiceList::Warning::Datum>]
           attr_accessor :data
@@ -6706,7 +6725,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::BackendServiceListUsable::Warning::Datum>]
           attr_accessor :data
@@ -7267,7 +7286,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::BackendServicesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -9710,7 +9729,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::CommitmentAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -9835,7 +9854,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::CommitmentList::Warning::Datum>]
           attr_accessor :data
@@ -10031,7 +10050,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::CommitmentsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -10274,7 +10293,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::CompositeHealthCheckAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -10432,7 +10451,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::CompositeHealthCheckList::Warning::Datum>]
           attr_accessor :data
@@ -10554,7 +10573,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::CompositeHealthChecksScopedList::Warning::Datum>]
           attr_accessor :data
@@ -10993,7 +11012,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::CrossSiteNetworkList::Warning::Datum>]
           attr_accessor :data
@@ -11773,7 +11792,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::DhcpOptionsConfigList::Warning::Datum>]
           attr_accessor :data
@@ -12524,7 +12543,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::DiskAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -12833,7 +12852,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::DiskList::Warning::Datum>]
           attr_accessor :data
@@ -13377,7 +13396,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::DiskTypeAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -13502,7 +13521,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::DiskTypeList::Warning::Datum>]
           attr_accessor :data
@@ -13599,7 +13618,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::DiskTypesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -13801,7 +13820,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::DisksScopedList::Warning::Datum>]
           attr_accessor :data
@@ -14222,7 +14241,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ExchangedPeeringRoutesList::Warning::Datum>]
           attr_accessor :data
@@ -14574,7 +14593,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ExternalVpnGatewayList::Warning::Datum>]
           attr_accessor :data
@@ -15056,7 +15075,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::FirewallList::Warning::Datum>]
           attr_accessor :data
@@ -15239,7 +15258,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::FirewallPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -15607,7 +15626,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -16420,7 +16439,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::FolderVmExtensionPolicyAggregatedListResponse::Warning::Datum>]
           attr_accessor :data
@@ -17106,7 +17125,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ForwardingRuleAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -17249,7 +17268,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ForwardingRuleList::Warning::Datum>]
           attr_accessor :data
@@ -17401,7 +17420,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ForwardingRulesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -18206,7 +18225,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::FutureReservationsAggregatedListResponse::Warning::Datum>]
           attr_accessor :data
@@ -18345,7 +18364,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::FutureReservationsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -18442,7 +18461,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::FutureReservationsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -18931,6 +18950,68 @@ module Google
         end
       end
       
+      # Metadata for GetHealth operations.
+      class GetHealthOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Health information.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeAlpha::GetHealthOperationMetadataHealthInfo]
+        attr_accessor :health_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_info = args[:health_info] if args.key?(:health_info)
+        end
+      end
+      
+      # Health information.
+      class GetHealthOperationMetadataHealthInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The availability SLO status.
+        # Corresponds to the JSON property `availabilitySloStatus`
+        # @return [String]
+        attr_accessor :availability_slo_status
+      
+        # Output only. The health status.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        # Output only. The repair category.
+        # Corresponds to the JSON property `repairCategory`
+        # @return [String]
+        attr_accessor :repair_category
+      
+        # Output only. The reason for unhealthy status.
+        # Corresponds to the JSON property `unhealthyReason`
+        # @return [String]
+        attr_accessor :unhealthy_reason
+      
+        # Output only. The time when health info was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_slo_status = args[:availability_slo_status] if args.key?(:availability_slo_status)
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @repair_category = args[:repair_category] if args.key?(:repair_category)
+          @unhealthy_reason = args[:unhealthy_reason] if args.key?(:unhealthy_reason)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # 
       class GetOwnerInstanceResponse
         include Google::Apis::Core::Hashable
@@ -19116,7 +19197,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::GlobalListVmExtensionsResponse::Warning::Datum>]
           attr_accessor :data
@@ -19810,7 +19891,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::GlobalVmExtensionPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -21404,7 +21485,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HaControllersAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -21552,7 +21633,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HaControllersList::Warning::Datum>]
           attr_accessor :data
@@ -21649,7 +21730,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HaControllersScopedList::Warning::Datum>]
           attr_accessor :data
@@ -21746,7 +21827,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthAggregationPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -22011,7 +22092,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthAggregationPolicyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -22137,7 +22218,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthAggregationPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -22464,7 +22545,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthCheckList::Warning::Datum>]
           attr_accessor :data
@@ -22804,7 +22885,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthCheckServiceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -22958,7 +23039,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthCheckServicesList::Warning::Datum>]
           attr_accessor :data
@@ -23055,7 +23136,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthCheckServicesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -23185,7 +23266,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthChecksAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -23282,7 +23363,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthChecksScopedList::Warning::Datum>]
           attr_accessor :data
@@ -23532,7 +23613,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthSourceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -23689,7 +23770,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthSourceList::Warning::Datum>]
           attr_accessor :data
@@ -23855,7 +23936,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HealthSourcesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -24396,7 +24477,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HostsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -24958,7 +25039,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HttpHealthCheckList::Warning::Datum>]
           attr_accessor :data
@@ -25764,7 +25845,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::HttpsHealthCheckList::Warning::Datum>]
           attr_accessor :data
@@ -26331,7 +26412,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ImageList::Warning::Datum>]
           attr_accessor :data
@@ -26533,7 +26614,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ImageViewsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -27181,7 +27262,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -27593,7 +27674,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -27720,7 +27801,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupList::Warning::Datum>]
           attr_accessor :data
@@ -28325,7 +28406,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -28776,7 +28857,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerList::Warning::Datum>]
           attr_accessor :data
@@ -29370,7 +29451,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagerResizeRequestsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -30918,7 +30999,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagersListPerInstanceConfigsResp::Warning::Datum>]
           attr_accessor :data
@@ -31130,7 +31211,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupManagersScopedList::Warning::Datum>]
           attr_accessor :data
@@ -31450,7 +31531,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupsListInstances::Warning::Datum>]
           attr_accessor :data
@@ -31588,7 +31669,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceGroupsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -31746,7 +31827,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceList::Warning::Datum>]
           attr_accessor :data
@@ -31871,7 +31952,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceListReferrers::Warning::Datum>]
           attr_accessor :data
@@ -32660,7 +32741,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceTemplateAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -32786,7 +32867,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceTemplateList::Warning::Datum>]
           attr_accessor :data
@@ -32884,7 +32965,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstanceTemplatesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -33283,7 +33364,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstancesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -33838,7 +33919,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstantSnapshotAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -34146,7 +34227,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstantSnapshotList::Warning::Datum>]
           attr_accessor :data
@@ -34288,7 +34369,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InstantSnapshotsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -35421,7 +35502,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InterconnectAttachmentAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -36412,7 +36493,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InterconnectAttachmentGroupsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -36778,7 +36859,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InterconnectAttachmentList::Warning::Datum>]
           attr_accessor :data
@@ -36966,7 +37047,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InterconnectAttachmentsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -37948,7 +38029,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InterconnectGroupsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -38164,7 +38245,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InterconnectList::Warning::Datum>]
           attr_accessor :data
@@ -38510,7 +38591,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InterconnectLocationList::Warning::Datum>]
           attr_accessor :data
@@ -39219,7 +39300,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::InterconnectRemoteLocationList::Warning::Datum>]
           attr_accessor :data
@@ -39548,7 +39629,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::IpAddressesList::Warning::Datum>]
           attr_accessor :data
@@ -39679,7 +39760,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::IpOwnerList::Warning::Datum>]
           attr_accessor :data
@@ -40335,7 +40416,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::LicensesListResponse::Warning::Datum>]
           attr_accessor :data
@@ -40472,7 +40553,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ListInstantSnapshotGroups::Warning::Datum>]
           attr_accessor :data
@@ -40609,7 +40690,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ListSnapshotGroups::Warning::Datum>]
           attr_accessor :data
@@ -40750,7 +40831,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ListVmExtensionStatesResponse::Warning::Datum>]
           attr_accessor :data
@@ -40891,7 +40972,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ListVmExtensionsResponse::Warning::Datum>]
           attr_accessor :data
@@ -41396,7 +41477,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::MachineImageList::Warning::Datum>]
           attr_accessor :data
@@ -41721,7 +41802,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::MachineTypeAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -41846,7 +41927,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::MachineTypeList::Warning::Datum>]
           attr_accessor :data
@@ -41943,7 +42024,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::MachineTypesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -42731,7 +42812,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ManagedRulesetList::Warning::Datum>]
           attr_accessor :data
@@ -43281,7 +43362,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::MultiMigMemberList::Warning::Datum>]
           attr_accessor :data
@@ -43669,7 +43750,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::MultiMigsList::Warning::Datum>]
           attr_accessor :data
@@ -44301,7 +44382,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkAttachmentAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -44493,7 +44574,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkAttachmentList::Warning::Datum>]
           attr_accessor :data
@@ -44590,7 +44671,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkAttachmentsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -44825,7 +44906,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkEdgeSecurityServiceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -44922,7 +45003,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkEdgeSecurityServicesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -45349,7 +45430,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkEndpointGroupAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -45674,7 +45755,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkEndpointGroupList::Warning::Datum>]
           attr_accessor :data
@@ -45996,7 +46077,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkEndpointGroupsListNetworkEndpoints::Warning::Datum>]
           attr_accessor :data
@@ -46096,7 +46177,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkEndpointGroupsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -46255,7 +46336,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkFirewallPolicyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -46673,7 +46754,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkList::Warning::Datum>]
           attr_accessor :data
@@ -47086,7 +47167,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -47310,7 +47391,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkPolicyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -47454,7 +47535,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -48246,7 +48327,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NetworkProfilesListResponse::Warning::Datum>]
           attr_accessor :data
@@ -48859,7 +48940,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NodeGroupAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -49018,7 +49099,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NodeGroupList::Warning::Datum>]
           attr_accessor :data
@@ -49321,7 +49402,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NodeGroupsListNodes::Warning::Datum>]
           attr_accessor :data
@@ -49443,7 +49524,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NodeGroupsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -49757,7 +49838,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NodeTemplateAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -49882,7 +49963,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NodeTemplateList::Warning::Datum>]
           attr_accessor :data
@@ -50010,7 +50091,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NodeTemplatesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -50252,7 +50333,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NodeTypeAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -50377,7 +50458,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NodeTypeList::Warning::Datum>]
           attr_accessor :data
@@ -50474,7 +50555,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NodeTypesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -50686,7 +50767,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NotificationEndpointAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -50864,7 +50945,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NotificationEndpointList::Warning::Datum>]
           attr_accessor :data
@@ -50961,7 +51042,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::NotificationEndpointsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -51072,6 +51153,11 @@ module Google
         # Corresponds to the JSON property `firewallPolicyRuleOperationMetadata`
         # @return [Google::Apis::ComputeAlpha::FirewallPolicyRuleOperationMetadata]
         attr_accessor :firewall_policy_rule_operation_metadata
+      
+        # Metadata for GetHealth operations.
+        # Corresponds to the JSON property `getHealthOperationMetadata`
+        # @return [Google::Apis::ComputeAlpha::GetHealthOperationMetadata]
+        attr_accessor :get_health_operation_metadata
       
         # 
         # Corresponds to the JSON property `getVersionOperationMetadata`
@@ -51232,6 +51318,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
           @firewall_policy_rule_operation_metadata = args[:firewall_policy_rule_operation_metadata] if args.key?(:firewall_policy_rule_operation_metadata)
+          @get_health_operation_metadata = args[:get_health_operation_metadata] if args.key?(:get_health_operation_metadata)
           @get_version_operation_metadata = args[:get_version_operation_metadata] if args.key?(:get_version_operation_metadata)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
@@ -51398,7 +51485,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::Operation::Warning::Datum>]
           attr_accessor :data
@@ -51531,7 +51618,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::OperationAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -51658,7 +51745,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::OperationList::Warning::Datum>]
           attr_accessor :data
@@ -51755,7 +51842,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::OperationsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -51886,7 +51973,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::OrganizationRolloutsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -52051,7 +52138,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::OrganizationVmExtensionPolicyAggregatedListResponse::Warning::Datum>]
           attr_accessor :data
@@ -52497,7 +52584,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::PacketMirroringAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -52691,7 +52778,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::PacketMirroringList::Warning::Datum>]
           attr_accessor :data
@@ -52907,7 +52994,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::PacketMirroringsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -53886,7 +53973,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::PreviewFeatureList::Warning::Datum>]
           attr_accessor :data
@@ -54707,7 +54794,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::PublicAdvertisedPrefixList::Warning::Datum>]
           attr_accessor :data
@@ -55095,7 +55182,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefixAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -55221,7 +55308,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefixList::Warning::Datum>]
           attr_accessor :data
@@ -55415,7 +55502,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefixesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -55649,7 +55736,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::QueuedResourceList::Warning::Datum>]
           attr_accessor :data
@@ -55958,7 +56045,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::QueuedResourcesAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -56055,7 +56142,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::QueuedResourcesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -56445,7 +56532,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RecoverableSnapshotAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -56584,7 +56671,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RecoverableSnapshotList::Warning::Datum>]
           attr_accessor :data
@@ -57005,7 +57092,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RecoverableSnapshotsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -57270,7 +57357,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::Region::QuotaStatusWarning::Datum>]
           attr_accessor :data
@@ -57427,7 +57514,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RegionAutoscalerList::Warning::Datum>]
           attr_accessor :data
@@ -57571,7 +57658,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RegionDiskTypeList::Warning::Datum>]
           attr_accessor :data
@@ -57824,7 +57911,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RegionInstanceGroupList::Warning::Datum>]
           attr_accessor :data
@@ -57970,7 +58057,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RegionInstanceGroupManagerList::Warning::Datum>]
           attr_accessor :data
@@ -58129,7 +58216,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RegionInstanceGroupManagerResizeRequestsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -58466,7 +58553,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RegionInstanceGroupManagersListInstanceConfigsResp::Warning::Datum>]
           attr_accessor :data
@@ -58859,7 +58946,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RegionInstanceGroupsListInstances::Warning::Datum>]
           attr_accessor :data
@@ -59045,7 +59132,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RegionList::Warning::Datum>]
           attr_accessor :data
@@ -59607,7 +59694,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ReliabilityRisksListResponse::Warning::Datum>]
           attr_accessor :data
@@ -60130,7 +60217,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ReservationAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -60529,7 +60616,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ReservationBlocksListResponse::Warning::Datum>]
           attr_accessor :data
@@ -60824,7 +60911,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ReservationConsumedInstancesListResponse::Warning::Datum>]
           attr_accessor :data
@@ -60950,7 +61037,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ReservationList::Warning::Datum>]
           attr_accessor :data
@@ -61291,7 +61378,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ReservationSlotsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -61655,7 +61742,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ReservationSubBlocksListResponse::Warning::Datum>]
           attr_accessor :data
@@ -61866,7 +61953,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ReservationsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -62033,7 +62120,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ResourcePoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -62301,7 +62388,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ResourcePolicyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -62657,7 +62744,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ResourcePolicyList::Warning::Datum>]
           attr_accessor :data
@@ -64281,7 +64368,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RolloutPlansListResponse::Warning::Datum>]
           attr_accessor :data
@@ -64620,7 +64707,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RolloutsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -64966,7 +65053,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::Route::Warning::Datum>]
           attr_accessor :data
@@ -65126,7 +65213,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RouteList::Warning::Datum>]
           attr_accessor :data
@@ -65561,7 +65648,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RouterAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -66207,7 +66294,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RouterList::Warning::Datum>]
           attr_accessor :data
@@ -67253,7 +67340,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RoutersListBgpRoutes::Warning::Datum>]
           attr_accessor :data
@@ -67391,7 +67478,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RoutersListNamedSets::Warning::Datum>]
           attr_accessor :data
@@ -67529,7 +67616,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RoutersListRoutePolicies::Warning::Datum>]
           attr_accessor :data
@@ -67647,7 +67734,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::RoutersScopedList::Warning::Datum>]
           attr_accessor :data
@@ -68457,7 +68544,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SecurityPoliciesAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -68573,7 +68660,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SecurityPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -69368,7 +69455,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -70195,6 +70282,8 @@ module Google
         # which is resolved based on "userIpRequestHeaders" configured with the
         # security policy. If there is no "userIpRequestHeaders" configuration or
         # an IP address cannot be resolved from it, the key type defaults toIP.
+        # - ASN: The autonomous system number of the originating
+        # client. If not available, the key type defaults toALL.
         # - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the
         # client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the
         # key type defaults to ALL.
@@ -70320,6 +70409,8 @@ module Google
         # which is resolved based on "userIpRequestHeaders" configured with the
         # security policy. If there is no "userIpRequestHeaders" configuration
         # or an IP address cannot be resolved from it, the key type defaults toIP.
+        # - ASN: The autonomous system number of the originating
+        # client. If not available, the key type defaults toALL.
         # - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the
         # client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the
         # key type defaults to ALL.
@@ -71000,7 +71091,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -71220,7 +71311,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentList::Warning::Datum>]
           attr_accessor :data
@@ -71347,7 +71438,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -72321,7 +72412,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SnapshotAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -72633,7 +72724,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SnapshotList::Warning::Datum>]
           attr_accessor :data
@@ -73019,7 +73110,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SnapshotsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -73480,7 +73571,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SslCertificateAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -73604,7 +73695,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SslCertificateList::Warning::Datum>]
           attr_accessor :data
@@ -73765,7 +73856,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SslCertificatesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -73902,7 +73993,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SslPoliciesAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -74029,7 +74120,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SslPoliciesList::Warning::Datum>]
           attr_accessor :data
@@ -74145,7 +74236,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SslPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -74368,7 +74459,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SslPolicy::Warning::Datum>]
           attr_accessor :data
@@ -74864,7 +74955,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::StoragePoolAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -75115,7 +75206,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::StoragePoolList::Warning::Datum>]
           attr_accessor :data
@@ -75256,7 +75347,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::StoragePoolListDisks::Warning::Datum>]
           attr_accessor :data
@@ -75720,7 +75811,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::StoragePoolTypeAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -75845,7 +75936,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::StoragePoolTypeList::Warning::Datum>]
           attr_accessor :data
@@ -75942,7 +76033,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::StoragePoolTypesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -76039,7 +76130,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::StoragePoolsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -76588,7 +76679,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SubnetworkAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -76713,7 +76804,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SubnetworkList::Warning::Datum>]
           attr_accessor :data
@@ -77094,7 +77185,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SubnetworksScopedList::Warning::Datum>]
           attr_accessor :data
@@ -77189,7 +77280,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::SubnetworksScopedWarning::Warning::Datum>]
           attr_accessor :data
@@ -77594,7 +77685,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetGrpcProxyList::Warning::Datum>]
           attr_accessor :data
@@ -77691,7 +77782,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetHttpProxiesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -77975,7 +78066,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetHttpProxyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -78100,7 +78191,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetHttpProxyList::Warning::Datum>]
           attr_accessor :data
@@ -78197,7 +78288,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetHttpsProxiesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -78677,7 +78768,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetHttpsProxyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -78802,7 +78893,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetHttpsProxyList::Warning::Datum>]
           attr_accessor :data
@@ -79048,7 +79139,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetInstanceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -79172,7 +79263,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetInstanceList::Warning::Datum>]
           attr_accessor :data
@@ -79269,7 +79360,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetInstancesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -79550,7 +79641,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetPoolAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -79702,7 +79793,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetPoolList::Warning::Datum>]
           attr_accessor :data
@@ -79887,7 +79978,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetPoolsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -80217,7 +80308,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetSslProxyList::Warning::Datum>]
           attr_accessor :data
@@ -80314,7 +80405,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetTcpProxiesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -80591,7 +80682,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetTcpProxyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -80715,7 +80806,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetTcpProxyList::Warning::Datum>]
           attr_accessor :data
@@ -80977,7 +81068,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetVpnGatewayAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -81102,7 +81193,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetVpnGatewayList::Warning::Datum>]
           attr_accessor :data
@@ -81231,7 +81322,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::TargetVpnGatewaysScopedList::Warning::Datum>]
           attr_accessor :data
@@ -81991,7 +82082,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::UrlMapList::Warning::Datum>]
           attr_accessor :data
@@ -82350,7 +82441,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::UrlMapsAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -82447,7 +82538,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::UrlMapsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -82853,7 +82944,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::UsableSubnetworksAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -83168,7 +83259,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::VmEndpointNatMappingsList::Warning::Datum>]
           attr_accessor :data
@@ -83290,7 +83381,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::VmExtensionPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -83553,7 +83644,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::VmExtensionPolicyAggregatedListResponse::Warning::Datum>]
           attr_accessor :data
@@ -83818,7 +83909,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::VmExtensionPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -84136,7 +84227,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::VpnGatewayAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -84261,7 +84352,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::VpnGatewayList::Warning::Datum>]
           attr_accessor :data
@@ -84595,7 +84686,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::VpnGatewaysScopedList::Warning::Datum>]
           attr_accessor :data
@@ -84990,7 +85081,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::VpnTunnelAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -85140,7 +85231,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::VpnTunnelList::Warning::Datum>]
           attr_accessor :data
@@ -85337,7 +85428,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::VpnTunnelsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -85904,7 +85995,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::WireGroupList::Warning::Datum>]
           attr_accessor :data
@@ -86254,7 +86345,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::XpnHostList::Warning::Datum>]
           attr_accessor :data
@@ -86498,7 +86589,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeAlpha::ZoneList::Warning::Datum>]
           attr_accessor :data
