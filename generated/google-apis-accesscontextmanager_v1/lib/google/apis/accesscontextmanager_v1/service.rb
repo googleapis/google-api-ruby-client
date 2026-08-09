@@ -1364,6 +1364,12 @@ module Google
         # Lists all GcpUserAccessBindings for a Google Cloud organization.
         # @param [String] parent
         #   Required. Example: "organizations/256"
+        # @param [String] filter
+        #   Optional. The literal filter to apply to the results returned. See https://
+        #   google.aip.dev/160 for more details. Accepts values: * principal:group_key *
+        #   principal:service_account OR principal:service_account_project_number. If this
+        #   field is empty or not one of the above, the default value is "principal:
+        #   group_key".
         # @param [Fixnum] page_size
         #   Optional. Maximum number of items to return. The server may return fewer items.
         #   If left blank, the server may return any number of items.
@@ -1387,11 +1393,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_gcp_user_access_bindings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_gcp_user_access_bindings(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/gcpUserAccessBindings', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1::ListGcpUserAccessBindingsResponse::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::ListGcpUserAccessBindingsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
