@@ -130,6 +130,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AvailabilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailabilityConfigGlobalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailabilityConfigRegionsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailabilityConfigRegionsConfigRegionInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchGetStatsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +473,12 @@ module Google
       end
       
       class IngestionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Interval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1471,6 +1501,42 @@ module Google
         end
       end
       
+      class AvailabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :global_config, as: 'globalConfig', class: Google::Apis::YoutubeV3::AvailabilityConfigGlobalConfig, decorator: Google::Apis::YoutubeV3::AvailabilityConfigGlobalConfig::Representation
+      
+          property :regions_config, as: 'regionsConfig', class: Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfig, decorator: Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfig::Representation
+      
+        end
+      end
+      
+      class AvailabilityConfigGlobalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_region_codes, as: 'excludedRegionCodes'
+          property :interval, as: 'interval', class: Google::Apis::YoutubeV3::Interval, decorator: Google::Apis::YoutubeV3::Interval::Representation
+      
+        end
+      end
+      
+      class AvailabilityConfigRegionsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :region_intervals, as: 'regionIntervals', class: Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfigRegionInterval, decorator: Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfigRegionInterval::Representation
+      
+        end
+      end
+      
+      class AvailabilityConfigRegionsConfigRegionInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval', class: Google::Apis::YoutubeV3::Interval, decorator: Google::Apis::YoutubeV3::Interval::Representation
+      
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
       class BatchGetStatsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2192,6 +2258,14 @@ module Google
         end
       end
       
+      class Interval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class InvideoBranding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2258,6 +2332,8 @@ module Google
       class LiveBroadcastContentDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_config, as: 'availabilityConfig', class: Google::Apis::YoutubeV3::AvailabilityConfig, decorator: Google::Apis::YoutubeV3::AvailabilityConfig::Representation
+      
           property :bound_stream_id, as: 'boundStreamId'
           property :bound_stream_last_update_time_ms, as: 'boundStreamLastUpdateTimeMs', type: DateTime
       
