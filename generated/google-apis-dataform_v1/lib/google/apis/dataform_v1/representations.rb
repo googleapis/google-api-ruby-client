@@ -304,6 +304,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcsRepositorySnapshotDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsRepositorySnapshotMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GitRemoteSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -491,6 +503,12 @@ module Google
       end
       
       class Operations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PipelineConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -917,6 +935,8 @@ module Google
           property :default_notebook_runtime_options, as: 'defaultNotebookRuntimeOptions', class: Google::Apis::DataformV1::NotebookRuntimeOptions, decorator: Google::Apis::DataformV1::NotebookRuntimeOptions::Representation
       
           property :default_schema, as: 'defaultSchema'
+          property :pipeline_config, as: 'pipelineConfig', class: Google::Apis::DataformV1::PipelineConfig, decorator: Google::Apis::DataformV1::PipelineConfig::Representation
+      
           property :schema_suffix, as: 'schemaSuffix'
           property :table_prefix, as: 'tablePrefix'
           hash :vars, as: 'vars'
@@ -1016,6 +1036,8 @@ module Google
           property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1::DataEncryptionState, decorator: Google::Apis::DataformV1::DataEncryptionState::Representation
       
           property :dataform_core_version, as: 'dataformCoreVersion'
+          property :gcs_repository_snapshot_metadata, as: 'gcsRepositorySnapshotMetadata', class: Google::Apis::DataformV1::GcsRepositorySnapshotMetadata, decorator: Google::Apis::DataformV1::GcsRepositorySnapshotMetadata::Representation
+      
           property :git_commitish, as: 'gitCommitish'
           property :internal_metadata, as: 'internalMetadata'
           property :name, as: 'name'
@@ -1256,6 +1278,22 @@ module Google
         end
       end
       
+      class GcsRepositorySnapshotDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :repository_snapshot_uri, as: 'repositorySnapshotUri'
+        end
+      end
+      
+      class GcsRepositorySnapshotMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crc32c_checksum, as: 'crc32cChecksum'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :repository_snapshot_uri, as: 'repositorySnapshotUri'
+        end
+      end
+      
       class GitRemoteSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1301,6 +1339,8 @@ module Google
       class InstallNpmPackagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :pipeline_config, as: 'pipelineConfig', class: Google::Apis::DataformV1::PipelineConfig, decorator: Google::Apis::DataformV1::PipelineConfig::Representation
+      
         end
       end
       
@@ -1506,6 +1546,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contents, as: 'contents'
+          property :file_path, as: 'filePath'
           property :job_id, as: 'jobId'
         end
       end
@@ -1515,6 +1556,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ai_platform_notebook_runtime_template, as: 'aiPlatformNotebookRuntimeTemplate'
           property :gcs_output_bucket, as: 'gcsOutputBucket'
+          property :gcs_repository_snapshot_destination, as: 'gcsRepositorySnapshotDestination', class: Google::Apis::DataformV1::GcsRepositorySnapshotDestination, decorator: Google::Apis::DataformV1::GcsRepositorySnapshotDestination::Representation
+      
         end
       end
       
@@ -1554,6 +1597,14 @@ module Google
           property :relation_descriptor, as: 'relationDescriptor', class: Google::Apis::DataformV1::RelationDescriptor, decorator: Google::Apis::DataformV1::RelationDescriptor::Representation
       
           collection :tags, as: 'tags'
+        end
+      end
+      
+      class PipelineConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :pipeline_type, as: 'pipelineType'
         end
       end
       
@@ -1996,6 +2047,8 @@ module Google
           property :invocation_timing, as: 'invocationTiming', class: Google::Apis::DataformV1::Interval, decorator: Google::Apis::DataformV1::Interval::Representation
       
           property :name, as: 'name'
+          property :pipeline_config, as: 'pipelineConfig', class: Google::Apis::DataformV1::PipelineConfig, decorator: Google::Apis::DataformV1::PipelineConfig::Representation
+      
           property :private_resource_metadata, as: 'privateResourceMetadata', class: Google::Apis::DataformV1::PrivateResourceMetadata, decorator: Google::Apis::DataformV1::PrivateResourceMetadata::Representation
       
           property :resolved_compilation_result, as: 'resolvedCompilationResult'
