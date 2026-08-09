@@ -42176,6 +42176,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Compacts the event history of a given Session, which may run an LLM
+        # summarization call and rewrite the full event history. Compaction is a storage-
+        # side rewrite that can apply a stackable pipeline of rules (event-horizon
+        # preservation, tool-response truncation, thought stripping, and LLM
+        # summarization etc.)
+        # @param [String] name
+        #   Required. The resource name of the session to compact. Format: `projects/`
+        #   project`/locations/`location`/reasoningEngines/`reasoning_engine`/sessions/`
+        #   session``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CompactSessionRequest] google_cloud_aiplatform_v1beta1_compact_session_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def compact_project_location_reasoning_engine_session(name, google_cloud_aiplatform_v1beta1_compact_session_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:compact', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CompactSessionRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_compact_session_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new Session.
         # @param [String] parent
         #   Required. The resource name of the location to create the session in. Format: `
