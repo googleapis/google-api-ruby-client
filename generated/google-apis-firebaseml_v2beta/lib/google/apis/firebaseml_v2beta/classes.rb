@@ -203,12 +203,20 @@ module Google
         attr_accessor :diarization
         alias_method :diarization?, :diarization
       
-        # Indicates the language of the audio should be automatically detected.
+        # Deprecated: Use top-level `language_codes` instead. Indicates the language of
+        # the audio should be automatically detected.
         # Corresponds to the JSON property `languageAuto`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto]
         attr_accessor :language_auto
       
-        # Provides hints to the model about possible languages present in the audio.
+        # Optional. BCP-47 language codes providing hints about the languages present in
+        # the audio. If omitted or empty, defaults to automatic language detection.
+        # Corresponds to the JSON property `languageCodes`
+        # @return [Array<String>]
+        attr_accessor :language_codes
+      
+        # Deprecated: Use top-level `language_codes` instead. Provides hints to the
+        # model about possible languages present in the audio.
         # Corresponds to the JSON property `languageHints`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints]
         attr_accessor :language_hints
@@ -229,12 +237,14 @@ module Google
           @custom_vocabulary = args[:custom_vocabulary] if args.key?(:custom_vocabulary)
           @diarization = args[:diarization] if args.key?(:diarization)
           @language_auto = args[:language_auto] if args.key?(:language_auto)
+          @language_codes = args[:language_codes] if args.key?(:language_codes)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
           @word_timestamp = args[:word_timestamp] if args.key?(:word_timestamp)
         end
       end
       
-      # Indicates the language of the audio should be automatically detected.
+      # Deprecated: Use top-level `language_codes` instead. Indicates the language of
+      # the audio should be automatically detected.
       class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto
         include Google::Apis::Core::Hashable
       
@@ -247,11 +257,13 @@ module Google
         end
       end
       
-      # Provides hints to the model about possible languages present in the audio.
+      # Deprecated: Use top-level `language_codes` instead. Provides hints to the
+      # model about possible languages present in the audio.
       class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints
         include Google::Apis::Core::Hashable
       
-        # Required. BCP-47 language codes. At least one must be specified.
+        # Required. Deprecated: Use top-level `language_codes` instead. BCP-47 language
+        # codes. At least one must be specified.
         # Corresponds to the JSON property `languageCodes`
         # @return [Array<String>]
         attr_accessor :language_codes
@@ -4549,6 +4561,12 @@ module Google
         # @return [String]
         attr_accessor :gcs_uri
       
+        # Optional. The video output resolution. Supported values: "360p", "720p", "
+        # 1080p", "4k".
+        # Corresponds to the JSON property `resolution`
+        # @return [String]
+        attr_accessor :resolution
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4559,6 +4577,7 @@ module Google
           @delivery = args[:delivery] if args.key?(:delivery)
           @duration = args[:duration] if args.key?(:duration)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @resolution = args[:resolution] if args.key?(:resolution)
         end
       end
       
