@@ -558,6 +558,9 @@ module Google
         #   ignore the second request. This prevents clients from accidentally creating
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the endpoint, but do not
+        #   actually create it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -575,7 +578,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_location_firewall_endpoint(parent, firewall_endpoint_object = nil, firewall_endpoint_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_organization_location_firewall_endpoint(parent, firewall_endpoint_object = nil, firewall_endpoint_id: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/firewallEndpoints', options)
           command.request_representation = Google::Apis::NetworksecurityV1beta1::FirewallEndpoint::Representation
           command.request_object = firewall_endpoint_object
@@ -584,6 +587,7 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['firewallEndpointId'] = firewall_endpoint_id unless firewall_endpoint_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3524,6 +3528,9 @@ module Google
         #   ignore the second request. This prevents clients from accidentally creating
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   Optional. If set, validate the request and preview the endpoint, but do not
+        #   actually create it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3541,7 +3548,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_firewall_endpoint(parent, firewall_endpoint_object = nil, firewall_endpoint_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_firewall_endpoint(parent, firewall_endpoint_object = nil, firewall_endpoint_id: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/firewallEndpoints', options)
           command.request_representation = Google::Apis::NetworksecurityV1beta1::FirewallEndpoint::Representation
           command.request_object = firewall_endpoint_object
@@ -3550,6 +3557,7 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['firewallEndpointId'] = firewall_endpoint_id unless firewall_endpoint_id.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -6093,6 +6101,12 @@ module Google
         # @param [String] name
         #   Required. Name of the resource, in the form `projects/`project`/locations/`
         #   location`/sacAttachments/`sac_attachment``.
+        # @param [Boolean] ignore_partner_deletion_errors
+        #   Optional. If set to true, the request will delete the SAC Attachment even if
+        #   some steps fail (e.g. deleting the remote Symantec Location). This option is a
+        #   no-op for partners where it does not apply (e.g. Palo Alto Networks). WARNING:
+        #   Enabling this option may leave dangling resources in the Broadcom/Symantec
+        #   customer portal that requires manual cleanup.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -6121,11 +6135,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_sac_attachment(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_sac_attachment(name, ignore_partner_deletion_errors: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::NetworksecurityV1beta1::Operation::Representation
           command.response_class = Google::Apis::NetworksecurityV1beta1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['ignorePartnerDeletionErrors'] = ignore_partner_deletion_errors unless ignore_partner_deletion_errors.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
