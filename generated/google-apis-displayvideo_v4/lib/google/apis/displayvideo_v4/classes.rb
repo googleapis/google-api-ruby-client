@@ -98,7 +98,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Whether the asset contains synthetic content or was created using AI.
+        # Optional. Whether to add a label to the asset as created or edited using AI
+        # when served in regions with local AI labeling regulations.
         # Corresponds to the JSON property `syntheticContentAttestationStatus`
         # @return [String]
         attr_accessor :synthetic_content_attestation_status
@@ -4879,7 +4880,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Country code of the member. Must also be set with the following
-        # fields: * country_code * hashed_first_name * hashed_last_name * zip_codes
+        # fields: * hashed_first_name * hashed_last_name * zip_codes
         # Corresponds to the JSON property `countryCode`
         # @return [String]
         attr_accessor :country_code
@@ -5769,8 +5770,8 @@ module Google
         attr_accessor :skippable
         alias_method :skippable?, :skippable
       
-        # Optional. Whether the creative contains synthetic content or was created using
-        # AI.
+        # Optional. Whether to add a label to the creative as created or edited using AI
+        # when served in regions with local AI labeling regulations.
         # Corresponds to the JSON property `syntheticContentAttestationStatus`
         # @return [String]
         attr_accessor :synthetic_content_attestation_status
@@ -14923,7 +14924,8 @@ module Google
         # @return [String]
         attr_accessor :filename
       
-        # Optional. Whether the asset contains synthetic content or was created using AI.
+        # Optional. Whether to add a label to the asset as created or edited using AI
+        # when served in regions with local AI labeling regulations.
         # Corresponds to the JSON property `syntheticContentAttestationStatus`
         # @return [String]
         attr_accessor :synthetic_content_attestation_status

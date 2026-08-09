@@ -545,8 +545,8 @@ module Google
         
         # Updates an ad asset. Returns the updated ad asset if successful. Supports
         # updating assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO` and `
-        # AD_ASSET_TYPE_IMAGE`. Only the `synthetic_content_attestation_status` field is
-        # mutable.
+        # AD_ASSET_TYPE_IMAGE`. Only the AdAsset.synthetic_content_attestation_status
+        # field is mutable.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad asset belongs to.
         # @param [Fixnum] ad_asset_id
@@ -4283,6 +4283,8 @@ module Google
         end
         
         # Generates a reach forecast for a given advertiser and targeting configuration.
+        # API support for generating reach forecasts and retrieving related metadata is
+        # in beta. This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser that will run the planned campaign.
         # @param [Google::Apis::DisplayvideoV4::GenerateReachForecastRequest] generate_reach_forecast_request_object
@@ -4315,7 +4317,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of countries where reach forecasting is supported.
+        # Retrieves the list of countries where reach forecasting is supported. API
+        # support for generating reach forecasts and retrieving related metadata is in
+        # beta. This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list plannable locations for.
         # @param [String] fields
@@ -4345,7 +4349,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of products that can be planned for a location.
+        # Retrieves the list of products that can be planned for a location. API support
+        # for generating reach forecasts and retrieving related metadata is in beta.
+        # This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list plannable products for.
         # @param [String] plannable_location_id
@@ -4378,7 +4384,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves Google Audiences (User Interests) available for forecasting.
+        # Retrieves Google Audiences (User Interests) available for forecasting. API
+        # support for generating reach forecasts and retrieving related metadata is in
+        # beta. This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list plannable user interests for.
         # @param [String] product_category
@@ -4411,7 +4419,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves first and third party user lists available for forecasting.
+        # Retrieves first and third party user lists available for forecasting. API
+        # support for generating reach forecasts and retrieving related metadata is in
+        # beta. This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to retrieve plannable user lists for.
         # @param [String] filter
