@@ -815,14 +815,14 @@ module Google
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of instances matching the request filters, up to the requested
-        # ListInstancesRequest.pageSize.
+        # The list of instances matching the request filters, up to the requested `
+        # pageSize`.
         # Corresponds to the JSON property `instances`
         # @return [Array<Google::Apis::LookerV1::Instance>]
         attr_accessor :instances
       
-        # If provided, a page token that can look up the next ListInstancesRequest.
-        # pageSize results. If empty, the results list is exhausted.
+        # If provided, a page token that can look up the next `pageSize` results. If
+        # empty, the results list is exhausted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
