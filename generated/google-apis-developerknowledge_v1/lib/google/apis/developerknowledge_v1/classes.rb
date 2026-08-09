@@ -184,7 +184,9 @@ module Google
         end
       end
       
-      # A Document represents a piece of content from the Developer Knowledge corpus.
+      # A Document represents a page of documentation in the Developer Knowledge
+      # corpus, like the page at https://docs.cloud.google.com/storage/docs/creating-
+      # buckets.
       class Document
         include Google::Apis::Core::Hashable
       
@@ -268,7 +270,9 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # A Document represents a piece of content from the Developer Knowledge corpus.
+        # A Document represents a page of documentation in the Developer Knowledge
+        # corpus, like the page at https://docs.cloud.google.com/storage/docs/creating-
+        # buckets.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::DeveloperknowledgeV1::Document]
         attr_accessor :document
@@ -326,8 +330,8 @@ module Google
       class SearchDocumentChunksResponse
         include Google::Apis::Core::Hashable
       
-        # Optional. Provides a token that can be sent as `page_token` to retrieve the
-        # next page. If this field is omitted, there are no subsequent pages.
+        # Provides a token that can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
