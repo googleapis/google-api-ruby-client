@@ -654,6 +654,33 @@ module Google
         end
       end
       
+      # Response message for FetchResourceSemantics.
+      class FetchResourceSemanticsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name for which semantics are returned. Examples: "//compute.
+        # googleapis.com/projects/123/zones/us-central1-a/instances/my-instance" "//
+        # storage.googleapis.com/projects/_/buckets/my_bucket"
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Map of resource semantics (e.g., `"ENVIRONMENT": "PRODUCTION"`).
+        # Corresponds to the JSON property `semantics`
+        # @return [Hash<String,String>]
+        attr_accessor :semantics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @semantics = args[:semantics] if args.key?(:semantics)
+        end
+      end
+      
       # A folder in an organization's resource hierarchy, used to organize that
       # organization's resources.
       class Folder
