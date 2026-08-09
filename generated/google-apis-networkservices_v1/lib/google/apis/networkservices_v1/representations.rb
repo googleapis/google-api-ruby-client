@@ -22,6 +22,12 @@ module Google
   module Apis
     module NetworkservicesV1
       
+      class AgentConnectivityTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentGateway
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,18 @@ module Google
       end
       
       class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsPeeringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EgressNetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -359,6 +377,12 @@ module Google
       end
       
       class LbTrafficExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAgentConnectivityTemplatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -718,9 +742,26 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentConnectivityTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_path, as: 'accessPath'
+          collection :access_types, as: 'accessTypes'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :egress_network_config, as: 'egressNetworkConfig', class: Google::Apis::NetworkservicesV1::EgressNetworkConfig, decorator: Google::Apis::NetworkservicesV1::EgressNetworkConfig::Representation
+      
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class AgentGateway
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_connectivity_template, as: 'agentConnectivityTemplate'
           property :agent_gateway_card, as: 'agentGatewayCard', class: Google::Apis::NetworkservicesV1::AgentGatewayAgentGatewayOutputCard, decorator: Google::Apis::NetworkservicesV1::AgentGatewayAgentGatewayOutputCard::Representation
       
           property :create_time, as: 'createTime'
@@ -840,6 +881,25 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DnsPeeringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :target_network, as: 'targetNetwork'
+        end
+      end
+      
+      class EgressNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_peering_config, as: 'dnsPeeringConfig', class: Google::Apis::NetworkservicesV1::DnsPeeringConfig, decorator: Google::Apis::NetworkservicesV1::DnsPeeringConfig::Representation
+      
+          property :network_attachment, as: 'networkAttachment'
+          property :trust_config, as: 'trustConfig'
+          property :vpc_egress, as: 'vpcEgress'
         end
       end
       
@@ -1361,6 +1421,16 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ListAgentConnectivityTemplatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_connectivity_templates, as: 'agentConnectivityTemplates', class: Google::Apis::NetworkservicesV1::AgentConnectivityTemplate, decorator: Google::Apis::NetworkservicesV1::AgentConnectivityTemplate::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
