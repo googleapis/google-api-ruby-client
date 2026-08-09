@@ -211,6 +211,12 @@ module Google
         attr_accessor :name_required
         alias_method :name_required?, :name_required
       
+        # Optional. Whether checking the opt-in checkbox is required.
+        # Corresponds to the JSON property `optInRequired`
+        # @return [Boolean]
+        attr_accessor :opt_in_required
+        alias_method :opt_in_required?, :opt_in_required
+      
         # Required. The title of the newsletter signup prompt.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -225,6 +231,7 @@ module Google
           @custom_consent_text = args[:custom_consent_text] if args.key?(:custom_consent_text)
           @custom_message = args[:custom_message] if args.key?(:custom_message)
           @name_required = args[:name_required] if args.key?(:name_required)
+          @opt_in_required = args[:opt_in_required] if args.key?(:opt_in_required)
           @title = args[:title] if args.key?(:title)
         end
       end

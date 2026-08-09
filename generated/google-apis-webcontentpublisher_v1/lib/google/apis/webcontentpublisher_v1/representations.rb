@@ -147,6 +147,7 @@ module Google
           property :custom_consent_text, as: 'customConsentText'
           property :custom_message, as: 'customMessage'
           property :name_required, as: 'nameRequired'
+          property :opt_in_required, as: 'optInRequired'
           property :title, as: 'title'
         end
       end
