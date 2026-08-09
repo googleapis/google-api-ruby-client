@@ -2798,7 +2798,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a CustomDimension.
+        # Creates a CustomDimension. Warning: It's not permissible to use this method to
+        # collect data on individual users. In particular, sending user IDs in custom
+        # dimensions violates the [Google Analytics Terms of Service](https://www.google.
+        # com/analytics/terms/).
         # @param [String] parent
         #   Required. Example format: properties/1234
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension] google_analytics_admin_v1alpha_custom_dimension_object
