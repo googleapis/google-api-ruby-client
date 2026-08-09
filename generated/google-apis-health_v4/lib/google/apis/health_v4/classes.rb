@@ -1112,9 +1112,12 @@ module Google
         # Optional. The data source family name to roll up. If empty, data points from
         # all available data sources will be rolled up. Format: `users/me/
         # dataSourceFamilies/`data_source_family`` The supported values are: - `users/me/
-        # dataSourceFamilies/all-sources` - default value - `users/me/dataSourceFamilies/
-        # google-wearables` - tracker devices - `users/me/dataSourceFamilies/google-
-        # sources` - Google first party sources
+        # dataSourceFamilies/all-sources` - Default value. Includes data from all
+        # available data sources. - `users/me/dataSourceFamilies/google-wearables` -
+        # Includes data from Google and Fitbit tracker devices (such as Fitbit trackers
+        # and Pixel Watch). Excludes manually logged data. - `users/me/
+        # dataSourceFamilies/google-sources` - Includes first-party Google data, such as
+        # data from tracker devices, manually logged data, and Health Connect.
         # Corresponds to the JSON property `dataSourceFamily`
         # @return [String]
         attr_accessor :data_source_family
@@ -1622,6 +1625,16 @@ module Google
         # @return [Google::Apis::HealthV4::IrregularRhythmNotification]
         attr_accessor :irregular_rhythm_notification
       
+        # Menstrual period record.
+        # Corresponds to the JSON property `menstrualPeriod`
+        # @return [Google::Apis::HealthV4::MenstrualPeriod]
+        attr_accessor :menstrual_period
+      
+        # Moods record.
+        # Corresponds to the JSON property `moods`
+        # @return [Google::Apis::HealthV4::Moods]
+        attr_accessor :moods
+      
         # Identifier. Data point name, only supported for the subset of identifiable
         # data types. For the majority of the data types, individual data points do not
         # need to be identified and this field would be empty. Format: `users/`user`/
@@ -1649,6 +1662,11 @@ module Google
         # Corresponds to the JSON property `nutritionLog`
         # @return [Google::Apis::HealthV4::NutritionLog]
         attr_accessor :nutrition_log
+      
+        # Ovulation test record.
+        # Corresponds to the JSON property `ovulationTest`
+        # @return [Google::Apis::HealthV4::OvulationTest]
+        attr_accessor :ovulation_test
       
         # Captures the user's instantaneous oxygen saturation percentage (SpO2).
         # Corresponds to the JSON property `oxygenSaturation`
@@ -1687,6 +1705,11 @@ module Google
         # Corresponds to the JSON property `swimLengthsData`
         # @return [Google::Apis::HealthV4::SwimLengthsData]
         attr_accessor :swim_lengths_data
+      
+        # Symptoms logged by the user.
+        # Corresponds to the JSON property `symptoms`
+        # @return [Google::Apis::HealthV4::Symptoms]
+        attr_accessor :symptoms
       
         # Time in heart rate zone record. It's an interval spent in specific heart rate
         # zone.
@@ -1738,8 +1761,11 @@ module Google
           @height = args[:height] if args.key?(:height)
           @hydration_log = args[:hydration_log] if args.key?(:hydration_log)
           @irregular_rhythm_notification = args[:irregular_rhythm_notification] if args.key?(:irregular_rhythm_notification)
+          @menstrual_period = args[:menstrual_period] if args.key?(:menstrual_period)
+          @moods = args[:moods] if args.key?(:moods)
           @name = args[:name] if args.key?(:name)
           @nutrition_log = args[:nutrition_log] if args.key?(:nutrition_log)
+          @ovulation_test = args[:ovulation_test] if args.key?(:ovulation_test)
           @oxygen_saturation = args[:oxygen_saturation] if args.key?(:oxygen_saturation)
           @respiratory_rate_sleep_summary = args[:respiratory_rate_sleep_summary] if args.key?(:respiratory_rate_sleep_summary)
           @run_vo2_max = args[:run_vo2_max] if args.key?(:run_vo2_max)
@@ -1747,6 +1773,7 @@ module Google
           @sleep = args[:sleep] if args.key?(:sleep)
           @steps = args[:steps] if args.key?(:steps)
           @swim_lengths_data = args[:swim_lengths_data] if args.key?(:swim_lengths_data)
+          @symptoms = args[:symptoms] if args.key?(:symptoms)
           @time_in_heart_rate_zone = args[:time_in_heart_rate_zone] if args.key?(:time_in_heart_rate_zone)
           @vo2_max = args[:vo2_max] if args.key?(:vo2_max)
           @weight = args[:weight] if args.key?(:weight)
@@ -2182,7 +2209,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. Exercise display name.
+        # Required. The localized, human-readable name of the exercise. For all exercise
+        # types other than `OTHER`, the system ignores client input and overrides this
+        # field with a generated name based on `exercise_type` (e.g., "Walking" for `
+        # WALKING`). If `exercise_type` is `OTHER`, this field can contain the user's
+        # custom, free-form display name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3377,6 +3408,31 @@ module Google
         end
       end
       
+      # Menstrual period record.
+      class MenstrualPeriod
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time interval of an observed data point.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::HealthV4::ObservationTimeInterval]
+        attr_accessor :interval
+      
+        # Optional. Standard free-form notes captured at manual logging.
+        # Corresponds to the JSON property `notes`
+        # @return [String]
+        attr_accessor :notes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @notes = args[:notes] if args.key?(:notes)
+        end
+      end
+      
       # Summary metrics for an exercise.
       class MetricsSummary
         include Google::Apis::Core::Hashable
@@ -3509,6 +3565,37 @@ module Google
           @avg_stride_length_millimeters = args[:avg_stride_length_millimeters] if args.key?(:avg_stride_length_millimeters)
           @avg_vertical_oscillation_millimeters = args[:avg_vertical_oscillation_millimeters] if args.key?(:avg_vertical_oscillation_millimeters)
           @avg_vertical_ratio = args[:avg_vertical_ratio] if args.key?(:avg_vertical_ratio)
+        end
+      end
+      
+      # Moods record.
+      class Moods
+        include Google::Apis::Core::Hashable
+      
+        # Required. The moods logged.
+        # Corresponds to the JSON property `moods`
+        # @return [Array<String>]
+        attr_accessor :moods
+      
+        # Represents a sample time of an observed data point.
+        # Corresponds to the JSON property `sampleTime`
+        # @return [Google::Apis::HealthV4::ObservationSampleTime]
+        attr_accessor :sample_time
+      
+        # Optional. The valences.
+        # Corresponds to the JSON property `valences`
+        # @return [Array<String>]
+        attr_accessor :valences
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @moods = args[:moods] if args.key?(:moods)
+          @sample_time = args[:sample_time] if args.key?(:sample_time)
+          @valences = args[:valences] if args.key?(:valences)
         end
       end
       
@@ -3878,6 +3965,31 @@ module Google
           @end_utc_offset = args[:end_utc_offset] if args.key?(:end_utc_offset)
           @start_time = args[:start_time] if args.key?(:start_time)
           @start_utc_offset = args[:start_utc_offset] if args.key?(:start_utc_offset)
+        end
+      end
+      
+      # Ovulation test record.
+      class OvulationTest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The result of the ovulation test.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        # Represents a sample time of an observed data point.
+        # Corresponds to the JSON property `sampleTime`
+        # @return [Google::Apis::HealthV4::ObservationSampleTime]
+        attr_accessor :sample_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
+          @sample_time = args[:sample_time] if args.key?(:sample_time)
         end
       end
       
@@ -4492,9 +4604,12 @@ module Google
         # Optional. The data source family name to roll up. If empty, data points from
         # all available data sources will be rolled up. Format: `users/me/
         # dataSourceFamilies/`data_source_family`` The supported values are: - `users/me/
-        # dataSourceFamilies/all-sources` - default value - `users/me/dataSourceFamilies/
-        # google-wearables` - tracker devices - `users/me/dataSourceFamilies/google-
-        # sources` - Google first party sources
+        # dataSourceFamilies/all-sources` - Default value. Includes data from all
+        # available data sources. - `users/me/dataSourceFamilies/google-wearables` -
+        # Includes data from Google and Fitbit tracker devices (such as Fitbit trackers
+        # and Pixel Watch). Excludes manually logged data. - `users/me/
+        # dataSourceFamilies/google-sources` - Includes first-party Google data, such as
+        # data from tracker devices, manually logged data, and Health Connect.
         # Corresponds to the JSON property `dataSourceFamily`
         # @return [String]
         attr_accessor :data_source_family
@@ -4926,8 +5041,7 @@ module Google
         attr_accessor :auto_stride_enabled
         alias_method :auto_stride_enabled?, :auto_stride_enabled
       
-        # Optional. The measurement unit defined in the user's account settings. Updates
-        # to this field are currently not supported.
+        # Optional. The measurement unit defined in the user's account settings.
         # Corresponds to the JSON property `distanceUnit`
         # @return [String]
         attr_accessor :distance_unit
@@ -5060,6 +5174,12 @@ module Google
         # @return [Array<Google::Apis::HealthV4::OutOfBedSegment>]
         attr_accessor :out_of_bed_segments
       
+        # Output only. List of short awake segments (under a set threshold) that are
+        # part of the sleep session. These can overlap with sleep stages.
+        # Corresponds to the JSON property `shortAwakenings`
+        # @return [Array<Google::Apis::HealthV4::SleepStage>]
+        attr_accessor :short_awakenings
+      
         # Optional. List of non-overlapping contiguous sleep stage segments that cover
         # the sleep period.
         # Corresponds to the JSON property `stages`
@@ -5091,6 +5211,7 @@ module Google
           @interval = args[:interval] if args.key?(:interval)
           @metadata = args[:metadata] if args.key?(:metadata)
           @out_of_bed_segments = args[:out_of_bed_segments] if args.key?(:out_of_bed_segments)
+          @short_awakenings = args[:short_awakenings] if args.key?(:short_awakenings)
           @stages = args[:stages] if args.key?(:stages)
           @summary = args[:summary] if args.key?(:summary)
           @type = args[:type] if args.key?(:type)
@@ -5630,6 +5751,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @stroke_count_sum = args[:stroke_count_sum] if args.key?(:stroke_count_sum)
+        end
+      end
+      
+      # Symptoms logged by the user.
+      class Symptoms
+        include Google::Apis::Core::Hashable
+      
+        # Represents a sample time of an observed data point.
+        # Corresponds to the JSON property `sampleTime`
+        # @return [Google::Apis::HealthV4::ObservationSampleTime]
+        attr_accessor :sample_time
+      
+        # Required. List of symptoms experienced.
+        # Corresponds to the JSON property `symptoms`
+        # @return [Array<String>]
+        attr_accessor :symptoms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sample_time = args[:sample_time] if args.key?(:sample_time)
+          @symptoms = args[:symptoms] if args.key?(:symptoms)
         end
       end
       
