@@ -502,6 +502,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JsonResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JwtInsertResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -509,6 +515,18 @@ module Google
       end
       
       class JwtResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JwtValidateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JwtValidateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2146,6 +2164,13 @@ module Google
         end
       end
       
+      class JsonResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json, as: 'json'
+        end
+      end
+      
       class JwtInsertResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2159,6 +2184,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :jwt, as: 'jwt'
+        end
+      end
+      
+      class JwtValidateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_resource, as: 'jsonResource', class: Google::Apis::WalletobjectsV1::JsonResource, decorator: Google::Apis::WalletobjectsV1::JsonResource::Representation
+      
+          property :jwt_resource, as: 'jwtResource', class: Google::Apis::WalletobjectsV1::JwtResource, decorator: Google::Apis::WalletobjectsV1::JwtResource::Representation
+      
+        end
+      end
+      
+      class JwtValidateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
