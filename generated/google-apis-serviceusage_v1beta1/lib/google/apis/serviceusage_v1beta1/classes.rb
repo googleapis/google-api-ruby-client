@@ -1198,6 +1198,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :supported_locations
       
+        # Indicates the traffic type attribution for this quota limit (e.g. agentic).
+        # This is an informational field used to categorize and filter the quota limits.
+        # Corresponds to the JSON property `trafficSource`
+        # @return [String]
+        attr_accessor :traffic_source
+      
         # The limit unit. An example unit would be `1/`project`/`region`` Note that ``
         # project`` and ``region`` are not placeholders in this example; the literal
         # characters ``` and ``` occur in the string.
@@ -1217,6 +1223,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @quota_buckets = args[:quota_buckets] if args.key?(:quota_buckets)
           @supported_locations = args[:supported_locations] if args.key?(:supported_locations)
+          @traffic_source = args[:traffic_source] if args.key?(:traffic_source)
           @unit = args[:unit] if args.key?(:unit)
         end
       end
