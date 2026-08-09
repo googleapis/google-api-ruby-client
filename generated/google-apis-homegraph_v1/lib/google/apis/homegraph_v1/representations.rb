@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CameraEventStreamTrait
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommonEventDataStruct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Component
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +59,12 @@ module Google
       end
       
       class Device
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceBlameStruct
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -71,6 +89,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EveUtilityTrait
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -101,6 +125,30 @@ module Google
       end
       
       class HomeTraitUpdates
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MediaUrlsStruct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MotionEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartnerPresenceSignalTrait
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PersonEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +226,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StructurePresenceStateChangeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StructurePresenceStateChangeReasonStruct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SyncRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,7 +256,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ThermostatFanControlTrait
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TraitData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserBlameStruct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ZoneStruct
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,6 +292,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_id, as: 'agentId'
           property :device_id, as: 'deviceId'
+        end
+      end
+      
+      class CameraEventStreamTrait
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CommonEventDataStruct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :media_urls, as: 'mediaUrls', class: Google::Apis::HomegraphV1::MediaUrlsStruct, decorator: Google::Apis::HomegraphV1::MediaUrlsStruct::Representation
+      
+          property :session_id, as: 'sessionId'
+          property :track_id, as: 'trackId'
         end
       end
       
@@ -259,6 +353,13 @@ module Google
         end
       end
       
+      class DeviceBlameStruct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blame_type, as: 'blameType'
+        end
+      end
+      
       class DeviceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -288,6 +389,35 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EveUtilityTrait
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accepted_command_list, as: 'acceptedCommandList'
+          property :accumulated_control_point, :numeric_string => true, as: 'accumulatedControlPoint'
+          property :air_pressure, as: 'airPressure'
+          property :altitude, as: 'altitude'
+          property :child_lock, as: 'childLock'
+          property :current, as: 'current'
+          property :get_config, :base64 => true, as: 'getConfig'
+          property :hold_position, as: 'holdPosition'
+          property :last_event_time, :numeric_string => true, as: 'lastEventTime'
+          property :logging_control_point, :base64 => true, as: 'loggingControlPoint'
+          property :logging_data, :base64 => true, as: 'loggingData'
+          property :logging_metadata, :base64 => true, as: 'loggingMetadata'
+          property :logging_time, :base64 => true, as: 'loggingTime'
+          property :motion_sensitivity, as: 'motionSensitivity'
+          property :obstruction_detected, as: 'obstructionDetected'
+          property :open_count, :numeric_string => true, as: 'openCount'
+          property :rloc16, as: 'rloc16'
+          property :set_config, :base64 => true, as: 'setConfig'
+          property :status_fault, as: 'statusFault'
+          property :voltage, as: 'voltage'
+          property :watt, as: 'watt'
+          property :watt_accumulated, as: 'wattAccumulated'
+          property :weather_trend, as: 'weatherTrend'
         end
       end
       
@@ -332,6 +462,44 @@ module Google
           collection :components, as: 'components', class: Google::Apis::HomegraphV1::ComponentTraitUpdates, decorator: Google::Apis::HomegraphV1::ComponentTraitUpdates::Representation
       
           property :device_id, as: 'deviceId'
+        end
+      end
+      
+      class MediaUrlsStruct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dash_manifest_url, as: 'dashManifestUrl'
+          property :hls_master_playlist_url, as: 'hlsMasterPlaylistUrl'
+          property :preview_url, as: 'previewUrl'
+          property :thumbnail_url, as: 'thumbnailUrl'
+        end
+      end
+      
+      class MotionEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_event_data, as: 'commonEventData', class: Google::Apis::HomegraphV1::CommonEventDataStruct, decorator: Google::Apis::HomegraphV1::CommonEventDataStruct::Representation
+      
+          collection :zones, as: 'zones', class: Google::Apis::HomegraphV1::ZoneStruct, decorator: Google::Apis::HomegraphV1::ZoneStruct::Representation
+      
+          property :zones_is_empty, as: 'zonesIsEmpty'
+        end
+      end
+      
+      class PartnerPresenceSignalTrait
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class PersonEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :common_event_data, as: 'commonEventData', class: Google::Apis::HomegraphV1::CommonEventDataStruct, decorator: Google::Apis::HomegraphV1::CommonEventDataStruct::Representation
+      
+          collection :zones, as: 'zones', class: Google::Apis::HomegraphV1::ZoneStruct, decorator: Google::Apis::HomegraphV1::ZoneStruct::Representation
+      
+          property :zones_is_empty, as: 'zonesIsEmpty'
         end
       end
       
@@ -445,6 +613,25 @@ module Google
         end
       end
       
+      class StructurePresenceStateChangeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :presence_state, as: 'presenceState'
+          property :reason, as: 'reason', class: Google::Apis::HomegraphV1::StructurePresenceStateChangeReasonStruct, decorator: Google::Apis::HomegraphV1::StructurePresenceStateChangeReasonStruct::Representation
+      
+        end
+      end
+      
+      class StructurePresenceStateChangeReasonStruct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_blame, as: 'deviceBlame', class: Google::Apis::HomegraphV1::DeviceBlameStruct, decorator: Google::Apis::HomegraphV1::DeviceBlameStruct::Representation
+      
+          property :user_blame, as: 'userBlame', class: Google::Apis::HomegraphV1::UserBlameStruct, decorator: Google::Apis::HomegraphV1::UserBlameStruct::Representation
+      
+        end
+      end
+      
       class SyncRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -471,12 +658,37 @@ module Google
         end
       end
       
+      class ThermostatFanControlTrait
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :timer_duration, :numeric_string => true, as: 'timerDuration'
+          property :timer_end, :numeric_string => true, as: 'timerEnd'
+          property :timer_speed, as: 'timerSpeed'
+        end
+      end
+      
       class TraitData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :commit_time, as: 'commitTime'
           property :provider_version_time, as: 'providerVersionTime'
           hash :trait, as: 'trait'
+        end
+      end
+      
+      class UserBlameStruct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blame_type, as: 'blameType'
+          property :user_email, as: 'userEmail'
+        end
+      end
+      
+      class ZoneStruct
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          property :zone_id, :numeric_string => true, as: 'zoneId'
         end
       end
     end
