@@ -995,6 +995,10 @@ module Google
         # @param [String] request_options_client_display_language_code
         #   The BCP-47 language code, such as "pt" or "en". It represents the user's
         #   preferred Display Language.
+        # @param [String] request_options_country_code
+        #   Optional. Specifies the country/region where the query originated, as a
+        #   lowercase ISO 3166-1 alpha-2 region code (using 'uk' instead of 'gb' for the
+        #   United Kingdom).
         # @param [Boolean] request_options_debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field. Otherwise,
         #   ignore this field.
@@ -1033,12 +1037,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_query_sources(page_token: nil, request_options_client_display_language_code: nil, request_options_debug_options_enable_debugging: nil, request_options_language_code: nil, request_options_search_application_id: nil, request_options_time_zone: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_query_sources(page_token: nil, request_options_client_display_language_code: nil, request_options_country_code: nil, request_options_debug_options_enable_debugging: nil, request_options_language_code: nil, request_options_search_application_id: nil, request_options_time_zone: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/query/sources', options)
           command.response_representation = Google::Apis::CloudsearchV1::ListQuerySourcesResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::ListQuerySourcesResponse
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['requestOptions.clientDisplayLanguageCode'] = request_options_client_display_language_code unless request_options_client_display_language_code.nil?
+          command.query['requestOptions.countryCode'] = request_options_country_code unless request_options_country_code.nil?
           command.query['requestOptions.debugOptions.enableDebugging'] = request_options_debug_options_enable_debugging unless request_options_debug_options_enable_debugging.nil?
           command.query['requestOptions.languageCode'] = request_options_language_code unless request_options_language_code.nil?
           command.query['requestOptions.searchApplicationId'] = request_options_search_application_id unless request_options_search_application_id.nil?

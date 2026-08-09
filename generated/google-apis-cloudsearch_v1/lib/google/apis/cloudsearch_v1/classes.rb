@@ -6431,6 +6431,13 @@ module Google
         # @return [String]
         attr_accessor :client_display_language_code
       
+        # Optional. Specifies the country/region where the query originated, as a
+        # lowercase ISO 3166-1 alpha-2 region code (using 'uk' instead of 'gb' for the
+        # United Kingdom).
+        # Corresponds to the JSON property `countryCode`
+        # @return [String]
+        attr_accessor :country_code
+      
         # Shared request debug options for all cloudsearch RPC methods.
         # Corresponds to the JSON property `debugOptions`
         # @return [Google::Apis::CloudsearchV1::DebugOptions]
@@ -6470,6 +6477,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @client_display_language_code = args[:client_display_language_code] if args.key?(:client_display_language_code)
+          @country_code = args[:country_code] if args.key?(:country_code)
           @debug_options = args[:debug_options] if args.key?(:debug_options)
           @language_code = args[:language_code] if args.key?(:language_code)
           @search_application_id = args[:search_application_id] if args.key?(:search_application_id)
