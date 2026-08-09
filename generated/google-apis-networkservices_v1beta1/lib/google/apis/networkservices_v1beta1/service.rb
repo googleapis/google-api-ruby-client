@@ -137,6 +137,194 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new AgentConnectivityTemplate in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource of the AgentConnectivityTemplate. Must be in the
+        #   format `projects/*/locations/*`.
+        # @param [Google::Apis::NetworkservicesV1beta1::AgentConnectivityTemplate] agent_connectivity_template_object
+        # @param [String] agent_connectivity_template_id
+        #   Required. Short name of the AgentConnectivityTemplate resource to be created.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_agent_connectivity_template(parent, agent_connectivity_template_object = nil, agent_connectivity_template_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/agentConnectivityTemplates', options)
+          command.request_representation = Google::Apis::NetworkservicesV1beta1::AgentConnectivityTemplate::Representation
+          command.request_object = agent_connectivity_template_object
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['agentConnectivityTemplateId'] = agent_connectivity_template_id unless agent_connectivity_template_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single AgentConnectivityTemplate.
+        # @param [String] name
+        #   Required. A name of the AgentConnectivityTemplate to delete. Must be in the
+        #   format `projects/*/locations/*/agentConnectivityTemplates/*`.
+        # @param [String] etag
+        #   Optional. The etag of the AgentConnectivityTemplate to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_agent_connectivity_template(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single AgentConnectivityTemplate.
+        # @param [String] name
+        #   Required. A name of the AgentConnectivityTemplate to get. Must be in the
+        #   format `projects/*/locations/*/agentConnectivityTemplates/*`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::AgentConnectivityTemplate] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::AgentConnectivityTemplate]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_agent_connectivity_template(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::AgentConnectivityTemplate::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::AgentConnectivityTemplate
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists AgentConnectivityTemplates in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location from which the AgentConnectivityTemplates
+        #   should be listed, specified in the format `projects/*/locations/*`.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of AgentConnectivityTemplates to return per call.
+        # @param [String] page_token
+        #   Optional. The value returned by the last `
+        #   ListAgentConnectivityTemplatesResponse` Indicates that this is a continuation
+        #   of a prior `ListAgentConnectivityTemplates` call, and that the system should
+        #   return the next page of data.
+        # @param [Boolean] return_partial_success
+        #   Optional. If true, allow partial responses for multi-regional Aggregated List
+        #   requests. Otherwise if one of the locations is down or unreachable, the
+        #   Aggregated List request will fail.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::ListAgentConnectivityTemplatesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::ListAgentConnectivityTemplatesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_agent_connectivity_templates(parent, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/agentConnectivityTemplates', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::ListAgentConnectivityTemplatesResponse::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::ListAgentConnectivityTemplatesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single AgentConnectivityTemplate.
+        # @param [String] name
+        #   Identifier. Name of the AgentConnectivityTemplate resource. It matches pattern
+        #   `projects/*/locations/*/agentConnectivityTemplates/`.
+        # @param [Google::Apis::NetworkservicesV1beta1::AgentConnectivityTemplate] agent_connectivity_template_object
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   AgentConnectivityTemplate resource by the update. The fields specified in the
+        #   update_mask are relative to the resource, not the full request. A field will
+        #   be overwritten if it is in the mask. If the user does not provide a mask then
+        #   all fields will be overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_agent_connectivity_template(name, agent_connectivity_template_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkservicesV1beta1::AgentConnectivityTemplate::Representation
+          command.request_object = agent_connectivity_template_object
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new AgentGateway in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the AgentGateway. Must be in the format `
