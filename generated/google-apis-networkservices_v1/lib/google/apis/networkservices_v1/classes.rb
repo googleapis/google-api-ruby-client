@@ -22,9 +22,90 @@ module Google
   module Apis
     module NetworkservicesV1
       
+      # AgentConnectivityTemplate represents a reusable network configuration.
+      class AgentConnectivityTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The path of the access. Maps roughly to ingress/egress,
+        # though we keep CLIENT_TO_AGENT and AGENT_TO_ANYWHERE as carryovers from Agent
+        # Gateway's original resource model. The path is immutable once set. Exactly one
+        # path can be set.
+        # Corresponds to the JSON property `accessPath`
+        # @return [String]
+        attr_accessor :access_path
+      
+        # Optional. The types of network access provided to the gateway. Both PUBLIC and
+        # PRIVATE can be configured.
+        # Corresponds to the JSON property `accessTypes`
+        # @return [Array<String>]
+        attr_accessor :access_types
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Configuration for egress network traffic.
+        # Corresponds to the JSON property `egressNetworkConfig`
+        # @return [Google::Apis::NetworkservicesV1::EgressNetworkConfig]
+        attr_accessor :egress_network_config
+      
+        # Optional. Etag of the resource. If this is provided, it must match the server'
+        # s etag. If the provided etag does not match the server's etag, the request
+        # will fail with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Set of label tags associated with the AgentConnectivityTemplate
+        # resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Name of the AgentConnectivityTemplate resource. It matches pattern
+        # `projects/*/locations/*/agentConnectivityTemplates/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_path = args[:access_path] if args.key?(:access_path)
+          @access_types = args[:access_types] if args.key?(:access_types)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @egress_network_config = args[:egress_network_config] if args.key?(:egress_network_config)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # AgentGateway represents the agent gateway resource.
       class AgentGateway
         include Google::Apis::Core::Hashable
+      
+        # Optional. The resource name of the AgentConnectivityTemplate. Format: projects/
+        # `project`/locations/`location`/agentConnectivityTemplates/`template`
+        # Corresponds to the JSON property `agentConnectivityTemplate`
+        # @return [String]
+        attr_accessor :agent_connectivity_template
       
         # AgentGatewayOutputCard contains informational output-only fields
         # Corresponds to the JSON property `agentGatewayCard`
@@ -100,6 +181,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_connectivity_template = args[:agent_connectivity_template] if args.key?(:agent_connectivity_template)
           @agent_gateway_card = args[:agent_gateway_card] if args.key?(:agent_gateway_card)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
@@ -603,6 +685,71 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # DNS Peering configuration.
+      class DnsPeeringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The domain to peer.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Optional. The target network resource name for DNS peering. Format: projects/`
+        # project`/global/networks/`network_id`
+        # Corresponds to the JSON property `targetNetwork`
+        # @return [String]
+        attr_accessor :target_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @target_network = args[:target_network] if args.key?(:target_network)
+        end
+      end
+      
+      # 
+      class EgressNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # DNS Peering configuration.
+        # Corresponds to the JSON property `dnsPeeringConfig`
+        # @return [Google::Apis::NetworkservicesV1::DnsPeeringConfig]
+        attr_accessor :dns_peering_config
+      
+        # Optional. The network attachment resource name. Format: projects/`project`/
+        # regions/`region`/networkAttachments/`network_attachment_id`
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        # Optional. Deprecated: Use tls_config instead. The trust config resource name.
+        # Format: projects/`project`/locations/`location`/trustConfigs/`trust_config`
+        # Corresponds to the JSON property `trustConfig`
+        # @return [String]
+        attr_accessor :trust_config
+      
+        # Optional. The VPC egress setting.
+        # Corresponds to the JSON property `vpcEgress`
+        # @return [String]
+        attr_accessor :vpc_egress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_peering_config = args[:dns_peering_config] if args.key?(:dns_peering_config)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
+          @vpc_egress = args[:vpc_egress] if args.key?(:vpc_egress)
         end
       end
       
@@ -2946,6 +3093,41 @@ module Google
         end
       end
       
+      # Response returned by the ListAgentConnectivityTemplates method.
+      class ListAgentConnectivityTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of AgentConnectivityTemplate resources.
+        # Corresponds to the JSON property `agentConnectivityTemplates`
+        # @return [Array<Google::Apis::NetworkservicesV1::AgentConnectivityTemplate>]
+        attr_accessor :agent_connectivity_templates
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Unreachable resources. Populated when the request attempts to
+        # list all resources across all supported locations, while some locations are
+        # temporarily unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_connectivity_templates = args[:agent_connectivity_templates] if args.key?(:agent_connectivity_templates)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response returned by the ListAgentGateways method.
       class ListAgentGatewaysResponse
         include Google::Apis::Core::Hashable
@@ -5202,21 +5384,22 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Non-empty default. Specifies the lowest level of the plugin logs that are
-        # exported to Cloud Logging. This setting relates to the logs generated by using
-        # logging statements in your Wasm code. This field is can be set only if logging
-        # is enabled for the plugin. If the field is not provided when logging is
-        # enabled, it is set to `INFO` by default.
+        # Optional. Non-empty default. Specifies the lowest level of the plugin logs
+        # that are exported to Cloud Logging. This setting relates to the logs generated
+        # by using logging statements in your Wasm code. This field is can be set only
+        # if logging is enabled for the plugin. If the field is not provided when
+        # logging is enabled, it is set to `INFO` by default.
         # Corresponds to the JSON property `minLogLevel`
         # @return [String]
         attr_accessor :min_log_level
       
-        # Non-empty default. Configures the sampling rate of activity logs, where `1.0`
-        # means all logged activity is reported and `0.0` means no activity is reported.
-        # A floating point value between `0.0` and `1.0` indicates that a percentage of
-        # log messages is stored. The default value when logging is enabled is `1.0`.
-        # The value of the field must be between `0` and `1` (inclusive). This field can
-        # be specified only if logging is enabled for this plugin.
+        # Optional. Non-empty default. Configures the sampling rate of activity logs,
+        # where `1.0` means all logged activity is reported and `0.0` means no activity
+        # is reported. A floating point value between `0.0` and `1.0` indicates that a
+        # percentage of log messages is stored. The default value when logging is
+        # enabled is `1.0`. The value of the field must be between `0` and `1` (
+        # inclusive). This field can be specified only if logging is enabled for this
+        # plugin.
         # Corresponds to the JSON property `sampleRate`
         # @return [Float]
         attr_accessor :sample_rate
