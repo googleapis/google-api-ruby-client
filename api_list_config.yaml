@@ -9,5 +9,4 @@ include:
 exclude:
   - discoveryengine.v1
   - discoveryengine.v1alpha
-  - discoveryengine.v1beta
 pause: []
