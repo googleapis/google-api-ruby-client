@@ -13,6 +13,7 @@
 # limitations under the License.
 
 require "uri"
+require "psych"
 
 desc "Run standard Google client generation."
 
@@ -75,15 +76,36 @@ def run
 end
 
 def list_apis_versions
-  return requested.map { |request| request.split(":") } unless all
+  return requested.map { |request| request.split(":") }.reject do |(name, version)|
+    excluded_api?(name, version)
+  end unless all
+
   path = git_cache.find("https://github.com/googleapis/discovery-artifact-manager.git",
                         path: "discoveries/index.json", update: true)
   apis_versions = []
-  JSON.parse(File.read path)["items"].each do |item|
+  JSON.parse(File.read(path))["items"].each do |item|
+    next if excluded_api?(item['name'], item['version'])
     next unless item["preferred"] || gem_exists?(item)
     apis_versions << [item["name"], item["version"]]
   end
   apis_versions.shuffle
+end
+
+def excluded_api? name, version
+  excluded_apis.include?("#{name}.#{version}") || excluded_apis.include?("#{name}:#{version}")
+end
+
+def excluded_apis
+  @excluded_apis ||= begin
+    config_path = "#{context_directory}/api_list_config.yaml"
+    return [] unless File.file?(config_path)
+    list = Psych.load_file(config_path)["exclude"] || []
+    puts "Loaded exclusion list: #{list.join(', ')}" if list.any?
+    list
+  rescue StandardError => e
+    puts "Failed to load exclusion list from #{config_path}: #{e.message}"
+    []
+  end
 end
 
 def gem_exists? item
