@@ -5,8 +5,8 @@ include:
   - name: youtubePartner
     version: v1
     discovery_rest_url: https://content.googleapis.com/discovery/v1/apis/youtubePartner/v1/rest
-# 📝 Exclusions logged and tracked by b/542740217
 exclude:
+  # 📝 Exclusions logged and tracked by b/542740217
   - discoveryengine.v1
   - discoveryengine.v1alpha
 pause: []
