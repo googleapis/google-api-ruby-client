@@ -99,7 +99,9 @@ def excluded_apis
   @excluded_apis ||= begin
     config_path = "#{context_directory}/api_list_config.yaml"
     return [] unless File.file?(config_path)
-    Psych.load_file(config_path)["exclude"] || []
+    list = Psych.load_file(config_path)["exclude"] || []
+    logger.info("Loaded exclusion list: #{list.join(', ')}")
+    list
   rescue StandardError => e
     logger.error("Failed to load exclusion list from #{config_path}: #{e.message}")
     []
