@@ -5152,6 +5152,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -14342,6 +14348,8 @@ module Google
       
           property :rank_signals, as: 'rankSignals', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals::Representation
       
+          property :retrieval_signals, as: 'retrievalSignals', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals::Representation
+      
         end
       end
       
@@ -14367,6 +14375,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :retrieval_sources, as: 'retrievalSources'
+          property :semantic_relevance_score, as: 'semanticRelevanceScore'
         end
       end
       
