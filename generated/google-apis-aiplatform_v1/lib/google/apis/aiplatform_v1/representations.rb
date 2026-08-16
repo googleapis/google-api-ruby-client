@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsAudioControlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,6 +52,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfigFrameSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,7 +76,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsVideoTransform
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoRequestAudio
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoRequestImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoRequestVideo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8840,6 +8876,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :anchor_last_frame, as: 'anchorLastFrame'
+          property :audio_control, as: 'audioControl', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsAudioControlConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsAudioControlConfig::Representation
+      
           property :cfg_scale, as: 'cfgScale'
           property :codec, as: 'codec'
           property :color_alignment, as: 'colorAlignment', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsColorAlignmentConfig::Representation
@@ -8855,6 +8893,8 @@ module Google
           property :omni_rewriter, as: 'omniRewriter', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOmniRewriterConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOmniRewriterConfig::Representation
       
           property :original_request_json, as: 'originalRequestJson'
+          property :outpaint_config, as: 'outpaintConfig', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig::Representation
+      
           property :prompt_inputs, as: 'promptInputs', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionPromptInputs, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionPromptInputs::Representation
       
           property :request_origin_tag, as: 'requestOriginTag'
@@ -8865,8 +8905,19 @@ module Google
           property :spatial_alignment, as: 'spatialAlignment', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig::Representation
       
           property :truncate_input_video, as: 'truncateInputVideo'
+          property :video_transform, as: 'videoTransform', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsVideoTransform, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsVideoTransform::Representation
+      
           property :video_transform_mask_gcs_uri, as: 'videoTransformMaskGcsUri'
           property :video_transform_strength, as: 'videoTransformStrength'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsAudioControlConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_audio, as: 'targetAudio', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestAudio, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestAudio::Representation
+      
+          property :use_target_audio_from_video, as: 'useTargetAudioFromVideo'
         end
       end
       
@@ -8894,6 +8945,24 @@ module Google
         end
       end
       
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :input_frames, as: 'inputFrames', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfigFrameSource, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfigFrameSource::Representation
+      
+          property :output_spec, as: 'outputSpec'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfigFrameSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :glob_pattern, as: 'globPattern'
+          property :horizontal_offset, as: 'horizontalOffset'
+          property :vertical_offset, as: 'verticalOffset'
+        end
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8908,7 +8977,38 @@ module Google
         end
       end
       
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsVideoTransform
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :initialization_video, as: 'initializationVideo', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestVideo, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestVideo::Representation
+      
+          property :mask, as: 'mask', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestVideo, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestVideo::Representation
+      
+          property :noise_strength, as: 'noiseStrength'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoRequestAudio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_id, as: 'blobId'
+          property :bytes_base64_encoded, as: 'bytesBase64Encoded'
+          property :gcs_uri, as: 'gcsUri'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoRequestImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :blob_id, as: 'blobId'
+          property :bytes_base64_encoded, as: 'bytesBase64Encoded'
+          property :gcs_uri, as: 'gcsUri'
+          property :mime_type, as: 'mimeType'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoRequestVideo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :blob_id, as: 'blobId'

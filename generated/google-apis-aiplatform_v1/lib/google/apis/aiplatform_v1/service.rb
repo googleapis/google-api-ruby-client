@@ -8474,7 +8474,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists agents in a location.
+        # Lists the agents in a location that belong to the caller. An agent belongs to
+        # the end user recorded as its owner when it was created, so the response holds
+        # that caller's agents and no others. It is empty for a caller that is not an
+        # end user, and an agent with no recorded owner is listed for nobody.
         # @param [String] parent
         #   Required. The resource name of the location to list agents from. Format: `
         #   projects/`project`/locations/`location``.
