@@ -33,6 +33,11 @@ module Google
         attr_accessor :anchor_last_frame
         alias_method :anchor_last_frame?, :anchor_last_frame
       
+        # Configuration for audio control.
+        # Corresponds to the JSON property `audioControl`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsAudioControlConfig]
+        attr_accessor :audio_control
+      
         # CFG scale for video-transform, perf-generation, a2v, video-textures models.
         # Corresponds to the JSON property `cfgScale`
         # @return [Float]
@@ -93,6 +98,11 @@ module Google
         # @return [String]
         attr_accessor :original_request_json
       
+        # Config for Outpainting task.
+        # Corresponds to the JSON property `outpaintConfig`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig]
+        attr_accessor :outpaint_config
+      
         # "Direct" prompting for Experimental Video Generation. These will be sent
         # directly to the LDM without being rewritten.
         # Corresponds to the JSON property `promptInputs`
@@ -131,6 +141,11 @@ module Google
         attr_accessor :truncate_input_video
         alias_method :truncate_input_video?, :truncate_input_video
       
+        # Video transform configuration for omni editing models.
+        # Corresponds to the JSON property `videoTransform`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsVideoTransform]
+        attr_accessor :video_transform
+      
         # GCS URI of the grayscale video mask for Differential Diffusion. Maps to
         # sdedit_video_tmax_scale_map
         # Corresponds to the JSON property `videoTransformMaskGcsUri`
@@ -149,6 +164,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @anchor_last_frame = args[:anchor_last_frame] if args.key?(:anchor_last_frame)
+          @audio_control = args[:audio_control] if args.key?(:audio_control)
           @cfg_scale = args[:cfg_scale] if args.key?(:cfg_scale)
           @codec = args[:codec] if args.key?(:codec)
           @color_alignment = args[:color_alignment] if args.key?(:color_alignment)
@@ -160,14 +176,44 @@ module Google
           @num_diffusion_steps = args[:num_diffusion_steps] if args.key?(:num_diffusion_steps)
           @omni_rewriter = args[:omni_rewriter] if args.key?(:omni_rewriter)
           @original_request_json = args[:original_request_json] if args.key?(:original_request_json)
+          @outpaint_config = args[:outpaint_config] if args.key?(:outpaint_config)
           @prompt_inputs = args[:prompt_inputs] if args.key?(:prompt_inputs)
           @request_origin_tag = args[:request_origin_tag] if args.key?(:request_origin_tag)
           @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
           @seamless = args[:seamless] if args.key?(:seamless)
           @spatial_alignment = args[:spatial_alignment] if args.key?(:spatial_alignment)
           @truncate_input_video = args[:truncate_input_video] if args.key?(:truncate_input_video)
+          @video_transform = args[:video_transform] if args.key?(:video_transform)
           @video_transform_mask_gcs_uri = args[:video_transform_mask_gcs_uri] if args.key?(:video_transform_mask_gcs_uri)
           @video_transform_strength = args[:video_transform_strength] if args.key?(:video_transform_strength)
+        end
+      end
+      
+      # Configuration for audio control.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsAudioControlConfig
+        include Google::Apis::Core::Hashable
+      
+        # The raw bytes or Cloud Storage URI for an audio input.
+        # Corresponds to the JSON property `targetAudio`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestAudio]
+        attr_accessor :target_audio
+      
+        # Optional. When true, uses the audio track from the input video as the target
+        # audio instead of regenerating it. Mutually exclusive with `target_audio` below.
+        # Requires the input to be a video file, not an image sequence.
+        # Corresponds to the JSON property `useTargetAudioFromVideo`
+        # @return [Boolean]
+        attr_accessor :use_target_audio_from_video
+        alias_method :use_target_audio_from_video?, :use_target_audio_from_video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_audio = args[:target_audio] if args.key?(:target_audio)
+          @use_target_audio_from_video = args[:use_target_audio_from_video] if args.key?(:use_target_audio_from_video)
         end
       end
       
@@ -241,6 +287,67 @@ module Google
         end
       end
       
+      # Config for Outpainting task.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig
+        include Google::Apis::Core::Hashable
+      
+        # The input frames for outpainting. Required.
+        # Corresponds to the JSON property `inputFrames`
+        # @return [Array<Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfigFrameSource>]
+        attr_accessor :input_frames
+      
+        # The output specification (defines target resolution and frame count). Required.
+        # Corresponds to the JSON property `outputSpec`
+        # @return [String]
+        attr_accessor :output_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_frames = args[:input_frames] if args.key?(:input_frames)
+          @output_spec = args[:output_spec] if args.key?(:output_spec)
+        end
+      end
+      
+      # The input frame(s). It can be a full path or a glob pattern to images. The
+      # proto can be extended in the future for alternative ways to specify source of
+      # frames.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfigFrameSource
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `globPattern`
+        # @return [String]
+        attr_accessor :glob_pattern
+      
+        # Horizontal offset in pixels to shift the input frame from center. Positive
+        # values shift right, negative values shift left. Optional. Default is 0 (
+        # centered).
+        # Corresponds to the JSON property `horizontalOffset`
+        # @return [Fixnum]
+        attr_accessor :horizontal_offset
+      
+        # Vertical offset in pixels to shift the input frame from center. Positive
+        # values shift down, negative values shift up. Optional. Default is 0 (centered).
+        # Corresponds to the JSON property `verticalOffset`
+        # @return [Fixnum]
+        attr_accessor :vertical_offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @glob_pattern = args[:glob_pattern] if args.key?(:glob_pattern)
+          @horizontal_offset = args[:horizontal_offset] if args.key?(:horizontal_offset)
+          @vertical_offset = args[:vertical_offset] if args.key?(:vertical_offset)
+        end
+      end
+      
       # Configuration for spatial alignment.
       class CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig
         include Google::Apis::Core::Hashable
@@ -281,6 +388,76 @@ module Google
         end
       end
       
+      # 
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsVideoTransform
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Input for video transform (sdedit, diffdiff). Note the input video
+        # from the main GenerateVideoRequest will be used as the conditioning.
+        # Corresponds to the JSON property `initializationVideo`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestVideo]
+        attr_accessor :initialization_video
+      
+        # Optional. Mask for video transform (diffdiff).
+        # Corresponds to the JSON property `mask`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestVideo]
+        attr_accessor :mask
+      
+        # Optional. Noise strength for video transform.
+        # Corresponds to the JSON property `noiseStrength`
+        # @return [Float]
+        attr_accessor :noise_strength
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @initialization_video = args[:initialization_video] if args.key?(:initialization_video)
+          @mask = args[:mask] if args.key?(:mask)
+          @noise_strength = args[:noise_strength] if args.key?(:noise_strength)
+        end
+      end
+      
+      # The raw bytes or Cloud Storage URI for an audio input.
+      class CloudAiLargeModelsVisionGenerateVideoRequestAudio
+        include Google::Apis::Core::Hashable
+      
+        # Blob ID of the audio. This is used for storing the large audio in the request.
+        # Corresponds to the JSON property `blobId`
+        # @return [String]
+        attr_accessor :blob_id
+      
+        # Base64 encoded bytes string representing the audio.
+        # Corresponds to the JSON property `bytesBase64Encoded`
+        # @return [String]
+        attr_accessor :bytes_base64_encoded
+      
+        # 
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # The MIME type of the content of the audio. Only audio in below listed MIME
+        # types are supported. - audio/wav - audio/mp3 - audio/mpeg
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @bytes_base64_encoded = args[:bytes_base64_encoded] if args.key?(:bytes_base64_encoded)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
       # The image bytes or Cloud Storage URI to make the prediction on.
       class CloudAiLargeModelsVisionGenerateVideoRequestImage
         include Google::Apis::Core::Hashable
@@ -302,6 +479,44 @@ module Google
       
         # The MIME type of the content of the image. Only the images in below listed
         # MIME types are supported. - image/jpeg - image/png
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blob_id = args[:blob_id] if args.key?(:blob_id)
+          @bytes_base64_encoded = args[:bytes_base64_encoded] if args.key?(:bytes_base64_encoded)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
+      # 
+      class CloudAiLargeModelsVisionGenerateVideoRequestVideo
+        include Google::Apis::Core::Hashable
+      
+        # Blob ID of the video. This is used for storing large videos in the request.
+        # Corresponds to the JSON property `blobId`
+        # @return [String]
+        attr_accessor :blob_id
+      
+        # Base64 encoded bytes string representing the video.
+        # Corresponds to the JSON property `bytesBase64Encoded`
+        # @return [String]
+        attr_accessor :bytes_base64_encoded
+      
+        # 
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # The MIME type of the content of the video. Only the video in the below listed
+        # MIME types are supported. - video/mp4
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -2132,13 +2347,13 @@ module Google
       end
       
       # The transcription of an audio part. For multi-speaker audio, each speaker
-      # segment is a separate Part with its own AudioTranscription carrying the
-      # speaker_label.
+      # segment is a separate `Part` with its own `AudioTranscription` carrying the `
+      # speaker_label`.
       class GoogleCloudAiplatformV1AudioTranscription
         include Google::Apis::Core::Hashable
       
-        # Optional. A label identifying the speaker of this audio segment (e.g. "spk_1",
-        # "spk_2"). Present when diarization is set.
+        # Optional. A label identifying the speaker of this audio segment (e.g. `spk_1`,
+        # `spk_2`). Present when `diarization` is set.
         # Corresponds to the JSON property `speakerLabel`
         # @return [String]
         attr_accessor :speaker_label
@@ -2148,8 +2363,8 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # Optional. Detailed word-level transcriptions and timing details. Present when
-        # word_timestamp is set.
+        # Optional. Detailed word-level transcriptions and timing details. Present when `
+        # word_timestamp` is set.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscriptionWordInfo>]
         attr_accessor :words
@@ -2170,7 +2385,8 @@ module Google
       class GoogleCloudAiplatformV1AudioTranscriptionConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. A list of phrases to bias the ASR model towards.
+        # Optional. Deprecated: Use `custom_vocabulary` instead. A list of phrases to
+        # bias the speech recognition model towards.
         # Corresponds to the JSON property `adaptationPhrases`
         # @return [Array<String>]
         attr_accessor :adaptation_phrases
@@ -29713,8 +29929,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The transcription of an audio part. For multi-speaker audio, each speaker
-        # segment is a separate Part with its own AudioTranscription carrying the
-        # speaker_label.
+        # segment is a separate `Part` with its own `AudioTranscription` carrying the `
+        # speaker_label`.
         # Corresponds to the JSON property `audioTranscription`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscription]
         attr_accessor :audio_transcription
@@ -32610,7 +32826,7 @@ module Google
         end
       end
       
-      # Request message for ReasoningEngineExecutionService.Query.
+      # Request message for ReasoningEngineExecutionService.QueryReasoningEngine.
       class GoogleCloudAiplatformV1QueryReasoningEngineRequest
         include Google::Apis::Core::Hashable
       
@@ -32637,7 +32853,7 @@ module Google
         end
       end
       
-      # Response message for ReasoningEngineExecutionService.Query
+      # Response message for ReasoningEngineExecutionService.QueryReasoningEngine.
       class GoogleCloudAiplatformV1QueryReasoningEngineResponse
         include Google::Apis::Core::Hashable
       
@@ -35630,7 +35846,8 @@ module Google
         attr_accessor :reservation_affinity_type
       
         # Optional. Corresponds to the label values of a reservation resource. This must
-        # be the full resource name of the reservation or reservation block.
+        # be the resource name of the reservation, reservation block, or reservation sub-
+        # block.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -46167,7 +46384,7 @@ module Google
         end
       end
       
-      # Request message for ReasoningEngineExecutionService.StreamQuery.
+      # Request message for ReasoningEngineExecutionService.StreamQueryReasoningEngine.
       class GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest
         include Google::Apis::Core::Hashable
       
