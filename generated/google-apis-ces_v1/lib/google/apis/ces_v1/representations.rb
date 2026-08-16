@@ -1894,8 +1894,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :messages, as: 'messages', class: Google::Apis::CesV1::Message, decorator: Google::Apis::CesV1::Message::Representation
       
+          property :resolved_developer_instruction, as: 'resolvedDeveloperInstruction'
           property :root_span, as: 'rootSpan', class: Google::Apis::CesV1::Span, decorator: Google::Apis::CesV1::Span::Representation
       
+          hash :template_attributes, as: 'templateAttributes'
           property :user_intended_text, as: 'userIntendedText'
         end
       end

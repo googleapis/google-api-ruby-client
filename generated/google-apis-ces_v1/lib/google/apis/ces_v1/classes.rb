@@ -2164,10 +2164,24 @@ module Google
         # @return [Array<Google::Apis::CesV1::Message>]
         attr_accessor :messages
       
+        # Output only. The full dynamically resolved developer instruction generated
+        # from templates. This field is only populated on-demand when requested during
+        # history retrieval. It is not persisted.
+        # Corresponds to the JSON property `resolvedDeveloperInstruction`
+        # @return [String]
+        attr_accessor :resolved_developer_instruction
+      
         # A span is a unit of work or a single operation during the request processing.
         # Corresponds to the JSON property `rootSpan`
         # @return [Google::Apis::CesV1::Span]
         attr_accessor :root_span
+      
+        # Optional. Variables or configurations referenced by the template engine during
+        # dynamic prompt generation. This allows reconstructing the exact prompt sent to
+        # the model for this turn.
+        # Corresponds to the JSON property `templateAttributes`
+        # @return [Hash<String,Object>]
+        attr_accessor :template_attributes
       
         # Optional. The intended ground-truth text from the Simulated Caller (Polysynth).
         # Only populated when word error rate metrics are enabled.
@@ -2182,7 +2196,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @messages = args[:messages] if args.key?(:messages)
+          @resolved_developer_instruction = args[:resolved_developer_instruction] if args.key?(:resolved_developer_instruction)
           @root_span = args[:root_span] if args.key?(:root_span)
+          @template_attributes = args[:template_attributes] if args.key?(:template_attributes)
           @user_intended_text = args[:user_intended_text] if args.key?(:user_intended_text)
         end
       end
