@@ -11579,7 +11579,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists agents in a location.
+        # Lists the agents in a location that belong to the caller. An agent belongs to
+        # the end user recorded as its owner when it was created, so the response holds
+        # that caller's agents and no others. It is empty for a caller that is not an
+        # end user, and an agent with no recorded owner is listed for nobody.
         # @param [String] parent
         #   Required. The resource name of the location to list agents from. Format: `
         #   projects/`project`/locations/`location``.
@@ -31531,18 +31534,28 @@ module Google
         # @param [String] filter
         #   Optional. Filter expression restricting which AnalyzedSessions are returned.
         #   Supports a subset of AIP-160: a closed `detection_time` window (both bounds
-        #   required) and/or an equality on `severity`, joined by `AND`. Each clause is
-        #   optional, may appear at most once, and may appear in either order. The `
-        #   severity` value is the string form of a `Severity` value (`CRITICAL`, `HIGH`, `
-        #   MEDIUM`, or `LOW`; `SEVERITY_UNSPECIFIED` is not supported) and matches
-        #   sessions whose maximum severity equals that bucket. For example, a session
-        #   that fires at both LOW and CRITICAL matches `severity = "CRITICAL"`, not `
-        #   severity = "LOW"`. Example (time window and severity): ``` detection_time >= "
-        #   2024-01-01T00:00:00Z" AND detection_time <= "2024-01-08T00:00:00Z" AND
-        #   severity = "CRITICAL" ``` If empty, results are restricted to the last 3 days
-        #   with no severity restriction. Other fields, additional operators, set
-        #   membership (`IN`), and boolean combinations (`OR`, `NOT`, parentheses) are not
-        #   yet supported.
+        #   required), an equality on `severity`, and an equality on `agent_type`, joined
+        #   by `AND`. Each clause is optional, may appear at most once, and may appear in
+        #   any order. The `severity` value is the **canonical** `Severity` enum name -- `
+        #   SEVERITY_CRITICAL`, `SEVERITY_HIGH`, `SEVERITY_MEDIUM` or `SEVERITY_LOW`.
+        #   Short forms such as `"CRITICAL"` are rejected, as is `SEVERITY_UNSPECIFIED`.
+        #   It matches sessions whose *maximum* severity equals that bucket: a session
+        #   that fires at both LOW and CRITICAL matches `severity = "SEVERITY_CRITICAL"`,
+        #   not `severity = "SEVERITY_LOW"`. The `agent_type` value is the canonical `
+        #   AgentResource.AgentType` enum name -- `REASONING_ENGINE`, `CLOUD_RUN_SERVICE`,
+        #   `GKE_WORKLOAD`, `GCE_INSTANCE`, `AGENT_TYPE_OTHER` or `AGENT_TYPE_UNSPECIFIED`
+        #   -- and matches sessions run by an agent on that runtime. Unlike `severity`, `
+        #   agent_type` accepts its `UNSPECIFIED` value. The two are not analogous: a
+        #   session always has a computed severity bucket, so `SEVERITY_UNSPECIFIED` is
+        #   never returned and filtering on it could only match nothing. `
+        #   AGENT_TYPE_UNSPECIFIED` *is* returned -- it is what `AnalyzedSession.
+        #   agent_type` reports for an agent whose runtime was never recorded -- so it
+        #   must remain filterable. Example (time window, severity and runtime): ```
+        #   detection_time >= "2024-01-01T00:00:00Z" AND detection_time <= "2024-01-08T00:
+        #   00:00Z" AND severity = "SEVERITY_CRITICAL" AND agent_type = "CLOUD_RUN_SERVICE"
+        #   ``` If empty, results are restricted to the last 7 days with no severity or
+        #   runtime restriction. Other fields, additional operators, set membership (`IN`),
+        #   and boolean combinations (`OR`, `NOT`, parentheses) are not yet supported.
         # @param [String] order_by
         #   Optional. Comma-separated list of fields to sort by, following AIP-132 syntax.
         #   The default sort direction is ascending; append " desc" to a field to sort
