@@ -313,59 +313,6 @@ module Google
         end
       end
       
-      # Request for acknowledging the violations in a batch
-      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Acknowledge type of specified violations.
-        # Corresponds to the JSON property `acknowledgeType`
-        # @return [String]
-        attr_accessor :acknowledge_type
-      
-        # Required. Business justification explaining the need for violations
-        # acknowledgement
-        # Corresponds to the JSON property `comment`
-        # @return [String]
-        attr_accessor :comment
-      
-        # Required. The resource names of the Violations to acknowledge. Format for each
-        # name: organizations/`organization`/locations/`location`/workloads/`workload`/
-        # violations/`violation`
-        # Corresponds to the JSON property `names`
-        # @return [Array<String>]
-        attr_accessor :names
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @acknowledge_type = args[:acknowledge_type] if args.key?(:acknowledge_type)
-          @comment = args[:comment] if args.key?(:comment)
-          @names = args[:names] if args.key?(:names)
-        end
-      end
-      
-      # Response for batch violation acknowledgement
-      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Count of acknowledged violations.
-        # Corresponds to the JSON property `acknowledgedViolationsCount`
-        # @return [Fixnum]
-        attr_accessor :acknowledged_violations_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @acknowledged_violations_count = args[:acknowledged_violations_count] if args.key?(:acknowledged_violations_count)
-        end
-      end
-      
       # A Common Expression Language (CEL) expression that's used to create a rule.
       class GoogleCloudAssuredworkloadsV1CelExpression
         include Google::Apis::Core::Hashable
@@ -732,10 +679,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Number of active organization policy findings for this category.
+        # Corresponds to the JSON property `organizationPolicyFindingCount`
+        # @return [Fixnum]
+        attr_accessor :organization_policy_finding_count
+      
         # Optional. The list of compliance frameworks that the finding belongs to.
         # Corresponds to the JSON property `relatedFrameworks`
         # @return [Array<String>]
         attr_accessor :related_frameworks
+      
+        # Output only. Number of active resource findings for this category.
+        # Corresponds to the JSON property `resourceFindingCount`
+        # @return [Fixnum]
+        attr_accessor :resource_finding_count
       
         # Output only. The severity of the finding.
         # Corresponds to the JSON property `severity`
@@ -757,7 +714,9 @@ module Google
           @finding_class = args[:finding_class] if args.key?(:finding_class)
           @finding_count = args[:finding_count] if args.key?(:finding_count)
           @name = args[:name] if args.key?(:name)
+          @organization_policy_finding_count = args[:organization_policy_finding_count] if args.key?(:organization_policy_finding_count)
           @related_frameworks = args[:related_frameworks] if args.key?(:related_frameworks)
+          @resource_finding_count = args[:resource_finding_count] if args.key?(:resource_finding_count)
           @severity = args[:severity] if args.key?(:severity)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
