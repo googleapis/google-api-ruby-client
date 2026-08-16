@@ -148,13 +148,13 @@ module Google
       end
       
       # The transcription of an audio part. For multi-speaker audio, each speaker
-      # segment is a separate Part with its own AudioTranscription carrying the
-      # speaker_label.
+      # segment is a separate `Part` with its own `AudioTranscription` carrying the `
+      # speaker_label`.
       class GoogleCloudAiplatformV1beta1AudioTranscription
         include Google::Apis::Core::Hashable
       
-        # Optional. A label identifying the speaker of this audio segment (e.g. "spk_1",
-        # "spk_2"). Present when diarization is set.
+        # Optional. A label identifying the speaker of this audio segment (e.g. `spk_1`,
+        # `spk_2`). Present when `diarization` is set.
         # Corresponds to the JSON property `speakerLabel`
         # @return [String]
         attr_accessor :speaker_label
@@ -164,8 +164,8 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # Optional. Detailed word-level transcriptions and timing details. Present when
-        # word_timestamp is set.
+        # Optional. Detailed word-level transcriptions and timing details. Present when `
+        # word_timestamp` is set.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo>]
         attr_accessor :words
@@ -186,7 +186,8 @@ module Google
       class GoogleCloudAiplatformV1beta1AudioTranscriptionConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. A list of phrases to bias the ASR model towards.
+        # Optional. Deprecated: Use `custom_vocabulary` instead. A list of phrases to
+        # bias the speech recognition model towards.
         # Corresponds to the JSON property `adaptationPhrases`
         # @return [Array<String>]
         attr_accessor :adaptation_phrases
@@ -2913,8 +2914,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The transcription of an audio part. For multi-speaker audio, each speaker
-        # segment is a separate Part with its own AudioTranscription carrying the
-        # speaker_label.
+        # segment is a separate `Part` with its own `AudioTranscription` carrying the `
+        # speaker_label`.
         # Corresponds to the JSON property `audioTranscription`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscription]
         attr_accessor :audio_transcription
