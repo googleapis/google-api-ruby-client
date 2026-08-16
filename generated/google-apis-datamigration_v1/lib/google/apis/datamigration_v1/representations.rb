@@ -706,6 +706,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservedPublicIpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2282,6 +2288,8 @@ module Google
           property :name, as: 'name'
           property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::DatamigrationV1::PscInterfaceConfig, decorator: Google::Apis::DatamigrationV1::PscInterfaceConfig::Representation
       
+          property :reserved_public_ip_config, as: 'reservedPublicIpConfig', class: Google::Apis::DatamigrationV1::ReservedPublicIpConfig, decorator: Google::Apis::DatamigrationV1::ReservedPublicIpConfig::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
@@ -2347,6 +2355,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
           property :serving_data, as: 'servingData'
+        end
+      end
+      
+      class ReservedPublicIpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :egress_public_ips, as: 'egressPublicIps'
+          property :nat_ips_count, as: 'natIpsCount'
         end
       end
       
