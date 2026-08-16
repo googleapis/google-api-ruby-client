@@ -1691,9 +1691,9 @@ module Google
         # @return [Google::Apis::MybusinessbusinessinformationV1::TimeOfDay]
         attr_accessor :close_time
       
-        # Optional. If true, `end_date`, `open_time`, and `close_time` are ignored, and
-        # the date specified in `start_date` is treated as the location being closed for
-        # the entire day.
+        # Optional. If `true`, `end_date`, `open_time`, and `close_time` are ignored,
+        # and the date specified in `start_date` is treated as the location being closed
+        # for the entire day.
         # Corresponds to the JSON property `closed`
         # @return [Boolean]
         attr_accessor :closed
