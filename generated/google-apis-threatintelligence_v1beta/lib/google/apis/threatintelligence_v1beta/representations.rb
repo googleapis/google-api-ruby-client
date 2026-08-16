@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetPasswordResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InitialAccessBrokerAlertDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -775,6 +781,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :domain, as: 'domain'
+        end
+      end
+      
+      class GetPasswordResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password, as: 'password'
         end
       end
       

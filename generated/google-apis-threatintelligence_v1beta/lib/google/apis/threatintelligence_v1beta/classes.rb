@@ -1377,6 +1377,25 @@ module Google
         end
       end
       
+      # Response message for GetPassword.
+      class GetPasswordResponse
+        include Google::Apis::Core::Hashable
+      
+        # The decrypted cleartext password for the compromised credential.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password = args[:password] if args.key?(:password)
+        end
+      end
+      
       # Captures the specific details of InitialAccessBroker (IAB) alert.
       class InitialAccessBrokerAlertDetail
         include Google::Apis::Core::Hashable
