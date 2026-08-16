@@ -8067,7 +8067,8 @@ module Google
         # field is only relevant if authenticationType is GOOGLE_AUTHENTICATED. This
         # must be an enterprise account and not a consumer account. Once set and a
         # Google authenticated account is added to the device, changing this field will
-        # have no effect, and thus recommended to be set only once.
+        # have no effect, and thus recommended to be set only once. The email address
+        # must be all lowercase.
         # Corresponds to the JSON property `requiredAccountEmail`
         # @return [String]
         attr_accessor :required_account_email
