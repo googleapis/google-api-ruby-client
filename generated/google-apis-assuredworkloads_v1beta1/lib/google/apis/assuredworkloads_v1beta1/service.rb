@@ -625,44 +625,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Acknowledges multiple existing violations. By acknowledging violations, users
-        # acknowledge the existence of compliance violations in their workload and
-        # decide to ignore them due to a valid business justification. Acknowledgement
-        # is a permanent operation and it cannot be reverted. This is a batch version of
-        # AcknowledgeViolation.
-        # @param [String] parent
-        #   Optional. The parent resource shared by all violations being acknowledged.
-        #   Format: organizations/`organization`/locations/`location`/workloads/`workload`
-        # @param [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest] google_cloud_assuredworkloads_v1beta1_batch_acknowledge_violations_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_organization_location_violation_acknowledge_violations(parent, google_cloud_assuredworkloads_v1beta1_batch_acknowledge_violations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+parent}/violations:batchAcknowledgeViolations', options)
-          command.request_representation = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest::Representation
-          command.request_object = google_cloud_assuredworkloads_v1beta1_batch_acknowledge_violations_request_object
-          command.response_representation = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse::Representation
-          command.response_class = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Analyzes a hypothetical move of a source resource to a target workload to
         # surface compliance risks. The analysis is best effort and is not guaranteed to
         # be exhaustive.
@@ -1130,44 +1092,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Acknowledges multiple existing violations. By acknowledging violations, users
-        # acknowledge the existence of compliance violations in their workload and
-        # decide to ignore them due to a valid business justification. Acknowledgement
-        # is a permanent operation and it cannot be reverted. This is a batch version of
-        # AcknowledgeViolation.
-        # @param [String] parent
-        #   Optional. The parent resource shared by all violations being acknowledged.
-        #   Format: organizations/`organization`/locations/`location`/workloads/`workload`
-        # @param [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest] google_cloud_assuredworkloads_v1beta1_batch_acknowledge_violations_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_organization_location_workload_violation_acknowledge_violations(parent, google_cloud_assuredworkloads_v1beta1_batch_acknowledge_violations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+parent}/violations:batchAcknowledgeViolations', options)
-          command.request_representation = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest::Representation
-          command.request_object = google_cloud_assuredworkloads_v1beta1_batch_acknowledge_violations_request_object
-          command.response_representation = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse::Representation
-          command.response_class = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Retrieves Assured Workload Violation based on ID.
         # @param [String] name
         #   Required. The resource name of the Violation to fetch (ie. Violation.name).
@@ -1248,44 +1172,6 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Acknowledges multiple existing violations. By acknowledging violations, users
-        # acknowledge the existence of compliance violations in their workload and
-        # decide to ignore them due to a valid business justification. Acknowledgement
-        # is a permanent operation and it cannot be reverted. This is a batch version of
-        # AcknowledgeViolation.
-        # @param [String] parent
-        #   Optional. The parent resource shared by all violations being acknowledged.
-        #   Format: organizations/`organization`/locations/`location`/workloads/`workload`
-        # @param [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest] google_cloud_assuredworkloads_v1beta1_batch_acknowledge_violations_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_organization_violation_acknowledge_violations(parent, google_cloud_assuredworkloads_v1beta1_batch_acknowledge_violations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+parent}/violations:batchAcknowledgeViolations', options)
-          command.request_representation = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsRequest::Representation
-          command.request_object = google_cloud_assuredworkloads_v1beta1_batch_acknowledge_violations_request_object
-          command.response_representation = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse::Representation
-          command.response_class = Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1BatchAcknowledgeViolationsResponse
-          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
