@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeneratePlatformSiteTokensRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeneratePlatformSiteTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCtasResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +83,12 @@ module Google
       end
       
       class RrmProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SiteToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -120,6 +138,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ownership_verified, as: 'ownershipVerified'
           property :url, as: 'url'
+        end
+      end
+      
+      class GeneratePlatformSiteTokensRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GeneratePlatformSiteTokensResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :site_tokens, as: 'siteTokens', class: Google::Apis::WebcontentpublisherV1::SiteToken, decorator: Google::Apis::WebcontentpublisherV1::SiteToken::Representation
+      
         end
       end
       
@@ -187,6 +219,14 @@ module Google
           property :product_tos_url, as: 'productTosUrl'
           property :tos_acceptance, as: 'tosAcceptance', class: Google::Apis::WebcontentpublisherV1::TosAcceptance, decorator: Google::Apis::WebcontentpublisherV1::TosAcceptance::Representation
       
+        end
+      end
+      
+      class SiteToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :token, as: 'token'
         end
       end
       
