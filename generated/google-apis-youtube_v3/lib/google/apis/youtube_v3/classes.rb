@@ -106,13 +106,12 @@ module Google
         end
       end
       
-      # An *activity* resource contains information about an action that a particular
-      # channel, or user, has taken on YouTube.The actions reported in activity feeds
-      # include rating a video, sharing a video, marking a video as a favorite,
-      # commenting on a video, uploading a video, and so forth. Each activity resource
-      # identifies the type of action, the channel associated with the action, and the
-      # resource(s) associated with the action, such as the video that was rated or
-      # uploaded.
+      # An `activity` resource contains information about an action that a particular
+      # channel, or user, has taken on YouTube. The actions reported in activity feeds
+      # include sharing a video, uploading a video, and so forth. Each `activity`
+      # resource identifies the type of action, the channel associated with the action,
+      # and the resource(s) associated with the action, such as the video that was
+      # rated or uploaded.
       class Activity
         include Google::Apis::Core::Hashable
       
@@ -132,8 +131,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string "youtube#
-        # activity".
+        # Identifies what kind of resource this is. Value: The fixed string `"youtube#
+        # activity"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -178,12 +177,14 @@ module Google
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsComment]
         attr_accessor :comment
       
-        # Information about a video that was marked as a favorite video.
+        # Information about a video that was marked as a favorite video. Deprecated:
+        # This resource is no longer returned.
         # Corresponds to the JSON property `favorite`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsFavorite]
         attr_accessor :favorite
       
         # Information about a resource that received a positive (like) rating.
+        # Deprecated: This resource is no longer returned.
         # Corresponds to the JSON property `like`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsLike]
         attr_accessor :like
@@ -208,7 +209,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsSocial]
         attr_accessor :social
       
-        # Information about a channel that a user subscribed to.
+        # Information about a channel that a user subscribed to. Deprecated: This
+        # resource is no longer returned.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsSubscription]
         attr_accessor :subscription
@@ -295,7 +297,8 @@ module Google
         end
       end
       
-      # Information about a video that was marked as a favorite video.
+      # Information about a video that was marked as a favorite video. Deprecated:
+      # This resource is no longer returned.
       class ActivityContentDetailsFavorite
         include Google::Apis::Core::Hashable
       
@@ -315,6 +318,7 @@ module Google
       end
       
       # Information about a resource that received a positive (like) rating.
+      # Deprecated: This resource is no longer returned.
       class ActivityContentDetailsLike
         include Google::Apis::Core::Hashable
       
@@ -519,7 +523,8 @@ module Google
         end
       end
       
-      # Information about a channel that a user subscribed to.
+      # Information about a channel that a user subscribed to. Deprecated: This
+      # resource is no longer returned.
       class ActivityContentDetailsSubscription
         include Google::Apis::Core::Hashable
       
@@ -652,10 +657,9 @@ module Google
       
         # The group ID associated with the activity. A group ID identifies user events
         # that are associated with the same user and resource. For example, if a user
-        # rates a video and marks the same video as a favorite, the entries for those
-        # events would have the same group ID in the user's activity feed. In your user
-        # interface, you can avoid repetition by grouping events with the same groupId
-        # value.
+        # uploads a video and watches the same video, the entries for those events would
+        # have the same group ID in the user's activity feed. In your user interface,
+        # you can avoid repetition by grouping events with the same `groupId` value.
         # Corresponds to the JSON property `groupId`
         # @return [String]
         attr_accessor :group_id
