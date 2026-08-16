@@ -287,6 +287,12 @@ module Google
       class GoogleCloudCesV1mainToolCall
         include Google::Apis::Core::Hashable
       
+        # Output only. Human-readable name of the agent that issued this call, e.g. "
+        # Contract Architect". Empty when the root agent issued it.
+        # Corresponds to the JSON property `agentName`
+        # @return [String]
+        attr_accessor :agent_name
+      
         # Optional. The input parameters and values for the tool in JSON object format.
         # Corresponds to the JSON property `args`
         # @return [Hash<String,Object>]
@@ -302,6 +308,14 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Output only. The id of the tool call that caused this one, when it was issued
+        # by a sub-agent working on behalf of a parent call. Empty for top-level calls.
+        # Lets a client group a sub-agent's work under the call that started it instead
+        # of rendering every step as a sibling.
+        # Corresponds to the JSON property `parentToolCallId`
+        # @return [String]
+        attr_accessor :parent_tool_call_id
       
         # Optional. The name of the tool to execute. Format: `projects/`project`/
         # locations/`location`/apps/`app`/tools/`tool``
@@ -320,9 +334,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_name = args[:agent_name] if args.key?(:agent_name)
           @args = args[:args] if args.key?(:args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
+          @parent_tool_call_id = args[:parent_tool_call_id] if args.key?(:parent_tool_call_id)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
         end
@@ -331,6 +347,12 @@ module Google
       # The execution result of a specific tool from the client or the agent.
       class GoogleCloudCesV1mainToolResponse
         include Google::Apis::Core::Hashable
+      
+        # Output only. Human-readable name of the agent that issued this call, e.g. "
+        # Contract Architect". Empty when the root agent issued it.
+        # Corresponds to the JSON property `agentName`
+        # @return [String]
+        attr_accessor :agent_name
       
         # Output only. Display name of the tool.
         # Corresponds to the JSON property `displayName`
@@ -341,6 +363,14 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Output only. The id of the tool call that caused this one, when it was issued
+        # by a sub-agent working on behalf of a parent call. Empty for top-level calls.
+        # Lets a client group a sub-agent's work under the call that started it instead
+        # of rendering every step as a sibling.
+        # Corresponds to the JSON property `parentToolCallId`
+        # @return [String]
+        attr_accessor :parent_tool_call_id
       
         # Required. The tool execution result in JSON object format. Use "output" key to
         # specify tool response and "error" key to specify error details (if any). If "
@@ -367,8 +397,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_name = args[:agent_name] if args.key?(:agent_name)
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
+          @parent_tool_call_id = args[:parent_tool_call_id] if args.key?(:parent_tool_call_id)
           @response = args[:response] if args.key?(:response)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)

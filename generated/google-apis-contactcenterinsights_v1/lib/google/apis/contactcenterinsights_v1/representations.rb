@@ -3910,9 +3910,11 @@ module Google
       class GoogleCloudCesV1mainToolCall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_name, as: 'agentName'
           hash :args, as: 'args'
           property :display_name, as: 'displayName'
           property :id, as: 'id'
+          property :parent_tool_call_id, as: 'parentToolCallId'
           property :tool, as: 'tool'
           property :toolset_tool, as: 'toolsetTool', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolsetTool, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolsetTool::Representation
       
@@ -3922,8 +3924,10 @@ module Google
       class GoogleCloudCesV1mainToolResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_name, as: 'agentName'
           property :display_name, as: 'displayName'
           property :id, as: 'id'
+          property :parent_tool_call_id, as: 'parentToolCallId'
           hash :response, as: 'response'
           property :tool, as: 'tool'
           property :toolset_tool, as: 'toolsetTool', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolsetTool, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolsetTool::Representation
