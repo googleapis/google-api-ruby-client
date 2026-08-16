@@ -139,6 +139,38 @@ module Google
         end
       end
       
+      # Request message for `GeneratePlatformSiteTokens`.
+      class GeneratePlatformSiteTokensRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for `GeneratePlatformSiteTokens`.
+      class GeneratePlatformSiteTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of domain-scoped secure token mappings.
+        # Corresponds to the JSON property `siteTokens`
+        # @return [Array<Google::Apis::WebcontentpublisherV1::SiteToken>]
+        attr_accessor :site_tokens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @site_tokens = args[:site_tokens] if args.key?(:site_tokens)
+        end
+      end
+      
       # Response message for `ListCtas`.
       class ListCtasResponse
         include Google::Apis::Core::Hashable
@@ -387,6 +419,31 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @product_tos_url = args[:product_tos_url] if args.key?(:product_tos_url)
           @tos_acceptance = args[:tos_acceptance] if args.key?(:tos_acceptance)
+        end
+      end
+      
+      # Represents a domain-scoped secure token mapping.
+      class SiteToken
+        include Google::Apis::Core::Hashable
+      
+        # The domain scope this token is valid for.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # The domain-scoped secure token value (ESUT).
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @token = args[:token] if args.key?(:token)
         end
       end
       
