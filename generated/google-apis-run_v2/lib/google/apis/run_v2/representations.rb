@@ -442,6 +442,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2UploadSourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2UploadSourceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2VersionToPath
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1802,6 +1814,21 @@ module Google
           property :tag, as: 'tag'
           property :type, as: 'type'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudRunV2UploadSourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleCloudRunV2UploadSourceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_source, as: 'cloudStorageSource', class: Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource::Representation
+      
         end
       end
       

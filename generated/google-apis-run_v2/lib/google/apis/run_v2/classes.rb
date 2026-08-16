@@ -4101,6 +4101,44 @@ module Google
         end
       end
       
+      # The request message for the UploadSource method.
+      class GoogleCloudRunV2UploadSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The name of Cloud Run Service upload source archive will be used for.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # The response message for the UploadSource method.
+      class GoogleCloudRunV2UploadSourceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage source.
+        # Corresponds to the JSON property `cloudStorageSource`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource]
+        attr_accessor :cloud_storage_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_source = args[:cloud_storage_source] if args.key?(:cloud_storage_source)
+        end
+      end
+      
       # VersionToPath maps a specific version of a secret to a relative file to mount
       # to, relative to VolumeMount's mount_path.
       class GoogleCloudRunV2VersionToPath
