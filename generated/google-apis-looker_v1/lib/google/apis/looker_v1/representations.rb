@@ -323,6 +323,7 @@ module Google
       class ExportMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :esa_source_dataset_id, as: 'esaSourceDatasetId'
           property :export_encryption_key, as: 'exportEncryptionKey', class: Google::Apis::LookerV1::ExportMetadataEncryptionKey, decorator: Google::Apis::LookerV1::ExportMetadataEncryptionKey::Representation
       
           collection :file_paths, as: 'filePaths'
