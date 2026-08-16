@@ -136,6 +136,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectorConfigurationTls
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectorConfigurationTlsPrivatePki
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectorConfigurationTlsWebPki
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectorConfigurationUsernamePassword
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +376,8 @@ module Google
       
           hash :parameters, as: 'parameters', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationParameterValue, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationParameterValue::Representation
       
+          property :tls, as: 'tls', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationTls, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationTls::Representation
+      
         end
       end
       
@@ -419,6 +439,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :plaintext, as: 'plaintext'
           property :secret_type, as: 'secretType'
+        end
+      end
+      
+      class ConnectorConfigurationTls
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
+          property :private_pki, as: 'privatePki', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationTlsPrivatePki, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationTlsPrivatePki::Representation
+      
+          property :web_pki, as: 'webPki', class: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationTlsWebPki, decorator: Google::Apis::BigqueryconnectionV1::ConnectorConfigurationTlsWebPki::Representation
+      
+        end
+      end
+      
+      class ConnectorConfigurationTlsPrivatePki
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :trusted_certificates_pem, as: 'trustedCertificatesPem'
+        end
+      end
+      
+      class ConnectorConfigurationTlsWebPki
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
