@@ -32702,6 +32702,11 @@ module Google
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals]
         attr_accessor :rank_signals
       
+        # Contains a set of signals used by the relevance filter.
+        # Corresponds to the JSON property `retrievalSignals`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals]
+        attr_accessor :retrieval_signals
+      
         def initialize(**args)
            update!(**args)
         end
@@ -32713,6 +32718,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @model_scores = args[:model_scores] if args.key?(:model_scores)
           @rank_signals = args[:rank_signals] if args.key?(:rank_signals)
+          @retrieval_signals = args[:retrieval_signals] if args.key?(:retrieval_signals)
         end
       end
       
@@ -32813,6 +32819,32 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Contains a set of signals used by the relevance filter.
+      class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates how the result was retrieved.
+        # Corresponds to the JSON property `retrievalSources`
+        # @return [Array<String>]
+        attr_accessor :retrieval_sources
+      
+        # Optional. Relevance score used by the filter when semantic_relevance_threshold
+        # is set.
+        # Corresponds to the JSON property `semanticRelevanceScore`
+        # @return [Float]
+        attr_accessor :semantic_relevance_score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retrieval_sources = args[:retrieval_sources] if args.key?(:retrieval_sources)
+          @semantic_relevance_score = args[:semantic_relevance_score] if args.key?(:semantic_relevance_score)
         end
       end
       
