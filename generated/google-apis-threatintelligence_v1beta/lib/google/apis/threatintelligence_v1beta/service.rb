@@ -287,7 +287,8 @@ module Google
         
         # Get the decrypted password of an alert.
         # @param [String] name
-        #   Required. Name of the alert to get. Format: projects/`project`/alerts/`alert`
+        #   Required. Name of the alert to get password for. Format: projects/`project`/
+        #   alerts/`alert`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -297,18 +298,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ThreatintelligenceV1beta::Alert] parsed result object
+        # @yieldparam result [Google::Apis::ThreatintelligenceV1beta::GetPasswordResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::ThreatintelligenceV1beta::Alert]
+        # @return [Google::Apis::ThreatintelligenceV1beta::GetPasswordResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_alert_password(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta/{+name}:getPassword', options)
-          command.response_representation = Google::Apis::ThreatintelligenceV1beta::Alert::Representation
-          command.response_class = Google::Apis::ThreatintelligenceV1beta::Alert
+          command.response_representation = Google::Apis::ThreatintelligenceV1beta::GetPasswordResponse::Representation
+          command.response_class = Google::Apis::ThreatintelligenceV1beta::GetPasswordResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
