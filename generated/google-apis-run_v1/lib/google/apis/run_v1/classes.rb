@@ -4927,25 +4927,26 @@ module Google
         # source-location`: Service, Revision. * `run.googleapis.com/build-worker-pool`:
         # Service. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.
         # com/cloudsql-instances`: Revision, Execution, Instance. * `run.googleapis.com/
-        # container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`:
-        # Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.
-        # com/default-url-disabled`: Service. * `run.googleapis.com/description`:
-        # Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.
-        # googleapis.com/encryption-key`: Revision, Execution, Instance. * `run.
-        # googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.
-        # com/gc-traffic-tags`: Service. * `run.googleapis.com/gpu-zonal-redundancy-
-        # disabled`: Revision. * `run.googleapis.com/health-check-disabled`: Revision. *
-        # `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.com/invoker-
-        # iam-disabled`: Service, Instance. * `run.googleapis.com/launch-stage`: Service,
-        # Job. * `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`
-        # : Service. * `run.googleapis.com/manualInstanceCount`: Service. * `run.
-        # googleapis.com/network-interfaces`: Revision, Execution, Instance. * `run.
-        # googleapis.com/post-key-revocation-action-type`: Revision. `run.googleapis.com/
-        # scalingMode`: Service. * `run.googleapis.com/secrets`: Revision, Execution. * `
-        # run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/
-        # sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision.
-        # * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.
-        # googleapis.com/vpc-access-egress`: Revision, Execution, Instance.
+        # container-dependencies`: Revision, Instance . * `run.googleapis.com/cpu-
+        # throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `
+        # run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/
+        # description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`:
+        # Revision * `run.googleapis.com/encryption-key`: Revision, Execution, Instance.
+        # * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.
+        # googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/gpu-zonal-
+        # redundancy-disabled`: Revision. * `run.googleapis.com/health-check-disabled`:
+        # Revision. * `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.
+        # com/invoker-iam-disabled`: Service, Instance. * `run.googleapis.com/launch-
+        # stage`: Service, Job. * `run.googleapis.com/minScale`: Service. * `run.
+        # googleapis.com/maxScale`: Service. * `run.googleapis.com/manualInstanceCount`:
+        # Service. * `run.googleapis.com/network-interfaces`: Revision, Execution,
+        # Instance. * `run.googleapis.com/post-key-revocation-action-type`: Revision. `
+        # run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`:
+        # Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `
+        # run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-
+        # cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision,
+        # Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution,
+        # Instance.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
