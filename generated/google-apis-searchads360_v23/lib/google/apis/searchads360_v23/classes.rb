@@ -334,6 +334,66 @@ module Google
         end
       end
       
+      # Loyalty retention campaign goal settings.
+      class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignLoyaltyRetentionGoalSettings
+        include Google::Apis::Core::Hashable
+      
+        # Whether to adjust bids for loyalty members.
+        # Corresponds to the JSON property `enableBidAdjustmentsForLoyaltyMembers`
+        # @return [Boolean]
+        attr_accessor :enable_bid_adjustments_for_loyalty_members
+        alias_method :enable_bid_adjustments_for_loyalty_members?, :enable_bid_adjustments_for_loyalty_members
+      
+        # Whether to show targeted loyalty member benefits in PLA format in eligible
+        # countries.
+        # Corresponds to the JSON property `showTargetedLoyaltyMemberBenefitsInPla`
+        # @return [Boolean]
+        attr_accessor :show_targeted_loyalty_member_benefits_in_pla
+        alias_method :show_targeted_loyalty_member_benefits_in_pla?, :show_targeted_loyalty_member_benefits_in_pla
+      
+        # Lifecycle goal optimization value settings.
+        # Corresponds to the JSON property `valueSettingsOverride`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCustomerLifecycleOptimizationValueSettings]
+        attr_accessor :value_settings_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_bid_adjustments_for_loyalty_members = args[:enable_bid_adjustments_for_loyalty_members] if args.key?(:enable_bid_adjustments_for_loyalty_members)
+          @show_targeted_loyalty_member_benefits_in_pla = args[:show_targeted_loyalty_member_benefits_in_pla] if args.key?(:show_targeted_loyalty_member_benefits_in_pla)
+          @value_settings_override = args[:value_settings_override] if args.key?(:value_settings_override)
+        end
+      end
+      
+      # New Customer Acquisition campaign goal settings.
+      class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignNewCustomerAcquisitionGoalSettings
+        include Google::Apis::Core::Hashable
+      
+        # New Customer Acquisition goal optimization mode for this campaign. Defaults to
+        # TARGET_ALL. Whether the campaign is targeting new customers only.
+        # Corresponds to the JSON property `targetOption`
+        # @return [String]
+        attr_accessor :target_option
+      
+        # Lifecycle goal optimization value settings.
+        # Corresponds to the JSON property `valueSettingsOverride`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCustomerLifecycleOptimizationValueSettings]
+        attr_accessor :value_settings_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_option = args[:target_option] if args.key?(:target_option)
+          @value_settings_override = args[:value_settings_override] if args.key?(:value_settings_override)
+        end
+      end
+      
       # Retention campaign goal settings.
       class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignRetentionGoalSettings
         include Google::Apis::Core::Hashable
@@ -25500,6 +25560,16 @@ module Google
         # @return [String]
         attr_accessor :campaign
       
+        # Loyalty retention campaign goal settings.
+        # Corresponds to the JSON property `campaignLoyaltyRetentionSettings`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignLoyaltyRetentionGoalSettings]
+        attr_accessor :campaign_loyalty_retention_settings
+      
+        # New Customer Acquisition campaign goal settings.
+        # Corresponds to the JSON property `campaignNewCustomerAcquisitionSettings`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignNewCustomerAcquisitionGoalSettings]
+        attr_accessor :campaign_new_customer_acquisition_settings
+      
         # Retention campaign goal settings.
         # Corresponds to the JSON property `campaignRetentionSettings`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignRetentionGoalSettings]
@@ -25529,6 +25599,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @campaign = args[:campaign] if args.key?(:campaign)
+          @campaign_loyalty_retention_settings = args[:campaign_loyalty_retention_settings] if args.key?(:campaign_loyalty_retention_settings)
+          @campaign_new_customer_acquisition_settings = args[:campaign_new_customer_acquisition_settings] if args.key?(:campaign_new_customer_acquisition_settings)
           @campaign_retention_settings = args[:campaign_retention_settings] if args.key?(:campaign_retention_settings)
           @goal = args[:goal] if args.key?(:goal)
           @goal_type = args[:goal_type] if args.key?(:goal_type)
