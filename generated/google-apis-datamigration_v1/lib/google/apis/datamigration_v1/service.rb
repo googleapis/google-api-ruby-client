@@ -56,6 +56,10 @@ module Google
         # @param [String] name
         #   Required. The resource name for the location for which static IPs should be
         #   returned. Must be in the format `projects/*/locations/*`.
+        # @param [Boolean] fetch_reserved_public_ips
+        #   Optional. Indicates whether to fetch the reserved public IP addresses
+        #   allocated for private connections in this location. If false or not set,
+        #   fetches the shared external static IP addresses instead.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of IPs to return.
         # @param [String] page_token
@@ -77,11 +81,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def fetch_project_location_static_ips(name, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def fetch_project_location_static_ips(name, fetch_reserved_public_ips: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}:fetchStaticIps', options)
           command.response_representation = Google::Apis::DatamigrationV1::FetchStaticIpsResponse::Representation
           command.response_class = Google::Apis::DatamigrationV1::FetchStaticIpsResponse
           command.params['name'] = name unless name.nil?
+          command.query['fetchReservedPublicIps'] = fetch_reserved_public_ips unless fetch_reserved_public_ips.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -4761,6 +4761,11 @@ module Google
         # @return [Google::Apis::DatamigrationV1::PscInterfaceConfig]
         attr_accessor :psc_interface_config
       
+        # Reserved Public IP configuration.
+        # Corresponds to the JSON property `reservedPublicIpConfig`
+        # @return [Google::Apis::DatamigrationV1::ReservedPublicIpConfig]
+        attr_accessor :reserved_public_ip_config
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzi`
         # @return [Boolean]
@@ -4801,6 +4806,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
+          @reserved_public_ip_config = args[:reserved_public_ip_config] if args.key?(:reserved_public_ip_config)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @state = args[:state] if args.key?(:state)
@@ -5037,6 +5043,31 @@ module Google
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
           @serving_data = args[:serving_data] if args.key?(:serving_data)
+        end
+      end
+      
+      # Reserved Public IP configuration.
+      class ReservedPublicIpConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The reserved public IPs.
+        # Corresponds to the JSON property `egressPublicIps`
+        # @return [Array<String>]
+        attr_accessor :egress_public_ips
+      
+        # Optional. Number of static public IP addresses to reserve.
+        # Corresponds to the JSON property `natIpsCount`
+        # @return [Fixnum]
+        attr_accessor :nat_ips_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @egress_public_ips = args[:egress_public_ips] if args.key?(:egress_public_ips)
+          @nat_ips_count = args[:nat_ips_count] if args.key?(:nat_ips_count)
         end
       end
       
