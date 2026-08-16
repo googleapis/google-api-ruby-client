@@ -21,10 +21,10 @@ module Google
   module Apis
     # Cloud FTP API
     #
-    # Cloud FTP is a managed service that allows transferring files directly to
-    # Google Cloud Storage using SFTP.
+    # A managed, cloud-native solution to move data in and out of Google Cloud by
+    # using SSH File Transfer Protocol (SFTP).
     #
-    # @see https://cloud.google.com/cloud-ftp/overview
+    # @see https://docs.cloud.google.com/cloud-ftp
     module FtpV1
       # Version of the Cloud FTP API this client connects to.
       # This is NOT the gem version.

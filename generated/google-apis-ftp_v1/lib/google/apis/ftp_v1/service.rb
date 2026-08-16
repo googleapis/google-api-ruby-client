@@ -22,8 +22,8 @@ module Google
     module FtpV1
       # Cloud FTP API
       #
-      # Cloud FTP is a managed service that allows transferring files directly to
-      #  Google Cloud Storage using SFTP.
+      # A managed, cloud-native solution to move data in and out of Google Cloud by
+      #  using SSH File Transfer Protocol (SFTP).
       #
       # @example
       #    require 'google/apis/ftp_v1'
@@ -31,7 +31,7 @@ module Google
       #    Ftp = Google::Apis::FtpV1 # Alias the module
       #    service = Ftp::CloudFTPService.new
       #
-      # @see https://cloud.google.com/cloud-ftp/overview
+      # @see https://docs.cloud.google.com/cloud-ftp
       class CloudFTPService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://ftp.$UNIVERSE_DOMAIN$/"
 
@@ -307,8 +307,9 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] server_id
-        #   Required. Id of the requesting object If auto-generating Id server-side,
-        #   remove this field and server_id from the method_signature of Create RPC
+        #   Required. A unique ID for the server. Must start with a lowercase letter, and
+        #   end with a lowercase letter or number. Can contain lowercase letters, numbers,
+        #   and hyphens. Maximum length is 30 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -585,8 +586,8 @@ module Google
         #   duplicate commitments. The request ID must be a valid UUID with the exception
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] user_id
-        #   Required. Id of the requesting object If auto-generating Id server-side,
-        #   remove this field and server_id from the method_signature of Create RPC
+        #   Required. A unique user ID for the SFTP user. The user ID must start with a
+        #   lowercase letter and can include lowercase letters, numbers, or hyphens.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
