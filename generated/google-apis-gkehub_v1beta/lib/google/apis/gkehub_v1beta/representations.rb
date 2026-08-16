@@ -1066,7 +1066,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceMeshFeatureCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceMeshFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshFeatureState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1418,6 +1430,8 @@ module Google
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1beta::FleetObservabilityFeatureState, decorator: Google::Apis::GkehubV1beta::FleetObservabilityFeatureState::Representation
       
           property :rbacrolebindingactuation, as: 'rbacrolebindingactuation', class: Google::Apis::GkehubV1beta::RbacRoleBindingActuationFeatureState, decorator: Google::Apis::GkehubV1beta::RbacRoleBindingActuationFeatureState::Representation
+      
+          property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1beta::ServiceMeshFeatureState, decorator: Google::Apis::GkehubV1beta::ServiceMeshFeatureState::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV1beta::FeatureState, decorator: Google::Apis::GkehubV1beta::FeatureState::Representation
       
@@ -3003,11 +3017,29 @@ module Google
         end
       end
       
+      class ServiceMeshFeatureCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :details, as: 'details'
+          property :documentation_link, as: 'documentationLink'
+          property :severity, as: 'severity'
+        end
+      end
+      
       class ServiceMeshFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :modernization_compatibility, as: 'modernizationCompatibility'
           property :modernization_strategy, as: 'modernizationStrategy'
+        end
+      end
+      
+      class ServiceMeshFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::GkehubV1beta::ServiceMeshFeatureCondition, decorator: Google::Apis::GkehubV1beta::ServiceMeshFeatureCondition::Representation
+      
         end
       end
       

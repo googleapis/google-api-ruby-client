@@ -853,6 +853,12 @@ module Google
         # @return [Google::Apis::GkehubV1beta::RbacRoleBindingActuationFeatureState]
         attr_accessor :rbacrolebindingactuation
       
+        # **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub
+        # Controller.
+        # Corresponds to the JSON property `servicemesh`
+        # @return [Google::Apis::GkehubV1beta::ServiceMeshFeatureState]
+        attr_accessor :servicemesh
+      
         # FeatureState describes the high-level state of a Feature. It may be used to
         # describe a Feature's state at the environ-level, or per-membershop, depending
         # on the context.
@@ -875,6 +881,7 @@ module Google
           @clusterupgrade = args[:clusterupgrade] if args.key?(:clusterupgrade)
           @fleetobservability = args[:fleetobservability] if args.key?(:fleetobservability)
           @rbacrolebindingactuation = args[:rbacrolebindingactuation] if args.key?(:rbacrolebindingactuation)
+          @servicemesh = args[:servicemesh] if args.key?(:servicemesh)
           @state = args[:state] if args.key?(:state)
           @workloadidentity = args[:workloadidentity] if args.key?(:workloadidentity)
         end
@@ -6558,6 +6565,44 @@ module Google
         end
       end
       
+      # Condition being reported.
+      class ServiceMeshFeatureCondition
+        include Google::Apis::Core::Hashable
+      
+        # Unique identifier of the condition which describes the condition recognizable
+        # to the user.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # A short summary about the issue.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Links contains actionable information.
+        # Corresponds to the JSON property `documentationLink`
+        # @return [String]
+        attr_accessor :documentation_link
+      
+        # Severity level of the condition.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @documentation_link = args[:documentation_link] if args.key?(:documentation_link)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
       # **Service Mesh**: Spec for the fleet for the servicemesh feature
       class ServiceMeshFeatureSpec
         include Google::Apis::Core::Hashable
@@ -6580,6 +6625,26 @@ module Google
         def update!(**args)
           @modernization_compatibility = args[:modernization_compatibility] if args.key?(:modernization_compatibility)
           @modernization_strategy = args[:modernization_strategy] if args.key?(:modernization_strategy)
+        end
+      end
+      
+      # **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub
+      # Controller.
+      class ServiceMeshFeatureState
+        include Google::Apis::Core::Hashable
+      
+        # Output only. List of conditions reported for this feature.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::GkehubV1beta::ServiceMeshFeatureCondition>]
+        attr_accessor :conditions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
         end
       end
       
