@@ -1366,10 +1366,10 @@ module Google
         #   Required. Example: "organizations/256"
         # @param [String] filter
         #   Optional. The literal filter to apply to the results returned. See https://
-        #   google.aip.dev/160 for more details. Accepts values: * principal:group_key *
-        #   principal:service_account OR principal:service_account_project_number. If this
-        #   field is empty or not one of the above, the default value is "principal:
-        #   group_key".
+        #   google.aip.dev/160 for more details. Accepts values: * `principal:group_key` *
+        #   `principal:service_account` OR `principal:service_account_project_number`. If
+        #   this field is empty or not one of the above, the default value is `"principal:
+        #   group_key"`.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of items to return. The server may return fewer items.
         #   If left blank, the server may return any number of items.

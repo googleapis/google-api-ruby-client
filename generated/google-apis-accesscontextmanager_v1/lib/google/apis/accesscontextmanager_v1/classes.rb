@@ -563,6 +563,11 @@ module Google
         # @return [Google::Apis::AccesscontextmanagerV1::Application]
         attr_accessor :restricted_client_application
       
+        # A GCP project which contains applications and resources that users can access.
+        # Corresponds to the JSON property `restrictedProject`
+        # @return [Google::Apis::AccesscontextmanagerV1::Project]
+        attr_accessor :restricted_project
+      
         def initialize(**args)
            update!(**args)
         end
@@ -570,6 +575,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @restricted_client_application = args[:restricted_client_application] if args.key?(:restricted_client_application)
+          @restricted_project = args[:restricted_project] if args.key?(:restricted_project)
         end
       end
       
@@ -1107,13 +1113,13 @@ module Google
         attr_accessor :name
       
         # The comprehensive identity container supporting identities including groups,
-        # service accounts and federated identities. Only one of them can be set to
+        # service accounts, and federated identities. Only one of them can be set to
         # create an access binding.
         # Corresponds to the JSON property `principal`
         # @return [Google::Apis::AccesscontextmanagerV1::Principal]
         attr_accessor :principal
       
-        # Optional. Deprecated: use scoped_access_settings instead. A list of
+        # Optional. Deprecated: Use `scoped_access_settings` instead. A list of
         # applications that are subject to this binding's restrictions. If the list is
         # empty, the binding restrictions will universally apply to all applications.
         # Corresponds to the JSON property `restrictedClientApplications`
@@ -1840,17 +1846,27 @@ module Google
       end
       
       # The comprehensive identity container supporting identities including groups,
-      # service accounts and federated identities. Only one of them can be set to
+      # service accounts, and federated identities. Only one of them can be set to
       # create an access binding.
       class Principal
         include Google::Apis::Core::Hashable
+      
+        # Immutable. IAM federated principal name to assign policies to workforce/
+        # workload federated identities. Can be principal set or single principal, here
+        # are some examples: Single principal: principal://iam.googleapis.com/projects/`
+        # project_number`/locations/global/workloadIdentityPools/`pool_id`/subject/`
+        # subject_attribute_value` PrincipalSet: principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/*
+        # Corresponds to the JSON property `federatedPrincipal`
+        # @return [String]
+        attr_accessor :federated_principal
       
         # Immutable. Service account email used to assign policies to a specific service
         # account. If a service account is subject to multiple policies (e.g., if there
         # is a policy for all service accounts in a project and a policy for the service
         # account), the closest (i.e. the most specific) dry-run policy will be used for
-        # the dry-run functionality and the closest policy will be used for the
-        # enforcement.
+        # the dry-run functionality and the closest enforcement policy will be used for
+        # the enforcement.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -1867,6 +1883,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @federated_principal = args[:federated_principal] if args.key?(:federated_principal)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_project_number = args[:service_account_project_number] if args.key?(:service_account_project_number)
         end
@@ -1890,6 +1907,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+        end
+      end
+      
+      # A GCP project which contains applications and resources that users can access.
+      class Project
+        include Google::Apis::Core::Hashable
+      
+        # The GCP project resource name. Format: "projects/`project_number`" (Only the
+        # numeric project name variation is supported). Example: "projects/1234567890"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2041,8 +2078,8 @@ module Google
         attr_accessor :modifiers
       
         # URL pattern to allow. Only patterns of ".googleapis.com/*", "www.googleapis.
-        # com//*" and "*.appspot.com/* forms are supported, where should be
-        # alphanumerical name.
+        # com//*" and "*.appspot.com/* forms are supported, where should be an
+        # alphanumeric name.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern
@@ -2232,18 +2269,20 @@ module Google
         # @return [String]
         attr_accessor :max_inactivity
       
-        # Optional. The session length. Setting this field to zero is equal to disabling
-        # session. Also can set infinite session by flipping the enabled bit to false
-        # below. If use_oidc_max_age is true, for OIDC apps, the session length will be
-        # the minimum of this field and OIDC max_age param. If this field is set to zero,
-        # session_length_enabled must be set to false or left unset.
+        # Optional. The session length. Setting this field to zero allows for sessions
+        # that are active indefinitely. Also, setting `session_length_enabled` to false
+        # disregards session limits, which means that sessions never expire. If
+        # use_oidc_max_age is true, for OIDC apps, the session length will be the
+        # minimum of this field and the OIDC max_age param. If this field is set to zero,
+        # `session_length_enabled` must be set to false or left unset.
         # Corresponds to the JSON property `sessionLength`
         # @return [String]
         attr_accessor :session_length
       
         # Optional. This field enables or disables Google Cloud session length. When
         # false, all fields set above will be disregarded and the session length is
-        # basically infinite. If session_length is set to zero, this field must be false.
+        # basically infinite. If `session_length` is set to zero, this field must be set
+        # to false.
         # Corresponds to the JSON property `sessionLengthEnabled`
         # @return [Boolean]
         attr_accessor :session_length_enabled
