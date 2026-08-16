@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Project
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReplaceAccessLevelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -547,6 +553,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :restricted_client_application, as: 'restrictedClientApplication', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
+      
+          property :restricted_project, as: 'restrictedProject', class: Google::Apis::AccesscontextmanagerV1::Project, decorator: Google::Apis::AccesscontextmanagerV1::Project::Representation
       
         end
       end
@@ -865,6 +873,7 @@ module Google
       class Principal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :federated_principal, as: 'federatedPrincipal'
           property :service_account, as: 'serviceAccount'
           property :service_account_project_number, as: 'serviceAccountProjectNumber'
         end
@@ -874,6 +883,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_rule, as: 'forwardingRule'
+        end
+      end
+      
+      class Project
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
