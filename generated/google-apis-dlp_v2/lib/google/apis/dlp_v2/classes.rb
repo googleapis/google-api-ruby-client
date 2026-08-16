@@ -957,7 +957,8 @@ module Google
         end
       end
       
-      # Bounding box encompassing detected text within an image.
+      # Bounding box encompassing detected text within an image. Coordinates are in
+      # pixels and strictly within the image or frame bounds.
       class GooglePrivacyDlpV2BoundingBox
         include Google::Apis::Core::Hashable
       
