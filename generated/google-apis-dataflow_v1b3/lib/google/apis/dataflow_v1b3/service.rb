@@ -121,7 +121,8 @@ module Google
         end
         
         # List the jobs of a project across all regions. **Note:** This method doesn't
-        # support filtering the list of jobs by name.
+        # support filtering the list of jobs by name. # IAM Permissions Requires the `
+        # dataflow.jobs.list` permission on the project.
         # @param [String] project_id
         #   The project which owns the jobs.
         # @param [String] filter
@@ -178,7 +179,10 @@ module Google
         # locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/
         # dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is
         # not recommended, as your job will always start in `us-central1`. Do not enter
-        # confidential information when you supply string values using the API.
+        # confidential information when you supply string values using the API. # IAM
+        # Permissions 1. Requires the `dataflow.jobs.create` permission on the project.
+        # 2. `resourcemanager.projects.get` (Specifically required for regional
+        # endpoints to resolve regional resource metadata)
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::Job] job_object
@@ -225,7 +229,8 @@ module Google
         # we recommend using `projects.locations.jobs.get` with a [regional endpoint] (
         # https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `
         # projects.jobs.get` is not recommended, as you can only get the state of jobs
-        # that are running in `us-central1`.
+        # that are running in `us-central1`. # IAM Permissions Requires the `dataflow.
+        # jobs.get` permission on the job.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] job_id
@@ -269,7 +274,8 @@ module Google
         # projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.
         # google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.
         # getMetrics` is not recommended, as you can only request the status of jobs
-        # that are running in `us-central1`.
+        # that are running in `us-central1`. # IAM Permissions Requires the `dataflow.
+        # metrics.get` permission on the job.
         # @param [String] project_id
         #   A project id.
         # @param [String] job_id
@@ -317,7 +323,8 @@ module Google
         # projects.jobs.list` is not recommended, because you can only get the list of
         # jobs that are running in `us-central1`. `projects.locations.jobs.list` and `
         # projects.jobs.list` support filtering the list of jobs by name. Filtering by
-        # name isn't supported by `projects.jobs.aggregated`.
+        # name isn't supported by `projects.jobs.aggregated`. # IAM Permissions Requires
+        # the `dataflow.jobs.list` permission on the project.
         # @param [String] project_id
         #   The project which owns the jobs.
         # @param [String] filter
@@ -370,7 +377,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Snapshot the state of a streaming job.
+        # Snapshot the state of a streaming job. # IAM Permissions Requires the `
+        # dataflow.jobs.snapshot` permission on the job.
         # @param [String] project_id
         #   The project which owns the job to be snapshotted.
         # @param [String] job_id
@@ -410,7 +418,9 @@ module Google
         # existing job, we recommend using `projects.locations.jobs.update` with a [
         # regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
         # endpoints). Using `projects.jobs.update` is not recommended, as you can only
-        # update the state of jobs that are running in `us-central1`.
+        # update the state of jobs that are running in `us-central1`. # IAM Permissions
+        # 1. Requires the `dataflow.jobs.cancel` permission to cancel a job. 2. Requires
+        # the `dataflow.jobs.updateContents` permission to update runtime parameters.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] job_id
@@ -534,7 +544,8 @@ module Google
         # projects.locations.jobs.messages.list` with a [regional endpoint] (https://
         # cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.
         # jobs.messages.list` is not recommended, as you can only request the status of
-        # jobs that are running in `us-central1`.
+        # jobs that are running in `us-central1`. # IAM Permissions Requires the `
+        # dataflow.messages.list` permission on the job.
         # @param [String] project_id
         #   A project id.
         # @param [String] job_id
@@ -700,7 +711,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Launch a job with a FlexTemplate.
+        # Launch a job with a FlexTemplate. # IAM Permissions Requires the following IAM
+        # permission(s) on the resource: - `dataflow.jobs.create` - `resourcemanager.
+        # projects.get` - `iam.serviceAccounts.actAs` - `storage.buckets.get` - `storage.
+        # buckets.create` (Required if the default staging bucket must be created)
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
@@ -742,7 +756,10 @@ module Google
         # locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/
         # dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is
         # not recommended, as your job will always start in `us-central1`. Do not enter
-        # confidential information when you supply string values using the API.
+        # confidential information when you supply string values using the API. # IAM
+        # Permissions 1. Requires the `dataflow.jobs.create` permission on the project.
+        # 2. `resourcemanager.projects.get` (Specifically required for regional
+        # endpoints to resolve regional resource metadata)
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
@@ -789,7 +806,8 @@ module Google
         # we recommend using `projects.locations.jobs.get` with a [regional endpoint] (
         # https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `
         # projects.jobs.get` is not recommended, as you can only get the state of jobs
-        # that are running in `us-central1`.
+        # that are running in `us-central1`. # IAM Permissions Requires the `dataflow.
+        # jobs.get` permission on the job.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
@@ -830,7 +848,8 @@ module Google
         end
         
         # Request detailed information about the execution status of the job.
-        # EXPERIMENTAL. This API is subject to change or removal without notice.
+        # EXPERIMENTAL. This API is subject to change or removal without notice. # IAM
+        # Permissions Requires the `dataflow.metrics.get` permission on the job.
         # @param [String] project_id
         #   A project id.
         # @param [String] location
@@ -880,7 +899,8 @@ module Google
         # projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.
         # google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.
         # getMetrics` is not recommended, as you can only request the status of jobs
-        # that are running in `us-central1`.
+        # that are running in `us-central1`. # IAM Permissions Requires the `dataflow.
+        # metrics.get` permission on the job.
         # @param [String] project_id
         #   A project id.
         # @param [String] location
@@ -928,7 +948,8 @@ module Google
         # projects.jobs.list` is not recommended, because you can only get the list of
         # jobs that are running in `us-central1`. `projects.locations.jobs.list` and `
         # projects.jobs.list` support filtering the list of jobs by name. Filtering by
-        # name isn't supported by `projects.jobs.aggregated`.
+        # name isn't supported by `projects.jobs.aggregated`. # IAM Permissions Requires
+        # the `dataflow.jobs.list` permission on the project.
         # @param [String] project_id
         #   The project which owns the jobs.
         # @param [String] location
@@ -981,7 +1002,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Snapshot the state of a streaming job.
+        # Snapshot the state of a streaming job. # IAM Permissions Requires the `
+        # dataflow.jobs.snapshot` permission on the job.
         # @param [String] project_id
         #   The project which owns the job to be snapshotted.
         # @param [String] location
@@ -1024,7 +1046,9 @@ module Google
         # existing job, we recommend using `projects.locations.jobs.update` with a [
         # regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-
         # endpoints). Using `projects.jobs.update` is not recommended, as you can only
-        # update the state of jobs that are running in `us-central1`.
+        # update the state of jobs that are running in `us-central1`. # IAM Permissions
+        # 1. Requires the `dataflow.jobs.cancel` permission to cancel a job. 2. Requires
+        # the `dataflow.jobs.updateContents` permission to update runtime parameters.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
@@ -1196,7 +1220,8 @@ module Google
         # projects.locations.jobs.messages.list` with a [regional endpoint] (https://
         # cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.
         # jobs.messages.list` is not recommended, as you can only request the status of
-        # jobs that are running in `us-central1`.
+        # jobs that are running in `us-central1`. # IAM Permissions Requires the `
+        # dataflow.messages.list` permission on the job.
         # @param [String] project_id
         #   A project id.
         # @param [String] location
@@ -1290,7 +1315,8 @@ module Google
         end
         
         # Request detailed information about the execution status of a stage of the job.
-        # EXPERIMENTAL. This API is subject to change or removal without notice.
+        # EXPERIMENTAL. This API is subject to change or removal without notice. # IAM
+        # Permissions Requires the `dataflow.metrics.get` permission on the job.
         # @param [String] project_id
         #   A project id.
         # @param [String] location
@@ -1538,7 +1564,9 @@ module Google
         # recommend using `projects.locations.templates.create` with a [regional
         # endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
         # Using `projects.templates.create` is not recommended, because your job will
-        # always start in `us-central1`.
+        # always start in `us-central1`. # IAM Permissions Requires the following IAM
+        # permission(s) on the project: - `dataflow.jobs.create` - `resourcemanager.
+        # projects.get`
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
@@ -1579,7 +1607,8 @@ module Google
         # using `projects.locations.templates.get` with a [regional endpoint] (https://
         # cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.
         # templates.get` is not recommended, because only templates that are running in `
-        # us-central1` are retrieved.
+        # us-central1` are retrieved. # IAM Permissions Requires the `resourcemanager.
+        # projects.get` permission on the project.
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
@@ -1624,7 +1653,9 @@ module Google
         # locations.templates.launch` with a [regional endpoint] (https://cloud.google.
         # com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.
         # launch` is not recommended, because jobs launched from the template will
-        # always start in `us-central1`.
+        # always start in `us-central1`. # IAM Permissions Requires the following IAM
+        # permission(s) on the project: - `dataflow.jobs.create` - `resourcemanager.
+        # projects.get`
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] location
@@ -1753,7 +1784,9 @@ module Google
         # recommend using `projects.locations.templates.create` with a [regional
         # endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
         # Using `projects.templates.create` is not recommended, because your job will
-        # always start in `us-central1`.
+        # always start in `us-central1`. # IAM Permissions Requires the following IAM
+        # permission(s) on the project: - `dataflow.jobs.create` - `resourcemanager.
+        # projects.get`
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::CreateJobFromTemplateRequest] create_job_from_template_request_object
@@ -1790,7 +1823,8 @@ module Google
         # using `projects.locations.templates.get` with a [regional endpoint] (https://
         # cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.
         # templates.get` is not recommended, because only templates that are running in `
-        # us-central1` are retrieved.
+        # us-central1` are retrieved. # IAM Permissions Requires the `resourcemanager.
+        # projects.get` permission on the project.
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [String] gcs_path
@@ -1835,7 +1869,9 @@ module Google
         # locations.templates.launch` with a [regional endpoint] (https://cloud.google.
         # com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.
         # launch` is not recommended, because jobs launched from the template will
-        # always start in `us-central1`.
+        # always start in `us-central1`. # IAM Permissions Requires the following IAM
+        # permission(s) on the project: - `dataflow.jobs.create` - `resourcemanager.
+        # projects.get`
         # @param [String] project_id
         #   Required. The ID of the Cloud Platform project that the job belongs to.
         # @param [Google::Apis::DataflowV1b3::LaunchTemplateParameters] launch_template_parameters_object
