@@ -3644,6 +3644,7 @@ module Google
           property :session_info, as: 'sessionInfo', class: Google::Apis::BigqueryV2::SessionInfo, decorator: Google::Apis::BigqueryV2::SessionInfo::Representation
       
           property :start_time, :numeric_string => true, as: 'startTime'
+          property :statement_type, as: 'statementType'
           property :total_bytes_billed, :numeric_string => true, as: 'totalBytesBilled'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_rows, :numeric_string => true, as: 'totalRows'
@@ -3907,6 +3908,9 @@ module Google
       class SkewSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_bytes_max, :numeric_string => true, as: 'outputBytesMax'
+          property :output_bytes_median, :numeric_string => true, as: 'outputBytesMedian'
+          property :output_bytes_p95, :numeric_string => true, as: 'outputBytesP95'
           property :stage_id, :numeric_string => true, as: 'stageId'
         end
       end
