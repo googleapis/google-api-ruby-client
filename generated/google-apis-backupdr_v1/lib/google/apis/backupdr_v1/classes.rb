@@ -2033,6 +2033,17 @@ module Google
       class ComputeInstanceBackupPlanProperties
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, only the boot disk will be backed up.
+        # Corresponds to the JSON property `bootDiskOnly`
+        # @return [Boolean]
+        attr_accessor :boot_disk_only
+        alias_method :boot_disk_only?, :boot_disk_only
+      
+        # Message for selective disk backup exclusion labels.
+        # Corresponds to the JSON property `diskExclusionLabels`
+        # @return [Google::Apis::BackupdrV1::DiskExclusionLabels]
+        attr_accessor :disk_exclusion_labels
+      
         # Optional. Indicates whether to perform a guest flush operation before taking a
         # compute backup. When set to false, the system will create crash-consistent
         # backups. Default value is false.
@@ -2047,6 +2058,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boot_disk_only = args[:boot_disk_only] if args.key?(:boot_disk_only)
+          @disk_exclusion_labels = args[:disk_exclusion_labels] if args.key?(:disk_exclusion_labels)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
         end
       end
@@ -2079,6 +2092,11 @@ module Google
         # @return [Array<Google::Apis::BackupdrV1::AttachedDisk>]
         attr_accessor :disk
       
+        # Optional. List of disks excluded from the backup.
+        # Corresponds to the JSON property `excludedDisks`
+        # @return [Array<String>]
+        attr_accessor :excluded_disks
+      
         # A list of guest accelerator cards' type and count to use for instances created
         # from these properties.
         # Corresponds to the JSON property `guestAccelerator`
@@ -2092,6 +2110,11 @@ module Google
         # @return [Boolean]
         attr_accessor :guest_flush
         alias_method :guest_flush?, :guest_flush
+      
+        # Optional. List of disks included in the backup.
+        # Corresponds to the JSON property `includedDisks`
+        # @return [Array<String>]
+        attr_accessor :included_disks
       
         # KeyRevocationActionType of the instance. Supported options are "STOP" and "
         # NONE". The default value is "NONE" if it is not specified.
@@ -2163,8 +2186,10 @@ module Google
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @description = args[:description] if args.key?(:description)
           @disk = args[:disk] if args.key?(:disk)
+          @excluded_disks = args[:excluded_disks] if args.key?(:excluded_disks)
           @guest_accelerator = args[:guest_accelerator] if args.key?(:guest_accelerator)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
+          @included_disks = args[:included_disks] if args.key?(:included_disks)
           @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -3053,6 +3078,26 @@ module Google
           @name = args[:name] if args.key?(:name)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Message for selective disk backup exclusion labels.
+      class DiskExclusionLabels
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Labels used to identify disks for exclusion from the backup. If a
+        # disk carries any of these labels, it will be excluded (OR logic).
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::BackupdrV1::LabelKeyValPair>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
         end
       end
       
@@ -4154,6 +4199,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+        end
+      end
+      
+      # Message for a label key-value pair.
+      class LabelKeyValPair
+        include Google::Apis::Core::Hashable
+      
+        # Key of the label. The key must follow the format: `\\p`Ll`\\p`Lo``0,62``. This
+        # means the key must start with a lowercase letter or a lowercase international
+        # character, followed by zero or more lowercase letters, lowercase international
+        # characters, numbers, underscores, or dashes. The key must be at most 63
+        # characters long. International characters are allowed.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value of the label. The value must follow the format: `[\\p`Ll`\\p`Lo`\\p`N`_-]
+        # `1,63``. This means the value must be one or more lowercase letters, lowercase
+        # international characters, numbers, underscores, or dashes. The value must be
+        # at most 63 characters long. International characters are allowed.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
