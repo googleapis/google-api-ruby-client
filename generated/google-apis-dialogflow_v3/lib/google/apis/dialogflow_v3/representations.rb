@@ -5053,6 +5053,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3AdvancedSettings::Representation
       
+          property :code_block_function, as: 'codeBlockFunction'
           collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCases::Representation
       
           property :enable_generative_fallback, as: 'enableGenerativeFallback'
@@ -7413,6 +7414,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
       
+          property :code_block_function, as: 'codeBlockFunction'
           collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases::Representation
       
           property :enable_generative_fallback, as: 'enableGenerativeFallback'
@@ -9075,6 +9077,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :candidates_token_count, as: 'candidatesTokenCount'
           property :prompt_token_count, as: 'promptTokenCount'
+          property :similarity_to_last_query, as: 'similarityToLastQuery'
+          property :similarity_to_last_query_threshold, as: 'similarityToLastQueryThreshold'
+          property :thinking_budget_tokens, as: 'thinkingBudgetTokens'
+          property :thinking_level, as: 'thinkingLevel'
           property :total_token_count, as: 'totalTokenCount'
         end
       end
@@ -10405,6 +10411,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :candidates_token_count, as: 'candidatesTokenCount'
           property :prompt_token_count, as: 'promptTokenCount'
+          property :similarity_to_last_query, as: 'similarityToLastQuery'
+          property :similarity_to_last_query_threshold, as: 'similarityToLastQueryThreshold'
+          property :thinking_budget_tokens, as: 'thinkingBudgetTokens'
+          property :thinking_level, as: 'thinkingLevel'
           property :total_token_count, as: 'totalTokenCount'
         end
       end
