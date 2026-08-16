@@ -301,6 +301,12 @@ module Google
       class ExportMetadata
         include Google::Apis::Core::Hashable
       
+        # Source BigQuery dataset (formatted as `project_id:dataset_id`) for O2C Elite
+        # System Activity (ESA) direct dataset migration.
+        # Corresponds to the JSON property `esaSourceDatasetId`
+        # @return [String]
+        attr_accessor :esa_source_dataset_id
+      
         # Encryption key details for the exported artifact.
         # Corresponds to the JSON property `exportEncryptionKey`
         # @return [Google::Apis::LookerV1::ExportMetadataEncryptionKey]
@@ -346,6 +352,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @esa_source_dataset_id = args[:esa_source_dataset_id] if args.key?(:esa_source_dataset_id)
           @export_encryption_key = args[:export_encryption_key] if args.key?(:export_encryption_key)
           @file_paths = args[:file_paths] if args.key?(:file_paths)
           @looker_encryption_key = args[:looker_encryption_key] if args.key?(:looker_encryption_key)
