@@ -1,5 +1,9 @@
 # Release history for google-apis-workstations_v1
 
+### v0.38.0 (2026-08-16)
+
+* Regenerated from discovery document revision 20260807
+
 ### v0.37.0 (2026-06-21)
 
 * Regenerated from discovery document revision 20260604
