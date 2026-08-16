@@ -2011,6 +2011,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a managed folder using patch semantics.
+        # @param [String] bucket
+        #   The name of the bucket containing the managed folder.
+        # @param [String] managed_folder
+        #   The name of the managed folder.
+        # @param [Google::Apis::StorageV1::ManagedFolder] managed_folder_object
+        # @param [Fixnum] if_metageneration_match
+        #   Makes the operation conditional on whether the metageneration of the managed
+        #   folder matches the specified value.
+        # @param [Fixnum] if_metageneration_not_match
+        #   Makes the operation conditional on whether the metageneration of the managed
+        #   folder doesn't match the specified value.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::ManagedFolder] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::ManagedFolder]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_managed_folder(bucket, managed_folder, managed_folder_object = nil, if_metageneration_match: nil, if_metageneration_not_match: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'b/{bucket}/managedFolders/{managedFolder}', options)
+          command.request_representation = Google::Apis::StorageV1::ManagedFolder::Representation
+          command.request_object = managed_folder_object
+          command.response_representation = Google::Apis::StorageV1::ManagedFolder::Representation
+          command.response_class = Google::Apis::StorageV1::ManagedFolder
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['managedFolder'] = managed_folder unless managed_folder.nil?
+          command.query['ifMetagenerationMatch'] = if_metageneration_match unless if_metageneration_match.nil?
+          command.query['ifMetagenerationNotMatch'] = if_metageneration_not_match unless if_metageneration_not_match.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Permanently deletes a notification subscription.
         # @param [String] bucket
         #   The parent bucket of the notification.
@@ -3997,6 +4044,193 @@ module Google
           command.response_class = Google::Apis::StorageV1::ServiceAccount
           command.params['projectId'] = project_id unless project_id.nil?
           command.query['userProject'] = user_project unless user_project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Disables a Rapid Cache instance.
+        # @param [String] bucket
+        #   Name of the parent bucket.
+        # @param [String] rapid_cache_id
+        #   The ID of the requested Rapid Cache instance.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def disable_rapid_cach(bucket, rapid_cache_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/rapidCaches/{rapidCacheId}/disable', options)
+          command.response_representation = Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::StorageV1::GoogleLongrunningOperation
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['rapidCacheId'] = rapid_cache_id unless rapid_cache_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the metadata of a Rapid Cache instance.
+        # @param [String] bucket
+        #   Name of the parent bucket.
+        # @param [String] rapid_cache_id
+        #   The ID of the requested Rapid Cache instance.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::RapidCache] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::RapidCache]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_rapid_cach(bucket, rapid_cache_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/rapidCaches/{rapidCacheId}', options)
+          command.response_representation = Google::Apis::StorageV1::RapidCache::Representation
+          command.response_class = Google::Apis::StorageV1::RapidCache
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['rapidCacheId'] = rapid_cache_id unless rapid_cache_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Rapid Cache instance.
+        # @param [String] bucket
+        #   Name of the parent bucket.
+        # @param [Google::Apis::StorageV1::RapidCache] rapid_cache_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_rapid_cach(bucket, rapid_cache_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'b/{bucket}/rapidCaches', options)
+          command.request_representation = Google::Apis::StorageV1::RapidCache::Representation
+          command.request_object = rapid_cache_object
+          command.response_representation = Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::StorageV1::GoogleLongrunningOperation
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of Rapid Cache instances of the bucket.
+        # @param [String] bucket
+        #   Name of the parent bucket.
+        # @param [Fixnum] page_size
+        #   Maximum number of items to return in a single page of responses.
+        # @param [String] page_token
+        #   A previously-returned page token representing part of the larger set of
+        #   results to view.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::RapidCaches] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::RapidCaches]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_rapid_caches(bucket, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/rapidCaches', options)
+          command.response_representation = Google::Apis::StorageV1::RapidCaches::Representation
+          command.response_class = Google::Apis::StorageV1::RapidCaches
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the configuration of a Rapid Cache instance.
+        # @param [String] bucket
+        #   Name of the parent bucket.
+        # @param [String] rapid_cache_id
+        #   The ID of the requested Rapid Cache instance.
+        # @param [Google::Apis::StorageV1::RapidCache] rapid_cache_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_rapid_cach(bucket, rapid_cache_id, rapid_cache_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'b/{bucket}/rapidCaches/{rapidCacheId}', options)
+          command.request_representation = Google::Apis::StorageV1::RapidCache::Representation
+          command.request_object = rapid_cache_object
+          command.response_representation = Google::Apis::StorageV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::StorageV1::GoogleLongrunningOperation
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['rapidCacheId'] = rapid_cache_id unless rapid_cache_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
