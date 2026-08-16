@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CatalogReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CatalogSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatabaseReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DatabaseSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +215,18 @@ module Google
       end
       
       class ErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionPlan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MigrationReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MigrationSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +443,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -514,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TableSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -533,6 +575,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValueDiff
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -675,6 +723,16 @@ module Google
         end
       end
       
+      class CatalogReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog, as: 'catalog'
+          property :catalog_type, as: 'catalogType'
+          hash :database_reports, as: 'databaseReports', class: Google::Apis::MetastoreV1alpha::DatabaseReport, decorator: Google::Apis::MetastoreV1alpha::DatabaseReport::Representation
+      
+        end
+      end
+      
       class CatalogSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -778,6 +836,19 @@ module Google
         end
       end
       
+      class DatabaseReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :execution_plan, as: 'executionPlan', class: Google::Apis::MetastoreV1alpha::ExecutionPlan, decorator: Google::Apis::MetastoreV1alpha::ExecutionPlan::Representation
+      
+          property :execution_result, as: 'executionResult', class: Google::Apis::MetastoreV1alpha::ExecutionResult, decorator: Google::Apis::MetastoreV1alpha::ExecutionResult::Representation
+      
+          hash :table_reports, as: 'tableReports', class: Google::Apis::MetastoreV1alpha::TableReport, decorator: Google::Apis::MetastoreV1alpha::TableReport::Representation
+      
+        end
+      end
+      
       class DatabaseSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -815,6 +886,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :details, as: 'details'
+        end
+      end
+      
+      class ExecutionPlan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          hash :diffs, as: 'diffs', class: Google::Apis::MetastoreV1alpha::ValueDiff, decorator: Google::Apis::MetastoreV1alpha::ValueDiff::Representation
+      
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class ExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :remediation, as: 'remediation'
+          property :state, as: 'state'
         end
       end
       
@@ -1094,6 +1184,16 @@ module Google
         end
       end
       
+      class MigrationReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :catalog_reports, as: 'catalogReports', class: Google::Apis::MetastoreV1alpha::CatalogReport, decorator: Google::Apis::MetastoreV1alpha::CatalogReport::Representation
+      
+          property :summary, as: 'summary', class: Google::Apis::MetastoreV1alpha::MigrationSummary, decorator: Google::Apis::MetastoreV1alpha::MigrationSummary::Representation
+      
+        end
+      end
+      
       class MigrationSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1170,6 +1270,15 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PartitionReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partition_failed_count, :numeric_string => true, as: 'partitionFailedCount'
+          property :partition_success_count, :numeric_string => true, as: 'partitionSuccessCount'
+          property :state, as: 'state'
         end
       end
       
@@ -1355,6 +1464,20 @@ module Google
         end
       end
       
+      class TableReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_plan, as: 'executionPlan', class: Google::Apis::MetastoreV1alpha::ExecutionPlan, decorator: Google::Apis::MetastoreV1alpha::ExecutionPlan::Representation
+      
+          property :execution_result, as: 'executionResult', class: Google::Apis::MetastoreV1alpha::ExecutionResult, decorator: Google::Apis::MetastoreV1alpha::ExecutionResult::Representation
+      
+          property :partition_discovered_count, :numeric_string => true, as: 'partitionDiscoveredCount'
+          property :partition_report, as: 'partitionReport', class: Google::Apis::MetastoreV1alpha::PartitionReport, decorator: Google::Apis::MetastoreV1alpha::PartitionReport::Representation
+      
+          property :table, as: 'table'
+        end
+      end
+      
       class TableSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1384,6 +1507,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class ValueDiff
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_value, as: 'sourceValue'
+          property :target_value, as: 'targetValue'
         end
       end
     end

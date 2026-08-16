@@ -567,6 +567,37 @@ module Google
         end
       end
       
+      # Aggregated report at the catalog level.
+      class CatalogReport
+        include Google::Apis::Core::Hashable
+      
+        # The name of the catalog (format: projects/*/catalogs/*).
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # The type of catalog.
+        # Corresponds to the JSON property `catalogType`
+        # @return [String]
+        attr_accessor :catalog_type
+      
+        # A map of database names to their respective reports.
+        # Corresponds to the JSON property `databaseReports`
+        # @return [Hash<String,Google::Apis::MetastoreV1alpha::DatabaseReport>]
+        attr_accessor :database_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @catalog_type = args[:catalog_type] if args.key?(:catalog_type)
+          @database_reports = args[:database_reports] if args.key?(:database_reports)
+        end
+      end
+      
       # Summary of results for a specific destination catalog.
       class CatalogSummary
         include Google::Apis::Core::Hashable
@@ -968,6 +999,44 @@ module Google
         end
       end
       
+      # Aggregated report at the database level.
+      class DatabaseReport
+        include Google::Apis::Core::Hashable
+      
+        # The name of the database.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Represents the migration plan for a specific resource (e.g. Database, Table).
+        # Corresponds to the JSON property `executionPlan`
+        # @return [Google::Apis::MetastoreV1alpha::ExecutionPlan]
+        attr_accessor :execution_plan
+      
+        # Represents the actual migration result for a specific resource (e.g. Database,
+        # Table).
+        # Corresponds to the JSON property `executionResult`
+        # @return [Google::Apis::MetastoreV1alpha::ExecutionResult]
+        attr_accessor :execution_result
+      
+        # A map of table names to their respective reports.
+        # Corresponds to the JSON property `tableReports`
+        # @return [Hash<String,Google::Apis::MetastoreV1alpha::TableReport>]
+        attr_accessor :table_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @execution_plan = args[:execution_plan] if args.key?(:execution_plan)
+          @execution_result = args[:execution_result] if args.key?(:execution_result)
+          @table_reports = args[:table_reports] if args.key?(:table_reports)
+        end
+      end
+      
       # Summary of results for a specific database in a catalog.
       class DatabaseSummary
         include Google::Apis::Core::Hashable
@@ -1091,6 +1160,69 @@ module Google
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
+        end
+      end
+      
+      # Represents the migration plan for a specific resource (e.g. Database, Table).
+      class ExecutionPlan
+        include Google::Apis::Core::Hashable
+      
+        # The action that will be taken for a resource during migration.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # A map of field names to their respective value diff.
+        # Corresponds to the JSON property `diffs`
+        # @return [Hash<String,Google::Apis::MetastoreV1alpha::ValueDiff>]
+        attr_accessor :diffs
+      
+        # A human-readable string explaining why the action was chosen.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @diffs = args[:diffs] if args.key?(:diffs)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Represents the actual migration result for a specific resource (e.g. Database,
+      # Table).
+      class ExecutionResult
+        include Google::Apis::Core::Hashable
+      
+        # Description of the error if the state is FAILED.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Remediation steps for the error if the state is FAILED.
+        # Corresponds to the JSON property `remediation`
+        # @return [String]
+        attr_accessor :remediation
+      
+        # Output only. The state of the migration for a resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @remediation = args[:remediation] if args.key?(:remediation)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2107,6 +2239,33 @@ module Google
         end
       end
       
+      # Report containing the results of a migration run. This report is generated at
+      # the specified path in the BigLakeMetastoreMigrationConfig after the backfill
+      # is complete, or when a dry run is executed.
+      class MigrationReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Detailed results for each catalog involved in the migration.
+        # Corresponds to the JSON property `catalogReports`
+        # @return [Array<Google::Apis::MetastoreV1alpha::CatalogReport>]
+        attr_accessor :catalog_reports
+      
+        # Summary of the migration results.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::MetastoreV1alpha::MigrationSummary]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog_reports = args[:catalog_reports] if args.key?(:catalog_reports)
+          @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
       # Summary of the migration results.
       class MigrationSummary
         include Google::Apis::Core::Hashable
@@ -2400,6 +2559,37 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Partition migration report for a Hive table.
+      class PartitionReport
+        include Google::Apis::Core::Hashable
+      
+        # The number of partitions that failed to migrate at the target.
+        # Corresponds to the JSON property `partitionFailedCount`
+        # @return [Fixnum]
+        attr_accessor :partition_failed_count
+      
+        # The number of partitions successfully migrated at the target.
+        # Corresponds to the JSON property `partitionSuccessCount`
+        # @return [Fixnum]
+        attr_accessor :partition_success_count
+      
+        # Output only. The state of the partition migration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partition_failed_count = args[:partition_failed_count] if args.key?(:partition_failed_count)
+          @partition_success_count = args[:partition_success_count] if args.key?(:partition_success_count)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -3194,6 +3384,51 @@ module Google
         end
       end
       
+      # Aggregated report at the table level.
+      class TableReport
+        include Google::Apis::Core::Hashable
+      
+        # Represents the migration plan for a specific resource (e.g. Database, Table).
+        # Corresponds to the JSON property `executionPlan`
+        # @return [Google::Apis::MetastoreV1alpha::ExecutionPlan]
+        attr_accessor :execution_plan
+      
+        # Represents the actual migration result for a specific resource (e.g. Database,
+        # Table).
+        # Corresponds to the JSON property `executionResult`
+        # @return [Google::Apis::MetastoreV1alpha::ExecutionResult]
+        attr_accessor :execution_result
+      
+        # The total number of partitions identified at the source during discovery. This
+        # is only relevant for Hive Partitioned tables.
+        # Corresponds to the JSON property `partitionDiscoveredCount`
+        # @return [Fixnum]
+        attr_accessor :partition_discovered_count
+      
+        # Partition migration report for a Hive table.
+        # Corresponds to the JSON property `partitionReport`
+        # @return [Google::Apis::MetastoreV1alpha::PartitionReport]
+        attr_accessor :partition_report
+      
+        # The name of the table.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_plan = args[:execution_plan] if args.key?(:execution_plan)
+          @execution_result = args[:execution_result] if args.key?(:execution_result)
+          @partition_discovered_count = args[:partition_discovered_count] if args.key?(:partition_discovered_count)
+          @partition_report = args[:partition_report] if args.key?(:partition_report)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
       # Aggregated summary of results for all tables in a database.
       class TableSummary
         include Google::Apis::Core::Hashable
@@ -3299,6 +3534,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A field-level metadata mismatch for a resource between the source and target.
+      class ValueDiff
+        include Google::Apis::Core::Hashable
+      
+        # The value of the field at the source.
+        # Corresponds to the JSON property `sourceValue`
+        # @return [String]
+        attr_accessor :source_value
+      
+        # The value of the field at the target.
+        # Corresponds to the JSON property `targetValue`
+        # @return [String]
+        attr_accessor :target_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_value = args[:source_value] if args.key?(:source_value)
+          @target_value = args[:target_value] if args.key?(:target_value)
         end
       end
     end
