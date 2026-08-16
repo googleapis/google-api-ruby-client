@@ -826,6 +826,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaliciousContentLlmResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaliciousContentStaticResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MalwareScanResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Material
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -869,6 +887,12 @@ module Google
       end
       
       class PackageOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerScannerVerdict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1174,6 +1198,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkspacePolicyResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AiSkillAnalysisNote
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1186,6 +1216,8 @@ module Google
           collection :findings, as: 'findings', class: Google::Apis::ContaineranalysisV1::Finding, decorator: Google::Apis::ContaineranalysisV1::Finding::Representation
       
           property :max_severity, as: 'maxSeverity'
+          property :per_scanner_verdict, as: 'perScannerVerdict', class: Google::Apis::ContaineranalysisV1::PerScannerVerdict, decorator: Google::Apis::ContaineranalysisV1::PerScannerVerdict::Representation
+      
           property :skill_name, as: 'skillName'
         end
       end
@@ -2633,6 +2665,30 @@ module Google
         end
       end
       
+      class MaliciousContentLlmResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_severity, as: 'maxSeverity'
+          property :scan_status, as: 'scanStatus'
+        end
+      end
+      
+      class MaliciousContentStaticResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_severity, as: 'maxSeverity'
+          property :scan_status, as: 'scanStatus'
+        end
+      end
+      
+      class MalwareScanResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scan_status, as: 'scanStatus'
+          property :verdict, as: 'verdict'
+        end
+      end
+      
       class Material
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2800,6 +2856,20 @@ module Google
           property :name, as: 'name'
           property :package_type, as: 'packageType'
           property :version, as: 'version', class: Google::Apis::ContaineranalysisV1::Version, decorator: Google::Apis::ContaineranalysisV1::Version::Representation
+      
+        end
+      end
+      
+      class PerScannerVerdict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :malicious_content_llm_result, as: 'maliciousContentLlmResult', class: Google::Apis::ContaineranalysisV1::MaliciousContentLlmResult, decorator: Google::Apis::ContaineranalysisV1::MaliciousContentLlmResult::Representation
+      
+          property :malicious_content_static_result, as: 'maliciousContentStaticResult', class: Google::Apis::ContaineranalysisV1::MaliciousContentStaticResult, decorator: Google::Apis::ContaineranalysisV1::MaliciousContentStaticResult::Representation
+      
+          property :malware_scan, as: 'malwareScan', class: Google::Apis::ContaineranalysisV1::MalwareScanResult, decorator: Google::Apis::ContaineranalysisV1::MalwareScanResult::Representation
+      
+          property :workspace_policy, as: 'workspacePolicy', class: Google::Apis::ContaineranalysisV1::WorkspacePolicyResult, decorator: Google::Apis::ContaineranalysisV1::WorkspacePolicyResult::Representation
       
         end
       end
@@ -3346,6 +3416,14 @@ module Google
           property :last_published_timestamp, as: 'lastPublishedTimestamp'
           property :support_url, as: 'supportUrl'
           property :title, as: 'title'
+        end
+      end
+      
+      class WorkspacePolicyResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scan_status, as: 'scanStatus'
+          property :verdict, as: 'verdict'
         end
       end
     end
