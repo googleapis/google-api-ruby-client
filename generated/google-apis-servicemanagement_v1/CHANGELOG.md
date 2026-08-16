@@ -1,5 +1,9 @@
 # Release history for google-apis-servicemanagement_v1
 
+### v0.78.0 (2026-08-16)
+
+* Regenerated from discovery document revision 20260731
+
 ### v0.77.0 (2026-06-14)
 
 * Regenerated from discovery document revision 20260430
