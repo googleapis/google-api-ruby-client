@@ -3345,6 +3345,11 @@ module Google
         attr_accessor :advanced_settings
       
         # 
+        # Corresponds to the JSON property `codeBlockFunction`
+        # @return [String]
+        attr_accessor :code_block_function
+      
+        # 
         # Corresponds to the JSON property `conditionalCases`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3FulfillmentConditionalCases>]
         attr_accessor :conditional_cases
@@ -3393,6 +3398,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
+          @code_block_function = args[:code_block_function] if args.key?(:code_block_function)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @enable_generative_fallback = args[:enable_generative_fallback] if args.key?(:enable_generative_fallback)
           @generators = args[:generators] if args.key?(:generators)
@@ -10736,6 +10742,11 @@ module Google
         attr_accessor :advanced_settings
       
         # 
+        # Corresponds to the JSON property `codeBlockFunction`
+        # @return [String]
+        attr_accessor :code_block_function
+      
+        # 
         # Corresponds to the JSON property `conditionalCases`
         # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases>]
         attr_accessor :conditional_cases
@@ -10784,6 +10795,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
+          @code_block_function = args[:code_block_function] if args.key?(:code_block_function)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @enable_generative_fallback = args[:enable_generative_fallback] if args.key?(:enable_generative_fallback)
           @generators = args[:generators] if args.key?(:generators)
@@ -16075,6 +16087,26 @@ module Google
         attr_accessor :prompt_token_count
       
         # 
+        # Corresponds to the JSON property `similarityToLastQuery`
+        # @return [Float]
+        attr_accessor :similarity_to_last_query
+      
+        # 
+        # Corresponds to the JSON property `similarityToLastQueryThreshold`
+        # @return [Float]
+        attr_accessor :similarity_to_last_query_threshold
+      
+        # 
+        # Corresponds to the JSON property `thinkingBudgetTokens`
+        # @return [Fixnum]
+        attr_accessor :thinking_budget_tokens
+      
+        # 
+        # Corresponds to the JSON property `thinkingLevel`
+        # @return [String]
+        attr_accessor :thinking_level
+      
+        # 
         # Corresponds to the JSON property `totalTokenCount`
         # @return [Fixnum]
         attr_accessor :total_token_count
@@ -16087,6 +16119,10 @@ module Google
         def update!(**args)
           @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
           @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @similarity_to_last_query = args[:similarity_to_last_query] if args.key?(:similarity_to_last_query)
+          @similarity_to_last_query_threshold = args[:similarity_to_last_query_threshold] if args.key?(:similarity_to_last_query_threshold)
+          @thinking_budget_tokens = args[:thinking_budget_tokens] if args.key?(:thinking_budget_tokens)
+          @thinking_level = args[:thinking_level] if args.key?(:thinking_level)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
         end
       end
@@ -20364,6 +20400,26 @@ module Google
         attr_accessor :prompt_token_count
       
         # 
+        # Corresponds to the JSON property `similarityToLastQuery`
+        # @return [Float]
+        attr_accessor :similarity_to_last_query
+      
+        # 
+        # Corresponds to the JSON property `similarityToLastQueryThreshold`
+        # @return [Float]
+        attr_accessor :similarity_to_last_query_threshold
+      
+        # 
+        # Corresponds to the JSON property `thinkingBudgetTokens`
+        # @return [Fixnum]
+        attr_accessor :thinking_budget_tokens
+      
+        # 
+        # Corresponds to the JSON property `thinkingLevel`
+        # @return [String]
+        attr_accessor :thinking_level
+      
+        # 
         # Corresponds to the JSON property `totalTokenCount`
         # @return [Fixnum]
         attr_accessor :total_token_count
@@ -20376,6 +20432,10 @@ module Google
         def update!(**args)
           @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
           @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @similarity_to_last_query = args[:similarity_to_last_query] if args.key?(:similarity_to_last_query)
+          @similarity_to_last_query_threshold = args[:similarity_to_last_query_threshold] if args.key?(:similarity_to_last_query_threshold)
+          @thinking_budget_tokens = args[:thinking_budget_tokens] if args.key?(:thinking_budget_tokens)
+          @thinking_level = args[:thinking_level] if args.key?(:thinking_level)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
         end
       end
