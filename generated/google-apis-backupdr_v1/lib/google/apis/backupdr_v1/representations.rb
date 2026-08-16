@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiskExclusionLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DiskRestoreProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -539,6 +545,12 @@ module Google
       end
       
       class InstanceParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LabelKeyValPair
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1315,6 +1327,9 @@ module Google
       class ComputeInstanceBackupPlanProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_disk_only, as: 'bootDiskOnly'
+          property :disk_exclusion_labels, as: 'diskExclusionLabels', class: Google::Apis::BackupdrV1::DiskExclusionLabels, decorator: Google::Apis::BackupdrV1::DiskExclusionLabels::Representation
+      
           property :guest_flush, as: 'guestFlush'
         end
       end
@@ -1326,9 +1341,11 @@ module Google
           property :description, as: 'description'
           collection :disk, as: 'disk', class: Google::Apis::BackupdrV1::AttachedDisk, decorator: Google::Apis::BackupdrV1::AttachedDisk::Representation
       
+          collection :excluded_disks, as: 'excludedDisks'
           collection :guest_accelerator, as: 'guestAccelerator', class: Google::Apis::BackupdrV1::AcceleratorConfig, decorator: Google::Apis::BackupdrV1::AcceleratorConfig::Representation
       
           property :guest_flush, as: 'guestFlush'
+          collection :included_disks, as: 'includedDisks'
           property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
@@ -1561,6 +1578,14 @@ module Google
           property :name, as: 'name'
           property :size_gb, :numeric_string => true, as: 'sizeGb'
           property :type, as: 'type'
+        end
+      end
+      
+      class DiskExclusionLabels
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :labels, as: 'labels', class: Google::Apis::BackupdrV1::LabelKeyValPair, decorator: Google::Apis::BackupdrV1::LabelKeyValPair::Representation
+      
         end
       end
       
@@ -1856,6 +1881,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
+      class LabelKeyValPair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
