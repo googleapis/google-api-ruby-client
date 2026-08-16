@@ -106,6 +106,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchRecordEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchRecordEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Category
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlayerGameEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlayerLeaderboardScore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +413,12 @@ module Google
       end
       
       class ProfileSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PropertyValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -473,6 +497,12 @@ module Google
       end
       
       class StatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -642,6 +672,26 @@ module Google
           property :alternate_player_id, as: 'alternate_player_id'
           property :kind, as: 'kind'
           property :player_id, as: 'player_id'
+        end
+      end
+      
+      class BatchRecordEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :droid_guard_blob, as: 'droidGuardBlob'
+          collection :events, as: 'events', class: Google::Apis::GamesV1::PlayerGameEvent, decorator: Google::Apis::GamesV1::PlayerGameEvent::Representation
+      
+          property :package_name, as: 'packageName'
+          property :request_time, as: 'requestTime'
+          property :salt, as: 'salt'
+        end
+      end
+      
+      class BatchRecordEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :failed_requests, as: 'failedRequests', class: Google::Apis::GamesV1::Status, decorator: Google::Apis::GamesV1::Status::Representation
+      
         end
       end
       
@@ -1074,6 +1124,17 @@ module Google
         end
       end
       
+      class PlayerGameEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :event_id, as: 'eventId'
+          property :event_name, as: 'eventName'
+          hash :event_properties, as: 'eventProperties', class: Google::Apis::GamesV1::PropertyValue, decorator: Google::Apis::GamesV1::PropertyValue::Representation
+      
+          property :event_time, as: 'eventTime'
+        end
+      end
+      
       class PlayerLeaderboardScore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1173,6 +1234,18 @@ module Google
           property :friends_list_visibility, as: 'friendsListVisibility'
           property :kind, as: 'kind'
           property :profile_visible, as: 'profileVisible'
+        end
+      end
+      
+      class PropertyValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :double_value, as: 'doubleValue'
+          property :duration_value, as: 'durationValue'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :string_value, as: 'stringValue'
+          property :timestamp_value, as: 'timestampValue'
         end
       end
       
@@ -1304,6 +1377,15 @@ module Google
           property :spend_percentile, as: 'spend_percentile'
           property :spend_probability, as: 'spend_probability'
           property :total_spend_next_28_days, as: 'total_spend_next_28_days'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       
