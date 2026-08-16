@@ -1508,6 +1508,8 @@ module Google
           property :system_version, as: 'systemVersion'
           property :time_zone, as: 'timeZone', class: Google::Apis::OracledatabaseV1::TimeZone, decorator: Google::Apis::OracledatabaseV1::TimeZone::Representation
       
+          property :vm_backup_storage_type, as: 'vmBackupStorageType'
+          property :vm_file_system_storage_type, as: 'vmFileSystemStorageType'
         end
       end
       
@@ -1516,6 +1518,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
           property :total_storage_size_gb, as: 'totalStorageSizeGb'
+          property :total_vm_storage_size_gb, as: 'totalVmStorageSizeGb'
         end
       end
       
@@ -1924,7 +1927,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :available_storage_size_gb, as: 'availableStorageSizeGb'
+          property :available_vm_storage_size_gb, as: 'availableVmStorageSizeGb'
           property :total_storage_size_gb, as: 'totalStorageSizeGb'
+          property :total_vm_storage_size_gb, as: 'totalVmStorageSizeGb'
         end
       end
       
