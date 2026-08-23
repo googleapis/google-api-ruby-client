@@ -2389,6 +2389,7 @@ module Google
       
           property :actual_start_time, as: 'actualStartTime', type: DateTime
       
+          property :category_id, as: 'categoryId'
           property :channel_id, as: 'channelId'
           property :description, as: 'description'
           property :is_default_broadcast, as: 'isDefaultBroadcast'
@@ -3390,13 +3391,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default, as: 'default', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
+          property :fhd, as: 'fhd', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
+      
           property :high, as: 'high', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
           property :maxres, as: 'maxres', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
           property :medium, as: 'medium', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
+          property :qhd, as: 'qhd', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
+      
           property :standard, as: 'standard', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
+      
+          property :uhd, as: 'uhd', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
         end
       end
