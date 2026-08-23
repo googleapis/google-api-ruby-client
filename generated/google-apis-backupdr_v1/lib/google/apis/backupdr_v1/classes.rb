@@ -3140,6 +3140,11 @@ module Google
         # @return [Array<Google::Apis::BackupdrV1::GuestOsFeature>]
         attr_accessor :guest_os_feature
       
+        # Options for creating a disk from a source Compute Instance backup.
+        # Corresponds to the JSON property `instanceBackupSource`
+        # @return [Google::Apis::BackupdrV1::RestoreDiskFromInstanceOptions]
+        attr_accessor :instance_backup_source
+      
         # Optional. Labels to apply to this disk. These can be modified later using
         # setLabels method. Label values can be empty.
         # Corresponds to the JSON property `labels`
@@ -3215,6 +3220,7 @@ module Google
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
           @guest_os_feature = args[:guest_os_feature] if args.key?(:guest_os_feature)
+          @instance_backup_source = args[:instance_backup_source] if args.key?(:instance_backup_source)
           @labels = args[:labels] if args.key?(:labels)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
@@ -5503,6 +5509,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @target_resource = args[:target_resource] if args.key?(:target_resource)
+        end
+      end
+      
+      # Options for creating a disk from a source Compute Instance backup.
+      class RestoreDiskFromInstanceOptions
+        include Google::Apis::Core::Hashable
+      
+        # Specifies that the boot disk should be restored from the instance backup. This
+        # field should only be set to `true` if selected.
+        # Corresponds to the JSON property `bootDisk`
+        # @return [Boolean]
+        attr_accessor :boot_disk
+        alias_method :boot_disk?, :boot_disk
+      
+        # The device name of the disk to restore from the VM backup.
+        # Corresponds to the JSON property `sourceDeviceName`
+        # @return [String]
+        attr_accessor :source_device_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
+          @source_device_name = args[:source_device_name] if args.key?(:source_device_name)
         end
       end
       
