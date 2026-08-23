@@ -2139,6 +2139,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Checkout a branch in a Workspace.
+        # @param [String] name
+        #   Required. The workspace resource name. Format: projects/`project`/locations/`
+        #   location`/repositories/`repository`/workspaces/`workspace`
+        # @param [Google::Apis::DataformV1beta1::CheckoutWorkspaceBranchRequest] checkout_workspace_branch_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def checkout_workspace_branch(name, checkout_workspace_branch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:checkout', options)
+          command.request_representation = Google::Apis::DataformV1beta1::CheckoutWorkspaceBranchRequest::Representation
+          command.request_object = checkout_workspace_branch_request_object
+          command.response_representation = Google::Apis::DataformV1beta1::Empty::Representation
+          command.response_class = Google::Apis::DataformV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Applies a Git commit for uncommitted files in a Workspace.
         # @param [String] name
         #   Required. The workspace's name.
@@ -2234,6 +2268,116 @@ module Google
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::DataformV1beta1::Empty::Representation
           command.response_class = Google::Apis::DataformV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a branch in a Workspace.
+        # @param [String] name
+        #   Required. The workspace resource name. Format: projects/`project`/locations/`
+        #   location`/repositories/`repository`/workspaces/`workspace`
+        # @param [Google::Apis::DataformV1beta1::DeleteBranchRequest] delete_branch_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::DeleteBranchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::DeleteBranchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_workspace_branch(name, delete_branch_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:deleteBranch', options)
+          command.request_representation = Google::Apis::DataformV1beta1::DeleteBranchRequest::Representation
+          command.request_object = delete_branch_request_object
+          command.response_representation = Google::Apis::DataformV1beta1::DeleteBranchResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::DeleteBranchResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches branches in a Workspace.
+        # @param [String] name
+        #   Required. The workspace resource name. Format: projects/`project`/locations/`
+        #   location`/repositories/`repository`/workspaces/`workspace`
+        # @param [String] filter
+        #   Optional. Filter for the returned list.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of branches to return. The server may return fewer
+        #   items than requested. If unspecified, the server will pick an appropriate
+        #   default. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. Page token received from a previous `FetchWorkspaceBranches` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `FetchWorkspaceBranches`, with the exception of `
+        #   page_size`, must match the call that provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::FetchWorkspaceBranchesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::FetchWorkspaceBranchesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_repository_workspace_branches(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}:fetchBranches', options)
+          command.response_representation = Google::Apis::DataformV1beta1::FetchWorkspaceBranchesResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::FetchWorkspaceBranchesResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches the current branch of a Workspace.
+        # @param [String] name
+        #   Required. The workspace resource name. Format: projects/`project`/locations/`
+        #   location`/repositories/`repository`/workspaces/`workspace`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::FetchCurrentWorkspaceBranchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::FetchCurrentWorkspaceBranchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_repository_workspace_current_branch(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}:fetchCurrentBranch', options)
+          command.response_representation = Google::Apis::DataformV1beta1::FetchCurrentWorkspaceBranchResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::FetchCurrentWorkspaceBranchResponse
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2928,6 +3072,40 @@ module Google
           command.response_representation = Google::Apis::DataformV1beta1::Policy::Representation
           command.response_class = Google::Apis::DataformV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Syncs the refs of a Workspace.
+        # @param [String] name
+        #   Required. The workspace resource name. Format: projects/`project`/locations/`
+        #   location`/repositories/`repository`/workspaces/`workspace`
+        # @param [Google::Apis::DataformV1beta1::SyncWorkspaceRefsRequest] sync_workspace_refs_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1beta1::SyncWorkspaceRefsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1beta1::SyncWorkspaceRefsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def sync_workspace_refs(name, sync_workspace_refs_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:syncWorkspaceRefs', options)
+          command.request_representation = Google::Apis::DataformV1beta1::SyncWorkspaceRefsRequest::Representation
+          command.request_object = sync_workspace_refs_request_object
+          command.response_representation = Google::Apis::DataformV1beta1::SyncWorkspaceRefsResponse::Representation
+          command.response_class = Google::Apis::DataformV1beta1::SyncWorkspaceRefsResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
