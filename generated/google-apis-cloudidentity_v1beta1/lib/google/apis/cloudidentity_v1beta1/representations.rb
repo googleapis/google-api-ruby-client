@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllowlistedDomain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AndroidAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -478,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAllowlistedDomainsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClientStatesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -849,6 +861,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pem_data, as: 'pemData'
+        end
+      end
+      
+      class AllowlistedDomain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :name, as: 'name'
         end
       end
       
@@ -1626,6 +1646,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_invitable_user, as: 'isInvitableUser'
+        end
+      end
+      
+      class ListAllowlistedDomainsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowlisted_domains, as: 'allowlistedDomains', class: Google::Apis::CloudidentityV1beta1::AllowlistedDomain, decorator: Google::Apis::CloudidentityV1beta1::AllowlistedDomain::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
