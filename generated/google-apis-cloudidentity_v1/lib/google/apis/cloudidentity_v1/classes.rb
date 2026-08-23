@@ -64,6 +64,33 @@ module Google
         end
       end
       
+      # This resource object defines a domain that has been designated as allowlisted.
+      class AllowlistedDomain
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. Name of the domain that is in the allowlist. e.g. "google.
+        # com"
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Output only. Identifier. Resource name of the domain in the allowlist e.g. "
+        # allowlistedDomains/0184mhaj1smlusv"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Request to cancel sent invitation for target email in UserInvitation.
       class CancelUserInvitationRequest
         include Google::Apis::Core::Hashable
@@ -2189,6 +2216,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_invitable_user = args[:is_invitable_user] if args.key?(:is_invitable_user)
+        end
+      end
+      
+      # Response message for AllowlistedDomainsService.ListAllowlistedDomains.
+      class ListAllowlistedDomainsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Contains the list of domains in the allowlist. There is no defined ordering of
+        # domains within a result.
+        # Corresponds to the JSON property `allowlistedDomains`
+        # @return [Array<Google::Apis::CloudidentityV1::AllowlistedDomain>]
+        attr_accessor :allowlisted_domains
+      
+        # Contains the next page token if the result is not exhaustive. If there are no
+        # more results, this token is empty.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowlisted_domains = args[:allowlisted_domains] if args.key?(:allowlisted_domains)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
