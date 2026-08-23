@@ -516,11 +516,21 @@ module Google
       class CustomThreatScenarioConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. The compiled Lucene query string.
+        # Corresponds to the JSON property `compiledLuceneQuery`
+        # @return [String]
+        attr_accessor :compiled_lucene_query
+      
         # Required. The condition driving the scenario, stored as a stringified JSON.
         # This is used to query/filter documents.
         # Corresponds to the JSON property `documentCondition`
         # @return [String]
         attr_accessor :document_condition
+      
+        # Legacy metadata associated with this scenario/monitor.
+        # Corresponds to the JSON property `legacyMonitorMetadata`
+        # @return [Google::Apis::ThreatintelligenceV1beta::LegacyMetadata]
+        attr_accessor :legacy_monitor_metadata
       
         def initialize(**args)
            update!(**args)
@@ -528,7 +538,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @compiled_lucene_query = args[:compiled_lucene_query] if args.key?(:compiled_lucene_query)
           @document_condition = args[:document_condition] if args.key?(:document_condition)
+          @legacy_monitor_metadata = args[:legacy_monitor_metadata] if args.key?(:legacy_monitor_metadata)
         end
       end
       
@@ -1518,6 +1530,118 @@ module Google
           @document_id = args[:document_id] if args.key?(:document_id)
           @match_score = args[:match_score] if args.key?(:match_score)
           @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # Legacy metadata associated with this scenario/monitor.
+      class LegacyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether aggregation is enabled for alerts from this monitor.
+        # Corresponds to the JSON property `aggregationEnabled`
+        # @return [Boolean]
+        attr_accessor :aggregation_enabled
+        alias_method :aggregation_enabled?, :aggregation_enabled
+      
+        # Optional. Similarity threshold for aggregation.
+        # Corresponds to the JSON property `aggregationSimilarity`
+        # @return [Float]
+        attr_accessor :aggregation_similarity
+      
+        # Optional. Version of the condition schema.
+        # Corresponds to the JSON property `conditionVersion`
+        # @return [Fixnum]
+        attr_accessor :condition_version
+      
+        # Optional. User ID who created the monitor.
+        # Corresponds to the JSON property `creatorUserId`
+        # @return [String]
+        attr_accessor :creator_user_id
+      
+        # Optional. Description of the legacy monitor.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Code indicating why the monitor is disabled (if applicable).
+        # Corresponds to the JSON property `disabledCode`
+        # @return [String]
+        attr_accessor :disabled_code
+      
+        # Optional. Reason why the monitor is disabled (if applicable).
+        # Corresponds to the JSON property `disabledReason`
+        # @return [String]
+        attr_accessor :disabled_reason
+      
+        # Optional. Name of the legacy monitor.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Whether email notifications are enabled.
+        # Corresponds to the JSON property `emailNotificationEnabled`
+        # @return [Boolean]
+        attr_accessor :email_notification_enabled
+        alias_method :email_notification_enabled?, :email_notification_enabled
+      
+        # Optional. Whether email notifications are intermediate/immediate.
+        # Corresponds to the JSON property `emailNotificationImmediate`
+        # @return [Boolean]
+        attr_accessor :email_notification_immediate
+        alias_method :email_notification_immediate?, :email_notification_immediate
+      
+        # Optional. Unique identifier of the legacy monitor.
+        # Corresponds to the JSON property `legacyMonitorId`
+        # @return [String]
+        attr_accessor :legacy_monitor_id
+      
+        # Optional. Time the legacy monitor was considered stale.
+        # Corresponds to the JSON property `staleTime`
+        # @return [String]
+        attr_accessor :stale_time
+      
+        # Optional. ID of the template this monitor was created from.
+        # Corresponds to the JSON property `templateId`
+        # @return [String]
+        attr_accessor :template_id
+      
+        # Optional. ID of the tenant owning the monitor.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        # Optional. User ID who last updated the monitor.
+        # Corresponds to the JSON property `updaterUserId`
+        # @return [String]
+        attr_accessor :updater_user_id
+      
+        # Optional. Version of the monitor configuration.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_enabled = args[:aggregation_enabled] if args.key?(:aggregation_enabled)
+          @aggregation_similarity = args[:aggregation_similarity] if args.key?(:aggregation_similarity)
+          @condition_version = args[:condition_version] if args.key?(:condition_version)
+          @creator_user_id = args[:creator_user_id] if args.key?(:creator_user_id)
+          @description = args[:description] if args.key?(:description)
+          @disabled_code = args[:disabled_code] if args.key?(:disabled_code)
+          @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email_notification_enabled = args[:email_notification_enabled] if args.key?(:email_notification_enabled)
+          @email_notification_immediate = args[:email_notification_immediate] if args.key?(:email_notification_immediate)
+          @legacy_monitor_id = args[:legacy_monitor_id] if args.key?(:legacy_monitor_id)
+          @stale_time = args[:stale_time] if args.key?(:stale_time)
+          @template_id = args[:template_id] if args.key?(:template_id)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+          @updater_user_id = args[:updater_user_id] if args.key?(:updater_user_id)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
