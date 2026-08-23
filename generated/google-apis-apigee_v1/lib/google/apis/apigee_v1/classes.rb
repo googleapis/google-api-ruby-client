@@ -5141,7 +5141,7 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig>]
         attr_accessor :targets
       
-        # NEXT ID: 11 RuntimeTraceConfig defines the configurations for distributed
+        # NEXT ID: 13 RuntimeTraceConfig defines the configurations for distributed
         # trace in an environment.
         # Corresponds to the JSON property `traceConfig`
         # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfig]
@@ -10188,6 +10188,15 @@ module Google
         # @return [String]
         attr_accessor :revision_id
       
+        # Runtime configuration for the Spec Generation add-on. All fields are proto3
+        # primitives (bool, string, double) rather than google.protobuf.*Value wrappers
+        # because the runtime consumer deserializes the JSON via Gson field reflection
+        # with no registered type adapters. Wrapper types would serialize as JSON
+        # objects/null that Gson cannot bind to Java primitive fields.
+        # Corresponds to the JSON property `specGenerationConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig]
+        attr_accessor :spec_generation_config
+      
         # UID is to detect if config is recreated after deletion. The add-on config will
         # only be deleted when the environment itself gets deleted, thus it will always
         # be the same as the UID of EnvironmentConfig.
@@ -10205,6 +10214,7 @@ module Google
           @api_security_config = args[:api_security_config] if args.key?(:api_security_config)
           @name = args[:name] if args.key?(:name)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @spec_generation_config = args[:spec_generation_config] if args.key?(:spec_generation_config)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
@@ -10299,7 +10309,68 @@ module Google
         end
       end
       
-      # NEXT ID: 11 RuntimeTraceConfig defines the configurations for distributed
+      # Runtime configuration for the Spec Generation add-on. All fields are proto3
+      # primitives (bool, string, double) rather than google.protobuf.*Value wrappers
+      # because the runtime consumer deserializes the JSON via Gson field reflection
+      # with no registered type adapters. Wrapper types would serialize as JSON
+      # objects/null that Gson cannot bind to Java primitive fields.
+      class GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig
+        include Google::Apis::Core::Hashable
+      
+        # Full Pub/Sub topic path in the Apigee Runtime Tenant Project where the Schema
+        # Inferring Engine publishes inferred ApiObservation messages. Format: projects/`
+        # project`/topics/`topic`. Same sentinel semantics as
+        # raw_observations_pubsub_topic. Default: empty string.
+        # Corresponds to the JSON property `apiObservationsPubsubTopic`
+        # @return [String]
+        attr_accessor :api_observations_pubsub_topic
+      
+        # Whether the Spec Generation add-on is active for this environment. Default:
+        # false.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # ISO-8601 timestamp until which Spec Generation remains active (e.g. "2026-12-
+        # 31T23:59:59Z"). Empty string is the canonical "not configured" sentinel and
+        # MUST be treated by the consumer as "expired" (short-circuit before parsing).
+        # Default: empty string.
+        # Corresponds to the JSON property `enabledUntil`
+        # @return [String]
+        attr_accessor :enabled_until
+      
+        # Full Pub/Sub topic path in the Apigee Runtime Tenant Project where the message
+        # processor publishes captured RawObservation messages. Format: projects/`
+        # project`/topics/`topic`. Empty string is the "not configured" sentinel; the
+        # consumer short-circuits publishing when empty. Default: empty string.
+        # Corresponds to the JSON property `rawObservationsPubsubTopic`
+        # @return [String]
+        attr_accessor :raw_observations_pubsub_topic
+      
+        # Fraction of eligible transactions to capture, in [0.0, 1.0]. The consumer
+        # enforces an internal upper-bound clamp independently of this field. Default: 0.
+        # 0 (omitted from JSON per proto3 default-scalar-omission; the consumer's field
+        # initializer supplies the effective 0.01 fallback).
+        # Corresponds to the JSON property `samplingRate`
+        # @return [Float]
+        attr_accessor :sampling_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_observations_pubsub_topic = args[:api_observations_pubsub_topic] if args.key?(:api_observations_pubsub_topic)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @enabled_until = args[:enabled_until] if args.key?(:enabled_until)
+          @raw_observations_pubsub_topic = args[:raw_observations_pubsub_topic] if args.key?(:raw_observations_pubsub_topic)
+          @sampling_rate = args[:sampling_rate] if args.key?(:sampling_rate)
+        end
+      end
+      
+      # NEXT ID: 13 RuntimeTraceConfig defines the configurations for distributed
       # trace in an environment.
       class GoogleCloudApigeeV1RuntimeTraceConfig
         include Google::Apis::Core::Hashable
@@ -10315,6 +10386,20 @@ module Google
         # Corresponds to the JSON property `exporter`
         # @return [String]
         attr_accessor :exporter
+      
+        # Runtime-side view of `TraceConfig.OtelMtlsConfig` for the outbound OTel
+        # Collector mTLS connection. Shape mirrors `TlsInfoConfig` (in this same file,
+        # above) exactly. The oneof discriminates between a direct keystore reference
+        # and a `ref://`-indirected reference; both are surfaced on the wire without
+        # flattening. The referenced keystore must also appear in `EnvironmentConfig.
+        # keystores[]` so the underlying alias bytes are available at runtime.
+        # Referential integrity is enforced at trace-config update time: any PATCH that
+        # references a keystore not already present is rejected in the same transaction
+        # that would persist the update, and keystore/alias/reference deletion is
+        # blocked while a trace-config references it.
+        # Corresponds to the JSON property `mTlsConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig]
+        attr_accessor :m_tls_config
       
         # Name of the trace config in the following format: `organizations/`org`/
         # environment/`env`/traceConfig`
@@ -10332,6 +10417,14 @@ module Google
         # @return [Boolean]
         attr_accessor :open_telemetry_protocol_enabled
         alias_method :open_telemetry_protocol_enabled?, :open_telemetry_protocol_enabled
+      
+        # Optional. Security scheme for the outbound connection to the customer-owned
+        # OpenTelemetry Collector. Only meaningful when `exporter` is `
+        # OPEN_TELEMETRY_COLLECTOR`. Runtime consumers unaware of a value should treat
+        # it as `OTEL_COLLECTOR_SECURITY_SCHEME_UNSPECIFIED` (== NONE).
+        # Corresponds to the JSON property `otelCollectorSecurityScheme`
+        # @return [String]
+        attr_accessor :otel_collector_security_scheme
       
         # List of trace configuration overrides for spicific API proxies.
         # Corresponds to the JSON property `overrides`
@@ -10376,14 +10469,67 @@ module Google
         def update!(**args)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @exporter = args[:exporter] if args.key?(:exporter)
+          @m_tls_config = args[:m_tls_config] if args.key?(:m_tls_config)
           @name = args[:name] if args.key?(:name)
           @open_telemetry_protocol_enabled = args[:open_telemetry_protocol_enabled] if args.key?(:open_telemetry_protocol_enabled)
+          @otel_collector_security_scheme = args[:otel_collector_security_scheme] if args.key?(:otel_collector_security_scheme)
           @overrides = args[:overrides] if args.key?(:overrides)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
           @span_semantics = args[:span_semantics] if args.key?(:span_semantics)
           @trace_protocol = args[:trace_protocol] if args.key?(:trace_protocol)
+        end
+      end
+      
+      # Runtime-side view of `TraceConfig.OtelMtlsConfig` for the outbound OTel
+      # Collector mTLS connection. Shape mirrors `TlsInfoConfig` (in this same file,
+      # above) exactly. The oneof discriminates between a direct keystore reference
+      # and a `ref://`-indirected reference; both are surfaced on the wire without
+      # flattening. The referenced keystore must also appear in `EnvironmentConfig.
+      # keystores[]` so the underlying alias bytes are available at runtime.
+      # Referential integrity is enforced at trace-config update time: any PATCH that
+      # references a keystore not already present is rejected in the same transaction
+      # that would persist the update, and keystore/alias/reference deletion is
+      # blocked while a trace-config references it.
+      class GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Full alias resource name of the client-side key/cert alias. Format: `
+        # organizations/`org`/environments/`env`/keystores/`keystore`/aliases/`alias``
+        # Set when the customer supplied a plain keystore ID in `TraceConfig.
+        # OtelMtlsConfig.key_store`.
+        # Corresponds to the JSON property `keyAlias`
+        # @return [String]
+        attr_accessor :key_alias
+      
+        # Reference name and alias-id pair. Set when the customer supplied a `ref://`
+        # referenceID`` URI in `TraceConfig.OtelMtlsConfig.key_store`. Resolved via the
+        # References catalog the same way as `TlsInfoConfig.key_alias_reference` in
+        # target-server TLS. Reuses the top-level `KeyAliasReference` message defined
+        # for `TlsInfoConfig` above; no new message.
+        # Corresponds to the JSON property `keyAliasReference`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyAliasReference]
+        attr_accessor :key_alias_reference
+      
+        # Full resource name of the truststore holding the CA(s) that signed the OTel
+        # Collector's server certificate. Either a keystore or a reference resource name,
+        # mirroring `TlsInfoConfig.trust_store` above: `organizations/`org`/
+        # environments/`env`/keystores/`keystore`` `organizations/`org`/environments/`
+        # env`/references/`reference``
+        # Corresponds to the JSON property `trustStore`
+        # @return [String]
+        attr_accessor :trust_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_alias = args[:key_alias] if args.key?(:key_alias)
+          @key_alias_reference = args[:key_alias_reference] if args.key?(:key_alias_reference)
+          @trust_store = args[:trust_store] if args.key?(:trust_store)
         end
       end
       
@@ -13094,6 +13240,34 @@ module Google
         # @return [String]
         attr_accessor :exporter
       
+        # OtelMtlsConfig configures mutual TLS for the outbound OTel Collector
+        # connection by referencing already-uploaded Keystore/Truststore aliases. Key/
+        # cert material is uploaded via the existing Keystore Alias APIs (POST .../
+        # keystores/`ks`/aliases), the same APIs used to configure mTLS for `
+        # TargetServer.tls_info`. Only the resource IDs of those aliases live in this
+        # message; no secret material is inlined into TraceConfig. Field shape mirrors `
+        # TlsInfo` used by `TargetServer.tls_info`: - `key_store` and `trust_store`
+        # accept either a plain keystore ID or a `ref://`referenceID`` URI (an
+        # environment-scoped Reference whose `resource_type` is `KeyStore`/`TrustStore`).
+        # References enable rotation without editing the TraceConfig itself. - `
+        # key_alias` is the plain alias ID within `key_store`. Fields that would
+        # normally appear on `TlsInfo` (enabled, client_auth_enabled, protocols, enforce,
+        # ignore_validation_errors) are intentionally omitted from this customer
+        # surface. The runtime enforces secure defaults: - Mutual TLS is always required
+        # (both server AND client cert exchanged). - Server certificate validation is
+        # always strict (no ignoring errors). - TLS 1.2 and TLS 1.3 are enabled; older
+        # versions are rejected.
+        # Corresponds to the JSON property `mtlsConfig`
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOtelMtlsConfig]
+        attr_accessor :mtls_config
+      
+        # Optional. The security scheme for the OTel Collector endpoint. Defaults to
+        # NONE (unauthenticated OTLP/HTTP), preserving today's behavior for existing
+        # configurations. Only applicable when `exporter` == OPEN_TELEMETRY_COLLECTOR.
+        # Corresponds to the JSON property `otelCollectorSecurityScheme`
+        # @return [String]
+        attr_accessor :otel_collector_security_scheme
+      
         # TraceSamplingConfig represents the detail settings of distributed tracing.
         # Only the fields that are defined in the distributed trace configuration can be
         # overridden using the distribute trace configuration override APIs.
@@ -13124,9 +13298,67 @@ module Google
         def update!(**args)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @exporter = args[:exporter] if args.key?(:exporter)
+          @mtls_config = args[:mtls_config] if args.key?(:mtls_config)
+          @otel_collector_security_scheme = args[:otel_collector_security_scheme] if args.key?(:otel_collector_security_scheme)
           @sampling_config = args[:sampling_config] if args.key?(:sampling_config)
           @span_semantics = args[:span_semantics] if args.key?(:span_semantics)
           @trace_protocol = args[:trace_protocol] if args.key?(:trace_protocol)
+        end
+      end
+      
+      # OtelMtlsConfig configures mutual TLS for the outbound OTel Collector
+      # connection by referencing already-uploaded Keystore/Truststore aliases. Key/
+      # cert material is uploaded via the existing Keystore Alias APIs (POST .../
+      # keystores/`ks`/aliases), the same APIs used to configure mTLS for `
+      # TargetServer.tls_info`. Only the resource IDs of those aliases live in this
+      # message; no secret material is inlined into TraceConfig. Field shape mirrors `
+      # TlsInfo` used by `TargetServer.tls_info`: - `key_store` and `trust_store`
+      # accept either a plain keystore ID or a `ref://`referenceID`` URI (an
+      # environment-scoped Reference whose `resource_type` is `KeyStore`/`TrustStore`).
+      # References enable rotation without editing the TraceConfig itself. - `
+      # key_alias` is the plain alias ID within `key_store`. Fields that would
+      # normally appear on `TlsInfo` (enabled, client_auth_enabled, protocols, enforce,
+      # ignore_validation_errors) are intentionally omitted from this customer
+      # surface. The runtime enforces secure defaults: - Mutual TLS is always required
+      # (both server AND client cert exchanged). - Server certificate validation is
+      # always strict (no ignoring errors). - TLS 1.2 and TLS 1.3 are enabled; older
+      # versions are rejected.
+      class GoogleCloudApigeeV1TraceConfigOtelMtlsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Plain alias ID within `key_store` that contains the client key/cert
+        # used for mTLS.
+        # Corresponds to the JSON property `keyAlias`
+        # @return [String]
+        attr_accessor :key_alias
+      
+        # Required. Keystore holding the client-side key/cert alias. Accepts either a
+        # plain keystore ID (e.g. `my-keystore`) resolving to `organizations/`org`/
+        # environments/`env`/keystores/`key_store``, or a reference URI of the form `ref:
+        # //`referenceID`` that points to a Reference whose `resource_type` is `KeyStore`
+        # .
+        # Corresponds to the JSON property `keyStore`
+        # @return [String]
+        attr_accessor :key_store
+      
+        # Required. Truststore holding the CA(s) that signed the OTel Collector's server
+        # certificate. Accepts either a plain keystore ID (e.g. `my-truststore`)
+        # resolving to `organizations/`org`/environments/`env`/keystores/`trust_store``,
+        # or a reference URI of the form `ref://`referenceID`` that points to a
+        # Reference whose `resource_type` is `KeyStore` (used as a truststore).
+        # Corresponds to the JSON property `trustStore`
+        # @return [String]
+        attr_accessor :trust_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_alias = args[:key_alias] if args.key?(:key_alias)
+          @key_store = args[:key_store] if args.key?(:key_store)
+          @trust_store = args[:trust_store] if args.key?(:trust_store)
         end
       end
       

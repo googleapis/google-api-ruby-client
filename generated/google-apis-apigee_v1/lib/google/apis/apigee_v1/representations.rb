@@ -1582,7 +1582,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1RuntimeTraceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1955,6 +1967,12 @@ module Google
       end
       
       class GoogleCloudApigeeV1TraceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudApigeeV1TraceConfigOtelMtlsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4830,6 +4848,8 @@ module Google
       
           property :name, as: 'name'
           property :revision_id, as: 'revisionId'
+          property :spec_generation_config, as: 'specGenerationConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig::Representation
+      
           property :uid, as: 'uid'
         end
       end
@@ -4859,13 +4879,27 @@ module Google
         end
       end
       
+      class GoogleCloudApigeeV1RuntimeSpecGenerationAddonConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_observations_pubsub_topic, as: 'apiObservationsPubsubTopic'
+          property :enabled, as: 'enabled'
+          property :enabled_until, as: 'enabledUntil'
+          property :raw_observations_pubsub_topic, as: 'rawObservationsPubsubTopic'
+          property :sampling_rate, as: 'samplingRate'
+        end
+      end
+      
       class GoogleCloudApigeeV1RuntimeTraceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint, as: 'endpoint'
           property :exporter, as: 'exporter'
+          property :m_tls_config, as: 'mTlsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig::Representation
+      
           property :name, as: 'name'
           property :open_telemetry_protocol_enabled, as: 'openTelemetryProtocolEnabled'
+          property :otel_collector_security_scheme, as: 'otelCollectorSecurityScheme'
           collection :overrides, as: 'overrides', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOverride, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1RuntimeTraceConfigOverride::Representation
       
           property :revision_create_time, as: 'revisionCreateTime'
@@ -4874,6 +4908,16 @@ module Google
       
           property :span_semantics, as: 'spanSemantics'
           property :trace_protocol, as: 'traceProtocol'
+        end
+      end
+      
+      class GoogleCloudApigeeV1RuntimeTraceConfigOtelMtlsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_alias, as: 'keyAlias'
+          property :key_alias_reference, as: 'keyAliasReference', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyAliasReference, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1KeyAliasReference::Representation
+      
+          property :trust_store, as: 'trustStore'
         end
       end
       
@@ -5575,10 +5619,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint, as: 'endpoint'
           property :exporter, as: 'exporter'
+          property :mtls_config, as: 'mtlsConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOtelMtlsConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceConfigOtelMtlsConfig::Representation
+      
+          property :otel_collector_security_scheme, as: 'otelCollectorSecurityScheme'
           property :sampling_config, as: 'samplingConfig', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TraceSamplingConfig::Representation
       
           property :span_semantics, as: 'spanSemantics'
           property :trace_protocol, as: 'traceProtocol'
+        end
+      end
+      
+      class GoogleCloudApigeeV1TraceConfigOtelMtlsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_alias, as: 'keyAlias'
+          property :key_store, as: 'keyStore'
+          property :trust_store, as: 'trustStore'
         end
       end
       

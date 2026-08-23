@@ -559,7 +559,7 @@ module Google
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ControlPlaneAccess] google_cloud_apigee_v1_control_plane_access_object
         # @param [String] update_mask
         #   List of fields to be updated. Fields that can be updated:
-        #   synchronizer_identities, publisher_identities.
+        #   synchronizer_identities, analytics_publisher_identities, watcher_identities.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
