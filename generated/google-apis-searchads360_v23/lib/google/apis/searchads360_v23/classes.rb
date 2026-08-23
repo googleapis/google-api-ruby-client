@@ -50703,6 +50703,11 @@ module Google
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignDraftOperation]
         attr_accessor :campaign_draft_operation
       
+        # A single mutate operation on the campaign goal config.
+        # Corresponds to the JSON property `campaignGoalConfigOperation`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGoalConfigOperation]
+        attr_accessor :campaign_goal_config_operation
+      
         # A single operation (create, update, remove) on a campaign group.
         # Corresponds to the JSON property `campaignGroupOperation`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGroupOperation]
@@ -50901,6 +50906,7 @@ module Google
           @campaign_criterion_operation = args[:campaign_criterion_operation] if args.key?(:campaign_criterion_operation)
           @campaign_customizer_operation = args[:campaign_customizer_operation] if args.key?(:campaign_customizer_operation)
           @campaign_draft_operation = args[:campaign_draft_operation] if args.key?(:campaign_draft_operation)
+          @campaign_goal_config_operation = args[:campaign_goal_config_operation] if args.key?(:campaign_goal_config_operation)
           @campaign_group_operation = args[:campaign_group_operation] if args.key?(:campaign_group_operation)
           @campaign_label_operation = args[:campaign_label_operation] if args.key?(:campaign_label_operation)
           @campaign_operation = args[:campaign_operation] if args.key?(:campaign_operation)
@@ -51094,6 +51100,11 @@ module Google
         # Corresponds to the JSON property `campaignDraftResult`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignDraftResult]
         attr_accessor :campaign_draft_result
+      
+        # The result for the campaign goal config mutate.
+        # Corresponds to the JSON property `campaignGoalConfigResult`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignGoalConfigResult]
+        attr_accessor :campaign_goal_config_result
       
         # The result for the campaign group mutate.
         # Corresponds to the JSON property `campaignGroupResult`
@@ -51293,6 +51304,7 @@ module Google
           @campaign_criterion_result = args[:campaign_criterion_result] if args.key?(:campaign_criterion_result)
           @campaign_customizer_result = args[:campaign_customizer_result] if args.key?(:campaign_customizer_result)
           @campaign_draft_result = args[:campaign_draft_result] if args.key?(:campaign_draft_result)
+          @campaign_goal_config_result = args[:campaign_goal_config_result] if args.key?(:campaign_goal_config_result)
           @campaign_group_result = args[:campaign_group_result] if args.key?(:campaign_group_result)
           @campaign_label_result = args[:campaign_label_result] if args.key?(:campaign_label_result)
           @campaign_result = args[:campaign_result] if args.key?(:campaign_result)

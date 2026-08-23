@@ -22113,6 +22113,8 @@ module Google
       
           property :campaign_draft_operation, as: 'campaignDraftOperation', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignDraftOperation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignDraftOperation::Representation
       
+          property :campaign_goal_config_operation, as: 'campaignGoalConfigOperation', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGoalConfigOperation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGoalConfigOperation::Representation
+      
           property :campaign_group_operation, as: 'campaignGroupOperation', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGroupOperation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGroupOperation::Representation
       
           property :campaign_label_operation, as: 'campaignLabelOperation', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignLabelOperation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignLabelOperation::Representation
@@ -22244,6 +22246,8 @@ module Google
           property :campaign_customizer_result, as: 'campaignCustomizerResult', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignCustomizerResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignCustomizerResult::Representation
       
           property :campaign_draft_result, as: 'campaignDraftResult', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignDraftResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignDraftResult::Representation
+      
+          property :campaign_goal_config_result, as: 'campaignGoalConfigResult', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignGoalConfigResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignGoalConfigResult::Representation
       
           property :campaign_group_result, as: 'campaignGroupResult', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignGroupResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignGroupResult::Representation
       
