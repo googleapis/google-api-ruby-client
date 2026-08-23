@@ -621,6 +621,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Records a batch of player game events for a specific player. This method
+        # allows sending multiple events in a single request.
+        # @param [String] player_id
+        #   Required. The player ID of the player that performed the events.
+        # @param [Google::Apis::GamesV1::BatchRecordEventsRequest] batch_record_events_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::GamesV1::BatchRecordEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::GamesV1::BatchRecordEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_game_stat_record_events(player_id, batch_record_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'games/v1/players/{playerId}/gameStats:batchRecordEvents', options)
+          command.request_representation = Google::Apis::GamesV1::BatchRecordEventsRequest::Representation
+          command.request_object = batch_record_events_request_object
+          command.response_representation = Google::Apis::GamesV1::BatchRecordEventsResponse::Representation
+          command.response_class = Google::Apis::GamesV1::BatchRecordEventsResponse
+          command.params['playerId'] = player_id unless player_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the metadata of the leaderboard with the given ID.
         # @param [String] leaderboard_id
         #   The ID of the leaderboard.
@@ -760,40 +794,6 @@ module Google
           command.query['language'] = language unless language.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Records a batch of player game events for a specific player. This method
-        # allows sending multiple events in a single request.
-        # @param [String] player_id
-        #   Required. The player ID of the player that performed the events.
-        # @param [Google::Apis::GamesV1::BatchRecordEventsRequest] batch_record_events_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesV1::BatchRecordEventsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GamesV1::BatchRecordEventsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_player_game_event_record_events(player_id, batch_record_events_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'games/v1/players/{playerId}/gameEvents:batchRecordEvents', options)
-          command.request_representation = Google::Apis::GamesV1::BatchRecordEventsRequest::Representation
-          command.request_object = batch_record_events_request_object
-          command.response_representation = Google::Apis::GamesV1::BatchRecordEventsResponse::Representation
-          command.response_class = Google::Apis::GamesV1::BatchRecordEventsResponse
-          command.params['playerId'] = player_id unless player_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
