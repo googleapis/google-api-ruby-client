@@ -6435,12 +6435,12 @@ module Google
         #   Required. The name of the interaction to retrieve. Format: interactions/`
         #   interaction`
         # @param [Boolean] include_input
-        #   Optional. If true, includes the input in the response.
+        #   If true, includes the input in the response.
         # @param [String] last_event_id
-        #   Optional. If set, resumes the interaction stream from the chunk after the
-        #   event marked by the event id. Can only be used if `stream` is true.
+        #   If set, resumes the interaction stream from the chunk after the event marked
+        #   by the event id. Can only be used if `stream` is true.
         # @param [Boolean] stream
-        #   Optional. If true, streams the interaction events as Server-Sent Events.
+        #   If true, streams the interaction events as Server-Sent Events.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6477,12 +6477,12 @@ module Google
         #   Required. The name of the interaction to retrieve. Format: interactions/`
         #   interaction`
         # @param [Boolean] include_input
-        #   Optional. If true, includes the input in the response.
+        #   If true, includes the input in the response.
         # @param [String] last_event_id
-        #   Optional. If set, resumes the interaction stream from the chunk after the
-        #   event marked by the event id. Can only be used if `stream` is true.
+        #   If set, resumes the interaction stream from the chunk after the event marked
+        #   by the event id. Can only be used if `stream` is true.
         # @param [Boolean] stream
-        #   Optional. If true, streams the interaction events as Server-Sent Events.
+        #   If true, streams the interaction events as Server-Sent Events.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
