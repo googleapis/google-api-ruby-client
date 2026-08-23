@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BranchMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +89,12 @@ module Google
       end
       
       class CancelWorkflowInvocationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckoutWorkspaceBranchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +208,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteBranchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteBranchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchCurrentWorkspaceBranchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchFileDiffResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +305,12 @@ module Google
       end
       
       class FetchRepositoryHistoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchWorkspaceBranchesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -742,6 +778,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SyncWorkspaceRefsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SyncWorkspaceRefsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TableUpdateTrigger
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -936,6 +984,15 @@ module Google
         end
       end
       
+      class BranchMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch_name, as: 'branchName'
+          property :last_commit, as: 'lastCommit', class: Google::Apis::DataformV1beta1::CommitLogEntry, decorator: Google::Apis::DataformV1beta1::CommitLogEntry::Representation
+      
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -951,6 +1008,15 @@ module Google
       class CancelWorkflowInvocationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CheckoutWorkspaceBranchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch, as: 'branch'
+          property :create_if_not_exists, as: 'createIfNotExists'
+          property :source_branch, as: 'sourceBranch'
         end
       end
       
@@ -1158,6 +1224,20 @@ module Google
         end
       end
       
+      class DeleteBranchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch, as: 'branch'
+          property :force, as: 'force'
+        end
+      end
+      
+      class DeleteBranchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DeleteFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1227,6 +1307,13 @@ module Google
         end
       end
       
+      class FetchCurrentWorkspaceBranchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch_name, as: 'branchName'
+        end
+      end
+      
       class FetchFileDiffResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1261,6 +1348,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :commits, as: 'commits', class: Google::Apis::DataformV1beta1::CommitLogEntry, decorator: Google::Apis::DataformV1beta1::CommitLogEntry::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FetchWorkspaceBranchesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :branches, as: 'branches', class: Google::Apis::DataformV1beta1::BranchMetadata, decorator: Google::Apis::DataformV1beta1::BranchMetadata::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1993,6 +2089,20 @@ module Google
         end
       end
       
+      class SyncWorkspaceRefsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deepen, as: 'deepen'
+          property :remote_branch_name, as: 'remoteBranchName'
+        end
+      end
+      
+      class SyncWorkspaceRefsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class TableUpdateTrigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2163,11 +2273,15 @@ module Google
           property :create_time, as: 'createTime'
           property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
       
+          property :depth, as: 'depth'
           property :disable_moves, as: 'disableMoves'
+          property :enable_branch_management, as: 'enableBranchManagement'
           property :internal_metadata, as: 'internalMetadata'
           property :name, as: 'name'
+          property :original_branch, as: 'originalBranch'
           property :private_resource_metadata, as: 'privateResourceMetadata', class: Google::Apis::DataformV1beta1::PrivateResourceMetadata, decorator: Google::Apis::DataformV1beta1::PrivateResourceMetadata::Representation
       
+          property :shallow, as: 'shallow'
         end
       end
       
