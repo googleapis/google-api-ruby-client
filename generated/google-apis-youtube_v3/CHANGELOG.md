@@ -1,5 +1,9 @@
 # Release history for google-apis-youtube_v3
 
+### v0.70.0 (2026-08-23)
+
+* Regenerated from discovery document revision 20260820
+
 ### v0.69.0 (2026-08-16)
 
 * Regenerated from discovery document revision 20260810

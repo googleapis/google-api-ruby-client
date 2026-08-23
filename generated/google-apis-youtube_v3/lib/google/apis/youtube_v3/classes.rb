@@ -4227,6 +4227,11 @@ module Google
         # @return [DateTime]
         attr_accessor :actual_start_time
       
+        # The YouTube video category associated with the video broadcast.
+        # Corresponds to the JSON property `categoryId`
+        # @return [String]
+        attr_accessor :category_id
+      
         # The ID that YouTube uses to uniquely identify the channel that is publishing
         # the broadcast.
         # Corresponds to the JSON property `channelId`
@@ -4287,6 +4292,7 @@ module Google
         def update!(**args)
           @actual_end_time = args[:actual_end_time] if args.key?(:actual_end_time)
           @actual_start_time = args[:actual_start_time] if args.key?(:actual_start_time)
+          @category_id = args[:category_id] if args.key?(:category_id)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
           @description = args[:description] if args.key?(:description)
           @is_default_broadcast = args[:is_default_broadcast] if args.key?(:is_default_broadcast)
@@ -7880,6 +7886,11 @@ module Google
         attr_accessor :default
       
         # A thumbnail is an image representing a YouTube resource.
+        # Corresponds to the JSON property `fhd`
+        # @return [Google::Apis::YoutubeV3::Thumbnail]
+        attr_accessor :fhd
+      
+        # A thumbnail is an image representing a YouTube resource.
         # Corresponds to the JSON property `high`
         # @return [Google::Apis::YoutubeV3::Thumbnail]
         attr_accessor :high
@@ -7895,9 +7906,19 @@ module Google
         attr_accessor :medium
       
         # A thumbnail is an image representing a YouTube resource.
+        # Corresponds to the JSON property `qhd`
+        # @return [Google::Apis::YoutubeV3::Thumbnail]
+        attr_accessor :qhd
+      
+        # A thumbnail is an image representing a YouTube resource.
         # Corresponds to the JSON property `standard`
         # @return [Google::Apis::YoutubeV3::Thumbnail]
         attr_accessor :standard
+      
+        # A thumbnail is an image representing a YouTube resource.
+        # Corresponds to the JSON property `uhd`
+        # @return [Google::Apis::YoutubeV3::Thumbnail]
+        attr_accessor :uhd
       
         def initialize(**args)
            update!(**args)
@@ -7906,10 +7927,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @default = args[:default] if args.key?(:default)
+          @fhd = args[:fhd] if args.key?(:fhd)
           @high = args[:high] if args.key?(:high)
           @maxres = args[:maxres] if args.key?(:maxres)
           @medium = args[:medium] if args.key?(:medium)
+          @qhd = args[:qhd] if args.key?(:qhd)
           @standard = args[:standard] if args.key?(:standard)
+          @uhd = args[:uhd] if args.key?(:uhd)
         end
       end
       
