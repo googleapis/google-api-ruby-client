@@ -3974,8 +3974,9 @@ module Google
         # @return [Google::Apis::BigqueryV2::GenAiErrorStats]
         attr_accessor :error_stats
       
-        # Function level stats for GenAi Functions. See https://docs.cloud.google.com/
-        # bigquery/docs/generative-ai-overview
+        # Function level stats for GenAI Functions. For more information, see [
+        # Generative AI overview](https://docs.cloud.google.com/bigquery/docs/generative-
+        # ai-overview).
         # Corresponds to the JSON property `functionStats`
         # @return [Array<Google::Apis::BigqueryV2::GenAiFunctionStats>]
         attr_accessor :function_stats
