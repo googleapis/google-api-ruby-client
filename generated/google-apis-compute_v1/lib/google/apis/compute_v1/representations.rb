@@ -1684,6 +1684,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FutureReservationStoragePoolProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationStoragePoolProvisionedCapacity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FutureReservationTimeWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5495,6 +5507,12 @@ module Google
       end
       
       class Reference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegexRewrite
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10272,6 +10290,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication_config, as: 'authenticationConfig'
+          property :identity, as: 'identity'
           property :sni, as: 'sni'
           collection :subject_alt_names, as: 'subjectAltNames', class: Google::Apis::ComputeV1::BackendServiceTlsSettingsSubjectAltName, decorator: Google::Apis::ComputeV1::BackendServiceTlsSettingsSubjectAltName::Representation
       
@@ -12038,6 +12057,7 @@ module Google
           property :reservation_name, as: 'reservationName'
           property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::ComputeV1::ResourceMetadata, decorator: Google::Apis::ComputeV1::ResourceMetadata::Representation
       
+          property :resource_name, as: 'resourceName'
           property :scheduling_type, as: 'schedulingType'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -12047,6 +12067,8 @@ module Google
           property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties, decorator: Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties::Representation
       
           property :status, as: 'status', class: Google::Apis::ComputeV1::FutureReservationStatus, decorator: Google::Apis::ComputeV1::FutureReservationStatus::Representation
+      
+          property :storage_pool_properties, as: 'storagePoolProperties', class: Google::Apis::ComputeV1::FutureReservationStoragePoolProperties, decorator: Google::Apis::ComputeV1::FutureReservationStoragePoolProperties::Representation
       
           property :time_window, as: 'timeWindow', class: Google::Apis::ComputeV1::FutureReservationTimeWindow, decorator: Google::Apis::ComputeV1::FutureReservationTimeWindow::Representation
       
@@ -12085,6 +12107,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amendment_status, as: 'amendmentStatus'
           collection :auto_created_reservations, as: 'autoCreatedReservations'
+          property :exapool_provisioned_capacity_gb, as: 'exapoolProvisionedCapacityGb', class: Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb, decorator: Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb::Representation
+      
           property :existing_matching_usage_info, as: 'existingMatchingUsageInfo', class: Google::Apis::ComputeV1::FutureReservationStatusExistingMatchingUsageInfo, decorator: Google::Apis::ComputeV1::FutureReservationStatusExistingMatchingUsageInfo::Representation
       
           property :fulfilled_count, :numeric_string => true, as: 'fulfilledCount'
@@ -12093,6 +12117,8 @@ module Google
           property :lock_time, as: 'lockTime'
           property :procurement_status, as: 'procurementStatus'
           property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeV1::FutureReservationStatusSpecificSkuProperties, decorator: Google::Apis::ComputeV1::FutureReservationStatusSpecificSkuProperties::Representation
+      
+          property :storage_pool_provisioned_capacity, as: 'storagePoolProvisionedCapacity', class: Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity, decorator: Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity::Representation
       
         end
       end
@@ -12135,6 +12161,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_instance_template_id, as: 'sourceInstanceTemplateId'
+        end
+      end
+      
+      class FutureReservationStoragePoolProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requested_exapool_provisioned_capacity_gb, as: 'requestedExapoolProvisionedCapacityGb', class: Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb, decorator: Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb::Representation
+      
+          property :requested_storage_pool_provisioned_capacity, as: 'requestedStoragePoolProvisionedCapacity', class: Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity, decorator: Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity::Representation
+      
+          property :storage_pool_type, as: 'storagePoolType'
+        end
+      end
+      
+      class FutureReservationStoragePoolProvisionedCapacity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pool_provisioned_capacity_gb, :numeric_string => true, as: 'poolProvisionedCapacityGb'
+          property :pool_provisioned_iops, :numeric_string => true, as: 'poolProvisionedIops'
+          property :pool_provisioned_throughput, :numeric_string => true, as: 'poolProvisionedThroughput'
         end
       end
       
@@ -13800,6 +13846,7 @@ module Google
           collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDisk::Representation
       
           collection :machine_types, as: 'machineTypes'
+          property :min_cpu_platform, as: 'minCpuPlatform'
           property :rank, :numeric_string => true, as: 'rank'
         end
       end
@@ -19310,6 +19357,14 @@ module Google
         end
       end
       
+      class RegexRewrite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path_pattern, as: 'pathPattern'
+          property :path_substitution, as: 'pathSubstitution'
+        end
+      end
+      
       class Region
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -24715,6 +24770,8 @@ module Google
           property :host_rewrite, as: 'hostRewrite'
           property :path_prefix_rewrite, as: 'pathPrefixRewrite'
           property :path_template_rewrite, as: 'pathTemplateRewrite'
+          property :regex_rewrite, as: 'regexRewrite', class: Google::Apis::ComputeV1::RegexRewrite, decorator: Google::Apis::ComputeV1::RegexRewrite::Representation
+      
         end
       end
       
