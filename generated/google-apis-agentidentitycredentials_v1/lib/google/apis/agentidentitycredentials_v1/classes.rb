@@ -22,7 +22,7 @@ module Google
   module Apis
     module AgentidentitycredentialsV1
       
-      # Indicates the user has rejected the permission delegation or cancelled the
+      # Indicates the user has rejected the permission delegation or canceled the
       # request.
       class GoogleCloudAgentidentitycredentialsV1ConsentRejected
         include Google::Apis::Core::Hashable
@@ -36,12 +36,14 @@ module Google
         end
       end
       
-      # Request message for FinalizeCredentials.
+      # Request message for `FinalizeCredentials`.
       class GoogleCloudAgentidentitycredentialsV1FinalizeCredentialsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The same consent_nonce value that was provided during redirect in
-        # the UriConsentRequired metadata.
+        # Required. The same `consent_nonce` value that was provided during retrieval in
+        # the [UriConsentRequired](https://cloud.google.com/iam/docs/reference/
+        # agentidentitycredentials/rest/v1/projects.locations.authProviders.credentials/
+        # retrieve#UriConsentRequired) metadata.
         # Corresponds to the JSON property `consentNonce`
         # @return [String]
         attr_accessor :consent_nonce
@@ -69,7 +71,7 @@ module Google
         end
       end
       
-      # Response message for FinalizeCredentials. Intentionally empty
+      # Response message for `FinalizeCredentials`. Intentionally empty.
       class GoogleCloudAgentidentitycredentialsV1FinalizeCredentialsResponse
         include Google::Apis::Core::Hashable
       
@@ -83,7 +85,7 @@ module Google
       end
       
       # Indicates that the credential retrieval is pending. The caller should retry
-      # the RetrieveCredentials request after some time.
+      # the `RetrieveCredentials` request after some time.
       class GoogleCloudAgentidentitycredentialsV1Pending
         include Google::Apis::Core::Hashable
       
@@ -96,21 +98,21 @@ module Google
         end
       end
       
-      # Request message for RetrieveCredentials.
+      # Request message for `RetrieveCredentials`.
       class GoogleCloudAgentidentitycredentialsV1RetrieveCredentialsRequest
         include Google::Apis::Core::Hashable
       
         # Optional. The URI to redirect the user to after consent is completed. This
-        # field is required for authproviders using the 3-legged OAuth flow. For other
-        # authprovider types, this field is unused but not rejected.
+        # field is required for auth providers using the 3-legged OAuth flow. For other
+        # auth provider types, this field is unused but not rejected.
         # Corresponds to the JSON property `continueUri`
         # @return [String]
         attr_accessor :continue_uri
       
         # Optional. Input only. Set this field only if the previous token was expired or
-        # invalid. This value must be the full, previously returned token string. Will
-        # trigger a refresh of the access token with a stored refresh token, if possible,
-        # or a new consent flow.
+        # invalid. This value must be the full, previously returned token string.
+        # Setting this field triggers a refresh of the access token with a stored
+        # refresh token, if possible, or a new consent flow.
         # Corresponds to the JSON property `forceRefreshToken`
         # @return [String]
         attr_accessor :force_refresh_token
@@ -138,19 +140,19 @@ module Google
         end
       end
       
-      # Response message for RetrieveCredentials. Contains the access tokens and
+      # Response message for `RetrieveCredentials`. Contains the access tokens and
       # related artifacts.
       class GoogleCloudAgentidentitycredentialsV1RetrieveCredentialsResponse
         include Google::Apis::Core::Hashable
       
-        # Indicates the user has rejected the permission delegation or cancelled the
+        # Indicates the user has rejected the permission delegation or canceled the
         # request.
         # Corresponds to the JSON property `consentRejected`
         # @return [Google::Apis::AgentidentitycredentialsV1::GoogleCloudAgentidentitycredentialsV1ConsentRejected]
         attr_accessor :consent_rejected
       
         # Indicates that the credential retrieval is pending. The caller should retry
-        # the RetrieveCredentials request after some time.
+        # the `RetrieveCredentials` request after some time.
         # Corresponds to the JSON property `pending`
         # @return [Google::Apis::AgentidentitycredentialsV1::GoogleCloudAgentidentitycredentialsV1Pending]
         attr_accessor :pending
@@ -162,7 +164,7 @@ module Google
       
         # Indicates that the user must visit the provided URI to consent to delegate
         # permission to the agent to act on their behalf. The caller can either poll the
-        # `RetrieveCredentials` method, or await the /ValidateUserId callback
+        # `RetrieveCredentials` method, or await the /ValidateUserId callback.
         # Corresponds to the JSON property `uriConsentRequired`
         # @return [Google::Apis::AgentidentitycredentialsV1::GoogleCloudAgentidentitycredentialsV1UriConsentRequired]
         attr_accessor :uri_consent_required
@@ -207,10 +209,10 @@ module Google
         # @return [Array<String>]
         attr_accessor :scopes
       
-        # The retrieved access token or credential for the end user. On MCPTool call,
-        # for an invalid token OAuth spec says this should return 401 or 403, but
-        # MCPServers may implement this differently. If you get any flavor of `
-        # PERMISSION_DENIED`, retry your original request to RetrieveCredentials with
+        # The retrieved access token or credential for the end user. On an MCP tool call,
+        # for an invalid token the OAuth spec states that this should return `401` or `
+        # 403`, but MCP servers may implement this differently. If you get any flavor of
+        # `PERMISSION_DENIED`, retry your original request to `RetrieveCredentials` with
         # force_refresh_token set to the expired/invalid token string, which will fetch
         # a new token or initiate a new consent flow.
         # Corresponds to the JSON property `token`
@@ -232,7 +234,7 @@ module Google
       
       # Indicates that the user must visit the provided URI to consent to delegate
       # permission to the agent to act on their behalf. The caller can either poll the
-      # `RetrieveCredentials` method, or await the /ValidateUserId callback
+      # `RetrieveCredentials` method, or await the /ValidateUserId callback.
       class GoogleCloudAgentidentitycredentialsV1UriConsentRequired
         include Google::Apis::Core::Hashable
       
@@ -244,9 +246,9 @@ module Google
       
         # Output only. A one-time, randomly generated value that validates the entire
         # consent flow is handled by a single user, avoiding CSRF attacks. It must be
-        # submitted with the FinalizeCredentials request to complete the OAuth exchange.
-        # This will always be present. Implemented per https://www.rfc-editor.org/rfc/
-        # rfc6819#section-5.3.5
+        # submitted with the `FinalizeCredentials` request to complete the OAuth
+        # exchange. This will always be present. Implemented per [RFC 6819 Section 5.3.5]
+        # (https://www.rfc-editor.org/rfc/rfc6819#section-5.3.5).
         # Corresponds to the JSON property `consentNonce`
         # @return [String]
         attr_accessor :consent_nonce
