@@ -7905,6 +7905,7 @@ module Google
           collection :policy_results, as: 'policyResults', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult::Representation
       
           property :verdict, as: 'verdict'
+          property :violation_source, as: 'violationSource'
         end
       end
       
@@ -11134,6 +11135,7 @@ module Google
           collection :policy_results, as: 'policyResults', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult::Representation
       
           property :verdict, as: 'verdict'
+          property :violation_source, as: 'violationSource'
         end
       end
       

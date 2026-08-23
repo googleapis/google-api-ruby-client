@@ -4014,15 +4014,16 @@ module Google
         # Supported keys: * `*`: all features, if it's present, all other feature state
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
-        # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `personalization-suggested-highlights` * `mobile-app-
-        # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
-        # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
-        # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
-        # canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-without-admin-
-        # approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
-        # * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
-        # intelligence` * `workflow-agents` * `in-app-notifications`
+        # org-chart` * `bi-directional-audio` * `speech-to-text` * `feedback` * `session-
+        # sharing` * `personalization-memory` * `personalization-suggested-highlights` *
+        # `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
+        # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
+        # canvas` * `canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-
+        # without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-
+        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
+        # orchestration` * `cross-product-intelligence` * `workflow-agents` * `in-app-
+        # notifications`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -8777,6 +8778,11 @@ module Google
         # @return [String]
         attr_accessor :verdict
       
+        # Output only. The source of the violation.
+        # Corresponds to the JSON property `violationSource`
+        # @return [String]
+        attr_accessor :violation_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8785,6 +8791,7 @@ module Google
         def update!(**args)
           @policy_results = args[:policy_results] if args.key?(:policy_results)
           @verdict = args[:verdict] if args.key?(:verdict)
+          @violation_source = args[:violation_source] if args.key?(:violation_source)
         end
       end
       
@@ -12513,15 +12520,16 @@ module Google
         # Supported keys: * `*`: all features, if it's present, all other feature state
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
-        # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `personalization-suggested-highlights` * `mobile-app-
-        # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
-        # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
-        # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
-        # canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-without-admin-
-        # approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
-        # * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
-        # intelligence` * `workflow-agents` * `in-app-notifications`
+        # org-chart` * `bi-directional-audio` * `speech-to-text` * `feedback` * `session-
+        # sharing` * `personalization-memory` * `personalization-suggested-highlights` *
+        # `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
+        # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
+        # canvas` * `canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-
+        # without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-
+        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
+        # orchestration` * `cross-product-intelligence` * `workflow-agents` * `in-app-
+        # notifications`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -20969,6 +20977,11 @@ module Google
         # @return [String]
         attr_accessor :verdict
       
+        # Output only. The source of the violation.
+        # Corresponds to the JSON property `violationSource`
+        # @return [String]
+        attr_accessor :violation_source
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20977,6 +20990,7 @@ module Google
         def update!(**args)
           @policy_results = args[:policy_results] if args.key?(:policy_results)
           @verdict = args[:verdict] if args.key?(:verdict)
+          @violation_source = args[:violation_source] if args.key?(:violation_source)
         end
       end
       
@@ -25488,15 +25502,16 @@ module Google
         # Supported keys: * `*`: all features, if it's present, all other feature state
         # settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-
         # gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-
-        # org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `
-        # personalization-memory` * `personalization-suggested-highlights` * `mobile-app-
-        # access` * `disable-agent-sharing` * `disable-image-generation` * `disable-
-        # video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `
-        # disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `
-        # canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-without-admin-
-        # approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
-        # * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-
-        # intelligence` * `workflow-agents` * `in-app-notifications`
+        # org-chart` * `bi-directional-audio` * `speech-to-text` * `feedback` * `session-
+        # sharing` * `personalization-memory` * `personalization-suggested-highlights` *
+        # `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
+        # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
+        # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
+        # canvas` * `canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-
+        # without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-
+        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
+        # orchestration` * `cross-product-intelligence` * `workflow-agents` * `in-app-
+        # notifications`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -32083,7 +32098,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaSearchResponse
         include Google::Apis::Core::Hashable
       
-        # Controls applied as part of the Control service.
+        # Optional. Controls applied as part of the Control service.
         # Corresponds to the JSON property `appliedControls`
         # @return [Array<String>]
         attr_accessor :applied_controls
