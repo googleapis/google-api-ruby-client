@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    google-apis-alloydb_v1alpha (0.57.0)
+    google-apis-alloydb_v1alpha (0.58.0)
       google-apis-core (>= 0.15.0, < 2.a)
 
 GEM
@@ -105,7 +105,7 @@ CHECKSUMS
   faraday (2.14.3) sha256=1882247e6766615c8220b4392bf1d27f6ebb63d8e28267587cef1fb0bf37f278
   faraday-follow_redirects (0.5.0) sha256=5cde93c894b30943a5d2b93c2fe9284216a6b756f7af406a1e55f211d97d10ad
   faraday-net_http (3.4.4) sha256=0e78af151747ed1b00f33e25973b4bc220d7f16c00c39676817c8b12331eb588
-  google-apis-alloydb_v1alpha (0.57.0)
+  google-apis-alloydb_v1alpha (0.58.0)
   google-apis-core (1.2.1) sha256=3739030455277e3be90f2d07321ad4d0bf0d6b1ed820b2d092916d6cdef05337
   google-cloud-env (2.3.1) sha256=0faac01eb27be78c2591d64433663b1a114f8f7af55a4f819755426cac9178e7
   google-logging-utils (0.2.0) sha256=675462b4ea5affa825a3442694ca2d75d0069455a1d0956127207498fca3df7b
