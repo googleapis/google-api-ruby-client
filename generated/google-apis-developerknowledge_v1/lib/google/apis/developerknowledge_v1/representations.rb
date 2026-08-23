@@ -170,6 +170,7 @@ module Google
       
           property :id, as: 'id'
           property :parent, as: 'parent'
+          property :relevance_score, as: 'relevanceScore'
         end
       end
       
