@@ -3850,6 +3850,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceManagementInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceManagementInterfaceAuthenticationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceMoveRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6971,6 +6983,12 @@ module Google
       end
       
       class RegionAddressesMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionAddressesUpdatePublicPtrRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10594,6 +10612,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnTunnelAdditionalKeyExchanges
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnTunnelAggregatedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -10649,6 +10673,12 @@ module Google
       end
       
       class VpnTunnelPhase2Algorithms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelPqc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11090,6 +11120,8 @@ module Google
           property :network_attachment, as: 'networkAttachment'
           property :network_tier, as: 'networkTier'
           property :prefix_length, as: 'prefixLength'
+          property :ptr_domain_name, as: 'ptrDomainName'
+          property :ptr_domain_name_ttl, as: 'ptrDomainNameTtl'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
@@ -15371,7 +15403,6 @@ module Google
           collection :backend_services, as: 'backendServices'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :failover_capacity, as: 'failoverCapacity'
           property :failover_initiation, as: 'failoverInitiation'
           property :id, :numeric_string => true, as: 'id'
           property :instance_name, as: 'instanceName'
@@ -15380,9 +15411,9 @@ module Google
           property :networking_auto_configuration, as: 'networkingAutoConfiguration', class: Google::Apis::ComputeAlpha::HaControllerNetworkingAutoConfiguration, decorator: Google::Apis::ComputeAlpha::HaControllerNetworkingAutoConfiguration::Representation
       
           property :region, as: 'region'
-          property :secondary_zone_capacity, as: 'secondaryZoneCapacity'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :state, as: 'state'
           property :status, as: 'status', class: Google::Apis::ComputeAlpha::HaControllerStatus, decorator: Google::Apis::ComputeAlpha::HaControllerStatus::Representation
       
           hash :zone_configurations, as: 'zoneConfigurations', class: Google::Apis::ComputeAlpha::HaControllerZoneConfiguration, decorator: Google::Apis::ComputeAlpha::HaControllerZoneConfiguration::Representation
@@ -15427,6 +15458,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failover_complete_timestamp, as: 'failoverCompleteTimestamp'
+          property :failover_duration, as: 'failoverDuration'
           property :failover_trigger, as: 'failoverTrigger'
           property :failover_trigger_timestamp, as: 'failoverTriggerTimestamp'
           property :last_failover_attempt, as: 'lastFailoverAttempt', class: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt, decorator: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt::Representation
@@ -16792,6 +16824,8 @@ module Google
           property :last_suspended_timestamp, as: 'lastSuspendedTimestamp'
           property :local_ssd_encryption_mode, as: 'localSsdEncryptionMode'
           property :machine_type, as: 'machineType'
+          hash :management_interfaces, as: 'managementInterfaces', class: Google::Apis::ComputeAlpha::InstanceManagementInterface, decorator: Google::Apis::ComputeAlpha::InstanceManagementInterface::Representation
+      
           property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::Metadata, decorator: Google::Apis::ComputeAlpha::Metadata::Representation
       
           property :min_cpu_platform, as: 'minCpuPlatform'
@@ -18081,6 +18115,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :message, as: 'message'
+        end
+      end
+      
+      class InstanceManagementInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_config, as: 'authenticationConfig', class: Google::Apis::ComputeAlpha::InstanceManagementInterfaceAuthenticationConfig, decorator: Google::Apis::ComputeAlpha::InstanceManagementInterfaceAuthenticationConfig::Representation
+      
+          property :ipv4_address, as: 'ipv4Address'
+          property :ipv6_address, as: 'ipv6Address'
+          property :network, as: 'network'
+          property :state, as: 'state'
+          property :subnetwork, as: 'subnetwork'
+          property :type, as: 'type'
+        end
+      end
+      
+      class InstanceManagementInterfaceAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :trust_config, as: 'trustConfig'
         end
       end
       
@@ -21446,6 +21501,8 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :igmp_query, as: 'igmpQuery'
           property :internal_ipv6_prefix_length, as: 'internalIpv6PrefixLength'
+          property :internal_nic_load_balancing_ipv6_address, as: 'internalNicLoadBalancingIpv6Address'
+          property :internal_nic_load_balancing_ipv6_prefix_length, as: 'internalNicLoadBalancingIpv6PrefixLength'
           collection :ipv6_access_configs, as: 'ipv6AccessConfigs', class: Google::Apis::ComputeAlpha::AccessConfig, decorator: Google::Apis::ComputeAlpha::AccessConfig::Representation
       
           property :ipv6_access_type, as: 'ipv6AccessType'
@@ -24044,6 +24101,14 @@ module Google
         end
       end
       
+      class RegionAddressesUpdatePublicPtrRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ptr_domain_name, as: 'ptrDomainName'
+          property :ptr_domain_name_ttl, as: 'ptrDomainNameTtl'
+        end
+      end
+      
       class RegionAutoscalerList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -26101,6 +26166,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :encrypted_interconnect_router, as: 'encryptedInterconnectRouter'
+          property :etag, as: 'etag'
           property :id, :numeric_string => true, as: 'id'
           collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeAlpha::RouterInterface, decorator: Google::Apis::ComputeAlpha::RouterInterface::Representation
       
@@ -30635,6 +30701,10 @@ module Google
           property :peer_external_gateway_interface, as: 'peerExternalGatewayInterface'
           property :peer_gcp_gateway, as: 'peerGcpGateway'
           property :peer_ip, as: 'peerIp'
+          property :pqc_phase1, as: 'pqcPhase1', class: Google::Apis::ComputeAlpha::VpnTunnelPqc, decorator: Google::Apis::ComputeAlpha::VpnTunnelPqc::Representation
+      
+          property :pqc_phase2, as: 'pqcPhase2', class: Google::Apis::ComputeAlpha::VpnTunnelPqc, decorator: Google::Apis::ComputeAlpha::VpnTunnelPqc::Representation
+      
           property :region, as: 'region'
           collection :remote_traffic_selector, as: 'remoteTrafficSelector'
           property :router, as: 'router'
@@ -30645,6 +30715,19 @@ module Google
           property :target_vpn_gateway, as: 'targetVpnGateway'
           property :vpn_gateway, as: 'vpnGateway'
           property :vpn_gateway_interface, as: 'vpnGatewayInterface'
+        end
+      end
+      
+      class VpnTunnelAdditionalKeyExchanges
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ke1s, as: 'ke1s'
+          collection :ke2s, as: 'ke2s'
+          collection :ke3s, as: 'ke3s'
+          collection :ke4s, as: 'ke4s'
+          collection :ke5s, as: 'ke5s'
+          collection :ke6s, as: 'ke6s'
+          collection :ke7s, as: 'ke7s'
         end
       end
       
@@ -30746,6 +30829,15 @@ module Google
           collection :encryption, as: 'encryption'
           collection :integrity, as: 'integrity'
           collection :pfs, as: 'pfs'
+        end
+      end
+      
+      class VpnTunnelPqc
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :keys, as: 'keys', class: Google::Apis::ComputeAlpha::VpnTunnelAdditionalKeyExchanges, decorator: Google::Apis::ComputeAlpha::VpnTunnelAdditionalKeyExchanges::Representation
+      
+          property :mode, as: 'mode'
         end
       end
       
@@ -30957,6 +31049,7 @@ module Google
           property :bandwidth_metered, :numeric_string => true, as: 'bandwidthMetered'
           property :bandwidth_unmetered, :numeric_string => true, as: 'bandwidthUnmetered'
           property :fault_response, as: 'faultResponse'
+          property :flow_management, as: 'flowManagement'
           property :network_service_class, as: 'networkServiceClass'
         end
       end
