@@ -5236,6 +5236,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_uri, as: 'audioUri'
+          collection :audio_uris, as: 'audioUris'
           property :transcript_uri, as: 'transcriptUri'
         end
       end
@@ -6562,6 +6563,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :signed_dialogflow_audio_uri, as: 'signedDialogflowAudioUri'
           property :signed_gcs_audio_uri, as: 'signedGcsAudioUri'
+          collection :signed_gcs_audio_uris, as: 'signedGcsAudioUris'
           collection :signed_turn_level_audios, as: 'signedTurnLevelAudios', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio::Representation
       
         end
@@ -7704,6 +7706,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_uri, as: 'audioUri'
+          collection :audio_uris, as: 'audioUris'
           property :transcript_uri, as: 'transcriptUri'
         end
       end
@@ -9537,6 +9540,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_uri, as: 'audioUri'
+          collection :audio_uris, as: 'audioUris'
           property :transcript_uri, as: 'transcriptUri'
         end
       end
