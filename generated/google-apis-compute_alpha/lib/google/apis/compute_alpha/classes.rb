@@ -1084,6 +1084,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :prefix_length
       
+        # The public DNS PTR record to be configured for this external
+        # IP.
+        # Corresponds to the JSON property `ptrDomainName`
+        # @return [String]
+        attr_accessor :ptr_domain_name
+      
+        # The TTL in seconds for public DNS PTR record.
+        # Corresponds to the JSON property `ptrDomainNameTtl`
+        # @return [Fixnum]
+        attr_accessor :ptr_domain_name_ttl
+      
         # The purpose of this resource, which can be one of the following values:
         # 
         # 
@@ -1191,6 +1202,8 @@ module Google
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
           @prefix_length = args[:prefix_length] if args.key?(:prefix_length)
+          @ptr_domain_name = args[:ptr_domain_name] if args.key?(:ptr_domain_name)
+          @ptr_domain_name_ttl = args[:ptr_domain_name_ttl] if args.key?(:ptr_domain_name_ttl)
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -3792,7 +3805,8 @@ module Google
         # Specifies how to determine whether the backend of a load balancer can
         # handle additional traffic or is fully loaded. For usage guidelines, see
         # Connection balancing mode.
-        # Backends must use compatible balancing modes. For more information, see
+        # Backends must use compatible balancing modes. Backends of a backend
+        # service may use different balancing modes. For more information, see
         # Supported balancing modes and target capacity settings and
         # Restrictions and guidance for instance groups.
         # Note: Currently, if you use the API to configure incompatible balancing
@@ -3835,6 +3849,8 @@ module Google
       
         # This field designates whether this is a failover backend. More than one
         # failover backend can be configured for a given BackendService.
+        # This field can only be used for a regional external Passthrough Network
+        # Load Balancer or a regional internal Passthrough Network Load Balancer.
         # Corresponds to the JSON property `failover`
         # @return [Boolean]
         attr_accessor :failover
@@ -3952,6 +3968,12 @@ module Google
         # capacity, backends in this layer would be used and traffic would be
         # assigned based on the load balancing algorithm you use. This is the
         # default
+        # For global external Passthrough Network Load Balancers, the following
+        # restrictions apply:
+        # 
+        # - At most one backend can be marked as PREFERRED.
+        # - PREFERRED and DEFAULT backends cannot reside
+        # in the same Cloud region.
         # Corresponds to the JSON property `preference`
         # @return [String]
         attr_accessor :preference
@@ -4301,16 +4323,17 @@ module Google
         attr_accessor :cache_key_policy
       
         # Specifies the cache setting for all responses from this backend.
-        # The possible values are:USE_ORIGIN_HEADERS Requires the origin to set valid
-        # caching
+        # The possible values are:
+        # USE_ORIGIN_HEADERS Requires the origin to set valid caching
         # headers to cache content. Responses without these headers will not be
         # cached at Google's edge, and will require a full trip to the origin on
         # every request, potentially impacting performance and increasing load on
-        # the origin server.FORCE_CACHE_ALL Cache all content, ignoring any "private",
+        # the origin server.
+        # FORCE_CACHE_ALL Cache all content, ignoring any "private",
         # "no-store" or "no-cache" directives in Cache-Control response headers.
         # Warning: this may result in Cloud CDN caching private,
-        # per-user (user identifiable) content.CACHE_ALL_STATIC Automatically cache
-        # static content,
+        # per-user (user identifiable) content.
+        # CACHE_ALL_STATIC Automatically cache static content,
         # including common image formats, media (video and audio), and web assets
         # (JavaScript and CSS). Requests and responses that are marked as
         # uncacheable, as well as dynamic content (including HTML), will not be
@@ -5185,8 +5208,10 @@ module Google
         # haPolicy requires customers to be responsible for tracking backend
         # endpoint health and electing a leader among the healthy endpoints.
         # Therefore, haPolicy cannot be specified with healthChecks.
-        # haPolicy can only be specified for External Passthrough Network Load
-        # Balancers and Internal Passthrough Network Load Balancers.
+        # haPolicy can only be specified for External Passthrough
+        # Network Load Balancers and Internal Passthrough Network Load Balancers.
+        # haPolicy cannot be used by global external Passthrough Network
+        # Load Balancers.
         # Corresponds to the JSON property `haPolicy`
         # @return [Google::Apis::ComputeAlpha::BackendServiceHaPolicy]
         attr_accessor :ha_policy
@@ -5256,8 +5281,8 @@ module Google
       
         # Specifies the load balancer type. A backend service
         # created for one type of load balancer cannot be used with another.
-        # For more information, refer toChoosing
-        # a load balancer.
+        # For more information, refer to
+        # Backend services product and scheme table.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -5305,27 +5330,32 @@ module Google
         # HTTP response header field Endpoint-Load-Metrics. The reported
         # metrics to use for computing the weights are specified via thecustomMetrics
         # field.
-        # 
+        # - WEIGHTED_MAGLEV: Per-endpoint weighted load balancing via
+        # health check reported weights. If set, the backend service must configure
+        # an HTTP-based Health Check, and health check replies are expected to
+        # contain the non-standard HTTP response header fieldX-Load-Balancing-
+        # Endpoint-Weight to specify the per-endpoint
+        # weights. If set, load balancing is weighted based on the per-endpoint
+        # weights reported in the last processed health check replies, as long as
+        # every instance either reported a valid weight or had UNAVAILABLE_WEIGHT.
+        # Otherwise, load balancing remains equal-weight.
         # This field is applicable to either:
+        # 
         # - A regional backend service with the service protocol set to HTTP,
         # HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
         # INTERNAL_MANAGED.
         # - A global backend service with the
         # load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or
         # EXTERNAL_MANAGED.
-        # 
-        # 
         # If sessionAffinity is not configured—that is, if session
         # affinity remains at the default value of NONE—then the
         # default value for localityLbPolicy
         # is ROUND_ROBIN. If session affinity is set to a value other
         # than NONE,
         # then the default value for localityLbPolicy isMAGLEV.
-        # 
         # Only ROUND_ROBIN and RING_HASH are supported
         # when the backend service is referenced by a URL map that is bound to
         # target gRPC proxy that has validateForProxyless field set to true.
-        # 
         # localityLbPolicy cannot be specified with haPolicy.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
@@ -5417,12 +5447,12 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
-        # The protocol this BackendService uses to communicate
-        # with backends.
-        # Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP or GRPC.
-        # depending on the chosen load balancer or Traffic Director configuration.
-        # Refer to the documentation for the load balancers or for Traffic Director
-        # for more information.
+        # The protocol this BackendService uses to communicate with backends.
+        # Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP, GRPC, or
+        # UNSPECIFIED, depending on the chosen load balancer or Traffic Director
+        # configuration.
+        # Refer to
+        # Load balancing features for more information.
         # Must be set to GRPC when the backend service is referenced by a URL map
         # that is bound to target gRPC proxy.
         # Corresponds to the JSON property `protocol`
@@ -5741,16 +5771,17 @@ module Google
         attr_accessor :cache_key_policy
       
         # Specifies the cache setting for all responses from this backend.
-        # The possible values are:USE_ORIGIN_HEADERS Requires the origin to set valid
-        # caching
+        # The possible values are:
+        # USE_ORIGIN_HEADERS Requires the origin to set valid caching
         # headers to cache content. Responses without these headers will not be
         # cached at Google's edge, and will require a full trip to the origin on
         # every request, potentially impacting performance and increasing load on
-        # the origin server.FORCE_CACHE_ALL Cache all content, ignoring any "private",
+        # the origin server.
+        # FORCE_CACHE_ALL Cache all content, ignoring any "private",
         # "no-store" or "no-cache" directives in Cache-Control response headers.
         # Warning: this may result in Cloud CDN caching private,
-        # per-user (user identifiable) content.CACHE_ALL_STATIC Automatically cache
-        # static content,
+        # per-user (user identifiable) content.
+        # CACHE_ALL_STATIC Automatically cache static content,
         # including common image formats, media (video and audio), and web assets
         # (JavaScript and CSS). Requests and responses that are marked as
         # uncacheable, as well as dynamic content (including HTML), will not be
@@ -8852,7 +8883,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies the type of the disk.
-        # This field must be set to SCRATCH.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -16535,6 +16565,7 @@ module Google
         # - regions/region/addresses/address-name
         # - global/addresses/address-name
         # - address-name
+        # The IP address can only be set at creation. Once set, it cannot be updated.
         # The forwarding rule's target or backendService,
         # and in most cases, also the loadBalancingScheme, determine the
         # type of IP address that you can use. For detailed information, see
@@ -16543,11 +16574,66 @@ module Google
         # concepts#ip_address_specifications).
         # When reading an IPAddress, the API always returns the IP
         # address number.
+        # When creating a global external Passthrough Network Load Balancer
+        # forwarding rule (a parent forwarding rule), you must use theIPAddresses field,
+        # but the Google Cloud generated child
+        # forwarding rules set the IPAddress field instead. Refer to
+        # theavailabilityGroup field for further details.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
       
+        # IP addresses for which this forwarding rule accepts traffic. All IP
+        # addresses must have the same IP version, IPv4 or IPv6. When a client sends
+        # traffic that matches one of the specified IP addresses, protocol and ports,
+        # the forwarding rule directs the traffic to the referencedbackendService. All
+        # IP addresses are served by the same set of
+        # backends, and they share the target capacities specified in the backend
+        # service fairly.
+        # Global external Passthrough Network Load Balancer requires two IP addresses
+        # for each forwarding rule to provide high availability when both IP
+        # addresses are used to serve client requests. The two IP addresses must come
+        # from global IP pools that belong to two distinct Availability
+        # Groups, represented by the
+        # purposePASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0
+        # andPASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1. TheIPAddresses field
+        # specifies zero, one, or two IP addresses:
         # 
+        # - If omitted, Google Cloud assigns two ephemeral IP addresses, one from
+        # each Availability Group.
+        # - If you specify one IP address that references an existing static IP
+        # address resource from one Availability Group, Google Cloud assigns an
+        # ephemeral IP address from the other Availability Group.
+        # - If you specify two IP addresses that reference existing static IP
+        # address resources, they are required to be from different Availability
+        # Groups.
+        # For global external Passthrough Network Load Balancer, each IP address can be
+        # one of the following:
+        # 
+        # - A static or ephemeral IPv4 address from a Google-owned IP pool.
+        # - A static IPv4 address from a global public delegated prefix.
+        # - A static or ephemeral IPv6 /96 prefix from a Google-owned IP pool.
+        # For global external Passthrough Network Load Balancer, the two IP addresses
+        # can be of different types. One IP address can be from a BYOIP prefix while
+        # the other is from a Google-owned IP pool. One IP address can be static
+        # while the other is ephemeral. However, both IP addresses must have the same
+        # IP version, IPv4 or IPv6.
+        # The IP addresses can only be set at creation and cannot be updated.
+        # When creating a global external Passthrough Network Load Balancer
+        # forwarding rule (a parent forwarding rule), you must use theIPAddresses field,
+        # but the Google Cloud-generated child
+        # forwarding rules set the IPAddress field instead. Refer to
+        # theavailabilityGroup field for further details.
+        # Refer to the IPAddress field for the formats that can be used
+        # to specify IP addresses while creating a forwarding rule.
+        # Because Passthrough Network Load Balancers do not terminate or translate
+        # traffic, the backend stack types must be compatible with the forwarding
+        # rule IP version:
+        # 
+        # - If the forwarding rule IP version is IPv4, backends should be
+        # configured as dual-stack or IPv4-only.
+        # - If the forwarding rule IP version is IPv6, backends should be
+        # configured as dual-stack or IPv6-only.
         # Corresponds to the JSON property `IPAddresses`
         # @return [Array<String>]
         attr_accessor :ip_addresses
@@ -16608,17 +16694,43 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::ForwardingRuleAttachedExtension>]
         attr_accessor :attached_extensions
       
-        # [Output Only] Specifies the availability group of the forwarding rule. This
+        # Output only. [Output Only] Specifies the load balancing availability group,
+        # one of the
+        # two that collectively provide high availability.
+        # Specifies the availability group of the forwarding rule. This
         # field is for use by global external passthrough load balancers (load
-        # balancing scheme EXTERNAL_PASSTHROUGH) and is set for the child forwarding
-        # rules only.
+        # balancing scheme EXTERNAL_PASSTHROUGH) and is set for the
+        # child forwarding rules only. The possible values are:
+        # 
+        # - AVAILABILITY_GROUP0: Set for the child forwarding rule
+        # that is programmed on the AVAILABILITY_GROUP0 load balancing
+        # stack. The child forwarding rule has the same IP protocol, port, and
+        # backend service settings as the parent forwarding rule, but has only one of
+        # the two IP addresses of the parent forwarding rule, the one with the
+        # purpose PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0.
+        # - AVAILABILITY_GROUP1: Set for the child forwarding rule
+        # that is programmed on the AVAILABILITY_GROUP1 load balancing
+        # stack. The child forwarding rule has the same IP protocol, port and backend
+        # service settings as the parent forwarding rule, but has only one of the two
+        # IP addresses of the parent forwarding rule, the one with the
+        # purposePASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1.
+        # For each global external Passthrough Network Load Balancer forwarding rule
+        # (a parent forwarding rule) that you create, Google Cloud generates two
+        # output-only child forwarding rules, one forAVAILABILITY_GROUP0 and one
+        # forAVAILABILITY_GROUP1.
         # Corresponds to the JSON property `availabilityGroup`
         # @return [String]
         attr_accessor :availability_group
       
         # Identifies the backend service to which the forwarding rule sends traffic.
-        # Required for internal and external passthrough Network Load Balancers;
-        # must be omitted for all other load balancer types.
+        # It is a required field for the following load balancers:
+        # 
+        # - Internal passthrough Network Load Balancers
+        # - Backend service-based regional external passthrough Network Load
+        # Balancers
+        # - Global external passthrough Network Load Balancers
+        # It cannot be set by other load balancer types and protocol forwarding
+        # rules.
         # Corresponds to the JSON property `backendService`
         # @return [String]
         attr_accessor :backend_service
@@ -16634,12 +16746,14 @@ module Google
         # @return [String]
         attr_accessor :base_forwarding_rule
       
-        # Output only. [Output Only] Applicable only to the parent forwarding rule of
-        # global
+        # Output only. [Output Only] The resource URLs for the child forwarding rules.
+        # Applicable only to the parent forwarding rule of global
         # external passthrough load balancers. This field contains the list of child
         # forwarding rule URLs associated with the parent forwarding rule: one for
         # each availability group. AVAILABILITY_GROUP0 will be the first element, and
-        # AVAILABILITY_GROUP1 will be the second element.
+        # AVAILABILITY_GROUP1 will be the second element. Refer to theavailabilityGroup
+        # field for further details. It cannot be set
+        # by any other forwarding rules.
         # Corresponds to the JSON property `childForwardingRules`
         # @return [Array<String>]
         attr_accessor :child_forwarding_rules
@@ -16760,8 +16874,8 @@ module Google
         attr_accessor :labels
       
         # Specifies the forwarding rule type.
-        # For more information about forwarding rules, refer to
-        # Forwarding rule concepts.
+        # For more information, refer to
+        # Forwarding rule product and scheme table.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -16801,6 +16915,13 @@ module Google
         # For Private Service Connect forwarding rules that forward traffic to Google
         # APIs, the forwarding rule name must be a 1-20 characters string with
         # lowercase letters and numbers and must start with a letter.
+        # For global external Passthrough Network Load Balancer forwarding rules, the
+        # forwarding rule name must be 1-43 characters long. For each global external
+        # Passthrough Network Load Balancer forwarding rule (a parent forwarding
+        # rule) that you create, Google Cloud generates two output-only child
+        # forwarding rules that are named by concatenating the parent forwarding rule
+        # name with the `-ag0` and `-ag1` suffixes, respectively. Refer to
+        # theavailabilityGroup field for further details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -16837,8 +16958,8 @@ module Google
         attr_accessor :no_automate_dns_zone
         alias_method :no_automate_dns_zone?, :no_automate_dns_zone
       
-        # Output only. [Output Only] Applicable only to the child forwarding rules of
-        # global external
+        # Output only. [Output Only] The resource URL for the parent forwarding rule.
+        # Applicable only to the child forwarding rules of global external
         # passthrough load balancers. This field contains the URL of the parent
         # forwarding rule.
         # Corresponds to the JSON property `parentForwardingRule`
@@ -16860,7 +16981,9 @@ module Google
         # - Some products have restrictions on what ports can be used. See
         # port specifications for details.
         # For external forwarding rules, two or more forwarding rules cannot use the
-        # same [IPAddress, IPProtocol] pair, and cannot have overlappingportRanges.
+        # same [IPAddress, IPProtocol] pair (specified inIPAddress, IPAddresses,
+        # IPProtocol
+        # fields) if they have overlapping portRanges.
         # For internal forwarding rules within the same VPC network, two or more
         # forwarding rules cannot use the same [IPAddress, IPProtocol]
         # pair, and cannot have overlapping portRanges.
@@ -16883,8 +17006,9 @@ module Google
         # - You can specify a list of up to five ports by number, separated by
         # commas. The ports can be contiguous or discontiguous.
         # For external forwarding rules, two or more forwarding rules cannot use the
-        # same [IPAddress, IPProtocol] pair if they share at least one
-        # port number.
+        # same [IPAddress, IPProtocol] pair (specified inIPAddress, IPAddresses,
+        # IPProtocol
+        # fields) if they share at least one port number.
         # For internal forwarding rules within the same VPC network, two or more
         # forwarding rules cannot use the same [IPAddress, IPProtocol]
         # pair if they share at least one port number.
@@ -16992,6 +17116,13 @@ module Google
         # -  For Private Service Connect forwarding rules that forward traffic to
         # managed services, the target must be a service attachment. The target is not
         # mutable once set as a service attachment.
+        # The following load balancers cannot set the target field (they should set the
+        # backendService field instead):
+        # 
+        # - Internal passthrough Network Load Balancers
+        # - Backend service-based regional external passthrough Network Load
+        # Balancers
+        # - Global external passthrough Network Load Balancers
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -20679,14 +20810,6 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Capacity guarantee settings for the event of a failover.
-        # This determines whether capacity is guaranteed to be available
-        # in the zones used by the HaController.
-        # Deprecated: This field is deprecated and has no effect.
-        # Corresponds to the JSON property `failoverCapacity`
-        # @return [String]
-        attr_accessor :failover_capacity
-      
         # Indicates how failover should be initiated.
         # Corresponds to the JSON property `failoverInitiation`
         # @return [String]
@@ -20742,11 +20865,6 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Indicates the capacity guarantees in the secondary zone.
-        # Corresponds to the JSON property `secondaryZoneCapacity`
-        # @return [String]
-        attr_accessor :secondary_zone_capacity
-      
         # Output only. [Output only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -20757,6 +20875,11 @@ module Google
         # Corresponds to the JSON property `selfLinkWithId`
         # @return [String]
         attr_accessor :self_link_with_id
+      
+        # Output only. The current state of the HA Controller.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
       
         # Contains information about current status of the HaController.
         # Corresponds to the JSON property `status`
@@ -20779,7 +20902,6 @@ module Google
           @backend_services = args[:backend_services] if args.key?(:backend_services)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
-          @failover_capacity = args[:failover_capacity] if args.key?(:failover_capacity)
           @failover_initiation = args[:failover_initiation] if args.key?(:failover_initiation)
           @id = args[:id] if args.key?(:id)
           @instance_name = args[:instance_name] if args.key?(:instance_name)
@@ -20787,9 +20909,9 @@ module Google
           @name = args[:name] if args.key?(:name)
           @networking_auto_configuration = args[:networking_auto_configuration] if args.key?(:networking_auto_configuration)
           @region = args[:region] if args.key?(:region)
-          @secondary_zone_capacity = args[:secondary_zone_capacity] if args.key?(:secondary_zone_capacity)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @zone_configurations = args[:zone_configurations] if args.key?(:zone_configurations)
         end
@@ -20925,6 +21047,11 @@ module Google
         # @return [String]
         attr_accessor :failover_complete_timestamp
       
+        # Output only. The duration of the last failover.
+        # Corresponds to the JSON property `failoverDuration`
+        # @return [String]
+        attr_accessor :failover_duration
+      
         # Output only. [Output Only] Indicates if failover has been triggered
         # automatically or
         # manually.
@@ -20951,6 +21078,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @failover_complete_timestamp = args[:failover_complete_timestamp] if args.key?(:failover_complete_timestamp)
+          @failover_duration = args[:failover_duration] if args.key?(:failover_duration)
           @failover_trigger = args[:failover_trigger] if args.key?(:failover_trigger)
           @failover_trigger_timestamp = args[:failover_trigger_timestamp] if args.key?(:failover_trigger_timestamp)
           @last_failover_attempt = args[:last_failover_attempt] if args.key?(:last_failover_attempt)
@@ -26901,6 +27029,12 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Map of management interfaces. Keys must be valid RFC1035 names and at most
+        # 63 characters long.
+        # Corresponds to the JSON property `managementInterfaces`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::InstanceManagementInterface>]
+        attr_accessor :management_interfaces
+      
         # A metadata key/value entry.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::ComputeAlpha::Metadata]
@@ -27147,6 +27281,7 @@ module Google
           @last_suspended_timestamp = args[:last_suspended_timestamp] if args.key?(:last_suspended_timestamp)
           @local_ssd_encryption_mode = args[:local_ssd_encryption_mode] if args.key?(:local_ssd_encryption_mode)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @management_interfaces = args[:management_interfaces] if args.key?(:management_interfaces)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @name = args[:name] if args.key?(:name)
@@ -32100,6 +32235,95 @@ module Google
         def update!(**args)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Represents Out-of-Band (OOB) Host Management Interface configuration
+      # details for direct host control.
+      class InstanceManagementInterface
+        include Google::Apis::Core::Hashable
+      
+        # Authentication configuration for the management interface, typically
+        # using mTLS.
+        # Corresponds to the JSON property `authenticationConfig`
+        # @return [Google::Apis::ComputeAlpha::InstanceManagementInterfaceAuthenticationConfig]
+        attr_accessor :authentication_config
+      
+        # The IPv4 internal IP address assigned to this management interface
+        # endpoint. This address will be used by the customer to route traffic to
+        # the management interface.
+        # Corresponds to the JSON property `ipv4Address`
+        # @return [String]
+        attr_accessor :ipv4_address
+      
+        # The IPv6 internal IP address assigned to this management interface
+        # endpoint. This address will be used by the customer to route traffic to
+        # the management interface if IPv6 is supported and configured.
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
+        # The URL of the VPC network to which the management interface endpoint is
+        # attached. The customer must ensure that this network is correctly
+        # configured for routing to the instance.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. [Output Only] The current state of the management interface
+        # endpoint.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The URL of the subnetwork from which to assign the IP address for the
+        # endpoint. The subnetwork must belong to the specified network and have
+        # available IP addresses.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # Required. The type of management service this interface provides.
+        # Supported types include HOST_MANAGEMENT for direct host control.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_config = args[:authentication_config] if args.key?(:authentication_config)
+          @ipv4_address = args[:ipv4_address] if args.key?(:ipv4_address)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
+          @network = args[:network] if args.key?(:network)
+          @state = args[:state] if args.key?(:state)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Authentication configuration for the management interface, typically
+      # using mTLS.
+      class InstanceManagementInterfaceAuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource name of the Cloud Certificate Manager TrustConfig used to
+        # validate client certificates for mTLS. Format:
+        # projects/`project`/locations/`location`/trustConfigs/`trust_config`
+        # Corresponds to the JSON property `trustConfig`
+        # @return [String]
+        attr_accessor :trust_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
         end
       end
       
@@ -46451,6 +46675,21 @@ module Google
         # @return [Fixnum]
         attr_accessor :internal_ipv6_prefix_length
       
+        # [Output Only] This field specifies the internal IPv6 network address
+        # assigned to the CX9 Network Interface Card, which facilitates the routing
+        # of traffic between NICs. For any single CX9 Network Interface Card, the
+        # identical internalNicLoadBalancingIpv6Address is assigned across all four
+        # associated ports.
+        # Corresponds to the JSON property `internalNicLoadBalancingIpv6Address`
+        # @return [String]
+        attr_accessor :internal_nic_load_balancing_ipv6_address
+      
+        # [Output Only] The prefix length of the internal IPv6 Nic load balancing
+        # prefix.
+        # Corresponds to the JSON property `internalNicLoadBalancingIpv6PrefixLength`
+        # @return [Fixnum]
+        attr_accessor :internal_nic_load_balancing_ipv6_prefix_length
+      
         # An array of IPv6 access configurations for this interface. Currently, only
         # one IPv6 access config, DIRECT_IPV6, is supported. If there
         # is no ipv6AccessConfig specified, then this instance will
@@ -46613,6 +46852,8 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @igmp_query = args[:igmp_query] if args.key?(:igmp_query)
           @internal_ipv6_prefix_length = args[:internal_ipv6_prefix_length] if args.key?(:internal_ipv6_prefix_length)
+          @internal_nic_load_balancing_ipv6_address = args[:internal_nic_load_balancing_ipv6_address] if args.key?(:internal_nic_load_balancing_ipv6_address)
+          @internal_nic_load_balancing_ipv6_prefix_length = args[:internal_nic_load_balancing_ipv6_prefix_length] if args.key?(:internal_nic_load_balancing_ipv6_prefix_length)
           @ipv6_access_configs = args[:ipv6_access_configs] if args.key?(:ipv6_access_configs)
           @ipv6_access_type = args[:ipv6_access_type] if args.key?(:ipv6_access_type)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
@@ -57192,7 +57433,7 @@ module Google
       class RegexRewrite
         include Google::Apis::Core::Hashable
       
-        # The regular expression used to match against the URL path.
+        # Required. The regular expression used to match against the URL path.
         # It uses RE2 syntax with the following constraints:
         # 
         # 
@@ -57220,7 +57461,8 @@ module Google
         # @return [String]
         attr_accessor :path_pattern
       
-        # Required when path pattern is specified. Used to rewrite matching parts of
+        # Required. Required when path pattern is specified. Used to rewrite matching
+        # parts of
         # the path.
         # Corresponds to the JSON property `pathSubstitution`
         # @return [String]
@@ -57441,6 +57683,31 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @destination_address = args[:destination_address] if args.key?(:destination_address)
+        end
+      end
+      
+      # 
+      class RegionAddressesUpdatePublicPtrRequest
+        include Google::Apis::Core::Hashable
+      
+        # The public DNS PTR record to be configured for this external IP.
+        # Corresponds to the JSON property `ptrDomainName`
+        # @return [String]
+        attr_accessor :ptr_domain_name
+      
+        # The TTL in seconds for public DNS PTR record.
+        # Corresponds to the JSON property `ptrDomainNameTtl`
+        # @return [Fixnum]
+        attr_accessor :ptr_domain_name_ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ptr_domain_name = args[:ptr_domain_name] if args.key?(:ptr_domain_name)
+          @ptr_domain_name_ttl = args[:ptr_domain_name_ttl] if args.key?(:ptr_domain_name_ttl)
         end
       end
       
@@ -65442,6 +65709,14 @@ module Google
         attr_accessor :encrypted_interconnect_router
         alias_method :encrypted_interconnect_router?, :encrypted_interconnect_router
       
+        # ETag for optimistic concurrency control as described by AIP 154. Used to
+        # prevent conflicting updates. If provided, the request will succeed only if
+        # the etag matches the current etag of the router; otherwise, the request
+        # fails with an ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -65532,6 +65807,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @encrypted_interconnect_router = args[:encrypted_interconnect_router] if args.key?(:encrypted_interconnect_router)
+          @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @interfaces = args[:interfaces] if args.key?(:interfaces)
           @kind = args[:kind] if args.key?(:kind)
@@ -79425,7 +79701,8 @@ module Google
         # The server-defined URL for the resource. This field is applicable only when
         # the containing target pool is serving a forwarding rule as the primary
         # pool, and its failoverRatio field is properly set to a value
-        # between [0, 1].backupPool and failoverRatio together define
+        # between [0, 1].
+        # backupPool and failoverRatio together define
         # the fallback behavior of the primary target pool: if the ratio of the
         # healthy instances in the primary pool is at or belowfailoverRatio, traffic
         # arriving at the load-balanced
@@ -84873,6 +85150,18 @@ module Google
         # @return [String]
         attr_accessor :peer_ip
       
+        # User specified list of PQC key exchange mechanisms (KEMs) to use for the
+        # phase 1 of the IKE protocol.
+        # Corresponds to the JSON property `pqcPhase1`
+        # @return [Google::Apis::ComputeAlpha::VpnTunnelPqc]
+        attr_accessor :pqc_phase1
+      
+        # User specified list of PQC key exchange mechanisms (KEMs) to use for the
+        # phase 2 of the IKE protocol.
+        # Corresponds to the JSON property `pqcPhase2`
+        # @return [Google::Apis::ComputeAlpha::VpnTunnelPqc]
+        attr_accessor :pqc_phase2
+      
         # [Output Only] URL of the region where the VPN tunnel resides.
         # You must specify this field as part of the HTTP request URL. It is
         # not settable as a field in the request body.
@@ -84991,6 +85280,8 @@ module Google
           @peer_external_gateway_interface = args[:peer_external_gateway_interface] if args.key?(:peer_external_gateway_interface)
           @peer_gcp_gateway = args[:peer_gcp_gateway] if args.key?(:peer_gcp_gateway)
           @peer_ip = args[:peer_ip] if args.key?(:peer_ip)
+          @pqc_phase1 = args[:pqc_phase1] if args.key?(:pqc_phase1)
+          @pqc_phase2 = args[:pqc_phase2] if args.key?(:pqc_phase2)
           @region = args[:region] if args.key?(:region)
           @remote_traffic_selector = args[:remote_traffic_selector] if args.key?(:remote_traffic_selector)
           @router = args[:router] if args.key?(:router)
@@ -85001,6 +85292,61 @@ module Google
           @target_vpn_gateway = args[:target_vpn_gateway] if args.key?(:target_vpn_gateway)
           @vpn_gateway = args[:vpn_gateway] if args.key?(:vpn_gateway)
           @vpn_gateway_interface = args[:vpn_gateway_interface] if args.key?(:vpn_gateway_interface)
+        end
+      end
+      
+      # User specified list of PQC key exchanges.
+      class VpnTunnelAdditionalKeyExchanges
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `ke1s`
+        # @return [Array<String>]
+        attr_accessor :ke1s
+      
+        # 
+        # Corresponds to the JSON property `ke2s`
+        # @return [Array<String>]
+        attr_accessor :ke2s
+      
+        # 
+        # Corresponds to the JSON property `ke3s`
+        # @return [Array<String>]
+        attr_accessor :ke3s
+      
+        # 
+        # Corresponds to the JSON property `ke4s`
+        # @return [Array<String>]
+        attr_accessor :ke4s
+      
+        # 
+        # Corresponds to the JSON property `ke5s`
+        # @return [Array<String>]
+        attr_accessor :ke5s
+      
+        # 
+        # Corresponds to the JSON property `ke6s`
+        # @return [Array<String>]
+        attr_accessor :ke6s
+      
+        # 
+        # Corresponds to the JSON property `ke7s`
+        # @return [Array<String>]
+        attr_accessor :ke7s
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ke1s = args[:ke1s] if args.key?(:ke1s)
+          @ke2s = args[:ke2s] if args.key?(:ke2s)
+          @ke3s = args[:ke3s] if args.key?(:ke3s)
+          @ke4s = args[:ke4s] if args.key?(:ke4s)
+          @ke5s = args[:ke5s] if args.key?(:ke5s)
+          @ke6s = args[:ke6s] if args.key?(:ke6s)
+          @ke7s = args[:ke7s] if args.key?(:ke7s)
         end
       end
       
@@ -85382,6 +85728,31 @@ module Google
           @encryption = args[:encryption] if args.key?(:encryption)
           @integrity = args[:integrity] if args.key?(:integrity)
           @pfs = args[:pfs] if args.key?(:pfs)
+        end
+      end
+      
+      # 
+      class VpnTunnelPqc
+        include Google::Apis::Core::Hashable
+      
+        # User specified list of PQC key exchanges.
+        # Corresponds to the JSON property `keys`
+        # @return [Google::Apis::ComputeAlpha::VpnTunnelAdditionalKeyExchanges]
+        attr_accessor :keys
+      
+        # 
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keys = args[:keys] if args.key?(:keys)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
@@ -86223,6 +86594,11 @@ module Google
         # @return [String]
         attr_accessor :fault_response
       
+        # The flow management configuration for the wire.
+        # Corresponds to the JSON property `flowManagement`
+        # @return [String]
+        attr_accessor :flow_management
+      
         # The network service class.
         # Corresponds to the JSON property `networkServiceClass`
         # @return [String]
@@ -86238,6 +86614,7 @@ module Google
           @bandwidth_metered = args[:bandwidth_metered] if args.key?(:bandwidth_metered)
           @bandwidth_unmetered = args[:bandwidth_unmetered] if args.key?(:bandwidth_unmetered)
           @fault_response = args[:fault_response] if args.key?(:fault_response)
+          @flow_management = args[:flow_management] if args.key?(:flow_management)
           @network_service_class = args[:network_service_class] if args.key?(:network_service_class)
         end
       end
