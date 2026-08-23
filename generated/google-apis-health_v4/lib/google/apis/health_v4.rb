@@ -54,9 +54,6 @@ module Google
       # See exercise GPS location data in Google Health
       AUTH_GOOGLEHEALTH_LOCATION_READONLY = 'https://www.googleapis.com/auth/googlehealth.location.readonly'
 
-      # Add exercise GPS location data to Google Health, and edit or delete the data it adds.
-      AUTH_GOOGLEHEALTH_LOCATION_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.location.writeonly'
-
       # Add logged symptoms data to Google Health, and edit or delete the data it adds
       AUTH_GOOGLEHEALTH_LOGGED_SYMPTOMS_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.logged_symptoms.writeonly'
 
