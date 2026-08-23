@@ -163,12 +163,12 @@ module Google
         #   Required. The merchant account who owns the notification subscriptions. Format:
         #   `accounts/`account``
         # @param [Fixnum] page_size
-        #   The maximum number of notification subscriptions to return in a page. The
-        #   default value for `page_size` is 100. The maximum value is `200`. Values above
-        #   `200` will be coerced to `200`.
+        #   Optional. The maximum number of notification subscriptions to return in a page.
+        #   The default value for `page_size` is 100. The maximum value is `200`. Values
+        #   above `200` will be coerced to `200`.
         # @param [String] page_token
-        #   Token (if provided) to retrieve the subsequent page. All other parameters must
-        #   match the original call that provided the page token.
+        #   Optional. Token (if provided) to retrieve the subsequent page. All other
+        #   parameters must match the original call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
