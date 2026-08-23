@@ -520,6 +520,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudKmsKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudKmsKeyAndCert
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CoarseLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -785,6 +803,30 @@ module Google
       end
       
       class DeviceTierSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnrollAppRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnrollAppResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnrollExistingApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnrollNewApp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1817,6 +1859,24 @@ module Google
       end
       
       class RevokeSubscriptionPurchaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RotateAppSigningKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RotateAppSigningKeyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RotatedCloudKmsKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3089,6 +3149,31 @@ module Google
         end
       end
       
+      class CertificateHashes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_hash_md5, as: 'certificateHashMd5'
+          property :certificate_hash_sha1, as: 'certificateHashSha1'
+          property :certificate_hash_sha256, as: 'certificateHashSha256'
+        end
+      end
+      
+      class CloudKmsKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crypto_key_version_resource, as: 'cryptoKeyVersionResource'
+        end
+      end
+      
+      class CloudKmsKeyAndCert
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key, as: 'cloudKmsKey', class: Google::Apis::AndroidpublisherV3::CloudKmsKey, decorator: Google::Apis::AndroidpublisherV3::CloudKmsKey::Representation
+      
+          property :pem_certificate, :base64 => true, as: 'pemCertificate'
+        end
+      end
+      
       class CoarseLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3515,6 +3600,43 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :device_tiers, as: 'deviceTiers', class: Google::Apis::AndroidpublisherV3::DeviceTier, decorator: Google::Apis::AndroidpublisherV3::DeviceTier::Representation
+      
+        end
+      end
+      
+      class EnrollAppRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enroll_existing_app, as: 'enrollExistingApp', class: Google::Apis::AndroidpublisherV3::EnrollExistingApp, decorator: Google::Apis::AndroidpublisherV3::EnrollExistingApp::Representation
+      
+          property :enroll_new_app, as: 'enrollNewApp', class: Google::Apis::AndroidpublisherV3::EnrollNewApp, decorator: Google::Apis::AndroidpublisherV3::EnrollNewApp::Representation
+      
+          property :pem_upload_certificate, :base64 => true, as: 'pemUploadCertificate'
+        end
+      end
+      
+      class EnrollAppResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signing_certificate, as: 'signingCertificate', class: Google::Apis::AndroidpublisherV3::CertificateHashes, decorator: Google::Apis::AndroidpublisherV3::CertificateHashes::Representation
+      
+          property :upload_certificate, as: 'uploadCertificate', class: Google::Apis::AndroidpublisherV3::CertificateHashes, decorator: Google::Apis::AndroidpublisherV3::CertificateHashes::Representation
+      
+        end
+      end
+      
+      class EnrollExistingApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key, as: 'cloudKmsKey', class: Google::Apis::AndroidpublisherV3::CloudKmsKey, decorator: Google::Apis::AndroidpublisherV3::CloudKmsKey::Representation
+      
+        end
+      end
+      
+      class EnrollNewApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key_and_cert, as: 'cloudKmsKeyAndCert', class: Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert, decorator: Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert::Representation
       
         end
       end
@@ -5212,6 +5334,32 @@ module Google
       class RevokeSubscriptionPurchaseResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RotateAppSigningKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_rotation_reason, as: 'keyRotationReason'
+          property :rotated_cloud_kms_key, as: 'rotatedCloudKmsKey', class: Google::Apis::AndroidpublisherV3::RotatedCloudKmsKey, decorator: Google::Apis::AndroidpublisherV3::RotatedCloudKmsKey::Representation
+      
+        end
+      end
+      
+      class RotateAppSigningKeyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rotated_key_certificate, as: 'rotatedKeyCertificate', class: Google::Apis::AndroidpublisherV3::CertificateHashes, decorator: Google::Apis::AndroidpublisherV3::CertificateHashes::Representation
+      
+        end
+      end
+      
+      class RotatedCloudKmsKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key_and_cert, as: 'cloudKmsKeyAndCert', class: Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert, decorator: Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert::Representation
+      
+          property :signing_certificate_lineage, :base64 => true, as: 'signingCertificateLineage'
         end
       end
       

@@ -2346,6 +2346,89 @@ module Google
         end
       end
       
+      # Hash digests of a certificate.
+      class CertificateHashes
+        include Google::Apis::Core::Hashable
+      
+        # Hex-encoded MD5 hash of the certificate. example: `43:51:43:A1:B5:FC:8B:B7:0A:
+        # 3A:A9:B1:0F:66:73:A8`
+        # Corresponds to the JSON property `certificateHashMd5`
+        # @return [String]
+        attr_accessor :certificate_hash_md5
+      
+        # Hex-encoded SHA1 hash of the certificate. example: `86:61:97:1A:D5:EF:E5:74:1E:
+        # A7:5B:84:7C:68:37:65:CD:94:16:DE`
+        # Corresponds to the JSON property `certificateHashSha1`
+        # @return [String]
+        attr_accessor :certificate_hash_sha1
+      
+        # Hex-encoded SHA256 hash of the certificate. example: `94:49:C7:F3:A9:3C:F0:C5:
+        # 5A:67:5D:DF:1C:83:73:2D:87:D5:62:55:E7:0B:15:0D:9E:6F:3C:F8:63:BB:7F:C1`
+        # Corresponds to the JSON property `certificateHashSha256`
+        # @return [String]
+        attr_accessor :certificate_hash_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_hash_md5 = args[:certificate_hash_md5] if args.key?(:certificate_hash_md5)
+          @certificate_hash_sha1 = args[:certificate_hash_sha1] if args.key?(:certificate_hash_sha1)
+          @certificate_hash_sha256 = args[:certificate_hash_sha256] if args.key?(:certificate_hash_sha256)
+        end
+      end
+      
+      # Reference to a private key hosted in developer-managed Google Cloud KMS.
+      class CloudKmsKey
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource identifier of the private key hosted in Google Cloud KMS.
+        # The Google Play service account must be granted Decrypt and Sign permissions
+        # on this resource. Format: projects//locations//keyRings//cryptoKeys//
+        # cryptoKeyVersions/
+        # Corresponds to the JSON property `cryptoKeyVersionResource`
+        # @return [String]
+        attr_accessor :crypto_key_version_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key_version_resource = args[:crypto_key_version_resource] if args.key?(:crypto_key_version_resource)
+        end
+      end
+      
+      # Cloud KMS key and the certificate associated with the key.
+      class CloudKmsKeyAndCert
+        include Google::Apis::Core::Hashable
+      
+        # Reference to a private key hosted in developer-managed Google Cloud KMS.
+        # Corresponds to the JSON property `cloudKmsKey`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKey]
+        attr_accessor :cloud_kms_key
+      
+        # Required. Certificate associated with the key. The bytes must contain the
+        # certificate in PEM format.
+        # Corresponds to the JSON property `pemCertificate`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :pem_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key = args[:cloud_kms_key] if args.key?(:cloud_kms_key)
+          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
+        end
+      end
+      
       # Coarse Geographic location details for where the consumption happened.
       class CoarseLocation
         include Google::Apis::Core::Hashable
@@ -3793,6 +3876,102 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_tiers = args[:device_tiers] if args.key?(:device_tiers)
+        end
+      end
+      
+      # Request to enroll an app into Play App Signing using a self-hosted Cloud KMS
+      # key.
+      class EnrollAppRequest
+        include Google::Apis::Core::Hashable
+      
+        # Enroll an existing app into Play signing.
+        # Corresponds to the JSON property `enrollExistingApp`
+        # @return [Google::Apis::AndroidpublisherV3::EnrollExistingApp]
+        attr_accessor :enroll_existing_app
+      
+        # Enroll a new app into Play signing.
+        # Corresponds to the JSON property `enrollNewApp`
+        # @return [Google::Apis::AndroidpublisherV3::EnrollNewApp]
+        attr_accessor :enroll_new_app
+      
+        # The certificate associated with the upload key, in PEM format.
+        # Corresponds to the JSON property `pemUploadCertificate`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :pem_upload_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enroll_existing_app = args[:enroll_existing_app] if args.key?(:enroll_existing_app)
+          @enroll_new_app = args[:enroll_new_app] if args.key?(:enroll_new_app)
+          @pem_upload_certificate = args[:pem_upload_certificate] if args.key?(:pem_upload_certificate)
+        end
+      end
+      
+      # Response to enroll an app into Play signing.
+      class EnrollAppResponse
+        include Google::Apis::Core::Hashable
+      
+        # Hash digests of a certificate.
+        # Corresponds to the JSON property `signingCertificate`
+        # @return [Google::Apis::AndroidpublisherV3::CertificateHashes]
+        attr_accessor :signing_certificate
+      
+        # Hash digests of a certificate.
+        # Corresponds to the JSON property `uploadCertificate`
+        # @return [Google::Apis::AndroidpublisherV3::CertificateHashes]
+        attr_accessor :upload_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signing_certificate = args[:signing_certificate] if args.key?(:signing_certificate)
+          @upload_certificate = args[:upload_certificate] if args.key?(:upload_certificate)
+        end
+      end
+      
+      # Enroll an existing app into Play signing.
+      class EnrollExistingApp
+        include Google::Apis::Core::Hashable
+      
+        # Reference to a private key hosted in developer-managed Google Cloud KMS.
+        # Corresponds to the JSON property `cloudKmsKey`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKey]
+        attr_accessor :cloud_kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key = args[:cloud_kms_key] if args.key?(:cloud_kms_key)
+        end
+      end
+      
+      # Enroll a new app into Play signing.
+      class EnrollNewApp
+        include Google::Apis::Core::Hashable
+      
+        # Cloud KMS key and the certificate associated with the key.
+        # Corresponds to the JSON property `cloudKmsKeyAndCert`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert]
+        attr_accessor :cloud_kms_key_and_cert
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key_and_cert = args[:cloud_kms_key_and_cert] if args.key?(:cloud_kms_key_and_cert)
         end
       end
       
@@ -9399,6 +9578,79 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request to rotate an app's signing key.
+      class RotateAppSigningKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Reason for rotating the app key.
+        # Corresponds to the JSON property `keyRotationReason`
+        # @return [String]
+        attr_accessor :key_rotation_reason
+      
+        # Message representing rotated Cloud KMS key. Consists of the Cloud KMS key and
+        # its associated proof of rotation.
+        # Corresponds to the JSON property `rotatedCloudKmsKey`
+        # @return [Google::Apis::AndroidpublisherV3::RotatedCloudKmsKey]
+        attr_accessor :rotated_cloud_kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_rotation_reason = args[:key_rotation_reason] if args.key?(:key_rotation_reason)
+          @rotated_cloud_kms_key = args[:rotated_cloud_kms_key] if args.key?(:rotated_cloud_kms_key)
+        end
+      end
+      
+      # Response to rotate an app's signing key.
+      class RotateAppSigningKeyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Hash digests of a certificate.
+        # Corresponds to the JSON property `rotatedKeyCertificate`
+        # @return [Google::Apis::AndroidpublisherV3::CertificateHashes]
+        attr_accessor :rotated_key_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rotated_key_certificate = args[:rotated_key_certificate] if args.key?(:rotated_key_certificate)
+        end
+      end
+      
+      # Message representing rotated Cloud KMS key. Consists of the Cloud KMS key and
+      # its associated proof of rotation.
+      class RotatedCloudKmsKey
+        include Google::Apis::Core::Hashable
+      
+        # Cloud KMS key and the certificate associated with the key.
+        # Corresponds to the JSON property `cloudKmsKeyAndCert`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert]
+        attr_accessor :cloud_kms_key_and_cert
+      
+        # Required. Proof-of-rotation. See [creating signing certificate lineages](https:
+        # //developer.android.com/studio/command-line/apksigner#rotate_signing_keys_2).
+        # Corresponds to the JSON property `signingCertificateLineage`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signing_certificate_lineage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key_and_cert = args[:cloud_kms_key_and_cert] if args.key?(:cloud_kms_key_and_cert)
+          @signing_certificate_lineage = args[:signing_certificate_lineage] if args.key?(:signing_certificate_lineage)
         end
       end
       

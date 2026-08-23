@@ -411,6 +411,84 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Enrolls an app in Play App Signing using a self-hosted Google Cloud KMS key.
+        # Warning: Do not use this method for standard Play App Signing enrollment. *
+        # Standard enrollment with Google-generated or Google-managed keys cannot be
+        # done via API. * This advanced API is strictly for enterprise organizations
+        # with mandatory compliance, regulatory, or policy requirements to retain key
+        # custody in an external Google Cloud KMS instance. * Prerequisites: Requires an
+        # active, properly configured Google Cloud KMS key with appropriate IAM
+        # permissions granted to Google Play before calling this method. See Help Center:
+        # https://support.google.com/googleplay/android-developer/answer/9842756
+        # @param [String] name
+        #   Required. Either package name or app ID of the app enrolling in Play Signing.
+        # @param [Google::Apis::AndroidpublisherV3::EnrollAppRequest] enroll_app_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::EnrollAppResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::EnrollAppResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enroll_appsigning_app(name, enroll_app_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{name}/appSigning:enrollApp', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::EnrollAppRequest::Representation
+          command.request_object = enroll_app_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::EnrollAppResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::EnrollAppResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rotates an app's signing key to a new self-hosted Google Cloud KMS key.
+        # Warning: This method only applies to apps enrolled with self-hosted Cloud KMS
+        # keys. For apps using standard Google-managed Play App Signing, key rotation
+        # requests must be initiated through the Google Play Console UI. See Help Center:
+        # https://support.google.com/googleplay/android-developer/answer/9842756
+        # @param [String] name
+        #   Required. Either package name or app ID of the app rotating the signing key.
+        # @param [Google::Apis::AndroidpublisherV3::RotateAppSigningKeyRequest] rotate_app_signing_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::RotateAppSigningKeyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::RotateAppSigningKeyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rotate_appsigning_app_signing_key(name, rotate_app_signing_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{name}/appSigning:rotateAppSigningKey', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::RotateAppSigningKeyRequest::Representation
+          command.request_object = rotate_app_signing_key_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::RotateAppSigningKeyResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::RotateAppSigningKeyResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an app store hosted app. This must be called before any other RPCs for
         # this hosted app.
         # @param [String] app_store_package_name
