@@ -563,7 +563,8 @@ module Google
         # @return [Google::Apis::AccesscontextmanagerV1::Application]
         attr_accessor :restricted_client_application
       
-        # A GCP project which contains applications and resources that users can access.
+        # A Google Cloud project which contains applications and resources that users
+        # can access.
         # Corresponds to the JSON property `restrictedProject`
         # @return [Google::Apis::AccesscontextmanagerV1::Project]
         attr_accessor :restricted_project
@@ -1851,12 +1852,18 @@ module Google
       class Principal
         include Google::Apis::Core::Hashable
       
-        # Immutable. IAM federated principal name to assign policies to workforce/
-        # workload federated identities. Can be principal set or single principal, here
-        # are some examples: Single principal: principal://iam.googleapis.com/projects/`
-        # project_number`/locations/global/workloadIdentityPools/`pool_id`/subject/`
-        # subject_attribute_value` PrincipalSet: principalSet://iam.googleapis.com/
-        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/*
+        # Immutable. The IAM principal identifier of the federated workforce or workload
+        # to assign the policy to. Examples include the following: * Single principal: `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value`` * All
+        # workloads in a workload identity pool: `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/*` *
+        # All Workforce Pools in a Google Cloud organization: `principalSet://
+        # cloudresourcemanager.googleapis.com/organizations/`organization_id`/type/
+        # WorkforcePool` Bindings created for all Workforce Pools in a Google Cloud
+        # organization support only `scoped_access_settings` with the `
+        # restricted_project` client scope and active `session_settings`. No other
+        # configurations are allowed.
         # Corresponds to the JSON property `federatedPrincipal`
         # @return [String]
         attr_accessor :federated_principal
@@ -1910,12 +1917,13 @@ module Google
         end
       end
       
-      # A GCP project which contains applications and resources that users can access.
+      # A Google Cloud project which contains applications and resources that users
+      # can access.
       class Project
         include Google::Apis::Core::Hashable
       
-        # The GCP project resource name. Format: "projects/`project_number`" (Only the
-        # numeric project name variation is supported). Example: "projects/1234567890"
+        # The Google Cloud project resource name. Format: `projects/`project_number``.
+        # Only the project number is supported. Example: `projects/1234567890`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2270,11 +2278,11 @@ module Google
         attr_accessor :max_inactivity
       
         # Optional. The session length. Setting this field to zero allows for sessions
-        # that are active indefinitely. Also, setting `session_length_enabled` to false
-        # disregards session limits, which means that sessions never expire. If
-        # use_oidc_max_age is true, for OIDC apps, the session length will be the
-        # minimum of this field and the OIDC max_age param. If this field is set to zero,
-        # `session_length_enabled` must be set to false or left unset.
+        # that are active indefinitely. Also, setting `session_length_enabled` to `false`
+        # disregards session limits, which means that sessions never expire. If `
+        # use_oidc_max_age` is `true`, for OIDC apps, the session length will be the
+        # minimum of this field and the OIDC `max_age` param. If this field is set to
+        # zero, `session_length_enabled` must be set to `false` or left unset.
         # Corresponds to the JSON property `sessionLength`
         # @return [String]
         attr_accessor :session_length

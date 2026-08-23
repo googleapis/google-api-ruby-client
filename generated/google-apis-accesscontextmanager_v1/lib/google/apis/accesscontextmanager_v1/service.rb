@@ -924,6 +924,9 @@ module Google
         # @param [String] name
         #   Required. Resource name for the Service Perimeter. Format: `accessPolicies/`
         #   policy_id`/servicePerimeters/`service_perimeters_id``
+        # @param [String] deleted_principal_syntax
+        #   Optional. If true, the response will contain the deleted principal syntax for
+        #   identities that support it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -941,11 +944,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_access_policy_service_perimeter(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_access_policy_service_perimeter(name, deleted_principal_syntax: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1::ServicePerimeter::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::ServicePerimeter
           command.params['name'] = name unless name.nil?
+          command.query['deletedPrincipalSyntax'] = deleted_principal_syntax unless deleted_principal_syntax.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -955,6 +959,9 @@ module Google
         # @param [String] parent
         #   Required. Resource name for the access policy to list Service Perimeters from.
         #   Format: `accessPolicies/`policy_id``
+        # @param [String] deleted_principal_syntax
+        #   Optional. If true, the response will contain the deleted principal syntax for
+        #   identities that support it.
         # @param [Fixnum] page_size
         #   Number of Service Perimeters to include in the list. Default 100.
         # @param [String] page_token
@@ -977,11 +984,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_access_policy_service_perimeters(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_access_policy_service_perimeters(parent, deleted_principal_syntax: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/servicePerimeters', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1::ListServicePerimetersResponse::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::ListServicePerimetersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['deletedPrincipalSyntax'] = deleted_principal_syntax unless deleted_principal_syntax.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -999,6 +1007,10 @@ module Google
         #   component must begin with a letter, followed by alphanumeric characters or `_`.
         #   After you create a `ServicePerimeter`, you cannot change its `name`.
         # @param [Google::Apis::AccesscontextmanagerV1::ServicePerimeter] service_perimeter_object
+        # @param [String] deleted_principal_syntax
+        #   Optional. If true, the response will contain the deleted principal syntax for
+        #   identities that support it and the request can contain identities with deleted
+        #   principal syntax.
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.
         # @param [String] fields
@@ -1018,13 +1030,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_access_policy_service_perimeter(name, service_perimeter_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_access_policy_service_perimeter(name, service_perimeter_object = nil, deleted_principal_syntax: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::AccesscontextmanagerV1::ServicePerimeter::Representation
           command.request_object = service_perimeter_object
           command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['deletedPrincipalSyntax'] = deleted_principal_syntax unless deleted_principal_syntax.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
