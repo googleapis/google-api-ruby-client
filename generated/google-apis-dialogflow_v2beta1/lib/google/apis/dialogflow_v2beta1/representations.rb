@@ -7502,6 +7502,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
+          property :retryable, as: 'retryable'
         end
       end
       
@@ -11033,6 +11034,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
+          property :retryable, as: 'retryable'
         end
       end
       
