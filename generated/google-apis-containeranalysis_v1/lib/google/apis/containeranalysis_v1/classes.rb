@@ -2769,6 +2769,14 @@ module Google
         # @return [String]
         attr_accessor :dest_path
       
+        # Optional. True if remote tags should be fetched too (default false). Note:
+        # when depth is 1 (default), git fetch only retrieves tags pointing to commits
+        # within the shallow boundary. Set depth to -1 to fetch all historical tags.
+        # Corresponds to the JSON property `fetchTags`
+        # @return [Boolean]
+        attr_accessor :fetch_tags
+        alias_method :fetch_tags?, :fetch_tags
+      
         # Optional. True if submodules should be fetched too (default false).
         # Corresponds to the JSON property `recurseSubmodules`
         # @return [Boolean]
@@ -2793,6 +2801,7 @@ module Google
         def update!(**args)
           @depth = args[:depth] if args.key?(:depth)
           @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @fetch_tags = args[:fetch_tags] if args.key?(:fetch_tags)
           @recurse_submodules = args[:recurse_submodules] if args.key?(:recurse_submodules)
           @repository = args[:repository] if args.key?(:repository)
           @revision = args[:revision] if args.key?(:revision)
