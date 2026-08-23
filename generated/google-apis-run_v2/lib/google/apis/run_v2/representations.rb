@@ -1110,6 +1110,7 @@ module Google
           hash :annotations, as: 'annotations'
           property :client, as: 'client'
           property :client_version, as: 'clientVersion'
+          property :delay_execution, as: 'delayExecution'
           hash :labels, as: 'labels'
           property :parallelism, as: 'parallelism'
           property :task_count, as: 'taskCount'
@@ -1413,6 +1414,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :container_overrides, as: 'containerOverrides', class: Google::Apis::RunV2::GoogleCloudRunV2ContainerOverride, decorator: Google::Apis::RunV2::GoogleCloudRunV2ContainerOverride::Representation
       
+          property :delay_execution, as: 'delayExecution'
           property :task_count, as: 'taskCount'
           property :timeout, as: 'timeout'
         end
@@ -1589,6 +1591,7 @@ module Google
           property :default_uri_disabled, as: 'defaultUriDisabled'
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
+          property :durable_execution, as: 'durableExecution'
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
           property :generation, :numeric_string => true, as: 'generation'
@@ -2228,6 +2231,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :depth, :numeric_string => true, as: 'depth'
           property :dest_path, as: 'destPath'
+          property :fetch_tags, as: 'fetchTags'
           property :recurse_submodules, as: 'recurseSubmodules'
           property :repository, as: 'repository', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitSourceRepository, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitSourceRepository::Representation
       
