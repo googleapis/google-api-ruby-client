@@ -2019,6 +2019,14 @@ module Google
         # @return [String]
         attr_accessor :family
       
+        # Output only. A human-readable description of the image running on the instance
+        # (for example, "Debian 11, Python 3.10"), derived at read time from the image
+        # release configuration (the source of truth). Set to "Custom" for unrecognized
+        # boot-disk images.
+        # Corresponds to the JSON property `imageDescription`
+        # @return [String]
+        attr_accessor :image_description
+      
         # Optional. Use VM image name to find the image.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2037,6 +2045,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @family = args[:family] if args.key?(:family)
+          @image_description = args[:image_description] if args.key?(:image_description)
           @name = args[:name] if args.key?(:name)
           @project = args[:project] if args.key?(:project)
         end

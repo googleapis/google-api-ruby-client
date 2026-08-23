@@ -836,6 +836,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :family, as: 'family'
+          property :image_description, as: 'imageDescription'
           property :name, as: 'name'
           property :project, as: 'project'
         end
