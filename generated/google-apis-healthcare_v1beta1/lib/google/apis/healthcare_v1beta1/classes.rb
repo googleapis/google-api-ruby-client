@@ -811,6 +811,11 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination]
         attr_accessor :gcs_destination
       
+        # Specifies the configuration for importing data from Cloud Storage.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource]
+        attr_accessor :gcs_source
+      
         # Optional. String of comma-delimited FHIR resource types. If provided, only
         # resources of the specified resource type(s) will be deleted.
         # Corresponds to the JSON property `type`
@@ -846,6 +851,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @type = args[:type] if args.key?(:type)
           @until = args[:until] if args.key?(:until)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
@@ -4074,17 +4080,17 @@ module Google
       class GoogleCloudHealthcareV1beta1FhirGcsSource
         include Google::Apis::Core::Hashable
       
-        # Points to a Cloud Storage URI containing file(s) to import. The URI must be in
-        # the following format: `gs://`bucket_id`/`object_id``. The URI can include
-        # wildcards in `object_id` and thus identify multiple files. Supported wildcards:
-        # * `*` to match 0 or more non-separator characters * `**` to match 0 or more
-        # characters (including separators). Must be used at the end of a path and with
-        # no other wildcards in the path. Can also be used with a file extension (such
-        # as .ndjson), which imports all files with the extension in the specified
-        # directory and its sub-directories. For example, `gs://my-bucket/my-directory/**
-        # .ndjson` imports all files with `.ndjson` extensions in `my-directory/` and
-        # its sub-directories. * `?` to match 1 character Files matching the wildcard
-        # are expected to contain content only, no metadata.
+        # Required. Points to a Cloud Storage URI containing file(s) to import. The URI
+        # must be in the following format: `gs://`bucket_id`/`object_id``. The URI can
+        # include wildcards in `object_id` and thus identify multiple files. Supported
+        # wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0
+        # or more characters (including separators). Must be used at the end of a path
+        # and with no other wildcards in the path. Can also be used with a file
+        # extension (such as .ndjson), which imports all files with the extension in the
+        # specified directory and its sub-directories. For example, `gs://my-bucket/my-
+        # directory/**.ndjson` imports all files with `.ndjson` extensions in `my-
+        # directory/` and its sub-directories. * `?` to match 1 character Files matching
+        # the wildcard are expected to contain content only, no metadata.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri

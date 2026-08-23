@@ -1498,6 +1498,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination::Representation
       
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsSource::Representation
+      
           property :type, as: 'type'
           property :until, as: 'until'
           property :validate_only, as: 'validateOnly'
