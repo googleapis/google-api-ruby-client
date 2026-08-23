@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirestoreAdminV1ChangeStream
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirestoreAdminV1CloneDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +305,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1CmekConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1CollectionGroupScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -323,6 +335,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1Database
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1DatabaseScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -443,6 +461,12 @@ module Google
       end
       
       class GoogleFirestoreAdminV1ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirestoreAdminV1ListChangeStreamsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -730,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RequestOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RollbackRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -896,6 +926,8 @@ module Google
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
@@ -915,6 +947,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
           collection :writes, as: 'writes', class: Google::Apis::FirestoreV1::Write, decorator: Google::Apis::FirestoreV1::Write::Representation
       
         end
@@ -934,6 +968,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :options, as: 'options', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
+      
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
       
         end
       end
@@ -973,6 +1009,8 @@ module Google
       class CommitRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
           property :transaction, :base64 => true, as: 'transaction'
           collection :writes, as: 'writes', class: Google::Apis::FirestoreV1::Write, decorator: Google::Apis::FirestoreV1::Write::Representation
       
@@ -1088,6 +1126,8 @@ module Google
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
           property :structured_pipeline, as: 'structuredPipeline', class: Google::Apis::FirestoreV1::StructuredPipeline, decorator: Google::Apis::FirestoreV1::StructuredPipeline::Representation
       
           property :transaction, :base64 => true, as: 'transaction'
@@ -1282,6 +1322,22 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1ChangeStream
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection_group_scope, as: 'collectionGroupScope', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CollectionGroupScope, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1CollectionGroupScope::Representation
+      
+          property :create_time, as: 'createTime'
+          property :database_scope, as: 'databaseScope', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseScope, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1DatabaseScope::Representation
+      
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :retention_period, as: 'retentionPeriod'
+          property :start_time, as: 'startTime'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GoogleFirestoreAdminV1CloneDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1313,6 +1369,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :active_key_version, as: 'activeKeyVersion'
           property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1CollectionGroupScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collection_group_id, as: 'collectionGroupId'
         end
       end
       
@@ -1364,6 +1427,12 @@ module Google
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
           property :version_retention_period, as: 'versionRetentionPeriod'
+        end
+      end
+      
+      class GoogleFirestoreAdminV1DatabaseScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1579,6 +1648,14 @@ module Google
         end
       end
       
+      class GoogleFirestoreAdminV1ListChangeStreamsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :change_streams, as: 'changeStreams', class: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ChangeStream, decorator: Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ChangeStream::Representation
+      
+        end
+      end
+      
       class GoogleFirestoreAdminV1ListDatabasesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1758,6 +1835,9 @@ module Google
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
         end
       end
       
@@ -1832,6 +1912,8 @@ module Google
           property :page_size, as: 'pageSize'
           property :page_token, as: 'pageToken'
           property :read_time, as: 'readTime'
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
         end
       end
       
@@ -1868,6 +1950,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :remove_target, as: 'removeTarget'
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
         end
       end
       
@@ -1922,6 +2006,8 @@ module Google
           property :page_token, as: 'pageToken'
           property :partition_count, :numeric_string => true, as: 'partitionCount'
           property :read_time, as: 'readTime'
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
           property :structured_query, as: 'structuredQuery', class: Google::Apis::FirestoreV1::StructuredQuery, decorator: Google::Apis::FirestoreV1::StructuredQuery::Representation
       
         end
@@ -1991,9 +2077,18 @@ module Google
         end
       end
       
+      class RequestOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_tags, as: 'requestTags'
+        end
+      end
+      
       class RollbackRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
           property :transaction, :base64 => true, as: 'transaction'
         end
       end
@@ -2006,6 +2101,8 @@ module Google
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
           property :structured_aggregation_query, as: 'structuredAggregationQuery', class: Google::Apis::FirestoreV1::StructuredAggregationQuery, decorator: Google::Apis::FirestoreV1::StructuredAggregationQuery::Representation
       
           property :transaction, :base64 => true, as: 'transaction'
@@ -2032,6 +2129,8 @@ module Google
           property :new_transaction, as: 'newTransaction', class: Google::Apis::FirestoreV1::TransactionOptions, decorator: Google::Apis::FirestoreV1::TransactionOptions::Representation
       
           property :read_time, as: 'readTime'
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
           property :structured_query, as: 'structuredQuery', class: Google::Apis::FirestoreV1::StructuredQuery, decorator: Google::Apis::FirestoreV1::StructuredQuery::Representation
       
           property :transaction, :base64 => true, as: 'transaction'
@@ -2215,6 +2314,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
+          property :request_options, as: 'requestOptions', class: Google::Apis::FirestoreV1::RequestOptions, decorator: Google::Apis::FirestoreV1::RequestOptions::Representation
+      
           property :stream_id, as: 'streamId'
           property :stream_token, :base64 => true, as: 'streamToken'
           collection :writes, as: 'writes', class: Google::Apis::FirestoreV1::Write, decorator: Google::Apis::FirestoreV1::Write::Representation
