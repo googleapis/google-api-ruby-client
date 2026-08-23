@@ -1760,6 +1760,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :depth, :numeric_string => true, as: 'depth'
           property :dest_path, as: 'destPath'
+          property :fetch_tags, as: 'fetchTags'
           property :recurse_submodules, as: 'recurseSubmodules'
           property :repository, as: 'repository', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository::Representation
       
