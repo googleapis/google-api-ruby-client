@@ -792,6 +792,7 @@ module Google
           collection :language_codes, as: 'languageCodes'
           property :language_hints, as: 'languageHints', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints::Representation
       
+          property :mode, as: 'mode'
           property :word_timestamp, as: 'wordTimestamp'
         end
       end
@@ -1520,6 +1521,7 @@ module Google
       
           property :inline_data, as: 'inlineData', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob::Representation
       
+          property :media_processing, as: 'mediaProcessing'
           property :media_resolution, as: 'mediaResolution', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartMediaResolution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartMediaResolution::Representation
       
           property :text, as: 'text'

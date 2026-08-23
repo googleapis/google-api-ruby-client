@@ -222,6 +222,16 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints]
         attr_accessor :language_hints
       
+        # Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`.
+        # If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the
+        # model performs disfluency removal (eliminating filler words, repetitions, and
+        # false starts), light grammatical cleanup, automatic formatting (paragraphs,
+        # bullet points, numbered lists), and minor user edits (inline self-corrections).
+        # Timestamps and diarization are incompatible with mode `SMART`.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # Optional. Configures word-level timestamp generation.
         # Corresponds to the JSON property `wordTimestamp`
         # @return [Boolean]
@@ -240,6 +250,7 @@ module Google
           @language_auto = args[:language_auto] if args.key?(:language_auto)
           @language_codes = args[:language_codes] if args.key?(:language_codes)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
+          @mode = args[:mode] if args.key?(:mode)
           @word_timestamp = args[:word_timestamp] if args.key?(:word_timestamp)
         end
       end
@@ -2962,6 +2973,13 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob]
         attr_accessor :inline_data
       
+        # Optional. How the model processes this part's media for understanding. Only
+        # meaningful for video parts (`inline_data` or `file_data` with video mime). Non-
+        # video parts ignore this field.
+        # Corresponds to the JSON property `mediaProcessing`
+        # @return [String]
+        attr_accessor :media_processing
+      
         # per part media resolution. Media resolution for the input media.
         # Corresponds to the JSON property `mediaResolution`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartMediaResolution]
@@ -3008,6 +3026,7 @@ module Google
           @function_call = args[:function_call] if args.key?(:function_call)
           @function_response = args[:function_response] if args.key?(:function_response)
           @inline_data = args[:inline_data] if args.key?(:inline_data)
+          @media_processing = args[:media_processing] if args.key?(:media_processing)
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @text = args[:text] if args.key?(:text)
           @thought = args[:thought] if args.key?(:thought)
