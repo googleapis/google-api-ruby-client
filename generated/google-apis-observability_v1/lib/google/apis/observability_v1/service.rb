@@ -823,6 +823,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new bucket.
+        # @param [String] parent
+        #   Required. Name of the project and location for the bucket. The format is:
+        #   projects/[PROJECT_ID]/locations/[LOCATION]
+        # @param [Google::Apis::ObservabilityV1::Bucket] bucket_object
+        # @param [String] bucket_id
+        #   Required. Id of the bucket to create.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ObservabilityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ObservabilityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_bucket(parent, bucket_object = nil, bucket_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/buckets', options)
+          command.request_representation = Google::Apis::ObservabilityV1::Bucket::Representation
+          command.request_object = bucket_object
+          command.response_representation = Google::Apis::ObservabilityV1::Operation::Representation
+          command.response_class = Google::Apis::ObservabilityV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['bucketId'] = bucket_id unless bucket_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get bucket resource.
         # @param [String] name
         #   Required. Name of the bucket to retrieve. The format is: projects/[PROJECT_ID]/
@@ -892,6 +929,43 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['showDeleted'] = show_deleted unless show_deleted.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a bucket.
+        # @param [String] name
+        #   Identifier. Name of the bucket. The format is: projects/[PROJECT_ID]/locations/
+        #   [LOCATION]/buckets/[BUCKET_ID]
+        # @param [Google::Apis::ObservabilityV1::Bucket] bucket_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ObservabilityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ObservabilityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_bucket(name, bucket_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::ObservabilityV1::Bucket::Representation
+          command.request_object = bucket_object
+          command.response_representation = Google::Apis::ObservabilityV1::Operation::Representation
+          command.response_class = Google::Apis::ObservabilityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
