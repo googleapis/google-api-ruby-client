@@ -291,6 +291,13 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Output only. Represents the relevance score of the chunk to the search query.
+        # Higher score indicates higher chunk relevance. The score is in range [0.0, 1.0]
+        # .
+        # Corresponds to the JSON property `relevanceScore`
+        # @return [Float]
+        attr_accessor :relevance_score
+      
         def initialize(**args)
            update!(**args)
         end
@@ -301,6 +308,7 @@ module Google
           @document = args[:document] if args.key?(:document)
           @id = args[:id] if args.key?(:id)
           @parent = args[:parent] if args.key?(:parent)
+          @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
         end
       end
       
