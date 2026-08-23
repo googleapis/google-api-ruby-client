@@ -118,10 +118,10 @@ module Google
       class AppParams
         include Google::Apis::Core::Hashable
       
-        # Grouping used to construct the name of the AppHub Application. Multiple
-        # UnitKinds can specify the same group to use the same Application across their
-        # respective units. Corresponds to the app_boundary_id in the ADC composite
-        # ApplicationTemplate. Defaults to UnitKind.name
+        # Optional. Grouping used to construct the name of the AppHub Application.
+        # Multiple UnitKinds can specify the same group to use the same Application
+        # across their respective units. Corresponds to the app_boundary_id in the ADC
+        # composite ApplicationTemplate. Defaults to UnitKind.name
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
@@ -193,8 +193,8 @@ module Google
         # @return [Google::Apis::SaasservicemgmtV1beta1::CompositeRef]
         attr_accessor :composite_ref
       
-        # Revision of the component. If the component does not have a revision, this
-        # field will be explicitly set to the revision of the composite
+        # Optional. Revision of the component. If the component does not have a revision,
+        # this field will be explicitly set to the revision of the composite
         # ApplicationTemplate.
         # Corresponds to the JSON property `revision`
         # @return [String]
@@ -221,8 +221,9 @@ module Google
         # @return [String]
         attr_accessor :application_template
       
-        # Revision of the ApplicationTemplate to use. Changes to revision will trigger
-        # manual resynchronization. If empty, ApplicationTemplate will be ignored.
+        # Optional. Revision of the ApplicationTemplate to use. Changes to revision will
+        # trigger manual resynchronization. If empty, ApplicationTemplate will be
+        # ignored.
         # Corresponds to the JSON property `revision`
         # @return [String]
         attr_accessor :revision
@@ -695,6 +696,25 @@ module Google
         end
       end
       
+      # Wrapper for a list of flags.
+      class FlagNameList
+        include Google::Apis::Core::Hashable
+      
+        # Required. Flags to be rolled out.
+        # Corresponds to the JSON property `flags`
+        # @return [Array<String>]
+        attr_accessor :flags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @flags = args[:flags] if args.key?(:flags)
+        end
+      end
+      
       # A collection of FlagRevisions.
       class FlagRelease
         include Google::Apis::Core::Hashable
@@ -739,6 +759,11 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
+      
+        # Wrapper for a list of flags.
+        # Corresponds to the JSON property `flagNamesRelease`
+        # @return [Google::Apis::SaasservicemgmtV1beta1::FlagNameList]
+        attr_accessor :flag_names_release
       
         # Optional. Immutable. DEPRECATED: Use flag_revisions_release instead.
         # FlagRevisions to be rolled out. Only one of flag_revisions, all_flags, or
@@ -818,6 +843,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @effective_flag_revisions = args[:effective_flag_revisions] if args.key?(:effective_flag_revisions)
           @etag = args[:etag] if args.key?(:etag)
+          @flag_names_release = args[:flag_names_release] if args.key?(:flag_names_release)
           @flag_revisions = args[:flag_revisions] if args.key?(:flag_revisions)
           @flag_revisions_release = args[:flag_revisions_release] if args.key?(:flag_revisions_release)
           @flag_sets = args[:flag_sets] if args.key?(:flag_sets)

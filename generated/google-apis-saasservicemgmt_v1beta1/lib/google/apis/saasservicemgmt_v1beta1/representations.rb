@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FlagNameList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FlagRelease
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -612,6 +618,13 @@ module Google
         end
       end
       
+      class FlagNameList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :flags, as: 'flags'
+        end
+      end
+      
       class FlagRelease
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -621,6 +634,8 @@ module Google
           property :create_time, as: 'createTime'
           collection :effective_flag_revisions, as: 'effectiveFlagRevisions'
           property :etag, as: 'etag'
+          property :flag_names_release, as: 'flagNamesRelease', class: Google::Apis::SaasservicemgmtV1beta1::FlagNameList, decorator: Google::Apis::SaasservicemgmtV1beta1::FlagNameList::Representation
+      
           collection :flag_revisions, as: 'flagRevisions'
           property :flag_revisions_release, as: 'flagRevisionsRelease', class: Google::Apis::SaasservicemgmtV1beta1::FlagRevisionList, decorator: Google::Apis::SaasservicemgmtV1beta1::FlagRevisionList::Representation
       
