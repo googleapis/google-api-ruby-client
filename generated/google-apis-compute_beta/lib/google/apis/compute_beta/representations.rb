@@ -1846,6 +1846,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FutureReservationStoragePoolProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationStoragePoolProvisionedCapacity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FutureReservationTimeWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4530,6 +4542,30 @@ module Google
       
       class ManagedInstanceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedRuleset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedRulesetList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -13043,6 +13079,7 @@ module Google
           property :protection_tier, as: 'protectionTier'
           property :reservation_mode, as: 'reservationMode'
           property :reservation_name, as: 'reservationName'
+          property :resource_name, as: 'resourceName'
           property :scheduling_type, as: 'schedulingType'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -13052,6 +13089,8 @@ module Google
           property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeBeta::FutureReservationSpecificSkuProperties, decorator: Google::Apis::ComputeBeta::FutureReservationSpecificSkuProperties::Representation
       
           property :status, as: 'status', class: Google::Apis::ComputeBeta::FutureReservationStatus, decorator: Google::Apis::ComputeBeta::FutureReservationStatus::Representation
+      
+          property :storage_pool_properties, as: 'storagePoolProperties', class: Google::Apis::ComputeBeta::FutureReservationStoragePoolProperties, decorator: Google::Apis::ComputeBeta::FutureReservationStoragePoolProperties::Representation
       
           property :time_window, as: 'timeWindow', class: Google::Apis::ComputeBeta::FutureReservationTimeWindow, decorator: Google::Apis::ComputeBeta::FutureReservationTimeWindow::Representation
       
@@ -13090,6 +13129,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amendment_status, as: 'amendmentStatus'
           collection :auto_created_reservations, as: 'autoCreatedReservations'
+          property :exapool_provisioned_capacity_gb, as: 'exapoolProvisionedCapacityGb', class: Google::Apis::ComputeBeta::StoragePoolExapoolProvisionedCapacityGb, decorator: Google::Apis::ComputeBeta::StoragePoolExapoolProvisionedCapacityGb::Representation
+      
           property :existing_matching_usage_info, as: 'existingMatchingUsageInfo', class: Google::Apis::ComputeBeta::FutureReservationStatusExistingMatchingUsageInfo, decorator: Google::Apis::ComputeBeta::FutureReservationStatusExistingMatchingUsageInfo::Representation
       
           property :fulfilled_count, :numeric_string => true, as: 'fulfilledCount'
@@ -13098,6 +13139,8 @@ module Google
           property :lock_time, as: 'lockTime'
           property :procurement_status, as: 'procurementStatus'
           property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeBeta::FutureReservationStatusSpecificSkuProperties, decorator: Google::Apis::ComputeBeta::FutureReservationStatusSpecificSkuProperties::Representation
+      
+          property :storage_pool_provisioned_capacity, as: 'storagePoolProvisionedCapacity', class: Google::Apis::ComputeBeta::FutureReservationStoragePoolProvisionedCapacity, decorator: Google::Apis::ComputeBeta::FutureReservationStoragePoolProvisionedCapacity::Representation
       
         end
       end
@@ -13140,6 +13183,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_instance_template_id, as: 'sourceInstanceTemplateId'
+        end
+      end
+      
+      class FutureReservationStoragePoolProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requested_exapool_provisioned_capacity_gb, as: 'requestedExapoolProvisionedCapacityGb', class: Google::Apis::ComputeBeta::StoragePoolExapoolProvisionedCapacityGb, decorator: Google::Apis::ComputeBeta::StoragePoolExapoolProvisionedCapacityGb::Representation
+      
+          property :requested_storage_pool_provisioned_capacity, as: 'requestedStoragePoolProvisionedCapacity', class: Google::Apis::ComputeBeta::FutureReservationStoragePoolProvisionedCapacity, decorator: Google::Apis::ComputeBeta::FutureReservationStoragePoolProvisionedCapacity::Representation
+      
+          property :storage_pool_type, as: 'storagePoolType'
+        end
+      end
+      
+      class FutureReservationStoragePoolProvisionedCapacity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pool_provisioned_capacity_gb, :numeric_string => true, as: 'poolProvisionedCapacityGb'
+          property :pool_provisioned_iops, :numeric_string => true, as: 'poolProvisionedIops'
+          property :pool_provisioned_throughput, :numeric_string => true, as: 'poolProvisionedThroughput'
         end
       end
       
@@ -14847,6 +14910,7 @@ module Google
           collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::AttachedDisk, decorator: Google::Apis::ComputeBeta::AttachedDisk::Representation
       
           collection :machine_types, as: 'machineTypes'
+          property :min_cpu_platform, as: 'minCpuPlatform'
           property :rank, :numeric_string => true, as: 'rank'
         end
       end
@@ -18166,6 +18230,50 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance_template, as: 'instanceTemplate'
           property :name, as: 'name'
+        end
+      end
+      
+      class ManagedRuleset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :change_log, as: 'changeLog'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          collection :rule_ids, as: 'ruleIds'
+          property :ruleset_id, as: 'rulesetId'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ManagedRulesetList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::ManagedRuleset, decorator: Google::Apis::ComputeBeta::ManagedRuleset::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ManagedRulesetList::Warning, decorator: Google::Apis::ComputeBeta::ManagedRulesetList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ManagedRulesetList::Warning::Datum, decorator: Google::Apis::ComputeBeta::ManagedRulesetList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
