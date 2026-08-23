@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LegacyMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAlertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -531,7 +537,10 @@ module Google
       class CustomThreatScenarioConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :compiled_lucene_query, as: 'compiledLuceneQuery'
           property :document_condition, as: 'documentCondition'
+          property :legacy_monitor_metadata, as: 'legacyMonitorMetadata', class: Google::Apis::ThreatintelligenceV1beta::LegacyMetadata, decorator: Google::Apis::ThreatintelligenceV1beta::LegacyMetadata::Representation
+      
         end
       end
       
@@ -822,6 +831,28 @@ module Google
           property :document_id, as: 'documentId'
           property :match_score, as: 'matchScore'
           property :severity, as: 'severity'
+        end
+      end
+      
+      class LegacyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_enabled, as: 'aggregationEnabled'
+          property :aggregation_similarity, as: 'aggregationSimilarity'
+          property :condition_version, as: 'conditionVersion'
+          property :creator_user_id, as: 'creatorUserId'
+          property :description, as: 'description'
+          property :disabled_code, as: 'disabledCode'
+          property :disabled_reason, as: 'disabledReason'
+          property :display_name, as: 'displayName'
+          property :email_notification_enabled, as: 'emailNotificationEnabled'
+          property :email_notification_immediate, as: 'emailNotificationImmediate'
+          property :legacy_monitor_id, as: 'legacyMonitorId'
+          property :stale_time, as: 'staleTime'
+          property :template_id, as: 'templateId'
+          property :tenant_id, as: 'tenantId'
+          property :updater_user_id, as: 'updaterUserId'
+          property :version, as: 'version'
         end
       end
       
