@@ -4967,6 +4967,28 @@ module Google
         end
       end
       
+      # Configuration for per-stage soak duration overrides.
+      class PerStageSoakDurationOverrides
+        include Google::Apis::Core::Hashable
+      
+        # Required. A mapping of stage numbers to their respective desired soak
+        # durations. Key is the stage number, value is the desired soak duration. Stages
+        # omitted from the map will receive the standard soak duration configured on the
+        # sequence for that stage.
+        # Corresponds to the JSON property `stageOverrides`
+        # @return [Hash<String,String>]
+        attr_accessor :stage_overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stage_overrides = args[:stage_overrides] if args.key?(:stage_overrides)
+        end
+      end
+      
       # An Identity and Access Management (IAM) policy, which specifies access
       # controls for Google Cloud resources. A `Policy` is a collection of `bindings`.
       # A `binding` binds one or more `members`, or principals, to a single `role`.
@@ -5795,6 +5817,20 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Optional. If set to true, the rollout will ignore the disruption budgets of
+        # the clusters.
+        # Corresponds to the JSON property `ignoreClusterDisruptionBudgets`
+        # @return [Boolean]
+        attr_accessor :ignore_cluster_disruption_budgets
+        alias_method :ignore_cluster_disruption_budgets?, :ignore_cluster_disruption_budgets
+      
+        # Optional. If set to true, the rollout will ignore any maintenance policies (
+        # Maintenance Windows and Maintenance Exclusions) set on the clusters.
+        # Corresponds to the JSON property `ignoreMaintenancePolicies`
+        # @return [Boolean]
+        attr_accessor :ignore_maintenance_policies
+        alias_method :ignore_maintenance_policies?, :ignore_maintenance_policies
+      
         # Output only. The intent of the rollout.
         # Corresponds to the JSON property `intent`
         # @return [String]
@@ -5824,6 +5860,14 @@ module Google
         # Corresponds to the JSON property `rolloutSequence`
         # @return [String]
         attr_accessor :rollout_sequence
+      
+        # Optional. Overrides the soak durations for specific stages of the rollout. Key
+        # is the stage number, value is the desired soak duration. Stages omitted from
+        # the map will receive the standard soak duration configured on the sequence for
+        # that stage.
+        # Corresponds to the JSON property `stageSoakDurationOverrides`
+        # @return [Hash<String,String>]
+        attr_accessor :stage_soak_duration_overrides
       
         # Output only. The stages of the Rollout.
         # Corresponds to the JSON property `stages`
@@ -5879,11 +5923,14 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @ignore_cluster_disruption_budgets = args[:ignore_cluster_disruption_budgets] if args.key?(:ignore_cluster_disruption_budgets)
+          @ignore_maintenance_policies = args[:ignore_maintenance_policies] if args.key?(:ignore_maintenance_policies)
           @intent = args[:intent] if args.key?(:intent)
           @labels = args[:labels] if args.key?(:labels)
           @membership_states = args[:membership_states] if args.key?(:membership_states)
           @name = args[:name] if args.key?(:name)
           @rollout_sequence = args[:rollout_sequence] if args.key?(:rollout_sequence)
+          @stage_soak_duration_overrides = args[:stage_soak_duration_overrides] if args.key?(:stage_soak_duration_overrides)
           @stages = args[:stages] if args.key?(:stages)
           @state = args[:state] if args.key?(:state)
           @state_reason = args[:state_reason] if args.key?(:state_reason)
@@ -6778,6 +6825,37 @@ module Google
         attr_accessor :force
         alias_method :force?, :force
       
+        # Optional. If set to true, the rollout will ignore the disruption budgets of
+        # the clusters.
+        # Corresponds to the JSON property `ignoreClusterDisruptionBudgets`
+        # @return [Boolean]
+        attr_accessor :ignore_cluster_disruption_budgets
+        alias_method :ignore_cluster_disruption_budgets?, :ignore_cluster_disruption_budgets
+      
+        # Optional. If set to true, the rollout will ignore any maintenance policies (
+        # Maintenance Windows and Maintenance Exclusions) set on the clusters.
+        # Corresponds to the JSON property `ignoreMaintenancePolicies`
+        # @return [Boolean]
+        attr_accessor :ignore_maintenance_policies
+        alias_method :ignore_maintenance_policies?, :ignore_maintenance_policies
+      
+        # Optional. If set to true, the rollout will only upgrade clusters that match
+        # the minor version of the `version` field, but are on an earlier patch version.
+        # Corresponds to the JSON property `patchOnly`
+        # @return [Boolean]
+        attr_accessor :patch_only
+        alias_method :patch_only?, :patch_only
+      
+        # Optional. Overrides the soak duration for all stages of the rollout.
+        # Corresponds to the JSON property `soakDurationOverrideAllStages`
+        # @return [String]
+        attr_accessor :soak_duration_override_all_stages
+      
+        # Configuration for per-stage soak duration overrides.
+        # Corresponds to the JSON property `soakDurationOverridePerStage`
+        # @return [Google::Apis::GkehubV1::PerStageSoakDurationOverrides]
+        attr_accessor :soak_duration_override_per_stage
+      
         # Required. The type of upgrade.
         # Corresponds to the JSON property `upgradeType`
         # @return [String]
@@ -6805,6 +6883,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @force = args[:force] if args.key?(:force)
+          @ignore_cluster_disruption_budgets = args[:ignore_cluster_disruption_budgets] if args.key?(:ignore_cluster_disruption_budgets)
+          @ignore_maintenance_policies = args[:ignore_maintenance_policies] if args.key?(:ignore_maintenance_policies)
+          @patch_only = args[:patch_only] if args.key?(:patch_only)
+          @soak_duration_override_all_stages = args[:soak_duration_override_all_stages] if args.key?(:soak_duration_override_all_stages)
+          @soak_duration_override_per_stage = args[:soak_duration_override_per_stage] if args.key?(:soak_duration_override_per_stage)
           @upgrade_type = args[:upgrade_type] if args.key?(:upgrade_type)
           @version = args[:version] if args.key?(:version)
         end
