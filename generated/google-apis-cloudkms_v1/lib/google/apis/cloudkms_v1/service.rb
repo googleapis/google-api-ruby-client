@@ -116,11 +116,14 @@ module Google
         end
         
         # Returns the effective Cloud KMS Autokey configuration for a given project or
-        # folder.
+        # folder. Note on permissions: - If called on a project (`projects/`project``),
+        # requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If called on a
+        # folder (`folders/`folder``), requires `cloudkms.folders.
+        # showEffectiveAutokeyConfig`.
         # @param [String] parent
         #   Required. Name of the resource project or folder to show the effective Cloud
-        #   KMS Autokey configuration for. This may be helpful for interrogating the
-        #   effect of nested folder configurations on a given resource project. Format: *
+        #   KMS Autokey configuration for. This may be helpful for evaluating the effect
+        #   of nested folder configurations on a given resource project. Format: *
         #   projects/`project` * folders/`folder`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -364,11 +367,14 @@ module Google
         end
         
         # Returns the effective Cloud KMS Autokey configuration for a given project or
-        # folder.
+        # folder. Note on permissions: - If called on a project (`projects/`project``),
+        # requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If called on a
+        # folder (`folders/`folder``), requires `cloudkms.folders.
+        # showEffectiveAutokeyConfig`.
         # @param [String] parent
         #   Required. Name of the resource project or folder to show the effective Cloud
-        #   KMS Autokey configuration for. This may be helpful for interrogating the
-        #   effect of nested folder configurations on a given resource project. Format: *
+        #   KMS Autokey configuration for. This may be helpful for evaluating the effect
+        #   of nested folder configurations on a given resource project. Format: *
         #   projects/`project` * folders/`folder`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
