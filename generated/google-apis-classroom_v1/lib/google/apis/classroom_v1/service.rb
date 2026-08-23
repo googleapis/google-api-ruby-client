@@ -1402,7 +1402,8 @@ module Google
         #   CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following
         #   fields may be specified by teachers: * `title` * `description` * `state` * `
         #   due_date` * `due_time` * `max_points` * `scheduled_time` * `
-        #   submission_modification_mode` * `topic_id` * `grading_period_id`
+        #   submission_modification_mode` * `topic_id` * `grading_period_id` * `
+        #   learning_goals`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2742,7 +2743,7 @@ module Google
         #   that does not support empty values is included in the update mask and not set
         #   in the course work material object, an `INVALID_ARGUMENT` error is returned.
         #   The following fields may be specified by teachers: * `title` * `description` *
-        #   `state` * `scheduled_time` * `topic_id`
+        #   `state` * `scheduled_time` * `topic_id` * `learning_goals`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
