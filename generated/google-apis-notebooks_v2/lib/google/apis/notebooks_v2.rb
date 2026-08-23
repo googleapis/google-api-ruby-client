@@ -31,6 +31,9 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # See, edit, configure, and delete your Google Cloud Agent Platform Workbench Instances data and see the email address for your Google Account
+      AUTH_NOTEBOOKS = 'https://www.googleapis.com/auth/notebooks'
     end
   end
 end
