@@ -17095,6 +17095,12 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # 
+        # Corresponds to the JSON property `retryable`
+        # @return [Boolean]
+        attr_accessor :retryable
+        alias_method :retryable?, :retryable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17102,6 +17108,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message = args[:message] if args.key?(:message)
+          @retryable = args[:retryable] if args.key?(:retryable)
         end
       end
       
@@ -21652,6 +21659,12 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # 
+        # Corresponds to the JSON property `retryable`
+        # @return [Boolean]
+        attr_accessor :retryable
+        alias_method :retryable?, :retryable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21659,6 +21672,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message = args[:message] if args.key?(:message)
+          @retryable = args[:retryable] if args.key?(:retryable)
         end
       end
       
