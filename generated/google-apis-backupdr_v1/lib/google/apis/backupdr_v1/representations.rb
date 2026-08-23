@@ -730,6 +730,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RestoreDiskFromInstanceOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuleConfigInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1600,6 +1606,8 @@ module Google
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
           collection :guest_os_feature, as: 'guestOsFeature', class: Google::Apis::BackupdrV1::GuestOsFeature, decorator: Google::Apis::BackupdrV1::GuestOsFeature::Representation
       
+          property :instance_backup_source, as: 'instanceBackupSource', class: Google::Apis::BackupdrV1::RestoreDiskFromInstanceOptions, decorator: Google::Apis::BackupdrV1::RestoreDiskFromInstanceOptions::Representation
+      
           hash :labels, as: 'labels'
           collection :licenses, as: 'licenses'
           property :name, as: 'name'
@@ -2208,6 +2216,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :target_resource, as: 'targetResource', class: Google::Apis::BackupdrV1::TargetResource, decorator: Google::Apis::BackupdrV1::TargetResource::Representation
       
+        end
+      end
+      
+      class RestoreDiskFromInstanceOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_disk, as: 'bootDisk'
+          property :source_device_name, as: 'sourceDeviceName'
         end
       end
       
