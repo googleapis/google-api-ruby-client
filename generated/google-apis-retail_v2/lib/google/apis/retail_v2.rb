@@ -19,16 +19,16 @@ require 'google/apis/retail_v2/gem_version.rb'
 
 module Google
   module Apis
-    # Vertex AI Search for commerce API
+    # AI Commerce Search API
     #
-    # Vertex AI Search for commerce API is made up of Retail Search, Browse and
+    # The AI Commerce Search API is made up of Retail Search, Browse and
     # Recommendations. These discovery AI solutions help you implement personalized
     # search, browse and recommendations, based on machine learning models, across
     # your websites and mobile applications.
     #
     # @see https://cloud.google.com/recommendations
     module RetailV2
-      # Version of the Vertex AI Search for commerce API this client connects to.
+      # Version of the AI Commerce Search API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V2'
 
