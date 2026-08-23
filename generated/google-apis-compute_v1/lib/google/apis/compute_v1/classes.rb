@@ -3229,7 +3229,8 @@ module Google
         # Specifies how to determine whether the backend of a load balancer can
         # handle additional traffic or is fully loaded. For usage guidelines, see
         # Connection balancing mode.
-        # Backends must use compatible balancing modes. For more information, see
+        # Backends must use compatible balancing modes. Backends of a backend
+        # service may use different balancing modes. For more information, see
         # Supported balancing modes and target capacity settings and
         # Restrictions and guidance for instance groups.
         # Note: Currently, if you use the API to configure incompatible balancing
@@ -3272,6 +3273,8 @@ module Google
       
         # This field designates whether this is a failover backend. More than one
         # failover backend can be configured for a given BackendService.
+        # This field can only be used for a regional external Passthrough Network
+        # Load Balancer or a regional internal Passthrough Network Load Balancer.
         # Corresponds to the JSON property `failover`
         # @return [Boolean]
         attr_accessor :failover
@@ -3389,6 +3392,12 @@ module Google
         # capacity, backends in this layer would be used and traffic would be
         # assigned based on the load balancing algorithm you use. This is the
         # default
+        # For global external Passthrough Network Load Balancers, the following
+        # restrictions apply:
+        # 
+        # - At most one backend can be marked as PREFERRED.
+        # - PREFERRED and DEFAULT backends cannot reside
+        # in the same Cloud region.
         # Corresponds to the JSON property `preference`
         # @return [String]
         attr_accessor :preference
@@ -3717,16 +3726,17 @@ module Google
         attr_accessor :cache_key_policy
       
         # Specifies the cache setting for all responses from this backend.
-        # The possible values are:USE_ORIGIN_HEADERS Requires the origin to set valid
-        # caching
+        # The possible values are:
+        # USE_ORIGIN_HEADERS Requires the origin to set valid caching
         # headers to cache content. Responses without these headers will not be
         # cached at Google's edge, and will require a full trip to the origin on
         # every request, potentially impacting performance and increasing load on
-        # the origin server.FORCE_CACHE_ALL Cache all content, ignoring any "private",
+        # the origin server.
+        # FORCE_CACHE_ALL Cache all content, ignoring any "private",
         # "no-store" or "no-cache" directives in Cache-Control response headers.
         # Warning: this may result in Cloud CDN caching private,
-        # per-user (user identifiable) content.CACHE_ALL_STATIC Automatically cache
-        # static content,
+        # per-user (user identifiable) content.
+        # CACHE_ALL_STATIC Automatically cache static content,
         # including common image formats, media (video and audio), and web assets
         # (JavaScript and CSS). Requests and responses that are marked as
         # uncacheable, as well as dynamic content (including HTML), will not be
@@ -4589,8 +4599,10 @@ module Google
         # haPolicy requires customers to be responsible for tracking backend
         # endpoint health and electing a leader among the healthy endpoints.
         # Therefore, haPolicy cannot be specified with healthChecks.
-        # haPolicy can only be specified for External Passthrough Network Load
-        # Balancers and Internal Passthrough Network Load Balancers.
+        # haPolicy can only be specified for External Passthrough
+        # Network Load Balancers and Internal Passthrough Network Load Balancers.
+        # haPolicy cannot be used by global external Passthrough Network
+        # Load Balancers.
         # Corresponds to the JSON property `haPolicy`
         # @return [Google::Apis::ComputeV1::BackendServiceHaPolicy]
         attr_accessor :ha_policy
@@ -4660,8 +4672,8 @@ module Google
       
         # Specifies the load balancer type. A backend service
         # created for one type of load balancer cannot be used with another.
-        # For more information, refer toChoosing
-        # a load balancer.
+        # For more information, refer to
+        # Backend services product and scheme table.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -4709,27 +4721,32 @@ module Google
         # HTTP response header field Endpoint-Load-Metrics. The reported
         # metrics to use for computing the weights are specified via thecustomMetrics
         # field.
-        # 
+        # - WEIGHTED_MAGLEV: Per-endpoint weighted load balancing via
+        # health check reported weights. If set, the backend service must configure
+        # an HTTP-based Health Check, and health check replies are expected to
+        # contain the non-standard HTTP response header fieldX-Load-Balancing-
+        # Endpoint-Weight to specify the per-endpoint
+        # weights. If set, load balancing is weighted based on the per-endpoint
+        # weights reported in the last processed health check replies, as long as
+        # every instance either reported a valid weight or had UNAVAILABLE_WEIGHT.
+        # Otherwise, load balancing remains equal-weight.
         # This field is applicable to either:
+        # 
         # - A regional backend service with the service protocol set to HTTP,
         # HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
         # INTERNAL_MANAGED.
         # - A global backend service with the
         # load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or
         # EXTERNAL_MANAGED.
-        # 
-        # 
         # If sessionAffinity is not configured—that is, if session
         # affinity remains at the default value of NONE—then the
         # default value for localityLbPolicy
         # is ROUND_ROBIN. If session affinity is set to a value other
         # than NONE,
         # then the default value for localityLbPolicy isMAGLEV.
-        # 
         # Only ROUND_ROBIN and RING_HASH are supported
         # when the backend service is referenced by a URL map that is bound to
         # target gRPC proxy that has validateForProxyless field set to true.
-        # 
         # localityLbPolicy cannot be specified with haPolicy.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
@@ -4821,12 +4838,12 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
-        # The protocol this BackendService uses to communicate
-        # with backends.
-        # Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP or GRPC.
-        # depending on the chosen load balancer or Traffic Director configuration.
-        # Refer to the documentation for the load balancers or for Traffic Director
-        # for more information.
+        # The protocol this BackendService uses to communicate with backends.
+        # Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP, GRPC, or
+        # UNSPECIFIED, depending on the chosen load balancer or Traffic Director
+        # configuration.
+        # Refer to
+        # Load balancing features for more information.
         # Must be set to GRPC when the backend service is referenced by a URL map
         # that is bound to target gRPC proxy.
         # Corresponds to the JSON property `protocol`
@@ -5136,16 +5153,17 @@ module Google
         attr_accessor :cache_key_policy
       
         # Specifies the cache setting for all responses from this backend.
-        # The possible values are:USE_ORIGIN_HEADERS Requires the origin to set valid
-        # caching
+        # The possible values are:
+        # USE_ORIGIN_HEADERS Requires the origin to set valid caching
         # headers to cache content. Responses without these headers will not be
         # cached at Google's edge, and will require a full trip to the origin on
         # every request, potentially impacting performance and increasing load on
-        # the origin server.FORCE_CACHE_ALL Cache all content, ignoring any "private",
+        # the origin server.
+        # FORCE_CACHE_ALL Cache all content, ignoring any "private",
         # "no-store" or "no-cache" directives in Cache-Control response headers.
         # Warning: this may result in Cloud CDN caching private,
-        # per-user (user identifiable) content.CACHE_ALL_STATIC Automatically cache
-        # static content,
+        # per-user (user identifiable) content.
+        # CACHE_ALL_STATIC Automatically cache static content,
         # including common image formats, media (video and audio), and web assets
         # (JavaScript and CSS). Requests and responses that are marked as
         # uncacheable, as well as dynamic content (including HTML), will not be
@@ -6376,6 +6394,39 @@ module Google
         # @return [String]
         attr_accessor :authentication_config
       
+        # Assigns the Managed Identity for the BackendService Workload.
+        # Use this property to configure the load balancer back-end to use
+        # certificates and roots of trust provisioned by the Managed Workload
+        # Identity system.
+        # The `identity` property is the
+        # fully-specified SPIFFE ID to use in the SVID presented by the Load
+        # Balancer Workload.
+        # The SPIFFE ID must be a resource starting with the
+        # `trustDomain` property value, followed by the path to the Managed
+        # Workload Identity.
+        # Supported SPIFFE ID format:
+        # 
+        # - //<trust_domain>/ns/<namespace>/sa/<subject>
+        # The Trust Domain within the Managed Identity must refer to a valid
+        # Workload Identity Pool. The TrustConfig and CertificateIssuanceConfig
+        # will be inherited from the Workload Identity Pool.
+        # Restrictions:
+        # 
+        # - If you set the `identity` property, you cannot manually set
+        # the following fields:
+        # - tlsSettings.sni
+        # - tlsSettings.subjectAltNames
+        # - tlsSettings.authenticationConfig
+        # 
+        # When defining a `identity` for a RegionBackendServices, the
+        # corresponding Workload Identity Pool must have a ca_pool
+        # configured in the same region.
+        # The system will set up a read-onlytlsSettings.authenticationConfig for the
+        # Managed Identity.
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
         # Server Name Indication - see RFC3546 section 3.1. If set, the load
         # balancer sends this string as the SNI hostname in the TLS connection to
         # the backend, and requires that this string match a Subject Alternative
@@ -6407,6 +6458,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authentication_config = args[:authentication_config] if args.key?(:authentication_config)
+          @identity = args[:identity] if args.key?(:identity)
           @sni = args[:sni] if args.key?(:sni)
           @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
         end
@@ -13690,6 +13742,7 @@ module Google
         # - regions/region/addresses/address-name
         # - global/addresses/address-name
         # - address-name
+        # The IP address can only be set at creation. Once set, it cannot be updated.
         # The forwarding rule's target or backendService,
         # and in most cases, also the loadBalancingScheme, determine the
         # type of IP address that you can use. For detailed information, see
@@ -13698,6 +13751,11 @@ module Google
         # concepts#ip_address_specifications).
         # When reading an IPAddress, the API always returns the IP
         # address number.
+        # When creating a global external Passthrough Network Load Balancer
+        # forwarding rule (a parent forwarding rule), you must use theIPAddresses field,
+        # but the Google Cloud generated child
+        # forwarding rules set the IPAddress field instead. Refer to
+        # theavailabilityGroup field for further details.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -13759,8 +13817,14 @@ module Google
         attr_accessor :attached_extensions
       
         # Identifies the backend service to which the forwarding rule sends traffic.
-        # Required for internal and external passthrough Network Load Balancers;
-        # must be omitted for all other load balancer types.
+        # It is a required field for the following load balancers:
+        # 
+        # - Internal passthrough Network Load Balancers
+        # - Backend service-based regional external passthrough Network Load
+        # Balancers
+        # - Global external passthrough Network Load Balancers
+        # It cannot be set by other load balancer types and protocol forwarding
+        # rules.
         # Corresponds to the JSON property `backendService`
         # @return [String]
         attr_accessor :backend_service
@@ -13892,8 +13956,8 @@ module Google
         attr_accessor :labels
       
         # Specifies the forwarding rule type.
-        # For more information about forwarding rules, refer to
-        # Forwarding rule concepts.
+        # For more information, refer to
+        # Forwarding rule product and scheme table.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -13933,6 +13997,13 @@ module Google
         # For Private Service Connect forwarding rules that forward traffic to Google
         # APIs, the forwarding rule name must be a 1-20 characters string with
         # lowercase letters and numbers and must start with a letter.
+        # For global external Passthrough Network Load Balancer forwarding rules, the
+        # forwarding rule name must be 1-43 characters long. For each global external
+        # Passthrough Network Load Balancer forwarding rule (a parent forwarding
+        # rule) that you create, Google Cloud generates two output-only child
+        # forwarding rules that are named by concatenating the parent forwarding rule
+        # name with the `-ag0` and `-ag1` suffixes, respectively. Refer to
+        # theavailabilityGroup field for further details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -13984,7 +14055,9 @@ module Google
         # - Some products have restrictions on what ports can be used. See
         # port specifications for details.
         # For external forwarding rules, two or more forwarding rules cannot use the
-        # same [IPAddress, IPProtocol] pair, and cannot have overlappingportRanges.
+        # same [IPAddress, IPProtocol] pair (specified inIPAddress, IPAddresses,
+        # IPProtocol
+        # fields) if they have overlapping portRanges.
         # For internal forwarding rules within the same VPC network, two or more
         # forwarding rules cannot use the same [IPAddress, IPProtocol]
         # pair, and cannot have overlapping portRanges.
@@ -14007,8 +14080,9 @@ module Google
         # - You can specify a list of up to five ports by number, separated by
         # commas. The ports can be contiguous or discontiguous.
         # For external forwarding rules, two or more forwarding rules cannot use the
-        # same [IPAddress, IPProtocol] pair if they share at least one
-        # port number.
+        # same [IPAddress, IPProtocol] pair (specified inIPAddress, IPAddresses,
+        # IPProtocol
+        # fields) if they share at least one port number.
         # For internal forwarding rules within the same VPC network, two or more
         # forwarding rules cannot use the same [IPAddress, IPProtocol]
         # pair if they share at least one port number.
@@ -14116,6 +14190,13 @@ module Google
         # -  For Private Service Connect forwarding rules that forward traffic to
         # managed services, the target must be a service attachment. The target is not
         # mutable once set as a service attachment.
+        # The following load balancers cannot set the target field (they should set the
+        # backendService field instead):
+        # 
+        # - Internal passthrough Network Load Balancers
+        # - Backend service-based regional external passthrough Network Load
+        # Balancers
+        # - Global external passthrough Network Load Balancers
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -14731,6 +14812,13 @@ module Google
         # @return [Google::Apis::ComputeV1::ResourceMetadata]
         attr_accessor :resource_metadata
       
+        # Name of the resource intended to be delivered. Name should conform to
+        # RFC1035. This will be the name of storage pool or Exapool for persistent
+        # disk FRs.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
         # Maintenance information for this reservation
         # Corresponds to the JSON property `schedulingType`
         # @return [String]
@@ -14772,6 +14860,11 @@ module Google
         # @return [Google::Apis::ComputeV1::FutureReservationStatus]
         attr_accessor :status
       
+        # Storage pool properties for the future reservation.
+        # Corresponds to the JSON property `storagePoolProperties`
+        # @return [Google::Apis::ComputeV1::FutureReservationStoragePoolProperties]
+        attr_accessor :storage_pool_properties
+      
         # Time window for this Future Reservation.
         # Corresponds to the JSON property `timeWindow`
         # @return [Google::Apis::ComputeV1::FutureReservationTimeWindow]
@@ -14808,6 +14901,7 @@ module Google
           @reservation_mode = args[:reservation_mode] if args.key?(:reservation_mode)
           @reservation_name = args[:reservation_name] if args.key?(:reservation_name)
           @resource_metadata = args[:resource_metadata] if args.key?(:resource_metadata)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -14815,6 +14909,7 @@ module Google
           @specific_reservation_required = args[:specific_reservation_required] if args.key?(:specific_reservation_required)
           @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
           @status = args[:status] if args.key?(:status)
+          @storage_pool_properties = args[:storage_pool_properties] if args.key?(:storage_pool_properties)
           @time_window = args[:time_window] if args.key?(:time_window)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -14930,6 +15025,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :auto_created_reservations
       
+        # Exapool provisioned capacities for each SKU type
+        # Corresponds to the JSON property `exapoolProvisionedCapacityGb`
+        # @return [Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb]
+        attr_accessor :exapool_provisioned_capacity_gb
+      
         # [Output Only] Represents the existing matching usage for the future
         # reservation.
         # Corresponds to the JSON property `existingMatchingUsageInfo`
@@ -14969,6 +15069,11 @@ module Google
         # @return [Google::Apis::ComputeV1::FutureReservationStatusSpecificSkuProperties]
         attr_accessor :specific_sku_properties
       
+        # Storage pool provisioned capacities for each SKU type.
+        # Corresponds to the JSON property `storagePoolProvisionedCapacity`
+        # @return [Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity]
+        attr_accessor :storage_pool_provisioned_capacity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14977,12 +15082,14 @@ module Google
         def update!(**args)
           @amendment_status = args[:amendment_status] if args.key?(:amendment_status)
           @auto_created_reservations = args[:auto_created_reservations] if args.key?(:auto_created_reservations)
+          @exapool_provisioned_capacity_gb = args[:exapool_provisioned_capacity_gb] if args.key?(:exapool_provisioned_capacity_gb)
           @existing_matching_usage_info = args[:existing_matching_usage_info] if args.key?(:existing_matching_usage_info)
           @fulfilled_count = args[:fulfilled_count] if args.key?(:fulfilled_count)
           @last_known_good_state = args[:last_known_good_state] if args.key?(:last_known_good_state)
           @lock_time = args[:lock_time] if args.key?(:lock_time)
           @procurement_status = args[:procurement_status] if args.key?(:procurement_status)
           @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
+          @storage_pool_provisioned_capacity = args[:storage_pool_provisioned_capacity] if args.key?(:storage_pool_provisioned_capacity)
         end
       end
       
@@ -15118,6 +15225,70 @@ module Google
         # Update properties of this object
         def update!(**args)
           @source_instance_template_id = args[:source_instance_template_id] if args.key?(:source_instance_template_id)
+        end
+      end
+      
+      # Storage pool properties for the future reservation.
+      class FutureReservationStoragePoolProperties
+        include Google::Apis::Core::Hashable
+      
+        # Exapool provisioned capacities for each SKU type
+        # Corresponds to the JSON property `requestedExapoolProvisionedCapacityGb`
+        # @return [Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb]
+        attr_accessor :requested_exapool_provisioned_capacity_gb
+      
+        # Storage pool provisioned capacities for each SKU type.
+        # Corresponds to the JSON property `requestedStoragePoolProvisionedCapacity`
+        # @return [Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity]
+        attr_accessor :requested_storage_pool_provisioned_capacity
+      
+        # Type of the storage pool.
+        # Corresponds to the JSON property `storagePoolType`
+        # @return [String]
+        attr_accessor :storage_pool_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requested_exapool_provisioned_capacity_gb = args[:requested_exapool_provisioned_capacity_gb] if args.key?(:requested_exapool_provisioned_capacity_gb)
+          @requested_storage_pool_provisioned_capacity = args[:requested_storage_pool_provisioned_capacity] if args.key?(:requested_storage_pool_provisioned_capacity)
+          @storage_pool_type = args[:storage_pool_type] if args.key?(:storage_pool_type)
+        end
+      end
+      
+      # Storage pool provisioned capacities for each SKU type.
+      class FutureReservationStoragePoolProvisionedCapacity
+        include Google::Apis::Core::Hashable
+      
+        # Size of the storage pool in GiB.
+        # Corresponds to the JSON property `poolProvisionedCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :pool_provisioned_capacity_gb
+      
+        # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+        # type is hyperdisk-balanced.
+        # Corresponds to the JSON property `poolProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :pool_provisioned_iops
+      
+        # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+        # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        # Corresponds to the JSON property `poolProvisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :pool_provisioned_throughput
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pool_provisioned_capacity_gb = args[:pool_provisioned_capacity_gb] if args.key?(:pool_provisioned_capacity_gb)
+          @pool_provisioned_iops = args[:pool_provisioned_iops] if args.key?(:pool_provisioned_iops)
+          @pool_provisioned_throughput = args[:pool_provisioned_throughput] if args.key?(:pool_provisioned_throughput)
         end
       end
       
@@ -22483,6 +22654,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :machine_types
       
+        # Name of the minimum CPU platform to be used by this instance selection.
+        # e.g. 'Intel Ice Lake'.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
         # Rank when prioritizing the shape flexibilities.
         # The instance selections with rank are considered
         # first, in the ascending order of the rank.
@@ -22499,6 +22676,7 @@ module Google
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @rank = args[:rank] if args.key?(:rank)
         end
       end
@@ -45553,6 +45731,56 @@ module Google
         end
       end
       
+      # The spec for modifying the path using a regular expression.
+      class RegexRewrite
+        include Google::Apis::Core::Hashable
+      
+        # Required. The regular expression used to match against the URL path.
+        # It uses RE2 syntax with the following constraints:
+        # 
+        # 
+        # - Any single character operators
+        # - Groups are allowed to have only submatch operator inside
+        # - Groups are allowed only without any char repetition, e.g.
+        # .*
+        # - Any char repetition, e.g. .*, is
+        # only allowed to be used in a single regex together with:
+        # 
+        # 
+        # - Empty string operators
+        # - Other repetitions
+        # - Ranges
+        # - Repetitions of ranges
+        # 
+        # 
+        # - Ranges are only allowed to have:
+        # 
+        # 
+        # - Character range
+        # - Digits range
+        # - Symbols listed in characters allowed for ranges
+        # Corresponds to the JSON property `pathPattern`
+        # @return [String]
+        attr_accessor :path_pattern
+      
+        # Required. Required when path pattern is specified. Used to rewrite matching
+        # parts of
+        # the path.
+        # Corresponds to the JSON property `pathSubstitution`
+        # @return [String]
+        attr_accessor :path_substitution
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path_pattern = args[:path_pattern] if args.key?(:path_pattern)
+          @path_substitution = args[:path_substitution] if args.key?(:path_substitution)
+        end
+      end
+      
       # Represents a Region resource.
       # A region is a geographical area where a resource is located. For more
       # information, readRegions
@@ -65181,7 +65409,8 @@ module Google
         # The server-defined URL for the resource. This field is applicable only when
         # the containing target pool is serving a forwarding rule as the primary
         # pool, and its failoverRatio field is properly set to a value
-        # between [0, 1].backupPool and failoverRatio together define
+        # between [0, 1].
+        # backupPool and failoverRatio together define
         # the fallback behavior of the primary target pool: if the ratio of the
         # healthy instances in the primary pool is at or belowfailoverRatio, traffic
         # arriving at the load-balanced
@@ -68174,6 +68403,11 @@ module Google
         # @return [String]
         attr_accessor :path_template_rewrite
       
+        # The spec for modifying the path using a regular expression.
+        # Corresponds to the JSON property `regexRewrite`
+        # @return [Google::Apis::ComputeV1::RegexRewrite]
+        attr_accessor :regex_rewrite
+      
         def initialize(**args)
            update!(**args)
         end
@@ -68183,6 +68417,7 @@ module Google
           @host_rewrite = args[:host_rewrite] if args.key?(:host_rewrite)
           @path_prefix_rewrite = args[:path_prefix_rewrite] if args.key?(:path_prefix_rewrite)
           @path_template_rewrite = args[:path_template_rewrite] if args.key?(:path_template_rewrite)
+          @regex_rewrite = args[:regex_rewrite] if args.key?(:regex_rewrite)
         end
       end
       
