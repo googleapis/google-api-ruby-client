@@ -1157,7 +1157,7 @@ module Google
         #   Optional. Signed UUID request idempotency token.
         # @param [String] skill_id
         #   Required. Custom, user-defined unique container identifier. Must be unique
-        #   within the parent project and location. This value should be 4-63 characters,
+        #   within the parent project and location. This value should be 4-64 characters,
         #   and valid characters are `/a-z-/`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1236,6 +1236,8 @@ module Google
         # @param [String] quota_user
         #   Available to use for quota purposes for server-side applications. Can be any
         #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] download_dest
+        #   IO stream or filename to receive content download
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1248,8 +1250,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_skill(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha/{+name}', options)
+        def get_project_location_skill(name, fields: nil, quota_user: nil, download_dest: nil, options: nil, &block)
+          if download_dest.nil?
+            command = make_simple_command(:get, 'v1alpha/{+name}', options)
+          else
+            command = make_download_command(:get, 'v1alpha/{+name}', options)
+            command.download_dest = download_dest
+          end
           command.response_representation = Google::Apis::AgentregistryV1alpha::Skill::Representation
           command.response_class = Google::Apis::AgentregistryV1alpha::Skill
           command.params['name'] = name unless name.nil?
