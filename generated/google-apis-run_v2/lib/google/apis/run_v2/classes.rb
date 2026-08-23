@@ -1011,6 +1011,13 @@ module Google
         # @return [String]
         attr_accessor :client_version
       
+        # Optional. If true, the system will start the execution within the next 12
+        # hours depending on available capacity.
+        # Corresponds to the JSON property `delayExecution`
+        # @return [Boolean]
+        attr_accessor :delay_execution
+        alias_method :delay_execution?, :delay_execution
+      
         # Unstructured key value map that can be used to organize and categorize objects.
         # User-provided labels are shared with Google's billing system, so they can be
         # used to filter, or break down billing charges by team, component, environment,
@@ -1056,6 +1063,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @client = args[:client] if args.key?(:client)
           @client_version = args[:client_version] if args.key?(:client_version)
+          @delay_execution = args[:delay_execution] if args.key?(:delay_execution)
           @labels = args[:labels] if args.key?(:labels)
           @parallelism = args[:parallelism] if args.key?(:parallelism)
           @task_count = args[:task_count] if args.key?(:task_count)
@@ -2229,6 +2237,13 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerOverride>]
         attr_accessor :container_overrides
       
+        # Optional. If true, the system will start the execution within the next 12
+        # hours depending on available capacity.
+        # Corresponds to the JSON property `delayExecution`
+        # @return [Boolean]
+        attr_accessor :delay_execution
+        alias_method :delay_execution?, :delay_execution
+      
         # Optional. The desired number of tasks the execution should run. Will replace
         # existing task_count value.
         # Corresponds to the JSON property `taskCount`
@@ -2249,6 +2264,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_overrides = args[:container_overrides] if args.key?(:container_overrides)
+          @delay_execution = args[:delay_execution] if args.key?(:delay_execution)
           @task_count = args[:task_count] if args.key?(:task_count)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
@@ -3055,6 +3071,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Immutable. Indicates whether the Service has durable execution
+        # enabled. This field is immutable once the Service is created.
+        # Corresponds to the JSON property `durableExecution`
+        # @return [Boolean]
+        attr_accessor :durable_execution
+        alias_method :durable_execution?, :durable_execution
+      
         # Optional. A system-generated fingerprint for this version of the resource. May
         # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
@@ -3271,6 +3294,7 @@ module Google
           @default_uri_disabled = args[:default_uri_disabled] if args.key?(:default_uri_disabled)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
+          @durable_execution = args[:durable_execution] if args.key?(:durable_execution)
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @generation = args[:generation] if args.key?(:generation)
@@ -5868,6 +5892,14 @@ module Google
         # @return [String]
         attr_accessor :dest_path
       
+        # Optional. True if remote tags should be fetched too (default false). Note:
+        # when depth is 1 (default), git fetch only retrieves tags pointing to commits
+        # within the shallow boundary. Set depth to -1 to fetch all historical tags.
+        # Corresponds to the JSON property `fetchTags`
+        # @return [Boolean]
+        attr_accessor :fetch_tags
+        alias_method :fetch_tags?, :fetch_tags
+      
         # Optional. True if submodules should be fetched too (default false).
         # Corresponds to the JSON property `recurseSubmodules`
         # @return [Boolean]
@@ -5892,6 +5924,7 @@ module Google
         def update!(**args)
           @depth = args[:depth] if args.key?(:depth)
           @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @fetch_tags = args[:fetch_tags] if args.key?(:fetch_tags)
           @recurse_submodules = args[:recurse_submodules] if args.key?(:recurse_submodules)
           @repository = args[:repository] if args.key?(:repository)
           @revision = args[:revision] if args.key?(:revision)
