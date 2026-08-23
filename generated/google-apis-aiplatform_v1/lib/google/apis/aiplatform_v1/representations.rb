@@ -4672,6 +4672,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredicate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5548,6 +5566,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1RayClusterAutoscalingSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1RayLogsSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6161,6 +6185,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1SandboxEnvironmentSpecCodeExecutionEnvironment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SandboxEnvironmentSpecShellEnvironment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9542,6 +9572,7 @@ module Google
           collection :language_codes, as: 'languageCodes'
           property :language_hints, as: 'languageHints', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints::Representation
       
+          property :mode, as: 'mode'
           property :word_timestamp, as: 'wordTimestamp'
         end
       end
@@ -17099,6 +17130,8 @@ module Google
           property :log_view, as: 'logView'
           property :open_telemetry, as: 'openTelemetry', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityOpenTelemetry, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityOpenTelemetry::Representation
       
+          property :session_scope, as: 'sessionScope', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScope, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScope::Representation
+      
           property :trace_scope, as: 'traceScope', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScope, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScope::Representation
       
           property :trace_view, as: 'traceView'
@@ -17117,6 +17150,43 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :semconv_version, as: 'semconvVersion'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :filter, as: 'filter', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredicate, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredicate::Representation
+      
+          property :inactivity_trigger, as: 'inactivityTrigger', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :threshold, as: 'threshold'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredicate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate::Representation
+      
+          property :model_call_errors, as: 'modelCallErrors', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate::Representation
+      
+          property :model_calls, as: 'modelCalls', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate::Representation
+      
+          property :tool_call_errors, as: 'toolCallErrors', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate::Representation
+      
+          property :tool_calls, as: 'toolCalls', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate::Representation
+      
+          property :total_token_usage, as: 'totalTokenUsage', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate::Representation
+      
+          property :user_turns, as: 'userTurns', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate::Representation
+      
         end
       end
       
@@ -18271,6 +18341,8 @@ module Google
       class GoogleCloudAiplatformV1RagChunk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :chunk_id, as: 'chunkId'
+          property :file_id, as: 'fileId'
           property :page_span, as: 'pageSpan', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunkPageSpan, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunkPageSpan::Representation
       
           property :text, as: 'text'
@@ -18604,6 +18676,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1RayClusterAutoscalingSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :idle_timeout_minutes, :numeric_string => true, as: 'idleTimeoutMinutes'
+          property :upscaling_speed, :numeric_string => true, as: 'upscalingSpeed'
+        end
+      end
+      
       class GoogleCloudAiplatformV1RayLogsSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18615,6 +18695,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled, as: 'disabled'
+          property :enable_usage_stats_collection, as: 'enableUsageStatsCollection'
         end
       end
       
@@ -18623,6 +18704,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :head_node_resource_pool_id, as: 'headNodeResourcePoolId'
           property :image_uri, as: 'imageUri'
+          property :ray_cluster_autoscaling_spec, as: 'rayClusterAutoscalingSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RayClusterAutoscalingSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RayClusterAutoscalingSpec::Representation
+      
           property :ray_logs_spec, as: 'rayLogsSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RayLogsSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RayLogsSpec::Representation
       
           property :ray_metric_spec, as: 'rayMetricSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RayMetricSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RayMetricSpec::Representation
@@ -19548,6 +19631,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_execution_environment, as: 'codeExecutionEnvironment', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentSpecCodeExecutionEnvironment, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentSpecCodeExecutionEnvironment::Representation
       
+          property :shell_environment, as: 'shellEnvironment', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentSpecShellEnvironment, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentSpecShellEnvironment::Representation
+      
         end
       end
       
@@ -19556,6 +19641,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_language, as: 'codeLanguage'
           property :machine_config, as: 'machineConfig'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SandboxEnvironmentSpecShellEnvironment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -20465,6 +20556,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code_repository_state, as: 'codeRepositoryState'
+          collection :deployed_regions, as: 'deployedRegions'
           property :framework, as: 'framework'
           collection :linked_resources, as: 'linkedResources', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderDataLinkedResource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderDataLinkedResource::Representation
       

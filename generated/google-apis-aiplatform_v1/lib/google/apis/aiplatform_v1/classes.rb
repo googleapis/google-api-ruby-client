@@ -1423,8 +1423,12 @@ module Google
       class GoogleCloudAiplatformV1Agent
         include Google::Apis::Core::Hashable
       
-        # Required. The base agent for the agent. Supported values: * `antigravity-
-        # preview-05-2026`
+        # Required. Immutable. The base agent for the agent. Supported values: * `
+        # antigravity-preview-05-2026` Immutable: `UpdateAgent` rejects a change,
+        # including clearing it. The kind of agent this is gets derived from this field
+        # when the agent is created and is recorded then; nothing recomputes it
+        # afterwards, so a later change would leave the agent described as one kind and
+        # behaving as another. Create a new agent instead.
         # Corresponds to the JSON property `base_agent`
         # @return [String]
         attr_accessor :base_agent
@@ -2421,6 +2425,16 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints]
         attr_accessor :language_hints
       
+        # Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`.
+        # If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the
+        # model performs disfluency removal (eliminating filler words, repetitions, and
+        # false starts), light grammatical cleanup, automatic formatting (paragraphs,
+        # bullet points, numbered lists), and minor user edits (inline self-corrections).
+        # Timestamps and diarization are incompatible with mode `SMART`.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # Optional. Configures word-level timestamp generation.
         # Corresponds to the JSON property `wordTimestamp`
         # @return [Boolean]
@@ -2439,6 +2453,7 @@ module Google
           @language_auto = args[:language_auto] if args.key?(:language_auto)
           @language_codes = args[:language_codes] if args.key?(:language_codes)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
+          @mode = args[:mode] if args.key?(:mode)
           @word_timestamp = args[:word_timestamp] if args.key?(:word_timestamp)
         end
       end
@@ -17316,8 +17331,13 @@ module Google
         # @return [String]
         attr_accessor :dns_record
       
-        # Optional. FQDN of the private DNS zone to create DNS record set for PSC
-        # endpoint.
+        # Optional. Name of the private Cloud DNS managed zone in which to create the
+        # gateway's A-record. This is the managed zone's own name, not its DNS name: for
+        # a zone serving `example.internal.`, this field takes the zone name, such as `
+        # my-private-zone`. The zone's DNS name is combined with a generated per-gateway
+        # label to form the record's fully qualified name, which must stay within the
+        # 255-octet DNS limit. If the full name is too long, gateway provisioning fails
+        # when it attempts to create the DNS record.
         # Corresponds to the JSON property `dnsZoneName`
         # @return [String]
         attr_accessor :dns_zone_name
@@ -29227,6 +29247,12 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityOpenTelemetry]
         attr_accessor :open_telemetry
       
+        # If chosen, the online evaluator will evaluate sessions matching specified `
+        # filter`. A session is a group of traces with a common `gen_ai.conversation.id`.
+        # Corresponds to the JSON property `sessionScope`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScope]
+        attr_accessor :session_scope
+      
         # If chosen, the online evaluator will evaluate single traces matching specified
         # `filter`.
         # Corresponds to the JSON property `traceScope`
@@ -29248,6 +29274,7 @@ module Google
         def update!(**args)
           @log_view = args[:log_view] if args.key?(:log_view)
           @open_telemetry = args[:open_telemetry] if args.key?(:open_telemetry)
+          @session_scope = args[:session_scope] if args.key?(:session_scope)
           @trace_scope = args[:trace_scope] if args.key?(:trace_scope)
           @trace_view = args[:trace_view] if args.key?(:trace_view)
         end
@@ -29295,6 +29322,110 @@ module Google
         # Update properties of this object
         def update!(**args)
           @semconv_version = args[:semconv_version] if args.key?(:semconv_version)
+        end
+      end
+      
+      # If chosen, the online evaluator will evaluate sessions matching specified `
+      # filter`. A session is a group of traces with a common `gen_ai.conversation.id`.
+      class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScope
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of predicates to filter sessions. Multiple predicates are
+        # combined using AND. The maximum number of predicates is 10.
+        # Corresponds to the JSON property `filter`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredicate>]
+        attr_accessor :filter
+      
+        # Configuration for inactivity based session completion.
+        # Corresponds to the JSON property `inactivityTrigger`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger]
+        attr_accessor :inactivity_trigger
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @inactivity_trigger = args[:inactivity_trigger] if args.key?(:inactivity_trigger)
+        end
+      end
+      
+      # Configuration for inactivity based session completion.
+      class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger
+        include Google::Apis::Core::Hashable
+      
+        # Required. The amount of time that must pass with no new traces before a
+        # session is considered ready for evaluation. This is a required field if
+        # InactivityTrigger is used. The value must be a positive duration no greater
+        # than 7 days (604800 seconds).
+        # Corresponds to the JSON property `threshold`
+        # @return [String]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
+      # Defines a single filter predicate.
+      class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilitySessionScopePredicate
+        include Google::Apis::Core::Hashable
+      
+        # Defines a predicate for filtering based on a numeric value.
+        # Corresponds to the JSON property `duration`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate]
+        attr_accessor :duration
+      
+        # Defines a predicate for filtering based on a numeric value.
+        # Corresponds to the JSON property `modelCallErrors`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate]
+        attr_accessor :model_call_errors
+      
+        # Defines a predicate for filtering based on a numeric value.
+        # Corresponds to the JSON property `modelCalls`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate]
+        attr_accessor :model_calls
+      
+        # Defines a predicate for filtering based on a numeric value.
+        # Corresponds to the JSON property `toolCallErrors`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate]
+        attr_accessor :tool_call_errors
+      
+        # Defines a predicate for filtering based on a numeric value.
+        # Corresponds to the JSON property `toolCalls`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate]
+        attr_accessor :tool_calls
+      
+        # Defines a predicate for filtering based on a numeric value.
+        # Corresponds to the JSON property `totalTokenUsage`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate]
+        attr_accessor :total_token_usage
+      
+        # Defines a predicate for filtering based on a numeric value.
+        # Corresponds to the JSON property `userTurns`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicate]
+        attr_accessor :user_turns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @model_call_errors = args[:model_call_errors] if args.key?(:model_call_errors)
+          @model_calls = args[:model_calls] if args.key?(:model_calls)
+          @tool_call_errors = args[:tool_call_errors] if args.key?(:tool_call_errors)
+          @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
+          @total_token_usage = args[:total_token_usage] if args.key?(:total_token_usage)
+          @user_turns = args[:user_turns] if args.key?(:user_turns)
         end
       end
       
@@ -33357,6 +33488,16 @@ module Google
       class GoogleCloudAiplatformV1RagChunk
         include Google::Apis::Core::Hashable
       
+        # The ID of the chunk.
+        # Corresponds to the JSON property `chunkId`
+        # @return [String]
+        attr_accessor :chunk_id
+      
+        # The ID of the file that the chunk belongs to.
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
         # Represents where the chunk starts and ends in the document.
         # Corresponds to the JSON property `pageSpan`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RagChunkPageSpan]
@@ -33373,6 +33514,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunk_id = args[:chunk_id] if args.key?(:chunk_id)
+          @file_id = args[:file_id] if args.key?(:file_id)
           @page_span = args[:page_span] if args.key?(:page_span)
           @text = args[:text] if args.key?(:text)
         end
@@ -34409,6 +34552,35 @@ module Google
         end
       end
       
+      # Ray cluster level autoscaling configuration.
+      class GoogleCloudAiplatformV1RayClusterAutoscalingSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of minutes that need to pass before an idle worker node
+        # is removed by the autoscaler. Default is 5 mins.
+        # Corresponds to the JSON property `idleTimeoutMinutes`
+        # @return [Fixnum]
+        attr_accessor :idle_timeout_minutes
+      
+        # Optional. The number of nodes allowed to be pending as a multiple of the
+        # current number of nodes. [OSS Ray reference](https://docs.ray.io/en/latest/
+        # cluster/vms/user-guides/configuring-autoscaling.html#upscaling-and-downscaling-
+        # speed)
+        # Corresponds to the JSON property `upscalingSpeed`
+        # @return [Fixnum]
+        attr_accessor :upscaling_speed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @idle_timeout_minutes = args[:idle_timeout_minutes] if args.key?(:idle_timeout_minutes)
+          @upscaling_speed = args[:upscaling_speed] if args.key?(:upscaling_speed)
+        end
+      end
+      
       # Configuration for the Ray OSS Logs.
       class GoogleCloudAiplatformV1RayLogsSpec
         include Google::Apis::Core::Hashable
@@ -34439,6 +34611,14 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
+        # Optional. Flag to enable the Ray usage stats collection by Anyscale. https://
+        # docs.ray.io/en/latest/cluster/usage-stats.html#usage-stats-collection Disable
+        # by default.
+        # Corresponds to the JSON property `enableUsageStatsCollection`
+        # @return [Boolean]
+        attr_accessor :enable_usage_stats_collection
+        alias_method :enable_usage_stats_collection?, :enable_usage_stats_collection
+      
         def initialize(**args)
            update!(**args)
         end
@@ -34446,6 +34626,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
+          @enable_usage_stats_collection = args[:enable_usage_stats_collection] if args.key?(:enable_usage_stats_collection)
         end
       end
       
@@ -34471,6 +34652,11 @@ module Google
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
+      
+        # Ray cluster level autoscaling configuration.
+        # Corresponds to the JSON property `rayClusterAutoscalingSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1RayClusterAutoscalingSpec]
+        attr_accessor :ray_cluster_autoscaling_spec
       
         # Configuration for the Ray OSS Logs.
         # Corresponds to the JSON property `rayLogsSpec`
@@ -34499,6 +34685,7 @@ module Google
         def update!(**args)
           @head_node_resource_pool_id = args[:head_node_resource_pool_id] if args.key?(:head_node_resource_pool_id)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
+          @ray_cluster_autoscaling_spec = args[:ray_cluster_autoscaling_spec] if args.key?(:ray_cluster_autoscaling_spec)
           @ray_logs_spec = args[:ray_logs_spec] if args.key?(:ray_logs_spec)
           @ray_metric_spec = args[:ray_metric_spec] if args.key?(:ray_metric_spec)
           @resource_pool_images = args[:resource_pool_images] if args.key?(:resource_pool_images)
@@ -37472,6 +37659,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentSpecCodeExecutionEnvironment]
         attr_accessor :code_execution_environment
       
+        # The shell environment.
+        # Corresponds to the JSON property `shellEnvironment`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentSpecShellEnvironment]
+        attr_accessor :shell_environment
+      
         def initialize(**args)
            update!(**args)
         end
@@ -37479,6 +37671,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_execution_environment = args[:code_execution_environment] if args.key?(:code_execution_environment)
+          @shell_environment = args[:shell_environment] if args.key?(:shell_environment)
         end
       end
       
@@ -37504,6 +37697,19 @@ module Google
         def update!(**args)
           @code_language = args[:code_language] if args.key?(:code_language)
           @machine_config = args[:machine_config] if args.key?(:machine_config)
+        end
+      end
+      
+      # The shell environment.
+      class GoogleCloudAiplatformV1SandboxEnvironmentSpecShellEnvironment
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -41072,6 +41278,13 @@ module Google
         # @return [String]
         attr_accessor :code_repository_state
       
+        # Optional. The Cloud Run regions in which the application is currently deployed.
+        # Used to rediscover and redeploy the app in the regions it already runs in,
+        # which may differ from the prompt's location.
+        # Corresponds to the JSON property `deployedRegions`
+        # @return [Array<String>]
+        attr_accessor :deployed_regions
+      
         # Optional. Framework used to build the application.
         # Corresponds to the JSON property `framework`
         # @return [String]
@@ -41089,6 +41302,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code_repository_state = args[:code_repository_state] if args.key?(:code_repository_state)
+          @deployed_regions = args[:deployed_regions] if args.key?(:deployed_regions)
           @framework = args[:framework] if args.key?(:framework)
           @linked_resources = args[:linked_resources] if args.key?(:linked_resources)
         end
