@@ -30,7 +30,8 @@ module Google
       class AlloydbClhErrorsAlloyDbInternalDebugInfo
         include Google::Apis::Core::Hashable
       
-        # 
+        # The original error message or details before sanitization, used internally for
+        # debugging and logging.
         # Corresponds to the JSON property `originalError`
         # @return [String]
         attr_accessor :original_error
