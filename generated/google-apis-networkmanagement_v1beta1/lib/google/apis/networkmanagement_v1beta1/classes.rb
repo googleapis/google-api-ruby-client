@@ -3608,6 +3608,12 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::StorageBucketInfo]
         attr_accessor :storage_bucket
       
+        # For display only. Metadata associated with a step that was redacted due to
+        # missing permissions.
+        # Corresponds to the JSON property `viewerPermissionMissingInfo`
+        # @return [Google::Apis::NetworkmanagementV1beta1::ViewerPermissionMissingInfo]
+        attr_accessor :viewer_permission_missing_info
+      
         # For display only. Metadata associated with a VPC connector.
         # Corresponds to the JSON property `vpcConnector`
         # @return [Google::Apis::NetworkmanagementV1beta1::VpcConnectorInfo]
@@ -3669,6 +3675,7 @@ module Google
           @serverless_neg = args[:serverless_neg] if args.key?(:serverless_neg)
           @state = args[:state] if args.key?(:state)
           @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)
+          @viewer_permission_missing_info = args[:viewer_permission_missing_info] if args.key?(:viewer_permission_missing_info)
           @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
           @vpn_gateway = args[:vpn_gateway] if args.key?(:vpn_gateway)
           @vpn_tunnel = args[:vpn_tunnel] if args.key?(:vpn_tunnel)
@@ -3775,6 +3782,26 @@ module Google
           @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
           @forward_trace_id = args[:forward_trace_id] if args.key?(:forward_trace_id)
           @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # For display only. Metadata associated with a step that was redacted due to
+      # missing permissions.
+      class ViewerPermissionMissingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Types of the resources that the user does not have permission to view.
+        # Corresponds to the JSON property `resourceTypes`
+        # @return [Array<String>]
+        attr_accessor :resource_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_types = args[:resource_types] if args.key?(:resource_types)
         end
       end
       
