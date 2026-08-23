@@ -766,6 +766,7 @@ module Google
       class SubscriptionMigrationDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :legacy_creation_time, as: 'legacyCreationTime'
           property :migrated_subscription_id, as: 'migratedSubscriptionId'
         end
       end
