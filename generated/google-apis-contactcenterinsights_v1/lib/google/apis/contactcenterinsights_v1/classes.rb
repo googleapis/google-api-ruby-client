@@ -4943,10 +4943,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1GcsSource
         include Google::Apis::Core::Hashable
       
-        # Cloud Storage URI that points to a file that contains the conversation audio.
+        # Immutable. Deprecated: Use `audio_uris` instead. Cloud Storage URI that points
+        # to a file that contains the conversation audio.
         # Corresponds to the JSON property `audioUri`
         # @return [String]
         attr_accessor :audio_uri
+      
+        # Immutable. Cloud Storage URIs that point to files that contain the
+        # conversation audio. Supports both single audio files and multi-leg session
+        # recordings (e.g., call transfers, rolling recording buffers).
+        # Corresponds to the JSON property `audioUris`
+        # @return [Array<String>]
+        attr_accessor :audio_uris
       
         # Immutable. Cloud Storage URI that points to a file that contains the
         # conversation transcript.
@@ -4961,6 +4969,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
+          @audio_uris = args[:audio_uris] if args.key?(:audio_uris)
           @transcript_uri = args[:transcript_uri] if args.key?(:transcript_uri)
         end
       end
@@ -9588,6 +9597,12 @@ module Google
         # @return [String]
         attr_accessor :signed_gcs_audio_uri
       
+        # Output only. The signed URIs for the audio from the Cloud Storage conversation
+        # source when multiple audio files exist (e.g. multi-leg conversations).
+        # Corresponds to the JSON property `signedGcsAudioUris`
+        # @return [Array<String>]
+        attr_accessor :signed_gcs_audio_uris
+      
         # The signed URI for the audio corresponding to each turn in the conversation.
         # Corresponds to the JSON property `signedTurnLevelAudios`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>]
@@ -9601,6 +9616,7 @@ module Google
         def update!(**args)
           @signed_dialogflow_audio_uri = args[:signed_dialogflow_audio_uri] if args.key?(:signed_dialogflow_audio_uri)
           @signed_gcs_audio_uri = args[:signed_gcs_audio_uri] if args.key?(:signed_gcs_audio_uri)
+          @signed_gcs_audio_uris = args[:signed_gcs_audio_uris] if args.key?(:signed_gcs_audio_uris)
           @signed_turn_level_audios = args[:signed_turn_level_audios] if args.key?(:signed_turn_level_audios)
         end
       end
@@ -13465,10 +13481,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1GcsSource
         include Google::Apis::Core::Hashable
       
-        # Cloud Storage URI that points to a file that contains the conversation audio.
+        # Immutable. Deprecated: Use `audio_uris` instead. Cloud Storage URI that points
+        # to a file that contains the conversation audio.
         # Corresponds to the JSON property `audioUri`
         # @return [String]
         attr_accessor :audio_uri
+      
+        # Immutable. Cloud Storage URIs that point to files that contain the
+        # conversation audio. Supports both single audio files and multi-leg session
+        # recordings (e.g., call transfers, rolling recording buffers).
+        # Corresponds to the JSON property `audioUris`
+        # @return [Array<String>]
+        attr_accessor :audio_uris
       
         # Immutable. Cloud Storage URI that points to a file that contains the
         # conversation transcript.
@@ -13483,6 +13507,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
+          @audio_uris = args[:audio_uris] if args.key?(:audio_uris)
           @transcript_uri = args[:transcript_uri] if args.key?(:transcript_uri)
         end
       end
@@ -19900,10 +19925,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainGcsSource
         include Google::Apis::Core::Hashable
       
-        # Cloud Storage URI that points to a file that contains the conversation audio.
+        # Immutable. Deprecated: Use `audio_uris` instead. Cloud Storage URI that points
+        # to a file that contains the conversation audio.
         # Corresponds to the JSON property `audioUri`
         # @return [String]
         attr_accessor :audio_uri
+      
+        # Immutable. Cloud Storage URIs that point to files that contain the
+        # conversation audio. Supports both single audio files and multi-leg session
+        # recordings (e.g., call transfers, rolling recording buffers).
+        # Corresponds to the JSON property `audioUris`
+        # @return [Array<String>]
+        attr_accessor :audio_uris
       
         # Immutable. Cloud Storage URI that points to a file that contains the
         # conversation transcript.
@@ -19918,6 +19951,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
+          @audio_uris = args[:audio_uris] if args.key?(:audio_uris)
           @transcript_uri = args[:transcript_uri] if args.key?(:transcript_uri)
         end
       end
