@@ -1237,6 +1237,7 @@ module Google
       class ExecutionSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delay_execution, as: 'delayExecution'
           property :parallelism, as: 'parallelism'
           property :task_count, as: 'taskCount'
           property :template, as: 'template', class: Google::Apis::RunV1::TaskTemplateSpec, decorator: Google::Apis::RunV1::TaskTemplateSpec::Representation
@@ -1576,6 +1577,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :depth, :numeric_string => true, as: 'depth'
           property :dest_path, as: 'destPath'
+          property :fetch_tags, as: 'fetchTags'
           property :recurse_submodules, as: 'recurseSubmodules'
           property :repository, as: 'repository', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSourceRepository, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSourceRepository::Representation
       
@@ -2247,6 +2249,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :container_overrides, as: 'containerOverrides', class: Google::Apis::RunV1::ContainerOverride, decorator: Google::Apis::RunV1::ContainerOverride::Representation
       
+          property :delay_execution, as: 'delayExecution'
           property :task_count, as: 'taskCount'
           property :timeout_seconds, as: 'timeoutSeconds'
         end
