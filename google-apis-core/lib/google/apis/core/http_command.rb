@@ -17,6 +17,7 @@ require 'addressable/template'
 require 'google/apis/options'
 require 'google/apis/errors'
 require 'retriable'
+require 'cgi'
 require 'google/apis/core/faraday_integration'
 require 'google/apis/core/logging'
 require 'pp'
@@ -502,11 +503,13 @@ module Google
         #
         # Validation Mechanism:
         # 1. Identifies query/fragment injections: Rejects values containing '?' or '#' characters.
-        # 2. For simple variables (standard single-wildcard behavior):
+        # 2. URL-decodes the parameter value to ensure all encoded dot (`%2e` / `%2E`) and slash
+        #    (`%2f` / `%2F`) segments are expanded before segment checks.
+        # 3. For simple variables (standard single-wildcard behavior):
         #    - Rejects if the value contains '/' (cannot span multiple path segments).
         #    - Rejects if the value is exactly '.' or '..'.
-        # 3. For reserved variables (reserved expansion like '+' or '#', double-wildcard behavior):
-        #    - Splits the value by slash ('/') using a `-1` limit to preserve empty trailing segments.
+        # 4. For reserved variables (reserved expansion like '+' or '#', double-wildcard behavior):
+        #    - Splits the decoded value by slash ('/') using a `-1` limit to preserve empty segments.
         #    - Rejects if any segment is a directory traversal segment ('.' or '..').
         #    - Rejects empty segments ('', meaning duplicate slashes '//' or trailing slashes).
         #
@@ -527,28 +530,32 @@ module Google
             var_name = v[:name]
             var_key = params.key?(var_name) ? var_name : var_name.to_sym
             next unless params.key?(var_key)
+
             value = params[var_key].to_s
 
             if value.include?('?') || value.include?('#')
               raise Google::Apis::Error, "Parameter #{var_name} contains invalid characters (? or #)"
             end
 
+            unescaped_value = CGI.unescape value
+
             if v[:reserved]
-              value_segments = value.split('/', -1)
+              value_segments = unescaped_value.split('/', -1)
               value_segments.each do |seg|
                 if seg == '.' || seg == '..'
                   raise Google::Apis::Error,
-                        "Path traversal segment #{seg.inspect} is not allowed in parameter #{var_name}: #{value}"
+                        "Value for #{var_name} must not contain segments that are exactly . or .."
                 end
                 raise Google::Apis::Error, "Invalid path segment '' in parameter #{var_name}" if seg == ''
               end
             else
-              if value.include?('/')
+              if unescaped_value.include?('/')
                 raise Google::Apis::Error, "Simple parameter #{var_name} cannot contain slashes: #{value}"
               end
-              if value == '.' || value == '..'
+
+              if unescaped_value == '.' || unescaped_value == '..'
                 raise Google::Apis::Error,
-                      "Path traversal segment #{value.inspect} is not allowed in parameter #{var_name}: #{value}"
+                      "Invalid value #{unescaped_value} for #{var_name}"
               end
             end
           end

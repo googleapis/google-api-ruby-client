@@ -667,7 +667,19 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         command.params[:location] = 'us-central1'
         command.params[:webhook] = '..'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /is not allowed/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Invalid value .. for webhook')
+      end
+
+      it 'should reject URL-encoded dot or double-dot in simple parameters' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:project] = 'sys-prod-123'
+        command.params[:location] = 'us-central1'
+        command.params[:webhook] = '%2e%2e'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Invalid value .. for webhook')
+
+        command.params[:webhook] = '%2e'
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Invalid value . for webhook')
       end
 
       it 'should reject query parameter injections' do
@@ -713,7 +725,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:parent] = 'projects/sys-prod-123/databases/default/documents/doc-1/../../default'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /is not allowed/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
       end
 
       it 'should reject traversals escaping the left parameter boundary' do
@@ -721,21 +733,37 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         command.params[:parent] =
           'projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /is not allowed/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
       end
 
       it 'should reject parameter values starting with parent directory traversals' do
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:parent] = '../escape-db'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /is not allowed/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
       end
 
       it 'should reject invalid segments like single dot' do
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:parent] = 'projects/sys-prod-123/./databases/default'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /is not allowed/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+      end
+
+      it 'should reject URL-encoded dots and slashes in reserved parameters' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = 'projects/p/databases/d/documents/doc/%2e%2e/doc2'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+
+        command.params[:parent] = 'projects/p/databases/d/documents/doc/%2e/a'
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+
+        command.params[:parent] = 'projects/p/databases/d/documents/doc/..%2f..%2fescape-db'
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+
+        command.params[:parent] = 'projects/p/databases/d/documents/doc/%2e%2e%2f%2e%2e%2fescape-db'
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
       end
 
       it 'should reject invalid empty segments' do
