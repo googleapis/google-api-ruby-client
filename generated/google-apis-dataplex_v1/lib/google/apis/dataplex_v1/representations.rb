@@ -2502,6 +2502,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :sql, as: 'sql'
+          property :sql_dialect, as: 'sqlDialect'
         end
       end
       
@@ -2550,6 +2551,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :catalog_publishing_enabled, as: 'catalogPublishingEnabled'
           collection :generation_scopes, as: 'generationScopes'
+          property :sql_dialect, as: 'sqlDialect'
         end
       end
       
