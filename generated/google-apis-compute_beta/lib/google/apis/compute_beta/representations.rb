@@ -1258,6 +1258,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DhcpOptionsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DhcpOptionsConfigAssociation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DhcpOptionsConfigList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Disk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1984,6 +2014,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetHealthOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetVersionOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1997,6 +2039,18 @@ module Google
       end
       
       class GlobalAddressesMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalFrontendSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalFrontendSettingsPatchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4348,6 +4402,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListVmExtensionStatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocalDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6083,6 +6155,36 @@ module Google
       end
       
       class QuotaExceededInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RecoverableSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RecoverableSnapshotList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RecoverableSnapshotOriginalSnapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7990,6 +8092,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SnapshotRecycleBinPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotRecycleBinPolicyRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotRecycleBinPolicyRuleRuleConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SnapshotSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8021,6 +8141,12 @@ module Google
       end
       
       class SnapshotUpdateKmsKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotsGetEffectiveRecycleBinRuleResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9372,6 +9498,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VmExtensionState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -12020,6 +12152,74 @@ module Google
         end
       end
       
+      class DhcpOptionsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :associations, as: 'associations', class: Google::Apis::ComputeBeta::DhcpOptionsConfigAssociation, decorator: Google::Apis::ComputeBeta::DhcpOptionsConfigAssociation::Representation
+      
+          property :boot_file_ipv4_name, as: 'bootFileIpv4Name'
+          collection :boot_file_ipv6_parameters, as: 'bootFileIpv6Parameters'
+          property :boot_file_ipv6_url, as: 'bootFileIpv6Url'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          collection :dns_search_paths, as: 'dnsSearchPaths'
+          property :domain_name, as: 'domainName'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :lease_time_sec, :numeric_string => true, as: 'leaseTimeSec'
+          property :name, as: 'name'
+          collection :ntp_server_ipv4_addresses, as: 'ntpServerIpv4Addresses'
+          collection :ntp_server_ipv6_addresses, as: 'ntpServerIpv6Addresses'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          collection :tftp_server_ipv4_addresses, as: 'tftpServerIpv4Addresses'
+          property :tftp_server_ipv4_name, as: 'tftpServerIpv4Name'
+        end
+      end
+      
+      class DhcpOptionsConfigAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :network_id, :numeric_string => true, as: 'networkId'
+          property :state, as: 'state'
+        end
+      end
+      
+      class DhcpOptionsConfigList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::DhcpOptionsConfig, decorator: Google::Apis::ComputeBeta::DhcpOptionsConfig::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::DhcpOptionsConfigList::Warning, decorator: Google::Apis::ComputeBeta::DhcpOptionsConfigList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::DhcpOptionsConfigList::Warning::Datum, decorator: Google::Apis::ComputeBeta::DhcpOptionsConfigList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class Disk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13417,6 +13617,25 @@ module Google
         end
       end
       
+      class GetHealthOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeBeta::GetHealthOperationMetadataHealthInfo, decorator: Google::Apis::ComputeBeta::GetHealthOperationMetadataHealthInfo::Representation
+      
+        end
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_slo_status, as: 'availabilitySloStatus'
+          property :health_status, as: 'healthStatus'
+          property :repair_category, as: 'repairCategory'
+          property :unhealthy_reason, as: 'unhealthyReason'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GetVersionOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13438,6 +13657,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :destination_address, as: 'destinationAddress'
+        end
+      end
+      
+      class GlobalFrontendSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_type, as: 'bundleType'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class GlobalFrontendSettingsPatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation', class: Google::Apis::ComputeBeta::Operation, decorator: Google::Apis::ComputeBeta::Operation::Representation
+      
         end
       end
       
@@ -16669,6 +16909,7 @@ module Google
           property :requested_link_count, as: 'requestedLinkCount'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
           property :subzone, as: 'subzone'
           collection :wire_groups, as: 'wireGroups'
@@ -17458,6 +17699,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :city, as: 'city'
+          property :max_dynamic_path_bandwidth_gbps, :numeric_string => true, as: 'maxDynamicPathBandwidthGbps'
+          property :max_fixed_path_bandwidth_gbps, :numeric_string => true, as: 'maxFixedPathBandwidthGbps'
         end
       end
       
@@ -17846,6 +18089,40 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeBeta::ListSnapshotGroups::Warning::Datum, decorator: Google::Apis::ComputeBeta::ListSnapshotGroups::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class ListVmExtensionStatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::VmExtensionState, decorator: Google::Apis::ComputeBeta::VmExtensionState::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ListVmExtensionStatesResponse::Warning, decorator: Google::Apis::ComputeBeta::ListVmExtensionStatesResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ListVmExtensionStatesResponse::Warning::Datum, decorator: Google::Apis::ComputeBeta::ListVmExtensionStatesResponse::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -20192,6 +20469,8 @@ module Google
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::ComputeBeta::Operation::Error, decorator: Google::Apis::ComputeBeta::Operation::Error::Representation
       
+          property :get_health_operation_metadata, as: 'getHealthOperationMetadata', class: Google::Apis::ComputeBeta::GetHealthOperationMetadata, decorator: Google::Apis::ComputeBeta::GetHealthOperationMetadata::Representation
+      
           property :get_version_operation_metadata, as: 'getVersionOperationMetadata', class: Google::Apis::ComputeBeta::GetVersionOperationMetadata, decorator: Google::Apis::ComputeBeta::GetVersionOperationMetadata::Representation
       
           property :http_error_message, as: 'httpErrorMessage'
@@ -21137,6 +21416,108 @@ module Google
           property :limit_name, as: 'limitName'
           property :metric_name, as: 'metricName'
           property :rollout_status, as: 'rolloutStatus'
+        end
+      end
+      
+      class RecoverableSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :original_resource, as: 'originalResource', class: Google::Apis::ComputeBeta::RecoverableSnapshotOriginalSnapshot, decorator: Google::Apis::ComputeBeta::RecoverableSnapshotOriginalSnapshot::Representation
+      
+          property :purge_timestamp, as: 'purgeTimestamp'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :status, as: 'status'
+        end
+      end
+      
+      class RecoverableSnapshotList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::RecoverableSnapshot, decorator: Google::Apis::ComputeBeta::RecoverableSnapshot::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::RecoverableSnapshotList::Warning, decorator: Google::Apis::ComputeBeta::RecoverableSnapshotList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::RecoverableSnapshotList::Warning::Datum, decorator: Google::Apis::ComputeBeta::RecoverableSnapshotList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class RecoverableSnapshotOriginalSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :architecture, as: 'architecture'
+          property :auto_created, as: 'autoCreated'
+          property :chain_name, as: 'chainName'
+          property :creation_size_bytes, :numeric_string => true, as: 'creationSizeBytes'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :deletion_timestamp, as: 'deletionTimestamp'
+          property :description, as: 'description'
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :download_bytes, :numeric_string => true, as: 'downloadBytes'
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          collection :license_codes, as: 'licenseCodes'
+          collection :licenses, as: 'licenses'
+          property :max_retention_days, as: 'maxRetentionDays'
+          property :name, as: 'name'
+          property :region, as: 'region'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :snapshot_encryption_key, as: 'snapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :snapshot_group_id, as: 'snapshotGroupId'
+          property :snapshot_group_name, as: 'snapshotGroupName'
+          property :snapshot_type, as: 'snapshotType'
+          property :source_disk, as: 'sourceDisk'
+          property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :source_disk_for_recovery_checkpoint, as: 'sourceDiskForRecoveryCheckpoint'
+          property :source_disk_id, as: 'sourceDiskId'
+          property :source_instant_snapshot, as: 'sourceInstantSnapshot'
+          property :source_instant_snapshot_encryption_key, as: 'sourceInstantSnapshotEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
+          property :source_snapshot_schedule_policy, as: 'sourceSnapshotSchedulePolicy'
+          property :source_snapshot_schedule_policy_id, as: 'sourceSnapshotSchedulePolicyId'
+          property :storage_bytes, :numeric_string => true, as: 'storageBytes'
+          property :storage_bytes_status, as: 'storageBytesStatus'
+          collection :storage_locations, as: 'storageLocations'
         end
       end
       
@@ -24619,6 +25000,31 @@ module Google
         end
       end
       
+      class SnapshotRecycleBinPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :rules, as: 'rules', class: Google::Apis::ComputeBeta::SnapshotRecycleBinPolicyRule, decorator: Google::Apis::ComputeBeta::SnapshotRecycleBinPolicyRule::Representation
+      
+          hash :system_rules, as: 'systemRules', class: Google::Apis::ComputeBeta::SnapshotRecycleBinPolicyRule, decorator: Google::Apis::ComputeBeta::SnapshotRecycleBinPolicyRule::Representation
+      
+        end
+      end
+      
+      class SnapshotRecycleBinPolicyRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :standard_snapshots, as: 'standardSnapshots', class: Google::Apis::ComputeBeta::SnapshotRecycleBinPolicyRuleRuleConfig, decorator: Google::Apis::ComputeBeta::SnapshotRecycleBinPolicyRuleRuleConfig::Representation
+      
+        end
+      end
+      
+      class SnapshotRecycleBinPolicyRuleRuleConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_duration_days, :numeric_string => true, as: 'retentionDurationDays'
+        end
+      end
+      
       class SnapshotSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -24665,6 +25071,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
+      class SnapshotsGetEffectiveRecycleBinRuleResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_duration_days, :numeric_string => true, as: 'retentionDurationDays'
         end
       end
       
@@ -27120,6 +27533,19 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class VmExtensionState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enforcement_msg, as: 'enforcementMsg'
+          property :enforcement_state, as: 'enforcementState'
+          property :health_msg, as: 'healthMsg'
+          property :health_status, as: 'healthStatus'
+          property :name, as: 'name'
+          property :policy_id, as: 'policyId'
+          property :version, as: 'version'
         end
       end
       
