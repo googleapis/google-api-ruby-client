@@ -5308,6 +5308,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8020,6 +8032,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :chunk_metadata, as: 'chunkMetadata'
           property :code_snippet, as: 'codeSnippet'
           property :content, as: 'content'
           property :document_metadata, as: 'documentMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata::Representation
@@ -11322,6 +11335,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :chunk_metadata, as: 'chunkMetadata'
           property :code_snippet, as: 'codeSnippet'
           property :content, as: 'content'
           property :document_metadata, as: 'documentMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata::Representation
@@ -14647,6 +14661,8 @@ module Google
       class GoogleCloudDiscoveryengineV1betaStreamAssistRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agents_spec, as: 'agentsSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec::Representation
+      
           property :generation_spec, as: 'generationSpec', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec::Representation
       
           property :query, as: 'query', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaQuery::Representation
@@ -14656,6 +14672,21 @@ module Google
       
           property :user_metadata, as: 'userMetadata', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistUserMetadata, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistUserMetadata::Representation
       
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_specs, as: 'agentSpecs', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
         end
       end
       
