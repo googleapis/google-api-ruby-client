@@ -1795,7 +1795,7 @@ module Google
       class EnableRule
         include Google::Apis::Core::Hashable
       
-        # Client and resource project enable type.
+        # Deprecated: EnableType is not supported.
         # Corresponds to the JSON property `enableType`
         # @return [String]
         attr_accessor :enable_type
