@@ -1,5 +1,9 @@
 # Release history for google-apis-agentregistry_v1alpha
 
+### v0.7.0 (2026-08-30)
+
+* Regenerated from discovery document revision 20260821
+
 ### v0.6.0 (2026-08-23)
 
 * Regenerated from discovery document revision 20260812
