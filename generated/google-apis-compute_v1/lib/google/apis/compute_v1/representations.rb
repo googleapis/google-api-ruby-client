@@ -1822,6 +1822,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetHealthOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetVersionOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12395,6 +12407,25 @@ module Google
         end
       end
       
+      class GetHealthOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeV1::GetHealthOperationMetadataHealthInfo, decorator: Google::Apis::ComputeV1::GetHealthOperationMetadataHealthInfo::Representation
+      
+        end
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_slo_status, as: 'availabilitySloStatus'
+          property :health_status, as: 'healthStatus'
+          property :repair_category, as: 'repairCategory'
+          property :unhealthy_reason, as: 'unhealthyReason'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GetVersionOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15447,6 +15478,7 @@ module Google
           property :requested_link_count, as: 'requestedLinkCount'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
           property :subzone, as: 'subzone'
           collection :wire_groups, as: 'wireGroups'
@@ -16236,6 +16268,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :city, as: 'city'
+          property :max_dynamic_path_bandwidth_gbps, :numeric_string => true, as: 'maxDynamicPathBandwidthGbps'
+          property :max_fixed_path_bandwidth_gbps, :numeric_string => true, as: 'maxFixedPathBandwidthGbps'
         end
       end
       
@@ -16868,6 +16902,7 @@ module Google
       
           property :shutdown_details, as: 'shutdownDetails', class: Google::Apis::ComputeV1::ManagedInstanceShutdownDetails, decorator: Google::Apis::ComputeV1::ManagedInstanceShutdownDetails::Representation
       
+          property :target_status, as: 'targetStatus'
           property :version, as: 'version', class: Google::Apis::ComputeV1::ManagedInstanceVersion, decorator: Google::Apis::ComputeV1::ManagedInstanceVersion::Representation
       
         end
@@ -18469,6 +18504,8 @@ module Google
           property :description, as: 'description'
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::ComputeV1::Operation::Error, decorator: Google::Apis::ComputeV1::Operation::Error::Representation
+      
+          property :get_health_operation_metadata, as: 'getHealthOperationMetadata', class: Google::Apis::ComputeV1::GetHealthOperationMetadata, decorator: Google::Apis::ComputeV1::GetHealthOperationMetadata::Representation
       
           property :get_version_operation_metadata, as: 'getVersionOperationMetadata', class: Google::Apis::ComputeV1::GetVersionOperationMetadata, decorator: Google::Apis::ComputeV1::GetVersionOperationMetadata::Representation
       
