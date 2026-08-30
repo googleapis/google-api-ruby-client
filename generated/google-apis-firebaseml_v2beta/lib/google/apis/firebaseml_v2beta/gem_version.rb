@@ -16,13 +16,13 @@ module Google
   module Apis
     module FirebasemlV2beta
       # Version of the google-apis-firebaseml_v2beta gem
-      GEM_VERSION = "0.44.0"
+      GEM_VERSION = "0.45.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260816"
+      REVISION = "20260823"
     end
   end
 end
