@@ -2265,6 +2265,14 @@ module Google
         # @return [String]
         attr_accessor :android_package_name
       
+        # Output only. Indicates a failure collecting reCAPTCHA signals at token
+        # generation. This might be a transient condition, or persistent for a user’s
+        # environment.
+        # Corresponds to the JSON property `clientSignalsFailed`
+        # @return [Boolean]
+        attr_accessor :client_signals_failed
+        alias_method :client_signals_failed?, :client_signals_failed
+      
         # Output only. The timestamp corresponding to the generation of the token.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2303,6 +2311,7 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @android_package_name = args[:android_package_name] if args.key?(:android_package_name)
+          @client_signals_failed = args[:client_signals_failed] if args.key?(:client_signals_failed)
           @create_time = args[:create_time] if args.key?(:create_time)
           @hostname = args[:hostname] if args.key?(:hostname)
           @invalid_reason = args[:invalid_reason] if args.key?(:invalid_reason)
@@ -2777,7 +2786,8 @@ module Google
       
         # Optional. Settings for the frequency and difficulty at which this key triggers
         # captcha challenges. This should only be specified for `IntegrationType`
-        # CHECKBOX, INVISIBLE or POLICY_BASED_CHALLENGE.
+        # CHECKBOX (defaults to BALANCE), INVISIBLE (defaults to USABILITY), or
+        # POLICY_BASED_CHALLENGE (defaults to USABILITY).
         # Corresponds to the JSON property `challengeSecurityPreference`
         # @return [String]
         attr_accessor :challenge_security_preference
