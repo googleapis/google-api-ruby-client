@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'google/apis/options'
 require 'google/apis/core/base_service'
