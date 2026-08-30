@@ -4148,9 +4148,8 @@ module Google
         # Create a ContentPolicy.
         # @param [String] parent
         #   Required. Parent resource name. The format of this value varies depending on
-        #   the scope of the request (project or organization): + Projects scope: `
-        #   projects/`project_id`/locations/`location_id`` + Organizations scope: `
-        #   organizations/`org_id`/locations/`location_id``
+        #   the scope of the request (project): + Projects scope: `projects/`project_id`/
+        #   locations/`location_id``
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateContentPolicyRequest] google_privacy_dlp_v2_create_content_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -4245,9 +4244,8 @@ module Google
         
         # Lists ContentPolicies in a parent.
         # @param [String] parent
-        #   Required. Resource name of the organization or project, for example, `
-        #   organizations/433245324/locations/europe` or `projects/project-id/locations/
-        #   asia`.
+        #   Required. Resource name of the project, for example, `projects/project-id/
+        #   locations/asia`.
         # @param [Fixnum] page_size
         #   Optional. Number of results per page, max 1000.
         # @param [String] page_token
