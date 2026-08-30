@@ -3664,6 +3664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1SpeechWordInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8982,6 +8988,8 @@ module Google
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
           property :enable_voice_activity_events, as: 'enableVoiceActivityEvents'
           property :enable_word_info, as: 'enableWordInfo'
+          property :gemini_asr_config, as: 'geminiAsrConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig::Representation
+      
           property :language_code, as: 'languageCode'
           property :model, as: 'model'
           property :model_variant, as: 'modelVariant'
@@ -8992,6 +9000,7 @@ module Google
           property :single_utterance, as: 'singleUtterance'
           collection :speech_contexts, as: 'speechContexts', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechContext, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechContext::Representation
       
+          property :use_gemini_asr, as: 'useGeminiAsr'
         end
       end
       
@@ -10438,12 +10447,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
           property :enable_word_info, as: 'enableWordInfo'
+          property :gemini_asr_config, as: 'geminiAsrConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig::Representation
+      
           property :language_code, as: 'languageCode'
           property :model, as: 'model'
           collection :phrase_sets, as: 'phraseSets'
           property :sample_rate_hertz, as: 'sampleRateHertz'
           property :speech_model_variant, as: 'speechModelVariant'
+          property :use_gemini_asr, as: 'useGeminiAsr'
           property :use_timeout_based_endpointing, as: 'useTimeoutBasedEndpointing'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_of_speech_sensitivity, as: 'endOfSpeechSensitivity'
+          property :model_id, as: 'modelId'
+          property :prefix_padding_ms, as: 'prefixPaddingMs'
+          property :silence_duration_ms, as: 'silenceDurationMs'
+          property :start_of_speech_sensitivity, as: 'startOfSpeechSensitivity'
         end
       end
       
