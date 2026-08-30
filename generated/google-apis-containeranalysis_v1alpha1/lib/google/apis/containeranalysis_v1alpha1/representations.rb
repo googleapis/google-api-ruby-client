@@ -2753,6 +2753,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_severity, as: 'maxSeverity'
+          property :model_id, as: 'modelId'
           property :scan_state, as: 'scanState'
         end
       end
