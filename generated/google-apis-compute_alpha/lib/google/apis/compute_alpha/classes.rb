@@ -3528,6 +3528,28 @@ module Google
         # @return [String]
         attr_accessor :predictive_method
       
+        # Defines how scaling signal is aggregated in a group. Operates on the
+        # results of the `TimeAggregation`, reducing the per-instance
+        # values down to a single aggregate value across the entire instance group.
+        # Corresponds to the JSON property `signalAggregation`
+        # @return [Google::Apis::ComputeAlpha::AutoscalingPolicySignalAggregation]
+        attr_accessor :signal_aggregation
+      
+        # Defines how scaling signal is aggregated over a time window. Operates on
+        # all signal samples produced over the `time_window_sec`, reducing them to
+        # exactly one value.
+        # Corresponds to the JSON property `timeAggregation`
+        # @return [Google::Apis::ComputeAlpha::AutoscalingPolicyTimeAggregation]
+        attr_accessor :time_aggregation
+      
+        # Represents a range of acceptable utilization values.
+        # This message is used to configure range-based scaling policies,
+        # allowing Autoscaler to maintain utilization within a specified range
+        # instead of aiming for a single target point.
+        # Corresponds to the JSON property `utilizationRange`
+        # @return [Google::Apis::ComputeAlpha::UtilizationRange]
+        attr_accessor :utilization_range
+      
         # The target CPU utilization that the autoscaler maintains. Must be
         # a float value in the range (0, 1]. If not specified, the default is0.6.
         # If the CPU level is below the target utilization, the autoscaler scales
@@ -3549,6 +3571,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @predictive_method = args[:predictive_method] if args.key?(:predictive_method)
+          @signal_aggregation = args[:signal_aggregation] if args.key?(:signal_aggregation)
+          @time_aggregation = args[:time_aggregation] if args.key?(:time_aggregation)
+          @utilization_range = args[:utilization_range] if args.key?(:utilization_range)
           @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
         end
       end
@@ -3795,6 +3820,71 @@ module Google
           @min_required_replicas = args[:min_required_replicas] if args.key?(:min_required_replicas)
           @schedule = args[:schedule] if args.key?(:schedule)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+        end
+      end
+      
+      # Defines how scaling signal is aggregated in a group. Operates on the
+      # results of the `TimeAggregation`, reducing the per-instance
+      # values down to a single aggregate value across the entire instance group.
+      class AutoscalingPolicySignalAggregation
+        include Google::Apis::Core::Hashable
+      
+        # If statistic is PERCENTILE, percentile must be defined. This value is
+        # used only when statistic is PERCENTILE.
+        # Corresponds to the JSON property `percentile`
+        # @return [Fixnum]
+        attr_accessor :percentile
+      
+        # Required. The aggregator used to aggregate signal samples across the entire
+        # instance group. This field is required.
+        # Corresponds to the JSON property `statistic`
+        # @return [String]
+        attr_accessor :statistic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentile = args[:percentile] if args.key?(:percentile)
+          @statistic = args[:statistic] if args.key?(:statistic)
+        end
+      end
+      
+      # Defines how scaling signal is aggregated over a time window. Operates on
+      # all signal samples produced over the `time_window_sec`, reducing them to
+      # exactly one value.
+      class AutoscalingPolicyTimeAggregation
+        include Google::Apis::Core::Hashable
+      
+        # If statistic is PERCENTILE, percentile must be defined. This value is
+        # used only when statistic is PERCENTILE.
+        # Corresponds to the JSON property `percentile`
+        # @return [Fixnum]
+        attr_accessor :percentile
+      
+        # Required. The aggregator used to aggregate signal samples over the
+        # `time_window_sec`. This field is required.
+        # Corresponds to the JSON property `statistic`
+        # @return [String]
+        attr_accessor :statistic
+      
+        # Required. The duration of the time window over which the signal samples are
+        # aggregated. This field is required.
+        # Corresponds to the JSON property `timeWindowSec`
+        # @return [Fixnum]
+        attr_accessor :time_window_sec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @percentile = args[:percentile] if args.key?(:percentile)
+          @statistic = args[:statistic] if args.key?(:statistic)
+          @time_window_sec = args[:time_window_sec] if args.key?(:time_window_sec)
         end
       end
       
@@ -15346,6 +15436,15 @@ module Google
       class FirewallPolicy
         include Google::Apis::Core::Hashable
       
+        # Optional. If specified, it defines what should happen in case of backend
+        # issues for
+        # rules with apply_security_profile_group action.
+        # Allowed values: ALLOW, DENY. If not specified, the default behavior is
+        # ALLOW.
+        # Corresponds to the JSON property `applySecurityProfileFallbackAction`
+        # @return [String]
+        attr_accessor :apply_security_profile_fallback_action
+      
         # A list of associations that belong to this firewall policy.
         # Corresponds to the JSON property `associations`
         # @return [Array<Google::Apis::ComputeAlpha::FirewallPolicyAssociation>]
@@ -15512,6 +15611,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @apply_security_profile_fallback_action = args[:apply_security_profile_fallback_action] if args.key?(:apply_security_profile_fallback_action)
           @associations = args[:associations] if args.key?(:associations)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -19241,6 +19341,106 @@ module Google
         end
       end
       
+      # Represents the Global Frontend Bundle settings for a single project.
+      class GlobalFrontendSettings
+        include Google::Apis::Core::Hashable
+      
+        # Customer-settable bundle type.
+        # Corresponds to the JSON property `bundleType`
+        # @return [String]
+        attr_accessor :bundle_type
+      
+        # Output only. [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Output only. [Output Only] An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. For optimistic locking
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. [Output Only] The unique identifier for the resource. This
+        # identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. OUTPUT_ONLY fields
+        # [Output Only] Name of the resource. Must be 1-63 characters long and match
+        # the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which
+        # cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_type = args[:bundle_type] if args.key?(:bundle_type)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Response to an UpdateGlobalFrontendSettingsRequest.
+      class GlobalFrontendSettingsPatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents an Operation resource.
+        # Google Compute Engine has three Operation resources:
+        # * [Global](/compute/docs/reference/rest/alpha/globalOperations)
+        # * [Regional](/compute/docs/reference/rest/alpha/regionOperations)
+        # * [Zonal](/compute/docs/reference/rest/alpha/zoneOperations)
+        # You can use an operation resource to manage asynchronous API requests.
+        # For more information, readHandling
+        # API responses.
+        # Operations can be global, regional or zonal.
+        # 
+        # - For global operations, use the `globalOperations`
+        # resource.
+        # - For regional operations, use the
+        # `regionOperations` resource.
+        # - For zonal operations, use
+        # the `zoneOperations` resource.
+        # For more information, read
+        # Global, Regional, and Zonal Resources.
+        # Note that completed Operation resources have a limited
+        # retention period.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::ComputeAlpha::Operation]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
+        end
+      end
+      
       # 
       class GlobalListVmExtensionsResponse
         include Google::Apis::Core::Hashable
@@ -20479,6 +20679,7 @@ module Google
         # - IDPF
         # - SNP_SVSM_CAPABLE
         # - CCA_CAPABLE
+        # - SUSPEND_SAFE_FPR
         # For more information, see
         # Enabling guest operating system features.
         # Corresponds to the JSON property `type`
@@ -30393,11 +30594,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_actions
       
-        # Whether the boot disk is allowed to be updated with restart.
-        # Corresponds to the JSON property `disruptionMode`
-        # @return [String]
-        attr_accessor :disruption_mode
-      
         # The
         # instance redistribution policy for regional managed instance groups.
         # Valid values are:
@@ -30477,7 +30673,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_actions = args[:allowed_actions] if args.key?(:allowed_actions)
-          @disruption_mode = args[:disruption_mode] if args.key?(:disruption_mode)
           @instance_redistribution_type = args[:instance_redistribution_type] if args.key?(:instance_redistribution_type)
           @max_surge = args[:max_surge] if args.key?(:max_surge)
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
@@ -30573,11 +30768,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_actions
       
-        # Whether the boot disk is allowed to be updated with restart.
-        # Corresponds to the JSON property `disruptionMode`
-        # @return [String]
-        attr_accessor :disruption_mode
-      
         # The list of URLs of one or more instances for which you want to apply
         # updates. Each URL can be a full URL or a partial URL, such aszones/[ZONE]/
         # instances/[INSTANCE_NAME].
@@ -30636,7 +30826,6 @@ module Google
         def update!(**args)
           @all_instances = args[:all_instances] if args.key?(:all_instances)
           @allowed_actions = args[:allowed_actions] if args.key?(:allowed_actions)
-          @disruption_mode = args[:disruption_mode] if args.key?(:disruption_mode)
           @instances = args[:instances] if args.key?(:instances)
           @maximal_action = args[:maximal_action] if args.key?(:maximal_action)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
@@ -34949,8 +35138,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Output only. [Output Only] Server-defined URL for this resource with the
-        # resource id.
+        # Output only. Server-defined URL for this resource with the resource id.
         # Corresponds to the JSON property `selfLinkWithId`
         # @return [String]
         attr_accessor :self_link_with_id
@@ -38726,6 +38914,19 @@ module Google
         # @return [String]
         attr_accessor :city
       
+        # Output only. The maximum unmetered bandwidth for dynamic paths allowable per
+        # WireGroup for this metro.
+        # Corresponds to the JSON property `maxDynamicPathBandwidthGbps`
+        # @return [Fixnum]
+        attr_accessor :max_dynamic_path_bandwidth_gbps
+      
+        # Output only. The maximum unmetered bandwidth for fixed paths allowable per
+        # WireGroup
+        # for this metro.
+        # Corresponds to the JSON property `maxFixedPathBandwidthGbps`
+        # @return [Fixnum]
+        attr_accessor :max_fixed_path_bandwidth_gbps
+      
         # Output only. The maximum gbps for a single flow to this metro.
         # This limits the total bandwidth which may be configured per wire.
         # Corresponds to the JSON property `maxSingleFlowGbps`
@@ -38739,6 +38940,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @city = args[:city] if args.key?(:city)
+          @max_dynamic_path_bandwidth_gbps = args[:max_dynamic_path_bandwidth_gbps] if args.key?(:max_dynamic_path_bandwidth_gbps)
+          @max_fixed_path_bandwidth_gbps = args[:max_fixed_path_bandwidth_gbps] if args.key?(:max_fixed_path_bandwidth_gbps)
           @max_single_flow_gbps = args[:max_single_flow_gbps] if args.key?(:max_single_flow_gbps)
         end
       end
@@ -42445,8 +42648,7 @@ module Google
         # @return [String]
         attr_accessor :tag
       
-        # Output only. [Output Only] The eventual status of the instance. The instance
-        # group
+        # Output only. The eventual status of the instance. The instance group
         # manager will not be identified as stable till each managed instance reaches
         # its targetStatus.
         # Corresponds to the JSON property `targetStatus`
@@ -43136,8 +43338,8 @@ module Google
         attr_accessor :subnetwork
       
         # Required. The type of management service this interface provides.
-        # Supported types include NMX-C for partition management, gNMI for switch
-        # monitoring, and TPU slice management.
+        # Supported types include NMX-C for partition management and gNMI for switch
+        # monitoring.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -57004,8 +57206,8 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # Output only. [Output Only] Purge timestamp of recoverable snapshot inRFC3339
-        # text format.
+        # Output only. [Output Only] Deletion timestamp of snapshot inRFC3339 text
+        # format.
         # Corresponds to the JSON property `deletionTimestamp`
         # @return [String]
         attr_accessor :deletion_timestamp
@@ -58613,11 +58815,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_actions
       
-        # Whether the boot disk is allowed to be updated with restart.
-        # Corresponds to the JSON property `disruptionMode`
-        # @return [String]
-        attr_accessor :disruption_mode
-      
         # The list of URLs of one or more instances for which you want to apply
         # updates. Each URL can be a full URL or a partial URL, such aszones/[ZONE]/
         # instances/[INSTANCE_NAME].
@@ -58676,7 +58873,6 @@ module Google
         def update!(**args)
           @all_instances = args[:all_instances] if args.key?(:all_instances)
           @allowed_actions = args[:allowed_actions] if args.key?(:allowed_actions)
-          @disruption_mode = args[:disruption_mode] if args.key?(:disruption_mode)
           @instances = args[:instances] if args.key?(:instances)
           @maximal_action = args[:maximal_action] if args.key?(:maximal_action)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
@@ -83308,6 +83504,50 @@ module Google
         def update!(**args)
           @bucket_name = args[:bucket_name] if args.key?(:bucket_name)
           @report_name_prefix = args[:report_name_prefix] if args.key?(:report_name_prefix)
+        end
+      end
+      
+      # Represents a range of acceptable utilization values.
+      # This message is used to configure range-based scaling policies,
+      # allowing Autoscaler to maintain utilization within a specified range
+      # instead of aiming for a single target point.
+      class UtilizationRange
+        include Google::Apis::Core::Hashable
+      
+        # Required. The upper bound of the utilization range. Must be greater or equal
+        # to
+        # min_utilization. This value is required when using range-based scaling.
+        # Scaling out is triggered if the utilization exceeds this value.
+        # Corresponds to the JSON property `maxUtilization`
+        # @return [Float]
+        attr_accessor :max_utilization
+      
+        # Required. The lower bound of the utilization range. Must be smaller or equal
+        # to
+        # max_utilization. This value is required when using range-based scaling.
+        # Scaling in is considered only if the utilization drops below this value.
+        # Corresponds to the JSON property `minUtilization`
+        # @return [Float]
+        attr_accessor :min_utilization
+      
+        # The target utilization that the autoscaler aims to achieve when scaling
+        # is triggered. This value must be within the range [min_utilization,
+        # max_utilization].
+        # If not specified, this will default to the average of max_utilization and
+        # min_utilization.
+        # Corresponds to the JSON property `utilizationTarget`
+        # @return [Float]
+        attr_accessor :utilization_target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_utilization = args[:max_utilization] if args.key?(:max_utilization)
+          @min_utilization = args[:min_utilization] if args.key?(:min_utilization)
+          @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
         end
       end
       

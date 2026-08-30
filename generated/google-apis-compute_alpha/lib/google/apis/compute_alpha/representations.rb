@@ -436,6 +436,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingPolicySignalAggregation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoscalingPolicyTimeAggregation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2237,6 +2249,18 @@ module Google
       end
       
       class GlobalAddressesMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalFrontendSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalFrontendSettingsPatchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10366,6 +10390,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UtilizationRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmEndpointNatMappings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11631,6 +11661,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :predictive_method, as: 'predictiveMethod'
+          property :signal_aggregation, as: 'signalAggregation', class: Google::Apis::ComputeAlpha::AutoscalingPolicySignalAggregation, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicySignalAggregation::Representation
+      
+          property :time_aggregation, as: 'timeAggregation', class: Google::Apis::ComputeAlpha::AutoscalingPolicyTimeAggregation, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicyTimeAggregation::Representation
+      
+          property :utilization_range, as: 'utilizationRange', class: Google::Apis::ComputeAlpha::UtilizationRange, decorator: Google::Apis::ComputeAlpha::UtilizationRange::Representation
+      
           property :utilization_target, as: 'utilizationTarget'
         end
       end
@@ -11680,6 +11716,23 @@ module Google
           property :min_required_replicas, as: 'minRequiredReplicas'
           property :schedule, as: 'schedule'
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class AutoscalingPolicySignalAggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentile, as: 'percentile'
+          property :statistic, as: 'statistic'
+        end
+      end
+      
+      class AutoscalingPolicyTimeAggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentile, as: 'percentile'
+          property :statistic, as: 'statistic'
+          property :time_window_sec, as: 'timeWindowSec'
         end
       end
       
@@ -14213,6 +14266,7 @@ module Google
       class FirewallPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_security_profile_fallback_action, as: 'applySecurityProfileFallbackAction'
           collection :associations, as: 'associations', class: Google::Apis::ComputeAlpha::FirewallPolicyAssociation, decorator: Google::Apis::ComputeAlpha::FirewallPolicyAssociation::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -15052,6 +15106,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :destination_address, as: 'destinationAddress'
+        end
+      end
+      
+      class GlobalFrontendSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_type, as: 'bundleType'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class GlobalFrontendSettingsPatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation', class: Google::Apis::ComputeAlpha::Operation, decorator: Google::Apis::ComputeAlpha::Operation::Representation
+      
         end
       end
       
@@ -17622,7 +17697,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_actions, as: 'allowedActions'
-          property :disruption_mode, as: 'disruptionMode'
           property :instance_redistribution_type, as: 'instanceRedistributionType'
           property :max_surge, as: 'maxSurge', class: Google::Apis::ComputeAlpha::FixedOrPercent, decorator: Google::Apis::ComputeAlpha::FixedOrPercent::Representation
       
@@ -17659,7 +17733,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :all_instances, as: 'allInstances'
           collection :allowed_actions, as: 'allowedActions'
-          property :disruption_mode, as: 'disruptionMode'
           collection :instances, as: 'instances'
           property :maximal_action, as: 'maximalAction'
           property :minimal_action, as: 'minimalAction'
@@ -19624,6 +19697,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :city, as: 'city'
+          property :max_dynamic_path_bandwidth_gbps, :numeric_string => true, as: 'maxDynamicPathBandwidthGbps'
+          property :max_fixed_path_bandwidth_gbps, :numeric_string => true, as: 'maxFixedPathBandwidthGbps'
           property :max_single_flow_gbps, as: 'maxSingleFlowGbps'
         end
       end
@@ -24357,7 +24432,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :all_instances, as: 'allInstances'
           collection :allowed_actions, as: 'allowedActions'
-          property :disruption_mode, as: 'disruptionMode'
           collection :instances, as: 'instances'
           property :maximal_action, as: 'maximalAction'
           property :minimal_action, as: 'minimalAction'
@@ -30254,6 +30328,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bucket_name, as: 'bucketName'
           property :report_name_prefix, as: 'reportNamePrefix'
+        end
+      end
+      
+      class UtilizationRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_utilization, as: 'maxUtilization'
+          property :min_utilization, as: 'minUtilization'
+          property :utilization_target, as: 'utilizationTarget'
         end
       end
       

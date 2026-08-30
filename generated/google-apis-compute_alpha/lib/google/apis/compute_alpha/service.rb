@@ -11242,6 +11242,78 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the Global Frontend Billing Bundle Settings for a project.
+        # @param [String] project
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::GlobalFrontendSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::GlobalFrontendSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_global_frontend_setting(project, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/globalFrontendSettings', options)
+          command.response_representation = Google::Apis::ComputeAlpha::GlobalFrontendSettings::Representation
+          command.response_class = Google::Apis::ComputeAlpha::GlobalFrontendSettings
+          command.params['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the Global Frontend Billing Bundle Settings for a project.
+        # @param [String] project
+        # @param [Google::Apis::ComputeAlpha::GlobalFrontendSettings] global_frontend_settings_object
+        # @param [String] request_id
+        # @param [String] update_mask
+        #   e.g., "type"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeAlpha::GlobalFrontendSettingsPatchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeAlpha::GlobalFrontendSettingsPatchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_global_frontend_setting(project, global_frontend_settings_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'projects/{project}/global/globalFrontendSettings', options)
+          command.request_representation = Google::Apis::ComputeAlpha::GlobalFrontendSettings::Representation
+          command.request_object = global_frontend_settings_object
+          command.response_representation = Google::Apis::ComputeAlpha::GlobalFrontendSettingsPatchResponse::Representation
+          command.response_class = Google::Apis::ComputeAlpha::GlobalFrontendSettingsPatchResponse
+          command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Attach a network endpoint to the specified network endpoint group.
         # @param [String] project
         #   Project ID for this request.
