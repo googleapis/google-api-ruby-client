@@ -2518,24 +2518,25 @@ module Google
       class DeviceRadioState
         include Google::Apis::Core::Hashable
       
-        # Controls whether airplane mode can be toggled by the user or not.
+        # Optional. Controls whether airplane mode can be toggled by the user or not.
         # Corresponds to the JSON property `airplaneModeState`
         # @return [String]
         attr_accessor :airplane_mode_state
       
-        # Controls whether cellular 2G setting can be toggled by the user or not.
+        # Optional. Controls whether cellular 2G setting can be toggled by the user or
+        # not.
         # Corresponds to the JSON property `cellularTwoGState`
         # @return [String]
         attr_accessor :cellular_two_g_state
       
-        # The minimum required security level of Wi-Fi networks that the device can
-        # connect to.
+        # Optional. The minimum required security level of Wi-Fi networks that the
+        # device can connect to.
         # Corresponds to the JSON property `minimumWifiSecurityLevel`
         # @return [String]
         attr_accessor :minimum_wifi_security_level
       
-        # Controls the state of the ultra wideband setting and whether the user can
-        # toggle it on or off.
+        # Optional. Controls the state of the ultra wideband setting and whether the
+        # user can toggle it on or off.
         # Corresponds to the JSON property `ultraWidebandState`
         # @return [String]
         attr_accessor :ultra_wideband_state
@@ -2545,7 +2546,7 @@ module Google
         # @return [String]
         attr_accessor :user_initiated_add_esim_settings
       
-        # Controls current state of Wi-Fi and if user can change its state.
+        # Optional. Controls current state of Wi-Fi and if user can change its state.
         # Corresponds to the JSON property `wifiState`
         # @return [String]
         attr_accessor :wifi_state
@@ -7989,7 +7990,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the factory-reset protection data is preserved on the device. This
-        # setting doesn’t apply to work profiles.
+        # setting applies to fully managed devices and work profiles on company-owned
+        # devices.
         # Corresponds to the JSON property `preserveFrp`
         # @return [Boolean]
         attr_accessor :preserve_frp
