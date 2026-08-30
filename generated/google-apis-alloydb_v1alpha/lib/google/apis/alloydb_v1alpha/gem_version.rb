@@ -16,13 +16,13 @@ module Google
   module Apis
     module AlloydbV1alpha
       # Version of the google-apis-alloydb_v1alpha gem
-      GEM_VERSION = "0.58.0"
+      GEM_VERSION = "0.59.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260813"
+      REVISION = "20260818"
     end
   end
 end
