@@ -722,6 +722,38 @@ module Google
         end
       end
       
+      # Response message for the CloudNumberRegistry.ListOrgNumberRegistries method.
+      class ListOrgNumberRegistriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of OrgNumberRegistries.
+        # Corresponds to the JSON property `orgNumberRegistries`
+        # @return [Array<Google::Apis::CloudnumberregistryV1alpha::OrgNumberRegistry>]
+        attr_accessor :org_number_registries
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @org_number_registries = args[:org_number_registries] if args.key?(:org_number_registries)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for the CloudNumberRegistry.ListRealms method.
       class ListRealmsResponse
         include Google::Apis::Core::Hashable
@@ -949,6 +981,60 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # An OrgNumberRegistry defines a delegation of authority from an organization to
+      # a project, allowing the project to manage IP address data within specified
+      # scopes of the organization.
+      class OrgNumberRegistry
+        include Google::Apis::Core::Hashable
+      
+        # Required. The project that will act as the admin project for CNR resources
+        # Format: projects/`project_number` or projects/`project_id`
+        # Corresponds to the JSON property `adminProject`
+        # @return [String]
+        attr_accessor :admin_project
+      
+        # Output only. The time at which the OrgNumberRegistry was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User-defined labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the OrgNumberRegistry.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The scopes within the organization that the project is able to
+        # manage. Currently only organization scope is supported. For example, "
+        # organizations/1234567890".
+        # Corresponds to the JSON property `targetScopes`
+        # @return [Array<String>]
+        attr_accessor :target_scopes
+      
+        # Output only. The time at which the OrgNumberRegistry was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_project = args[:admin_project] if args.key?(:admin_project)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @target_scopes = args[:target_scopes] if args.key?(:target_scopes)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
