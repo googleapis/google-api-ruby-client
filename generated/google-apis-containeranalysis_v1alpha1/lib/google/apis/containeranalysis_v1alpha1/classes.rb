@@ -5721,6 +5721,11 @@ module Google
         # @return [String]
         attr_accessor :max_severity
       
+        # Optional. The base name of the model that performed the scan.
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
         # Output only. State of the scan.
         # Corresponds to the JSON property `scanState`
         # @return [String]
@@ -5733,6 +5738,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_severity = args[:max_severity] if args.key?(:max_severity)
+          @model_id = args[:model_id] if args.key?(:model_id)
           @scan_state = args[:scan_state] if args.key?(:scan_state)
         end
       end
