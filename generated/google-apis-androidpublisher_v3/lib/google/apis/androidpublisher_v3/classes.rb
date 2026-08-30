@@ -7934,7 +7934,7 @@ module Google
         end
       end
       
-      # An individual response to a policy question about an app.
+      # An individual response (answer) to a policy question about an app.
       class PolicyResponse
         include Google::Apis::Core::Hashable
       
