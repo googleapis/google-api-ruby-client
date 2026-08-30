@@ -484,16 +484,6 @@ module Google
         attr_accessor :email_opt_in
         alias_method :email_opt_in?, :email_opt_in
       
-        # Optional. The name of the person who accepted the TOS.
-        # Corresponds to the JSON property `signer`
-        # @return [String]
-        attr_accessor :signer
-      
-        # Optional. The job title or role of the signer.
-        # Corresponds to the JSON property `signerTitle`
-        # @return [String]
-        attr_accessor :signer_title
-      
         # Required. Whether the user has accepted the Terms of Service.
         # Corresponds to the JSON property `userAccepted`
         # @return [Boolean]
@@ -507,8 +497,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @email_opt_in = args[:email_opt_in] if args.key?(:email_opt_in)
-          @signer = args[:signer] if args.key?(:signer)
-          @signer_title = args[:signer_title] if args.key?(:signer_title)
           @user_accepted = args[:user_accepted] if args.key?(:user_accepted)
         end
       end

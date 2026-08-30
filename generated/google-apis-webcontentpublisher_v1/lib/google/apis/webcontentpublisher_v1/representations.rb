@@ -242,8 +242,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email_opt_in, as: 'emailOptIn'
-          property :signer, as: 'signer'
-          property :signer_title, as: 'signerTitle'
           property :user_accepted, as: 'userAccepted'
         end
       end

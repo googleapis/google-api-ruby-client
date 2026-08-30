@@ -28,12 +28,6 @@ module Google
       # Version of the Web Content Publisher API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
-
-      # Private Service: https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage
-      AUTH_SUBSCRIBEWITHGOOGLE_PUBLICATIONS_ENTITLEMENTS_MANAGE = 'https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage'
-
-      # See and review your subscription information
-      AUTH_SUBSCRIBEWITHGOOGLE_PUBLICATIONS_ENTITLEMENTS_READONLY = 'https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.readonly'
     end
   end
 end
