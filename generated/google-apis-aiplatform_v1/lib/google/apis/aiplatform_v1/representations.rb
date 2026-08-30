@@ -478,6 +478,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1AutomaticResources
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8918,6 +8930,7 @@ module Google
           property :exr_color_space_override, as: 'exrColorSpaceOverride'
           property :human_pose, as: 'humanPose', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionHumanPose, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionHumanPose::Representation
       
+          property :model_endpoint_override, as: 'modelEndpointOverride'
           property :model_name, as: 'modelName'
           property :num_diffusion_steps, as: 'numDiffusionSteps'
           property :omni_rewriter, as: 'omniRewriter', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOmniRewriterConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOmniRewriterConfig::Representation
@@ -9572,7 +9585,6 @@ module Google
           collection :language_codes, as: 'languageCodes'
           property :language_hints, as: 'languageHints', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints::Representation
       
-          property :mode, as: 'mode'
           property :word_timestamp, as: 'wordTimestamp'
         end
       end
@@ -9683,6 +9695,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id_token, as: 'idToken'
           property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -15681,6 +15705,7 @@ module Google
       class GoogleCloudAiplatformV1Memory
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :disable_memory_revisions, as: 'disableMemoryRevisions'
@@ -15833,6 +15858,7 @@ module Google
       class GoogleCloudAiplatformV1MemoryRevision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
           property :create_time, as: 'createTime'
           property :expire_time, as: 'expireTime'
           collection :extracted_memories, as: 'extractedMemories', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IntermediateExtractedMemory, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1IntermediateExtractedMemory::Representation
@@ -19700,7 +19726,6 @@ module Google
       class GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer_vpc_network, as: 'customerVpcNetwork'
           collection :dns_peering_configs, as: 'dnsPeeringConfigs', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfigDnsPeeringConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfigDnsPeeringConfig::Representation
       
           property :internet_access, as: 'internetAccess'

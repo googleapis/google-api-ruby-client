@@ -8416,6 +8416,14 @@ module Google
         # @param [String] name
         #   Required. The resource name of the agent to delete. Format: `projects/`project`
         #   /locations/`location`/agents/`agent``.
+        # @param [Boolean] force
+        #   Optional. If true, any `Task` belonging to this agent is deleted along with it.
+        #   If false or unset and the agent still has at least one `Task`, the request
+        #   fails with `FAILED_PRECONDITION` and nothing is deleted. This governs `Task`
+        #   and nothing else. Resources the agent owns but a caller never named -- its AI
+        #   Application and the tenant project bound to it, its Workspace identity, its
+        #   service-extension binding -- are torn down with the agent on every delete,
+        #   whatever this field says.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8433,11 +8441,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_agent(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_agent(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -8474,6 +8483,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the access control policy for a resource. Returns an empty policy if the
+        # resource exists and does not have a policy set.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The maximum policy version that will be used to format the policy.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected. Requests for policies with any conditional role bindings must
+        #   specify version 3. Policies with no conditional role bindings may specify any
+        #   valid value or leave the field unset. The policy in the response might use the
+        #   policy version that you specified, or it might use a lower policy version. For
+        #   example, if you specify version 3, but the policy has no conditional role
+        #   bindings, the response uses version 1. To learn which resources support
+        #   conditions in their IAM policies, see the [IAM documentation](https://cloud.
+        #   google.com/iam/help/conditions/resource-policies).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_agent_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:getIamPolicy', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the agents in a location that belong to the caller. An agent belongs to
         # the end user recorded as its owner when it was created, so the response holds
         # that caller's agents and no others. It is empty for a caller that is not an
@@ -8481,6 +8535,19 @@ module Google
         # @param [String] parent
         #   Required. The resource name of the location to list agents from. Format: `
         #   projects/`project`/locations/`location``.
+        # @param [String] filter
+        #   Optional. An [AIP-160](https://google.aip.dev/160) filter over the returned
+        #   agents. An empty filter returns the unfiltered collection. Supported fields: *
+        #   `created` * `updated` Both are timestamps and take an RFC-3339 value, for
+        #   example `2026-08-01T00:00:00Z`. Supported operators: `=`, `!=`, `<`, `>`, `<=`,
+        #   `>=`, `:`, `AND`, `OR`, `NOT` (equivalently `-`), and parentheses. Note that `
+        #   OR` binds more tightly than `AND`, so `a AND b OR c` means `a AND (b OR c)`;
+        #   parentheses are recommended, not required. Example: `created > "2026-08-01T00:
+        #   00:00Z" AND updated < "2026-08-09T00:00:00Z"`. Not supported: any field other
+        #   than those listed above, wildcards other than `field:*`, bare literals with no
+        #   field name, functions, and the regular-expression operators `=~` and `!~`. A
+        #   filter that names an unsupported field, exceeds 1000 characters, or nests
+        #   parentheses more than 5 deep fails with `INVALID_ARGUMENT`.
         # @param [String] order_by
         #   Optional. A comma-separated list of fields to order by. Supported fields: * `
         #   created` * `updated` Use `desc` after a field name for descending order.
@@ -8509,11 +8576,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_agents(parent, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_agents(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/agents', options)
           command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListAgentsResponse::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListAgentsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -8554,6 +8622,84 @@ module Google
           command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Agent
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `
+        # PERMISSION_DENIED` errors.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified. See [Resource
+        #   names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Google::Apis::AiplatformV1::GoogleIamV1SetIamPolicyRequest] google_iam_v1_set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleIamV1Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleIamV1Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_agent_iam_policy(resource, google_iam_v1_set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleIamV1SetIamPolicyRequest::Representation
+          command.request_object = google_iam_v1_set_iam_policy_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleIamV1Policy::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleIamV1Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource. If the
+        # resource does not exist, this will return an empty set of permissions, not a `
+        # NOT_FOUND` error. Note: This operation is designed to be used for building
+        # permission-aware UIs and command-line tools, not for authorization checking.
+        # This operation may "fail open" without warning.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested. See [
+        #   Resource names](https://cloud.google.com/apis/design/resource_names) for the
+        #   appropriate value for this field.
+        # @param [Array<String>, String] permissions
+        #   The set of permissions to check for the `resource`. Permissions with wildcards
+        #   (such as `*` or `storage.*`) are not allowed. For more information see [IAM
+        #   Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleIamV1TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleIamV1TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_project_location_agent_iam_permissions(resource, permissions: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+resource}:testIamPermissions', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleIamV1TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleIamV1TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['permissions'] = permissions unless permissions.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -30731,6 +30877,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Checks whether the caller is authorized to access the sandbox environment.
+        # Authorization is performed entirely by the API infrastructure from the `
+        # method_policy` below; the handler is a no-op. A successful response means the
+        # caller holds `sandboxEnvironments.execute` on the named sandbox. Used by the
+        # sandbox data-plane proxy, which forwards the caller's credential and proxies
+        # traffic only on success.
+        # @param [String] name
+        #   Required. The resource name of the sandbox environment to authorize access to.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine`/sandboxEnvironments/`sandbox_environment``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest] google_cloud_aiplatform_v1_authorize_sandbox_environment_access_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def authorize_project_location_reasoning_engine_sandbox_environment_access(name, google_cloud_aiplatform_v1_authorize_sandbox_environment_access_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:authorizeAccess', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_authorize_sandbox_environment_access_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a SandboxEnvironment in a given reasoning engine.
         # @param [String] parent
         #   Required. The resource name of the reasoning engine to create the
@@ -39082,6 +39268,46 @@ module Google
           command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Checks whether the caller is authorized to access the sandbox environment.
+        # Authorization is performed entirely by the API infrastructure from the `
+        # method_policy` below; the handler is a no-op. A successful response means the
+        # caller holds `sandboxEnvironments.execute` on the named sandbox. Used by the
+        # sandbox data-plane proxy, which forwards the caller's credential and proxies
+        # traffic only on success.
+        # @param [String] name
+        #   Required. The resource name of the sandbox environment to authorize access to.
+        #   Format: `projects/`project`/locations/`location`/reasoningEngines/`
+        #   reasoning_engine`/sandboxEnvironments/`sandbox_environment``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest] google_cloud_aiplatform_v1_authorize_sandbox_environment_access_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def authorize_reasoning_engine_sandbox_environment_access(name, google_cloud_aiplatform_v1_authorize_sandbox_environment_access_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:authorizeAccess', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1_authorize_sandbox_environment_access_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
