@@ -400,7 +400,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The URI of the Cloud Run service that the revision belongs to.
-        # The format is: projects/`project`/locations/`location`/services/`service`
+        # The format is: projects/`project`/locations/`location`/services/`service`.
+        # Mutually exclusive with worker_pool_uri.
         # Corresponds to the JSON property `serviceUri`
         # @return [String]
         attr_accessor :service_uri
@@ -412,6 +413,13 @@ module Google
         # @return [String]
         attr_accessor :uri
       
+        # Output only. The URI of the worker pool that the revision belongs to. The
+        # format is: projects/`project`/locations/`location`/workerPools/`workerPool`.
+        # Mutually exclusive with service_uri.
+        # Corresponds to the JSON property `workerPoolUri`
+        # @return [String]
+        attr_accessor :worker_pool_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -420,6 +428,7 @@ module Google
         def update!(**args)
           @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
+          @worker_pool_uri = args[:worker_pool_uri] if args.key?(:worker_pool_uri)
         end
       end
       
@@ -438,7 +447,8 @@ module Google
         attr_accessor :location
       
         # URI of Cloud Run service this revision belongs to. Format: `projects/`
-        # project_id`/locations/`location`/services/`service_id``
+        # project_id`/locations/`location`/services/`service_id`` Mutually exclusive
+        # with `worker_pool_uri`.
         # Corresponds to the JSON property `serviceUri`
         # @return [String]
         attr_accessor :service_uri
@@ -448,6 +458,13 @@ module Google
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
+      
+        # URI of Cloud Run worker pool this revision belongs to. Format: `projects/`
+        # project_id`/locations/`location`/workerPools/`worker_pool_id``. Mutually
+        # exclusive with `service_uri`.
+        # Corresponds to the JSON property `workerPoolUri`
+        # @return [String]
+        attr_accessor :worker_pool_uri
       
         def initialize(**args)
            update!(**args)
@@ -459,6 +476,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
+          @worker_pool_uri = args[:worker_pool_uri] if args.key?(:worker_pool_uri)
         end
       end
       
