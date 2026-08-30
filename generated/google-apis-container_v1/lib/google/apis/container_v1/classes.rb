@@ -6231,7 +6231,9 @@ module Google
         attr_accessor :containerd_config
       
         # Size of the disk attached to each node, specified in GB. The smallest allowed
-        # disk size is 10GB. If unspecified, the default disk size is 100GB.
+        # disk size is 15 GB for node pools running GKE versions 1.36.3-gke.1480000 or
+        # later. Or, for earlier versions, the smallest allowed disk size is 12 GB. If
+        # unspecified, the default disk size is 100GB.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
@@ -8567,6 +8569,11 @@ module Google
         # @return [String]
         attr_accessor :default_version
       
+        # Output only. List of preview versions for the channel.
+        # Corresponds to the JSON property `previewVersions`
+        # @return [Array<String>]
+        attr_accessor :preview_versions
+      
         # The auto upgrade target version for clusters on the channel.
         # Corresponds to the JSON property `upgradeTargetVersion`
         # @return [String]
@@ -8586,6 +8593,7 @@ module Google
           @channel = args[:channel] if args.key?(:channel)
           @custom_versions = args[:custom_versions] if args.key?(:custom_versions)
           @default_version = args[:default_version] if args.key?(:default_version)
+          @preview_versions = args[:preview_versions] if args.key?(:preview_versions)
           @upgrade_target_version = args[:upgrade_target_version] if args.key?(:upgrade_target_version)
           @valid_versions = args[:valid_versions] if args.key?(:valid_versions)
         end
