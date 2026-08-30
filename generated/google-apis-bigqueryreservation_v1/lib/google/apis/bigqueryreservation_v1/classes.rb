@@ -33,6 +33,25 @@ module Google
         # @return [String]
         attr_accessor :assignee
       
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec. Example (Comparison): title:
+        # "Summary size limit" description: "Determines if a summary is less than 100
+        # chars" expression: "document.summary.size() < 100" Example (Equality): title: "
+        # Requestor is owner" description: "Determines if requestor is the document
+        # owner" expression: "document.owner == request.auth.claims.email" Example (
+        # Logic): title: "Public documents" description: "Determine whether the document
+        # should be publicly visible" expression: "document.type != 'private' &&
+        # document.type != 'internal'" Example (Data Manipulation): title: "Notification
+        # string" description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)" The
+        # exact variables and functions that may be referenced within an expression are
+        # determined by the service that evaluates it. See the service documentation for
+        # additional information.
+        # Corresponds to the JSON property `condition`
+        # @return [Google::Apis::BigqueryreservationV1::Expr]
+        attr_accessor :condition
+      
         # Optional. Deprecated: "Gemini in BigQuery" is now available by default for all
         # BigQuery editions and should not be explicitly set. Controls if "Gemini in
         # BigQuery" (https://cloud.google.com/gemini/docs/bigquery/overview) features
@@ -54,6 +73,16 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. Specifies the priority precedence for this assignment. Used to
+        # resolve ambiguity when multiple assignments match a single job. Higher
+        # numerical values represent higher priority (e.g., 20 is higher than 10). If
+        # unspecified, it defaults to 0. Multiple assignments can share the same
+        # precedence, but it is recommended to use unique precedence values for
+        # assignments within the same assignee scope.
+        # Corresponds to the JSON property `precedence`
+        # @return [Fixnum]
+        attr_accessor :precedence
       
         # Optional. Represents the principal for this assignment. If not empty, jobs run
         # by this principal will utilize the associated reservation. Otherwise, jobs
@@ -88,9 +117,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assignee = args[:assignee] if args.key?(:assignee)
+          @condition = args[:condition] if args.key?(:condition)
           @enable_gemini_in_bigquery = args[:enable_gemini_in_bigquery] if args.key?(:enable_gemini_in_bigquery)
           @job_type = args[:job_type] if args.key?(:job_type)
           @name = args[:name] if args.key?(:name)
+          @precedence = args[:precedence] if args.key?(:precedence)
           @principal = args[:principal] if args.key?(:principal)
           @scheduling_policy = args[:scheduling_policy] if args.key?(:scheduling_policy)
           @state = args[:state] if args.key?(:state)
@@ -1055,6 +1086,11 @@ module Google
       class ReservationGroup
         include Google::Apis::Core::Hashable
       
+        # Output only. Creation time of the reservation group.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
         # Identifier. The resource name of the reservation group, e.g., `projects/*/
         # locations/*/reservationGroups/team1-prod`. The reservation_group_id must only
         # contain lower case alphanumeric characters or dashes. It must start with a
@@ -1070,14 +1106,24 @@ module Google
         # @return [String]
         attr_accessor :parent_group
       
+        # Output only. Last update time of the reservation group via a user operation.
+        # This timestamp is updated only when an update operation explicitly targets
+        # this reservation group directly. It is not updated when parent or child groups
+        # are created, updated, or deleted.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
           @name = args[:name] if args.key?(:name)
           @parent_group = args[:parent_group] if args.key?(:parent_group)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
