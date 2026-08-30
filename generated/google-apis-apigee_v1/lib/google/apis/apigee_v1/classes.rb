@@ -11881,7 +11881,8 @@ module Google
         # @return [String]
         attr_accessor :attach_time
       
-        # Immutable. Name of the environment that the profile is attached to.
+        # Immutable. The environment ID that the profile is attached to, e.g. `prod`.
+        # This is the bare environment ID, not a full resource name; see b/288477507.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
