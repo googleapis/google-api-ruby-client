@@ -4904,6 +4904,32 @@ module Google
         end
       end
       
+      # Response message for listing message pins.
+      class ListMessagePinsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pinned messages from the specified space.
+        # Corresponds to the JSON property `messagePins`
+        # @return [Array<Google::Apis::ChatV1::MessagePin>]
+        attr_accessor :message_pins
+      
+        # You can send a token as `pageToken` to retrieve the next page of results. If
+        # empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_pins = args[:message_pins] if args.key?(:message_pins)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for listing messages.
       class ListMessagesResponse
         include Google::Apis::Core::Hashable
@@ -5789,6 +5815,37 @@ module Google
         end
       end
       
+      # A pin on a Chat message. For more information see [Pin a message](https://
+      # support.google.com/chat?p=chat-board-hc).
+      class MessagePin
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The resource name of the message that is pinned. Format: `
+        # spaces/`space`/messages/`message``
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Identifier. The resource name of the message pin. Format: `spaces/`space`/
+        # messagePins/`message_pin`` The resource ID component matches the resource ID
+        # component of the message. For example, a message with `spaces/AAA/messages/bbb.
+        # ccc` corresponds to the message pin with the resource name `spaces/AAA/
+        # messagePins/bbb.ccc`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Event payload for an updated message. Event type: `google.workspace.chat.
       # message.v1.updated`
       class MessageUpdatedEventData
@@ -6572,7 +6629,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A token that can be used to retrieve the next page. If this field is empty,
-        # there are no subsequent pages.
+        # there are no subsequent pages. Only populated when `useAdminAccess` is set to `
+        # true`.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6590,7 +6648,8 @@ module Google
         attr_accessor :spaces
       
         # The total number of spaces that match the query, across all pages. If the
-        # result is over 10,000 spaces, this value is an estimate.
+        # result is over 10,000 spaces, this value is an estimate. Only populated when `
+        # useAdminAccess` is set to `true`.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
