@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LdapConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +202,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListVolumePoolsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListVolumesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +233,12 @@ module Google
       end
       
       class ManagedActiveDirectoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MountPoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -353,6 +377,18 @@ module Google
       end
       
       class UpdatePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Volume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VolumePool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -626,6 +662,22 @@ module Google
         end
       end
       
+      class InstanceTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_type, as: 'backendType'
+          property :capacity_gb, as: 'capacityGb'
+          hash :labels, as: 'labels'
+          collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
+      
+          property :performance_config, as: 'performanceConfig', class: Google::Apis::FileV1beta1::PerformanceConfig, decorator: Google::Apis::FileV1beta1::PerformanceConfig::Representation
+      
+          property :protocol, as: 'protocol'
+          property :request_overrides, as: 'requestOverrides'
+          property :tier, as: 'tier'
+        end
+      end
+      
       class LdapConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -695,6 +747,26 @@ module Google
         end
       end
       
+      class ListVolumePoolsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :volume_pools, as: 'volumePools', class: Google::Apis::FileV1beta1::VolumePool, decorator: Google::Apis::FileV1beta1::VolumePool::Representation
+      
+        end
+      end
+      
+      class ListVolumesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :volumes, as: 'volumes', class: Google::Apis::FileV1beta1::Volume, decorator: Google::Apis::FileV1beta1::Volume::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -735,6 +807,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :computer, as: 'computer'
           property :domain, as: 'domain'
+        end
+      end
+      
+      class MountPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :mount_name, as: 'mountName'
         end
       end
       
@@ -827,6 +907,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint_project, as: 'endpointProject'
+          property :requested_ip_address, as: 'requestedIpAddress'
         end
       end
       
@@ -959,6 +1040,46 @@ module Google
       
           property :window, as: 'window', class: Google::Apis::FileV1beta1::MaintenanceWindow, decorator: Google::Apis::FileV1beta1::MaintenanceWindow::Representation
       
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :mount_point, as: 'mountPoint', class: Google::Apis::FileV1beta1::MountPoint, decorator: Google::Apis::FileV1beta1::MountPoint::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class VolumePool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :instance_list_page_size, as: 'instanceListPageSize'
+          property :instance_name_prefix, as: 'instanceNamePrefix'
+          property :instance_template, as: 'instanceTemplate', class: Google::Apis::FileV1beta1::InstanceTemplate, decorator: Google::Apis::FileV1beta1::InstanceTemplate::Representation
+      
+          hash :labels, as: 'labels'
+          property :max_acquire_candidates, as: 'maxAcquireCandidates'
+          property :max_instances, as: 'maxInstances'
+          property :max_pending_instance_creations, as: 'maxPendingInstanceCreations'
+          property :max_pending_volume_creations_per_instance, as: 'maxPendingVolumeCreationsPerInstance'
+          property :max_pending_volume_deletions_per_instance, as: 'maxPendingVolumeDeletionsPerInstance'
+          property :max_volumes_per_instance, as: 'maxVolumesPerInstance'
+          property :min_available_volumes, as: 'minAvailableVolumes'
+          property :min_instances, as: 'minInstances'
+          property :name, as: 'name'
+          property :negba_instance_ratio, as: 'negbaInstanceRatio'
+          property :operation_poll_limit, as: 'operationPollLimit'
+          property :state, as: 'state'
+          property :unique_id, as: 'uniqueId'
+          property :volume_batch_size, as: 'volumeBatchSize'
+          property :volume_size_mb, as: 'volumeSizeMb'
         end
       end
       
