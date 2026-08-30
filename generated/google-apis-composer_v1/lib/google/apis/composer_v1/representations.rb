@@ -553,6 +553,7 @@ module Google
       
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
