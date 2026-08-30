@@ -782,6 +782,10 @@ module Google
         # @param [String] name
         #   Required. The project to which the request should be attributed in the
         #   following form: projects/`project`/locations/global.
+        # @param [Array<String>, String] contexts
+        #   Optional. Specifies the scope of the context in which the search will be
+        #   performed. This scope will also be used to perform IAM checks, which if
+        #   passing, will return all resources in the scope.
         # @param [String] order_by
         #   Optional. Specifies the ordering of results. Supported values are: relevance
         #   last_modified_timestamp last_modified_timestamp asc
@@ -820,11 +824,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_project_location_entries(name, order_by: nil, page_size: nil, page_token: nil, query: nil, scope: nil, semantic_search: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def search_project_location_entries(name, contexts: nil, order_by: nil, page_size: nil, page_token: nil, query: nil, scope: nil, semantic_search: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+name}:searchEntries', options)
           command.response_representation = Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResponse::Representation
           command.response_class = Google::Apis::DataplexV1::GoogleCloudDataplexV1SearchEntriesResponse
           command.params['name'] = name unless name.nil?
+          command.query['contexts'] = contexts unless contexts.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?

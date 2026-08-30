@@ -2534,6 +2534,11 @@ module Google
         # @return [String]
         attr_accessor :sql
       
+        # Output only. The SQL dialect of the query.
+        # Corresponds to the JSON property `sqlDialect`
+        # @return [String]
+        attr_accessor :sql_dialect
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2542,6 +2547,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @sql = args[:sql] if args.key?(:sql)
+          @sql_dialect = args[:sql_dialect] if args.key?(:sql_dialect)
         end
       end
       
@@ -2688,6 +2694,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :generation_scopes
       
+        # Optional. The SQL dialect to use in the generated SQL queries. If not
+        # specified, the default dialect is Google SQL.
+        # Corresponds to the JSON property `sqlDialect`
+        # @return [String]
+        attr_accessor :sql_dialect
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2696,6 +2708,7 @@ module Google
         def update!(**args)
           @catalog_publishing_enabled = args[:catalog_publishing_enabled] if args.key?(:catalog_publishing_enabled)
           @generation_scopes = args[:generation_scopes] if args.key?(:generation_scopes)
+          @sql_dialect = args[:sql_dialect] if args.key?(:sql_dialect)
         end
       end
       
