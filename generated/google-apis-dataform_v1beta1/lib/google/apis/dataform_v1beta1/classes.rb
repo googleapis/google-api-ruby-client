@@ -4755,7 +4755,7 @@ module Google
         # Optional. Input only. Immutable. The maximum depth of the Git repository to
         # checkout for this workspace. If defined and greater than 0, the Git repository
         # will be created as a shallow clone with the given depth, otherwise a full
-        # clone will be performed. This field is available only for GitHub, Gitlab and
+        # clone will be performed. This field is available only for GitHub, GitLab and
         # 1p repositories with enabled branch management.
         # Corresponds to the JSON property `depth`
         # @return [Fixnum]
