@@ -578,6 +578,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_size_gb
       
+        # Optional. Indicates how many IOPS to provision for the disk. This sets the
+        # number of I/O operations per second that the disk can handle. Values must be
+        # between 3000 and 100,000.
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # Optional. Indicates how much throughput to provision for the disk. This sets
+        # the number of throughput mb per second that the disk can handle. Values must
+        # be between 1 and 2,400.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
+      
         # Optional. Whether the persistent disk should be deleted when the workstation
         # is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
         # Corresponds to the JSON property `reclaimPolicy`
@@ -606,6 +620,8 @@ module Google
         def update!(**args)
           @archive_timeout = args[:archive_timeout] if args.key?(:archive_timeout)
           @max_size_gb = args[:max_size_gb] if args.key?(:max_size_gb)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
