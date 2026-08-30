@@ -630,6 +630,57 @@ module Google
         end
       end
       
+      # A ConfigStoreSetting resource.
+      class ConfigStoreSetting
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the setting.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a dynamically typed value.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::DataflowV1b3::ConfigStoreSettingValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents a dynamically typed value.
+      class ConfigStoreSettingValue
+        include Google::Apis::Core::Hashable
+      
+        # Represents a boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Represents a string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # Container Spec.
       class ContainerSpec
         include Google::Apis::Core::Hashable
@@ -1504,6 +1555,22 @@ module Google
         def update!(**args)
           @primary = args[:primary] if args.key?(:primary)
           @residual = args[:residual] if args.key?(:residual)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3367,6 +3434,31 @@ module Google
         end
       end
       
+      # Response message for ListConfigStoreSettings.
+      class ListConfigStoreSettingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of ConfigStoreSettings.
+        # Corresponds to the JSON property `configStoreSettings`
+        # @return [Array<Google::Apis::DataflowV1b3::ConfigStoreSetting>]
+        attr_accessor :config_store_settings
+      
+        # A token that can be sent as `page_token` to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_store_settings = args[:config_store_settings] if args.key?(:config_store_settings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response to a request to list job messages.
       class ListJobMessagesResponse
         include Google::Apis::Core::Hashable
@@ -4710,6 +4802,44 @@ module Google
         def update!(**args)
           @is_infinite = args[:is_infinite] if args.key?(:is_infinite)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Request message for ResolveConfigStoreSetting.
+      class ResolveConfigStoreSettingRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for ResolveConfigStoreSetting.
+      class ResolveConfigStoreSettingResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of settings that were considered during resolution.
+        # Corresponds to the JSON property `choices`
+        # @return [Array<Google::Apis::DataflowV1b3::ConfigStoreSetting>]
+        attr_accessor :choices
+      
+        # A ConfigStoreSetting resource.
+        # Corresponds to the JSON property `setting`
+        # @return [Google::Apis::DataflowV1b3::ConfigStoreSetting]
+        attr_accessor :setting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @choices = args[:choices] if args.key?(:choices)
+          @setting = args[:setting] if args.key?(:setting)
         end
       end
       

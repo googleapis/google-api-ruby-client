@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    google-apis-dataflow_v1b3 (0.82.0)
+    google-apis-dataflow_v1b3 (0.83.0)
       google-apis-core (>= 0.15.0, < 2.a)
 
 GEM
@@ -106,7 +106,7 @@ CHECKSUMS
   faraday-follow_redirects (0.5.0) sha256=5cde93c894b30943a5d2b93c2fe9284216a6b756f7af406a1e55f211d97d10ad
   faraday-net_http (3.4.4) sha256=0e78af151747ed1b00f33e25973b4bc220d7f16c00c39676817c8b12331eb588
   google-apis-core (1.2.1) sha256=3739030455277e3be90f2d07321ad4d0bf0d6b1ed820b2d092916d6cdef05337
-  google-apis-dataflow_v1b3 (0.82.0)
+  google-apis-dataflow_v1b3 (0.83.0)
   google-cloud-env (2.3.1) sha256=0faac01eb27be78c2591d64433663b1a114f8f7af55a4f819755426cac9178e7
   google-logging-utils (0.2.0) sha256=675462b4ea5affa825a3442694ca2d75d0069455a1d0956127207498fca3df7b
   googleauth (1.17.1) sha256=0f7e6fc70e204cee1b2d71f1e1de2d3b349d432404197fe68ebf7fa23d0821b9

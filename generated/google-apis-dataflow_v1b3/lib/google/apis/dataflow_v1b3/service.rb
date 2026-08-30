@@ -51,6 +51,338 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a new ConfigStoreSetting.
+        # @param [String] parent
+        #   Required. The parent resource where this setting will be created.
+        # @param [Google::Apis::DataflowV1b3::ConfigStoreSetting] config_store_setting_object
+        # @param [String] config_store_setting_id
+        #   Required. The ID to use for the setting.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ConfigStoreSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ConfigStoreSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_location_config_store_setting(parent, config_store_setting_object = nil, config_store_setting_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1b3/{+parent}/configStoreSettings', options)
+          command.request_representation = Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+          command.request_object = config_store_setting_object
+          command.response_representation = Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ConfigStoreSetting
+          command.params['parent'] = parent unless parent.nil?
+          command.query['configStoreSettingId'] = config_store_setting_id unless config_store_setting_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing ConfigStoreSetting.
+        # @param [String] name
+        #   Required. The name of the ConfigStoreSetting to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_location_config_store_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1b3/{+name}', options)
+          command.response_representation = Google::Apis::DataflowV1b3::Empty::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a ConfigStoreSetting.
+        # @param [String] name
+        #   Required. The name of the ConfigStoreSetting to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ConfigStoreSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ConfigStoreSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_location_config_store_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/{+name}', options)
+          command.response_representation = Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ConfigStoreSetting
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ConfigStoreSettings.
+        # @param [String] parent
+        #   Required. The parent resource whose settings are being listed.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of settings to return.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListConfigStoreSettings`
+        #   call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_location_config_store_settings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/{+parent}/configStoreSettings', options)
+          command.response_representation = Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resolves effective value of a ConfigStoreSetting.
+        # @param [String] name
+        #   Required. The name of the setting to resolve.
+        # @param [Google::Apis::DataflowV1b3::ResolveConfigStoreSettingRequest] resolve_config_store_setting_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resolve_folder_location_config_store_setting(name, resolve_config_store_setting_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1b3/{+name}:resolve', options)
+          command.request_representation = Google::Apis::DataflowV1b3::ResolveConfigStoreSettingRequest::Representation
+          command.request_object = resolve_config_store_setting_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new ConfigStoreSetting.
+        # @param [String] parent
+        #   Required. The parent resource where this setting will be created.
+        # @param [Google::Apis::DataflowV1b3::ConfigStoreSetting] config_store_setting_object
+        # @param [String] config_store_setting_id
+        #   Required. The ID to use for the setting.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ConfigStoreSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ConfigStoreSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_location_config_store_setting(parent, config_store_setting_object = nil, config_store_setting_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1b3/{+parent}/configStoreSettings', options)
+          command.request_representation = Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+          command.request_object = config_store_setting_object
+          command.response_representation = Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ConfigStoreSetting
+          command.params['parent'] = parent unless parent.nil?
+          command.query['configStoreSettingId'] = config_store_setting_id unless config_store_setting_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing ConfigStoreSetting.
+        # @param [String] name
+        #   Required. The name of the ConfigStoreSetting to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_location_config_store_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1b3/{+name}', options)
+          command.response_representation = Google::Apis::DataflowV1b3::Empty::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a ConfigStoreSetting.
+        # @param [String] name
+        #   Required. The name of the ConfigStoreSetting to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ConfigStoreSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ConfigStoreSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_location_config_store_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/{+name}', options)
+          command.response_representation = Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ConfigStoreSetting
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ConfigStoreSettings.
+        # @param [String] parent
+        #   Required. The parent resource whose settings are being listed.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of settings to return.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListConfigStoreSettings`
+        #   call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_location_config_store_settings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/{+parent}/configStoreSettings', options)
+          command.response_representation = Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resolves effective value of a ConfigStoreSetting.
+        # @param [String] name
+        #   Required. The name of the setting to resolve.
+        # @param [Google::Apis::DataflowV1b3::ResolveConfigStoreSettingRequest] resolve_config_store_setting_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resolve_organization_location_config_store_setting(name, resolve_config_store_setting_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1b3/{+name}:resolve', options)
+          command.request_representation = Google::Apis::DataflowV1b3::ResolveConfigStoreSettingRequest::Representation
+          command.request_object = resolve_config_store_setting_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a snapshot.
         # @param [String] project_id
         #   The ID of the Cloud Platform project that the snapshot belongs to.
@@ -706,6 +1038,172 @@ module Google
           command.response_class = Google::Apis::DataflowV1b3::SendWorkerMessagesResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new ConfigStoreSetting.
+        # @param [String] parent
+        #   Required. The parent resource where this setting will be created.
+        # @param [Google::Apis::DataflowV1b3::ConfigStoreSetting] config_store_setting_object
+        # @param [String] config_store_setting_id
+        #   Required. The ID to use for the setting.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ConfigStoreSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ConfigStoreSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_config_store_setting(parent, config_store_setting_object = nil, config_store_setting_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1b3/{+parent}/configStoreSettings', options)
+          command.request_representation = Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+          command.request_object = config_store_setting_object
+          command.response_representation = Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ConfigStoreSetting
+          command.params['parent'] = parent unless parent.nil?
+          command.query['configStoreSettingId'] = config_store_setting_id unless config_store_setting_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing ConfigStoreSetting.
+        # @param [String] name
+        #   Required. The name of the ConfigStoreSetting to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_config_store_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1b3/{+name}', options)
+          command.response_representation = Google::Apis::DataflowV1b3::Empty::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a ConfigStoreSetting.
+        # @param [String] name
+        #   Required. The name of the ConfigStoreSetting to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ConfigStoreSetting] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ConfigStoreSetting]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_config_store_setting(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/{+name}', options)
+          command.response_representation = Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ConfigStoreSetting
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ConfigStoreSettings.
+        # @param [String] parent
+        #   Required. The parent resource whose settings are being listed.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of settings to return.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListConfigStoreSettings`
+        #   call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_config_store_settings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/{+parent}/configStoreSettings', options)
+          command.response_representation = Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ListConfigStoreSettingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resolves effective value of a ConfigStoreSetting.
+        # @param [String] name
+        #   Required. The name of the setting to resolve.
+        # @param [Google::Apis::DataflowV1b3::ResolveConfigStoreSettingRequest] resolve_config_store_setting_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resolve_project_location_config_store_setting(name, resolve_config_store_setting_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1b3/{+name}:resolve', options)
+          command.request_representation = Google::Apis::DataflowV1b3::ResolveConfigStoreSettingRequest::Representation
+          command.request_object = resolve_config_store_setting_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ResolveConfigStoreSettingResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

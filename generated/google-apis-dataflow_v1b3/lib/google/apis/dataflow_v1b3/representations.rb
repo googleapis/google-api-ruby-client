@@ -124,6 +124,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigStoreSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigStoreSettingValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContainerSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +251,12 @@ module Google
       end
       
       class DynamicSourceSplit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -496,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListConfigStoreSettingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListJobMessagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -695,6 +719,18 @@ module Google
       end
       
       class ReportedParallelism
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResolveConfigStoreSettingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResolveConfigStoreSettingResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1374,6 +1410,23 @@ module Google
         end
       end
       
+      class ConfigStoreSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value', class: Google::Apis::DataflowV1b3::ConfigStoreSettingValue, decorator: Google::Apis::DataflowV1b3::ConfigStoreSettingValue::Representation
+      
+        end
+      end
+      
+      class ConfigStoreSettingValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :string_value, as: 'stringValue'
+        end
+      end
+      
       class ContainerSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1609,6 +1662,12 @@ module Google
       
           property :residual, as: 'residual', class: Google::Apis::DataflowV1b3::DerivedSource, decorator: Google::Apis::DataflowV1b3::DerivedSource::Representation
       
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2091,6 +2150,15 @@ module Google
         end
       end
       
+      class ListConfigStoreSettingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :config_store_settings, as: 'configStoreSettings', class: Google::Apis::DataflowV1b3::ConfigStoreSetting, decorator: Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListJobMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2457,6 +2525,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_infinite, as: 'isInfinite'
           property :value, as: 'value'
+        end
+      end
+      
+      class ResolveConfigStoreSettingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ResolveConfigStoreSettingResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :choices, as: 'choices', class: Google::Apis::DataflowV1b3::ConfigStoreSetting, decorator: Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+      
+          property :setting, as: 'setting', class: Google::Apis::DataflowV1b3::ConfigStoreSetting, decorator: Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+      
         end
       end
       
