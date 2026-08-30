@@ -1325,6 +1325,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Permanently deletes the given KeyRing. All child resources of the KeyRing must
+        # have been previously deleted using their corresponding Delete operations. The
+        # specified key ring will be immediately and permanently deleted upon calling
+        # this method. This action cannot be undone. Note: the key ring and its metadata
+        # will be remembered by KeyManagementService to prevent re-use of the key ring's
+        # resource name.
+        # @param [String] name
+        #   Required. The name of the KeyRing to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_key_ring(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::Operation::Representation
+          command.response_class = Google::Apis::CloudkmsV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns metadata for a given KeyRing.
         # @param [String] name
         #   Required. The name of the KeyRing to get.
