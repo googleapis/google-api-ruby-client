@@ -759,9 +759,10 @@ module Google
         # @return [Google::Apis::DatamanagerV1::ProductAccount]
         attr_accessor :operating_account
       
-        # Required. The object within the product account to ingest into. For example, a
+        # Optional. The object within the product account to ingest into. For example, a
         # Google Ads audience ID, a Display & Video 360 audience ID or a Google Ads
-        # conversion action ID.
+        # conversion action ID. This field is optional for Google Ad Manager event
+        # ingestion and User ingestion. Required for all other use cases.
         # Corresponds to the JSON property `productDestinationId`
         # @return [String]
         attr_accessor :product_destination_id
