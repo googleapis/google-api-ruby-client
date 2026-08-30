@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DashboardSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +401,12 @@ module Google
       end
       
       class DataStoreToolSummarizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeployChannelResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -838,6 +850,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LfA2aV1StreamResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LfA2aV1StringList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -850,6 +868,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LfA2aV1TaskArtifactUpdateEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LfA2aV1TaskPushNotificationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -857,6 +881,12 @@ module Google
       end
       
       class LfA2aV1TaskStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LfA2aV1TaskStatusUpdateEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1518,6 +1548,8 @@ module Google
           property :client_certificate_settings, as: 'clientCertificateSettings', class: Google::Apis::CesV1::ClientCertificateSettings, decorator: Google::Apis::CesV1::ClientCertificateSettings::Representation
       
           property :create_time, as: 'createTime'
+          property :dashboard_settings, as: 'dashboardSettings', class: Google::Apis::CesV1::DashboardSettings, decorator: Google::Apis::CesV1::DashboardSettings::Representation
+      
           property :data_store_settings, as: 'dataStoreSettings', class: Google::Apis::CesV1::DataStoreSettings, decorator: Google::Apis::CesV1::DataStoreSettings::Representation
       
           property :default_channel_profile, as: 'defaultChannelProfile', class: Google::Apis::CesV1::ChannelProfile, decorator: Google::Apis::CesV1::ChannelProfile::Representation
@@ -1894,11 +1926,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :messages, as: 'messages', class: Google::Apis::CesV1::Message, decorator: Google::Apis::CesV1::Message::Representation
       
-          property :resolved_developer_instruction, as: 'resolvedDeveloperInstruction'
           property :root_span, as: 'rootSpan', class: Google::Apis::CesV1::Span, decorator: Google::Apis::CesV1::Span::Representation
       
-          hash :template_attributes, as: 'templateAttributes'
           property :user_intended_text, as: 'userIntendedText'
+        end
+      end
+      
+      class DashboardSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_dashboard, as: 'defaultDashboard'
         end
       end
       
@@ -2059,6 +2096,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_snippets, as: 'enableSnippets'
+          property :max_snippets, as: 'maxSnippets'
         end
       end
       
@@ -2069,6 +2107,14 @@ module Google
           property :model_settings, as: 'modelSettings', class: Google::Apis::CesV1::ModelSettings, decorator: Google::Apis::CesV1::ModelSettings::Representation
       
           property :prompt, as: 'prompt'
+        end
+      end
+      
+      class DeployChannelResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment, as: 'deployment', class: Google::Apis::CesV1::Deployment, decorator: Google::Apis::CesV1::Deployment::Representation
+      
         end
       end
       
@@ -2488,6 +2534,8 @@ module Google
           property :ignore_app_lock, as: 'ignoreAppLock'
           property :import_options, as: 'importOptions', class: Google::Apis::CesV1::ImportAppRequestImportOptions, decorator: Google::Apis::CesV1::ImportAppRequestImportOptions::Representation
       
+          property :json_patch_content, as: 'jsonPatchContent'
+          property :json_patch_gcs_uri, as: 'jsonPatchGcsUri'
         end
       end
       
@@ -2836,6 +2884,20 @@ module Google
         end
       end
       
+      class LfA2aV1StreamResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_update, as: 'artifactUpdate', class: Google::Apis::CesV1::LfA2aV1TaskArtifactUpdateEvent, decorator: Google::Apis::CesV1::LfA2aV1TaskArtifactUpdateEvent::Representation
+      
+          property :message, as: 'message', class: Google::Apis::CesV1::LfA2aV1Message, decorator: Google::Apis::CesV1::LfA2aV1Message::Representation
+      
+          property :status_update, as: 'statusUpdate', class: Google::Apis::CesV1::LfA2aV1TaskStatusUpdateEvent, decorator: Google::Apis::CesV1::LfA2aV1TaskStatusUpdateEvent::Representation
+      
+          property :task, as: 'task', class: Google::Apis::CesV1::LfA2aV1Task, decorator: Google::Apis::CesV1::LfA2aV1Task::Representation
+      
+        end
+      end
+      
       class LfA2aV1StringList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2855,6 +2917,19 @@ module Google
           hash :metadata, as: 'metadata'
           property :status, as: 'status', class: Google::Apis::CesV1::LfA2aV1TaskStatus, decorator: Google::Apis::CesV1::LfA2aV1TaskStatus::Representation
       
+        end
+      end
+      
+      class LfA2aV1TaskArtifactUpdateEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :append, as: 'append'
+          property :artifact, as: 'artifact', class: Google::Apis::CesV1::LfA2aV1Artifact, decorator: Google::Apis::CesV1::LfA2aV1Artifact::Representation
+      
+          property :context_id, as: 'contextId'
+          property :last_chunk, as: 'lastChunk'
+          hash :metadata, as: 'metadata'
+          property :task_id, as: 'taskId'
         end
       end
       
@@ -2878,6 +2953,17 @@ module Google
       
           property :state, as: 'state'
           property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class LfA2aV1TaskStatusUpdateEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_id, as: 'contextId'
+          hash :metadata, as: 'metadata'
+          property :status, as: 'status', class: Google::Apis::CesV1::LfA2aV1TaskStatus, decorator: Google::Apis::CesV1::LfA2aV1TaskStatus::Representation
+      
+          property :task_id, as: 'taskId'
         end
       end
       
@@ -3237,6 +3323,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_card, as: 'agentCard', class: Google::Apis::CesV1::AgentCard, decorator: Google::Apis::CesV1::AgentCard::Representation
       
+          property :api_authentication, as: 'apiAuthentication', class: Google::Apis::CesV1::ApiAuthentication, decorator: Google::Apis::CesV1::ApiAuthentication::Representation
+      
           property :description, as: 'description'
           property :name, as: 'name'
         end
@@ -3429,6 +3517,8 @@ module Google
       
           property :google_search_suggestions, as: 'googleSearchSuggestions', class: Google::Apis::CesV1::GoogleSearchSuggestions, decorator: Google::Apis::CesV1::GoogleSearchSuggestions::Representation
       
+          property :image, as: 'image', class: Google::Apis::CesV1::Image, decorator: Google::Apis::CesV1::Image::Representation
+      
           hash :payload, as: 'payload'
           property :text, as: 'text'
           property :tool_calls, as: 'toolCalls', class: Google::Apis::CesV1::ToolCalls, decorator: Google::Apis::CesV1::ToolCalls::Representation
@@ -3556,9 +3646,11 @@ module Google
       class ToolCall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_name, as: 'agentName'
           hash :args, as: 'args'
           property :display_name, as: 'displayName'
           property :id, as: 'id'
+          property :parent_tool_call_id, as: 'parentToolCallId'
           property :tool, as: 'tool'
           property :toolset_tool, as: 'toolsetTool', class: Google::Apis::CesV1::ToolsetTool, decorator: Google::Apis::CesV1::ToolsetTool::Representation
       
@@ -3585,8 +3677,10 @@ module Google
       class ToolResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_name, as: 'agentName'
           property :display_name, as: 'displayName'
           property :id, as: 'id'
+          property :parent_tool_call_id, as: 'parentToolCallId'
           hash :response, as: 'response'
           property :tool, as: 'tool'
           property :toolset_tool, as: 'toolsetTool', class: Google::Apis::CesV1::ToolsetTool, decorator: Google::Apis::CesV1::ToolsetTool::Representation

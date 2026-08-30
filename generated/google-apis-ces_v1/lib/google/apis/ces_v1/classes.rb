@@ -749,6 +749,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Settings for dashboards associated with the app, that show up in the
+        # Monitoring view.
+        # Corresponds to the JSON property `dashboardSettings`
+        # @return [Google::Apis::CesV1::DashboardSettings]
+        attr_accessor :dashboard_settings
+      
         # Data store related settings for the app.
         # Corresponds to the JSON property `dataStoreSettings`
         # @return [Google::Apis::CesV1::DataStoreSettings]
@@ -895,6 +901,7 @@ module Google
           @audio_processing_config = args[:audio_processing_config] if args.key?(:audio_processing_config)
           @client_certificate_settings = args[:client_certificate_settings] if args.key?(:client_certificate_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @dashboard_settings = args[:dashboard_settings] if args.key?(:dashboard_settings)
           @data_store_settings = args[:data_store_settings] if args.key?(:data_store_settings)
           @default_channel_profile = args[:default_channel_profile] if args.key?(:default_channel_profile)
           @deployment_count = args[:deployment_count] if args.key?(:deployment_count)
@@ -2164,24 +2171,10 @@ module Google
         # @return [Array<Google::Apis::CesV1::Message>]
         attr_accessor :messages
       
-        # Output only. The full dynamically resolved developer instruction generated
-        # from templates. This field is only populated on-demand when requested during
-        # history retrieval. It is not persisted.
-        # Corresponds to the JSON property `resolvedDeveloperInstruction`
-        # @return [String]
-        attr_accessor :resolved_developer_instruction
-      
         # A span is a unit of work or a single operation during the request processing.
         # Corresponds to the JSON property `rootSpan`
         # @return [Google::Apis::CesV1::Span]
         attr_accessor :root_span
-      
-        # Optional. Variables or configurations referenced by the template engine during
-        # dynamic prompt generation. This allows reconstructing the exact prompt sent to
-        # the model for this turn.
-        # Corresponds to the JSON property `templateAttributes`
-        # @return [Hash<String,Object>]
-        attr_accessor :template_attributes
       
         # Optional. The intended ground-truth text from the Simulated Caller (Polysynth).
         # Only populated when word error rate metrics are enabled.
@@ -2196,10 +2189,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @messages = args[:messages] if args.key?(:messages)
-          @resolved_developer_instruction = args[:resolved_developer_instruction] if args.key?(:resolved_developer_instruction)
           @root_span = args[:root_span] if args.key?(:root_span)
-          @template_attributes = args[:template_attributes] if args.key?(:template_attributes)
           @user_intended_text = args[:user_intended_text] if args.key?(:user_intended_text)
+        end
+      end
+      
+      # Settings for dashboards associated with the app, that show up in the
+      # Monitoring view.
+      class DashboardSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The resource name of the default Contact Center Insights dashboard
+        # associated with the app. This is the dashboard that will be displayed when
+        # users navigate to the Monitoring view for the app. Format: `projects/`project`/
+        # locations/`location`/dashboards/`dashboard``
+        # Corresponds to the JSON property `defaultDashboard`
+        # @return [String]
+        attr_accessor :default_dashboard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_dashboard = args[:default_dashboard] if args.key?(:default_dashboard)
         end
       end
       
@@ -2737,6 +2751,12 @@ module Google
         attr_accessor :enable_snippets
         alias_method :enable_snippets?, :enable_snippets
       
+        # Optional. Number of snippets to return per query. If unset, returns all
+        # snippets from the service by default.
+        # Corresponds to the JSON property `maxSnippets`
+        # @return [Fixnum]
+        attr_accessor :max_snippets
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2744,6 +2764,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_snippets = args[:enable_snippets] if args.key?(:enable_snippets)
+          @max_snippets = args[:max_snippets] if args.key?(:max_snippets)
         end
       end
       
@@ -2776,6 +2797,26 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @model_settings = args[:model_settings] if args.key?(:model_settings)
           @prompt = args[:prompt] if args.key?(:prompt)
+        end
+      end
+      
+      # Response message for AgentService.DeployChannel.
+      class DeployChannelResponse
+        include Google::Apis::Core::Hashable
+      
+        # A deployment represents an immutable, queryable version of the app. It is used
+        # to deploy an app version with a specific channel profile.
+        # Corresponds to the JSON property `deployment`
+        # @return [Google::Apis::CesV1::Deployment]
+        attr_accessor :deployment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment = args[:deployment] if args.key?(:deployment)
         end
       end
       
@@ -4238,6 +4279,16 @@ module Google
         # @return [Google::Apis::CesV1::ImportAppRequestImportOptions]
         attr_accessor :import_options
       
+        # Optional. Patch content as a JSON string.
+        # Corresponds to the JSON property `jsonPatchContent`
+        # @return [String]
+        attr_accessor :json_patch_content
+      
+        # Optional. A Cloud Storage URI pointing to a JSON file containing the patches.
+        # Corresponds to the JSON property `jsonPatchGcsUri`
+        # @return [String]
+        attr_accessor :json_patch_gcs_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4250,6 +4301,8 @@ module Google
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
           @ignore_app_lock = args[:ignore_app_lock] if args.key?(:ignore_app_lock)
           @import_options = args[:import_options] if args.key?(:import_options)
+          @json_patch_content = args[:json_patch_content] if args.key?(:json_patch_content)
+          @json_patch_gcs_uri = args[:json_patch_gcs_uri] if args.key?(:json_patch_gcs_uri)
         end
       end
       
@@ -5528,6 +5581,51 @@ module Google
         end
       end
       
+      # A wrapper object used in streaming operations to encapsulate different types
+      # of response data.
+      class LfA2aV1StreamResponse
+        include Google::Apis::Core::Hashable
+      
+        # A task delta where an artifact has been generated.
+        # Corresponds to the JSON property `artifactUpdate`
+        # @return [Google::Apis::CesV1::LfA2aV1TaskArtifactUpdateEvent]
+        attr_accessor :artifact_update
+      
+        # `Message` is one unit of communication between client and server. It can be
+        # associated with a context and/or a task. For server messages, `context_id`
+        # must be provided, and `task_id` only if a task was created. For client
+        # messages, both fields are optional, with the caveat that if both are provided,
+        # they have to match (the `context_id` has to be the one that is set on the task)
+        # . If only `task_id` is provided, the server will infer `context_id` from it.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::CesV1::LfA2aV1Message]
+        attr_accessor :message
+      
+        # An event sent by the agent to notify the client of a change in a task's status.
+        # Corresponds to the JSON property `statusUpdate`
+        # @return [Google::Apis::CesV1::LfA2aV1TaskStatusUpdateEvent]
+        attr_accessor :status_update
+      
+        # `Task` is the core unit of action for A2A. It has a current status and when
+        # results are created for the task they are stored in the artifact. If there are
+        # multiple turns for a task, these are stored in history.
+        # Corresponds to the JSON property `task`
+        # @return [Google::Apis::CesV1::LfA2aV1Task]
+        attr_accessor :task
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_update = args[:artifact_update] if args.key?(:artifact_update)
+          @message = args[:message] if args.key?(:message)
+          @status_update = args[:status_update] if args.key?(:status_update)
+          @task = args[:task] if args.key?(:task)
+        end
+      end
+      
       # protolint:disable REPEATED_FIELD_NAMES_PLURALIZED A list of strings.
       class LfA2aV1StringList
         include Google::Apis::Core::Hashable
@@ -5599,6 +5697,58 @@ module Google
           @id = args[:id] if args.key?(:id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # A task delta where an artifact has been generated.
+      class LfA2aV1TaskArtifactUpdateEvent
+        include Google::Apis::Core::Hashable
+      
+        # If true, the content of this artifact should be appended to a previously sent
+        # artifact with the same ID.
+        # Corresponds to the JSON property `append`
+        # @return [Boolean]
+        attr_accessor :append
+        alias_method :append?, :append
+      
+        # Artifacts represent task outputs.
+        # Corresponds to the JSON property `artifact`
+        # @return [Google::Apis::CesV1::LfA2aV1Artifact]
+        attr_accessor :artifact
+      
+        # Required. The ID of the context that this task belongs to.
+        # Corresponds to the JSON property `contextId`
+        # @return [String]
+        attr_accessor :context_id
+      
+        # If true, this is the final chunk of the artifact.
+        # Corresponds to the JSON property `lastChunk`
+        # @return [Boolean]
+        attr_accessor :last_chunk
+        alias_method :last_chunk?, :last_chunk
+      
+        # Optional. Metadata associated with the artifact update.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Required. The ID of the task for this artifact.
+        # Corresponds to the JSON property `taskId`
+        # @return [String]
+        attr_accessor :task_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @append = args[:append] if args.key?(:append)
+          @artifact = args[:artifact] if args.key?(:artifact)
+          @context_id = args[:context_id] if args.key?(:context_id)
+          @last_chunk = args[:last_chunk] if args.key?(:last_chunk)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @task_id = args[:task_id] if args.key?(:task_id)
         end
       end
       
@@ -5687,6 +5837,43 @@ module Google
           @message = args[:message] if args.key?(:message)
           @state = args[:state] if args.key?(:state)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # An event sent by the agent to notify the client of a change in a task's status.
+      class LfA2aV1TaskStatusUpdateEvent
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID of the context that the task belongs to.
+        # Corresponds to the JSON property `contextId`
+        # @return [String]
+        attr_accessor :context_id
+      
+        # Optional. Metadata associated with the task update.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # A container for the status of a task
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::CesV1::LfA2aV1TaskStatus]
+        attr_accessor :status
+      
+        # Required. The ID of the task that has changed.
+        # Corresponds to the JSON property `taskId`
+        # @return [String]
+        attr_accessor :task_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_id = args[:context_id] if args.key?(:context_id)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @status = args[:status] if args.key?(:status)
+          @task_id = args[:task_id] if args.key?(:task_id)
         end
       end
       
@@ -6917,6 +7104,11 @@ module Google
         # @return [Google::Apis::CesV1::AgentCard]
         attr_accessor :agent_card
       
+        # Authentication information required for API calls.
+        # Corresponds to the JSON property `apiAuthentication`
+        # @return [Google::Apis::CesV1::ApiAuthentication]
+        attr_accessor :api_authentication
+      
         # Required. The description of the tool.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -6934,6 +7126,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_card = args[:agent_card] if args.key?(:agent_card)
+          @api_authentication = args[:api_authentication] if args.key?(:api_authentication)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
         end
@@ -7610,6 +7803,11 @@ module Google
         # @return [Google::Apis::CesV1::GoogleSearchSuggestions]
         attr_accessor :google_search_suggestions
       
+        # Represents an image input or output in the conversation.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::CesV1::Image]
+        attr_accessor :image
+      
         # Custom payload with structured output from the CES agent.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
@@ -7651,6 +7849,7 @@ module Google
           @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
           @end_session = args[:end_session] if args.key?(:end_session)
           @google_search_suggestions = args[:google_search_suggestions] if args.key?(:google_search_suggestions)
+          @image = args[:image] if args.key?(:image)
           @payload = args[:payload] if args.key?(:payload)
           @text = args[:text] if args.key?(:text)
           @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
@@ -8101,6 +8300,12 @@ module Google
       class ToolCall
         include Google::Apis::Core::Hashable
       
+        # Output only. Human-readable name of the agent that issued this call, e.g. "
+        # Contract Architect". Empty when the root agent issued it.
+        # Corresponds to the JSON property `agentName`
+        # @return [String]
+        attr_accessor :agent_name
+      
         # Optional. The input parameters and values for the tool in JSON object format.
         # Corresponds to the JSON property `args`
         # @return [Hash<String,Object>]
@@ -8116,6 +8321,14 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Output only. The id of the tool call that caused this one, when it was issued
+        # by a sub-agent working on behalf of a parent call. Empty for top-level calls.
+        # Lets a client group a sub-agent's work under the call that started it instead
+        # of rendering every step as a sibling.
+        # Corresponds to the JSON property `parentToolCallId`
+        # @return [String]
+        attr_accessor :parent_tool_call_id
       
         # Optional. The name of the tool to execute. Format: `projects/`project`/
         # locations/`location`/apps/`app`/tools/`tool``
@@ -8134,9 +8347,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_name = args[:agent_name] if args.key?(:agent_name)
           @args = args[:args] if args.key?(:args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
+          @parent_tool_call_id = args[:parent_tool_call_id] if args.key?(:parent_tool_call_id)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
         end
@@ -8192,6 +8407,12 @@ module Google
       class ToolResponse
         include Google::Apis::Core::Hashable
       
+        # Output only. Human-readable name of the agent that issued this call, e.g. "
+        # Contract Architect". Empty when the root agent issued it.
+        # Corresponds to the JSON property `agentName`
+        # @return [String]
+        attr_accessor :agent_name
+      
         # Output only. Display name of the tool.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -8201,6 +8422,14 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Output only. The id of the tool call that caused this one, when it was issued
+        # by a sub-agent working on behalf of a parent call. Empty for top-level calls.
+        # Lets a client group a sub-agent's work under the call that started it instead
+        # of rendering every step as a sibling.
+        # Corresponds to the JSON property `parentToolCallId`
+        # @return [String]
+        attr_accessor :parent_tool_call_id
       
         # Required. The tool execution result in JSON object format. Use "output" key to
         # specify tool response and "error" key to specify error details (if any). If "
@@ -8227,8 +8456,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_name = args[:agent_name] if args.key?(:agent_name)
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
+          @parent_tool_call_id = args[:parent_tool_call_id] if args.key?(:parent_tool_call_id)
           @response = args[:response] if args.key?(:response)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
