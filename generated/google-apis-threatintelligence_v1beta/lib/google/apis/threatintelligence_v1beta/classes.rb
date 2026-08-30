@@ -459,6 +459,11 @@ module Google
         # @return [String]
         attr_accessor :detail_type
       
+        # Configuration holding settings for one or more monitored domains.
+        # Corresponds to the JSON property `domainConfiguration`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainConfiguration]
+        attr_accessor :domain_configuration
+      
         # TechnologyWatchListConfig is the configuration for the technology watchlist.
         # Corresponds to the JSON property `technologyWatchlist`
         # @return [Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig]
@@ -473,6 +478,7 @@ module Google
           @custom_threat_scenario = args[:custom_threat_scenario] if args.key?(:custom_threat_scenario)
           @customer_profile = args[:customer_profile] if args.key?(:customer_profile)
           @detail_type = args[:detail_type] if args.key?(:detail_type)
+          @domain_configuration = args[:domain_configuration] if args.key?(:domain_configuration)
           @technology_watchlist = args[:technology_watchlist] if args.key?(:technology_watchlist)
         end
       end
@@ -527,6 +533,11 @@ module Google
         # @return [String]
         attr_accessor :document_condition
       
+        # Represents a query to match documents.
+        # Corresponds to the JSON property `documentQuery`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DocumentQuery]
+        attr_accessor :document_query
+      
         # Legacy metadata associated with this scenario/monitor.
         # Corresponds to the JSON property `legacyMonitorMetadata`
         # @return [Google::Apis::ThreatintelligenceV1beta::LegacyMetadata]
@@ -540,6 +551,7 @@ module Google
         def update!(**args)
           @compiled_lucene_query = args[:compiled_lucene_query] if args.key?(:compiled_lucene_query)
           @document_condition = args[:document_condition] if args.key?(:document_condition)
+          @document_query = args[:document_query] if args.key?(:document_query)
           @legacy_monitor_metadata = args[:legacy_monitor_metadata] if args.key?(:legacy_monitor_metadata)
         end
       end
@@ -1098,6 +1110,107 @@ module Google
           @document_id = args[:document_id] if args.key?(:document_id)
           @match_score = args[:match_score] if args.key?(:match_score)
           @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # Represents a query to match documents.
+      class DocumentQuery
+        include Google::Apis::Core::Hashable
+      
+        # Required. The data model to query against.
+        # Corresponds to the JSON property `dataModel`
+        # @return [String]
+        attr_accessor :data_model
+      
+        # Required. The query string.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Required. The type of query.
+        # Corresponds to the JSON property `queryType`
+        # @return [String]
+        attr_accessor :query_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_model = args[:data_model] if args.key?(:data_model)
+          @query = args[:query] if args.key?(:query)
+          @query_type = args[:query_type] if args.key?(:query_type)
+        end
+      end
+      
+      # Configuration holding settings for one or more monitored domains.
+      class DomainConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of settings for individual domains.
+        # Corresponds to the JSON property `domainSettings`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::DomainSetting>]
+        attr_accessor :domain_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_settings = args[:domain_settings] if args.key?(:domain_settings)
+        end
+      end
+      
+      # Specific configuration for the Domain Monitoring feature.
+      class DomainMonitoringFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the Domain Monitoring feature is disabled for the domain.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # Feature settings and toggles for a single specific domain.
+      class DomainSetting
+        include Google::Apis::Core::Hashable
+      
+        # Required. The domain name to match against.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Specific configuration for the Domain Monitoring feature.
+        # Corresponds to the JSON property `domainMonitoringConfig`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringFeatureConfig]
+        attr_accessor :domain_monitoring_config
+      
+        # Output only. The verification state of the domain.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @domain_monitoring_config = args[:domain_monitoring_config] if args.key?(:domain_monitoring_config)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
