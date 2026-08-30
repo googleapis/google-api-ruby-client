@@ -723,6 +723,132 @@ module Google
         end
       end
       
+      # A `BlueGreenDeployment` resource represents a Cloud SQL blue-green deployment
+      # setup.
+      class BlueGreenDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the deployment was created. Example: `2024-01-01T00:
+        # 00:00Z`
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. A list representing the pairs of source and target instances in
+        # the deployment.
+        # Corresponds to the JSON property `deploymentMappings`
+        # @return [Array<Google::Apis::SqladminV1::SourceTargetPairedNode>]
+        attr_accessor :deployment_mappings
+      
+        # Combined list of tasks for all paired nodes in the deployment.
+        # Corresponds to the JSON property `deploymentTasks`
+        # @return [Google::Apis::SqladminV1::DeploymentTasks]
+        attr_accessor :deployment_tasks
+      
+        # Optional. User-provided description for the deployment. The description can be
+        # up to 255 characters long.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Provides details on why switchover is not possible. This field is
+        # empty unless a switchover attempt failed or the state is `SWITCHOVER_NOT_READY`
+        # . Example: "The target database version does not match the source instance
+        # database version."
+        # Corresponds to the JSON property `errorDetail`
+        # @return [String]
+        attr_accessor :error_detail
+      
+        # Output only. Identifier. The full resource name of the deployment. Format:
+        # projects/`project`/locations/`location`/blueGreenDeployments/`deployment_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration specified by the user at creation time for the target (green)
+        # instance.
+        # Corresponds to the JSON property `requestedConfig`
+        # @return [Google::Apis::SqladminV1::RequestedConfig]
+        attr_accessor :requested_config
+      
+        # Required. Immutable. Required on create, and immutable. The full resource name
+        # of the source instance (the "blue" instance). Format: projects/`project`/
+        # instances/`instance`
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [String]
+        attr_accessor :source_instance
+      
+        # Output only. The current state of the blue-green deployment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The full resource name of the primary target instance (the "green"
+        # instance) that will be promoted during switchover. This field is always
+        # populated once the deployment is created. Format: projects/`project`/instances/
+        # `instance`
+        # Corresponds to the JSON property `switchoverTargetInstance`
+        # @return [String]
+        attr_accessor :switchover_target_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deployment_mappings = args[:deployment_mappings] if args.key?(:deployment_mappings)
+          @deployment_tasks = args[:deployment_tasks] if args.key?(:deployment_tasks)
+          @description = args[:description] if args.key?(:description)
+          @error_detail = args[:error_detail] if args.key?(:error_detail)
+          @name = args[:name] if args.key?(:name)
+          @requested_config = args[:requested_config] if args.key?(:requested_config)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @state = args[:state] if args.key?(:state)
+          @switchover_target_instance = args[:switchover_target_instance] if args.key?(:switchover_target_instance)
+        end
+      end
+      
+      # Blue-green deployment metadata for a database instance. In a blue-green
+      # deployment, we maintain two environments, one of which is live. This message
+      # contains details about the blue-green deployment.
+      class BlueGreenDeploymentInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource ID of the blue-green deployment.
+        # Corresponds to the JSON property `deploymentId`
+        # @return [String]
+        attr_accessor :deployment_id
+      
+        # The source instance for the Blue-Green deployment.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::SqladminV1::SourceRole]
+        attr_accessor :source
+      
+        # Output only. The current state of blue-green-deployment for UI tags
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The target instance for the Blue-Green deployment.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::SqladminV1::TargetRole]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
+          @source = args[:source] if args.key?(:source)
+          @state = args[:state] if args.key?(:state)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
       # Database instance clone context.
       class CloneContext
         include Google::Apis::Core::Hashable
@@ -848,6 +974,39 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents a specific configuration difference between blue and green
+      # instances.
+      class ConfigDiff
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the field that differs in the blue and green
+        # instances, fully-qualified. Example: `settings.tier`
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Output only. The value on the source instance.
+        # Corresponds to the JSON property `sourceValue`
+        # @return [String]
+        attr_accessor :source_value
+      
+        # Output only. The value on the target instance.
+        # Corresponds to the JSON property `targetValue`
+        # @return [String]
+        attr_accessor :target_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @source_value = args[:source_value] if args.key?(:source_value)
+          @target_value = args[:target_value] if args.key?(:target_value)
         end
       end
       
@@ -1241,6 +1400,13 @@ module Google
         # @return [String]
         attr_accessor :database_version
       
+        # Blue-green deployment metadata for a database instance. In a blue-green
+        # deployment, we maintain two environments, one of which is live. This message
+        # contains details about the blue-green deployment.
+        # Corresponds to the JSON property `deploymentInfo`
+        # @return [Google::Apis::SqladminV1::BlueGreenDeploymentInfo]
+        attr_accessor :deployment_info
+      
         # Disk encryption configuration for an instance.
         # Corresponds to the JSON property `diskEncryptionConfiguration`
         # @return [Google::Apis::SqladminV1::DiskEncryptionConfiguration]
@@ -1507,6 +1673,7 @@ module Google
           @database_center_integration_enabled = args[:database_center_integration_enabled] if args.key?(:database_center_integration_enabled)
           @database_installed_version = args[:database_installed_version] if args.key?(:database_installed_version)
           @database_version = args[:database_version] if args.key?(:database_version)
+          @deployment_info = args[:deployment_info] if args.key?(:deployment_info)
           @disk_encryption_configuration = args[:disk_encryption_configuration] if args.key?(:disk_encryption_configuration)
           @disk_encryption_status = args[:disk_encryption_status] if args.key?(:disk_encryption_status)
           @dns_name = args[:dns_name] if args.key?(:dns_name)
@@ -1802,9 +1969,79 @@ module Google
         end
       end
       
+      # Represents a task executed as part of the deployment on a target instance.
+      class DeploymentTask
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Task end time (if completed).
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Optional error details if the task state is `FAILED`.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Output only. Task start time.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the task.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The type of the task.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Combined list of tasks for all paired nodes in the deployment.
+      class DeploymentTasks
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tasks performed or being performed on the paired nodes of the
+        # deployment at a consolidated level.
+        # Corresponds to the JSON property `task`
+        # @return [Array<Google::Apis::SqladminV1::DeploymentTask>]
+        attr_accessor :task
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @task = args[:task] if args.key?(:task)
+        end
+      end
+      
       # Disk encryption configuration for an instance.
       class DiskEncryptionConfiguration
         include Google::Apis::Core::Hashable
+      
+        # Optional. If true, enables Confidential Mode for the instance's Hyperdisk
+        # Balanced volumes. Only supported for zonal C4A instances currently.
+        # Corresponds to the JSON property `confidentialMode`
+        # @return [Boolean]
+        attr_accessor :confidential_mode
+        alias_method :confidential_mode?, :confidential_mode
       
         # This is always `sql#diskEncryptionConfiguration`.
         # Corresponds to the JSON property `kind`
@@ -1822,6 +2059,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @confidential_mode = args[:confidential_mode] if args.key?(:confidential_mode)
           @kind = args[:kind] if args.key?(:kind)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
@@ -3398,6 +3636,13 @@ module Google
         # @return [String]
         attr_accessor :backupdr_backup
       
+        # Optional. If true, the restore operation proceeds even if the target instance'
+        # s maintenance version is older than the source instance's maintenance version.
+        # Corresponds to the JSON property `ignoreMaintenanceVersion`
+        # @return [Boolean]
+        attr_accessor :ignore_maintenance_version
+        alias_method :ignore_maintenance_version?, :ignore_maintenance_version
+      
         # Database instance restore from backup context. Backup context contains source
         # instance id and project id.
         # Corresponds to the JSON property `restoreBackupContext`
@@ -3424,6 +3669,7 @@ module Google
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
           @backupdr_backup = args[:backupdr_backup] if args.key?(:backupdr_backup)
+          @ignore_maintenance_version = args[:ignore_maintenance_version] if args.key?(:ignore_maintenance_version)
           @restore_backup_context = args[:restore_backup_context] if args.key?(:restore_backup_context)
           @restore_instance_clear_overrides_field_names = args[:restore_instance_clear_overrides_field_names] if args.key?(:restore_instance_clear_overrides_field_names)
           @restore_instance_settings = args[:restore_instance_settings] if args.key?(:restore_instance_settings)
@@ -3728,6 +3974,32 @@ module Google
         end
       end
       
+      # The response message for listing blue-green deployment resources.
+      class ListBlueGreenDeploymentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of blue-green deployment resources.
+        # Corresponds to the JSON property `blueGreenDeployments`
+        # @return [Array<Google::Apis::SqladminV1::BlueGreenDeployment>]
+        attr_accessor :blue_green_deployments
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blue_green_deployments = args[:blue_green_deployments] if args.key?(:blue_green_deployments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Preferred location. This specifies where a Cloud SQL instance is located. Note
       # that if the preferred location is not available, the instance will be located
       # as close as possible within the region. Only one location may be specified.
@@ -3963,6 +4235,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @initial_sync_flags = args[:initial_sync_flags] if args.key?(:initial_sync_flags)
+        end
+      end
+      
+      # Details about an instance within the deployment.
+      class NodeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The instance connection name.
+        # Corresponds to the JSON property `connection`
+        # @return [String]
+        attr_accessor :connection
+      
+        # Output only. The unique DNS name for this instance.
+        # Corresponds to the JSON property `dns`
+        # @return [String]
+        attr_accessor :dns
+      
+        # Output only. The full resource name of the instance. Format: projects/`project`
+        # /instances/`instance`
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Output only. The list of IP addresses for this instance.
+        # Corresponds to the JSON property `ipMappings`
+        # @return [Array<Google::Apis::SqladminV1::IpMapping>]
+        attr_accessor :ip_mappings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection = args[:connection] if args.key?(:connection)
+          @dns = args[:dns] if args.key?(:dns)
+          @instance = args[:instance] if args.key?(:instance)
+          @ip_mappings = args[:ip_mappings] if args.key?(:ip_mappings)
         end
       end
       
@@ -4884,8 +5194,8 @@ module Google
         attr_accessor :allowed_consumer_projects
       
         # Optional. The network attachment of the consumer network that the Private
-        # Service Connect enabled Cloud SQL instance is authorized to connect via PSC
-        # interface. format: projects/PROJECT/regions/REGION/networkAttachments/ID
+        # Service Connect enabled Cloud SQL instance is authorized to connect using the
+        # PSC interface. format: projects/PROJECT/regions/REGION/networkAttachments/ID
         # Corresponds to the JSON property `networkAttachmentUri`
         # @return [String]
         attr_accessor :network_attachment_uri
@@ -5144,6 +5454,27 @@ module Google
           @dr_replica = args[:dr_replica] if args.key?(:dr_replica)
           @failover_dr_replica_name = args[:failover_dr_replica_name] if args.key?(:failover_dr_replica_name)
           @psa_write_endpoint = args[:psa_write_endpoint] if args.key?(:psa_write_endpoint)
+        end
+      end
+      
+      # Configuration specified by the user at creation time for the target (green)
+      # instance.
+      class RequestedConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The target database major version for the upgrade. For example, `
+        # MYSQL_8_0` or `POSTGRES_15`.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_version = args[:database_version] if args.key?(:database_version)
         end
       end
       
@@ -5679,6 +6010,63 @@ module Google
         end
       end
       
+      # The source instance for the Blue-Green deployment.
+      class SourceRole
+        include Google::Apis::Core::Hashable
+      
+        # Reference to another Cloud SQL instance.
+        # Corresponds to the JSON property `targetId`
+        # @return [Google::Apis::SqladminV1::InstanceReference]
+        attr_accessor :target_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_id = args[:target_id] if args.key?(:target_id)
+        end
+      end
+      
+      # Represents a pairing of a source instance node and a target instance node.
+      class SourceTargetPairedNode
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Describes the list of differences for the `SourceTargetPairedNode`
+        # .
+        # Corresponds to the JSON property `diffs`
+        # @return [Array<Google::Apis::SqladminV1::ConfigDiff>]
+        attr_accessor :diffs
+      
+        # Details about an instance within the deployment.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::SqladminV1::NodeInfo]
+        attr_accessor :source
+      
+        # Output only. Specifies the current state of this specific source-target pair.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Details about an instance within the deployment.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::SqladminV1::NodeInfo]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @diffs = args[:diffs] if args.key?(:diffs)
+          @source = args[:source] if args.key?(:source)
+          @state = args[:state] if args.key?(:state)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
       # Active Directory configuration, relevant only for Cloud SQL for SQL Server.
       class SqlActiveDirectoryConfig
         include Google::Apis::Core::Hashable
@@ -5931,18 +6319,29 @@ module Google
       class SqlInstancesResetReplicaSizeRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Region of the Cloud SQL instance.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @location = args[:location] if args.key?(:location)
         end
       end
       
       # Instance start external sync request.
       class SqlInstancesStartExternalSyncRequest
         include Google::Apis::Core::Hashable
+      
+        # Optional. Region of the Cloud SQL instance.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # Optional. MigrationType configures the migration to use physical files or
         # logical dump files. If not set, then the logical dump file configuration is
@@ -5988,6 +6387,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @location = args[:location] if args.key?(:location)
           @migration_type = args[:migration_type] if args.key?(:migration_type)
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
           @replica_overwrite_enabled = args[:replica_overwrite_enabled] if args.key?(:replica_overwrite_enabled)
@@ -6000,6 +6400,11 @@ module Google
       # Instance verify external sync settings request.
       class SqlInstancesVerifyExternalSyncSettingsRequest
         include Google::Apis::Core::Hashable
+      
+        # Optional. Region of the Cloud SQL instance.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # Optional. MigrationType configures the migration to use physical files or
         # logical dump files. If not set, then the logical dump file configuration is
@@ -6047,6 +6452,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @location = args[:location] if args.key?(:location)
           @migration_type = args[:migration_type] if args.key?(:migration_type)
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
           @selected_objects = args[:selected_objects] if args.key?(:selected_objects)
@@ -6253,13 +6659,13 @@ module Google
       class SqlServerUserDetails
         include Google::Apis::Core::Hashable
       
-        # If the user has been disabled
+        # Indicates if the user has been disabled.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # The server roles for this user
+        # Indicates the server roles for this user.
         # Corresponds to the JSON property `serverRoles`
         # @return [Array<String>]
         attr_accessor :server_roles
@@ -6537,6 +6943,19 @@ module Google
         end
       end
       
+      # Request message for switching over a `BlueGreenDeployment` resource.
+      class SwitchoverBlueGreenDeploymentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Initial sync flags for certain Cloud SQL APIs. Currently used for the MySQL
       # external server initial dump.
       class SyncFlags
@@ -6586,6 +7005,25 @@ module Google
         def update!(**args)
           @metric = args[:metric] if args.key?(:metric)
           @target_value = args[:target_value] if args.key?(:target_value)
+        end
+      end
+      
+      # The target instance for the Blue-Green deployment.
+      class TargetRole
+        include Google::Apis::Core::Hashable
+      
+        # Reference to another Cloud SQL instance.
+        # Corresponds to the JSON property `sourceId`
+        # @return [Google::Apis::SqladminV1::InstanceReference]
+        attr_accessor :source_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_id = args[:source_id] if args.key?(:source_id)
         end
       end
       

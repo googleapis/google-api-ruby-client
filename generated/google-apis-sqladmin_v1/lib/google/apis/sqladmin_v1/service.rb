@@ -387,6 +387,196 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a blue-green deployment under a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource where this blue-green deployment will be created.
+        #   Format: projects/`project`/locations/`location`
+        # @param [Google::Apis::SqladminV1::BlueGreenDeployment] blue_green_deployment_object
+        # @param [String] blue_green_deployment_id
+        #   Required. The ID to use for the blue-green deployment, which will become the
+        #   final component of the deployment's resource name. The ID must be unique
+        #   within the given project and location and between 2-63 characters.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_blue_green_deployment(parent, blue_green_deployment_object = nil, blue_green_deployment_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/blueGreenDeployments', options)
+          command.request_representation = Google::Apis::SqladminV1::BlueGreenDeployment::Representation
+          command.request_object = blue_green_deployment_object
+          command.response_representation = Google::Apis::SqladminV1::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['blueGreenDeploymentId'] = blue_green_deployment_id unless blue_green_deployment_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a blue-green deployment.
+        # @param [String] name
+        #   Required. The name of the blue-green deployment to delete. Format: projects/`
+        #   project`/locations/`location`/blueGreenDeployments/`blue_green_deployment`
+        # @param [Boolean] delete_old_source
+        #   Optional. If set to true, and the switchover is complete, this deletes the old
+        #   source instance along with the deployment.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_blue_green_deployment(name, delete_old_source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SqladminV1::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['deleteOldSource'] = delete_old_source unless delete_old_source.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a blue-green deployment resource under a given project and location.
+        # @param [String] name
+        #   Required. The name of the blue-green deployment to retrieve. Format: projects/`
+        #   project`/locations/`location`/blueGreenDeployments/`blue_green_deployment`
+        # @param [String] view
+        #   Optional. Specifies whether to return the basic or detailed view of the
+        #   resource in the response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::BlueGreenDeployment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::BlueGreenDeployment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_blue_green_deployment(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SqladminV1::BlueGreenDeployment::Representation
+          command.response_class = Google::Apis::SqladminV1::BlueGreenDeployment
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists blue-green deployments under a given project.
+        # @param [String] parent
+        #   Required. The parent resource whose blue-green deployments are to be listed.
+        #   Format: projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. A filter expression that filters the results.
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order the results by.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of deployments to return. The service may return
+        #   fewer deployments than this value. If unspecified, at most 500 deployments are
+        #   returned. The maximum value is 1000; values above 1000 are treated as 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListBlueGreenDeployments`
+        #   call. Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::ListBlueGreenDeploymentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::ListBlueGreenDeploymentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_blue_green_deployments(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/blueGreenDeployments', options)
+          command.response_representation = Google::Apis::SqladminV1::ListBlueGreenDeploymentsResponse::Representation
+          command.response_class = Google::Apis::SqladminV1::ListBlueGreenDeploymentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Switches over to green instance for a blue-green deployment.
+        # @param [String] name
+        #   Required. The name of the blue-green deployment to switch over. Format:
+        #   projects/`project`/locations/`location`/blueGreenDeployments/`
+        #   blue_green_deployment`
+        # @param [Google::Apis::SqladminV1::SwitchoverBlueGreenDeploymentRequest] switchover_blue_green_deployment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def switchover_blue_green_deployment(name, switchover_blue_green_deployment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:switchover', options)
+          command.request_representation = Google::Apis::SqladminV1::SwitchoverBlueGreenDeploymentRequest::Representation
+          command.request_object = switchover_blue_green_deployment_request_object
+          command.response_representation = Google::Apis::SqladminV1::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generates a short-lived X509 certificate containing the provided public key
         # and signed by a private key specific to the target instance. Users may use the
         # certificate to authenticate as themselves when connecting to the database.
@@ -502,6 +692,8 @@ module Google
         #   Database instance ID. This does not include the project ID.
         # @param [String] database
         #   Name of the database to be deleted in the instance.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -519,13 +711,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_database(project, instance, database, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_database(project, instance, database, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/projects/{project}/instances/{instance}/databases/{database}', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.params['database'] = database unless database.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -539,6 +732,8 @@ module Google
         #   Database instance ID. This does not include the project ID.
         # @param [String] database
         #   Name of the database in the instance.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -556,13 +751,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_database(project, instance, database, fields: nil, quota_user: nil, options: nil, &block)
+        def get_database(project, instance, database, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/databases/{database}', options)
           command.response_representation = Google::Apis::SqladminV1::Database::Representation
           command.response_class = Google::Apis::SqladminV1::Database
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.params['database'] = database unless database.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -575,6 +771,8 @@ module Google
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::Database] database_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -592,7 +790,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_database(project, instance, database_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_database(project, instance, database_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/databases', options)
           command.request_representation = Google::Apis::SqladminV1::Database::Representation
           command.request_object = database_object
@@ -600,6 +798,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -610,6 +809,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -627,12 +828,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_databases(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def list_databases(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/databases', options)
           command.response_representation = Google::Apis::SqladminV1::DatabasesListResponse::Representation
           command.response_class = Google::Apis::SqladminV1::DatabasesListResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -647,6 +849,8 @@ module Google
         # @param [String] database
         #   Name of the database to be updated in the instance.
         # @param [Google::Apis::SqladminV1::Database] database_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -664,7 +868,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_database(project, instance, database, database_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_database(project, instance, database, database_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/projects/{project}/instances/{instance}/databases/{database}', options)
           command.request_representation = Google::Apis::SqladminV1::Database::Representation
           command.request_object = database_object
@@ -673,6 +877,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.params['database'] = database unless database.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -687,6 +892,8 @@ module Google
         # @param [String] database
         #   Name of the database to be updated in the instance.
         # @param [Google::Apis::SqladminV1::Database] database_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -704,7 +911,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_database(project, instance, database, database_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_database(project, instance, database, database_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v1/projects/{project}/instances/{instance}/databases/{database}', options)
           command.request_representation = Google::Apis::SqladminV1::Database::Representation
           command.request_object = database_object
@@ -713,6 +920,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.params['database'] = database unless database.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -761,6 +969,8 @@ module Google
         #   Required. Project ID of the project that contains the instance.
         # @param [String] instance
         #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -778,12 +988,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_entra_id_certificates(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def list_instance_entra_id_certificates(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/listEntraIdCertificates', options)
           command.response_representation = Google::Apis::SqladminV1::InstancesListEntraIdCertificatesResponse::Representation
           command.response_class = Google::Apis::SqladminV1::InstancesListEntraIdCertificatesResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -799,6 +1010,8 @@ module Google
         #   Required. Project ID of the project that contains the instance.
         # @param [String] instance
         #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -816,12 +1029,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_server_certificates(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def list_instance_server_certificates(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/listServerCertificates', options)
           command.response_representation = Google::Apis::SqladminV1::InstancesListServerCertificatesResponse::Representation
           command.response_class = Google::Apis::SqladminV1::InstancesListServerCertificatesResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -834,6 +1048,8 @@ module Google
         # @param [String] instance
         #   Required. Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesRotateEntraIdCertificateRequest] instances_rotate_entra_id_certificate_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -851,7 +1067,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rotate_instance_entra_id_certificate(project, instance, instances_rotate_entra_id_certificate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def rotate_instance_entra_id_certificate(project, instance, instances_rotate_entra_id_certificate_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/rotateEntraIdCertificate', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesRotateEntraIdCertificateRequest::Representation
           command.request_object = instances_rotate_entra_id_certificate_request_object
@@ -859,6 +1075,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -872,6 +1089,8 @@ module Google
         # @param [String] instance
         #   Required. Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesRotateServerCertificateRequest] instances_rotate_server_certificate_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -889,7 +1108,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rotate_instance_server_certificate(project, instance, instances_rotate_server_certificate_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def rotate_instance_server_certificate(project, instance, instances_rotate_server_certificate_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/rotateServerCertificate', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesRotateServerCertificateRequest::Representation
           command.request_object = instances_rotate_server_certificate_request_object
@@ -897,6 +1116,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -911,6 +1131,8 @@ module Google
         #   composed of lowercase letters, numbers, and hyphens, and it must start with a
         #   letter. The total length must be 98 characters or less (Example: instance-id).
         # @param [Google::Apis::SqladminV1::InstancesAcquireSsrsLeaseRequest] instances_acquire_ssrs_lease_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -928,7 +1150,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def acquire_instance_ssrs_lease(project, instance, instances_acquire_ssrs_lease_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def acquire_instance_ssrs_lease(project, instance, instances_acquire_ssrs_lease_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/acquireSsrsLease', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesAcquireSsrsLeaseRequest::Representation
           command.request_object = instances_acquire_ssrs_lease_request_object
@@ -936,6 +1158,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::SqlInstancesAcquireSsrsLeaseResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -948,6 +1171,8 @@ module Google
         #   Required. Project ID of the project that contains the instance.
         # @param [String] instance
         #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -965,12 +1190,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_instance_entra_id_certificate(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def add_instance_entra_id_certificate(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/addEntraIdCertificate', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -986,6 +1212,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1003,12 +1231,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_instance_server_ca(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def add_instance_server_ca(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/addServerCa', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1024,6 +1253,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1041,12 +1272,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_instance_server_certificate(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def add_instance_server_certificate(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/addServerCertificate', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1060,6 +1292,8 @@ module Google
         #   Required. The ID of the Cloud SQL instance to be cloned (source). This does
         #   not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesCloneRequest] instances_clone_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1077,7 +1311,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def clone_instance(project, instance, instances_clone_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def clone_instance(project, instance, instances_clone_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/clone', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesCloneRequest::Representation
           command.request_object = instances_clone_request_object
@@ -1085,6 +1319,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1104,6 +1339,8 @@ module Google
         #   is considered expired.
         # @param [Fixnum] final_backup_ttl_days
         #   Optional. Retention period of the final backup.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1121,7 +1358,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_instance(project, instance, enable_final_backup: nil, final_backup_description: nil, final_backup_expiry_time: nil, final_backup_ttl_days: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_instance(project, instance, enable_final_backup: nil, final_backup_description: nil, final_backup_expiry_time: nil, final_backup_ttl_days: nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/projects/{project}/instances/{instance}', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
@@ -1131,6 +1368,7 @@ module Google
           command.query['finalBackupDescription'] = final_backup_description unless final_backup_description.nil?
           command.query['finalBackupExpiryTime'] = final_backup_expiry_time unless final_backup_expiry_time.nil?
           command.query['finalBackupTtlDays'] = final_backup_ttl_days unless final_backup_ttl_days.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1143,6 +1381,8 @@ module Google
         # @param [String] instance
         #   Required. Cloud SQL instance name.
         # @param [Google::Apis::SqladminV1::InstancesDemoteRequest] instances_demote_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1160,7 +1400,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def demote_instance(project, instance, instances_demote_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def demote_instance(project, instance, instances_demote_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/demote', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesDemoteRequest::Representation
           command.request_object = instances_demote_request_object
@@ -1168,6 +1408,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1180,6 +1421,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance name.
         # @param [Google::Apis::SqladminV1::InstancesDemoteMasterRequest] instances_demote_master_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1197,7 +1440,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def demote_instance_master(project, instance, instances_demote_master_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def demote_instance_master(project, instance, instances_demote_master_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/demoteMaster', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesDemoteMasterRequest::Representation
           command.request_object = instances_demote_master_request_object
@@ -1205,6 +1448,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1216,6 +1460,8 @@ module Google
         # @param [String] instance
         #   Required. Database instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::ExecuteSqlPayload] execute_sql_payload_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1233,7 +1479,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def execute_instance_sql(project, instance, execute_sql_payload_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def execute_instance_sql(project, instance, execute_sql_payload_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/executeSql', options)
           command.request_representation = Google::Apis::SqladminV1::ExecuteSqlPayload::Representation
           command.request_object = execute_sql_payload_object
@@ -1241,6 +1487,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::SqlInstancesExecuteSqlResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1253,6 +1500,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesExportRequest] instances_export_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1270,7 +1519,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def export_instance(project, instance, instances_export_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def export_instance(project, instance, instances_export_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/export', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesExportRequest::Representation
           command.request_object = instances_export_request_object
@@ -1278,6 +1527,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1294,6 +1544,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesFailoverRequest] instances_failover_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1311,7 +1563,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def failover_instance(project, instance, instances_failover_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def failover_instance(project, instance, instances_failover_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/failover', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesFailoverRequest::Representation
           command.request_object = instances_failover_request_object
@@ -1319,6 +1571,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1329,6 +1582,8 @@ module Google
         #   Required. Project ID of the project that contains the instance.
         # @param [String] instance
         #   Required. Database instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1346,12 +1601,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_instance(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def get_instance(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}', options)
           command.response_representation = Google::Apis::SqladminV1::DatabaseInstance::Representation
           command.response_class = Google::Apis::SqladminV1::DatabaseInstance
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1364,6 +1620,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesImportRequest] instances_import_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1381,7 +1639,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_instance(project, instance, instances_import_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def import_instance(project, instance, instances_import_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/import', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesImportRequest::Representation
           command.request_object = instances_import_request_object
@@ -1389,6 +1647,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1399,6 +1658,8 @@ module Google
         #   Project ID of the project to which the newly created Cloud SQL instances
         #   should belong.
         # @param [Google::Apis::SqladminV1::DatabaseInstance] database_instance_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1416,13 +1677,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_instance(project, database_instance_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_instance(project, database_instance_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances', options)
           command.request_representation = Google::Apis::SqladminV1::DatabaseInstance::Representation
           command.request_object = database_instance_object
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1439,6 +1701,8 @@ module Google
         #   queries are space-separated. For example. 'state:RUNNABLE instanceType:
         #   CLOUD_SQL_INSTANCE'. By default, each expression is an AND expression. However,
         #   you can include AND and OR expressions explicitly.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [Fixnum] max_results
         #   The maximum number of instances to return. The service may return fewer than
         #   this value. If unspecified, at most 500 instances are returned. The maximum
@@ -1463,12 +1727,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instances(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_instances(project, filter: nil, location: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances', options)
           command.response_representation = Google::Apis::SqladminV1::InstancesListResponse::Representation
           command.response_class = Google::Apis::SqladminV1::InstancesListResponse
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['location'] = location unless location.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1485,6 +1750,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1502,12 +1769,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_server_cas(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def list_instance_server_cas(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/listServerCas', options)
           command.response_representation = Google::Apis::SqladminV1::InstancesListServerCasResponse::Representation
           command.response_class = Google::Apis::SqladminV1::InstancesListServerCasResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1520,6 +1788,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::DatabaseInstance] database_instance_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [Boolean] reconcile_psc_networking
         #   Optional. Set PSC config to the same value as the existing config to reconcile
         #   the PSC networking.
@@ -1543,7 +1813,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_instance(project, instance, database_instance_object = nil, reconcile_psc_networking: nil, reconcile_psc_networking_force: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_instance(project, instance, database_instance_object = nil, location: nil, reconcile_psc_networking: nil, reconcile_psc_networking_force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/projects/{project}/instances/{instance}', options)
           command.request_representation = Google::Apis::SqladminV1::DatabaseInstance::Representation
           command.request_object = database_instance_object
@@ -1551,6 +1821,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['reconcilePscNetworking'] = reconcile_psc_networking unless reconcile_psc_networking.nil?
           command.query['reconcilePscNetworkingForce'] = reconcile_psc_networking_force unless reconcile_psc_networking_force.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1599,6 +1870,8 @@ module Google
         # @param [String] instance
         #   Required. Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesPreCheckMajorVersionUpgradeRequest] instances_pre_check_major_version_upgrade_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1616,7 +1889,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def pre_instance_check_major_version_upgrade(project, instance, instances_pre_check_major_version_upgrade_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def pre_instance_check_major_version_upgrade(project, instance, instances_pre_check_major_version_upgrade_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesPreCheckMajorVersionUpgradeRequest::Representation
           command.request_object = instances_pre_check_major_version_upgrade_request_object
@@ -1624,6 +1897,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1641,6 +1915,8 @@ module Google
         #   as a replica of the promoted DR replica when the original primary instance
         #   comes back online. If set to false or not specified, then the original primary
         #   instance becomes an independent Cloud SQL primary instance.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1658,13 +1934,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def promote_instance_replica(project, instance, failover: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def promote_instance_replica(project, instance, failover: nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/promoteReplica', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['failover'] = failover unless failover.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1676,6 +1953,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesReencryptRequest] instances_reencrypt_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1693,7 +1972,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reencrypt_instance(project, instance, instances_reencrypt_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def reencrypt_instance(project, instance, instances_reencrypt_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/reencrypt', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesReencryptRequest::Representation
           command.request_object = instances_reencrypt_request_object
@@ -1701,6 +1980,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1713,6 +1993,8 @@ module Google
         #   Required. The Cloud SQL instance ID. This doesn't include the project ID. The
         #   instance ID contains lowercase letters, numbers, and hyphens, and it must
         #   start with a letter. This ID can have a maximum length of 98 characters.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1730,12 +2012,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def release_instance_ssrs_lease(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def release_instance_ssrs_lease(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/releaseSsrsLease', options)
           command.response_representation = Google::Apis::SqladminV1::SqlInstancesReleaseSsrsLeaseResponse::Representation
           command.response_class = Google::Apis::SqladminV1::SqlInstancesReleaseSsrsLeaseResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1747,6 +2030,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] mode
         #   Optional. Reset SSL mode to use.
         # @param [String] fields
@@ -1766,12 +2051,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reset_instance_ssl_config(project, instance, mode: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def reset_instance_ssl_config(project, instance, location: nil, mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/resetSslConfig', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['mode'] = mode unless mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1783,6 +2069,8 @@ module Google
         #   Project ID of the project that contains the instance to be restarted.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1800,12 +2088,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restart_instance(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def restart_instance(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/restart', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1818,6 +2107,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesRestoreBackupRequest] instances_restore_backup_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1835,7 +2126,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def restore_instance_backup(project, instance, instances_restore_backup_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def restore_instance_backup(project, instance, instances_restore_backup_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/restoreBackup', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesRestoreBackupRequest::Representation
           command.request_object = instances_restore_backup_request_object
@@ -1843,6 +2134,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1857,6 +2149,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesRotateServerCaRequest] instances_rotate_server_ca_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1874,7 +2168,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rotate_instance_server_ca(project, instance, instances_rotate_server_ca_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def rotate_instance_server_ca(project, instance, instances_rotate_server_ca_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/rotateServerCa', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesRotateServerCaRequest::Representation
           command.request_object = instances_rotate_server_ca_request_object
@@ -1882,6 +2176,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1892,6 +2187,8 @@ module Google
         #   ID of the project that contains the read replica.
         # @param [String] instance
         #   Cloud SQL read replica instance name.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1909,12 +2206,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_instance_replica(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def start_instance_replica(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/startReplica', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1925,6 +2223,8 @@ module Google
         #   ID of the project that contains the read replica.
         # @param [String] instance
         #   Cloud SQL read replica instance name.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1942,12 +2242,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def stop_instance_replica(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def stop_instance_replica(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/stopReplica', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1962,6 +2263,8 @@ module Google
         #   Optional. (MySQL and PostgreSQL only) Cloud SQL instance operations timeout,
         #   which is a sum of all database operations. Default value is 10 minutes and can
         #   be modified to a maximum value of 24 hours.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1979,13 +2282,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def switchover_instance(project, instance, db_timeout: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def switchover_instance(project, instance, db_timeout: nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/switchover', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['dbTimeout'] = db_timeout unless db_timeout.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1997,6 +2301,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::InstancesTruncateLogRequest] instances_truncate_log_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2014,7 +2320,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def truncate_instance_log(project, instance, instances_truncate_log_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def truncate_instance_log(project, instance, instances_truncate_log_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/truncateLog', options)
           command.request_representation = Google::Apis::SqladminV1::InstancesTruncateLogRequest::Representation
           command.request_object = instances_truncate_log_request_object
@@ -2022,6 +2328,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2034,6 +2341,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::DatabaseInstance] database_instance_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2051,7 +2360,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_instance(project, instance, database_instance_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_instance(project, instance, database_instance_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v1/projects/{project}/instances/{instance}', options)
           command.request_representation = Google::Apis::SqladminV1::DatabaseInstance::Representation
           command.request_object = database_instance_object
@@ -2059,6 +2368,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2185,6 +2495,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2202,12 +2514,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_instance_disk_shrink_config(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_instance_disk_shrink_config(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/getDiskShrinkConfig', options)
           command.response_representation = Google::Apis::SqladminV1::SqlInstancesGetDiskShrinkConfigResponse::Representation
           command.response_class = Google::Apis::SqladminV1::SqlInstancesGetDiskShrinkConfigResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2218,6 +2531,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] source_instance_deletion_time
         #   The timestamp used to identify the time when the source instance is deleted.
         #   If this instance is deleted, then you must set the timestamp.
@@ -2238,12 +2553,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_instance_latest_recovery_time(project, instance, source_instance_deletion_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_instance_latest_recovery_time(project, instance, location: nil, source_instance_deletion_time: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/getLatestRecoveryTime', options)
           command.response_representation = Google::Apis::SqladminV1::SqlInstancesGetLatestRecoveryTimeResponse::Representation
           command.response_class = Google::Apis::SqladminV1::SqlInstancesGetLatestRecoveryTimeResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['sourceInstanceDeletionTime'] = source_instance_deletion_time unless source_instance_deletion_time.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2256,6 +2572,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::PerformDiskShrinkContext] perform_disk_shrink_context_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2273,7 +2591,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def perform_project_instance_disk_shrink(project, instance, perform_disk_shrink_context_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def perform_project_instance_disk_shrink(project, instance, perform_disk_shrink_context_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/performDiskShrink', options)
           command.request_representation = Google::Apis::SqladminV1::PerformDiskShrinkContext::Representation
           command.request_object = perform_disk_shrink_context_object
@@ -2281,6 +2599,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2292,6 +2611,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::SqlInstancesRescheduleMaintenanceRequestBody] sql_instances_reschedule_maintenance_request_body_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2309,7 +2630,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reschedule_project_instance_maintenance(project, instance, sql_instances_reschedule_maintenance_request_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def reschedule_project_instance_maintenance(project, instance, sql_instances_reschedule_maintenance_request_body_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/rescheduleMaintenance', options)
           command.request_representation = Google::Apis::SqladminV1::SqlInstancesRescheduleMaintenanceRequestBody::Representation
           command.request_object = sql_instances_reschedule_maintenance_request_body_object
@@ -2317,6 +2638,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2438,6 +2760,8 @@ module Google
         # @param [String] instance
         #   Cloud SQL instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::SslCertsCreateEphemeralRequest] ssl_certs_create_ephemeral_request_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2455,7 +2779,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_ssl_cert_ephemeral(project, instance, ssl_certs_create_ephemeral_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_ssl_cert_ephemeral(project, instance, ssl_certs_create_ephemeral_request_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/createEphemeral', options)
           command.request_representation = Google::Apis::SqladminV1::SslCertsCreateEphemeralRequest::Representation
           command.request_object = ssl_certs_create_ephemeral_request_object
@@ -2463,6 +2787,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::SslCert
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2652,6 +2977,8 @@ module Google
         #   Database instance ID. This does not include the project ID.
         # @param [String] host
         #   Host of the user in the instance.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] name
         #   Name of the user in the instance.
         # @param [String] fields
@@ -2671,13 +2998,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_user(project, instance, host: nil, name: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_user(project, instance, host: nil, location: nil, name: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/projects/{project}/instances/{instance}/users', options)
           command.response_representation = Google::Apis::SqladminV1::Operation::Representation
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['host'] = host unless host.nil?
+          command.query['location'] = location unless location.nil?
           command.query['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2693,6 +3021,8 @@ module Google
         #   User of the instance.
         # @param [String] host
         #   Host of a user of the instance.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2710,7 +3040,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user(project, instance, name, host: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_user(project, instance, name, host: nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/users/{name}', options)
           command.response_representation = Google::Apis::SqladminV1::User::Representation
           command.response_class = Google::Apis::SqladminV1::User
@@ -2718,6 +3048,7 @@ module Google
           command.params['instance'] = instance unless instance.nil?
           command.params['name'] = name unless name.nil?
           command.query['host'] = host unless host.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2729,6 +3060,8 @@ module Google
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
         # @param [Google::Apis::SqladminV1::User] user_object
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2746,7 +3079,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_user(project, instance, user_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_user(project, instance, user_object = nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/projects/{project}/instances/{instance}/users', options)
           command.request_representation = Google::Apis::SqladminV1::User::Representation
           command.request_object = user_object
@@ -2754,6 +3087,7 @@ module Google
           command.response_class = Google::Apis::SqladminV1::Operation
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2764,6 +3098,8 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] instance
         #   Database instance ID. This does not include the project ID.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2781,12 +3117,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_users(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+        def list_users(project, instance, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/projects/{project}/instances/{instance}/users', options)
           command.response_representation = Google::Apis::SqladminV1::UsersListResponse::Representation
           command.response_class = Google::Apis::SqladminV1::UsersListResponse
           command.params['project'] = project unless project.nil?
           command.params['instance'] = instance unless instance.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2803,6 +3140,8 @@ module Google
         #   will be ignored for update request.
         # @param [String] host
         #   Optional. Host of the user in the instance.
+        # @param [String] location
+        #   Optional. Region of the Cloud SQL instance.
         # @param [String] name
         #   Name of the user in the instance.
         # @param [Boolean] revoke_existing_roles
@@ -2834,7 +3173,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user(project, instance, user_object = nil, database_roles: nil, host: nil, name: nil, revoke_existing_roles: nil, revoke_existing_server_roles: nil, server_roles: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_user(project, instance, user_object = nil, database_roles: nil, host: nil, location: nil, name: nil, revoke_existing_roles: nil, revoke_existing_server_roles: nil, server_roles: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'v1/projects/{project}/instances/{instance}/users', options)
           command.request_representation = Google::Apis::SqladminV1::User::Representation
           command.request_object = user_object
@@ -2844,6 +3183,7 @@ module Google
           command.params['instance'] = instance unless instance.nil?
           command.query['databaseRoles'] = database_roles unless database_roles.nil?
           command.query['host'] = host unless host.nil?
+          command.query['location'] = location unless location.nil?
           command.query['name'] = name unless name.nil?
           command.query['revokeExistingRoles'] = revoke_existing_roles unless revoke_existing_roles.nil?
           command.query['revokeExistingServerRoles'] = revoke_existing_server_roles unless revoke_existing_server_roles.nil?
