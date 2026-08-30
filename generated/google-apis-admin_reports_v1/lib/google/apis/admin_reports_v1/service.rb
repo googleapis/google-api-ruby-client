@@ -154,8 +154,8 @@ module Google
         # @param [Boolean] include_sensitive_data
         #   Optional. When set to `true`, this field allows sensitive user-generated
         #   content to be included in the returned audit logs. This parameter is supported
-        #   only for Rules (DLP) and Chat applications; using it with any other
-        #   application will result in a permission error.
+        #   only for Rules (DLP), Chat and Workspace Studio applications; using it with
+        #   any other application will result in a permission error.
         # @param [Fixnum] max_results
         #   Determines how many activity records are shown on each response page. For
         #   example, if the request sets `maxResults=1` and the report has two activities,
