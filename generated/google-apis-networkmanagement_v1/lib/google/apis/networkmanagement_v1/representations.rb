@@ -659,6 +659,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
+          property :worker_pool_uri, as: 'workerPoolUri'
         end
       end
       
@@ -669,6 +670,7 @@ module Google
           property :location, as: 'location'
           property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
+          property :worker_pool_uri, as: 'workerPoolUri'
         end
       end
       
