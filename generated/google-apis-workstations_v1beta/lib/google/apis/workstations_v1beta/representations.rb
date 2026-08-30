@@ -461,6 +461,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :archive_timeout, as: 'archiveTimeout'
           property :max_size_gb, as: 'maxSizeGb'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :reclaim_policy, as: 'reclaimPolicy'
           property :size_gb, as: 'sizeGb'
           property :source_snapshot, as: 'sourceSnapshot'
