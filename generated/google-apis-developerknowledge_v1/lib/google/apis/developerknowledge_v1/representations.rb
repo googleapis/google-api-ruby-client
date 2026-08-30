@@ -112,6 +112,7 @@ module Google
       class AnswerQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
           property :query, as: 'query'
         end
       end
