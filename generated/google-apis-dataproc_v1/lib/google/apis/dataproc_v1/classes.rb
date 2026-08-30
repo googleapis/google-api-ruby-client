@@ -1910,7 +1910,7 @@ module Google
       class ClusterStatus
         include Google::Apis::Core::Hashable
       
-        # Optional. Output only. Details of cluster's state.
+        # Optional. Details of cluster's state.
         # Corresponds to the JSON property `detail`
         # @return [String]
         attr_accessor :detail
@@ -4817,8 +4817,8 @@ module Google
       class JobStatus
         include Google::Apis::Core::Hashable
       
-        # Optional. Output only. Job state details, such as an error description if the
-        # state is ERROR.
+        # Optional. Job state details, such as an error description if the state is
+        # ERROR.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
@@ -5586,7 +5586,7 @@ module Google
         # dataproc/docs/guides/dataproc-metrics#custom_metrics) to collect for the
         # metric course (for the SPARK metric source (any Spark metric (https://spark.
         # apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide
-        # metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use
+        # metrics in the following format:METRIC_SOURCE:INSTANCE :GROUP:METRIC Use
         # camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:
         # AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:
         # Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.
