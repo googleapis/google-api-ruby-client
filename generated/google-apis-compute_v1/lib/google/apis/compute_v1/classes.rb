@@ -16111,6 +16111,68 @@ module Google
         end
       end
       
+      # Metadata for GetHealth operations.
+      class GetHealthOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Health information.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeV1::GetHealthOperationMetadataHealthInfo]
+        attr_accessor :health_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_info = args[:health_info] if args.key?(:health_info)
+        end
+      end
+      
+      # Health information.
+      class GetHealthOperationMetadataHealthInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The availability SLO status.
+        # Corresponds to the JSON property `availabilitySloStatus`
+        # @return [String]
+        attr_accessor :availability_slo_status
+      
+        # Output only. The health status.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        # Output only. The repair category.
+        # Corresponds to the JSON property `repairCategory`
+        # @return [String]
+        attr_accessor :repair_category
+      
+        # Output only. The reason for unhealthy status.
+        # Corresponds to the JSON property `unhealthyReason`
+        # @return [String]
+        attr_accessor :unhealthy_reason
+      
+        # Output only. The time when health info was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_slo_status = args[:availability_slo_status] if args.key?(:availability_slo_status)
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @repair_category = args[:repair_category] if args.key?(:repair_category)
+          @unhealthy_reason = args[:unhealthy_reason] if args.key?(:unhealthy_reason)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # 
       class GetVersionOperationMetadata
         include Google::Apis::Core::Hashable
@@ -17147,6 +17209,7 @@ module Google
         # - IDPF
         # - SNP_SVSM_CAPABLE
         # - CCA_CAPABLE
+        # - SUSPEND_SAFE_FPR
         # For more information, see
         # Enabling guest operating system features.
         # Corresponds to the JSON property `type`
@@ -29095,6 +29158,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Output only. Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # Output only. [Output Only] The current state of Interconnect functionality,
         # which can
         # take one of the following values:
@@ -29163,6 +29231,7 @@ module Google
           @requested_link_count = args[:requested_link_count] if args.key?(:requested_link_count)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @state = args[:state] if args.key?(:state)
           @subzone = args[:subzone] if args.key?(:subzone)
           @wire_groups = args[:wire_groups] if args.key?(:wire_groups)
@@ -32474,6 +32543,19 @@ module Google
         # @return [String]
         attr_accessor :city
       
+        # Output only. The maximum unmetered bandwidth for dynamic paths allowable per
+        # WireGroup for this metro.
+        # Corresponds to the JSON property `maxDynamicPathBandwidthGbps`
+        # @return [Fixnum]
+        attr_accessor :max_dynamic_path_bandwidth_gbps
+      
+        # Output only. The maximum unmetered bandwidth for fixed paths allowable per
+        # WireGroup
+        # for this metro.
+        # Corresponds to the JSON property `maxFixedPathBandwidthGbps`
+        # @return [Fixnum]
+        attr_accessor :max_fixed_path_bandwidth_gbps
+      
         def initialize(**args)
            update!(**args)
         end
@@ -32481,6 +32563,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @city = args[:city] if args.key?(:city)
+          @max_dynamic_path_bandwidth_gbps = args[:max_dynamic_path_bandwidth_gbps] if args.key?(:max_dynamic_path_bandwidth_gbps)
+          @max_fixed_path_bandwidth_gbps = args[:max_fixed_path_bandwidth_gbps] if args.key?(:max_fixed_path_bandwidth_gbps)
         end
       end
       
@@ -35201,6 +35285,13 @@ module Google
         # @return [Google::Apis::ComputeV1::ManagedInstanceShutdownDetails]
         attr_accessor :shutdown_details
       
+        # Output only. The eventual status of the instance. The instance group
+        # manager will not be identified as stable till each managed instance reaches
+        # its targetStatus.
+        # Corresponds to the JSON property `targetStatus`
+        # @return [String]
+        attr_accessor :target_status
+      
         # Output only. [Output Only] Intended version of this instance.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ComputeV1::ManagedInstanceVersion]
@@ -35224,6 +35315,7 @@ module Google
           @properties_from_flexibility_policy = args[:properties_from_flexibility_policy] if args.key?(:properties_from_flexibility_policy)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @shutdown_details = args[:shutdown_details] if args.key?(:shutdown_details)
+          @target_status = args[:target_status] if args.key?(:target_status)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -41911,6 +42003,11 @@ module Google
         # @return [Google::Apis::ComputeV1::Operation::Error]
         attr_accessor :error
       
+        # Metadata for GetHealth operations.
+        # Corresponds to the JSON property `getHealthOperationMetadata`
+        # @return [Google::Apis::ComputeV1::GetHealthOperationMetadata]
+        attr_accessor :get_health_operation_metadata
+      
         # 
         # Corresponds to the JSON property `getVersionOperationMetadata`
         # @return [Google::Apis::ComputeV1::GetVersionOperationMetadata]
@@ -42063,6 +42160,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
+          @get_health_operation_metadata = args[:get_health_operation_metadata] if args.key?(:get_health_operation_metadata)
           @get_version_operation_metadata = args[:get_version_operation_metadata] if args.key?(:get_version_operation_metadata)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
