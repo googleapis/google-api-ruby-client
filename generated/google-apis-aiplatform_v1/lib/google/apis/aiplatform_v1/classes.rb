@@ -75,6 +75,12 @@ module Google
         # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionHumanPose]
         attr_accessor :human_pose
       
+        # Optional. BNS override for model backend. Enabled only for local and autopush
+        # environments by the flag `lvm_allow_model_zoo_bns_override`.
+        # Corresponds to the JSON property `modelEndpointOverride`
+        # @return [String]
+        attr_accessor :model_endpoint_override
+      
         # Model names, as defined in: xyz
         # Corresponds to the JSON property `modelName`
         # @return [String]
@@ -172,6 +178,7 @@ module Google
           @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
           @exr_color_space_override = args[:exr_color_space_override] if args.key?(:exr_color_space_override)
           @human_pose = args[:human_pose] if args.key?(:human_pose)
+          @model_endpoint_override = args[:model_endpoint_override] if args.key?(:model_endpoint_override)
           @model_name = args[:model_name] if args.key?(:model_name)
           @num_diffusion_steps = args[:num_diffusion_steps] if args.key?(:num_diffusion_steps)
           @omni_rewriter = args[:omni_rewriter] if args.key?(:omni_rewriter)
@@ -2425,16 +2432,6 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints]
         attr_accessor :language_hints
       
-        # Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`.
-        # If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the
-        # model performs disfluency removal (eliminating filler words, repetitions, and
-        # false starts), light grammatical cleanup, automatic formatting (paragraphs,
-        # bullet points, numbered lists), and minor user edits (inline self-corrections).
-        # Timestamps and diarization are incompatible with mode `SMART`.
-        # Corresponds to the JSON property `mode`
-        # @return [String]
-        attr_accessor :mode
-      
         # Optional. Configures word-level timestamp generation.
         # Corresponds to the JSON property `wordTimestamp`
         # @return [Boolean]
@@ -2453,7 +2450,6 @@ module Google
           @language_auto = args[:language_auto] if args.key?(:language_auto)
           @language_codes = args[:language_codes] if args.key?(:language_codes)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
-          @mode = args[:mode] if args.key?(:mode)
           @word_timestamp = args[:word_timestamp] if args.key?(:word_timestamp)
         end
       end
@@ -2808,6 +2804,35 @@ module Google
         def update!(**args)
           @id_token = args[:id_token] if args.key?(:id_token)
           @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Request message for SandboxEnvironmentExecutionService.
+      # AuthorizeSandboxEnvironmentAccess.
+      class GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for SandboxEnvironmentExecutionService.
+      # AuthorizeSandboxEnvironmentAccess. Intentionally empty: a successful response
+      # is the authorization result.
+      class GoogleCloudAiplatformV1AuthorizeSandboxEnvironmentAccessResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -23783,6 +23808,11 @@ module Google
       class GoogleCloudAiplatformV1Memory
         include Google::Apis::Core::Hashable
       
+        # Optional. Represents the context of the memory.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
         # Output only. Represents the timestamp when this Memory was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -23880,6 +23910,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @context = args[:context] if args.key?(:context)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @disable_memory_revisions = args[:disable_memory_revisions] if args.key?(:disable_memory_revisions)
@@ -24311,6 +24342,12 @@ module Google
       class GoogleCloudAiplatformV1MemoryRevision
         include Google::Apis::Core::Hashable
       
+        # Output only. Represents the context of the Memory Revision. The context may
+        # include context from both the historical revisions and the extracted content.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
         # Output only. Represents the timestamp when this Memory Revision was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -24361,6 +24398,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @context = args[:context] if args.key?(:context)
           @create_time = args[:create_time] if args.key?(:create_time)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @extracted_memories = args[:extracted_memories] if args.key?(:extracted_memories)
@@ -29236,8 +29274,8 @@ module Google
       class GoogleCloudAiplatformV1OnlineEvaluatorCloudObservability
         include Google::Apis::Core::Hashable
       
-        # Optional. Optional log view that will be used to query logs. If empty, the `
-        # _Default` view will be used.
+        # Optional. Optional log view that will be used to query logs. If empty, the
+        # project's default view (`projects/`project_id``) will be used.
         # Corresponds to the JSON property `logView`
         # @return [String]
         attr_accessor :log_view
@@ -29260,8 +29298,8 @@ module Google
         attr_accessor :trace_scope
       
         # Optional. Optional trace view that will be used to query traces. If empty, the
-        # `_Default` view will be used. NOTE: This field is not supported yet and will
-        # be ignored if set.
+        # `_AllSpans` view from `_Trace` US bucket will be used, i.e. `projects/`
+        # project_id`/locations/us/buckets/_Trace/datasets/Spans/views/_AllSpans`.
         # Corresponds to the JSON property `traceView`
         # @return [String]
         attr_accessor :trace_view
@@ -37867,11 +37905,6 @@ module Google
       class GoogleCloudAiplatformV1SandboxEnvironmentTemplateEgressControlConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The customer VPC network that sandbox egress is routed into.
-        # Corresponds to the JSON property `customerVpcNetwork`
-        # @return [String]
-        attr_accessor :customer_vpc_network
-      
         # Optional. DNS peering configurations that allow sandbox egress to resolve
         # customer-internal domains via the customer VPC.
         # Corresponds to the JSON property `dnsPeeringConfigs`
@@ -37896,7 +37929,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @customer_vpc_network = args[:customer_vpc_network] if args.key?(:customer_vpc_network)
           @dns_peering_configs = args[:dns_peering_configs] if args.key?(:dns_peering_configs)
           @internet_access = args[:internet_access] if args.key?(:internet_access)
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
