@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOrgNumberRegistriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRealmsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +167,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrgNumberRegistry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -421,6 +433,16 @@ module Google
         end
       end
       
+      class ListOrgNumberRegistriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :org_number_registries, as: 'orgNumberRegistries', class: Google::Apis::CloudnumberregistryV1alpha::OrgNumberRegistry, decorator: Google::Apis::CloudnumberregistryV1alpha::OrgNumberRegistry::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListRealmsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -474,6 +496,18 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class OrgNumberRegistry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_project, as: 'adminProject'
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :target_scopes, as: 'targetScopes'
+          property :update_time, as: 'updateTime'
         end
       end
       
