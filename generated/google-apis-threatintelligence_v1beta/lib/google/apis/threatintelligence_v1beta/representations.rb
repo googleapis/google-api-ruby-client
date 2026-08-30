@@ -166,6 +166,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DocumentQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringFeatureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnumerateAlertFacetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -519,6 +543,8 @@ module Google
           property :customer_profile, as: 'customerProfile', class: Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig, decorator: Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig::Representation
       
           property :detail_type, as: 'detailType'
+          property :domain_configuration, as: 'domainConfiguration', class: Google::Apis::ThreatintelligenceV1beta::DomainConfiguration, decorator: Google::Apis::ThreatintelligenceV1beta::DomainConfiguration::Representation
+      
           property :technology_watchlist, as: 'technologyWatchlist', class: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig, decorator: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig::Representation
       
         end
@@ -539,6 +565,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compiled_lucene_query, as: 'compiledLuceneQuery'
           property :document_condition, as: 'documentCondition'
+          property :document_query, as: 'documentQuery', class: Google::Apis::ThreatintelligenceV1beta::DocumentQuery, decorator: Google::Apis::ThreatintelligenceV1beta::DocumentQuery::Representation
+      
           property :legacy_monitor_metadata, as: 'legacyMonitorMetadata', class: Google::Apis::ThreatintelligenceV1beta::LegacyMetadata, decorator: Google::Apis::ThreatintelligenceV1beta::LegacyMetadata::Representation
       
         end
@@ -708,6 +736,40 @@ module Google
           property :document_id, as: 'documentId'
           property :match_score, as: 'matchScore'
           property :severity, as: 'severity'
+        end
+      end
+      
+      class DocumentQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_model, as: 'dataModel'
+          property :query, as: 'query'
+          property :query_type, as: 'queryType'
+        end
+      end
+      
+      class DomainConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domain_settings, as: 'domainSettings', class: Google::Apis::ThreatintelligenceV1beta::DomainSetting, decorator: Google::Apis::ThreatintelligenceV1beta::DomainSetting::Representation
+      
+        end
+      end
+      
+      class DomainMonitoringFeatureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+        end
+      end
+      
+      class DomainSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :domain_monitoring_config, as: 'domainMonitoringConfig', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringFeatureConfig, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringFeatureConfig::Representation
+      
+          property :state, as: 'state'
         end
       end
       
