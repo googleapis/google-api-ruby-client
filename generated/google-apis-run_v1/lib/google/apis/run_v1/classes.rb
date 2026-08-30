@@ -5345,8 +5345,8 @@ module Google
       class ResourceRecord
         include Google::Apis::Core::Hashable
       
-        # Relative name of the object affected by this record. Only applicable for `
-        # CNAME` records. Example: 'www'.
+        # Name of the resource record relative to its apex domain, e.g. `www` for `www.
+        # example.com`. Omitted for apex records.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
