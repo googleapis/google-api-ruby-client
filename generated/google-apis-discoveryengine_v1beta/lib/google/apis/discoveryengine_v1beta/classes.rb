@@ -9126,6 +9126,12 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference
         include Google::Apis::Core::Hashable
       
+        # Output only. Generic structured chunk metadata from upstream data source
+        # connectors.
+        # Corresponds to the JSON property `chunkMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :chunk_metadata
+      
         # Chunk of code snippet from the referenced document.
         # Corresponds to the JSON property `codeSnippet`
         # @return [String]
@@ -9147,6 +9153,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunk_metadata = args[:chunk_metadata] if args.key?(:chunk_metadata)
           @code_snippet = args[:code_snippet] if args.key?(:code_snippet)
           @content = args[:content] if args.key?(:content)
           @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
@@ -21593,6 +21600,12 @@ module Google
       class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference
         include Google::Apis::Core::Hashable
       
+        # Output only. Generic structured chunk metadata from upstream data source
+        # connectors.
+        # Corresponds to the JSON property `chunkMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :chunk_metadata
+      
         # Chunk of code snippet from the referenced document.
         # Corresponds to the JSON property `codeSnippet`
         # @return [String]
@@ -21614,6 +21627,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @chunk_metadata = args[:chunk_metadata] if args.key?(:chunk_metadata)
           @code_snippet = args[:code_snippet] if args.key?(:code_snippet)
           @content = args[:content] if args.key?(:content)
           @document_metadata = args[:document_metadata] if args.key?(:document_metadata)
@@ -33859,6 +33873,11 @@ module Google
       class GoogleCloudDiscoveryengineV1betaStreamAssistRequest
         include Google::Apis::Core::Hashable
       
+        # Specification of agents that are used to serve the request.
+        # Corresponds to the JSON property `agentsSpec`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec]
+        attr_accessor :agents_spec
+      
         # Assistant generation specification for the request. This allows to override
         # the default generation configuration at the engine level.
         # Corresponds to the JSON property `generationSpec`
@@ -33896,11 +33915,52 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agents_spec = args[:agents_spec] if args.key?(:agents_spec)
           @generation_spec = args[:generation_spec] if args.key?(:generation_spec)
           @query = args[:query] if args.key?(:query)
           @session = args[:session] if args.key?(:session)
           @tools_spec = args[:tools_spec] if args.key?(:tools_spec)
           @user_metadata = args[:user_metadata] if args.key?(:user_metadata)
+        end
+      end
+      
+      # Specification of agents that are used to serve the request.
+      class GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specification of agents that are used to serve the request.
+        # Corresponds to the JSON property `agentSpecs`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec>]
+        attr_accessor :agent_specs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_specs = args[:agent_specs] if args.key?(:agent_specs)
+        end
+      end
+      
+      # Specification of an agent.
+      class GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. ID to identify the agent resource serving the request. This field
+        # must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) with a length
+        # limit of 63 characters.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
         end
       end
       
