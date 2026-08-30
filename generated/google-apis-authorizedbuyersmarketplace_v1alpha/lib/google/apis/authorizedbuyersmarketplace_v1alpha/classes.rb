@@ -675,6 +675,17 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. Immutable. The ID of the User List wrapped by this Data Segment.
+        # Curators with a linked Data Partner account can create a data segment that
+        # wraps a user list owned by the linked Data Partner account. User lists can be
+        # uploaded and managed using the [Data Manager API](https://developers.google.
+        # com/data-manager/api/data-partners/audiences). Linking a user list to a data
+        # segment lets you define a segment of inventory that is based on an audience
+        # you create.
+        # Corresponds to the JSON property `userListId`
+        # @return [String]
+        attr_accessor :user_list_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -687,6 +698,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @user_list_id = args[:user_list_id] if args.key?(:user_list_id)
         end
       end
       
