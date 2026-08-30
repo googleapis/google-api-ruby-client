@@ -4167,6 +4167,7 @@ module Google
           property :channel, as: 'channel'
           collection :custom_versions, as: 'customVersions'
           property :default_version, as: 'defaultVersion'
+          collection :preview_versions, as: 'previewVersions'
           property :upgrade_target_version, as: 'upgradeTargetVersion'
           collection :valid_versions, as: 'validVersions'
         end
