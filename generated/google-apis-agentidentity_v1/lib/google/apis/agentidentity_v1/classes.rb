@@ -22,39 +22,38 @@ module Google
   module Apis
     module AgentidentityV1
       
-      # Message describing AccessSummary object
+      # Represents an access summary.
       class AccessSummary
         include Google::Apis::Core::Hashable
       
-        # Output only. The auth_provider that this access summary is associated with.
+        # Output only. The auth provider that this access summary is associated with.
         # Corresponds to the JSON property `authProvider`
         # @return [String]
         attr_accessor :auth_provider
       
-        # Output only. The type of the connector that was used to create this access
-        # summary.
+        # Output only. The auth provider type used to create this access summary.
         # Corresponds to the JSON property `authProviderType`
         # @return [String]
         attr_accessor :auth_provider_type
       
-        # Output only. The first time this user has interacted with this workload.
-        # Rounded to the previous hour.
+        # Output only. The first time this user interacted with this workload, rounded
+        # to the previous hour.
         # Corresponds to the JSON property `firstAccessTime`
         # @return [String]
         attr_accessor :first_access_time
       
-        # Optional. Labels as key value pairs
+        # Optional. Labels as key-value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The most recent time this user has interacted with this workload.
-        # Rounded to the previous hour.
+        # Output only. The most recent time this user interacted with this workload,
+        # rounded to the previous hour.
         # Corresponds to the JSON property `lastAccessTime`
         # @return [String]
         attr_accessor :last_access_time
       
-        # Output only. Identifier. Name of the AccessSummary
+        # Output only. Identifier. The resource name of the access summary.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -70,19 +69,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :scopes
       
-        # Output only. The url of the authentication server that was accessed.
+        # Output only. The URL of the authentication server that was accessed.
         # Corresponds to the JSON property `tokenUrl`
         # @return [String]
         attr_accessor :token_url
       
-        # Output only. The user_id provided by the workload application for this user.
+        # Output only. The user ID provided by the workload application for this user.
         # Not verified by Google.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
       
         # Output only. The identity bound to the workload that this user interacted with
-        # to produce this AccessSummary. Will typically be an agentic spiffe id
+        # to produce this access summary. Typically an agentic SPIFFE ID.
         # Corresponds to the JSON property `workloadId`
         # @return [String]
         attr_accessor :workload_id
@@ -107,11 +106,11 @@ module Google
         end
       end
       
-      # Message describing ApiKeyParams object.
+      # Configuration for API key authentication.
       class ApiKeyParams
         include Google::Apis::Core::Hashable
       
-        # Optional. Input only. The API key for this auth_provider.
+        # Optional. Input only. The API key for this auth provider.
         # Corresponds to the JSON property `apiKey`
         # @return [String]
         attr_accessor :api_key
@@ -197,12 +196,12 @@ module Google
         end
       end
       
-      # Message describing AuthProvider object
+      # Represents an auth provider.
       class AuthProvider
         include Google::Apis::Core::Hashable
       
-        # Optional. List of scopes that are allowed to be requested for this
-        # auth_provider. If this list is non-empty, only scopes within this list may be
+        # Optional. List of scopes that are allowed to be requested for this auth
+        # provider. If this list is non-empty, only scopes within this list may be
         # requested. If this list is empty, all scopes may be requested. Scopes
         # appearing in `blocked_scopes` are disallowed even if they appear in `
         # allowed_scopes`. The number of allowed scopes is limited to 200.
@@ -210,25 +209,25 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_scopes
       
-        # AuthProvider type specific parameters. Required when creating an auth_provider.
+        # Required. Parameters specific to the auth provider type.
         # Corresponds to the JSON property `authProviderTypeParams`
         # @return [Google::Apis::AgentidentityV1::AuthProviderTypeParams]
         attr_accessor :auth_provider_type_params
       
-        # Optional. List of scopes that are blocked from being requested for this
-        # auth_provider. If a scope appears in this list, it will not be requested, even
-        # if it also appears in `allowed_scopes`. `blocked_scopes` takes precedence over
-        # `allowed_scopes`. The number of blocked scopes is limited to 200.
+        # Optional. List of scopes that are blocked from being requested for this auth
+        # provider. If a scope appears in this list, it will not be requested, even if
+        # it also appears in `allowed_scopes`. `blocked_scopes` takes precedence over `
+        # allowed_scopes`. The number of blocked scopes is limited to 200.
         # Corresponds to the JSON property `blockedScopes`
         # @return [Array<String>]
         attr_accessor :blocked_scopes
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The creation timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. This is set to true if the auth_provider is deleted.
+        # Output only. Set to `true` if the auth provider is deleted.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
@@ -239,36 +238,36 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. The time when the auth_provider will expire.
+        # Output only. The time when the auth provider will expire.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
       
-        # Optional. Labels as key value pairs
+        # Optional. Labels as key-value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Identifier. The full resource name of the auth_provider. Format: projects/`
+        # Identifier. The full resource name of the auth provider. Format: projects/`
         # project`/locations/`location`/authProviders/`auth_provider`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. The state of the auth_provider.
+        # Output only. The state of the auth provider.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The update timestamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Optional. Input only. Represents the workload identity in IAM `principal://`
-        # format of the agent(s) that will use this AuthProvider. Example: `principal://
-        # agents.global.org-$`ORG_ID`.system.id.goog/resources/aiplatform/projects/`
-        # PROJECT_ID`/locations/`LOCATIONS`/reasoningEngines/`ID``
+        # Optional. Input only. Identifiers for the agents that will use this auth
+        # provider, starting with `principal://`. For example: `principal://agents.
+        # global.org-$`ORG_ID`.system.id.goog/resources/aiplatform/projects/`PROJECT_ID`/
+        # locations/`LOCATIONS`/reasoningEngines/`ID``
         # Corresponds to the JSON property `workloadIds`
         # @return [Array<String>]
         attr_accessor :workload_ids
@@ -294,26 +293,26 @@ module Google
         end
       end
       
-      # AuthProvider type specific parameters. Required when creating an auth_provider.
+      # Required. Parameters specific to the auth provider type.
       class AuthProviderTypeParams
         include Google::Apis::Core::Hashable
       
-        # Message describing ApiKeyParams object.
+        # Configuration for API key authentication.
         # Corresponds to the JSON property `apiKey`
         # @return [Google::Apis::AgentidentityV1::ApiKeyParams]
         attr_accessor :api_key
       
-        # Message describing GeminiEnterpriseAuthProviderParams object.
+        # Configuration for Gemini Enterprise authentication.
         # Corresponds to the JSON property `geAuthProvider`
         # @return [Google::Apis::AgentidentityV1::GeminiEnterpriseAuthProviderParams]
         attr_accessor :ge_auth_provider
       
-        # Message describing ThreeLeggedOAuth object.
+        # Configuration for 3-legged OAuth (3LO) authentication.
         # Corresponds to the JSON property `threeLeggedOauth`
         # @return [Google::Apis::AgentidentityV1::ThreeLeggedOAuth]
         attr_accessor :three_legged_oauth
       
-        # Message describing TwoLeggedOAuth object.
+        # Configuration for 2-legged OAuth (2LO) authentication.
         # Corresponds to the JSON property `twoLeggedOauth`
         # @return [Google::Apis::AgentidentityV1::TwoLeggedOAuth]
         attr_accessor :two_legged_oauth
@@ -331,22 +330,22 @@ module Google
         end
       end
       
-      # Message describing Authorization object
+      # Represents an authorization.
       class Authorization
         include Google::Apis::Core::Hashable
       
-        # Output only. The client_user_id provided by the client application for their
+        # Output only. The client user ID provided by the client application for their
         # end user. Not verified by Google.
         # Corresponds to the JSON property `clientUserId`
         # @return [String]
         attr_accessor :client_user_id
       
-        # Output only. [Output only] Create time stamp
+        # Output only. The creation timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Identifier. name of resource
+        # Identifier. The resource name of the authorization.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -362,7 +361,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. [Output only] Update time stamp
+        # Output only. The update timestamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -483,7 +482,7 @@ module Google
         end
       end
       
-      # Message for disabling an AuthProvider
+      # Request message for `DisableAuthProvider`.
       class DisableAuthProviderRequest
         include Google::Apis::Core::Hashable
       
@@ -523,7 +522,7 @@ module Google
         end
       end
       
-      # Message for enabling an AuthProvider
+      # Request message for `EnableAuthProvider`.
       class EnableAuthProviderRequest
         include Google::Apis::Core::Hashable
       
@@ -601,7 +600,7 @@ module Google
         end
       end
       
-      # Message describing GeminiEnterpriseAuthProviderParams object.
+      # Configuration for Gemini Enterprise authentication.
       class GeminiEnterpriseAuthProviderParams
         include Google::Apis::Core::Hashable
       
@@ -614,11 +613,11 @@ module Google
         end
       end
       
-      # Message for response to listing AccessSummaries
+      # Response message for `ListAccessSummaries`.
       class ListAccessSummariesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of AccessSummary
+        # The list of access summaries.
         # Corresponds to the JSON property `accessSummaries`
         # @return [Array<Google::Apis::AgentidentityV1::AccessSummary>]
         attr_accessor :access_summaries
@@ -645,11 +644,11 @@ module Google
         end
       end
       
-      # Message for response to listing AuthProviders
+      # Response message for `ListAuthProviders`.
       class ListAuthProvidersResponse
         include Google::Apis::Core::Hashable
       
-        # The list of AuthProvider
+        # The list of auth providers.
         # Corresponds to the JSON property `authProviders`
         # @return [Array<Google::Apis::AgentidentityV1::AuthProvider>]
         attr_accessor :auth_providers
@@ -676,11 +675,11 @@ module Google
         end
       end
       
-      # Message for response to listing Authorizations
+      # Response message for `ListAuthorizations`.
       class ListAuthorizationsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Authorization
+        # The list of authorizations.
         # Corresponds to the JSON property `authorizations`
         # @return [Array<Google::Apis::AgentidentityV1::Authorization>]
         attr_accessor :authorizations
@@ -874,11 +873,11 @@ module Google
         end
       end
       
-      # Response message for QueryAuthProviders.
+      # Response message for `QueryAuthProviders`.
       class QueryAuthProvidersResponse
         include Google::Apis::Core::Hashable
       
-        # The unique list of auth_provider resource names used by the workload.
+        # The unique list of auth provider resource names used by the workload.
         # Corresponds to the JSON property `authProviderNames`
         # @return [Array<String>]
         attr_accessor :auth_provider_names
@@ -900,7 +899,7 @@ module Google
         end
       end
       
-      # Response message for QueryWorkloads.
+      # Response message for `QueryWorkloads`.
       class QueryWorkloadsResponse
         include Google::Apis::Core::Hashable
       
@@ -909,7 +908,8 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The unique list of workload identifiers (agents) that used the auth_provider.
+        # The unique list of identifiers for the agents that used this auth provider,
+        # starting with `principal://`.
         # Corresponds to the JSON property `workloadIds`
         # @return [Array<String>]
         attr_accessor :workload_ids
@@ -925,7 +925,7 @@ module Google
         end
       end
       
-      # Request message for RevokeAuthorization.
+      # Request message for `RevokeAuthorization`.
       class RevokeAuthorizationRequest
         include Google::Apis::Core::Hashable
       
@@ -944,7 +944,7 @@ module Google
         end
       end
       
-      # Response message for RevokeAuthorization.
+      # Response message for `RevokeAuthorization`.
       class RevokeAuthorizationResponse
         include Google::Apis::Core::Hashable
       
@@ -1050,12 +1050,12 @@ module Google
         end
       end
       
-      # Message describing ThreeLeggedOAuth object.
+      # Configuration for 3-legged OAuth (3LO) authentication.
       class ThreeLeggedOAuth
         include Google::Apis::Core::Hashable
       
         # Optional. The authorization endpoint to send users to for consenting to
-        # delegate to the agent. eg. "https://auth.atlassian.com/authorize"
+        # delegate to the agent. For example, "https://auth.atlassian.com/authorize".
         # Corresponds to the JSON property `authorizationUrl`
         # @return [String]
         attr_accessor :authorization_url
@@ -1070,8 +1070,8 @@ module Google
         # @return [String]
         attr_accessor :client_secret
       
-        # Optional. The default continue URI for 3LO flow and it will be used when no
-        # continue URI is provided in the RetrieveCredentials request.
+        # Optional. The default continue URI for the 3LO flow, used when no continue URI
+        # is provided in the RetrieveCredentials request.
         # Corresponds to the JSON property `defaultContinueUri`
         # @return [String]
         attr_accessor :default_continue_uri
@@ -1083,14 +1083,14 @@ module Google
         attr_accessor :enable_pkce
         alias_method :enable_pkce?, :enable_pkce
       
-        # Output only. The redirect URL this auth_provider uses for the OAuth exchange.
-        # This is deterministic based on the name of the auth_provider.
+        # Output only. The redirect URL this auth provider uses for the OAuth exchange.
+        # This is deterministic based on the name of the auth provider.
         # Corresponds to the JSON property `redirectUrl`
         # @return [String]
         attr_accessor :redirect_url
       
         # Optional. The token endpoint for requesting tokens on behalf of an end user.
-        # eg. "https://auth.atlassian.com/oauth/token"
+        # For example, "https://auth.atlassian.com/oauth/token".
         # Corresponds to the JSON property `tokenUrl`
         # @return [String]
         attr_accessor :token_url
@@ -1111,7 +1111,7 @@ module Google
         end
       end
       
-      # Message describing TwoLeggedOAuth object.
+      # Configuration for 2-legged OAuth (2LO) authentication.
       class TwoLeggedOAuth
         include Google::Apis::Core::Hashable
       
@@ -1142,7 +1142,7 @@ module Google
         end
       end
       
-      # Message for undeleting a AuthProvider
+      # Request message for `UndeleteAuthProvider`.
       class UndeleteAuthProviderRequest
         include Google::Apis::Core::Hashable
       

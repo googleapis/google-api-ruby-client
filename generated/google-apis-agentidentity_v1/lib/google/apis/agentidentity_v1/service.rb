@@ -137,9 +137,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single AccessSummary.
+        # Gets details of a single access summary.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the access summary.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -167,7 +167,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists AccessSummaries in a given project and location. Supported Filters: - `
+        # Lists access summaries in a given project and location. Supported filters: - `
         # workload_id`: Filter by the SPIFFE ID of the agent. Example: `workload_id="
         # spiffe://example.com/ns/default/sa/my-agent"`
         # @param [String] parent
@@ -183,7 +183,8 @@ module Google
         #   auth_provider_id, user_id) in ascending order.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   If unspecified, server will pick an appropriate default. The maximum page size
+        #   is 1000.
         # @param [String] page_token
         #   Optional. A token identifying a page of results the server should return.
         # @param [String] fields
@@ -217,14 +218,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new AuthProvider in a given project and location.
+        # Creates a new auth provider in a given project and location.
         # @param [String] parent
-        #   Required. The parent resource where the AuthProvider is created. Format:
+        #   Required. The parent resource where the auth provider is created. Format:
         #   projects/`project`/locations/`location`
         # @param [Google::Apis::AgentidentityV1::AuthProvider] auth_provider_object
         # @param [String] auth_provider_id
-        #   Required. The ID to use for the AuthProvider, which will become the final
-        #   segment of the AuthProvider's resource name. This value should be 1-63
+        #   Required. The ID to use for the auth provider, which will become the final
+        #   segment of the auth provider's resource name. This value should be 1-63
         #   characters, and valid characters are /a-z-/. The first character must be a
         #   lowercase letter, and the last character must be a lowercase letter or a
         #   number.
@@ -270,9 +271,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single AuthProvider.
+        # Deletes a single auth provider.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the auth provider.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -312,10 +313,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disables a single AuthProvider.
+        # Disables a single auth provider.
         # @param [String] name
-        #   Required. Name of the resource Format: projects/`project`/locations/`location`/
-        #   authProviders/`auth_provider`
+        #   Required. The resource name of the auth provider. Format: projects/`project`/
+        #   locations/`location`/authProviders/`auth_provider`
         # @param [Google::Apis::AgentidentityV1::DisableAuthProviderRequest] disable_auth_provider_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -346,10 +347,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enables a single AuthProvider.
+        # Enables a single auth provider.
         # @param [String] name
-        #   Required. Name of the resource Format: projects/`project`/locations/`location`/
-        #   authProviders/`auth_provider`
+        #   Required. The resource name of the auth provider. Format: projects/`project`/
+        #   locations/`location`/authProviders/`auth_provider`
         # @param [Google::Apis::AgentidentityV1::EnableAuthProviderRequest] enable_auth_provider_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -380,9 +381,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single AuthProvider.
+        # Gets details of a single auth provider.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the auth provider.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -455,7 +456,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists AuthProviders in a given project and location.
+        # Lists auth providers in a given project and location.
         # @param [String] parent
         #   Required. The parent resource where the search is performed. Format: projects/`
         #   project`/locations/`location`
@@ -466,14 +467,15 @@ module Google
         #   ascending order.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   If unspecified, server will pick an appropriate default. The maximum page size
+        #   is 1000.
         # @param [String] page_token
         #   Optional. A token, which can be sent as `page_token` to retrieve the next page.
         #   If this field is omitted, the first page is returned.
         # @param [Boolean] show_deleted
-        #   Optional. Deleted auth_providers will be kept with a soft-delete for 30 days
-        #   before being purged. If this field is set to true, deleted auth_providers will
-        #   also be returned.
+        #   Optional. Deleted auth providers will be kept with a soft-delete for 30 days
+        #   before being purged. If this field is set to `true`, deleted auth providers
+        #   will also be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -506,9 +508,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the parameters of a single AuthProvider.
+        # Updates the parameters of a single auth provider.
         # @param [String] name
-        #   Identifier. The full resource name of the auth_provider. Format: projects/`
+        #   Identifier. The full resource name of the auth provider. Format: projects/`
         #   project`/locations/`location`/authProviders/`auth_provider`
         # @param [Google::Apis::AgentidentityV1::AuthProvider] auth_provider_object
         # @param [String] request_id
@@ -524,7 +526,7 @@ module Google
         #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
-        #   AuthProvider resource by the update. The fields specified in the update_mask
+        #   auth provider resource by the update. The fields specified in the `update_mask`
         #   are relative to the resource, not the full request. A field will be
         #   overwritten if it is in the mask. If the user does not provide a mask then all
         #   fields present in the request will be overwritten.
@@ -559,7 +561,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Queries what all auth_providers are used by a given workload_id.
+        # Queries which auth providers are used by a given workload ID.
         # @param [String] parent
         #   Required. The parent resource where the search is performed. Format: projects/`
         #   project`/locations/`location`
@@ -605,16 +607,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Queries what all workloads are using a given auth_provider.
+        # Queries which workloads are using a given auth provider.
         # @param [String] name
-        #   Required. The name of the auth_provider to query. Format: projects/`project`/
+        #   Required. The name of the auth provider to query. Format: projects/`project`/
         #   locations/`location`/authProviders/`auth_provider`
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   If unspecified, server will pick an appropriate default. The maximum page size
+        #   is 1000.
         # @param [String] page_token
         #   Optional. A token, which can be sent as `page_token` to retrieve the next page.
-        #   When paginating, all other parameters provided to QueryWorkloads must match
+        #   When paginating, all other parameters provided to `QueryWorkloads` must match
         #   the call that provided the page token. If this field is omitted, the first
         #   page is returned.
         # @param [String] fields
@@ -646,11 +649,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Revokes all authorizations for a specific user on an AuthProvider. This
-        # deletes all authorization records associated with the user and AuthProvider,
+        # Revokes all authorizations for a specific user on an auth provider. This
+        # deletes all authorization records associated with the user and auth provider,
         # effectively revoking access across all agents.
         # @param [String] name
-        #   Required. The resource name of the AuthProvider. Format: projects/`project`/
+        #   Required. The resource name of the auth provider. Format: projects/`project`/
         #   locations/`location`/authProviders/`auth_provider`
         # @param [Google::Apis::AgentidentityV1::RevokeAuthorizationRequest] revoke_authorization_request_object
         # @param [String] fields
@@ -758,10 +761,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeletes a single AuthProvider.
+        # Undeletes a single auth provider.
         # @param [String] name
-        #   Required. Name of the resource Format: projects/`project`/locations/`location`/
-        #   authProviders/`auth_provider`
+        #   Required. The resource name of the auth provider. Format: projects/`project`/
+        #   locations/`location`/authProviders/`auth_provider`
         # @param [Google::Apis::AgentidentityV1::UndeleteAuthProviderRequest] undelete_auth_provider_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -792,10 +795,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single Authorization.
+        # Deletes a single authorization.
         # @param [String] name
-        #   Required. The name of the Authorization to delete. Format: projects/`project`/
-        #   locations/`location`/authProviders/`auth_provider`/authorizations/`
+        #   Required. The resource name of the authorization to delete. Format: projects/`
+        #   project`/locations/`location`/authProviders/`auth_provider`/authorizations/`
         #   authorization`
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -836,9 +839,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single Authorization.
+        # Gets details of a single authorization.
         # @param [String] name
-        #   Required. Name of the resource
+        #   Required. The resource name of the authorization.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -866,7 +869,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Authorizations in a given project and location.
+        # Lists authorizations in a given project and location.
         # @param [String] parent
         #   Required. The parent resource where the search is performed. Format: projects/`
         #   project`/locations/`location`/authProviders/`auth_provider`
@@ -878,7 +881,8 @@ module Google
         #   authorization_id in ascending order.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
-        #   If unspecified, server will pick an appropriate default.
+        #   If unspecified, server will pick an appropriate default. The maximum page size
+        #   is 1000.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListAuthorizations` call.
         #   Provide this to retrieve the subsequent page. When paginating, all other
