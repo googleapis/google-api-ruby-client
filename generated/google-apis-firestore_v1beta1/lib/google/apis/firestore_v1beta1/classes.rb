@@ -180,7 +180,7 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -258,7 +258,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -318,7 +318,7 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::TransactionOptions]
         attr_accessor :options
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -468,7 +468,7 @@ module Google
       class CommitRequest
         include Google::Apis::Core::Hashable
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -875,7 +875,7 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -2129,7 +2129,7 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -2217,7 +2217,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :remove_target
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -2378,7 +2378,7 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -2611,11 +2611,31 @@ module Google
         end
       end
       
-      # Options for a server request.
+      # Options for a request.
       class RequestOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. The request tags for the request.
+        # Optional. The request tags for the request. Request tags are user-provided
+        # strings used for usage monitoring, cost management, and observability. Callers
+        # can associate custom application context (such as component, microservice,
+        # feature name, or operation type) with database requests. These tags are
+        # collected and aggregated in usage and monitoring reports, allowing billable
+        # operations and usage metrics to be sliced and analyzed by tag. These tags *
+        # only* show up in monitoring and are visible in administrative operations (such
+        # as usage reports). They do not affect data storage, query semantics, or
+        # request execution. Cardinality and Best Practices: - Request tags are most
+        # effective when using a bounded set of distinct values (e.g., fewer than 100
+        # distinct tags across an entire database). Using a large number of distinct
+        # tags may result in tags being omitted from top usage dashboards. - Use
+        # structured identifiers (for example: `app=cart`, `env=prod`, `service=checkout`
+        # ) and avoid high-cardinality values such as UUIDs, request IDs, timestamps,
+        # user IDs, or document keys. - Do not include sensitive data or personally
+        # identifiable information (PII) in request tags, as they show up in
+        # administrative monitoring. The tags are processed as follows: - Leading and
+        # trailing whitespace is trimmed. - Empty tags (after trimming) are filtered out.
+        # - Truncated to a maximum of 510 characters. - Deduplicated within the same
+        # request. - Limited to a maximum of 50 tags per request (excess tags are
+        # silently discarded).
         # Corresponds to the JSON property `requestTags`
         # @return [Array<String>]
         attr_accessor :request_tags
@@ -2634,7 +2654,7 @@ module Google
       class RollbackRequest
         include Google::Apis::Core::Hashable
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -2677,7 +2697,7 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -2775,7 +2795,7 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
@@ -3499,7 +3519,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Options for a server request.
+        # Options for a request.
         # Corresponds to the JSON property `requestOptions`
         # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
         attr_accessor :request_options
