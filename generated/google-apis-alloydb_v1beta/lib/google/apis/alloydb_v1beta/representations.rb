@@ -22,12 +22,6 @@ module Google
   module Apis
     module AlloydbV1beta
       
-      class AlloydbClhErrorsAlloyDbInternalDebugInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AuthorizedNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -812,13 +806,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AlloydbClhErrorsAlloyDbInternalDebugInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :original_error, as: 'originalError'
-        end
       end
       
       class AuthorizedNetwork
