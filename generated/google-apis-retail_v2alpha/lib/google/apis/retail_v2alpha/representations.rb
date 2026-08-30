@@ -472,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,12 +485,6 @@ module Google
       end
       
       class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResultAgentPrompt
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2452,6 +2452,8 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_prompts, as: 'agentPrompts', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt::Representation
+      
           hash :attribute_results, as: 'attributeResults', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult::Representation
       
           property :attribution_token, as: 'attributionToken'
@@ -2459,6 +2461,13 @@ module Google
       
           collection :recent_search_results, as: 'recentSearchResults', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseRecentSearchResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseRecentSearchResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt, as: 'prompt'
         end
       end
       
@@ -2472,7 +2481,7 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :agent_prompts, as: 'agentPrompts', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResultAgentPrompt, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResultAgentPrompt::Representation
+          collection :agent_prompts, as: 'agentPrompts', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt::Representation
       
           hash :attributes, as: 'attributes', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute::Representation
       
@@ -2480,13 +2489,6 @@ module Google
       
           property :suggestion, as: 'suggestion'
           property :total_product_count, as: 'totalProductCount'
-        end
-      end
-      
-      class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResultAgentPrompt
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :prompt, as: 'prompt'
         end
       end
       

@@ -2333,6 +2333,12 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponse
         include Google::Apis::Core::Hashable
       
+        # Conversational prompts to trigger agents like Shopping Agent. This is an
+        # experimental feature for select customers.
+        # Corresponds to the JSON property `agentPrompts`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt>]
+        attr_accessor :agent_prompts
+      
         # A map of matched attribute suggestions. This field is only available for `
         # cloud-retail` dataset. Current supported keys: * `brands` * `categories`
         # Corresponds to the JSON property `attributeResults`
@@ -2371,10 +2377,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_prompts = args[:agent_prompts] if args.key?(:agent_prompts)
           @attribute_results = args[:attribute_results] if args.key?(:attribute_results)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @completion_results = args[:completion_results] if args.key?(:completion_results)
           @recent_search_results = args[:recent_search_results] if args.key?(:recent_search_results)
+        end
+      end
+      
+      # A conversational prompt to trigger agents like Shopping Agent.
+      class GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt
+        include Google::Apis::Core::Hashable
+      
+        # The conversational prompt string.
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt = args[:prompt] if args.key?(:prompt)
         end
       end
       
@@ -2401,12 +2427,11 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult
         include Google::Apis::Core::Hashable
       
-        # Conversational prompts to trigger agents like Shopping Agent. There may be
-        # multiple prompts for a single suggestion. This is an experimental feature for
-        # select customers. If you want to receive this prompt information, reach out to
-        # the Retail support team.
+        # Deprecated: Use CompleteQueryResponse.agent_prompts instead. Conversational
+        # prompts to trigger agents like Shopping Agent. There may be multiple prompts
+        # for a single suggestion. This is an experimental feature for select customers.
         # Corresponds to the JSON property `agentPrompts`
-        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResultAgentPrompt>]
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt>]
         attr_accessor :agent_prompts
       
         # Custom attributes for the suggestion term. * For `user-data`, the attributes
@@ -2448,25 +2473,6 @@ module Google
           @facets = args[:facets] if args.key?(:facets)
           @suggestion = args[:suggestion] if args.key?(:suggestion)
           @total_product_count = args[:total_product_count] if args.key?(:total_product_count)
-        end
-      end
-      
-      # A conversational prompt to trigger agents like Shopping Agent.
-      class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResultAgentPrompt
-        include Google::Apis::Core::Hashable
-      
-        # The conversational prompt string.
-        # Corresponds to the JSON property `prompt`
-        # @return [String]
-        attr_accessor :prompt
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @prompt = args[:prompt] if args.key?(:prompt)
         end
       end
       
