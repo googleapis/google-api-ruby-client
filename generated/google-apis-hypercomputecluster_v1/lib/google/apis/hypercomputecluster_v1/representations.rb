@@ -479,6 +479,7 @@ module Google
           property :reconciling, as: 'reconciling'
           hash :storage_resources, as: 'storageResources', class: Google::Apis::HypercomputeclusterV1::StorageResource, decorator: Google::Apis::HypercomputeclusterV1::StorageResource::Representation
       
+          property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
       end
