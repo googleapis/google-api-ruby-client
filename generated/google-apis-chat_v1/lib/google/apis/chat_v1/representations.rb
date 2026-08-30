@@ -658,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMessagePinsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListMessagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -809,6 +815,12 @@ module Google
       end
       
       class MessageDeletedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessagePin
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2280,6 +2292,15 @@ module Google
         end
       end
       
+      class ListMessagePinsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :message_pins, as: 'messagePins', class: Google::Apis::ChatV1::MessagePin, decorator: Google::Apis::ChatV1::MessagePin::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2538,6 +2559,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
       
+        end
+      end
+      
+      class MessagePin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :name, as: 'name'
         end
       end
       
