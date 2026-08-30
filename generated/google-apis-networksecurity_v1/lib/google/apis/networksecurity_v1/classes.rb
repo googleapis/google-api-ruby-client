@@ -225,18 +225,20 @@ module Google
       class AuthzPolicy
         include Google::Apis::Core::Hashable
       
-        # Required. Can be one of `ALLOW`, `DENY`, `CUSTOM`. When the action is `CUSTOM`,
-        # `customProvider` must be specified. When the action is `ALLOW`, only requests
-        # matching the policy will be allowed. When the action is `DENY`, only requests
-        # matching the policy will be denied. When a request arrives, the policies are
-        # evaluated in the following order: 1. If there is a `CUSTOM` policy that
-        # matches the request, the `CUSTOM` policy is evaluated using the custom
-        # authorization providers and the request is denied if the provider rejects the
-        # request. 2. If there are any `DENY` policies that match the request, the
-        # request is denied. 3. If there are no `ALLOW` policies for the resource or if
-        # any of the `ALLOW` policies match the request, the request is allowed. 4. Else
-        # the request is denied by default if none of the configured AuthzPolicies with `
-        # ALLOW` action match the request.
+        # Required. Can be one of `ALLOW`, `DENY`, `CUSTOM`, `DENY_BY_DEFAULT`. When the
+        # action is `CUSTOM`, `customProvider` must be specified. When the action is `
+        # ALLOW`, only requests matching the policy will be allowed. When the action is `
+        # DENY`, only requests matching the policy will be denied. When the action is `
+        # DENY_BY_DEFAULT`, no `http_rules` or `network_rules` can be specified. When a
+        # request arrives, the policies are evaluated in the following order: 1. If
+        # there is a `CUSTOM` policy that matches the request, the `CUSTOM` policy is
+        # evaluated using the custom authorization providers and the request is denied
+        # if the provider rejects the request. 2. If there are any `DENY` policies that
+        # match the request, the request is denied. 3. If any of the `ALLOW` policies
+        # match the request, the request is allowed. 4. If a `DENY_BY_DEFAULT` policy is
+        # applied to the resource, the request is denied (unless it was explicitly
+        # allowed by a `CUSTOM` or `ALLOW` policy). 5. Else, the request is allowed by
+        # default if no other policies are configured.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
@@ -768,12 +770,12 @@ module Google
       class AuthzPolicyAuthzRuleToRequestOperationMcpMethod
         include Google::Apis::Core::Hashable
       
-        # Required. The MCP method to match against. Allowed values are as follows: 1. `
-        # tools`, `prompts`, `resources` - these will match against all sub methods
-        # under the respective methods. 2. `prompts/list`, `tools/list`, `resources/list`
-        # , `resources/templates/list` 3. `prompts/get`, `tools/call`, `resources/
-        # subscribe`, `resources/unsubscribe`, `resources/read` Params cannot be
-        # specified for categories 1 and 2.
+        # Required. The MCP method to match against. Allowed values include: 1. `tools`,
+        # `prompts`, `resources` - these will match against all sub methods under the
+        # respective methods. 2. `prompts/list`, `tools/list`, `resources/list`, `
+        # resources/templates/list` 3. `prompts/get`, `tools/call`, `resources/subscribe`
+        # , `resources/unsubscribe`, `resources/read` Params cannot be specified for
+        # categories 1 and 2.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -874,9 +876,9 @@ module Google
         # extensions must share the same load balancing scheme. Required only when
         # targeting forwarding rules. If targeting Secure Web Proxy, this field must be `
         # INTERNAL_MANAGED` or not specified. Must not be specified when targeting Agent
-        # Gateway. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more
-        # information, refer to [Backend services overview](https://cloud.google.com/
-        # load-balancing/docs/backend-service).
+        # Gateway. Supported values include `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`.
+        # For more information, refer to [Backend services overview](https://cloud.
+        # google.com/load-balancing/docs/backend-service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -4921,6 +4923,12 @@ module Google
         # @return [String]
         attr_accessor :ca_pool
       
+        # Optional. The mode used to issue certificates (local CA signing vs direct leaf)
+        # .
+        # Corresponds to the JSON property `certificateIssuanceMode`
+        # @return [String]
+        attr_accessor :certificate_issuance_mode
+      
         # Output only. The timestamp when the resource was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -5003,6 +5011,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ca_pool = args[:ca_pool] if args.key?(:ca_pool)
+          @certificate_issuance_mode = args[:certificate_issuance_mode] if args.key?(:certificate_issuance_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
           @custom_tls_features = args[:custom_tls_features] if args.key?(:custom_tls_features)
           @description = args[:description] if args.key?(:description)
