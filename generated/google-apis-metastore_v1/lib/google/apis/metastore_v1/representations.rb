@@ -70,7 +70,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackfillStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigLakeMetastoreMigrationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -94,19 +106,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CdcConfig
+      class CatalogReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudSqlConnectionConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudSqlMigrationConfig
+      class CatalogSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DatabaseReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +173,18 @@ module Google
       end
       
       class ErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionPlan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecutionResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HiveConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HiveMetastoreConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +221,12 @@ module Google
       end
       
       class HiveMetastoreVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IcebergConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,6 +346,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MigrationReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MigrationSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MoveTableToDatabaseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +389,12 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +478,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TableSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TelemetryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +503,12 @@ module Google
       end
       
       class TestIamPermissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValueDiff
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -504,6 +582,16 @@ module Google
         end
       end
       
+      class BackfillStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :migration_summary, as: 'migrationSummary', class: Google::Apis::MetastoreV1::MigrationSummary, decorator: Google::Apis::MetastoreV1::MigrationSummary::Representation
+      
+          property :report_path, as: 'reportPath'
+          property :state, as: 'state'
+        end
+      end
+      
       class Backup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -515,6 +603,22 @@ module Google
           property :service_revision, as: 'serviceRevision', class: Google::Apis::MetastoreV1::Service, decorator: Google::Apis::MetastoreV1::Service::Representation
       
           property :state, as: 'state'
+        end
+      end
+      
+      class BigLakeMetastoreMigrationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backfill_status, as: 'backfillStatus', class: Google::Apis::MetastoreV1::BackfillStatus, decorator: Google::Apis::MetastoreV1::BackfillStatus::Representation
+      
+          property :conflict_policy, as: 'conflictPolicy'
+          property :dry_run, as: 'dryRun'
+          property :hive_config, as: 'hiveConfig', class: Google::Apis::MetastoreV1::HiveConfig, decorator: Google::Apis::MetastoreV1::HiveConfig::Representation
+      
+          property :iceberg_config, as: 'icebergConfig', class: Google::Apis::MetastoreV1::IcebergConfig, decorator: Google::Apis::MetastoreV1::IcebergConfig::Representation
+      
+          property :mode, as: 'mode'
+          property :report_path, as: 'reportPath'
         end
       end
       
@@ -540,39 +644,22 @@ module Google
         end
       end
       
-      class CdcConfig
+      class CatalogReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :bucket, as: 'bucket'
-          property :password, as: 'password'
-          property :reverse_proxy_subnet, as: 'reverseProxySubnet'
-          property :root_path, as: 'rootPath'
-          property :subnet_ip_range, as: 'subnetIpRange'
-          property :username, as: 'username'
-          property :vpc_network, as: 'vpcNetwork'
+          property :catalog, as: 'catalog'
+          property :catalog_type, as: 'catalogType'
+          hash :database_reports, as: 'databaseReports', class: Google::Apis::MetastoreV1::DatabaseReport, decorator: Google::Apis::MetastoreV1::DatabaseReport::Representation
+      
         end
       end
       
-      class CloudSqlConnectionConfig
+      class CatalogSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :hive_database_name, as: 'hiveDatabaseName'
-          property :instance_connection_name, as: 'instanceConnectionName'
-          property :ip_address, as: 'ipAddress'
-          property :nat_subnet, as: 'natSubnet'
-          property :password, as: 'password'
-          property :port, as: 'port'
-          property :proxy_subnet, as: 'proxySubnet'
-          property :username, as: 'username'
-        end
-      end
-      
-      class CloudSqlMigrationConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cdc_config, as: 'cdcConfig', class: Google::Apis::MetastoreV1::CdcConfig, decorator: Google::Apis::MetastoreV1::CdcConfig::Representation
-      
-          property :cloud_sql_connection_config, as: 'cloudSqlConnectionConfig', class: Google::Apis::MetastoreV1::CloudSqlConnectionConfig, decorator: Google::Apis::MetastoreV1::CloudSqlConnectionConfig::Representation
+          property :catalog, as: 'catalog'
+          property :catalog_type, as: 'catalogType'
+          collection :database_summaries, as: 'databaseSummaries', class: Google::Apis::MetastoreV1::DatabaseSummary, decorator: Google::Apis::MetastoreV1::DatabaseSummary::Representation
       
         end
       end
@@ -618,6 +705,30 @@ module Google
         end
       end
       
+      class DatabaseReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :execution_plan, as: 'executionPlan', class: Google::Apis::MetastoreV1::ExecutionPlan, decorator: Google::Apis::MetastoreV1::ExecutionPlan::Representation
+      
+          property :execution_result, as: 'executionResult', class: Google::Apis::MetastoreV1::ExecutionResult, decorator: Google::Apis::MetastoreV1::ExecutionResult::Representation
+      
+          hash :table_reports, as: 'tableReports', class: Google::Apis::MetastoreV1::TableReport, decorator: Google::Apis::MetastoreV1::TableReport::Representation
+      
+        end
+      end
+      
+      class DatabaseSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database, as: 'database'
+          property :plan_action, as: 'planAction'
+          property :result_status, as: 'resultStatus'
+          property :table_summary, as: 'tableSummary', class: Google::Apis::MetastoreV1::TableSummary, decorator: Google::Apis::MetastoreV1::TableSummary::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -635,6 +746,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :details, as: 'details'
+        end
+      end
+      
+      class ExecutionPlan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          hash :diffs, as: 'diffs', class: Google::Apis::MetastoreV1::ValueDiff, decorator: Google::Apis::MetastoreV1::ValueDiff::Representation
+      
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class ExecutionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :remediation, as: 'remediation'
+          property :state, as: 'state'
         end
       end
       
@@ -675,6 +805,14 @@ module Google
         end
       end
       
+      class HiveConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog, as: 'catalog'
+          collection :databases, as: 'databases'
+        end
+      end
+      
       class HiveMetastoreConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -693,6 +831,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_default, as: 'isDefault'
           property :version, as: 'version'
+        end
+      end
+      
+      class IcebergConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog, as: 'catalog'
+          collection :namespaces, as: 'namespaces'
         end
       end
       
@@ -876,7 +1022,7 @@ module Google
       class MigrationExecution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_sql_migration_config, as: 'cloudSqlMigrationConfig', class: Google::Apis::MetastoreV1::CloudSqlMigrationConfig, decorator: Google::Apis::MetastoreV1::CloudSqlMigrationConfig::Representation
+          property :biglake_metastore_migration_config, as: 'biglakeMetastoreMigrationConfig', class: Google::Apis::MetastoreV1::BigLakeMetastoreMigrationConfig, decorator: Google::Apis::MetastoreV1::BigLakeMetastoreMigrationConfig::Representation
       
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
@@ -884,6 +1030,27 @@ module Google
           property :phase, as: 'phase'
           property :state, as: 'state'
           property :state_message, as: 'stateMessage'
+        end
+      end
+      
+      class MigrationReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :catalog_reports, as: 'catalogReports', class: Google::Apis::MetastoreV1::CatalogReport, decorator: Google::Apis::MetastoreV1::CatalogReport::Representation
+      
+          property :summary, as: 'summary', class: Google::Apis::MetastoreV1::MigrationSummary, decorator: Google::Apis::MetastoreV1::MigrationSummary::Representation
+      
+        end
+      end
+      
+      class MigrationSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :catalog_summaries, as: 'catalogSummaries', class: Google::Apis::MetastoreV1::CatalogSummary, decorator: Google::Apis::MetastoreV1::CatalogSummary::Representation
+      
+          property :create_time, as: 'createTime'
+          property :dry_run, as: 'dryRun'
+          property :service, as: 'service'
         end
       end
       
@@ -941,6 +1108,15 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class PartitionReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partition_failed_count, :numeric_string => true, as: 'partitionFailedCount'
+          property :partition_success_count, :numeric_string => true, as: 'partitionSuccessCount'
+          property :state, as: 'state'
         end
       end
       
@@ -1077,6 +1253,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :migration_execution, as: 'migrationExecution', class: Google::Apis::MetastoreV1::MigrationExecution, decorator: Google::Apis::MetastoreV1::MigrationExecution::Representation
       
+          property :migration_execution_id, as: 'migrationExecutionId'
           property :request_id, as: 'requestId'
         end
       end
@@ -1102,6 +1279,31 @@ module Google
         end
       end
       
+      class TableReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_plan, as: 'executionPlan', class: Google::Apis::MetastoreV1::ExecutionPlan, decorator: Google::Apis::MetastoreV1::ExecutionPlan::Representation
+      
+          property :execution_result, as: 'executionResult', class: Google::Apis::MetastoreV1::ExecutionResult, decorator: Google::Apis::MetastoreV1::ExecutionResult::Representation
+      
+          property :partition_discovered_count, :numeric_string => true, as: 'partitionDiscoveredCount'
+          property :partition_report, as: 'partitionReport', class: Google::Apis::MetastoreV1::PartitionReport, decorator: Google::Apis::MetastoreV1::PartitionReport::Representation
+      
+          property :table, as: 'table'
+        end
+      end
+      
+      class TableSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partition_discovered_count, :numeric_string => true, as: 'partitionDiscoveredCount'
+          property :partition_failed_count, :numeric_string => true, as: 'partitionFailedCount'
+          property :partition_success_count, :numeric_string => true, as: 'partitionSuccessCount'
+          hash :plan_counts, as: 'planCounts'
+          hash :result_counts, as: 'resultCounts'
+        end
+      end
+      
       class TelemetryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1120,6 +1322,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class ValueDiff
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_value, as: 'sourceValue'
+          property :target_value, as: 'targetValue'
         end
       end
     end
