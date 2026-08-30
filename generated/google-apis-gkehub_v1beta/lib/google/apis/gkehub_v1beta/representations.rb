@@ -844,6 +844,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerStageSoakDurationOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2624,6 +2630,13 @@ module Google
         end
       end
       
+      class PerStageSoakDurationOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :stage_overrides, as: 'stageOverrides'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2854,12 +2867,15 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
+          property :ignore_cluster_disruption_budgets, as: 'ignoreClusterDisruptionBudgets'
+          property :ignore_maintenance_policies, as: 'ignoreMaintenancePolicies'
           property :intent, as: 'intent'
           hash :labels, as: 'labels'
           hash :membership_states, as: 'membershipStates', class: Google::Apis::GkehubV1beta::RolloutMembershipState, decorator: Google::Apis::GkehubV1beta::RolloutMembershipState::Representation
       
           property :name, as: 'name'
           property :rollout_sequence, as: 'rolloutSequence'
+          hash :stage_soak_duration_overrides, as: 'stageSoakDurationOverrides'
           collection :stages, as: 'stages', class: Google::Apis::GkehubV1beta::RolloutStage, decorator: Google::Apis::GkehubV1beta::RolloutStage::Representation
       
           property :state, as: 'state'
@@ -3125,6 +3141,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :force, as: 'force'
+          property :ignore_cluster_disruption_budgets, as: 'ignoreClusterDisruptionBudgets'
+          property :ignore_maintenance_policies, as: 'ignoreMaintenancePolicies'
+          property :patch_only, as: 'patchOnly'
+          property :soak_duration_override_all_stages, as: 'soakDurationOverrideAllStages'
+          property :soak_duration_override_per_stage, as: 'soakDurationOverridePerStage', class: Google::Apis::GkehubV1beta::PerStageSoakDurationOverrides, decorator: Google::Apis::GkehubV1beta::PerStageSoakDurationOverrides::Representation
+      
           property :upgrade_type, as: 'upgradeType'
           property :version, as: 'version'
         end
