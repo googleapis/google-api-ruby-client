@@ -213,9 +213,14 @@ module Google
       end
       
       # Log entry for Backup and Restore Job for resources using BackupPlan based
-      # protection. Next Id: 26
+      # protection. Next Id: 27
       class BdrBackupRestoreJobLog
         include Google::Apis::Core::Hashable
+      
+        # The auto-protection policy that created the backup.
+        # Corresponds to the JSON property `autoProtectionPolicy`
+        # @return [String]
+        attr_accessor :auto_protection_policy
       
         # Backup consistency time.
         # Corresponds to the JSON property `backupConsistencyTime`
@@ -351,6 +356,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_protection_policy = args[:auto_protection_policy] if args.key?(:auto_protection_policy)
           @backup_consistency_time = args[:backup_consistency_time] if args.key?(:backup_consistency_time)
           @backup_name = args[:backup_name] if args.key?(:backup_name)
           @backup_plan_name = args[:backup_plan_name] if args.key?(:backup_plan_name)
