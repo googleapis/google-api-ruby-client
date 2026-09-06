@@ -190,9 +190,9 @@ module Google
         #   partner_link_id` - `owning_account.account_type` - `owning_account.account_id`
         #   - `partner_account.account_type` - `partner_account.account_id` - `feature_set`
         #   For partner links with the FEATURE_SET_AD_EVENT_MANAGEMENT feature set, the
-        #   following fields are also supported: - `partner_customer_account.account_id`
-        #   Example: `owning_account.account_type = "GOOGLE_ADS" AND partner_account.
-        #   account_id = 987654321`
+        #   following fields are also supported: - `partner_customer_account.account_id` -
+        #   `partner_link_metadata.implicit_accounts.account_id` Example: `owning_account.
+        #   account_type = "GOOGLE_ADS" AND partner_account.account_id = 987654321`
         # @param [Fixnum] page_size
         #   The maximum number of partner links to return. The service may return fewer
         #   than this value. If unspecified, at most 50 partner links will be returned.
