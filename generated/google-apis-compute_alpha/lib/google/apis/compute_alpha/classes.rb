@@ -5493,6 +5493,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The URL of the network attachment that this resource
+        # belongs to.projects/`project`/regions/`region_name`/networkAttachments/`
+        # network_attachment_name`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
         # Configures traffic steering properties of internal passthrough Network
         # Load Balancers.
         # networkPassThroughLbTrafficPolicy cannot be specified with haPolicy.
@@ -5586,6 +5593,15 @@ module Google
         # Corresponds to the JSON property `serviceBindings`
         # @return [Array<String>]
         attr_accessor :service_bindings
+      
+        # Optional. The service class ID associated with this resource.
+        # Producer Service's Service class ID for the region of this backend
+        # service. Can only be used with network_attachment. It is not possible to
+        # use on its own; however, network_attachment can be used without
+        # service_class_id.
+        # Corresponds to the JSON property `serviceClassId`
+        # @return [String]
+        attr_accessor :service_class_id
       
         # URL to networkservices.ServiceLbPolicy resource.
         # Can only be set if load balancing scheme is EXTERNAL_MANAGED,
@@ -5690,6 +5706,7 @@ module Google
           @metadatas = args[:metadatas] if args.key?(:metadatas)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_pass_through_lb_traffic_policy = args[:network_pass_through_lb_traffic_policy] if args.key?(:network_pass_through_lb_traffic_policy)
           @orchestration_info = args[:orchestration_info] if args.key?(:orchestration_info)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
@@ -5703,6 +5720,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @service_bindings = args[:service_bindings] if args.key?(:service_bindings)
+          @service_class_id = args[:service_class_id] if args.key?(:service_class_id)
           @service_lb_policy = args[:service_lb_policy] if args.key?(:service_lb_policy)
           @session_affinity = args[:session_affinity] if args.key?(:session_affinity)
           @strong_session_affinity_cookie = args[:strong_session_affinity_cookie] if args.key?(:strong_session_affinity_cookie)
@@ -6514,7 +6532,8 @@ module Google
         # The name of the VM instance of the leader network endpoint. The
         # instance must already be attached to the NEG specified in the
         # haPolicy.leader.backendGroup.
-        # The name must be 1-63 characters long, and comply with RFC1035.
+        # The value must be a valid RFC1035 name (1-63 characters) or a valid
+        # instance URL.
         # Authorization requires the following IAM permission on the
         # specified resource instance: compute.instances.use
         # Corresponds to the JSON property `instance`
@@ -8677,18 +8696,18 @@ module Google
         end
       end
       
-      # A request to recommend the best duration for extending an existing
-      # Future Reservation in CALENDAR mode, that is equal or less than the specified
-      # extension duration.
+      # A request to recommend the maximum duration for extending an existing future
+      # reservation in calendar mode. The recommended duration is shorter than or
+      # equal to the specified extension duration.
       class CalendarModeExtensionAdviceRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The desired end time after the Future Reservation is extended.
+        # Required. The desired end time for the extension.
         # Corresponds to the JSON property `endTimeNotLaterThan`
         # @return [String]
         attr_accessor :end_time_not_later_than
       
-        # Required. Reference to the Future Reservation, in the format:
+        # Required. Reference to the future reservation, in the format:
         # projects/`project`/zones/`zone`/futureReservations/`name`
         # Full URIs that include hostnames (like compute.googleapis.com or
         # www.googleapis.com) are also supported.
@@ -8707,16 +8726,16 @@ module Google
         end
       end
       
-      # A response containing the recommended duration to extend a
-      # Future Reservation in CALENDAR mode based on the available capacity during
-      # the extension period.
+      # A response that contains the recommended duration for extending
+      # a future reservation in calendar mode based on available capacity
+      # during the extension period.
       class CalendarModeExtensionAdviceResponse
         include Google::Apis::Core::Hashable
       
-        # The recommended end time for the extension, which will either be
-        # the end time requested by the caller or the longest alternative for
-        # which there is sufficient capacity. If extension is not possible, this
-        # field will be empty, and not_recommended_reason will be populated instead.
+        # The recommended end time for the extension, which is either the end time
+        # requested by the caller or the longest alternative with sufficient
+        # capacity. If the extension is not possible, this field is empty, and
+        # notRecommendedReason is populated instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -8726,7 +8745,8 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CalendarModeExtensionAdviceResponseNotRecommendedReason]
         attr_accessor :not_recommended_reason
       
-        # Unique id of the recommendation, a UUID string generated by the API.
+        # The unique ID of the recommendation, which is a UUID string generated by
+        # the API.
         # Corresponds to the JSON property `recommendationId`
         # @return [String]
         attr_accessor :recommendation_id
@@ -8747,10 +8767,9 @@ module Google
       class CalendarModeExtensionAdviceResponseNotRecommendedReason
         include Google::Apis::Core::Hashable
       
-        # Details (human readable) describing why the recommendation
-        # was not provided. For example, if the status is CONDITION_NOT_MET,
-        # then this field will contain information about why the requested
-        # extension duration is not eligible.
+        # Human-readable details describing why the recommendation wasn't provided.
+        # For example, if the status is CONDITIONS_NOT_MET, this field explains why
+        # the requested extension duration isn't possible.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
@@ -14176,6 +14195,26 @@ module Google
         end
       end
       
+      # Dynamic compression policy for this URL Map's route.
+      class DynamicCompressionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Compress text responses using Brotli or gzip compression, based on
+        # the client's Accept-Encoding header.
+        # Corresponds to the JSON property `compressionMode`
+        # @return [String]
+        attr_accessor :compression_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compression_mode = args[:compression_mode] if args.key?(:compression_mode)
+        end
+      end
+      
       # Describes the cause of the error with structured details.
       # Example of an error when contacting the "pubsub.googleapis.com" API when it
       # is not enabled:
@@ -17039,6 +17078,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The URL of the network attachment that this resource
+        # belongs to.projects/`project`/regions/`region_name`/networkAttachments/`
+        # network_attachment_name`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
         # This signifies the networking tier used for configuring
         # this load balancer and can only take the following values:PREMIUM, STANDARD.
         # For regional ForwardingRule, the valid values are PREMIUM andSTANDARD. For
@@ -17146,6 +17192,14 @@ module Google
         # Corresponds to the JSON property `selfLinkWithId`
         # @return [String]
         attr_accessor :self_link_with_id
+      
+        # Optional. Producer Service's Service class ID for the region of this
+        # forwarding rule.
+        # Can only be used with network_attachment. It is not possible to use on its
+        # own; however, network_attachment can be used without service_class_id.
+        # Corresponds to the JSON property `serviceClassId`
+        # @return [String]
+        attr_accessor :service_class_id
       
         # Service Directory resources to register this forwarding rule with.
         # Currently, only supports a single Service Directory resource.
@@ -17260,6 +17314,7 @@ module Google
           @metadata_filters = args[:metadata_filters] if args.key?(:metadata_filters)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
           @no_automate_dns_zone = args[:no_automate_dns_zone] if args.key?(:no_automate_dns_zone)
           @parent_forwarding_rule = args[:parent_forwarding_rule] if args.key?(:parent_forwarding_rule)
@@ -17270,6 +17325,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @service_class_id = args[:service_class_id] if args.key?(:service_class_id)
           @service_directory_registrations = args[:service_directory_registrations] if args.key?(:service_directory_registrations)
           @service_label = args[:service_label] if args.key?(:service_label)
           @service_name = args[:service_name] if args.key?(:service_name)
@@ -25644,6 +25700,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::CorsPolicy]
         attr_accessor :cors_policy
       
+        # Dynamic compression policy for this URL Map's route.
+        # Corresponds to the JSON property `dynamicCompressionPolicy`
+        # @return [Google::Apis::ComputeAlpha::DynamicCompressionPolicy]
+        attr_accessor :dynamic_compression_policy
+      
         # The specification for fault injection introduced into traffic to test
         # the resiliency of clients to backend service failure. As part of fault
         # injection, when clients send requests to a backend service, delays can be
@@ -25721,6 +25782,7 @@ module Google
         def update!(**args)
           @cache_policy = args[:cache_policy] if args.key?(:cache_policy)
           @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
+          @dynamic_compression_policy = args[:dynamic_compression_policy] if args.key?(:dynamic_compression_policy)
           @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
           @image_optimization_policy = args[:image_optimization_policy] if args.key?(:image_optimization_policy)
           @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
@@ -44425,6 +44487,11 @@ module Google
         # @return [String]
         attr_accessor :i_pv4_range
       
+        # Output only. [Output Only] Additional tags for this resource.
+        # Corresponds to the JSON property `additionalTags`
+        # @return [Array<String>]
+        attr_accessor :additional_tags
+      
         # Must be set to create a VPC network. If not set, a legacy network is
         # created.
         # When set to true, the VPC network is created in auto mode.
@@ -44582,6 +44649,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @i_pv4_range = args[:i_pv4_range] if args.key?(:i_pv4_range)
+          @additional_tags = args[:additional_tags] if args.key?(:additional_tags)
           @auto_create_subnetworks = args[:auto_create_subnetworks] if args.key?(:auto_create_subnetworks)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -63958,6 +64026,13 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Output only. [Output Only] The ID of the machine on which the running instance
+        # is
+        # located. It is only populated for machines which have multiple hosts.
+        # Corresponds to the JSON property `machine`
+        # @return [String]
+        attr_accessor :machine
+      
         # [Output Only] The ID of the sub-block in which the running instance is
         # located. Instances in the same sub-block experience lower network latency
         # than instances in the same block.
@@ -63975,6 +64050,7 @@ module Google
           @block = args[:block] if args.key?(:block)
           @cluster = args[:cluster] if args.key?(:cluster)
           @host = args[:host] if args.key?(:host)
+          @machine = args[:machine] if args.key?(:machine)
           @subblock = args[:subblock] if args.key?(:subblock)
         end
       end

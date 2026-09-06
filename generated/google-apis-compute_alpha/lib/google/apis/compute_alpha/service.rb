@@ -1253,10 +1253,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Advise on whether extending an existing Future Reservation is possible
-        # based on the desired extension end time. If capacity is not available for
-        # the entire requested duration, the method will recommend the longest
-        # possible extension.
+        # Advises on whether extending an existing future reservation is possible
+        # based on the desired extension end time. If capacity isn't available for
+        # the entire requested duration, the method recommends the longest possible
+        # extension.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
