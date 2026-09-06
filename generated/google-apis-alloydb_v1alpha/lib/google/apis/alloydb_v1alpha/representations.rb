@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DnsAutomationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1155,6 +1161,14 @@ module Google
         end
       end
       
+      class DnsAutomationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fully_qualified_domain_name, as: 'fullyQualifiedDomainName'
+          property :state, as: 'state'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1602,7 +1616,11 @@ module Google
           property :consumer_network, as: 'consumerNetwork'
           property :consumer_network_status, as: 'consumerNetworkStatus'
           property :consumer_project, as: 'consumerProject'
+          collection :dns_automation_infos, as: 'dnsAutomationInfos', class: Google::Apis::AlloydbV1alpha::DnsAutomationInfo, decorator: Google::Apis::AlloydbV1alpha::DnsAutomationInfo::Representation
+      
           property :ip_address, as: 'ipAddress'
+          property :service_connection_policy, as: 'serviceConnectionPolicy'
+          property :service_connection_policy_creation_state, as: 'serviceConnectionPolicyCreationState'
           property :status, as: 'status'
         end
       end
