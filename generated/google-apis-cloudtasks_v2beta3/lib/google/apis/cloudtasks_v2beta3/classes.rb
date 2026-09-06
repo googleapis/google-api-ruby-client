@@ -870,8 +870,8 @@ module Google
         end
       end
       
-      # HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will
-      # be overridden according to the target.
+      # HTTP target. When specified at the Queue level, all tasks with HttpRequest are
+      # overridden according to the target.
       class HttpTarget
         include Google::Apis::Core::Hashable
       
@@ -1397,8 +1397,8 @@ module Google
         # @return [Google::Apis::CloudtasksV2beta3::AppEngineHttpQueue]
         attr_accessor :app_engine_http_queue
       
-        # HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will
-        # be overridden according to the target.
+        # HTTP target. When specified at the Queue level, all tasks with HttpRequest are
+        # overridden according to the target.
         # Corresponds to the JSON property `httpTarget`
         # @return [Google::Apis::CloudtasksV2beta3::HttpTarget]
         attr_accessor :http_target
