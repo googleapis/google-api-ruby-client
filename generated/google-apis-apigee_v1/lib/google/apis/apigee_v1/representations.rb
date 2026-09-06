@@ -1198,6 +1198,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudApigeeV1McpServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudApigeeV1Metadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4205,6 +4211,17 @@ module Google
           property :day, as: 'day'
           property :start_time, as: 'startTime', class: Google::Apis::ApigeeV1::GoogleTypeTimeOfDay, decorator: Google::Apis::ApigeeV1::GoogleTypeTimeOfDay::Representation
       
+        end
+      end
+      
+      class GoogleCloudApigeeV1McpServerConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mcp_server_config_data_location, as: 'mcpServerConfigDataLocation'
+          property :name, as: 'name'
+          property :revision_create_time, as: 'revisionCreateTime'
+          property :revision_id, :numeric_string => true, as: 'revisionId'
+          property :uid, as: 'uid'
         end
       end
       
