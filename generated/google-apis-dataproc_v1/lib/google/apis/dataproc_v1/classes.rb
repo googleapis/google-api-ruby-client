@@ -754,7 +754,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # Optional. Disk type.
+        # Optional. Deprecated: Use type instead.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -773,6 +773,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
       
+        # Optional. Attached disk type. Currently only supports Hyperdisks. See https://
+        # cloud.google.com/compute/docs/disks/hyperdisks. Note: Hyperdisk Balanced High
+        # Availability is not supported.Allowed values are: hyperdisk-balanced hyperdisk-
+        # extreme hyperdisk-ml hyperdisk-throughput
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -783,6 +791,7 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
