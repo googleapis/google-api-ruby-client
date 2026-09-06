@@ -7756,6 +7756,63 @@ module Google
         end
       end
       
+      # Deployed MCP server configuration for an organization. Response for
+      # GetMcpServerConfig. Org-scoped singleton: each organization has exactly one
+      # McpServerConfig. Multiple logical MCP servers within the same org are
+      # expressed inside the Cloud Storage blob (McpServerConfigData.hosts map), not
+      # as multiple McpServerConfig resources.
+      class GoogleCloudApigeeV1McpServerConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Cloud Storage URI to the McpServerConfigData blob in the Apigee
+        # tenant project bucket. The sidecar fetches this URI using Cloud Storage, and
+        # deserializes the. protojson blob to McpServerConfigData. Treat this as an
+        # opaque URI — its format may change. Example: gs://`apigee-tp-bucket`/apigee-
+        # mcp-config-`org`-`revision_id`.json
+        # Corresponds to the JSON property `mcpServerConfigDataLocation`
+        # @return [String]
+        attr_accessor :mcp_server_config_data_location
+      
+        # Identifier. Resource name in the singleton form: organizations/`org`/
+        # mcpServerConfig
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Time at which this McpServerConfig revision was created. Mirrors
+        # IngressConfig.revision_create_time.
+        # Corresponds to the JSON property `revisionCreateTime`
+        # @return [String]
+        attr_accessor :revision_create_time
+      
+        # Output only. Revision ID that defines the ordering on McpServerConfig
+        # revisions. Higher values indicate more recently deployed configurations.
+        # Monotonically non-decreasing per organization. Mirrors IngressConfig.
+        # revision_id.
+        # Corresponds to the JSON property `revisionId`
+        # @return [Fixnum]
+        attr_accessor :revision_id
+      
+        # Output only. Unique ID for the McpServerConfig that will only change if the
+        # organization is deleted and recreated.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mcp_server_config_data_location = args[:mcp_server_config_data_location] if args.key?(:mcp_server_config_data_location)
+          @name = args[:name] if args.key?(:name)
+          @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
+          @uid = args[:uid] if args.key?(:uid)
+        end
+      end
+      
       # Encapsulates additional information about query execution.
       class GoogleCloudApigeeV1Metadata
         include Google::Apis::Core::Hashable
