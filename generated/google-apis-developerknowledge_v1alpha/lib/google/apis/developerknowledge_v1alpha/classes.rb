@@ -259,8 +259,8 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. Provides the URI of the content, such as `docs.cloud.google.com/
-        # storage/docs/creating-buckets`.
+        # Output only. Provides the URI of the content, such as `https://docs.cloud.
+        # google.com/storage/docs/creating-buckets`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
