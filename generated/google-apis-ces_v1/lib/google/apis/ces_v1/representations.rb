@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentRegistryDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentRemoteA2aAgent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentRemoteDialogflowAgent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CitationsInlineCitation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClientCertificateSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +311,12 @@ module Google
       end
       
       class ConversationTurn
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomVoiceSample
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1084,6 +1108,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoteA2aConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoteAgentTool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1413,6 +1443,8 @@ module Google
           property :model_settings, as: 'modelSettings', class: Google::Apis::CesV1::ModelSettings, decorator: Google::Apis::CesV1::ModelSettings::Representation
       
           property :name, as: 'name'
+          property :remote_a2a_agent, as: 'remoteA2aAgent', class: Google::Apis::CesV1::AgentRemoteA2aAgent, decorator: Google::Apis::CesV1::AgentRemoteA2aAgent::Representation
+      
           property :remote_dialogflow_agent, as: 'remoteDialogflowAgent', class: Google::Apis::CesV1::AgentRemoteDialogflowAgent, decorator: Google::Apis::CesV1::AgentRemoteDialogflowAgent::Representation
       
           collection :tools, as: 'tools'
@@ -1459,6 +1491,21 @@ module Google
       class AgentLlmAgent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AgentRegistryDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_registry_service_name, as: 'agentRegistryServiceName'
+        end
+      end
+      
+      class AgentRemoteA2aAgent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :a2a_config, as: 'a2aConfig', class: Google::Apis::CesV1::RemoteA2aConfig, decorator: Google::Apis::CesV1::RemoteA2aConfig::Representation
+      
         end
       end
       
@@ -1628,6 +1675,7 @@ module Google
           property :name, as: 'name'
           property :snapshot, as: 'snapshot', class: Google::Apis::CesV1::AppSnapshot, decorator: Google::Apis::CesV1::AppSnapshot::Representation
       
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1637,6 +1685,8 @@ module Google
           property :ambient_sound_config, as: 'ambientSoundConfig', class: Google::Apis::CesV1::AmbientSoundConfig, decorator: Google::Apis::CesV1::AmbientSoundConfig::Representation
       
           property :barge_in_config, as: 'bargeInConfig', class: Google::Apis::CesV1::BargeInConfig, decorator: Google::Apis::CesV1::BargeInConfig::Representation
+      
+          collection :custom_voice_samples, as: 'customVoiceSamples', class: Google::Apis::CesV1::CustomVoiceSample, decorator: Google::Apis::CesV1::CustomVoiceSample::Representation
       
           property :inactivity_timeout, as: 'inactivityTimeout'
           hash :synthesize_speech_configs, as: 'synthesizeSpeechConfigs', class: Google::Apis::CesV1::SynthesizeSpeechConfig, decorator: Google::Apis::CesV1::SynthesizeSpeechConfig::Representation
@@ -1820,6 +1870,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cited_chunks, as: 'citedChunks', class: Google::Apis::CesV1::CitationsCitedChunk, decorator: Google::Apis::CesV1::CitationsCitedChunk::Representation
       
+          collection :inline_citations, as: 'inlineCitations', class: Google::Apis::CesV1::CitationsInlineCitation, decorator: Google::Apis::CesV1::CitationsInlineCitation::Representation
+      
         end
       end
       
@@ -1830,6 +1882,15 @@ module Google
           property :text, as: 'text'
           property :title, as: 'title'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class CitationsInlineCitation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cited_chunk_indices, as: 'citedChunkIndices'
+          property :end_index, as: 'endIndex'
+          property :start_index, as: 'startIndex'
         end
       end
       
@@ -1929,6 +1990,18 @@ module Google
           property :root_span, as: 'rootSpan', class: Google::Apis::CesV1::Span, decorator: Google::Apis::CesV1::Span::Representation
       
           property :user_intended_text, as: 'userIntendedText'
+        end
+      end
+      
+      class CustomVoiceSample
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consent_audio_gcs_uri, as: 'consentAudioGcsUri'
+          property :name, as: 'name'
+          property :preview_audio_content, :base64 => true, as: 'previewAudioContent'
+          property :preview_text, as: 'previewText'
+          property :voice_instruction, as: 'voiceInstruction'
+          property :voice_sample_gcs_uri, as: 'voiceSampleGcsUri'
         end
       end
       
@@ -2121,6 +2194,8 @@ module Google
       class Deployment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_registry_deployment, as: 'agentRegistryDeployment', class: Google::Apis::CesV1::AgentRegistryDeployment, decorator: Google::Apis::CesV1::AgentRegistryDeployment::Representation
+      
           property :app_version, as: 'appVersion'
           property :channel_profile, as: 'channelProfile', class: Google::Apis::CesV1::ChannelProfile, decorator: Google::Apis::CesV1::ChannelProfile::Representation
       
@@ -2519,6 +2594,7 @@ module Google
       class Image
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alt_text, as: 'altText'
           property :data, :base64 => true, as: 'data'
           property :mime_type, as: 'mimeType'
         end
@@ -3318,6 +3394,21 @@ module Google
         end
       end
       
+      class RemoteA2aConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_card, as: 'agentCard', class: Google::Apis::CesV1::AgentCard, decorator: Google::Apis::CesV1::AgentCard::Representation
+      
+          property :agent_registry, as: 'agentRegistry'
+          property :api_authentication, as: 'apiAuthentication', class: Google::Apis::CesV1::ApiAuthentication, decorator: Google::Apis::CesV1::ApiAuthentication::Representation
+      
+          property :context_id, as: 'contextId'
+          hash :input_variable_mapping, as: 'inputVariableMapping'
+          hash :output_variable_mapping, as: 'outputVariableMapping'
+          property :streaming_enabled, as: 'streamingEnabled'
+        end
+      end
+      
       class RemoteAgentTool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3520,6 +3611,7 @@ module Google
           property :image, as: 'image', class: Google::Apis::CesV1::Image, decorator: Google::Apis::CesV1::Image::Representation
       
           hash :payload, as: 'payload'
+          property :progress, as: 'progress'
           property :text, as: 'text'
           property :tool_calls, as: 'toolCalls', class: Google::Apis::CesV1::ToolCalls, decorator: Google::Apis::CesV1::ToolCalls::Representation
       
