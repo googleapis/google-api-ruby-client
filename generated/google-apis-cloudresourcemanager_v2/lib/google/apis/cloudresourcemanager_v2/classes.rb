@@ -272,6 +272,34 @@ module Google
         end
       end
       
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by CreateBoundary. Currently empty.
+      class CreateBoundaryMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by CreateCapabilityConfig. Currently empty.
+      class CreateCapabilityConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Metadata pertaining to the Folder creation process.
       class CreateFolderMetadata
         include Google::Apis::Core::Hashable
@@ -362,6 +390,34 @@ module Google
       
       # Runtime operation information for creating a TagValue.
       class CreateTagValueMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by DeleteBoundary. Currently empty.
+      class DeleteBoundaryMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by DeleteCapabilityConfig. Currently empty.
+      class DeleteCapabilityConfigMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -1223,6 +1279,48 @@ module Google
       # A status object which is used as the `metadata` field for the Operation
       # returned by `UndeleteProject`.
       class UndeleteProjectMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UpdateBoundaryConfig. Currently empty.
+      class UpdateBoundaryConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UpdateBoundary. Currently empty.
+      class UpdateBoundaryMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UpdateCapabilityConfig. Currently empty.
+      class UpdateCapabilityConfigMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
