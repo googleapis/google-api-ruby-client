@@ -856,6 +856,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalContentLinkDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExternalOfferDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1319,6 +1325,12 @@ module Google
       end
       
       class OneTimeProductDiscountedOffer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductGameRewardOffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3674,6 +3686,15 @@ module Google
         end
       end
       
+      class ExternalContentLinkDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_app_category, as: 'externalAppCategory'
+          property :installed_app_package, as: 'installedAppPackage'
+          property :link_type, as: 'linkType'
+        end
+      end
+      
       class ExternalOfferDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3698,6 +3719,8 @@ module Google
           property :current_pre_tax_amount, as: 'currentPreTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
       
           property :current_tax_amount, as: 'currentTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
+      
+          property :external_content_link_details, as: 'externalContentLinkDetails', class: Google::Apis::AndroidpublisherV3::ExternalContentLinkDetails, decorator: Google::Apis::AndroidpublisherV3::ExternalContentLinkDetails::Representation
       
           property :external_offer_details, as: 'externalOfferDetails', class: Google::Apis::AndroidpublisherV3::ExternalOfferDetails, decorator: Google::Apis::AndroidpublisherV3::ExternalOfferDetails::Representation
       
@@ -4479,6 +4502,13 @@ module Google
         end
       end
       
+      class OneTimeProductGameRewardOffer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :redemption_limit, :numeric_string => true, as: 'redemptionLimit'
+        end
+      end
+      
       class OneTimeProductListing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4492,6 +4522,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :discounted_offer, as: 'discountedOffer', class: Google::Apis::AndroidpublisherV3::OneTimeProductDiscountedOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductDiscountedOffer::Representation
+      
+          property :game_reward_offer, as: 'gameRewardOffer', class: Google::Apis::AndroidpublisherV3::OneTimeProductGameRewardOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductGameRewardOffer::Representation
       
           property :offer_id, as: 'offerId'
           collection :offer_tags, as: 'offerTags', class: Google::Apis::AndroidpublisherV3::OfferTag, decorator: Google::Apis::AndroidpublisherV3::OfferTag::Representation

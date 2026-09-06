@@ -4106,6 +4106,40 @@ module Google
         end
       end
       
+      # Reporting details unique to the external content link program.
+      class ExternalContentLinkDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The category of the downlaoded app. This must match the category
+        # provided in Play Console during the external app verification process. Only
+        # required for app installs.
+        # Corresponds to the JSON property `externalAppCategory`
+        # @return [String]
+        attr_accessor :external_app_category
+      
+        # Optional. The package name of the app downloaded through this transaction.
+        # Only required for app installs.
+        # Corresponds to the JSON property `installedAppPackage`
+        # @return [String]
+        attr_accessor :installed_app_package
+      
+        # Required. The type content being reported by this transaction.
+        # Corresponds to the JSON property `linkType`
+        # @return [String]
+        attr_accessor :link_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_app_category = args[:external_app_category] if args.key?(:external_app_category)
+          @installed_app_package = args[:installed_app_package] if args.key?(:installed_app_package)
+          @link_type = args[:link_type] if args.key?(:link_type)
+        end
+      end
+      
       # Reporting details unique to the external offers program.
       class ExternalOfferDetails
         include Google::Apis::Core::Hashable
@@ -4189,6 +4223,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::Price]
         attr_accessor :current_tax_amount
       
+        # Reporting details unique to the external content link program.
+        # Corresponds to the JSON property `externalContentLinkDetails`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalContentLinkDetails]
+        attr_accessor :external_content_link_details
+      
         # Reporting details unique to the external offers program.
         # Corresponds to the JSON property `externalOfferDetails`
         # @return [Google::Apis::AndroidpublisherV3::ExternalOfferDetails]
@@ -4269,6 +4308,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_pre_tax_amount = args[:current_pre_tax_amount] if args.key?(:current_pre_tax_amount)
           @current_tax_amount = args[:current_tax_amount] if args.key?(:current_tax_amount)
+          @external_content_link_details = args[:external_content_link_details] if args.key?(:external_content_link_details)
           @external_offer_details = args[:external_offer_details] if args.key?(:external_offer_details)
           @external_transaction_id = args[:external_transaction_id] if args.key?(:external_transaction_id)
           @one_time_transaction = args[:one_time_transaction] if args.key?(:one_time_transaction)
@@ -6756,6 +6796,27 @@ module Google
         end
       end
       
+      # Configuration specific to game reward offers.
+      class OneTimeProductGameRewardOffer
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of times this offer can be redeemed. If unset or set to 0,
+        # allows for unlimited offer redemptions. Otherwise must be a number between 1
+        # and 50 inclusive.
+        # Corresponds to the JSON property `redemptionLimit`
+        # @return [Fixnum]
+        attr_accessor :redemption_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @redemption_limit = args[:redemption_limit] if args.key?(:redemption_limit)
+        end
+      end
+      
       # Regional store listing for a one-time product.
       class OneTimeProductListing
         include Google::Apis::Core::Hashable
@@ -6797,6 +6858,11 @@ module Google
         # Corresponds to the JSON property `discountedOffer`
         # @return [Google::Apis::AndroidpublisherV3::OneTimeProductDiscountedOffer]
         attr_accessor :discounted_offer
+      
+        # Configuration specific to game reward offers.
+        # Corresponds to the JSON property `gameRewardOffer`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductGameRewardOffer]
+        attr_accessor :game_reward_offer
       
         # Required. Immutable. The ID of this product offer. Must be unique within the
         # purchase option. It must start with a number or lower-case letter, and can
@@ -6857,6 +6923,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @discounted_offer = args[:discounted_offer] if args.key?(:discounted_offer)
+          @game_reward_offer = args[:game_reward_offer] if args.key?(:game_reward_offer)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
           @package_name = args[:package_name] if args.key?(:package_name)
