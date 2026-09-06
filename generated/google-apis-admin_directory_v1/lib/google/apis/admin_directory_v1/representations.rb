@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExpirationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExternalId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1453,6 +1459,13 @@ module Google
         end
       end
       
+      class ExpirationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+        end
+      end
+      
       class ExternalId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1839,6 +1852,8 @@ module Google
           property :assignee_type, as: 'assigneeType'
           property :condition, as: 'condition'
           property :etag, as: 'etag'
+          property :expiration_details, as: 'expirationDetails', class: Google::Apis::AdminDirectoryV1::ExpirationDetails, decorator: Google::Apis::AdminDirectoryV1::ExpirationDetails::Representation
+      
           property :kind, as: 'kind'
           property :org_unit_id, as: 'orgUnitId'
           property :role_assignment_id, :numeric_string => true, as: 'roleAssignmentId'
