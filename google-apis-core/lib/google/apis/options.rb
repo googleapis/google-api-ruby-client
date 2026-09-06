@@ -18,6 +18,7 @@ module Google
     ClientOptions = Struct.new(
       :application_name,
       :application_version,
+      :adapter,
       :proxy_url,
       :open_timeout_sec,
       :read_timeout_sec,
@@ -50,6 +51,8 @@ module Google
       #   @return [String] Name of the application, for identification in the User-Agent header
       # @!attribute [rw] application_version
       #   @return [String] Version of the application, for identification in the User-Agent header
+      # @!attribute [rw] adapter
+      #   @return [Symbol, Class] Faraday adapter to use
       # @!attribute [rw] proxy_url
       #   @return [String] URL of a proxy server
       # @!attribute [rw] log_http_requests
