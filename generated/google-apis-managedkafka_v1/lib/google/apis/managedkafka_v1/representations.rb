@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BrokerCapacityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BrokerDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EffectiveCapacityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +281,18 @@ module Google
       end
       
       class PauseConnectorResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PublicClusterDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -417,6 +441,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :network_configs, as: 'networkConfigs', class: Google::Apis::ManagedkafkaV1::NetworkConfig, decorator: Google::Apis::ManagedkafkaV1::NetworkConfig::Representation
       
+          property :public_cluster_config, as: 'publicClusterConfig', class: Google::Apis::ManagedkafkaV1::PublicClusterConfig, decorator: Google::Apis::ManagedkafkaV1::PublicClusterConfig::Representation
+      
         end
       end
       
@@ -449,6 +475,13 @@ module Google
           property :acl, as: 'acl', class: Google::Apis::ManagedkafkaV1::Acl, decorator: Google::Apis::ManagedkafkaV1::Acl::Representation
       
           property :acl_created, as: 'aclCreated'
+        end
+      end
+      
+      class BrokerCapacityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_size_gib, :numeric_string => true, as: 'diskSizeGib'
         end
       end
       
@@ -504,16 +537,23 @@ module Google
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bootstrap_address, as: 'bootstrapAddress'
+          property :broker_capacity_config, as: 'brokerCapacityConfig', class: Google::Apis::ManagedkafkaV1::BrokerCapacityConfig, decorator: Google::Apis::ManagedkafkaV1::BrokerCapacityConfig::Representation
+      
           collection :broker_details, as: 'brokerDetails', class: Google::Apis::ManagedkafkaV1::BrokerDetails, decorator: Google::Apis::ManagedkafkaV1::BrokerDetails::Representation
       
           property :capacity_config, as: 'capacityConfig', class: Google::Apis::ManagedkafkaV1::CapacityConfig, decorator: Google::Apis::ManagedkafkaV1::CapacityConfig::Representation
       
           property :create_time, as: 'createTime'
+          property :effective_capacity_config, as: 'effectiveCapacityConfig', class: Google::Apis::ManagedkafkaV1::EffectiveCapacityConfig, decorator: Google::Apis::ManagedkafkaV1::EffectiveCapacityConfig::Representation
+      
           property :gcp_config, as: 'gcpConfig', class: Google::Apis::ManagedkafkaV1::GcpConfig, decorator: Google::Apis::ManagedkafkaV1::GcpConfig::Representation
       
           property :kafka_version, as: 'kafkaVersion'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :public_cluster_details, as: 'publicClusterDetails', class: Google::Apis::ManagedkafkaV1::PublicClusterDetails, decorator: Google::Apis::ManagedkafkaV1::PublicClusterDetails::Representation
+      
           property :rebalance_config, as: 'rebalanceConfig', class: Google::Apis::ManagedkafkaV1::RebalanceConfig, decorator: Google::Apis::ManagedkafkaV1::RebalanceConfig::Representation
       
           property :satisfies_pzi, as: 'satisfiesPzi'
@@ -642,6 +682,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
+        end
+      end
+      
+      class EffectiveCapacityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :broker_count, :numeric_string => true, as: 'brokerCount'
+          property :broker_disk_size_gib, :numeric_string => true, as: 'brokerDiskSizeGib'
         end
       end
       
@@ -816,6 +864,21 @@ module Google
       class PauseConnectorResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class PublicClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_source_ip_ranges, as: 'allowedSourceIpRanges'
+        end
+      end
+      
+      class PublicClusterDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :discovery_dns_records, as: 'discoveryDnsRecords'
+          collection :external_ip_addresses, as: 'externalIpAddresses'
         end
       end
       
