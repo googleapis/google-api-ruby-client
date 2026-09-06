@@ -957,6 +957,7 @@ module Google
       class GoogleCloudApihubV1Addon
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost_spec_gemini_region_id, as: 'boostSpecGeminiRegionId'
           property :config, as: 'config', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig::Representation
       
           property :create_time, as: 'createTime'
