@@ -1382,6 +1382,35 @@ module Google
         end
       end
       
+      # DnsAutomationInfo contains information about the DNS automation for the
+      # instance.
+      class DnsAutomationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The fully qualified domain name of the instance for DNS
+        # automation. Example: "...alloydb.goog.". Note: The AUDIT directive is
+        # intentionally omitted because this field contains sensitive network topology
+        # information.
+        # Corresponds to the JSON property `fullyQualifiedDomainName`
+        # @return [String]
+        attr_accessor :fully_qualified_domain_name
+      
+        # Output only. The state of the DNS automation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fully_qualified_domain_name = args[:fully_qualified_domain_name] if args.key?(:fully_qualified_domain_name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -3178,10 +3207,30 @@ module Google
         # @return [String]
         attr_accessor :consumer_project
       
+        # Output only. List of DNS automation info for the PSC auto connection.
+        # Corresponds to the JSON property `dnsAutomationInfos`
+        # @return [Array<Google::Apis::AlloydbV1beta::DnsAutomationInfo>]
+        attr_accessor :dns_automation_infos
+      
         # Output only. The IP address of the PSC service automation endpoint.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # Output only. The PSC service connection policy name. The format is "projects//
+        # regions//serviceConnectionPolicies/"
+        # Corresponds to the JSON property `serviceConnectionPolicy`
+        # @return [String]
+        attr_accessor :service_connection_policy
+      
+        # Output only. The creation state or result of the connection policy. Possible
+        # values include: - `ACTIVE`: The policy was created successfully. - `
+        # PERMISSION_DENIED`: Sufficient permissions were not provided. Note that this
+        # field is an unstructured output and customers should not rely on the specific
+        # string value or error message directly.
+        # Corresponds to the JSON property `serviceConnectionPolicyCreationState`
+        # @return [String]
+        attr_accessor :service_connection_policy_creation_state
       
         # Output only. The status of the PSC service automation connection. Possible
         # values: "STATE_UNSPECIFIED" - An invalid state as the default case. "ACTIVE" -
@@ -3204,7 +3253,10 @@ module Google
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @consumer_network_status = args[:consumer_network_status] if args.key?(:consumer_network_status)
           @consumer_project = args[:consumer_project] if args.key?(:consumer_project)
+          @dns_automation_infos = args[:dns_automation_infos] if args.key?(:dns_automation_infos)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @service_connection_policy = args[:service_connection_policy] if args.key?(:service_connection_policy)
+          @service_connection_policy_creation_state = args[:service_connection_policy_creation_state] if args.key?(:service_connection_policy_creation_state)
           @status = args[:status] if args.key?(:status)
         end
       end
