@@ -1328,9 +1328,7 @@ module Google
         # Permanently deletes the given KeyRing. All child resources of the KeyRing must
         # have been previously deleted using their corresponding Delete operations. The
         # specified key ring will be immediately and permanently deleted upon calling
-        # this method. This action cannot be undone. Note: the key ring and its metadata
-        # will be remembered by KeyManagementService to prevent re-use of the key ring's
-        # resource name.
+        # this method. This action cannot be undone.
         # @param [String] name
         #   Required. The name of the KeyRing to delete.
         # @param [String] fields
