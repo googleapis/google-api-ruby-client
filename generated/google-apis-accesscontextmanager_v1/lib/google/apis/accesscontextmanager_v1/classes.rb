@@ -1120,16 +1120,8 @@ module Google
         # @return [Google::Apis::AccesscontextmanagerV1::Principal]
         attr_accessor :principal
       
-        # Optional. Deprecated: Use `scoped_access_settings` instead. A list of
-        # applications that are subject to this binding's restrictions. If the list is
-        # empty, the binding restrictions will universally apply to all applications.
-        # Corresponds to the JSON property `restrictedClientApplications`
-        # @return [Array<Google::Apis::AccesscontextmanagerV1::Application>]
-        attr_accessor :restricted_client_applications
-      
         # Optional. A list of scoped access settings that set this binding's
-        # restrictions on a subset of applications. This field cannot be set if
-        # restricted_client_applications is set.
+        # restrictions on a subset of applications.
         # Corresponds to the JSON property `scopedAccessSettings`
         # @return [Array<Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings>]
         attr_accessor :scoped_access_settings
@@ -1152,7 +1144,6 @@ module Google
           @group_key = args[:group_key] if args.key?(:group_key)
           @name = args[:name] if args.key?(:name)
           @principal = args[:principal] if args.key?(:principal)
-          @restricted_client_applications = args[:restricted_client_applications] if args.key?(:restricted_client_applications)
           @scoped_access_settings = args[:scoped_access_settings] if args.key?(:scoped_access_settings)
           @session_settings = args[:session_settings] if args.key?(:session_settings)
         end
@@ -1602,6 +1593,49 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @supported_services = args[:supported_services] if args.key?(:supported_services)
+        end
+      end
+      
+      # A configured service perimeter returned by Access Context Manager.
+      class LookupConfiguredServicePerimeterResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource (e.g. "projects/123", "folders/456") that directly owns/is
+        # restricted by the enforced perimeter.
+        # Corresponds to the JSON property `restrictedResource`
+        # @return [String]
+        attr_accessor :restricted_resource
+      
+        # The resource (e.g. "projects/123", "folders/456") that directly owns/is
+        # restricted by the dry-run perimeter.
+        # Corresponds to the JSON property `restrictedResourceDryRun`
+        # @return [String]
+        attr_accessor :restricted_resource_dry_run
+      
+        # Fully qualified name of the configured enforced perimeter. Format: `
+        # accessPolicies/`policy_id`/servicePerimeters/`perimeter_name`` This field is
+        # empty if no enforced perimeter applies.
+        # Corresponds to the JSON property `servicePerimeter`
+        # @return [String]
+        attr_accessor :service_perimeter
+      
+        # Fully qualified name of the configured dry-run perimeter. Format: `
+        # accessPolicies/`policy_id`/servicePerimeters/`perimeter_name`` This field is
+        # empty if no dry-run perimeter configuration applies.
+        # Corresponds to the JSON property `servicePerimeterDryRun`
+        # @return [String]
+        attr_accessor :service_perimeter_dry_run
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restricted_resource = args[:restricted_resource] if args.key?(:restricted_resource)
+          @restricted_resource_dry_run = args[:restricted_resource_dry_run] if args.key?(:restricted_resource_dry_run)
+          @service_perimeter = args[:service_perimeter] if args.key?(:service_perimeter)
+          @service_perimeter_dry_run = args[:service_perimeter_dry_run] if args.key?(:service_perimeter_dry_run)
         end
       end
       

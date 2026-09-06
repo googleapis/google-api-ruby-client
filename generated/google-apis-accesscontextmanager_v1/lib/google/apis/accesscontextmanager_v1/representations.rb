@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LookupConfiguredServicePerimeterResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MethodSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -678,8 +684,6 @@ module Google
           property :name, as: 'name'
           property :principal, as: 'principal', class: Google::Apis::AccesscontextmanagerV1::Principal, decorator: Google::Apis::AccesscontextmanagerV1::Principal::Representation
       
-          collection :restricted_client_applications, as: 'restrictedClientApplications', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
-      
           collection :scoped_access_settings, as: 'scopedAccessSettings', class: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings, decorator: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings::Representation
       
           property :session_settings, as: 'sessionSettings', class: Google::Apis::AccesscontextmanagerV1::SessionSettings, decorator: Google::Apis::AccesscontextmanagerV1::SessionSettings::Representation
@@ -818,6 +822,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :supported_services, as: 'supportedServices', class: Google::Apis::AccesscontextmanagerV1::SupportedService, decorator: Google::Apis::AccesscontextmanagerV1::SupportedService::Representation
       
+        end
+      end
+      
+      class LookupConfiguredServicePerimeterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restricted_resource, as: 'restrictedResource'
+          property :restricted_resource_dry_run, as: 'restrictedResourceDryRun'
+          property :service_perimeter, as: 'servicePerimeter'
+          property :service_perimeter_dry_run, as: 'servicePerimeterDryRun'
         end
       end
       
