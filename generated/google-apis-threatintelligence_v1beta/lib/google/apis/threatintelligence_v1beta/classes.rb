@@ -1650,85 +1650,88 @@ module Google
       class LegacyMetadata
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether aggregation is enabled for alerts from this monitor.
+        # Output only. Whether aggregation is enabled for alerts from this monitor.
         # Corresponds to the JSON property `aggregationEnabled`
         # @return [Boolean]
         attr_accessor :aggregation_enabled
         alias_method :aggregation_enabled?, :aggregation_enabled
       
-        # Optional. Similarity threshold for aggregation.
+        # Output only. Similarity threshold for aggregation.
         # Corresponds to the JSON property `aggregationSimilarity`
         # @return [Float]
         attr_accessor :aggregation_similarity
       
-        # Optional. Version of the condition schema.
+        # Output only. Version of the condition schema.
         # Corresponds to the JSON property `conditionVersion`
         # @return [Fixnum]
         attr_accessor :condition_version
       
-        # Optional. User ID who created the monitor.
+        # Output only. User ID who created the monitor.
         # Corresponds to the JSON property `creatorUserId`
         # @return [String]
         attr_accessor :creator_user_id
       
-        # Optional. Description of the legacy monitor.
+        # Output only. Description of the legacy monitor.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. Code indicating why the monitor is disabled (if applicable).
+        # Output only. Code indicating why the monitor is disabled (if applicable).
         # Corresponds to the JSON property `disabledCode`
         # @return [String]
         attr_accessor :disabled_code
       
-        # Optional. Reason why the monitor is disabled (if applicable).
+        # Output only. Reason why the monitor is disabled (if applicable).
         # Corresponds to the JSON property `disabledReason`
         # @return [String]
         attr_accessor :disabled_reason
       
-        # Optional. Name of the legacy monitor.
+        # Output only. Name of the legacy monitor.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Whether email notifications are enabled.
+        # Output only. Deprecated: Whether email notifications are enabled. This field
+        # will not be used as email notifications are handled through the GTI Mail Hub.
         # Corresponds to the JSON property `emailNotificationEnabled`
         # @return [Boolean]
         attr_accessor :email_notification_enabled
         alias_method :email_notification_enabled?, :email_notification_enabled
       
-        # Optional. Whether email notifications are intermediate/immediate.
+        # Output only. Deprecated: Whether email notifications are intermediate/
+        # immediate. This field will not be used as email notifications are handled
+        # through the GTI Mail Hub.
         # Corresponds to the JSON property `emailNotificationImmediate`
         # @return [Boolean]
         attr_accessor :email_notification_immediate
         alias_method :email_notification_immediate?, :email_notification_immediate
       
-        # Optional. Unique identifier of the legacy monitor.
+        # Output only. Unique identifier of the legacy monitor.
         # Corresponds to the JSON property `legacyMonitorId`
         # @return [String]
         attr_accessor :legacy_monitor_id
       
-        # Optional. Time the legacy monitor was considered stale.
+        # Output only. Time the legacy monitor was considered stale.
         # Corresponds to the JSON property `staleTime`
         # @return [String]
         attr_accessor :stale_time
       
-        # Optional. ID of the template this monitor was created from.
+        # Output only. ID of the template this monitor was created from.
         # Corresponds to the JSON property `templateId`
         # @return [String]
         attr_accessor :template_id
       
-        # Optional. ID of the tenant owning the monitor.
+        # Output only. ID of the tenant owning the monitor.
         # Corresponds to the JSON property `tenantId`
         # @return [String]
         attr_accessor :tenant_id
       
-        # Optional. User ID who last updated the monitor.
+        # Output only. User ID who last updated the monitor.
         # Corresponds to the JSON property `updaterUserId`
         # @return [String]
         attr_accessor :updater_user_id
       
-        # Optional. Version of the monitor configuration.
+        # Output only. Version of the monitor configuration.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
