@@ -116,7 +116,7 @@ module Google
       class DomainProperty
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether the domain ownership has been verified (e.g., via Google
+        # Output only. Whether the domain ownership has been verified (e.g., via Google
         # Search Console).
         # Corresponds to the JSON property `ownershipVerified`
         # @return [Boolean]
