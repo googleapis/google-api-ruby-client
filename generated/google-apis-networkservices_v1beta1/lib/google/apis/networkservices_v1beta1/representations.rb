@@ -82,6 +82,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CdnEdgeExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CdnEdgeExtensionTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DnsPeeringConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -419,6 +431,12 @@ module Google
       end
       
       class ListAuthzExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCdnEdgeExtensionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -862,6 +880,28 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CdnEdgeExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :extension_chains, as: 'extensionChains', class: Google::Apis::NetworkservicesV1beta1::ExtensionChain, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionChain::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :target, as: 'target', class: Google::Apis::NetworkservicesV1beta1::CdnEdgeExtensionTarget, decorator: Google::Apis::NetworkservicesV1beta1::CdnEdgeExtensionTarget::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class CdnEdgeExtensionTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources'
         end
       end
       
@@ -1516,6 +1556,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :authz_extensions, as: 'authzExtensions', class: Google::Apis::NetworkservicesV1beta1::AuthzExtension, decorator: Google::Apis::NetworkservicesV1beta1::AuthzExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListCdnEdgeExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cdn_edge_extensions, as: 'cdnEdgeExtensions', class: Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension, decorator: Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'

@@ -529,6 +529,96 @@ module Google
         end
       end
       
+      # `CdnEdgeExtension` is a resource that lets the extension service modify the
+      # headers of both requests to the cache and responses from the cache served by
+      # an [`EdgeCacheService`](https://cloud.google.com/media-cdn/docs/reference/rest/
+      # v1/projects.locations.edgeCacheServices).
+      class CdnEdgeExtension
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. A set of ordered extension chains that contain the match conditions
+        # and extensions to execute. Match conditions for each extension chain are
+        # evaluated in sequence for a given request. The first extension chain that has
+        # a condition that matches the request is executed. Any subsequent extension
+        # chains do not execute. Limited to 5 extension chains per resource.
+        # Corresponds to the JSON property `extensionChains`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::ExtensionChain>]
+        attr_accessor :extension_chains
+      
+        # Optional. Set of labels associated with the `CdnEdgeExtension` resource. The
+        # format must comply with [the requirements for labels](https://cloud.google.com/
+        # compute/docs/labeling-resources#requirements) for Google Cloud resources.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Required. Identifier. Name of the `CdnEdgeExtension` resource in the following
+        # format: `projects/`project`/locations/`location`/cdnEdgeExtensions/`
+        # cdn_edge_extension``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies the set of targets to which `CdnEdgeExtension` should be applied to.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::NetworkservicesV1beta1::CdnEdgeExtensionTarget]
+        attr_accessor :target
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @extension_chains = args[:extension_chains] if args.key?(:extension_chains)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @target = args[:target] if args.key?(:target)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Specifies the set of targets to which `CdnEdgeExtension` should be applied to.
+      class CdnEdgeExtensionTarget
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of references to the resources that are targeted by `
+        # CdnEdgeExtension`. Types of resources supported: `EdgeCacheService`. The
+        # format must be the full resource name of [EdgeCacheService](https://cloud.
+        # google.com/media-cdn/docs/reference/rest/v1/projects.locations.
+        # edgeCacheServices) in the following format: `//networkservices.googleapis.com/
+        # projects/`project`/locations/`location`/edgeCacheServices/`edgeCacheService``.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<String>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
       # DNS Peering configuration.
       class DnsPeeringConfig
         include Google::Apis::Core::Hashable
@@ -3353,6 +3443,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authz_extensions = args[:authz_extensions] if args.key?(:authz_extensions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing `CdnEdgeExtension` resources.
+      class ListCdnEdgeExtensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `CdnEdgeExtension` resources.
+        # Corresponds to the JSON property `cdnEdgeExtensions`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension>]
+        attr_accessor :cdn_edge_extensions
+      
+        # A token identifying a page of results that the server returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cdn_edge_extensions = args[:cdn_edge_extensions] if args.key?(:cdn_edge_extensions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end

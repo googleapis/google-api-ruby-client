@@ -732,6 +732,227 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new `CdnEdgeExtension` resource in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource of the `CdnEdgeExtension` resource. Must be in
+        #   the format `projects/`project`/locations/`location``.
+        # @param [Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension] cdn_edge_extension_object
+        # @param [String] cdn_edge_extension_id
+        #   Required. User-provided ID of the `CdnEdgeExtension` resource to be created.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes since the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_cdn_edge_extension(parent, cdn_edge_extension_object = nil, cdn_edge_extension_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/cdnEdgeExtensions', options)
+          command.request_representation = Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension::Representation
+          command.request_object = cdn_edge_extension_object
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['cdnEdgeExtensionId'] = cdn_edge_extension_id unless cdn_edge_extension_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified `CdnEdgeExtension` resource.
+        # @param [String] name
+        #   Required. The name of the `CdnEdgeExtension` resource to delete. Must be in
+        #   the format `projects/`project`/locations/`location`/cdnEdgeExtensions/`
+        #   cdn_edge_extension``.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_cdn_edge_extension(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of the specified `CdnEdgeExtension` resource.
+        # @param [String] name
+        #   Required. A name of the `CdnEdgeExtension` resource to get. Must be in the
+        #   format `projects/`project`/locations/`location`/cdnEdgeExtensions/`
+        #   cdn_edge_extension``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cdn_edge_extension(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists `CdnEdgeExtensions` resources in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location from which the `CdnEdgeExtension` resources
+        #   are listed. These values are specified in the following format: `projects/`
+        #   project`/locations/`location``.
+        # @param [String] filter
+        #   Optional. Filtering results.
+        # @param [String] order_by
+        #   Optional. Hint about how to order the results.
+        # @param [Fixnum] page_size
+        #   Optional. Requested page size. The server might return fewer items than
+        #   requested. If unspecified, the server picks an appropriate default.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results that the server returns.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::ListCdnEdgeExtensionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::ListCdnEdgeExtensionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_cdn_edge_extensions(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/cdnEdgeExtensions', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::ListCdnEdgeExtensionsResponse::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::ListCdnEdgeExtensionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of the specified `CdnEdgeExtension` resource.
+        # @param [String] name
+        #   Required. Identifier. Name of the `CdnEdgeExtension` resource in the following
+        #   format: `projects/`project`/locations/`location`/cdnEdgeExtensions/`
+        #   cdn_edge_extension``.
+        # @param [Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension] cdn_edge_extension_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees that for 60
+        #   minutes since the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID with the exception that zero UUID is not supported (
+        #   00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. Used to specify the fields to be overwritten in the `
+        #   CdnEdgeExtension` resource by the update. The fields specified in the `
+        #   update_mask` are relative to the resource, not the full request. A field is
+        #   overwritten if it is in the mask. If the user does not specify a mask, then
+        #   all fields are overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_cdn_edge_extension(name, cdn_edge_extension_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension::Representation
+          command.request_object = cdn_edge_extension_object
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new EndpointPolicy in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the EndpointPolicy. Must be in the format `
