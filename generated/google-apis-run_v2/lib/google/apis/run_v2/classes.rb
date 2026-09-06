@@ -3071,13 +3071,6 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Immutable. Indicates whether the Service has durable execution
-        # enabled. This field is immutable once the Service is created.
-        # Corresponds to the JSON property `durableExecution`
-        # @return [Boolean]
-        attr_accessor :durable_execution
-        alias_method :durable_execution?, :durable_execution
-      
         # Optional. A system-generated fingerprint for this version of the resource. May
         # be used to detect modification conflict during updates.
         # Corresponds to the JSON property `etag`
@@ -3294,7 +3287,6 @@ module Google
           @default_uri_disabled = args[:default_uri_disabled] if args.key?(:default_uri_disabled)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
-          @durable_execution = args[:durable_execution] if args.key?(:durable_execution)
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @generation = args[:generation] if args.key?(:generation)
