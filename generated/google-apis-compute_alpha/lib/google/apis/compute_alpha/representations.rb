@@ -1672,6 +1672,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DynamicCompressionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ErrorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -12040,6 +12046,7 @@ module Google
           hash :metadatas, as: 'metadatas'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_pass_through_lb_traffic_policy, as: 'networkPassThroughLbTrafficPolicy', class: Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicy::Representation
       
           property :orchestration_info, as: 'orchestrationInfo', class: Google::Apis::ComputeAlpha::BackendServiceOrchestrationInfo, decorator: Google::Apis::ComputeAlpha::BackendServiceOrchestrationInfo::Representation
@@ -12058,6 +12065,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           collection :service_bindings, as: 'serviceBindings'
+          property :service_class_id, as: 'serviceClassId'
           property :service_lb_policy, as: 'serviceLbPolicy'
           property :session_affinity, as: 'sessionAffinity'
           property :strong_session_affinity_cookie, as: 'strongSessionAffinityCookie', class: Google::Apis::ComputeAlpha::BackendServiceHttpCookie, decorator: Google::Apis::ComputeAlpha::BackendServiceHttpCookie::Representation
@@ -13993,6 +14001,13 @@ module Google
         end
       end
       
+      class DynamicCompressionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compression_mode, as: 'compressionMode'
+        end
+      end
+      
       class ErrorInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14547,6 +14562,7 @@ module Google
       
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_tier, as: 'networkTier'
           property :no_automate_dns_zone, as: 'noAutomateDnsZone'
           property :parent_forwarding_rule, as: 'parentForwardingRule'
@@ -14557,6 +14573,7 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :service_class_id, as: 'serviceClassId'
           collection :service_directory_registrations, as: 'serviceDirectoryRegistrations', class: Google::Apis::ComputeAlpha::ForwardingRuleServiceDirectoryRegistration, decorator: Google::Apis::ComputeAlpha::ForwardingRuleServiceDirectoryRegistration::Representation
       
           property :service_label, as: 'serviceLabel'
@@ -16579,6 +16596,8 @@ module Google
           property :cache_policy, as: 'cachePolicy', class: Google::Apis::ComputeAlpha::CachePolicy, decorator: Google::Apis::ComputeAlpha::CachePolicy::Representation
       
           property :cors_policy, as: 'corsPolicy', class: Google::Apis::ComputeAlpha::CorsPolicy, decorator: Google::Apis::ComputeAlpha::CorsPolicy::Representation
+      
+          property :dynamic_compression_policy, as: 'dynamicCompressionPolicy', class: Google::Apis::ComputeAlpha::DynamicCompressionPolicy, decorator: Google::Apis::ComputeAlpha::DynamicCompressionPolicy::Representation
       
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::ComputeAlpha::HttpFaultInjection, decorator: Google::Apis::ComputeAlpha::HttpFaultInjection::Representation
       
@@ -21026,6 +21045,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :i_pv4_range, as: 'IPv4Range'
+          collection :additional_tags, as: 'additionalTags'
           property :auto_create_subnetworks, as: 'autoCreateSubnetworks'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -25779,6 +25799,7 @@ module Google
           property :block, as: 'block'
           property :cluster, as: 'cluster'
           property :host, as: 'host'
+          property :machine, as: 'machine'
           property :subblock, as: 'subblock'
         end
       end
