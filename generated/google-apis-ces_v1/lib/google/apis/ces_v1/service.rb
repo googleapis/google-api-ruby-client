@@ -2376,6 +2376,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the specified app version.
+        # @param [String] name
+        #   Identifier. The unique identifier of the app version. Format: `projects/`
+        #   project`/locations/`location`/apps/`app`/versions/`version``
+        # @param [Google::Apis::CesV1::AppVersion] app_version_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. If empty, fields `display_name` and `
+        #   description` will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::AppVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::AppVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_app_version(name, app_version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CesV1::AppVersion::Representation
+          command.request_object = app_version_object
+          command.response_representation = Google::Apis::CesV1::AppVersion::Representation
+          command.response_class = Google::Apis::CesV1::AppVersion
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Restores the specified app version. This will create a new app version from
         # the current draft app and overwrite the current draft with the specified app
         # version.

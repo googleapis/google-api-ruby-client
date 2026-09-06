@@ -207,6 +207,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The agent which will transfer execution to a remote [A2A](https://github.com/
+        # a2aproject/A2A) agent.
+        # Corresponds to the JSON property `remoteA2aAgent`
+        # @return [Google::Apis::CesV1::AgentRemoteA2aAgent]
+        attr_accessor :remote_a2a_agent
+      
         # The agent which will transfer execution to a remote [Dialogflow CX](https://
         # docs.cloud.google.com/dialogflow/cx/docs/concept/agent) agent. The Dialogflow
         # agent will process subsequent user queries until the session ends or flow ends,
@@ -266,6 +272,7 @@ module Google
           @llm_agent = args[:llm_agent] if args.key?(:llm_agent)
           @model_settings = args[:model_settings] if args.key?(:model_settings)
           @name = args[:name] if args.key?(:name)
+          @remote_a2a_agent = args[:remote_a2a_agent] if args.key?(:remote_a2a_agent)
           @remote_dialogflow_agent = args[:remote_dialogflow_agent] if args.key?(:remote_dialogflow_agent)
           @tools = args[:tools] if args.key?(:tools)
           @toolsets = args[:toolsets] if args.key?(:toolsets)
@@ -403,6 +410,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Configuration and status for Agent Registry deployment.
+      class AgentRegistryDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. The resource name of the deployed Agent Registry
+        # service. Format: `projects/`project`/locations/`location`/services/`service``
+        # Corresponds to the JSON property `agentRegistryServiceName`
+        # @return [String]
+        attr_accessor :agent_registry_service_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_registry_service_name = args[:agent_registry_service_name] if args.key?(:agent_registry_service_name)
+        end
+      end
+      
+      # The agent which will transfer execution to a remote [A2A](https://github.com/
+      # a2aproject/A2A) agent.
+      class AgentRemoteA2aAgent
+        include Google::Apis::Core::Hashable
+      
+        # Shared configuration for connecting to a remote [A2A](https://github.com/
+        # a2aproject/A2A) agent.
+        # Corresponds to the JSON property `a2aConfig`
+        # @return [Google::Apis::CesV1::RemoteA2aConfig]
+        attr_accessor :a2a_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @a2a_config = args[:a2a_config] if args.key?(:a2a_config)
         end
       end
       
@@ -1056,6 +1104,11 @@ module Google
         # @return [Google::Apis::CesV1::AppSnapshot]
         attr_accessor :snapshot
       
+        # Output only. Timestamp when the app version was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1069,6 +1122,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @snapshot = args[:snapshot] if args.key?(:snapshot)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1087,6 +1141,11 @@ module Google
         # Corresponds to the JSON property `bargeInConfig`
         # @return [Google::Apis::CesV1::BargeInConfig]
         attr_accessor :barge_in_config
+      
+        # Optional. Configures custom voice samples for voice cloning.
+        # Corresponds to the JSON property `customVoiceSamples`
+        # @return [Array<Google::Apis::CesV1::CustomVoiceSample>]
+        attr_accessor :custom_voice_samples
       
         # Optional. The duration of user inactivity (no speech or interaction) before
         # the agent prompts the user for reengagement. If not set, the agent will not
@@ -1113,6 +1172,7 @@ module Google
         def update!(**args)
           @ambient_sound_config = args[:ambient_sound_config] if args.key?(:ambient_sound_config)
           @barge_in_config = args[:barge_in_config] if args.key?(:barge_in_config)
+          @custom_voice_samples = args[:custom_voice_samples] if args.key?(:custom_voice_samples)
           @inactivity_timeout = args[:inactivity_timeout] if args.key?(:inactivity_timeout)
           @synthesize_speech_configs = args[:synthesize_speech_configs] if args.key?(:synthesize_speech_configs)
         end
@@ -1780,6 +1840,11 @@ module Google
         # @return [Array<Google::Apis::CesV1::CitationsCitedChunk>]
         attr_accessor :cited_chunks
       
+        # Optional. List of inline citations in the agent response.
+        # Corresponds to the JSON property `inlineCitations`
+        # @return [Array<Google::Apis::CesV1::CitationsInlineCitation>]
+        attr_accessor :inline_citations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1787,6 +1852,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cited_chunks = args[:cited_chunks] if args.key?(:cited_chunks)
+          @inline_citations = args[:inline_citations] if args.key?(:inline_citations)
         end
       end
       
@@ -1825,6 +1891,38 @@ module Google
           @text = args[:text] if args.key?(:text)
           @title = args[:title] if args.key?(:title)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # An inline citation in the response text.
+      class CitationsInlineCitation
+        include Google::Apis::Core::Hashable
+      
+        # The indices of the cited chunks that back this text segment. Indices refer to
+        # the elements in `cited_chunks`.
+        # Corresponds to the JSON property `citedChunkIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :cited_chunk_indices
+      
+        # The ending index (in bytes) of the text segment in the agent response.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # The starting index (in bytes) of the text segment in the agent response.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cited_chunk_indices = args[:cited_chunk_indices] if args.key?(:cited_chunk_indices)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @start_index = args[:start_index] if args.key?(:start_index)
         end
       end
       
@@ -2191,6 +2289,59 @@ module Google
           @messages = args[:messages] if args.key?(:messages)
           @root_span = args[:root_span] if args.key?(:root_span)
           @user_intended_text = args[:user_intended_text] if args.key?(:user_intended_text)
+        end
+      end
+      
+      # Configuration for a custom voice sample used for voice cloning.
+      class CustomVoiceSample
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Consent audio for voice cloning.
+        # Corresponds to the JSON property `consentAudioGcsUri`
+        # @return [String]
+        attr_accessor :consent_audio_gcs_uri
+      
+        # Optional. The user-defined name for the custom voice sample.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Synthesized preview audio for custom voice, formatted as
+        # canonical WAV (LINEAR16, 24kHz, 16-bit, mono).
+        # Corresponds to the JSON property `previewAudioContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :preview_audio_content
+      
+        # Optional. Text for synthesizing preview audio for custom voice.
+        # Corresponds to the JSON property `previewText`
+        # @return [String]
+        attr_accessor :preview_text
+      
+        # Optional. Natural language instructions for voice style, tone, pacing, or
+        # pronunciation.
+        # Corresponds to the JSON property `voiceInstruction`
+        # @return [String]
+        attr_accessor :voice_instruction
+      
+        # Optional. The Cloud Storage URI to the audio sample for voice cloning. The
+        # audio sample should be a mono-channel, 24kHz WAV file.
+        # Corresponds to the JSON property `voiceSampleGcsUri`
+        # @return [String]
+        attr_accessor :voice_sample_gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_audio_gcs_uri = args[:consent_audio_gcs_uri] if args.key?(:consent_audio_gcs_uri)
+          @name = args[:name] if args.key?(:name)
+          @preview_audio_content = args[:preview_audio_content] if args.key?(:preview_audio_content)
+          @preview_text = args[:preview_text] if args.key?(:preview_text)
+          @voice_instruction = args[:voice_instruction] if args.key?(:voice_instruction)
+          @voice_sample_gcs_uri = args[:voice_sample_gcs_uri] if args.key?(:voice_sample_gcs_uri)
         end
       end
       
@@ -2825,6 +2976,11 @@ module Google
       class Deployment
         include Google::Apis::Core::Hashable
       
+        # Configuration and status for Agent Registry deployment.
+        # Corresponds to the JSON property `agentRegistryDeployment`
+        # @return [Google::Apis::CesV1::AgentRegistryDeployment]
+        attr_accessor :agent_registry_deployment
+      
         # Optional. The resource name of the app version to deploy. Format: `projects/`
         # project`/locations/`location`/apps/`app`/versions/`version`` Use `projects/`
         # project`/locations/`location`/apps/`app`/versions/-` to use the draft app.
@@ -2899,6 +3055,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_registry_deployment = args[:agent_registry_deployment] if args.key?(:agent_registry_deployment)
           @app_version = args[:app_version] if args.key?(:app_version)
           @channel_profile = args[:channel_profile] if args.key?(:channel_profile)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -4208,6 +4365,11 @@ module Google
       class Image
         include Google::Apis::Core::Hashable
       
+        # Optional. The alternative text for the image.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
         # Required. Raw bytes of the image.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -4226,6 +4388,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
           @data = args[:data] if args.key?(:data)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
@@ -7093,6 +7256,70 @@ module Google
         end
       end
       
+      # Shared configuration for connecting to a remote [A2A](https://github.com/
+      # a2aproject/A2A) agent.
+      class RemoteA2aConfig
+        include Google::Apis::Core::Hashable
+      
+        # AgentCard conveys key information about a remote agent. It is a trimmed
+        # version of the AgentCard defined in the A2A protocol https://a2a-protocol.org/
+        # dev/specification/#441-agentcard
+        # Corresponds to the JSON property `agentCard`
+        # @return [Google::Apis::CesV1::AgentCard]
+        attr_accessor :agent_card
+      
+        # Optional. Reference to the agent in the Agent Registry. Format: `projects/`
+        # project`/locations/`location`/agents/`agent``
+        # Corresponds to the JSON property `agentRegistry`
+        # @return [String]
+        attr_accessor :agent_registry
+      
+        # Authentication information required for API calls.
+        # Corresponds to the JSON property `apiAuthentication`
+        # @return [Google::Apis::CesV1::ApiAuthentication]
+        attr_accessor :api_authentication
+      
+        # Optional. If not empty, interactions with the remote A2A agent will use this
+        # context ID. This context_id field can refer to a session variable like `$
+        # context.variables.order_agent_session_id`.
+        # Corresponds to the JSON property `contextId`
+        # @return [String]
+        attr_accessor :context_id
+      
+        # Optional. Mapping of input variable names of remote agent to GECX variable
+        # names.
+        # Corresponds to the JSON property `inputVariableMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :input_variable_mapping
+      
+        # Optional. Mapping of output variable names of remote agent to GECX variable
+        # names.
+        # Corresponds to the JSON property `outputVariableMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :output_variable_mapping
+      
+        # Optional. Whether streaming is enabled for the remote agent.
+        # Corresponds to the JSON property `streamingEnabled`
+        # @return [Boolean]
+        attr_accessor :streaming_enabled
+        alias_method :streaming_enabled?, :streaming_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_card = args[:agent_card] if args.key?(:agent_card)
+          @agent_registry = args[:agent_registry] if args.key?(:agent_registry)
+          @api_authentication = args[:api_authentication] if args.key?(:api_authentication)
+          @context_id = args[:context_id] if args.key?(:context_id)
+          @input_variable_mapping = args[:input_variable_mapping] if args.key?(:input_variable_mapping)
+          @output_variable_mapping = args[:output_variable_mapping] if args.key?(:output_variable_mapping)
+          @streaming_enabled = args[:streaming_enabled] if args.key?(:streaming_enabled)
+        end
+      end
+      
       # Represents a tool that allows the agent to call another remote agent.
       class RemoteAgentTool
         include Google::Apis::Core::Hashable
@@ -7813,6 +8040,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :payload
       
+        # Intermediate progress update from the CES agent.
+        # Corresponds to the JSON property `progress`
+        # @return [String]
+        attr_accessor :progress
+      
         # Output text from the CES agent.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -7851,6 +8083,7 @@ module Google
           @google_search_suggestions = args[:google_search_suggestions] if args.key?(:google_search_suggestions)
           @image = args[:image] if args.key?(:image)
           @payload = args[:payload] if args.key?(:payload)
+          @progress = args[:progress] if args.key?(:progress)
           @text = args[:text] if args.key?(:text)
           @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
           @turn_completed = args[:turn_completed] if args.key?(:turn_completed)
