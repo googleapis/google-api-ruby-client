@@ -91,8 +91,8 @@ module Google
       
         # Product Certifications, for example for energy efficiency labeling of products
         # recorded in the [EU EPREL](https://eprel.ec.europa.eu/screen/home) database.
-        # See the [Help Center](https://support.google.com/merchants/answer/13528839)
-        # article for more information.
+        # For more information, see [Certification](https://support.google.com/merchants/
+        # answer/13528839).
         # Corresponds to the JSON property `certifications`
         # @return [Array<Google::Apis::MerchantapiProductsV1beta::Certification>]
         attr_accessor :certifications
@@ -739,6 +739,22 @@ module Google
         # @return [String]
         attr_accessor :certification_code
       
+        # Optional. URL to the certification document (eg. `https://www.example.com/
+        # document`), for example, the product data sheet or fiche required by UK's
+        # DESNZ or EU's EPREL. Maximum length is 2000 characters. For more information,
+        # see [Certification](https://support.google.com/merchants/answer/13528839).
+        # Corresponds to the JSON property `certificationDocumentLink`
+        # @return [String]
+        attr_accessor :certification_document_link
+      
+        # Optional. URL to the certification label (eg. `https://www.example.com/label`),
+        # for example, the energy efficiency label required by UK's DESNZ or EU's EPREL.
+        # Maximum length is 2000 characters. For more information, see [Certification](
+        # https://support.google.com/merchants/answer/13528839).
+        # Corresponds to the JSON property `certificationLabelLink`
+        # @return [String]
+        attr_accessor :certification_label_link
+      
         # The name of the certification, for example "EPREL". Maximum length is 2000
         # characters.
         # Corresponds to the JSON property `certificationName`
@@ -759,6 +775,8 @@ module Google
         def update!(**args)
           @certification_authority = args[:certification_authority] if args.key?(:certification_authority)
           @certification_code = args[:certification_code] if args.key?(:certification_code)
+          @certification_document_link = args[:certification_document_link] if args.key?(:certification_document_link)
+          @certification_label_link = args[:certification_label_link] if args.key?(:certification_label_link)
           @certification_name = args[:certification_name] if args.key?(:certification_name)
           @certification_value = args[:certification_value] if args.key?(:certification_value)
         end
