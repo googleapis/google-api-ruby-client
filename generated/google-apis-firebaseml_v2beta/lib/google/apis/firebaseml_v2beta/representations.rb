@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1TranslationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1UrlContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1216,6 +1222,8 @@ module Google
       
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
+          property :translation_config, as: 'translationConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1TranslationConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1TranslationConfig::Representation
+      
         end
       end
       
@@ -1883,6 +1891,14 @@ module Google
           hash :custom_configs, as: 'customConfigs'
           property :enable_data_retention, as: 'enableDataRetention'
           property :enable_zero_data_retention, as: 'enableZeroDataRetention'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1TranslationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :echo_target_language, as: 'echoTargetLanguage'
+          property :target_language_code, as: 'targetLanguageCode'
         end
       end
       

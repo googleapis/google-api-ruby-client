@@ -1874,6 +1874,11 @@ module Google
         # @return [Float]
         attr_accessor :top_p
       
+        # Config for translation features.
+        # Corresponds to the JSON property `translationConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1TranslationConfig]
+        attr_accessor :translation_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1905,6 +1910,7 @@ module Google
           @thinking_config = args[:thinking_config] if args.key?(:thinking_config)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
+          @translation_config = args[:translation_config] if args.key?(:translation_config)
         end
       end
       
@@ -4284,6 +4290,35 @@ module Google
           @custom_configs = args[:custom_configs] if args.key?(:custom_configs)
           @enable_data_retention = args[:enable_data_retention] if args.key?(:enable_data_retention)
           @enable_zero_data_retention = args[:enable_zero_data_retention] if args.key?(:enable_zero_data_retention)
+        end
+      end
+      
+      # Config for translation features.
+      class GoogleCloudAiplatformV1beta1TranslationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If `true`, the model will generate audio when the target language is
+        # spoken, essentially it will parrot the input. If `false`, we will not produce
+        # audio for the target language.
+        # Corresponds to the JSON property `echoTargetLanguage`
+        # @return [Boolean]
+        attr_accessor :echo_target_language
+        alias_method :echo_target_language?, :echo_target_language
+      
+        # Required. The target language for translation. Supported values are BCP-47
+        # language codes (e.g. "en", "es", "fr").
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @echo_target_language = args[:echo_target_language] if args.key?(:echo_target_language)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
         end
       end
       
