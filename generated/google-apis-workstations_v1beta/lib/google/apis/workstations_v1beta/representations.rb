@@ -852,6 +852,7 @@ module Google
           hash :annotations, as: 'annotations'
           collection :conditions, as: 'conditions', class: Google::Apis::WorkstationsV1beta::Status, decorator: Google::Apis::WorkstationsV1beta::Status::Representation
       
+          property :console_base_url, as: 'consoleBaseUrl'
           property :control_plane_ip, as: 'controlPlaneIp'
           property :create_time, as: 'createTime'
           property :degraded, as: 'degraded'
