@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateBoundaryMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateCapabilityConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateFolderMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,18 @@ module Google
       end
       
       class CreateTagValueMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteBoundaryMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteCapabilityConfigMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +298,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateBoundaryConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateBoundaryMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateCapabilityConfigMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateFolderMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +395,18 @@ module Google
         end
       end
       
+      class CreateBoundaryMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CreateCapabilityConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CreateFolderMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -383,6 +437,18 @@ module Google
       end
       
       class CreateTagValueMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteBoundaryMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteCapabilityConfigMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
@@ -556,6 +622,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :configured_capabilities, as: 'configuredCapabilities'
           property :create_time, as: 'createTime'
+          property :is_management_project, as: 'isManagementProject'
           hash :labels, as: 'labels'
           property :lifecycle_state, as: 'lifecycleState'
           property :name, as: 'name'
@@ -625,6 +692,24 @@ module Google
       end
       
       class UndeleteProjectRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateBoundaryConfigMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateBoundaryMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UpdateCapabilityConfigMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
