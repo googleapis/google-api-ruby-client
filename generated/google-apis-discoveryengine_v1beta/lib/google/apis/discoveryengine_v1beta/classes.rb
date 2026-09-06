@@ -4019,11 +4019,11 @@ module Google
         # `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
         # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
         # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
-        # canvas` * `canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-
-        # without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-
-        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence` * `workflow-agents` * `in-app-
-        # notifications`
+        # canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` * `skill-
+        # sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi`
+        # * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `
+        # multi-agent-orchestration` * `cross-product-intelligence` * `workflow-agents` *
+        # `in-app-notifications`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -12532,11 +12532,11 @@ module Google
         # `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
         # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
         # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
-        # canvas` * `canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-
-        # without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-
-        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence` * `workflow-agents` * `in-app-
-        # notifications`
+        # canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` * `skill-
+        # sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi`
+        # * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `
+        # multi-agent-orchestration` * `cross-product-intelligence` * `workflow-agents` *
+        # `in-app-notifications`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -25521,11 +25521,11 @@ module Google
         # `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `
         # disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-
         # content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-
-        # canvas` * `canvas-workspace` * `skills` * `skill-sharing` * `skill-sharing-
-        # without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-
-        # sharing-with-groups` * `single-agent-orchestration` * `multi-agent-
-        # orchestration` * `cross-product-intelligence` * `workflow-agents` * `in-app-
-        # notifications`
+        # canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` * `skill-
+        # sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi`
+        # * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `
+        # multi-agent-orchestration` * `cross-product-intelligence` * `workflow-agents` *
+        # `in-app-notifications`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
