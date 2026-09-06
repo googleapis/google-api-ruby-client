@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1AgentResponseCustomization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1AgentTool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8410,6 +8416,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1TranslationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1Trial
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9377,6 +9389,13 @@ module Google
       
           property :event_time, as: 'eventTime'
           hash :state_delta, as: 'stateDelta'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1AgentResponseCustomization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :denial_message, as: 'denialMessage'
         end
       end
       
@@ -14172,6 +14191,8 @@ module Google
       
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
+          property :translation_config, as: 'translationConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TranslationConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TranslationConfig::Representation
+      
         end
       end
       
@@ -21800,6 +21821,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent, as: 'agent'
           property :agent_identity, as: 'agentIdentity'
+          property :agent_response_customization, as: 'agentResponseCustomization', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AgentResponseCustomization, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AgentResponseCustomization::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -23311,6 +23334,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :finished, as: 'finished'
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1TranslationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :echo_target_language, as: 'echoTargetLanguage'
+          property :target_language_code, as: 'targetLanguageCode'
         end
       end
       

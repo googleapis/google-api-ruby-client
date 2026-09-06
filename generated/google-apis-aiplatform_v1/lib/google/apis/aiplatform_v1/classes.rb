@@ -1651,6 +1651,29 @@ module Google
         end
       end
       
+      # Customizes the agent's response to the end user when a `
+      # SemanticGovernancePolicy` is evaluated (for example, with a custom message
+      # shown on denial).
+      class GoogleCloudAiplatformV1AgentResponseCustomization
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Custom message shown to the end user when the policy check results
+        # in a denial. Use this to explain the rationale to the user. Max 1000
+        # characters.
+        # Corresponds to the JSON property `denialMessage`
+        # @return [String]
+        attr_accessor :denial_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @denial_message = args[:denial_message] if args.key?(:denial_message)
+        end
+      end
+      
       # A tool provides a list of actions available to the Agent during the process of
       # executing a task.
       class GoogleCloudAiplatformV1AgentTool
@@ -1662,20 +1685,26 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :headers
       
-        # Optional. The name of the MCP server. Only applicable when `type` is `
-        # mcp_server`.
+        # Optional. The tool's GCP resource name, used to resolve the tool. Applicable
+        # when `type` is `mcp_server` or `endpoint` (a tool registered in Agent Registry)
+        # , for example `projects/`project`/locations/`location`/.../mcpServers/`id`` or
+        # `projects/`project`/locations/`location`/.../endpoints/`id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Required. The type of the tool. Supported types: * `code_execution` * `
-        # filesystem` * `google_search` * `mcp_server` * `url_context`
+        # endpoint` * `filesystem` * `google_search` * `mcp_server` * `url_context`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Optional. The URL for the MCP server endpoint. Only applicable when `type` is `
-        # mcp_server`.
+        # Optional. Temporary: the tool's runtime reference, consumed by CreateAgent to
+        # create the downstream AI App. Applicable when `type` is `mcp_server` or `
+        # endpoint`. It is duplicated here (the resource name is already in `name`) only
+        # because the Agent service is not yet connected to Agent Registry to derive it
+        # from `name`; the Task Service instead resolves it from Agent Registry (
+        # GetMcpServer / GetEndpoint) at task creation.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -18648,6 +18677,11 @@ module Google
         # @return [Float]
         attr_accessor :top_p
       
+        # Config for translation features.
+        # Corresponds to the JSON property `translationConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1TranslationConfig]
+        attr_accessor :translation_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -18678,6 +18712,7 @@ module Google
           @thinking_config = args[:thinking_config] if args.key?(:thinking_config)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
+          @translation_config = args[:translation_config] if args.key?(:translation_config)
         end
       end
       
@@ -45747,6 +45782,13 @@ module Google
         # @return [String]
         attr_accessor :agent_identity
       
+        # Customizes the agent's response to the end user when a `
+        # SemanticGovernancePolicy` is evaluated (for example, with a custom message
+        # shown on denial).
+        # Corresponds to the JSON property `agentResponseCustomization`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AgentResponseCustomization]
+        attr_accessor :agent_response_customization
+      
         # Output only. Timestamp when this SemanticGovernancePolicy was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -45797,6 +45839,7 @@ module Google
         def update!(**args)
           @agent = args[:agent] if args.key?(:agent)
           @agent_identity = args[:agent_identity] if args.key?(:agent_identity)
+          @agent_response_customization = args[:agent_response_customization] if args.key?(:agent_response_customization)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -50828,6 +50871,35 @@ module Google
         def update!(**args)
           @finished = args[:finished] if args.key?(:finished)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Config for translation features.
+      class GoogleCloudAiplatformV1TranslationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If `true`, the model will generate audio when the target language is
+        # spoken, essentially it will parrot the input. If `false`, we will not produce
+        # audio for the target language.
+        # Corresponds to the JSON property `echoTargetLanguage`
+        # @return [Boolean]
+        attr_accessor :echo_target_language
+        alias_method :echo_target_language?, :echo_target_language
+      
+        # Required. The target language for translation. Supported values are BCP-47
+        # language codes (e.g. "en", "es", "fr").
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @echo_target_language = args[:echo_target_language] if args.key?(:echo_target_language)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
         end
       end
       
