@@ -3377,6 +3377,12 @@ module Google
         # @return [String]
         attr_accessor :file_id
       
+        # Optional. The type of the file to upload. Defaulting to ATTACHMENT if not
+        # specified.
+        # Corresponds to the JSON property `fileType`
+        # @return [String]
+        attr_accessor :file_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3384,6 +3390,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_id = args[:file_id] if args.key?(:file_id)
+          @file_type = args[:file_type] if args.key?(:file_type)
         end
       end
       
@@ -3442,6 +3449,13 @@ module Google
         # @return [String]
         attr_accessor :package_id
       
+        # Optional. Client specified annotations to attach to the version upon creation.
+        # This field is only applied if the Version is created during this upload. If
+        # the Version already exists and this field is set, the request will fail.
+        # Corresponds to the JSON property `versionAnnotations`
+        # @return [Hash<String,String>]
+        attr_accessor :version_annotations
+      
         # The ID of the version of the generic artifact. If the version does not exist,
         # a new version will be created. The version_id must start and end with a letter
         # or number, can only contain lowercase letters, numbers, the following
@@ -3459,6 +3473,7 @@ module Google
         def update!(**args)
           @filename = args[:filename] if args.key?(:filename)
           @package_id = args[:package_id] if args.key?(:package_id)
+          @version_annotations = args[:version_annotations] if args.key?(:version_annotations)
           @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
@@ -3901,7 +3916,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Config for whether this repository has vulnerability scanning
-        # disabled.
+        # disabled. When unset (ENABLEMENT_CONFIG_UNSPECIFIED), this is treated as
+        # INHERITED for Docker repositories and DISABLED for non-Docker repositories.
         # Corresponds to the JSON property `enablementConfig`
         # @return [String]
         attr_accessor :enablement_config
