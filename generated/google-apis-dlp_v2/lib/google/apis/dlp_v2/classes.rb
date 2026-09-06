@@ -2184,14 +2184,6 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # The inspectTemplate contains a configuration (set of types of sensitive data
-        # to be detected) to be used anywhere you otherwise would normally specify
-        # InspectConfig. See https://docs.cloud.google.com/sensitive-data-protection/
-        # docs/concepts-templates to learn more.
-        # Corresponds to the JSON property `inspectTemplate`
-        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
-        attr_accessor :inspect_template
-      
         # Optional. Log the actions taken by the content policy to external systems.
         # Corresponds to the JSON property `loggingConfigs`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2LoggingConfig>]
@@ -2231,7 +2223,6 @@ module Google
           @failed_to_scan_supported_file_type = args[:failed_to_scan_supported_file_type] if args.key?(:failed_to_scan_supported_file_type)
           @input_too_large = args[:input_too_large] if args.key?(:input_too_large)
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
-          @inspect_template = args[:inspect_template] if args.key?(:inspect_template)
           @logging_configs = args[:logging_configs] if args.key?(:logging_configs)
           @name = args[:name] if args.key?(:name)
           @rules = args[:rules] if args.key?(:rules)
@@ -2291,10 +2282,17 @@ module Google
       class GooglePrivacyDlpV2ConversationMessage
         include Google::Apis::Core::Hashable
       
-        # The contents of this message.
+        # Deprecated: Use `message_parts` instead. The contents of this message. Only
+        # one of `content` and `message_parts` can be set.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
+      
+        # Optional. The parts of the message. Restricted to being at most a single text
+        # item. Only one of `content` and `message_parts` can be set.
+        # Corresponds to the JSON property `messageParts`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2MessagePart>]
+        attr_accessor :message_parts
       
         # The type of message.
         # Corresponds to the JSON property `messageType`
@@ -2316,6 +2314,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @message_parts = args[:message_parts] if args.key?(:message_parts)
           @message_type = args[:message_type] if args.key?(:message_type)
           @participant_id = args[:participant_id] if args.key?(:participant_id)
         end
@@ -8566,6 +8565,25 @@ module Google
         end
       end
       
+      # A part of a conversation message.
+      class GooglePrivacyDlpV2MessagePart
+        include Google::Apis::Core::Hashable
+      
+        # String content for text-based messages.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # Configuration for a custom infoType that detects key-value pairs in the
       # metadata matching the specified regular expressions.
       class GooglePrivacyDlpV2MetadataKeyValueExpression
@@ -9107,12 +9125,6 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2PolicyCondition>]
         attr_accessor :conditions
       
-        # If set, the verdict will be returned to the user. Deprecated: Use `action`
-        # instead.
-        # Corresponds to the JSON property `returnVerdict`
-        # @return [String]
-        attr_accessor :return_verdict
-      
         def initialize(**args)
            update!(**args)
         end
@@ -9121,7 +9133,6 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @conditions = args[:conditions] if args.key?(:conditions)
-          @return_verdict = args[:return_verdict] if args.key?(:return_verdict)
         end
       end
       
